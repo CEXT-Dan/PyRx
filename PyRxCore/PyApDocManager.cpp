@@ -38,6 +38,7 @@ PyApDocManagerReactor::PyApDocManagerReactor()
 PyApDocManagerReactor::PyApDocManagerReactor(const PyApDocManagerReactor&)
     :AcApDocManagerReactor()
 {
+    PyThrowBadEs(eNotApplicable);
 }
 #endif
 

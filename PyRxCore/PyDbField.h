@@ -60,12 +60,15 @@ public:
 //PyDdFieldEvaluator
 void makePyDdFieldEvaluatorWrapper();
 
-#ifndef _BRXTARGET260_OOOOF
 class PyDdFieldEvaluator : public AcFdFieldEvaluator, public boost::python::wrapper<PyDdFieldEvaluator>
 {
 public:
     PyDdFieldEvaluator(const std::string& name, const std::string& evalName);
     virtual ~PyDdFieldEvaluator() override = default;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDdFieldEvaluator(const PyDdFieldEvaluator&);
+#endif
+
 
     virtual const ACHAR*            evaluatorId(void) const override;
     virtual const ACHAR*            evaluatorId(AcDbField* pField) override;
@@ -103,16 +106,18 @@ public:
     bool reg_compile = true;
     bool reg_format = true;
 };
-#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
-#ifndef _BRXTARGET260_OOOOF
 class PyRxFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader
 {
 public:
     PyRxFieldEvaluatorLoader() = default;
     virtual ~PyRxFieldEvaluatorLoader() override = default;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyRxFieldEvaluatorLoader(const PyRxFieldEvaluatorLoader&);
+#endif
+
     virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
     virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
 
@@ -122,13 +127,11 @@ public:
 public:
     std::map <AcString, PyDdFieldEvaluator*> m_evaluators;
 };
-#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyDbFieldEngine
 void makePyDbFieldEngineWrapper();
 
-#ifndef _BRXTARGET260_OOOOF
 
 #ifdef _BRXTARGET250
 class PyDbFieldEngine
@@ -139,6 +142,10 @@ class PyDbFieldEngine : public AcFdFieldReactor
     PyDbFieldEngine();
 public:
     ~PyDbFieldEngine();
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDbFieldEngine(const PyDbFieldEngine&);
+#endif
+
 
     void                        registerEvaluator(const PyDdFieldEvaluator& evaluator) const;
     void                        unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const;
@@ -160,10 +167,10 @@ public:
     std::shared_ptr<PyRxFieldEvaluatorLoader> mloader;
 };
 
-#endif
 
+//---------------------------------------------------------------------------------------- -
+//PyRxFdUiFieldDialogHook
 //#define FIELDHOOK 1
-
 #ifdef FIELDHOOK
 #if defined(_ARXTARGET)
 
