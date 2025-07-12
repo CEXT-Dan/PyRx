@@ -621,7 +621,7 @@ public:
     void        SetCategory(const CString& csVal) const;
 
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET250)
     IAcSmSheet2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
