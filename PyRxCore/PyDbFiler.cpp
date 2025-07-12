@@ -30,6 +30,7 @@ PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
 PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(const PyDbSnoopDwgFiler&)
     : AcDbDwgFiler()
 {
+    PyThrowBadEs(eNotApplicable);
 }
 #endif
 
@@ -405,6 +406,7 @@ void makePyDbSnoopDxfFilerrWrapper()
 PyDbSnoopDxfFiler::PyDbSnoopDxfFiler(const PyDbSnoopDxfFiler&)
     : AcDbDxfFiler()
 {
+    PyThrowBadEs(eNotApplicable);
 }
 #endif
 
