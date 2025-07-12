@@ -10,6 +10,7 @@ class PyAutoDocLock;
 //-----------------------------------------------------------------------------------------
 //PyApDocManagerReactor
 void makePyApDocManagerReactorWrapper();
+#ifndef _BRXTARGET260_OOOOF
 class PyApDocManagerReactor :public AcApDocManagerReactor, public boost::python::wrapper<PyApDocManagerReactor>
 {
 public:
@@ -86,7 +87,7 @@ public:
 public:
     bool m_isActive = false;
 };
-
+#endif
 //-----------------------------------------------------------------------------------------
 //PyApDocManager
 void makePyApDocManagerWrapper();

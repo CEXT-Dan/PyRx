@@ -177,7 +177,7 @@ public:
 void makePyDbXrefObjectIdWrapper();
 class PyDbXrefObjectId
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyDbXrefObjectId();
     PyDbXrefObjectId(const AcDbXrefObjectId& id);

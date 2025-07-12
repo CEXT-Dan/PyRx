@@ -71,7 +71,7 @@ public:
     PyGePosition2d();
     PyGePosition2d(const AcGePoint2d& pnt);
     PyGePosition2d(double x, double y);
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     PyGePosition2d(const AcGePosition2d& pos);
 #endif
     PyGePosition2d(AcGeEntity2d* pEnt);

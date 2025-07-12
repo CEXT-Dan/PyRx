@@ -43,7 +43,7 @@ bool PyDbJoinEntityPE::joinEntity1(PyDbEntity& pPrimaryEntity, PyDbEntity& pSeco
 
 bool PyDbJoinEntityPE::joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->joinEntity(pPrimaryEntity.impObj(), pSecondaryEntity.impObj(), tol) == eOk;

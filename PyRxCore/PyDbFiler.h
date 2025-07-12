@@ -12,6 +12,8 @@ class PyDbHardOwnershipId;
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDwgFiler
 void makePyDbSnoopDwgFilerWrapper();
+#ifndef _BRXTARGET260_OOOOF
+
 class PyDbSnoopDwgFiler : public AcDbDwgFiler
 {
 public:
@@ -84,10 +86,12 @@ public:
     AcDb::FilerType     m_filerType = AcDb::kCopyFiler;
     boost::python::list m_list;
 };
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDxfFiler
 void makePyDbSnoopDxfFilerrWrapper();
+#ifndef _BRXTARGET260_OOOOF
 class PyDbSnoopDxfFiler : public AcDbDxfFiler
 {
 public:
@@ -130,9 +134,8 @@ public:
 public:
     boost::python::list m_list;
     AcDbDatabase* mpDb = nullptr;
-
-
 };
+#endif
 
 
 #pragma pack (pop)

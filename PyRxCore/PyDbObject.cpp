@@ -88,8 +88,10 @@ void makePyDbObjectWrapper()
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.ARGS(7183))
         .def("addReactor", &PyDbObject::addReactor, DS.ARGS({ "reactor: PyDb.DbObjectReactor" }, 7146))
         .def("removeReactor", &PyDbObject::removeReactor, DS.ARGS({ "reactor: PyDb.DbObjectReactor" }, 7226))
+#ifndef _BRXTARGET260_OOOOF
         .def("snoop", &PyDbObject::snoop, DS.ARGS({ " filer : PyDb.SnoopDwgFiler" }))
         .def("snoopdxf", &PyDbObject::snoopdxf, DS.ARGS({ " filer : PyDb.SnoopDxfFiler" }))
+#endif
         .def("deepClone", &PyDbObject::deepClone1)
         .def("deepClone", &PyDbObject::deepClone2, DS.ARGS({ "owner: PyDb.DbObject" ,"mapping: PyDb.IdMapping","isPrimary:bool=True" }, 7163))
         .def("wblockClone", &PyDbObject::wblockClone1)
@@ -480,16 +482,20 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 }
 
+#ifndef _BRXTARGET260_OOOOF
 void PyDbObject::snoop(PyDbSnoopDwgFiler& filer) const
 {
     PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
 }
+#endif
 
+#ifndef _BRXTARGET260_OOOOF
 void PyDbObject::snoopdxf(PyDbSnoopDxfFiler& filer) const
 {
     filer.mpDb = impObj()->database();
     PyThrowBadEs(impObj()->dxfOutFields(std::addressof(filer)));
 }
+#endif
 
 PyDbObject PyDbObject::deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap) const
 {

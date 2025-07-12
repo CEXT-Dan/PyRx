@@ -84,7 +84,7 @@ void PyDbDate::setDate(int month, int day, int year) const
 
 std::string PyDbDate::getLocalDisplayString() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->getLocalDisplayString());

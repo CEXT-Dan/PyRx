@@ -17,7 +17,7 @@ public:
     PyJig(const PyDbEntity& ent);
     virtual ~PyJig() override = default;
     AcEdJig::DragStatus         dragwr1();
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     AcEdJig::DragStatus         dragwr2(const AcEdDragStyle& style);
 #endif
     virtual AcEdJig::DragStatus sampler() override;
@@ -55,7 +55,7 @@ public:
     virtual ~PyDrawJig() override = default;
     AcEdJig::DragStatus         dragwr1();
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     AcEdJig::DragStatus         dragwr2(const AcEdDragStyle& style);
 #endif
     virtual AcEdJig::DragStatus sampler() override;

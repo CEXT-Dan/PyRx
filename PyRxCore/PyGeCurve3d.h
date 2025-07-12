@@ -180,7 +180,7 @@ class PyGeEllipArc3d : public PyGeCurve3d
 public:
     PyGeEllipArc3d();
     PyGeEllipArc3d(AcGeEntity3d* pEnt);
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     PyGeEllipArc3d(const AcGeEllipArc3d& ell);
     PyGeEllipArc3d(const PyGeCircArc3d& arc);
 #endif

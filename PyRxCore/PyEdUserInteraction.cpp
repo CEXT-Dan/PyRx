@@ -160,6 +160,7 @@ void PyEdUserInteraction::undoUserInteraction()
 // PyEdUIContext
 void makePyEdUIContextWrapper()
 {
+#ifndef  _BRXTARGET260_OOOOF
     PyDocString DS("UIContext");
     class_<PyEdUIContext>("UIContext")
         .def(init<>(DS.ARGS()))
@@ -173,8 +174,10 @@ void makePyEdUIContextWrapper()
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2, DS.SARGS({ "context: PyEd.UIContext","appName: str = ..." })).staticmethod("addDefaultContextMenu")
         .def("removeDefaultContextMenu", &PyEdUIContext::removeDefaultContextMenu, DS.SARGS({ "context: PyEd.UIContext" })).staticmethod("removeDefaultContextMenu")
         ;
+#endif
 }
 
+#ifndef  _BRXTARGET260_OOOOF
 PyEdUIContext::PyEdUIContext()
 {
 }
@@ -332,3 +335,4 @@ bool PyEdUIContext::removeDefaultContextMenu(PyEdUIContext& pContext)
     pContext.m_isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
     return !pContext.m_isAlive;
 }
+#endif

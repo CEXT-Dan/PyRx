@@ -11,7 +11,7 @@
 #pragma pack (push, 8)
 
 class PyDbObjectId;
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 class PyDb3dProfile;
 #endif
 class PyDbSweepOptions;
@@ -50,10 +50,10 @@ public:
     boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection) const;
 
     static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     static PyDbExtrudedSurface  createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
 #endif
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     static PyDbRevolvedSurface  createRevolvedSurface(PyDb3dProfile& pRev, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& options);
 #endif
     static std::string      className();

@@ -568,7 +568,7 @@ void makePyDb2dVertexWrapper()
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
         .def(init<const AcGePoint3d&, double, double, double, double, Adesk::Int32>())
 #endif
         .def(init<const PyDbObjectId&>())
@@ -608,7 +608,7 @@ PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos)
 {
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier)
     : PyDb2dVertex(new AcDb2dVertex(pos, bulge, startWidth, endWidth, tangent, vertexIdentifier), true)
 {
@@ -697,7 +697,7 @@ void PyDb2dVertex::ignoreTangent() const
 
 void PyDb2dVertex::setTangentUsed(Adesk::Boolean val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setTangentUsed(val));
@@ -716,7 +716,7 @@ void PyDb2dVertex::setTangent(double newVal) const
 
 void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setVertexIdentifier(suggestedValue));
@@ -725,7 +725,7 @@ void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue) const
 
 int PyDb2dVertex::vertexIdentifier() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->vertexIdentifier();
@@ -1613,7 +1613,7 @@ AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
 
 void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
-#if defined(_GRXTARGET260) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET260) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
@@ -2177,7 +2177,7 @@ void PyDbCircle::setNormal(const AcGeVector3d& val) const
 
 double PyDbCircle::circumference() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->circumference();
@@ -2186,7 +2186,7 @@ double PyDbCircle::circumference() const
 
 void PyDbCircle::setCircumference(double val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setCircumference(val));
@@ -2195,7 +2195,7 @@ void PyDbCircle::setCircumference(double val) const
 
 double PyDbCircle::diameter() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->diameter();
@@ -2204,7 +2204,7 @@ double PyDbCircle::diameter() const
 
 void PyDbCircle::setDiameter(double val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setDiameter(val));
@@ -2905,7 +2905,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
-#if defined(_GRXTARGET260) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET260) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
@@ -3859,7 +3859,7 @@ void PyDbShape::setSize(double val) const
 
 std::string PyDbShape::name() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     return wstr_to_utf8(impObj()->name());
 #else
     AcString val;

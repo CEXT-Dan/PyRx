@@ -52,6 +52,7 @@ protected:
 //-----------------------------------------------------------------------------------------
 // PyEdUIContext
 void makePyEdUIContextWrapper();
+#ifndef  _BRXTARGET260_OOOOF
 class PyEdUIContext : AcEdUIContext, public boost::python::wrapper<PyEdUIContext>
 {
 public:
@@ -77,4 +78,6 @@ public:
     static bool addDefaultContextMenu2(PyEdUIContext& pContext, const std::string& appName);
     static bool removeDefaultContextMenu(PyEdUIContext& pContext);
 };
+#endif
+
 #pragma pack (pop)

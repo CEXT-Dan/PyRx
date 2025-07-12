@@ -76,7 +76,7 @@ PyDbGraphNode PyDbGraphNode::nodeOut(int idx) const
 
 void PyDbGraphNode::addRefTo(const PyDbGraphNode& node) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->addRefTo(node.impObj()));
@@ -85,7 +85,7 @@ void PyDbGraphNode::addRefTo(const PyDbGraphNode& node) const
 
 void PyDbGraphNode::removeRefTo(const PyDbGraphNode& node) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->removeRefTo(node.impObj()));
@@ -94,7 +94,7 @@ void PyDbGraphNode::removeRefTo(const PyDbGraphNode& node) const
 
 void PyDbGraphNode::disconnectAll() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     impObj()->disconnectAll();
@@ -108,7 +108,7 @@ PyDbGraph PyDbGraphNode::owner() const
 
 bool PyDbGraphNode::isMarkedAs(Adesk::UInt8 flags) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->isMarkedAs(flags);
@@ -117,7 +117,7 @@ bool PyDbGraphNode::isMarkedAs(Adesk::UInt8 flags) const
 
 void PyDbGraphNode::markAs(Adesk::UInt8 flags) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->markAs(flags));
@@ -126,7 +126,7 @@ void PyDbGraphNode::markAs(Adesk::UInt8 flags) const
 
 void PyDbGraphNode::clear(Adesk::UInt8 flags) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->clear(flags));
@@ -165,7 +165,7 @@ bool PyDbGraphNode::isCycleNode() const
 
 void PyDbGraphNode::setEdgeGrowthRate(int outEdgeRate, int inEdgeRate) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setEdgeGrowthRate(outEdgeRate, inEdgeRate);
@@ -205,7 +205,7 @@ void makePyDbObjectIdGraphNodeWrapper()
         ;
 }
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const PyDbObjectId& id)
     : PyDbObjectIdGraphNode(nullptr, false)
 {
@@ -341,7 +341,7 @@ void PyDbXrefGraphNode::setXrefNotificationStatus(AcDb::XrefNotificationStatus s
 
 Acad::ErrorStatus PyDbXrefGraphNode::xrefReadSubstatus() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->xrefReadSubstatus();
@@ -426,7 +426,7 @@ void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto) co
 
 void PyDbGraph::delNode(const PyDbGraphNode& node) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->delNode(node.impObj()));
@@ -441,7 +441,7 @@ void PyDbGraph::reset() const
 
 void PyDbGraph::clearAll(Adesk::UInt8 flags) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     impObj()->clearAll(flags);
@@ -455,7 +455,7 @@ bool PyDbGraph::findCycles(const PyDbGraphNode& start) const
 
 void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->breakCycleEdge(pfrom.impObj(), pto.impObj()));
@@ -464,7 +464,7 @@ void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& 
 
 void PyDbGraph::setNodeGrowthRate(int rate) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setNodeGrowthRate(rate);
@@ -499,7 +499,7 @@ void makePyObjectIdGraphWrapper()
         ;
 }
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 PyObjectIdGraph::PyObjectIdGraph()
     : PyObjectIdGraph(nullptr, false)
 {
@@ -524,7 +524,7 @@ PyObjectIdGraph::PyObjectIdGraph(AcDbObjectIdGraph* ptr, bool autoDelete)
 
 void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->addNode(node.impObj()));
@@ -534,7 +534,7 @@ void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node) const
 
 void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->delNode(node.impObj()));
@@ -544,7 +544,7 @@ void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node) const
 
 PyDbObjectIdGraphNode PyObjectIdGraph::findNode(const PyDbObjectId& id) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return PyDbObjectIdGraphNode{ impObj()->findNode(id.m_id), false };
@@ -609,7 +609,7 @@ PyDbXrefGraph::PyDbXrefGraph(AcDbXrefGraph* ptr, bool autoDelete)
 
 PyDbXrefGraphNode PyDbXrefGraph::xrefNode1(const std::string& pName) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return PyDbXrefGraphNode{ impObj()->xrefNode(utf8_to_wstr(pName).c_str()), false };
@@ -618,7 +618,7 @@ PyDbXrefGraphNode PyDbXrefGraph::xrefNode1(const std::string& pName) const
 
 PyDbXrefGraphNode PyDbXrefGraph::xrefNode2(const PyDbObjectId& btrId) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return PyDbXrefGraphNode{ impObj()->xrefNode(btrId.m_id), false };
@@ -642,7 +642,7 @@ PyDbXrefGraphNode PyDbXrefGraph::hostDwg() const
 
 Adesk::Boolean PyDbXrefGraph::markUnresolvedTrees() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->markUnresolvedTrees();

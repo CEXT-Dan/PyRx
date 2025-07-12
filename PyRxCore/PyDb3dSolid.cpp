@@ -431,7 +431,7 @@ void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::p
 
 bool PyDb3dSolid::usesGraphicsCache() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->usesGraphicsCache();
@@ -447,7 +447,7 @@ void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies,
 
 boost::python::list PyDb3dSolid::projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -759,7 +759,7 @@ boost::python::tuple PyDbRevolveOptions::checkRevolveCurve1(PyDbEntity& ent, con
 
 boost::python::tuple PyDbRevolveOptions::checkRevolveCurve2(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, bool displayErrorMessages) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

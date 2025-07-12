@@ -1377,11 +1377,6 @@ void makePyBrxCvDbHAlignmentElementWrapper()
         ;
 }
 
-PyBrxCvDbHAlignmentElement::PyBrxCvDbHAlignmentElement(const BrxCvDbHAlignmentElement& ref)
-    : PyBrxCvDbSubObject(new BrxCvDbHAlignmentElement(ref), true)
-{
-}
-
 PyBrxCvDbHAlignmentElement::PyBrxCvDbHAlignmentElement(BrxCvDbHAlignmentElement* ptr, bool autoDelete)
     : PyBrxCvDbSubObject(ptr, autoDelete)
 {

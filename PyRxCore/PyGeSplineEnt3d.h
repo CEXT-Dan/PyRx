@@ -45,7 +45,7 @@ public:
 void makePyGeCubicSplineCurve3dWrapper();
 class PyGeCubicSplineCurve3d : public PyGeSplineEnt3d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeCubicSplineCurve3d();
     PyGeCubicSplineCurve3d(const PyGeCurve3d& curve, double epsilon);
@@ -74,7 +74,7 @@ public:
 void makePyGeNurbCurve3dWrapper();
 class PyGeNurbCurve3d : public PyGeSplineEnt3d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeNurbCurve3d();
     PyGeNurbCurve3d(const AcGeNurbCurve3d& src);
@@ -166,7 +166,7 @@ public:
     PyGePolyline3d(const AcGePolyline3d& src);
     PyGePolyline3d(const boost::python::list& points);
     PyGePolyline3d(const PyGeKnotVector& knots, const boost::python::list& points);
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     PyGePolyline3d(const PyGeCurve3d& crv, double apprEps);
 #endif
     virtual ~PyGePolyline3d() override = default;

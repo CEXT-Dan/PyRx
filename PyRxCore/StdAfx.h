@@ -87,12 +87,19 @@
 #if defined(_BRXTARGET) && (_BRXTARGET <= 250)
 #define _BRXTARGET250 250
 #endif
+#if defined(_BRXTARGET) && (_BRXTARGET <= 260)
+#define _BRXTARGET260 260
+#endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
 #define _ARXTARGET240 240
 #endif
 #if defined(_ARXTARGET) && (_ARXTARGET == 251)
 #define _ARXTARGET250 250
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+#define _BRXTARGET260_OOOOF 1
 #endif
 
 //- ObjectARX and OMF headers needs this
@@ -208,14 +215,15 @@
 
 #if defined(_BRXTARGET)
 #include "AcGi.h"
+#pragma comment( lib , "Ice.lib" )
 #endif
 
 #if defined(_BRXTARGET) && (_BRXTARGET == 240)
 #pragma comment( lib , "BrxATIL24.lib" )
-#pragma comment( lib , "Ice.lib" )
 #elif defined(_BRXTARGET) && (_BRXTARGET == 250)
 #pragma comment( lib , "BrxATIL25.lib" )
-#pragma comment( lib , "Ice.lib" )
+#elif defined(_BRXTARGET) && (_BRXTARGET == 260)
+#pragma comment( lib , "BrxATIL26.lib" )
 #endif
 
 #if defined(_GRXTARGET)

@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGeSplineEnt2d wrapper
 void makePyGeSplineEnt2dWrapper()
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     PyDocString DS("SplineEnt2d");
     class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
         .def("isRational", &PyGeSplineEnt2d::isRational, DS.ARGS())
@@ -35,7 +35,7 @@ void makePyGeSplineEnt2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeSplineEnt2d::PyGeSplineEnt2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
@@ -155,7 +155,7 @@ AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std
 void makePyGeCubicSplineCurve2dWrapper()
 {
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- curve: PyGe.Curve2d, epsilon: float\n"
@@ -182,7 +182,7 @@ void makePyGeCubicSplineCurve2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d()
     : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d())
 {
@@ -267,7 +267,7 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_locatio
 //AcGeNurbCurve2d  wrapper
 void makePyGeNurbCurve2dWrapper()
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- src: PyGe.Curve2d\n"
@@ -345,7 +345,7 @@ void makePyGeNurbCurve2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeNurbCurve2d::PyGeNurbCurve2d()
     : PyGeSplineEnt2d(new AcGeNurbCurve2d())
 {
@@ -618,7 +618,7 @@ void PyGeNurbCurve2d::elevateDegree(int plusDegree) const
 
 Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoint2d& point, double weight) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->addControlPointAt(newKnot, point, weight);
@@ -627,7 +627,7 @@ Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoin
 
 Adesk::Boolean PyGeNurbCurve2d::deleteControlPointAt(int index) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->deleteControlPointAt(index);
@@ -662,7 +662,7 @@ AcGeNurbCurve2d* PyGeNurbCurve2d::impObj(const std::source_location& src /*= std
 void makePyGePolyline2dWrapper()
 {
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- points: list[PyGe.Point2d]\n"
@@ -685,7 +685,7 @@ void makePyGePolyline2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGePolyline2d::PyGePolyline2d()
     : PyGeSplineEnt2d(new AcGePolyline2d())
 {

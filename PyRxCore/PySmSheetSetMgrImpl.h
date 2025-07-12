@@ -4,7 +4,7 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET) && (_BRXTARGET <= 260)
 #import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
@@ -333,10 +333,10 @@ public:
 #if !defined(_BRXTARGET240)
     IAcSmPublishOptions2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     IAcSmPublishOptions3* impObj3(const std::source_location& src = std::source_location::current()) const;
 #endif
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     IAcSmPublishOptions4* impObj4(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
@@ -621,7 +621,7 @@ public:
     void        SetCategory(const CString& csVal) const;
 
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     IAcSmSheet2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };

@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{254ed7f5-4891-44d2-b6bd-f5b3891ddfcf}</ProjectGuid>
+    <RootNamespace>PyRx</RootNamespace>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectName>PyRxV26.0</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>false</UseOfAtl>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v143</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>false</UseOfAtl>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v143</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.brx</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
+    <TargetExt>.brx</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <Optimization>Disabled</Optimization>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=260;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(BRX26)\inc\BrxSpecific;$(BRX26)\inc\BrxSpecific\bim;$(BRX26)\inc\BrxSpecific\civil;$(BRX26)\inc;$(BRX26)\inc$(PlatformArchitecture);$(BRX26)\utils\brep\inc;$(BRX26)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(BRX26)\lib;$(BRX26)\lib$(PlatformArchitecture);$(BRX26)\utils\atil\lib$(PlatformArchitecture);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <Optimization>MaxSpeed</Optimization>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(BRX26)\inc\BrxSpecific;$(BRX26)\inc\BrxSpecific\bim;$(BRX26)\inc\BrxSpecific\civil;$(BRX26)\inc;$(BRX26)\inc$(PlatformArchitecture);$(BRX26)\utils\brep\inc;$(BRX26)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=260;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>
+      </ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(BRX26)\lib;$(BRX26)\lib$(PlatformArchitecture);$(BRX26)\utils\atil\lib$(PlatformArchitecture);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy /y $(TargetPath) $(SolutionDir)pyrx\$(TargetFileName)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="acrxEntryPoint.cpp" />
+    <ClCompile Include="DbCore.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="EdCore.cpp" />
+    <ClCompile Include="GsCore.cpp" />
+    <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcadDimension.cpp" />
+    <ClCompile Include="PyAcadEntity.cpp" />
+    <ClCompile Include="PyAcadEntityImpl.cpp" />
+    <ClCompile Include="PyAcadDbObject.cpp" />
+    <ClCompile Include="PyAcadDbObjectImpl.cpp" />
+    <ClCompile Include="PyAcadTable.cpp" />
+    <ClCompile Include="PyAcadTableImpl.cpp" />
+    <ClCompile Include="PyAcAx.cpp" />
+    <ClCompile Include="PyAcBr.cpp" />
+    <ClCompile Include="PyAcadApplication.cpp" />
+    <ClCompile Include="PyAcadApplicationImpl.cpp" />
+    <ClCompile Include="PyAcadObject.cpp" />
+    <ClCompile Include="PyAcadObjectImpl.cpp" />
+    <ClCompile Include="PyBimCore.cpp" />
+    <ClCompile Include="PyBrEntity.cpp" />
+    <ClCompile Include="PyBrTraverser.cpp" />
+    <ClCompile Include="PyBrx.cpp" />
+    <ClCompile Include="PyBrxBim.cpp" />
+    <ClCompile Include="PyBrxBimImportExport.cpp" />
+    <ClCompile Include="PyBrxBimObject.cpp" />
+    <ClCompile Include="PyBrxCore.cpp" />
+    <ClCompile Include="PyBrxCv.cpp" />
+    <ClCompile Include="PyBrxCvDbAlignments.cpp" />
+    <ClCompile Include="PyBrxCvDbLabel.cpp" />
+    <ClCompile Include="PyBrxCvDbObjectManager.cpp" />
+    <ClCompile Include="PyBrxCvDbPoint.cpp" />
+    <ClCompile Include="PyBrxCvDbTinSurface.cpp" />
+    <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp" />
+    <ClCompile Include="PyBrxCvObject.cpp" />
+    <ClCompile Include="PyBrxDbProperties.cpp" />
+    <ClCompile Include="PyBrxIFC.cpp" />
+    <ClCompile Include="PyBrxPanel.cpp" />
+    <ClCompile Include="PyDb3dProfile.cpp" />
+    <ClCompile Include="PyDbDatabaseReactor.cpp" />
+    <ClCompile Include="PyDbDate.cpp" />
+    <ClCompile Include="PyDbDbLayerStateManager.cpp" />
+    <ClCompile Include="PyDbDimAssoc.cpp" />
+    <ClCompile Include="PyDbEllipse.cpp" />
+    <ClCompile Include="PyDbGeo.cpp" />
+    <ClCompile Include="PyDbGraph.cpp" />
+    <ClCompile Include="PyDbGripData.cpp" />
+    <ClCompile Include="PyDbHyperlink.cpp" />
+    <ClCompile Include="PyDbOverrule.cpp" />
+    <ClCompile Include="PyDbPointCloudEx.cpp" />
+    <ClCompile Include="PyDbPointRef.cpp" />
+    <ClCompile Include="PyDbSection.cpp" />
+    <ClCompile Include="PyDbSpatialFilter.cpp" />
+    <ClCompile Include="PyDbSubDMesh.cpp" />
+    <ClCompile Include="PyDbTextEditor.cpp" />
+    <ClCompile Include="PyException.cpp" />
+    <ClCompile Include="PyGePoint3dTree.cpp" />
+    <ClCompile Include="PyGeSurface.cpp" />
+    <ClCompile Include="PyAcGs.cpp" />
+    <ClCompile Include="PyAcPl.cpp" />
+    <ClCompile Include="PyApLayoutManager.cpp" />
+    <ClCompile Include="PyCmd.cpp" />
+    <ClCompile Include="PyDb3dSolid.cpp" />
+    <ClCompile Include="PyDbCurve.cpp" />
+    <ClCompile Include="PyDbDimension.cpp" />
+    <ClCompile Include="PyDbEnts.cpp" />
+    <ClCompile Include="PyAcAp.cpp" />
+    <ClCompile Include="PyAcDb.cpp" />
+    <ClCompile Include="PyAcEd.cpp" />
+    <ClCompile Include="PyAcEditor.cpp" />
+    <ClCompile Include="PyAcGe.cpp" />
+    <ClCompile Include="PyAcGi.cpp" />
+    <ClCompile Include="PyAcRx.cpp" />
+    <ClCompile Include="PyApApplication.cpp" />
+    <ClCompile Include="PyApDocManager.cpp" />
+    <ClCompile Include="PyApDocument.cpp" />
+    <ClCompile Include="PyCmColorBase.cpp" />
+    <ClCompile Include="PyDbDatabase.cpp" />
+    <ClCompile Include="PyDbDictionary.cpp" />
+    <ClCompile Include="PyDbEntity.cpp" />
+    <ClCompile Include="PyDbEval.cpp" />
+    <ClCompile Include="PyDbField.cpp" />
+    <ClCompile Include="PyDbFiler.cpp" />
+    <ClCompile Include="PyDbGroup.cpp" />
+    <ClCompile Include="PyDbHatch.cpp" />
+    <ClCompile Include="PyDbHostApplicationServices.cpp" />
+    <ClCompile Include="PyDbIdMapping.cpp" />
+    <ClCompile Include="PyDbImage.cpp" />
+    <ClCompile Include="PyDbLayout.cpp" />
+    <ClCompile Include="PyDbLeader.cpp" />
+    <ClCompile Include="PyDbMline.cpp" />
+    <ClCompile Include="PyDbMText.cpp" />
+    <ClCompile Include="PyDbObject.cpp" />
+    <ClCompile Include="PyDbObjectContext.cpp" />
+    <ClCompile Include="PyDbObjectId.cpp" />
+    <ClCompile Include="PyDbProtocolExtensions.cpp" />
+    <ClCompile Include="PyDbSpline.cpp" />
+    <ClCompile Include="PyDbSurface.cpp" />
+    <ClCompile Include="PyDbSymbolTable.cpp" />
+    <ClCompile Include="PyDbSymbolTableRecord.cpp" />
+    <ClCompile Include="PyDbTable.cpp" />
+    <ClCompile Include="PyDbTableStyle.cpp" />
+    <ClCompile Include="PyDbTransactionManager.cpp" />
+    <ClCompile Include="PyDbUnderlayReference.cpp" />
+    <ClCompile Include="PyDbViewport.cpp" />
+    <ClCompile Include="PyDbXrecord.cpp" />
+    <ClCompile Include="PyDocString.cpp" />
+    <ClCompile Include="PyEdInput.cpp" />
+    <ClCompile Include="PyEditorReactor.cpp" />
+    <ClCompile Include="PyGeBoundBlock2d.cpp" />
+    <ClCompile Include="PyGeBoundBlock3d.cpp" />
+    <ClCompile Include="PyGeClipBoundary2d.cpp" />
+    <ClCompile Include="PyGeCurve2d.cpp" />
+    <ClCompile Include="PyGeCurve3d.cpp" />
+    <ClCompile Include="PyGeCurveCurveInt2d.cpp" />
+    <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
+    <ClCompile Include="PyGeCurveSurfInt.cpp" />
+    <ClCompile Include="PyGeEntity2d.cpp" />
+    <ClCompile Include="PyGeEntity3d.cpp" />
+    <ClCompile Include="PyGeInterval.cpp" />
+    <ClCompile Include="PyGeKnotVector.cpp" />
+    <ClCompile Include="PyGeLinearEnt2d.cpp" />
+    <ClCompile Include="PyGeLinearEnt3d.cpp" />
+    <ClCompile Include="PyGePlanarEnt.cpp" />
+    <ClCompile Include="PyGePlane.cpp" />
+    <ClCompile Include="PyGePointEnt2d.cpp" />
+    <ClCompile Include="PyGePointEnt3d.cpp" />
+    <ClCompile Include="PyGeSplineEnt2d.cpp" />
+    <ClCompile Include="PyGeSplineEnt3d.cpp" />
+    <ClCompile Include="PyGeSurfSurfInt.cpp" />
+    <ClCompile Include="PyGiCommonDraw.cpp" />
+    <ClCompile Include="PyGiDrawable.cpp" />
+    <ClCompile Include="PyGiGraphicsKernel.cpp" />
+    <ClCompile Include="PyGiSubEntityTraits.cpp" />
+    <ClCompile Include="PyGiTransientManager.cpp" />
+    <ClCompile Include="PyGsManager.cpp" />
+    <ClCompile Include="PyGsView.cpp" />
+    <ClCompile Include="PyAcadDimensionImpl.cpp" />
+    <ClCompile Include="PyJig.cpp" />
+    <ClCompile Include="PyLayerFilter.cpp" />
+    <ClCompile Include="PyLispService.cpp" />
+    <ClCompile Include="PyPlObject.cpp" />
+    <ClCompile Include="PyPlPlotConfigManager.cpp" />
+    <ClCompile Include="PyPlPlotProgressDialog.cpp" />
+    <ClCompile Include="PyRxApp.cpp" />
+    <ClCompile Include="PyRxContainers.cpp" />
+    <ClCompile Include="PyRxAppSettings.cpp" />
+    <ClCompile Include="PyRxModule.cpp" />
+    <ClCompile Include="PyRxModuleLoader.cpp" />
+    <ClCompile Include="PyRxObject.cpp" />
+    <ClCompile Include="PyRxOverrule.cpp" />
+    <ClCompile Include="PyEdSelectionSet.cpp" />
+    <ClCompile Include="PyAcSm.cpp" />
+    <ClCompile Include="PySmSheetSetMgr.cpp" />
+    <ClCompile Include="PySmSheetSetMgrImpl.cpp" />
+    <ClCompile Include="PyUiPalette.cpp" />
+    <ClCompile Include="ResultBuffer.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PyEdUserInteraction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DbCore.h" />
+    <ClInclude Include="DocData.h" />
+    <ClInclude Include="EdCore.h" />
+    <ClInclude Include="GsCore.h" />
+    <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcad.h" />
+    <ClInclude Include="PyAcadDimension.h" />
+    <ClInclude Include="PyAcadEntity.h" />
+    <ClInclude Include="PyAcadEntityImpl.h" />
+    <ClInclude Include="PyAcadDbObject.h" />
+    <ClInclude Include="PyAcadDbObjectImpl.h" />
+    <ClInclude Include="PyAcadTable.h" />
+    <ClInclude Include="PyAcadTableImpl.h" />
+    <ClInclude Include="PyAcAx.h" />
+    <ClInclude Include="PyAcAxCommon.h" />
+    <ClInclude Include="PyAcBr.h" />
+    <ClInclude Include="PyAcadApplication.h" />
+    <ClInclude Include="PyAcadApplicationImpl.h" />
+    <ClInclude Include="PyAcadObject.h" />
+    <ClInclude Include="PyAcadObjectImpl.h" />
+    <ClInclude Include="PyBimCore.h" />
+    <ClInclude Include="PyBrEntity.h" />
+    <ClInclude Include="PyBrTraverser.h" />
+    <ClInclude Include="PyBrx.h" />
+    <ClInclude Include="PyBrxBim.h" />
+    <ClInclude Include="PyBrxBimImportExport.h" />
+    <ClInclude Include="PyBrxBimObject.h" />
+    <ClInclude Include="PyBrxCore.h" />
+    <ClInclude Include="PyBrxCv.h" />
+    <ClInclude Include="PyBrxCvDbAlignments.h" />
+    <ClInclude Include="PyBrxCvDbLabel.h" />
+    <ClInclude Include="PyBrxCvDbObjectManager.h" />
+    <ClInclude Include="PyBrxCvDbPoint.h" />
+    <ClInclude Include="PyBrxCvDbTinSurface.h" />
+    <ClInclude Include="PyBrxCvDbTinSurfaceDef.h" />
+    <ClInclude Include="PyBrxCvObject.h" />
+    <ClInclude Include="PyBrxDbProperties.h" />
+    <ClInclude Include="PyBrxIFC.h" />
+    <ClInclude Include="PyBrxPanel.h" />
+    <ClInclude Include="PyDb3dProfile.h" />
+    <ClInclude Include="PyDbDatabaseReactor.h" />
+    <ClInclude Include="PyDbDate.h" />
+    <ClInclude Include="PyDbDbLayerStateManager.h" />
+    <ClInclude Include="PyDbDimAssoc.h" />
+    <ClInclude Include="PyDbEllipse.h" />
+    <ClInclude Include="PyDbGeo.h" />
+    <ClInclude Include="PyDbGraph.h" />
+    <ClInclude Include="PyDbGripData.h" />
+    <ClInclude Include="PyDbHyperlink.h" />
+    <ClInclude Include="PyDbOverrule.h" />
+    <ClInclude Include="PyDbPointCloudEx.h" />
+    <ClInclude Include="PyDbPointRef.h" />
+    <ClInclude Include="PyDbSection.h" />
+    <ClInclude Include="PyDbSpatialFilter.h" />
+    <ClInclude Include="PyDbSubDMesh.h" />
+    <ClInclude Include="PyDbTextEditor.h" />
+    <ClInclude Include="PyGePoint3dTree.h" />
+    <ClInclude Include="PyGeSurface.h" />
+    <ClInclude Include="PyAcGs.h" />
+    <ClInclude Include="PyAcPl.h" />
+    <ClInclude Include="PyApLayoutManager.h" />
+    <ClInclude Include="PyCmd.h" />
+    <ClInclude Include="PyDb3dSolid.h" />
+    <ClInclude Include="PyDbCurve.h" />
+    <ClInclude Include="PyDbDimension.h" />
+    <ClInclude Include="PyDbEnts.h" />
+    <ClInclude Include="PyAcAp.h" />
+    <ClInclude Include="PyAcDb.h" />
+    <ClInclude Include="PyAcEd.h" />
+    <ClInclude Include="PyAcEditor.h" />
+    <ClInclude Include="PyAcGe.h" />
+    <ClInclude Include="PyAcGi.h" />
+    <ClInclude Include="PyAcRx.h" />
+    <ClInclude Include="PyApApplication.h" />
+    <ClInclude Include="PyApDocManager.h" />
+    <ClInclude Include="PyApDocument.h" />
+    <ClInclude Include="PyCmColorBase.h" />
+    <ClInclude Include="PyDbDatabase.h" />
+    <ClInclude Include="PyDbDictionary.h" />
+    <ClInclude Include="PyDbEntity.h" />
+    <ClInclude Include="PyDbEval.h" />
+    <ClInclude Include="PyDbField.h" />
+    <ClInclude Include="PyDbFiler.h" />
+    <ClInclude Include="PyDbGroup.h" />
+    <ClInclude Include="PyDbHatch.h" />
+    <ClInclude Include="PyDbHostApplicationServices.h" />
+    <ClInclude Include="PyDbIdMapping.h" />
+    <ClInclude Include="PyDbImage.h" />
+    <ClInclude Include="PyDbLayout.h" />
+    <ClInclude Include="PyDbLeader.h" />
+    <ClInclude Include="PyDbMline.h" />
+    <ClInclude Include="PyDbMText.h" />
+    <ClInclude Include="PyDbObject.h" />
+    <ClInclude Include="PyDbObjectContext.h" />
+    <ClInclude Include="PyDbObjectId.h" />
+    <ClInclude Include="PyDbProtocolExtensions.h" />
+    <ClInclude Include="PyDbSpline.h" />
+    <ClInclude Include="PyDbSurface.h" />
+    <ClInclude Include="PyDbSymbolTable.h" />
+    <ClInclude Include="PyDbSymbolTableRecord.h" />
+    <ClInclude Include="PyDbTable.h" />
+    <ClInclude Include="PyDbTableStyle.h" />
+    <ClInclude Include="PyDbTransactionManager.h" />
+    <ClInclude Include="PyDbUnderlayReference.h" />
+    <ClInclude Include="PyDbViewport.h" />
+    <ClInclude Include="PyDbXrecord.h" />
+    <ClInclude Include="PyDocString.h" />
+    <ClInclude Include="PyEdInput.h" />
+    <ClInclude Include="PyEditorReactor.h" />
+    <ClInclude Include="PyException.h" />
+    <ClInclude Include="PyGeBoundBlock2d.h" />
+    <ClInclude Include="PyGeBoundBlock3d.h" />
+    <ClInclude Include="PyGeClipBoundary2d.h" />
+    <ClInclude Include="PyGeCurve2d.h" />
+    <ClInclude Include="PyGeCurve3d.h" />
+    <ClInclude Include="PyGeCurveCurveInt2d.h" />
+    <ClInclude Include="PyGeCurveCurveInt3d.h" />
+    <ClInclude Include="PyGeCurveSurfInt.h" />
+    <ClInclude Include="PyGeEntity2d.h" />
+    <ClInclude Include="PyGeEntity3d.h" />
+    <ClInclude Include="PyGeInterval.h" />
+    <ClInclude Include="PyGeKnotVector.h" />
+    <ClInclude Include="PyGeLinearEnt2d.h" />
+    <ClInclude Include="PyGeLinearEnt3d.h" />
+    <ClInclude Include="PyGePlanarEnt.h" />
+    <ClInclude Include="PyGePlane.h" />
+    <ClInclude Include="PyGePointEnt2d.h" />
+    <ClInclude Include="PyGePointEnt3d.h" />
+    <ClInclude Include="PyGeSplineEnt2d.h" />
+    <ClInclude Include="PyGeSplineEnt3d.h" />
+    <ClInclude Include="PyGeSurfSurfInt.h" />
+    <ClInclude Include="PyGiCommonDraw.h" />
+    <ClInclude Include="PyGiDrawable.h" />
+    <ClInclude Include="PyGiGraphicsKernel.h" />
+    <ClInclude Include="PyGiSubEntityTraits.h" />
+    <ClInclude Include="PyGiTransientManager.h" />
+    <ClInclude Include="PyGsManager.h" />
+    <ClInclude Include="PyGsView.h" />
+    <ClInclude Include="PyAcadDimensionImpl.h" />
+    <ClInclude Include="PyJig.h" />
+    <ClInclude Include="PyLayerFilter.h" />
+    <ClInclude Include="PyLispService.h" />
+    <ClInclude Include="PyPlObject.h" />
+    <ClInclude Include="PyPlPlotConfigManager.h" />
+    <ClInclude Include="PyPlPlotProgressDialog.h" />
+    <ClInclude Include="PyRxApp.h" />
+    <ClInclude Include="PyRxContainers.h" />
+    <ClInclude Include="PyRxAppSettings.h" />
+    <ClInclude Include="PyRxModule.h" />
+    <ClInclude Include="PyRxModuleLoader.h" />
+    <ClInclude Include="PyRxObject.h" />
+    <ClInclude Include="PyRxOverrule.h" />
+    <ClInclude Include="PyEdSelectionSet.h" />
+    <ClInclude Include="PyAcSm.h" />
+    <ClInclude Include="PySmSheetSetMgr.h" />
+    <ClInclude Include="PySmSheetSetMgrImpl.h" />
+    <ClInclude Include="PyUiPalette.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResultBuffer.h" />
+    <ClInclude Include="RxPyString.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="PyEdUserInteraction.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PyRx.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

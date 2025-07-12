@@ -293,7 +293,7 @@ PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const Ac
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGeBoundBlock3d(impObj()->boundBlock().copy());
@@ -303,7 +303,7 @@ PyGeBoundBlock3d PyGeCurve3d::boundBlock1() const
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock2(const PyGeInterval& range) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGeBoundBlock3d(impObj()->boundBlock(range.imp).copy());
@@ -312,7 +312,7 @@ PyGeBoundBlock3d PyGeCurve3d::boundBlock2(const PyGeInterval& range) const
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGeBoundBlock3d(impObj()->orthoBoundBlock().copy());
@@ -321,7 +321,7 @@ PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock1() const
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock2(const PyGeInterval& range) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGeBoundBlock3d(impObj()->orthoBoundBlock(range.imp).copy());
@@ -604,7 +604,7 @@ boost::python::tuple PyGeCurve3d::getSamplePoints1(int numSample) const
     PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     impObj()->getSamplePoints(numSample, pointArray);
 #else
     impObj()->getSamplePoints(numSample, pointArray, paramArray);
@@ -1251,7 +1251,7 @@ void makePyGeEllipArc3dWrapper()
     PyDocString DS("EllipArc3d");
     class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
         .def(init<const PyGeCircArc3d&>())
 #endif
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
@@ -1303,7 +1303,7 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
 {
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
     : PyGeCurve3d(new AcGeEllipArc3d(ell))
 {

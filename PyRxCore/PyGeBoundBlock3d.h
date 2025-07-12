@@ -7,7 +7,7 @@
 void makePyGeBoundBlock3dWrapper();
 class PyGeBoundBlock3d : public PyGeEntity3d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeBoundBlock3d();
     PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3);
