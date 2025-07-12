@@ -9,6 +9,7 @@ using namespace boost::python;
 //PyApDocManagerReactor
 void makePyApDocManagerReactorWrapper()
 {
+#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("DocManagerReactor");
     class_<PyApDocManagerReactor>("DocManagerReactor")
         .def(init<>(DS.ARGS(78)))
@@ -28,8 +29,10 @@ void makePyApDocManagerReactorWrapper()
         .def("addReactor", &PyApDocManagerReactor::addReactor, DS.ARGS(97))
         .def("removeReactor", &PyApDocManagerReactor::removeReactor, DS.ARGS(127))
         ;
+#endif
 }
 
+#ifndef _BRXTARGET260_OOOOF
 PyApDocManagerReactor::PyApDocManagerReactor()
 {
 }
@@ -385,6 +388,7 @@ void PyApDocManagerReactor::removeReactor()
         m_isActive = false;
     }
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PyApDocManager Wrapper
@@ -548,7 +552,7 @@ void PyApDocManager::appContextOpenDocument(const std::string& pszDrawingName) c
 
 void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->appContextRecoverDocument(utf8_to_wstr(pszDrawingName).c_str()));

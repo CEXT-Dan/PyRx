@@ -15,7 +15,7 @@ void makePyGeCurveCurveInt2dWrapper();
 
 class PyGeCurveCurveInt2d : public PyGeEntity2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeCurveCurveInt2d();
     PyGeCurveCurveInt2d(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2);

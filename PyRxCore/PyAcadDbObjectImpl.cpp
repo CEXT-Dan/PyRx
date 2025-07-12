@@ -3247,7 +3247,7 @@ void PyIAcadMLeaderStyleImpl::SetSecondSegmentAngleConstraint(PyAcSegmentAngleTy
 
 PyAcMLeaderType PyIAcadMLeaderStyleImpl::GetLeaderLineType() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     AcMLeaderType rtval = (AcMLeaderType)PyAcMLeaderType::pyacInVisibleLeader;
@@ -3258,7 +3258,7 @@ PyAcMLeaderType PyIAcadMLeaderStyleImpl::GetLeaderLineType() const
 
 void PyIAcadMLeaderStyleImpl::SetLeaderLineType(PyAcMLeaderType val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadHr(impObj()->put_LeaderLinetype((AcMLeaderType)val));
@@ -3390,7 +3390,7 @@ void PyIAcadMLeaderStyleImpl::SetTextStyle(const CString& val) const
 
 PyAcTextAttachmentDirection PyIAcadMLeaderStyleImpl::GetTextAttachmentDirection() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     AcTextAttachmentDirection rtval = (AcTextAttachmentDirection)PyAcTextAttachmentDirection::pyacAttachmentHorizontal;
@@ -3401,7 +3401,7 @@ PyAcTextAttachmentDirection PyIAcadMLeaderStyleImpl::GetTextAttachmentDirection(
 
 void PyIAcadMLeaderStyleImpl::SetTextAttachmentDirection(PyAcTextAttachmentDirection val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadHr(impObj()->put_TextAttachmentDirection((AcTextAttachmentDirection)val));
@@ -3434,7 +3434,7 @@ void PyIAcadMLeaderStyleImpl::SetTextRightAttachmentType(PyAcTextAttachmentType 
 
 PyAcVerticalTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextTopAttachmentType() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     AcVerticalTextAttachmentType rtval = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
@@ -3445,7 +3445,7 @@ PyAcVerticalTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextTopAttachmentType
 
 void PyIAcadMLeaderStyleImpl::SetTextTopAttachmentType(PyAcVerticalTextAttachmentType val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadHr(impObj()->put_TextTopAttachmentType((AcVerticalTextAttachmentType)val));
@@ -3454,7 +3454,7 @@ void PyIAcadMLeaderStyleImpl::SetTextTopAttachmentType(PyAcVerticalTextAttachmen
 
 PyAcVerticalTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextBottomAttachmentType() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     AcVerticalTextAttachmentType rtval = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
@@ -3678,7 +3678,7 @@ void PyIAcadMLeaderStyleImpl::SetTextAlignmentType(PyAcTextAlignmentType val) co
 
 void PyIAcadMLeaderStyleImpl::SetTextBottomAttachmentType(PyAcVerticalTextAttachmentType val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadHr(impObj()->put_TextBottomAttachmentType((AcVerticalTextAttachmentType)val));

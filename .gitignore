@@ -356,3 +356,5 @@ $RECYCLE.BIN/
 /Version/Version.vcxproj.filters
 /Version/x64/Debug
 /Version/x64/Release
+/PyRxCore/PyRxV26.0
+/PyRxLoader/RxLoaderV26.0

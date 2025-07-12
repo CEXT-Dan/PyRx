@@ -111,7 +111,7 @@ void makePyDbHatchWrapper()
         .value("kSelfIntersecting", AcDbHatch::HatchLoopType::kSelfIntersecting)
         .value("kTextIsland", AcDbHatch::HatchLoopType::kTextIsland)
         .value("kDuplicate", AcDbHatch::HatchLoopType::kDuplicate)
-#if !defined (_BRXTARGET250)
+#if !defined (_BRXTARGET260)
         .value("kIsAnnotative", AcDbHatch::HatchLoopType::kIsAnnotative)
         .value("kDoesNotSupportScale", AcDbHatch::HatchLoopType::kDoesNotSupportScale)
         .value("kForceAnnoAllVisible", AcDbHatch::HatchLoopType::kForceAnnoAllVisible)
@@ -405,7 +405,7 @@ void PyDbHatch::setGradientShift(float shiftValue) const
 
 AcCmColor PyDbHatch::evaluateGradientColorAt(float value) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcCmColor clr;
@@ -509,7 +509,7 @@ void PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines) const
 
 void PyDbHatch::evaluateHatchAllScales1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales());
@@ -518,7 +518,7 @@ void PyDbHatch::evaluateHatchAllScales1() const
 
 void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales(bUnderestimateNumLines));
@@ -527,7 +527,7 @@ void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines) const
 
 bool PyDbHatch::lineGenerationEnabled() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->lineGenerationEnabled();
@@ -536,7 +536,7 @@ bool PyDbHatch::lineGenerationEnabled() const
 
 bool PyDbHatch::setLineGenerationEnabled(bool bEnable) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setLineGenerationEnabled(bEnable);

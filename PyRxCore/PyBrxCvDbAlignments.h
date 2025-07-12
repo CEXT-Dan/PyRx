@@ -398,7 +398,6 @@ class PyBrxCvDbHAlignmentElement : public PyBrxCvDbSubObject
     using EParameterConstraint = BrxCvDbHAlignmentElement::EParameterConstraint;
 
 public:
-    PyBrxCvDbHAlignmentElement(const BrxCvDbHAlignmentElement& ref);
     PyBrxCvDbHAlignmentElement(BrxCvDbHAlignmentElement* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentElement() override = default;
     Adesk::UInt64           id() const;

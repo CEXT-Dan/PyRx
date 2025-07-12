@@ -856,7 +856,7 @@ void makePyDbGeoMapWrapper()
     PyDocString DS("GeoMap");
     class_<PyDbGeoMap, bases<PyDbRasterImage>>("GeoMap", boost::python::no_init)
         .def(init<AcGeoMapType, AcGeoMapResolution, unsigned int>())
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
         //Not in BRX
 #else
         .def(init<const PyDbObjectId&, bool>())
@@ -890,7 +890,7 @@ PyDbGeoMap::PyDbGeoMap(AcGeoMapType mapType, AcGeoMapResolution resolution, unsi
 {
 }
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 //Not in BRX
 #else
 PyDbGeoMap::PyDbGeoMap(const PyDbObjectId& viewportId, bool isViewportSpecific)

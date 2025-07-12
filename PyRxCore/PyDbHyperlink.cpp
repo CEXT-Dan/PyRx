@@ -162,7 +162,7 @@ void PyDbHyperlinkCollection::addAt2(int nIndex, const std::string& sName, const
 
 void PyDbHyperlinkCollection::addAt3(int index, const PyDbHyperlink& pHLink) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->addAt(index, pHLink.impObj());
@@ -313,7 +313,7 @@ uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount4(const boost::python::list& id
 
 bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
  #else
     return hasHyperlink2(obj, true);
@@ -322,7 +322,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj) const
 
 bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlockDefinition) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     bool flag = false;
@@ -333,7 +333,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlo
 
 bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainers) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return hasHyperlink4(idContainers, true);
@@ -342,7 +342,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainer
 
 bool PyDbEntityHyperlinkPE::hasHyperlink4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     bool flag = false;

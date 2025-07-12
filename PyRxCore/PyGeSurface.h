@@ -52,7 +52,7 @@ public:
 void makePyGeConeWrapper();
 class PyGeCone : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeCone();
 
@@ -172,7 +172,7 @@ public:
 void makePyGeExternalBoundedSurfaceWrapper();
 class PyGeExternalBoundedSurface : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeExternalBoundedSurface();
     PyGeExternalBoundedSurface(AcGeEntity3d* src);
@@ -192,7 +192,7 @@ public:
 void makePyGeExternalSurfaceWrapper();
 class PyGeExternalSurface : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeExternalSurface();
     PyGeExternalSurface(AcGeEntity3d* src);
@@ -212,7 +212,7 @@ public:
 void makePyGeNurbSurfaceWrapper();
 class PyGeNurbSurface : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeNurbSurface();
     PyGeNurbSurface(AcGeEntity3d* src);
@@ -232,7 +232,7 @@ public:
 void makePyGeOffsetSurfaceWrapper();
 class PyGeOffsetSurface : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeOffsetSurface();
     PyGeOffsetSurface(AcGeOffsetSurface* src);
@@ -302,7 +302,7 @@ public:
 void makePyGeTorusWrapper();
 class PyGeTorus : public PyGeSurface
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeTorus();
     PyGeTorus(AcGeEntity3d* src);

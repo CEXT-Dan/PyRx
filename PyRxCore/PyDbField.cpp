@@ -66,7 +66,7 @@ void makePyDbFieldWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
 #endif
         .export_values()
@@ -113,7 +113,7 @@ void makePyDbFieldWrapper()
         .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
-#if !defined (_BRXTARGET250)
+#if !defined (_BRXTARGET260)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
@@ -160,7 +160,7 @@ PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
@@ -209,7 +209,7 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToTextField());
@@ -298,7 +298,7 @@ void PyDbField::setData1(const std::string& key, const PyDbAcValue& value) const
 
 void PyDbField::setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), value.impObj(), bRecursive));
@@ -350,6 +350,7 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
 //PyDdFieldEvaluator
 void makePyDdFieldEvaluatorWrapper()
 {
+#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("PyDb.FieldEvaluator");
     class_<PyDdFieldEvaluator>("FieldEvaluator", boost::python::no_init)
         .def(init<const std::string&, const std::string&>())
@@ -363,8 +364,10 @@ void makePyDdFieldEvaluatorWrapper()
         .def("getEvalName", &PyDdFieldEvaluator::getEvalName, DS.ARGS())
         .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")
         ;
+#endif
 }
 
+#ifndef _BRXTARGET260_OOOOF
 PyDdFieldEvaluator::PyDdFieldEvaluator(const std::string& name, const std::string& evalName)
     :m_name(utf8_to_wstr(name).c_str()), m_evalName(utf8_to_wstr(evalName).c_str())
 {
@@ -558,9 +561,11 @@ std::string PyDdFieldEvaluator::className()
 {
     return "AcFdFieldEvaluator";
 }
+#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
+#ifndef _BRXTARGET260_OOOOF
 AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::getEvaluator(const ACHAR* pszEvalId)
 {
     if (m_evaluators.contains(pszEvalId))
@@ -597,11 +602,13 @@ void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& eva
     else
         acutPrintf(_T("Evaluator %ls was never loaded"), (const TCHAR*)evaluator.getEvalNameW());
 }
+#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyDbFieldEngine
 void makePyDbFieldEngineWrapper()
 {
+#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("PyDb.FieldEngine");
     class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
         .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
@@ -613,8 +620,10 @@ void makePyDbFieldEngineWrapper()
         .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_value_policy<reference_existing_object>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
         ;
+#endif
 }
 
+#ifndef _BRXTARGET260_OOOOF
 PyDbFieldEngine::PyDbFieldEngine()
     : mloader(new PyRxFieldEvaluatorLoader())
 {
@@ -696,7 +705,7 @@ bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
 
 AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 {
-#if defined(_ZRXTARGET260) || defined(_BRXTARGET250)
+#if defined(_ZRXTARGET260) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return acdbGetFieldEngine()->evaluationOption();
@@ -705,7 +714,7 @@ AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 
 void PyDbFieldEngine::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-#if defined(_ZRXTARGET260) || defined(_BRXTARGET250)
+#if defined(_ZRXTARGET260) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(acdbGetFieldEngine()->setEvaluationOption(nEvalOption));
@@ -716,6 +725,7 @@ std::string PyDbFieldEngine::className()
 {
     return "AcFdFieldEngine";
 }
+#endif
 
 #ifdef FIELDHOOK
 #if defined(_ARXTARGET)

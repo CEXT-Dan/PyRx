@@ -288,7 +288,7 @@ bool PyIAcadTableImpl::GetCellBackgroundColorNone(int row, int col) const
 
 void PyIAcadTableImpl::SetCellBackgroundColorNone(int row, int col, bool val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     PyThrowBadHr(impObj()->SetCellBackgroundColorNone(row, col, val ? VARIANT_TRUE : VARIANT_FALSE));
 #else
     VARIANT_BOOL vtval = val ? VARIANT_TRUE : VARIANT_FALSE;
@@ -400,7 +400,7 @@ bool PyIAcadTableImpl::GetAutoScale(int row, int col) const
 
 void PyIAcadTableImpl::SetAutoScale(int row, int col, bool val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     PyThrowBadHr(impObj()->SetAutoScale(row, col, val ? VARIANT_TRUE : VARIANT_FALSE));
 #else
     VARIANT_BOOL vtval = val ? VARIANT_TRUE : VARIANT_FALSE;
@@ -579,7 +579,7 @@ boost::python::tuple PyIAcadTableImpl::Select(const AcGePoint3d& wpt, const AcGe
     PyThrowBadHr(AcGePoint3dToVariant(vtwpt.GetVARIANT(), wpt));
     PyThrowBadHr(AcGeVector3dToVariant(vtwvwVec.GetVARIANT(), wvwVec));
     PyThrowBadHr(AcGeVector3dToVariant(vtwvwxVec.GetVARIANT(), wvwxVec));
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     _variant_t paths; //ignore?
     PyThrowBadHr(impObj()->Select(vtwpt, vtwvwVec, vtwvwxVec, wxaper, wyaper, allowOutside ? VARIANT_TRUE : VARIANT_FALSE, &rtRow, &rtcol, &paths.GetVARIANT()));
 #else
@@ -603,7 +603,7 @@ boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, 
     PyThrowBadHr(AcGePoint3dToVariant(vtwpt2.GetVARIANT(), wpt2));
     PyThrowBadHr(AcGeVector3dToVariant(vtwvwVec.GetVARIANT(), wvwVec));
     PyThrowBadHr(AcGeVector3dToVariant(vtwvwxVec.GetVARIANT(), wvwxVec));
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     _variant_t paths; //ignore?
     PyThrowBadHr(impObj()->SelectSubRegion(vtwpt1, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax, &paths.GetVARIANT()));
 #else
@@ -614,7 +614,7 @@ boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, 
 
 void PyIAcadTableImpl::ReselectSubRegion() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     _variant_t paths; //ignore?
     PyThrowBadHr(impObj()->ReselectSubRegion(&paths.GetVARIANT()));
 #else

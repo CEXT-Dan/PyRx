@@ -1599,7 +1599,7 @@ CString PyIAcadPreferencesFilesImpl::GetMenuFile() const
 
 void PyIAcadPreferencesFilesImpl::SetEnterpriseMenuFile(const CString& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -1609,7 +1609,7 @@ void PyIAcadPreferencesFilesImpl::SetEnterpriseMenuFile(const CString& val) cons
 
 CString PyIAcadPreferencesFilesImpl::GetEnterpriseMenuFile() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -1620,7 +1620,7 @@ CString PyIAcadPreferencesFilesImpl::GetEnterpriseMenuFile() const
 
 void PyIAcadPreferencesFilesImpl::SetCustomIconPath(const CString& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -1630,7 +1630,7 @@ void PyIAcadPreferencesFilesImpl::SetCustomIconPath(const CString& val) const
 
 CString PyIAcadPreferencesFilesImpl::GetCustomIconPath() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -2014,7 +2014,7 @@ CString PyIAcadPreferencesFilesImpl::GetQNewTemplateFile() const
 
 void PyIAcadPreferencesFilesImpl::SetPlotLogFilePath(const CString& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -2024,7 +2024,7 @@ void PyIAcadPreferencesFilesImpl::SetPlotLogFilePath(const CString& val) const
 
 CString PyIAcadPreferencesFilesImpl::GetPlotLogFilePath() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -2035,7 +2035,7 @@ CString PyIAcadPreferencesFilesImpl::GetPlotLogFilePath() const
 
 void PyIAcadPreferencesFilesImpl::SetPageSetupOverridesTemplateFile(const CString& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -2045,7 +2045,7 @@ void PyIAcadPreferencesFilesImpl::SetPageSetupOverridesTemplateFile(const CStrin
 
 CString PyIAcadPreferencesFilesImpl::GetPageSetupOverridesTemplateFile() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -2056,7 +2056,7 @@ CString PyIAcadPreferencesFilesImpl::GetPageSetupOverridesTemplateFile() const
 
 void PyIAcadPreferencesFilesImpl::SetActiveInvProject(const CString& val) const
 {
-#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -2066,7 +2066,7 @@ void PyIAcadPreferencesFilesImpl::SetActiveInvProject(const CString& val) const
 
 CString PyIAcadPreferencesFilesImpl::GetActiveInvProject() const
 {
-#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -2768,7 +2768,7 @@ CString PyIAcadPreferencesOutputImpl::GetDefaultPlotStyleForLayer() const
 
 void PyIAcadPreferencesOutputImpl::SetContinuousPlotLog(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj()->put_ContinuousPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -2777,7 +2777,7 @@ void PyIAcadPreferencesOutputImpl::SetContinuousPlotLog(bool val) const
 
 bool PyIAcadPreferencesOutputImpl::GetContinuousPlotLog() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -2788,7 +2788,7 @@ bool PyIAcadPreferencesOutputImpl::GetContinuousPlotLog() const
 
 void PyIAcadPreferencesOutputImpl::SetAutomaticPlotLog(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj()->put_AutomaticPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -2797,7 +2797,7 @@ void PyIAcadPreferencesOutputImpl::SetAutomaticPlotLog(bool val) const
 
 bool PyIAcadPreferencesOutputImpl::GetAutomaticPlotLog() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -2808,7 +2808,7 @@ bool PyIAcadPreferencesOutputImpl::GetAutomaticPlotLog() const
 
 void PyIAcadPreferencesOutputImpl::SetDefaultPlotToFilePath(const CString& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal{ val };
@@ -2818,7 +2818,7 @@ void PyIAcadPreferencesOutputImpl::SetDefaultPlotToFilePath(const CString& val) 
 
 CString PyIAcadPreferencesOutputImpl::GetDefaultPlotToFilePath() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrVal;
@@ -3322,7 +3322,7 @@ long PyIAcadPreferencesSelectionImpl::GetPickBoxSize() const
 
 void PyIAcadPreferencesSelectionImpl::SetDisplayGrips(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     PyThrowBadHr(impObj()->put_DisplayGrips(val ? 1 : 0));
 #else
     PyThrowBadHr(impObj()->put_DisplayGrips(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -3331,7 +3331,7 @@ void PyIAcadPreferencesSelectionImpl::SetDisplayGrips(bool val) const
 
 bool PyIAcadPreferencesSelectionImpl::GetDisplayGrips() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     long rtVal = 0;
     PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
     return rtVal != 0;

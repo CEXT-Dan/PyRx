@@ -2,7 +2,7 @@
 #include "PyDb3dProfile.h"
 #include "PyDbEntity.h"
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 //
 #else
 using namespace boost::python;

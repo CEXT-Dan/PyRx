@@ -60,6 +60,7 @@ public:
 //PyDdFieldEvaluator
 void makePyDdFieldEvaluatorWrapper();
 
+#ifndef _BRXTARGET260_OOOOF
 class PyDdFieldEvaluator : public AcFdFieldEvaluator, public boost::python::wrapper<PyDdFieldEvaluator>
 {
 public:
@@ -102,9 +103,11 @@ public:
     bool reg_compile = true;
     bool reg_format = true;
 };
+#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
+#ifndef _BRXTARGET260_OOOOF
 class PyRxFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader
 {
 public:
@@ -119,10 +122,13 @@ public:
 public:
     std::map <AcString, PyDdFieldEvaluator*> m_evaluators;
 };
+#endif
 
 //---------------------------------------------------------------------------------------- -
 //PyDbFieldEngine
 void makePyDbFieldEngineWrapper();
+
+#ifndef _BRXTARGET260_OOOOF
 
 #ifdef _BRXTARGET250
 class PyDbFieldEngine
@@ -153,6 +159,8 @@ public:
     AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PyRxFieldEvaluatorLoader> mloader;
 };
+
+#endif
 
 //#define FIELDHOOK 1
 

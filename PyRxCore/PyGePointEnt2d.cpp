@@ -135,7 +135,7 @@ AcGePoint2d PyGePointOnCurve2d::point1() const
 
 AcGePoint2d PyGePointOnCurve2d::point2(double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(param);
@@ -144,7 +144,7 @@ AcGePoint2d PyGePointOnCurve2d::point2(double param) const
 
 AcGePoint2d PyGePointOnCurve2d::point3(const PyGeCurve2d& crv, double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(*crv.impObj(), param);
@@ -291,7 +291,7 @@ PyGePosition2d::PyGePosition2d(double x, double y)
 {
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
     : PyGePointEnt2d(new AcGePosition2d(pos))
 {
@@ -300,7 +300,7 @@ PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
 
 void PyGePosition2d::set1(const AcGePoint2d& pnt) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt);
@@ -309,7 +309,7 @@ void PyGePosition2d::set1(const AcGePoint2d& pnt) const
 
 void PyGePosition2d::set2(double x, double y) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(x, y);

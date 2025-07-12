@@ -363,7 +363,7 @@ double PyDbMText::actualWidth() const
 
 int PyDbMText::correctSpelling() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -379,7 +379,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -394,7 +394,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -573,7 +573,7 @@ void PyDbMText::setColumnHeight(int idx, double val) const
 
 void PyDbMText::convertFieldToText() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());
@@ -990,7 +990,7 @@ void PyDbText::setVerticalMode(AcDb::TextVertMode val) const
 
 int PyDbText::correctSpelling() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -1004,7 +1004,7 @@ void PyDbText::adjustAlignment(const PyDbDatabase& pDb) const
 
 void PyDbText::convertFieldToText() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());
@@ -1013,7 +1013,7 @@ void PyDbText::convertFieldToText() const
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)    
+#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)    
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -1248,7 +1248,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
     AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
     if (ptr == nullptr)
         throw PyNullObject(std::source_location::current());
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     return PyDbMText(static_cast<AcDbMText*>(ptr->clone()), true);
 #else
     return PyDbMText(ptr, true);
@@ -1258,7 +1258,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt) const
 {
     // clones are missing setMTextAttributeDefinitionConst
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     // [BRX - SR 192611] this should crash BricsCAD
     PyThrowBadEs(impObj()->setMTextAttributeDefinition(mt.impObj()));
 #elif defined(_GRXTARGET250) || defined(_ZRXTARGET260)  
@@ -1476,7 +1476,7 @@ void PyDbAttribute::updateMTextAttribute() const
 
 bool PyDbAttribute::isReallyLocked() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isReallyLocked();

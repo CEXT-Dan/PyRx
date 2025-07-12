@@ -1526,7 +1526,7 @@ void PyIAcadDocumentImpl::Regen(PyAcRegenType rt) const
 
 PyIAcadSelectionSetPtr PyIAcadDocumentImpl::GetPickfirstSelectionSet() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     IDispatch* ptr = nullptr;
     PyThrowBadHr(impObj()->get_PickfirstSelectionSet(&ptr));
     return std::make_unique<PyIAcadSelectionSetImpl>((IAcadSelectionSet*)ptr);
@@ -1623,7 +1623,7 @@ void PyIAcadDocumentImpl::SendCommand(const CString& cmd) const
 
 void PyIAcadDocumentImpl::PostCommand(const CString& cmd) const
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET240)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrcmd{ cmd };
@@ -1657,7 +1657,7 @@ void PyIAcadDocumentImpl::EndUndoMark() const
 
 PyIAcadDatabasePtr PyIAcadDocumentImpl::GetDatabase() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     IAcadDatabase* ptr = nullptr;
     PyThrowBadHr(impObj()->get_database(&ptr));
     return std::make_unique<PyIAcadDatabaseImpl>(ptr);

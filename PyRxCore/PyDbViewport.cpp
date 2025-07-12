@@ -293,7 +293,7 @@ PyDbViewport::PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode, bool era
 
 void PyDbViewport::setModelView(const PyDbXrefObjectId& xrefObjId) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setModelView(xrefObjId.m_imp));
@@ -302,7 +302,7 @@ void PyDbViewport::setModelView(const PyDbXrefObjectId& xrefObjId) const
 
 PyDbXrefObjectId PyDbViewport::getModelView() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyDbXrefObjectId id;
@@ -313,7 +313,7 @@ PyDbXrefObjectId PyDbViewport::getModelView() const
 
 void PyDbViewport::removeModelView(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeModelView());
@@ -322,7 +322,7 @@ void PyDbViewport::removeModelView(void) const
 
 void PyDbViewport::setSheetView(PyDbObjectId objId) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSheetView(objId.m_id));
@@ -331,7 +331,7 @@ void PyDbViewport::setSheetView(PyDbObjectId objId) const
 
 PyDbObjectId PyDbViewport::getSheetView() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -342,7 +342,7 @@ PyDbObjectId PyDbViewport::getSheetView() const
 
 void PyDbViewport::removeSheetView(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeSheetView());
@@ -351,7 +351,7 @@ void PyDbViewport::removeSheetView(void) const
 
 void PyDbViewport::setLabelBlock(PyDbObjectId& objId) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setLabelBlock(objId.m_id));
@@ -360,7 +360,7 @@ void PyDbViewport::setLabelBlock(PyDbObjectId& objId) const
 
 PyDbObjectId PyDbViewport::getLabelBlock() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -371,7 +371,7 @@ PyDbObjectId PyDbViewport::getLabelBlock() const
 
 void PyDbViewport::removeLabelBlock(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeLabelBlock());
@@ -380,7 +380,7 @@ void PyDbViewport::removeLabelBlock(void) const
 
 void PyDbViewport::syncModelView(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->syncModelView());
@@ -439,7 +439,7 @@ void PyDbViewport::setOff() const
 
 void PyDbViewport::setIsOn(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setIsOn(bOn));
@@ -468,7 +468,7 @@ void PyDbViewport::setViewDirection1(const AcGeVector3d& val) const
 
 void PyDbViewport::setViewDirection2(AcDb::OrthographicView view) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setViewDirection(view));
@@ -502,7 +502,7 @@ void PyDbViewport::setShadePlot2(const AcDbViewport::ShadePlotType type, const P
 
 bool PyDbViewport::plotWireframe() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->plotWireframe();
@@ -511,7 +511,7 @@ bool PyDbViewport::plotWireframe() const
 
 bool PyDbViewport::plotAsRaster() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->plotAsRaster();
@@ -575,7 +575,7 @@ void PyDbViewport::setFrontClipOn1() const
 
 void PyDbViewport::setFrontClipOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFrontClipOn(bOn));
@@ -599,7 +599,7 @@ void PyDbViewport::setBackClipOn1() const
 
 void PyDbViewport::setBackClipOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBackClipOn(bOn));
@@ -623,7 +623,7 @@ void PyDbViewport::setFrontClipAtEyeOff() const
 
 void PyDbViewport::setFrontClipAtEyeOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFrontClipAtEyeOn(bOn));
@@ -667,7 +667,7 @@ void PyDbViewport::setPerspectiveOff() const
 
 void PyDbViewport::setPerspectiveOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPerspectiveOn(bOn));
@@ -691,7 +691,7 @@ void PyDbViewport::setUcsFollowModeOff() const
 
 void PyDbViewport::setUcsFollowModeOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsFollowModeOn(bOn));
@@ -715,7 +715,7 @@ void PyDbViewport::setUcsIconInvisible() const
 
 void PyDbViewport::setUcsIconVisible2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsIconVisible(bOn));
@@ -740,7 +740,7 @@ void PyDbViewport::setUcsIconAtCorner() const
 void PyDbViewport::setUcsIconAtOrigin2(bool bOn) const
 {
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsIconAtOrigin(bOn));
@@ -769,7 +769,7 @@ void PyDbViewport::setFastZoomOff() const
 
 void PyDbViewport::setFastZoomOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFastZoomOn(bOn));
@@ -803,7 +803,7 @@ void PyDbViewport::setSnapOff() const
 
 void PyDbViewport::setSnapOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSnapOn(bOn));
@@ -827,7 +827,7 @@ void PyDbViewport::setSnapStandard() const
 
 void PyDbViewport::setSnapIsometric2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSnapIsometric(bOn));
@@ -891,7 +891,7 @@ void PyDbViewport::setGridOff() const
 
 void PyDbViewport::setGridOn2(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridOn(val));
@@ -900,7 +900,7 @@ void PyDbViewport::setGridOn2(bool val) const
 
 bool PyDbViewport::isGridBoundToLimits() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridBoundToLimits();
@@ -909,7 +909,7 @@ bool PyDbViewport::isGridBoundToLimits() const
 
 void PyDbViewport::setGridBoundToLimits(bool bNewVal) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridBoundToLimits(bNewVal));
@@ -918,7 +918,7 @@ void PyDbViewport::setGridBoundToLimits(bool bNewVal) const
 
 bool PyDbViewport::isGridAdaptive() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridAdaptive();
@@ -927,7 +927,7 @@ bool PyDbViewport::isGridAdaptive() const
 
 void PyDbViewport::setGridAdaptive(bool bNewVal) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridAdaptive(bNewVal));
@@ -936,7 +936,7 @@ void PyDbViewport::setGridAdaptive(bool bNewVal) const
 
 bool PyDbViewport::isGridSubdivisionRestricted() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridSubdivisionRestricted();
@@ -945,7 +945,7 @@ bool PyDbViewport::isGridSubdivisionRestricted() const
 
 void PyDbViewport::setGridSubdivisionRestricted(bool bNewVal) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridSubdivisionRestricted(bNewVal));
@@ -954,7 +954,7 @@ void PyDbViewport::setGridSubdivisionRestricted(bool bNewVal) const
 
 bool PyDbViewport::isGridFollow() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridFollow();
@@ -963,7 +963,7 @@ bool PyDbViewport::isGridFollow() const
 
 void PyDbViewport::setGridFollow(bool bNewVal) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridFollow(bNewVal));
@@ -972,7 +972,7 @@ void PyDbViewport::setGridFollow(bool bNewVal) const
 
 Adesk::UInt16 PyDbViewport::gridMajor() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridMajor();
@@ -981,7 +981,7 @@ Adesk::UInt16 PyDbViewport::gridMajor() const
 
 void PyDbViewport::setGridMajor(Adesk::UInt16 val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridMajor(val));
@@ -990,7 +990,7 @@ void PyDbViewport::setGridMajor(Adesk::UInt16 val) const
 
 AcGeVector2d PyDbViewport::gridIncrement() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridIncrement();
@@ -999,7 +999,7 @@ AcGeVector2d PyDbViewport::gridIncrement() const
 
 void PyDbViewport::setGridIncrement(const AcGeVector2d& val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridIncrement(val));
@@ -1023,7 +1023,7 @@ void PyDbViewport::removeHiddenLines1() const
 
 void PyDbViewport::removeHiddenLines2(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeHiddenLines(val));
@@ -1076,7 +1076,7 @@ void PyDbViewport::setBackground(PyDbObjectId& backgroundId) const
 
 PyDbObjectId PyDbViewport::previousBackground1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->previousBackground());
@@ -1085,7 +1085,7 @@ PyDbObjectId PyDbViewport::previousBackground1() const
 
 PyDbObjectId PyDbViewport::previousBackground2(AcGiDrawable::DrawableType type) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->previousBackground(type));
@@ -1094,7 +1094,7 @@ PyDbObjectId PyDbViewport::previousBackground2(AcGiDrawable::DrawableType type) 
 
 void PyDbViewport::setPreviousBackground1(PyDbObjectId& backgroundId) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id));
@@ -1103,7 +1103,7 @@ void PyDbViewport::setPreviousBackground1(PyDbObjectId& backgroundId) const
 
 void PyDbViewport::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type));
@@ -1112,7 +1112,7 @@ void PyDbViewport::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawab
 
 void PyDbViewport::setPreviousBackground3(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool force) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type, force));
@@ -1121,7 +1121,7 @@ void PyDbViewport::setPreviousBackground3(PyDbObjectId& backgroundId, AcGiDrawab
 
 bool PyDbViewport::previousBackgroundForcedSwitch(void) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->previousBackgroundForcedSwitch();
@@ -1200,7 +1200,7 @@ void PyDbViewport::setSun1(PyDbObjectId& retId, PyDbObject& pSun) const
 
 void PyDbViewport::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
@@ -1224,7 +1224,7 @@ void PyDbViewport::setUnlocked() const
 
 void PyDbViewport::setLocked2(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setLocked(val));
@@ -1258,7 +1258,7 @@ void PyDbViewport::setOpaque() const
 
 void PyDbViewport::setTransparent2(bool val) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setTransparent(val));
@@ -1321,7 +1321,7 @@ void PyDbViewport::setNonRectClipOff() const
 
 void PyDbViewport::setNonRectClipOn2(bool bOn) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setNonRectClipOn(bOn));

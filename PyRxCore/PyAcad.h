@@ -9,7 +9,7 @@
 
 #pragma comment( lib , "propsys.lib" )
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET) && (_BRXTARGET <= 260)
 #import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "axbricscadapp1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
