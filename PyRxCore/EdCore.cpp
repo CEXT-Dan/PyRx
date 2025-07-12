@@ -36,6 +36,9 @@ extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
 #endif
 
 #ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET >= 260)
+extern Adesk::Boolean           acedGetPredefinedPattens(AcStringArray& patterns);
+#endif
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern  bool                    acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
@@ -736,13 +739,13 @@ std::string EdCore::findTrustedFile(const std::string& file)
 
 boost::python::list EdCore::getPredefinedPattens()
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
     AcStringArray patterns;
     boost::python::list py_patterns;
-    if (acedGetPredefinedPattens(patterns) == true)
+    if (acedGetPredefinedPattens(patterns))
     {
         for (auto& pattern : patterns)
             py_patterns.append(wstr_to_utf8(pattern));
