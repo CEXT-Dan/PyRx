@@ -1,7 +1,7 @@
-import traceback
-from pyrx import Ap, Ax, Db, Ed, Ge, Gi, command
-from timeit import default_timer as timer
 import random
+from timeit import default_timer as timer
+
+from pyrx import Ge, command
 
 
 @command
