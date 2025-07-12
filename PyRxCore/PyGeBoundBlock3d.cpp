@@ -6,7 +6,7 @@ using namespace boost::python;
 //PyGeBoundBlock3d
 void makePyGeBoundBlock3dWrapper()
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d\n";
@@ -40,7 +40,7 @@ void makePyGeBoundBlock3dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeBoundBlock3d::PyGeBoundBlock3d()
     :PyGeEntity3d(new AcGeBoundBlock3d())
 {

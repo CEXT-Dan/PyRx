@@ -11,7 +11,7 @@ class PyGePolyline2d;
 void makePyGeSplineEnt2dWrapper();
 class PyGeSplineEnt2d : public PyGeCurve2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeSplineEnt2d(AcGeEntity2d* pEnt);
     virtual ~PyGeSplineEnt2d() override = default;
@@ -46,7 +46,7 @@ public:
 void makePyGeCubicSplineCurve2dWrapper();
 class PyGeCubicSplineCurve2d : public PyGeSplineEnt2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeCubicSplineCurve2d();
     PyGeCubicSplineCurve2d(const PyGeCurve2d& curve, double epsilon);
@@ -75,7 +75,7 @@ public:
 void makePyGeNurbCurve2dWrapper();
 class PyGeNurbCurve2d : public PyGeSplineEnt2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeNurbCurve2d();
     PyGeNurbCurve2d(const AcGeNurbCurve2d& src);
@@ -161,7 +161,7 @@ public:
 void makePyGePolyline2dWrapper();
 class PyGePolyline2d : public PyGeSplineEnt2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGePolyline2d();
     PyGePolyline2d(const AcGePolyline2d& src);

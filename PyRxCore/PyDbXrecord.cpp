@@ -96,7 +96,7 @@ void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& 
 
 bool PyDbXrecord::isXlateReferences() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isXlateReferences();
@@ -105,7 +105,7 @@ bool PyDbXrecord::isXlateReferences() const
 
 void PyDbXrecord::setXlateReferences(bool translate) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setXlateReferences(translate);

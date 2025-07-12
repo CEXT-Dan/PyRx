@@ -19,6 +19,7 @@ class PyDbEntity;
 //PyDbObjectOverrule
 void makePyDbObjectOverruleWrapper();
 
+#ifndef _BRXTARGET260_OOOOF
 class PyDbObjectOverrule : public PyRxOverrule, public AcDbObjectOverrule, public boost::python::wrapper<PyDbObjectOverrule>
 {
 public:
@@ -63,11 +64,13 @@ public:
     mutable bool reg_deepClone = true;
     mutable bool reg_wblockClone = true;
 };
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PyDbOsnapOverrule
 void makePyDbOsnapOverruleWrapper();
 
+#ifndef _BRXTARGET260_OOOOF
 class PyDbOsnapOverrule : public PyRxOverrule, public AcDbOsnapOverrule, public boost::python::wrapper<PyDbOsnapOverrule>
 {
 public:
@@ -148,4 +151,5 @@ public:
     mutable bool reg_getOsnapPoints = true;
     mutable bool reg_getOsnapPointsXform = true;
 };
+#endif
 #pragma pack (pop)

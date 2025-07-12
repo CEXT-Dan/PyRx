@@ -360,7 +360,7 @@ void PyIAcadDimensionImpl::SetTextFillColor(PyAcColor val) const
 
 bool PyIAcadDimensionImpl::GetDimTxtDirection() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     VARIANT_BOOL rtval = VARIANT_FALSE;
@@ -371,7 +371,7 @@ bool PyIAcadDimensionImpl::GetDimTxtDirection() const
 
 void PyIAcadDimensionImpl::SetDimTxtDirection(bool val) const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadHr(impObj()->put_DimTxtDirection(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -4487,7 +4487,7 @@ void PyIAcadDim3PointAngularImpl::SetArrowhead2Block(const CString& val) const
 
 CString PyIAcadDim3PointAngularImpl::GetDimensionLinetype() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     _bstr_t bstrVal;
@@ -5295,7 +5295,7 @@ void PyIAcadDimArcLengthImpl::SetExtLineFixedLen(double val) const
 
 CString PyIAcadDimArcLengthImpl::GetSubUnitsSuffix() const
 {
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET260
     throw PyNotimplementedByHost{};
 #else
     _bstr_t bstrVal;

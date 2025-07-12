@@ -97,8 +97,10 @@ public:
     PyDbObjectId        getFieldDictionary(void) const;
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
+#ifndef _BRXTARGET260_OOOOF
     void                snoop(PyDbSnoopDwgFiler& filer) const;
     void                snoopdxf(PyDbSnoopDxfFiler& filer) const;
+#endif
     PyDbObject          deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap) const;
     PyDbObject          deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary) const;
     PyDbObject          wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap) const;

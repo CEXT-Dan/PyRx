@@ -17,7 +17,7 @@ public:
     OutputDisplayServiceImpl();
     virtual ~OutputDisplayServiceImpl() override;
     virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault) override;
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     virtual AcadInternalServices* acadInternalServices() override;
 #endif
     virtual const ProdIdCode prodcode() override;

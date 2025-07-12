@@ -182,7 +182,7 @@ void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allo
 
 std::string PyDbEntity::plotStyleName() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     return wstr_to_utf8(impObj()->plotStyleName());
 #else
     AcString str;
@@ -1028,7 +1028,7 @@ bool PyDbFullSubentPath::operator!=(const PyDbFullSubentPath& id) const
 
 void PyDbFullSubentPath::setObjectIds(const boost::python::list& objectIds)
 {
-#if defined (_ZRXTARGET240) || defined (_BRXTARGET250)
+#if defined (_ZRXTARGET240) || defined (_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     pyImp.setObjectIds(PyListToObjectIdArray(objectIds));
@@ -1042,7 +1042,7 @@ boost::python::list PyDbFullSubentPath::objectIds() const
 
 void PyDbFullSubentPath::setSubentId(const PyDbSubentId& subentId)
 {
-#if defined (_ZRXTARGET240) || defined (_BRXTARGET250)
+#if defined (_ZRXTARGET240) || defined (_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     pyImp.setSubentId(*subentId.impObj());

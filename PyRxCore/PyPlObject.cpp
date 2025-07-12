@@ -7,7 +7,7 @@
 
 using namespace boost::python;
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 //
 #else
 //-----------------------------------------------------------------------------------------

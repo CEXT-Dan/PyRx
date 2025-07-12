@@ -1,0 +1,1110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="PyAcDb.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDatabase.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbHostApplicationServices.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcGi.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbObjectId.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcGe.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcRx.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbObject.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGiDrawable.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxObject.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbEntity.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcAp.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSymbolTableRecord.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyApApplication.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyApDocManager.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyApDocument.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcEd.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcEditor.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDictionary.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSymbolTable.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultBuffer.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyCmColorBase.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeEntity3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbEnts.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbField.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbCurve.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeBoundBlock3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurve3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveCurveInt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveSurfInt.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeSurface.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePointEnt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeSurfSurfInt.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePlane.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePlanarEnt.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeInterval.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeEntity2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeBoundBlock2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeClipBoundary2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurve2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveCurveInt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePointEnt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeLinearEnt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeSplineEnt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeLinearEnt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeSplineEnt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbMText.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbTable.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbTableStyle.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyJig.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeKnotVector.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDb3dSolid.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSurface.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDimension.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyEditorReactor.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbIdMapping.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbLeader.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="DbCore.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbMline.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbHatch.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbXrecord.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGiCommonDraw.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxOverrule.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGiSubEntityTraits.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbUnderlayReference.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbImage.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyEdSelectionSet.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbViewport.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbFiler.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="EdCore.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbTransactionManager.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbEval.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbLayout.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyApLayoutManager.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbObjectContext.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyEdUserInteraction.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyUiPalette.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyEdInput.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGiTransientManager.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcGs.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGsManager.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbProtocolExtensions.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSpline.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyLayerFilter.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbGroup.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyPlObject.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcPl.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PyPlPlotProgressDialog.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PyPlPlotConfigManager.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PlCore.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGsView.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGiGraphicsKernel.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbEllipse.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDimAssoc.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbPointRef.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDatabaseReactor.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDb3dProfile.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbTextEditor.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbOverrule.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbPointCloudEx.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSpatialFilter.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxModule.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxModuleLoader.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbGeo.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDate.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="GsCore.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCv.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbAlignments.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbObjectManager.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvObject.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbPoint.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbTinSurfaceDef.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbTinSurface.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSubDMesh.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="acrxEntryPoint.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="DocData.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyCmd.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDocString.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxApp.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxContainers.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbGripData.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxAppSettings.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbDbLayerStateManager.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbSection.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PySmSheetSetMgrImpl.cpp">
+      <Filter>Source Files\PySm</Filter>
+    </ClCompile>
+    <ClCompile Include="PySmSheetSetMgr.cpp">
+      <Filter>Source Files\PySm</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcSm.cpp">
+      <Filter>Source Files\PySm</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxBim.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxBimObject.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxBimImportExport.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxIFC.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBimCore.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
+    <ClCompile Include="PyException.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcBr.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrEntity.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbLabel.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrTraverser.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrx.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxDbProperties.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCore.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyLispService.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbHyperlink.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxPanel.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcAx.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadApplication.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadObject.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadApplicationImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadObjectImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadEntityImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDbObjectImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadEntity.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDbObject.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDimension.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDimensionImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadTable.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadTableImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbGraph.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePoint3dTree.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PyDbDatabase.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcDb.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbHostApplicationServices.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcRx.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcGi.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbObjectId.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcGe.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbObject.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiDrawable.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxObject.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEntity.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcAp.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSymbolTableRecord.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyException.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyApApplication.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyApDocManager.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyApDocument.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcEd.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDictionary.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSymbolTable.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultBuffer.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyCmColorBase.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeEntity3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEnts.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbField.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbCurve.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeBoundBlock3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurve3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurveCurveInt3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurveSurfInt.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeSurface.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePointEnt3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeSurfSurfInt.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePlanarEnt.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePlane.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeInterval.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeEntity2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeBoundBlock2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeClipBoundary2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurve2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePointEnt2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurveCurveInt2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeLinearEnt2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeSplineEnt2d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeLinearEnt3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeSplineEnt3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbMText.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbTable.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbTableStyle.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyJig.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeKnotVector.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDb3dSolid.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSurface.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDimension.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEditorReactor.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbIdMapping.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbLeader.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="DbCore.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbMline.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbHatch.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbXrecord.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiCommonDraw.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxOverrule.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiSubEntityTraits.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbUnderlayReference.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbImage.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdSelectionSet.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbViewport.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbFiler.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="EdCore.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbTransactionManager.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEval.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbLayout.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyApLayoutManager.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbObjectContext.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdUserInteraction.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyUiPalette.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdInput.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiTransientManager.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcGs.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGsManager.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbProtocolExtensions.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSpline.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyLayerFilter.h">
+      <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGroup.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyPlObject.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcPl.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyPlPlotProgressDialog.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyPlPlotConfigManager.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PlCore.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGsView.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiGraphicsKernel.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcEditor.h">
+      <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEllipse.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDimAssoc.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbPointRef.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDatabaseReactor.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDb3dProfile.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbTextEditor.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbOverrule.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbPointCloudEx.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSpatialFilter.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxModule.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxModuleLoader.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGeo.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDate.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="GsCore.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCv.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbAlignments.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbObjectManager.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvObject.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbPoint.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbTinSurfaceDef.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbTinSurface.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSubDMesh.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="DocData.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyCmd.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDocString.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxApp.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxContainers.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="RxPyString.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGripData.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxAppSettings.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDbLayerStateManager.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSection.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PySmSheetSetMgrImpl.h">
+      <Filter>Header Files\PySm</Filter>
+    </ClInclude>
+    <ClInclude Include="PySmSheetSetMgr.h">
+      <Filter>Header Files\PySm</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcSm.h">
+      <Filter>Header Files\PySm</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxBim.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxBimObject.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxBimImportExport.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxIFC.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBimCore.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcBr.h">
+      <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrEntity.h">
+      <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbLabel.h">
+      <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrTraverser.h">
+      <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrx.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxDbProperties.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCore.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyLispService.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbHyperlink.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxPanel.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcAx.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadApplication.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadApplicationImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadObject.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadObjectImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcad.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadEntityImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDbObjectImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadEntity.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDbObject.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcAxCommon.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDimension.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDimensionImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadTable.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadTableImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGraph.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePoint3dTree.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{06f2ee10-a704-48c4-b087-f3b6a58c01b3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ce0ed860-dbc4-4044-972b-d96d549883a0}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resouce Files">
+      <UniqueIdentifier>{5fb4dac7-49dc-47a5-a18f-735d08f4a695}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyDb">
+      <UniqueIdentifier>{9ab2293f-bd68-49ce-bcb7-7e2351619f50}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyDb">
+      <UniqueIdentifier>{cd657597-4d92-4437-a6aa-16c663e97645}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyRx">
+      <UniqueIdentifier>{c170c15e-6d44-4827-a816-bda8bf79da30}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyRx">
+      <UniqueIdentifier>{1d836492-2c42-4aa7-ab94-d2f8cc772441}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyGi">
+      <UniqueIdentifier>{290be023-5c1f-415c-a917-54f2b9271034}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyGi">
+      <UniqueIdentifier>{45676106-d93d-4155-a29a-9a6c31ac5a65}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyGe">
+      <UniqueIdentifier>{a8b80604-967c-416c-8376-501f6c4a01a6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyGe">
+      <UniqueIdentifier>{65b7854c-e3eb-42e2-93ac-a76dc09cfceb}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyAp">
+      <UniqueIdentifier>{5b85cf01-6343-48c1-b6ec-3db2c1b3f6a0}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyAp">
+      <UniqueIdentifier>{e3cd6db1-f5ee-4b3b-ac30-a9f980608ac6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyEd">
+      <UniqueIdentifier>{4f8b5310-f740-4fea-a53f-c124b6f64c96}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyEd">
+      <UniqueIdentifier>{104b26c1-4635-4730-8522-4790fadbda27}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyGs">
+      <UniqueIdentifier>{fd492d91-6dd9-4592-aa52-1887e8a9359c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyGs">
+      <UniqueIdentifier>{8ffb5799-5480-4ef8-8c6c-a4028d0821d4}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyPl">
+      <UniqueIdentifier>{6422b17d-bdcc-4679-a081-93ba7b2f89b9}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyPl">
+      <UniqueIdentifier>{8348c96c-d809-4f06-a0e2-61810170d6ad}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBrxCv">
+      <UniqueIdentifier>{2f533454-20ab-410f-ab9d-75ce3122c2b5}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBrxCv">
+      <UniqueIdentifier>{e1b77746-5f81-48fc-8c48-49478086578a}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyRxApp">
+      <UniqueIdentifier>{78c20d29-85c5-4ecc-bdea-8a3926aa225e}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyRxApp">
+      <UniqueIdentifier>{5ed2daf5-9b44-4d74-84f4-6a97ad1c6f21}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PySm">
+      <UniqueIdentifier>{acb503c2-e4c1-4752-aed4-ab78b1da703a}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PySm">
+      <UniqueIdentifier>{98e88479-9ae7-4dec-aa4c-96d980f34600}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBrxBim">
+      <UniqueIdentifier>{8640af06-5a77-4d6e-b9ef-40db5528076c}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBrxBim">
+      <UniqueIdentifier>{d7a03251-95c9-4a77-ac40-dc1b7548a20c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBr">
+      <UniqueIdentifier>{39a3c9ab-20aa-4831-b0be-5e3c3c67964d}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBr">
+      <UniqueIdentifier>{502d16d5-6467-4c03-b5e9-87d1da5f798d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBrx">
+      <UniqueIdentifier>{4308532e-f327-4e5d-af5a-d897271324ec}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBrx">
+      <UniqueIdentifier>{f2551b7b-d058-4103-9bec-f8cbf1d8cf60}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyAx">
+      <UniqueIdentifier>{27a478c8-98a3-4e8d-a1de-0466a3ee8063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyAx">
+      <UniqueIdentifier>{00ee2cc2-cdc3-4d18-b355-6a570bfad73c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PyRx.rc">
+      <Filter>Resouce Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

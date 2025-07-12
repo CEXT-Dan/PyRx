@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyGeBoundBlock2d wrapper
 void makePyGeBoundBlock2dWrapper()
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- pt1: PyGe.Point2d, pt2: PyGe.Point2d\n"
@@ -42,7 +42,7 @@ void makePyGeBoundBlock2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeBoundBlock2d::PyGeBoundBlock2d()
     : PyGeEntity2d(new AcGeBoundBlock2d())
 {

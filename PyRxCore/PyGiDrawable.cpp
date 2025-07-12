@@ -37,7 +37,7 @@ void makePyGiObjectWrapper()
         .value("kImageBackground", AcGiDrawable::DrawableType::kImageBackground)
         .value("kGroundPlaneBackground", AcGiDrawable::DrawableType::kGroundPlaneBackground)
         .value("kViewport", AcGiDrawable::DrawableType::kViewport)
-#if !defined (_BRXTARGET250)
+#if !defined (_BRXTARGET260)
         .value("kWebLight", AcGiDrawable::DrawableType::kWebLight)
         .value("kSkyBackground", AcGiDrawable::DrawableType::kSkyBackground)
         .value("kImageBasedLightingBackground", AcGiDrawable::DrawableType::kImageBasedLightingBackground)
@@ -148,6 +148,7 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 //PyGiDrawableOverrule
 void makePyGiDrawableOverruleWrapper()
 {
+#ifndef _BRXTARGET260_OOOOF
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
         .def("setAttributes", &PyGiDrawableOverrule::setAttributes)
         .def("isApplicable", &PyGiDrawableOverrule::isApplicableWr)
@@ -160,8 +161,10 @@ void makePyGiDrawableOverruleWrapper()
         .def("className", &PyGiDrawableOverrule::className).staticmethod("className")
         .def("desc", &PyGiDrawableOverrule::desc).staticmethod("desc")
         ;
+#endif
 }
 
+#ifndef _BRXTARGET260_OOOOF
 PyGiDrawableOverrule::PyGiDrawableOverrule()
     : PyRxOverrule(this)
 {
@@ -312,3 +315,4 @@ AcGiDrawableOverrule* PyGiDrawableOverrule::impObj(const std::source_location& s
     }
     return static_cast<AcGiDrawableOverrule*>(m_pyImp.get());
 }
+#endif

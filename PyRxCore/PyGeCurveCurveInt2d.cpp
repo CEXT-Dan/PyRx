@@ -11,7 +11,7 @@ using namespace boost::python;
 //NOTE curve1, curve2 are not overloads
 void makePyGeCurveCurveInt2dWrapper()
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- curve1: PyGe.Curve2d, curve2: PyGe.Curve2d\n"
@@ -52,7 +52,7 @@ void makePyGeCurveCurveInt2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 PyGeCurveCurveInt2d::PyGeCurveCurveInt2d()
     : PyGeEntity2d(new AcGeCurveCurveInt2d())
 {

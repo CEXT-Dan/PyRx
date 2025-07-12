@@ -136,7 +136,7 @@ AcGePoint3d PyGePointOnCurve3d::point1() const
 
 AcGePoint3d PyGePointOnCurve3d::point2(double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(param);
@@ -145,7 +145,7 @@ AcGePoint3d PyGePointOnCurve3d::point2(double param) const
 
 AcGePoint3d PyGePointOnCurve3d::point3(const PyGeCurve3d& crv, double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(*crv.impObj(), param);
@@ -164,7 +164,7 @@ AcGeVector3d PyGePointOnCurve3d::deriv2(int order, double param) const
 
 AcGeVector3d PyGePointOnCurve3d::deriv3(int order, const PyGeCurve3d& crv, double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->deriv(order, *crv.impObj(), param);
@@ -173,7 +173,7 @@ AcGeVector3d PyGePointOnCurve3d::deriv3(int order, const PyGeCurve3d& crv, doubl
 
 Adesk::Boolean PyGePointOnCurve3d::isSingular() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isSingular();
@@ -182,7 +182,7 @@ Adesk::Boolean PyGePointOnCurve3d::isSingular() const
 
 double PyGePointOnCurve3d::curvature1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     double res = 0;
@@ -194,7 +194,7 @@ double PyGePointOnCurve3d::curvature1() const
 
 double PyGePointOnCurve3d::curvature2(double param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     double res = 0;
@@ -345,7 +345,7 @@ PyGePointOnSurface::PyGePointOnSurface(const AcGePointOnSurface& src)
 
 PyGeSurface PyGePointOnSurface::surface() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGeSurface(impObj()->surface());
@@ -364,7 +364,7 @@ AcGePoint3d PyGePointOnSurface::point1() const
 
 AcGePoint3d PyGePointOnSurface::point2(const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(param);
@@ -373,7 +373,7 @@ AcGePoint3d PyGePointOnSurface::point2(const AcGePoint2d& param) const
 
 AcGePoint3d PyGePointOnSurface::point3(const PyGeSurface& surf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->point(*surf.impObj(), param);
@@ -397,7 +397,7 @@ AcGeVector3d PyGePointOnSurface::normal3(const PyGeSurface& surf, const AcGePoin
 
 AcGeVector3d PyGePointOnSurface::uDeriv1(int order) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->uDeriv(order);
@@ -407,7 +407,7 @@ AcGeVector3d PyGePointOnSurface::uDeriv1(int order) const
 
 AcGeVector3d PyGePointOnSurface::uDeriv2(int order, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->uDeriv(order, param);
@@ -416,7 +416,7 @@ AcGeVector3d PyGePointOnSurface::uDeriv2(int order, const AcGePoint2d& param) co
 
 AcGeVector3d PyGePointOnSurface::uDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->uDeriv(order, *surf.impObj(), param);
@@ -425,7 +425,7 @@ AcGeVector3d PyGePointOnSurface::uDeriv3(int order, const PyGeSurface& surf, con
 
 AcGeVector3d PyGePointOnSurface::vDeriv1(int order) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->vDeriv(order);
@@ -434,7 +434,7 @@ AcGeVector3d PyGePointOnSurface::vDeriv1(int order) const
 
 AcGeVector3d PyGePointOnSurface::vDeriv2(int order, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->vDeriv(order, param);
@@ -443,7 +443,7 @@ AcGeVector3d PyGePointOnSurface::vDeriv2(int order, const AcGePoint2d& param) co
 
 AcGeVector3d PyGePointOnSurface::vDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->vDeriv(order, *surf.impObj(), param);
@@ -452,7 +452,7 @@ AcGeVector3d PyGePointOnSurface::vDeriv3(int order, const PyGeSurface& surf, con
 
 AcGeVector3d PyGePointOnSurface::mixedPartial1() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->mixedPartial();
@@ -461,7 +461,7 @@ AcGeVector3d PyGePointOnSurface::mixedPartial1() const
 
 AcGeVector3d PyGePointOnSurface::mixedPartial2(const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->mixedPartial(param);
@@ -470,7 +470,7 @@ AcGeVector3d PyGePointOnSurface::mixedPartial2(const AcGePoint2d& param) const
 
 AcGeVector3d PyGePointOnSurface::mixedPartial3(const PyGeSurface& surf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->mixedPartial(*surf.impObj(), param);
@@ -479,7 +479,7 @@ AcGeVector3d PyGePointOnSurface::mixedPartial3(const PyGeSurface& surf, const Ac
 
 AcGeVector3d PyGePointOnSurface::tangentVector1(const AcGeVector2d& vec) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->tangentVector(vec);
@@ -488,7 +488,7 @@ AcGeVector3d PyGePointOnSurface::tangentVector1(const AcGeVector2d& vec) const
 
 AcGeVector3d PyGePointOnSurface::tangentVector2(const AcGeVector2d& vec, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->tangentVector(vec, param);
@@ -497,7 +497,7 @@ AcGeVector3d PyGePointOnSurface::tangentVector2(const AcGeVector2d& vec, const A
 
 AcGeVector3d PyGePointOnSurface::tangentVector3(const AcGeVector2d& vec, const PyGeSurface& vecSurf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->tangentVector(vec, *vecSurf.impObj(), param);
@@ -506,7 +506,7 @@ AcGeVector3d PyGePointOnSurface::tangentVector3(const AcGeVector2d& vec, const P
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector1(const AcGeVector3d& vec) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->inverseTangentVector(vec);
@@ -515,7 +515,7 @@ AcGeVector2d PyGePointOnSurface::inverseTangentVector1(const AcGeVector3d& vec) 
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector2(const AcGeVector3d& vec, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->inverseTangentVector(vec, param);
@@ -524,7 +524,7 @@ AcGeVector2d PyGePointOnSurface::inverseTangentVector2(const AcGeVector3d& vec, 
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector3(const AcGeVector3d& vec, const PyGeSurface& surf, const AcGePoint2d& param) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->inverseTangentVector(vec, *surf.impObj(), param);
@@ -612,7 +612,7 @@ PyGePosition3d::PyGePosition3d(double x, double y, double z)
 
 void PyGePosition3d::set1(const AcGePoint3d& pnt) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(pnt);
@@ -621,7 +621,7 @@ void PyGePosition3d::set1(const AcGePoint3d& pnt) const
 
 void PyGePosition3d::set2(double x, double y, double z) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->set(x, y, x);

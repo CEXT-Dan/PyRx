@@ -8,7 +8,7 @@ void makePyGeClipBoundary2dWrapper();
 
 class PyGeClipBoundary2d : public PyGeEntity2d
 {
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
 public:
     PyGeClipBoundary2d();
     PyGeClipBoundary2d(AcGeEntity2d* pEnt);

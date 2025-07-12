@@ -71,7 +71,7 @@ PyDbOsnapPointRef::PyDbOsnapPointRef()
 {
 }
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 PyDbOsnapPointRef::PyDbOsnapPointRef(const AcGePoint3d& refPt)
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
 {
@@ -112,7 +112,7 @@ void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk
 
 void PyDbOsnapPointRef::setIntIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost{};
 #else
     AcDbFullSubentPath idPath(id.m_id, AcDbSubentId(type, gsMarker));

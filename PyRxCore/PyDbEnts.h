@@ -145,7 +145,7 @@ class PyDb2dVertex : public PyDbVertex
 public:
     PyDb2dVertex();
     PyDb2dVertex(const AcGePoint3d& pos);
-#if !defined(_BRXTARGET250)
+#if !defined(_BRXTARGET260)
     PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier);
 #endif
     PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);

@@ -49,7 +49,7 @@ struct AcGsViewDeleter
         if (ptr == nullptr)
             return;
         ptr->eraseAll();
-#if !defined (_BRXTARGET250)
+#if !defined (_BRXTARGET260)
         acgsGetGsManager()->destroyView(ptr);
 #endif
     }
@@ -139,7 +139,7 @@ PyGsView GsCore::getCurrentAcGsView(int vpNum)
 
 PyGsView GsCore::getCurrent3DAcGsView(int vpNum)
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyGsView(acgsGetCurrent3dAcGsView(vpNum), false);

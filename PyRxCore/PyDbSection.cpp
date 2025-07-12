@@ -47,7 +47,7 @@ PyDbSectionManager::PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete)
 
 PyDbObjectId PyDbSectionManager::getSection(const std::string& name) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -58,7 +58,7 @@ PyDbObjectId PyDbSectionManager::getSection(const std::string& name) const
 
 PyDbObjectId PyDbSectionManager::getLiveSection() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -74,7 +74,7 @@ int PyDbSectionManager::numSections(void) const
 
 std::string PyDbSectionManager::getUniqueSectionName(const std::string& pszBaseName) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcString val;
@@ -270,7 +270,7 @@ void PyDbSectionSettings::setGenerationOptions(AcDbSectionSettings::SectionType 
 
 boost::python::list PyDbSectionSettings::getSourceObjects(AcDbSectionSettings::SectionType nSecType) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -751,7 +751,7 @@ void PyDbSection::setHeight(AcDbSection::Height nHeightType, double fHeight) con
 
 boost::python::tuple PyDbSection::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

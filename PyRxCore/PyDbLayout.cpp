@@ -263,7 +263,7 @@ void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders
 
 Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->plotTransparency();
@@ -272,7 +272,7 @@ Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 
 void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->setPlotTransparency(plotTransparency);
@@ -457,7 +457,7 @@ Adesk::Boolean PyDbPlotSettings::modelType() const
 
 PyDbObjectId PyDbPlotSettings::shadePlotId() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->shadePlotId());
@@ -625,7 +625,7 @@ boost::python::tuple PyDbLayout::getLimits() const
 
 boost::python::tuple PyDbLayout::getExtents() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -945,7 +945,7 @@ boost::python::dict PyDbLayoutManager::getLayouts2(PyDbDatabase& pDb) const
 
 Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     Adesk::ULongPtr contextHandle = 0;
@@ -956,7 +956,7 @@ Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 
 void PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));

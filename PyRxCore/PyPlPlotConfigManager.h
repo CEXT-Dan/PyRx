@@ -1,6 +1,6 @@
 #pragma once
 #pragma pack (push, 8)
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
 // dead
 #else
 

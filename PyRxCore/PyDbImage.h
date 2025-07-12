@@ -197,7 +197,7 @@ class PyDbGeoMap : public PyDbRasterImage
 {
 public:
     PyDbGeoMap(AcGeoMapType mapType, AcGeoMapResolution resolution, unsigned int levelOfDetail);
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     //Not in BRX
 #else
     PyDbGeoMap(const PyDbObjectId& viewportId, bool isViewportSpecific);

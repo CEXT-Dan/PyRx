@@ -70,7 +70,9 @@ public:
     ~PyApResourceOverride() = default;
     static std::string className();
 public:
+#ifndef  _BRXTARGET260_OOOOF
     CAcModuleResourceOverride myResources;
+#endif
 };
 
 #pragma pack (pop)

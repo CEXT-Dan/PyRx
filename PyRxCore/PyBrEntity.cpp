@@ -68,7 +68,7 @@ PyBrEntity PyBrHit::getEntityHit() const
 
 PyBrEntity PyBrHit::getEntityEntered() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcBrEntity* hit = nullptr;
@@ -79,7 +79,7 @@ PyBrEntity PyBrHit::getEntityEntered() const
 
 PyBrEntity PyBrHit::getEntityAssociated() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcBrEntity* hit = nullptr;
@@ -97,7 +97,7 @@ AcGePoint3d PyBrHit::getPoint() const
 
 void PyBrHit::setValidationLevel(const AcBr::ValidationLevel& validationLevel) const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
@@ -106,7 +106,7 @@ void PyBrHit::setValidationLevel(const AcBr::ValidationLevel& validationLevel) c
 
 AcBr::ValidationLevel PyBrHit::getValidationLevel() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcBr::ValidationLevel val;
@@ -117,7 +117,7 @@ AcBr::ValidationLevel PyBrHit::getValidationLevel() const
 
 Adesk::Boolean PyBrHit::brepChanged() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->brepChanged();
@@ -212,7 +212,7 @@ Adesk::Boolean PyBrEntity::checkEntity() const
 
 PyGeBoundBlock3d PyBrEntity::getBoundBlock() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcGeBoundBlock3d block;
@@ -265,7 +265,7 @@ AcBr::ValidationLevel PyBrEntity::getValidationLevel() const
 
 Adesk::Boolean PyBrEntity::brepChanged() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->brepChanged();
@@ -661,7 +661,7 @@ boost::python::tuple PyBrFace::getAreaWithTol(double tolRequired) const
 
 PyBrShell PyBrFace::getShell() const
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcBrShell shell;
