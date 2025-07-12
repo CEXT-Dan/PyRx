@@ -22,6 +22,8 @@ class MyDboOverrule(Db.DbObjectOverrule):
     # optional override
     def open(self, subject: Db.DbObject, mode: Db.OpenMode) -> Db.ErrorStatus:
         try:
+            if mode == Db.OpenMode.kForWrite:
+                print("\nopened for write")
             return self.baseOpen(subject, mode)
         except Exception as err:
             print(err)
@@ -69,7 +71,7 @@ overrule = None
 def PyRxCmd_pydbooverrule():
     try:
         global overrule
-        if overrule is None:
+        if overrule is not None:
             return
         overrule = MyDboOverrule()
         overrule.addOverrule(Db.Line.desc(), overrule)
