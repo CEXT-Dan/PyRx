@@ -163,6 +163,8 @@ public:
     void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves) const;
     boost::python::tuple globalToLocalParam(double param) const;
     double				 localToGlobalParam(double param, int segNum) const;
+
+    static boost::python::list  createFromLineSeg3dArray(const boost::python::list& curveList);
     static PyGeCompositeCurve3d cast(const PyGeEntity3d& src);
     static PyGeCompositeCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
