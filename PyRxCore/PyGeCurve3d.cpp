@@ -981,6 +981,125 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------
 //AcGeCompositeCurve3d
+using Segment = std::pair<AcGePoint3d, AcGePoint3d>;
+using Segments = std::vector<Segment>;
+
+using Polyline3D = std::vector<AcGePoint3d>;
+using Polyline3Ds = std::vector<Polyline3D>;
+
+struct Point3DHash
+{
+    inline static double roundPointComponentToGTol(double value)
+    {
+        const double precision = AcGeContext::gTol.equalPoint();
+        return std::round(value / precision) * precision;
+    }
+
+    inline std::size_t operator()(const AcGePoint3d& p) const
+    {
+        std::size_t seed = 0;
+        boost::hash_combine(seed, roundPointComponentToGTol(p.x));
+        boost::hash_combine(seed, roundPointComponentToGTol(p.y));
+        boost::hash_combine(seed, roundPointComponentToGTol(p.z));
+        return seed;
+    }
+};
+
+struct SegmentPtrHash
+{
+    std::size_t operator()(const Segment* s) const
+    {
+        return std::hash<const void*>{}(static_cast<const void*>(s));
+    }
+};
+
+static auto connectSegmentsIntoPolylines(const Segments& segments) -> Polyline3Ds
+{
+    // Map from point to all segments starting or ending at that point
+    std::unordered_multimap<AcGePoint3d, const Segment*, Point3DHash> pointToSegs;
+    for (const auto& seg : segments)
+    {
+        pointToSegs.emplace(seg.first, &seg);
+        pointToSegs.emplace(seg.second, &seg);
+    }
+
+    std::unordered_set<const Segment*, SegmentPtrHash> visited;
+    Polyline3Ds polylines;
+
+    for (const auto& seg : segments)
+    {
+        if (visited.count(&seg))
+            continue;
+
+        Polyline3D polyline;
+        polyline.push_back(seg.first);
+        polyline.push_back(seg.second);
+        visited.insert(&seg);
+
+        // Extend forward
+        AcGePoint3d current = seg.second;
+        while (true)
+        {
+            bool extended = false;
+            auto range = pointToSegs.equal_range(current);
+            for (auto it = range.first; it != range.second; ++it)
+            {
+                const Segment* nextSeg = it->second;
+                if (visited.count(nextSeg))
+                    continue;
+                // Find the next point to extend
+                AcGePoint3d nextPoint;
+                {
+                    if (current.isEqualTo(nextSeg->first))
+                        nextPoint = nextSeg->second;
+                    else if (current.isEqualTo(nextSeg->second))
+                        nextPoint = nextSeg->first;
+                    else
+                        continue;
+                }
+                polyline.push_back(nextPoint);
+                current = nextPoint;
+                visited.insert(nextSeg);
+                extended = true;
+                break;
+            }
+            if (!extended)
+                break;
+        }
+
+        // Extend backward
+        current = seg.first;
+        while (true)
+        {
+            bool extended = false;
+            auto range = pointToSegs.equal_range(current);
+            for (auto it = range.first; it != range.second; ++it) {
+                const Segment* prevSeg = it->second;
+                if (visited.count(prevSeg))
+                    continue;
+                AcGePoint3d prevPoint;
+                {
+                    if (current.isEqualTo(prevSeg->first))
+                        prevPoint = prevSeg->second;
+                    else if (current.isEqualTo(prevSeg->second))
+                        prevPoint = prevSeg->first;
+                    else
+                        continue;
+                }
+                polyline.insert(polyline.begin(), prevPoint);
+                current = prevPoint;
+                visited.insert(prevSeg);
+                extended = true;
+                break;
+            }
+            if (!extended)
+                break;
+        }
+        polylines.push_back(polyline);
+    }
+    return polylines;
+}
+
 void makePyGeCompositeCurve3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -1002,6 +1121,7 @@ void makePyGeCompositeCurve3dWrapper()
         .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2, DS.OVRL(setCurveListOverloads))
         .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam, DS.ARGS({ "param: float" }))
         .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
+        .def("createFromLineSeg3dArray", &PyGeCompositeCurve3d::createFromLineSeg3dArray, DS.SARGS({ "seg: list[PyGe.LineSeg3d]" })).staticmethod("createFromLineSeg3dArray")
         .def("cast", &PyGeCompositeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve3d::className, DS.SARGS()).staticmethod("className")
@@ -1062,6 +1182,31 @@ boost::python::tuple PyGeCompositeCurve3d::globalToLocalParam(double param) cons
 double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
 {
     return impObj()->localToGlobalParam(param, segNum);
+}
+
+boost::python::list PyGeCompositeCurve3d::createFromLineSeg3dArray(const boost::python::list& curveList)
+{
+    PyAutoLockGIL lock;
+    const auto& vec = py_list_to_std_vector<PyGeLineSeg3d>(curveList);
+    Segments segs;
+    for(const auto& item : vec)
+        segs.emplace_back(Segment{ item.startPoint(), item.endPoint() });
+    const auto& plines = connectSegmentsIntoPolylines(segs);
+    boost::python::list pylist;
+    for (const auto& pline : plines)
+    {
+        AcGeVoidPointerArray arr;
+        AcGeIntArray isOwnerOfCurves;
+        arr.setPhysicalLength(pline.size());
+        isOwnerOfCurves.setPhysicalLength(pline.size());
+        for (size_t idx = 1; idx < pline.size(); idx++)
+        {
+            arr.append(new AcGeLineSeg3d(pline[idx - 1], pline[idx]));
+            isOwnerOfCurves.append(1);
+        }
+        pylist.append(PyGeCompositeCurve3d(new AcGeCompositeCurve3d(arr, isOwnerOfCurves)));
+    }
+    return pylist;
 }
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::cast(const PyGeEntity3d& src)
