@@ -4,7 +4,7 @@
 #pragma pack (push, 8)
 
 class PyDbEntity;
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
 //
 #else
 //-----------------------------------------------------------------------------------------

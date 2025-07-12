@@ -103,7 +103,7 @@ public:
     double              getPerimeter() const;
     double              getArea() const;
     AcGeVector3d        getNormal() const;
-    void                booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion);
+    void                booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion) const;
     Adesk::UInt32       numChanges() const;
     Adesk::Boolean      isNull() const;
 
