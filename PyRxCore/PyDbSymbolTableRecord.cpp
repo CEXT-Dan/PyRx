@@ -147,7 +147,7 @@ void makePyDbDimStyleTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords,4030)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 4030)))
         .def("arrowId", &PyDbDimStyleTableRecord::arrowId, DS.ARGS({ "val: PyDb.DimArrowFlags" }))
         .def("dimadec", &PyDbDimStyleTableRecord::dimadec, DS.ARGS())
         .def("dimalt", &PyDbDimStyleTableRecord::dimalt, DS.ARGS())
@@ -1624,7 +1624,7 @@ void makePyDbViewportTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords,9958)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9958)))
         .def("number", &PyDbViewportTableRecord::number, DS.ARGS(9976))
         .def("lowerLeftCorner", &PyDbViewportTableRecord::lowerLeftCorner, DS.ARGS(9975))
         .def("setLowerLeftCorner", &PyDbViewportTableRecord::setLowerLeftCorner, DS.ARGS({ "val : PyGe.Point2d" }, 9993))
@@ -3021,11 +3021,19 @@ std::string PyDbBlockTableRecord::effectiveName() const
     AcString efname;
     if (impObj()->isAnonymous())
     {
-#if defined (_BRXTARGET)//(SR196681)
+#if defined (_BRXTARGET) && (_BRXTARGET >= 260)
+
+        auto efid = acdbEffectiveBlockTableRecord(impObj()->objectId());
+        AcDbBlockTableRecordPointer efrec(efid);
+        PyThrowBadEs(efrec.openStatus());
+        PyThrowBadEs(efrec->getName(efname));
+        return wstr_to_utf8(efname);
+#elif defined (_BRXTARGET) && (_BRXTARGET <= 250)
         if (AcDbObjectIdArray refids; impObj()->getBlockReferenceIds(refids) == eOk && refids.length() != 0)
         {
-            if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
-                return wstr_to_utf8(efname);
+            acdbEffectiveBlockTableRecord(impObj()->objectId())
+                if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
+                    return wstr_to_utf8(efname);
         }
 #endif
         AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
