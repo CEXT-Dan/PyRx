@@ -19,12 +19,15 @@ class PyDbEntity;
 //PyDbObjectOverrule
 void makePyDbObjectOverruleWrapper();
 
-#ifndef _BRXTARGET260_OOOOF
 class PyDbObjectOverrule : public PyRxOverrule, public AcDbObjectOverrule, public boost::python::wrapper<PyDbObjectOverrule>
 {
 public:
     PyDbObjectOverrule();
     virtual ~PyDbObjectOverrule() override = default;
+
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDbObjectOverrule(const PyDbObjectOverrule&);
+#endif
 
     virtual bool			    isApplicable(const AcRxObject* pOverruledSubject) const override;
     virtual Acad::ErrorStatus   open(AcDbObject* pSubject, AcDb::OpenMode mode) override;
@@ -64,18 +67,21 @@ public:
     mutable bool reg_deepClone = true;
     mutable bool reg_wblockClone = true;
 };
-#endif
 
 //-----------------------------------------------------------------------------------------
 //PyDbOsnapOverrule
 void makePyDbOsnapOverruleWrapper();
 
-#ifndef _BRXTARGET260_OOOOF
 class PyDbOsnapOverrule : public PyRxOverrule, public AcDbOsnapOverrule, public boost::python::wrapper<PyDbOsnapOverrule>
 {
 public:
     PyDbOsnapOverrule();
     virtual ~PyDbOsnapOverrule() override = default;
+
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDbOsnapOverrule(const PyDbOsnapOverrule&);
+#endif
+
 
     virtual bool		      isApplicable(const AcRxObject* pOverruledSubject) const override;
     virtual bool              isContentSnappable(const AcDbEntity* pSubject) override;
@@ -151,5 +157,5 @@ public:
     mutable bool reg_getOsnapPoints = true;
     mutable bool reg_getOsnapPointsXform = true;
 };
-#endif
+
 #pragma pack (pop)
