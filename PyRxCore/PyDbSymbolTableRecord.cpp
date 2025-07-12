@@ -3031,9 +3031,8 @@ std::string PyDbBlockTableRecord::effectiveName() const
 #elif defined (_BRXTARGET) && (_BRXTARGET <= 250)
         if (AcDbObjectIdArray refids; impObj()->getBlockReferenceIds(refids) == eOk && refids.length() != 0)
         {
-            acdbEffectiveBlockTableRecord(impObj()->objectId())
-                if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
-                    return wstr_to_utf8(efname);
+            if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
+                return wstr_to_utf8(efname);
         }
 #endif
         AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
