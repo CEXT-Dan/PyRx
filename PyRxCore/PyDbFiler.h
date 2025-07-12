@@ -12,13 +12,15 @@ class PyDbHardOwnershipId;
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDwgFiler
 void makePyDbSnoopDwgFilerWrapper();
-#ifndef _BRXTARGET260_OOOOF
 
 class PyDbSnoopDwgFiler : public AcDbDwgFiler
 {
 public:
     PyDbSnoopDwgFiler();
     PyDbSnoopDwgFiler(AcDb::FilerType ft);
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDbSnoopDwgFiler(const PyDbSnoopDwgFiler&);
+#endif
     virtual ~PyDbSnoopDwgFiler() override = default;
     virtual  Acad::ErrorStatus  filerStatus() const override;
     virtual  AcDb::FilerType    filerType() const override;
@@ -86,17 +88,19 @@ public:
     AcDb::FilerType     m_filerType = AcDb::kCopyFiler;
     boost::python::list m_list;
 };
-#endif
 
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDxfFiler
 void makePyDbSnoopDxfFilerrWrapper();
-#ifndef _BRXTARGET260_OOOOF
+
 class PyDbSnoopDxfFiler : public AcDbDxfFiler
 {
 public:
     PyDbSnoopDxfFiler() = default;
-    inline virtual ~PyDbSnoopDxfFiler() = default;
+    inline virtual ~PyDbSnoopDxfFiler() override = default;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyDbSnoopDxfFiler(const PyDbSnoopDxfFiler&);
+#endif
     virtual int                 rewindFiler() override;
     virtual Acad::ErrorStatus   filerStatus() const override;
     virtual void                resetFilerStatus() override;
@@ -135,7 +139,5 @@ public:
     boost::python::list m_list;
     AcDbDatabase* mpDb = nullptr;
 };
-#endif
-
 
 #pragma pack (pop)

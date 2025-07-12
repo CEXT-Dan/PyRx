@@ -100,6 +100,7 @@
 
 #if defined(_BRXTARGET) && (_BRXTARGET == 260)
 #define _BRXTARGET260_OOOOF 1
+#define _BRXTARGET_COPY_CTOR 1
 #endif
 
 //- ObjectARX and OMF headers needs this
