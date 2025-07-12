@@ -10,12 +10,15 @@ class PyAutoDocLock;
 //-----------------------------------------------------------------------------------------
 //PyApDocManagerReactor
 void makePyApDocManagerReactorWrapper();
-#ifndef _BRXTARGET260_OOOOF
+
 class PyApDocManagerReactor :public AcApDocManagerReactor, public boost::python::wrapper<PyApDocManagerReactor>
 {
 public:
     PyApDocManagerReactor();
     virtual ~PyApDocManagerReactor() override;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyApDocManagerReactor(const PyApDocManagerReactor&);
+#endif
     virtual void    documentCreateStarted(AcApDocument* pDocCreating) override;
     virtual void    documentCreated(AcApDocument* pDocCreating) override;
     virtual void    documentToBeDestroyed(AcApDocument* pDocToDestroy) override;
@@ -87,7 +90,7 @@ public:
 public:
     bool m_isActive = false;
 };
-#endif
+
 //-----------------------------------------------------------------------------------------
 //PyApDocManager
 void makePyApDocManagerWrapper();
