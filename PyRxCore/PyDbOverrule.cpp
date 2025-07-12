@@ -11,7 +11,6 @@ using namespace boost::python;
 static std::mutex PyDbObjectOverruleMutex;
 void makePyDbObjectOverruleWrapper()
 {
-#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("DbObjectOverrule");
     class_<PyDbObjectOverrule, bases<PyRxOverrule>>("DbObjectOverrule")
         .def(init<>(DS.ARGS(7101)))
@@ -31,14 +30,20 @@ void makePyDbObjectOverruleWrapper()
         .def("className", &PyDbObjectOverrule::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
-#endif
 }
 
-#ifndef _BRXTARGET260_OOOOF
 PyDbObjectOverrule::PyDbObjectOverrule()
     : PyRxOverrule(this)
 {
 }
+
+#ifdef _BRXTARGET_COPY_CTOR
+PyDbObjectOverrule::PyDbObjectOverrule(const PyDbObjectOverrule&)
+    : PyRxOverrule(this), AcDbObjectOverrule()
+{
+    PyThrowBadEs(eNotApplicable);
+}
+#endif
 
 bool PyDbObjectOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
@@ -312,14 +317,12 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
     }
     return static_cast<AcDbObjectOverrule*>(m_pyImp.get());
 }
-#endif
 
 
 //-----------------------------------------------------------------------------------------
 //PyDbOsnapOverrule
 void makePyDbOsnapOverruleWrapper()
 {
-#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("OsnapOverrule");
     class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("OsnapOverrule")
         .def(init<>(DS.ARGS()))
@@ -343,10 +346,9 @@ void makePyDbOsnapOverruleWrapper()
         .def("className", &PyDbOsnapOverrule::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbOsnapOverrule::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
-#endif
 }
 
-#ifndef _BRXTARGET260_OOOOF
+
 static std::mutex PyDbOsnapOverruleMutex;
 
 static auto tupletotuple(const boost::python::tuple& pytuple)
@@ -368,6 +370,14 @@ PyDbOsnapOverrule::PyDbOsnapOverrule()
     : PyRxOverrule(this)
 {
 }
+
+#ifdef _BRXTARGET_COPY_CTOR
+PyDbOsnapOverrule::PyDbOsnapOverrule(const PyDbOsnapOverrule&)
+    : AcDbOsnapOverrule(), PyRxOverrule(this)
+{
+    PyThrowBadEs(eNotApplicable);
+}
+#endif
 
 bool PyDbOsnapOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
@@ -413,7 +423,6 @@ Acad::ErrorStatus PyDbOsnapOverrule::getOsnapPoints(
         return eOk;
     }
     return eInvalidInput;
-
 }
 
 Acad::ErrorStatus PyDbOsnapOverrule::getOsnapPoints(const AcDbEntity* pSubject,
@@ -576,4 +585,3 @@ AcDbOsnapOverrule* PyDbOsnapOverrule::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbOsnapOverrule*>(m_pyImp.get());
 }
-#endif

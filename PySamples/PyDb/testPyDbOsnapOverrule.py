@@ -73,7 +73,7 @@ overrule = None
 def PyRxCmd_pyosnapoverrule() -> None:
     try:
         global overrule
-        if overrule is None:
+        if not overrule is None:
             return
         overrule = MyOsnapOverrule()
         overrule.addOverrule(Db.Entity.desc(), overrule)

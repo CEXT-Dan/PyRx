@@ -69,9 +69,8 @@ public:
     PyDdFieldEvaluator(const PyDdFieldEvaluator&);
 #endif
 
-
-    virtual const ACHAR*            evaluatorId(void) const override;
-    virtual const ACHAR*            evaluatorId(AcDbField* pField) override;
+    virtual const ACHAR* evaluatorId(void) const override;
+    virtual const ACHAR* evaluatorId(AcDbField* pField) override;
 
     virtual Acad::ErrorStatus       initialize(AcDbField* pField) override;
     virtual Acad::ErrorStatus       initializeWr(const PyDbField& pField);
@@ -117,7 +116,6 @@ public:
 #ifdef _BRXTARGET_COPY_CTOR
     PyRxFieldEvaluatorLoader(const PyRxFieldEvaluatorLoader&);
 #endif
-
     virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
     virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
 
@@ -133,7 +131,7 @@ public:
 void makePyDbFieldEngineWrapper();
 
 
-#ifdef _BRXTARGET250
+#ifdef _BRXTARGET250 //no reactor
 class PyDbFieldEngine
 #else
 class PyDbFieldEngine : public AcFdFieldReactor
@@ -160,7 +158,7 @@ public:
     AcDbField::EvalOption       evaluationOption(void) const;
     void                        setEvaluationOption(AcDbField::EvalOption nEvalOption);
 
-    static PyDbFieldEngine&     getEngine();
+    static PyDbFieldEngine& getEngine();
     static std::string          className();
 public:
     AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
