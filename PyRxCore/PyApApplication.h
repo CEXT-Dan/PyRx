@@ -46,13 +46,7 @@ public:
 
     static boost::python::list  listFilesInPath(const std::string& spath, const std::string& ext);
     static boost::python::list  listFilesInPathRecursive(const std::string& spath, const std::string& ext);
-
-
     static std::string          testFlags(PyRxTestFlags flags);
-
-
-
-
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
@@ -70,9 +64,7 @@ public:
     ~PyApResourceOverride() = default;
     static std::string className();
 public:
-#ifndef  _BRXTARGET260_OOOOF
-    CAcModuleResourceOverride myResources;
-#endif
+    std::shared_ptr<CAcModuleResourceOverride> myResources{ new CAcModuleResourceOverride() };
 };
 
 #pragma pack (pop)
