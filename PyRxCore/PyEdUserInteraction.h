@@ -52,7 +52,7 @@ protected:
 //-----------------------------------------------------------------------------------------
 // PyEdUIContext
 void makePyEdUIContextWrapper();
-#ifndef  _BRXTARGET260_OOOOF
+
 class PyEdUIContext : AcEdUIContext, public boost::python::wrapper<PyEdUIContext>
 {
 public:
@@ -62,6 +62,9 @@ public:
 public:
     PyEdUIContext();
     virtual ~PyEdUIContext() override;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyEdUIContext(const PyEdUIContext&);
+#endif
     virtual void* getMenuContext(const AcRxClass* pClass, const AcDbObjectIdArray& ids);
     virtual void  onCommand(Adesk::UInt32 cmd);
     virtual void  OnUpdateMenu();
@@ -78,6 +81,6 @@ public:
     static bool addDefaultContextMenu2(PyEdUIContext& pContext, const std::string& appName);
     static bool removeDefaultContextMenu(PyEdUIContext& pContext);
 };
-#endif
+
 
 #pragma pack (pop)
