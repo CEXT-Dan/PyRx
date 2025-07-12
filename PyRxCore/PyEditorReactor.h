@@ -9,12 +9,14 @@ class PyDbObjectId;
 //PyEditorReactor
 void makePyEditorReactorWrapper();
 
-#ifndef _BRXTARGET260_OOOOF
 class PyEditorReactor : public AcEditorReactor, public boost::python::wrapper<PyEditorReactor>
 {
 public:
     PyEditorReactor();
     ~PyEditorReactor() override;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyEditorReactor(const PyEditorReactor&);
+#endif
     void addReactor();
     void removeReactor();
     Acad::ErrorStatus pyveto();
@@ -300,6 +302,5 @@ public:
 public:
     bool m_isActive = false;
 };
-#endif
 
 #pragma pack (pop)
