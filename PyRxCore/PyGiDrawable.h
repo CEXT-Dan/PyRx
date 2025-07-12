@@ -41,6 +41,9 @@ class PyGiDrawableOverrule : public PyRxOverrule, public AcGiDrawableOverrule, p
 public:
     PyGiDrawableOverrule();
     virtual ~PyGiDrawableOverrule() override = default;
+#ifdef _BRXTARGET_COPY_CTOR
+    PyGiDrawableOverrule(const PyGiDrawableOverrule&);
+#endif
 
     Adesk::UInt32	setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits) const;
 

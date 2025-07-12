@@ -9,7 +9,6 @@ using namespace boost::python;
 //PyEditorReactor
 void makePyEditorReactorWrapper()
 {
-#ifndef _BRXTARGET260_OOOOF
     constexpr const std::string_view beginInsertOverloads = "Overloads:\n"
         "- dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database\n"
         "- dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database\n\n";
@@ -108,13 +107,19 @@ void makePyEditorReactorWrapper()
         .def("viewChanged", &PyEditorReactor::viewChangedWr, DS.ARGS())
         .def("fullRegenWillStart", &PyEditorReactor::fullRegenWillStartWr, DS.ARGS({ "db: PyDb.Database" }))
         ;
-#endif
 }
 
-#ifndef _BRXTARGET260_OOOOF
 PyEditorReactor::PyEditorReactor()
 {
 }
+
+#ifdef _BRXTARGET_COPY_CTOR
+PyEditorReactor::PyEditorReactor(const PyEditorReactor&)
+    : AcEditorReactor()
+{
+     PyThrowBadEs(eNotApplicable);
+}
+#endif
 
 PyEditorReactor::~PyEditorReactor()
 {
@@ -2331,4 +2336,3 @@ void PyEditorReactor::fullRegenWillStartWr(PyDbDatabase& pDb)
         printExceptionMsg();
     }
 }
-#endif
