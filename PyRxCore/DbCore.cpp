@@ -163,6 +163,7 @@ void makeDbCoreWrapper()
         .def("stringtolower", &DbCore::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
         .def("stringtoupper", &DbCore::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
         .def("icompare", &DbCore::icompare, DS.SARGS({ "left: str","right: str" })).staticmethod("icompare")
+        .def("groupCodeToType", &DbCore::groupCodeToType, DS.SARGS({ "code: PyDb.DxfCode" })).staticmethod("groupCodeToType")
         ;
 }
 
@@ -1049,4 +1050,9 @@ Acad::ErrorStatus DbCore::evaluateFields2(const boost::python::object& ids, int 
 void DbCore::resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, bool doNewOnly)
 {
     PyThrowBadEs(acdbResolveCurrentXRefs(db.impObj(), useThreadEngine, doNewOnly));
+}
+
+AcDb::DwgDataType DbCore::groupCodeToType(AcDb::DxfCode pCode)
+{
+    return acdbGroupCodeToType(pCode);
 }

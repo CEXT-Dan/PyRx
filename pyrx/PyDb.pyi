@@ -5175,6 +5175,8 @@ class Core:
         Returns the visual style of the current viewport.
         """
     @staticmethod
+    def groupCodeToType(code: PyDb.DxfCode, /) -> DwgDataType: ...
+    @staticmethod
     def handEnt(handle: str, /) -> ObjectId:
         """
         Finds the entity with the specified handle. An entity's name changes whenever AutoCAD opens
