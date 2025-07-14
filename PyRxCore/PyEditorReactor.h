@@ -14,9 +14,7 @@ class PyEditorReactor : public AcEditorReactor, public boost::python::wrapper<Py
 public:
     PyEditorReactor();
     ~PyEditorReactor() override;
-#ifdef _BRXTARGET_COPY_CTOR
-    PyEditorReactor(const PyEditorReactor&);
-#endif
+
     void addReactor();
     void removeReactor();
     Acad::ErrorStatus pyveto();

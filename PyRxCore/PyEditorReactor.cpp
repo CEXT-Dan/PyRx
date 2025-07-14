@@ -14,7 +14,7 @@ void makePyEditorReactorWrapper()
         "- dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database\n\n";
 
     PyDocString DS("EditorReactor");
-    class_<PyEditorReactor>("EditorReactor")
+    class_<PyEditorReactor, boost::noncopyable>("EditorReactor")
         .def(init<>(DS.ARGS()))
         .def("addReactor", &PyEditorReactor::addReactor, DS.ARGS())
         .def("removeReactor", &PyEditorReactor::removeReactor, DS.ARGS())
@@ -112,14 +112,6 @@ void makePyEditorReactorWrapper()
 PyEditorReactor::PyEditorReactor()
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyEditorReactor::PyEditorReactor(const PyEditorReactor&)
-    : AcEditorReactor()
-{
-     PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 PyEditorReactor::~PyEditorReactor()
 {
