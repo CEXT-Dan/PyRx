@@ -5,7 +5,8 @@ import openpyxl as xl
 from pyrx import Ap, Db
 
 # Some notes
-# - AcFdFieldEvaluatorLoader and AcFdFieldReactor are embedded (BricsCAD does not have the reactors)
+# - AcFdFieldEvaluatorLoader and AcFdFieldReactor are embedded (BricsCAD 25 does not have the reactors)
+# - BricsCAD V26 has added the reactors
 # - if you follow the normal %<\MyFieldID fcode>%, it should pick up your evaluator
 # - Fields are like custom objects, name and evalname(FieldID) should be unique if you plan on sharing
 # - AutoCAD caches the last evaluation, so if the evaluator it not loaded, your data should still show
