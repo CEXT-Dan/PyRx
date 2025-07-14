@@ -62,9 +62,7 @@ public:
 public:
     PyEdUIContext();
     virtual ~PyEdUIContext() override;
-#ifdef _BRXTARGET_COPY_CTOR
-    PyEdUIContext(const PyEdUIContext&);
-#endif
+
     virtual void* getMenuContext(const AcRxClass* pClass, const AcDbObjectIdArray& ids);
     virtual void  onCommand(Adesk::UInt32 cmd);
     virtual void  OnUpdateMenu();

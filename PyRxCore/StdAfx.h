@@ -98,11 +98,6 @@
 #define _ARXTARGET250 250
 #endif
 
-//KLUDGE!!! BRX26 deletes AcRxObject CTOR
-#if defined(_BRXTARGET) && (_BRXTARGET == 260)
-#define _BRXTARGET_COPY_CTOR 1
-#endif
-
 //- ObjectARX and OMF headers needs this
 #include <map>
 #include <vector>
@@ -124,7 +119,6 @@
 #include <ranges>
 #include <queue>
 #include<execution>
-
 
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components

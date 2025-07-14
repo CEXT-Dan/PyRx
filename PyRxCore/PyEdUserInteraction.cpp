@@ -161,7 +161,7 @@ void PyEdUserInteraction::undoUserInteraction()
 void makePyEdUIContextWrapper()
 {
     PyDocString DS("UIContext");
-    class_<PyEdUIContext>("UIContext")
+    class_<PyEdUIContext, boost::noncopyable>("UIContext")
         .def(init<>(DS.ARGS()))
         .def("getMenuContext", &PyEdUIContext::getMenuContextWr, DS.ARGS({ "val: PyRx.RxClass","ids: list[PyDb.ObjectId]" }))
         .def("onCommand", &PyEdUIContext::onCommandWr, DS.ARGS({ "mnuCmd: int" }))
@@ -178,14 +178,6 @@ void makePyEdUIContextWrapper()
 PyEdUIContext::PyEdUIContext()
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyEdUIContext::PyEdUIContext(const PyEdUIContext&)
-    : AcEdUIContext()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 PyEdUIContext::~PyEdUIContext()
 {

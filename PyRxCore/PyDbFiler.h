@@ -18,9 +18,6 @@ class PyDbSnoopDwgFiler : public AcDbDwgFiler
 public:
     PyDbSnoopDwgFiler();
     PyDbSnoopDwgFiler(AcDb::FilerType ft);
-#ifdef _BRXTARGET_COPY_CTOR
-    PyDbSnoopDwgFiler(const PyDbSnoopDwgFiler&);
-#endif
     virtual ~PyDbSnoopDwgFiler() override = default;
     virtual  Acad::ErrorStatus  filerStatus() const override;
     virtual  AcDb::FilerType    filerType() const override;
@@ -98,9 +95,6 @@ class PyDbSnoopDxfFiler : public AcDbDxfFiler
 public:
     PyDbSnoopDxfFiler() = default;
     inline virtual ~PyDbSnoopDxfFiler() override = default;
-#ifdef _BRXTARGET_COPY_CTOR
-    PyDbSnoopDxfFiler(const PyDbSnoopDxfFiler&);
-#endif
     virtual int                 rewindFiler() override;
     virtual Acad::ErrorStatus   filerStatus() const override;
     virtual void                resetFilerStatus() override;

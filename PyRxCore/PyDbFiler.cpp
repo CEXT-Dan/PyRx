@@ -9,7 +9,7 @@ using namespace boost::python;
 void makePyDbSnoopDwgFilerWrapper()
 {
     PyDocString DS("SnoopDwgFiler");
-    class_<PyDbSnoopDwgFiler>("SnoopDwgFiler")
+    class_<PyDbSnoopDwgFiler, boost::noncopyable>("SnoopDwgFiler")
         .def(init<>())
         .def(init<AcDb::FilerType>(DS.ARGS({ "filerType: PyDb.FilerType" })))
         .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.ARGS())
@@ -25,14 +25,6 @@ PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
     :m_filerType(ft)
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(const PyDbSnoopDwgFiler&)
-    : AcDbDwgFiler()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 Acad::ErrorStatus PyDbSnoopDwgFiler::filerStatus() const
 {
@@ -395,20 +387,12 @@ boost::python::object PyDbSnoopDwgFiler::getitem(int idx)
 void makePyDbSnoopDxfFilerrWrapper()
 {
     PyDocString DS("SnoopDxfFiler");
-    class_<PyDbSnoopDxfFiler>("SnoopDxfFiler")
+    class_<PyDbSnoopDxfFiler, boost::noncopyable>("SnoopDxfFiler")
         .def(init<>())
         .def("buffer", &PyDbSnoopDxfFiler::buffer, DS.ARGS())
         .def("__getitem__", &PyDbSnoopDwgFiler::getitem, DS.ARGS())
         ;
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDbSnoopDxfFiler::PyDbSnoopDxfFiler(const PyDbSnoopDxfFiler&)
-    : AcDbDxfFiler()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 int PyDbSnoopDxfFiler::rewindFiler()
 {
