@@ -7,7 +7,7 @@
 
 using namespace boost::python;
 
-int retTuple(const boost::python::tuple& tpl)
+static int retTuple(const boost::python::tuple& tpl)
 {
     int code = extract<int>(tpl[0]);
     if (code < 5000)
@@ -296,6 +296,7 @@ int PyLispService::execLispFunc()
 bool PyLispService::tryAddFunc(const std::filesystem::path& fpath, const AcString& pythonFuncName, PyObject* method)
 {
     PyAutoLockGIL lock;
+    // TODO: we can start from the first unused code for the hinstance, something like 10
     constexpr const int startFunCode = 16383;
     AcString lispFuncName;
     if (pythonFuncName.find(PyLispFuncPrefix) != -1)
