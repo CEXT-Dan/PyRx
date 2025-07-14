@@ -526,9 +526,7 @@ void makePyDbDatabaseWrapper()
 
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS(2968))
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)
-        .def("readDwgFile", &PyDbDatabase::readDwgFile2,
-            DS.ARGS({ "fileName: str", "mode: PyDb.DatabaseOpenMode=PyDb.DatabaseOpenMode.kForReadAndReadShare", "bAllowCPConversion:bool=False","password:str='empty'" }, 3116))
-
+        .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.ARGS({ "fileName: str", "mode: PyDb.DatabaseOpenMode", "bAllowCPConversion:bool","password:str" }, 3116))
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("modelSpace", &PyDbDatabase::modelSpace1)
