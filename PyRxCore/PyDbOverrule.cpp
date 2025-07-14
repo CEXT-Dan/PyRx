@@ -12,7 +12,7 @@ static std::mutex PyDbObjectOverruleMutex;
 void makePyDbObjectOverruleWrapper()
 {
     PyDocString DS("DbObjectOverrule");
-    class_<PyDbObjectOverrule, bases<PyRxOverrule>>("DbObjectOverrule")
+    class_<PyDbObjectOverrule, bases<PyRxOverrule>, boost::noncopyable>("DbObjectOverrule")
         .def(init<>(DS.ARGS(7101)))
         .def("isApplicable", &PyDbObjectOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
         .def("open", &PyDbObjectOverrule::openWr, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
@@ -36,14 +36,6 @@ PyDbObjectOverrule::PyDbObjectOverrule()
     : PyRxOverrule(this)
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDbObjectOverrule::PyDbObjectOverrule(const PyDbObjectOverrule&)
-    : PyRxOverrule(this), AcDbObjectOverrule()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 bool PyDbObjectOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
@@ -324,7 +316,7 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
 void makePyDbOsnapOverruleWrapper()
 {
     PyDocString DS("OsnapOverrule");
-    class_<PyDbOsnapOverrule, bases<PyRxOverrule>>("OsnapOverrule")
+    class_<PyDbOsnapOverrule, bases<PyRxOverrule>, boost::noncopyable>("OsnapOverrule")
         .def(init<>(DS.ARGS()))
 
         .def("isApplicable", &PyDbOsnapOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
@@ -370,14 +362,6 @@ PyDbOsnapOverrule::PyDbOsnapOverrule()
     : PyRxOverrule(this)
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDbOsnapOverrule::PyDbOsnapOverrule(const PyDbOsnapOverrule&)
-    : AcDbOsnapOverrule(), PyRxOverrule(this)
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 bool PyDbOsnapOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {

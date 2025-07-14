@@ -16,9 +16,6 @@ class PyApDocManagerReactor :public AcApDocManagerReactor, public boost::python:
 public:
     PyApDocManagerReactor();
     virtual ~PyApDocManagerReactor() override;
-#ifdef _BRXTARGET_COPY_CTOR
-    PyApDocManagerReactor(const PyApDocManagerReactor&);
-#endif
     virtual void    documentCreateStarted(AcApDocument* pDocCreating) override;
     virtual void    documentCreated(AcApDocument* pDocCreating) override;
     virtual void    documentToBeDestroyed(AcApDocument* pDocToDestroy) override;

@@ -148,7 +148,7 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 //PyGiDrawableOverrule
 void makePyGiDrawableOverruleWrapper()
 {
-    class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
+    class_<PyGiDrawableOverrule, bases<PyRxOverrule>, boost::noncopyable>("DrawableOverrule")
         .def("setAttributes", &PyGiDrawableOverrule::setAttributes)
         .def("isApplicable", &PyGiDrawableOverrule::isApplicableWr)
         .def("worldDraw", &PyGiDrawableOverrule::worldDrawWr)
@@ -166,14 +166,6 @@ PyGiDrawableOverrule::PyGiDrawableOverrule()
     : PyRxOverrule(this)
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyGiDrawableOverrule::PyGiDrawableOverrule(const PyGiDrawableOverrule&)
-    : PyRxOverrule(this)
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 Adesk::UInt32 PyGiDrawableOverrule::setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits) const
 {

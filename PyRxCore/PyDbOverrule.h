@@ -25,10 +25,6 @@ public:
     PyDbObjectOverrule();
     virtual ~PyDbObjectOverrule() override = default;
 
-#ifdef _BRXTARGET_COPY_CTOR
-    PyDbObjectOverrule(const PyDbObjectOverrule&);
-#endif
-
     virtual bool			    isApplicable(const AcRxObject* pOverruledSubject) const override;
     virtual Acad::ErrorStatus   open(AcDbObject* pSubject, AcDb::OpenMode mode) override;
     virtual Acad::ErrorStatus   close(AcDbObject* pSubject) override;
@@ -77,11 +73,6 @@ class PyDbOsnapOverrule : public PyRxOverrule, public AcDbOsnapOverrule, public 
 public:
     PyDbOsnapOverrule();
     virtual ~PyDbOsnapOverrule() override = default;
-
-#ifdef _BRXTARGET_COPY_CTOR
-    PyDbOsnapOverrule(const PyDbOsnapOverrule&);
-#endif
-
 
     virtual bool		      isApplicable(const AcRxObject* pOverruledSubject) const override;
     virtual bool              isContentSnappable(const AcDbEntity* pSubject) override;

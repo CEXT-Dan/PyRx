@@ -351,7 +351,7 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
 void makePyDdFieldEvaluatorWrapper()
 {
     PyDocString DS("PyDb.FieldEvaluator");
-    class_<PyDdFieldEvaluator>("FieldEvaluator", boost::python::no_init)
+    class_<PyDdFieldEvaluator, boost::noncopyable>("FieldEvaluator", boost::python::no_init)
         .def(init<const std::string&, const std::string&>())
         .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }, 11617))
         .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }, 11623))
@@ -369,14 +369,6 @@ PyDdFieldEvaluator::PyDdFieldEvaluator(const std::string& name, const std::strin
     :m_name(utf8_to_wstr(name).c_str()), m_evalName(utf8_to_wstr(evalName).c_str())
 {
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDdFieldEvaluator::PyDdFieldEvaluator(const PyDdFieldEvaluator&)
-    : AcFdFieldEvaluator()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 const ACHAR* PyDdFieldEvaluator::evaluatorId(void) const
 {
@@ -569,13 +561,6 @@ std::string PyDdFieldEvaluator::className()
 
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
-#ifdef _BRXTARGET_COPY_CTOR
-PyRxFieldEvaluatorLoader::PyRxFieldEvaluatorLoader(const PyRxFieldEvaluatorLoader&)
-    : AcFdFieldEvaluatorLoader()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::getEvaluator(const ACHAR* pszEvalId)
 {
@@ -619,7 +604,7 @@ void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& eva
 void makePyDbFieldEngineWrapper()
 {
     PyDocString DS("PyDb.FieldEngine");
-    class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
+    class_<PyDbFieldEngine, boost::noncopyable>("FieldEngine", boost::python::no_init)
         .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("evaluatorLoaderCount", &PyDbFieldEngine::evaluatorLoaderCount, DS.ARGS())
@@ -639,14 +624,6 @@ PyDbFieldEngine::PyDbFieldEngine()
     acdbAddFieldReactor(this);
 #endif // !_BRXTARGET250
 }
-
-#ifdef _BRXTARGET_COPY_CTOR
-PyDbFieldEngine::PyDbFieldEngine(const PyDbFieldEngine&)
-    : AcFdFieldReactor()
-{
-    PyThrowBadEs(eNotApplicable);
-}
-#endif
 
 PyDbFieldEngine::~PyDbFieldEngine()
 {
