@@ -102,8 +102,11 @@ def main() -> None:
         from pyrx.utils.wx import set_top_window_title
 
         set_top_window_title(title)
-    # load REPLs
+
+    # load PyRx commands
     import pyrx._commands  # noqa: F401
+
+    # load REPLs
     import pyrx.repl.repl_cmds  # noqa: F401
 
 
