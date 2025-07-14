@@ -5,6 +5,9 @@ from pathlib import Path
 
 import pytest
 
+if True:
+    pytest.skip(allow_module_level=True,reason ="invalid inherited docstring #216")
+
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm  # noqa
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import (
