@@ -7366,14 +7366,73 @@ class Database(PyRx.RxObject):
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE.
         """
+    @overload
+    def readDwgFile(self, fileName: str, /) -> None:
+        """
+        Reads the drawing file specified by fileName into the database object executing this
+        function. fileName must include the extension of the file (which does not have to be .dwg)
+        if the file to open has one, even if the extension is .dwg. This function uses the
+        'lazy-load' mechanism, which means that pieces of the drawing are read in only as needed.
+        So, the drawing file is left open until the database object is deleted, at which point the
+        database destructor closes the drawing file. This function always tries to open files with
+        read access. It fails if read access is not available. For an ObjectARX application, if
+        bAllowCPConversion is false, AutoCAD will pop up a dialog explaining the situation and
+        asking if the user wants to allow some kind of default conversion, which might cause a data
+        loss. The bAllowCPConversion argument controls the behavior when the user tries to read a
+        dwg file where the NLS files are not available to convert from the codepage of the drawing
+        to the codepage of the system (for example, a Japanese drawing on an English OS). However,
+        when a non-AutoCAD host application encounters this situation with an ObjectDBX module,
+        readDwgFile() will merely return the error status eNLSFileNotAvailable. At that point, the
+        application can decide whether it wants to allow the default conversion by whatever means
+        it chooses (including asking the user). If it chooses to allow the conversion, it can again
+        call readDwgFile() and set bAllowCPConversion to true. In either ObjectARX or ObjectDBX, if
+        bAllowCPConversion is true, the file will be opened and the conversion will happen
+        silently. If wszPassword is NULL, the user is prompted for a password if one is required
+        and if no applicable password exists in the password cache. Returns Acad::eOk if
+        successful. WarningThis function should only be used on a newly created AcDbDatabase that
+        was created with its constructor's buildDefaultDrawing argument set to Adesk::kFalse. If
+        this method is used on an AcDbDatabase that was created with buildDefaultDrawing set to
+        Adesk::kTrue, or an AcDbDatabase that already has information in it (for any reason
+        including a previous call to this function), then memory leaks (or worse) will result.
+        """
+    @overload
     def readDwgFile(
         self,
         fileName: str,
-        mode: PyDb.DatabaseOpenMode = PyDb.DatabaseOpenMode.kForReadAndReadShare,
-        bAllowCPConversion: bool = False,
-        password: str = "empty",
+        mode: PyDb.DatabaseOpenMode,
+        bAllowCPConversion: bool,
+        password: str,
         /,
     ) -> None:
+        """
+        Reads the drawing file specified by fileName into the database object executing this
+        function. fileName must include the extension of the file (which does not have to be .dwg)
+        if the file to open has one, even if the extension is .dwg. This function uses the
+        'lazy-load' mechanism, which means that pieces of the drawing are read in only as needed.
+        So, the drawing file is left open until the database object is deleted, at which point the
+        database destructor closes the drawing file. This function always tries to open files with
+        read access. It fails if read access is not available. For an ObjectARX application, if
+        bAllowCPConversion is false, AutoCAD will pop up a dialog explaining the situation and
+        asking if the user wants to allow some kind of default conversion, which might cause a data
+        loss. The bAllowCPConversion argument controls the behavior when the user tries to read a
+        dwg file where the NLS files are not available to convert from the codepage of the drawing
+        to the codepage of the system (for example, a Japanese drawing on an English OS). However,
+        when a non-AutoCAD host application encounters this situation with an ObjectDBX module,
+        readDwgFile() will merely return the error status eNLSFileNotAvailable. At that point, the
+        application can decide whether it wants to allow the default conversion by whatever means
+        it chooses (including asking the user). If it chooses to allow the conversion, it can again
+        call readDwgFile() and set bAllowCPConversion to true. In either ObjectARX or ObjectDBX, if
+        bAllowCPConversion is true, the file will be opened and the conversion will happen
+        silently. If wszPassword is NULL, the user is prompted for a password if one is required
+        and if no applicable password exists in the password cache. Returns Acad::eOk if
+        successful. WarningThis function should only be used on a newly created AcDbDatabase that
+        was created with its constructor's buildDefaultDrawing argument set to Adesk::kFalse. If
+        this method is used on an AcDbDatabase that was created with buildDefaultDrawing set to
+        Adesk::kTrue, or an AcDbDatabase that already has information in it (for any reason
+        including a previous call to this function), then memory leaks (or worse) will result.
+        """
+    @overload
+    def readDwgFile(self, *args) -> None:
         """
         Reads the drawing file specified by fileName into the database object executing this
         function. fileName must include the extension of the file (which does not have to be .dwg)
