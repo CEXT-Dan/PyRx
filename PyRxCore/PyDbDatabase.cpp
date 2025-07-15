@@ -32,6 +32,10 @@ void makePyDbDatabaseWrapper()
         "- blockId: PyDb.ObjectId, pBlockName: str, pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
         "- xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool\n";
 
+    constexpr const std::string_view  readDwgFilesOverloads = "Overloads:\n"
+        "- fileName:str\n"
+        "- fileName:str, mode: PyDb.DatabaseOpenMode,bAllowCPConversion:bool,password:str\n";
+
     PyDocString DS("PyDb.Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
@@ -526,7 +530,7 @@ void makePyDbDatabaseWrapper()
 
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS(2968))
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)
-        .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.ARGS({ "fileName: str", "mode: PyDb.DatabaseOpenMode", "bAllowCPConversion:bool","password:str" }, 3116))
+        .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.OVRL(readDwgFilesOverloads, 3116))
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("modelSpace", &PyDbDatabase::modelSpace1)
