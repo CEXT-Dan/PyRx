@@ -28,7 +28,7 @@
     "rows": [
         [
             "PyEd::Editor::getKword",
-            "tuple[int, str]"
+            "tuple[PyEd.PromptStatus, str]"
         ],
         [
             "PyEd::Editor::getCorner",
