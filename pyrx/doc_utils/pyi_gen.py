@@ -253,8 +253,8 @@ class _BoostPythonInstanceClassPyiGenerator:
     def get_chunks(
         self, cls: t.Type[BoostPythonInstance], module_name: str, node: Node | None
     ) -> c.Generator[str | Node, None, None]:
+        indent = self.indent
         if node is None:
-            indent = self.indent
             chunks = []
             cls_name = cls.__name__
             chunks.append(f"{indent}class {cls_name}")
