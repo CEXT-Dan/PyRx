@@ -1790,7 +1790,7 @@ class Editor:
         enable return values of RTNONE or RTKWORD.
         """
     @staticmethod
-    def getKword(keyword: str, /) -> tuple[int, str]:
+    def getKword(keyword: str, /) -> tuple[PyEd.PromptStatus, str]:
         """
         Deprecated. Function acedGetFullKword() is an alternate form of acedGetKword(). Instead of
         truncating any characters beyond the 131, acedGetFullKword() returns a new copy of the
