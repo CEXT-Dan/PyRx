@@ -9902,7 +9902,7 @@ class DbObject(PyGi.Drawable):
         """
     def snoop(self, filer: PyDb.SnoopDwgFiler, /) -> None: ...
     def snoopdxf(self, filer: PyDb.SnoopDxfFiler, /) -> None: ...
-    def swapIdWith(self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool, /) -> None:
+    def swapIdWith(self, otherId: PyDb.ObjectId, swapXdata: bool, swapExtDict: bool, /) -> None:
         """
         This function swaps objectIds and handles between the object specified by otherId and the
         object invoking this function. Both objects must currently be database-resident and must
