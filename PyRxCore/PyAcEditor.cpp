@@ -732,7 +732,7 @@ boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
 {
     PyAutoLockGIL lock;
     RxAutoOutStr pStr;
-    int resval = acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr.buf);
+    auto resval = static_cast<Acad::PromptStatus>(acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr.buf));
     return boost::python::make_tuple(resval, pStr.str());
 }
 
