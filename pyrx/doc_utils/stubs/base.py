@@ -15,8 +15,8 @@ BASE_DIR = Path(__file__).parent
 MARKER = "# pyrx-marker:"
 HEADER_END_MARKER = f"{MARKER} HEADER_END"
 
-COMMENT_SECTION_START = re.compile(re.escape("# /*") + r".*")
-COMMENT_SECTION_END = re.compile(re.escape("# ") + r".*" + re.escape("*/"))
+COMMENT_SECTION_START = re.compile(r"^\s*" + re.escape("# /*") + r".*")
+COMMENT_SECTION_END = re.compile(r"^\s*" + re.escape("# ") + r".*" + re.escape("*/") + r"\s*$")
 
 
 class SrcParsingError(Exception):
