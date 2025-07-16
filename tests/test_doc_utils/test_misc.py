@@ -51,7 +51,7 @@ class TestReturnTypesManager:
         assert row1.module == "PyEd"
         assert row1.cls == "Editor"
         assert row1.func == "getKword"
-        assert row1.value == "tuple[int, str]"
+        assert row1.value == "tuple[PyEd.PromptStatus, str]"
 
         row22 = rows[21]
         assert row22.module is None
