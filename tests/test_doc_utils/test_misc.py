@@ -69,14 +69,14 @@ class TestReturnTypesManager:
         dict_ = return_types.rows_dict
         assert dict_ is return_types.rows_dict
 
-        assert dict_[("PyEd", "Editor", "getKword")] == "tuple[int, str]"
+        assert dict_[("PyEd", "Editor", "getKword")] == "tuple[PyEd.PromptStatus, str]"
         assert dict_[("PyDb", None, "explode")] == "list[PyDb.Entity]"
         assert dict_[(None, None, "objectIds")] == "list[PyDb.ObjectId]"
 
     @pytest.mark.parametrize(
         "module, cls, func, expected",
         (
-            pytest.param("PyEd", "Editor", "getKword", "tuple[int, str]", id="001"),
+            pytest.param("PyEd", "Editor", "getKword", "tuple[PyEd.PromptStatus, str]", id="001"),
             pytest.param("PyDb", "Entity", "explode", "list[PyDb.Entity]", id="002"),
             pytest.param("PyDb", "BlockTableRecord", "objectIds", "list[PyDb.ObjectId]", id="003"),
             pytest.param("PyDb", "BlockTableRecord", "unknown_func", None, id="004"),
