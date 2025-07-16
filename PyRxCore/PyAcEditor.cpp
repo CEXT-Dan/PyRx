@@ -90,7 +90,7 @@ private:
     const boost::python::object& m_obj;
 };
 
-boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
+static boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
     return boost::python::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, PyEdSelectionSet{ name });
@@ -345,7 +345,7 @@ boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& promp
     return boost::python::make_tuple(stat, sval);
 }
 
-boost::python::tuple entSelFilter(const std::string& prompt, const AcRxClass* desc)
+static boost::python::tuple entSelFilter(const std::string& prompt, const AcRxClass* desc)
 {
     PyEdUserInteraction ui;
     ads_point pnt;
@@ -368,7 +368,7 @@ boost::python::tuple entSelFilter(const std::string& prompt, const AcRxClass* de
     return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
 }
 
-boost::python::tuple entSelFilterList(const std::string& prompt, const AcRxClassArray& descs)
+static boost::python::tuple entSelFilterList(const std::string& prompt, const AcRxClassArray& descs)
 {
     PyEdUserInteraction ui;
     ads_point pnt;
