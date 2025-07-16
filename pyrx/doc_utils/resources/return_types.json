@@ -100,15 +100,15 @@
         ],
         [
             "PyEd::Editor::entSel",
-            "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]"
+            "tuple[PyEd.PromptStatus, PyDb.ObjectId[PyDb.Entity], PyGe.Point3d]"
         ],
         [
             "PyEd::Editor::nEntSelP",
-            "tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]]"
+            "tuple[PyEd.PromptStatus, PyDb.ObjectId[PyDb.Entity], PyGe.Point3d, PyGe.Matrix3d, list[PyDb.ObjectId[PyDb.Entity]]]"
         ],
         [
             "PyEd::Editor::nEntSelPEx",
-            "tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]"
+            "tuple[PyEd.PromptStatus,PyDb.ObjectId[PyDb.Entity],PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId[PyDb.Entity]]]"
         ],
         [
             "objectIds",
@@ -132,15 +132,15 @@
         ],
         [
             "PyEd::SelectionSet::toList",
-            "list[PyDb.ObjectId]"
+            "list[PyDb.ObjectId[PyDb.Entity]]"
         ],
         [
             "PyEd::Editor::getCurrentSelectionSet",
-            "list[PyDb.ObjectId]"
+            "list[PyDb.ObjectId[PyDb.Entity]]"
         ],
         [
             "PyEd::InputPoint::pickedEntities",
-            "list[PyDb.ObjectId]"
+            "list[PyDb.ObjectId[PyDb.Entity]]"
         ],
         [
             "PyEd::Core::getRGB",
@@ -204,7 +204,7 @@
         ],
         [
             "PyDb::appendAcDbEntities",
-            "list[PyDb.ObjectId]"
+            "list[PyDb.ObjectId[PyDb.Entity]]"
         ],
         [
             "PyDb::Core::activeDatabaseArray",
@@ -348,7 +348,7 @@
         ],
         [
             "PyEd::Core::getCurrentSelectionSet",
-            "list[PyDb.ObjectId]"
+            "list[PyDb.ObjectId[PyDb.Entity]]"
         ],
         [
             "PyEd::Core::getCurVportScreenToDisplay",
