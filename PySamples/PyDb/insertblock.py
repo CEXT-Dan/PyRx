@@ -79,6 +79,14 @@ def PyRxCmd_pyinsertatt() -> None:
                 attref.setTextString("XXX")
                 attref.setAlignmentPoint(attdef.alignmentPoint() + blockRef.position().asVector())
                 blockRef.appendAttribute(attref)
+                if attdef.hasFields():
+                    of = Db.Field(attdef.getField())
+                    flag = Db.FieldCodeFlag(
+                        Db.FieldCodeFlag.kFieldCode | Db.FieldCodeFlag.kAddMarkers
+                    )
+                    nf = Db.Field(of.getFieldCode(flag))
+                    attref.setField(nf)
+                    nf.evaluate()
 
     except Exception as err:
         print(err)
