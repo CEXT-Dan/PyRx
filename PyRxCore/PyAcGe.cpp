@@ -87,12 +87,12 @@ static double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.sx;
-        case 1:
-            return p.sy;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        return p.sx;
+    case 1:
+        return p.sy;
+    default:
+        throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -100,14 +100,14 @@ static void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.sx = val;
-            break;
-        case 1:
-            p.sy = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        p.sx = val;
+        break;
+    case 1:
+        p.sy = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -145,7 +145,7 @@ static void makePyGeScale2dWrapper()
 #endif
         .def_readwrite("sx", &AcGeScale2d::sx)
         .def_readwrite("sy", &AcGeScale2d::sy)
-        .def("__eq__", &AcGeScale2d::operator==,DS.ARGS({ "other: PyGe.Scale2d" }))
+        .def("__eq__", &AcGeScale2d::operator==, DS.ARGS({ "other: PyGe.Scale2d" }))
         .def("__ne__", &AcGeScale2d::operator!=, DS.ARGS({ "other: PyGe.Scale2d" }))
         .def<AcGeScale2d(AcGeScale2d::*)(double)const>("__mul__", &AcGeScale2d::operator*, DS.ARGS({ "val: float" }))
         .def<AcGeScale2d& (AcGeScale2d::*)(double)>("__imul__", &AcGeScale2d::operator*=, DS.ARGS({ "val: float" }), return_self<>())
@@ -275,12 +275,12 @@ static double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -288,14 +288,14 @@ static void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -400,7 +400,7 @@ static void makePyGePoint2dWrapper()
         .def_readwrite("y", &AcGePoint2d::y)
         .add_static_property("kOrigin", &AcGePoint2dkOrigin, DS.ARGS())
         .def("__eq__", &AcGePoint2d::operator==, DS.ARGS({ "other: PyGe.Point2d" }))
-        .def("__ne__", &AcGePoint2d::operator!= ,DS.ARGS({ "other: PyGe.Point2d" }))
+        .def("__ne__", &AcGePoint2d::operator!=, DS.ARGS({ "other: PyGe.Point2d" }))
         .def<AcGePoint2d(AcGePoint2d::*)(double)const>("__mul__", &AcGePoint2d::operator*, DS.ARGS({ "val: float" }))
         .def<AcGePoint2d& (AcGePoint2d::*)(double)>("__imul__", &AcGePoint2d::operator*=, DS.ARGS({ "val: float" }), return_self<>())
         .def<AcGePoint2d(AcGePoint2d::*)(double)const>("__truediv__", &AcGePoint2d::operator/, DS.ARGS({ "val: float" }))
@@ -488,12 +488,12 @@ static double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -501,14 +501,14 @@ static void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -654,6 +654,29 @@ static std::string AcGeMatrix2dToStringRepr(const AcGeMatrix2d& x)
         x.entry[2][0], x.entry[2][1], x.entry[2][2]);
 }
 
+static AcGeMatrix2d AcGeMatrix2dInitFromCollection(const boost::python::object& obj)
+{
+    AcGeMatrix2d x;
+    const size_t listSize = boost::python::len(obj);
+    if (listSize != 3)
+        PyThrowBadEs(eInvalidInput);
+    auto objvec = std::vector<boost::python::object>(boost::python::stl_input_iterator<boost::python::object>(obj),
+        boost::python::stl_input_iterator<boost::python::object>());
+    auto e0 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(0)),
+        boost::python::stl_input_iterator<double>());
+    auto e1 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(1)),
+        boost::python::stl_input_iterator<double>());
+    auto e2 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(2)),
+        boost::python::stl_input_iterator<double>());
+    if (auto t = (e0.size() + e1.size() + e2.size()); t != 9)
+        PyThrowBadEs(eInvalidInput);
+    x.entry[0][0] = e0[0]; x.entry[0][1] = e0[1]; x.entry[0][2] = e0[2];
+    x.entry[1][0] = e1[0]; x.entry[1][1] = e1[1]; x.entry[1][2] = e1[2];
+    x.entry[2][0] = e2[0]; x.entry[2][1] = e2[1]; x.entry[2][2] = e2[2];
+    return x;
+}
+
+
 static AcGeMatrix2d AcGeMatrix2dtranslation(const AcGeVector2d& vec)
 {
     return AcGeMatrix2d::translation(vec);
@@ -765,6 +788,8 @@ static void makePyGeMatrix2dWrapper()
         .def("mirroring", &AcGeMatrix2mirroring2, DS.SARGS({ "pt: PyGe.Point2d|PyGe.Line2d" })).staticmethod("mirroring")
         .def("alignCoordSys", &AcGeMatrix2alignCoordSys, DS.SARGS({ "fo: PyGe.Point2d","fe0: PyGe.Vector2d",
             "fe1: PyGe.Vector2d", "to: PyGe.Point2d","te0: PyGe.Vector2d","te1: PyGe.Vector2d" })).staticmethod("alignCoordSys")
+        .def("fromCollection", &AcGeMatrix2dInitFromCollection, DS.SARGS({ "entry: Collection[Collection[float]]" })).staticmethod("fromCollection")
+        //operators
         .def<double(AcGeMatrix2d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix2d::operator(), DS.ARGS({ "row: int","col: int" }))
         .def("__eq__", &AcGeMatrix2d::operator==, DS.ARGS({ "other: PyGe.Matrix2d" }))
         .def("__ne__", &AcGeMatrix2d::operator!=, DS.ARGS({ "other: PyGe.Matrix2d" }))
@@ -788,14 +813,14 @@ static double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.sx;
-        case 1:
-            return p.sy;
-        case 2:
-            return p.sz;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        return p.sx;
+    case 1:
+        return p.sy;
+    case 2:
+        return p.sz;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -803,17 +828,17 @@ static void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.sx = val;
-            break;
-        case 1:
-            p.sy = val;
-            break;
-        case 2:
-            p.sz = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        p.sx = val;
+        break;
+    case 1:
+        p.sy = val;
+        break;
+    case 2:
+        p.sz = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -931,14 +956,14 @@ static double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        case 2:
-            return p.z;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    case 2:
+        return p.z;
+    default:
+        throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -946,17 +971,17 @@ static void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        case 2:
-            p.z = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError " };
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    case 2:
+        p.z = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -1182,14 +1207,14 @@ static double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        case 2:
-            return p.z;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    case 2:
+        return p.z;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1197,17 +1222,17 @@ static void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        case 2:
-            p.z = val;
-            break;
-        default:
-            throw std::out_of_range{ "IndexError" };
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    case 2:
+        p.z = val;
+        break;
+    default:
+        throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1453,6 +1478,31 @@ static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
     return m;
 }
 
+static AcGeMatrix3d AcGeMatrix3dInitFromCollection(const boost::python::object& obj)
+{
+    AcGeMatrix3d x;
+    const size_t listSize = boost::python::len(obj);
+    if (listSize != 4)
+        PyThrowBadEs(eInvalidInput);
+    auto objvec = std::vector<boost::python::object>(boost::python::stl_input_iterator<boost::python::object>(obj),
+        boost::python::stl_input_iterator<boost::python::object>());
+    auto e0 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(0)),
+        boost::python::stl_input_iterator<double>());
+    auto e1 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(1)),
+        boost::python::stl_input_iterator<double>());
+    auto e2 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(2)),
+        boost::python::stl_input_iterator<double>());
+    auto e3 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(3)),
+        boost::python::stl_input_iterator<double>());
+    if (auto t = (e0.size() + e1.size() + e2.size() + e3.size()); t != 16)
+        PyThrowBadEs(eInvalidInput);
+    x.entry[0][0] = e0[0]; x.entry[0][1] = e0[1]; x.entry[0][2] = e0[2]; x.entry[0][3] = e0[3];
+    x.entry[1][0] = e1[0]; x.entry[1][1] = e1[1]; x.entry[1][2] = e1[2]; x.entry[1][3] = e1[3];
+    x.entry[2][0] = e2[0]; x.entry[2][1] = e2[1]; x.entry[2][2] = e2[2]; x.entry[2][3] = e2[3];
+    x.entry[3][0] = e3[0]; x.entry[3][1] = e3[1]; x.entry[3][2] = e3[2]; x.entry[3][3] = e3[3];
+    return x;
+}
+
 static std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
 {
     return std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
@@ -1521,7 +1571,6 @@ static AcGeVector3d AcGeMatrix3dGetZaxis(const AcGeMatrix3d& xf)
     xf.getCoordSystem(pnt, x, y, z);
     return z;
 }
-
 
 static void makePyGeMatrix3dWrapper()
 {
@@ -1599,6 +1648,8 @@ static void makePyGeMatrix3dWrapper()
         .def("worldToPlane", &AcGeMatrix3dworldToPlane2, DS.SARGS({ "val: PyGe.Vector3d|PyGe.Plane" })).staticmethod("worldToPlane")
         .def("planeToWorld", &AcGeMatrix3dplaneToWorld1)
         .def("planeToWorld", &AcGeMatrix3dplaneToWorld2, DS.SARGS({ "val: PyGe.Vector3d|PyGe.Plane" })).staticmethod("planeToWorld")
+        .def("fromCollection", &AcGeMatrix3dInitFromCollection, DS.SARGS({ "entry: Collection[Collection[float]]" })).staticmethod("fromCollection")
+        //operators
         .def("__eq__", &AcGeMatrix3d::operator==, DS.ARGS({ "other: PyGe.Matrix3d" }))
         .def("__ne__", &AcGeMatrix3d::operator!=, DS.ARGS({ "other: PyGe.Matrix3d" }))
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*, DS.ARGS({ "xform: PyGe.Matrix3d" }))
