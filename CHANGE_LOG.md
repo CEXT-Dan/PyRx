@@ -1,3 +1,10 @@
+## v2.2.19
+
+* Add Db.Core.groupCodeToType
+* [#375] Enforce boost::noncopyable, reactors are overruling are explicit no copy
+* [#377] getKword  should return PromptStatus
+* [#383] Ge.Matrix direct constructor
+
 ## v2.2.18
 
 * [#374] build for BricsCAD v26 beta, is locked to version 26.1.1.0,
