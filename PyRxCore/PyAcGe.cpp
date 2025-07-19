@@ -676,6 +676,13 @@ static AcGeMatrix2d AcGeMatrix2dInitFromCollection(const boost::python::object& 
     return x;
 }
 
+static boost::shared_ptr<AcGeMatrix2d> AcGeMatrix2dInitFromCollectionCtor(const boost::python::object& iterable)
+{
+    if (extract<AcGeMatrix2d>(iterable).check())
+        return boost::shared_ptr<AcGeMatrix2d>(new AcGeMatrix2d(extract<AcGeMatrix2d>(iterable)));
+    return boost::shared_ptr<AcGeMatrix2d>(new AcGeMatrix2d(AcGeMatrix2dInitFromCollection(iterable)));
+}
+
 
 static AcGeMatrix2d AcGeMatrix2dtranslation(const AcGeVector2d& vec)
 {
@@ -751,9 +758,13 @@ static AcGeVector2d AcGeMatrix2dGetYaxis(const AcGeMatrix2d& xf)
 
 static void makePyGeMatrix2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- entry: Collection[Collection[float]]";
+
     PyDocString DS("Matrix2d");
     class_<AcGeMatrix2d>("Matrix2d")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.CTOR(ctor)))
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
         .def("setToIdentity", &AcGeMatrix2d::setToIdentity, DS.ARGS(), return_self<>())
         .def("preMultBy", &AcGeMatrix2d::preMultBy, DS.ARGS({ "xform: PyGe.Matrix2d" }), return_self<>())
@@ -804,6 +815,7 @@ static void makePyGeMatrix2dWrapper()
         .def("toList", &AcGeMatrix2dToList, DS.ARGS())
         .def("__str__", &AcGeMatrix2dToString, DS.ARGS())
         .def("__repr__", &AcGeMatrix2dToStringRepr, DS.ARGS())
+        .def("__init__", make_constructor(&AcGeMatrix2dInitFromCollectionCtor))
         ;
 }
 
@@ -1503,6 +1515,13 @@ static AcGeMatrix3d AcGeMatrix3dInitFromCollection(const boost::python::object& 
     return x;
 }
 
+static boost::shared_ptr<AcGeMatrix3d> AcGeMatrix3dInitFromCollectionCtor(const boost::python::object& iterable)
+{
+    if (extract<AcGeMatrix3d>(iterable).check())
+        return boost::shared_ptr<AcGeMatrix3d>(new AcGeMatrix3d(extract<AcGeMatrix3d>(iterable)));
+    return boost::shared_ptr<AcGeMatrix3d>(new AcGeMatrix3d(AcGeMatrix3dInitFromCollection(iterable)));
+}
+
 static std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
 {
     return std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
@@ -1584,9 +1603,13 @@ static void makePyGeMatrix3dWrapper()
         "- tol: PyGe.Tol\n"
         "- xform: PyGe.Matrix3d, tol: float";
 
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- entry: Collection[Collection[float]]";
+
     PyDocString DS("PyGe.Matrix3d");
     class_<AcGeMatrix3d>("Matrix3d")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.CTOR(ctor)))
         .add_static_property("kIdentity", &AcGeMatrix3dkIdentity, DS.SARGS())
         .def("setToIdentity", &AcGeMatrix3d::setToIdentity, DS.ARGS(), return_self<>())
         .def("preMultBy", &AcGeMatrix3d::preMultBy, DS.ARGS({ "val: PyGe.Matrix3d" }), return_self<>())
@@ -1660,6 +1683,7 @@ static void makePyGeMatrix3dWrapper()
         .def("toTuple", &AcGeMatrix3dToTuple, DS.ARGS())
         .def("__str__", &AcGeMatrix3dToString, DS.ARGS())
         .def("__repr__", &AcGeMatrix3dToStringRepr, DS.ARGS())
+        .def("__init__", make_constructor(&AcGeMatrix3dInitFromCollectionCtor))
         ;
 }
 
