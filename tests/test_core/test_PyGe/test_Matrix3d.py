@@ -56,3 +56,29 @@ class TestMatrix3d:
         assert vX, vX2
         assert vY, vY2
         assert vZ, vZ2
+
+    def test_matrix3d_ctor(self):
+        mat1 = Ge.Matrix3d.kIdentity
+        mat1.setToRotation(0.785398, Ge.Vector3d.kZAxis)
+        mat2 = Ge.Matrix3d(mat1.toTuple())
+        mat3 = Ge.Matrix3d(mat1.toList())
+        assert mat2 == mat1 == mat3
+
+        mat1 = Ge.Matrix2d.kIdentity
+        mat1.setToRotation(0.785398)
+        mat2 = Ge.Matrix2d(mat1.toTuple())
+        mat3 = Ge.Matrix2d(mat1.toList())
+        assert mat2 == mat1 == mat3
+
+    def test_matrix3d_fromCollection(self):
+        mat1 = Ge.Matrix3d.kIdentity
+        mat1.setToRotation(0.785398, Ge.Vector3d.kZAxis)
+        mat2 = Ge.Matrix3d.fromCollection(mat1.toTuple())
+        mat3 = Ge.Matrix3d.fromCollection(mat1.toList())
+        assert mat2 == mat1 == mat3
+
+        mat1 = Ge.Matrix2d.kIdentity
+        mat1.setToRotation(0.785398)
+        mat2 = Ge.Matrix2d.fromCollection(mat1.toTuple())
+        mat3 = Ge.Matrix2d.fromCollection(mat1.toList())
+        assert mat2 == mat1 == mat3
