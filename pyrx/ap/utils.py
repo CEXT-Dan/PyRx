@@ -4,7 +4,12 @@ import queue
 import threading
 from functools import wraps
 
-from pyrx import Ap
+import win32api
+import win32con
+
+from pyrx import Ap, Ed
+
+WM_CHAR = win32con.WM_CHAR
 
 
 def call_after(func, args=(), kwargs={}, *, wait=False):
@@ -67,3 +72,16 @@ def call_in_main_thread(func):
         return call_after(func, args, kwargs, wait=True)
 
     return wrapper
+
+
+def queue_command(cmd: str):
+    """
+    Add a command to the command line queue. Primarily intended for
+    testing functions that require user interaction. Note: the command
+    should end with a newline to simulate pressing Enter.
+    """
+    cmdline_hwnd = Ed.Core.getAcadTextCmdLine()
+    if not cmdline_hwnd:
+        raise RuntimeError("Command line window not found")
+    for char in cmd:
+        win32api.PostMessage(cmdline_hwnd, WM_CHAR, ord(char), 0)

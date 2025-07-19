@@ -7,7 +7,8 @@ import pytest
 from pytest import FixtureRequest
 
 from pyrx import Ax
-from pyrx.ap.utils import call_in_main_thread
+from pyrx import Ed
+from pyrx.ap.utils import call_in_main_thread, queue_command
 
 BASE_DIR = Path(__file__).parent
 
@@ -64,3 +65,10 @@ class Test_call_in_main_thread_and_call_after:
 
         assert res is not None, f"{process.stdout=}\n{process.stderr=}"
         assert res.strip() == "True"
+
+def test_queue_command():
+    queue_command("100,200\n")
+    status, point = Ed.Editor.getPoint(f"\n[{__name__}.test_queue_command] Enter point: ")
+    assert status == Ed.PromptStatus.eOk
+    assert tuple(point) == (100, 200, 0)
+
