@@ -1,7 +1,6 @@
-# the generator.
 from __future__ import annotations
 
-from typing import Any, ClassVar, Collection, Iterator, Self, overload
+from typing import Any, ClassVar, Collection, Generic, Iterator, Self, TypeVar, overload
 
 from pyrx import Ax as PyAx
 from pyrx import Db as PyDb
@@ -10,6 +9,8 @@ from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
+Object_T = TypeVar("Object_T", bound=PyDb.DbObject)
 
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
@@ -20850,7 +20851,7 @@ class ObjectContextManager(PyRx.RxObject):
     ) -> None: ...
     def unregisterContextCollection(self, name: str, /) -> None: ...
 
-class ObjectId:
+class ObjectId(Generic[Object_T]):
     def __ge__(self, /) -> bool: ...
     def __gt__(self, /) -> bool: ...
     def __hash__(self, /) -> int: ...
