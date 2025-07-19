@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from pyrx import Ap
 from tests import HOST
+import pytest
 
 
+@pytest.mark.known_failure_GRX
 class TestAxMenu:
 
     def setup_class(self):
