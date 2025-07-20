@@ -1,7 +1,7 @@
 import traceback
 from pyrx import Rx, Ge, Gs, Db, Ap, Ed
 import wx
-import os, pathlib
+import os
 
 
 # extract the image and save it
