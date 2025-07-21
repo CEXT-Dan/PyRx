@@ -3,6 +3,7 @@
 #include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
 #include "PyGsView.h"
+#include "PyDbEnts.h"
 
 #include <wx/mstream.h>
 using namespace boost::python;
@@ -2567,6 +2568,8 @@ void makePyDbBlockTableRecordWrapper()
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs, DS.ARGS({ "scale : bool" }, 2552))
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable1)
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "createIfNecessary:bool = False" }, 2568))
+        .def("getBlockReferences", &PyDbBlockTableRecord::getBlockReferences1)
+        .def("getBlockReferences", &PyDbBlockTableRecord::getBlockReferences2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))
         .def("effectiveName", &PyDbBlockTableRecord::effectiveName, DS.ARGS())
         .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
@@ -2931,6 +2934,34 @@ boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds() const
     AcDbObjectIdArray ids;
     impObj()->getErasedBlockReferenceIds(ids);
     return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyDbBlockTableRecord::getBlockReferences1() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    auto [es, iter] = makeBlockRefIterator(*impObj());
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        AcDbBlockReference* pref = nullptr;
+        PyThrowBadEs(iter->getBlockReference(pref, AcDb::OpenMode::kForRead));
+        pylist.append(PyDbBlockReference{ pref , false });
+    }
+    return pylist;
+}
+
+boost::python::list PyDbBlockTableRecord::getBlockReferences2(AcDb::OpenMode mode) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    auto [es, iter] = makeBlockRefIterator(*impObj());
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        AcDbBlockReference* pref = nullptr;
+        PyThrowBadEs(iter->getBlockReference(pref, mode));
+        pylist.append(PyDbBlockReference{ pref , false });
+    }
+    return pylist;
 }
 
 PyDbDatabase PyDbBlockTableRecord::xrefDatabase(bool incUnres) const

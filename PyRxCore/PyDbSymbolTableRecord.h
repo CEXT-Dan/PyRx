@@ -503,6 +503,8 @@ public:
     boost::python::list getBlockReferenceIds1() const;
     boost::python::list getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity) const;
     boost::python::list getErasedBlockReferenceIds() const;
+    boost::python::list getBlockReferences1() const;
+    boost::python::list getBlockReferences2(AcDb::OpenMode mode) const;
     PyDbDatabase        xrefDatabase(bool incUnres) const;
     bool                isUnloaded() const;
     void                setIsUnloaded(bool isUnloaded) const;

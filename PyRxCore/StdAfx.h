@@ -290,6 +290,13 @@ constexpr auto makeAcDbSymbolTableIterator = makeIterator<AcDbSymbolTableIterato
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
 
+constexpr auto makeBlockRefIterator = [](const AcDbBlockTableRecord& record)
+    {
+        AcDbBlockReferenceIdIterator* pIter = nullptr;
+        Acad::ErrorStatus es = record.newBlockReferenceIdIterator(pIter);
+        return std::make_tuple(es, std::unique_ptr<AcDbBlockReferenceIdIterator>(pIter));
+    };
+
 class PerfTimer
 {
     std::wstring m_funcName;
