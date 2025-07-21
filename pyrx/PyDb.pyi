@@ -6600,7 +6600,7 @@ class Database(PyRx.RxObject):
         """
     def dxfOut(
         self,
-        filename: str,
+        dxfFilename: str,
         precision: int = 16,
         dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT,
         saveThumbnailImage: bool = False,
@@ -7679,7 +7679,7 @@ class Database(PyRx.RxObject):
         for information on CANNOSCALE. This is an AcDbDatabase Header Variable Edit Function.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setCePlotStyleName(self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId, /) -> None:
+    def setCePlotStyleName(self, val: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, /) -> None:
         """
         The possible values for type are shown in the following table: AcDb::kPlotStyleNameByLayer
         Use the plot style name of the layer table record referenced by the entity
@@ -8321,23 +8321,23 @@ class Database(PyRx.RxObject):
         This is the Paper Space value of UCSNAME. See the System Variables section of the AutoCAD
         Command Reference for information on UCSNAME.
         """
-    def setQtextmode(self, val: bool, /) -> None:
+    def setQtextmode(self, mode: bool, /) -> None:
         """
         Sets mode to be the QTEXTMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE. Returns Acad::eOk if successful.
         """
-    def setRealWorldScale(self, val: float, /) -> None:
+    def setRealWorldScale(self, realWorldScale: float, /) -> None:
         """
         Reserved for future use.
         """
-    def setRegenmode(self, val: bool, /) -> None:
+    def setRegenmode(self, mode: bool, /) -> None:
         """
         Sets mode to be the current REGENMODE value for the database. The value of false is 0. The
         value of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on REGENMODE. Returns Acad::eOk if successful.
         """
-    def setRetainOriginalThumbnailBitmap(self, val: bool, /) -> None:
+    def setRetainOriginalThumbnailBitmap(self, retain: bool, /) -> None:
         """
         This function will set the database to use retain as the flag indicating whether or not to
         retain the existing thumbnail bitmap during saves.
@@ -8614,7 +8614,7 @@ class Database(PyRx.RxObject):
         This function sets the database to use a copy of the pNewGuid string as the Version GUID
         for the database. Returns Acad::eOk if successful.
         """
-    def setViewportScaleDefault(self, val: float, /) -> None:
+    def setViewportScaleDefault(self, newDefaultVPScale: float, /) -> None:
         """
         This function sets the database to use newDefaultVPScale as the scale value for all
         viewports created subsequent to calling this function. newDefaultVPScale must be greater
@@ -8643,17 +8643,17 @@ class Database(PyRx.RxObject):
         specified by orthoView. orthoView may be any one of the AcDb::OrthographicView enumerators.
         Returns Acad::eOk if successful.
         """
-    def setWorldview(self, val: bool, /) -> None:
+    def setWorldview(self, view: bool, /) -> None:
         """
         Sets view to be the WORLDVIEW value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on WORLDVIEW. Returns Acad::eOk if successful.
         """
-    def setXclipFrame(self, val: int, /) -> None:
+    def setXclipFrame(self, disp: int, /) -> None:
         """
         Sets the value of the XCLIPFRAME header variable.
         """
-    def setXrefEditEnabled(self, val: bool, /) -> None:
+    def setXrefEditEnabled(self, enable: bool, /) -> None:
         """
         If enable is true, the XEDIT value of this database is set to 1. Otherwise, it is set to 0.
         See the system variables documentation in the AutoCAD Command Reference for information on
@@ -8898,7 +8898,7 @@ class Database(PyRx.RxObject):
         Updates the data link manager. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def updateExt(self, val: bool, /) -> None:
+    def updateExt(self, doBestFit: bool, /) -> None:
         """
         This function iterates through all the entities in the database's Model Space and updates
         the database's Model Space extents variables EXTMAX and EXTMIN to the values determined
@@ -20982,7 +20982,15 @@ class ObjectIdArray:
     def __reduce__(self, /) -> Any: ...
     def __setitem__(self, /) -> None: ...
     def append(self, /) -> None: ...
+    def clear(self, /) -> None: ...
     def extend(self, /) -> None: ...
+    @overload
+    def getIdsOfType(self, desc: PyRx.RxClass = PyDb.Entity, /) -> ObjectIdArray: ...
+    @overload
+    def getIdsOfType(self, descList: list[PyRx.RxClass], /) -> ObjectIdArray: ...
+    @overload
+    def getIdsOfType(self, *args) -> ObjectIdArray: ...
+    def removeErased(self, /) -> None: ...
 
 class ObjectIdGraph(PyDb.Graph):
     def __init__(self, /) -> None:

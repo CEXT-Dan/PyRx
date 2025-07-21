@@ -6,12 +6,61 @@
 
 using namespace boost::python;
 
+static PyDbObjectIdArray objectIdArrayFilter1(const PyDbObjectIdArray& inIds, const PyRxClass& _class)
+{
+    PyDbObjectIdArray idList;
+    const auto _desc = _class.impObj();
+    for (const auto& id : inIds)
+    {
+        if (id.m_id.objectClass()->isDerivedFrom(_desc))
+            idList.push_back(id);
+    }
+    return idList;
+}
+
+static PyDbObjectIdArray objectIdArrayFilter2(const PyDbObjectIdArray& inIds, boost::python::list& _classes)
+{
+    PyDbObjectIdArray idList;
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+        _set.insert(item.impObj());
+    for (const auto& id : inIds)
+    {
+        if (_set.contains(id.m_id.objectClass()))
+            idList.push_back(id);
+    }
+    return idList;
+}
+
+static void objectIdArrayRemoveErased(PyDbObjectIdArray& inIds)
+{
+    size_t erased_count = std::erase_if(inIds, [](PyDbObjectId& id)
+        {
+            return id.isErased();
+        });
+}
+
+static void objectIdArrayClear(PyDbObjectIdArray& inIds)
+{
+    inIds.clear();
+}
+
 //---------------------------------------------------------------------------------
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
 {
+    constexpr const std::string_view ObjectIdArrayOverloads = "Overloads:\n"
+        "desc: PyRx.RxClass=PyDb.Entity\n"
+        "descList: list[PyRx.RxClass]\n";
+
+    PyDocString DSIDA("PyDb.ObjectIdArray");
     class_<PyDbObjectIdArray>("ObjectIdArray")
-        .def(boost::python::vector_indexing_suite<PyDbObjectIdArray>());
+        .def(boost::python::vector_indexing_suite<PyDbObjectIdArray>())
+        .def("getIdsOfType", &objectIdArrayFilter1)
+        .def("getIdsOfType", &objectIdArrayFilter2, DSIDA.OVRL(ObjectIdArrayOverloads))
+        .def("removeErased", &objectIdArrayRemoveErased, DSIDA.ARGS())
+        .def("clear", &objectIdArrayClear, DSIDA.ARGS())
+        ;
 
     PyDocString DS("PyDb.ObjectId");
     class_<PyDbObjectId>("ObjectId")
