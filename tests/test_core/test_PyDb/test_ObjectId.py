@@ -27,4 +27,34 @@ class TestDbObjectId:
         assert id.isValid() == True
         assert id2.isValid() == True
         bt.close()
+        
+    def test_ObjectIdArray_clear(self):
+        db = Db.curDb()
+        ms = db.modelSpace()
+        ids = ms.objectIdArray()
+        ids.append(db.modelSpaceId())
+        assert len(ids) != 0
+        ids.clear()
+        assert len(ids) == 0
+        
+    def test_ObjectIdArray_filter(self):
+        db = Db.curDb()
+        ms = db.modelSpace()
+        ids = ms.objectIdArray()
+        ids.append(db.modelSpaceId())
+        filteredIds = ids.getIdsOfType(Db.BlockTableRecord.desc())
+        assert len(filteredIds) == 1
+        
+    def test_ObjectIdArray_filter2(self):
+        db = Db.curDb()
+        ms = db.modelSpace()
+        ids = ms.objectIdArray()
+        ids.append(db.modelSpaceId())
+        filteredIds = ids.getIdsOfType([Db.BlockTableRecord.desc()])
+        assert len(filteredIds) == 1
+
+        
+
+        
+                
                 
