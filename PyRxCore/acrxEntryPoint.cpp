@@ -379,20 +379,6 @@ public:
         return RSRSLT;
     }
 
-#ifdef PYPERFPROFILER
-    static void AcRxPyApp_pyprofiler(void)
-    {
-    }
-    static void AcRxPyApp_pyprofilerend(void)
-    {
-        PyRxApp::instance().perfTimerEx.end();
-    }
-    static void AcRxPyApp_pyprofilerreset(void)
-    {
-        PyRxApp::instance().perfTimerEx.reset();
-    }
-#endif
-
 #ifdef PYRXDEBUG
     //-- utilities 
     static auto entsel() -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>

@@ -4099,6 +4099,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         bForceValidity is false, it will return Acad::eSomeInputDataLeftUnread if it encounters an
         older drawing that does not have the reference information in its blocks.
         """
+    def getBlockReferences(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> list: ...
     def getErasedBlockReferenceIds(self, /) -> list[PyDb.ObjectId]:
         """
         This function returns a list of AcDbBlockReferences that directly reference this block. It
