@@ -837,7 +837,7 @@ bool DbCore::snValid(const std::string& tbstr, int pipeTest)
 
 PyDbSymUtilServices DbCore::symUtil()
 {
-    return PyDbSymUtilServices();
+    return PyDbSymUtilServices{};
 }
 
 boost::python::list DbCore::tblNext(const std::string& tblname, int rewind)
