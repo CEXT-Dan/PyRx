@@ -17,51 +17,7 @@ enum class PyRxTestFlags : __int64
     kPyTfWaitForDebug = (1 << 8),
 };
 
-
 struct PyRxMethod;
-
-#ifdef PYPERFPROFILE
-class PerfTimerEx
-{
-public:
-    void init(const CString& funcName);
-    void tick();
-    void end();
-    void reset();
-
-private:
-    CString m_funcName;
-    uint64_t m_ticks = 0;
-    std::chrono::high_resolution_clock::time_point t_begin;
-};
-
-inline void PerfTimerEx::init(const CString& funcName)
-{
-    m_funcName = funcName;
-    reset();
-}
-
-inline void PerfTimerEx::reset()
-{
-    m_ticks = 0;
-    t_begin = std::chrono::high_resolution_clock::now();
-}
-
-inline void PerfTimerEx::tick()
-{
-    m_ticks++;
-}
-
-inline void PerfTimerEx::end()
-{
-    std::chrono::duration<double> elapsed;
-    auto t_end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> diff = t_end - t_begin;
-    acutPrintf(_T("\nName= %ls, total = %lf, ticks %ld, per tick = %lf"),
-        (const TCHAR*)m_funcName, diff.count(), m_ticks, diff.count() / m_ticks);
-    reset();
-}
-#endif
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -139,10 +95,6 @@ public:
     void* appPkt = nullptr;
     size_t testflags = 0;
     bool isLoaded = false;
-
-#ifdef PYPERFPROFILER
-    PerfTimerEx perfTimerEx;
-#endif
 
 };
 
