@@ -14,6 +14,10 @@ class TestScale2d:
         scale = Ge.Scale2d()
         assert scale.sx == 1
         assert scale.sy == 1
+        
+    def test_scale2_len(self):
+        pO = Ge.Scale2d(2)
+        assert len(pO) == 2
 
     def test_scale2_ctor1(self):
         scale = Ge.Scale2d(3)

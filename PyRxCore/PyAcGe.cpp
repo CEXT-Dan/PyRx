@@ -121,6 +121,11 @@ static std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
     return std::format("{}.Scale2d({:.14f},{:.14f})", PyGeNamespace, s.sx, s.sy);
 }
 
+static int Scale2dLen(const AcGeScale2d& p)
+{
+    return 2;
+}
+
 static void makePyGeScale2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -156,6 +161,7 @@ static void makePyGeScale2dWrapper()
         .def("__repr__", &AcGeScale2dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale2dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeScale2dSetItem, DS.ARGS({ "idx: int","val: float" }))
+        .def("__len__", &Scale2dLen, DS.ARGS())
         ;
 }
 
@@ -299,6 +305,11 @@ static void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
     }
 }
 
+static int AcGePoint2dLen(const AcGePoint2d& p)
+{
+    return 2;
+}
+
 static AcGePoint3d AcGePoint2dToAcGePoint3d(const AcGePoint2d src)
 {
     return AcGePoint3d(src.x, src.y, 0.0);
@@ -420,6 +431,7 @@ static void makePyGePoint2dWrapper()
         .def("__hash__", &AcGePoint2dHash, DS.ARGS())
         .def("__getitem__", &AcGePoint2dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGePoint2dSetItem, DS.ARGS({ "idx: int","val: float" }))
+        .def("__len__", &AcGePoint2dLen, DS.ARGS())
         .def("__init__", make_constructor(&PyGePoint2dInitTuple))
         ;
 }
@@ -512,6 +524,11 @@ static void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
     }
 }
 
+static int AcGeVector2dLen(const AcGeVector2d& p)
+{
+    return 2;
+}
+
 static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python::object& iterable)
 {
     if (extract<AcGeVector2d>(iterable).check())
@@ -586,6 +603,7 @@ static void makePyGeVector2dWrapper()
         .def("__getitem__", &AcGeVector2dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeVector2dSetItem, DS.ARGS({ "idx: int","val: float" }))
         .def("__hash__", &AcGeVector2dHash, DS.ARGS())
+        .def("__len__", &AcGeVector2dLen, DS.ARGS())
         .def("__init__", make_constructor(&PyGeVector2dInitTuple))
         ;
 }
@@ -854,6 +872,12 @@ static void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
     }
 }
 
+static int AcGeScale3dLen(const AcGeScale3d& p)
+{
+    return 3;
+}
+
+
 static std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
@@ -900,6 +924,7 @@ static void makePyGeScale3dWrapper()
         .def("__repr__", &AcGeScale3dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale3dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeScale3dSetItem, DS.ARGS({ "idx: int", "val: float" }))
+        .def("__len__", &AcGeScale3dLen, DS.ARGS())
         ;
 }
 
@@ -1248,6 +1273,11 @@ static void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
     }
 }
 
+static int AcGeVector3dLen(const AcGeVector3d& p)
+{
+    return 3;
+}
+
 static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python::object& iterable)
 {
     if (extract<AcGeVector3d>(iterable).check())
@@ -1336,6 +1366,7 @@ static void makePyGeVector3dWrapper()
         .def("__hash__", AcGeVector3dHash, DS.ARGS())
         .def("__getitem__", &AcGeVector3dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeVector3dSetItem, DS.ARGS({ "idx: int","val: float" }))
+        .def("__len__", &AcGeVector3dLen, DS.ARGS())
         .def("__init__", make_constructor(&PyGeVector3dInitTuple))
         ;
 }
