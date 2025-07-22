@@ -321,10 +321,8 @@ public:
     PyDbObjectId		modelSpaceId() const;
     PyDbBlockTableRecord modelSpace1() const;
     PyDbBlockTableRecord modelSpace2(AcDb::OpenMode mode) const;
-
     PyDbBlockTableRecord currentSpace1() const;
     PyDbBlockTableRecord currentSpace2(AcDb::OpenMode mode) const;
-
     void	            setGeoMarkerVisibility(bool value) const;
     void	            setHaloGap(Adesk::UInt8 val) const;
     void                setHandseed(const PyDbHandle& handle) const;
