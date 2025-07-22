@@ -52,10 +52,88 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
+#define PYRX_DRAG
+#ifdef PYRX_DRAG
+
+class CPyRxDropTarget : public  COleDropTarget
+{
+public:
+    CPyRxDropTarget() = default;
+    virtual ~CPyRxDropTarget() override = default;
+
+protected:
+    virtual DROPEFFECT OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
+    {
+        return DROPEFFECT_COPY;
+    }
+    virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
+    {
+        return DROPEFFECT_COPY;
+    }
+    virtual void OnDragLeave(CWnd* pWnd) override
+    {
+        //do nothing
+    }
+    virtual BOOL OnDrop(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point) override
+    {
+        CString pszFilename = GetPyRxFilename(pDataObject);
+        if (!pszFilename.IsEmpty())
+        {
+            if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
+            {
+                std::filesystem::path _path = (const TCHAR*)pszFilename;
+                if (ads_loadPythonModule(_path))
+                    acutPrintf(_T("\nSuccess! %ls is loaded"), (const TCHAR*)pszFilename);
+                else
+                    acutPrintf(_T("\nFail! %ls is not oaded"), (const TCHAR*)pszFilename);
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
+    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point) override
+    {
+        if (GetPyRxFilename(pDataObject) != nullptr)
+            return DROPEFFECT_COPY;
+        return -1;
+    }
+
+    //Owen Wengerd ODCL
+    static LPCTSTR GetPyRxFilename(COleDataObject* pDataObject)
+    {
+        HGLOBAL hData = pDataObject->GetGlobalData(CF_HDROP);
+        if (!hData)
+            return NULL;
+        static CString sFilename;
+        sFilename.Empty();
+        DROPFILES* py = (DROPFILES*)GlobalLock(hData);
+        if (py)
+        {
+            if (py->fWide)
+                sFilename = (LPCWSTR)((BYTE*)py + py->pFiles);
+            else
+                sFilename = (LPCSTR)((BYTE*)py + py->pFiles);
+        }
+        GlobalUnlock(hData);
+        GlobalFree(hData);
+        if (sFilename.IsEmpty())
+            return NULL;
+        if (sFilename.Right(3).CompareNoCase(_T(".py")) == 0)
+            return sFilename;
+        if (sFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
+            return sFilename;
+        return NULL;
+    }
+};
+#endif
+
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
+#ifdef PYRX_DRAG
+    CPyRxDropTarget mPyRxDropTarget;
+#endif
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -72,6 +150,11 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
+#ifdef PYRX_DRAG
+#if defined(_ARXTARGET) ||  defined(_BRXTARGET)
+        acedAddDropTarget(&mPyRxDropTarget);
+#endif
+#endif
         return (retCode);
     }
 
