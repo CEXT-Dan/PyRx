@@ -12,6 +12,7 @@
 #include "PyDbDbLayerStateManager.h"
 #include "PyAcadApplication.h"
 #include "PyDbGraph.h"
+#include "PyDbSymbolTable.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -129,6 +130,8 @@ void makePyDbDatabaseWrapper()
         .def("objectIdArray", &PyDbDatabase::objectIdArray3, DS.OVRL(objectIdsOverloads))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }, 2950))
+        .def("getBlockTable", &PyDbDatabase::getBlockTable1)
+        .def("getBlockTable", &PyDbDatabase::getBlockTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 2951))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.ARGS(2952))
@@ -679,6 +682,20 @@ Adesk::Int16 PyDbDatabase::auprec() const
 bool PyDbDatabase::blipmode() const
 {
     return impObj()->blipmode();
+}
+
+PyDbBlockTable PyDbDatabase::getBlockTable1() const
+{
+    AcDbBlockTable* ptr = nullptr;
+    PyThrowBadEs(impObj()->getBlockTable(ptr));
+    return PyDbBlockTable(ptr, false);
+}
+
+PyDbBlockTable PyDbDatabase::getBlockTable2(AcDb::OpenMode mode) const
+{
+    AcDbBlockTable* ptr = nullptr;
+    PyThrowBadEs(impObj()->getBlockTable(ptr, mode));
+    return PyDbBlockTable(ptr, false);
 }
 
 PyDbObjectId PyDbDatabase::byBlockLinetype() const
