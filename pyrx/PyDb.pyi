@@ -6671,6 +6671,7 @@ class Database(PyRx.RxObject):
         Opens the database's block table in the mode specified by mode. The pTable pointer is
         filled in with the address of the block table. Returns Acad::eOk if open is successful.
         """
+    def getBlocks(self, /) -> dict: ...
     def getCePlotStyleNameId(self, /) -> PlotStyleNameType:
         """
         This function returns the current entity plot style name type, which can be one of the
