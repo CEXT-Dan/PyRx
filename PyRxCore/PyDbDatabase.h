@@ -51,6 +51,7 @@ public:
     bool                blipmode() const;
     PyDbBlockTable      getBlockTable1() const;
     PyDbBlockTable      getBlockTable2(AcDb::OpenMode mode) const;
+    boost::python::dict getBlocks() const;
     PyDbObjectId        byBlockLinetype() const;
     PyDbObjectId        byBlockMaterial() const;
     PyDbObjectId        byLayerLinetype() const;
