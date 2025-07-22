@@ -2673,6 +2673,14 @@
         [
             "PyAx::AcadXline::offset",
             "list[PyAx.AcadEntity]"
+        ],
+        [
+            "PyDb::BlockTableRecord::getBlockReferences",
+            "list[PyDb.BlockReference]"
+        ],
+        [
+            "PyDb::Database::getBlocks",
+            "dict[str, PyDb.ObjectId]"
         ]
     ]
 }

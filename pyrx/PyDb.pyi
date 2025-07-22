@@ -4099,7 +4099,9 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         bForceValidity is false, it will return Acad::eSomeInputDataLeftUnread if it encounters an
         older drawing that does not have the reference information in its blocks.
         """
-    def getBlockReferences(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> list: ...
+    def getBlockReferences(
+        self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+    ) -> list[PyDb.BlockReference]: ...
     def getErasedBlockReferenceIds(self, /) -> list[PyDb.ObjectId]:
         """
         This function returns a list of AcDbBlockReferences that directly reference this block. It
@@ -6671,7 +6673,7 @@ class Database(PyRx.RxObject):
         Opens the database's block table in the mode specified by mode. The pTable pointer is
         filled in with the address of the block table. Returns Acad::eOk if open is successful.
         """
-    def getBlocks(self, /) -> dict: ...
+    def getBlocks(self, /) -> dict[str, PyDb.ObjectId]: ...
     def getCePlotStyleNameId(self, /) -> PlotStyleNameType:
         """
         This function returns the current entity plot style name type, which can be one of the
