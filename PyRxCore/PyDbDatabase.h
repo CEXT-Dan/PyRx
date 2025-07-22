@@ -17,6 +17,7 @@ class PyDbDbLayerStateManager;
 class PyAcadDatabase;
 class PyObjectIdGraph;
 class PyDbBlockTableRecord;
+class PyDbBlockTable;
 
 typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
 
@@ -48,6 +49,8 @@ public:
     Adesk::Int16        aunits() const;
     Adesk::Int16        auprec() const;
     bool                blipmode() const;
+    PyDbBlockTable      getBlockTable1() const;
+    PyDbBlockTable      getBlockTable2(AcDb::OpenMode mode) const;
     PyDbObjectId        byBlockLinetype() const;
     PyDbObjectId        byBlockMaterial() const;
     PyDbObjectId        byLayerLinetype() const;
