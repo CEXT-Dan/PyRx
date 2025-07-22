@@ -16,11 +16,7 @@
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar
-
 from pyrx import Db as PyDb
-
-Object_T = TypeVar("Object_T", bound=PyDb.DbObject)
 
 # pyrx-marker: HEADER_END
 
@@ -28,7 +24,3 @@ class ErrorStatusException(RuntimeError):
     code: PyDb.ErrorStatus
     message: str
     fullmessage: str
-
-class ObjectId(Generic[Object_T]):
-    # /* workaround - class body is needed */
-    def __ge__(self, /) -> bool: ...
