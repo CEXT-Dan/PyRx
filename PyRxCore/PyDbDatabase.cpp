@@ -132,6 +132,7 @@ void makePyDbDatabaseWrapper()
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }, 2950))
         .def("getBlockTable", &PyDbDatabase::getBlockTable1)
         .def("getBlockTable", &PyDbDatabase::getBlockTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 2951))
+        .def("getBlocks", &PyDbDatabase::getBlocks, DS.ARGS())
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.ARGS(2952))
@@ -696,6 +697,24 @@ PyDbBlockTable PyDbDatabase::getBlockTable2(AcDb::OpenMode mode) const
     AcDbBlockTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getBlockTable(ptr, mode));
     return PyDbBlockTable(ptr, false);
+}
+
+boost::python::dict PyDbDatabase::getBlocks() const
+{
+    PyAutoLockGIL lock;
+    boost::python::dict pydict;
+    AcDbBlockTablePointer bt(impObj()->blockTableId());
+    auto [es, iter] = makeBlockTableIterator(*bt);
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        PyDbObjectId id;
+        PyThrowBadEs(iter->getRecordId(id.m_id));
+        AcDbBlockTableRecordPointer blk(id.m_id);
+        AcString name;
+        PyThrowBadEs(blk->getName(name));
+        pydict[wstr_to_utf8(name)] = id;
+    }
+    return pydict;
 }
 
 PyDbObjectId PyDbDatabase::byBlockLinetype() const
