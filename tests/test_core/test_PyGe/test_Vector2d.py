@@ -10,6 +10,10 @@ class TestVector2d:
         val = Ge.Vector2d(1.2, 2.3)
         assert val.__repr__() == "PyGe.Vector2d(1.20000000000000,2.30000000000000)"
 
+    def test_vector2d_len(self):
+        pO = Ge.Vector2d(1, 1)
+        assert len(pO) == 2
+
     def test_vector2d_mul2(self):
         v = Ge.Vector2d(1, 1)
         v = v * 10

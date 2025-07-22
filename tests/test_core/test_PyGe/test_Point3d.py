@@ -8,6 +8,10 @@ class TestPoint3d:
         val = Ge.Point3d(1.2, 2.3, 4.5)
         assert val.__repr__() == "PyGe.Point3d(1.20000000000000,2.30000000000000,4.50000000000000)"
 
+    def test_point3d_len(self):
+        pO = Ge.Point3d(0, 0, 0)
+        assert len(pO) == 3
+
     def test_point3d_toVec(self):
         pO = Ge.Point3d(0, 0, 0)
         p1 = Ge.Point3d(0, 100, 0)
@@ -77,11 +81,11 @@ class TestPoint3d:
         assert pO.x == 12.0
         assert pO.y == 13.0
         assert pO.z == 14.0
-        
+
     def test_Point3dArray_sort(self):
         pnts = Ge.Point3dArray()
         for i in range(5, 0, -1):
-            pnts.append(Ge.Point3d(i,i,i))
-        assert pnts[0] != Ge.Point3d(1,1,1)
-        pnts.sortByDistFrom(Ge.Point3d(0,0,0))
-        assert pnts[0] == Ge.Point3d(1,1,1)
+            pnts.append(Ge.Point3d(i, i, i))
+        assert pnts[0] != Ge.Point3d(1, 1, 1)
+        pnts.sortByDistFrom(Ge.Point3d(0, 0, 0))
+        assert pnts[0] == Ge.Point3d(1, 1, 1)
