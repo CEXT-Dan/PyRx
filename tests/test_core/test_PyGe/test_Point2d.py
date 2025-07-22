@@ -11,6 +11,11 @@ class TestPoint2d:
     def test_point2d_default_ctor(self):
         point = Ge.Point2d()
         assert point == Ge.Point2d(0, 0)
+        
+        
+    def test_point2d_len(self):
+        pO = Ge.Point2d(0, 0)
+        assert len(pO) == 2
 
     def test_point2d_arg_ctor(self):
         point = Ge.Point2d(100, 100)

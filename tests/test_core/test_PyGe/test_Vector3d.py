@@ -23,3 +23,7 @@ class TestVector3d:
         m.setToRotation(math.pi, Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
         v = m * v
         assert v == Ge.Vector3d(-1.0, -1.0, 1.0)
+        
+    def test_vector3d_len(self):
+        pO = Ge.Vector3d(-1.0, -1.0, 1.0)
+        assert len(pO) == 3
