@@ -2681,6 +2681,26 @@
         [
             "PyDb::Database::getBlocks",
             "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::Dictionary::asDict",
+            "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::Dictionary::toDict",
+            "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::LayoutManager::getLayouts",
+            "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::SymbolTable::asDict",
+            "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::SymbolTable::toDict",
+            "dict[str, PyDb.ObjectId]"
         ]
     ]
 }
