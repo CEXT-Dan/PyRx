@@ -24,6 +24,10 @@ def do_capture_audit() -> str:
 class TestDatabase:
     def setup_class(self):
         self.assertions = unittest.TestCase("__init__")
+        
+    def test_getBlocks(self, db_06457: Db.Database):
+        blks = db_06457.getBlocks()
+        assert blks['*Model_Space'] == db_06457.modelSpaceId()
 
     def test_dbopbjectforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
