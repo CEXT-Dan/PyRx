@@ -6205,7 +6205,10 @@ class Database(PyRx.RxObject):
         Triggers an AcEditor notification that the deepClone operation identified by idMap has been
         aborted. The AcDbIdMapping object will uniquely identify a deepClone operation.
         """
-    def acadDatabase(self, /) -> PyAx.AcadDatabase: ...
+    def acadDatabase(self, /) -> PyAx.AcadDatabase:
+        """
+        Returns the ActiveX instance of the database (AcadDatabase)
+        """
     def addObject(self, object: PyDb.DbObject, /) -> ObjectId:
         """
         Adds the object pointed to by pObj to the database, giving it a handle and an object ID.
@@ -6671,7 +6674,10 @@ class Database(PyRx.RxObject):
         Opens the database's block table in the mode specified by mode. The pTable pointer is
         filled in with the address of the block table. Returns Acad::eOk if open is successful.
         """
-    def getBlocks(self, /) -> dict[str, PyDb.ObjectId]: ...
+    def getBlocks(self, /) -> dict[str, PyDb.ObjectId]:
+        """
+        Returns a Python dictionary of all the blocks in this database {str, ObjectId}
+        """
     def getCePlotStyleNameId(self, /) -> PlotStyleNameType:
         """
         This function returns the current entity plot style name type, which can be one of the
