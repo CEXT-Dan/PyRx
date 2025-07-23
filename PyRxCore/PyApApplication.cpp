@@ -336,7 +336,6 @@ boost::python::object PyApApplication::loadPythonModule(const std::string& fullp
             return boost::python::object(handle);
         }
     }
-    PyThrowBadEs(eInvalidInput);
     return boost::python::object{};
 }
 
@@ -357,7 +356,6 @@ boost::python::object PyApApplication::reloadPythonModule(const std::string& ful
             return boost::python::object(handle);
         }
     }
-    PyThrowBadEs(eInvalidInput);
     return boost::python::object{};
 }
 
