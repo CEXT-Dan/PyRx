@@ -97,9 +97,9 @@ __all__ = (
 
 
 def _check_version() -> None:
-    from ._version import __version__ as source_version
     from ._version import __version_tuple__ as source_version_tuple
 
+    source_version = __version__
     dll_version = Ap.Application.pyrxVersion()
     dll_version_tuple = tuple(int(i) for i in dll_version.split("."))
 
