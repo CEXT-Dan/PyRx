@@ -95,3 +95,24 @@ __all__ = (
     "reload",
 )
 
+
+def _check_version() -> None:
+    from ._version import __version__ as source_version
+    from ._version import __version_tuple__ as source_version_tuple
+
+    dll_version = Ap.Application.pyrxVersion()
+    dll_version_tuple = tuple(int(i) for i in dll_version.split("."))
+
+    if not (
+        dll_version_tuple[:3] == source_version_tuple[:3]
+        and dll_version_tuple[3] + 1 == source_version_tuple[3]
+    ):
+        warnings.warn(
+            f"PyRx DLL version ({dll_version}) does not match "
+            f"the source version ({source_version}). "
+            "Some features may not work as expected.",
+        )
+
+
+if Ap is not None:
+    _check_version()
