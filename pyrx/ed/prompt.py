@@ -427,7 +427,7 @@ def get_point(
 
 def get_angle(
     prompt: str = _prompt("Specify angle"),
-    basePt: Ge.Point3d = Ge.Point3d(),
+    basePt: Ge.Point3d | None = None,
     degrees: bool = False,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
@@ -449,6 +449,8 @@ def get_angle(
     Raises:
         PromptException: If the selection operation fails or is canceled.
     """
+    if basePt is None:
+        basePt = Ge.Point3d()
     with InitGetCtx(flags, kwords):
         angle = raise_for_status(Ed.Editor.getAngle(basePt, prompt))
         if degrees:
@@ -459,7 +461,7 @@ def get_angle(
 
 def get_corner(
     prompt: str = _prompt("Specify corner"),
-    basePt: Ge.Point3d = Ge.Point3d(),
+    basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
 ) -> Ge.Point3d:
@@ -478,6 +480,8 @@ def get_corner(
     Raises:
         PromptException: If the selection operation fails or is canceled.
     """
+    if basePt is None:
+        basePt = Ge.Point3d()
     with InitGetCtx(flags, kwords):
         return raise_for_status(Ed.Editor.getCorner(basePt, prompt))
 
