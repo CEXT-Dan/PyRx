@@ -7,7 +7,7 @@ include = ["pyrx*"]
 namespaces = false
 
 [tool.setuptools_scm]
-write_to = "your_package/_version.py"
+write_to = "pyrx/_version.py"
 local_scheme = "no-local-version"
 
 [project]
