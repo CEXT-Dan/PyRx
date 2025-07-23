@@ -20,8 +20,14 @@ from pyrx.ed.prompt import (
     get_integer,
     get_point,
     get_string,
-    raise_for_status, Kwords, InitGetCtx, InitGetFlags,
-    PromptExceptionKword, init_get, get_kword, PromptExceptionError
+    raise_for_status,
+    Kwords,
+    InitGetCtx,
+    InitGetFlags,
+    PromptExceptionKword,
+    init_get,
+    get_kword,
+    PromptExceptionError,
 )
 
 
@@ -85,6 +91,7 @@ class Test_entsel:
             mock_entSel.return_value = (Ed.PromptStatus.eOk, line_id, Ge.Point3d())
             result = entsel("Select entity: ", [Db.Line, Db.Circle])
             assert isinstance(result, Db.ObjectId)
+
 
 class Test_get_point:
     def test_get_point_without_base_point(self):
@@ -301,6 +308,8 @@ class Test_get_string:
             mock_getString.assert_called_once_with(cronly, prompt, Ed.PromptCondition(condition))
             assert isinstance(result, str)
             assert result == value
+
+
 class Test_Kwords:
     def test_init_with_empty_keywords(self):
         Kwords([])
@@ -310,7 +319,8 @@ class Test_Kwords:
             ValueError,
             match=re.escape(
                 "kwords must be an iterable of strings or tuples of "
-                "(localized, lang-independent) strings"),
+                "(localized, lang-independent) strings"
+            ),
         ):
             Kwords([123, 456])
 
@@ -319,7 +329,8 @@ class Test_Kwords:
             ValueError,
             match=re.escape(
                 "kwords must be an iterable of strings or tuples of "
-                "(localized, lang-independent) strings"),
+                "(localized, lang-independent) strings"
+            ),
         ):
             Kwords(["valid", (123, "invalid")])
 
@@ -346,6 +357,8 @@ class Test_Kwords:
         obj = Kwords(kwords)
         result = obj.as_init_get()
         assert result == "localized1 localized2 _independent1 independent2"
+
+
 class Test_InitGetCtx:
     def test_init_with_int_flags_and_kwords_list(self):
         ctx = InitGetCtx(InitGetFlags.RSG_NONULL, ["A", "B"])
@@ -367,7 +380,10 @@ class Test_InitGetCtx:
 
     def test_call_invokes_initGet_and_raises_for_status(self):
         kwords = Kwords(["A", "B"])
-        with patch("pyrx.ed.prompt.Ed.Editor.initGet") as mock_initGet, patch("pyrx.ed.prompt.raise_for_status") as mock_raise_for_status:
+        with (
+            patch("pyrx.ed.prompt.Ed.Editor.initGet") as mock_initGet,
+            patch("pyrx.ed.prompt.raise_for_status") as mock_raise_for_status,
+        ):
             mock_initGet.return_value = Ed.PromptStatus.eOk
             ctx = InitGetCtx(InitGetFlags.RSG_NONULL, kwords)
             ctx.call()
@@ -394,8 +410,10 @@ class Test_InitGetCtx:
             with InitGetCtx():
                 raise PromptExceptionError()
         assert excinfo.value.status == Ed.PromptStatus.eError
+
+
 def test_init_get():
-    with patch ("pyrx.ed.prompt.Ed.Editor.initGet") as mock_initGet:
+    with patch("pyrx.ed.prompt.Ed.Editor.initGet") as mock_initGet:
         mock_initGet.return_value = Ed.PromptStatus.eOk
         res = init_get(2, ["A", "B"])
         assert isinstance(res, InitGetCtx)
@@ -405,7 +423,10 @@ def test_init_get():
 class Test_get_kword:
     def test_get_kword_with_explicit_prompt(self):
         prompt = "Choose option: "
-        with patch("pyrx.ed.prompt.init_get") as mock_init_get,patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword:
+        with (
+            patch("pyrx.ed.prompt.init_get") as mock_init_get,
+            patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword,
+        ):
             mock_init_get.return_value = Ed.PromptStatus.eOk
             mock_getKword.return_value = (Ed.PromptStatus.eOk, "Yes")
             get_kword(prompt)
@@ -413,7 +434,10 @@ class Test_get_kword:
             mock_getKword.assert_called_once_with(prompt)
 
     def test_get_kword_with_default_prompt_and_no_kwords(self):
-        with patch("pyrx.ed.prompt.init_get") as mock_init_get,patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword:
+        with (
+            patch("pyrx.ed.prompt.init_get") as mock_init_get,
+            patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword,
+        ):
             mock_getKword.return_value = (Ed.PromptStatus.eOk, "B")
             result = get_kword()
             mock_init_get.assert_called_once()
@@ -421,10 +445,12 @@ class Test_get_kword:
             assert result == "B"
 
     def test_get_kword_with_default_prompt_and_kwords(self):
-        with patch("pyrx.ed.prompt.init_get") as mock_init_get,patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword:
+        with (
+            patch("pyrx.ed.prompt.init_get") as mock_init_get,
+            patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword,
+        ):
             mock_getKword.return_value = (Ed.PromptStatus.eOk, "Yes")
             result = get_kword(kwords=["Yes", "No"])
             mock_init_get.assert_called_once()
             mock_getKword.assert_called_once_with("\nSelect a keyword [Yes/No]: ")
             assert result == "Yes"
-
