@@ -123,7 +123,6 @@ protected:
     }
 };
 
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
@@ -146,7 +145,7 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#if defined(_ARXTARGET) ||  defined(_BRXTARGET)
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
         acedAddDropTarget(&mPyRxDropTarget);
 #endif
         return (retCode);
