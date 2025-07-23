@@ -424,7 +424,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
     }
 }
 
-bool ads_loadPythonModule(const std::filesystem::path& pypath)
+bool ads_loadPythonModule(const std::filesystem::path& pypath, bool silent)
 {
     try
     {
@@ -434,7 +434,7 @@ bool ads_loadPythonModule(const std::filesystem::path& pypath)
         modulePath.fullPath = pypath;
         modulePath.moduleName = moduleNameFromPath(_path);
         modulePath.modulePath = _path.remove_filename();
-        return loadPythonModule(modulePath, true);
+        return loadPythonModule(modulePath, silent);
     }
     catch (...)
     {
@@ -443,7 +443,7 @@ bool ads_loadPythonModule(const std::filesystem::path& pypath)
     return false;
 }
 
-bool ads_reloadPythonModule(const std::filesystem::path& pypath)
+bool ads_reloadPythonModule(const std::filesystem::path& pypath, bool silent)
 {
     try
     {
@@ -453,7 +453,7 @@ bool ads_reloadPythonModule(const std::filesystem::path& pypath)
         modulePath.fullPath = pypath;
         modulePath.moduleName = moduleNameFromPath(_path);
         modulePath.modulePath = _path.remove_filename();
-        return reloadPythonModule(modulePath, true);
+        return reloadPythonModule(modulePath, silent);
     }
     catch (...)
     {
