@@ -345,7 +345,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     {
         if (!silent)
             acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)path.moduleName);
-        return true;
+        return false;
     }
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
     PyRxApp::appendSearchPath(path.modulePath, true);

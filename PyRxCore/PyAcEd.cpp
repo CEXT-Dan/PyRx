@@ -58,7 +58,7 @@ static BOOST_PYTHON_MODULE(PyEd)
         .value("eNone", PromptCondition::eNone)
         .value("eNoZero", PromptCondition::eNoZero)
         .value("eNoEmpty", PromptCondition::eNoEmpty)
-        .value("eNoNegitive", PromptCondition::eNoNegitive)
+        .value("eNoNegative", PromptCondition::eNoNegative)
         .export_values()
         ;
 

@@ -218,7 +218,7 @@ boost::python::tuple PyAcEditor::getInteger2(const std::string& prompt, PromptCo
         if (val == 0)
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
     }
-    if (GETBIT(condition, PromptCondition::eNoNegitive))
+    if (GETBIT(condition, PromptCondition::eNoNegative))
     {
         if (val < 0)
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
@@ -246,7 +246,7 @@ boost::python::tuple PyAcEditor::getDouble2(const std::string& prompt, PromptCon
         if (std::fabs(val) < AcGeContext::gTol.equalPoint())
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
     }
-    if (GETBIT(condition, PromptCondition::eNoNegitive))
+    if (GETBIT(condition, PromptCondition::eNoNegative))
     {
         if (val < 0)
             return boost::python::make_tuple(Acad::PromptStatus::eRejected, val);
