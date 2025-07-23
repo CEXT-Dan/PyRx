@@ -117,18 +117,21 @@ class PromptExceptionKword(PromptException):
         return f"{self.__class__.__name__}: {self.kword}"
 
 
-_status_to_exception = {
-    Ed.PromptStatus.eNone: PromptExceptionNone,
-    Ed.PromptStatus.eModeless: PromptExceptionModeless,
-    Ed.PromptStatus.eError: PromptExceptionError,
-    Ed.PromptStatus.eCancel: PromptExceptionCancel,
-    Ed.PromptStatus.eRejected: PromptExceptionRejected,
-    Ed.PromptStatus.eFailed: PromptExceptionFailed,
-    Ed.PromptStatus.eDirect: PromptExceptionDirect,
-}
+_status_to_exception: dict | None = None
 
 
 def prompt_exception_from_status(status: Ed.PromptStatus) -> PromptException:
+    global _status_to_exception
+    if _status_to_exception is None:
+        _status_to_exception = {
+            Ed.PromptStatus.eNone: PromptExceptionNone,
+            Ed.PromptStatus.eModeless: PromptExceptionModeless,
+            Ed.PromptStatus.eError: PromptExceptionError,
+            Ed.PromptStatus.eCancel: PromptExceptionCancel,
+            Ed.PromptStatus.eRejected: PromptExceptionRejected,
+            Ed.PromptStatus.eFailed: PromptExceptionFailed,
+            Ed.PromptStatus.eDirect: PromptExceptionDirect,
+        }
     try:
         return _status_to_exception[status]()
     except KeyError:
