@@ -79,10 +79,10 @@ protected:
             if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
             {
                 std::filesystem::path _path = (const TCHAR*)pszFilename;
-                if (ads_loadPythonModule(_path))
+                if (ads_loadPythonModule(_path,true))
                     acutPrintf(_T("\nSuccess! %ls is loaded"), (const TCHAR*)pszFilename);
                 else
-                    acutPrintf(_T("\nFail! %ls is not loaded"), (const TCHAR*)pszFilename);
+                    acutPrintf(_T("\nOOPS! %ls is not loaded"), (const TCHAR*)pszFilename);
                 return TRUE;
             }
         }
@@ -145,7 +145,7 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
+#if defined(_ARXTARGET)
         acedAddDropTarget(&mPyRxDropTarget);
 #endif
         return (retCode);
