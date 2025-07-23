@@ -79,11 +79,7 @@ protected:
         {
             if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
             {
-                std::filesystem::path _path = (const TCHAR*)pszFilename;
-                if (ads_loadPythonModule(_path,false))
-                    acutPrintf(_T("\nSuccess! %ls is loaded"), (const TCHAR*)pszFilename);
-                else
-                    acutPrintf(_T("\nOOPS! loading %ls failed"), (const TCHAR*)pszFilename);
+                ads_loadPythonModule((const TCHAR*)pszFilename, false);
                 return TRUE;
             }
         }
@@ -158,6 +154,9 @@ public:
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
+#if defined(_ARXTARGET)
+        acedRemoveDropTarget(&mPyRxDropTarget);
+#endif
         acdbModelerEnd();
         acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRemoveWatchWinMsg(PyWatchWinMsgFn);
