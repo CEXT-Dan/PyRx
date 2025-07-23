@@ -6,7 +6,7 @@ enum PromptCondition
     eNone = 0,
     eNoEmpty = 1,
     eNoZero = 1,
-    eNoNegitive = 2,
+    eNoNegative = 2,
 };
 
 
