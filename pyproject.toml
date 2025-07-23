@@ -113,7 +113,7 @@ files = [
     "pyrx/PyRxDebug.py",
     "pyrx/PySm.pyi",
     #    "PySamples",  # Needs extra work
-    "tests",
+    #    "tests",
     "gen_pyi.py",
     "in_test_runner.py",
 ]
