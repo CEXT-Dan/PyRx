@@ -10,8 +10,9 @@ def version_scheme(version: ScmVersion) -> str:
         count = subprocess.check_output(
             ["git", "rev-list", "--count", "--first-parent", "main"], text=True
         ).strip()
-    except Exception:
-        count = "0"
+    except Exception as e:
+        e.add_note("Failed to get commit count from git.")
+        raise e
     return f"{base_version}.{count}"
 
 
