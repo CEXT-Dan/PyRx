@@ -31,7 +31,7 @@ eKeyword: PromptStatus  # -5005
 eLastPt: PointHistory  # 4
 eModeless: PromptStatus  # 5027
 eNoEmpty: PromptCondition  # 1
-eNoNegitive: PromptCondition  # 2
+eNoNegative: PromptCondition  # 2
 eNoZero: PromptCondition  # 1
 eNone: PromptCondition  # 0
 eNormal: PromptStatus  # 5100
@@ -2384,7 +2384,7 @@ class PromptCondition(_BoostPythonEnum):
     eNone: ClassVar[Self]  # 0
     eNoZero: ClassVar[Self]  # 1
     eNoEmpty: ClassVar[Self]  # 1
-    eNoNegitive: ClassVar[Self]  # 2
+    eNoNegative: ClassVar[Self]  # 2
 
 class PromptStatus(_BoostPythonEnum):
     eNone: ClassVar[Self]  # 5000

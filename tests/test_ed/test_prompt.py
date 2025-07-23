@@ -227,7 +227,7 @@ class Test_get_double:
     def test_get_double_with_condition_as_int(self):
         value = 7.89
         prompt = "Enter a real number: "
-        condition = Ed.PromptCondition.eNoNegitive | Ed.PromptCondition.eNoZero
+        condition = Ed.PromptCondition.eNoNegative | Ed.PromptCondition.eNoZero
         assert isinstance(condition, int)
         with patch("pyrx.ed.prompt.Ed.Editor.getDouble") as mock_getDouble:
             mock_getDouble.return_value = (Ed.PromptStatus.eOk, value)
@@ -262,7 +262,7 @@ class Test_get_integer:
     def test_get_integer_with_condition_as_int(self):
         value = 15
         prompt = "Enter an integer: "
-        condition = Ed.PromptCondition.eNoNegitive | Ed.PromptCondition.eNoZero
+        condition = Ed.PromptCondition.eNoNegative | Ed.PromptCondition.eNoZero
         assert isinstance(condition, int)
         with patch("pyrx.ed.prompt.Ed.Editor.getInteger") as mock_getInteger:
             mock_getInteger.return_value = (Ed.PromptStatus.eOk, value)
@@ -300,7 +300,7 @@ class Test_get_string:
         value = "another string"
         prompt = "Enter a string: "
         cronly = False
-        condition = Ed.PromptCondition.eNoNegitive | Ed.PromptCondition.eNoZero
+        condition = Ed.PromptCondition.eNoNegative | Ed.PromptCondition.eNoZero
         assert isinstance(condition, int)
         with patch("pyrx.ed.prompt.Ed.Editor.getString") as mock_getString:
             mock_getString.return_value = (Ed.PromptStatus.eOk, value)
