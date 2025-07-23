@@ -5,7 +5,8 @@ import traceback
 import typing as t
 from collections import defaultdict
 
-from pyrx import Ap
+from . import Ap
+from .ed.prompt import PromptExceptionCancel, PromptExceptionNone, PromptExceptionRejected
 
 _commands: dict[str, dict[str, t.Callable[..., None]]] = defaultdict(dict)
 
@@ -60,15 +61,15 @@ def command(
         def wrapper(*args, **kwargs):
             try:
                 f(*args, **kwargs)
+            except (PromptExceptionNone, PromptExceptionRejected, PromptExceptionCancel):
+                pass
             except Exception as e:
                 if e.__traceback__ is None:
                     traceback.print_exception(e)
                 else:
                     traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
 
-        Ap.Application.regCommand(
-            f.__globals__["__file__"], f.__module__, name, wrapper, flags
-        )
+        Ap.Application.regCommand(f.__globals__["__file__"], f.__module__, name, wrapper, flags)
         _commands[f.__module__][name] = wrapper  # prevent garbage collection
 
         return f
