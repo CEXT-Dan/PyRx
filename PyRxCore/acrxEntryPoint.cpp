@@ -52,9 +52,6 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-#define PYRX_DRAG
-#ifdef PYRX_DRAG
-
 class CPyRxDropTarget : public  COleDropTarget
 {
 public:
@@ -85,7 +82,7 @@ protected:
                 if (ads_loadPythonModule(_path))
                     acutPrintf(_T("\nSuccess! %ls is loaded"), (const TCHAR*)pszFilename);
                 else
-                    acutPrintf(_T("\nFail! %ls is not oaded"), (const TCHAR*)pszFilename);
+                    acutPrintf(_T("\nFail! %ls is not loaded"), (const TCHAR*)pszFilename);
                 return TRUE;
             }
         }
@@ -125,15 +122,14 @@ protected:
         return NULL;
     }
 };
-#endif
+
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-#ifdef PYRX_DRAG
     CPyRxDropTarget mPyRxDropTarget;
-#endif
+
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -150,10 +146,8 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#ifdef PYRX_DRAG
 #if defined(_ARXTARGET) ||  defined(_BRXTARGET)
         acedAddDropTarget(&mPyRxDropTarget);
-#endif
 #endif
         return (retCode);
     }
