@@ -52,7 +52,6 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 class CPyRxDropTarget : public  COleDropTarget
 {
 public:
@@ -126,15 +125,13 @@ protected:
         return NULL;
     }
 };
-#endif
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
+private:
     CPyRxDropTarget mPyRxDropTarget;
-#endif
 
 public:
     AcRxPyApp() : AcRxArxApp()
@@ -154,6 +151,9 @@ public:
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
 #if defined(_ARXTARGET) || defined(_BRXTARGET)
         acedAddDropTarget(&mPyRxDropTarget);
+#endif
+#if defined(_GRXTARGET) || defined(_ZRXTARGET)
+        mPyRxDropTarget.Register(acedGetAcadDockCmdLine());
 #endif
         return (retCode);
     }
