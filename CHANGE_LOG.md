@@ -1,3 +1,12 @@
+## v2.2.20
+
+* Add drag and drop loading support for .py and .pyc
+* [#385] add missing len methods for geometry (Ge.Point2d)
+* add Database::getBlockTable() utility method
+* add Database.getBlocks returns a dictionary {name: id}
+* add ObjectIdArray clear
+* add ObjectIdArray.getIdsOfType, the idea is to be able to extract out types as needed, returns a new ObjectIdArray
+
 ## v2.2.19
 
 * Add Db.Core.groupCodeToType
