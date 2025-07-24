@@ -103,3 +103,63 @@ def add_block_definition(
     block_id = Db.ObjectId()
     db.insert(block_id, _block_name, block, if_exists == "replace")
     return block_id
+
+
+@pass_working_db
+def get_block_by_name(
+    block_name: str, must_exists: bool = False, db: Db.Database = ...
+) -> Db.ObjectId[Db.BlockTableRecord]:
+    """
+    Retrieve a block definition by its name from the database.
+
+    This function attempts to find an existing block definition in the database.
+    If the block doesn't exist and `must_exists` is False, it will automatically
+    try to load the block from a file with the same name found in the search paths.
+
+    Args:
+        block_name: Name of the block definition to retrieve. Can be
+            just the block name (e.g., "my_block") or a file path. If
+            only a name is provided, the function will search for a
+            corresponding .dwg file in the AutoCAD search paths.
+        must_exists: If True, raises ``BlockNotFoundError`` immediately
+            when the block is not found in the database, without
+            attempting to load from file. If False (default), tries to
+            load the block from file if not found in database.
+        db: Database to search in. Defaults to the working database.
+
+    Returns:
+        ObjectId: The ObjectId (BlockTableRecord) of the found or newly
+            loaded block definition.
+
+    Raises:
+        BlockNotFoundError: If the block is not found in the database
+            and either `must_exists` is True or the block file cannot be
+            found/loaded.
+
+    Example:
+        >>> # Get existing block or load from file
+        >>> block_id = get_block_by_name("door_symbol")
+        >>>
+        >>> # Only get if already exists in database
+        >>> block_id = get_block_by_name("window", must_exists=True)
+    """
+    try:
+        # Try to find the block in the current database
+        return Db.BlockTable(db.blockTableId()).getAt(block_name)
+    except Db.ErrorStatusException as err:
+        # Re-raise any error that's not "key not found"
+        if not err.code == Db.ErrorStatus.eKeyNotFound:
+            raise
+
+    # Block not found in database
+    if must_exists:
+        # User explicitly wants only existing blocks
+        raise BlockNotFoundError(block_name)
+
+    try:
+        # Attempt to load block definition from file
+        # This will search in AutoCAD's search paths for a .dwg file
+        return add_block_definition(block_name, db=db)
+    except FileNotFoundError:
+        # Block file not found in search paths, convert to our custom exception
+        raise BlockNotFoundError(block_name) from None
