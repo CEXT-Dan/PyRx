@@ -60,6 +60,7 @@ dev = [
     "mypy",
     "types-pywin32",
     "asttokens",
+    "setuptools-scm>=8",
 ]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
