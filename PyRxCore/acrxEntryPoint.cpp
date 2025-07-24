@@ -52,7 +52,7 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-#if defined(_ARXTARGET)
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
 class CPyRxDropTarget : public  COleDropTarget
 {
 public:
@@ -64,15 +64,28 @@ protected:
     {
         return DROPEFFECT_COPY;
     }
+
     virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
     {
         return DROPEFFECT_COPY;
     }
+
     virtual void OnDragLeave(CWnd* pWnd) override
     {
         //do nothing
     }
+
     virtual BOOL OnDrop(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point) override
+    {
+        return FALSE;
+    }
+
+    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point) override
+    {
+        return DoDropEvent(pDataObject) ? DROPEFFECT_COPY : -1;
+    }
+
+    static bool DoDropEvent(COleDataObject* pDataObject)
     {
         CString pszFilename = GetPyRxFilename(pDataObject);
         if (!pszFilename.IsEmpty())
@@ -80,16 +93,10 @@ protected:
             if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
             {
                 ads_loadPythonModule((const TCHAR*)pszFilename, false);
-                return TRUE;
+                return true;
             }
         }
-        return FALSE;
-    }
-    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point) override
-    {
-        if (GetPyRxFilename(pDataObject) != nullptr)
-            return DROPEFFECT_COPY;
-        return -1;
+        return false;
     }
 
     //Owen Wengerd ODCL
@@ -125,7 +132,7 @@ protected:
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-#if defined(_ARXTARGET)
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
     CPyRxDropTarget mPyRxDropTarget;
 #endif
 
@@ -145,7 +152,7 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#if defined(_ARXTARGET)
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
         acedAddDropTarget(&mPyRxDropTarget);
 #endif
         return (retCode);
@@ -154,7 +161,7 @@ public:
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-#if defined(_ARXTARGET)
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
         acedRemoveDropTarget(&mPyRxDropTarget);
 #endif
         acdbModelerEnd();
