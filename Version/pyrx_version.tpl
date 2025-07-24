@@ -1,10 +1,10 @@
 //-----------------------------------------------------
 // auto generated from pyrx_version.tpl 
 
-#define VERSION_MAJOR 2
-#define VERSION_MINOR 2
-#define VERSION_BUILD 19
-#define VERSION_REVISION $WCLOGCOUNT&65535$
+#define VERSION_MAJOR {VERSION_MAJOR}
+#define VERSION_MINOR {VERSION_MINOR}
+#define VERSION_BUILD {VERSION_BUILD}
+#define VERSION_REVISION {VERSION_REVISION}
 
 #define VERSION_STRINGIZE_I(x) #x
 #define VERSION_STRINGIZE(x) VERSION_STRINGIZE_I(x)

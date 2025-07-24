@@ -1,13 +1,14 @@
 [build-system]
-requires = ["setuptools >= 61.0"]
+requires = ["setuptools >= 61.0", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["pyrx*"]
 namespaces = false
 
-[tool.setuptools.dynamic]
-version = { attr = "pyrx.__version__" }
+[tool.setuptools_scm]
+write_to = "pyrx/_version.py"
+local_scheme = "no-local-version"
 
 [project]
 name = "cad-pyrx"
@@ -59,6 +60,7 @@ dev = [
     "mypy",
     "types-pywin32",
     "asttokens",
+    "setuptools-scm>=8",
 ]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
