@@ -17,7 +17,7 @@
 .. _ARX Documentation: https://help.autodesk.com/view/OARX/2026/ENU/?guid=OARX-RefGuide-ObjectARX_Reference_Guide
 """
 
-__version__ = "2.2.20S.4590"
+__version__ = "2.2.20.4591"
 
 import importlib.util
 import warnings
