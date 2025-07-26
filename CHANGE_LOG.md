@@ -1,3 +1,7 @@
+## v2.2.21
+
+* Add Ge.Point2dArray. convexHull
+
 ## v2.2.20
 
 * Add drag and drop loading support for .py and .pyc
