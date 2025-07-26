@@ -24,6 +24,9 @@
 #include "PyGePoint3dTree.h"
 
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+#include <boost/geometry.hpp>
+#include <boost/geometry/geometries/point.hpp>
+#include <boost/geometry/geometries/polygon.hpp>
 
 
 using namespace boost::python;
@@ -377,11 +380,29 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
         });
 }
 
+static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
+{
+    using point_type = boost::geometry::model::d2::point_xy<double>;
+    boost::geometry::model::multi_point<point_type> input_points;
+    input_points.reserve(src.size());
+    for (const auto& pnt : src)
+        boost::geometry::append(input_points, point_type(pnt.x, pnt.y));
+    boost::geometry::model::polygon<point_type> convex_hull_polygon;
+    boost::geometry::convex_hull(input_points, convex_hull_polygon);
+    const auto& ring = convex_hull_polygon.outer();
+    PyGePoint2dArray hullpnts;
+    hullpnts.reserve(ring.size());
+    for (const auto& p : ring)
+        hullpnts.push_back(AcGePoint2d(p.x(), p.y()));
+    return hullpnts;
+}
+
 static void makePyGePoint2dWrapper()
 {
     PyDocString DSPA("PyGe.Point2dArray");
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
+        .def("convexHull", &PyGePoint2dConvexHull, DSPA.ARGS())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
