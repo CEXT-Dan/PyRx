@@ -22,12 +22,7 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 #include "PyGePoint3dTree.h"
-
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/geometries/polygon.hpp>
-
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------------------
@@ -426,6 +421,8 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
 
 static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
 {
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
     const auto& hull = PyGePoint2dConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -436,6 +433,8 @@ static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& 
 
 static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
 {
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
     const auto& hullidx = PyGePoint2dConvexHullIndexesImpl(src);
     PyGePoint2dArray hull;
     hull.reserve(hullidx.size());
@@ -1214,6 +1213,8 @@ static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArr
 
 static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& src)
 {
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
     const auto& hull = PyGePoint3dConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -1224,6 +1225,8 @@ static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& 
 
 static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
 {
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
     const auto& hullidx = PyGePoint3dConvexHullIndexesImpl(src);
     PyGePoint3dArray hull;
     hull.reserve(hullidx.size());
