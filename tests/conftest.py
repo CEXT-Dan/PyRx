@@ -23,7 +23,7 @@ def _load_db(path: _t.StrPath):
     if not path.exists():
         raise FileNotFoundError(str(path))
     db = Db.Database(False, True)
-    db.readDwgFile(str(path))
+    db.readDwgFile(str(path), Db.DatabaseOpenMode.kForReadAndAllShare, False, "")
     db.closeInput(True)
     return db
 
@@ -78,4 +78,9 @@ def db_block_reference():
 @pytest.fixture(scope="session")
 def db_xrefGraph():
     db = _load_db("XrefGraph.dwg")
+    return db
+
+@pytest.fixture(scope="session")
+def db_dyn_block_ref():
+    db = _load_db("dyn_block_ref.dwg")
     return db
