@@ -33,7 +33,7 @@ def point_3d(
         >>> point_3d([1.0, 2.0, 3.0])  # From list
         >>> point_3d(existing_point)  # From existing point
     """
-    # If input is already a Point3d, return it directly (no conversion needed)
+    # If input is already a Point3d, return a copy of it
     if isinstance(x_or_point, Ge.Point3d):
         if y is not None or z is not None:
             raise ValueError("If x_or_point is a Point3d, y and z should not be provided.")
