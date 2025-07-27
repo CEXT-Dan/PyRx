@@ -91,7 +91,7 @@ def point_2d(
         >>> point_2d([1.0, 2.0])  # From list (z ignored if present)
         >>> point_2d(existing_point_3d)  # From 3D point (z discarded)
     """
-    # If input is already a Point2d, return it directly (no conversion needed)
+    # If input is already a Point2d, return a new Point2d object that is a copy of the input
     if isinstance(x_or_point, Ge.Point2d):
         if y is not None or z is not None:
             raise ValueError("If x_or_point is a Point2d, y and z should not be provided.")
