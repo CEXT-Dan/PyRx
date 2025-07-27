@@ -1243,13 +1243,17 @@ static bool PyGePoint3dArePlanar(const PyGePoint3dArray& src)
     const double tol = AcGeContext::gTol.equalPoint();
     size_t i0 = 0, i1 = 1, i2 = 2;
     bool found = false;
-    for (size_t a = 0; a < src.size() && !found; ++a) {
-        for (size_t b = a + 1; b < src.size() && !found; ++b) {
-            for (size_t c = b + 1; c < src.size() && !found; ++c) {
-                AcGeVector3d ab = src[b] - src[a];
-                AcGeVector3d ac = src[c] - src[a];
-                AcGeVector3d n = ab.crossProduct(ac);
-                if (n.lengthSqrd() > tol * tol) {
+    for (size_t a = 0; a < src.size() && !found; ++a)
+    {
+        for (size_t b = a + 1; b < src.size() && !found; ++b)
+        {
+            for (size_t c = b + 1; c < src.size() && !found; ++c)
+            {
+                const AcGeVector3d& ab = src[b] - src[a];
+                const AcGeVector3d& ac = src[c] - src[a];
+                const AcGeVector3d& n = ab.crossProduct(ac);
+                if (n.lengthSqrd() > tol * tol)
+                {
                     i0 = a; i1 = b; i2 = c;
                     found = true;
                 }
@@ -1260,10 +1264,11 @@ static bool PyGePoint3dArePlanar(const PyGePoint3dArray& src)
         return true; // All points are collinear or coincident
     // Plane: normal . (P - P0) = 0
     const AcGePoint3d& p0 = src[i0];
-    AcGeVector3d ab = src[i1] - p0;
-    AcGeVector3d ac = src[i2] - p0;
-    AcGeVector3d normal = ab.crossProduct(ac).normal();
-    for (const auto& pt : src) {
+    const AcGeVector3d& ab = src[i1] - p0;
+    const AcGeVector3d& ac = src[i2] - p0;
+    const AcGeVector3d& normal = ab.crossProduct(ac).normal();
+    for (const auto& pt : src)
+    {
         double dist = normal.dotProduct(pt - p0);
         if (std::abs(dist) > tol)
             return false;
