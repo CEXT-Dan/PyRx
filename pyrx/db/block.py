@@ -3,8 +3,12 @@ from __future__ import annotations
 import typing as t
 from pathlib import Path
 
-from pyrx import Db, Ed
+from pyrx import Db, Ed, Ge
+from pyrx.ge.point import point_3d
 from pyrx.utils.decorators import pass_working_db
+
+if t.TYPE_CHECKING:
+    from pyrx.typing import UPoint
 
 
 class BlockNotFoundError(Exception):
@@ -163,3 +167,167 @@ def get_block_by_name(
     except FileNotFoundError:
         # Block file not found in search paths, convert to our custom exception
         raise BlockNotFoundError(block_name) from None
+
+
+@pass_working_db
+def get_block_reference(
+    btr_id_or_name: Db.ObjectId[Db.BlockTableRecord] | str,
+    position: UPoint = (0, 0, 0),
+    rotation: t.SupportsFloat = 0.0,
+    scale: t.SupportsFloat | Ge.Scale3d = 1.0,
+    attributes: dict[str, str] | None = None,
+    dyn_properties: dict[str, t.Any] | None = None,
+    scale_dyn_properties: bool = False,
+    db: Db.Database = ...,
+) -> Db.ObjectId[Db.BlockReference]:
+    """
+    Create a block reference (insert) in the database.
+
+    Note:
+        The reference is added to the database, so if subsequent operations fail,
+        you should remove the returned ID from the database. Use transactions
+        (Db.TransactionManager) for this purpose. The object is NOT added to any
+        layout (e.g., modelspace).
+
+    Args:
+        btr_id_or_name: BlockTableRecord ObjectId or block name. If a name is given,
+            the block is searched in the database and in search paths.
+        position: Insertion coordinates for the block. Default is (0, 0, 0).
+        rotation: Block rotation angle in radians. Default is 0.0.
+        scale: Block scale factor or Ge.Scale3d object. Default is 1.0.
+        attributes: Dictionary of attribute values to set in the block reference.
+            Default is None.
+        dyn_properties: Dictionary of dynamic property values to set in the block reference.
+            Default is None.
+        scale_dyn_properties: If True, dynamic properties are scaled according to the block scale.
+            Requires uniform scale (sx == sy == sz). Default is False.
+        db: Database in which the block reference will be created. Defaults to the working database.
+
+    Returns:
+        Db.ObjectId: The ObjectId of the newly created BlockReference.
+
+    Raises:
+        BlockNotFoundError: If the block is not found in the database.
+        TypeError: If btr_id_or_name is not a string or Db.ObjectId.
+        ValueError: If scale_dyn_properties is True and scale is not uniform.
+
+    Example:
+        >>> # Create a simple block reference
+        >>> bref_id = get_block_reference("door", position=(10, 20, 0), scale=2.0)
+        >>> bref = Db.BlockReference(bref_id)
+        >>> Db.curDb().addToModelspace(bref)
+        >>>
+        >>> # Create block reference with attributes
+        >>> attrs = {"TAG1": "Value1", "TAG2": "Value2"}
+        >>> bref_id = get_block_reference("door", attributes=attrs)
+    """
+    # Resolve block table record ID from name or ObjectId
+    if isinstance(btr_id_or_name, str):
+        btr_id = get_block_by_name(btr_id_or_name, must_exists=False, db=db)
+    elif not isinstance(btr_id_or_name, Db.ObjectId):
+        raise TypeError(
+            f"btr_id_or_name must be a string or Db.ObjectId, not {type(btr_id_or_name).__name__}"
+        )
+    else:
+        btr_id = btr_id_or_name
+
+    # Convert position to 3D point
+    position = point_3d(position)
+
+    # Convert scale to Ge.Scale3d if needed
+    if not isinstance(scale, Ge.Scale3d):
+        scale = Ge.Scale3d(float(scale))
+
+    # Check for uniform scale if scaling dynamic properties
+    if scale_dyn_properties and not (scale.sx == scale.sy == scale.sz):
+        raise ValueError("scale_dyn_properties requires uniform scale")
+
+    # Create BlockReference object
+    block_ref = Db.BlockReference(position, btr_id)
+    block_ref.setScaleFactors(scale)
+    block_ref.setRotation(rotation)
+
+    # Start transaction for safe object creation
+    tmr = db.transactionManager()
+    _ = tmr.startTransaction()
+    bref_id = db.addObject(block_ref)
+    tmr.addNewlyCreatedDBRObject(block_ref)
+
+    try:
+        block_def = Db.BlockTableRecord(btr_id)
+        is_dynamic = block_def.isDynamicBlock()
+
+        # Handle attribute definitions
+        if block_def.hasAttributeDefinitions():
+            for att_def_id in block_def.objectIds(Db.AttributeDefinition.desc()):
+                att_def = Db.AttributeDefinition(att_def_id)
+                if att_def.isConstant():
+                    att_def.dispose()
+                    continue
+                att_ref = Db.AttributeReference()
+                block_ref.appendAttribute(att_ref)
+                att_ref.setAttributeFromBlock(att_def, block_ref.blockTransform())
+                attr_value: str | None = None
+                if attributes:
+                    attr_value = attributes.get(att_def.tag(), None)
+                if attr_value is not None:
+                    att_ref.setTextString(attr_value)
+                elif att_def.hasFields():
+                    # Handle field attributes
+                    att_def_field = Db.Field(att_def.getField())
+                    flag = Db.FieldCodeFlag(
+                        Db.FieldCodeFlag.kAddMarkers | Db.FieldCodeFlag.kFieldCode
+                    )
+                    field_code = att_def_field.getFieldCode(flag)
+                    obj_code = f"%<\\_ObjId {block_ref.objectId().asOldId()}>%"
+                    field_code = field_code.replace("?BlockRefId", obj_code)
+                    att_ref_field = Db.Field(field_code)
+                    att_ref_field.setOwnerId(bref_id)
+                    att_ref_field.evaluate()
+                    att_ref.setField(att_ref_field)
+                    att_def_field.dispose()
+                    att_ref_field.dispose()
+                att_def.dispose()
+                att_ref.dispose()
+
+        block_def.dispose()
+        block_ref.dispose()
+
+        # Handle dynamic block properties
+        if is_dynamic and dyn_properties:
+            dyn_bref = Db.DynBlockReference(bref_id)
+            if dyn_bref.isDynamicBlock():
+                props = {prop.propertyName(): prop for prop in dyn_bref.getBlockProperties()}
+                for prop_name, prop_value in dyn_properties.items():
+                    try:
+                        try:
+                            prop = props[prop_name]
+                        except KeyError:
+                            continue
+                        if prop.readOnly():
+                            continue
+                        unit_type = prop.unitsType()
+                        # Scale dynamic properties if requested
+                        if unit_type == Db.DynUnitsType.kDistance:
+                            prop_value = prop_value * scale.sx
+                        elif unit_type == Db.DynUnitsType.kArea:
+                            prop_value = prop_value * (scale.sx**2)
+                        if isinstance(prop_value, Db.EvalVariant):
+                            value_eval = prop_value
+                        else:
+                            value_eval = Db.EvalVariant(prop_value)
+                        prop.setValue(value_eval)
+                    except Exception as err:
+                        err.add_note(
+                            f"Failed to set dynamic property '{prop_name}' "
+                            f"with value '{prop_value}'"
+                        )
+                        raise
+    except Exception:
+        # Abort transaction on error
+        tmr.abortTransaction()
+        raise
+    else:
+        # Commit transaction
+        tmr.endTransaction()
+        return bref_id
