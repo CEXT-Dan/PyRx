@@ -380,27 +380,9 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
         });
 }
 
-static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
-{
-    using point_type = boost::geometry::model::d2::point_xy<double>;
-    boost::geometry::model::multi_point<point_type> input_points;
-    input_points.reserve(src.size());
-    for (const auto& pnt : src)
-        boost::geometry::append(input_points, point_type(pnt.x, pnt.y));
-    boost::geometry::model::polygon<point_type> convex_hull_polygon;
-    boost::geometry::convex_hull(input_points, convex_hull_polygon);
-    const auto& ring = convex_hull_polygon.outer();
-    PyGePoint2dArray hullpnts;
-    hullpnts.reserve(ring.size());
-    for (const auto& p : ring)
-        hullpnts.push_back(AcGePoint2d(p.x(), p.y()));
-    return hullpnts;
-}
-
-
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
-static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
+static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArray& src)
 {
     size_t n = src.size();
     std::vector<size_t> idxs(n);
@@ -417,7 +399,7 @@ static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& 
         });
 
     // 2D cross product of OA and OB vectors, returns z-component
-    auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) {
+    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) {
         return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
         };
 
@@ -439,11 +421,27 @@ static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& 
             hull.pop_back();
         hull.push_back(idxs[i]);
     }
+    return hull;
+}
+
+static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
+{
+    const auto& hull = PyGePoint2dConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (auto item : hull)
         pylist.append(item);
     return pylist;
+}
+
+static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
+{
+    const auto& hullidx = PyGePoint2dConvexHullIndexesImpl(src);
+    PyGePoint2dArray hull;
+    hull.reserve(hullidx.size());
+    for (auto item : hullidx)
+        hull.push_back(src[item]);
+    return hull;
 }
 
 static void makePyGePoint2dWrapper()
@@ -1170,11 +1168,77 @@ static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
         });
 }
 
+// Returns the indices of the convex hull points in the input vector, in counterclockwise order.
+// Uses Andrew's monotone chain algorithm (O(n log n))
+static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArray& src)
+{
+    size_t n = src.size();
+    std::vector<size_t> idxs(n);
+    for (size_t i = 0; i < n; ++i)
+        idxs[i] = i;
+
+    // Sort indices by (x, y)
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) {
+        const auto& pa = src[a];
+        const auto& pb = src[b];
+        if (pa.x != pb.x)
+            return pa.x < pb.x;
+        return pa.y < pb.y;
+        });
+
+    // 2D cross product of OA and OB vectors, returns z-component
+    const auto cross = [&](const AcGePoint3d& O, const AcGePoint3d& A, const AcGePoint3d& B) {
+        return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+        };
+
+    std::vector<size_t> hull;
+    hull.reserve(2 * n);
+
+    // Lower hull
+    for (size_t i = 0; i < n; ++i) {
+        while (hull.size() >= 2 &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    // Upper hull
+    size_t t = hull.size() + 1;
+    for (size_t i = n; i-- > 0;) {
+        while (hull.size() >= t &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    return hull;
+}
+
+static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& src)
+{
+    const auto& hull = PyGePoint3dConvexHullIndexesImpl(src);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto item : hull)
+        pylist.append(item);
+    return pylist;
+}
+
+static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
+{
+    const auto& hullidx = PyGePoint3dConvexHullIndexesImpl(src);
+    PyGePoint3dArray hull;
+    hull.reserve(hullidx.size());
+    for (auto item : hullidx)
+        hull.push_back(src[item]);
+    return hull;
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
+        .def("convexHull", &PyGePoint3dConvexHull, DSPA.ARGS())
+        .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())

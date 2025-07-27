@@ -12,8 +12,8 @@ def convexHull() -> None:  # change me
             raise RuntimeError("Selection Error! {}: ".format(ps))
 
         # get all the positions
-        pnts = Ge.Point2dArray()
-        pnts.extend([Db.Point(id).position().to2d() for id in ss.objectIdArray()])
+        pnts = Ge.Point3dArray()
+        pnts.extend([Db.Point(id).position() for id in ss.objectIdArray()])
         pnts.convexHull()
 
         hull = Db.Polyline(pnts.convexHull())
@@ -36,11 +36,8 @@ def convexHull2() -> None:  # change me
         pnts3d = Ge.Point3dArray()
         pnts3d.extend([Db.Point(id).position() for id in ss.objectIdArray()])
 
-        # only 2d has the hull, but we can use the indexs
-        pnts2d = pnts3d.to2d()
-
         polyPoints = Ge.Point3dArray()
-        for idx in pnts2d.convexHullIndexes():
+        for idx in pnts3d.convexHullIndexes():
             polyPoints.append(pnts3d[idx])
 
         hull = Db.Polyline(polyPoints)
