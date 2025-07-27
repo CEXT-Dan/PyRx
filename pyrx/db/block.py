@@ -184,10 +184,10 @@ def get_block_reference(
     Create a block reference (insert) in the database.
 
     Note:
-        The reference is added to the database, so if subsequent operations fail,
-        you should remove the returned ID from the database. Use transactions
-        (Db.TransactionManager) for this purpose. The object is NOT added to any
-        layout (e.g., modelspace).
+        The reference is added to the database, so if subsequent
+        operations fail, you should remove the returned ID from the
+        database. The object is NOT added to any layout (e.g.,
+        modelspace).
 
     Args:
         btr_id_or_name: BlockTableRecord ObjectId or block name. If a name is given,
