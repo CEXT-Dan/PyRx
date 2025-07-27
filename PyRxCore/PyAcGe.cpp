@@ -397,12 +397,62 @@ static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
     return hullpnts;
 }
 
+
+// Returns the indices of the convex hull points in the input vector, in counterclockwise order.
+// Uses Andrew's monotone chain algorithm (O(n log n))
+static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
+{
+    size_t n = src.size();
+    std::vector<size_t> idxs(n);
+    for (size_t i = 0; i < n; ++i)
+        idxs[i] = i;
+
+    // Sort indices by (x, y)
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) {
+        const auto& pa = src[a];
+        const auto& pb = src[b];
+        if (pa.x != pb.x)
+            return pa.x < pb.x;
+        return pa.y < pb.y;
+        });
+
+    // 2D cross product of OA and OB vectors, returns z-component
+    auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) {
+        return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+        };
+
+    std::vector<size_t> hull;
+    hull.reserve(2 * n);
+
+    // Lower hull
+    for (size_t i = 0; i < n; ++i) {
+        while (hull.size() >= 2 &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    // Upper hull
+    size_t t = hull.size() + 1;
+    for (size_t i = n; i-- > 0;) {
+        while (hull.size() >= t &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto item : hull)
+        pylist.append(item);
+    return pylist;
+}
+
 static void makePyGePoint2dWrapper()
 {
     PyDocString DSPA("PyGe.Point2dArray");
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
         .def("convexHull", &PyGePoint2dConvexHull, DSPA.ARGS())
+        .def("convexHullIndexes", &PyGePoint2dConvexHullIndexes, DSPA.ARGS())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
