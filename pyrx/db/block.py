@@ -308,10 +308,11 @@ def get_block_reference(
                             continue
                         unit_type = prop.unitsType()
                         # Scale dynamic properties if requested
-                        if unit_type == Db.DynUnitsType.kDistance:
-                            prop_value = prop_value * scale.sx
-                        elif unit_type == Db.DynUnitsType.kArea:
-                            prop_value = prop_value * (scale.sx**2)
+                        if scale_dyn_properties:
+                            if unit_type == Db.DynUnitsType.kDistance:
+                                prop_value = prop_value * scale.sx
+                            elif unit_type == Db.DynUnitsType.kArea:
+                                prop_value = prop_value * (scale.sx**2)
                         if isinstance(prop_value, Db.EvalVariant):
                             value_eval = prop_value
                         else:
