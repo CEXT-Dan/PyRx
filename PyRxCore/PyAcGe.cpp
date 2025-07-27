@@ -423,10 +423,9 @@ static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& 
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    const auto& hull = PyGePoint2dConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto item : hull)
+    for (auto item : PyGePoint2dConvexHullIndexesImpl(src))
         pylist.append(item);
     return pylist;
 }
@@ -435,7 +434,7 @@ static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    const auto& hullidx = PyGePoint2dConvexHullIndexesImpl(src);
+    auto hullidx = PyGePoint2dConvexHullIndexesImpl(src);
     PyGePoint2dArray hull;
     hull.reserve(hullidx.size());
     for (auto item : hullidx)
@@ -1215,7 +1214,7 @@ static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& 
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    const auto& hull = PyGePoint3dConvexHullIndexesImpl(src);
+    auto hull = PyGePoint3dConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (auto item : hull)
@@ -1235,6 +1234,43 @@ static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
     return hull;
 }
 
+static bool PyGePoint3dArePlanar(const PyGePoint3dArray& src)
+{
+    // Less than 3 points are always planar
+    if (src.size() < 3)
+        return true;
+    // Find three non-collinear points
+    const double tol = AcGeContext::gTol.equalPoint();
+    size_t i0 = 0, i1 = 1, i2 = 2;
+    bool found = false;
+    for (size_t a = 0; a < src.size() && !found; ++a) {
+        for (size_t b = a + 1; b < src.size() && !found; ++b) {
+            for (size_t c = b + 1; c < src.size() && !found; ++c) {
+                AcGeVector3d ab = src[b] - src[a];
+                AcGeVector3d ac = src[c] - src[a];
+                AcGeVector3d n = ab.crossProduct(ac);
+                if (n.lengthSqrd() > tol * tol) {
+                    i0 = a; i1 = b; i2 = c;
+                    found = true;
+                }
+            }
+        }
+    }
+    if (!found)
+        return true; // All points are collinear or coincident
+    // Plane: normal . (P - P0) = 0
+    const AcGePoint3d& p0 = src[i0];
+    AcGeVector3d ab = src[i1] - p0;
+    AcGeVector3d ac = src[i2] - p0;
+    AcGeVector3d normal = ab.crossProduct(ac).normal();
+    for (const auto& pt : src) {
+        double dist = normal.dotProduct(pt - p0);
+        if (std::abs(dist) > tol)
+            return false;
+    }
+    return true;
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -1242,6 +1278,7 @@ static void makePyGePoint3dWrapper()
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
         .def("convexHull", &PyGePoint3dConvexHull, DSPA.ARGS())
         .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
+        .def("arePlanar", &PyGePoint3dArePlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
