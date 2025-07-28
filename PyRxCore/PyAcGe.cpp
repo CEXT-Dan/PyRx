@@ -1242,7 +1242,7 @@ static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
     return hull;
 }
 
-static bool PyGePoint3dArePlanar(const PyGePoint3dArray& src)
+static bool PyGePoint3dIsPlanar(const PyGePoint3dArray& src)
 {
     // Less than 3 points are always planar
     if (src.size() < 3)
@@ -1291,7 +1291,7 @@ static void makePyGePoint3dWrapper()
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
         .def("convexHull", &PyGePoint3dConvexHull, DSPA.ARGS())
         .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
-        .def("arePlanar", &PyGePoint3dArePlanar, DSPA.ARGS())
+        .def("isPlanar", &PyGePoint3dIsPlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
