@@ -481,6 +481,9 @@
     <ClCompile Include="PyGePoint3dTree.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxCvAttribVariant.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -968,6 +971,9 @@
     </ClInclude>
     <ClInclude Include="PyGePoint3dTree.h">
       <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvAttribVariant.h">
+      <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
