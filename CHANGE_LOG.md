@@ -1,3 +1,10 @@
+## v2.2.22
+
+* [#401] Remove support for drag and drop loading as it breaks AutoCAD’s block palette
+* added Point3dArray .isPlanar
+* added Point3dArray . convexHull
+* added Point3dArray . convexHullIndexes - Uses Andrew's monotone chain algorithm, ignores the Z
+
 ## v2.2.21
 
 * Add Ge.Point2dArray. convexHull

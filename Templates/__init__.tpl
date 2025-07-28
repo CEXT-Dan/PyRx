@@ -17,7 +17,7 @@
 .. _ARX Documentation: https://help.autodesk.com/view/OARX/2026/ENU/?guid=OARX-RefGuide-ObjectARX_Reference_Guide
 """
 
-__version__ = "2.2.21.$WCLOGCOUNT+1&65535$"
+__version__ = "2.2.22.$WCLOGCOUNT+1&65535$"
 
 import importlib.util
 import warnings
