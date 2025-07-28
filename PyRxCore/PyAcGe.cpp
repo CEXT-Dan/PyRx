@@ -385,7 +385,8 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
         idxs[i] = i;
 
     // Sort indices by (x, y)
-    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) {
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) 
+        {
         const auto& pa = src[a];
         const auto& pb = src[b];
         if (pa.x != pb.x)
@@ -394,7 +395,8 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
         });
 
     // 2D cross product of OA and OB vectors, returns z-component
-    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) {
+    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) 
+        {
         return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
         };
 
@@ -402,7 +404,8 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
     hull.reserve(2 * n);
 
     // Lower hull
-    for (size_t i = 0; i < n; ++i) {
+    for (size_t i = 0; i < n; ++i) 
+    {
         while (hull.size() >= 2 &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
             hull.pop_back();
@@ -410,7 +413,8 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
     }
     // Upper hull
     size_t t = hull.size() + 1;
-    for (size_t i = n; i-- > 0;) {
+    for (size_t i = n; i-- > 0;) 
+    {
         while (hull.size() >= t &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
             hull.pop_back();
@@ -1176,24 +1180,27 @@ static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArr
         idxs[i] = i;
 
     // Sort indices by (x, y)
-    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) {
-        const auto& pa = src[a];
-        const auto& pb = src[b];
-        if (pa.x != pb.x)
-            return pa.x < pb.x;
-        return pa.y < pb.y;
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b)
+        {
+            const auto& pa = src[a];
+            const auto& pb = src[b];
+            if (pa.x != pb.x)
+                return pa.x < pb.x;
+            return pa.y < pb.y;
         });
 
     // 2D cross product of OA and OB vectors, returns z-component
-    const auto cross = [&](const AcGePoint3d& O, const AcGePoint3d& A, const AcGePoint3d& B) {
-        return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+    const auto cross = [&](const AcGePoint3d& O, const AcGePoint3d& A, const AcGePoint3d& B)
+        {
+            return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
         };
 
     std::vector<size_t> hull;
     hull.reserve(2 * n);
 
     // Lower hull
-    for (size_t i = 0; i < n; ++i) {
+    for (size_t i = 0; i < n; ++i)
+    {
         while (hull.size() >= 2 &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
             hull.pop_back();
@@ -1201,7 +1208,8 @@ static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArr
     }
     // Upper hull
     size_t t = hull.size() + 1;
-    for (size_t i = n; i-- > 0;) {
+    for (size_t i = n; i-- > 0;)
+    {
         while (hull.size() >= t &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
             hull.pop_back();

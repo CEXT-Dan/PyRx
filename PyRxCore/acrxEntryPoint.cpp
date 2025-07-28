@@ -52,87 +52,10 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-class CPyRxDropTarget : public  COleDropTarget
-{
-public:
-    CPyRxDropTarget() = default;
-    virtual ~CPyRxDropTarget() override = default;
-
-protected:
-    virtual DROPEFFECT OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
-    {
-        return DROPEFFECT_COPY;
-    }
-
-    virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
-    {
-        return DROPEFFECT_COPY;
-    }
-
-    virtual void OnDragLeave(CWnd* pWnd) override
-    {
-        //do nothing
-    }
-
-    virtual BOOL OnDrop(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point) override
-    {
-        return FALSE;
-    }
-
-    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point) override
-    {
-        return DoDropEvent(pDataObject) ? DROPEFFECT_COPY : -1;
-    }
-
-    static bool DoDropEvent(COleDataObject* pDataObject)
-    {
-        CString pszFilename = GetPyRxFilename(pDataObject);
-        if (!pszFilename.IsEmpty())
-        {
-            if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
-            {
-                ads_loadPythonModule((const TCHAR*)pszFilename, false);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //Owen Wengerd ODCL
-    static LPCTSTR GetPyRxFilename(COleDataObject* pDataObject)
-    {
-        HGLOBAL hData = pDataObject->GetGlobalData(CF_HDROP);
-        if (!hData)
-            return NULL;
-        static CString sFilename;
-        sFilename.Empty();
-        DROPFILES* py = (DROPFILES*)GlobalLock(hData);
-        if (py)
-        {
-            if (py->fWide)
-                sFilename = (LPCWSTR)((BYTE*)py + py->pFiles);
-            else
-                sFilename = (LPCSTR)((BYTE*)py + py->pFiles);
-        }
-        GlobalUnlock(hData);
-        GlobalFree(hData);
-        if (sFilename.IsEmpty())
-            return NULL;
-        if (sFilename.Right(3).CompareNoCase(_T(".py")) == 0)
-            return sFilename;
-        if (sFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
-            return sFilename;
-        return NULL;
-    }
-};
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-private:
-    CPyRxDropTarget mPyRxDropTarget;
-
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -149,21 +72,12 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
-        acedAddDropTarget(&mPyRxDropTarget);
-#endif
-#if defined(_GRXTARGET) || defined(_ZRXTARGET)
-        mPyRxDropTarget.Register(acedGetAcadDockCmdLine());
-#endif
         return (retCode);
     }
 
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
-        acedRemoveDropTarget(&mPyRxDropTarget);
-#endif
         acdbModelerEnd();
         acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRemoveWatchWinMsg(PyWatchWinMsgFn);
