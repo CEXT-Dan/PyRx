@@ -3,12 +3,17 @@
 #ifdef BRXAPP
 #include "PyBrxCvObject.h"
 
+#if !defined(_BRXTARGET240)
+#include "BrxCvGlobal.h"
+#endif
+
 class BrxCvDbPoint;
 class BrxCvDbPointReferencedEntity;
 class BrxCvDbPointGroup;
 
 class PyBrxCvDbPointReferencedEntity;
 class PyDbObjectId;
+class PyBrxCvAttribVariant;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbPoint
@@ -66,6 +71,16 @@ public:
     static void                 assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId);
     static void                 assignPointsToPointGroup(const boost::python::list& cvpoints, const PyDbObjectId& groupId);
     static void                 assignStylesToPoints(const boost::python::list& cvpoints,const PyDbObjectId& symbolStyleId, const PyDbObjectId& labelStyleId);
+
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+    bool                    addUserAttribute(const std::string& name, const PyBrxCvAttribVariant& value) const;
+    bool                    removeUserAttribute(const std::string& name, BrxCvDataType type) const;
+    boost::python::list     userAttributes() const;
+    PyBrxCvAttribVariant    userAttribute(const std::string& name, BrxCvDataType spec) const;
+    boost::python::list     userAttributeNames() const;
+    Adesk::UInt32           userAttributeCount() const;
+    boost::python::tuple    userAttributeAt(Adesk::UInt32 index) const;
+#endif
 
     static std::string      className();
     static PyRxClass        desc();
