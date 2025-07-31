@@ -948,7 +948,6 @@ static int AcGeScale3dLen(const AcGeScale3d& p)
     return 3;
 }
 
-
 static std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
@@ -1125,6 +1124,7 @@ struct Point3dComparator
     }
     inline static AcGePoint3d basePoint = AcGePoint3d::kOrigin;
 };
+
 static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt)
 {
     Point3dComparator::basePoint = pnt;
