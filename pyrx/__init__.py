@@ -2,14 +2,14 @@
 | Commonly used sub modules:
 | from pyrx import Ap, Ax, Db, Ed, Ge, Rx
 
-- Ap - is responsible for Application-level items, I.e. Documents 
-- Ax - is the ActiveX classes 
-- Ge - contains all the geometry classes 
-- Gi - is the graphics interface 
+- Ap - is responsible for Application-level items, I.e. Documents
+- Ax - is the ActiveX classes
+- Ge - contains all the geometry classes
+- Gi - is the graphics interface
 - Gs - is the graphics system interface
 - Db - represents the DWG Database
 - Ed - contains editor functions, such as entSel
-- Pl - holds the plotting related classes 
+- Pl - holds the plotting related classes
 - Sm - is the sheet set API
 - Br - is the BRep interface
 
@@ -17,11 +17,11 @@
 .. _ARX Documentation: https://help.autodesk.com/view/OARX/2026/ENU/?guid=OARX-RefGuide-ObjectARX_Reference_Guide
 """
 
-__version__ = "2.2.22.4609"
-
 import importlib.util
 import warnings
 from typing import TYPE_CHECKING
+
+from ._version import __version__  # noqa: F401
 
 try:
     import PyRx as Rx  # isort: skip  # type: ignore
@@ -94,4 +94,3 @@ __all__ = (
     "command",
     "reload",
 )
-
