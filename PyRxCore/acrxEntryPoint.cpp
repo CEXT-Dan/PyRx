@@ -418,7 +418,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        acutPrintf(_T("%.16lf"), AcGeContext::gTol.equalPoint());
+
     }
 #endif
 };

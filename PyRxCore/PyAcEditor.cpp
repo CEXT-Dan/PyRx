@@ -61,7 +61,7 @@ public:
         }
         else if (PyList_Check(m_obj.ptr()))
         {
-            ptr.reset(acGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
+            ptr.reset(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
             return ptr.get();
         }
         else if (PyTuple_Check(m_obj.ptr()))
@@ -586,7 +586,7 @@ boost::python::tuple PyAcEditor::selectFence1(const boost::python::object& point
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
-    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
 }
@@ -596,7 +596,7 @@ boost::python::tuple PyAcEditor::selectFence2(const boost::python::object& point
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
-    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
@@ -605,7 +605,7 @@ boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::objec
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
-    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
 }
@@ -615,7 +615,7 @@ boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::objec
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
-    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
