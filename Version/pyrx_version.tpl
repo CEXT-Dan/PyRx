@@ -1,9 +1,9 @@
 //-----------------------------------------------------
 // auto generated from pyrx_version.tpl 
 
-#define VERSION_MAJOR 2
-#define VERSION_MINOR 2
-#define VERSION_BUILD 22
+#define VERSION_MAJOR {MAJOR}
+#define VERSION_MINOR {MINOR}
+#define VERSION_BUILD {REVISION}
 #define VERSION_REVISION {VERSION_REVISION}
 
 #define VERSION_STRINGIZE_I(x) #x

@@ -1,3 +1,6 @@
+#-----------------------------------------------------
+# auto generated from __init__.tpl
+
 """
 | Commonly used sub modules:
 | from pyrx import Ap, Ax, Db, Ed, Ge, Rx
@@ -21,7 +24,7 @@ import importlib.util
 import warnings
 from typing import TYPE_CHECKING
 
-__version__ = "2.2.22.4613"
+__version__ = "{MAJOR}.{MINOR}.{REVISION}.{VERSION_REVISION}"
 
 try:
     import PyRx as Rx  # isort: skip  # type: ignore
