@@ -1,3 +1,8 @@
+## v2.2.23
+
+* minor update for BRX26
+* [#398] add class BrxCvDbAttribVariant
+
 ## v2.2.22
 
 * [#401] Remove support for drag and drop loading as it breaks AutoCAD’s block palette
