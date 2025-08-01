@@ -5,6 +5,7 @@ from setuptools_scm import ScmVersion, get_version
 from setuptools_scm._integration.dump_version import write_version_to_path
 
 BASE_DIR = Path(__file__).parent
+REPO_DIR = BASE_DIR / ".."
 PYRX_VERSION_PY = BASE_DIR / "../pyrx/_version.py"
 PYRX_VERSION_H_TPL = BASE_DIR / "pyrx_version.tpl"
 PYRX_VERSION_H = BASE_DIR / "../pyrx_version.h"
@@ -14,7 +15,7 @@ def custom_version_scheme(version: ScmVersion) -> str:
     base_version = version.format_with("{tag}")
     try:
         count = subprocess.check_output(
-            ["git", "rev-list", "--count", "--first-parent", "main"], text=True
+            ["git", "rev-list", "--count", "--first-parent", "main"], text=True, cwd=REPO_DIR
         ).strip()
     except Exception as err:
         err.add_note("Failed to get commit count from git.")
@@ -25,6 +26,7 @@ def custom_version_scheme(version: ScmVersion) -> str:
 
 def get_project_version():
     return get_version(
+        root=REPO_DIR,
         version_scheme=custom_version_scheme,
         local_scheme="no-local-version",
     )
