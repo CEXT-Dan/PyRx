@@ -395,33 +395,24 @@ boost::python::list resbufToList(resbuf* pRb)
     return list;
 }
 
-resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArray)
+resbuf* AcGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
 {
-    resbuf* ptList = NULL;        // overall list
-    resbuf* lastRb = NULL;        // place holder to end of list
-    resbuf* rb;
-    int len = ptArray.length();
-    for (int i = 0; i < len; i++)
+    resbuf* phead = nullptr;
+    resbuf* ptail = nullptr;
+    constexpr size_t memsize = sizeof(AcGePoint3d);
+    for (size_t idx = 0; idx < ptArrayWCS.length(); idx++)
     {
-        if ((rb = acutNewRb(RT3DPOINT)) == NULL)
+        if (idx == 0)
         {
-            acutRelRb(ptList);
-            return NULL;
-        }
-        const AcGePoint3d& p = ptArray.at(i);
-        rb->resval.rpoint[0] = p.x;
-        rb->resval.rpoint[1] = p.y;
-        rb->resval.rpoint[2] = p.z;
-        if (ptList == NULL)
-        {
-            ptList = rb;
-            lastRb = rb;
+            phead = acutNewRb(RT3DPOINT);
+            ptail = phead;
+            memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
         }
         else
         {
-            lastRb->rbnext = rb;
-            lastRb = rb;
+            ptail = ptail->rbnext = acutNewRb(RT3DPOINT);
+            memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
         }
     }
-    return ptList;
+    return phead;
 }
