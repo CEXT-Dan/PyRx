@@ -1,7 +1,7 @@
+import re
 import subprocess
 from pathlib import Path
 
-from setuptools_scm import ScmVersion, get_version
 from setuptools_scm._integration.dump_version import write_version_to_path
 
 BASE_DIR = Path(__file__).parent
@@ -9,27 +9,36 @@ REPO_DIR = BASE_DIR / ".."
 PYRX_VERSION_PY = BASE_DIR / "../pyrx/_version.py"
 PYRX_VERSION_H_TPL = BASE_DIR / "pyrx_version.tpl"
 PYRX_VERSION_H = BASE_DIR / "../pyrx_version.h"
+BASE_VERSION_FILE = BASE_DIR / "version.txt"
+
+BASE_VERSION_PATTERN = re.compile(r"^(\d+)\.(\d+)\.(\d+)$")
 
 
-def custom_version_scheme(version: ScmVersion) -> str:
-    base_version = version.format_with("{tag}")
+def get_base_version() -> str:
+    version = BASE_VERSION_FILE.read_text("utf-8").strip()
+    if not BASE_VERSION_PATTERN.fullmatch(version):
+        raise ValueError(f"Invalid version format: {version}")
+    return version
+
+
+def get_revision_number() -> str:
+    number = subprocess.check_output(
+        ["git", "rev-list", "--count", "--first-parent", "main"], text=True
+    ).strip()
+    if not number.isdigit():
+        raise ValueError(f"Revision number is not a digit: {number}")
+    return number
+
+
+def get_project_version() -> str:
+    base_version = get_base_version()
     try:
-        count = subprocess.check_output(
-            ["git", "rev-list", "--count", "--first-parent", "main"], text=True, cwd=REPO_DIR
-        ).strip()
+        revision = get_revision_number()
     except Exception as err:
         err.add_note("Failed to get commit count from git.")
         raise err
 
-    return f"{base_version}.{count}"
-
-
-def get_project_version():
-    return get_version(
-        root=REPO_DIR,
-        version_scheme=custom_version_scheme,
-        local_scheme="no-local-version",
-    )
+    return f"{base_version}.{revision}"
 
 
 def override_pyrx_version_h(version: str) -> str:
