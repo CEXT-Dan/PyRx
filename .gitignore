@@ -358,3 +358,4 @@ $RECYCLE.BIN/
 /Version/x64/Release
 /PyRxCore/PyRxV26.0
 /PyRxLoader/RxLoaderV26.0
+pyrx/_version.py
