@@ -5,5 +5,5 @@
 resbuf* listToResbuf(const boost::python::object& bpl);
 boost::python::list resbufToList(resbuf* pRb);
 
-resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS);
+resbuf* AcGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS);
 #pragma pack (pop)
