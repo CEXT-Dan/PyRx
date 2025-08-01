@@ -13,7 +13,7 @@ PYRX_VERSION_H = BASE_DIR / "../pyrx_version.h"
 
 MAJOR = 2
 MINOR = 2
-REVISION= 22
+REVISION= 23
 
 def custom_version_scheme(version: ScmVersion) -> str:
     base_version = version.format_with("{tag}")
