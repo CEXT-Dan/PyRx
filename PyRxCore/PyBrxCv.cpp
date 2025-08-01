@@ -9,6 +9,10 @@
 #include "PyBrxCvDbTinSurface.h"
 #include "PyBrxCvDbLabel.h"
 
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+#include "PyBrxCvAttribVariant.h"
+#endif
+
 using namespace boost::python;
 
 static void makePyBrxCvTinPointWrapper()
@@ -132,6 +136,10 @@ static BOOST_PYTHON_MODULE(PyBrxCv)
     makeBrxCvDbLabelStyleBlockWrapper();
     makeBrxCvDbLabelStyleLineWrapper();
     makeBrxCvDbLabelStyleTextWrapper();
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+    makePyBrxCvDbAttribVariantWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")

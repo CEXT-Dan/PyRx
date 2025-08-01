@@ -162,6 +162,7 @@
     <ClCompile Include="PyBrxBimObject.cpp" />
     <ClCompile Include="PyBrxCore.cpp" />
     <ClCompile Include="PyBrxCv.cpp" />
+    <ClCompile Include="PyBrxCvAttribVariant.cpp" />
     <ClCompile Include="PyBrxCvDbAlignments.cpp" />
     <ClCompile Include="PyBrxCvDbLabel.cpp" />
     <ClCompile Include="PyBrxCvDbObjectManager.cpp" />
@@ -327,6 +328,7 @@
     <ClInclude Include="PyBrxBimObject.h" />
     <ClInclude Include="PyBrxCore.h" />
     <ClInclude Include="PyBrxCv.h" />
+    <ClInclude Include="PyBrxCvAttribVariant.h" />
     <ClInclude Include="PyBrxCvDbAlignments.h" />
     <ClInclude Include="PyBrxCvDbLabel.h" />
     <ClInclude Include="PyBrxCvDbObjectManager.h" />
