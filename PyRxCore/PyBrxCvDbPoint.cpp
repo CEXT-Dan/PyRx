@@ -6,6 +6,11 @@
 #include "PyDbObjectId.h"
 #include "BrxCvDbPoint.h"
 
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+#include "PyBrxCvAttribVariant.h"
+#endif
+
+
 using namespace boost::python;
 void makePyBrxCvDbPointWrapper()
 {
@@ -53,6 +58,16 @@ void makePyBrxCvDbPointWrapper()
         .def("referencedEntityCount", &PyBrxCvDbPoint::referencedEntityCount, DS.ARGS())
         .def("referencedEntityAt", &PyBrxCvDbPoint::referencedEntityAt, DS.ARGS({ "val : int" }))
         .def("update", &PyBrxCvDbPoint::update, DS.ARGS())
+
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+        .def("addUserAttribute", &PyBrxCvDbPoint::addUserAttribute, DS.ARGS({ "name : str", "value : PyBrxCv.CvAttribVariant" }))
+        .def("removeUserAttribute", &PyBrxCvDbPoint::removeUserAttribute, DS.ARGS({ "name : str", "value : PyBrxCv.CvDataType" }))
+        .def("userAttributes", &PyBrxCvDbPoint::userAttributes, DS.ARGS())
+        .def("userAttribute", &PyBrxCvDbPoint::userAttribute, DS.ARGS({ "name : str", "value : PyBrxCv.CvDataType" }))
+        .def("userAttributeNames", &PyBrxCvDbPoint::userAttributeNames, DS.ARGS())
+        .def("userAttributeCount", &PyBrxCvDbPoint::userAttributeCount, DS.ARGS())
+        .def("userAttributeAt", &PyBrxCvDbPoint::userAttributeAt, DS.ARGS({ "index : int" }))
+#endif
 
         .def("importPointsFromFile", &PyBrxCvDbPoint::importPointsFromFile, 
             DS.SARGS({ "files: list[str]","fmtid: PyDb.ObjectId" })).staticmethod("importPointsFromFile")
@@ -324,6 +339,57 @@ void PyBrxCvDbPoint::assignStylesToPoints(const boost::python::list& cvpoints, c
     PyThrowBadEs(BrxCvDbPoint::assignStylesToPoints(pnts, symbolStyleId.m_id, labelStyleId.m_id));
 #endif
 }
+
+#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+bool PyBrxCvDbPoint::addUserAttribute(const std::string& name, const PyBrxCvAttribVariant& value) const
+{
+    return impObj()->addUserAttribute(utf8_to_wstr(name).c_str(), value.impl);
+}
+
+bool PyBrxCvDbPoint::removeUserAttribute(const std::string& name, BrxCvDataType type) const
+{
+    return impObj()->removeUserAttribute(utf8_to_wstr(name).c_str(), type);
+}
+
+boost::python::list PyBrxCvDbPoint::userAttributes() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->userAttributes())
+        pylist.append(PyBrxCvAttribVariant(item));
+    return pylist;
+}
+
+PyBrxCvAttribVariant PyBrxCvDbPoint::userAttribute(const std::string& name, BrxCvDataType spec) const
+{
+    return PyBrxCvAttribVariant(impObj()->userAttribute(utf8_to_wstr(name).c_str(), spec));
+}
+
+boost::python::list PyBrxCvDbPoint::userAttributeNames() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->userAttributeNames())
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+Adesk::UInt32 PyBrxCvDbPoint::userAttributeCount() const
+{
+    return impObj()->userAttributeCount();
+}
+
+boost::python::tuple PyBrxCvDbPoint::userAttributeAt(Adesk::UInt32 index) const
+{
+    
+    PyAutoLockGIL lock;
+    AcString name;
+    BrxCvAttribVariant variant;
+    bool flag = impObj()->userAttributeAt(index, name, variant);
+    return boost::python::make_tuple(flag, wstr_to_utf8(name), PyBrxCvAttribVariant{ variant });
+}
+
+#endif
 
 std::string PyBrxCvDbPoint::className()
 {

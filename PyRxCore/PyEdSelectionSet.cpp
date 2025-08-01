@@ -289,7 +289,7 @@ void PyEdSelectionSet::filliterator()
         throw PyErrorStatusException(Acad::eNotInitializedYet);
     PyDbObjectId objId;
     ads_name ename = { 0 };
-    auto nsize = size();
+    const auto nsize = size();
     m_iterable.reserve(nsize);
     for (size_t i = 0; i < nsize; i++)
     {

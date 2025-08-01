@@ -22,9 +22,7 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 #include "PyGePoint3dTree.h"
-
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------------------
@@ -377,11 +375,84 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
         });
 }
 
+// Returns the indices of the convex hull points in the input vector, in counterclockwise order.
+// Uses Andrew's monotone chain algorithm (O(n log n))
+static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArray& src)
+{
+    size_t n = src.size();
+    std::vector<size_t> idxs(n);
+    for (size_t i = 0; i < n; ++i)
+        idxs[i] = i;
+
+    // Sort indices by (x, y)
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) 
+        {
+        const auto& pa = src[a];
+        const auto& pb = src[b];
+        if (pa.x != pb.x)
+            return pa.x < pb.x;
+        return pa.y < pb.y;
+        });
+
+    // 2D cross product of OA and OB vectors, returns z-component
+    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) 
+        {
+        return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+        };
+
+    std::vector<size_t> hull;
+    hull.reserve(2 * n);
+
+    // Lower hull
+    for (size_t i = 0; i < n; ++i) 
+    {
+        while (hull.size() >= 2 &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    // Upper hull
+    size_t t = hull.size() + 1;
+    for (size_t i = n; i-- > 0;) 
+    {
+        while (hull.size() >= t &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    return hull;
+}
+
+static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
+{
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto item : PyGePoint2dConvexHullIndexesImpl(src))
+        pylist.append(item);
+    return pylist;
+}
+
+static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
+{
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
+    auto hullidx = PyGePoint2dConvexHullIndexesImpl(src);
+    PyGePoint2dArray hull;
+    hull.reserve(hullidx.size());
+    for (auto item : hullidx)
+        hull.push_back(src[item]);
+    return hull;
+}
+
 static void makePyGePoint2dWrapper()
 {
     PyDocString DSPA("PyGe.Point2dArray");
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
+        .def("convexHull", &PyGePoint2dConvexHull, DSPA.ARGS())
+        .def("convexHullIndexes", &PyGePoint2dConvexHullIndexes, DSPA.ARGS())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
@@ -877,7 +948,6 @@ static int AcGeScale3dLen(const AcGeScale3d& p)
     return 3;
 }
 
-
 static std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
@@ -1054,6 +1124,7 @@ struct Point3dComparator
     }
     inline static AcGePoint3d basePoint = AcGePoint3d::kOrigin;
 };
+
 static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt)
 {
     Point3dComparator::basePoint = pnt;
@@ -1099,11 +1170,128 @@ static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
         });
 }
 
+// Returns the indices of the convex hull points in the input vector, in counterclockwise order.
+// Uses Andrew's monotone chain algorithm (O(n log n))
+static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArray& src)
+{
+    size_t n = src.size();
+    std::vector<size_t> idxs(n);
+    for (size_t i = 0; i < n; ++i)
+        idxs[i] = i;
+
+    // Sort indices by (x, y)
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b)
+        {
+            const auto& pa = src[a];
+            const auto& pb = src[b];
+            if (pa.x != pb.x)
+                return pa.x < pb.x;
+            return pa.y < pb.y;
+        });
+
+    // 2D cross product of OA and OB vectors, returns z-component
+    const auto cross = [&](const AcGePoint3d& O, const AcGePoint3d& A, const AcGePoint3d& B)
+        {
+            return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+        };
+
+    std::vector<size_t> hull;
+    hull.reserve(2 * n);
+
+    // Lower hull
+    for (size_t i = 0; i < n; ++i)
+    {
+        while (hull.size() >= 2 &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    // Upper hull
+    size_t t = hull.size() + 1;
+    for (size_t i = n; i-- > 0;)
+    {
+        while (hull.size() >= t &&
+            cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
+            hull.pop_back();
+        hull.push_back(idxs[i]);
+    }
+    return hull;
+}
+
+static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& src)
+{
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
+    auto hull = PyGePoint3dConvexHullIndexesImpl(src);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto item : hull)
+        pylist.append(item);
+    return pylist;
+}
+
+static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
+{
+    if (src.size() < 3)
+        PyThrowBadEs(eInvalidInput);
+    const auto& hullidx = PyGePoint3dConvexHullIndexesImpl(src);
+    PyGePoint3dArray hull;
+    hull.reserve(hullidx.size());
+    for (auto item : hullidx)
+        hull.push_back(src[item]);
+    return hull;
+}
+
+static bool PyGePoint3dIsPlanar(const PyGePoint3dArray& src)
+{
+    // Less than 3 points are always planar
+    if (src.size() < 3)
+        return true;
+    // Find three non-collinear points
+    const double tol = AcGeContext::gTol.equalPoint();
+    size_t i0 = 0, i1 = 1, i2 = 2;
+    bool found = false;
+    for (size_t a = 0; a < src.size() && !found; ++a)
+    {
+        for (size_t b = a + 1; b < src.size() && !found; ++b)
+        {
+            for (size_t c = b + 1; c < src.size() && !found; ++c)
+            {
+                const AcGeVector3d& ab = src[b] - src[a];
+                const AcGeVector3d& ac = src[c] - src[a];
+                const AcGeVector3d& n = ab.crossProduct(ac);
+                if (n.lengthSqrd() > tol * tol)
+                {
+                    i0 = a; i1 = b; i2 = c;
+                    found = true;
+                }
+            }
+        }
+    }
+    if (!found)
+        return true; // All points are collinear or coincident
+    // Plane: normal . (P - P0) = 0
+    const AcGePoint3d& p0 = src[i0];
+    const AcGeVector3d& ab = src[i1] - p0;
+    const AcGeVector3d& ac = src[i2] - p0;
+    const AcGeVector3d& normal = ab.crossProduct(ac).normal();
+    for (const auto& pt : src)
+    {
+        double dist = normal.dotProduct(pt - p0);
+        if (std::abs(dist) > tol)
+            return false;
+    }
+    return true;
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
+        .def("convexHull", &PyGePoint3dConvexHull, DSPA.ARGS())
+        .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
+        .def("isPlanar", &PyGePoint3dIsPlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
