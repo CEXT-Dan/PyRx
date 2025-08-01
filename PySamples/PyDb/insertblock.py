@@ -1,10 +1,22 @@
-from pyrx import Db, Ed, Ge
+from pathlib import Path
+
+from pyrx import Db, Ed, Ge, command
+from pyrx.db.block import (
+    BlockNotFoundError,
+    add_block_definition,
+    get_block_by_name,
+    get_block_reference,
+)
+from pyrx.ed.prompt import get_point, get_real, get_string
 
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
     print("Added command pyinsert")
     print("Added command pyinsertatt")
+    print("Added command pyinsert2")
+    print("Added command pyinsert_interactive")
+    print("Added command py_add_block")
 
 
 def OnPyUnloadApp():
@@ -90,3 +102,71 @@ def PyRxCmd_pyinsertatt() -> None:
 
     except Exception as err:
         print(err)
+
+
+@command
+def pyinsert2():
+    # ./media/rect.dwg
+    BLOCK_NAME = "RECT"
+    DESCRIPTION = "PY Insert Block"
+
+    bref_id = get_block_reference(
+        BLOCK_NAME,
+        position=(20, 30, 0),
+        scale=5.0,
+        attributes={"DESCRIPTION": DESCRIPTION},
+        dyn_properties={"W": 2.5, "H": 1.2},
+        scale_dyn_properties=True,
+    )
+    bref = Db.BlockReference(bref_id)
+    try:
+        Db.curDb().addToModelspace(bref)
+        print(f"Block '{BLOCK_NAME}' inserted with handle: {bref_id.handle()}")
+    except Exception:
+        bref.erase()
+        raise
+
+
+@command
+def pyinsert_interactive():
+    # ./media/rect.dwg
+    block_name = get_string("\nEnter block name: ", cronly=True)
+
+    try:
+        btr_id = get_block_by_name(block_name)
+    except BlockNotFoundError:
+        print(f"Block '{block_name}' not found.")
+        return
+    position = get_point("\nSpecify insertion point: ")
+    scale = get_real("\nSpecify scale factor: ")
+    bref_id = get_block_reference(
+        btr_id,
+        position=position,
+        scale=scale,
+    )
+    bref = Db.BlockReference(bref_id)
+    try:
+        Db.curDb().addToModelspace(bref)
+        print(f"Block '{block_name}' inserted with handle: {bref_id.handle()}")
+    except Exception:
+        bref.erase()
+        raise
+
+
+@command
+def py_add_block():
+    try:
+        btr_id = get_block_by_name("block_circle")
+        print("Block 'block_circle' already exists.")
+    except BlockNotFoundError:
+        block_path = Path(__file__).parent / "media" / "block_circle.dwg"
+        btr_id = add_block_definition(block_path)
+        print("Block 'block_circle' added.")
+    bref_id = get_block_reference(btr_id)
+    bref = Db.BlockReference(bref_id)
+    try:
+        Db.curDb().addToModelspace(bref)
+        print(f"Block 'block_circle' inserted with handle: {bref_id.handle()}")
+    except Exception:
+        bref.erase()
+        raise
