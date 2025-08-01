@@ -130,8 +130,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>GitWCRev "$(SolutionDir)\" "$(SolutionDir)Templates\pyrx_version.tpl" "$(SolutionDir)pyrx_version.h" 
-GitWCRev "$(SolutionDir)\" "$(SolutionDir)Templates\__init__.tpl" "$(SolutionDir)pyrx\__init__.py" </Command>
+      <Command>python.exe "$(ProjectDir)\version.py"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
