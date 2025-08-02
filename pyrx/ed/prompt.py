@@ -70,12 +70,10 @@ import enum
 import math
 import typing as t
 
-from typing_extensions import Sentinel
-
 from pyrx import Db, Ed, Ge, Rx
 
 T = t.TypeVar("T")
-_missing = Sentinel("missing")
+_missing = object()
 
 
 class PromptException(Exception):
@@ -351,7 +349,7 @@ def get_kword(
     prompt: str | None = None,
     flags: InitGetFlags | int = 0,
     kwords: _Kwords_T | Kwords | None = None,
-    default: T = _missing,
+    default=_missing,
 ):
     """
     Prompts the user to enter a keyword from a predefined list.
@@ -449,7 +447,7 @@ def get_point(
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
     default=_missing,
-) -> Ge.Point3d | T:
+):
     """
     Prompts the user to select a point.
 
@@ -499,8 +497,8 @@ def get_angle(
     degrees: bool = False,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-    default: T = _missing,
-) -> float | T:
+    default=_missing,
+):
     """
     Prompts the user to specify an angle and returns the angle value.
 
@@ -551,8 +549,8 @@ def get_corner(
     basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-    default: T = _missing,
-) -> Ge.Point3d | T:
+    default=_missing,
+):
     """
     Prompts the user to specify a corner point of a rectangle, opposite
     to the given base point. While the user selects the point, the
@@ -597,8 +595,8 @@ def get_dist(
     basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-    default: T = _missing,
-) -> float | T:
+    default=_missing,
+):
     """
     Prompts the user to specify a distance.
 
@@ -642,8 +640,8 @@ def get_double(
     condition: Ed.PromptCondition | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-    default: T = _missing,
-) -> float | T:
+    default=_missing,
+):
     """
     Prompts the user to enter a real number.
 
@@ -693,8 +691,8 @@ def get_integer(
     condition: Ed.PromptCondition | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-    default: T = _missing,
-) -> int | T:
+    default=_missing,
+):
     """
     Prompts the user to enter an integer.
 
