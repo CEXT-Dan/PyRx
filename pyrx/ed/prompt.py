@@ -522,6 +522,9 @@ def get_angle(
         basePt = Ge.Point3d()
     with InitGetCtx(flags, kwords):
         angle = raise_for_status(Ed.Editor.getAngle(basePt, prompt), default=default)
+        # If the returned value is the default, return it directly (do not convert to degrees)
+        if default is not _missing and angle is default:
+            return angle
         if degrees:
             return math.degrees(angle)
         else:
