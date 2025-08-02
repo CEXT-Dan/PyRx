@@ -3,6 +3,7 @@ from __future__ import annotations
 import collections.abc as c
 import logging
 import os
+import traceback
 from pathlib import Path
 
 from pyrx import Ap, Ed, command, reload
@@ -88,26 +89,33 @@ wxRxApp = None
 
 
 def main() -> None:
-    global wxRxApp
-    wxRxApp = Ap.Application.wxApp()
-    # reload all pyrx modules if this module is reloaded
-    reload("pyrx")
-    # add PYDEBUG command
-    command(startListener, name="PYDEBUG")
-    # load pyrx onload files
-    pyrx_onload()
-    # pyrx_settings can be modified by onload file so there is getting it again
-    pyrx_settings = get_pyrx_settings()
-    if (title := pyrx_settings.top_window_title) is not None:
-        from pyrx.utils.wx import set_top_window_title
+    try:
+        global wxRxApp
+        wxRxApp = Ap.Application.wxApp()
+        # reload all pyrx modules if this module is reloaded
+        reload("pyrx")
+        # add PYDEBUG command
+        command(startListener, name="PYDEBUG")
+        # load pyrx onload files
+        pyrx_onload()
+        # pyrx_settings can be modified by onload file so there is getting it again
+        pyrx_settings = get_pyrx_settings()
+        if (title := pyrx_settings.top_window_title) is not None:
+            from pyrx.utils.wx import set_top_window_title
 
-        set_top_window_title(title)
+            set_top_window_title(title)
 
-    # load PyRx commands
-    import pyrx._commands  # noqa: F401
+        # load PyRx commands
+        import pyrx._commands  # noqa: F401
 
-    # load REPLs
-    import pyrx.repl.repl_cmds  # noqa: F401
+        # load REPLs
+        import pyrx.repl.repl_cmds  # noqa: F401
+
+    except Exception as e:
+        if e.__traceback__ is None:
+            traceback.print_exception(e)
+        else:
+            traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
 
 
 if __name__ == "_host_init":  # loaded by PyRxCore
