@@ -1,8 +1,8 @@
-import wx
 import subprocess
 import sys
 import traceback
 
+import wx
 
 from . import command
 from .PyRxDebug import startListener
@@ -126,7 +126,7 @@ class PipManager:
             print(f"{result.stdout}\n")
         except subprocess.CalledProcessError as e:
             print(f"Command failed with error: {e}")
-        except Exception as e:
+        except Exception:
             print("An error occurred while calling list:")
             traceback.print_exc()
 
