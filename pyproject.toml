@@ -47,7 +47,6 @@ dependencies = [
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
     "pydantic_settings",
-    "typing_extensions>=4.14",
 ]
 
 [project.optional-dependencies]
