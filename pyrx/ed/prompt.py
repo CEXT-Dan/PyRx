@@ -51,6 +51,16 @@ an invalid value will raise an exception with status ``eError``, while with ``fl
 will not be accepted until the user enters a valid value. The user can still cancel the operation,
 which will raise an exception with status ``eCancel``.
 
+Default values
+--------------
+Functions containing the ``default`` argument return this value if the user does not specify any
+value (e.g., presses Enter)
+
+```
+>>> get_point(default=Ge.Point3d(0, 0, 0))
+# the user presses Enter
+PyGe.Point3d(0.00000000000000,0.00000000000000,0.00000000000000)
+```
 """
 
 from __future__ import annotations
@@ -60,9 +70,12 @@ import enum
 import math
 import typing as t
 
+from typing_extensions import Sentinel
+
 from pyrx import Db, Ed, Ge, Rx
 
 T = t.TypeVar("T")
+_missing = Sentinel("missing")
 
 
 class PromptException(Exception):
@@ -292,11 +305,13 @@ class InitGetCtx:
             raise PromptExceptionKword(kword) from None
 
 
-def raise_for_status(__prompt_result: tuple | Ed.PromptStatus):
+def raise_for_status(__prompt_result: tuple | Ed.PromptStatus, default=_missing):
     if isinstance(__prompt_result, Ed.PromptStatus):
         status = __prompt_result
     else:
         status = __prompt_result[0]
+    if status == Ed.PromptStatus.eNone and default is not _missing:
+        return default
     if not status == Ed.PromptStatus.eOk:
         raise prompt_exception_from_status(status)
     if isinstance(__prompt_result, Ed.PromptStatus):
@@ -318,11 +333,26 @@ def init_get(
     return _init_get
 
 
+@t.overload
 def get_kword(
     prompt: str | None = None,
     flags: InitGetFlags | int = 0,
     kwords: _Kwords_T | Kwords | None = None,
-) -> str:
+    default: T = ...,
+) -> str | T: ...
+@t.overload
+def get_kword(
+    prompt: str | None = None,
+    flags: InitGetFlags | int = 0,
+    kwords: _Kwords_T | Kwords | None = None,
+    default=_missing,
+) -> str: ...
+def get_kword(
+    prompt: str | None = None,
+    flags: InitGetFlags | int = 0,
+    kwords: _Kwords_T | Kwords | None = None,
+    default: T = _missing,
+):
     """
     Prompts the user to enter a keyword from a predefined list.
 
@@ -331,6 +361,7 @@ def get_kword(
         kwords: An iterable of keywords or tuples of (localized,
         lang-independent) strings.
         flags: Flags controlling the behavior of the keyword input.
+        default: The default value to return if the user does not enter a keyword.
 
     Returns:
         str: The keyword entered by the user. Note: If lang-independent
@@ -347,7 +378,7 @@ def get_kword(
             prompt = _prompt("Select a keyword")
         else:
             prompt = _prompt(f"Select a keyword {_kwords.as_prompt()}")
-    return raise_for_status(Ed.Editor.getKword(prompt))
+    return raise_for_status(Ed.Editor.getKword(prompt), default=default)
 
 
 def _ent_type_to_desc(ent_type_or_desc: Rx.RxClass | type[Db.Entity]):
@@ -396,20 +427,39 @@ def entsel(
         return ent_id
 
 
+@t.overload
+def get_point(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> Ge.Point3d | T: ...
+@t.overload
+def get_point(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> Ge.Point3d: ...
 def get_point(
     prompt: str = _prompt("Select point"),
     basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> Ge.Point3d:
+    default=_missing,
+) -> Ge.Point3d | T:
     """
-    Prompts the user to select a point in the editor.
+    Prompts the user to select a point.
 
     Args:
         prompt: The prompt message displayed to the user.
         basePt: An optional base point. If provided, a dashed helper
             line is displayed from the base point to the current cursor
             position during selection.
+        default: The default value to return if the user does not
+            specify a point (e.g., presses Enter).
 
     Returns:
         Ge.Point3d: The point selected by the user.
@@ -422,16 +472,35 @@ def get_point(
             res = Ed.Editor.getPoint(basePt, prompt)
         else:
             res = Ed.Editor.getPoint(prompt)
-        return raise_for_status(res)
+        return raise_for_status(res, default=default)
 
 
+@t.overload
+def get_angle(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    degrees: bool = False,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> float | T: ...
+@t.overload
+def get_angle(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    degrees: bool = False,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> float: ...
 def get_angle(
     prompt: str = _prompt("Specify angle"),
     basePt: Ge.Point3d | None = None,
     degrees: bool = False,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> float:
+    default: T = _missing,
+) -> float | T:
     """
     Prompts the user to specify an angle and returns the angle value.
 
@@ -441,6 +510,8 @@ def get_angle(
             the origin (0, 0, 0).
         degrees: If True, the angle is returned in degrees. If False,
             the angle is returned in radians. Defaults to False.
+        default: The default value to return if the user does not
+            specify an angle (e.g., presses Enter).
 
     Returns:
         float: The angle value in radians or degrees, depending on the
@@ -452,19 +523,36 @@ def get_angle(
     if basePt is None:
         basePt = Ge.Point3d()
     with InitGetCtx(flags, kwords):
-        angle = raise_for_status(Ed.Editor.getAngle(basePt, prompt))
+        angle = raise_for_status(Ed.Editor.getAngle(basePt, prompt), default=default)
         if degrees:
             return math.degrees(angle)
         else:
             return angle
 
 
+@t.overload
+def get_corner(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> Ge.Point3d | T: ...
+@t.overload
+def get_corner(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> Ge.Point3d: ...
 def get_corner(
     prompt: str = _prompt("Specify corner"),
     basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> Ge.Point3d:
+    default: T = _missing,
+) -> Ge.Point3d | T:
     """
     Prompts the user to specify a corner point of a rectangle, opposite
     to the given base point. While the user selects the point, the
@@ -473,6 +561,8 @@ def get_corner(
     Args:
         prompt: The prompt message displayed to the user.
         basePt: The base point of the rectangle. Defaults to the origin (0, 0, 0).
+        default: The default value to return if the user does not
+            specify a corner point (e.g., presses Enter).
 
     Returns:
         Ge.Point3d: The corner point specified by the user.
@@ -483,22 +573,41 @@ def get_corner(
     if basePt is None:
         basePt = Ge.Point3d()
     with InitGetCtx(flags, kwords):
-        return raise_for_status(Ed.Editor.getCorner(basePt, prompt))
+        return raise_for_status(Ed.Editor.getCorner(basePt, prompt), default=default)
 
 
+@t.overload
+def get_dist(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> float | T: ...
+@t.overload
+def get_dist(
+    prompt: str = ...,
+    basePt: Ge.Point3d | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> float: ...
 def get_dist(
     prompt: str = _prompt("Specify distance"),
     basePt: Ge.Point3d | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> float:
+    default: T = _missing,
+) -> float | T:
     """
-    Prompts the user to specify a distance in the editor.
+    Prompts the user to specify a distance.
 
     Args:
         prompt: The prompt message displayed to the user.
         basePt: The base point from which the distance is measured.
             If None, the user is prompted to specify a base point.
+        default: The default value to return if the user does not
+            specify a distance (e.g., presses Enter).
 
     Returns:
         float: The distance specified by the user.
@@ -509,21 +618,40 @@ def get_dist(
     with InitGetCtx(flags, kwords):
         if basePt is None:
             basePt = get_point(_prompt("Specify base point"))
-        return raise_for_status(Ed.Editor.getDist(basePt, prompt))
+        return raise_for_status(Ed.Editor.getDist(basePt, prompt), default=default)
 
 
+@t.overload
+def get_double(
+    prompt: str = ...,
+    condition: Ed.PromptCondition | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> float | T: ...
+@t.overload
+def get_double(
+    prompt: str = ...,
+    condition: Ed.PromptCondition | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> float: ...
 def get_double(
     prompt: str = _prompt("Enter a real number"),
     condition: Ed.PromptCondition | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> float:
+    default: T = _missing,
+) -> float | T:
     """
     Prompts the user to enter a real number.
 
     Args:
         prompt: The prompt message displayed to the user.
         condition: An optional condition to validate the input.
+        default: The default value to return if the user does not
+            enter a number (e.g., presses Enter).
 
     Returns:
         float: The real number entered by the user.
@@ -538,24 +666,43 @@ def get_double(
             if isinstance(condition, int):
                 condition = Ed.PromptCondition(condition)
             res = Ed.Editor.getDouble(prompt, condition)
-        return raise_for_status(res)
+        return raise_for_status(res, default=default)
 
 
 get_real = get_double  # Alias
 
 
+@t.overload
+def get_integer(
+    prompt: str = ...,
+    condition: Ed.PromptCondition | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default: T = ...,
+) -> int | T: ...
+@t.overload
+def get_integer(
+    prompt: str = ...,
+    condition: Ed.PromptCondition | None = None,
+    kwords: Kwords | None = None,
+    flags: int | InitGetFlags = 0,
+    default=_missing,
+) -> int: ...
 def get_integer(
     prompt: str = _prompt("Enter an integer"),
     condition: Ed.PromptCondition | None = None,
     kwords: Kwords | None = None,
     flags: int | InitGetFlags = 0,
-) -> int:
+    default: T = _missing,
+) -> int | T:
     """
     Prompts the user to enter an integer.
 
     Args:
         prompt: The prompt message displayed to the user.
         condition: An optional condition to validate the input.
+        default: The default value to return if the user does not
+            enter an integer (e.g., presses Enter).
 
     Returns:
         int: The integer entered by the user.
@@ -570,7 +717,7 @@ def get_integer(
             if isinstance(condition, int):
                 condition = Ed.PromptCondition(condition)
             res = Ed.Editor.getInteger(prompt, condition)
-        return raise_for_status(res)
+        return raise_for_status(res, default=default)
 
 
 def get_string(
