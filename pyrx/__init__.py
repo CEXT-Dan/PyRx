@@ -1,4 +1,4 @@
-#-----------------------------------------------------
+# -----------------------------------------------------
 # auto generated from __init__.tpl
 
 """
@@ -24,7 +24,7 @@ import importlib.util
 import warnings
 from typing import TYPE_CHECKING
 
-__version__ = "2.2.23.4619"
+from ._version import __version__  # noqa: F401
 
 try:
     import PyRx as Rx  # isort: skip  # type: ignore
