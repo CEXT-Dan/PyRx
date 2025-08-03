@@ -66,7 +66,7 @@ class PipManager:
     """
 
     @staticmethod
-    def install(package: str):
+    def install(package: str) -> None:
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "install", package],
@@ -83,7 +83,7 @@ class PipManager:
             traceback.print_exc()
 
     @staticmethod
-    def update(package: str):
+    def update(package: str) -> None:
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "install", "--upgrade", package],
@@ -100,7 +100,7 @@ class PipManager:
             traceback.print_exc()
 
     @staticmethod
-    def uninstall(package: str):
+    def uninstall(package: str) -> None:
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "uninstall", "-y", package],
@@ -117,7 +117,7 @@ class PipManager:
             traceback.print_exc()
 
     @staticmethod
-    def list():
+    def list() -> None:
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "list"],
@@ -151,7 +151,7 @@ def pypip() -> None:
     if kw_ps != Ed.PromptStatus.eOk and kw_ps != Ed.PromptStatus.eNone:
         raise Exception(kw_ps)
 
-    def _getPackageName():
+    def _getPackageName() -> str:
         gs_ps, gs_str = Ed.Editor.getString("\nEnter package: ", Ed.PromptCondition.eNoEmpty)
         if ig_ps != Ed.PromptStatus.eOk:
             raise Exception(gs_ps)
