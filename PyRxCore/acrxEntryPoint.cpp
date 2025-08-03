@@ -378,12 +378,12 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto entsel() -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
+    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ") -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
         ads_name name = { 0L };
-        int res = acedEntSel(L"\nSelect it: ", name, asDblArray(pnt));
+        int res = acedEntSel(msg, name, asDblArray(pnt));
         if (auto es = acdbGetObjectId(id, name); es != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
@@ -403,7 +403,7 @@ public:
     static auto getPoint() -> std::tuple<Acad::PromptStatus, AcGePoint3d>
     {
         AcGePoint3d pnt;
-        int res = acedGetPoint(NULL, _T("\nGetPoint: "), asDblArray(pnt));;
+        int res = acedGetPoint(NULL, _T("\nGet Point: "), asDblArray(pnt));;
         return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 

@@ -4,6 +4,8 @@ import traceback
 
 import wx
 
+from pyrx import Ed
+
 from . import command
 from .PyRxDebug import startListener
 from .utils.wx import show_inspection_frame
@@ -62,8 +64,9 @@ class PipManager:
     list() -> None
         Lists all installed Python packages using pip.
     """
+
     @staticmethod
-    def install(package):
+    def install(package: str):
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "install", package],
@@ -80,7 +83,7 @@ class PipManager:
             traceback.print_exc()
 
     @staticmethod
-    def update(package):
+    def update(package: str):
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "install", "--upgrade", package],
@@ -97,7 +100,7 @@ class PipManager:
             traceback.print_exc()
 
     @staticmethod
-    def uninstall(package):
+    def uninstall(package: str):
         try:
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "uninstall", "-y", package],
@@ -131,6 +134,37 @@ class PipManager:
             traceback.print_exc()
 
 
-# @command
-# def pypip() -> None:
-#     PipManager.list()
+@command
+def pypip() -> None:
+    """
+    Interactively manage Python packages using a PIP-like interface.
+    Prompts the user to select an action (List, Install, Remove, Update) and performs the corresponding
+    operation using the PIP. For Install, (Uninstall)Remove, and Update actions, the user is prompted to enter
+    the package name. Raises an exception if user input is cancelled or invalid.
+    Replicates basic PIP functionality within the application.
+    """
+    ig_ps = Ed.Editor.initGet(0, "List Install Remove Update")
+    if ig_ps != Ed.PromptStatus.eOk:
+        raise Exception(ig_ps)
+
+    kw_ps, kw_str = Ed.Editor.getKword("\n[List/Install/Remove/Update] <list>: ")
+    if kw_ps != Ed.PromptStatus.eOk and kw_ps != Ed.PromptStatus.eNone:
+        raise Exception(kw_ps)
+
+    def _getPackageName():
+        gs_ps, gs_str = Ed.Editor.getString("\nEnter package: ", Ed.PromptCondition.eNoEmpty)
+        if ig_ps != Ed.PromptStatus.eOk:
+            raise Exception(gs_ps)
+        return gs_str.strip()
+
+    match kw_str:
+        case "List":
+            PipManager.list()
+        case "Install":
+            PipManager.install(_getPackageName())
+        case "Remove":
+            PipManager.uninstall(_getPackageName())
+        case "Update":
+            PipManager.update(_getPackageName())
+        case _:
+            PipManager.list()
