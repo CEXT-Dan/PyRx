@@ -10,6 +10,7 @@ import pytest
 from pyrx import Db, Ed, Ge
 from pyrx.ed.prompt import (
     PromptException,
+    PromptExceptionNone,
     _ent_type_to_desc,
     _prompt,
     entsel,
@@ -115,6 +116,23 @@ class Test_get_point:
             assert isinstance(result, Ge.Point3d)
             assert result == point
 
+    def test_default(self):
+        point = Ge.Point3d(0, 0, 0)
+        with patch("pyrx.ed.prompt.Ed.Editor.getPoint") as mock_getPoint:
+            mock_getPoint.return_value = (Ed.PromptStatus.eOk, point)
+            result = get_point()
+            assert result == point
+
+            result = get_point(default=None)
+            assert result == point
+
+            mock_getPoint.return_value = (Ed.PromptStatus.eNone, point)
+            result = get_point(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_point()
+
 
 class Test_get_angle:
     def test_get_angle_in_radians(self):
@@ -149,6 +167,23 @@ class Test_get_angle:
             assert isinstance(result, float)
             assert result == angle
 
+    def test_default(self):
+        angle = 0.0
+        with patch("pyrx.ed.prompt.Ed.Editor.getAngle") as mock_getAngle:
+            mock_getAngle.return_value = (Ed.PromptStatus.eOk, angle)
+            result = get_angle()
+            assert result == angle
+
+            result = get_angle(default=None)
+            assert result == angle
+
+            mock_getAngle.return_value = (Ed.PromptStatus.eNone, angle)
+            result = get_angle(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_angle()
+
 
 class Test_get_corner:
     def test_get_corner_with_default_base_point(self):
@@ -172,6 +207,22 @@ class Test_get_corner:
             assert isinstance(result, Ge.Point3d)
             assert result == corner_point
 
+    def test_default(self):
+        corner_point = Ge.Point3d(0, 0, 0)
+        with patch("pyrx.ed.prompt.Ed.Editor.getCorner") as mock_getCorner:
+            mock_getCorner.return_value = (Ed.PromptStatus.eOk, corner_point)
+            result = get_corner()
+            assert result == corner_point
+
+            result = get_corner(default=None)
+            assert result == corner_point
+
+            mock_getCorner.return_value = (Ed.PromptStatus.eNone, corner_point)
+            result = get_corner(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_corner()
 
 class Test_get_dist:
     def test_get_dist_with_base_point(self):
@@ -200,6 +251,24 @@ class Test_get_dist:
             mock_getDist.assert_called_once_with(base_point, prompt)
             assert isinstance(result, float)
             assert result == distance
+
+    def test_default(self):
+        distance = 10.0
+        basePt = Ge.Point3d(0, 0, 0)
+        with patch("pyrx.ed.prompt.Ed.Editor.getDist") as mock_getDist:
+            mock_getDist.return_value = (Ed.PromptStatus.eOk, distance)
+            result = get_dist(basePt=basePt)
+            assert result == distance
+
+            result = get_dist(basePt=basePt,default=None)
+            assert result == distance
+
+            mock_getDist.return_value = (Ed.PromptStatus.eNone, distance)
+            result = get_dist(basePt=basePt,default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_dist(basePt=basePt)
 
 
 class Test_get_double:
@@ -236,6 +305,23 @@ class Test_get_double:
             assert isinstance(result, float)
             assert result == value
 
+    def test_default(self):
+        value = 10.0
+        with patch("pyrx.ed.prompt.Ed.Editor.getDouble") as mock_getDouble:
+            mock_getDouble.return_value = (Ed.PromptStatus.eOk, value)
+            result = get_double()
+            assert result == value
+
+            result = get_double(default=None)
+            assert result == value
+
+            mock_getDouble.return_value = (Ed.PromptStatus.eNone, value)
+            result = get_double(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_double()
+
 
 class Test_get_integer:
     def test_get_integer_without_condition(self):
@@ -270,6 +356,23 @@ class Test_get_integer:
             mock_getInteger.assert_called_once_with(prompt, Ed.PromptCondition(condition))
             assert isinstance(result, int)
             assert result == value
+
+    def test_default(self):
+        value = 10
+        with patch("pyrx.ed.prompt.Ed.Editor.getInteger") as mock_getInteger:
+            mock_getInteger.return_value = (Ed.PromptStatus.eOk, value)
+            result = get_integer()
+            assert result == value
+
+            result = get_integer(default=None)
+            assert result == value
+
+            mock_getInteger.return_value = (Ed.PromptStatus.eNone, value)
+            result = get_integer(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_integer()
 
 
 class Test_get_string:
@@ -454,3 +557,19 @@ class Test_get_kword:
             mock_init_get.assert_called_once()
             mock_getKword.assert_called_once_with("\nSelect a keyword [Yes/No]: ")
             assert result == "Yes"
+
+    def test_default(self):
+        with patch("pyrx.ed.prompt.Ed.Editor.getKword") as mock_getKword:
+            mock_getKword.return_value = (Ed.PromptStatus.eOk, "result")
+            result = get_kword()
+            assert result == "result"
+
+            result = get_kword(default=None)
+            assert result == "result"
+
+            mock_getKword.return_value = (Ed.PromptStatus.eNone, "result")
+            result = get_kword(default=None)
+            assert result is None
+
+            with pytest.raises(PromptExceptionNone):
+                get_kword()
