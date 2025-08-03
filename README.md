@@ -4,7 +4,7 @@
 [![Mypy Type Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml)
 [![Pytest Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml)
 [![Ruff Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml)
-# PyRx
+# Python for AutoCAD 
 
 Visit us on [PyPi](https://pypi.org/project/cad-pyrx/).  View the [Change Log](https://github.com/CEXT-Dan/PyRx/blob/main/CHANGE_LOG.md)
 
