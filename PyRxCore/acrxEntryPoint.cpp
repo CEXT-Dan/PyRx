@@ -378,7 +378,7 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ") -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
+    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", auto* desc = AcDbEntity::desc()) -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
@@ -386,6 +386,8 @@ public:
         int res = acedEntSel(msg, name, asDblArray(pnt));
         if (auto es = acdbGetObjectId(id, name); es != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
+        if (!id.objectClass()->isDerivedFrom(desc))
+            return std::make_tuple(Acad::PromptStatus::eRejected, id, pnt);
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
