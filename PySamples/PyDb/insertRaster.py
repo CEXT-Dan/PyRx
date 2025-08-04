@@ -2,11 +2,6 @@ from pyrx import Db
 
 print("added command do_raster")
 
-# debug
-def PyRxCmd_pydebug() -> None:
-    import PyRxDebug
-    PyRxDebug.startListener()
-
 def PyRxCmd_do_raster():
     try:
         dictName = "MY_IMAGE_NAME"
@@ -16,7 +11,7 @@ def PyRxCmd_do_raster():
            imageDictId = Db.RasterImageDef.createImageDictionary(db)
            
         imageDef = Db.RasterImageDef()
-        imageDef.setSourceFileName("C:\\Users\\Dan\\Pictures\\vb.jpg")
+        imageDef.setSourceFileName("M:/Dev/Projects/PyRxGit/tests/media/rastertest.jpg")
         imageDef.load()
        
         imageDict = Db.Dictionary(imageDictId, Db.OpenMode.kForWrite)
