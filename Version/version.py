@@ -57,7 +57,6 @@ def override_pyrx_version_h(major: str, minor: str, revision: str, version_revis
         content.replace("{MAJOR}", str(major))
         .replace("{MINOR}", str(minor))
         .replace("{REVISION}", str(revision))
-        .replace("{VERSION_REVISION}", version_revision)
     )
     PYRX_VERSION_H.write_text(content, "utf-8")
     print(

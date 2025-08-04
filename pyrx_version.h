@@ -4,7 +4,6 @@
 #define VERSION_MAJOR 2
 #define VERSION_MINOR 2
 #define VERSION_BUILD 23
-#define VERSION_REVISION 4619
 
 #define VERSION_STRINGIZE_I(x) #x
 #define VERSION_STRINGIZE(x) VERSION_STRINGIZE_I(x)
@@ -12,14 +11,12 @@
 #define VERSION_STRING \
     VERSION_STRINGIZE(VERSION_MAJOR) "." \
     VERSION_STRINGIZE(VERSION_MINOR) "." \
-    VERSION_STRINGIZE(VERSION_BUILD) "." \
-    VERSION_STRINGIZE(VERSION_REVISION)
+    VERSION_STRINGIZE(VERSION_BUILD)
 
 #define VERSION_STRING_WIDE \
     VERSION_STRINGIZE(VERSION_MAJOR) L"." \
     VERSION_STRINGIZE(VERSION_MINOR) L"." \
-    VERSION_STRINGIZE(VERSION_BUILD) L"." \
-    VERSION_STRINGIZE(VERSION_REVISION)
+    VERSION_STRINGIZE(VERSION_BUILD)
 
 constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
 constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul

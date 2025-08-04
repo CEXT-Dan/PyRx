@@ -73,7 +73,7 @@ void makePyApApplictionWrapper()
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("hostFileInfo", &PyApApplication::hostFileInfo, DS.SARGS()).staticmethod("hostFileInfo")
-        .def("pyrxVersion", &PyApApplication::pyrxVersion, DS.SARGS()).staticmethod("pyrxVersion")
+        .def("pyrxDLLVersion", &PyApApplication::pyrxDLLVersion, DS.SARGS()).staticmethod("pyrxDLLVersion")
         .def("regCommand", &PyApApplication::apregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: PyAp.CmdFlags" })).staticmethod("regCommand")
         .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str" })).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
@@ -201,7 +201,7 @@ std::string PyApApplication::hostFileInfo()
     return wstr_to_utf8(checkFileVersionInfo());
 }
 
-std::string PyApApplication::pyrxVersion()
+std::string PyApApplication::pyrxDLLVersion()
 {
     return wstr_to_utf8(getPyRxBuldVersion());
 }
