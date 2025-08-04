@@ -51,7 +51,7 @@ def parse_version(version: str) -> tuple:
     return match.groups()
 
 
-def override_pyrx_version_h(major: str, minor: str, revision: str, version_revision: str) -> None:
+def override_pyrx_version_h(major: str, minor: str, revision: str) -> None:
     content = PYRX_VERSION_H_TPL.read_text("utf-8")
     content = (
         content.replace("{MAJOR}", str(major))
@@ -61,7 +61,7 @@ def override_pyrx_version_h(major: str, minor: str, revision: str, version_revis
     PYRX_VERSION_H.write_text(content, "utf-8")
     print(
         f"The version in the file {PYRX_VERSION_H.name} "
-        f"has been set to: {major}.{minor}.{revision}.{version_revision}"
+        f"has been set to: {major}.{minor}.{revision}"
     )
 
 
@@ -89,8 +89,8 @@ def main():
     _, version_tuple = get_project_version()
     major, minor, revision, version_revision = version_tuple
     version_revision_inc = f"{int(version_revision) + 1}"
-    override_pyrx_version_h(major, minor, revision, version_revision_inc)
     override_pyrx_version_py(major, minor, revision, version_revision_inc)
+    override_pyrx_version_h(major, minor, revision)
     override_package_contents(major, minor, revision)
 
 
