@@ -93,7 +93,7 @@ def main() -> None:
         global wxRxApp
         wxRxApp = Ap.Application.wxApp()
         
-        #display verion_
+        #display version
         import pyrx._version
         print("\nPyRx version <{}>: ".format(pyrx._version.__version__))
         
