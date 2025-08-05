@@ -92,11 +92,12 @@ def main() -> None:
     try:
         global wxRxApp
         wxRxApp = Ap.Application.wxApp()
-        
-        #display version
-        import pyrx._version
-        print("\nPyRx version <{}>: ".format(pyrx._version.__version__))
-        
+
+        # display version
+        import pyrx
+
+        print("\nPyRx version <{}>: ".format(pyrx.__version__))
+
         # reload all pyrx modules if this module is reloaded
         reload("pyrx")
         # add PYDEBUG command
