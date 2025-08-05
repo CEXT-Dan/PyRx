@@ -280,7 +280,7 @@ public:
         acutPrintf(_T("\npyreload failed: "));
     }
 
-    static void AcRxPyApp_pyrxdllver(void)
+    static void AcRxPyApp_pyrxver(void)
     {
         printPyRxBuldVersion();
     }
@@ -430,7 +430,7 @@ public:
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxdllver, pyrxdllver, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 // lisp
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
