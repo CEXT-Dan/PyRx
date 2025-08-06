@@ -377,7 +377,8 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", auto* desc = AcDbEntity::desc()) -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
+    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ",const AcRxClass* desc = AcDbEntity::desc()) 
+        -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
@@ -419,7 +420,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-
+        auto [ps, id, pnt] = entsel();
+        AcDbEntityPointer pEnt(id);
+        acutPrintf(pEnt->layer());
     }
 #endif
 };
