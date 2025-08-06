@@ -9,7 +9,6 @@ kNoMap: ViewProjection  # 0
 
 class Core:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def getBlockImage(
         blkid: PyDb.ObjectId, sx: int, sy: int, zoomFactor: float, bkrgb: list[int] =  , /
@@ -27,7 +26,6 @@ class Core:
 
 class GraphicsKernel:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addRef(self, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -35,13 +33,11 @@ class GraphicsKernel:
 
 class GsManager:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
 
 class GsView:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def backClip(self, /) -> float:  
     @staticmethod
     def className() -> str:  
@@ -82,7 +78,6 @@ class GsView:
 
 class KernelDescriptor:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addSupport(self, /) -> None:  
     @staticmethod
     def className() -> str:  

@@ -20,7 +20,6 @@ kUnLocked: LockStatus  # 0
 
 class CalloutBlocks(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PySm.DbBlockRecordReference, /) -> None:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> CalloutBlocks:  
@@ -31,7 +30,6 @@ class CalloutBlocks(PySm.Component):
 
 class Component(PySm.Persist):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> Component:  
     @staticmethod
@@ -44,7 +42,6 @@ class Component(PySm.Persist):
 
 class CustomPropertyBag(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> CustomPropertyBag:  
     @staticmethod
@@ -57,7 +54,6 @@ class CustomPropertyBag(PySm.Persist):
 
 class CustomPropertyValue(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> CustomPropertyValue:  
     @staticmethod
@@ -69,7 +65,6 @@ class CustomPropertyValue(PySm.Persist):
 
 class DbBlockRecordReference(PySm.NamedDbObjectReference):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> DbBlockRecordReference:  
     @staticmethod
@@ -77,14 +72,12 @@ class DbBlockRecordReference(PySm.NamedDbObjectReference):
 
 class DbDatabase:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def getAcDbDatabase(self, /) -> PyDb.Database:  
 
 class DbLayoutReference(PySm.NamedDbObjectReference):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> DbLayoutReference:  
     @staticmethod
@@ -92,7 +85,6 @@ class DbLayoutReference(PySm.NamedDbObjectReference):
 
 class DbObjectReference(PySm.FileReference):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> DbObjectReference:  
     @staticmethod
@@ -105,7 +97,6 @@ class DbObjectReference(PySm.FileReference):
 
 class DbViewReference(PySm.NamedDbObjectReference):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> DbViewReference:  
     @staticmethod
@@ -113,7 +104,6 @@ class DbViewReference(PySm.NamedDbObjectReference):
 
 class FileReference(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> FileReference:  
     @staticmethod
@@ -131,7 +121,6 @@ class LockStatus(_BoostPythonEnum):
 
 class NamedDbObjectReference(PySm.DbObjectReference):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> NamedDbObjectReference:  
     @staticmethod
@@ -143,7 +132,6 @@ class NamedDbObjectReference(PySm.DbObjectReference):
 
 class ObjectReference(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> ObjectReference:  
     @staticmethod
@@ -159,7 +147,6 @@ class ObjectReferenceFlags(_BoostPythonEnum):
 
 class Persist:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> Persist:  
     @staticmethod
@@ -176,7 +163,6 @@ class Persist:
 
 class PersistProxy(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> PersistProxy:  
     @staticmethod
@@ -184,7 +170,6 @@ class PersistProxy(PySm.Persist):
 
 class ProjectPointLocation(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> ProjectPointLocation:  
     @staticmethod
@@ -201,7 +186,6 @@ class ProjectPointLocation(PySm.Persist):
 
 class ProjectPointLocations(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addNewLocation(
         self, name: str, url: str, folder: str, username: str, password: str, /
     ) -> ProjectPointLocation:  
@@ -221,7 +205,6 @@ class PropertyFlags(_BoostPythonEnum):
 
 class PublishOptions(PySm.Persist):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> PublishOptions:  
     @staticmethod
@@ -255,7 +238,6 @@ class PublishOptions(PySm.Persist):
 
 class Resources(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PySm.FileReference, /) -> None:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> Resources:  
@@ -266,7 +248,6 @@ class Resources(PySm.Component):
 
 class Sheet(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> Sheet:  
     @staticmethod
@@ -291,7 +272,6 @@ class Sheet(PySm.Component):
 
 class SheetSelSet(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PySm.Component, /) -> None:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SheetSelSet:  
@@ -302,7 +282,6 @@ class SheetSelSet(PySm.Component):
 
 class SheetSelSets(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, desc: str, /) -> SheetSelSet:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SheetSelSets:  
@@ -313,7 +292,6 @@ class SheetSelSets(PySm.Component):
 
 class SheetSet(PySm.Subset):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SheetSet:  
     @staticmethod
@@ -336,7 +314,6 @@ class SheetSet(PySm.Subset):
 
 class SheetSetMgr:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def close(self, smDb: PySm.Database, /) -> None:  
@@ -359,7 +336,6 @@ class SheetSetMgr:
 
 class SheetView(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SheetView:  
     @staticmethod
@@ -375,7 +351,6 @@ class SheetView(PySm.Component):
 
 class SheetViews(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SheetViews:  
     @staticmethod
@@ -385,7 +360,6 @@ class SheetViews(PySm.Component):
 
 class SmDatabase(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> SmDatabase:  
     @staticmethod
@@ -403,7 +377,6 @@ class SmDatabase(PySm.Component):
 
 class Subset(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addNewSheet(self, name: str, desc: str, /) -> Sheet:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> Subset:  
@@ -432,7 +405,6 @@ class Subset(PySm.Component):
 
 class ViewCategories(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> ViewCategories:  
     @staticmethod
@@ -444,7 +416,6 @@ class ViewCategories(PySm.Component):
 
 class ViewCategory(PySm.Component):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PySm.Persist, /) -> ViewCategory:  
     @staticmethod

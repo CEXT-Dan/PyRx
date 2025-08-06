@@ -107,7 +107,6 @@ class ArcType(_BoostPythonEnum):
 
 class CommonDraw(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -140,7 +139,6 @@ class DrawFlags(_BoostPythonEnum):
 
 class Drawable(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def bounds(self, ext: PyDb.Extents, /) -> bool:
     @staticmethod
     def className() -> str:  
@@ -157,7 +155,6 @@ class Drawable(PyRx.RxObject):
 
 class DrawableOverrule(PyRx.Overrule):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def baseViewportDraw(self, /) -> None:  
     def baseViewportDrawLogicalFlags(self, /) -> int:  
     def baseWorldDraw(self, /) -> bool:  
@@ -173,7 +170,6 @@ class DrawableOverrule(PyRx.Overrule):
 
 class DrawableTraits(PyGi.SubEntityTraits):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -186,7 +182,6 @@ class FillType(_BoostPythonEnum):
 
 class Geometry(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def circle(self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, /) -> bool:
     @overload
@@ -333,14 +328,12 @@ class GiDrawableType(_BoostPythonEnum):
 
 class GiGraphicsKernel:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def getDescriptor(self, /) -> GiKernelDescriptor:
 
 class GiKernelDescriptor:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def supports(self, /) -> bool:
@@ -362,7 +355,6 @@ class PixelBGRA32Array:
     def __init__(self, /) -> None:  
     def __iter__(self, /) -> object:  
     def __len__(self, /) -> int:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, /) -> None:  
     def append(self, /) -> None:  
     @staticmethod
@@ -403,7 +395,6 @@ class ShadowFlags(_BoostPythonEnum):
 
 class SubEntityTraits(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def color(self, /) -> int:  
@@ -455,7 +446,6 @@ class TransientDrawingMode(_BoostPythonEnum):
 
 class TransientManager:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable, /) -> bool:
     def addTransient(
         self,
@@ -489,7 +479,6 @@ class TransparencyMode(_BoostPythonEnum):
 
 class ViewportDraw(PyGi.CommonDraw):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -498,7 +487,6 @@ class ViewportDraw(PyGi.CommonDraw):
 
 class ViewportGeometry(PyGi.Geometry):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -511,7 +499,6 @@ class Visibility(_BoostPythonEnum):
 
 class WorldDraw(PyGi.CommonDraw):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -520,7 +507,6 @@ class WorldDraw(PyGi.CommonDraw):
 
 class WorldGeometry(PyGi.Geometry):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod

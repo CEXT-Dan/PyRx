@@ -57,7 +57,6 @@ class Ordering(_BoostPythonEnum):
 
 class Overrule(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def addOverrule(rxClass: PyRx.RxClass, overrule: PyRx.Overrule, /) -> None:  
     @staticmethod
@@ -79,7 +78,6 @@ class Overrule(PyRx.RxObject):
 
 class RxClass(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def appName(self, /) -> str:
     @staticmethod
     def className() -> str:  
@@ -95,7 +93,6 @@ class RxObject:
     def __hash__(self, /) -> int:  
     def __init__(self) -> None:
     def __ne__(self, rhs: PyRx.RxObject, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def comparedTo(self, other: PyRx.RxObject, /) -> Ordering:
@@ -114,13 +111,11 @@ class RxObject:
 
 class stderr:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def flush(self, /) -> None:  
     def write(self, /) -> None:  
 
 class stdout:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def flush(self, /) -> None:  
     def write(self, /) -> None:  
 ```

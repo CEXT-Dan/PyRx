@@ -35,6 +35,8 @@ def generate_md(moduleName, moduleFile):
                     continue
                 if 'import' in line:
                     continue
+                if '__reduce__' in line:
+                    continue
                 outfile.write(line.replace('...',' '))
             outfile.write('```\n')
                     
