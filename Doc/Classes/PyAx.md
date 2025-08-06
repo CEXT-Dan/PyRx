@@ -1515,7 +1515,6 @@ class AcZoomScaleType(_BoostPythonEnum):
 
 class Acad3DFace(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> Acad3DFace:  
     @staticmethod
@@ -1531,7 +1530,6 @@ class Acad3DFace(PyAx.AcadEntity):
 
 class Acad3DPolyline(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendVertex(self, vertex: PyGe.Point3d, /) -> None:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> Acad3DPolyline:  
@@ -1550,7 +1548,6 @@ class Acad3DPolyline(PyAx.AcadEntity):
 
 class Acad3DSolid(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def boolean(self, val: PyAx.AcBooleanType, solid: PyAx.Acad3DSolid, /) -> None:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> Acad3DSolid:  
@@ -1587,7 +1584,6 @@ class AcadAcCmColor:
     def __init__(self, r: int, g: int, b: int, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def blue(self, /) -> int:  
     def bookName(self, /) -> str:  
     @staticmethod
@@ -1608,7 +1604,6 @@ class AcadAcCmColor:
 
 class AcadApplication:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def acadState(self, /) -> AcadState:  
     def activeDocument(self, /) -> AcadDocument:  
     def caption(self, /) -> str:  
@@ -1656,7 +1651,6 @@ class AcadApplication:
 
 class AcadArc(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcLength(self, /) -> float:  
     def area(self, /) -> float:  
     @staticmethod
@@ -1681,7 +1675,6 @@ class AcadArc(PyAx.AcadEntity):
 
 class AcadAttribute(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignment(self, /) -> AcAlignment:  
     def backward(self, /) -> bool:  
     @staticmethod
@@ -1747,7 +1740,6 @@ class AcadAttribute(PyAx.AcadEntity):
 
 class AcadAttributeReference(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignment(self, /) -> AcAlignment:  
     def backward(self, /) -> bool:  
     @staticmethod
@@ -1805,7 +1797,6 @@ class AcadBlock(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:  
-    def __reduce__(self, /) -> Any:  
     def add3DFace(
         self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, p4: PyGe.Point3d, /
     ) -> Acad3DFace:  
@@ -2051,7 +2042,6 @@ class AcadBlock(PyAx.AcadObject):
 
 class AcadBlockReference(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def attributes(self, /) -> list[PyAx.AcadAttributeReference]:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlockReference:  
@@ -2093,7 +2083,6 @@ class AcadBlocks(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadBlock:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadBlock]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, insertionPoint: PyGe.Point3d, name: str, /) -> AcadBlock:  
     def blocks(self, /) -> list[PyAx.AcadBlock]:  
     @staticmethod
@@ -2107,7 +2096,6 @@ class AcadBlocks(PyAx.AcadObject):
 
 class AcadCircle(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, /) -> float:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadCircle:  
@@ -2130,7 +2118,6 @@ class AcadCircle(PyAx.AcadEntity):
 
 class AcadDatabase:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def blocks(self, /) -> AcadBlocks:  
     @staticmethod
     def className() -> str:  
@@ -2166,7 +2153,6 @@ class AcadDatabase:
 
 class AcadDatabasePreferences:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def allowLongSymbolNames(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -2212,7 +2198,6 @@ class AcadDictionaries(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadDictionary:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadDictionary]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadDictionary:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDictionaries:  
@@ -2224,7 +2209,6 @@ class AcadDictionaries(PyAx.AcadObject):
 
 class AcadDictionary(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addObject(self, keyword: str, objectName: str, /) -> AcadObject:  
     def addXRecord(self, keyword: str, /) -> AcadXRecord:  
     @staticmethod
@@ -2244,7 +2228,6 @@ class AcadDictionary(PyAx.AcadObject):
 
 class AcadDim3PointAngular(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def angleFormat(self, /) -> AcAngleUnits:  
     def angleVertex(self, /) -> PyGe.Point3d:  
     def arrowhead1Block(self, /) -> str:  
@@ -2329,7 +2312,6 @@ class AcadDim3PointAngular(PyAx.AcadDimension):
 
 class AcadDimAligned(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altSubUnitsFactor(self, /) -> float:  
     def altSubUnitsSuffix(self, /) -> str:  
     def altSuppressLeadingZeros(self, /) -> bool:  
@@ -2462,7 +2444,6 @@ class AcadDimAligned(PyAx.AcadDimension):
 
 class AcadDimAngular(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def angleFormat(self, /) -> AcAngleUnits:  
     def arrowhead1Block(self, /) -> str:  
     def arrowhead1Type(self, /) -> AcDimArrowheadType:  
@@ -2549,7 +2530,6 @@ class AcadDimAngular(PyAx.AcadDimension):
 
 class AcadDimArcLength(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altRoundDistance(self, /) -> float:  
     def altSubUnitsFactor(self, /) -> float:  
     def altSubUnitsSuffix(self, /) -> str:  
@@ -2694,7 +2674,6 @@ class AcadDimArcLength(PyAx.AcadDimension):
 
 class AcadDimDiametric(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altSuppressLeadingZeros(self, /) -> bool:  
     def altSuppressTrailingZeros(self, /) -> bool:  
     def altSuppressZeroFeet(self, /) -> bool:  
@@ -2798,7 +2777,6 @@ class AcadDimDiametric(PyAx.AcadDimension):
 
 class AcadDimOrdinate(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altRoundDistance(self, /) -> float:  
     def altSubUnitsFactor(self, /) -> float:  
     def altSubUnitsSuffix(self, /) -> str:  
@@ -2877,7 +2855,6 @@ class AcadDimOrdinate(PyAx.AcadDimension):
 
 class AcadDimRadial(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altRoundDistance(self, /) -> float:  
     def altSuppressLeadingZeros(self, /) -> bool:  
     def altSuppressTrailingZeros(self, /) -> bool:  
@@ -2977,7 +2954,6 @@ class AcadDimRadial(PyAx.AcadDimension):
 
 class AcadDimRadialLarge(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altRoundDistance(self, /) -> float:  
     def altSuppressLeadingZeros(self, /) -> bool:  
     def altSuppressTrailingZeros(self, /) -> bool:  
@@ -3074,7 +3050,6 @@ class AcadDimRadialLarge(PyAx.AcadDimension):
 
 class AcadDimRotated(PyAx.AcadDimension):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def altRoundDistance(self, /) -> float:  
     def altSubUnitsFactor(self, /) -> float:  
     def altSubUnitsSuffix(self, /) -> str:  
@@ -3209,7 +3184,6 @@ class AcadDimRotated(PyAx.AcadDimension):
 
 class AcadDimStyle(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimStyle:  
     @staticmethod
@@ -3222,7 +3196,6 @@ class AcadDimStyles(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadDimStyle:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadDimStyle]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadDimStyle:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimStyles:  
@@ -3234,7 +3207,6 @@ class AcadDimStyles(PyAx.AcadObject):
 
 class AcadDimension(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimension:  
     @staticmethod
@@ -3301,7 +3273,6 @@ class AcadDimension(PyAx.AcadEntity):
 class AcadDocument(PyAx.AcadDatabase):
     def HWND(self, /) -> int:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def activate(self, /) -> None:  
     def activeDimStyle(self, /) -> AcadDimStyle:  
     def activeLayer(self, /) -> AcadLayer:  
@@ -3381,7 +3352,6 @@ class AcadDocument(PyAx.AcadDatabase):
 class AcadDocuments:
     def __getitem__(self, index: int, /) -> AcadDocument:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, template: str =  , /) -> AcadDocument:  
     @staticmethod
     def className() -> str:  
@@ -3392,7 +3362,6 @@ class AcadDocuments:
 
 class AcadDynamicBlockReferenceProperty:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def allowedValues(self, /) -> list[PyDb.EvalVariant]:  
     @staticmethod
     def className() -> str:  
@@ -3406,7 +3375,6 @@ class AcadDynamicBlockReferenceProperty:
 
 class AcadEllipse(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, /) -> float:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadEllipse:  
@@ -3439,7 +3407,6 @@ class AcadEllipse(PyAx.AcadEntity):
 
 class AcadEntity(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def arrayPolar(
         self, numberOfObjects: int, angleToFill: float, centerPoint: PyGe.Point3d, /
     ) -> list[PyAx.AcadEntity]:  
@@ -3501,7 +3468,6 @@ class AcadEntity(PyAx.AcadObject):
 
 class AcadExternalReference(PyAx.AcadBlockReference):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadExternalReference:  
     @staticmethod
@@ -3514,7 +3480,6 @@ class AcadGroup(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:  
-    def __reduce__(self, /) -> Any:  
     def appendItems(self, val: Collection[PyAx.AcadEntity], /) -> None:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadGroup:  
@@ -3542,7 +3507,6 @@ class AcadGroups(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadGroup:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadGroup]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadGroup:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadGroups:  
@@ -3554,7 +3518,6 @@ class AcadGroups(PyAx.AcadObject):
 
 class AcadHatch(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendInnerLoop(self, objects: Collection[PyAx.AcadEntity], /) -> None:  
     def appendOuterLoop(self, objects: Collection[PyAx.AcadEntity], /) -> None:  
     def area(self, /) -> float:  
@@ -3608,7 +3571,6 @@ class AcadHatch(PyAx.AcadEntity):
 
 class AcadHyperlink:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def clear(self, /) -> None:  
@@ -3622,7 +3584,6 @@ class AcadHyperlink:
 class AcadHyperlinks:
     def __getitem__(self, name: str, description: str, namedLocation: str, /) -> AcadHyperlink:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, index: int, /) -> AcadHyperlink:  
     @staticmethod
     def className() -> str:  
@@ -3631,7 +3592,6 @@ class AcadHyperlinks:
 
 class AcadIdPair:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def isCloned(self, /) -> bool:  
@@ -3642,7 +3602,6 @@ class AcadIdPair:
 
 class AcadLWPolyline(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addVertex(self, index: int, val: PyGe.Point2d, /) -> None:  
     def area(self, /) -> float:  
     def bulge(self, index: int, /) -> float:  
@@ -3675,7 +3634,6 @@ class AcadLWPolyline(PyAx.AcadEntity):
 
 class AcadLayer(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayer:  
     @staticmethod
@@ -3712,7 +3670,6 @@ class AcadLayers(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadLayer:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadLayer]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadLayer:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayers:  
@@ -3724,7 +3681,6 @@ class AcadLayers(PyAx.AcadObject):
 
 class AcadLayout(PyAx.AcadPlotConfiguration):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def block(self, /) -> AcadBlock:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayout:  
@@ -3737,7 +3693,6 @@ class AcadLayouts(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadLayout:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadLayout]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadLayout:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayouts:  
@@ -3749,7 +3704,6 @@ class AcadLayouts(PyAx.AcadObject):
 
 class AcadLeader(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def annotation(self, /) -> AcadEntity:  
     def arrowheadBlock(self, /) -> str:  
     def arrowheadSize(self, /) -> float:  
@@ -3784,7 +3738,6 @@ class AcadLeader(PyAx.AcadEntity):
 
 class AcadLine(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def angle(self, /) -> float:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLine:  
@@ -3804,7 +3757,6 @@ class AcadLine(PyAx.AcadEntity):
 
 class AcadLineType(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLineType:  
     @staticmethod
@@ -3818,7 +3770,6 @@ class AcadLineTypes(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadLineType:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadLineType]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadLineType:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLineTypes:  
@@ -3830,7 +3781,6 @@ class AcadLineTypes(PyAx.AcadObject):
 
 class AcadMInsertBlock(PyAx.AcadBlockReference):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMInsertBlock:  
     @staticmethod
@@ -3846,7 +3796,6 @@ class AcadMInsertBlock(PyAx.AcadBlockReference):
 
 class AcadMLeader(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addLeader(self, /) -> int:  
     def addLeaderLine(self, val: int, coords: Collection[PyGe.Point3d], /) -> int:  
     def addLeaderLineEx(self, coords: Collection[PyGe.Point3d], /) -> int:  
@@ -3938,7 +3887,6 @@ class AcadMLeader(PyAx.AcadEntity):
 class AcadMLeaderStyle(PyAx.AcadObject):
     def BlockRotation(self, /) -> float:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignSpace(self, /) -> float:  
     def annotative(self, /) -> bool:  
     def arrowSize(self, /) -> float:  
@@ -4028,7 +3976,6 @@ class AcadMLeaderStyle(PyAx.AcadObject):
 
 class AcadMLine(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMLine:  
     @staticmethod
@@ -4043,7 +3990,6 @@ class AcadMLine(PyAx.AcadEntity):
 
 class AcadMText(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def attachmentPoint(self, /) -> AcAttachmentPoint:  
     def backgroundFill(self, /) -> bool:  
     @staticmethod
@@ -4079,7 +4025,6 @@ class AcadMText(PyAx.AcadEntity):
 
 class AcadMaterial(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMaterial:  
     @staticmethod
@@ -4093,7 +4038,6 @@ class AcadMaterials(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadMaterial:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadMaterial]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadMaterial:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMaterials:  
@@ -4106,7 +4050,6 @@ class AcadMaterials(PyAx.AcadObject):
 class AcadMenuBar:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def count(self, /) -> int:  
@@ -4114,7 +4057,6 @@ class AcadMenuBar:
 
 class AcadMenuGroup:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def fileName(self, /) -> str:  
@@ -4130,7 +4072,6 @@ class AcadMenuGroup:
 class AcadMenuGroups:
     def __getitem__(self, index: int, /) -> AcadMenuGroup:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def count(self, /) -> int:  
@@ -4141,7 +4082,6 @@ class AcadObject:
     def __hash__(self, /) -> int:  
     def __init__(self) -> None:
     def __ne__(self, rhs: PyAx.AcadObject, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadObject:  
     @staticmethod
@@ -4162,7 +4102,6 @@ class AcadObject:
 
 class AcadPViewport(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcSmoothness(self, /) -> int:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPViewport:  
@@ -4233,7 +4172,6 @@ class AcadPViewport(PyAx.AcadEntity):
 
 class AcadPlot:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def batchPlotProgress(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -4248,7 +4186,6 @@ class AcadPlot:
 
 class AcadPlotConfiguration(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def canonicalMediaName(self, /) -> str:  
     def canonicalMediaNames(self, /) -> list[str]:  
     @staticmethod
@@ -4309,7 +4246,6 @@ class AcadPlotConfigurations(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadPlotConfiguration:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadPlotConfiguration]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadPlotConfiguration:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPlotConfigurations:  
@@ -4321,7 +4257,6 @@ class AcadPlotConfigurations(PyAx.AcadObject):
 
 class AcadPoint(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPoint:  
     @staticmethod
@@ -4335,7 +4270,6 @@ class AcadPoint(PyAx.AcadEntity):
 
 class AcadPolyfaceMesh(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPolyfaceMesh:  
     @staticmethod
@@ -4350,7 +4284,6 @@ class AcadPolyfaceMesh(PyAx.AcadEntity):
 
 class AcadPolygonMesh(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendVertex(self, vertex: PyGe.Point3d, /) -> None:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPolygonMesh:  
@@ -4376,7 +4309,6 @@ class AcadPolygonMesh(PyAx.AcadEntity):
 
 class AcadPolyline(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, /) -> float:  
     def bulge(self, index: int, /) -> float:  
     @staticmethod
@@ -4409,7 +4341,6 @@ class AcadPolyline(PyAx.AcadEntity):
 class AcadPopupMenu:
     def __getitem__(self, index: int, /) -> AcadPopupMenuItem:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addMenuItem(self, idx: int, label: str, macro: str, /) -> AcadPopupMenuItem:  
     def addSeparator(self, idx: int, /) -> AcadPopupMenuItem:  
     def addSubMenu(self, idx: int, label: str, /) -> AcadPopupMenuItem:  
@@ -4429,7 +4360,6 @@ class AcadPopupMenu:
 
 class AcadPopupMenuItem:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def caption(self, /) -> str:  
     def check(self, /) -> bool:  
     @staticmethod
@@ -4456,7 +4386,6 @@ class AcadPopupMenuItem:
 class AcadPopupMenus:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, toolbarName: str, /) -> AcadPopupMenu:  
     @staticmethod
     def className() -> str:  
@@ -4468,7 +4397,6 @@ class AcadPopupMenus:
 
 class AcadPreferences:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def display(self, /) -> AcadPreferencesDisplay:  
@@ -4483,7 +4411,6 @@ class AcadPreferences:
 
 class AcadPreferencesDisplay:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def autoTrackingVecColor(self, /) -> tuple[int, int, int]:  
     @staticmethod
     def className() -> str:  
@@ -4541,7 +4468,6 @@ class AcadPreferencesDisplay:
 
 class AcadPreferencesDrafting:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignmentPointAcquisition(self, /) -> AcAlignmentPointAcquisition:  
     def autoSnapAperture(self, /) -> bool:  
     def autoSnapApertureSize(self, /) -> int:  
@@ -4569,7 +4495,6 @@ class AcadPreferencesDrafting:
 
 class AcadPreferencesFiles:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def activeInvProject(self, /) -> str:  
     def altFontFile(self, /) -> str:  
     def altTabletMenuFile(self, /) -> str:  
@@ -4647,7 +4572,6 @@ class AcadPreferencesFiles:
 
 class AcadPreferencesOpenSave:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def autoAudit(self, /) -> bool:  
     def autoSaveInterval(self, /) -> int:  
     @staticmethod
@@ -4680,7 +4604,6 @@ class AcadPreferencesOpenSave:
 
 class AcadPreferencesOutput:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def automaticPlotLog(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -4712,7 +4635,6 @@ class AcadPreferencesOutput:
 
 class AcadPreferencesProfiles:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def activeProfile(self, /) -> str:  
     @staticmethod
     def className() -> str:  
@@ -4726,7 +4648,6 @@ class AcadPreferencesProfiles:
 
 class AcadPreferencesSelection:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def displayGrips(self, /) -> bool:  
@@ -4754,7 +4675,6 @@ class AcadPreferencesSelection:
 
 class AcadPreferencesSystem:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def beepOnError(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -4776,7 +4696,6 @@ class AcadPreferencesSystem:
 
 class AcadPreferencesUser:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def acmEditMode(self, /) -> AcDrawingAreaSCMEdit:  
     def adcInsertUnitsDefaultSource(self, /) -> AcInsertUnits:  
     def adcInsertUnitsDefaultTarget(self, /) -> AcInsertUnits:  
@@ -4804,7 +4723,6 @@ class AcadPreferencesUser:
 
 class AcadRasterImage(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def brightness(self, /) -> int:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRasterImage:  
@@ -4843,7 +4761,6 @@ class AcadRasterImage(PyAx.AcadEntity):
 
 class AcadRay(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def basePoint(self, /) -> PyGe.Point3d:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRay:  
@@ -4857,7 +4774,6 @@ class AcadRay(PyAx.AcadEntity):
 
 class AcadRegion(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, /) -> float:  
     def boolean(self, booleanType: PyAx.AcBooleanType, region: PyAx.AcadRegion, /) -> None:  
     @staticmethod
@@ -4875,7 +4791,6 @@ class AcadRegion(PyAx.AcadEntity):
 
 class AcadRegisteredApplication(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRegisteredApplication:  
     @staticmethod
@@ -4887,7 +4802,6 @@ class AcadRegisteredApplications(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadRegisteredApplication:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadRegisteredApplication]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadRegisteredApplication:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRegisteredApplications:  
@@ -4899,7 +4813,6 @@ class AcadRegisteredApplications(PyAx.AcadObject):
 
 class AcadSection(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addVertex(self, index: int, val: PyGe.Point3d, /) -> None:  
     def bottomHeight(self, /) -> float:  
     @staticmethod
@@ -4939,7 +4852,6 @@ class AcadSection(PyAx.AcadEntity):
 
 class AcadSectionManager(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSectionManager:  
     @staticmethod
@@ -4951,7 +4863,6 @@ class AcadSectionManager(PyAx.AcadObject):
 
 class AcadSectionSettings(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSectionSettings:  
     @staticmethod
@@ -4962,7 +4873,6 @@ class AcadSectionSettings(PyAx.AcadObject):
 
 class AcadSectionTypeSettings:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def backgroundLinesColor(self, /) -> AcadAcCmColor:  
     def backgroundLinesHiddenLine(self, /) -> bool:  
     def backgroundLinesLayer(self, /) -> str:  
@@ -5066,7 +4976,6 @@ class AcadSectionTypeSettings:
 
 class AcadSecurityParams:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
 
@@ -5074,7 +4983,6 @@ class AcadSelectionSet:
     def __getitem__(self, index: int, /) -> AcadEntity:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:  
-    def __reduce__(self, /) -> Any:  
     def addItems(self, entities: Collection[PyAx.AcadEntity], /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -5112,7 +5020,6 @@ class AcadSelectionSet:
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadSelectionSet:  
     @staticmethod
     def className() -> str:  
@@ -5121,7 +5028,6 @@ class AcadSelectionSets:
 
 class AcadShape(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadShape:  
     @staticmethod
@@ -5145,7 +5051,6 @@ class AcadShape(PyAx.AcadEntity):
 
 class AcadSolid(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSolid:  
     @staticmethod
@@ -5159,7 +5064,6 @@ class AcadSolid(PyAx.AcadEntity):
 
 class AcadSortentsTable(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def block(self, /) -> AcadBlock:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSortentsTable:  
@@ -5180,7 +5084,6 @@ class AcadSortentsTable(PyAx.AcadObject):
 
 class AcadSpline(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addFitPoint(self, val: int, point: PyGe.Point3d, /) -> None:  
     def area(self, /) -> float:  
     @staticmethod
@@ -5231,7 +5134,6 @@ class AcadSpline(PyAx.AcadEntity):
 
 class AcadState:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def isQuiescent(self, /) -> bool:  
@@ -5239,7 +5141,6 @@ class AcadState:
 class AcadSummaryInfo:
     def __getitem__(self, index: int, /) -> tuple[str, str]:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addCustomInfo(self, key: str, val: str, /) -> None:  
     def author(self, /) -> str:  
     @staticmethod
@@ -5269,7 +5170,6 @@ class AcadSummaryInfo:
 
 class AcadTable(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def allowManualHeights(self, /) -> bool:  
     def allowManualPositions(self, /) -> bool:  
     def attachmentPoint(self, row: int, col: int, /) -> PyGe.Point3d:  
@@ -5565,7 +5465,6 @@ class AcadTable(PyAx.AcadEntity):
 
 class AcadTableStyle(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignment(self, cellStyle: str, /) -> AcCellAlignment:  
     def backgroundColor(self, cellStyle: str, /) -> AcadAcCmColor:  
     def bitFlags(self, /) -> int:  
@@ -5637,7 +5536,6 @@ class AcadTableStyle(PyAx.AcadObject):
 
 class AcadText(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignment(self, /) -> AcAlignment:  
     def backward(self, /) -> bool:  
     @staticmethod
@@ -5678,7 +5576,6 @@ class AcadText(PyAx.AcadEntity):
 
 class AcadTextStyle(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def bigFontFile(self, /) -> str:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyle:  
@@ -5707,7 +5604,6 @@ class AcadTextStyles(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadTextStyle:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadTextStyle]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadTextStyle:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyles:  
@@ -5719,7 +5615,6 @@ class AcadTextStyles(PyAx.AcadObject):
 
 class AcadTolerance(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTolerance:  
     @staticmethod
@@ -5748,7 +5643,6 @@ class AcadTolerance(PyAx.AcadEntity):
 class AcadToolbar:
     def __getitem__(self, index: int, /) -> AcadToolbarItem:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addToolbarButton(
         self, index: int, name: str, helpstr: str, macro: str, flyoutButton: bool, /
     ) -> AcadToolbarItem:  
@@ -5780,7 +5674,6 @@ class AcadToolbar:
 
 class AcadToolbarItem:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def attachToolbarToFlyout(self, menuGroupName: str, toolbarGroupName: str, /) -> None:  
     def bitmaps(self, /) -> tuple[str, str]:  
     @staticmethod
@@ -5804,7 +5697,6 @@ class AcadToolbarItem:
 class AcadToolbars:
     def __getitem__(self, index: int, /) -> AcadToolbar:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, toolbarName: str, /) -> AcadToolbar:  
     @staticmethod
     def className() -> str:  
@@ -5816,7 +5708,6 @@ class AcadToolbars:
 
 class AcadTrace(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTrace:  
     @staticmethod
@@ -5830,7 +5721,6 @@ class AcadTrace(PyAx.AcadEntity):
 
 class AcadUCS(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadUCS:  
     @staticmethod
@@ -5848,7 +5738,6 @@ class AcadUCSs(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadUCS:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadUCS]:  
-    def __reduce__(self, /) -> Any:  
     def add(
         self, origin: PyGe.Point3d, XDir: PyGe.Vector3d, YDir: PyGe.Vector3d, name: str, /
     ) -> AcadUCS:  
@@ -5862,7 +5751,6 @@ class AcadUCSs(PyAx.AcadObject):
 
 class AcadUtility:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def angleFromXAxis(self, startPoint: PyGe.Point3d, endPoint: PyGe.Point3d, /) -> float:  
     def angleToReal(self, angle: str, unit: PyAx.AcAngleUnits, /) -> float:  
     def angleToString(self, angle: float, unit: PyAx.AcAngleUnits, precision: int, /) -> str:  
@@ -5911,7 +5799,6 @@ class AcadUtility:
 
 class AcadView(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadView:  
     def categoryName(self, /) -> str:  
@@ -5939,7 +5826,6 @@ class AcadView(PyAx.AcadObject):
 
 class AcadViewport(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcSmoothness(self, /) -> int:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViewport:  
@@ -5985,7 +5871,6 @@ class AcadViewports(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadViewport:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadViewport]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadViewport:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViewports:  
@@ -5999,7 +5884,6 @@ class AcadViews(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadView:  
     def __init__(self) -> None:
     def __iter__(self, /) -> Iterator[PyAx.AcadView]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, /) -> AcadView:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViews:  
@@ -6011,7 +5895,6 @@ class AcadViews(PyAx.AcadObject):
 
 class AcadXRecord(PyAx.AcadObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadXRecord:  
     @staticmethod
@@ -6025,7 +5908,6 @@ class AcadXRecord(PyAx.AcadObject):
 
 class AcadXline(PyAx.AcadEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def basePoint(self, /) -> PyGe.Point3d:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadXline:  
@@ -6040,7 +5922,6 @@ class AcadXline(PyAx.AcadEntity):
 
 class ModelSpace(PyAx.AcadBlock):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> ModelSpace:  
     @staticmethod
@@ -6048,7 +5929,6 @@ class ModelSpace(PyAx.AcadBlock):
 
 class PaperSpace(PyAx.AcadBlock):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addPViewport(self, /) -> AcadPViewport:  
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> PaperSpace:  

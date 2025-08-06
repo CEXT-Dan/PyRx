@@ -64,7 +64,6 @@ kXWrite: DocLockMode  # 64
 
 class Application:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def acadApplication() -> PyAx.AcadApplication:  
     @staticmethod
@@ -130,7 +129,6 @@ class Application:
 
 class AutoDocLock:
     def __init__(self, docToLock: PyAp.Document =  , /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def doc(self, /) -> Document:  
@@ -157,7 +155,6 @@ class CmdFlags:
     UNDEFINED: int
     USEPICKSET: int
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class DocLockMode(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
@@ -170,7 +167,6 @@ class DocLockMode(_BoostPythonEnum):
 
 class DocManager(PyRx.RxObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def activateDocument(self, doc: PyAp.Document, bPassScript: bool = False, /) -> None:
     def appContextCloseDocument(self, doc: PyAp.Document, /) -> None:
     def appContextNewDocument(self, templateName: str, /) -> None:
@@ -227,7 +223,6 @@ class DocManager(PyRx.RxObject):
 
 class DocManagerReactor:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def addReactor(self, /) -> None:
     def documentActivated(self, val: Document, /) -> None:
     def documentActivationModified(self, val: bool, /) -> None:
@@ -261,7 +256,6 @@ class DocManagerReactor:
 
 class Document(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def autoLock(self, /) -> AutoDocLock:
     @staticmethod
     def className() -> str:  
@@ -292,7 +286,6 @@ class Document(PyRx.RxObject):
 
 class LayerFilter(PyRx.RxObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def addNested(self, val: PyAp.LayerFilter, /) -> None:
     def allowDelete(self, /) -> bool:
     def allowNested(self, /) -> bool:
@@ -318,7 +311,6 @@ class LayerFilter(PyRx.RxObject):
 
 class LayerFilterManager:
     def __init__(self, db: PyDb.Database =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def getFilters(self, /) -> tuple[PyAp.LayerFilter, PyAp.LayerFilter]:  
     @overload
     def setFilters(self, root: PyAp.LayerFilter, current: PyAp.LayerFilter, /) -> None:  
@@ -329,7 +321,6 @@ class LayerFilterManager:
 
 class LayerGroup(PyAp.LayerFilter):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addLayerId(self, id: PyDb.ObjectId, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -340,7 +331,6 @@ class LayerGroup(PyAp.LayerFilter):
 
 class LayoutManager(PyDb.LayoutManager):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def createLayoutFromTemplate(
@@ -383,7 +373,6 @@ class LayoutManager(PyDb.LayoutManager):
 
 class Palette:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def getWxWindow(self, /) -> object:  
 
 class PaletteDockStyle(_BoostPythonEnum):
@@ -396,7 +385,6 @@ class PaletteDockStyle(_BoostPythonEnum):
 
 class PaletteSet:
     def __init__(self, name: str, guid: str =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, name: str, panel: wx.Panel, /) -> int:  
     def anchored(self, /) -> bool:  
     def autoRollupStyle(self, /) -> bool:
@@ -475,7 +463,6 @@ class PyRxTestFlags(_BoostPythonEnum):
 
 class ResourceOverride:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
 
@@ -516,7 +503,6 @@ class SaveFormat(_BoostPythonEnum):
 
 class TransactionManager(PyDb.TransactionManager):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod

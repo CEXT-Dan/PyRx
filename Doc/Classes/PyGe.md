@@ -193,7 +193,6 @@ class AcGeXConfig(_BoostPythonEnum):
 
 class AutoTol:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def equalPoint(self, /) -> float:  
     def equalVector(self, /) -> float:  
     def setEqualPoint(self, val: float, /) -> None:  
@@ -208,7 +207,6 @@ class BoundBlock2d(PyGe.Entity2d):
     def __init__(self, base: PyGe.Point2d, dir1: PyGe.Vector2d, dir2: PyGe.Vector2d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> BoundBlock2d:  
     @staticmethod
@@ -242,7 +240,6 @@ class BoundBlock3d(PyGe.Entity3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> BoundBlock3d:  
     @staticmethod
@@ -278,7 +275,6 @@ class BoundedPlane(PyGe.PlanarEnt):
     def __init__(self, p1: PyGe.Point3d, origin: PyGe.Point3d, p2: PyGe.Point3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> BoundedPlane:  
     @staticmethod
@@ -325,7 +321,6 @@ class CircArc2d(PyGe.Curve2d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> CircArc2d:  
     def center(self, /) -> Point2d:  
@@ -402,7 +397,6 @@ class CircArc3d(PyGe.Curve3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> CircArc3d:  
     def center(self, /) -> Point3d:  
@@ -466,7 +460,6 @@ class ClipBoundary2d(PyGe.Entity2d):
     def __init__(self, clipBoundary: list[PyGe.Point2d], /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> ClipBoundary2d:  
     @staticmethod
@@ -483,7 +476,6 @@ class CompositeCurve2d(PyGe.Curve2d):
     def __init__(self, curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int], /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> CompositeCurve2d:  
     @staticmethod
@@ -511,7 +503,6 @@ class CompositeCurve3d(PyGe.Curve3d):
     def __init__(self, curveList: list[PyGe.Curve3d], isOwnerOfCurves: list[int], /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> CompositeCurve3d:  
     @staticmethod
@@ -561,7 +552,6 @@ class Cone(PyGe.Surface):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def apex(self, /) -> Point3d:  
     def axisOfSymmetry(self, /) -> Vector3d:  
     def baseCenter(self, /) -> Point3d:  
@@ -640,7 +630,6 @@ class CubicSplineCurve2d(PyGe.SplineEnt2d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> CubicSplineCurve2d:  
     @staticmethod
@@ -680,7 +669,6 @@ class CubicSplineCurve3d(PyGe.SplineEnt3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> CubicSplineCurve3d:  
     @staticmethod
@@ -695,7 +683,6 @@ class CubicSplineCurve3d(PyGe.SplineEnt3d):
 
 class Curve2d(PyGe.Entity2d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, startParam: float, endParam: float, tol: float =  , /) -> float:  
     def boundBlock(self, range: PyGe.Interval =  , /) -> BoundBlock2d:  
     @staticmethod
@@ -748,7 +735,6 @@ class Curve2d(PyGe.Entity2d):
 
 class Curve3d(PyGe.Entity3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def area(self, startParam: float, endParam: float, tol: float =  , /) -> float:
     def boundBlock(self, range: PyGe.Interval =  , /) -> BoundBlock3d:
     @staticmethod
@@ -852,7 +838,6 @@ class CurveCurveInt2d(PyGe.Entity2d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> CurveCurveInt2d:  
     def changeCurveOrder(self, /) -> None:  
@@ -914,7 +899,6 @@ class CurveCurveInt3d(PyGe.Entity3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> CurveCurveInt3d:  
     def changeCurveOrder(self, /) -> None:  
@@ -952,7 +936,6 @@ class CurveSurfInt(PyGe.Entity3d):
     def __init__(self, curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> CurveSurfInt:  
     @staticmethod
@@ -996,7 +979,6 @@ class Cylinder(PyGe.Surface):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def axisOfSymmetry(self, /) -> Vector3d:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Cylinder:  
@@ -1066,7 +1048,6 @@ class EllipArc2d(PyGe.Curve2d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> EllipArc2d:  
     def center(self, /) -> Point2d:  
@@ -1149,7 +1130,6 @@ class EllipArc3d(PyGe.Curve3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> EllipArc3d:  
     def center(self, /) -> Point3d:  
@@ -1214,7 +1194,6 @@ class Entity2d:
     def __hash__(self, /) -> int:  
     def __init__(self) -> None:
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def copy(self, /) -> Entity2d:  
@@ -1235,7 +1214,6 @@ class Entity3d:
     def __hash__(self, /) -> int:  
     def __init__(self) -> None:
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def copy(self, /) -> Entity3d:
@@ -1337,7 +1315,6 @@ class EntityId(_BoostPythonEnum):
 
 class ExternalBoundedSurface(PyGe.Surface):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> ExternalBoundedSurface:  
     @staticmethod
@@ -1347,7 +1324,6 @@ class ExternalBoundedSurface(PyGe.Surface):
 
 class ExternalCurve2d(PyGe.Curve2d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> ExternalCurve2d:  
     @staticmethod
@@ -1357,7 +1333,6 @@ class ExternalCurve2d(PyGe.Curve2d):
 
 class ExternalCurve3d(PyGe.Curve3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> ExternalCurve3d:  
     @staticmethod
@@ -1382,7 +1357,6 @@ class ExternalEntityKind(_BoostPythonEnum):
 
 class ExternalSurface(PyGe.Surface):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> ExternalSurface:  
     @staticmethod
@@ -1404,7 +1378,6 @@ class Interval:
     def __le__(self, val: PyGe.Interval | float, /) -> bool:  
     def __lt__(self, val: PyGe.Interval | float, /) -> bool:  
     def __ne__(self, val: PyGe.Interval, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def contains(self, val: PyGe.Interval | float, /) -> bool:  
@@ -1462,7 +1435,6 @@ class KnotVector:
     def __init__(self, plusMult: int, other: PyGe.KnotVector, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def append(self, val: float, /) -> int:  
     @overload
@@ -1512,7 +1484,6 @@ class Line2d(PyGe.LinearEnt2d):
     def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> Line2d:  
     @staticmethod
@@ -1537,7 +1508,6 @@ class Line3d(PyGe.LinearEnt3d):
     def __init__(self, startPoint: PyGe.Point3d, direction: PyGe.Vector3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Line3d:  
     @staticmethod
@@ -1563,7 +1533,6 @@ class LineSeg2d(PyGe.LinearEnt2d):
     def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def baryComb(self, blendCoeff: float, /) -> Point2d:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> LineSeg2d:  
@@ -1603,7 +1572,6 @@ class LineSeg3d(PyGe.LinearEnt3d):
     def __init__(self, startPoint: PyGe.Point3d, direction: PyGe.Vector3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def baryComb(self, /) -> Point3d:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> LineSeg3d:  
@@ -1632,7 +1600,6 @@ class LineSeg3d(PyGe.LinearEnt3d):
 
 class LinearEnt2d(PyGe.Curve2d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> LinearEnt2d:  
     @staticmethod
@@ -1655,7 +1622,6 @@ class LinearEnt2d(PyGe.Curve2d):
 
 class LinearEnt3d(PyGe.Curve3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> LinearEnt3d:  
     @staticmethod
@@ -1721,7 +1687,6 @@ class Matrix2d:
     def __init__(self, *args) -> None:  
     def __mul__(self, xform: PyGe.Matrix2d, /) -> Matrix2d:  
     def __ne__(self, other: PyGe.Matrix2d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def alignCoordSys(
         fo: PyGe.Point2d,
@@ -1798,7 +1763,6 @@ class Matrix3d:
     def __init__(self, *args) -> None:  
     def __mul__(self, xform: PyGe.Matrix3d, /) -> Matrix3d:  
     def __ne__(self, other: PyGe.Matrix3d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def alignCoordSys(
         fromOrigin: PyGe.Point3d,
@@ -1959,7 +1923,6 @@ class NurbCurve2d(PyGe.SplineEnt2d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addControlPointAt(self, newKnot: float, pt: PyGe.Point2d, weight: float, /) -> bool:  
     def addFitPointAt(self, idx: int, pt: PyGe.Point2d, /) -> bool:  
     def addKnot(self, val: float, /) -> None:  
@@ -2096,7 +2059,6 @@ class NurbCurve3d(PyGe.SplineEnt3d):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addControlPointAt(self, newKnot: float, pt: PyGe.Point3d, weight: float, /) -> bool:  
     def addFitPointAt(self, idx: int, pt: PyGe.Point3d, /) -> bool:  
     def addKnot(self, val: float, /) -> None:  
@@ -2189,7 +2151,6 @@ class NurbCurve3d(PyGe.SplineEnt3d):
 
 class NurbSurface(PyGe.Surface):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> NurbSurface:  
     @staticmethod
@@ -2204,7 +2165,6 @@ class OffsetCrvExtType(_BoostPythonEnum):
 
 class OffsetCurve2d(PyGe.Curve2d):
     def __init__(self, baseCurve: PyGe.Curve2d, offsetDistance: float, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> OffsetCurve2d:  
     @staticmethod
@@ -2216,7 +2176,6 @@ class OffsetCurve3d(PyGe.Curve3d):
     def __init__(
         self, baseCurve: PyGe.Curve3d, planeNormal: PyGe.Vector3d, offsetDistance: float, /
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> OffsetCurve3d:  
     @staticmethod
@@ -2234,7 +2193,6 @@ class OffsetCurve3d(PyGe.Curve3d):
 
 class OffsetSurface(PyGe.Surface):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> OffsetSurface:  
     @staticmethod
@@ -2244,7 +2202,6 @@ class OffsetSurface(PyGe.Surface):
 
 class PlanarEnt(PyGe.Surface):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> PlanarEnt:  
     @staticmethod
@@ -2287,7 +2244,6 @@ class Plane(PyGe.PlanarEnt):
     def __init__(self, a: float, b: float, c: float, d: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Plane:  
     @staticmethod
@@ -2327,7 +2283,6 @@ class Point2d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Point2d:  
     def __ne__(self, other: PyGe.Point2d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, idx: int, val: float, /) -> None:  
     def __sub__(self, other: PyGe.Point2d | PyGe.Vector2d, /) -> Point2d:  
     def __truediv__(self, val: float, /) -> Point2d:  
@@ -2358,7 +2313,6 @@ class Point2dArray:
     def __init__(self, /) -> None:  
     def __iter__(self, /) -> object:  
     def __len__(self, /) -> int:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, /) -> None:  
     def append(self, /) -> None:  
     def convexHull(self, /) -> Point2dArray:  
@@ -2372,7 +2326,6 @@ class Point2dArray:
 
 class Point2dTree:
     def __init__(self, points: Collection[PyGe.Point2d], /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def inputPoints(self, /) -> Point2dArray:  
@@ -2401,7 +2354,6 @@ class Point3d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Point3d:  
     def __ne__(self, pt: PyGe.Point3d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __rmul__(self, val: float | PyGe.Matrix3d, /) -> Point3d:  
     def __setitem__(self, idx: int, val: float, /) -> None:  
     def __sub__(self, val: PyGe.Vector3d | PyGe.Point3d, /) -> Vector3d:  
@@ -2445,7 +2397,6 @@ class Point3dArray:
     def __init__(self, /) -> None:  
     def __iter__(self, /) -> object:  
     def __len__(self, /) -> int:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, /) -> None:  
     def append(self, /) -> None:  
     def convexHull(self, /) -> Point3dArray:  
@@ -2461,7 +2412,6 @@ class Point3dArray:
 
 class Point3dTree:
     def __init__(self, points: Collection[PyGe.Point3d], /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def inputPoints(self, /) -> Point3dArray:  
@@ -2475,7 +2425,6 @@ class PointContainment(_BoostPythonEnum):
 
 class PointEnt2d(PyGe.Entity2d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> PointEnt2d:  
     @staticmethod
@@ -2486,7 +2435,6 @@ class PointEnt2d(PyGe.Entity2d):
 
 class PointEnt3d(PyGe.Entity3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> PointEnt3d:  
     @staticmethod
@@ -2504,7 +2452,6 @@ class PointOnCurve2d(PyGe.PointEnt2d):
     def __init__(self, curve: PyGe.Curve2d, param: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> PointEnt2d:  
     @staticmethod
@@ -2541,7 +2488,6 @@ class PointOnCurve3d(PyGe.PointEnt3d):
     def __init__(self, curve: PyGe.Curve3d, param: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> PointOnCurve3d:  
     @staticmethod
@@ -2580,7 +2526,6 @@ class PointOnSurface(PyGe.PointEnt3d):
     def __init__(self, surface: PyGe.Surface, pnt: PyGe.Point2d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> PointOnSurface:  
     @staticmethod
@@ -2663,7 +2608,6 @@ class Polyline2d(PyGe.SplineEnt2d):
     def __init__(self, crv: PyGe.Curve2d, apprEps: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> Polyline2d:  
     @staticmethod
@@ -2685,7 +2629,6 @@ class Polyline3d(PyGe.SplineEnt3d):
     def __init__(self, crv: PyGe.Curve3d, apprEps: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Polyline3d:  
     @staticmethod
@@ -2705,7 +2648,6 @@ class Position2d(PyGe.PointEnt2d):
     def __init__(self, x: float, y: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> Position2d:  
     @staticmethod
@@ -2728,7 +2670,6 @@ class Position3d(PyGe.PointEnt3d):
     def __init__(self, x: float, y: float, z: float, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Position3d:  
     @staticmethod
@@ -2751,7 +2692,6 @@ class Ray2d(PyGe.LinearEnt2d):
     def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> Ray2d:  
     @staticmethod
@@ -2774,7 +2714,6 @@ class Ray3d(PyGe.LinearEnt3d):
     def __init__(self, startPoint: PyGe.Point3d, direction: PyGe.Vector3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Ray3d:  
     @staticmethod
@@ -2802,7 +2741,6 @@ class Scale2d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Scale2d:  
     def __ne__(self, other: PyGe.Scale2d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, idx: int, val: float, /) -> None:  
     def postMultBy(self, right: PyGe.Scale2d, /) -> Scale2d:  
     def preMultBy(self, left: PyGe.Scale2d, /) -> Scale2d:  
@@ -2832,7 +2770,6 @@ class Scale3d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Scale3d:  
     def __ne__(self, other: PyGe.Scale3d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, idx: int, val: float, /) -> None:  
     def postMultBy(self, vec: PyGe.Vector3d, /) -> Scale3d:  
     def preMultBy(self, vec: PyGe.Vector3d, /) -> Scale3d:  
@@ -2870,7 +2807,6 @@ class Sphere(PyGe.Surface):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Sphere:  
     def center(self, /) -> Point3d:  
@@ -2913,7 +2849,6 @@ class Sphere(PyGe.Surface):
 
 class SplineEnt2d(PyGe.Curve2d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity2d, /) -> SplineEnt2d:  
     @staticmethod
@@ -2939,7 +2874,6 @@ class SplineEnt2d(PyGe.Curve2d):
 
 class SplineEnt3d(PyGe.Curve3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> SplineEnt3d:  
     @staticmethod
@@ -2972,7 +2906,6 @@ class SurfSurfInt(PyGe.Entity3d):
     def __init__(self, srf1: PyGe.Surface, srf2: PyGe.Surface, tol: PyGe.Tol, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> SurfSurfInt:  
     @staticmethod
@@ -2994,7 +2927,6 @@ class SurfSurfInt(PyGe.Entity3d):
 
 class Surface(PyGe.Entity3d):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> PyGe.Surface:  
     @staticmethod
@@ -3040,7 +2972,6 @@ class Surface(PyGe.Entity3d):
 
 class Tol:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def current() -> Tol:  
     def equalPoint(self, /) -> float:  
@@ -3052,7 +2983,6 @@ class Tol:
 
 class Torus(PyGe.Surface):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyGe.Entity3d, /) -> Torus:  
     @staticmethod
@@ -3078,7 +3008,6 @@ class Vector2d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Vector2d:  
     def __ne__(self, other: PyGe.Vector2d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @overload
     def __rmul__(self, val: float, /) -> Vector2d:  
     @overload
@@ -3146,7 +3075,6 @@ class Vector3d:
     def __len__(self, /) -> int:  
     def __mul__(self, val: float, /) -> Vector3d:  
     def __ne__(self, vec: PyGe.Vector3d, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __rmul__(self, val: float | PyGe.Matrix3d, /) -> Vector3d:  
     def __setitem__(self, idx: int, val: float, /) -> None:  
     def __sub__(self, vec: PyGe.Vector3d, /) -> Vector3d:  

@@ -96,7 +96,6 @@ kUninitialized: DeviceType  # -1
 
 class Core:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -125,7 +124,6 @@ class CustomSizeResult(_BoostPythonEnum):
 
 class DSDData(PyPl.PlObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def categoryName(self, /) -> str:  
     @staticmethod
     def className() -> str:  
@@ -190,7 +188,6 @@ class DSDEntry(PyPl.PlObject):
     def NPS(self, /) -> str:  
     def NPSSourceDWG(self, /) -> str:  
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -225,7 +222,6 @@ class MatchingPolicy(_BoostPythonEnum):
 
 class PlObject(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
 
@@ -237,7 +233,6 @@ class PlotCancelStatus(_BoostPythonEnum):
 
 class PlotConfig(PyPl.PlObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -259,7 +254,6 @@ class PlotConfig(PyPl.PlObject):
 
 class PlotConfigInfo(PyPl.PlObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -275,7 +269,6 @@ class PlotConfigInfo(PyPl.PlObject):
 
 class PlotConfigManager:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def getCurrentConfig(self, /) -> PlotConfig:  
@@ -287,7 +280,6 @@ class PlotConfigManager:
 
 class PlotEngine:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def beginDocument(
         self, plotInfo: PyPl.PlotInfo, docName: str, plotToFile: bool, fileName: str, /
     ) -> None:  
@@ -307,7 +299,6 @@ class PlotEngine:
 
 class PlotFactory:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -320,7 +311,6 @@ class PlotFactory:
 class PlotInfo(PyPl.PlObject):
     def OrgFilePath(self, /) -> str:  
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def copyFrom(self, otherObject: PyRx.RxObject, /) -> None:  
@@ -342,7 +332,6 @@ class PlotInfo(PyPl.PlObject):
 
 class PlotInfoValidator(PyPl.PlObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -388,7 +377,6 @@ class PlotMSGIndex(_BoostPythonEnum):
 
 class PlotPageInfo(PyPl.PlObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -415,7 +403,6 @@ class PlotProgressDialog:
     ) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def destroy(self, /) -> None:  
@@ -453,7 +440,6 @@ class PlotToFileCapability(_BoostPythonEnum):
 
 class PrecisionEntry(PyPl.PlObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def colorResolution(self, /) -> int:  

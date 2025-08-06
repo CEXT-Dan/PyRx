@@ -50,7 +50,6 @@ kWinding: LoopType  # 3
 
 class Brep(PyBr.Entity):
     def __init__(self, entity: PyDb.Entity =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -61,7 +60,6 @@ class Brep(PyBr.Entity):
 
 class Complex(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -69,7 +67,6 @@ class Complex(PyBr.Entity):
 
 class ComplexShellTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -83,7 +80,6 @@ class ComplexShellTraverser(PyBr.Traverser):
 
 class ComplexTraverser(PyBr.Traverser):
     def __init__(self, val: PyBr.Brep =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -97,7 +93,6 @@ class ComplexTraverser(PyBr.Traverser):
 
 class Edge(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -110,7 +105,6 @@ class Edge(PyBr.Entity):
 
 class EdgeLoopTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -124,7 +118,6 @@ class EdgeLoopTraverser(PyBr.Traverser):
 
 class EdgeTraverser(PyBr.Traverser):
     def __init__(self, val: PyBr.Brep =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -138,7 +131,6 @@ class EdgeTraverser(PyBr.Traverser):
 
 class Element(PyBr.MeshEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -146,7 +138,6 @@ class Element(PyBr.MeshEntity):
 
 class Element2d(PyBr.Element):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -155,7 +146,6 @@ class Element2d(PyBr.Element):
 
 class Element2dNodeTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -176,7 +166,6 @@ class Element2dShape(_BoostPythonEnum):
 
 class Entity(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def brepChanged(self, /) -> bool:  
     def checkEntity(self, /) -> bool:  
     @staticmethod
@@ -227,7 +216,6 @@ class ErrorStatus(_BoostPythonEnum):
 
 class Face(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -241,7 +229,6 @@ class Face(PyBr.Entity):
 
 class FaceLoopTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -255,7 +242,6 @@ class FaceLoopTraverser(PyBr.Traverser):
 
 class FaceTraverser(PyBr.Traverser):
     def __init__(self, val: PyBr.Brep =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -269,7 +255,6 @@ class FaceTraverser(PyBr.Traverser):
 
 class Hit(PyRx.RxObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def brepChanged(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -286,7 +271,6 @@ class Hit(PyRx.RxObject):
 
 class Loop(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -296,7 +280,6 @@ class Loop(PyBr.Entity):
 
 class LoopEdgeTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -321,7 +304,6 @@ class LoopType(_BoostPythonEnum):
 
 class LoopVertexTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -336,7 +318,6 @@ class LoopVertexTraverser(PyBr.Traverser):
 
 class MassProps:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def centroid(self, /) -> PyGe.Point3d:  
     def mass(self, /) -> float:  
     def momInertia(self, /) -> tuple:  
@@ -348,7 +329,6 @@ class MassProps:
 
 class Mesh(PyBr.MeshEntity):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -356,7 +336,6 @@ class Mesh(PyBr.MeshEntity):
 
 class Mesh2d(PyBr.Mesh):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -364,7 +343,6 @@ class Mesh2d(PyBr.Mesh):
 
 class Mesh2dElement2dTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -377,7 +355,6 @@ class Mesh2dElement2dTraverser(PyBr.Traverser):
 
 class MeshEntity(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def brepChanged(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -391,7 +368,6 @@ class MeshEntity(PyRx.RxObject):
 
 class Node(PyBr.MeshEntity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -409,7 +385,6 @@ class Relation(_BoostPythonEnum):
 
 class Shell(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -419,7 +394,6 @@ class Shell(PyBr.Entity):
 
 class ShellFaceTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -433,7 +407,6 @@ class ShellFaceTraverser(PyBr.Traverser):
 
 class ShellTraverser(PyBr.Traverser):
     def __init__(self, val: PyBr.Brep =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -452,7 +425,6 @@ class ShellType(_BoostPythonEnum):
 
 class Traverser(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def brepChanged(self, /) -> bool:  
     @staticmethod
     def className() -> str:  
@@ -472,7 +444,6 @@ class ValidationLevel(_BoostPythonEnum):
 
 class Vertex(PyBr.Entity):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -481,7 +452,6 @@ class Vertex(PyBr.Entity):
 
 class VertexEdgeTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -493,7 +463,6 @@ class VertexEdgeTraverser(PyBr.Traverser):
 
 class VertexLoopTraverser(PyBr.Traverser):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -506,7 +475,6 @@ class VertexLoopTraverser(PyBr.Traverser):
 
 class VertexTraverser(PyBr.Traverser):
     def __init__(self, val: PyBr.Brep =  , /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
