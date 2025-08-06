@@ -2,7 +2,7 @@ import traceback
 from typing import no_type_check
 from pyrx import Ap, Ed, Db
 
-src_path = "M:/Dev/Projects/PyRxGit/pyrx/"
+src_path = "../pyrx/"
 all_modules = [
     ("PyRx", "PyRx.pyi"),
     ("PyGe", "PyGe.pyi"),
@@ -20,7 +20,7 @@ all_modules = [
 
 def generate_md(moduleName, moduleFile):
     src_file = "{}{}".format(src_path,moduleFile)
-    dst_file = "{}{}".format(moduleName,".md")
+    dst_file = "../Doc/Classes/{}{}".format(moduleName,".md")
     
     ignore = False
     with open(src_file, 'r') as infile:
