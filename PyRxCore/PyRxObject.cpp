@@ -40,18 +40,13 @@ struct PyRxObjectDeleter
     // a clever solution
     inline bool isDbroThenClose(AcRxObject* p) const
     {
-        static constexpr const wchar_t* fmt = _T("\nStatus = %ls in %ls: ");
         if (m_isDbObject)
         {
             AcDbObject* pDbo = static_cast<AcDbObject*>(p);
             if (!pDbo->objectId().isNull())
             {
-#ifdef PYRXDEBUG
-                //acutPrintf(_T("\n%ls is closing %ls"), pDbo->isA()->name());
-#endif
-                if (const auto es = pDbo->close(); es != eOk) [[unlikely]] {
-                    acutPrintf(fmt, acadErrorStatusText(es), __FUNCTIONW__);
-                }
+                if (const auto es = pDbo->close(); es != eOk) [[unlikely]] 
+                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
                 return true;
             }
         }
