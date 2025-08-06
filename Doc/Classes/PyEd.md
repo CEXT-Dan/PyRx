@@ -104,12 +104,10 @@ kUseBasePointElevation: UserInputControls  # 32768
 
 class AutoSysVar:
     def __init__(self, varName: str, value, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def detach(self, val: bool, /) -> None:  
 
 class Core:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def addSupplementalCursorImage(
         image: wx.Image, order: int = 0, alpha: int = 255, /
@@ -565,7 +563,6 @@ class DragStyle:
     def __init__(
         self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType, /
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def setStyleTypeForDragged(
         self, styleTypeForDragged: PyEd.DragStyleType, /
     ) -> PyDb.ErrorStatus:  
@@ -586,7 +583,6 @@ class DragStyleType(_BoostPythonEnum):
 
 class DrawJig:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def acquireAngle(self, basePnt: PyGe.Point3d =  , /) -> tuple[PyEd.DragStatus, float]:  
     def acquireDist(self, basePnt: PyGe.Point3d =  , /) -> tuple[PyEd.DragStatus, float]:  
     def acquirePoint(
@@ -618,7 +614,6 @@ class DrawOrderCmdType(_BoostPythonEnum):
 
 class Editor:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def activeViewportId() -> PyDb.ObjectId:
     @staticmethod
@@ -790,7 +785,6 @@ class Editor:
 
 class EditorReactor:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def abortAttach(self, dbFrom: PyDb.Database, /) -> None:  
     def abortDeepClone(self, idMap: PyDb.IdMapping, /) -> None:  
     def abortDxfIn(self, db: PyDb.Database, /) -> None:  
@@ -912,7 +906,6 @@ class EditorReactor:
 
 class InputPoint:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def alignmentPaths(self, /) -> list[PyGe.Curve]:  
     def cartesianSnappedPoint(self, /) -> PyGe.Point3d:  
     def computedPoint(self, /) -> PyGe.Point3d:  
@@ -936,14 +929,12 @@ class InputPoint:
 
 class InputPointFilter:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def processInputPoint(
         self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /
     ) -> PyDb.ErrorStatus:  
 
 class InputPointFilterResult:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def displayOsnapGlyph(self, /) -> bool:  
     def newPoint(self, /) -> PyGe.Point3d:  
     def newTooltipString(self, /) -> str:  
@@ -955,7 +946,6 @@ class InputPointFilterResult:
 
 class InputPointManager:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addPointMonitor(self, monitor: PyEd.InputPointMonitor, /) -> None:  
     def disableSystemCursorGraphics(self, /) -> bool:  
     def enableMultiSubentPathSelection(self, /) -> None:  
@@ -973,21 +963,18 @@ class InputPointManager:
 
 class InputPointMonitor:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def monitorInputPoint(
         self, input: PyEd.InputPoint, output: PyEd.InputPointMonitorResult, /
     ) -> PyDb.ErrorStatus:  
 
 class InputPointMonitorResult:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def additionalTooltipString(self, /) -> str:  
     def appendToTooltipStr(self, /) -> bool:  
     def setAdditionalTooltipString(self, val: str, /) -> None:  
 
 class Jig:
     def __init__(self, entity: PyDb.Entity, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def acquireAngle(self, basePnt: PyGe.Point3d =  , /) -> tuple[PyEd.DragStatus, float]:  
     def acquireDist(self, basePnt: PyGe.Point3d =  , /) -> tuple[PyEd.DragStatus, float]:  
     def acquirePoint(
@@ -1058,7 +1045,6 @@ class PromptStatus(_BoostPythonEnum):
 class SelectionSet:
     def __init__(self, /) -> None:  
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, id: PyDb.ObjectId, /) -> None:  
     def adsname(self, /) -> PyDb.AdsName:  
     def clear(self, /) -> None:  
@@ -1087,7 +1073,6 @@ class SelectionSet:
 class UIContext:
     def OnUpdateMenu(self, /) -> None:  
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def addDefaultContextMenu(context: PyEd.UIContext, appName: str =  , /) -> bool:  
     @staticmethod
@@ -1121,11 +1106,9 @@ class UserInputControls(_BoostPythonEnum):
 
 class UserInteraction:
     def __init__(self, doc: PyAp.Document = "current", isPrompting: bool = True, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class Util:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def angle(pt1: PyGe.Point3d, pt2: PyGe.Point3d, /) -> float:  
     @staticmethod

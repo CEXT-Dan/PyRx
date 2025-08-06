@@ -1849,7 +1849,6 @@ class AbstractViewTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable:  
@@ -1868,7 +1867,6 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def ambientLightColor(self, /) -> Color:
     def backClipDistance(self, /) -> float:
     def backClipEnabled(self, /) -> bool:
@@ -1982,7 +1980,6 @@ class AcValue(PyRx.RxObject):
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def convertTo(self, dt: PyDb.ValueDataType, vt: PyDb.ValueUnitType, /) -> bool:  
@@ -2014,7 +2011,6 @@ class AcValue(PyRx.RxObject):
 
 class AdsName:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def fromObjectId(self, id: PyDb.ObjectId, /) -> None:  
     def toObjectId(self, /) -> ObjectId:  
 
@@ -2052,7 +2048,6 @@ class AlignedDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AlignedDimension:  
     @staticmethod
@@ -2082,7 +2077,6 @@ class AnnoType(_BoostPythonEnum):
 
 class AnnotationScale(PyDb.ObjectContext):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyDb.ObjectContext, /) -> AnnotationScale:  
     @staticmethod
@@ -2128,7 +2122,6 @@ class Arc(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Arc:  
     def center(self, /) -> PyGe.Point3d:
@@ -2194,7 +2187,6 @@ class ArcDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcEndParam(self, /) -> float:
     def arcPoint(self, /) -> PyGe.Point3d:
     def arcStartParam(self, /) -> float:
@@ -2234,7 +2226,6 @@ class AssocFlags(_BoostPythonEnum):
 
 class AssocPersSubentIdPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -2276,7 +2267,6 @@ class AttributeDefinition(PyDb.Text):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def adjustAlignment(self, val: Database, /) -> None:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AttributeDefinition:  
@@ -2323,7 +2313,6 @@ class AttributeReference(PyDb.Text):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AttributeReference:  
     @staticmethod
@@ -2360,7 +2349,6 @@ class AttributeReference(PyDb.Text):
 
 class AutoWorkingDatabase:
     def __init__(self, db: PyDb.Database, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def wdb(self, /) -> Database:  
 
 class BlockBegin(PyDb.Entity):
@@ -2372,7 +2360,6 @@ class BlockBegin(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> BlockBegin:  
     @staticmethod
@@ -2391,7 +2378,6 @@ class BlockEnd(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> BlockEnd:  
     @staticmethod
@@ -2414,7 +2400,6 @@ class BlockReference(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendAttribute(self, val: PyDb.AttributeReference, /) -> ObjectId:
     def attributeIds(self, /) -> list[PyDb.ObjectId]:  
     def blockTableRecord(self, /) -> ObjectId:
@@ -2456,7 +2441,6 @@ class BlockTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, block: BlockTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> BlockTable:  
@@ -2479,7 +2463,6 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, *args) -> None:
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]:  
-    def __reduce__(self, /) -> Any:  
     def addAnnoScalestoBlkRefs(self, scale: bool, /) -> None:
     def appendAcDbEntities(self, entities: Collection[PyDb.Entity], /) -> list[PyDb.ObjectId]:
     def appendAcDbEntity(self, entity: PyDb.Entity, /) -> ObjectId:
@@ -2556,7 +2539,6 @@ class Body(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Body:  
     @staticmethod
@@ -2575,7 +2557,6 @@ class Cell:
     def __getitem__(self, idx: int, /) -> int:  
     def __init__(self, row: int = -1, column: int = -1, /) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, idx: int, val: int, /) -> None:  
     @property
     def column(self, /) -> int:  
@@ -2654,7 +2635,6 @@ class CellRange:
         self, topRow: int = -1, leftColumn: int = -1, bottomRow: int = -1, rightColumn: int = -1, /
     ) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, idx: int, val: int, /) -> None:  
     @property
     def bottomRow(self, /) -> int:  
@@ -2700,7 +2680,6 @@ class Circle(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Circle:  
     def center(self, /) -> PyGe.Point3d:
@@ -2735,7 +2714,6 @@ class CollisionType(_BoostPythonEnum):
 class Color:
     def __init__(self, /) -> None:
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def blue(self, /) -> int:  
     def colorIndex(self, /) -> int:  
     def entityColor(self, /) -> EntityColor:  
@@ -2766,7 +2744,6 @@ class ColorMethod(_BoostPythonEnum):
 
 class Core:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def activeDatabaseArray() -> list[PyDb.PyDbDatabase]:
     @staticmethod
@@ -3041,7 +3018,6 @@ class Curve(PyDb.Entity):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Curve:  
     @staticmethod
@@ -3106,7 +3082,6 @@ class Curve(PyDb.Entity):
 class Database(PyRx.RxObject):
     def UCSTableId(self, /) -> ObjectId:
     def __init__(self, buildDefaultDrawing: bool = True, noDocument: bool = False, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def abortDeepClone(self, idmap: PyDb.IdMapping, /) -> None:
     def acadDatabase(self, /) -> PyAx.AcadDatabase:
     def addObject(self, object: PyDb.DbObject, /) -> ObjectId:
@@ -3705,7 +3680,6 @@ class DatabaseOpenMode(_BoostPythonEnum):
 
 class DatabaseReactor(PyRx.RxObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -3726,7 +3700,6 @@ class DatabaseReactor(PyRx.RxObject):
 class DatabaseSummaryInfo(PyRx.RxObject):
     def __getitem__(self, index: int, /) -> tuple:  
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addCustomSummaryInfo(self, key: str, val: str, /) -> None:  
     def asDict(self, /) -> dict:  
     @staticmethod
@@ -3777,7 +3750,6 @@ class Date:
     def __isub__(self, val: PyDb.Date, /) -> Date:  
     def __le__(self, val: PyDb.Date, /) -> bool:  
     def __lt__(self, val: PyDb.Date, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def __sub__(self, val: PyDb.Date, /) -> Date:  
     @staticmethod
     def className() -> object:  
@@ -3823,7 +3795,6 @@ class DbObject(PyGi.Drawable):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def addContext(self, obj: PyDb.ObjectContext, /) -> None:  
     def addPersistentReactor(self, id: PyDb.ObjectId, /) -> None:
     def addReactor(self, reactor: PyDb.DbObjectReactor, /) -> None:
@@ -3911,7 +3882,6 @@ class DbObject(PyGi.Drawable):
 
 class DbObjectOverrule(PyRx.Overrule):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def baseCancel(self, object: PyDb.DbObject, /) -> ErrorStatus:  
     def baseClose(self, object: PyDb.DbObject, /) -> ErrorStatus:  
     def baseDeepClone(
@@ -3960,7 +3930,6 @@ class DbObjectOverrule(PyRx.Overrule):
 
 class DbObjectReactor(PyRx.RxObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def cancelled(self, obj: PyDb.DbObject, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -4025,7 +3994,6 @@ class DiametricDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> DiametricDimension:  
     def chordPoint(self, /) -> PyGe.Point3d:
@@ -4047,7 +4015,6 @@ class DiametricDimension(PyDb.Dimension):
 
 class DictUtil:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def dictionaryGetAt(name: str, owner: PyDb.ObjectId, /) -> ObjectId:  
     @staticmethod
@@ -4118,7 +4085,6 @@ class Dictionary(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def asDict(self, /) -> dict[str, PyDb.ObjectId]:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Dictionary:  
@@ -4159,7 +4125,6 @@ class DimAssoc(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addToDimensionReactor(self, add: bool = True, /) -> None:
     def addToPointRefReactor(self, /) -> None:
     @overload
@@ -4244,7 +4209,6 @@ class DimStyleTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.DimStyleTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> DimStyleTable:  
@@ -4266,7 +4230,6 @@ class DimStyleTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def arrowId(self, val: PyDb.DimArrowFlags, /) -> ObjectId:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> DimStyleTableRecord:  
@@ -4442,7 +4405,6 @@ class Dimension(PyDb.Entity):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def altSuppressLeadingZeros(self, /) -> bool:
     def altSuppressTrailingZeros(self, /) -> bool:
     def altSuppressZeroFeet(self, /) -> bool:
@@ -4818,7 +4780,6 @@ class DxfCode(_BoostPythonEnum):
 
 class DynBlockReference:
     def __init__(self, val: PyDb.ObjectId, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def anonymousBlockTableRecord(self, /) -> ObjectId:
     def blockId(self, /) -> ObjectId:
     @staticmethod
@@ -4833,7 +4794,6 @@ class DynBlockReference:
 
 class DynBlockReferenceProperty:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def blockId(self, /) -> ObjectId:
     @staticmethod
     def className() -> str:  
@@ -4850,7 +4810,6 @@ class DynBlockReferenceProperty:
 
 class DynBlockTableRecord:
     def __init__(self, val: PyDb.ObjectId, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def blockTableRecordId(self, /) -> ObjectId:
     @staticmethod
     def className() -> str:  
@@ -4897,7 +4856,6 @@ class Ellipse(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def angleAtParam(self, val: float, /) -> float:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Ellipse:  
@@ -4964,7 +4922,6 @@ class Entity(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def addReactor(self, reactor: PyDb.EntityReactor, /) -> None:  
     def addSubentPaths(self, paths: list[PyDb.FullSubentPath], /) -> None:
     def blockId(self, /) -> ObjectId:
@@ -5093,7 +5050,6 @@ class EntityColor:
     def NoneClr() -> EntityColor:  
     def __init__(self, r: int, g: int, b: int, /) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def black() -> EntityColor:  
     def blue(self, /) -> int:  
@@ -5139,7 +5095,6 @@ class EntityColor:
 
 class EntityHyperlinkPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -5182,7 +5137,6 @@ class EntityHyperlinkPE(PyRx.RxObject):
 
 class EntityReactor(PyRx.RxObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def cancelled(self, obj: PyDb.DbObject, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -5746,7 +5700,6 @@ class EvalVariant(PyRx.RxObject):
     def __le__(self, /) -> bool:  
     def __lt__(self, /) -> bool:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def clear(self, /) -> None:
@@ -5778,7 +5731,6 @@ class Extents:
     def __init__(self, min: PyGe.Point3d, max: PyGe.Point3d, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addBlockExt(self, btr: PyDb.BlockTableRecord, /) -> None:
     def addExt(self, extents: PyDb.Extents, /) -> None:
     def addPoint(self, pt: PyGe.Point3d, /) -> None:
@@ -5800,7 +5752,6 @@ class Extents2d:
     def __init__(self, min: PyGe.Point2d, max: PyGe.Point2d, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addExt(self, ex: PyDb.Extents2d, /) -> None:
     def addPoint(self, pt: PyGe.Point2d, /) -> None:
     def addPoints(self, pts: list[PyGe.Point2d], /) -> None:
@@ -5822,7 +5773,6 @@ class ExtrudedSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ExtrudedSurface:  
     @staticmethod
@@ -5876,7 +5826,6 @@ class Face(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Face:  
     @staticmethod
@@ -5904,7 +5853,6 @@ class FaceRecord(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> FaceRecord:  
     @staticmethod
@@ -5934,7 +5882,6 @@ class Fcf(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Fcf:  
     @staticmethod
@@ -5991,7 +5938,6 @@ class Field(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Field:  
     def childCount(self, /) -> int:
@@ -6052,7 +5998,6 @@ class FieldCodeFlag(_BoostPythonEnum):
 
 class FieldEngine:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def evaluationOption(self, /) -> FieldEvalOption:  
@@ -6095,7 +6040,6 @@ class FieldEvalStatus(_BoostPythonEnum):
 
 class FieldEvaluator:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def beginEvaluateFields(self, context: int, db: PyDb.Database, /) -> None:
     @staticmethod
     def className() -> str:  
@@ -6161,7 +6105,6 @@ class FullSubentPath:
     @overload
     def __init__(self, *args) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     kNull: PyDb.SubentId
     def objectIds(self, /) -> list[PyDb.ObjectId]:
     def setObjectIds(self, ids: list[PyDb.ObjectId], /) -> None:
@@ -6170,7 +6113,6 @@ class FullSubentPath:
 
 class GeoCoordinateSystem:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -6267,7 +6209,6 @@ class GeoCoordinateSystemProjectionCode(_BoostPythonEnum):
 
 class GeoCoordinateSystemTransformer:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -6359,7 +6300,6 @@ class GeoData(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addMeshFace(self, idx: int, p0: int, p1: int, p2: int, /) -> None:
     def addMeshPointMap(self, idx: int, src: PyGe.Point2d, dest: PyGe.Point2d, /) -> None:
     def blockTableRecordId(self, /) -> ObjectId:
@@ -6440,7 +6380,6 @@ class GeoMap(PyDb.RasterImage):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def bottomLeftPt(self, /) -> PyGe.Point3d:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> GeoMap:  
@@ -6475,7 +6414,6 @@ class GeoPositionMarker(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> GeoPositionMarker:  
     @staticmethod
@@ -6528,7 +6466,6 @@ class GeoTypeOfCoordinates(_BoostPythonEnum):
 
 class Graph:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addEdge(self, pfrom: PyDb.GraphNode, pto: PyDb.GraphNode, /) -> None:  
     def addNode(self, val: PyDb.GraphNode, /) -> None:  
     def breakCycleEdge(self, pfrom: PyDb.GraphNode, pto: PyDb.GraphNode, /) -> None:  
@@ -6546,7 +6483,6 @@ class Graph:
 
 class GraphNode:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addRefTo(self, val: PyDb.GraphNode, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -6609,7 +6545,6 @@ class GridProperty(_BoostPythonEnum):
 
 class GripData:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def gripPoint(self, /) -> PyGe.Point3d:
@@ -6630,7 +6565,6 @@ class Group(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def allEntityIds(self, /) -> list[PyDb.ObjectId]:
     def append(self, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
     @staticmethod
@@ -6685,7 +6619,6 @@ class Handle:
     @overload
     def __init__(self, *args) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def decrement(self, /) -> None:  
     def high(self, /) -> int:  
     def increment(self, /) -> None:  
@@ -6701,11 +6634,9 @@ class Handle:
 
 class HardOwnershipId(PyDb.ObjectId):
     def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class HardPointerId(PyDb.ObjectId):
     def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class Hatch(PyDb.Entity):
     @overload
@@ -6718,7 +6649,6 @@ class Hatch(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendLoop(self, loopType: int, ids: list[PyDb.ObjectId], /) -> None:
     def appendLoopBulges(self, loopType: int, vertices: list, bulges: list, /) -> None:
     def appendLoopEdges(self, loopType: int, edges: list, edgeTypes: list, /) -> None:
@@ -6839,7 +6769,6 @@ class Helix(PyDb.Spline):
     def __init__(
         self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def axisPoint(self, /) -> PyGe.Point3d:  
     def axisVector(self, /) -> PyGe.Vector3d:  
     def baseRadius(self, /) -> float:  
@@ -6881,7 +6810,6 @@ class HelixConstrainType(_BoostPythonEnum):
 class HostApplicationServices:
     def LayoutManager(self, /) -> LayoutManager:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def companyName(self, /) -> str:
     @staticmethod
     def createOutputCapture() -> OutputDisplayService:  
@@ -6906,7 +6834,6 @@ class HostApplicationServices:
 
 class Hyperlink:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def description(self, /) -> str:  
@@ -6923,7 +6850,6 @@ class Hyperlink:
 
 class HyperlinkCollection:
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def addAt(
         self, index: int, sName: str, sDescription: str, sSubLocation: str =  , /
@@ -6944,7 +6870,6 @@ class HyperlinkCollection:
 
 class IdMapping:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def assign(self, pair: PyDb.IdPair, /) -> None:
     def change(self, pair: PyDb.IdPair, /) -> bool:
     def compute(self, pair: PyDb.IdPair, /) -> bool:
@@ -6975,7 +6900,6 @@ class IdPair:
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def isCloned(self, /) -> bool:
     def isOwnerXlated(self, /) -> bool:
     def isPrimary(self, /) -> bool:
@@ -6995,7 +6919,6 @@ class Image(PyDb.Entity):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Image:  
     @staticmethod
@@ -7036,7 +6959,6 @@ class ImageUnits(_BoostPythonEnum):
 
 class IndexFilterManager:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def addFilter(blkRef: PyDb.BlockReference, filter: PyDb.SpatialFilter, /) -> None:
     @staticmethod
@@ -7067,7 +6989,6 @@ class Intersect(_BoostPythonEnum):
 
 class JoinEntityPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -7100,7 +7021,6 @@ class LayerFilter(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def add(self, val: str, /) -> None:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LayerFilter:  
@@ -7118,7 +7038,6 @@ class LayerFilter(PyDb.DbObject):
 
 class LayerStateManager(PyRx.RxObject):
     def __init__(self, db: PyDb.Database =  , /) -> None:
-    def __reduce__(self, /) -> Any:  
     def addLayerStateLayers(self, sName: str, layerIds: list[PyDb.ObjectId], /) -> None:
     @staticmethod
     def className() -> str:  
@@ -7174,7 +7093,6 @@ class LayerTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.LayerTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LayerTable:  
@@ -7197,7 +7115,6 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LayerTableRecord:  
     @staticmethod
@@ -7266,7 +7183,6 @@ class Layout(PyDb.PlotSettings):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addToLayoutDict(self, db: PyDb.Database, id: PyDb.ObjectId, /) -> None:  
     def annoAllVisible(self, /) -> bool:  
     @staticmethod
@@ -7293,7 +7209,6 @@ class Layout(PyDb.PlotSettings):
 
 class LayoutManager(PyRx.RxObject):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -7333,7 +7248,6 @@ class Leader(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def annoHeight(self, /) -> float:  
     def annoType(self, /) -> AnnoType:  
     def annoWidth(self, /) -> float:  
@@ -7410,7 +7324,6 @@ class Line(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Line:  
     @staticmethod
@@ -7478,7 +7391,6 @@ class LineAngularDimension2(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcPoint(self, /) -> PyGe.Point3d:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LineAngularDimension2:  
@@ -7541,7 +7453,6 @@ class LinetypeTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.LinetypeTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LinetypeTable:  
@@ -7563,7 +7474,6 @@ class LinetypeTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord:  
     @staticmethod
@@ -7607,7 +7517,6 @@ class LoftedSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LoftedSurface:  
     @staticmethod
@@ -7639,7 +7548,6 @@ class MInsertBlock(PyDb.BlockReference):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> MInsertBlock:  
     @staticmethod
@@ -7669,7 +7577,6 @@ class MLeader(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:  
     def addLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:  
     def addLeader(self, /) -> int:  
@@ -7945,7 +7852,6 @@ class MLeaderStyle(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def alignSpace(self, /) -> float:  
     def annotative(self, /) -> bool:  
     def arrowSize(self, /) -> float:  
@@ -8093,7 +7999,6 @@ class MPolygon(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @overload
     def appendLoopFromBoundary(
         self, circle: PyDb.Circle, excludeCrossing: bool, tol: float, /
@@ -8203,7 +8108,6 @@ class MText(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def actualHeight(self, /) -> float:
     def actualWidth(self, /) -> float:
     def ascent(self, /) -> float:
@@ -8365,7 +8269,6 @@ class Mline(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def appendSeg(self, val: PyGe.Point3d, /) -> None:  
     def axisAt(self, val: int, /) -> PyGe.Vector3d:  
     @staticmethod
@@ -8430,7 +8333,6 @@ class MlineStyle(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def addElement(
         self,
         offset: float,
@@ -8488,7 +8390,6 @@ class NurbSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> NurbSurface:  
     @staticmethod
@@ -8500,7 +8401,6 @@ class NurbSurface(PyDb.Surface):
 
 class ObjectContext(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def collectionName(self, /) -> str:  
@@ -8512,7 +8412,6 @@ class ObjectContext(PyRx.RxObject):
 
 class ObjectContextCollection(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     def addContext(self, obj: PyDb.ObjectContext, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -8531,7 +8430,6 @@ class ObjectContextCollection(PyRx.RxObject):
 
 class ObjectContextManager(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def contextCollection(self, name: str, /) -> ObjectContextCollection:  
@@ -8550,7 +8448,6 @@ class ObjectId:
     def __le__(self, /) -> bool:  
     def __lt__(self, /) -> bool:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def acadObject(self, /) -> PyAx.AcadObject:  
     def asOldId(self, /) -> int:
     def convertToRedirectedId(self, /) -> bool:
@@ -8578,7 +8475,6 @@ class ObjectIdArray:
     def __init__(self, /) -> None:  
     def __iter__(self, /) -> object:  
     def __len__(self, /) -> int:  
-    def __reduce__(self, /) -> Any:  
     def __setitem__(self, /) -> None:  
     def append(self, /) -> None:  
     def clear(self, /) -> None:  
@@ -8593,7 +8489,6 @@ class ObjectIdArray:
 
 class ObjectIdGraph(PyDb.Graph):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def addNode(self, val: PyDb.ObjectIdGraphNode, /) -> None:  
     @staticmethod
     def className() -> str:  
@@ -8603,7 +8498,6 @@ class ObjectIdGraph(PyDb.Graph):
 
 class ObjectIdGraphNode(PyDb.GraphNode):
     def __init__(self, val: PyDb.ObjectId, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def id(self, /) -> ObjectId:  
@@ -8650,7 +8544,6 @@ class OrdinateDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> OrdinateDimension:  
     @staticmethod
@@ -8716,7 +8609,6 @@ class OsnapMode(_BoostPythonEnum):
 
 class OsnapOverrule(PyRx.Overrule):
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def baseGetOsnapPoints(
         self,
         pSubject: PyDb.Entity,
@@ -8774,7 +8666,6 @@ class OsnapPointRef(PyDb.PointRef):
     def __init__(self, refPt: PyGe.Point3d, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -8806,7 +8697,6 @@ class OsnapType(_BoostPythonEnum):
 
 class OutputDisplayService:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def getMuteCmdLine(self, /) -> bool:  
@@ -8815,7 +8705,6 @@ class OutputDisplayService:
 
 class PdfDefinition(PyDb.UnderlayDefinition):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PdfDefinition:  
     @staticmethod
@@ -8827,7 +8716,6 @@ class PdfDefinition(PyDb.UnderlayDefinition):
 
 class PdfReference(PyDb.UnderlayReference):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PdfReference:  
     @staticmethod
@@ -8850,7 +8738,6 @@ class PlaneSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PlaneSurface:  
     @staticmethod
@@ -8884,7 +8771,6 @@ class PlotSettings(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addToPlotSettingsDict(self, db: PyDb.Database, /) -> None:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PlotSettings:  
@@ -8946,7 +8832,6 @@ class PlotSettings(PyDb.DbObject):
 
 class PlotSettingsValidator:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def canonicalMediaNameList(self, settings: PyDb.PlotSettings, /) -> list[str]:  
     @staticmethod
     def className() -> str:  
@@ -9038,7 +8923,6 @@ class Point(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Point:  
     @staticmethod
@@ -9097,7 +8981,6 @@ class Point3AngularDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def arcPoint(self, /) -> PyGe.Point3d:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Point3AngularDimension:  
@@ -9119,7 +9002,6 @@ class Point3AngularDimension(PyDb.Dimension):
 
 class PointCloudClassificationColorRamp:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def color(self, val: int, /) -> EntityColor:  
@@ -9139,7 +9021,6 @@ class PointCloudColorMap(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PointCloudColorMap:  
     @staticmethod
@@ -9175,7 +9056,6 @@ class PointCloudColorMap(PyDb.DbObject):
 
 class PointCloudColorRamp:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def color(self, val: int, /) -> EntityColor:  
@@ -9190,7 +9070,6 @@ class PointCloudColorRamp:
 
 class PointCloudCrop:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def clear(self, /) -> None:  
@@ -9221,7 +9100,6 @@ class PointCloudDefEx(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def activeFileName(self, /) -> str:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PointCloudDefEx:  
@@ -9270,7 +9148,6 @@ class PointCloudEx(PyDb.Entity):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     def addCroppingBoundary(self, val: PyDb.PointCloudCrop, /) -> None:  
     @overload
     def applyGeoLocation(self, /) -> None:  
@@ -9422,7 +9299,6 @@ class PointCloudStylizationType(_BoostPythonEnum):
 
 class PointRef(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -9452,7 +9328,6 @@ class PolyFaceMeshVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex:  
     @staticmethod
@@ -9477,7 +9352,6 @@ class PolygonMeshVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex:  
     @staticmethod
@@ -9509,7 +9383,6 @@ class Polyline(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addVertexAt(
         self,
         idx: int,
@@ -9589,7 +9462,6 @@ class Polyline2d(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def appendVertex(self, vertex: PyDb.Vertex2d, /) -> None:
     @overload
@@ -9664,7 +9536,6 @@ class Polyline3d(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def appendVertex(self, vertex: PyDb.Polyline3dVertex, /) -> None:
     @overload
@@ -9725,7 +9596,6 @@ class Polyline3dVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Polyline3dVertex:  
     @staticmethod
@@ -9745,7 +9615,6 @@ class Profile3d(PyRx.RxObject):
     def __init__(self, val: PyDb.Entity, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -9784,7 +9653,6 @@ class RadialDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RadialDimension:  
     def center(self, /) -> PyGe.Point3d:
@@ -9848,7 +9716,6 @@ class RadialDimensionLarge(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge:  
     def center(self, /) -> PyGe.Point3d:
@@ -9886,7 +9753,6 @@ class RasterImage(PyDb.Image):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def brightness(self, /) -> int:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RasterImage:  
@@ -9946,7 +9812,6 @@ class RasterImageDef(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def activeFileName(self, /) -> str:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RasterImageDef:  
@@ -9989,7 +9854,6 @@ class RasterImageDefReactor(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor:  
     @staticmethod
@@ -10009,7 +9873,6 @@ class RegAppTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.RegAppTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RegAppTable:  
@@ -10031,7 +9894,6 @@ class RegAppTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RegAppTableRecord:  
     @staticmethod
@@ -10050,7 +9912,6 @@ class Region(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def booleanOper(self, operation: PyDb.BoolOperType, otherRegion: PyDb.Region, /) -> None:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Region:  
@@ -10104,7 +9965,6 @@ class ReservedStringEnumType(_BoostPythonEnum):
 
 class RevolveOptions:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def checkRevolveCurve(
         self,
         ent: PyDb.Entity,
@@ -10128,7 +9988,6 @@ class RevolvedSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RevolvedSurface:  
     @staticmethod
@@ -10179,7 +10038,6 @@ class RotatedDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RotatedDimension:  
     @staticmethod
@@ -10234,7 +10092,6 @@ class Section(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def addVertex(self, val: int, pt: PyGe.Point3d, /) -> None:  
     def bottomPlane(self, /) -> float:  
     @staticmethod
@@ -10314,7 +10171,6 @@ class SectionManager(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SectionManager:  
     @staticmethod
@@ -10337,7 +10193,6 @@ class SectionSettings(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SectionSettings:  
     @staticmethod
@@ -10499,7 +10354,6 @@ class SequenceEnd(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SequenceEnd:  
     @staticmethod
@@ -10540,7 +10394,6 @@ class Shape(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Shape:  
     @staticmethod
@@ -10573,22 +10426,18 @@ class Shape(PyDb.Entity):
 class SnoopDwgFiler:
     def __getitem__(self, /) -> object:  
     def __init__(self, filerType: PyDb.FilerType, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def buffer(self, /) -> list:  
 
 class SnoopDxfFiler:
     def __getitem__(self, /) -> object:  
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def buffer(self, /) -> list:  
 
 class SoftOwnershipId(PyDb.ObjectId):
     def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class SoftPointerId(PyDb.ObjectId):
     def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:  
-    def __reduce__(self, /) -> Any:  
 
 class Solid(PyDb.Entity):
     @overload
@@ -10607,7 +10456,6 @@ class Solid(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Solid:  
     @staticmethod
@@ -10634,7 +10482,6 @@ class Solid3d(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Solid3d:  
@@ -10810,7 +10657,6 @@ class SortentsTable(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def blockId(self, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SortentsTable:  
@@ -10847,7 +10693,6 @@ class SpatialFilter(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SpatialFilter:  
     @staticmethod
@@ -10991,7 +10836,6 @@ class Spline(PyDb.Curve):
     ) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Spline:  
     @staticmethod
@@ -11205,7 +11049,6 @@ class SubDMesh(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def cap(self, subentPaths: list[PyDb.FullSubentPath], /) -> None:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SubDMesh:  
@@ -11402,7 +11245,6 @@ class SubentId:
     @overload
     def __init__(self, *args) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def index(self, /) -> int:
     kNull: PyDb.SubentId
     def setIndex(self, indexMarker: int, /) -> None:
@@ -11432,7 +11274,6 @@ class Surface(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PyDb.Surface:  
     @staticmethod
@@ -11505,7 +11346,6 @@ class SweepMiterOption(_BoostPythonEnum):
 
 class SweepOptions:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def align(self, /) -> SweepAlignOption:  
     def alignAngle(self, /) -> float:  
     def alignStart(self, /) -> bool:  
@@ -11569,7 +11409,6 @@ class SweptSurface(PyDb.Surface):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SweptSurface:  
     @staticmethod
@@ -11581,7 +11420,6 @@ class SweptSurface(PyDb.Surface):
 
 class SymUtilServices:
     def __init__(self, /) -> None:  
-    def __reduce__(self, /) -> Any:  
     def blockModelSpaceId(self, db: PyDb.Database, /) -> ObjectId:  
     def blockModelSpaceName(self, /) -> str:  
     def blockPaperSpaceId(self, db: PyDb.Database, /) -> ObjectId:  
@@ -11641,7 +11479,6 @@ class SymbolTable(PyDb.DbObject):
         /,
     ) -> None:  
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.SymbolTableRecord, /) -> ObjectId:
     def asDict(self, /) -> dict[str, PyDb.ObjectId]:  
     @staticmethod
@@ -11665,7 +11502,6 @@ class SymbolTableRecord(PyDb.DbObject):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SymbolTableRecord:  
     @staticmethod
@@ -11690,7 +11526,6 @@ class Table(PyDb.BlockReference):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     @overload
     def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment:  
     @overload
@@ -12275,7 +12110,6 @@ class TableStyle(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @overload
     def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment:  
     @overload
@@ -12524,7 +12358,6 @@ class Text(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:  
     @overload
     def __init__(self, *args) -> None:  
-    def __reduce__(self, /) -> Any:  
     def adjustAlignment(self, val: Database, /) -> None:
     def alignmentPoint(self, /) -> PyGe.Point3d:
     @staticmethod
@@ -12604,7 +12437,6 @@ class TextStyleTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.TextStyleTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> TextStyleTable:  
@@ -12626,7 +12458,6 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def bigFontFileName(self, /) -> str:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> TextStyleTableRecord:  
@@ -12765,7 +12596,6 @@ class Trace(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Trace:  
     @staticmethod
@@ -12783,7 +12613,6 @@ class Trace(PyDb.Entity):
 
 class Transaction(PyRx.RxObject):
     def __init__(self) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     @staticmethod
@@ -12796,7 +12625,6 @@ class Transaction(PyRx.RxObject):
 
 class TransactionManager(PyRx.RxObject):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def abortTransaction(self, /) -> None:  
     def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool = True, /) -> None:  
     @staticmethod
@@ -12817,7 +12645,6 @@ class TransactionManager(PyRx.RxObject):
 class Transparency:
     def __init__(self, alpha: int | float, /) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def alpha(self, /) -> int:  
     def alphaPercent(self, /) -> float:  
     def isByAlpha(self, /) -> bool:  
@@ -12844,7 +12671,6 @@ class UCSTable(PyDb.SymbolTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.UCSTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UCSTable:  
@@ -12866,7 +12692,6 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UCSTableRecord:  
     @staticmethod
@@ -12886,7 +12711,6 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
 
 class UnderlayDefinition(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UnderlayDefinition:  
     @staticmethod
@@ -12908,7 +12732,6 @@ class UnderlayDefinition(PyDb.DbObject):
 
 class UnderlayLayer:
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def name(self, /) -> str:
     def setName(self, name: str, /) -> None:
     def setState(self, state: bool, /) -> None:
@@ -12925,7 +12748,6 @@ class UnderlayReference(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UnderlayReference:  
     @staticmethod
@@ -13078,7 +12900,6 @@ class Vertex(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PyDb.Vertex:  
     @staticmethod
@@ -13110,7 +12931,6 @@ class Vertex2d(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def bulge(self, /) -> float:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Vertex2d:  
@@ -13151,7 +12971,6 @@ class ViewTable(PyDb.AbstractViewTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable:  
@@ -13173,7 +12992,6 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def annotationScale(self, /) -> AnnotationScale:
     def camera(self, /) -> ObjectId:
     @staticmethod
@@ -13217,7 +13035,6 @@ class Viewport(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     def ambientLightColor(self, /) -> Color:
     def annotationScale(self, /) -> AnnotationScale:
     def backClipDistance(self, /) -> float:
@@ -13414,7 +13231,6 @@ class ViewportTable(PyDb.AbstractViewTable):
         erased: bool = False,
         /,
     ) -> None:  
-    def __reduce__(self, /) -> Any:  
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ViewportTable:  
@@ -13436,7 +13252,6 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ViewportTableRecord:  
     def circleSides(self, /) -> int:
@@ -13534,7 +13349,6 @@ class Wipeout(PyDb.RasterImage):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Wipeout:  
     @staticmethod
@@ -13557,7 +13371,6 @@ class Xrecord(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
     @overload
     def __init__(self, *args) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Xrecord:  
     @staticmethod
@@ -13573,7 +13386,6 @@ class Xrecord(PyDb.DbObject):
 
 class XrefGraph(PyDb.Graph):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     @staticmethod
     def className() -> str:  
     def hostDwg(self, /) -> XrefGraphNode:  
@@ -13591,7 +13403,6 @@ class XrefGraph(PyDb.Graph):
 
 class XrefGraphNode(PyDb.GraphNode):
     def __init__(self, /) -> None:
-    def __reduce__(self, /) -> Any:  
     def btrId(self, /) -> ObjectId:  
     @staticmethod
     def className() -> str:  
@@ -13610,7 +13421,6 @@ class XrefGraphNode(PyDb.GraphNode):
 class XrefObjectId:
     def __init__(self, /) -> None:  
     def __ne__(self, /) -> bool:  
-    def __reduce__(self, /) -> Any:  
     def getLocalId(self, id: PyDb.ObjectId, /) -> None:  
     def getXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None:  
     def isNull(self, /) -> bool:  
