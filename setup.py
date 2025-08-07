@@ -31,6 +31,8 @@ def version_scheme(version: ScmVersion) -> str:
     try:
         revision = get_revision_number()
     except Exception:
+        import traceback
+        traceback.print_exc()
         revision = "0"
     return f"{base_version}.{revision}"
 
