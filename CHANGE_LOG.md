@@ -1,3 +1,8 @@
+## v2.2.24
+
+Added new command PYPIP
+Added support for BricsCAD beta 2
+
 ## v2.2.23
 
 * minor update for BRX26
