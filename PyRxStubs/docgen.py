@@ -128,11 +128,45 @@ def generate_html(doc_data, title="Stub Documentation"):
         h1 {{
             color: #569cd6;
         }}
+        .tag {{
+            background: #007acc;
+            color: #fff;
+            border-radius: 4px;
+            padding: 0.1em 0.5em;
+            font-size: 0.9em;
+            margin-left: 0.5em;
+        }}
+        .toc {{
+            margin-bottom: 2em;
+        }}
     </style>
 </head>
 <body>
     <h1>{escape(title)}</h1>
+    <div class="toc">
+        <h2>Classes</h2>
+        <ul>
 """
+    # Table of contents with links
+    for class_name, _ in doc_data:
+        html += f'            <li><a href="#{escape(class_name)}">{escape(class_name)}</a></li>\n'
+
+    html += "        </ul>\n    </div>\n"
+
+    # Class sections with anchors and tags
+    for class_name, members in doc_data:
+        html += f"""
+    <div class="class" id="{escape(class_name)}">
+        <details>
+            <summary>class {escape(class_name)} <span class="tag">Class</span></summary>
+"""
+        for member in members:
+            html += f"            <code>{escape(member)}</code>\n"
+
+        html += "        </details>\n    </div>\n"
+
+    html += "</body>\n</html>"
+    return html
 
     for class_name, members in doc_data:
         html += f"""
