@@ -18799,44 +18799,50 @@ class Line(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     @overload
     def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     @overload
     def __init__(self, *args) -> None:
         """
-        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
-        is specified by its start point, endpoint, and normal vector. In addition, the line object
-        supports thickness along its normal vector direction (that is, height or 'extrusion').
+        The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
+        line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
+        endpoint, and normal vector. In addition, the line object supports thickness along its
+        normal vector direction (that is, height or 'extrusion').
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
