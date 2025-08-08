@@ -162,7 +162,7 @@ def docgen() -> None:
     try:
         for name, module in all_modules:
             src_file = "{}{}".format(src_path, module)
-            dst_file = "../Doc/Classes/{}{}".format(name, ".html")
+            dst_file = "./{}{}".format(name, ".html")
             generate_doc_from_pyi(src_file, dst_file)
 
     except Exception as err:
