@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PyBrxBim.pyi</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Consolas, monospace;
+            margin: 2em;
+        }
+        a {
+            color: #569cd6;
+        }
+        .class {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        details {
+            margin-left: 0.5em;
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 0.5em;
+        }
+        code {
+            display: block;
+            margin: 0.3em 0;
+            white-space: pre;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 0.4em 0.6em;
+            border-left: 4px solid #007acc;
+        }
+        h1 {
+            color: #569cd6;
+        }
+    </style>
+</head>
+<body>
+    <h1>PyBrxBim.pyi</h1>
+
+    <div class="class">
+        <details>
+            <summary>class BimAssets</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimBuilding</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def allObjectBuildings(db: PyDb.Database) -&gt; list</code>
+            <code>def allObjectStories(self) -&gt; list</code>
+            <code>def allObjectStoriesFromDb(db: PyDb.Database) -&gt; list</code>
+            <code>def allStringBuildings(db: PyDb.Database) -&gt; list</code>
+            <code>def allStringStories(self) -&gt; list</code>
+            <code>def allStringStoriesFromDb(db: PyDb.Database) -&gt; list</code>
+            <code>def assignToEntity(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignedBuilding(building: PyBrxBim.BimBuilding, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignedObjects(self, db: PyDb.Database) -&gt; list</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimBuilding</code>
+            <code>def className() -&gt; str</code>
+            <code>def createBuilding(self, name: str, db: PyDb.Database) -&gt; None</code>
+            <code>def createNewBuilding(db: PyDb.Database, name: str) -&gt; BimBuilding</code>
+            <code>def createStory(self, name: str) -&gt; None</code>
+            <code>def deleteBuildingFromDb(db: PyDb.Database, name: str) -&gt; None</code>
+            <code>def deleteStoryObject(self, story: PyBrxBim.BimStory) -&gt; None</code>
+            <code>def deleteStoryString(self, story: str) -&gt; None</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def getBuilding(db: PyDb.Database, name: str) -&gt; BimBuilding</code>
+            <code>def getStory(self, story: str) -&gt; BimStory</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def longName(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, desc: str) -&gt; None</code>
+            <code>def setLongName(self, name: str) -&gt; None</code>
+            <code>def setName(self, name: str) -&gt; None</code>
+            <code>def setNull(self) -&gt; None</code>
+            <code>def typeDesc(self) -&gt; BimObjectType</code>
+            <code>def typeName(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimCategory</summary>
+            <code>kStandard: ClassVar[Self]</code>
+            <code>kBricsys: ClassVar[Self]</code>
+            <code>kIFC2x3: ClassVar[Self]</code>
+            <code>kIFCCustom: ClassVar[Self]</code>
+            <code>kUser: ClassVar[Self]</code>
+            <code>kQuantity: ClassVar[Self]</code>
+            <code>kClassfication: ClassVar[Self]</code>
+            <code>kIFC4: ClassVar[Self]</code>
+            <code>kIFCQuantity: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimClassification</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def classifyAs(id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType) -&gt; None</code>
+            <code>def classifyAs(database: PyDb.database, objectType: PyBrxBim.BimElementType) -&gt; None</code>
+            <code>def classifyAs(id: PyDb.ObjectId, typeName: str) -&gt; None</code>
+            <code>def classifyAs(id: PyDb.ObjectId, typeName: str, localName: bool) -&gt; None</code>
+            <code>def classifyAs(*args) -&gt; None</code>
+            <code>def deleteProperty(id: PyDb.ObjectId, propertyName: str) -&gt; bool</code>
+            <code>def deleteProperty(id: PyDb.ObjectId, propertyName: str, category: PyBrxBim.EBimCategory) -&gt; bool</code>
+            <code>def deleteProperty(id: PyDb.ObjectId, propertyName: str, category: str) -&gt; bool</code>
+            <code>def deleteProperty(*args) -&gt; bool</code>
+            <code>def getAllClassified(db: PyDb.Database) -&gt; list</code>
+            <code>def getAllClassifiedAs(name: str, db: PyDb.Database) -&gt; list</code>
+            <code>def getAllClassifiedAsName(name: str, db: PyDb.Database, local: bool) -&gt; list</code>
+            <code>def getAllUnclassified(db: PyDb.Database) -&gt; list</code>
+            <code>def getAllUsedClassificationNames(db: PyDb.Database, local: bool) -&gt; list</code>
+            <code>def getAllUsedClassifications(db: PyDb.Database) -&gt; list</code>
+            <code>def getBimTypeNames(local: bool) -&gt; list</code>
+            <code>def getClassification() -&gt; Any</code>
+            <code>def getClassificationName(id: PyDb.ObjectId, localName: bool) -&gt; str</code>
+            <code>def getDescription(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getGUID(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getName(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getProperty(id: PyDb.ObjectId, propertyName: str) -&gt; PyDb.AcValue</code>
+            <code>def getProperty(id: PyDb.ObjectId, propertyName: str, category: PyBrxBim.EBimCategory) -&gt; PyDb.AcValue</code>
+            <code>def getProperty(id: PyDb.ObjectId, propertyName: str, category: str) -&gt; PyDb.AcValue</code>
+            <code>def getProperty(*args) -&gt; PyDb.AcValue</code>
+            <code>def getPropertyDict(id: PyDb.ObjectId) -&gt; dict</code>
+            <code>def getPropertyNames(id: PyDb.ObjectId) -&gt; list</code>
+            <code>def hasProperty(id: PyDb.ObjectId, propertyName: str) -&gt; bool</code>
+            <code>def hasProperty(id: PyDb.ObjectId, propertyName: str, category: PyBrxBim.EBimCategory) -&gt; bool</code>
+            <code>def hasProperty(id: PyDb.ObjectId, propertyName: str, category: str) -&gt; bool</code>
+            <code>def hasProperty(*args) -&gt; bool</code>
+            <code>def isClassified(val: PyDb.Database) -&gt; bool</code>
+            <code>def isClassifiedAs(id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType) -&gt; bool</code>
+            <code>def isClassifiedAs(database: PyDb.database, objectType: PyBrxBim.BimElementType) -&gt; bool</code>
+            <code>def isClassifiedAs(id: PyDb.ObjectId, typeName: str) -&gt; bool</code>
+            <code>def isClassifiedAs(id: PyDb.ObjectId, typeName: str, localName: bool) -&gt; bool</code>
+            <code>def isClassifiedAs(*args) -&gt; bool</code>
+            <code>def isClassifiedAsAnyBuildingElement(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def isUnclassified(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setDescription(id: PyDb.ObjectId, description: str) -&gt; None</code>
+            <code>def setName(id: PyDb.ObjectId, description: str) -&gt; None</code>
+            <code>def setProperty(id: PyDb.ObjectId, propertyName: str, val: PyDb.AcValue) -&gt; None</code>
+            <code>def setProperty(id: PyDb.ObjectId, propertyName: str, val: PyDb.AcValue, category: PyBrxBim.EBimCategory) -&gt; None</code>
+            <code>def setProperty(id: PyDb.ObjectId, propertyName: str, val: PyDb.AcValue, category: str) -&gt; None</code>
+            <code>def setProperty(*args) -&gt; None</code>
+            <code>def unClassify(val: PyDb.ObjectId | PyDb.Database) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimComposition</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, name: str) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimComposition</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimElementType</summary>
+            <code>eBimGenericBuildingElt: ClassVar[Self]</code>
+            <code>eBimSection: ClassVar[Self]</code>
+            <code>eBimWall: ClassVar[Self]</code>
+            <code>eBimWindow: ClassVar[Self]</code>
+            <code>eBimDoor: ClassVar[Self]</code>
+            <code>eBimColumn: ClassVar[Self]</code>
+            <code>eBimSlab: ClassVar[Self]</code>
+            <code>eBimBeam: ClassVar[Self]</code>
+            <code>eBimRoom: ClassVar[Self]</code>
+            <code>eBimCovering: ClassVar[Self]</code>
+            <code>eBimCurtainWall: ClassVar[Self]</code>
+            <code>eBimFlowTerminal: ClassVar[Self]</code>
+            <code>eBimFurnishingElement: ClassVar[Self]</code>
+            <code>eBimMember: ClassVar[Self]</code>
+            <code>eBimPile: ClassVar[Self]</code>
+            <code>eBimRailing: ClassVar[Self]</code>
+            <code>eBimRamp: ClassVar[Self]</code>
+            <code>eBimRampFlight: ClassVar[Self]</code>
+            <code>eBimRoof: ClassVar[Self]</code>
+            <code>eBimSite: ClassVar[Self]</code>
+            <code>eBimStair: ClassVar[Self]</code>
+            <code>eBimStairFlight: ClassVar[Self]</code>
+            <code>eBimFooting: ClassVar[Self]</code>
+            <code>eBimXReference: ClassVar[Self]</code>
+            <code>eBimDistributionControlElement: ClassVar[Self]</code>
+            <code>eBimDistributionPort: ClassVar[Self]</code>
+            <code>eBimDistributionFlowElement: ClassVar[Self]</code>
+            <code>eBimDistributionChamberElement: ClassVar[Self]</code>
+            <code>eBimEnergyConversionDevice: ClassVar[Self]</code>
+            <code>eBimFlowFitting: ClassVar[Self]</code>
+            <code>eBimFlowController: ClassVar[Self]</code>
+            <code>eBimFlowMovingDevice: ClassVar[Self]</code>
+            <code>eBimFlowSegment: ClassVar[Self]</code>
+            <code>eBimFlowStorageDevice: ClassVar[Self]</code>
+            <code>eBimFlowTreatmentDevice: ClassVar[Self]</code>
+            <code>eBimReinforcingBar: ClassVar[Self]</code>
+            <code>eBimReinforcingMesh: ClassVar[Self]</code>
+            <code>eBimTendon: ClassVar[Self]</code>
+            <code>eBimTendonAnchor: ClassVar[Self]</code>
+            <code>eBimPlate: ClassVar[Self]</code>
+            <code>eBimDiscreteAccessory: ClassVar[Self]</code>
+            <code>eBimFastener: ClassVar[Self]</code>
+            <code>eBimMechanicalFastener: ClassVar[Self]</code>
+            <code>eBimSchedule: ClassVar[Self]</code>
+            <code>eBimGridAxis: ClassVar[Self]</code>
+            <code>eBimGrid: ClassVar[Self]</code>
+            <code>eBimFlowConnectionPoint: ClassVar[Self]</code>
+            <code>eBimOpening: ClassVar[Self]</code>
+            <code>eBimAnnotation: ClassVar[Self]</code>
+            <code>eBimSpatialElementType: ClassVar[Self]</code>
+            <code>eBimSpaceType: ClassVar[Self]</code>
+            <code>eBimBuildingType: ClassVar[Self]</code>
+            <code>eBimStoryType: ClassVar[Self]</code>
+            <code>eBimViewportType: ClassVar[Self]</code>
+            <code>eBimProduct: ClassVar[Self]</code>
+            <code>eBimDetail: ClassVar[Self]</code>
+            <code>eNoBuildingElement: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimHatchPattern</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, scaleOrSpacing: float, angle: float, cross: bool) -&gt; None</code>
+            <code>def __init__(self, hType: PyBrxBim.BimHatchType, name: str, scaleOrSpacing: float, angle: float) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimHatchType</summary>
+            <code>eHatchNone: ClassVar[Self]</code>
+            <code>eHatchUserDefined: ClassVar[Self]</code>
+            <code>eHatchPredefined: ClassVar[Self]</code>
+            <code>eHatchCustom: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimInformationalAssets</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimLinearGeometry</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimMaterial</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, name: str) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimMaterial</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimNameSpaces</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def createNameSpace(szName: str) -&gt; None</code>
+            <code>def createNameSpace(szName: str, szLabel: str, visible: bool, db: PyDb.Database) -&gt; None</code>
+            <code>def createNameSpace(*args) -&gt; None</code>
+            <code>def deleteNameSpace(szNameOrLabel: str, db: PyDb.Database) -&gt; None</code>
+            <code>def getIsNameSpaceVisible(szNameOrLabel: str, db: PyDb.Database) -&gt; bool</code>
+            <code>def getNameSpaceLabel(szName: str, db: PyDb.Database) -&gt; str</code>
+            <code>def hasNameSpace(szNameOrLabel: str, db: PyDb.Database) -&gt; bool</code>
+            <code>def listNameSpaces(db: PyDb.Database) -&gt; dict</code>
+            <code>def setIsNameSpaceVisible(visible: bool, szNameOrLabel: str, db: PyDb.Database) -&gt; None</code>
+            <code>def setNameSpaceLabel(szName: str, szLable: str, db: PyDb.Database) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimObject</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimObject</code>
+            <code>def className() -&gt; str</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; None</code>
+            <code>def setName(self, val: str) -&gt; None</code>
+            <code>def setNull(self) -&gt; None</code>
+            <code>def typeDesc(self) -&gt; BimObjectType</code>
+            <code>def typeName(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimObjectType</summary>
+            <code>eBimUnknownObject: ClassVar[Self]</code>
+            <code>eBimSpatialLocation: ClassVar[Self]</code>
+            <code>eBimStory: ClassVar[Self]</code>
+            <code>eBimBuilding: ClassVar[Self]</code>
+            <code>eBimComposition: ClassVar[Self]</code>
+            <code>eBimRoomObject: ClassVar[Self]</code>
+            <code>eBimPly: ClassVar[Self]</code>
+            <code>eBimMaterial: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimPly</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, material: PyBrxBim.BimMaterial, function: PyBrxBim.MaterialFunction, thickness: float) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimPly</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimPolicies</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getPolicy(option: PyBrxBim.BimPolicyOptions) -&gt; bool</code>
+            <code>def setPolicy(option: PyBrxBim.BimPolicyOptions, enable: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimPolicyOptions</summary>
+            <code>eNothing: ClassVar[Self]</code>
+            <code>eInstantSave: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimProfile</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimRoom</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def assignToBuilding(self, val: PyBrxBim.BimBuilding) -&gt; None</code>
+            <code>def assignToBuildingS(id: PyDb.ObjectId, val: PyBrxBim.BimBuilding) -&gt; None</code>
+            <code>def assignToStory(self, val: PyBrxBim.BimStory) -&gt; None</code>
+            <code>def assignToStoryS(id: PyDb.ObjectId, val: PyBrxBim.BimStory) -&gt; None</code>
+            <code>def buildAssociativeRoomS(insidePoint: PyGe.Point3d, basePlane: PyGe.Plane) -&gt; PyDb.ObjectId</code>
+            <code>def buildNonAssociativeRoomS(id: PyDb.ObjectId) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimRoom</code>
+            <code>def className() -&gt; str</code>
+            <code>def createAssociativeRoom(self, insidePoint: PyGe.Point3d, basePlane: PyGe.Plane) -&gt; PyDb.ObjectId</code>
+            <code>def createNonAssociativeRoom(self, id: PyDb.ObjectId) -&gt; PyDb.ObjectId</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def descriptionS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getAllRoomsS() -&gt; list</code>
+            <code>def getAllRoomsS(db: PyDb.Database) -&gt; list</code>
+            <code>def getAllRoomsS(val: PyBrxBim.BimStory) -&gt; list</code>
+            <code>def getAllRoomsS(val: PyBrxBim.BimBuilding) -&gt; list</code>
+            <code>def getAllRoomsS(val: PyBrxBim.BimStory, db: PyDb.Database) -&gt; list</code>
+            <code>def getAllRoomsS(val: PyBrxBim.BimBuilding, db: PyDb.Database) -&gt; list</code>
+            <code>def getAllRoomsS(*args) -&gt; list</code>
+            <code>def getAssignedBuilding(self) -&gt; BimBuilding</code>
+            <code>def getAssignedBuildingS(id: PyDb.ObjectId) -&gt; BimBuilding</code>
+            <code>def getAssignedLocation(self) -&gt; BimSpatialLocation</code>
+            <code>def getAssignedLocationS(id: PyDb.ObjectId) -&gt; BimSpatialLocation</code>
+            <code>def getAssignedStory(self) -&gt; BimStory</code>
+            <code>def getAssignedStoryS(id: PyDb.ObjectId) -&gt; BimStory</code>
+            <code>def getBoundingElements(self) -&gt; list</code>
+            <code>def getBoundingElementsS(id: PyDb.ObjectId) -&gt; list</code>
+            <code>def getId(self) -&gt; PyDb.ObjectId</code>
+            <code>def getOpenings(self) -&gt; list</code>
+            <code>def getOpeningsS(id: PyDb.ObjectId) -&gt; list</code>
+            <code>def getRoomDepartment(self) -&gt; str</code>
+            <code>def getRoomDepartmentS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getRoomEntity(self) -&gt; PyDb.ObjectId</code>
+            <code>def getRoomEntityS(val: PyBrxBim.BimRoom) -&gt; PyDb.ObjectId</code>
+            <code>def getRoomRepresentation(self) -&gt; str</code>
+            <code>def getRoomRepresentationS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def isAssociativeRoom(self) -&gt; bool</code>
+            <code>def isAssociativeRoomS(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def isRoomValid(self) -&gt; bool</code>
+            <code>def isRoomValidS(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def roomArea(self) -&gt; float</code>
+            <code>def roomAreaS(id: PyDb.ObjectId) -&gt; float</code>
+            <code>def roomIdent(self) -&gt; str</code>
+            <code>def roomIdentS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def roomName(self) -&gt; str</code>
+            <code>def roomNameS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def roomNumber(self) -&gt; str</code>
+            <code>def roomNumberS(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; None</code>
+            <code>def setDescriptionS(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setId(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setName(self, val: str) -&gt; None</code>
+            <code>def setNull(self) -&gt; None</code>
+            <code>def setRoomDepartment(self, val: str) -&gt; None</code>
+            <code>def setRoomDepartmentS(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setRoomName(self, val: str) -&gt; None</code>
+            <code>def setRoomNameS(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setRoomNumber(self, val: str) -&gt; None</code>
+            <code>def setRoomNumberS(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setRoomRepresentation(self, val: str) -&gt; None</code>
+            <code>def setRoomRepresentationS(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def typeDesc(self) -&gt; BimObjectType</code>
+            <code>def typeName(self) -&gt; str</code>
+            <code>def unassignLocation(self) -&gt; None</code>
+            <code>def unassignLocationS(id: PyDb.ObjectId) -&gt; None</code>
+            <code>def updateAssociativeRoom(self) -&gt; None</code>
+            <code>def updateAssociativeRoomS(id: PyDb.ObjectId) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimSpace</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def assignToBuilding(id: PyDb.ObjectId, building: PyBrxBim.BimBuilding) -&gt; None</code>
+            <code>def assignToStory(id: PyDb.ObjectId, building: PyBrxBim.BimStory) -&gt; None</code>
+            <code>def className() -&gt; str</code>
+            <code>def createSpace(pt: PyGe.Point3d) -&gt; PyDb.ObjectId</code>
+            <code>def getAllSpaces() -&gt; list</code>
+            <code>def getAllSpaces(db: PyDb.Database) -&gt; list</code>
+            <code>def getAllSpaces(val: PyBrxBim.BimStory) -&gt; list</code>
+            <code>def getAllSpaces(val: PyBrxBim.BimBuilding) -&gt; list</code>
+            <code>def getAllSpaces(val: PyBrxBim.BimStory, db: PyDb.Database) -&gt; list</code>
+            <code>def getAllSpaces(val: PyBrxBim.BimBuilding, db: PyDb.Database) -&gt; list</code>
+            <code>def getAllSpaces(*args) -&gt; list</code>
+            <code>def getAssignedEntities(val: str | PyDb.ObjectId, db: PyDb.Database) -&gt; list</code>
+            <code>def getAssignedSpace(id: PyDb.ObjectId) -&gt; tuple</code>
+            <code>def getBoundingElements(id: PyDb.ObjectId) -&gt; list</code>
+            <code>def getSpaceArea(id: PyDb.ObjectId) -&gt; float</code>
+            <code>def getSpaceEntity(spaceName: str, db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def getSpaceName(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getSpaceNumber(id: PyDb.ObjectId) -&gt; str</code>
+            <code>def getSpaceRepresentation(id: PyDb.ObjectId) -&gt; BimSpaceRepresentation</code>
+            <code>def isSpaceUpdated(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def isSpaceValid(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setAssignedSpace(id: PyDb.ObjectId, val: str | PyDb.ObjectId) -&gt; None</code>
+            <code>def setSpaceName(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setSpaceNumber(id: PyDb.ObjectId, val: str) -&gt; None</code>
+            <code>def setSpaceRepresentation(id: PyDb.ObjectId, val: PyBrxBim.BimSpaceRepresentation) -&gt; None</code>
+            <code>def updateSpace(id: PyDb.ObjectId) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimSpaceRepresentation</summary>
+            <code>eSolid: ClassVar[Self]</code>
+            <code>eFootprint: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimSpatialLocation</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def assignToEntity(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignedObjects(self, id: PyDb.ObjectId) -&gt; list</code>
+            <code>def assignedSpatialLocation(id: PyDb.ObjectId) -&gt; BimSpatialLocation</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimSpatialLocation</code>
+            <code>def className() -&gt; str</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def hasBuilding(self) -&gt; bool</code>
+            <code>def hasStory(self) -&gt; bool</code>
+            <code>def isBuilding(self) -&gt; bool</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def isStory(self) -&gt; bool</code>
+            <code>def longName(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def removeSpatialLocationFrom(id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setDescription(self, desc: str) -&gt; None</code>
+            <code>def setLongName(self) -&gt; None</code>
+            <code>def setName(self, name: str) -&gt; None</code>
+            <code>def setNull(self) -&gt; None</code>
+            <code>def typeDesc(self) -&gt; BimObjectType</code>
+            <code>def typeName(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BimStory</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def allStories(db: PyDb.Database) -&gt; list</code>
+            <code>def allStoryNames(db: PyDb.Database) -&gt; list</code>
+            <code>def assignToEntity(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignedObjects(self, db: PyDb.Database) -&gt; list</code>
+            <code>def assignedStory(id: PyDb.ObjectId) -&gt; BimStory</code>
+            <code>def cast(otherObject: PyBrxBim.BimObject) -&gt; BimStory</code>
+            <code>def className() -&gt; str</code>
+            <code>def createNewStory(db: PyDb.Database, buildingName: str, storyName: str) -&gt; BimStory</code>
+            <code>def createStory(self, szName: str, building: PyBrxBim.BimBuilding) -&gt; None</code>
+            <code>def deleteStory(self) -&gt; None</code>
+            <code>def deleteStoryFromDatabase(db: PyDb.Database, buildingName: str, storyName: str) -&gt; None</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def elevation(self) -&gt; float</code>
+            <code>def getBuilding(self) -&gt; BimBuilding</code>
+            <code>def getStory(db: PyDb.Database, buildingName: str, storyName: str) -&gt; BimStory</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def longName(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, desc: str) -&gt; None</code>
+            <code>def setElevation(self, val: float) -&gt; None</code>
+            <code>def setLongName(self, name: str) -&gt; None</code>
+            <code>def setName(self, name: str) -&gt; None</code>
+            <code>def setNull(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BrxBimAttributeSet</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BrxBimDialogs</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Core</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def createAnchoredBlockReference(blockRefId: PyDb.ObjectId, faceSubentPath: PyDb.FullSubentPath, pt: PyGe.Point3d, keepOrientation: bool) -&gt; PyDb.ObjectId</code>
+            <code>def findMatchingBlockDefinition(entitySet: list[PyDb.ObjectId]) -&gt; tuple</code>
+            <code>def findSimilar3dSolids(entitySet: list[PyDb.ObjectId]) -&gt; tuple</code>
+            <code>def findSimilarGeometry(matchSet: list[PyDb.ObjectId], searchSet: list[PyDb.ObjectId]) -&gt; tuple</code>
+            <code>def getAnchorFace(id: PyDb.ObjectId) -&gt; PyDb.FullSubentPath</code>
+            <code>def getAnchoredBlockReferences(db: PyDb.Database) -&gt; list</code>
+            <code>def isAnchoredBlockRef(id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def isSimilarGeometry(firstSet: list[PyDb.ObjectId], secondSet: list[PyDb.ObjectId]) -&gt; tuple</code>
+            <code>def matchEntitiesToBlockDefinitions(entitySet: list[PyDb.ObjectId]) -&gt; tuple</code>
+            <code>def queryValidAnchorPt(pt: PyGe.Point3d, db: PyDb.Database) -&gt; PyDb.FullSubentPath</code>
+            <code>def replaceGeometryByBlocks(similarGroups: tuple) -&gt; tuple</code>
+            <code>def unAnchorBlockReference(id: PyDb.ObjectId) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcBinary</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def clear(self) -&gt; None</code>
+            <code>def getBit(self, val: int) -&gt; bool</code>
+            <code>def getEncodedString(self) -&gt; str</code>
+            <code>def isEmpty(self) -&gt; bool</code>
+            <code>def numBits(self) -&gt; int</code>
+            <code>def reset(self, val: str) -&gt; None</code>
+            <code>def resize(self, val: int) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcEntity</summary>
+            <code>def IfcId(self) -&gt; int</code>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def create(model: PyBrxBim.IfcModel, entityDesc: PyBrxBim.IfcEntityDesc) -&gt; IfcEntity</code>
+            <code>def createNull() -&gt; IfcEntity</code>
+            <code>def getAttribute(self, val: str) -&gt; IfcVariant</code>
+            <code>def getInverseRefs(self) -&gt; list</code>
+            <code>def isA(self) -&gt; IfcEntityDesc</code>
+            <code>def isKindOf(self, val: PyBrxBim.IfcEntityDesc) -&gt; bool</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def setAttribute(self, val: str, attribValue: PyBrxBim.IfcVariant) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcEntityDesc</summary>
+            <code>def Ifc2DCompositeCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcActionRequest() -&gt; IfcEntityDesc</code>
+            <code>def IfcActor() -&gt; IfcEntityDesc</code>
+            <code>def IfcActorRole() -&gt; IfcEntityDesc</code>
+            <code>def IfcActuator() -&gt; IfcEntityDesc</code>
+            <code>def IfcActuatorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAddress() -&gt; IfcEntityDesc</code>
+            <code>def IfcAdvancedBrep() -&gt; IfcEntityDesc</code>
+            <code>def IfcAdvancedBrepWithVoids() -&gt; IfcEntityDesc</code>
+            <code>def IfcAdvancedFace() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirTerminalBox() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirTerminalBoxType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirToAirHeatRecovery() -&gt; IfcEntityDesc</code>
+            <code>def IfcAirToAirHeatRecoveryType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlarm() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlarmType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DHorizontal() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DHorizontalSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DVerSegCircularArc() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DVerSegLine() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DVerSegParabolicArc() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DVertical() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignment2DVerticalSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcAlignmentCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcAngularDimension() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotation() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationCurveOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationFillArea() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationFillAreaOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationSurfaceOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationSymbolOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcAnnotationTextOccurrence() -&gt; IfcEntityDesc</code>
+            <code>def IfcApplication() -&gt; IfcEntityDesc</code>
+            <code>def IfcAppliedValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcAppliedValueRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcApproval() -&gt; IfcEntityDesc</code>
+            <code>def IfcApprovalActorRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcApprovalPropertyRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcApprovalRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcArbitraryClosedProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcArbitraryOpenProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcArbitraryProfileDefWithVoids() -&gt; IfcEntityDesc</code>
+            <code>def IfcAsset() -&gt; IfcEntityDesc</code>
+            <code>def IfcAsymmetricIShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcAudioVisualAppliance() -&gt; IfcEntityDesc</code>
+            <code>def IfcAudioVisualApplianceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcAxis1Placement() -&gt; IfcEntityDesc</code>
+            <code>def IfcAxis2Placement2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcAxis2Placement3D() -&gt; IfcEntityDesc</code>
+            <code>def IfcBSplineCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcBSplineCurveWithKnots() -&gt; IfcEntityDesc</code>
+            <code>def IfcBSplineSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcBSplineSurfaceWithKnots() -&gt; IfcEntityDesc</code>
+            <code>def IfcBeam() -&gt; IfcEntityDesc</code>
+            <code>def IfcBeamStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcBeamType() -&gt; IfcEntityDesc</code>
+            <code>def IfcBezierCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcBlobTexture() -&gt; IfcEntityDesc</code>
+            <code>def IfcBlock() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoiler() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoilerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcBooleanClippingResult() -&gt; IfcEntityDesc</code>
+            <code>def IfcBooleanResult() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryEdgeCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryFaceCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryNodeCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundaryNodeConditionWarping() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundedCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundedSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoundingBox() -&gt; IfcEntityDesc</code>
+            <code>def IfcBoxedHalfSpace() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuilding() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementComponent() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementPart() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementPartType() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementProxy() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementProxyType() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingStorey() -&gt; IfcEntityDesc</code>
+            <code>def IfcBuildingSystem() -&gt; IfcEntityDesc</code>
+            <code>def IfcBurner() -&gt; IfcEntityDesc</code>
+            <code>def IfcBurnerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableCarrierFitting() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableCarrierFittingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableCarrierSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableCarrierSegmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableFitting() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableFittingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcCableSegmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCalendarDate() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianPoint() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianPointList() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianPointList2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianPointList3D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianTransformationOperator() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianTransformationOperator2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianTransformationOperator2DnonUniform() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianTransformationOperator3D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCartesianTransformationOperator3DnonUniform() -&gt; IfcEntityDesc</code>
+            <code>def IfcCenterLineProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcChamferEdgeFeature() -&gt; IfcEntityDesc</code>
+            <code>def IfcChiller() -&gt; IfcEntityDesc</code>
+            <code>def IfcChillerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcChimney() -&gt; IfcEntityDesc</code>
+            <code>def IfcChimneyType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCircle() -&gt; IfcEntityDesc</code>
+            <code>def IfcCircleHollowProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCircleProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCircularArcSegment2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCivilElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcCivilElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassification() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassificationItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassificationItemRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassificationNotation() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassificationNotationFacet() -&gt; IfcEntityDesc</code>
+            <code>def IfcClassificationReference() -&gt; IfcEntityDesc</code>
+            <code>def IfcClosedShell() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoil() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoilType() -&gt; IfcEntityDesc</code>
+            <code>def IfcColourRgb() -&gt; IfcEntityDesc</code>
+            <code>def IfcColourRgbList() -&gt; IfcEntityDesc</code>
+            <code>def IfcColourSpecification() -&gt; IfcEntityDesc</code>
+            <code>def IfcColumn() -&gt; IfcEntityDesc</code>
+            <code>def IfcColumnStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcColumnType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCommunicationsAppliance() -&gt; IfcEntityDesc</code>
+            <code>def IfcCommunicationsApplianceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcComplexProperty() -&gt; IfcEntityDesc</code>
+            <code>def IfcComplexPropertyTemplate() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompositeCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompositeCurveOnSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompositeCurveSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompositeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompressor() -&gt; IfcEntityDesc</code>
+            <code>def IfcCompressorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCondenser() -&gt; IfcEntityDesc</code>
+            <code>def IfcCondenserType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcConditionCriterion() -&gt; IfcEntityDesc</code>
+            <code>def IfcConic() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectedFaceSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionCurveGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionPointEccentricity() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionPointGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionPortGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionSurfaceGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConnectionVolumeGeometry() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstraint() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstraintAggregationRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstraintClassificationRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstraintRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionEquipmentResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionEquipmentResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionMaterialResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionMaterialResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionProductResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionProductResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcConstructionResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcContext() -&gt; IfcEntityDesc</code>
+            <code>def IfcContextDependentUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcControl() -&gt; IfcEntityDesc</code>
+            <code>def IfcController() -&gt; IfcEntityDesc</code>
+            <code>def IfcControllerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcConversionBasedUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcConversionBasedUnitWithOffset() -&gt; IfcEntityDesc</code>
+            <code>def IfcCooledBeam() -&gt; IfcEntityDesc</code>
+            <code>def IfcCooledBeamType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoolingTower() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoolingTowerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoordinateOperation() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoordinateReferenceSystem() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoordinatedUniversalTimeOffset() -&gt; IfcEntityDesc</code>
+            <code>def IfcCostItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcCostSchedule() -&gt; IfcEntityDesc</code>
+            <code>def IfcCostValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcCovering() -&gt; IfcEntityDesc</code>
+            <code>def IfcCoveringType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCraneRailAShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCraneRailFShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcCrewResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcCrewResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCsgPrimitive3D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCsgSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurrencyRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurtainWall() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurtainWallType() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveBoundedPlane() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveBoundedSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveSegment2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveStyleFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveStyleFontAndScaling() -&gt; IfcEntityDesc</code>
+            <code>def IfcCurveStyleFontPattern() -&gt; IfcEntityDesc</code>
+            <code>def IfcCylindricalSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcDamper() -&gt; IfcEntityDesc</code>
+            <code>def IfcDamperType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDateAndTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcDefinedSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcDerivedProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcDerivedUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcDerivedUnitElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcDiameterDimension() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionCalloutRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionCurveDirectedCallout() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionCurveTerminator() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionPair() -&gt; IfcEntityDesc</code>
+            <code>def IfcDimensionalExponents() -&gt; IfcEntityDesc</code>
+            <code>def IfcDirection() -&gt; IfcEntityDesc</code>
+            <code>def IfcDiscreteAccessory() -&gt; IfcEntityDesc</code>
+            <code>def IfcDiscreteAccessoryType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistanceExpression() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionChamberElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionChamberElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionCircuit() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionControlElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionControlElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionFlowElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionFlowElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionPort() -&gt; IfcEntityDesc</code>
+            <code>def IfcDistributionSystem() -&gt; IfcEntityDesc</code>
+            <code>def IfcDocumentElectronicFormat() -&gt; IfcEntityDesc</code>
+            <code>def IfcDocumentInformation() -&gt; IfcEntityDesc</code>
+            <code>def IfcDocumentInformationRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcDocumentReference() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoor() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoorLiningProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoorPanelProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoorStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoorStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcDoorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDraughtingCallout() -&gt; IfcEntityDesc</code>
+            <code>def IfcDraughtingCalloutRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcDraughtingPreDefinedColour() -&gt; IfcEntityDesc</code>
+            <code>def IfcDraughtingPreDefinedCurveFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcDraughtingPreDefinedTextFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctFitting() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctFittingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctSegmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctSilencer() -&gt; IfcEntityDesc</code>
+            <code>def IfcDuctSilencerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcEdge() -&gt; IfcEntityDesc</code>
+            <code>def IfcEdgeCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcEdgeFeature() -&gt; IfcEntityDesc</code>
+            <code>def IfcEdgeLoop() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricAppliance() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricApplianceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricDistributionBoard() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricDistributionBoardType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricDistributionPoint() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricFlowStorageDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricFlowStorageDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricGenerator() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricGeneratorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricHeaterType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricMotor() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricMotorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricTimeControl() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricTimeControlType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricalBaseProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricalCircuit() -&gt; IfcEntityDesc</code>
+            <code>def IfcElectricalElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementAssembly() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementAssemblyType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementComponent() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementComponentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementQuantity() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcElementarySurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcEllipse() -&gt; IfcEntityDesc</code>
+            <code>def IfcEllipseProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcEnergyConversionDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcEnergyConversionDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcEnergyProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcEngine() -&gt; IfcEntityDesc</code>
+            <code>def IfcEngineType() -&gt; IfcEntityDesc</code>
+            <code>def IfcEnvironmentalImpactValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcEquipmentElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcEquipmentStandard() -&gt; IfcEntityDesc</code>
+            <code>def IfcEvaporativeCooler() -&gt; IfcEntityDesc</code>
+            <code>def IfcEvaporativeCoolerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcEvaporator() -&gt; IfcEntityDesc</code>
+            <code>def IfcEvaporatorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcEvent() -&gt; IfcEntityDesc</code>
+            <code>def IfcEventTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcEventType() -&gt; IfcEntityDesc</code>
+            <code>def IfcExtendedMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcExtendedProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternalInformation() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternalReference() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternalReferenceRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternalSpatialElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternalSpatialStructureElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternallyDefinedHatchStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternallyDefinedSurfaceStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternallyDefinedSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcExternallyDefinedTextFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcExtrudedAreaSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcExtrudedAreaSolidTapered() -&gt; IfcEntityDesc</code>
+            <code>def IfcFace() -&gt; IfcEntityDesc</code>
+            <code>def IfcFaceBasedSurfaceModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcFaceBound() -&gt; IfcEntityDesc</code>
+            <code>def IfcFaceOuterBound() -&gt; IfcEntityDesc</code>
+            <code>def IfcFaceSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcFacetedBrep() -&gt; IfcEntityDesc</code>
+            <code>def IfcFacetedBrepWithVoids() -&gt; IfcEntityDesc</code>
+            <code>def IfcFailureConnectionCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcFan() -&gt; IfcEntityDesc</code>
+            <code>def IfcFanType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFastener() -&gt; IfcEntityDesc</code>
+            <code>def IfcFastenerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFeatureElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcFeatureElementAddition() -&gt; IfcEntityDesc</code>
+            <code>def IfcFeatureElementSubtraction() -&gt; IfcEntityDesc</code>
+            <code>def IfcFillAreaStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcFillAreaStyleHatching() -&gt; IfcEntityDesc</code>
+            <code>def IfcFillAreaStyleTileSymbolWithStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcFillAreaStyleTiles() -&gt; IfcEntityDesc</code>
+            <code>def IfcFilter() -&gt; IfcEntityDesc</code>
+            <code>def IfcFilterType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFireSuppressionTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcFireSuppressionTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFixedReferenceSweptAreaSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowController() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowControllerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowFitting() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowFittingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowInstrument() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowInstrumentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowMeter() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowMeterType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowMovingDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowMovingDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowSegmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowStorageDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowStorageDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowTreatmentDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcFlowTreatmentDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFluidFlowProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcFooting() -&gt; IfcEntityDesc</code>
+            <code>def IfcFootingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFuelProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcFurnishingElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcFurnishingElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcFurniture() -&gt; IfcEntityDesc</code>
+            <code>def IfcFurnitureStandard() -&gt; IfcEntityDesc</code>
+            <code>def IfcFurnitureType() -&gt; IfcEntityDesc</code>
+            <code>def IfcGasTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeneralMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeneralProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeographicElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeographicElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeometricCurveSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeometricRepresentationContext() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeometricRepresentationItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeometricRepresentationSubContext() -&gt; IfcEntityDesc</code>
+            <code>def IfcGeometricSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcGrid() -&gt; IfcEntityDesc</code>
+            <code>def IfcGridAxis() -&gt; IfcEntityDesc</code>
+            <code>def IfcGridPlacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcGroup() -&gt; IfcEntityDesc</code>
+            <code>def IfcHalfSpaceSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcHeatExchanger() -&gt; IfcEntityDesc</code>
+            <code>def IfcHeatExchangerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcHumidifier() -&gt; IfcEntityDesc</code>
+            <code>def IfcHumidifierType() -&gt; IfcEntityDesc</code>
+            <code>def IfcHygroscopicMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcIShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcImageTexture() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedColourMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedPolyCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedPolygonalFace() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedPolygonalFaceWithVoids() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedTextureMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcIndexedTriangleTextureMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcInterceptor() -&gt; IfcEntityDesc</code>
+            <code>def IfcInterceptorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcIntersectionCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcInventory() -&gt; IfcEntityDesc</code>
+            <code>def IfcIrregularTimeSeries() -&gt; IfcEntityDesc</code>
+            <code>def IfcIrregularTimeSeriesValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcJunctionBox() -&gt; IfcEntityDesc</code>
+            <code>def IfcJunctionBoxType() -&gt; IfcEntityDesc</code>
+            <code>def IfcLShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcLaborResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcLaborResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcLagTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcLamp() -&gt; IfcEntityDesc</code>
+            <code>def IfcLampType() -&gt; IfcEntityDesc</code>
+            <code>def IfcLibraryInformation() -&gt; IfcEntityDesc</code>
+            <code>def IfcLibraryReference() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightDistributionData() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightFixture() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightFixtureType() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightIntensityDistribution() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSource() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSourceAmbient() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSourceDirectional() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSourceGoniometric() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSourcePositional() -&gt; IfcEntityDesc</code>
+            <code>def IfcLightSourceSpot() -&gt; IfcEntityDesc</code>
+            <code>def IfcLine() -&gt; IfcEntityDesc</code>
+            <code>def IfcLineSegment2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcLinearDimension() -&gt; IfcEntityDesc</code>
+            <code>def IfcLinearPlacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcLinearPositioningElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcLocalPlacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcLocalTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcLoop() -&gt; IfcEntityDesc</code>
+            <code>def IfcManifoldSolidBrep() -&gt; IfcEntityDesc</code>
+            <code>def IfcMapConversion() -&gt; IfcEntityDesc</code>
+            <code>def IfcMappedItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterial() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialClassificationRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialConstituent() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialConstituentSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialDefinitionRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialLayer() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialLayerSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialLayerSetUsage() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialLayerWithOffsets() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialList() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProfile() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProfileSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProfileSetUsage() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProfileSetUsageTapering() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProfileWithOffsets() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcMaterialUsageDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcMeasureWithUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcMechanicalConcreteMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcMechanicalFastener() -&gt; IfcEntityDesc</code>
+            <code>def IfcMechanicalFastenerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcMechanicalMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcMechanicalSteelMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcMedicalDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcMedicalDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcMember() -&gt; IfcEntityDesc</code>
+            <code>def IfcMemberStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcMemberType() -&gt; IfcEntityDesc</code>
+            <code>def IfcMetric() -&gt; IfcEntityDesc</code>
+            <code>def IfcMirroredProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcMonetaryUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcMotorConnection() -&gt; IfcEntityDesc</code>
+            <code>def IfcMotorConnectionType() -&gt; IfcEntityDesc</code>
+            <code>def IfcMove() -&gt; IfcEntityDesc</code>
+            <code>def IfcNamedUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcObject() -&gt; IfcEntityDesc</code>
+            <code>def IfcObjectDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcObjectPlacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcObjective() -&gt; IfcEntityDesc</code>
+            <code>def IfcOccupant() -&gt; IfcEntityDesc</code>
+            <code>def IfcOffsetCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcOffsetCurve2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcOffsetCurve3D() -&gt; IfcEntityDesc</code>
+            <code>def IfcOffsetCurveByDistances() -&gt; IfcEntityDesc</code>
+            <code>def IfcOneDirectionRepeatFactor() -&gt; IfcEntityDesc</code>
+            <code>def IfcOpenShell() -&gt; IfcEntityDesc</code>
+            <code>def IfcOpeningElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcOpeningStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcOpticalMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcOrderAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcOrganization() -&gt; IfcEntityDesc</code>
+            <code>def IfcOrganizationRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcOrientationExpression() -&gt; IfcEntityDesc</code>
+            <code>def IfcOrientedEdge() -&gt; IfcEntityDesc</code>
+            <code>def IfcOuterBoundaryCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcOutlet() -&gt; IfcEntityDesc</code>
+            <code>def IfcOutletType() -&gt; IfcEntityDesc</code>
+            <code>def IfcOwnerHistory() -&gt; IfcEntityDesc</code>
+            <code>def IfcParameterizedProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcPath() -&gt; IfcEntityDesc</code>
+            <code>def IfcPcurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcPerformanceHistory() -&gt; IfcEntityDesc</code>
+            <code>def IfcPermeableCoveringProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcPermit() -&gt; IfcEntityDesc</code>
+            <code>def IfcPerson() -&gt; IfcEntityDesc</code>
+            <code>def IfcPersonAndOrganization() -&gt; IfcEntityDesc</code>
+            <code>def IfcPhysicalComplexQuantity() -&gt; IfcEntityDesc</code>
+            <code>def IfcPhysicalQuantity() -&gt; IfcEntityDesc</code>
+            <code>def IfcPhysicalSimpleQuantity() -&gt; IfcEntityDesc</code>
+            <code>def IfcPile() -&gt; IfcEntityDesc</code>
+            <code>def IfcPileType() -&gt; IfcEntityDesc</code>
+            <code>def IfcPipeFitting() -&gt; IfcEntityDesc</code>
+            <code>def IfcPipeFittingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcPipeSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcPipeSegmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcPixelTexture() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlanarBox() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlanarExtent() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlane() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlate() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlateStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcPlateType() -&gt; IfcEntityDesc</code>
+            <code>def IfcPoint() -&gt; IfcEntityDesc</code>
+            <code>def IfcPointOnCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcPointOnSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcPolyLoop() -&gt; IfcEntityDesc</code>
+            <code>def IfcPolygonalBoundedHalfSpace() -&gt; IfcEntityDesc</code>
+            <code>def IfcPolygonalFaceSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcPolyline() -&gt; IfcEntityDesc</code>
+            <code>def IfcPort() -&gt; IfcEntityDesc</code>
+            <code>def IfcPositioningElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcPostalAddress() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedColour() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedCurveFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedDimensionSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedPointMarkerSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedPropertySet() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedTerminatorSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcPreDefinedTextFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcPresentationItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcPresentationLayerAssignment() -&gt; IfcEntityDesc</code>
+            <code>def IfcPresentationLayerWithStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcPresentationStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcPresentationStyleAssignment() -&gt; IfcEntityDesc</code>
+            <code>def IfcProcedure() -&gt; IfcEntityDesc</code>
+            <code>def IfcProcedureType() -&gt; IfcEntityDesc</code>
+            <code>def IfcProcess() -&gt; IfcEntityDesc</code>
+            <code>def IfcProduct() -&gt; IfcEntityDesc</code>
+            <code>def IfcProductDefinitionShape() -&gt; IfcEntityDesc</code>
+            <code>def IfcProductRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcProductsOfCombustionProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcProject() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectLibrary() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectOrder() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectOrderRecord() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectedCRS() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectionCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcProjectionElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcProperty() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyAbstraction() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyBoundedValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyConstraintRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyDependencyRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyEnumeratedValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyEnumeration() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyListValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyReferenceValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertySet() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertySetDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertySetTemplate() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertySingleValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyTableValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyTemplate() -&gt; IfcEntityDesc</code>
+            <code>def IfcPropertyTemplateDefinition() -&gt; IfcEntityDesc</code>
+            <code>def IfcProtectiveDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcProtectiveDeviceTrippingUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcProtectiveDeviceTrippingUnitType() -&gt; IfcEntityDesc</code>
+            <code>def IfcProtectiveDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcProxy() -&gt; IfcEntityDesc</code>
+            <code>def IfcPump() -&gt; IfcEntityDesc</code>
+            <code>def IfcPumpType() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityArea() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityCount() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityLength() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantitySet() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityVolume() -&gt; IfcEntityDesc</code>
+            <code>def IfcQuantityWeight() -&gt; IfcEntityDesc</code>
+            <code>def IfcRadiusDimension() -&gt; IfcEntityDesc</code>
+            <code>def IfcRailing() -&gt; IfcEntityDesc</code>
+            <code>def IfcRailingType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRamp() -&gt; IfcEntityDesc</code>
+            <code>def IfcRampFlight() -&gt; IfcEntityDesc</code>
+            <code>def IfcRampFlightType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRampType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRationalBSplineCurveWithKnots() -&gt; IfcEntityDesc</code>
+            <code>def IfcRationalBSplineSurfaceWithKnots() -&gt; IfcEntityDesc</code>
+            <code>def IfcRationalBezierCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcRectangleHollowProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcRectangleProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcRectangularPyramid() -&gt; IfcEntityDesc</code>
+            <code>def IfcRectangularTrimmedSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcRecurrencePattern() -&gt; IfcEntityDesc</code>
+            <code>def IfcReference() -&gt; IfcEntityDesc</code>
+            <code>def IfcReferencesValueDocument() -&gt; IfcEntityDesc</code>
+            <code>def IfcReferent() -&gt; IfcEntityDesc</code>
+            <code>def IfcRegularTimeSeries() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcementBarProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcementDefinitionProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingBar() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingBarType() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingMesh() -&gt; IfcEntityDesc</code>
+            <code>def IfcReinforcingMeshType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAggregates() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssigns() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsTasks() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToActor() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToControl() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToGroup() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToGroupByFactor() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToProcess() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToProduct() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToProjectOrder() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssignsToResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociates() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesAppliedValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesApproval() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesClassification() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesConstraint() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesDocument() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesLibrary() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesMaterial() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelAssociatesProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnects() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsPathElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsPortToElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsPorts() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsStructuralActivity() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsStructuralElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsStructuralMember() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsWithEccentricity() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelConnectsWithRealizingElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelContainedInSpatialStructure() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelCoversBldgElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelCoversSpaces() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDeclares() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDecomposes() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDefines() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDefinesByObject() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDefinesByProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDefinesByTemplate() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelDefinesByType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelFillsElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelFlowControlElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelInteractionRequirements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelInterferesElements() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelNests() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelOccupiesSpaces() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelOverridesProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelProjectsElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelReferencedInSpatialStructure() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelSchedulesCostItems() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelSequence() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelServicesBuildings() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelSpaceBoundary() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelSpaceBoundary1stLevel() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelSpaceBoundary2ndLevel() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelVoidsElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcRelaxation() -&gt; IfcEntityDesc</code>
+            <code>def IfcReparametrisedCompositeCurveSegment() -&gt; IfcEntityDesc</code>
+            <code>def IfcRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcRepresentationContext() -&gt; IfcEntityDesc</code>
+            <code>def IfcRepresentationItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcRepresentationMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcResourceApprovalRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcResourceConstraintRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcResourceLevelRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcResourceTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcRevolvedAreaSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcRevolvedAreaSolidTapered() -&gt; IfcEntityDesc</code>
+            <code>def IfcRibPlateProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcRightCircularCone() -&gt; IfcEntityDesc</code>
+            <code>def IfcRightCircularCylinder() -&gt; IfcEntityDesc</code>
+            <code>def IfcRoof() -&gt; IfcEntityDesc</code>
+            <code>def IfcRoofType() -&gt; IfcEntityDesc</code>
+            <code>def IfcRoot() -&gt; IfcEntityDesc</code>
+            <code>def IfcRoundedEdgeFeature() -&gt; IfcEntityDesc</code>
+            <code>def IfcRoundedRectangleProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcSIUnit() -&gt; IfcEntityDesc</code>
+            <code>def IfcSanitaryTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcSanitaryTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcScheduleTimeControl() -&gt; IfcEntityDesc</code>
+            <code>def IfcSchedulingTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcSeamCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcSectionProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcSectionReinforcementProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcSectionedSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcSectionedSolidHorizontal() -&gt; IfcEntityDesc</code>
+            <code>def IfcSectionedSpine() -&gt; IfcEntityDesc</code>
+            <code>def IfcSensor() -&gt; IfcEntityDesc</code>
+            <code>def IfcSensorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcServiceLife() -&gt; IfcEntityDesc</code>
+            <code>def IfcServiceLifeFactor() -&gt; IfcEntityDesc</code>
+            <code>def IfcShadingDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcShadingDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcShapeAspect() -&gt; IfcEntityDesc</code>
+            <code>def IfcShapeModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcShapeRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcShellBasedSurfaceModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcSimpleProperty() -&gt; IfcEntityDesc</code>
+            <code>def IfcSimplePropertyTemplate() -&gt; IfcEntityDesc</code>
+            <code>def IfcSite() -&gt; IfcEntityDesc</code>
+            <code>def IfcSlab() -&gt; IfcEntityDesc</code>
+            <code>def IfcSlabElementedCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcSlabStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcSlabType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSlippageConnectionCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcSolarDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcSolarDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSolidModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcSoundProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcSoundValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpace() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpaceHeater() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpaceHeaterType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpaceProgram() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpaceThermalLoadProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpaceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialStructureElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialStructureElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialZone() -&gt; IfcEntityDesc</code>
+            <code>def IfcSpatialZoneType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSphere() -&gt; IfcEntityDesc</code>
+            <code>def IfcSphericalSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcStackTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcStackTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcStair() -&gt; IfcEntityDesc</code>
+            <code>def IfcStairFlight() -&gt; IfcEntityDesc</code>
+            <code>def IfcStairFlightType() -&gt; IfcEntityDesc</code>
+            <code>def IfcStairType() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralActivity() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralAnalysisModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralConnection() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralConnectionCondition() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralCurveAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralCurveConnection() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralCurveMember() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralCurveMemberVarying() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralCurveReaction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLinearAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLinearActionVarying() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoad() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadConfiguration() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadGroup() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadLinearForce() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadOrResult() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadPlanarForce() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadSingleDisplacement() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadSingleDisplacementDistortion() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadSingleForce() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadSingleForceWarping() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadStatic() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralLoadTemperature() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralMember() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralPlanarAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralPlanarActionVarying() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralPointAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralPointConnection() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralPointReaction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralReaction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralResultGroup() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSteelProfileProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSurfaceAction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSurfaceConnection() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSurfaceMember() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSurfaceMemberVarying() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuralSurfaceReaction() -&gt; IfcEntityDesc</code>
+            <code>def IfcStructuredDimensionCallout() -&gt; IfcEntityDesc</code>
+            <code>def IfcStyleModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcStyledItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcStyledRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcSubContractResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcSubContractResourceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSubedge() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceCurveSweptAreaSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceFeature() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceOfLinearExtrusion() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceOfRevolution() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceReinforcementArea() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyleLighting() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyleRefraction() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyleRendering() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyleShading() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceStyleWithTextures() -&gt; IfcEntityDesc</code>
+            <code>def IfcSurfaceTexture() -&gt; IfcEntityDesc</code>
+            <code>def IfcSweptAreaSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcSweptDiskSolid() -&gt; IfcEntityDesc</code>
+            <code>def IfcSweptDiskSolidPolygonal() -&gt; IfcEntityDesc</code>
+            <code>def IfcSweptSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcSwitchingDevice() -&gt; IfcEntityDesc</code>
+            <code>def IfcSwitchingDeviceType() -&gt; IfcEntityDesc</code>
+            <code>def IfcSymbolStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcSystem() -&gt; IfcEntityDesc</code>
+            <code>def IfcSystemFurnitureElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcSystemFurnitureElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcTable() -&gt; IfcEntityDesc</code>
+            <code>def IfcTableColumn() -&gt; IfcEntityDesc</code>
+            <code>def IfcTableRow() -&gt; IfcEntityDesc</code>
+            <code>def IfcTank() -&gt; IfcEntityDesc</code>
+            <code>def IfcTankType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTask() -&gt; IfcEntityDesc</code>
+            <code>def IfcTaskTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcTaskTimeRecurring() -&gt; IfcEntityDesc</code>
+            <code>def IfcTaskType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTelecomAddress() -&gt; IfcEntityDesc</code>
+            <code>def IfcTendon() -&gt; IfcEntityDesc</code>
+            <code>def IfcTendonAnchor() -&gt; IfcEntityDesc</code>
+            <code>def IfcTendonAnchorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTendonType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTerminatorSymbol() -&gt; IfcEntityDesc</code>
+            <code>def IfcTessellatedFaceSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcTessellatedItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextLiteral() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextLiteralWithExtent() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextStyleFontModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextStyleForDefinedFont() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextStyleTextModel() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextStyleWithBoxCharacteristics() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextureCoordinate() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextureCoordinateGenerator() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextureMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextureVertex() -&gt; IfcEntityDesc</code>
+            <code>def IfcTextureVertexList() -&gt; IfcEntityDesc</code>
+            <code>def IfcThermalMaterialProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcTimePeriod() -&gt; IfcEntityDesc</code>
+            <code>def IfcTimeSeries() -&gt; IfcEntityDesc</code>
+            <code>def IfcTimeSeriesReferenceRelationship() -&gt; IfcEntityDesc</code>
+            <code>def IfcTimeSeriesSchedule() -&gt; IfcEntityDesc</code>
+            <code>def IfcTimeSeriesValue() -&gt; IfcEntityDesc</code>
+            <code>def IfcTopologicalRepresentationItem() -&gt; IfcEntityDesc</code>
+            <code>def IfcTopologyRepresentation() -&gt; IfcEntityDesc</code>
+            <code>def IfcToroidalSurface() -&gt; IfcEntityDesc</code>
+            <code>def IfcTransformer() -&gt; IfcEntityDesc</code>
+            <code>def IfcTransformerType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTransitionCurveSegment2D() -&gt; IfcEntityDesc</code>
+            <code>def IfcTransportElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcTransportElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTrapeziumProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcTriangulatedFaceSet() -&gt; IfcEntityDesc</code>
+            <code>def IfcTriangulatedIrregularNetwork() -&gt; IfcEntityDesc</code>
+            <code>def IfcTrimmedCurve() -&gt; IfcEntityDesc</code>
+            <code>def IfcTubeBundle() -&gt; IfcEntityDesc</code>
+            <code>def IfcTubeBundleType() -&gt; IfcEntityDesc</code>
+            <code>def IfcTwoDirectionRepeatFactor() -&gt; IfcEntityDesc</code>
+            <code>def IfcTypeObject() -&gt; IfcEntityDesc</code>
+            <code>def IfcTypeProcess() -&gt; IfcEntityDesc</code>
+            <code>def IfcTypeProduct() -&gt; IfcEntityDesc</code>
+            <code>def IfcTypeResource() -&gt; IfcEntityDesc</code>
+            <code>def IfcUShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcUnitAssignment() -&gt; IfcEntityDesc</code>
+            <code>def IfcUnitaryControlElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcUnitaryControlElementType() -&gt; IfcEntityDesc</code>
+            <code>def IfcUnitaryEquipment() -&gt; IfcEntityDesc</code>
+            <code>def IfcUnitaryEquipmentType() -&gt; IfcEntityDesc</code>
+            <code>def IfcValve() -&gt; IfcEntityDesc</code>
+            <code>def IfcValveType() -&gt; IfcEntityDesc</code>
+            <code>def IfcVector() -&gt; IfcEntityDesc</code>
+            <code>def IfcVertex() -&gt; IfcEntityDesc</code>
+            <code>def IfcVertexBasedTextureMap() -&gt; IfcEntityDesc</code>
+            <code>def IfcVertexLoop() -&gt; IfcEntityDesc</code>
+            <code>def IfcVertexPoint() -&gt; IfcEntityDesc</code>
+            <code>def IfcVibrationIsolator() -&gt; IfcEntityDesc</code>
+            <code>def IfcVibrationIsolatorType() -&gt; IfcEntityDesc</code>
+            <code>def IfcVirtualElement() -&gt; IfcEntityDesc</code>
+            <code>def IfcVirtualGridIntersection() -&gt; IfcEntityDesc</code>
+            <code>def IfcVoidingFeature() -&gt; IfcEntityDesc</code>
+            <code>def IfcWall() -&gt; IfcEntityDesc</code>
+            <code>def IfcWallElementedCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcWallStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcWallType() -&gt; IfcEntityDesc</code>
+            <code>def IfcWasteTerminal() -&gt; IfcEntityDesc</code>
+            <code>def IfcWasteTerminalType() -&gt; IfcEntityDesc</code>
+            <code>def IfcWaterProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindow() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindowLiningProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindowPanelProperties() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindowStandardCase() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindowStyle() -&gt; IfcEntityDesc</code>
+            <code>def IfcWindowType() -&gt; IfcEntityDesc</code>
+            <code>def IfcWorkCalendar() -&gt; IfcEntityDesc</code>
+            <code>def IfcWorkControl() -&gt; IfcEntityDesc</code>
+            <code>def IfcWorkPlan() -&gt; IfcEntityDesc</code>
+            <code>def IfcWorkSchedule() -&gt; IfcEntityDesc</code>
+            <code>def IfcWorkTime() -&gt; IfcEntityDesc</code>
+            <code>def IfcZShapeProfileDef() -&gt; IfcEntityDesc</code>
+            <code>def IfcZone() -&gt; IfcEntityDesc</code>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def isDerivedFrom(self, entDesc: PyBrxBim.IfcEntityDesc, eSchema: IfcSchemaId) -&gt; bool</code>
+            <code>def name(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcEnumValue</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getValue(self) -&gt; str</code>
+            <code>def setValue(self, val: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcExportContext</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def database(self) -&gt; PyDb.Database</code>
+            <code>def getAxis2Placement2D(self, coordSystem: PyGe.Matrix2d) -&gt; IfcEntity</code>
+            <code>def getAxis2Placement3D(self, coordSystem: PyGe.Matrix3d) -&gt; IfcEntity</code>
+            <code>def getCartesianPoint2D(self, pt: PyGe.Point2d) -&gt; IfcEntity</code>
+            <code>def getCartesianPoint3D(self, pt: PyGe.Point3d) -&gt; IfcEntity</code>
+            <code>def getDirection2D(self, vec: PyGe.Vector3d) -&gt; IfcEntity</code>
+            <code>def getDirection3D(self, vec: PyGe.Vector3d) -&gt; IfcEntity</code>
+            <code>def getProduct(self, val: PyDb.ObjectId | PyDb.FullSubentPath) -&gt; IfcEntity</code>
+            <code>def ifcModel(self) -&gt; IfcModel</code>
+            <code>def setIfcRootData(self, ifcObject: PyBrxBim.IfcEntity) -&gt; bool</code>
+            <code>def setIfcRootData(self, ifcObject: PyBrxBim.IfcEntity, name: str, description: str, guid: str, hist: PyBrxBim.IfcEntity) -&gt; bool</code>
+            <code>def setIfcRootData(*args) -&gt; bool</code>
+            <code>def setLocationRelToAssignedSpatialLocation(self, ifcElement: PyBrxBim.IfcEntity, correspondingEntity: PyDb.Entity, relativeCoordSys: PyGe.Matrix3d) -&gt; bool</code>
+            <code>def setLocationRelToBuilding(self, ifcElement: PyBrxBim.IfcEntity, buildingName: str, relativeCoordSys: PyGe.Matrix3d) -&gt; bool</code>
+            <code>def setLocationRelToStory(self, ifcElement: PyBrxBim.IfcEntity, buildingName: str, storyName: str, relativeCoordSys: PyGe.Matrix3d) -&gt; bool</code>
+            <code>def setLocationRelToWCS(self, ifcObject: PyBrxBim.IfcEntity, relativeCoordSys: PyGe.Matrix3d) -&gt; bool</code>
+            <code>def setMaterialToAssignedComposition(self, ifcObject: PyBrxBim.IfcEntity, correspondingEntity: PyDb.Entity, thicknessVariableLayer: float) -&gt; bool</code>
+            <code>def setMaterialToComposition(self, ifcObject: PyBrxBim.IfcEntity, compositionName: str, thicknessVariableLayer: float) -&gt; bool</code>
+            <code>def setRepresentationAsBrep(self, ifcProduct: PyBrxBim.IfcEntity, correspondingEntity: PyDb.Entity) -&gt; bool</code>
+            <code>def setRepresentationAsClippedExtrudedAreaSolid(self, ifcProduct: PyBrxBim.IfcEntity, correspondingSolid: PyDb.Solid3d, extrusionDirection: PyGe.Vector3d) -&gt; bool</code>
+            <code>def setRepresentationAsExtrudedAreaSolid(self, ifcProduct: PyBrxBim.IfcEntity, correspondingSolid: PyDb.Solid3d, preferredSweepingDirections: PyGe.Vector3d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcExportOptionFlags</summary>
+            <code>eBaseQuantities: ClassVar[Self]</code>
+            <code>eIncludeFrozenHidden: ClassVar[Self]</code>
+            <code>eExplodeXrefs: ClassVar[Self]</code>
+            <code>eAggregateMultiPly: ClassVar[Self]</code>
+            <code>eMergeGuidForBlocks: ClassVar[Self]</code>
+            <code>eMergeGuidForXrefs: ClassVar[Self]</code>
+            <code>eTesselateBSplines: ClassVar[Self]</code>
+            <code>eSweptSolidsAsBRep: ClassVar[Self]</code>
+            <code>eProfileCenterOfGravity: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcExportOptions</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def exportIfcFile(db: PyAp.Document, filename: str, options: PyBrxBim.IfcExportOptions) -&gt; None</code>
+            <code>def ifcVersion(self) -&gt; IfcSchemaId</code>
+            <code>def mvdType(self) -&gt; IfcModelViewDefType</code>
+            <code>def nestedObjectsToExport(self) -&gt; list</code>
+            <code>def objectsToExport(self) -&gt; list</code>
+            <code>def option(self) -&gt; bool</code>
+            <code>def optionFlags(self) -&gt; int</code>
+            <code>def setIfcVersion(self, val: PyBrxBim.IfcSchemaId) -&gt; None</code>
+            <code>def setMvdType(self, val: PyBrxBim.IfcModelViewDefType) -&gt; None</code>
+            <code>def setNestedObjectsToExport(self, ids: list[PyDb.FullSubentPath]) -&gt; None</code>
+            <code>def setObjectsToExport(self, ids: list[PyDb.ObjectId]) -&gt; None</code>
+            <code>def setOption(self, option: PyBrxBim.IfcExportOptionFlags, value: bool) -&gt; None</code>
+            <code>def setOptionFlags(self, val: int) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcExportReactor</summary>
+            <code>def __init__(self, displayName: str, guid: str) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def adjustProjectData(self, context: PyBrxBim.IfcExportContext, project: PyBrxBim.IfcProjectData) -&gt; None</code>
+            <code>def attachReactor(self) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def detachReactor(self) -&gt; bool</code>
+            <code>def onBeginIfcModelSetup(self, context: PyBrxBim.IfcExportContext) -&gt; None</code>
+            <code>def onEndIfcModelSetup(self, context: PyBrxBim.IfcExportContext) -&gt; None</code>
+            <code>def onEntity(self, context: PyBrxBim.IfcExportContext, entity: PyDb.Entity) -&gt; IfcEntity</code>
+            <code>def onEntityConstructed(self, contructedEntity: PyBrxBim.IfcEntity, sourceBCEntity: PyDb.Entity) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcGuid</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def create() -&gt; IfcGuid</code>
+            <code>def createFromBase64(val: str) -&gt; IfcGuid</code>
+            <code>def createFromText(val: str) -&gt; IfcGuid</code>
+            <code>def getBase64(self) -&gt; str</code>
+            <code>def getText(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcHeader</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def author(self) -&gt; IfcString</code>
+            <code>def authorization(self) -&gt; IfcString</code>
+            <code>def className() -&gt; str</code>
+            <code>def fileDescription(self) -&gt; IfcString</code>
+            <code>def fileName(self) -&gt; IfcString</code>
+            <code>def fileSchema(self) -&gt; IfcString</code>
+            <code>def implementationLevel(self) -&gt; IfcString</code>
+            <code>def organization(self) -&gt; IfcString</code>
+            <code>def originatingSystem(self) -&gt; IfcString</code>
+            <code>def preprocessorVersion(self) -&gt; IfcString</code>
+            <code>def setAuthor(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setAuthorization(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setFileDescription(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setFileName(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setFileSchema(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setOrganization(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setOriginatingSystem(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setPreprocessorVersion(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setTimeStamp(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def timeStamp(self) -&gt; IfcString</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcImportContext</summary>
+            <code>def IfcModel(self) -&gt; IfcModel</code>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def angleConversionFactor(self) -&gt; float</code>
+            <code>def areaConversionFactor(self) -&gt; float</code>
+            <code>def className() -&gt; str</code>
+            <code>def createDefaultRepresentation(self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity) -&gt; PyDb.Entity</code>
+            <code>def createPoint(self, entity: PyBrxBim.IfcEntity) -&gt; PyGe.Point3d</code>
+            <code>def createRepresentationFromItem(self, entity: PyBrxBim.IfcEntity) -&gt; PyDb.Entity</code>
+            <code>def createSweptArea(self, entity: PyBrxBim.IfcEntity) -&gt; list</code>
+            <code>def database(self) -&gt; PyDb.Database</code>
+            <code>def getEntity(self, entity: PyBrxBim.IfcEntity) -&gt; PyDb.Entity</code>
+            <code>def getEntityId(self, entity: PyBrxBim.IfcEntity) -&gt; PyDb.ObjectId</code>
+            <code>def getLocalPlacement(self, entity: PyBrxBim.IfcEntity) -&gt; PyGe.Matrix3d</code>
+            <code>def lengthConversionFactor(self) -&gt; float</code>
+            <code>def precision(self) -&gt; float</code>
+            <code>def volumeConversionFactor(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcImportInfo</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def author(self) -&gt; str</code>
+            <code>def authorization(self) -&gt; str</code>
+            <code>def className() -&gt; str</code>
+            <code>def importBimData(self) -&gt; bool</code>
+            <code>def importBrepGeometryAsMeshes(self) -&gt; bool</code>
+            <code>def importIfcProjectStructureAsXrefs(self) -&gt; bool</code>
+            <code>def importIfcSpace(self) -&gt; bool</code>
+            <code>def importParametricComponents(self) -&gt; bool</code>
+            <code>def organization(self) -&gt; str</code>
+            <code>def originatingSystem(self) -&gt; str</code>
+            <code>def preprocessorVersion(self) -&gt; str</code>
+            <code>def timeStamp(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcImportModelOrigin</summary>
+            <code>eIfcGlobalOrigin: ClassVar[Self]</code>
+            <code>eIfcSiteLocation: ClassVar[Self]</code>
+            <code>eIfcProjectLocation: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcImportOptions</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def importBimData(self) -&gt; bool</code>
+            <code>def importBrepGeometryAsMeshes(self) -&gt; bool</code>
+            <code>def importIfcFile(db: PyDb.Database, filename: str, options: PyBrxBim.IfcImportOptions) -&gt; None</code>
+            <code>def importIfcProjectStructureAsXrefs(self) -&gt; bool</code>
+            <code>def importIfcSpace(self) -&gt; bool</code>
+            <code>def importModelOrigin(self) -&gt; IfcImportModelOrigin</code>
+            <code>def importParametricComponents(self) -&gt; bool</code>
+            <code>def setImportBimData(self, val: bool) -&gt; None</code>
+            <code>def setImportBrepGeometryAsMeshes(self, val: bool) -&gt; None</code>
+            <code>def setImportIfcProjectStructureAsXrefs(self, val: bool) -&gt; None</code>
+            <code>def setImportIfcSpace(self, val: bool) -&gt; None</code>
+            <code>def setImportModelOrigin(self, val: PyBrxBim.IfcImportModelOrigin) -&gt; None</code>
+            <code>def setImportParametricComponents(self, val: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcImportReactor</summary>
+            <code>def __init__(self, displayName: str, guid: str) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def attachReactor(self) -&gt; bool</code>
+            <code>def beforeCompletion(self, context: PyBrxBim.IfcImportContext, success: bool) -&gt; None</code>
+            <code>def className() -&gt; str</code>
+            <code>def detachReactor(self) -&gt; bool</code>
+            <code>def onIfcProduct(self, context: PyBrxBim.IfcImportContext, entity: PyBrxBim.IfcEntity, isParent: bool, parentEntity: PyBrxBim.IfcEntity) -&gt; bool</code>
+            <code>def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.EIfcSchemaId) -&gt; None</code>
+            <code>def onStart(self, context: PyBrxBim.IfcImportContext, project: PyBrxBim.IfcEntity, info: PyBrxBim.IfcImportInfo) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcLogical</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def isKnown(self) -&gt; bool</code>
+            <code>def isUnknown(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcModel</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def get(self, index: int) -&gt; IfcEntity</code>
+            <code>def getNumEntities(self) -&gt; int</code>
+            <code>def read(fileName: str) -&gt; IfcModel</code>
+            <code>def release(self) -&gt; None</code>
+            <code>def schemaId(self) -&gt; IfcSchemaId</code>
+            <code>def write(fileName: str, header: PyBrxBim.IfcHeader) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcModelViewDefType</summary>
+            <code>eNotSet: ClassVar[Self]</code>
+            <code>eReference: ClassVar[Self]</code>
+            <code>eDesignTransfer: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcProjectData</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getApplicationDeveloper(self) -&gt; str</code>
+            <code>def getApplicationFullName(self) -&gt; str</code>
+            <code>def getApplicationIdentifier(self) -&gt; str</code>
+            <code>def getApplicationVersion(self) -&gt; str</code>
+            <code>def getAuthorFamilyName(self) -&gt; str</code>
+            <code>def getAuthorGivenName(self) -&gt; str</code>
+            <code>def getAuthorOrganization(self) -&gt; str</code>
+            <code>def getProjectDescription(self) -&gt; str</code>
+            <code>def getProjectName(self) -&gt; str</code>
+            <code>def getProjectNorthAngle(self) -&gt; float</code>
+            <code>def getProjectPhase(self) -&gt; str</code>
+            <code>def getSiteAddressLines(self) -&gt; str</code>
+            <code>def getSiteBuildableArea(self) -&gt; float</code>
+            <code>def getSiteBuildingHeightLimit(self) -&gt; float</code>
+            <code>def getSiteCountry(self) -&gt; str</code>
+            <code>def getSiteDescription(self) -&gt; str</code>
+            <code>def getSiteElevation(self) -&gt; float</code>
+            <code>def getSiteInternalLocation(self) -&gt; str</code>
+            <code>def getSiteLandTitleNumber(self) -&gt; str</code>
+            <code>def getSiteLatitude(self) -&gt; float</code>
+            <code>def getSiteLongitude(self) -&gt; float</code>
+            <code>def getSiteName(self) -&gt; str</code>
+            <code>def getSitePostalBox(self) -&gt; str</code>
+            <code>def getSitePostalCode(self) -&gt; str</code>
+            <code>def getSiteRegion(self) -&gt; str</code>
+            <code>def getSiteTotalArea(self) -&gt; float</code>
+            <code>def getSiteTown(self) -&gt; str</code>
+            <code>def setApplicationDeveloper(self, val: str) -&gt; None</code>
+            <code>def setApplicationFullName(self, val: str) -&gt; None</code>
+            <code>def setApplicationIdentifier(self, val: str) -&gt; None</code>
+            <code>def setApplicationVersion(self, val: str) -&gt; None</code>
+            <code>def setAuthorFamilyName(self, val: str) -&gt; None</code>
+            <code>def setAuthorGivenName(self, val: str) -&gt; None</code>
+            <code>def setAuthorOrganization(self, val: str) -&gt; None</code>
+            <code>def setProjectDescription(self, val: str) -&gt; None</code>
+            <code>def setProjectName(self, val: str) -&gt; None</code>
+            <code>def setProjectNorthAngle(self, val: float) -&gt; None</code>
+            <code>def setProjectPhase(self, val: str) -&gt; None</code>
+            <code>def setSiteAddressLines(self, val: str) -&gt; None</code>
+            <code>def setSiteBuildableArea(self, val: float) -&gt; None</code>
+            <code>def setSiteBuildingHeightLimit(self, val: float) -&gt; None</code>
+            <code>def setSiteCountry(self, val: str) -&gt; None</code>
+            <code>def setSiteDescription(self, val: str) -&gt; None</code>
+            <code>def setSiteElevation(self, val: float) -&gt; None</code>
+            <code>def setSiteInternalLocation(self, val: str) -&gt; None</code>
+            <code>def setSiteLandTitleNumber(self, val: str) -&gt; None</code>
+            <code>def setSiteLatitude(self, val: float) -&gt; None</code>
+            <code>def setSiteName(self, val: str) -&gt; None</code>
+            <code>def setSitePostalBox(self, val: str) -&gt; None</code>
+            <code>def setSitePostalCode(self, val: str) -&gt; None</code>
+            <code>def setSiteRegion(self, val: str) -&gt; None</code>
+            <code>def setSiteTotalArea(self, val: float) -&gt; None</code>
+            <code>def setSiteTown(self, val: str) -&gt; None</code>
+            <code>def setSitelongitude(self, val: float) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcResult</summary>
+            <code>eOk: ClassVar[Self]</code>
+            <code>eNotInitialized: ClassVar[Self]</code>
+            <code>eWrongName: ClassVar[Self]</code>
+            <code>eWrongType: ClassVar[Self]</code>
+            <code>eInternalError: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcSchemaId</summary>
+            <code>eIFC2X3: ClassVar[Self]</code>
+            <code>eIFC4: ClassVar[Self]</code>
+            <code>eIFC4X1: ClassVar[Self]</code>
+            <code>eIfcSchemaLast: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcSelectValue</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getValue(self) -&gt; IfcVariant</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def setValue(self, tag: str, val: PyBrxBim.IfcVariant) -&gt; str</code>
+            <code>def tag(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcSelectorDesc</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcString</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, text: str) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def c_str(self) -&gt; str</code>
+            <code>def className() -&gt; str</code>
+            <code>def decode(val: str) -&gt; IfcString</code>
+            <code>def getEncoded(self) -&gt; str</code>
+            <code>def isEmpty(self) -&gt; bool</code>
+            <code>def setEmpty(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcValueType</summary>
+            <code>eBool: ClassVar[Self]</code>
+            <code>eInt: ClassVar[Self]</code>
+            <code>eUInt: ClassVar[Self]</code>
+            <code>eReal: ClassVar[Self]</code>
+            <code>eString: ClassVar[Self]</code>
+            <code>eEntity: ClassVar[Self]</code>
+            <code>eLogical: ClassVar[Self]</code>
+            <code>eBinary: ClassVar[Self]</code>
+            <code>eGuid: ClassVar[Self]</code>
+            <code>eEnum: ClassVar[Self]</code>
+            <code>eSelect: ClassVar[Self]</code>
+            <code>eVector: ClassVar[Self]</code>
+            <code>eEmpty: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcVariant</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getBinary(self) -&gt; IfcBinary</code>
+            <code>def getBool(self) -&gt; bool</code>
+            <code>def getEntity(self) -&gt; IfcEntity</code>
+            <code>def getEnum(self) -&gt; IfcEnumValue</code>
+            <code>def getGuid(self) -&gt; IfcGuid</code>
+            <code>def getInt(self) -&gt; int</code>
+            <code>def getLogical(self) -&gt; IfcLogical</code>
+            <code>def getReal(self) -&gt; float</code>
+            <code>def getSelect(self) -&gt; IfcSelectValue</code>
+            <code>def getString(self) -&gt; IfcString</code>
+            <code>def getUInt(self) -&gt; int</code>
+            <code>def getVector(self) -&gt; IfcVectorValue</code>
+            <code>def setBinary(self, val: PyBrxBim.IfcBinary) -&gt; None</code>
+            <code>def setBool(self, val: bool) -&gt; None</code>
+            <code>def setEntity(self, val: PyBrxBim.IfcEntity) -&gt; None</code>
+            <code>def setEnum(self, val: PyBrxBim.IfcEnumValue) -&gt; None</code>
+            <code>def setGuid(self, val: PyBrxBim.IfcGuid) -&gt; None</code>
+            <code>def setInt(self, val: int) -&gt; None</code>
+            <code>def setLogical(self, val: PyBrxBim.IfcLogical) -&gt; None</code>
+            <code>def setReal(self, val: float) -&gt; None</code>
+            <code>def setSelect(self, val: PyBrxBim.IfcVectorValue) -&gt; None</code>
+            <code>def setString(self, val: PyBrxBim.IfcString) -&gt; None</code>
+            <code>def setUInt(self, val: int) -&gt; None</code>
+            <code>def setVector(self, val: PyBrxBim.IfcVectorValue) -&gt; None</code>
+            <code>def type(self) -&gt; IfcValueType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcVectorDesc</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class IfcVectorValue</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def add(self, val: PyBrxBim.IfcVariant) -&gt; IfcResult</code>
+            <code>def className() -&gt; str</code>
+            <code>def clear(self) -&gt; None</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def remove(self, val: int) -&gt; bool</code>
+            <code>def size(self) -&gt; int</code>
+            <code>def values(self) -&gt; list</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PyBrxBimPropertySets</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ResultStatus</summary>
+            <code>eOk: ClassVar[Self]</code>
+            <code>eNoDbResidentObject: ClassVar[Self]</code>
+            <code>eDbNotAccessible: ClassVar[Self]</code>
+            <code>eDbObjectNotSupported: ClassVar[Self]</code>
+            <code>eDbNotOpenForWrite: ClassVar[Self]</code>
+            <code>eModelSpaceNotAccessible: ClassVar[Self]</code>
+            <code>eProjectDbNotAccessible: ClassVar[Self]</code>
+            <code>eAssociatedLibraryNotAccessible: ClassVar[Self]</code>
+            <code>eNotApplicableForTheseParameters: ClassVar[Self]</code>
+            <code>eInvalidSpatialLocation: ClassVar[Self]</code>
+            <code>eInvalidMaterial: ClassVar[Self]</code>
+            <code>eInvalidMaterialComposition: ClassVar[Self]</code>
+            <code>eObjectAlreadyExists: ClassVar[Self]</code>
+            <code>eObjectCouldNotBeDeleted: ClassVar[Self]</code>
+            <code>eXmlFileCouldNotBeParsed: ClassVar[Self]</code>
+            <code>eInvalidXmlFormat: ClassVar[Self]</code>
+            <code>eInvalidName: ClassVar[Self]</code>
+            <code>eNotLinearBuildingElement: ClassVar[Self]</code>
+            <code>eInvalidValue: ClassVar[Self]</code>
+            <code>eNotAssignedToLibrary: ClassVar[Self]</code>
+            <code>eNullObject: ClassVar[Self]</code>
+            <code>eNullObjectId: ClassVar[Self]</code>
+            <code>eNullDatabase: ClassVar[Self]</code>
+            <code>eNullDocument: ClassVar[Self]</code>
+            <code>eNullString: ClassVar[Self]</code>
+            <code>eObjectNotExisting: ClassVar[Self]</code>
+            <code>eObjectNotSupported: ClassVar[Self]</code>
+            <code>eNoProfileAssigned: ClassVar[Self]</code>
+            <code>eNoData: ClassVar[Self]</code>
+            <code>eUnknownData: ClassVar[Self]</code>
+            <code>eWrongDataType: ClassVar[Self]</code>
+            <code>eUnassignedEntity: ClassVar[Self]</code>
+            <code>eBimNotImplementedYet: ClassVar[Self]</code>
+            <code>eBimNotAvailable: ClassVar[Self]</code>
+            <code>eInternalError: ClassVar[Self]</code>
+            <code>eUnknownError: ClassVar[Self]</code>
+            <code>eInvalidIndex: ClassVar[Self]</code>
+            <code>eInvalidInput: ClassVar[Self]</code>
+            <code>eNoNameSpace: ClassVar[Self]</code>
+            <code>eNameSpaceAlreadyExists: ClassVar[Self]</code>
+            <code>eNoPropertySet: ClassVar[Self]</code>
+            <code>ePropertySetAlreadyExists: ClassVar[Self]</code>
+            <code>eNoProperty: ClassVar[Self]</code>
+            <code>eNotImplemented: ClassVar[Self]</code>
+            <code>eInvalidArgument: ClassVar[Self]</code>
+            <code>eNoAttributeSet: ClassVar[Self]</code>
+        </details>
+    </div>
+</body>
+</html>

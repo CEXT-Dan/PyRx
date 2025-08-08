@@ -15,6 +15,10 @@ all_modules = [
     ("PySm", "PySm.pyi"),
     ("PyBr", "PyBr.pyi"),
     ("PyAx", "PyAx.pyi"),
+    #
+    ("PyBrx", "PyBrx.pyi"),
+    ("PyBrxCv", "PyBrxCv.pyi"),
+    ("PyBrxBim", "PyBrxBim.pyi"),
 ]
 
 import ast
