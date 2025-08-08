@@ -50,7 +50,7 @@ def parse_pyi_file(filepath):
                     args = []
 
                     # Positional arguments
-                    #print(str(item.args.posonlyargs.))
+                    # print(str(item.args.posonlyargs.))
                     for arg in item.args.posonlyargs:
                         args.append(get_arg_str(arg))
 
@@ -167,21 +167,6 @@ def generate_html(doc_data, title="Stub Documentation"):
 
     html += "</body>\n</html>"
     return html
-
-    for class_name, members in doc_data:
-        html += f"""
-    <div class="class">
-        <details>
-            <summary>class {escape(class_name)}</summary>
-"""
-        for member in members:
-            html += f"            <code>{escape(member)}</code>\n"
-
-        html += "        </details>\n    </div>\n"
-
-    html += "</body>\n</html>"
-    return html
-
 
 def generate_doc_from_pyi(pyi_path, output_path="documentation.html"):
     doc_data = parse_pyi_file(pyi_path)
