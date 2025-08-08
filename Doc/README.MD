@@ -25,5 +25,7 @@
 ## BricsCAD Namespaces
 
 [Brx](https://cext-dan.github.io/CAD-PyRx.github.io/PyBrx.html)
+
 [BrxCv](https://cext-dan.github.io/CAD-PyRx.github.io/PyBrxCv.html)
-[BrxBim](https://cext-dan.github.io/CAD-PyRx.github.io/BrxBim.html)
+
+[BrxBim](https://cext-dan.github.io/CAD-PyRx.github.io/PyBrxBim.html)
