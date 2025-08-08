@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PyGs.pyi</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Consolas, monospace;
+            margin: 2em;
+        }
+        a {
+            color: #569cd6;
+        }
+        .class {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        details {
+            margin-left: 0.5em;
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 0.5em;
+        }
+        code {
+            display: block;
+            margin: 0.3em 0;
+            white-space: pre;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 0.4em 0.6em;
+            border-left: 4px solid #007acc;
+        }
+        h1 {
+            color: #569cd6;
+        }
+    </style>
+</head>
+<body>
+    <h1>PyGs.pyi</h1>
+
+    <div class="class">
+        <details>
+            <summary>class Core</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def getBlockImage(blkid: PyDb.ObjectId, sx: int, sy: int, zoomFactor: float, bkrgb: list[int]) -&gt; object</code>
+            <code>def getCurrent3DAcGsView(vpNum: int) -&gt; GsView</code>
+            <code>def getCurrentAcGsView(vpNum: int) -&gt; GsView</code>
+            <code>def getViewParameters(vpNum: int, view: PyGs.View) -&gt; bool</code>
+            <code>def setViewParameters(vpNum: int, view: PyGs.View, bRegen: bool, bRescale: bool, bSync: bool) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GraphicsKernel</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addRef(self) -&gt; None</code>
+            <code>def className() -&gt; str</code>
+            <code>def delRef(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GsManager</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GsView</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def backClip(self) -&gt; float</code>
+            <code>def className() -&gt; str</code>
+            <code>def fieldHeight(self) -&gt; float</code>
+            <code>def fieldWidth(self) -&gt; float</code>
+            <code>def frontClip(self) -&gt; float</code>
+            <code>def getViewport(self) -&gt; tuple[PyGe.Point2d, PyGe.Point2d]</code>
+            <code>def graphicsKernel(self) -&gt; GraphicsKernel</code>
+            <code>def isBackClipped(self) -&gt; bool</code>
+            <code>def isFrontClipped(self) -&gt; bool</code>
+            <code>def isNullObj(self) -&gt; bool</code>
+            <code>def isPerspective(self) -&gt; bool</code>
+            <code>def isViewportBorderVisible(self) -&gt; bool</code>
+            <code>def objectToDeviceMatrix(self) -&gt; PyGe.Matrix3d</code>
+            <code>def position(self) -&gt; PyGe.Point3d</code>
+            <code>def projectionMatrix(self) -&gt; PyGe.Matrix3d</code>
+            <code>def screenMatrix(self) -&gt; PyGe.Matrix3d</code>
+            <code>def setBackClip(self, val: float) -&gt; None</code>
+            <code>def setEnableBackClip(self, val: bool) -&gt; None</code>
+            <code>def setEnableFrontClip(self, val: bool) -&gt; None</code>
+            <code>def setFrontClip(self, val: float) -&gt; None</code>
+            <code>def setView(self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float, projection: PyGs.ViewProjection) -&gt; None</code>
+            <code>def setViewport(self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d) -&gt; None</code>
+            <code>def setViewportBorderVisibility(self, val: bool) -&gt; None</code>
+            <code>def target(self) -&gt; PyGe.Point3d</code>
+            <code>def upVector(self) -&gt; PyGe.Vector3d</code>
+            <code>def viewingMatrix(self) -&gt; PyGe.Matrix3d</code>
+            <code>def worldToDeviceMatrix(self) -&gt; PyGe.Matrix3d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class KernelDescriptor</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addSupport(self) -&gt; None</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ViewProjection</summary>
+            <code>kNoMap: ClassVar[Self]</code>
+            <code>kAerial: ClassVar[Self]</code>
+        </details>
+    </div>
+</body>
+</html>

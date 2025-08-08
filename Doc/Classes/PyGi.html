@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PyGi.pyi</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Consolas, monospace;
+            margin: 2em;
+        }
+        a {
+            color: #569cd6;
+        }
+        .class {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        details {
+            margin-left: 0.5em;
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 0.5em;
+        }
+        code {
+            display: block;
+            margin: 0.3em 0;
+            white-space: pre;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 0.4em 0.6em;
+            border-left: 4px solid #007acc;
+        }
+        h1 {
+            color: #569cd6;
+        }
+    </style>
+</head>
+<body>
+    <h1>PyGi.pyi</h1>
+
+    <div class="class">
+        <details>
+            <summary>class ArcType</summary>
+            <code>kAcGiArcSimple: ClassVar[Self]</code>
+            <code>kAcGiArcSector: ClassVar[Self]</code>
+            <code>kAcGiArcChord: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CommonDraw</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def isDragging(self) -&gt; bool</code>
+            <code>def regenAbort(self) -&gt; bool</code>
+            <code>def regenType(self) -&gt; RegenType</code>
+            <code>def subEntityTraits(self) -&gt; SubEntityTraits</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DefaultLightingType</summary>
+            <code>kOneDistantLight: ClassVar[Self]</code>
+            <code>kTwoDistantLights: ClassVar[Self]</code>
+            <code>kBackLighting: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DrawFlags</summary>
+            <code>kNoDrawFlags: ClassVar[Self]</code>
+            <code>kDrawHatchGroup: ClassVar[Self]</code>
+            <code>kDrawFrontfacesOnly: ClassVar[Self]</code>
+            <code>kDrawGradientFill: ClassVar[Self]</code>
+            <code>kDrawSolidFill: ClassVar[Self]</code>
+            <code>kDrawNoLineWeight: ClassVar[Self]</code>
+            <code>kDrawNoOptimization: ClassVar[Self]</code>
+            <code>kDrawUseAcGiEntityForDgnLineType: ClassVar[Self]</code>
+            <code>kDrawFillTextBoundaryStart: ClassVar[Self]</code>
+            <code>kDrawFillTextBoundaryEnd: ClassVar[Self]</code>
+            <code>kDrawFillSelectionWindow: ClassVar[Self]</code>
+            <code>kDrawNoForceByLayer: ClassVar[Self]</code>
+            <code>kDrawIsInWCS: ClassVar[Self]</code>
+            <code>kDrawNoImageFrame: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Drawable</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def bounds(self, ext: PyDb.Extents) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def drawableType(self) -&gt; GiDrawableType</code>
+            <code>def id(self) -&gt; PyDb.ObjectId</code>
+            <code>def isPersistent(self) -&gt; bool</code>
+            <code>def rolloverHit(self, nSubentId: int, nMouseFlags: int, bReset: bool) -&gt; bool</code>
+            <code>def setAttributes(self, traits: PyGi.DrawableTraits) -&gt; int</code>
+            <code>def viewportDraw(self, vpdraw: PyGi.ViewportDraw) -&gt; None</code>
+            <code>def viewportDrawLogicalFlags(self, vpdraw: PyGi.ViewportDraw) -&gt; int</code>
+            <code>def worldDraw(self, wdraw: PyGi.WorldDraw) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DrawableOverrule</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def baseViewportDraw(self) -&gt; None</code>
+            <code>def baseViewportDrawLogicalFlags(self) -&gt; int</code>
+            <code>def baseWorldDraw(self) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def isApplicable(self) -&gt; bool</code>
+            <code>def setAttributes(self) -&gt; int</code>
+            <code>def viewportDraw(self) -&gt; None</code>
+            <code>def viewportDrawLogicalFlags(self) -&gt; int</code>
+            <code>def worldDraw(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DrawableTraits</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def setupForEntity(self, entity: PyDb.Entity) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class FillType</summary>
+            <code>kAcGiFillAlways: ClassVar[Self]</code>
+            <code>kAcGiFillNever: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Geometry</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def circle(self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d) -&gt; bool</code>
+            <code>def circle(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d) -&gt; bool</code>
+            <code>def circle(*args) -&gt; bool</code>
+            <code>def circularArc(self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float) -&gt; bool</code>
+            <code>def circularArc(self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGi.ArcType) -&gt; bool</code>
+            <code>def circularArc(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d) -&gt; bool</code>
+            <code>def circularArc(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType) -&gt; bool</code>
+            <code>def circularArc(*args) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def draw(self, drawable: PyGi.Drawable) -&gt; bool</code>
+            <code>def edge(self, edgeList: list[PyGe.Curve2d]) -&gt; bool</code>
+            <code>def ellipticalArc(self, center: PyGe.Point3d, norm: PyGe.Vector3d, majAxisLen: float, minAxisLen: float, startDeg: float, endDeg: float, tilt: float, arcType: ArcType) -&gt; bool</code>
+            <code>def getModelToWorldTransform(self) -&gt; PyGe.Matrix3d</code>
+            <code>def getWorldToModelTransform(self) -&gt; PyGe.Matrix3d</code>
+            <code>def image(self, image: wx.Image, position: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d) -&gt; bool</code>
+            <code>def image(self, image: PyGi.PixelBGRA32Array, width: int, height: int, position: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d) -&gt; bool</code>
+            <code>def image(*args) -&gt; bool</code>
+            <code>def pline(self, p1: PyDb.Polyline, fromIndex: int, numSegs: int) -&gt; bool</code>
+            <code>def polygon(self, vertexList: list[PyGe.Point3d]) -&gt; bool</code>
+            <code>def polyline(self, vertexList: list[PyGe.Point3d], normal: PyGe.Vector3d, marker: int) -&gt; bool</code>
+            <code>def popModelTransform(self) -&gt; bool</code>
+            <code>def pushModelTransform(self, val: PyGe.Vector3d | PyGe.Matrix3d) -&gt; bool</code>
+            <code>def pushOrientationTransform(self, behavior: PyGi.AcGiOrientationTransformBehavior) -&gt; PyGe.Matrix3d</code>
+            <code>def pushPositionTransform(self, behavior: PyGi.AcGiPositionTransformBehavior, offset: PyGe.Point2d | PyGe.Point2d) -&gt; PyGe.Matrix3d</code>
+            <code>def pushScaleTransform(self, behavior: PyGi.AcGiScaleTransformBehavior, extents: PyGe.Point2d | PyGe.Point2d) -&gt; PyGe.Matrix3d</code>
+            <code>def ray(self, p1: PyGe.Point3d, p2: PyGe.Point3d) -&gt; bool</code>
+            <code>def rowOfDots(self, count: int, start: PyGe.Point3d, step: PyGe.Vector3d) -&gt; bool</code>
+            <code>def text(self, pos: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d, height: float, width: float, oblique: float, msg: str) -&gt; bool</code>
+            <code>def worldLine(self, p1: PyGe.Point3d, p2: PyGe.Point3d) -&gt; bool</code>
+            <code>def xline(self, p1: PyGe.Point3d, p2: PyGe.Point3d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GiAttributesFlags</summary>
+            <code>kDrawableNone: ClassVar[Self]</code>
+            <code>kDrawableIsAnEntity: ClassVar[Self]</code>
+            <code>kDrawableUsesNesting: ClassVar[Self]</code>
+            <code>kDrawableIsCompoundObject: ClassVar[Self]</code>
+            <code>kDrawableViewIndependentViewportDraw: ClassVar[Self]</code>
+            <code>kDrawableIsInvisible: ClassVar[Self]</code>
+            <code>kDrawableHasAttributes: ClassVar[Self]</code>
+            <code>kDrawableRegenTypeDependentGeometry: ClassVar[Self]</code>
+            <code>kDrawableIsDimension: ClassVar[Self]</code>
+            <code>kDrawableRegenDraw: ClassVar[Self]</code>
+            <code>kDrawableStandardDisplaySingleLOD: ClassVar[Self]</code>
+            <code>kDrawableShadedDisplaySingleLOD: ClassVar[Self]</code>
+            <code>kDrawableViewDependentViewportDraw: ClassVar[Self]</code>
+            <code>kDrawableBlockDependentViewportDraw: ClassVar[Self]</code>
+            <code>kDrawableIsExternalReference: ClassVar[Self]</code>
+            <code>kDrawableNotPlottable: ClassVar[Self]</code>
+            <code>kDrawableNotAllowLCS: ClassVar[Self]</code>
+            <code>kDrawableMergeControlOff: ClassVar[Self]</code>
+            <code>kThreadedWorldDrawViewportDraw: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GiDrawableType</summary>
+            <code>kGeometry: ClassVar[Self]</code>
+            <code>kDistantLight: ClassVar[Self]</code>
+            <code>kPointLight: ClassVar[Self]</code>
+            <code>kSpotLight: ClassVar[Self]</code>
+            <code>kAmbientLight: ClassVar[Self]</code>
+            <code>kSolidBackground: ClassVar[Self]</code>
+            <code>kGradientBackground: ClassVar[Self]</code>
+            <code>kImageBackground: ClassVar[Self]</code>
+            <code>kGroundPlaneBackground: ClassVar[Self]</code>
+            <code>kViewport: ClassVar[Self]</code>
+            <code>kWebLight: ClassVar[Self]</code>
+            <code>kSkyBackground: ClassVar[Self]</code>
+            <code>kImageBasedLightingBackground: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GiGraphicsKernel</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getDescriptor(self) -&gt; GiKernelDescriptor</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GiKernelDescriptor</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def supports(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class OrientationTransformBehavior</summary>
+            <code>kAcGiWorldOrientation: ClassVar[Self]</code>
+            <code>kAcGiScreenOrientation: ClassVar[Self]</code>
+            <code>kAcGiZAxisOrientation: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class OrientationType</summary>
+            <code>kAcGiCounterClockwise: ClassVar[Self]</code>
+            <code>kAcGiNoOrientation: ClassVar[Self]</code>
+            <code>kAcGiClockwise: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PixelBGRA32Array</summary>
+            <code>def __contains__(self) -&gt; bool</code>
+            <code>def __delitem__(self) -&gt; None</code>
+            <code>def __getitem__(self) -&gt; object</code>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __iter__(self) -&gt; object</code>
+            <code>def __len__(self) -&gt; int</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def __setitem__(self) -&gt; None</code>
+            <code>def append(self) -&gt; None</code>
+            <code>def createFromWxImage(image: wx.Image, alpha: int) -&gt; PixelBGRA32Array</code>
+            <code>def extend(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PositionTransformBehavior</summary>
+            <code>kAcGiWorldPosition: ClassVar[Self]</code>
+            <code>kAcGiViewportPosition: ClassVar[Self]</code>
+            <code>kAcGiScreenPosition: ClassVar[Self]</code>
+            <code>kAcGiScreenLocalOriginPosition: ClassVar[Self]</code>
+            <code>kAcGiWorldWithScreenOffsetPosition: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class RegenType</summary>
+            <code>eAcGiRegenTypeInvalid: ClassVar[Self]</code>
+            <code>kAcGiStandardDisplay: ClassVar[Self]</code>
+            <code>kAcGiHideOrShadeCommand: ClassVar[Self]</code>
+            <code>kAcGiShadedDisplay: ClassVar[Self]</code>
+            <code>kAcGiForExplode: ClassVar[Self]</code>
+            <code>kAcGiSaveWorldDrawForProxy: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ScaleTransformBehavior</summary>
+            <code>kAcGiWorldScale: ClassVar[Self]</code>
+            <code>kAcGiViewportScale: ClassVar[Self]</code>
+            <code>kAcGiScreenScale: ClassVar[Self]</code>
+            <code>kAcGiViewportLocalOriginScale: ClassVar[Self]</code>
+            <code>kAcGiScreenLocalOriginScale: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SelectionFlags</summary>
+            <code>kNoSelectionFlags: ClassVar[Self]</code>
+            <code>kSelectionIgnore: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ShadowFlags</summary>
+            <code>kNoDrawFlags: ClassVar[Self]</code>
+            <code>kShadowsDoesNotCast: ClassVar[Self]</code>
+            <code>kShadowsDoesNotReceive: ClassVar[Self]</code>
+            <code>kShadowsIgnore: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SubEntityTraits</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def color(self) -&gt; int</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def drawFlags(self) -&gt; int</code>
+            <code>def fillType(self) -&gt; FillType</code>
+            <code>def getPlotStyleNameId(self) -&gt; PyDb.ObjectId</code>
+            <code>def layerId(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineTypeId(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineTypeScale(self) -&gt; float</code>
+            <code>def lineWeight(self) -&gt; PyDb.LineWeight</code>
+            <code>def materialId(self) -&gt; PyDb.ObjectId</code>
+            <code>def sectionable(self) -&gt; bool</code>
+            <code>def selectionGeom(self) -&gt; bool</code>
+            <code>def setColor(self, val: int) -&gt; None</code>
+            <code>def setDrawFlags(self, flags: int) -&gt; None</code>
+            <code>def setFillType(self, val: PyGi.FillType) -&gt; None</code>
+            <code>def setLayer(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineType(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineTypeScale(self, val: float) -&gt; None</code>
+            <code>def setLineWeight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setMaterial(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setPlotStyleName(self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setSectionable(self, val: bool) -&gt; None</code>
+            <code>def setSelectionGeom(self, val: bool) -&gt; None</code>
+            <code>def setSelectionMarker(self, val: int) -&gt; None</code>
+            <code>def setShadowFlags(self, val: PyGi.ShadowFlags) -&gt; None</code>
+            <code>def setThickness(self, val: float) -&gt; None</code>
+            <code>def setTransparency(self, val: PyDb.Transparency) -&gt; None</code>
+            <code>def setTrueColor(self, clr: PyDb.EntityColor) -&gt; None</code>
+            <code>def setVisualStyle(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def shadowFlags(self) -&gt; ShadowFlags</code>
+            <code>def thickness(self) -&gt; float</code>
+            <code>def transparency(self) -&gt; PyDb.Transparency</code>
+            <code>def trueColor(self) -&gt; PyDb.EntityColor</code>
+            <code>def visualStyle(self) -&gt; PyDb.ObjectId</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TransientDrawingMode</summary>
+            <code>kAcGiMain: ClassVar[Self]</code>
+            <code>kAcGiSprite: ClassVar[Self]</code>
+            <code>kAcGiDirectShortTerm: ClassVar[Self]</code>
+            <code>kAcGiHighlight: ClassVar[Self]</code>
+            <code>kAcGiDirectTopmost: ClassVar[Self]</code>
+            <code>kAcGiContrast: ClassVar[Self]</code>
+            <code>kAcGiDrawingModeCount: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TransientManager</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable) -&gt; bool</code>
+            <code>def addTransient(self, drawable: PyGi.Drawable, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int]) -&gt; bool</code>
+            <code>def current() -&gt; TransientManager</code>
+            <code>def eraseChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable) -&gt; bool</code>
+            <code>def eraseTransient(self, drawable: PyGi.Drawable, viewportNumbers: list[int]) -&gt; bool</code>
+            <code>def eraseTransients(self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int]) -&gt; bool</code>
+            <code>def getFreeSubDrawingMode(self, mode: PyGi.TransientDrawingMode, subDrawingMode: int, viewportNumbers: list[int]) -&gt; tuple[int, int]</code>
+            <code>def updateChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable) -&gt; None</code>
+            <code>def updateTransient(self, drawable: PyGi.Drawable, viewportNumbers: list[int]) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TransparencyMode</summary>
+            <code>kTransparencyOff: ClassVar[Self]</code>
+            <code>kTransparency1Bit: ClassVar[Self]</code>
+            <code>kTransparency8Bit: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ViewportDraw</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def geometry(self) -&gt; ViewportGeometry</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ViewportGeometry</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Visibility</summary>
+            <code>kAcGiInvisible: ClassVar[Self]</code>
+            <code>kAcGiVisible: ClassVar[Self]</code>
+            <code>kAcGiSilhouette: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class WorldDraw</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def geometry(self) -&gt; WorldGeometry</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class WorldGeometry</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+        </details>
+    </div>
+</body>
+</html>

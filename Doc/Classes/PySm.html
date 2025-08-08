@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PySm.pyi</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Consolas, monospace;
+            margin: 2em;
+        }
+        a {
+            color: #569cd6;
+        }
+        .class {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        details {
+            margin-left: 0.5em;
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 0.5em;
+        }
+        code {
+            display: block;
+            margin: 0.3em 0;
+            white-space: pre;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 0.4em 0.6em;
+            border-left: 4px solid #007acc;
+        }
+        h1 {
+            color: #569cd6;
+        }
+    </style>
+</head>
+<body>
+    <h1>PySm.pyi</h1>
+
+    <div class="class">
+        <details>
+            <summary>class CalloutBlocks</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def add(self, val: PySm.DbBlockRecordReference) -&gt; None</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; CalloutBlocks</code>
+            <code>def className() -&gt; str</code>
+            <code>def getDbBlockRecordReferences(self) -&gt; list[PySm.DbBlockRecordReference]</code>
+            <code>def remove(self, val: PySm.DbBlockRecordReference) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Component</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; Component</code>
+            <code>def className() -&gt; str</code>
+            <code>def getCustomPropertyBag(self) -&gt; CustomPropertyBag</code>
+            <code>def getDesc(self) -&gt; str</code>
+            <code>def getName(self) -&gt; str</code>
+            <code>def setDesc(self, desc: str) -&gt; None</code>
+            <code>def setName(self, name: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CustomPropertyBag</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; CustomPropertyBag</code>
+            <code>def className() -&gt; str</code>
+            <code>def getProperties(self) -&gt; list[tuple[str, PySm.CustomPropertyValue]]</code>
+            <code>def getProperty(self, prop: str) -&gt; CustomPropertyValue</code>
+            <code>def getPropertyValues(self) -&gt; list[tuple[str, PyDb.AcValue]]</code>
+            <code>def hasProperty(self, prop: str) -&gt; bool</code>
+            <code>def setProperty(self, prop: str, val: PySm.CustomPropertyValue) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CustomPropertyValue</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; CustomPropertyValue</code>
+            <code>def className() -&gt; str</code>
+            <code>def getFlags(self) -&gt; PropertyFlags</code>
+            <code>def getValue(self) -&gt; PyDb.AcValue</code>
+            <code>def setFlags(self, flags: PySm.PropertyFlags) -&gt; None</code>
+            <code>def setValue(self, val: PyDb.AcValue | str | int | float) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DbBlockRecordReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; DbBlockRecordReference</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DbDatabase</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getAcDbDatabase(self) -&gt; PyDb.Database</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DbLayoutReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; DbLayoutReference</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DbObjectReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; DbObjectReference</code>
+            <code>def className() -&gt; str</code>
+            <code>def getAcDbHandle(self) -&gt; PyDb.Handle</code>
+            <code>def getAcSmAcDbDatabase(self) -&gt; DbDatabase</code>
+            <code>def resolveAcDbObject(self, db: PyDb.Database) -&gt; PyDb.Handle</code>
+            <code>def setAcDbHandle(self, handle: PyDb.Handle) -&gt; None</code>
+            <code>def setAcDbObject(self, obj: PyDb.Object) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DbViewReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; DbViewReference</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class FileReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; FileReference</code>
+            <code>def className() -&gt; str</code>
+            <code>def getFileName(self) -&gt; str</code>
+            <code>def setFileName(self, fname: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class LockStatus</summary>
+            <code>kUnLocked: ClassVar[Self]</code>
+            <code>kLockedLocal: ClassVar[Self]</code>
+            <code>kLockedRemote: ClassVar[Self]</code>
+            <code>kLockedReadOnly: ClassVar[Self]</code>
+            <code>kLockedNotConnected: ClassVar[Self]</code>
+            <code>kLockedAccessDenied: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class NamedDbObjectReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; NamedDbObjectReference</code>
+            <code>def className() -&gt; str</code>
+            <code>def getName(self) -&gt; str</code>
+            <code>def getOwnerAcDbHandle(self) -&gt; PyDb.Handle</code>
+            <code>def setName(self, val: str) -&gt; None</code>
+            <code>def setOwnerAcDbHandle(self, val: PyDb.Handle) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ObjectReference</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; ObjectReference</code>
+            <code>def className() -&gt; str</code>
+            <code>def getReferenceFlags(self) -&gt; ObjectReferenceFlags</code>
+            <code>def getReferencedObject(self) -&gt; Persist</code>
+            <code>def setReferenceFlags(self, val: PySm.ObjectReferenceFlags) -&gt; None</code>
+            <code>def setReferencedObject(self, val: PySm.Persist) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ObjectReferenceFlags</summary>
+            <code>kSoftPointer: ClassVar[Self]</code>
+            <code>kHardPointer: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Persist</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; Persist</code>
+            <code>def className() -&gt; str</code>
+            <code>def clear(self) -&gt; None</code>
+            <code>def getDatabase(self) -&gt; SmDatabase</code>
+            <code>def getIsDirty(self) -&gt; bool</code>
+            <code>def getObjectId(self) -&gt; object</code>
+            <code>def getOwner(self) -&gt; Persist</code>
+            <code>def getTypeName(self) -&gt; str</code>
+            <code>def initNew(self, owner: PySm.Persist) -&gt; None</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def setOwner(self, owner: PySm.Persist) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PersistProxy</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; PersistProxy</code>
+            <code>def className() -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ProjectPointLocation</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; ProjectPointLocation</code>
+            <code>def className() -&gt; str</code>
+            <code>def getFolder(self) -&gt; str</code>
+            <code>def getPassword(self) -&gt; str</code>
+            <code>def getResourceType(self) -&gt; int</code>
+            <code>def getURL(self) -&gt; str</code>
+            <code>def getUsername(self) -&gt; str</code>
+            <code>def setFolder(self, val: str) -&gt; None</code>
+            <code>def setPassword(self, val: str) -&gt; None</code>
+            <code>def setResourceType(self, val: int) -&gt; None</code>
+            <code>def setUsername(self, val: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ProjectPointLocations</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addNewLocation(self, name: str, url: str, folder: str, username: str, password: str) -&gt; ProjectPointLocation</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; ProjectPointLocations</code>
+            <code>def className() -&gt; str</code>
+            <code>def getLocation(self, locationName: str) -&gt; ProjectPointLocation</code>
+            <code>def removeLocation(self, val: PySm.ProjectPointLocation) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PropertyFlags</summary>
+            <code>kEmpty: ClassVar[Self]</code>
+            <code>kSheetSetProp: ClassVar[Self]</code>
+            <code>kSheetProp: ClassVar[Self]</code>
+            <code>kSubSetProp: ClassVar[Self]</code>
+            <code>kIsChild: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class PublishOptions</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; PublishOptions</code>
+            <code>def className() -&gt; str</code>
+            <code>def getDefaultFilename(self) -&gt; str</code>
+            <code>def getDefaultOutputdir(self) -&gt; FileReference</code>
+            <code>def getDwfType(self) -&gt; bool</code>
+            <code>def getEplotFormat(self) -&gt; int</code>
+            <code>def getIncludeSheetData(self) -&gt; bool</code>
+            <code>def getIncludeSheetSetData(self) -&gt; bool</code>
+            <code>def getLayerInfo(self) -&gt; bool</code>
+            <code>def getLinesMerge(self) -&gt; bool</code>
+            <code>def getPromptForName(self) -&gt; bool</code>
+            <code>def getPromptForPassword(self) -&gt; bool</code>
+            <code>def getUnrecognizedData(self) -&gt; CustomPropertyBag</code>
+            <code>def getUnrecognizedSections(self) -&gt; CustomPropertyBag</code>
+            <code>def getUsePassword(self) -&gt; bool</code>
+            <code>def setDefaultFilename(self, val: str) -&gt; None</code>
+            <code>def setDefaultOutputdir(self, val: PySm.FileReference) -&gt; None</code>
+            <code>def setDwfType(self, val: bool) -&gt; None</code>
+            <code>def setEplotFormat(self, val: int) -&gt; None</code>
+            <code>def setIncludeSheetData(self, val: bool) -&gt; None</code>
+            <code>def setIncludeSheetSetData(self, val: bool) -&gt; None</code>
+            <code>def setLayerInfo(self, val: bool) -&gt; None</code>
+            <code>def setLinesMerge(self, val: bool) -&gt; None</code>
+            <code>def setPromptForName(self, val: bool) -&gt; None</code>
+            <code>def setPromptForPassword(self, val: bool) -&gt; None</code>
+            <code>def setUnrecognizedData(self, val: PySm.CustomPropertyBag) -&gt; None</code>
+            <code>def setUnrecognizedSections(self, val: PySm.CustomPropertyBag) -&gt; None</code>
+            <code>def setUsePassword(self, val: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Resources</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def add(self, val: PySm.FileReference) -&gt; None</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; Resources</code>
+            <code>def className() -&gt; str</code>
+            <code>def getFileReferences(self) -&gt; list[PySm.FileReference]</code>
+            <code>def remove(self, val: PySm.FileReference) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Sheet</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; Sheet</code>
+            <code>def className() -&gt; str</code>
+            <code>def getCategory(self) -&gt; str</code>
+            <code>def getDoNotPlot(self) -&gt; bool</code>
+            <code>def getIssuePurpose(self) -&gt; str</code>
+            <code>def getLayout(self) -&gt; DbLayoutReference</code>
+            <code>def getNumber(self) -&gt; str</code>
+            <code>def getRevisionDate(self) -&gt; str</code>
+            <code>def getRevisionNumber(self) -&gt; str</code>
+            <code>def getSheetViews(self) -&gt; SheetViews</code>
+            <code>def getTitle(self) -&gt; str</code>
+            <code>def setCategory(self, cat: str) -&gt; None</code>
+            <code>def setDoNotPlot(self, flag: bool) -&gt; None</code>
+            <code>def setIssuePurpose(self, why: str) -&gt; None</code>
+            <code>def setLayout(self, layout: PySm.DbLayoutReference) -&gt; None</code>
+            <code>def setNumber(self, number: str) -&gt; None</code>
+            <code>def setRevisionDate(self, date: str) -&gt; None</code>
+            <code>def setRevisionNumber(self, number: str) -&gt; None</code>
+            <code>def setTitle(self, title: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetSelSet</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def add(self, val: PySm.Component) -&gt; None</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SheetSelSet</code>
+            <code>def className() -&gt; str</code>
+            <code>def getComponents(self) -&gt; list[PySm.Component]</code>
+            <code>def remove(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetSelSets</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def add(self, name: str, desc: str) -&gt; SheetSelSet</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SheetSelSets</code>
+            <code>def className() -&gt; str</code>
+            <code>def getSheetSelSets(self) -&gt; list[PySm.SheetSelSet]</code>
+            <code>def remove(self, val: PySm.SheetSelSet) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetSet</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SheetSet</code>
+            <code>def className() -&gt; str</code>
+            <code>def getAltPageSetups(self) -&gt; FileReference</code>
+            <code>def getCalloutBlocks(self) -&gt; CalloutBlocks</code>
+            <code>def getDefAltPageSetup(self) -&gt; NamedDbObjectReference</code>
+            <code>def getDefLabelBlk(self) -&gt; DbBlockRecordReference</code>
+            <code>def getPromptForDwgName(self) -&gt; bool</code>
+            <code>def getPublishOptions(self) -&gt; PublishOptions</code>
+            <code>def getResources(self) -&gt; Resources</code>
+            <code>def getSheetSelSets(self) -&gt; SheetSelSets</code>
+            <code>def getViewCategories(self) -&gt; ViewCategories</code>
+            <code>def setAltPageSetups(self, val: PySm.FileReference) -&gt; None</code>
+            <code>def setDefAltPageSetup(self, val: PySm.NamedDbObjectReference) -&gt; None</code>
+            <code>def setDefLabelBlk(self, val: PySm.DbBlockRecordReference) -&gt; None</code>
+            <code>def setPromptForDwgName(self, val: bool) -&gt; None</code>
+            <code>def sync(self, db: PyDb.Database) -&gt; None</code>
+            <code>def updateSheetCustomProps(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetSetMgr</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def close(self, smDb: PySm.Database) -&gt; None</code>
+            <code>def closeAll(self) -&gt; None</code>
+            <code>def createDatabase(self, filename: str) -&gt; SmDatabase</code>
+            <code>def createDatabase(self, filename: str, template: str, bAlwaysCreate: bool) -&gt; SmDatabase</code>
+            <code>def createDatabase(*args) -&gt; SmDatabase</code>
+            <code>def findOpenDatabase(self, filename: str) -&gt; SmDatabase</code>
+            <code>def getDatabases(self) -&gt; list[PySm.SmDatabase]</code>
+            <code>def getParentSheetSet(self, dwg: str, layout: str) -&gt; tuple[PySm.SmDatabase, PySm.SheetSet]</code>
+            <code>def getSheetFromLayout(self, layout: PyDb.Object) -&gt; tuple[PySm.SmDatabase, PySm.Sheet]</code>
+            <code>def openDatabase(self, filename: str) -&gt; SmDatabase</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetView</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SheetView</code>
+            <code>def className() -&gt; str</code>
+            <code>def getCategory(self) -&gt; ViewCategory</code>
+            <code>def getNamedView(self) -&gt; DbViewReference</code>
+            <code>def getNumber(self) -&gt; str</code>
+            <code>def getTitle(self) -&gt; str</code>
+            <code>def setCategory(self, val: PySm.ViewCategory) -&gt; None</code>
+            <code>def setNamedView(self, val: PySm.AcDbViewReference) -&gt; None</code>
+            <code>def setNumber(self, val: str) -&gt; None</code>
+            <code>def setTitle(self, val: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SheetViews</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SheetViews</code>
+            <code>def className() -&gt; str</code>
+            <code>def getSheetViews(self) -&gt; list[PySm.SheetView]</code>
+            <code>def sync(self, val: PySm.AcDbLayoutReference, db: PyDb.Database) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SmDatabase</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; SmDatabase</code>
+            <code>def className() -&gt; str</code>
+            <code>def getFileName(self) -&gt; str</code>
+            <code>def getLockOwnerInfo(self) -&gt; tuple[str, str]</code>
+            <code>def getLockStatus(self) -&gt; LockStatus</code>
+            <code>def getPersistObjects(self) -&gt; list[PySm.Persist]</code>
+            <code>def getSheetSet(self) -&gt; SheetSet</code>
+            <code>def getTemplateDstFileName(self) -&gt; str</code>
+            <code>def loadFromFile(self, filename: str) -&gt; None</code>
+            <code>def lockDb(self) -&gt; None</code>
+            <code>def setFileName(self, filename: str) -&gt; None</code>
+            <code>def unlockDb(self, commit: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Subset</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addNewSheet(self, name: str, desc: str) -&gt; Sheet</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; Subset</code>
+            <code>def className() -&gt; str</code>
+            <code>def createSubset(self, name: str, desc: str) -&gt; Subset</code>
+            <code>def getDefDwtLayout(self) -&gt; DbLayoutReference</code>
+            <code>def getNewSheetLocation(self) -&gt; FileReference</code>
+            <code>def getOverrideSheetPublish(self) -&gt; bool</code>
+            <code>def getPromptForDwt(self) -&gt; bool</code>
+            <code>def getSheets(self) -&gt; list[PySm.Sheet]</code>
+            <code>def importSheet(self, val: PySm.DbLayoutReference) -&gt; Sheet</code>
+            <code>def insertComponent(self, newSheet: PySm.Component, beforeSheet: PySm.Component) -&gt; None</code>
+            <code>def insertComponentAfter(self, newSheet: PySm.Component, afterSheet: PySm.Component) -&gt; None</code>
+            <code>def insertComponentFirst(self, newSheet: PySm.Component) -&gt; None</code>
+            <code>def removeSheet(self, val: PySm.Sheet) -&gt; None</code>
+            <code>def removeSubset(self, val: PySm.Subset) -&gt; None</code>
+            <code>def setDefDwtLayout(self, val: PySm.DbLayoutReference) -&gt; None</code>
+            <code>def setNewSheetLocation(self, val: PySm.FileReference) -&gt; None</code>
+            <code>def setOverrideSheetPublish(self, val: bool) -&gt; None</code>
+            <code>def setPromptForDwt(self, val: bool) -&gt; None</code>
+            <code>def updateInMemoryDwgHints(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ViewCategories</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; ViewCategories</code>
+            <code>def className() -&gt; str</code>
+            <code>def createViewCategory(self, name: str, desc: str, id: str) -&gt; ViewCategory</code>
+            <code>def getDefaultViewCategory(self) -&gt; ViewCategory</code>
+            <code>def getViewCategories(self) -&gt; list[PySm.ViewCategory]</code>
+            <code>def removeViewCategory(self, val: PySm.ViewCategory) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ViewCategory</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PySm.Persist) -&gt; ViewCategory</code>
+            <code>def className() -&gt; str</code>
+            <code>def getCalloutBlocks(self) -&gt; CalloutBlocks</code>
+            <code>def getSheetViews(self) -&gt; list[PySm.SheetView]</code>
+        </details>
+    </div>
+</body>
+</html>
