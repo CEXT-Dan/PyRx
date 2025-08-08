@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PyBrxCv.pyi</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Consolas, monospace;
+            margin: 2em;
+        }
+        a {
+            color: #569cd6;
+        }
+        .class {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        details {
+            margin-left: 0.5em;
+            background-color: #252526;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 0.5em;
+        }
+        code {
+            display: block;
+            margin: 0.3em 0;
+            white-space: pre;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 0.4em 0.6em;
+            border-left: 4px solid #007acc;
+        }
+        h1 {
+            color: #569cd6;
+        }
+    </style>
+</head>
+<body>
+    <h1>PyBrxCv.pyi</h1>
+
+    <div class="class">
+        <details>
+            <summary>class ArcParameterType</summary>
+            <code>eRadius: ClassVar[Self]</code>
+            <code>eDegreeOfCurve: ClassVar[Self]</code>
+            <code>eTangentLength: ClassVar[Self]</code>
+            <code>eChordLength: ClassVar[Self]</code>
+            <code>eCurveLength: ClassVar[Self]</code>
+            <code>eExternalDist: ClassVar[Self]</code>
+            <code>eMiddleOrdinate: ClassVar[Self]</code>
+            <code>eCurveAngle: ClassVar[Self]</code>
+            <code>eCurveThroughPoint: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ArcType</summary>
+            <code>eCompound: ClassVar[Self]</code>
+            <code>eReverse: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BlockAttachment</summary>
+            <code>eBlockAttachmentTopLeft: ClassVar[Self]</code>
+            <code>eBlockAttachmentTopCenter: ClassVar[Self]</code>
+            <code>eBlockAttachmentTopRight: ClassVar[Self]</code>
+            <code>eBlockAttachmentMiddleLeft: ClassVar[Self]</code>
+            <code>eBlockAttachmentMiddleCenter: ClassVar[Self]</code>
+            <code>eBlockAttachmentMiddleRight: ClassVar[Self]</code>
+            <code>eBlockAttachmentBottomLeft: ClassVar[Self]</code>
+            <code>eBlockAttachmentBottomCenter: ClassVar[Self]</code>
+            <code>eBlockAttachmentBottomRight: ClassVar[Self]</code>
+            <code>eBlockAttachmentInsertionPoint: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BorderType</summary>
+            <code>eBorderTypeRectangular: ClassVar[Self]</code>
+            <code>eBorderTypeRoundedRectangular: ClassVar[Self]</code>
+            <code>eBorderTypeCircular: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class BreaklineIntersectionElevation</summary>
+            <code>eTinNotAllowed: ClassVar[Self]</code>
+            <code>eTinElevationMin: ClassVar[Self]</code>
+            <code>eTinElevationMax: ClassVar[Self]</code>
+            <code>eTinElevationMid: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Civil3dAlignmentType</summary>
+            <code>eNotAlignment: ClassVar[Self]</code>
+            <code>eCenterline: ClassVar[Self]</code>
+            <code>eOffset: ClassVar[Self]</code>
+            <code>eCurbReturn: ClassVar[Self]</code>
+            <code>eRail: ClassVar[Self]</code>
+            <code>eMiscellaneous: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Civil3dEntityType</summary>
+            <code>eNoEntity: ClassVar[Self]</code>
+            <code>eAlignment: ClassVar[Self]</code>
+            <code>eProfile: ClassVar[Self]</code>
+            <code>eTinSurface: ClassVar[Self]</code>
+            <code>eProfileView: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Civil3dLabels</summary>
+            <code>eNoLabels: ClassVar[Self]</code>
+            <code>eSurfaceLabels: ClassVar[Self]</code>
+            <code>eAlignmentsLabels: ClassVar[Self]</code>
+            <code>eUnattachedLabels: ClassVar[Self]</code>
+            <code>eDefaultLabels: ClassVar[Self]</code>
+            <code>eAllLabels: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class Civil3dProfileType</summary>
+            <code>eNotProfile: ClassVar[Self]</code>
+            <code>eLayout: ClassVar[Self]</code>
+            <code>eStaticSurface: ClassVar[Self]</code>
+            <code>eDynamicSurface: ClassVar[Self]</code>
+            <code>eQuick: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CustomSymbol</summary>
+            <code>eCustomSymbolSpotPoint: ClassVar[Self]</code>
+            <code>eCustomSymbolSpotEmpty: ClassVar[Self]</code>
+            <code>eCustomSymbolSpotCross: ClassVar[Self]</code>
+            <code>eCustomSymbolSpotCross45: ClassVar[Self]</code>
+            <code>eCustomSymbolSpotVerticalLine: ClassVar[Self]</code>
+            <code>eCustomSymbolFrameCircle: ClassVar[Self]</code>
+            <code>eCustomSymbolFrameSquare: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvAttribVariant</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, val: str) -&gt; None</code>
+            <code>def __init__(self, val: PyBrxCv.CvDataType) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getAngle(self) -&gt; float</code>
+            <code>def getArea(self) -&gt; float</code>
+            <code>def getAzimuth(self) -&gt; float</code>
+            <code>def getBool(self) -&gt; bool</code>
+            <code>def getDirection(self) -&gt; float</code>
+            <code>def getDistance(self) -&gt; float</code>
+            <code>def getDouble(self) -&gt; float</code>
+            <code>def getElevation(self) -&gt; float</code>
+            <code>def getInteger(self) -&gt; int</code>
+            <code>def getLatitude(self) -&gt; float</code>
+            <code>def getLinear(self) -&gt; float</code>
+            <code>def getLongitude(self) -&gt; float</code>
+            <code>def getRatio(self) -&gt; float</code>
+            <code>def getRotation(self) -&gt; float</code>
+            <code>def getSlope(self) -&gt; float</code>
+            <code>def getSpeed(self) -&gt; float</code>
+            <code>def getStation(self) -&gt; float</code>
+            <code>def getString(self) -&gt; str</code>
+            <code>def getVolume(self) -&gt; float</code>
+            <code>def isValid(self) -&gt; bool</code>
+            <code>def setAngle(self, val: float) -&gt; None</code>
+            <code>def setArea(self, val: float) -&gt; None</code>
+            <code>def setAzimuth(self, val: float) -&gt; None</code>
+            <code>def setBool(self, val: bool) -&gt; None</code>
+            <code>def setDirection(self, val: float) -&gt; None</code>
+            <code>def setDistance(self, val: float) -&gt; None</code>
+            <code>def setElevation(self, val: float) -&gt; None</code>
+            <code>def setInteger(self, val: int) -&gt; None</code>
+            <code>def setLatitude(self, val: float) -&gt; None</code>
+            <code>def setLinear(self, val: float) -&gt; None</code>
+            <code>def setLongitude(self, val: float) -&gt; None</code>
+            <code>def setRatio(self, val: float) -&gt; None</code>
+            <code>def setRotation(self, val: float) -&gt; None</code>
+            <code>def setSlope(self, val: float) -&gt; None</code>
+            <code>def setSpeed(self, val: float) -&gt; None</code>
+            <code>def setStation(self, val: float) -&gt; None</code>
+            <code>def setString(self, val: str) -&gt; None</code>
+            <code>def setVolume(self, val: float) -&gt; None</code>
+            <code>def type(self) -&gt; CvDataType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvCivil3dConverter</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def attachedLabels(self, civilEntity: PyBrxCv.CvCivil3dEntityInfo) -&gt; list[PyDb.ObjectId]</code>
+            <code>def className() -&gt; str</code>
+            <code>def convert(self, entitiesToConvert: list) -&gt; list</code>
+            <code>def getCivilEntities(self) -&gt; list[PyBrxCv.CvCivil3dEntityInfo]</code>
+            <code>def getInsertedEntities(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def unattachedLabels(self) -&gt; list[PyDb.ObjectId]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvCivil3dEntityInfo</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def alignmentType(self) -&gt; Civil3dAlignmentType</code>
+            <code>def baseAlignment(self) -&gt; CvCivil3dEntityInfo</code>
+            <code>def baseSurface(self) -&gt; CvCivil3dEntityInfo</code>
+            <code>def className() -&gt; str</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def objectId(self) -&gt; PyDb.ObjectId</code>
+            <code>def profileType(self) -&gt; Civil3dProfileType</code>
+            <code>def profiles(self) -&gt; list[PyBrxCv.CvCivil3dEntityInfo]</code>
+            <code>def type(self) -&gt; Civil3dEntityType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDataType</summary>
+            <code>eBrxCvDataTypeNone: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeBool: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeString: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeInteger: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeDate: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeLinear: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeStation: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeAngle: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeRatio: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeArea: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeAzimuth: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeDirection: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeDistance: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeElevation: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeSlope: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeLatitude: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeLongitude: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeRotation: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeVolume: ClassVar[Self]</code>
+            <code>eBrxCvDataTypeSpeed: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDb3dAlignment</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def baseHAlignment(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDb3dAlignment</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDb3dAlignment</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getPointsArray(self) -&gt; list[PyGe.Point3d]</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def setBaseHAlignment(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setVAlignment(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def vAlignment(self) -&gt; PyDb.ObjectId</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbCurve</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbCurve</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbCurve</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; bool</code>
+            <code>def setName(self, val: str) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbCurveLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbCurveLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbCurveLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbCurveLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbEntity</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbEntity</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbEntity</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; bool</code>
+            <code>def setName(self, val: str) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbFileFormatManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def allFileFormats(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def applicableFileFormats(self, val: str) -&gt; list[PyDb.ObjectId]</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbFileFormatManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbFileFormatManager</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManager(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbFileFormatManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbGrading</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbGrading</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbGrading</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getCalculationCurve(self) -&gt; PyGe.Curve3d</code>
+            <code>def getCalculationMethod(self) -&gt; GradingCalculationMethod</code>
+            <code>def getGradingVisualStyle(self) -&gt; GradingVisualStyle</code>
+            <code>def getInputEntityId(self) -&gt; PyDb.ObjectId</code>
+            <code>def getIsAssociative(self) -&gt; bool</code>
+            <code>def getIsDrawInfill(self) -&gt; bool</code>
+            <code>def getMidOrdinateDist(self) -&gt; float</code>
+            <code>def getRegionEnd(self) -&gt; float</code>
+            <code>def getRegionStart(self) -&gt; float</code>
+            <code>def getSegmentMaxAngle(self) -&gt; float</code>
+            <code>def getSegmentMaxLength(self) -&gt; float</code>
+            <code>def isClosed(self) -&gt; bool</code>
+            <code>def resultDayLight(self) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def rule(self) -&gt; CvGradingRule</code>
+            <code>def setCalculationMethod(self, val: PyBrxCv.GradingCalculationMethod) -&gt; bool</code>
+            <code>def setDrawInfill(self, val: bool) -&gt; GradingStatus</code>
+            <code>def setGradingVisualStyle(self, val: PyBrxCv.GradingVisualStyle) -&gt; bool</code>
+            <code>def setInputData(self, curve: PyGe.Curve3d) -&gt; GradingStatus</code>
+            <code>def setInputDataId(self, id: PyDb.ObjectId) -&gt; GradingStatus</code>
+            <code>def setIsAssociative(self, val: bool) -&gt; bool</code>
+            <code>def setMidOrdinateDist(self, val: float) -&gt; GradingStatus</code>
+            <code>def setRegionEnd(self, val: float) -&gt; GradingStatus</code>
+            <code>def setRegionStart(self, val: float) -&gt; GradingStatus</code>
+            <code>def setRule(self, val: PyBrxCv.CvGradingRule) -&gt; GradingStatus</code>
+            <code>def setSegmentMaxAngle(self, val: float) -&gt; GradingStatus</code>
+            <code>def setSegmentMaxLength(self, val: float) -&gt; GradingStatus</code>
+            <code>def targetSurface(self) -&gt; PyDb.ObjectId</code>
+            <code>def update(self, val: bool) -&gt; GradingStatus</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignment</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addArcAuto(self, prevId: int, nextId: int) -&gt; int</code>
+            <code>def addArcBetween(self, prevId: int, nextId: int, passThroughPoint: PyGe.Point2d) -&gt; int</code>
+            <code>def addArcBetween(self, prevId: int, nextId: int, parameter: float, paramType: PyBrxCv.EArcParameterType, isGreaterThan180: bool, arcType: PyBrxCv.ArcType) -&gt; int</code>
+            <code>def addArcBetween(*args) -&gt; int</code>
+            <code>def addArcFixed(self, center: PyGe.Point2d, radius: float, clockwise: bool) -&gt; int</code>
+            <code>def addArcFixed(self, startPoint: PyGe.Point2d, midPoint: PyGe.Point2d, endPoint: PyGe.Point2d) -&gt; int</code>
+            <code>def addArcFixed(*args) -&gt; int</code>
+            <code>def addArcFrom(self, prevId: int, passThroughPoint: PyGe.Point2d) -&gt; int</code>
+            <code>def addArcFrom(self, prevId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d) -&gt; int</code>
+            <code>def addArcFrom(self, prevId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType) -&gt; int</code>
+            <code>def addArcFrom(self, prevId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool) -&gt; int</code>
+            <code>def addArcFrom(*args) -&gt; int</code>
+            <code>def addArcTo(self, nextId: int, passThroughPoint: PyGe.Point2d) -&gt; int</code>
+            <code>def addArcTo(self, nextId: int, passThroughPoint: PyGe.Point2d, direction: PyGe.Vector2d) -&gt; int</code>
+            <code>def addArcTo(self, nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType) -&gt; int</code>
+            <code>def addArcTo(self, nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool) -&gt; int</code>
+            <code>def addArcTo(*args) -&gt; int</code>
+            <code>def addCSSTo(self, nextId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addCSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float, passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addCSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float, arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addCSTo(*args) -&gt; int</code>
+            <code>def addLineBetween(self, prevId: int, nextId: int) -&gt; int</code>
+            <code>def addLineFixed(self, prevId: int, length: float) -&gt; int</code>
+            <code>def addLineFixed(self, start: PyGe.Point2d, end: PyGe.Point2d) -&gt; int</code>
+            <code>def addLineFixed(*args) -&gt; int</code>
+            <code>def addLineFrom(self, prevId: int, length: float) -&gt; int</code>
+            <code>def addLineFrom(self, prevId: int, to: PyGe.Point2d) -&gt; int</code>
+            <code>def addLineFrom(*args) -&gt; int</code>
+            <code>def addLineTo(self, nextId: int, length: float) -&gt; int</code>
+            <code>def addLineTo(self, nextId: int, to: PyGe.Point2d) -&gt; int</code>
+            <code>def addLineTo(*args) -&gt; int</code>
+            <code>def addSCFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float, passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSCFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float, arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSCFrom(*args) -&gt; int</code>
+            <code>def addSCSAuto(self, prevId: int, nextId: int) -&gt; int</code>
+            <code>def addSCSBetween(self, prevId: int, nextId: int, spiral1: float, spiral2: float, spiralType: PyBrxCv.SpiralParameterType, radius: float, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSSBetween(self, prevId: int, nextId: int, spiralRatio: float, spiralParamType: PyBrxCv.SpiralParameterType, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSSCFrom(self, prevId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSTFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSTFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSTFrom(*args) -&gt; int</code>
+            <code>def addSTSBetween(self, prevId: int, nextId: int, spiral1Param: float, spiral2Param: float, spiralType: PyBrxCv.SpiralParameterType, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSpiralBetween(self, prevId: int, nextId: int, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSpiralFrom(self, prevId: int, radius: float, length: float, isClockwise: bool, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addSpiralTo(self, nextId: int, radius: float, length: float, isClockwise: bool, spiralDef: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addTSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addTSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float, spiralDefinition: PyBrxCv.SpiralDefinitionType) -&gt; int</code>
+            <code>def addTSTo(*args) -&gt; int</code>
+            <code>def alignment3dAt(self, index: int) -&gt; PyDb.ObjectId</code>
+            <code>def alignment3dCount(self) -&gt; int</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignment</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbHAlignment</code>
+            <code>def curveAtPI(self, pi: PyBrxCv.CvDbHAlignmentPI) -&gt; int</code>
+            <code>def curveElementColor(self) -&gt; int</code>
+            <code>def deleteElement(self, id: int) -&gt; bool</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def elementAtId(self, Id: int) -&gt; CvDbHAlignmentElement</code>
+            <code>def elementAtStation(self, station: float) -&gt; CvDbHAlignmentElement</code>
+            <code>def elementCount(self) -&gt; int</code>
+            <code>def elementExtensionColor(self) -&gt; int</code>
+            <code>def firstElementId(self) -&gt; int</code>
+            <code>def firstLineElementId(self) -&gt; int</code>
+            <code>def getElementId(self, gsMarker: int) -&gt; int</code>
+            <code>def getPIsArray(self) -&gt; list[PyBrxCv.CvDbHAlignmentPI]</code>
+            <code>def getPointAtStation(self, station: float) -&gt; tuple[bool, PyGe.Point2d]</code>
+            <code>def getRadius(self, param: float) -&gt; float</code>
+            <code>def getStationAtPoint(self, station: PyGe.Point2d) -&gt; tuple[bool, float, float]</code>
+            <code>def getStationAtPoint(self, station: PyGe.Point2d, fromStation: float, toStation: float) -&gt; tuple[bool, float, float]</code>
+            <code>def getStationAtPoint(*args) -&gt; tuple[bool, float, float]</code>
+            <code>def getUnorderedElementIds(self) -&gt; list[int]</code>
+            <code>def insertLineFixed(self, start: PyGe.Point2d, end: PyGe.Point2d, prevId: int) -&gt; int</code>
+            <code>def lastElementId(self) -&gt; int</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def lineElementColor(self) -&gt; int</code>
+            <code>def nextLineElementId(self, Id: int) -&gt; int</code>
+            <code>def previousLineElementId(self, Id: int) -&gt; int</code>
+            <code>def setCurveElementColor(self, colACI: int) -&gt; bool</code>
+            <code>def setElementExtensionColor(self, colACI: int) -&gt; bool</code>
+            <code>def setLineElementColor(self, colACI: int) -&gt; bool</code>
+            <code>def setSpiralElementColor(self, colACI: int) -&gt; bool</code>
+            <code>def setStationEquations(self, val: PyBrxCv.CvStationEquations) -&gt; bool</code>
+            <code>def setStyle(self, style: int) -&gt; bool</code>
+            <code>def setTangentExtensionColor(self, colACI: int) -&gt; bool</code>
+            <code>def spiralElementColor(self) -&gt; int</code>
+            <code>def stationEquations(self) -&gt; CvStationEquations</code>
+            <code>def style(self) -&gt; int</code>
+            <code>def tangentExtensionColor(self) -&gt; int</code>
+            <code>def update(self) -&gt; bool</code>
+            <code>def verticalAlignmentAt(self, index: int) -&gt; PyDb.ObjectId</code>
+            <code>def verticalAlignmentCount(self) -&gt; int</code>
+            <code>def verticalAlignmentViewAt(self, index: int) -&gt; PyDb.ObjectId</code>
+            <code>def verticalAlignmentViewCount(self) -&gt; int</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentArc</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentArc</code>
+            <code>def center(self) -&gt; PyGe.Point2d</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def isClockwise(self) -&gt; bool</code>
+            <code>def isCompound(self) -&gt; bool</code>
+            <code>def isLessThan180(self) -&gt; bool</code>
+            <code>def paramLength(self) -&gt; float</code>
+            <code>def passThroughPoint1(self) -&gt; PyGe.Point2d</code>
+            <code>def passThroughPoint2(self) -&gt; PyGe.Point2d</code>
+            <code>def passThroughPoint3(self) -&gt; PyGe.Point2d</code>
+            <code>def radius(self) -&gt; float</code>
+            <code>def setCenter(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setClockwise(self, val: bool) -&gt; bool</code>
+            <code>def setCompound(self, val: bool) -&gt; bool</code>
+            <code>def setLessThan180(self, val: bool) -&gt; bool</code>
+            <code>def setParamLength(self, val: float) -&gt; bool</code>
+            <code>def setPassThroughPoint1(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setPassThroughPoint2(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setPassThroughPoint3(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setRadius(self, val: float) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentCurve</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentCurve</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def endPoint(self) -&gt; PyGe.Point2d</code>
+            <code>def endStation(self) -&gt; float</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def startPoint(self) -&gt; PyGe.Point2d</code>
+            <code>def startStation(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentElement</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentElement</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def id(self) -&gt; int</code>
+            <code>def isSubentity(self) -&gt; bool</code>
+            <code>def nextId(self) -&gt; int</code>
+            <code>def parameterConstraint(self) -&gt; HAlignmentParameterConstraint</code>
+            <code>def previousId(self) -&gt; int</code>
+            <code>def setNextId(self, val: int) -&gt; bool</code>
+            <code>def setParameterConstraint(self, val: PyBrxCv.EParameterConstraint) -&gt; bool</code>
+            <code>def setPreviousId(self, val: int) -&gt; bool</code>
+            <code>def setTangencyConstraint(self, val: PyBrxCv.ETangencyConstraint) -&gt; bool</code>
+            <code>def tangencyConstraint(self) -&gt; HAlignmentTangencyConstraint</code>
+            <code>def type(self) -&gt; HAlignmentElementType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentLine</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentLine</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def paramLength(self) -&gt; float</code>
+            <code>def passThroughPoint1(self) -&gt; PyGe.Point2d</code>
+            <code>def passThroughPoint2(self) -&gt; PyGe.Point2d</code>
+            <code>def setParamLength(self, val: float) -&gt; bool</code>
+            <code>def setPassThroughPoint1(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setPassThroughPoint2(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentPI</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentPI</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def location(self) -&gt; PyGe.Point2d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentSCS</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def arc(self) -&gt; CvDbHAlignmentArc</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentSCS</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def spiralIn(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiralOut(self) -&gt; CvDbHAlignmentSpiral</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentSSCSS</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def arc(self) -&gt; CvDbHAlignmentArc</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentSSCSS</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def spiral1(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiral2(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiral3(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiral4(self) -&gt; CvDbHAlignmentSpiral</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentSTS</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentSTS</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def line(self) -&gt; CvDbHAlignmentLine</code>
+            <code>def spiralIn(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiralOut(self) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def spiralRatio(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbHAlignmentSpiral</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbHAlignmentSpiral</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def endDirection(self) -&gt; float</code>
+            <code>def isCompound(self) -&gt; bool</code>
+            <code>def paramA(self) -&gt; float</code>
+            <code>def paramLength(self) -&gt; float</code>
+            <code>def radiusIn(self) -&gt; float</code>
+            <code>def radiusOut(self) -&gt; float</code>
+            <code>def setClockwise(self, val: bool) -&gt; bool</code>
+            <code>def setCompound(self, val: float) -&gt; bool</code>
+            <code>def setEndDirection(self, val: float) -&gt; bool</code>
+            <code>def setParamA(self, val: float) -&gt; bool</code>
+            <code>def setParamLength(self, val: float) -&gt; bool</code>
+            <code>def setRadiusIn(self, val: float) -&gt; bool</code>
+            <code>def setRadiusOut(self, val: float) -&gt; bool</code>
+            <code>def setSpiralCurveType(self, val: PyBrxCv.ESpiralCurveType) -&gt; bool</code>
+            <code>def setSpiralDefinition(self, val: PyBrxCv.ESpiralDefinitionType) -&gt; bool</code>
+            <code>def spiralCurveType(self) -&gt; SpiralCurveType</code>
+            <code>def spiralDefinition(self) -&gt; SpiralDefinitionTypeSpiral</code>
+            <code>def startDirection(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyle</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, metric: bool) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addComponent(self, val: PyBrxCv.CvDbLabelStyleComponent) -&gt; None</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLabelStyle</code>
+            <code>def className() -&gt; str</code>
+            <code>def componentAt(self, index: int) -&gt; CvDbLabelStyleComponent</code>
+            <code>def componentCount(self) -&gt; int</code>
+            <code>def components(self) -&gt; list[PyBrxCv.CvDbLabelStyleComponent]</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def draggedStateBackgroundMask(self) -&gt; bool</code>
+            <code>def draggedStateBorderAndLeaderGap(self) -&gt; float</code>
+            <code>def draggedStateBorderAndLeaderGapExprIndex(self) -&gt; int</code>
+            <code>def draggedStateBorderIsVisible(self) -&gt; bool</code>
+            <code>def draggedStateBorderType(self) -&gt; BorderType</code>
+            <code>def draggedStateColor(self) -&gt; PyDb.Color</code>
+            <code>def draggedStateDisplayMode(self) -&gt; DisplayMode</code>
+            <code>def draggedStateLeaderArrowHeadSize(self) -&gt; float</code>
+            <code>def draggedStateLeaderArrowHeadSizeExprIndex(self) -&gt; int</code>
+            <code>def draggedStateLeaderArrowHeadStyle(self) -&gt; PyDb.ObjectId</code>
+            <code>def draggedStateLeaderAttachment(self) -&gt; LeaderAttachment</code>
+            <code>def draggedStateLeaderColor(self) -&gt; PyDb.Color</code>
+            <code>def draggedStateLeaderIsVisible(self) -&gt; bool</code>
+            <code>def draggedStateLeaderJustification(self) -&gt; bool</code>
+            <code>def draggedStateLeaderLinetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def draggedStateLeaderLineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def draggedStateLeaderTail(self) -&gt; bool</code>
+            <code>def draggedStateLeaderType(self) -&gt; LeaderType</code>
+            <code>def draggedStateLinetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def draggedStateLineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def draggedStateMaximumTextWidth(self) -&gt; float</code>
+            <code>def draggedStateMaximumTextWidthExprIndex(self) -&gt; int</code>
+            <code>def draggedStateTagDisplayMode(self) -&gt; bool</code>
+            <code>def draggedStateTextHeight(self) -&gt; float</code>
+            <code>def draggedStateTextHeightExprIndex(self) -&gt; int</code>
+            <code>def expressionAt(self, index: int) -&gt; tuple[str, str]</code>
+            <code>def expressionCount(self) -&gt; int</code>
+            <code>def flipAnchorsWithText(self) -&gt; bool</code>
+            <code>def forceInsideCurve(self) -&gt; bool</code>
+            <code>def forcedInsertion(self) -&gt; ForcedInsertion</code>
+            <code>def isVisible(self) -&gt; bool</code>
+            <code>def layer(self) -&gt; PyDb.ObjectId</code>
+            <code>def moveComponent(self, _from: int, _to: int) -&gt; None</code>
+            <code>def orientationReference(self) -&gt; OrientationRef</code>
+            <code>def planReadable(self) -&gt; bool</code>
+            <code>def readabilityBias(self) -&gt; float</code>
+            <code>def removeComponent(self, val: int | PyBrxCv.CvDbLabelStyleComponent) -&gt; None</code>
+            <code>def setDraggedStateBackgroundMask(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateBorderAndLeaderGap(self, val: float) -&gt; None</code>
+            <code>def setDraggedStateBorderAndLeaderGapExprIndex(self, val: int) -&gt; None</code>
+            <code>def setDraggedStateBorderType(self, val: BorderType) -&gt; None</code>
+            <code>def setDraggedStateBorderVisibility(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateColor(self, val: PyDb.Color) -&gt; None</code>
+            <code>def setDraggedStateDisplayMode(self, val: DisplayMode) -&gt; None</code>
+            <code>def setDraggedStateLeaderArrowHeadSize(self, val: float) -&gt; None</code>
+            <code>def setDraggedStateLeaderArrowHeadSizeExprIndex(self, val: int) -&gt; None</code>
+            <code>def setDraggedStateLeaderArrowHeadStyle(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setDraggedStateLeaderAttachment(self, val: LeaderAttachment) -&gt; None</code>
+            <code>def setDraggedStateLeaderColor(self, val: PyDb.Color) -&gt; None</code>
+            <code>def setDraggedStateLeaderJustification(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateLeaderLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setDraggedStateLeaderLineweight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setDraggedStateLeaderTail(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateLeaderType(self, val: LeaderType) -&gt; None</code>
+            <code>def setDraggedStateLeaderVisibility(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setDraggedStateLineweight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setDraggedStateMaximumTextWidth(self, val: float) -&gt; None</code>
+            <code>def setDraggedStateMaximumTextWidthExprIndex(self, val: int) -&gt; None</code>
+            <code>def setDraggedStateTagDisplayMode(self, val: bool) -&gt; None</code>
+            <code>def setDraggedStateTextHeight(self, val: float) -&gt; None</code>
+            <code>def setDraggedStateTextHeightExprIndex(self, val: int) -&gt; None</code>
+            <code>def setExpressionAt(self, index: int, name: str, expr: str, val: PyBrxCv.DataType) -&gt; None</code>
+            <code>def setFlipAnchorsWithText(self, val: bool) -&gt; None</code>
+            <code>def setForceInsideCurve(self, val: bool) -&gt; None</code>
+            <code>def setForcedInsertion(self, val: ForcedInsertion) -&gt; None</code>
+            <code>def setLayer(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setOrientationReference(self, val: PyBrxCv.OrientationRef) -&gt; None</code>
+            <code>def setPlanReadable(self, val: bool) -&gt; None</code>
+            <code>def setReadabilityBias(self, val: float) -&gt; None</code>
+            <code>def setTextStyle(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setVisibility(self, val: bool) -&gt; None</code>
+            <code>def textStyle(self) -&gt; PyDb.ObjectId</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyleArrow</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def angle(self) -&gt; float</code>
+            <code>def angleExprIndex(self) -&gt; int</code>
+            <code>def arrowHeadSize(self) -&gt; float</code>
+            <code>def arrowHeadStyle(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLabelStyleArrow</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def isFixedLength(self) -&gt; bool</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def lengthExprIndex(self) -&gt; int</code>
+            <code>def linetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def offset(self) -&gt; PyGe.Vector2d</code>
+            <code>def setAngle(self, val: float) -&gt; None</code>
+            <code>def setAngleExprIndex(self, val: int) -&gt; None</code>
+            <code>def setArrowHeadSize(self, val: float) -&gt; None</code>
+            <code>def setArrowHeadSizeExprIndex(self, val: int) -&gt; None</code>
+            <code>def setArrowHeadStyle(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setFixedLength(self, val: bool) -&gt; None</code>
+            <code>def setLength(self, val: float) -&gt; None</code>
+            <code>def setLengthExprIndex(self, val: int) -&gt; None</code>
+            <code>def setLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineweight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setOffset(self, val: PyGe.Vector2d) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyleBlock</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def angle(self) -&gt; float</code>
+            <code>def angleExprIndex(self) -&gt; int</code>
+            <code>def attachment(self) -&gt; BlockAttachment</code>
+            <code>def blockId(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLabelStyleBlock</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def height(self) -&gt; float</code>
+            <code>def heightExprIndex(self) -&gt; int</code>
+            <code>def linetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def offset(self) -&gt; PyGe.Vector2d</code>
+            <code>def setAngle(self, val: float) -&gt; None</code>
+            <code>def setAngleExprIndex(self, val: int) -&gt; None</code>
+            <code>def setAttachment(self, attachment: PyBrxCv.BlockAttachment) -&gt; None</code>
+            <code>def setBlockId(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setHeight(self, val: float) -&gt; None</code>
+            <code>def setHeightExprIndex(self, val: int) -&gt; None</code>
+            <code>def setLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineweight(self, lineWeight: PyDb.LineWeight) -&gt; None</code>
+            <code>def setOffset(self, val: PyGe.Vector2d) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyleComponent</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def anchorIndex(self) -&gt; int</code>
+            <code>def anchorPoint(self) -&gt; LabelAnchor</code>
+            <code>def color(self) -&gt; PyDb.Color</code>
+            <code>def displaySetting(self) -&gt; bool</code>
+            <code>def setAnchorIndex(self, val: int) -&gt; None</code>
+            <code>def setAnchorPoint(self, val: PyBrxCv.LabelAnchor) -&gt; None</code>
+            <code>def setColor(self, clr: PyDb.Color) -&gt; None</code>
+            <code>def setVisible(self, val: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyleLine</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def angle(self) -&gt; float</code>
+            <code>def angleExprIndex(self) -&gt; int</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLabelStyleLine</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def endPointAnchorIndex(self) -&gt; int</code>
+            <code>def endPointAnchorPoint(self) -&gt; LabelAnchor</code>
+            <code>def endPointOffset(self) -&gt; PyGe.Vector2d</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def lengthExprIndex(self) -&gt; int</code>
+            <code>def lengthPercentage(self) -&gt; float</code>
+            <code>def lengthPercentageExprIndex(self) -&gt; int</code>
+            <code>def lengthType(self) -&gt; LengthType</code>
+            <code>def linetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def setAngle(self, val: float) -&gt; None</code>
+            <code>def setAngleExprIndex(self, val: int) -&gt; None</code>
+            <code>def setEndPointAnchorIndex(self, val: int) -&gt; None</code>
+            <code>def setEndPointAnchorPoint(self, val: PyBrxCv.LabelAnchor) -&gt; None</code>
+            <code>def setEndPointOffset(self, val: PyGe.Vector2d) -&gt; None</code>
+            <code>def setLength(self, val: float) -&gt; None</code>
+            <code>def setLengthExprIndex(self, val: int) -&gt; None</code>
+            <code>def setLengthPercentage(self, val: float) -&gt; None</code>
+            <code>def setLengthPercentageExprIndex(self, val: int) -&gt; None</code>
+            <code>def setLengthType(self, val: PyBrxCv.LengthType) -&gt; None</code>
+            <code>def setLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineweight(self, id: PyDb.LineWeight) -&gt; None</code>
+            <code>def setStartPointOffset(self, val: PyGe.Vector2d) -&gt; None</code>
+            <code>def setUseEndPointAnchor(self, val: bool) -&gt; None</code>
+            <code>def startPointOffset(self) -&gt; PyGe.Vector2d</code>
+            <code>def useEndPointAnchor(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLabelStyleText</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def allowCurvedText(self) -&gt; bool</code>
+            <code>def borderBackgroudMask(self) -&gt; bool</code>
+            <code>def borderColor(self) -&gt; PyDb.Color</code>
+            <code>def borderGap(self) -&gt; float</code>
+            <code>def borderGapExprIndex(self) -&gt; int</code>
+            <code>def borderIsVisible(self) -&gt; bool</code>
+            <code>def borderLinetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def borderLineweight(self, val: PyDb.LineWeight) -&gt; PyDb.LineWeight</code>
+            <code>def borderType(self) -&gt; BorderType</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLabelStyleText</code>
+            <code>def className() -&gt; str</code>
+            <code>def contents(self) -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def setAllowCurvedText(self, val: bool) -&gt; None</code>
+            <code>def setBorderBackgroudMask(self, val: bool) -&gt; None</code>
+            <code>def setBorderColor(self, val: PyDb.Color) -&gt; None</code>
+            <code>def setBorderGap(self, val: float) -&gt; None</code>
+            <code>def setBorderGapExprIndex(self, val: int) -&gt; None</code>
+            <code>def setBorderLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setBorderLineweight(self) -&gt; None</code>
+            <code>def setBorderType(self, val: BorderType) -&gt; None</code>
+            <code>def setBorderVisibility(self, val: bool) -&gt; None</code>
+            <code>def setContents(self, val: str) -&gt; None</code>
+            <code>def setTextAngle(self, val: float) -&gt; None</code>
+            <code>def setTextAngleExprIndex(self, val: int) -&gt; None</code>
+            <code>def setTextAttachment(self, val: PyDb.MTextAttachmentPoint) -&gt; None</code>
+            <code>def setTextHeight(self, val: float) -&gt; None</code>
+            <code>def setTextHeightExprIndex(self, val: int) -&gt; None</code>
+            <code>def setTextHorizontalAlignment(self, val: PyDb.TextHorzMode) -&gt; None</code>
+            <code>def setTextLinetype(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setTextLineweight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setTextMaximumWidth(self, val: float) -&gt; None</code>
+            <code>def setTextMaximumWidthExprIndex(self, val: int) -&gt; None</code>
+            <code>def setTextOffset(self, val: PyGe.Vector2d) -&gt; None</code>
+            <code>def textAngle(self) -&gt; float</code>
+            <code>def textAngleExprIndex(self) -&gt; int</code>
+            <code>def textAttachment(self) -&gt; PyDb.MTextAttachmentPoint</code>
+            <code>def textHeight(self) -&gt; float</code>
+            <code>def textHeightExprIndex(self) -&gt; int</code>
+            <code>def textHorizontalAlignment(self) -&gt; PyDb.TextHorzMode</code>
+            <code>def textLinetype(self) -&gt; PyDb.ObjectId</code>
+            <code>def textLineweight(self) -&gt; PyDb.LineWeight</code>
+            <code>def textMaximumWidth(self) -&gt; float</code>
+            <code>def textMaximumWidthExprIndex(self) -&gt; int</code>
+            <code>def textOffset(self) -&gt; PyGe.Vector2d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbLineLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbLineLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbLineLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbLineLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbObject</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbObject</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbObject</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; bool</code>
+            <code>def setName(self, val: str) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbObjectManager</summary>
+            <code>def __contains__(self, id: str | PyDb.ObjectId) -&gt; bool</code>
+            <code>def __getitem__(self, val: int | str) -&gt; PyDb.ObjectId</code>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbObjectManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbObjectManager</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def elementCount(self) -&gt; int</code>
+            <code>def has(self, id: str | PyDb.ObjectId) -&gt; bool</code>
+            <code>def idAt(self, val: int | str) -&gt; PyDb.ObjectId</code>
+            <code>def ids(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def nameAt(self, val: int) -&gt; str</code>
+            <code>def names(self) -&gt; list[str]</code>
+            <code>def remove(self, id: str | PyDb.ObjectId) -&gt; bool</code>
+            <code>def toDict(self) -&gt; dict</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbPoint</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addUserAttribute(self, name: str, value: PyBrxCv.CvAttribVariant) -&gt; bool</code>
+            <code>def assignPointToPointGroup(cvpoint: PyBrxCv.CvDbPoint, groupid: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignPointsToPointGroup(cvpoint: list[PyBrxCv.CvDbPoint], groupid: PyDb.ObjectId) -&gt; None</code>
+            <code>def assignStylesToPoints(cvpoint: list[PyBrxCv.CvDbPoint], symbolStyleId: PyDb.ObjectId, labelStyleId: PyDb.ObjectId) -&gt; None</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbPoint</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbPoint</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def easting(self) -&gt; float</code>
+            <code>def elevation(self) -&gt; float</code>
+            <code>def fullDescription(self) -&gt; str</code>
+            <code>def importPointsFromFile(files: list[str], fmtid: PyDb.ObjectId) -&gt; list[PyBrxCv.CvDbPoint]</code>
+            <code>def isLabelDragged(self) -&gt; bool</code>
+            <code>def isLabelPinned(self) -&gt; bool</code>
+            <code>def labelId(self) -&gt; PyDb.ObjectId</code>
+            <code>def labelLeaderVertices(self) -&gt; list[PyGe.Point3d]</code>
+            <code>def labelPosition(self) -&gt; PyGe.Point3d</code>
+            <code>def labelRotation(self) -&gt; float</code>
+            <code>def northing(self) -&gt; float</code>
+            <code>def number(self) -&gt; int</code>
+            <code>def pointGroupsIds(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def pointGroupsNames(self) -&gt; list[str]</code>
+            <code>def position(self) -&gt; PyGe.Point3d</code>
+            <code>def rawDescription(self) -&gt; str</code>
+            <code>def referencedEntityAt(self, val: int) -&gt; CvDbPointReferencedEntity</code>
+            <code>def referencedEntityCount(self) -&gt; int</code>
+            <code>def removeUserAttribute(self, name: str, value: PyBrxCv.CvDataType) -&gt; bool</code>
+            <code>def resetLabel(self) -&gt; bool</code>
+            <code>def setEasting(self, val: float) -&gt; bool</code>
+            <code>def setElevation(self, val: float) -&gt; bool</code>
+            <code>def setFullDescription(self, val: str) -&gt; bool</code>
+            <code>def setLabelId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setLabelLeaderVertices(self, vertices: list[PyGe.Point3d]) -&gt; bool</code>
+            <code>def setLabelPinned(self, val: bool) -&gt; bool</code>
+            <code>def setLabelPosition(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def setLabelRotation(self, val: float) -&gt; bool</code>
+            <code>def setNorthing(self, val: float) -&gt; bool</code>
+            <code>def setNumber(self, val: int) -&gt; bool</code>
+            <code>def setPosition(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def setRawDescription(self, val: str) -&gt; bool</code>
+            <code>def setSymbolId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setSymbolRotation(self, val: float) -&gt; bool</code>
+            <code>def symbolId(self) -&gt; PyDb.ObjectId</code>
+            <code>def symbolRotation(self) -&gt; float</code>
+            <code>def update(self) -&gt; bool</code>
+            <code>def userAttribute(self, name: str, value: PyBrxCv.CvDataType) -&gt; CvAttribVariant</code>
+            <code>def userAttributeAt(self, index: int) -&gt; tuple</code>
+            <code>def userAttributeCount(self) -&gt; int</code>
+            <code>def userAttributeNames(self) -&gt; list</code>
+            <code>def userAttributes(self) -&gt; list</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbPointGroup</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbPointGroup</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbPointGroup</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def excludeElevations(self) -&gt; str</code>
+            <code>def excludeFullDescriptions(self) -&gt; str</code>
+            <code>def excludeNames(self) -&gt; str</code>
+            <code>def excludeNumbers(self) -&gt; str</code>
+            <code>def excludeRawDescriptions(self) -&gt; str</code>
+            <code>def excludeUserAttributesKeys(self) -&gt; str</code>
+            <code>def excludeUserAttributesValues(self) -&gt; str</code>
+            <code>def hasPoint(self, val: int) -&gt; PyDb.ObjectId</code>
+            <code>def includeElevations(self) -&gt; str</code>
+            <code>def includeFullDescriptions(self) -&gt; str</code>
+            <code>def includeNames(self) -&gt; str</code>
+            <code>def includeNumbers(self) -&gt; str</code>
+            <code>def includeRawDescriptions(self) -&gt; str</code>
+            <code>def includeUserAttributesKeys(self) -&gt; str</code>
+            <code>def includeUserAttributesValues(self) -&gt; str</code>
+            <code>def isApplicable(self) -&gt; bool</code>
+            <code>def isEditable(self) -&gt; bool</code>
+            <code>def pointCount(self) -&gt; int</code>
+            <code>def pointIds(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def setExcludeElevations(self, filter: str) -&gt; bool</code>
+            <code>def setExcludeFullDescriptions(self, filter: str) -&gt; bool</code>
+            <code>def setExcludeNames(self, filter: str) -&gt; bool</code>
+            <code>def setExcludeNumbers(self, filter: str) -&gt; bool</code>
+            <code>def setExcludeRawDescriptions(self, filter: str) -&gt; bool</code>
+            <code>def setExcludeUserAttributesKeys(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeElevations(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeFullDescriptions(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeNames(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeNumbers(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeRawDescriptions(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeUserAttributesKeys(self, filter: str) -&gt; bool</code>
+            <code>def setIncludeUserAttributesValues(self, filter: str) -&gt; bool</code>
+            <code>def update(self) -&gt; bool</code>
+            <code>def updateNeeded(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbPointGroupManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbPointGroupManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbPointGroupManager</code>
+            <code>def createPointGroup(self, val: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def groupsWithPoint(self, val: int) -&gt; list[PyDb.ObjectId]</code>
+            <code>def nextPointNumber(self) -&gt; int</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbPointGroupManager</code>
+            <code>def setNextPointNumber(self, val: int) -&gt; bool</code>
+            <code>def updatePointGroups(self) -&gt; int</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbPointLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbPointLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbPointLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbPointLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbPointReferencedEntity</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbPointReferencedEntity</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def id(self) -&gt; PyDb.ObjectId</code>
+            <code>def setId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def type(self) -&gt; PyRx.RxClass</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbStyle</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbStyle</code>
+            <code>def className() -&gt; str</code>
+            <code>def createdBy(self) -&gt; str</code>
+            <code>def createdDate(self) -&gt; PyDb.Date</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def displaySetting(self, orientation: PyBrxCv.DisplayOrientation, partName: str) -&gt; CvDbStylePartDisplaySettings</code>
+            <code>def displaySettings(self, orientation: PyBrxCv.DisplayOrientation) -&gt; list[PyBrxCv.CvDbStylePartDisplaySettings]</code>
+            <code>def lastEditedBy(self) -&gt; str</code>
+            <code>def lastEditedDate(self) -&gt; PyDb.Date</code>
+            <code>def setCreatedBy(self, filter: str) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbStyleManager</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManager(db: PyDb.Database, styleType: PyBrxCv.StyleManagerType) -&gt; PyDb.ObjectId</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode, styleType: PyBrxCv.StyleManagerType) -&gt; CvDbObjectManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbStylePartDisplaySettings</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def color(self) -&gt; PyDb.Color</code>
+            <code>def displaySetting(self) -&gt; bool</code>
+            <code>def layer(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineType(self) -&gt; PyDb.ObjectId</code>
+            <code>def lineTypeScale(self) -&gt; float</code>
+            <code>def lineWeight(self) -&gt; PyDb.LineWeight</code>
+            <code>def plotStyleNameId(self) -&gt; PyDb.ObjectId</code>
+            <code>def plotStyleNameType(self) -&gt; PyDb.PlotStyleNameType</code>
+            <code>def setColor(self, clr: PyDb.Color) -&gt; None</code>
+            <code>def setLayer(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineType(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setLineTypeScale(self, val: float) -&gt; None</code>
+            <code>def setLineWeight(self, val: PyDb.LineWeight) -&gt; None</code>
+            <code>def setPlotStyleNameId(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setPlotStyleNameType(self, val: PyDb.PlotStyleNameType) -&gt; None</code>
+            <code>def setVisible(self, val: bool) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSubObject</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSubObject</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, val: str) -&gt; bool</code>
+            <code>def setName(self, val: str) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSurfaceContourLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceContourLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceContourLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbSurfaceContourLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSurfaceElevationLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceElevationLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceElevationLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbSurfaceElevationLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSurfaceSlopeLabelStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceSlopeLabelStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbSurfaceSlopeLabelStyleManager</code>
+            <code>def createLabelStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbSurfaceSlopeLabelStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSymbolStyle</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, metric: bool) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode) -&gt; None</code>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def asPDMODE(self) -&gt; int</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSymbolStyle</code>
+            <code>def circleFrame(self) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def customSymbol(self) -&gt; CustomSymbol</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def fixedScale(self) -&gt; PyGe.Scale3d</code>
+            <code>def maximumSize(self) -&gt; float</code>
+            <code>def orientationReference(self) -&gt; OrientationRef</code>
+            <code>def rotationAngle(self) -&gt; float</code>
+            <code>def scalingType(self) -&gt; ScalingType</code>
+            <code>def setCircleFrame(self, val: bool) -&gt; None</code>
+            <code>def setCustomSymbol(self, val: PyBrxCv.CustomSymbol) -&gt; None</code>
+            <code>def setFixedScale(self, scale: PyGe.Scale3d) -&gt; None</code>
+            <code>def setMaximumSize(self, val: float) -&gt; None</code>
+            <code>def setOrientationReference(self, val: PyBrxCv.OrientationRef) -&gt; None</code>
+            <code>def setPDMODE(self, val: int) -&gt; None</code>
+            <code>def setRotationAngle(self, val: float) -&gt; None</code>
+            <code>def setScalingType(self, val: PyBrxCv.ScalingType) -&gt; None</code>
+            <code>def setSize(self, val: float) -&gt; None</code>
+            <code>def setSquareFrame(self, val: bool) -&gt; None</code>
+            <code>def setSymbolBlockId(self, id: PyDb.ObjectId) -&gt; None</code>
+            <code>def setSymbolType(self, val: PyBrxCv.SymbolType) -&gt; None</code>
+            <code>def size(self) -&gt; float</code>
+            <code>def squareFrame(self) -&gt; bool</code>
+            <code>def symbolBlockId(self) -&gt; PyDb.ObjectId</code>
+            <code>def symbolType(self) -&gt; SymbolType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbSymbolStyleManager</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbSymbolStyleManager</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbSymbolStyleManager</code>
+            <code>def createSymbolStyle(self, name: str) -&gt; PyDb.ObjectId</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def getManagerId(db: PyDb.Database) -&gt; PyDb.ObjectId</code>
+            <code>def managerId() -&gt; str</code>
+            <code>def openManager(db: PyDb.Database, mode: PyDb.OpenMode) -&gt; CvDbSymbolStyleManager</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurface</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addConstraint(self, constraint: PyBrxCv.CvDbTinSurfaceConstraint, addReactor: bool) -&gt; bool</code>
+            <code>def addConstraints(self, constraints: list[PyBrxCv.CvDbTinSurfaceConstraint], addReactor: bool) -&gt; bool</code>
+            <code>def addDefinition(self, ref: PyBrxCv.CvDbTinSurfaceDefinition) -&gt; int</code>
+            <code>def addPoint(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def addPoints(self, pts: list[PyGe.Point3d]) -&gt; bool</code>
+            <code>def area2d(self, visibleOnly: bool) -&gt; float</code>
+            <code>def area3d(self, visibleOnly: bool) -&gt; float</code>
+            <code>def boundingBox(self) -&gt; tuple[PyGe.Point2d, PyGe.Point2d]</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurface</code>
+            <code>def changePointsElevations(self, pts: list[PyGe.Point3d], newZValues: list[float]) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbTinSurface</code>
+            <code>def closestPointTo(self, pt: PyGe.Point3d) -&gt; PyGe.Point3d</code>
+            <code>def contains(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def contoursAtElevation(self, elevation: float) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def createSnapshot(self) -&gt; int</code>
+            <code>def definitionAt(self, index: int) -&gt; CvDbTinSurfaceDefinition</code>
+            <code>def definitionCount(self) -&gt; int</code>
+            <code>def definitionIndex(self, ref: PyBrxCv.CvDbTinSurfaceDefinition) -&gt; tuple[bool, int]</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def drapeId(self, id: PyDb.ObjectId) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def drapePoints(self, pts: list[PyGe.Point3d]) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def elevationAtPoint(self, pt: PyGe.Point3d) -&gt; tuple[bool, float]</code>
+            <code>def eraseConstraint(self, id: PyDb.ObjectId | int, removeReactor: bool) -&gt; bool</code>
+            <code>def eraseConstraints(self, int64ids: list[int], removeReactor: bool) -&gt; bool</code>
+            <code>def eraseConstraintsIds(self, ids: list[PyDb.ObjectId], removeReactor: bool) -&gt; bool</code>
+            <code>def findDefinition(self, id: int) -&gt; CvDbTinSurfaceDefinition</code>
+            <code>def findTinPointAt(self, pt: PyGe.Point3d) -&gt; tuple[bool, PyBrxCv.CvTinPoint]</code>
+            <code>def findTinTrianglesAt(self, pt: PyGe.Point3d) -&gt; list[PyBrx.CvTinTriangle]</code>
+            <code>def getBorders(self) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def getConstraint(self, id: PyDb.ObjectId | int) -&gt; CvDbTinSurfaceConstraint</code>
+            <code>def getConstraints(self) -&gt; list[PyBrxCv.CvDbTinSurfaceConstraint]</code>
+            <code>def getPoints(self, visibleOnly: bool) -&gt; list[PyGe.Point3d]</code>
+            <code>def getPointsInsidePolygon(self, pts: list[PyGe.Point3d], includeOnEdge: bool) -&gt; list[PyGe.Point3d]</code>
+            <code>def getTinPoints(self) -&gt; list[PyBrx.CvTinPoint]</code>
+            <code>def hasSnapshot(self) -&gt; bool</code>
+            <code>def initialize(self, min: PyGe.Point3d, max: PyGe.Point3d, numOfPoints: int) -&gt; None</code>
+            <code>def insertDefinitionAt(self, index: int, ref: PyBrxCv.CvDbTinSurfaceDefinition) -&gt; int</code>
+            <code>def intersectionsWithLine(self, start: PyGe.Point3d, end: PyGe.Point3d, type: PyBrxCv.TinSurfaceIntersectType, visibleOnly: bool) -&gt; tuple[bool, list[PyGe.Point3d]]</code>
+            <code>def isAssociative(self) -&gt; bool</code>
+            <code>def isAutoUpdate(self) -&gt; bool</code>
+            <code>def isRebuildPossible(self) -&gt; bool</code>
+            <code>def isSnapshotUpdateNeeded(self) -&gt; bool</code>
+            <code>def isUpdateNeeded(self) -&gt; bool</code>
+            <code>def majorContours(self) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def majorContoursColor(self) -&gt; tuple[bool, int]</code>
+            <code>def majorContoursInterval(self) -&gt; tuple[bool, int]</code>
+            <code>def maxElevation(self, visibleOnly: bool) -&gt; float</code>
+            <code>def merge(self, other: PyBrxCv.CvDbTinSurface) -&gt; bool</code>
+            <code>def mergeSurfaces(theOne: PyBrxCv.CvDbTinSurface, theOther: PyBrxCv.CvDbTinSurface) -&gt; CvDbTinSurface</code>
+            <code>def minElevation(self, visibleOnly: bool) -&gt; float</code>
+            <code>def minorContours(self) -&gt; list[list[PyGe.Point3d]]</code>
+            <code>def minorContoursColor(self) -&gt; tuple[bool, int]</code>
+            <code>def minorContoursInterval(self) -&gt; tuple[bool, int]</code>
+            <code>def moveDefinition(self, _from: int, _to: int) -&gt; int</code>
+            <code>def movePoint(self, _from: PyGe.Point3d, _to: PyGe.Point3d) -&gt; bool</code>
+            <code>def movePoints(self, _from: list[PyGe.Point3d], _to: list[PyGe.Point3d]) -&gt; bool</code>
+            <code>def pointsCount(self, visibleOnly: bool) -&gt; int</code>
+            <code>def raiseSurface(self, offset: float) -&gt; bool</code>
+            <code>def rebuild(self, val: bool) -&gt; bool</code>
+            <code>def rebuildSnapshot(self) -&gt; bool</code>
+            <code>def removeAllDefinitions(self) -&gt; int</code>
+            <code>def removeDefinitionAt(self, index: int) -&gt; bool</code>
+            <code>def removePoint(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def removePoints(self, pts: list[PyGe.Point3d]) -&gt; bool</code>
+            <code>def removeSnapshot(self) -&gt; bool</code>
+            <code>def setAssociative(self, isAssociative: bool) -&gt; bool</code>
+            <code>def setIsAutoUpdate(self, autoUpdateOn: bool) -&gt; bool</code>
+            <code>def setMajorContoursColor(self, colorIndex: int) -&gt; bool</code>
+            <code>def setMajorContoursInterval(self, interval: float) -&gt; bool</code>
+            <code>def setMinorContoursColor(self, colorIndex: int) -&gt; bool</code>
+            <code>def setMinorContoursInterval(self, interval: float) -&gt; bool</code>
+            <code>def setStyle(self, style: PyBrxCv.TinSurfaceStyle) -&gt; bool</code>
+            <code>def setSurfaceElevation(self, elevation: float) -&gt; bool</code>
+            <code>def solid3d(self, surface: PyBrxCv.CvDbTinSurface) -&gt; PyDb.Solid3d</code>
+            <code>def solid3d(self, surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float) -&gt; PyDb.Solid3d</code>
+            <code>def solid3d(*args) -&gt; PyDb.Solid3d</code>
+            <code>def style(self) -&gt; TinSurfaceStyle</code>
+            <code>def subDMesh(self) -&gt; PyDb.SubDMesh</code>
+            <code>def subDMesh(self, surface: PyBrxCv.CvDbTinSurface) -&gt; PyDb.SubDMesh</code>
+            <code>def subDMesh(self, surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float) -&gt; PyDb.SubDMesh</code>
+            <code>def subDMesh(*args) -&gt; PyDb.SubDMesh</code>
+            <code>def swapEdge(self, pt: PyGe.Point3d) -&gt; bool</code>
+            <code>def tinTriangles(self) -&gt; list[PyBrx.CvTinTriangle]</code>
+            <code>def triangles(self, visibleOnly: bool) -&gt; list[PyBrx.CvTinTriangle]</code>
+            <code>def trianglesCount(self, visibleOnly: bool) -&gt; int</code>
+            <code>def updateConstraint(self, val: PyBrxCv.CvDbTinSurfaceConstraint) -&gt; bool</code>
+            <code>def updateObjectData(self) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceBoundary</summary>
+            <code>def __init__(self, type: PyBrxCv.TinBoundaryType) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def wallType(self) -&gt; TinBoundaryType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceBreakline</summary>
+            <code>def __init__(self, type: PyBrxCv.TinBreaklineType) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def intersectionElevation(self) -&gt; BreaklineIntersectionElevation</code>
+            <code>def setIntersectionElevation(self, val: PyBrxCv.TinBreaklineType) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceConstraint</summary>
+            <code>def __init__(self, type: PyBrxCv.TinConstraintType) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def constraintType(self) -&gt; TinConstraintType</code>
+            <code>def data(self) -&gt; list[PyGe.Point3d]</code>
+            <code>def id(self) -&gt; int</code>
+            <code>def isDbResident(self) -&gt; bool</code>
+            <code>def midOrdinateDistance(self) -&gt; float</code>
+            <code>def setData(self, intId: int, pts: list[PyGe.Point3d]) -&gt; None</code>
+            <code>def setDataId(self, id: PyDb.ObjectId, midOrdinateDist: float) -&gt; None</code>
+            <code>def setIsDbResident(self, val: bool) -&gt; None</code>
+            <code>def setMidOrdinateDistance(self, val: float) -&gt; None</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinition</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinition</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def description(self) -&gt; str</code>
+            <code>def id(self) -&gt; int</code>
+            <code>def isEnabled(self) -&gt; bool</code>
+            <code>def isReadOnly(self) -&gt; bool</code>
+            <code>def isSubDefinition(self) -&gt; bool</code>
+            <code>def isUpdateNeeded(self) -&gt; bool</code>
+            <code>def isValid(self) -&gt; bool</code>
+            <code>def name(self) -&gt; str</code>
+            <code>def setDescription(self, desc: str) -&gt; bool</code>
+            <code>def setEnabled(self, val: bool) -&gt; bool</code>
+            <code>def setName(self, name: str) -&gt; bool</code>
+            <code>def setReadOnly(self, val: bool) -&gt; bool</code>
+            <code>def type(self) -&gt; TinSurfaceDefinitionType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddDrawingObjects</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addEntity(self, entity: PyDb.Entity) -&gt; bool</code>
+            <code>def addEntityId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddDrawingObjects</code>
+            <code>def className() -&gt; str</code>
+            <code>def crossingsElevation(self) -&gt; TinIntersectionElevation</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def drawingObjectAt(self, idx: int) -&gt; tuple[bool, PyBrx.DrawingObjectTypet, list[PyGe.Point3d]]</code>
+            <code>def drawingObjectsCount(self) -&gt; int</code>
+            <code>def isApplyEdges(self) -&gt; bool</code>
+            <code>def removeAllDrawingObjects(self) -&gt; bool</code>
+            <code>def removeDrawingObjectAt(self, idx: int) -&gt; bool</code>
+            <code>def setCrossingsElevation(self, val: PyBrxCv.TinIntersectionElevation) -&gt; bool</code>
+            <code>def setIsApplyEdges(self, val: bool) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddFromFiles</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddFromFiles</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def fileFormatId(self) -&gt; PyDb.ObjectId</code>
+            <code>def filesPaths(self) -&gt; list[str]</code>
+            <code>def setFileFormatId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setFilesPaths(self, val: list[str]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddFromPointClouds</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddFromPointClouds</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def pcObjectIds(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def setPcObjectIds(self, val: list[PyDb.ObjectId]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddLine</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddLine</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def line(self) -&gt; PyGe.LineSeg2d</code>
+            <code>def setLine(self, line: PyGe.LineSeg2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddLines</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddLines</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def lines(self) -&gt; list[PyGe.LineSeg3d]</code>
+            <code>def setLines(self, lines: list[PyGe.LineSeg2d]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddPoint</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddPoint</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def position(self) -&gt; PyGe.Point3d</code>
+            <code>def setPosition(self, pt: PyGe.Point3d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddPointGroups</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddPointGroups</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def pointGroupsIds(self) -&gt; list[PyDb.ObjectId]</code>
+            <code>def setPointGroupsIds(self, val: list[PyDb.ObjectId]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionAddPoints</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionAddPoints</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def positions(self) -&gt; list[PyGe.Point2d]</code>
+            <code>def setPositions(self, pt: list[PyGe.Point3d]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionCreateFromC3D</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionCreateFromC3D</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def filePath(self) -&gt; str</code>
+            <code>def setFilePath(self, val: str) -&gt; bool</code>
+            <code>def setSurfaceName(self, val: str) -&gt; bool</code>
+            <code>def surfaceName(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionCreateFromFaces</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionCreateFromFaces</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def faceAt(self) -&gt; tuple[bool, PyDb.Face]</code>
+            <code>def facesCount(self) -&gt; int</code>
+            <code>def isApplyEdgesVisibility(self) -&gt; bool</code>
+            <code>def points(self) -&gt; list[PyGe.Point3d]</code>
+            <code>def setIsApplyEdgesVisibility(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionCreateFromLandXML</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionCreateFromLandXML</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def dwgUnits(self) -&gt; PyDb.UnitsValue</code>
+            <code>def filePath(self) -&gt; str</code>
+            <code>def scaleToDwgUnits(self) -&gt; bool</code>
+            <code>def setFilePath(self, val: str) -&gt; bool</code>
+            <code>def setScaleToDwgUnits(self, val: bool) -&gt; bool</code>
+            <code>def setSurfaceName(self, val: str) -&gt; bool</code>
+            <code>def surfaceName(self) -&gt; str</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionDeleteEdge</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionDeleteEdge</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def position(self) -&gt; PyGe.Point2d</code>
+            <code>def setPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionDeleteEdges</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addPolygon(self, edgePolygon: list[PyGe.Point2d], includeIntersected: bool) -&gt; bool</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionDeleteEdges</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def polygonAt(self, index: int) -&gt; tuple[bool, list[PyGe.Point2d]]</code>
+            <code>def polygonsCount(self) -&gt; int</code>
+            <code>def removeAllPolygons(self) -&gt; bool</code>
+            <code>def removePolygonAt(self, index: int) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionDeletePoint</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionDeletePoint</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def position(self) -&gt; PyGe.Point2d</code>
+            <code>def setPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionGroupDefs</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addSubDefinition(self, val: PyBrxCv.CvDbTinSurfaceDefinition) -&gt; int</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionGroupDefs</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def findSubDefinition(self, defid: int) -&gt; int</code>
+            <code>def getSubDefinitionAt(self, index: int) -&gt; CvDbTinSurfaceDefinition</code>
+            <code>def numSubDefinitions(self) -&gt; int</code>
+            <code>def removeSubDefinitionAt(self, index: int) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionModifyPointElevation</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionModifyPointElevation</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def elevation(self) -&gt; float</code>
+            <code>def isDeltaElevation(self) -&gt; bool</code>
+            <code>def position(self) -&gt; PyGe.Point2d</code>
+            <code>def setElevation(self, val: float) -&gt; bool</code>
+            <code>def setIsDeltaElevation(self, val: float) -&gt; bool</code>
+            <code>def setPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionModifyPointsElevation</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionModifyPointsElevation</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def elevation(self) -&gt; float</code>
+            <code>def isDeltaElevation(self) -&gt; bool</code>
+            <code>def positions(self) -&gt; list[PyGe.Point2d]</code>
+            <code>def setElevation(self, val: float) -&gt; bool</code>
+            <code>def setPositions(self, pt: list[PyGe.Point2d]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionModifyPointsElevations</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addPointElevation(self) -&gt; bool</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionModifyPointsElevations</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def pointElevationAt(self) -&gt; tuple[bool, PyGe.Point2d]</code>
+            <code>def pointElevationsCount(self) -&gt; int</code>
+            <code>def removeAllPointElevations(self) -&gt; bool</code>
+            <code>def removePointElevationAt(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionMovePoint</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionMovePoint</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def fromPosition(self) -&gt; PyGe.Point2d</code>
+            <code>def setFromPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setToPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def toPosition(self) -&gt; PyGe.Point2d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionMovePoints</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionMovePoints</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def displacement(self) -&gt; PyGe.Vector2d</code>
+            <code>def fromPoints(self) -&gt; list[PyGe.Point2d]</code>
+            <code>def setDisplacement(self, vec: PyGe.Vector3d) -&gt; bool</code>
+            <code>def setFromPoints(self, pt: list[PyGe.Point2d]) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionRemoveElevations</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionRemoveElevations</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def removeAbove(self) -&gt; bool</code>
+            <code>def removeAboveElevation(self) -&gt; float</code>
+            <code>def removeBelow(self) -&gt; bool</code>
+            <code>def removeBelowElevation(self) -&gt; float</code>
+            <code>def removedPointsCount(self) -&gt; int</code>
+            <code>def setRemoveAbove(self, val: bool) -&gt; bool</code>
+            <code>def setRemoveAboveElevation(self, val: float) -&gt; bool</code>
+            <code>def setRemoveBelow(self, val: bool) -&gt; bool</code>
+            <code>def setRemoveBelowElevation(self, val: float) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionRemoveOuterEdges</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionRemoveOuterEdges</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def maxAdjAngle(self) -&gt; float</code>
+            <code>def maxEdgeLength(self) -&gt; float</code>
+            <code>def minEdgeLength(self) -&gt; float</code>
+            <code>def setMaxAdjAngle(self, val: float) -&gt; bool</code>
+            <code>def setMaxEdgeLength(self, val: float) -&gt; bool</code>
+            <code>def setMinEdgeLength(self, val: float) -&gt; bool</code>
+            <code>def setUseMaxAdjAngle(self, val: bool) -&gt; bool</code>
+            <code>def setUseMaxEdgeLength(self, val: bool) -&gt; bool</code>
+            <code>def setUseMinEdgeLength(self, val: bool) -&gt; bool</code>
+            <code>def useMaxAdjAngle(self) -&gt; bool</code>
+            <code>def useMaxEdgeLength(self) -&gt; bool</code>
+            <code>def useMinEdgeLength(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionRiseLower</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionRiseLower</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def offset(self) -&gt; float</code>
+            <code>def setOffset(self, val: float) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionSwapEdge</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionSwapEdge</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def position(self) -&gt; PyGe.Point2d</code>
+            <code>def setPosition(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionTransform</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionTransform</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def setTransformationMatrix(self, xform: PyGe.Matrix3d) -&gt; bool</code>
+            <code>def transformationMatrix(self) -&gt; PyGe.Matrix3d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceDefinitionTrianglesVisibility</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbTinSurfaceDefinitionTrianglesVisibility</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def positions(self) -&gt; list[PyGe.Point2d]</code>
+            <code>def setPositions(self, val: list[PyGe.Point2d]) -&gt; bool</code>
+            <code>def setVisible(self, val: bool) -&gt; bool</code>
+            <code>def visible(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbTinSurfaceWall</summary>
+            <code>def __init__(self, type: PyBrxCv.TinWallType) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def setHeight(self, val: float) -&gt; None</code>
+            <code>def setWallSide(self, val: PyBrxCv.TinWallSide) -&gt; None</code>
+            <code>def wallSide(self) -&gt; TinWallSide</code>
+            <code>def wallType(self) -&gt; TinWallType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignment</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addArcAuto(self, prevId: int, nextId: int) -&gt; int</code>
+            <code>def addArcBetween(self, prevId: int, nextId: int, radius: float) -&gt; int</code>
+            <code>def addParabolaAuto(self, prevId: int, nextId: int) -&gt; int</code>
+            <code>def addParabolaBetween(self, prevId: int, nextId: int, radius: float) -&gt; int</code>
+            <code>def addTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d) -&gt; int</code>
+            <code>def baseHAlignment(self) -&gt; PyDb.ObjectId</code>
+            <code>def baseSurface(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignment</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbVAlignment</code>
+            <code>def curveAtPVI(self, pvi: PyBrxCv.CvDbVAlignmentPVI) -&gt; int</code>
+            <code>def curveElementColor(self) -&gt; int</code>
+            <code>def deleteElement(self, id: int) -&gt; bool</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def elementAtId(self, id: int) -&gt; CvDbVAlignmentElement</code>
+            <code>def elementCount(self) -&gt; int</code>
+            <code>def elevationMax(self) -&gt; float</code>
+            <code>def elevationMin(self) -&gt; float</code>
+            <code>def firstElementId(self) -&gt; int</code>
+            <code>def firstTangentElementId(self) -&gt; int</code>
+            <code>def getElementId(self, gsMarker: int) -&gt; int</code>
+            <code>def getElevationAt(self, station: float) -&gt; tuple[bool, float]</code>
+            <code>def getElevations(self) -&gt; list[PyGe.Point2d]</code>
+            <code>def getPVIsArrays(self) -&gt; list[PyBrxCv.CvDbVAlignmentPVI]</code>
+            <code>def getRadius(self, param: float) -&gt; float</code>
+            <code>def getUnorderedElementIds(self) -&gt; list[int]</code>
+            <code>def insertTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, val: int) -&gt; int</code>
+            <code>def lastElementId(self) -&gt; int</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def lineElementColor(self) -&gt; int</code>
+            <code>def nextTangentElementId(self, id: int) -&gt; int</code>
+            <code>def previousTangentElementId(self, id: int) -&gt; int</code>
+            <code>def pviAtCurve(self, curve: PyBrxCv.CvDbVAlignmentCurve) -&gt; CvDbVAlignmentPVI</code>
+            <code>def setBaseHAlignment(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setBaseSurface(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setCurveElementColor(self, val: int) -&gt; bool</code>
+            <code>def setLineElementColor(self, val: int) -&gt; bool</code>
+            <code>def setStyle(self, val: int) -&gt; bool</code>
+            <code>def setTangentPolygonColor(self, val: int) -&gt; bool</code>
+            <code>def setType(self, val: VAlignmentType) -&gt; bool</code>
+            <code>def style(self) -&gt; int</code>
+            <code>def tangentPolygonColor(self) -&gt; int</code>
+            <code>def type(self) -&gt; VAlignmentType</code>
+            <code>def update(self, updateDependencies: bool) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentArc</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentArc</code>
+            <code>def center(self) -&gt; PyGe.Point2d</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def gradeIn(self) -&gt; float</code>
+            <code>def gradeOut(self) -&gt; float</code>
+            <code>def isClockwise(self) -&gt; bool</code>
+            <code>def radius(self) -&gt; float</code>
+            <code>def setCenter(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setClockwise(self, val: bool) -&gt; bool</code>
+            <code>def setRadius(self, val: float) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentCurve</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentCurve</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def endPoint(self) -&gt; PyGe.Point2d</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def startPoint(self) -&gt; PyGe.Point2d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentElement</summary>
+            <code>def __init__() -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentElement</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def id(self) -&gt; int</code>
+            <code>def nextId(self) -&gt; int</code>
+            <code>def parameterConstraint(self) -&gt; VAlignmentParameterConstraint</code>
+            <code>def previousId(self) -&gt; int</code>
+            <code>def setNextId(self, val: int) -&gt; bool</code>
+            <code>def setParameterConstraint(self, val: PyBrxCv.VAlignmentParameterConstraint) -&gt; bool</code>
+            <code>def setPreviousId(self, val: int) -&gt; bool</code>
+            <code>def setTangencyConstraint(self, val: PyBrxCv.VAlignmentTangencyConstraint) -&gt; bool</code>
+            <code>def tangencyConstraint(self) -&gt; VAlignmentTangencyConstraint</code>
+            <code>def type(self) -&gt; VAlignmentElementType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentPVI</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentPVI</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def location(self) -&gt; PyGe.Point2d</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentParabola</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentParabola</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def gradeIn(self) -&gt; float</code>
+            <code>def gradeOut(self) -&gt; float</code>
+            <code>def radius(self) -&gt; float</code>
+            <code>def setRadius(self, val: float) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentTangent</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentTangent</code>
+            <code>def className() -&gt; str</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def passThroughPoint1(self) -&gt; PyGe.Point2d</code>
+            <code>def passThroughPoint2(self) -&gt; PyGe.Point2d</code>
+            <code>def setPassThroughPoint1(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setPassThroughPoint2(self, pt: PyGe.Point2d) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVAlignmentView</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentView</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbVAlignmentView</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def update(self, bUpdateDependencies: bool, updateOrigin: bool) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbView</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addGraph(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def baseElevation(self) -&gt; float</code>
+            <code>def baseHAlignment(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbView</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbView</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def fromWCSPoint2d(self, pt: PyGe.Point2d) -&gt; PyGe.Point2d</code>
+            <code>def fromWCSX(self, val: float) -&gt; float</code>
+            <code>def fromWCSY(self, val: float) -&gt; float</code>
+            <code>def graphAt(self, val: int) -&gt; PyDb.ObjectId</code>
+            <code>def graphCount(self) -&gt; int</code>
+            <code>def height(self) -&gt; float</code>
+            <code>def horizontalScale(self) -&gt; float</code>
+            <code>def length(self) -&gt; float</code>
+            <code>def origin(self) -&gt; PyGe.Point2d</code>
+            <code>def removeGraph(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setBaseElevation(self, val: float) -&gt; bool</code>
+            <code>def setBaseHAlignment(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def setHeight(self, val: float) -&gt; bool</code>
+            <code>def setHorizontalScale(self, val: float) -&gt; bool</code>
+            <code>def setLength(self, val: float) -&gt; bool</code>
+            <code>def setOrigin(self, pt: PyGe.Point2d) -&gt; bool</code>
+            <code>def setVerticalScale(self, val: float) -&gt; bool</code>
+            <code>def toWCSPoint2d(self, pt: PyGe.Point2d) -&gt; PyGe.Point2d</code>
+            <code>def toWCSX(self, val: float) -&gt; float</code>
+            <code>def toWCSY(self, val: float) -&gt; float</code>
+            <code>def verticalScale(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvDbVolumeSurface</summary>
+            <code>def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def baseSurfaceObjectId(self) -&gt; PyDb.ObjectId</code>
+            <code>def boundingPolygon(self) -&gt; list[PyGe.Point3d]</code>
+            <code>def boundingPolygonObjectId(self) -&gt; PyDb.ObjectId</code>
+            <code>def cast(otherObject: PyRx.RxObject) -&gt; CvDbVolumeSurface</code>
+            <code>def className() -&gt; str</code>
+            <code>def cloneFrom(otherObject: PyRx.RxObject) -&gt; CvDbVolumeSurface</code>
+            <code>def comparisonSurfaceObjectId(self) -&gt; PyDb.ObjectId</code>
+            <code>def cutVolume(self) -&gt; float</code>
+            <code>def depthElevation(self) -&gt; float</code>
+            <code>def desc() -&gt; PyRx.RxClass</code>
+            <code>def fillVolume(self) -&gt; float</code>
+            <code>def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d]) -&gt; bool</code>
+            <code>def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float) -&gt; bool</code>
+            <code>def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d]) -&gt; bool</code>
+            <code>def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float) -&gt; bool</code>
+            <code>def initialize(*args) -&gt; bool</code>
+            <code>def type(self) -&gt; VolumeSurfaceType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvGradingRule</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxCv.CvGradingRule) -&gt; CvGradingRule</code>
+            <code>def className() -&gt; str</code>
+            <code>def convertRadToSlope() -&gt; float</code>
+            <code>def convertSlopeToRad() -&gt; float</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def release(self) -&gt; bool</code>
+            <code>def setSide(self, format: int) -&gt; bool</code>
+            <code>def setSlopeFormat(self, format: int) -&gt; bool</code>
+            <code>def side(self) -&gt; GradingSide</code>
+            <code>def slopeFormat(self) -&gt; GradingSlopeFormat</code>
+            <code>def type(self) -&gt; GradingType</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvGradingSlopeOffsetRule</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxCv.CvGradingRule) -&gt; CvGradingSlopeOffsetRule</code>
+            <code>def className() -&gt; str</code>
+            <code>def offset(self) -&gt; float</code>
+            <code>def setOffset(self, offset: float) -&gt; bool</code>
+            <code>def setSlope(self, slope: float) -&gt; bool</code>
+            <code>def slope(self) -&gt; float</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvGradingSlopeSurfaceRule</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def cast(otherObject: PyBrxCv.CvGradingRule) -&gt; CvGradingSlopeSurfaceRule</code>
+            <code>def className() -&gt; str</code>
+            <code>def cutSlope(self) -&gt; float</code>
+            <code>def fillSlope(self) -&gt; float</code>
+            <code>def setCutSlope(self, val: float) -&gt; bool</code>
+            <code>def setFillSlope(self, val: float) -&gt; bool</code>
+            <code>def setSurfaceId(self, id: PyDb.ObjectId) -&gt; bool</code>
+            <code>def surfaceId(self) -&gt; PyDb.ObjectId</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvStationEquation</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, rawStation: float, stationForward: float, type: StationEquationType) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def className() -&gt; str</code>
+            <code>def getRawStation(self) -&gt; float</code>
+            <code>def getStationForward(self) -&gt; float</code>
+            <code>def getType(self) -&gt; StationEquationType</code>
+            <code>def isNull(self) -&gt; bool</code>
+            <code>def setRawStation(self, val: float) -&gt; bool</code>
+            <code>def setStationForward(self, val: float) -&gt; bool</code>
+            <code>def setType(self, val: PyBrxCv.EStationEquationType) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvStationEquations</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __init__(self, alignment: PyBrxCv.CvDbHAlignment) -&gt; None</code>
+            <code>def __init__(*args) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def addStationEquation(self, equation: PyBrxCv.CvStationEquation) -&gt; bool</code>
+            <code>def className() -&gt; str</code>
+            <code>def getLengthFromRawStation(self, rawStation: float) -&gt; float</code>
+            <code>def getRawStation(self, station: float) -&gt; list[float]</code>
+            <code>def getRawStationFromLength(self, length: float) -&gt; float</code>
+            <code>def getRefRawStartingStation(self) -&gt; float</code>
+            <code>def getRefStartingLength(self) -&gt; float</code>
+            <code>def getStartingStation(self) -&gt; float</code>
+            <code>def getStation(self, rawStation: float) -&gt; float</code>
+            <code>def getStationBack(self, idx: int) -&gt; float</code>
+            <code>def getStationEquation(self, idx: int) -&gt; CvStationEquation</code>
+            <code>def removeAllStationEquations(self) -&gt; bool</code>
+            <code>def removeStationEquation(self, idx: int) -&gt; bool</code>
+            <code>def setRefRawStartingStation(self, rawStartingStation: float) -&gt; bool</code>
+            <code>def setRefStartingLength(self, startingStation: float) -&gt; bool</code>
+            <code>def stationEquationsCount(self) -&gt; int</code>
+            <code>def update(self) -&gt; bool</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvTinPoint</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def isValid(self) -&gt; bool</code>
+            <code>def location(self) -&gt; PyGe.Point3d</code>
+            <code>def triangleWithPoint(self) -&gt; CvTinTriangle</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class CvTinTriangle</summary>
+            <code>def __init__(self) -&gt; None</code>
+            <code>def __reduce__(self) -&gt; Any</code>
+            <code>def isValid(self) -&gt; bool</code>
+            <code>def isVisible(self) -&gt; bool</code>
+            <code>def locationAt(self, index: int) -&gt; PyGe.Point3d</code>
+            <code>def neighborAt(self, index: int) -&gt; CvTinTriangle</code>
+            <code>def pointAt(self, index: int) -&gt; CvTinPoint</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DisplayMode</summary>
+            <code>eDisplayModeAsComposed: ClassVar[Self]</code>
+            <code>eDisplayModeStackedText: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DisplayOrientation</summary>
+            <code>eDisplayOrientationPlan: ClassVar[Self]</code>
+            <code>eDisplayOrientationModel: ClassVar[Self]</code>
+            <code>eDisplayOrientationProfile: ClassVar[Self]</code>
+            <code>eDisplayOrientationSection: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class DrawingObjectType</summary>
+            <code>eUnknown: ClassVar[Self]</code>
+            <code>ePoint: ClassVar[Self]</code>
+            <code>eBlock: ClassVar[Self]</code>
+            <code>eText: ClassVar[Self]</code>
+            <code>eLine: ClassVar[Self]</code>
+            <code>eFace: ClassVar[Self]</code>
+            <code>ePolyline: ClassVar[Self]</code>
+            <code>eCivilPoint: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ForcedInsertion</summary>
+            <code>eForcedInsertionNone: ClassVar[Self]</code>
+            <code>eForcedInsertionTop: ClassVar[Self]</code>
+            <code>eForcedInsertionBottom: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingCalculationMethod</summary>
+            <code>eGradingAccurate: ClassVar[Self]</code>
+            <code>eGradingFast: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingSide</summary>
+            <code>eGradingSideNone: ClassVar[Self]</code>
+            <code>eGradingSideLeft: ClassVar[Self]</code>
+            <code>eGradingSideRight: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingSlopeFormat</summary>
+            <code>eSlopeNoFormat: ClassVar[Self]</code>
+            <code>eSlopeRiseRun: ClassVar[Self]</code>
+            <code>eSlopeDegrees: ClassVar[Self]</code>
+            <code>eSlopePercent: ClassVar[Self]</code>
+            <code>eSlopeRadians: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingStatus</summary>
+            <code>eGradingNoStatus: ClassVar[Self]</code>
+            <code>eGradingOk: ClassVar[Self]</code>
+            <code>eGradingUpdateNeeded: ClassVar[Self]</code>
+            <code>eGradingIncorrectInputData: ClassVar[Self]</code>
+            <code>eGradingSurfaceMissing: ClassVar[Self]</code>
+            <code>eGradingRuleMissing: ClassVar[Self]</code>
+            <code>eGradingInputDataOutsideSurface: ClassVar[Self]</code>
+            <code>eGradingGradingOutsideSurface: ClassVar[Self]</code>
+            <code>eGradingOffsetFailed: ClassVar[Self]</code>
+            <code>eGradingMultipleOffsetResult: ClassVar[Self]</code>
+            <code>eGradingZeroGrading: ClassVar[Self]</code>
+            <code>eGradingUnknownError: ClassVar[Self]</code>
+            <code>eGradingInputDataMissing: ClassVar[Self]</code>
+            <code>eGradingInvalidInput: ClassVar[Self]</code>
+            <code>eGradingInvalidRule: ClassVar[Self]</code>
+            <code>eGradingTimeout: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingType</summary>
+            <code>eGradingTypeNone: ClassVar[Self]</code>
+            <code>eGradingTypeSlopeSurface: ClassVar[Self]</code>
+            <code>eGradingTypeSlopeOffset: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class GradingVisualStyle</summary>
+            <code>eGradingDrawNothing: ClassVar[Self]</code>
+            <code>eGradingDrawSurface: ClassVar[Self]</code>
+            <code>eGradingDrawRays: ClassVar[Self]</code>
+            <code>eGradingDrawDaylight: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class HAlignmentElementType</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eLine: ClassVar[Self]</code>
+            <code>eArc: ClassVar[Self]</code>
+            <code>eSpiral: ClassVar[Self]</code>
+            <code>eSpiralCurveSpiral: ClassVar[Self]</code>
+            <code>eSpiralLineSpiral: ClassVar[Self]</code>
+            <code>eSpiralLine: ClassVar[Self]</code>
+            <code>eLineSpiral: ClassVar[Self]</code>
+            <code>eSpiralCurve: ClassVar[Self]</code>
+            <code>eCurveSpiral: ClassVar[Self]</code>
+            <code>eSpiralSpiralCurveSpiralSpiral: ClassVar[Self]</code>
+            <code>eMultipleSegments: ClassVar[Self]</code>
+            <code>eSpiralCurveSpiralCurveSpiral: ClassVar[Self]</code>
+            <code>eSpiralCurveSpiralSpiralCurveSpiral: ClassVar[Self]</code>
+            <code>eSpiralSpiral: ClassVar[Self]</code>
+            <code>eSpiralSpiralCurve: ClassVar[Self]</code>
+            <code>eCurveSpiralSpiral: ClassVar[Self]</code>
+            <code>eCurveLineCurve: ClassVar[Self]</code>
+            <code>eCurveReverseCurve: ClassVar[Self]</code>
+            <code>eCurveCurveReverseCurve: ClassVar[Self]</code>
+            <code>ePI: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class HAlignmentParameterConstraint</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eAutomatic: ClassVar[Self]</code>
+            <code>eLine_TwoPoints: ClassVar[Self]</code>
+            <code>eLine_ThroughPoint: ClassVar[Self]</code>
+            <code>eLine_Length: ClassVar[Self]</code>
+            <code>eLine_BestFit: ClassVar[Self]</code>
+            <code>eArc_ThreePoints: ClassVar[Self]</code>
+            <code>eArc_CenterRadius: ClassVar[Self]</code>
+            <code>eArc_CenterPassThrough: ClassVar[Self]</code>
+            <code>eArc_PassThroughRadius: ClassVar[Self]</code>
+            <code>eArc_PassThroughAttachToEnd: ClassVar[Self]</code>
+            <code>eArc_PassThroughDirection: ClassVar[Self]</code>
+            <code>eArc_Radius: ClassVar[Self]</code>
+            <code>eArc_PassThrough: ClassVar[Self]</code>
+            <code>eArc_RadiusAndLength: ClassVar[Self]</code>
+            <code>eArc_PointOnTangent: ClassVar[Self]</code>
+            <code>eArc_BestFit: ClassVar[Self]</code>
+            <code>eSCS_SpiralInRadiusSpiralOut: ClassVar[Self]</code>
+            <code>eSCS_SpiralLengthRadiusPassThrough: ClassVar[Self]</code>
+            <code>eSCS_SpiralLengthRadiusArcLength: ClassVar[Self]</code>
+            <code>eSCS_SpiralLengthRadius: ClassVar[Self]</code>
+            <code>eSCS_SpiralLength: ClassVar[Self]</code>
+            <code>eSCS_SpiralInLengthSpiralOutLength: ClassVar[Self]</code>
+            <code>eSCS_SpiralInAValSpiralOutAVal: ClassVar[Self]</code>
+            <code>eSCS_SpiralInAValRadiusSpiralOutAVal: ClassVar[Self]</code>
+            <code>eSCS_SpiralAValRadiusPassThrough: ClassVar[Self]</code>
+            <code>eSCS_SpiralAValRadiusArcLength: ClassVar[Self]</code>
+            <code>eSCS_SpiralAValRadius: ClassVar[Self]</code>
+            <code>eSCS_SpiralAVal: ClassVar[Self]</code>
+            <code>eSCS_PointOnTangent: ClassVar[Self]</code>
+            <code>eSpiral_StartPointDirRadiusLength: ClassVar[Self]</code>
+            <code>eSpiral_StartPointDirStartAndEndRadiusLength: ClassVar[Self]</code>
+            <code>eSTS_SpiralInLengthSpiralOutLength: ClassVar[Self]</code>
+            <code>eSTS_TangentLength: ClassVar[Self]</code>
+            <code>eSTS_SpiralInAValSpiralOutAVal: ClassVar[Self]</code>
+            <code>eSTS_SpiralLengthTangentPassThrough: ClassVar[Self]</code>
+            <code>eSTS_SpiralLengthTangentLength: ClassVar[Self]</code>
+            <code>eSTS_SpiralAValTangentPassThrough: ClassVar[Self]</code>
+            <code>eSTS_SpiralAValTangentLength: ClassVar[Self]</code>
+            <code>eSSCSS_Sp1LenSp2LenRadiusPt: ClassVar[Self]</code>
+            <code>eSSCSS_Sp1LenSp2LenPt1Pt2: ClassVar[Self]</code>
+            <code>eSSCSS_Sp1AValSp2AValRadiusPt: ClassVar[Self]</code>
+            <code>eSSCSS_Sp1AValSp2AValPt1Pt2: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class HAlignmentTangencyConstraint</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eFixed: ClassVar[Self]</code>
+            <code>ePrevious: ClassVar[Self]</code>
+            <code>eNext: ClassVar[Self]</code>
+            <code>eBoth: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class HAlignmentVisualStyle</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eElements: ClassVar[Self]</code>
+            <code>eTangentExtensions: ClassVar[Self]</code>
+            <code>eElementExtensions: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class LabelAnchor</summary>
+            <code>eLabelAnchors: ClassVar[Self]</code>
+            <code>eLabelAnchorStart: ClassVar[Self]</code>
+            <code>eLabelAnchorMiddle: ClassVar[Self]</code>
+            <code>eLabelAnchorEnd: ClassVar[Self]</code>
+            <code>eLabelAnchorTopLeft: ClassVar[Self]</code>
+            <code>eLabelAnchorTopCenter: ClassVar[Self]</code>
+            <code>eLabelAnchorTopRight: ClassVar[Self]</code>
+            <code>eLabelAnchorMiddleLeft: ClassVar[Self]</code>
+            <code>eLabelAnchorMiddleCenter: ClassVar[Self]</code>
+            <code>eLabelAnchorMiddleRight: ClassVar[Self]</code>
+            <code>eLabelAnchorBottomLeft: ClassVar[Self]</code>
+            <code>eLabelAnchorBottomCenter: ClassVar[Self]</code>
+            <code>eLabelAnchorBottomRight: ClassVar[Self]</code>
+            <code>eLabelAnchorInsertionPoint: ClassVar[Self]</code>
+            <code>eLabelAnchorCurveCenter: ClassVar[Self]</code>
+            <code>eLabelAnchorCurvePI: ClassVar[Self]</code>
+            <code>eLabelAnchorFeatureLocation: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class LeaderAttachment</summary>
+            <code>eLeaderAttachmentTopOfTopLine: ClassVar[Self]</code>
+            <code>eLeaderAttachmentMiddleOfTopLine: ClassVar[Self]</code>
+            <code>eLeaderAttachmentMiddle: ClassVar[Self]</code>
+            <code>eLeaderAttachmentMiddleOfBottomLine: ClassVar[Self]</code>
+            <code>eLeaderAttachmentBottomOfBottomLine: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class LeaderType</summary>
+            <code>eLeaderTypeStraight: ClassVar[Self]</code>
+            <code>eLeaderTypeSpline: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class LengthType</summary>
+            <code>eLengthTypeFixed: ClassVar[Self]</code>
+            <code>eLengthTypePercentage: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class OrientationRef</summary>
+            <code>eOrientationReferenceObject: ClassVar[Self]</code>
+            <code>eOrientationReferenceView: ClassVar[Self]</code>
+            <code>eOrientationReferenceWCS: ClassVar[Self]</code>
+            <code>eOrientationReferenceStartLeaderAtMarker: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class ScalingType</summary>
+            <code>eScalingTypeDrawingScale: ClassVar[Self]</code>
+            <code>eScalingTypeFixedScale: ClassVar[Self]</code>
+            <code>eScalingTypeAbsoluteUnits: ClassVar[Self]</code>
+            <code>eScalingTypeRelativeToScreen: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralCurveType</summary>
+            <code>eInCurve: ClassVar[Self]</code>
+            <code>eOutCurve: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralDefinitionType</summary>
+            <code>eClothoid: ClassVar[Self]</code>
+            <code>eCubicParabola: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralDefinitionTypeSpiral</summary>
+            <code>eClothoid: ClassVar[Self]</code>
+            <code>eCubicParabola: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralDirectionType</summary>
+            <code>eDirectionRight: ClassVar[Self]</code>
+            <code>eDirectionLeft: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralParameterType</summary>
+            <code>eClothoid: ClassVar[Self]</code>
+            <code>eCubicParabola: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SpiralParameterType2</summary>
+            <code>eParamA: ClassVar[Self]</code>
+            <code>eParamLength: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class StationEquationType</summary>
+            <code>Increasing: ClassVar[Self]</code>
+            <code>Decreasing: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class StyleManagerType</summary>
+            <code>eSymbolStyle: ClassVar[Self]</code>
+            <code>eLineLabel: ClassVar[Self]</code>
+            <code>eCurveLabel: ClassVar[Self]</code>
+            <code>ePointLabel: ClassVar[Self]</code>
+            <code>eContourLabel: ClassVar[Self]</code>
+            <code>eSurfaceSlopeLabel: ClassVar[Self]</code>
+            <code>eSurfaceElevationLabel: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class SymbolType</summary>
+            <code>eSymbolTypeACADPoint: ClassVar[Self]</code>
+            <code>eSymbolTypeCustom: ClassVar[Self]</code>
+            <code>eSymbolTypeBlock: ClassVar[Self]</code>
+            <code>eSymbolTypeVerticalLine: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinBoundaryType</summary>
+            <code>eTinShow: ClassVar[Self]</code>
+            <code>eTinHide: ClassVar[Self]</code>
+            <code>eTinOuter: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinBreaklineType</summary>
+            <code>eTinBreaklineNormal: ClassVar[Self]</code>
+            <code>eTinNonDestructive: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinConstraintType</summary>
+            <code>eTinBreakline: ClassVar[Self]</code>
+            <code>eTinBoundary: ClassVar[Self]</code>
+            <code>eTinWall: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinIntersectionElevation</summary>
+            <code>eTinNotAllowed: ClassVar[Self]</code>
+            <code>eTinElevationMin: ClassVar[Self]</code>
+            <code>eTinElevationMax: ClassVar[Self]</code>
+            <code>eTinElevationMid: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinSurfaceDefinitionType</summary>
+            <code>eNone: ClassVar[Self]</code>
+            <code>eTransform: ClassVar[Self]</code>
+            <code>eAddPoint: ClassVar[Self]</code>
+            <code>eAddPoints: ClassVar[Self]</code>
+            <code>eDeletePoint: ClassVar[Self]</code>
+            <code>eDeletePoints: ClassVar[Self]</code>
+            <code>eSwapEdge: ClassVar[Self]</code>
+            <code>eMovePoint: ClassVar[Self]</code>
+            <code>eMovePoints: ClassVar[Self]</code>
+            <code>eAddBreaklines: ClassVar[Self]</code>
+            <code>eAddBoundaries: ClassVar[Self]</code>
+            <code>eAddWalls: ClassVar[Self]</code>
+            <code>eVolume: ClassVar[Self]</code>
+            <code>eMerge: ClassVar[Self]</code>
+            <code>eDeleteEdge: ClassVar[Self]</code>
+            <code>eDeleteEdges: ClassVar[Self]</code>
+            <code>eAddLine: ClassVar[Self]</code>
+            <code>eAddLines: ClassVar[Self]</code>
+            <code>eModifyPointElevation: ClassVar[Self]</code>
+            <code>eModifyPointsElevation: ClassVar[Self]</code>
+            <code>eModifyPointsElevations: ClassVar[Self]</code>
+            <code>eCreateFromFaces: ClassVar[Self]</code>
+            <code>eAddDrawingObjects: ClassVar[Self]</code>
+            <code>eCreateSnapshot: ClassVar[Self]</code>
+            <code>eRiseLower: ClassVar[Self]</code>
+            <code>eLandXML: ClassVar[Self]</code>
+            <code>eAddPointFiles: ClassVar[Self]</code>
+            <code>eAddPointGroups: ClassVar[Self]</code>
+            <code>eAddPointClouds: ClassVar[Self]</code>
+            <code>eGroupDefinitions: ClassVar[Self]</code>
+            <code>eDeform: ClassVar[Self]</code>
+            <code>eSmoothen: ClassVar[Self]</code>
+            <code>eCreateMerged: ClassVar[Self]</code>
+            <code>eIFC: ClassVar[Self]</code>
+            <code>eCreateTypedSnapshot: ClassVar[Self]</code>
+            <code>eCreateFromCorridor: ClassVar[Self]</code>
+            <code>eCreateFromC3D: ClassVar[Self]</code>
+            <code>eRemoveOuterEdges: ClassVar[Self]</code>
+            <code>eCreateFromContours: ClassVar[Self]</code>
+            <code>eMinimizeFlatAreas: ClassVar[Self]</code>
+            <code>eTrianglesVisibility: ClassVar[Self]</code>
+            <code>eRemoveBelowAboveElevation: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinSurfaceIntersectType</summary>
+            <code>eTinSurfaceFirstOnly: ClassVar[Self]</code>
+            <code>eTinSurfaceAll: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinSurfaceMeshType</summary>
+            <code>eTinSurfaceMeshSurface: ClassVar[Self]</code>
+            <code>eTinSurfaceMeshElevation: ClassVar[Self]</code>
+            <code>eTinSurfaceMeshDepth: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinSurfaceSolidType</summary>
+            <code>eSolidTypeSurfaceSurface: ClassVar[Self]</code>
+            <code>eSolidTypeSurfaceElevation: ClassVar[Self]</code>
+            <code>eSolidTypeSurfaceDepth: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinSurfaceStyle</summary>
+            <code>eTinStyleNone: ClassVar[Self]</code>
+            <code>eTinStyleBoundaryLine: ClassVar[Self]</code>
+            <code>eTinStylePoints: ClassVar[Self]</code>
+            <code>eTinStyleTriangles: ClassVar[Self]</code>
+            <code>eTinStyleContours: ClassVar[Self]</code>
+            <code>eTinStyleElevationTooltip: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinWallSide</summary>
+            <code>eTinWallLeft: ClassVar[Self]</code>
+            <code>eTinWallRight: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class TinWallType</summary>
+            <code>eTinWallNormal: ClassVar[Self]</code>
+            <code>eTinWallProjected: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VAlignmentElementType</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eTangent: ClassVar[Self]</code>
+            <code>eArc: ClassVar[Self]</code>
+            <code>eParabola: ClassVar[Self]</code>
+            <code>ePVI: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VAlignmentParameterConstraint</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>ePassThroughPoints: ClassVar[Self]</code>
+            <code>eRadius: ClassVar[Self]</code>
+            <code>eLength: ClassVar[Self]</code>
+            <code>eAngle: ClassVar[Self]</code>
+            <code>eAutomatic: ClassVar[Self]</code>
+            <code>ePointOnTangent: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VAlignmentTangencyConstraint</summary>
+            <code>eUndefined: ClassVar[Self]</code>
+            <code>eFixed: ClassVar[Self]</code>
+            <code>ePrevious: ClassVar[Self]</code>
+            <code>eNext: ClassVar[Self]</code>
+            <code>eBoth: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VAlignmentType</summary>
+            <code>eLayout: ClassVar[Self]</code>
+            <code>eStaticSurface: ClassVar[Self]</code>
+            <code>eDynamicSurface: ClassVar[Self]</code>
+            <code>eAutomatic: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VAlignmentVisualStyle</summary>
+            <code>eElements: ClassVar[Self]</code>
+            <code>eTangents: ClassVar[Self]</code>
+            <code>eExtensions: ClassVar[Self]</code>
+        </details>
+    </div>
+
+    <div class="class">
+        <details>
+            <summary>class VolumeSurfaceType</summary>
+            <code>eTinVolumeBaseComparison: ClassVar[Self]</code>
+            <code>eTinVolumeToElevation: ClassVar[Self]</code>
+            <code>eTinVolumeToDepth: ClassVar[Self]</code>
+        </details>
+    </div>
+</body>
+</html>
