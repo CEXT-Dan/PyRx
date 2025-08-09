@@ -66,7 +66,7 @@ def parse_pyi_file(filepath):
                     signature = f"def {item.name}({', '.join(args)}){ret_annotation}"
                     func_doc = ast.get_docstring(item)
                     if func_doc:
-                        signature += f"\n    {func_doc}"
+                        signature += f'\n    """{func_doc}"""'
                     members.append(signature)
 
                 elif isinstance(item, ast.AnnAssign) and isinstance(item.target, ast.Name):
@@ -129,6 +129,10 @@ def generate_html(doc_data, title="Stub Documentation"):
             color: #569cd6;
             font-weight: bold;
         }}
+        .ds {{
+            color: #FF8787;
+            opacity: 0.7;
+        }}
         h1 {{
             color: #569cd6;
         }}
@@ -170,6 +174,15 @@ def generate_html(doc_data, title="Stub Documentation"):
                 member_html = escape(member).replace(
                     "def ", '<span class="kw">def</span> ', 1
                 )
+                
+                member_html = member_html.replace(
+                    '&quot;&quot;&quot;', '<span class="ds">', 1
+                )
+                
+                member_html = member_html.replace(
+                    '&quot;&quot;&quot;', '</span>', 1
+                )
+                
             else:
                 member_html = escape(member)
             html += f"            <code>{member_html}</code>\n"
