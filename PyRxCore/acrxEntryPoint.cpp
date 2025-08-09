@@ -421,8 +421,6 @@ public:
     static void AcRxPyApp_idoit(void)
     {
         auto [ps, id, pnt] = entsel();
-        AcDbEntityPointer pEnt(id);
-        acutPrintf(pEnt->layer());
     }
 #endif
 };
