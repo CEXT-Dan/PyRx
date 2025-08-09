@@ -43,40 +43,39 @@ def parse_pyi_file(filepath):
     for node in tree.body:
         if isinstance(node, ast.ClassDef):
             class_name = node.name
+            class_doc = ast.get_docstring(node)
             members = []
 
             for item in node.body:
                 if isinstance(item, ast.FunctionDef):
                     args = []
 
-                    # Positional arguments
-                    # print(str(item.args.posonlyargs.))
                     for arg in item.args.posonlyargs:
                         args.append(get_arg_str(arg))
-
-                    # *args
                     if item.args.vararg:
                         args.append(f"*{get_arg_str(item.args.vararg)}")
-
-                    # Keyword-only arguments
                     for arg in item.args.kwonlyargs:
                         args.append(get_arg_str(arg))
-
-                    # **kwargs
                     if item.args.kwarg:
                         args.append(f"**{get_arg_str(item.args.kwarg)}")
 
-                    # Return type
                     ret_annotation = ""
                     if item.returns:
                         ret_annotation = f" -> {ast.unparse(item.returns)}"
 
                     signature = f"def {item.name}({', '.join(args)}){ret_annotation}"
+                    func_doc = ast.get_docstring(item)
+                    if func_doc:
+                        signature += f"\n    \"\"\"{func_doc}\"\"\""
                     members.append(signature)
 
                 elif isinstance(item, ast.AnnAssign) and isinstance(item.target, ast.Name):
                     annotation = ast.unparse(item.annotation)
                     members.append(f"{item.target.id}: {annotation}")
+
+            # Attach class docstring at the top of members, if present
+            if class_doc:
+                members.insert(0, f'""" {class_doc} """')
 
             docs.append((class_name, members))
 
@@ -124,6 +123,11 @@ def generate_html(doc_data, title="Stub Documentation"):
             color: #dcdcdc;
             padding: 0.4em 0.6em;
             border-left: 4px solid #007acc;
+            font-size: 1.2em;
+        }}
+        .kw {{
+            color: #569cd6;
+            font-weight: bold;
         }}
         h1 {{
             color: #569cd6;
@@ -161,7 +165,14 @@ def generate_html(doc_data, title="Stub Documentation"):
             <summary>class {escape(class_name)} <span class="tag">Class</span></summary>
 """
         for member in members:
-            html += f"            <code>{escape(member)}</code>\n"
+            # Highlight 'def' at the start of the line
+            if member.strip().startswith("def "):
+                member_html = escape(member).replace(
+                    "def ", '<span class="kw">def</span> ', 1
+                )
+            else:
+                member_html = escape(member)
+            html += f"            <code>{member_html}</code>\n"
 
         html += "        </details>\n    </div>\n"
 
