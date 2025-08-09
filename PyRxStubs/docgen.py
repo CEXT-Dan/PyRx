@@ -61,12 +61,12 @@ def parse_pyi_file(filepath):
 
                     ret_annotation = ""
                     if item.returns:
-                        ret_annotation = f" -> {ast.unparse(item.returns)}"
+                        ret_annotation = f" -> {ast.unparse(item.returns)}:"
 
                     signature = f"def {item.name}({', '.join(args)}){ret_annotation}"
                     func_doc = ast.get_docstring(item)
                     if func_doc:
-                        signature += f"\n    \"\"\"{func_doc}\"\"\""
+                        signature += f"\n    {func_doc}"
                     members.append(signature)
 
                 elif isinstance(item, ast.AnnAssign) and isinstance(item.target, ast.Name):
