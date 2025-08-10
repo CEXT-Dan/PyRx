@@ -275,12 +275,12 @@ void PyDbEntity::setPlotStyleName3(AcDb::PlotStyleNameType tp, const PyDbObjectI
 
 std::string PyDbEntity::linetype() const
 {
-    return  wstr_to_utf8(impObj()->linetype());
+    return wstr_to_utf8(impObj()->linetype());
 }
 
 PyDbObjectId PyDbEntity::linetypeId() const
 {
-    return  PyDbObjectId(impObj()->linetypeId());
+    return PyDbObjectId(impObj()->linetypeId());
 }
 
 void PyDbEntity::setLinetype1(const std::string& newVal) const
