@@ -48,6 +48,7 @@ public:
     Adesk::Int16        attmode() const;
     Adesk::Int16        aunits() const;
     Adesk::Int16        auprec() const;
+    void                audit(bool fixErrors, bool cmdLineEcho) const;
     bool                blipmode() const;
     PyDbBlockTable      getBlockTable1() const;
     PyDbBlockTable      getBlockTable2(AcDb::OpenMode mode) const;

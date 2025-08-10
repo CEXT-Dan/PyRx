@@ -58,6 +58,7 @@ void makePyDbDatabaseWrapper()
         .def("attmode", &PyDbDatabase::attmode, DS.ARGS(2872))
         .def("aunits", &PyDbDatabase::aunits, DS.ARGS(2875))
         .def("auprec", &PyDbDatabase::auprec, DS.ARGS(2876))
+        .def("audit", &PyDbDatabase::audit, DS.ARGS({"fixErrors: bool", "cmdLineEcho: bool"}, 10721))
         .def("blipmode", &PyDbDatabase::blipmode, DS.ARGS(2877))
         .def("byBlockLinetype", &PyDbDatabase::byBlockLinetype, DS.ARGS(2879))
         .def("byBlockMaterial", &PyDbDatabase::byBlockMaterial, DS.ARGS(2880))
@@ -678,6 +679,15 @@ Adesk::Int16 PyDbDatabase::aunits() const
 Adesk::Int16 PyDbDatabase::auprec() const
 {
     return impObj()->auprec();
+}
+
+void PyDbDatabase::audit(bool fixErrors, bool cmdLineEcho) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acedAudit(this->impObj(), fixErrors, cmdLineEcho));
+#endif
 }
 
 bool PyDbDatabase::blipmode() const

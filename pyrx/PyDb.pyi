@@ -6269,6 +6269,10 @@ class Database(PyRx.RxObject):
         Returns the current ATTMODE value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on ATTMODE.
         """
+    def audit(self, fixErrors: bool, cmdLineEcho: bool, /) -> None:
+        """
+        This function audits the AcDbDatabase pointed to by pDb.
+        """
     def aunits(self, /) -> int:
         """
         Returns the current AUNITS value for the database. See the System Variables section of the
