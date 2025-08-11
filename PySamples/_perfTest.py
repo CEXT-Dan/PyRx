@@ -53,9 +53,11 @@ def move_points_iter():
     mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
     db = Db.curDb()
     model = Db.BlockTableRecord(db.modelSpaceId())
+    desc = Db.Point.desc()
     for id in model:
-        ent = Db.Entity(id, Db.OpenMode.ForWrite)
-        ent.transformBy(mat)
+        if id.isDerivedFrom(desc):
+            ent = Db.Entity(id, Db.OpenMode.ForWrite)
+            ent.transformBy(mat)
 
 
 def move_points_com_iter():
