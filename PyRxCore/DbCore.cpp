@@ -311,10 +311,10 @@ void DbCore::detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId)
 
 bool DbCore::dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj)
 {
+    ads_name ads_newobj = { 0 };
     ads_name ads_dictname = { 0 };
     PyThrowBadEs(acdbGetAdsName(ads_dictname, dictname.m_id));
-    ads_name ads_newobj = { 0 };
-    acdbGetAdsName(ads_newobj, dictname.m_id);
+    PyThrowBadEs(acdbGetAdsName(ads_newobj, dictname.m_id));
     return acdbDictAdd(ads_dictname, utf8_to_wstr(symname).c_str(), ads_newobj) == RTNORM;
 }
 
@@ -695,7 +695,7 @@ boost::python::list DbCore::openDbObjects3(const boost::python::list& ids, AcDb:
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    for (auto& id : PyListToObjectIdArray(ids))
+    for (const auto& id : PyListToObjectIdArray(ids))
     {
         AcDbObject* pObj = nullptr;
         PyThrowBadEs(acdbOpenAcDbObject(pObj, id, mode, erased));
@@ -729,7 +729,7 @@ boost::python::list DbCore::openDbEntities3(const boost::python::list& ids, AcDb
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    for (auto& id : PyListToObjectIdArray(ids))
+    for (const auto& id : PyListToObjectIdArray(ids))
     {
         AcDbEntity* pObj = nullptr;
         PyThrowBadEs(acdbOpenAcDbEntity(pObj, id, mode, erased));
@@ -850,7 +850,7 @@ PyDbObjectId DbCore::tblObjName(const std::string& tblname, const std::string& s
 {
     PyDbObjectId id;
     ads_name entres = { 0 };
-    acdbTblObjName(utf8_to_wstr(tblname).c_str(), utf8_to_wstr(sym).c_str(), entres);
+    PyThrowBadRt(acdbTblObjName(utf8_to_wstr(tblname).c_str(), utf8_to_wstr(sym).c_str(), entres));
     PyThrowBadEs(acdbGetObjectId(id.m_id, entres));
     return id;
 }
