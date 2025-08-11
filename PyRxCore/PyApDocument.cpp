@@ -4,6 +4,7 @@
 #include "PyDbTransactionManager.h"
 #include "PyEdInput.h"
 #include "PyApDocManager.h"
+#include "PyAcadApplication.h"
 
 using namespace boost::python;
 
@@ -17,6 +18,21 @@ public:
         this->AdoptAttributesFromHWND();
     }
 };
+
+static PyAcadDocument findDoc(const PyApDocument& ndoc)
+{
+    //TODO: maybe a better way than search?
+    const auto app = PyAcadApplication{};
+    const auto& docs = app.documents();
+    size_t ndocs = docs.count();
+    for (size_t idx = 0; idx < ndocs; idx++)
+    {
+        auto acdoc = docs.item(idx);
+        if (acdoc.modelSpace().objectId() == ndoc.database().modelSpaceId())
+            return acdoc;
+    }
+    throw PyErrorStatusException(eNoDocument);
+}
 
 //-----------------------------------------------------------------------------------------
 //PyApDocument Wrapper
@@ -46,6 +62,7 @@ void makePyApDocumentWrapper()
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : object" }))
         .def("autoLock", &PyApDocument::autoLock, DS.ARGS(120))
+        .def("acadDocument", &PyApDocument::acadDocument, DS.ARGS())
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
@@ -226,6 +243,11 @@ void PyApDocument::setUserData(const boost::python::object& data)
 PyAutoDocLock PyApDocument::autoLock() const
 {
     return PyAutoDocLock(*this);
+}
+
+PyAcadDocument PyApDocument::acadDocument() const
+{
+   return  findDoc(*this);
 }
 
 UINT_PTR PyApDocument::docWnd()
