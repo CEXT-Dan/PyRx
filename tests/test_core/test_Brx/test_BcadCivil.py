@@ -123,7 +123,7 @@ class TestBCadCivil:
             elementId = element.nextId()
         self.assertEqual(len(ids), 3)
         
-    def test_CvDbLabelStyleText(self):
+    def test_add_createLabelStyle(self):
         db = Db.curDb()
         style_id = Cv.CvDbLineLabelStyleManager.getManagerId(db)
         manager = Cv.CvDbLineLabelStyleManager(style_id)
