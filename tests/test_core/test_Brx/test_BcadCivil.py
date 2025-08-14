@@ -122,3 +122,13 @@ class TestBCadCivil:
                 ids.append(elementId)
             elementId = element.nextId()
         self.assertEqual(len(ids), 3)
+        
+    def test_CvDbLabelStyleText(self):
+        db = Db.curDb()
+        style_id = Cv.CvDbLineLabelStyleManager.getManagerId(db)
+        manager = Cv.CvDbLineLabelStyleManager(style_id)
+        new_id = manager.createLabelStyle("test")
+        style = Cv.CvDbLabelStyle(new_id, Db.OpenMode.kForWrite)
+        component = Cv.CvDbLabelStyleText()
+        style.addComponent(component)
+
