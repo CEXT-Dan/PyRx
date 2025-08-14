@@ -702,7 +702,6 @@ Adesk::UInt32 PyBrxCvDbLabelStyle::componentCount() const
 
 void PyBrxCvDbLabelStyle::addComponent(const PyBrxCvDbLabelStyleComponent& pComponent) const
 {
-    //TODO: write test;
     BrxCvDbLabelStyleComponentPtr ptr(pComponent.impObj());
     PyThrowBadEs(impObj()->addComponent(ptr));
     if (ptr.refCount() == 1)
