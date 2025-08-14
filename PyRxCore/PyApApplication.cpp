@@ -53,8 +53,8 @@ void makePyApApplictionWrapper()
 {
     PyDocString DS("Application");
     class_<PyApApplication>("Application")
-        .def("docManager", &PyApApplication::docManager, DS.SARGS()).staticmethod("docManager")
-        .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS()).staticmethod("acadApplication")
+        .def("docManager", &PyApApplication::docManager, DS.SARGS(77)).staticmethod("docManager")
+        .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS(19139)).staticmethod("acadApplication")
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
@@ -74,7 +74,7 @@ void makePyApApplictionWrapper()
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("hostFileInfo", &PyApApplication::hostFileInfo, DS.SARGS()).staticmethod("hostFileInfo")
         .def("pyrxVersion", &PyApApplication::pyrxVersion, DS.SARGS()).staticmethod("pyrxVersion")
-        .def("regCommand", &PyApApplication::apregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: PyAp.CmdFlags" })).staticmethod("regCommand")
+        .def("regCommand", &PyApApplication::appregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: PyAp.CmdFlags" })).staticmethod("regCommand")
         .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str" })).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
@@ -424,7 +424,7 @@ int PyApApplication::showModalDialog1(const boost::python::object& window)
     return pDlg->ShowModal();
 }
 
-void PyApApplication::apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
+void PyApApplication::appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
 {
     ::regcommand(fullpath, modulename, name, func, flags);
 }

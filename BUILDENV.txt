@@ -3,8 +3,8 @@ env $(ARX2021) = path to ARXSDK
 env $(WXWIN) = path to wxWidgets' 3.2.0 release tag. 
 (pre built) https://drive.google.com/file/d/1ukMDR7qCfgEnD62-frIuph73dr-POv_9/view?usp=sharing
 
-env $(BOOST) = path to boost_1_88_0
-(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.88.0/
+env $(BOOST) = path to boost_1_89_0
+(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.89.0/
 
 env $(Py312) = path to python 3.12.X headers and libraries 
 env $(WXPYWIN) = wxPython 4.2.3 install dir (...\AppData\Local\Programs\Python\Python312\Lib\site-packages\wx
