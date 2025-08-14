@@ -41,7 +41,7 @@ public:
     static boost::python::list  getLoadedModuleNames();
     static void                 acedWatchWinMsgFn(const MSG* message);
     static int                  showModalDialog1(const boost::python::object& window);
-    static void                 apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
+    static void                 appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
 
     static boost::python::list  listFilesInPath(const std::string& spath, const std::string& ext);
