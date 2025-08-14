@@ -82,7 +82,12 @@ class Application:
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def docManager() -> DocManager: ...
+    def docManager() -> DocManager:
+        """
+        The AcApDocumentManager object is the container for all the document objects (there is one
+        document object for each drawing that is open and being edited). There is only one
+        instance, which can be obtained using the macro named acDocManager.
+        """
     @staticmethod
     def getAppDataPath(createIfNotFound: bool = True, /) -> str: ...
     @staticmethod
