@@ -709,6 +709,7 @@ void PyBrxCvDbLabelStyle::addComponent(const PyBrxCvDbLabelStyleComponent& pComp
         ptr.detach();
     else
         PyThrowBadEs(eInvalidOpenState);
+    pComponent.forceKeepAlive(true); //PyBrxCvDbLabelStyle is now the owner
 }
 
 void PyBrxCvDbLabelStyle::removeComponent_1(const PyBrxCvDbLabelStyleComponent& pComponent) const
