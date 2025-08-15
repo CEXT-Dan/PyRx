@@ -47,7 +47,7 @@ dependencies = [
     "wxpython>=4.2.3; os_name == 'nt'", # Hard to install on Ubuntu for the CI
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
-    "pydantic_settings",
+    "pydantic_settings>=2.10.0",
 ]
 
 [project.optional-dependencies]
