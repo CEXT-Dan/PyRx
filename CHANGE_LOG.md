@@ -1,3 +1,12 @@
+## v2.2.25
+
+* [#413] fix dispose issue with CvDbLabelStyle
+* upgrade boost_1_88_0 -> boost_1_89_0
+* Document::acadDocument, returns axDoc from doc
+* AcadEntity::TransformBy is now non com.
+* added Database::audit
+* C++ modules are now compiled with AVX2
+
 ## v2.2.24
 
 Added new command PYPIP
