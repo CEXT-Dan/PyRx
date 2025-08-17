@@ -32,6 +32,7 @@
 #include "PyApApplication.h"
 #include "PyRxAppSettings.h"
 #include "PyAcRx.h"
+#include "acedCmdNF.h"
 
 //for testing
 #ifdef PYRXDEBUG
@@ -285,6 +286,13 @@ public:
         printPyRxBuldVersion();
     }
 
+    static void AcRxPyApp_pyrxdoc(void)
+    {
+        printPyRxBuldVersion();
+        AutoCmdEcho cmdEcho;
+        acedCommandS(RTSTR, _T("_BROWSER"), RTSTR, L"https://cext-dan.github.io/CADPyRxDoc", RTNONE);
+    }
+
     static void AcRxPyApp_pycmdprompt(void)
     {
         try
@@ -431,6 +439,7 @@ public:
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxdoc, pyrxdoc, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 // lisp

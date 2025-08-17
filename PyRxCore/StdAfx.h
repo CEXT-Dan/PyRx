@@ -435,6 +435,46 @@ struct AutoCWD
 };
 
 //-----------------------------------------------------------------------------------
+// AutoCmdEcho
+class AutoCmdEcho
+{
+public:
+    AutoCmdEcho(int mode = 0) noexcept
+    {
+        get(m_old);
+        set(mode);
+    }
+    ~AutoCmdEcho() noexcept
+    {
+        set(m_old);
+    }
+    Adesk::Int16 old() const noexcept
+    {
+        return m_old;
+    }
+    bool set(Adesk::Int16 mode) const noexcept
+    {
+        resbuf buf;
+        buf.restype = RTSHORT;
+        buf.resval.rint = mode;
+        return acedSetVar(_cmdecho, &buf) == RTNORM;
+    }
+    bool get(Adesk::Int16& mode) const noexcept
+    {
+        resbuf buf;
+        if (acedGetVar(_cmdecho, &buf) == RTNORM) [[likely]]
+        {
+            mode = buf.resval.rint;
+            return true;
+        }
+        return false;
+    }
+private:
+    static constexpr auto _cmdecho{ L"CMDECHO" };
+    Adesk::Int16 m_old = 0;
+};
+
+//-----------------------------------------------------------------------------------
 //vector_indexing_suite
 inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs) noexcept
 {
