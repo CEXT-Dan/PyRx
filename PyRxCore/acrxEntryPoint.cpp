@@ -290,7 +290,7 @@ public:
     {
         printPyRxBuldVersion();
         AutoCmdEcho cmdEcho;
-        acedCommandS(RTSTR, _T("_BROWSER"), RTSTR, L"https://cext-dan.github.io/CADPyRxDoc", RTNONE);
+        acedCommandS(RTSTR, _T("_BROWSER"), RTSTR, L"https://github.com/CEXT-Dan/PyRx/blob/main/Doc/README.MD", RTNONE);
     }
 
     static void AcRxPyApp_pycmdprompt(void)
