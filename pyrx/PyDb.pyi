@@ -29799,41 +29799,104 @@ class TableStyle(PyDb.DbObject):
         """
     def __reduce__(self, /) -> Any: ...
     @overload
-    def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment: ...
+    def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment:
+        """
+        Returns the cell alignment for the specified cell style.
+        """
     @overload
-    def alignment(self, cellStyle: str, /) -> CellAlignment: ...
+    def alignment(self, cellStyle: str, /) -> CellAlignment:
+        """
+        Returns the cell alignment for the specified cell style.
+        """
     @overload
-    def alignment(self, *args) -> CellAlignment: ...
+    def alignment(self, *args) -> CellAlignment:
+        """
+        Returns the cell alignment for the specified cell style.
+        """
     @overload
-    def backgroundColor(self, rowType: PyDb.RowType, /) -> Color: ...
+    def backgroundColor(self, rowType: PyDb.RowType, /) -> Color:
+        """
+        This function returns the background color for a given cell style of the table style
+        object.
+        """
     @overload
-    def backgroundColor(self, cellStyle: str, /) -> Color: ...
+    def backgroundColor(self, cellStyle: str, /) -> Color:
+        """
+        This function returns the background color for a given cell style of the table style
+        object.
+        """
     @overload
-    def backgroundColor(self, *args) -> Color: ...
-    def bitFlags(self, /) -> int: ...
+    def backgroundColor(self, *args) -> Color:
+        """
+        This function returns the background color for a given cell style of the table style
+        object.
+        """
+    def bitFlags(self, /) -> int:
+        """
+        This function returns an unsigned integer representing the operation bit setFlowDirection
+        flags set for the AcDbTableStyle object.
+        """
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> TableStyle: ...
-    def cellClass(self, pszCellStyle: str, /) -> int: ...
+    def cellClass(self, pszCellStyle: str, /) -> int:
+        """
+        Returns the cell classification value for the specified cell style.
+        """
     @staticmethod
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> TableStyle: ...
     @overload
-    def color(self, rowType: PyDb.RowType, /) -> Color: ...
+    def color(self, rowType: PyDb.RowType, /) -> Color:
+        """
+        Returns the content color of the specified cell style.
+        """
     @overload
-    def color(self, cellStyle: str, /) -> Color: ...
+    def color(self, cellStyle: str, /) -> Color:
+        """
+        Returns the content color of the specified cell style.
+        """
     @overload
-    def color(self, *args) -> Color: ...
-    def copyCellStyle(self, pszSrcCellStyle: str, pszTargetCellStyle: str, /) -> None: ...
+    def color(self, *args) -> Color:
+        """
+        Returns the content color of the specified cell style.
+        """
+    def copyCellStyle(self, pszSrcCellStyle: str, pszTargetCellStyle: str, /) -> None:
+        """
+        Copies the cell style properties from source to target. The pszTargetCellStyle can be NULL
+        or empty, in which case a cell style with a unique name is created the target cell style
+        properties are copied to it. Acad::eOk if successful, or AutoCAD error status if the
+        function fails.
+        """
     @overload
-    def createCellStyle(self, /) -> str: ...
+    def createCellStyle(self, /) -> str:
+        """
+        Creates a new cellstyle from an existing cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def createCellStyle(self, pszCellStyle: str, /) -> str: ...
+    def createCellStyle(self, pszCellStyle: str, /) -> str:
+        """
+        Creates a new cellstyle from an existing cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def createCellStyle(self, pszCellStyle: str, fromCellStyle: str, /) -> str: ...
+    def createCellStyle(self, pszCellStyle: str, fromCellStyle: str, /) -> str:
+        """
+        Creates a new cellstyle from an existing cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def createCellStyle(self, *args) -> str: ...
-    def deleteCellStyle(self, pszCellStyle: str, /) -> None: ...
+    def createCellStyle(self, *args) -> str:
+        """
+        Creates a new cellstyle from an existing cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
+    def deleteCellStyle(self, pszCellStyle: str, /) -> None:
+        """
+        Deletes the cell style. Returns Acad::eOk if successful, or AutoCAD error status if the
+        function fails.
+        """
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -29848,95 +29911,313 @@ class TableStyle(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str: ...
-    def enableMergeAll(self, val: bool, pszCellStyle: str, /) -> None: ...
-    def flowDirection(self, /) -> TableFlowDirection: ...
+    def description(self, /) -> str:
+        """
+        This function returns a pointer to the description of the table style. The pointer points
+        to the actual internal string, not a copy, so do not attempt to delete the string.
+        """
+    def enableMergeAll(self, val: bool, pszCellStyle: str, /) -> None:
+        """
+        Enables or disables the merge all flag in the specified cell style. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
+    def flowDirection(self, /) -> TableFlowDirection:
+        """
+        This function returns the flow direction of the table. Possible values for
+        AcDb::FlowDirection are kTtoB and kBtoT.
+        """
     @overload
-    def format(self, /) -> str: ...
+    def format(self, /) -> str:
+        """
+        Returns the format string of the data row of the table style object. This method is
+        deprecated and may be removed in a future release.
+        """
     @overload
-    def format(self, rowType: PyDb.RowType, /) -> str: ...
+    def format(self, rowType: PyDb.RowType, /) -> str:
+        """
+        Returns the format string of the data row of the table style object. This method is
+        deprecated and may be removed in a future release.
+        """
     @overload
-    def format(self, cellStyle: str, /) -> str: ...
+    def format(self, cellStyle: str, /) -> str:
+        """
+        Returns the format string of the data row of the table style object. This method is
+        deprecated and may be removed in a future release.
+        """
     @overload
-    def format(self, *args) -> str: ...
-    def getCellStyles(self, /) -> list[str]: ...
+    def format(self, *args) -> str:
+        """
+        Returns the format string of the data row of the table style object. This method is
+        deprecated and may be removed in a future release.
+        """
+    def getCellStyles(self, /) -> list[str]:
+        """
+        Returns the number of cell styles in the table style.
+        """
     @overload
     def getDataType(
         self, rowType: PyDb.RowType, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
+    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type.
+        """
     @overload
-    def getDataType(self, cellStyle: str, /) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
+    def getDataType(self, cellStyle: str, /) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type.
+        """
     @overload
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
-    def getGridProperty(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> object: ...
-    def getName(self, /) -> str: ...
-    def getTemplate(self, /) -> ObjectId: ...
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type.
+        """
+    def getGridProperty(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> object:
+        """
+        Gets the grid line properties of the specified cell style. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def getName(self, /) -> str:
+        """
+        This function returns the name of the table style.
+        """
+    def getTemplate(self, /) -> ObjectId:
+        """
+        Returns the ID of the AcDbTableTemplate object in the tablestyle. If the tablestyle does
+        not contain a template, then the returned objectId will be set to AcDbObjectId::kNull.
+        """
     @overload
-    def gridColor(self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /) -> Color: ...
+    def gridColor(self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /) -> Color:
+        """
+        Returns the grid color of the specified cell style.
+        """
     @overload
-    def gridColor(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Color: ...
+    def gridColor(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Color:
+        """
+        Returns the grid color of the specified cell style.
+        """
     @overload
-    def gridColor(self, *args) -> Color: ...
+    def gridColor(self, *args) -> Color:
+        """
+        Returns the grid color of the specified cell style.
+        """
     def gridDoubleLineSpacing(
         self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> float: ...
+    ) -> float:
+        """
+        Returns the grid double line spacing of the specified cell style.
+        """
     def gridLineStyle(
         self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> GridLineStyle: ...
+    ) -> GridLineStyle:
+        """
+        Returns the grid line style of the specified cell style.
+        """
     @overload
     def gridLineWeight(
         self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> LineWeight: ...
+    ) -> LineWeight:
+        """
+        Gets the grid line weight of the specified cell style.
+        """
     @overload
-    def gridLineWeight(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> LineWeight: ...
+    def gridLineWeight(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> LineWeight:
+        """
+        Gets the grid line weight of the specified cell style.
+        """
     @overload
-    def gridLineWeight(self, *args) -> LineWeight: ...
-    def gridLinetype(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> ObjectId: ...
+    def gridLineWeight(self, *args) -> LineWeight:
+        """
+        Gets the grid line weight of the specified cell style.
+        """
+    def gridLinetype(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> ObjectId:
+        """
+        Returns the grid line type of the specified cell style.
+        """
     @overload
     def gridVisibility(
         self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> Visibility: ...
+    ) -> Visibility:
+        """
+        Gets the grid visibility of the specified cell style.
+        """
     @overload
-    def gridVisibility(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Visibility: ...
+    def gridVisibility(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Visibility:
+        """
+        Gets the grid visibility of the specified cell style.
+        """
     @overload
-    def gridVisibility(self, *args) -> Visibility: ...
-    def horzCellMargin(self, /) -> float: ...
-    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool: ...
-    def isCellStyleInUse(self, pszCellStyle: str, /) -> bool: ...
-    def isHeaderSuppressed(self, /) -> bool: ...
-    def isMergeAllEnabled(self, pszCellStyle: str, /) -> bool: ...
-    def isTitleSuppressed(self, /) -> bool: ...
-    def margin(self, nMargin: PyDb.CellMargin, pszCellStyle: str, /) -> float: ...
-    def numCellStyles(self, /) -> int: ...
-    def postTableStyleToDb(self, db: PyDb.Database, styleName: str, /) -> ObjectId: ...
-    def removeTemplate(self, /) -> ObjectId: ...
-    def renameCellStyle(self, pszOldName: str, pszNewName: str, /) -> None: ...
-    def rotation(self, pszCellStyle: str, /) -> float: ...
+    def gridVisibility(self, *args) -> Visibility:
+        """
+        Gets the grid visibility of the specified cell style.
+        """
+    def horzCellMargin(self, /) -> float:
+        """
+        This function returns the horizontal cell margin value used by the table style. This method
+        is deprecated and may be removed in a future release.
+        """
+    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool:
+        """
+        Returns true if the background color for a given row type of the table style object is set
+        to no color value. Otherwise, returns false. The possible values of rowType are
+        AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If no row type is specified, the
+        default of kDataRow will be used. This method is deprecated and may be removed in a future
+        release
+        """
+    def isCellStyleInUse(self, pszCellStyle: str, /) -> bool:
+        """
+        Returns true if the cell style is in use; false otherwise.
+        """
+    def isHeaderSuppressed(self, /) -> bool:
+        """
+        This function returns a true/false status for the isHeaderSuppressed flag. This method is
+        deprecated and may be removed in a future release.
+        """
+    def isMergeAllEnabled(self, pszCellStyle: str, /) -> bool:
+        """
+        Returns true if the merge all flag is enabled in the specified cell; false if not.
+        """
+    def isTitleSuppressed(self, /) -> bool:
+        """
+        This function returns a true/false status for the isTitleSuppressed flag. This method is
+        deprecated and may be removed in a future release.
+        """
+    def margin(self, nMargin: PyDb.CellMargin, pszCellStyle: str, /) -> float:
+        """
+        Returns the cell classification value for the specified cell style
+        """
+    def numCellStyles(self, /) -> int:
+        """
+        Returns the number of cell styles in a tablestyle.
+        """
+    def postTableStyleToDb(self, db: PyDb.Database, styleName: str, /) -> ObjectId:
+        """
+        Adds a table style to the specified database. Returns Acad::eOk if successful,
+        Acad::eAlreadyInDb if the table style already exists in the database, Acad::eDuplicateKey
+        if styleName already exists in the style dictionary, or Acad::eInvalidInput if styleName is
+        invalid.
+        """
+    def removeTemplate(self, /) -> ObjectId:
+        """
+        Removes the template. Returns an object id to the new object.
+        """
+    def renameCellStyle(self, pszOldName: str, pszNewName: str, /) -> None:
+        """
+        This function renames a cellstyle. Returns Acad::eOk if successful, or AutoCAD error status
+        if the function fails. If the style already exists Acad::eDuplicateKey is returned.
+        """
+    def rotation(self, pszCellStyle: str, /) -> float:
+        """
+        Returns a cell's rotation value.
+        """
     @overload
-    def setAlignment(self, val: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None: ...
+    def setAlignment(self, val: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the cell alignment for the specified row types. Different row types can
+        be combined using the OR operator. The possible row types are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. If no row type is specified, this function sets the
+        alignment for all possible row types. Possible values for cell alignment are
+        AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight, AcDb::kMiddleLeft, AcDb::kMiddleCenter,
+        AcDb::kMiddleRight, AcDb::kBottomLeft, AcDb::kBottomCenter, and AcDb::kBottomRight. Returns
+        Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setAlignment(self, val: PyDb.CellAlignment, cellStyle: str, /) -> None: ...
+    def setAlignment(self, val: PyDb.CellAlignment, cellStyle: str, /) -> None:
+        """
+        This function sets the cell alignment for the specified row types. Different row types can
+        be combined using the OR operator. The possible row types are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. If no row type is specified, this function sets the
+        alignment for all possible row types. Possible values for cell alignment are
+        AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight, AcDb::kMiddleLeft, AcDb::kMiddleCenter,
+        AcDb::kMiddleRight, AcDb::kBottomLeft, AcDb::kBottomCenter, and AcDb::kBottomRight. Returns
+        Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setAlignment(self, *args) -> None: ...
+    def setAlignment(self, *args) -> None:
+        """
+        This function sets the cell alignment for the specified row types. Different row types can
+        be combined using the OR operator. The possible row types are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. If no row type is specified, this function sets the
+        alignment for all possible row types. Possible values for cell alignment are
+        AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight, AcDb::kMiddleLeft, AcDb::kMiddleCenter,
+        AcDb::kMiddleRight, AcDb::kBottomLeft, AcDb::kBottomCenter, and AcDb::kBottomRight. Returns
+        Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
+    def setBackgroundColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the background color for the specified row types. Different row types
+        can be OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and
+        AcDb::kHeaderRow. If no row type is specified, this function sets the background color for
+        the all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColor(self, val: PyDb.Color, cellStyle: str, /) -> None: ...
+    def setBackgroundColor(self, val: PyDb.Color, cellStyle: str, /) -> None:
+        """
+        This function sets the background color for the specified row types. Different row types
+        can be OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and
+        AcDb::kHeaderRow. If no row type is specified, this function sets the background color for
+        the all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColor(self, *args) -> None: ...
-    def setBackgroundColorNone(self, val: bool, rowType: PyDb.RowType, /) -> None: ...
-    def setBitFlags(self, flags: int, /) -> None: ...
-    def setCellClass(self, val: int, pszCellStyle: str, /) -> None: ...
+    def setBackgroundColor(self, *args) -> None:
+        """
+        This function sets the background color for the specified row types. Different row types
+        can be OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and
+        AcDb::kHeaderRow. If no row type is specified, this function sets the background color for
+        the all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
+    def setBackgroundColorNone(self, val: bool, rowType: PyDb.RowType, /) -> None:
+        """
+        This function enables or disables the background color for the specified row types.
+        Different row types can be OR'd. The possible row types are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. If no row type is specified, this function enables
+        or disables the background color for all possible row types. Returns Acad::eOk if
+        successful; otherwise, returns Acad::eInvalidInput. This method is deprecated and may be
+        removed in a future release
+        """
+    def setBitFlags(self, flags: int, /) -> None:
+        """
+        This function sets the bit flag value for the table style object. The valid flags are a
+        combination of values from the TableStyleFlags enumeration. Returns Acad::eOk if
+        successful; otherwise, returns Acad::eInvalidInput.
+        """
+    def setCellClass(self, val: int, pszCellStyle: str, /) -> None:
+        """
+        Sets the class of a cell, by style. Returns Acad::eOk if successful.
+        """
     @overload
-    def setColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
+    def setColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the text color for the specified row types. Different row types can be
+        OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If
+        no row type is specified, this function sets the color for the all possible row types.
+        Returns Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setColor(self, val: PyDb.Color, cellStyle: str, /) -> None: ...
+    def setColor(self, val: PyDb.Color, cellStyle: str, /) -> None:
+        """
+        This function sets the text color for the specified row types. Different row types can be
+        OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If
+        no row type is specified, this function sets the color for the all possible row types.
+        Returns Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setColor(self, *args) -> None: ...
+    def setColor(self, *args) -> None:
+        """
+        This function sets the text color for the specified row types. Different row types can be
+        OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If
+        no row type is specified, this function sets the color for the all possible row types.
+        Returns Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setDataType(
-        self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, /
-    ) -> None: ...
+    def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, /) -> None:
+        """
+        Sets the data type and unit type of the specified row type of the table style object.
+        Returns Acad::eOk if successful.
+        """
     @overload
     def setDataType(
         self,
@@ -29944,39 +30225,107 @@ class TableStyle(PyDb.DbObject):
         nUnitType: PyDb.ValueDataType,
         rowType: PyDb.RowType,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the data type and unit type of the specified row type of the table style object.
+        Returns Acad::eOk if successful.
+        """
     @overload
     def setDataType(
         self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, cellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the data type and unit type of the specified row type of the table style object.
+        Returns Acad::eOk if successful.
+        """
     @overload
-    def setDataType(self, *args) -> None: ...
-    def setDescription(self, val: str, /) -> None: ...
-    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None: ...
+    def setDataType(self, *args) -> None:
+        """
+        Sets the data type and unit type of the specified row type of the table style object.
+        Returns Acad::eOk if successful.
+        """
+    def setDescription(self, val: str, /) -> None:
+        """
+        AcDbTableStyle::setDescription
+        """
+    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None:
+        """
+        This function sets the flow direction for the table in the table style object. Possible
+        values for AcDb::FlowDirection are kTtoB and kBtoT. Returns Acad::eOk if successful;
+        otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setFormat(self, sFormat: str, /) -> None: ...
+    def setFormat(self, sFormat: str, /) -> None:
+        """
+        Sets the format string of the specified cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def setFormat(self, sFormat: str, rowType: PyDb.RowType, /) -> None: ...
+    def setFormat(self, sFormat: str, rowType: PyDb.RowType, /) -> None:
+        """
+        Sets the format string of the specified cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def setFormat(self, sFormat: str, cellStyle: str, /) -> None: ...
+    def setFormat(self, sFormat: str, cellStyle: str, /) -> None:
+        """
+        Sets the format string of the specified cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
-    def setFormat(self, *args) -> None: ...
+    def setFormat(self, *args) -> None:
+        """
+        Sets the format string of the specified cell style. Returns Acad::eOk if successful, or
+        AutoCAD error status if the function fails.
+        """
     @overload
     def setGridColor(
         self, clr: PyDb.Color, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid color for the specified grid line types and row types.
+        Different border and row types can be combined using the OR operator. The possible values
+        of gridLineType are AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft,
+        AcDb::kVertInside, and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
     def setGridColor(
         self, clr: PyDb.Color, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid color for the specified grid line types and row types.
+        Different border and row types can be combined using the OR operator. The possible values
+        of gridLineType are AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft,
+        AcDb::kVertInside, and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setGridColor(self, *args) -> None: ...
+    def setGridColor(self, *args) -> None:
+        """
+        This function sets the grid color for the specified grid line types and row types.
+        Different border and row types can be combined using the OR operator. The possible values
+        of gridLineType are AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft,
+        AcDb::kVertInside, and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow,
+        AcDb::kTitleRow, and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     def setGridDoubleLineSpacing(
         self, val: float, gridLineTypes: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid double line spacing in the specified cell style. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     def setGridLineStyle(
         self, nLineStyle: PyDb.GridLineStyle, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid line style of the specified cell style. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setGridLineWeight(
         self,
@@ -29984,62 +30333,210 @@ class TableStyle(PyDb.DbObject):
         gridLineType: PyDb.GridLineType,
         rowType: PyDb.RowType,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the lineweight for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
     def setGridLineWeight(
         self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the lineweight for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setGridLineWeight(self, *args) -> None: ...
+    def setGridLineWeight(self, *args) -> None:
+        """
+        This function sets the lineweight for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     def setGridLinetype(
         self, id: PyDb.ObjectId, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid line type for a cell style. Returns Acad::eOk if successful; otherwise,
+        returns an AutoCAD error status.
+        """
     def setGridProperty(
         self, gridProp: PyDb.GridProperty, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid line properties of the specified cell style. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setGridVisibility(
         self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid visibility for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
     def setGridVisibility(
         self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid visibility for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setGridVisibility(self, *args) -> None: ...
-    def setHorzCellMargin(self, val: float, /) -> None: ...
-    def setMargin(self, nMargins: PyDb.CellMargin, val: float, pszCellStyle: str, /) -> None: ...
-    def setName(self, val: str, /) -> None: ...
-    def setRotation(self, val: float, pszCellStyle: str, /) -> None: ...
-    def setTemplate(self, id: PyDb.ObjectId, nOption: PyDb.MergeCellStyleOption, /) -> None: ...
+    def setGridVisibility(self, *args) -> None:
+        """
+        This function sets the grid visibility for the specified grid line types and row types.
+        Different grid line and row types can be OR'd. The possible values of gridLineType are
+        AcDb::kHorzTop, AcDb::kHorzInside, AcDb::kHorzBottom, AcDb::kVertLeft, AcDb::kVertInside,
+        and AcDb::kVertRight. The possible values of rowType are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
+    def setHorzCellMargin(self, val: float, /) -> None:
+        """
+        This function sets the horizontal cell margin value used by the table style. Returns
+        Acad::eOk if successful; otherwise, returns Acad::eInvalidInput. This method is deprecated
+        and may be removed in a future release.
+        """
+    def setMargin(self, nMargins: PyDb.CellMargin, val: float, pszCellStyle: str, /) -> None:
+        """
+        Sets the cell classification value for the specified cell style. Returns Acad::eOk if
+        successful, or AutoCAD error status if the function fails.
+        """
+    def setName(self, val: str, /) -> None:
+        """
+        This function sets the name of the table style to pszName. Returns Acad::eOk if successful;
+        otherwise, returns Acad::eInvalidInput.
+        """
+    def setRotation(self, val: float, pszCellStyle: str, /) -> None:
+        """
+        Sets the rotation angle of the specified cell style. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def setTemplate(self, id: PyDb.ObjectId, nOption: PyDb.MergeCellStyleOption, /) -> None:
+        """
+        Assigns the template to the tablestyle. If NULL is passed then the template is removed from
+        the tablestyle. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
+        status.
+        """
     @overload
-    def setTextHeight(self, val: float, rowType: PyDb.RowType, /) -> None: ...
+    def setTextHeight(self, val: float, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the text height for the specified row types. Different row types can be
+        combined using the OR operator. The possible row types are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. If no row type is specified, this function sets the text height to
+        all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setTextHeight(self, val: float, cellStyle: str, /) -> None: ...
+    def setTextHeight(self, val: float, cellStyle: str, /) -> None:
+        """
+        This function sets the text height for the specified row types. Different row types can be
+        combined using the OR operator. The possible row types are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. If no row type is specified, this function sets the text height to
+        all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setTextHeight(self, *args) -> None: ...
+    def setTextHeight(self, *args) -> None:
+        """
+        This function sets the text height for the specified row types. Different row types can be
+        combined using the OR operator. The possible row types are AcDb::kDataRow, AcDb::kTitleRow,
+        and AcDb::kHeaderRow. If no row type is specified, this function sets the text height to
+        all possible row types. Returns Acad::eOk if successful; otherwise, returns
+        Acad::eInvalidInput.
+        """
     @overload
-    def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None: ...
+    def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None:
+        """
+        Sets the text style for a cell style.
+        """
     @overload
-    def setTextStyle(self, id: PyDb.ObjectId, cellStyle: str, /) -> None: ...
+    def setTextStyle(self, id: PyDb.ObjectId, cellStyle: str, /) -> None:
+        """
+        Sets the text style for a cell style.
+        """
     @overload
-    def setTextStyle(self, *args) -> None: ...
-    def setVertCellMargin(self, val: float, /) -> None: ...
-    def suppressHeaderRow(self, val: bool, /) -> None: ...
-    def suppressTitleRow(self, val: bool, /) -> None: ...
+    def setTextStyle(self, *args) -> None:
+        """
+        Sets the text style for a cell style.
+        """
+    def setVertCellMargin(self, val: float, /) -> None:
+        """
+        This function sets the vertical cell margin value used by the table style. Returns
+        Acad::eOk if successful; otherwise, returns Acad::eInvalidInput. This method is deprecated
+        and may be removed in a future release.
+        """
+    def suppressHeaderRow(self, val: bool, /) -> None:
+        """
+        This function suppresses or enables the header row for the table. Returns Acad::eOk if
+        successful; otherwise, returns Acad::eInvalidInput. This method is deprecated and may be
+        removed in a future release.
+        """
+    def suppressTitleRow(self, val: bool, /) -> None:
+        """
+        This function suppresses or enables the title row for the table. Returns Acad::eOk if
+        successful; otherwise, returns Acad::eInvalidInput. This method is deprecated and may be
+        removed in a future release.
+        """
     @overload
-    def textHeight(self, rowType: PyDb.RowType, /) -> float: ...
+    def textHeight(self, rowType: PyDb.RowType, /) -> float:
+        """
+        Gets the text height of the specified cell style Returns the text height of the specified
+        cell style.
+        """
     @overload
-    def textHeight(self, cellStyle: str, /) -> float: ...
+    def textHeight(self, cellStyle: str, /) -> float:
+        """
+        Gets the text height of the specified cell style Returns the text height of the specified
+        cell style.
+        """
     @overload
-    def textHeight(self, *args) -> float: ...
+    def textHeight(self, *args) -> float:
+        """
+        Gets the text height of the specified cell style Returns the text height of the specified
+        cell style.
+        """
     @overload
-    def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId: ...
+    def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId:
+        """
+        Returns the textstyle id of the specified cell style.
+        """
     @overload
-    def textStyle(self, cellStyle: str, /) -> ObjectId: ...
+    def textStyle(self, cellStyle: str, /) -> ObjectId:
+        """
+        Returns the textstyle id of the specified cell style.
+        """
     @overload
-    def textStyle(self, *args) -> ObjectId: ...
-    def vertCellMargin(self, /) -> float: ...
+    def textStyle(self, *args) -> ObjectId:
+        """
+        Returns the textstyle id of the specified cell style.
+        """
+    def vertCellMargin(self, /) -> float:
+        """
+        This function returns the vertical cell margin value used by the table style. This method
+        is deprecated and may be removed in a future release.
+        """
 
 class Text(PyDb.Entity):
     @overload
