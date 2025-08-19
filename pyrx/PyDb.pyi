@@ -28006,122 +28006,335 @@ class Table(PyDb.BlockReference):
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @overload
-    def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment: ...
+    def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment:
+        """
+        This function returns the alignment of the text or block in the specified cell of the
+        table. Possible cell alignment values
+        are:AcDb::kTopLeftAcDb::kTopCenterAcDb::kTopRightAcDb::kMiddleLeftAcDb::kMiddleCenterAcDb::kMiddleRightAcDb::kBottomLeftAcDb::kBottomCenterAcDb::kBottomRight
+        """
     @overload
-    def alignment(self, row: int, col: int, /) -> CellAlignment: ...
+    def alignment(self, row: int, col: int, /) -> CellAlignment:
+        """
+        This function returns the alignment of the text or block in the specified cell of the
+        table. Possible cell alignment values
+        are:AcDb::kTopLeftAcDb::kTopCenterAcDb::kTopRightAcDb::kMiddleLeftAcDb::kMiddleCenterAcDb::kMiddleRightAcDb::kBottomLeftAcDb::kBottomCenterAcDb::kBottomRight
+        """
     @overload
-    def alignment(self, *args) -> CellAlignment: ...
-    def attachmentPoint(self, row: int, col: int, content: int = 1, /) -> PyGe.Point3d: ...
+    def alignment(self, *args) -> CellAlignment:
+        """
+        This function returns the alignment of the text or block in the specified cell of the
+        table. Possible cell alignment values
+        are:AcDb::kTopLeftAcDb::kTopCenterAcDb::kTopRightAcDb::kMiddleLeftAcDb::kMiddleCenterAcDb::kMiddleRightAcDb::kBottomLeftAcDb::kBottomCenterAcDb::kBottomRight
+        """
+    def attachmentPoint(self, row: int, col: int, content: int = 1, /) -> PyGe.Point3d:
+        """
+        This function returns the attachment point of the specified cell.
+        """
     @overload
-    def backgroundColor(self, rowType: PyDb.RowType, /) -> Color: ...
+    def backgroundColor(self, rowType: PyDb.RowType, /) -> Color:
+        """
+        This function returns the background color of the specified cell in the table.
+        """
     @overload
-    def backgroundColor(self, row: int, col: int, /) -> Color: ...
+    def backgroundColor(self, row: int, col: int, /) -> Color:
+        """
+        This function returns the background color of the specified cell in the table.
+        """
     @overload
-    def backgroundColor(self, *args) -> Color: ...
-    def blockRotation(self, row: int, col: int, /) -> float: ...
-    def blockScale(self, row: int, col: int, /) -> float: ...
+    def backgroundColor(self, *args) -> Color:
+        """
+        This function returns the background color of the specified cell in the table.
+        """
+    def blockRotation(self, row: int, col: int, /) -> float:
+        """
+        This function returns the rotation angle of the block reference at the specified cell in
+        the table. This method is deprecated and may be removed in a future release.
+        """
+    def blockScale(self, row: int, col: int, /) -> float:
+        """
+        This function returns the scale factor of the block reference at the specified cell in the
+        table. This method is deprecated and may be removed in a future release.
+        """
     @overload
-    def blockTableRecordId(self, row: int, col: int, /) -> ObjectId: ...
+    def blockTableRecordId(self, row: int, col: int, /) -> ObjectId:
+        """
+        Returns the id of the block table record if the content at the specified content index is a
+        block; returns null id if the content is not a block.
+        """
     @overload
-    def blockTableRecordId(self, row: int, col: int, content: int, /) -> ObjectId: ...
+    def blockTableRecordId(self, row: int, col: int, content: int, /) -> ObjectId:
+        """
+        Returns the id of the block table record if the content at the specified content index is a
+        block; returns null id if the content is not a block.
+        """
     @overload
-    def blockTableRecordId(self, *args) -> ObjectId: ...
-    def breakFlowDirection(self, /) -> TableBreakFlowDirection: ...
-    def breakHeight(self, val: int, /) -> float: ...
-    def breakOffset(self, idx: int, /) -> PyGe.Vector3d: ...
-    def breakOption(self, /) -> TableBreakOption: ...
-    def breakSpacing(self, /) -> float: ...
+    def blockTableRecordId(self, *args) -> ObjectId:
+        """
+        Returns the id of the block table record if the content at the specified content index is a
+        block; returns null id if the content is not a block.
+        """
+    def breakFlowDirection(self, /) -> TableBreakFlowDirection:
+        """
+        This function returns the table break flow direction of the table. The break flow direction
+        determines the positioning of the tables when the table break is enabled.
+        """
+    def breakHeight(self, val: int, /) -> float:
+        """
+        Returns the break height of the specified table when table breaking is enabled.
+        """
+    def breakOffset(self, idx: int, /) -> PyGe.Vector3d:
+        """
+        Returns the break offset of the specified table when table breaking is enabled.
+        """
+    def breakOption(self, /) -> TableBreakOption:
+        """
+        This function returns the table break option.
+        """
+    def breakSpacing(self, /) -> float:
+        """
+        This function gets the spacing between multiple tables when table breaking is enabled.
+        """
     @staticmethod
     def calcTextExtents(val: str, textStyleId: PyDb.ObjectId, /) -> tuple[float, float]: ...
-    def canDelete(self, row: int, col: int, brow: bool, /) -> bool: ...
-    def canInsert(self, index: int, brow: bool, /) -> bool: ...
+    def canDelete(self, row: int, col: int, brow: bool, /) -> bool:
+        """
+        This function checks if the row or column can be deleted Returns true if the row or column
+        can be deleted, false if not.
+        """
+    def canInsert(self, index: int, brow: bool, /) -> bool:
+        """
+        This function checks if new rows or columns can be inserted at the specified index. Returns
+        true if the row or column can be inserted, false if not.
+        """
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Table: ...
-    def cellRange(self, /) -> CellRange: ...
-    def cellState(self, row: int, col: int, /) -> CellState: ...
+    def cellRange(self, /) -> CellRange:
+        """
+        This function returns the cell range.
+        """
+    def cellState(self, row: int, col: int, /) -> CellState:
+        """
+        This function returns the cell state. To determine if a cell's content and format are
+        editable use the functions isContentEditable() and isFormatEditable() instead of using
+        cellState() and checking the returned state. This is because the semantics of an editable
+        cell may change as new states are added.
+        """
     @overload
-    def cellStrValues(self, /) -> list[tuple[int, int, str]]: ...
+    def cellStrValues(self, /) -> list[tuple[int, int, str]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellStrValues(
-        self, nOption: PyDb.TableIteratorOption, /
-    ) -> list[tuple[int, int, str]]: ...
+    def cellStrValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int, int, str]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellStrValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, str]]: ...
+    def cellStrValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, str]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
     def cellStrValues(
         self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /
-    ) -> list[tuple[int, int, str]]: ...
+    ) -> list[tuple[int, int, str]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellStrValues(self, *args) -> list[tuple[int, int, str]]: ...
-    def cellStyle(self, row: int, col: int, /) -> str: ...
-    def cellStyleOverrides(self, row: int, col: int, /) -> list[int]: ...
-    def cellType(self, row: int, col: int, /) -> CellType: ...
+    def cellStrValues(self, *args) -> list[tuple[int, int, str]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
+    def cellStyle(self, row: int, col: int, /) -> str:
+        """
+        This function returns the cell style of cell, row, or column. To specify cell pass a valid
+        row and column indices; to specify row pass a valid row index and pass -1 as column index;
+        to specify column pass a valid column index and pass -1 as row index.
+        """
+    def cellStyleOverrides(self, row: int, col: int, /) -> list[int]:
+        """
+        This function returns the cell overrides for the specified cell.
+        """
+    def cellType(self, row: int, col: int, /) -> CellType:
+        """
+        This function returns the cell type of the cell at the specified location in the table.
+        Possible values for cell type are: AcDbTable::kTextCellAcDbTable::kBlockCell
+        """
     @overload
-    def cellValues(self, /) -> list[tuple[int, int, Any]]: ...
+    def cellValues(self, /) -> list[tuple[int, int, Any]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int, int, Any]]: ...
+    def cellValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int, int, Any]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, Any]]: ...
+    def cellValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, Any]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
     def cellValues(
         self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /
-    ) -> list[tuple[int, int, Any]]: ...
+    ) -> list[tuple[int, int, Any]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cellValues(self, *args) -> list[tuple[int, int, Any]]: ...
+    def cellValues(self, *args) -> list[tuple[int, int, Any]]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cells(self, /) -> list[PyDb.Cell]: ...
+    def cells(self, /) -> list[PyDb.Cell]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cells(self, nOption: PyDb.TableIteratorOption, /) -> list[PyDb.Cell]: ...
+    def cells(self, nOption: PyDb.TableIteratorOption, /) -> list[PyDb.Cell]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cells(self, pRange: PyDb.CellRange, /) -> list[PyDb.Cell]: ...
+    def cells(self, pRange: PyDb.CellRange, /) -> list[PyDb.Cell]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cells(
-        self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /
-    ) -> list[PyDb.Cell]: ...
+    def cells(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[PyDb.Cell]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @overload
-    def cells(self, *args) -> list[PyDb.Cell]: ...
+    def cells(self, *args) -> list[PyDb.Cell]:
+        """
+        Returns the iterator. The returned pointer should be deleted after using it.
+        """
     @staticmethod
     def className() -> str: ...
-    def clearCellOverrides(self, row: int, col: int, /) -> None: ...
+    def clearCellOverrides(self, row: int, col: int, /) -> None:
+        """
+        Clears all overrides in the cell identified by row and column.
+        """
     def clearCustomData(self, row: int, col: int, style: str, /) -> None: ...
-    def clearSubSelection(self, /) -> None: ...
-    def clearTableStyleOverrides(self, /) -> None: ...
+    def clearSubSelection(self, /) -> None:
+        """
+        This function removes the sub-selection set of cells from the table.
+        """
+    def clearTableStyleOverrides(self, /) -> None:
+        """
+        This function clears the overrides used in a table and its cells. The options argument can
+        be one of the following: Value Description 0 Delete all table and cell overrides 1 Delete
+        all table overrides, but retain cell overrides 2 Delete all cell overrides, but retain
+        table overrides
+        """
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Table: ...
-    def columnWidth(self, col: int, /) -> float: ...
+    def columnWidth(self, col: int, /) -> float:
+        """
+        This function returns the column width at the specified column index in the table.
+        """
     @overload
-    def contentColor(self, rowType: PyDb.RowType, /) -> Color: ...
+    def contentColor(self, rowType: PyDb.RowType, /) -> Color:
+        """
+        Returns the color of the content at the specified content index in radians.
+        """
     @overload
-    def contentColor(self, row: int, col: int, /) -> Color: ...
+    def contentColor(self, row: int, col: int, /) -> Color:
+        """
+        Returns the color of the content at the specified content index in radians.
+        """
     @overload
-    def contentColor(self, row: int, col: int, content: int, /) -> Color: ...
+    def contentColor(self, row: int, col: int, content: int, /) -> Color:
+        """
+        Returns the color of the content at the specified content index in radians.
+        """
     @overload
-    def contentColor(self, *args) -> Color: ...
-    def contentLayout(self, row: int, col: int, /) -> CellContentLayout: ...
+    def contentColor(self, *args) -> Color:
+        """
+        Returns the color of the content at the specified content index in radians.
+        """
+    def contentLayout(self, row: int, col: int, /) -> CellContentLayout:
+        """
+        This function returns the content layout of a cell.
+        """
     @overload
-    def contentType(self, row: int, col: int, /) -> CellContentType: ...
+    def contentType(self, row: int, col: int, /) -> CellContentType:
+        """
+        Returns the content type of the content at the specified content index.
+        """
     @overload
-    def contentType(self, row: int, col: int, content: int, /) -> CellContentType: ...
+    def contentType(self, row: int, col: int, content: int, /) -> CellContentType:
+        """
+        Returns the content type of the content at the specified content index.
+        """
     @overload
-    def contentType(self, *args) -> CellContentType: ...
-    def createContent(self, row: int, col: int, idx: int, /) -> int: ...
+    def contentType(self, *args) -> CellContentType:
+        """
+        Returns the content type of the content at the specified content index.
+        """
+    def createContent(self, row: int, col: int, idx: int, /) -> int:
+        """
+        This function is called to create additional contents for a cell; one is created by default
+        from the constructor. Returns the index of the created content.
+        """
     @overload
-    def dataFormat(self, row: int, col: int, /) -> str: ...
+    def dataFormat(self, row: int, col: int, /) -> str:
+        """
+        Returns the data format of the content at the specified content index.
+        """
     @overload
-    def dataFormat(self, row: int, col: int, content: int, /) -> str: ...
+    def dataFormat(self, row: int, col: int, content: int, /) -> str:
+        """
+        Returns the data format of the content at the specified content index.
+        """
     @overload
-    def dataFormat(self, *args) -> str: ...
-    def deleteCellContent(self, row: int, col: int, /) -> None: ...
-    def deleteColumns(self, row: int, nCols: int, /) -> None: ...
+    def dataFormat(self, *args) -> str:
+        """
+        Returns the data format of the content at the specified content index.
+        """
+    def deleteCellContent(self, row: int, col: int, /) -> None:
+        """
+        This function deletes the cell content for the specified cell. Returns Acad::eOk if
+        successful. This method is deprecated and may be removed in a future release.
+        """
+    def deleteColumns(self, row: int, nCols: int, /) -> None:
+        """
+        This function deletes the specified number of columns from the table at the column index
+        col. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def deleteContent(self, row: int, col: int, /) -> None: ...
+    def deleteContent(self, row: int, col: int, /) -> None:
+        """
+        This function deletes a single content type from a cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def deleteContent(self, row: int, col: int, content: int, /) -> None: ...
+    def deleteContent(self, row: int, col: int, content: int, /) -> None:
+        """
+        This function deletes a single content type from a cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def deleteContent(self, range: PyDb.CellRange, /) -> None: ...
+    def deleteContent(self, range: PyDb.CellRange, /) -> None:
+        """
+        This function deletes a single content type from a cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def deleteContent(self, *args) -> None: ...
-    def deleteRows(self, row: int, nRows: int, /) -> None: ...
+    def deleteContent(self, *args) -> None:
+        """
+        This function deletes a single content type from a cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def deleteRows(self, row: int, nRows: int, /) -> None:
+        """
+        This function deletes the specified number of rows from the table at the row index row.
+        Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -28136,260 +28349,854 @@ class Table(PyDb.BlockReference):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def direction(self, /) -> PyGe.Vector3d: ...
-    def enableBreak(self, val: bool, /) -> None: ...
-    def enableMergeAll(self, row: int, col: int, val: bool, /) -> None: ...
+    def direction(self, /) -> PyGe.Vector3d:
+        """
+        This function returns the unit horizontal direction vector for the table in WCS
+        coordinates.
+        """
+    def enableBreak(self, val: bool, /) -> None:
+        """
+        Enables or disables table breaking. Returns Acad::eOk if successful; otherwise, returns an
+        AutoCAD error status.
+        """
+    def enableMergeAll(self, row: int, col: int, val: bool, /) -> None:
+        """
+        Enables or disables the merge all flag in row or column Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status. To specify row pass a valid row index and pass
+        -1 as column index; to specify column pass a valid column index and pass -1 as row index.
+        This flag is not applicable for cell.
+        """
     @overload
-    def fieldId(self, row: int, col: int, /) -> ObjectId: ...
+    def fieldId(self, row: int, col: int, /) -> ObjectId:
+        """
+        Returns the id of the field if the content at the specified content index is a field;
+        returns null id if content is not a field.
+        """
     @overload
-    def fieldId(self, row: int, col: int, content: int, /) -> ObjectId: ...
+    def fieldId(self, row: int, col: int, content: int, /) -> ObjectId:
+        """
+        Returns the id of the field if the content at the specified content index is a field;
+        returns null id if content is not a field.
+        """
     @overload
-    def fieldId(self, *args) -> ObjectId: ...
-    def flowDirection(self, /) -> TableFlowDirection: ...
-    def generateLayout(self, /) -> None: ...
+    def fieldId(self, *args) -> ObjectId:
+        """
+        Returns the id of the field if the content at the specified content index is a field;
+        returns null id if content is not a field.
+        """
+    def flowDirection(self, /) -> TableFlowDirection:
+        """
+        This function returns the direction that the table follows from its start to its finish.
+        Possible values for AcDb::FlowDirection are AcDb::kTtoB (top to bottom) and AcDb::kBtoT
+        (bottom to top).
+        """
+    def generateLayout(self, /) -> None:
+        """
+        This function will update the table object according to the current table style. It
+        computes table geometry, including grid lines, text content, block content, and background
+        fills, from given definition data and table style. The generated table geometry are
+        maintained internally by member data mpEntities, which is a list of in-memory AcDbEntity
+        pointers. This function does not generate the table block. The table block is created
+        automatically from the in-memory entity list when the application posts the table object to
+        database and closes the object. This function empowers the table object for full use
+        regardless of its database status--resident or non-resident. The generated in-memory table
+        geometry will be deleted automatically by table object destructor. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def getBlockAttributeValue(
-        self, row: int, col: int, val: str, id: PyDb.ObjectId, /
-    ) -> str: ...
+    def getBlockAttributeValue(self, row: int, col: int, val: str, id: PyDb.ObjectId, /) -> str:
+        """
+        Gets the block attribute value if the content at the specified content index is a block
+        with attributes.
+        """
     @overload
     def getBlockAttributeValue(
         self, row: int, col: int, content: int, val: str, id: PyDb.ObjectId, /
-    ) -> str: ...
+    ) -> str:
+        """
+        Gets the block attribute value if the content at the specified content index is a block
+        with attributes.
+        """
     @overload
-    def getBlockAttributeValue(self, *args) -> str: ...
-    def getCellExtents(self, row: int, col: int, isOuterCell: bool, /) -> list[PyGe.Point3d]: ...
+    def getBlockAttributeValue(self, *args) -> str:
+        """
+        Gets the block attribute value if the content at the specified content index is a block
+        with attributes.
+        """
+    def getCellExtents(self, row: int, col: int, isOuterCell: bool, /) -> list[PyGe.Point3d]:
+        """
+        This function returns the cell extents for the specified cell. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput.
+        """
     def getCellOverride(self, row: int, col: int, content: int, /) -> CellProperty: ...
-    def getCustomData(self, row: int, col: int, style: str, /) -> AcValue: ...
-    def getDataLink(self, row: int, col: int, /) -> ObjectId: ...
-    def getDataLinkRange(self, row: int, col: int, /) -> CellRange: ...
+    def getCustomData(self, row: int, col: int, style: str, /) -> AcValue:
+        """
+        Gets the custom data value set in cell, row, or column. Returns the custom data value set
+        in cell, row, or column. To specify cell pass a valid row and column indices; to specify
+        row pass a valid row index and pass -1 as column index; to specify column pass a valid
+        column index and pass -1 as row index.
+        """
+    def getDataLink(self, row: int, col: int, /) -> ObjectId:
+        """
+        This function gets the id of the data link if the specified cell is linked to a data source
+        using a data link. This function may be called on any of the cells in a linked range.
+        Returns the id of the data link. Returns null id if the cell is not linked using a data
+        link.
+        """
+    def getDataLinkRange(self, row: int, col: int, /) -> CellRange:
+        """
+        This function returns the data link range if the specified cell is part of a linked range.
+        Returns invalid range if the specified cell is not part of a linked range. The specified
+        cell can be any cell in a linked range.
+        """
     @overload
     def getDataType(
         self, rowType: PyDb.RowType, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
+    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def getDataType(
-        self, row: int, col: int, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
+    def getDataType(self, row: int, col: int, /) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
     def getDataType(
         self, row: int, col: int, content: int, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
+    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]: ...
-    def getFormula(self, row: int, col: int, content: int, /) -> str: ...
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+        """
+        Gets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def getFormula(self, row: int, col: int, content: int, /) -> str:
+        """
+        This function returns the formula if the content at the specified content index has a
+        formula; otherwise it returns an empty string.
+        """
     def getGridOverride(
         self, row: int, col: int, nGridLineType: PyDb.GridLineType, /
     ) -> GridProperty: ...
-    def getGridProperty(self, row: int, col: int, nGridLineType: GridLineType, /) -> object: ...
-    def getMergeRange(self, row: int, col: int, /) -> CellRange: ...
-    def getSubSelection(self, /) -> CellRange: ...
+    def getGridProperty(self, row: int, col: int, nGridLineType: GridLineType, /) -> object:
+        """
+        Gets the grid line properties of cell, row, or column. To specify cell, pass a valid row
+        and column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Before calling this
+        function, the mnPropMask member of the structure AcGridProperty should be initialized to a
+        value indicating which properties to get. If it is set to zero it gets all the properties.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def getMergeRange(self, row: int, col: int, /) -> CellRange:
+        """
+        Returns the merge range. The merge range will be invalid if the cell is not part of a merge
+        range.
+        """
+    def getSubSelection(self, /) -> CellRange:
+        """
+        This function gets the row and column indexes of the cells in the sub-selection set.
+        Returns Acad::eOk if successful. Returns Acad::eSubSelectionSetEmpty if there are no
+        sub-selection cells.
+        """
     @overload
-    def gridColor(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> Color: ...
+    def gridColor(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> Color:
+        """
+        Gets the grid color of cell, row, or column. To specify cell, pass a valid row and column
+        indices. To specify row, pass a valid row index and pass -1 as column index. To specify
+        column, pass a valid column index and pass -1 as row index. Returns the grid color of cell,
+        row, or column.
+        """
     @overload
-    def gridColor(self, row: int, col, gridlineType: GridLineType, /) -> Color: ...
+    def gridColor(self, row: int, col, gridlineType: GridLineType, /) -> Color:
+        """
+        Gets the grid color of cell, row, or column. To specify cell, pass a valid row and column
+        indices. To specify row, pass a valid row index and pass -1 as column index. To specify
+        column, pass a valid column index and pass -1 as row index. Returns the grid color of cell,
+        row, or column.
+        """
     @overload
-    def gridColor(self, *args) -> Color: ...
-    def gridDoubleLineSpacing(
-        self, row: int, col: int, nGridLineType: GridLineType, /
-    ) -> float: ...
+    def gridColor(self, *args) -> Color:
+        """
+        Gets the grid color of cell, row, or column. To specify cell, pass a valid row and column
+        indices. To specify row, pass a valid row index and pass -1 as column index. To specify
+        column, pass a valid column index and pass -1 as row index. Returns the grid color of cell,
+        row, or column.
+        """
+    def gridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, /) -> float:
+        """
+        Gets the grid double line spacing from cell, row, or column. To specify cell, pass a valid
+        row and column indices. To specify row, pass a valid row index and pass -1 as column index.
+        To specify column, pass a valid column index and pass -1 as row index. Returns the grid
+        double line spacing of cell, row, or column.
+        """
     def gridEdgeColor(self, row: int, col: int, content: CellEdgeMask, /) -> Color: ...
     def gridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, /) -> LineWeight: ...
     def gridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, /) -> Visibility: ...
     def gridLineStyle(
         self, row: int, col: int, nGridLineType: PyDb.GridLineType, /
-    ) -> GridLineStyle: ...
+    ) -> GridLineStyle:
+        """
+        Gets the grid line style of cell, row, or column. Returns the grid line style of cell, row,
+        or column. To specify cell, pass a valid row and column indices. To specify row, pass a
+        valid row index and pass -1 as column index. To specify column, pass a valid column index
+        and pass -1 as row index.
+        """
     @overload
-    def gridLineWeight(
-        self, gridlineType: GridLineType, rowType: PyDb.RowType, /
-    ) -> LineWeight: ...
+    def gridLineWeight(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> LineWeight:
+        """
+        Gets the grid line weight of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid line
+        weight of cell, row, or column.
+        """
     @overload
-    def gridLineWeight(self, row: int, col, gridlineType: GridLineType, /) -> LineWeight: ...
+    def gridLineWeight(self, row: int, col, gridlineType: GridLineType, /) -> LineWeight:
+        """
+        Gets the grid line weight of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid line
+        weight of cell, row, or column.
+        """
     @overload
-    def gridLineWeight(self, *args) -> LineWeight: ...
-    def gridLinetype(
-        self, row: int, col: int, nGridLineType: PyDb.GridLineType, /
-    ) -> ObjectId: ...
+    def gridLineWeight(self, *args) -> LineWeight:
+        """
+        Gets the grid line weight of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid line
+        weight of cell, row, or column.
+        """
+    def gridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> ObjectId:
+        """
+        Gets the grid line type of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid line
+        type of cell, row, or column.
+        """
     @overload
-    def gridVisibility(
-        self, gridlineType: GridLineType, rowType: PyDb.RowType, /
-    ) -> Visibility: ...
+    def gridVisibility(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> Visibility:
+        """
+        Gets the grid visibility of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid
+        visibility of cell, row, or column.
+        """
     @overload
-    def gridVisibility(self, row: int, col, gridlineType: GridLineType, /) -> Visibility: ...
+    def gridVisibility(self, row: int, col, gridlineType: GridLineType, /) -> Visibility:
+        """
+        Gets the grid visibility of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid
+        visibility of cell, row, or column.
+        """
     @overload
-    def gridVisibility(self, *args) -> Visibility: ...
-    def hasFormula(self, row: int, col: int, content: int, /) -> bool: ...
-    def hasSubSelection(self, /) -> bool: ...
-    def height(self, /) -> float: ...
+    def gridVisibility(self, *args) -> Visibility:
+        """
+        Gets the grid visibility of cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. Returns the grid
+        visibility of cell, row, or column.
+        """
+    def hasFormula(self, row: int, col: int, content: int, /) -> bool:
+        """
+        This function returns true if the content at the specified index is a formula.
+        """
+    def hasSubSelection(self, /) -> bool:
+        """
+        Returns true if the table has a sub-selection set. Otherwise, returns false.
+        """
+    def height(self, /) -> float:
+        """
+        This function returns the total height for the table.
+        """
     def hitTest(
         self, wpt: PyGe.Point3d, viewvec: PyGe.Vector3d, wx: float = 0.0, wy: float = 0.0, /
-    ) -> tuple[bool, int, int, int, int]: ...
-    def horzCellMargin(self, /) -> float: ...
-    def insertColumns(self, row: int, width: float, nCols: int, /) -> None: ...
-    def insertColumnsAndInherit(
-        self, nIndex: int, nInheritFrom: int, nNumCols: int, /
-    ) -> None: ...
-    def insertRows(self, row: int, height: float, nRows: int, /) -> None: ...
-    def insertRowsAndInherit(self, nIndex: int, nInheritFrom: int, nNumRows: int, /) -> None: ...
+    ) -> tuple[bool, int, int, int, int]:
+        """
+        This function performs a hit test for the specified point and viewing direction. The cell
+        hit by the ray will be returned in the output arguments resultRowIndex and
+        resultColumnIndex. Returns true if a table set is hit; otherwise, returns false.
+        """
+    def horzCellMargin(self, /) -> float:
+        """
+        This function returns the horizontal cell margin for the table. This method is deprecated
+        and may be removed in a future release.
+        """
+    def insertColumns(self, row: int, width: float, nCols: int, /) -> None:
+        """
+        This function inserts one or more columns at the specified index. Returns the starting
+        index of the inserted columns
+        """
+    def insertColumnsAndInherit(self, nIndex: int, nInheritFrom: int, nNumCols: int, /) -> None:
+        """
+        This function inserts the specified number of new columns into the table at the column
+        index col. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
+    def insertRows(self, row: int, height: float, nRows: int, /) -> None:
+        """
+        This function inserts one or more rows at the specified index. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput .
+        """
+    def insertRowsAndInherit(self, nIndex: int, nInheritFrom: int, nNumRows: int, /) -> None:
+        """
+        This function inserts the specified number of new rows into the table at the row index row.
+        Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def isAutoScale(self, row: int, col: int, /) -> bool: ...
+    def isAutoScale(self, row: int, col: int, /) -> bool:
+        """
+        This function returns the status of the mBlockAutoFit flag at the specified cell in the
+        table. If this flag is true, the AcDbTable object automatically computes the scale and
+        insertion point for the block content in order to fit it into the specified cell. Returns
+        true if the block at the specified index is auto-scaled.
+        """
     @overload
-    def isAutoScale(self, row: int, col: int, content: int, /) -> bool: ...
+    def isAutoScale(self, row: int, col: int, content: int, /) -> bool:
+        """
+        This function returns the status of the mBlockAutoFit flag at the specified cell in the
+        table. If this flag is true, the AcDbTable object automatically computes the scale and
+        insertion point for the block content in order to fit it into the specified cell. Returns
+        true if the block at the specified index is auto-scaled.
+        """
     @overload
-    def isAutoScale(self, *args) -> bool: ...
+    def isAutoScale(self, *args) -> bool:
+        """
+        This function returns the status of the mBlockAutoFit flag at the specified cell in the
+        table. If this flag is true, the AcDbTable object automatically computes the scale and
+        insertion point for the block content in order to fit it into the specified cell. Returns
+        true if the block at the specified index is auto-scaled.
+        """
     @overload
-    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool: ...
+    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool:
+        """
+        Returns true if the background color for the specified cell in the table is set to no color
+        value. Otherwise, returns false.
+        """
     @overload
-    def isBackgroundColorNone(self, row: int, col: int, /) -> bool: ...
+    def isBackgroundColorNone(self, row: int, col: int, /) -> bool:
+        """
+        Returns true if the background color for the specified cell in the table is set to no color
+        value. Otherwise, returns false.
+        """
     @overload
-    def isBackgroundColorNone(self, *args) -> bool: ...
-    def isBreakEnabled(self, /) -> bool: ...
-    def isContentEditable(self, row: int, col: int, /) -> bool: ...
-    def isEmpty(self, row: int, col: int, /) -> bool: ...
-    def isFormatEditable(self, row: int, col: int, /) -> bool: ...
-    def isHeaderSuppressed(self, /) -> bool: ...
-    def isLinked(self, row: int, col: int, /) -> bool: ...
-    def isMergeAllEnabled(self, row: int, col: int, /) -> bool: ...
-    def isMergedCell(self, row: int, col: int, /) -> tuple[bool, int, int, int, int]: ...
-    def isRegenerateTableSuppressed(self, /) -> bool: ...
-    def isTitleSuppressed(self, /) -> bool: ...
-    def margin(self, row: int, col: int, nMargin: PyDb.CellMargin, /) -> float: ...
-    def mergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None: ...
-    def minimumColumnWidth(self, col: int, /) -> float: ...
-    def minimumRowHeight(self, row: int, /) -> float: ...
-    def minimumTableHeight(self, /) -> float: ...
-    def minimumTableWidth(self, /) -> float: ...
-    def moveContent(self, row: int, col: int, frm: int, to: int, /) -> None: ...
-    def numColumns(self, /) -> int: ...
-    def numContents(self, row: int, col: int, /) -> int: ...
-    def numRows(self, /) -> int: ...
-    def recomputeTableBlock(self, val: bool, /) -> None: ...
-    def removeAllOverrides(self, row: int, col: int, /) -> None: ...
-    def removeDataLink(self, row: int = -1, col: int = -1, /) -> None: ...
-    def rotation(self, row: int, col: int, content: int, /) -> float: ...
-    def rowHeight(self, row: int, /) -> float: ...
-    def rowType(self, row: int, /) -> RowType: ...
-    def scale(self, row: int, col: int, content: int, /) -> float: ...
+    def isBackgroundColorNone(self, *args) -> bool:
+        """
+        Returns true if the background color for the specified cell in the table is set to no color
+        value. Otherwise, returns false.
+        """
+    def isBreakEnabled(self, /) -> bool:
+        """
+        This function checks if the table break is enabled. Returns true if table break is enabled,
+        false otherwise.
+        """
+    def isContentEditable(self, row: int, col: int, /) -> bool:
+        """
+        This function checks the cell state to determine if a cell content can be modified. For
+        example, content locked and read-only cells cannot be modified. Applications should use
+        this function to determine if a cell is editable instead of calling cellState directly and
+        checking the state since the semantics of an editable cell may change as new states are
+        added. Returns true if the content can be modified and false if not.
+        """
+    def isEmpty(self, row: int, col: int, /) -> bool:
+        """
+        This function inserts checks if the content of the specified cell is empty Returns true if
+        the cell is empty, false if not.
+        """
+    def isFormatEditable(self, row: int, col: int, /) -> bool:
+        """
+        This function checks the cell state to determine if a cell format can be modified.
+        Applications should use this function to determine if a cell is editable instead of calling
+        cellState directly and checking the state since the semantics of an editable cell may
+        change as new states are added. Returns true if the format can be modified and false if
+        not.
+        """
+    def isHeaderSuppressed(self, /) -> bool:
+        """
+        This function returns true if the header row of the table is suppressed, or false if it is
+        not. This method is deprecated and may be removed in a future release.
+        """
+    def isLinked(self, row: int, col: int, /) -> bool:
+        """
+        Checks if a cell is linked to a data source. Returns true if the cell is linked and false
+        if not
+        """
+    def isMergeAllEnabled(self, row: int, col: int, /) -> bool:
+        """
+        Determines whether the merge-all flag is enabled in a row or column Returns true if the
+        flag is enabled; false if not.
+        """
+    def isMergedCell(self, row: int, col: int, /) -> tuple[bool, int, int, int, int]:
+        """
+        This function returns true if the specified cell is within merged cells. It also returns
+        the range of the merged cells if minRow, maxRow, minCol, and maxCol are not null. The
+        merged cell region is always a rectangular area.
+        """
+    def isRegenerateTableSuppressed(self, /) -> bool:
+        """
+        Returns true if the regenerating of the table block is currently disabled. Otherwise,
+        returns false.
+        """
+    def isTitleSuppressed(self, /) -> bool:
+        """
+        This function returns true if the title row of the table is suppressed, or false if it is
+        not. This method is deprecated and may be removed in a future release.
+        """
+    def margin(self, row: int, col: int, nMargin: PyDb.CellMargin, /) -> float:
+        """
+        Returns the margin of cell, row, or column.
+        """
+    def mergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None:
+        """
+        This function merges a rectangular region of cells. The total number of cells merged is
+        ((maxRow - minRow) + 1) * ((maxCol - minCol) + 1). Returns Acad::eOk if successful.
+        Otherwise, returns Acad::eInvalidInput.
+        """
+    def minimumColumnWidth(self, col: int, /) -> float:
+        """
+        This function returns the minimum column width at the specified column index in the table.
+        """
+    def minimumRowHeight(self, row: int, /) -> float:
+        """
+        This function returns the minimum row height for the specified row in the table.
+        """
+    def minimumTableHeight(self, /) -> float:
+        """
+        This function returns the minimum total height for the table.
+        """
+    def minimumTableWidth(self, /) -> float:
+        """
+        This function returns the minimum total width for the table.
+        """
+    def moveContent(self, row: int, col: int, frm: int, to: int, /) -> None:
+        """
+        Moves a content in a cell from one position to another position within the cell Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def numColumns(self, /) -> int:
+        """
+        This function returns a non-negative integer representing the number of columns in the
+        table.
+        """
+    def numContents(self, row: int, col: int, /) -> int:
+        """
+        Returns the number of contents in the specified cell.
+        """
+    def numRows(self, /) -> int:
+        """
+        This function returns a non-negative integer representing the number of rows in the table.
+        """
+    def recomputeTableBlock(self, val: bool, /) -> None:
+        """
+        This function updates the block table record the table object references to match any
+        changes made to the table object since the last time the block table record was updated. If
+        forceUpdate is true, then the block table record will be updated regardless of whether or
+        not the table object has had any changes since the last time the block table record was
+        updated. If forceUpdate is false, then the block table record will only be updated if the
+        table object has been changed since it was opened, is not currently erased, and is not in
+        the middle of an undo operation.
+        """
+    def removeAllOverrides(self, row: int, col: int, /) -> None:
+        """
+        Removes all the overrides in cell, row, or column. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def removeDataLink(self, row: int = -1, col: int = -1, /) -> None:
+        """
+        This function removes all the data links in the table. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def rotation(self, row: int, col: int, content: int, /) -> float:
+        """
+        Returns the rotation.
+        """
+    def rowHeight(self, row: int, /) -> float:
+        """
+        This function returns the row height of the specified row in the table.
+        """
+    def rowType(self, row: int, /) -> RowType:
+        """
+        This function returns the row type of the specified row in the table. The row type may be
+        AcDb::kTitleRow, AcDb::kHeaderRow, or AcDb::kDataRow. This method is deprecated and may be
+        removed in a future release.
+        """
+    def scale(self, row: int, col: int, content: int, /) -> float:
+        """
+        This function returns the scale of the content at the specified content index.
+        """
     @overload
-    def setAlignment(self, align: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None: ...
+    def setAlignment(self, align: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the alignment of the text or block in the specified cell of the table.
+        Possible cell alignment values are AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight,
+        AcDb::kMiddleLeft, AcDb::kMiddleCenter, AcDb::kMiddleRight, AcDb::kBottomLeft,
+        AcDb::kBottomCenter, and AcDb::kBottomRight. Returns Acad::eOk if successful. Otherwise,
+        returns Acad::eInvalidInput.
+        """
     @overload
-    def setAlignment(self, nRow: int, nCol: int, align: PyDb.CellAlignment, /) -> None: ...
+    def setAlignment(self, nRow: int, nCol: int, align: PyDb.CellAlignment, /) -> None:
+        """
+        This function sets the alignment of the text or block in the specified cell of the table.
+        Possible cell alignment values are AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight,
+        AcDb::kMiddleLeft, AcDb::kMiddleCenter, AcDb::kMiddleRight, AcDb::kBottomLeft,
+        AcDb::kBottomCenter, and AcDb::kBottomRight. Returns Acad::eOk if successful. Otherwise,
+        returns Acad::eInvalidInput.
+        """
     @overload
-    def setAlignment(self, *args) -> None: ...
+    def setAlignment(self, *args) -> None:
+        """
+        This function sets the alignment of the text or block in the specified cell of the table.
+        Possible cell alignment values are AcDb::kTopLeft, AcDb::kTopCenter, AcDb::kTopRight,
+        AcDb::kMiddleLeft, AcDb::kMiddleCenter, AcDb::kMiddleRight, AcDb::kBottomLeft,
+        AcDb::kBottomCenter, and AcDb::kBottomRight. Returns Acad::eOk if successful. Otherwise,
+        returns Acad::eInvalidInput.
+        """
     @overload
-    def setAutoScale(self, row: int, col: int, flag: bool, /) -> None: ...
+    def setAutoScale(self, row: int, col: int, flag: bool, /) -> None:
+        """
+        Sets the auto scale flag for the block at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setAutoScale(self, row: int, col: int, content: int, flag: bool, /) -> None: ...
+    def setAutoScale(self, row: int, col: int, content: int, flag: bool, /) -> None:
+        """
+        Sets the auto scale flag for the block at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setAutoScale(self, *args) -> None: ...
+    def setAutoScale(self, *args) -> None:
+        """
+        Sets the auto scale flag for the block at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setBackgroundColor(self, clr: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
+    def setBackgroundColor(self, clr: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+        """
+        This function sets the background color of the specified cell in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColor(self, row: int, col: int, clr: PyDb.Color, /) -> None: ...
+    def setBackgroundColor(self, row: int, col: int, clr: PyDb.Color, /) -> None:
+        """
+        This function sets the background color of the specified cell in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColor(self, *args) -> None: ...
+    def setBackgroundColor(self, *args) -> None:
+        """
+        This function sets the background color of the specified cell in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColorNone(self, value: bool, rowType: PyDb.RowType, /) -> None: ...
+    def setBackgroundColorNone(self, value: bool, rowType: PyDb.RowType, /) -> None:
+        """
+        This function enables or disables the background color for the specified cell. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColorNone(self, nRow: int, nCol: int, value: bool, /) -> None: ...
+    def setBackgroundColorNone(self, nRow: int, nCol: int, value: bool, /) -> None:
+        """
+        This function enables or disables the background color for the specified cell. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBackgroundColorNone(self, *args) -> None: ...
+    def setBackgroundColorNone(self, *args) -> None:
+        """
+        This function enables or disables the background color for the specified cell. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setBlockAttributeValue(
-        self, row: int, col: int, id: PyDb.ObjectId, val: str, /
-    ) -> None: ...
+    def setBlockAttributeValue(self, row: int, col: int, id: PyDb.ObjectId, val: str, /) -> None:
+        """
+        Sets the block attribute value if the content at the specified content index is a block
+        with attributes. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
+        status.
+        """
     @overload
     def setBlockAttributeValue(
         self, row: int, col: int, content: int, id: PyDb.ObjectId, val: str, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the block attribute value if the content at the specified content index is a block
+        with attributes. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
+        status.
+        """
     @overload
-    def setBlockAttributeValue(self, *args) -> None: ...
-    def setBlockRotation(self, row: int, col: int, rotAng: float, /) -> None: ...
-    def setBlockScale(self, row: int, col: int, scale: float, /) -> None: ...
+    def setBlockAttributeValue(self, *args) -> None:
+        """
+        Sets the block attribute value if the content at the specified content index is a block
+        with attributes. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
+        status.
+        """
+    def setBlockRotation(self, row: int, col: int, rotAng: float, /) -> None:
+        """
+        This function sets the rotation angle of the block reference at the specified cell in the
+        table. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput. This method
+        is deprecated and may be removed in a future release.
+        """
+    def setBlockScale(self, row: int, col: int, scale: float, /) -> None:
+        """
+        This function sets the scale factor of the block reference at the specified cell in the
+        table. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput. This method
+        is deprecated and may be removed in a future release.
+        """
     @overload
     def setBlockTableRecordId(
         self, row: int, col: int, id: PyDb.ObjectId, autoFit: bool, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the id of the block table record for the content at the specified content index.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setBlockTableRecordId(
         self, row: int, col: int, content: int, id: PyDb.ObjectId, autoFit: bool, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the id of the block table record for the content at the specified content index.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setBlockTableRecordId(self, *args) -> None: ...
-    def setBreakFlowDirection(self, dir: PyDb.TableBreakFlowDirection, /) -> None: ...
-    def setBreakHeight(self, val: int, height: float, /) -> None: ...
-    def setBreakOffset(self, idx: int, vec: PyGe.Vector3d, /) -> None: ...
-    def setBreakOption(self, val: TableBreakOption, /) -> None: ...
-    def setBreakSpacing(self, val: float, /) -> None: ...
+    def setBlockTableRecordId(self, *args) -> None:
+        """
+        Sets the id of the block table record for the content at the specified content index.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def setBreakFlowDirection(self, dir: PyDb.TableBreakFlowDirection, /) -> None:
+        """
+        Sets the table break flow direction of the table. The break flow direction determines the
+        positioning of the tables when the table break is enabled. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def setBreakHeight(self, val: int, height: float, /) -> None:
+        """
+        Sets the break height of the specified table when table breaking is enabled. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def setBreakOffset(self, idx: int, vec: PyGe.Vector3d, /) -> None:
+        """
+        Sets the table break offset of the table. Returns Acad::eOk if successful; otherwise,
+        returns an AutoCAD error status.
+        """
+    def setBreakOption(self, val: TableBreakOption, /) -> None:
+        """
+        Sets the table break option. Returns Acad::eOk if successful; otherwise, returns an AutoCAD
+        error status.
+        """
+    def setBreakSpacing(self, val: float, /) -> None:
+        """
+        Sets the table break spacing. Returns Acad::eOk if successful; otherwise, returns an
+        AutoCAD error status.
+        """
     def setCellOverride(
         self, row: int, col: int, content: int, nOverride: PyDb.CellProperty, /
     ) -> None: ...
-    def setCellState(self, row: int, col: int, val: PyDb.CellState, /) -> None: ...
-    def setCellStyle(self, row: int, col: int, style: str, /) -> None: ...
-    def setCellType(self, row: int, col: int, type: CellType, /) -> None: ...
+    def setCellState(self, row: int, col: int, val: PyDb.CellState, /) -> None:
+        """
+        Sets the cell state. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
+        status.
+        """
+    def setCellStyle(self, row: int, col: int, style: str, /) -> None:
+        """
+        Sets the the cell style of a cell, row, or column. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def setCellType(self, row: int, col: int, type: CellType, /) -> None:
+        """
+        This function sets the cell type to be applied to the cell at the specified location in the
+        table. Possible values for cell type are AcDbTable::kTextCell and AcDbTable::kBlockCell.
+        Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput. This method is
+        deprecated and may be removed in a future release.
+        """
     @overload
-    def setColumnWidth(self, column: int, width: float, /) -> None: ...
+    def setColumnWidth(self, column: int, width: float, /) -> None:
+        """
+        This function sets the column width at the specified column index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setColumnWidth(self, width: float, /) -> None: ...
+    def setColumnWidth(self, width: float, /) -> None:
+        """
+        This function sets the column width at the specified column index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setColumnWidth(self, *args) -> None: ...
+    def setColumnWidth(self, *args) -> None:
+        """
+        This function sets the column width at the specified column index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setContentColor(self, color: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
+    def setContentColor(self, color: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+        """
+        Sets the color of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setContentColor(self, nRow: int, nCol: int, color: PyDb.Color, /) -> None: ...
+    def setContentColor(self, nRow: int, nCol: int, color: PyDb.Color, /) -> None:
+        """
+        Sets the color of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setContentColor(
-        self, nRow: int, nCol: int, content: int, color: PyDb.Color, /
-    ) -> None: ...
+    def setContentColor(self, nRow: int, nCol: int, content: int, color: PyDb.Color, /) -> None:
+        """
+        Sets the color of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setContentColor(self, *args) -> None: ...
-    def setContentLayout(self, row: int, col: int, val: PyDb.CellContentLayout, /) -> None: ...
-    def setCustomData(self, row: int, col: int, style: str, val: PyDb.AcValue, /) -> None: ...
+    def setContentColor(self, *args) -> None:
+        """
+        Sets the color of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
+    def setContentLayout(self, row: int, col: int, val: PyDb.CellContentLayout, /) -> None:
+        """
+        Sets the content layout of the first content. Returns Acad::eOk if successful; otherwise,
+        returns an AutoCAD error status.
+        """
+    def setCustomData(self, row: int, col: int, style: str, val: PyDb.AcValue, /) -> None:
+        """
+        Sets the custom data value set in cell, row, or column. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setDataFormat(self, row: int, col: int, val: str, /) -> None: ...
+    def setDataFormat(self, row: int, col: int, val: str, /) -> None:
+        """
+        Sets the data format of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setDataFormat(self, row: int, col: int, content: int, val: str, /) -> None: ...
+    def setDataFormat(self, row: int, col: int, content: int, val: str, /) -> None:
+        """
+        Sets the data format of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setDataFormat(self, *args) -> None: ...
-    def setDataLink(self, row: int, col: int, id: PyDb.ObjectId, update: bool, /) -> None: ...
+    def setDataFormat(self, *args) -> None:
+        """
+        Sets the data format of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
+    def setDataLink(self, row: int, col: int, id: PyDb.ObjectId, update: bool, /) -> None:
+        """
+        Sets the specified data link in a cell. If the specified cell is top-left cell of an
+        existing linked range this will overwrite the current data link. If it is any other cell in
+        a linked range the function will fail. This function does not automatically update the
+        data; call updateDataLink() to update the data. Returns Acad::eOk if successful; otherwise,
+        returns an AutoCAD error status.
+        """
     @overload
-    def setDataType(self, nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None: ...
+    def setDataType(self, nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None:
+        """
+        Sets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setDataType(
         self, nDataType: ValueDataType, nUnitType: ValueUnitType, rowType: PyDb.RowType, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setDataType(
         self, row: int, col: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setDataType(
         self, row: int, col, nContent: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setDataType(self, *args) -> None: ...
-    def setDirection(self, val: PyGe.Vector3d, /) -> None: ...
+    def setDataType(self, *args) -> None:
+        """
+        Sets the data type and unit type of the content at the specified content index. Returns
+        Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
+    def setDirection(self, val: PyGe.Vector3d, /) -> None:
+        """
+        This function sets the horizontal direction (X axis, in WCS coordinates) for the table.
+        Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setFieldId(self, row: int, col: int, id: PyDb.ObjectId, /) -> None: ...
+    def setFieldId(self, row: int, col: int, id: PyDb.ObjectId, /) -> None:
+        """
+        Sets the id of the field at the specified index. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
     def setFieldId(
         self, row: int, col: int, content: int, id: PyDb.ObjectId, nFlag: PyDb.CellOption, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the id of the field at the specified index. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setFieldId(self, *args) -> None: ...
-    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None: ...
-    def setFormat(self, row: int, col: int, format: str, /) -> None: ...
-    def setFormula(self, row: int, col: int, content: int, val: str, /) -> None: ...
+    def setFieldId(self, *args) -> None:
+        """
+        Sets the id of the field at the specified index. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None:
+        """
+        This function sets the flow direction for the table. Possible values for
+        AcDb::FlowDirection are AcDb::kTtoB (top to bottom) and AcDb::kBtoT (bottom to top).
+        Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
+    def setFormat(self, row: int, col: int, format: str, /) -> None:
+        """
+        For internal use only.
+        """
+    def setFormula(self, row: int, col: int, content: int, val: str, /) -> None:
+        """
+        Sets the formula at the specified content index. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setGridColor(self, color: PyDb.Color, nBorders: int, nRows: int, /) -> None: ...
+    def setGridColor(self, color: PyDb.Color, nBorders: int, nRows: int, /) -> None:
+        """
+        This function sets the grid color of the specified edge of the cell. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
     def setGridColor(
         self, nRow: int, nCol: int, nGridLineTypes: GridLineType, color: PyDb.Color, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid color of the specified edge of the cell. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setGridColor(self, *args) -> None: ...
+    def setGridColor(self, *args) -> None:
+        """
+        This function sets the grid color of the specified edge of the cell. Returns Acad::eOk if
+        successful. Otherwise, returns Acad::eInvalidInput.
+        """
     def setGridDoubleLineSpacing(
         self, row: int, col: int, nGridLineType: GridLineType, spacing: float, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid double line spacing in a cell, row, or column. To specify cell, pass a valid
+        row and column indices. To specify row, pass a valid row index and pass -1 as column index.
+        To specify column, pass a valid column index and pass -1 as row index. To set the same
+        value in multiple grid line types combine multiple grid line types using the OR and pass
+        it. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     def setGridEdgeColor(
         self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor, /
     ) -> None: ...
@@ -28406,154 +29213,493 @@ class Table(PyDb.BlockReference):
         nGridLineType: PyDb.GridLineType,
         nLineStyle: PyDb.GridLineStyle,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid line style in a cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. To set the same value
+        in multiple grid line types combine multiple grid line types using the OR and pass it.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setGridLineWeight(self, lwt: LineWeight, nBorders: int, nRows: int, /) -> None: ...
+    def setGridLineWeight(self, lwt: LineWeight, nBorders: int, nRows: int, /) -> None:
+        """
+        This function sets the grid lineweight of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
     def setGridLineWeight(
         self, nRow: int, nCol: int, nGridLineTypes: GridLineType, nLineWeight: LineWeight, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid lineweight of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setGridLineWeight(self, *args) -> None: ...
+    def setGridLineWeight(self, *args) -> None:
+        """
+        This function sets the grid lineweight of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     def setGridLinetype(
         self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the grid line type in a cell, row, or column. To specify cell, pass a valid row and
+        column indices. To specify row, pass a valid row index and pass -1 as column index. To
+        specify column, pass a valid column index and pass -1 as row index. To set the same value
+        in multiple grid line types combine multiple grid line types using the OR and pass it.
+        Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
+        """
     def setGridOverride(
         self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty, /
     ) -> None: ...
     @overload
-    def setGridVisibility(
-        self, visible: PyDb.Visibility, nBorders: int, nRows: int, /
-    ) -> None: ...
+    def setGridVisibility(self, visible: PyDb.Visibility, nBorders: int, nRows: int, /) -> None:
+        """
+        This function sets the grid visibility of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
     def setGridVisibility(
         self, nRow: int, nCol: int, nGridLineTypes: GridLineType, visible: PyDb.Visibility, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function sets the grid visibility of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setGridVisibility(self, *args) -> None: ...
-    def setHeight(self, val: float, /) -> None: ...
-    def setHorzCellMargin(self, val: float, /) -> None: ...
-    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val: float, /) -> None: ...
-    def setNormal(self, val: PyGe.Vector3d, /) -> None: ...
-    def setPosition(self, val: PyGe.Point3d, /) -> None: ...
-    def setRecomputeTableBlock(self, val: bool, /) -> None: ...
-    def setRegen(self, /) -> None: ...
-    def setRotation(self, row: int, col: int, content: int, fang: float, /) -> None: ...
+    def setGridVisibility(self, *args) -> None:
+        """
+        This function sets the grid visibility of the specified edge of the cell. Returns Acad::eOk
+        if successful. Otherwise, returns Acad::eInvalidInput.
+        """
+    def setHeight(self, val: float, /) -> None:
+        """
+        This function sets the total row height for the table. The individual row heights may be
+        increased or decreased proportionally. Returns Acad::eOk if successful. Otherwise, returns
+        Acad::eInvalidInput.
+        """
+    def setHorzCellMargin(self, val: float, /) -> None:
+        """
+        This function sets the horizontal cell margin (space between the cell text and the cell
+        border) for the table. In general, the horizontal cell margin should not greater than five
+        times the standard data row text height. Returns Acad::eOk if successful. Otherwise,
+        returns Acad::eInvalidInput. This method is deprecated and may be removed in a future
+        release.
+        """
+    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val: float, /) -> None:
+        """
+        Sets the margin of cell, row, or column. To specify cell pass a valid row and column
+        indices; to specify row pass a valid row index and pass -1 as column index; to specify
+        column pass a valid column index and pass -1 as row index. Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
+    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+        """
+        Overridden method from AcDbBlockReference. See AcDbBlockReference::setNormal.
+        """
+    def setPosition(self, val: PyGe.Point3d, /) -> None:
+        """
+        Overridden method from AcDbBlockReference. See AcDbBlockReference::setPosition.
+        """
+    def setRecomputeTableBlock(self, val: bool, /) -> None:
+        """
+        This function updates the block table record that the table object references to match any
+        changes made to the table object since the last time the block table record was updated. If
+        forceUpdate is true, then the block table record will be updated regardless of whether or
+        not the table object has had any changes since the last time the block table record was
+        updated. If forceUpdate is false, then the block table record will only be updated if the
+        table object has been changed since it was opened, is not currently erased, and is not in
+        the middle of an undo operation.
+        """
+    def setRegen(self, /) -> None:
+        """
+        For internal use only.
+        """
+    def setRotation(self, row: int, col: int, content: int, fang: float, /) -> None:
+        """
+        Sets the rotation angle of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status
+        """
     @overload
-    def setRowHeight(self, row: int, height: float, /) -> None: ...
+    def setRowHeight(self, row: int, height: float, /) -> None:
+        """
+        This function sets the row height for the specified row index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setRowHeight(self, height: float, /) -> None: ...
+    def setRowHeight(self, height: float, /) -> None:
+        """
+        This function sets the row height for the specified row index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setRowHeight(self, *args) -> None: ...
-    def setScale(self, row: int, col: int, content: int, val: float, /) -> None: ...
-    def setSize(self, rows: int, cols: int, /) -> None: ...
-    def setSubSelection(self, val: PyDb.CellRange, /) -> None: ...
-    def setTableRotation(self, val: float, /) -> None: ...
-    def setTableStyle(self, val: PyDb.ObjectId, /) -> None: ...
+    def setRowHeight(self, *args) -> None:
+        """
+        This function sets the row height for the specified row index in the table. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
+    def setScale(self, row: int, col: int, content: int, val: float, /) -> None:
+        """
+        Sets the scale of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
+    def setSize(self, rows: int, cols: int, /) -> None:
+        """
+        Resizes the table. Returns Acad::eOk if successful.
+        """
+    def setSubSelection(self, val: PyDb.CellRange, /) -> None:
+        """
+        This function sets the row and column indexes of cells to the subselection set. Returns
+        Acad::eOk if successful. Returns Acad::eInvalidInput if the input indexes of row and column
+        are out of range.
+        """
+    def setTableRotation(self, val: float, /) -> None:
+        """
+        Sets the rotation angle of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status
+        """
+    def setTableStyle(self, val: PyDb.ObjectId, /) -> None:
+        """
+        This function sets the table to use the AcDbTableStyle with the given object ID. Returns
+        Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def setTextHeight(self, height: float, rowType: PyDb.RowType, /) -> None: ...
+    def setTextHeight(self, height: float, rowType: PyDb.RowType, /) -> None:
+        """
+        Sets the text height of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextHeight(self, row: int, col: int, height: float, /) -> None: ...
+    def setTextHeight(self, row: int, col: int, height: float, /) -> None:
+        """
+        Sets the text height of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextHeight(self, row: int, col, nContent: int, height: float, /) -> None: ...
+    def setTextHeight(self, row: int, col, nContent: int, height: float, /) -> None:
+        """
+        Sets the text height of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextHeight(self, *args) -> None: ...
-    def setTextRotation(self, row: int, col: int, rot: RotationAngle, /) -> None: ...
+    def setTextHeight(self, *args) -> None:
+        """
+        Sets the text height of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
+    def setTextRotation(self, row: int, col: int, rot: RotationAngle, /) -> None:
+        """
+        This function sets the rotation angle of the text in the specified cell. The possible
+        values for rotation angle are AcDb::kDegrees000, AcDb::kDegrees090, AcDb::kDegrees180, and
+        AcDb::kDegrees270. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
+        This method is deprecated and may be removed in a future release.
+        """
     @overload
-    def setTextString(self, row: int, col: int, val: str, /) -> None: ...
+    def setTextString(self, row: int, col: int, val: str, /) -> None:
+        """
+        Sets the text for the first content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextString(self, row: int, col: int, content: int, val: str, /) -> None: ...
+    def setTextString(self, row: int, col: int, content: int, val: str, /) -> None:
+        """
+        Sets the text for the first content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextString(self, cell: PyDb.Cell, val: str, /) -> None: ...
+    def setTextString(self, cell: PyDb.Cell, val: str, /) -> None:
+        """
+        Sets the text for the first content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextString(self, *args) -> None: ...
+    def setTextString(self, *args) -> None:
+        """
+        Sets the text for the first content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None: ...
+    def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None:
+        """
+        Sets the text style of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextStyle(self, row: int, col: int, id: PyDb.ObjectId, /) -> None: ...
+    def setTextStyle(self, row: int, col: int, id: PyDb.ObjectId, /) -> None:
+        """
+        Sets the text style of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextStyle(self, row: int, col, nContent: int, id: PyDb.ObjectId, /) -> None: ...
+    def setTextStyle(self, row: int, col, nContent: int, id: PyDb.ObjectId, /) -> None:
+        """
+        Sets the text style of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setTextStyle(self, *args) -> None: ...
+    def setTextStyle(self, *args) -> None:
+        """
+        Sets the text style of the content at the specified content index. Returns Acad::eOk if
+        successful; otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def setValue(self, row: int, col: int, val: PyDb.AcValue, /) -> None: ...
+    def setValue(self, row: int, col: int, val: PyDb.AcValue, /) -> None:
+        """
+        Parses the specified text, converts it to a value of appropriate data type and sets it in
+        the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
+        AcValue::kSetDefaultFormat it sets a default format appropriate for the data type, in the
+        value. If it is AcValue::kPreserveMTextFormat it uses the MText format code in the passed
+        text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
+        argument is invalid.
+        """
     @overload
-    def setValue(self, row: int, col: int, content: int, val: PyDb.AcValue, /) -> None: ...
+    def setValue(self, row: int, col: int, content: int, val: PyDb.AcValue, /) -> None:
+        """
+        Parses the specified text, converts it to a value of appropriate data type and sets it in
+        the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
+        AcValue::kSetDefaultFormat it sets a default format appropriate for the data type, in the
+        value. If it is AcValue::kPreserveMTextFormat it uses the MText format code in the passed
+        text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
+        argument is invalid.
+        """
     @overload
     def setValue(
         self, row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Parses the specified text, converts it to a value of appropriate data type and sets it in
+        the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
+        AcValue::kSetDefaultFormat it sets a default format appropriate for the data type, in the
+        value. If it is AcValue::kPreserveMTextFormat it uses the MText format code in the passed
+        text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
+        argument is invalid.
+        """
     @overload
     def setValue(
         self, row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Parses the specified text, converts it to a value of appropriate data type and sets it in
+        the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
+        AcValue::kSetDefaultFormat it sets a default format appropriate for the data type, in the
+        value. If it is AcValue::kPreserveMTextFormat it uses the MText format code in the passed
+        text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
+        argument is invalid.
+        """
     @overload
-    def setValue(self, *args) -> None: ...
-    def setVertCellMargin(self, val: float, /) -> None: ...
-    def setWidth(self, val: float, /) -> None: ...
-    def suppressHeaderRow(self, val: bool, /) -> None: ...
-    def suppressInvisibleGrid(self, val: bool, /) -> None: ...
-    def suppressRegenerateTable(self, val: bool, /) -> None: ...
-    def suppressTitleRow(self, val: bool, /) -> None: ...
-    def tableRotation(self, /) -> float: ...
-    def tableStyle(self, /) -> ObjectId: ...
-    def tableStyleOverrides(self, /) -> list[int]: ...
+    def setValue(self, *args) -> None:
+        """
+        Parses the specified text, converts it to a value of appropriate data type and sets it in
+        the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
+        AcValue::kSetDefaultFormat it sets a default format appropriate for the data type, in the
+        value. If it is AcValue::kPreserveMTextFormat it uses the MText format code in the passed
+        text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
+        argument is invalid.
+        """
+    def setVertCellMargin(self, val: float, /) -> None:
+        """
+        This function sets the vertical cell margin (space between the cell text and the cell
+        border) for the table. In general, the vertical cell margin should not greater than five
+        times the standard data row text height. Returns Acad::eOk if successful. Otherwise,
+        returns Acad::eInvalidInput.
+        """
+    def setWidth(self, val: float, /) -> None:
+        """
+        This function sets the total width for the table. The individual column widths may be
+        widened or narrowed proportionally. Returns Acad::eOk if successful. Otherwise, returns
+        Acad::eInvalidInput.
+        """
+    def suppressHeaderRow(self, val: bool, /) -> None:
+        """
+        This function suppresses or enables the header row for the table. This method is deprecated
+        and may be removed in a future release.
+        """
+    def suppressInvisibleGrid(self, val: bool, /) -> None:
+        """
+        For internal use only.
+        """
+    def suppressRegenerateTable(self, val: bool, /) -> None:
+        """
+        This method allows the user to temporarily disable the regeneration of the table object
+        during changes in one or more of its properties. WarningThis method is provided for VBA
+        applications to temporarily disable the regenerating of the table object. It is not
+        intended for use in ObjectARX applications. Calling this function with bSuppress set to
+        true disables regenerating the table object. The table object is recomputed when this
+        function is called with bSuppress set to false. Before saving the table object to the
+        drawing file, the user should either call this function with false value or call
+        recomputeTableBlock(true). Otherwise, the table object will never be displayed.
+        """
+    def suppressTitleRow(self, val: bool, /) -> None:
+        """
+        This function suppresses or enables the title row for the table. This method is deprecated
+        and may be removed in a future release.
+        """
+    def tableRotation(self, /) -> float:
+        """
+        Returns the rotation.
+        """
+    def tableStyle(self, /) -> ObjectId:
+        """
+        Returns the object ID of the AcDbTableStyle referenced by the table object.
+        """
+    def tableStyleOverrides(self, /) -> list[int]:
+        """
+        This function returns the table style overrides. AcDbTable::TableStyleOverrides defines the
+        values for table style overrides. Returns true if successful, false otherwise.
+        """
     @overload
-    def textHeight(self, rowType: PyDb.RowType, /) -> float: ...
+    def textHeight(self, rowType: PyDb.RowType, /) -> float:
+        """
+        Returns the text height of the content at the specified content index.
+        """
     @overload
-    def textHeight(self, row: int, col: int, /) -> float: ...
+    def textHeight(self, row: int, col: int, /) -> float:
+        """
+        Returns the text height of the content at the specified content index.
+        """
     @overload
-    def textHeight(self, row: int, col: int, content: int, /) -> float: ...
+    def textHeight(self, row: int, col: int, content: int, /) -> float:
+        """
+        Returns the text height of the content at the specified content index.
+        """
     @overload
-    def textHeight(self, *args) -> float: ...
-    def textRotation(self, row: int, col: int, /) -> RotationAngle: ...
+    def textHeight(self, *args) -> float:
+        """
+        Returns the text height of the content at the specified content index.
+        """
+    def textRotation(self, row: int, col: int, /) -> RotationAngle:
+        """
+        This function returns the rotation angle of the text in the specified cell. The possible
+        values for rotation angle are AcDb::kDegrees000, AcDb::kDegrees090, AcDb::kDegrees180, and
+        AcDb::kDegrees270. This method is deprecated and may be removed in a future release.
+        """
     @overload
-    def textString(self, row: int, col: int, /) -> str: ...
+    def textString(self, row: int, col: int, /) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textString(self, row: int, col: int, content: int, /) -> str: ...
+    def textString(self, row: int, col: int, content: int, /) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textString(self, cell: PyDb.Cell, /) -> str: ...
+    def textString(self, cell: PyDb.Cell, /) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textString(self, *args) -> str: ...
+    def textString(self, *args) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textStringFmt(self, row: int, col: int, nOption: ValueFormatOption, /) -> str: ...
+    def textStringFmt(self, row: int, col: int, nOption: ValueFormatOption, /) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
     def textStringFmt(
         self, row: int, col: int, content: int, nOption: ValueFormatOption, /
-    ) -> str: ...
+    ) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textStringFmt(self, cell: PyDb.Cell, nOption: ValueFormatOption, /) -> str: ...
+    def textStringFmt(self, cell: PyDb.Cell, nOption: ValueFormatOption, /) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textStringFmt(self, *args) -> str: ...
+    def textStringFmt(self, *args) -> str:
+        """
+        Gets the formatted text string of the content at the specified content index. Returns text
+        of the content.
+        """
     @overload
-    def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId: ...
+    def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId:
+        """
+        Returns the text style of the content at the specified content index.
+        """
     @overload
-    def textStyle(self, row: int, col: int, /) -> ObjectId: ...
+    def textStyle(self, row: int, col: int, /) -> ObjectId:
+        """
+        Returns the text style of the content at the specified content index.
+        """
     @overload
-    def textStyle(self, row: int, col: int, content: int, /) -> ObjectId: ...
+    def textStyle(self, row: int, col: int, content: int, /) -> ObjectId:
+        """
+        Returns the text style of the content at the specified content index.
+        """
     @overload
-    def textStyle(self, *args) -> ObjectId: ...
-    def unmergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None: ...
+    def textStyle(self, *args) -> ObjectId:
+        """
+        Returns the text style of the content at the specified content index.
+        """
+    def unmergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None:
+        """
+        This function unmerges a rectangular region of cells. The total number of cells unmerged is
+        ((maxRow - minRow) + 1) * ((maxCol - minCol) + 1)Returns Acad::eOk if successful.
+        Otherwise, returns Acad::eInvalidInput.
+        """
     @overload
-    def updateDataLink(self, nDir: UpdateDirection, nOption: UpdateOption, /) -> None: ...
+    def updateDataLink(self, nDir: UpdateDirection, nOption: UpdateOption, /) -> None:
+        """
+        This function updates the data link at the specified cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
     def updateDataLink(
         self, row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This function updates the data link at the specified cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def updateDataLink(self, *args) -> None: ...
+    def updateDataLink(self, *args) -> None:
+        """
+        This function updates the data link at the specified cell Returns Acad::eOk if successful;
+        otherwise, returns an AutoCAD error status.
+        """
     @overload
-    def value(self, row: int, col: int, /) -> AcValue: ...
+    def value(self, row: int, col: int, /) -> AcValue:
+        """
+        Returns the content type of the content at the specified content index.
+        """
     @overload
-    def value(self, row: int, col: int, content: int, /) -> AcValue: ...
+    def value(self, row: int, col: int, content: int, /) -> AcValue:
+        """
+        Returns the content type of the content at the specified content index.
+        """
     @overload
-    def value(
-        self, row: int, col: int, content: int, opt: PyDb.ValueFormatOption, /
-    ) -> AcValue: ...
+    def value(self, row: int, col: int, content: int, opt: PyDb.ValueFormatOption, /) -> AcValue:
+        """
+        Returns the content type of the content at the specified content index.
+        """
     @overload
-    def value(self, *args) -> AcValue: ...
-    def vertCellMargin(self, /) -> float: ...
-    def width(self, /) -> float: ...
+    def value(self, *args) -> AcValue:
+        """
+        Returns the content type of the content at the specified content index.
+        """
+    def vertCellMargin(self, /) -> float:
+        """
+        This function returns the vertical cell margin for the table. This method is deprecated and
+        may be removed in a future release.
+        """
+    def width(self, /) -> float:
+        """
+        This function returns the total width for the table.
+        """
 
 class TableBreakFlowDirection(_BoostPythonEnum):
     kTableIteratorNone: ClassVar[Self]  # 1
