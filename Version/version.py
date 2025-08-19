@@ -2,7 +2,6 @@ import subprocess
 from pathlib import Path
 
 from setuptools_scm import ScmVersion, get_version
-from setuptools_scm._integration.dump_version import write_version_to_path
 
 MAJOR = 2
 MINOR = 2
