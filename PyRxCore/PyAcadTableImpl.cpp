@@ -706,14 +706,8 @@ AcValue PyIAcadTableImpl::GetCellValue(int row, int col) const
 #endif 
 }
 
-void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) const
+static void AcValueToVariant(const AcValue& acVal, _variant_t& varVal)
 {
-    //TODO: TEST
-    _variant_t varVal = {};
-#ifdef _ARXTARGET
-    if (!acVal.get(varVal.GetVARIANT()))
-        PyThrowBadEs(eInvalidInput);
-#else
     switch (acVal.dataType())
     {
         case AcValue::kLong:
@@ -737,6 +731,16 @@ void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) cons
         default:
             PyThrowBadEs(eInvalidInput);
     }
+}
+
+void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) const
+{
+    _variant_t varVal = {};
+#ifdef _ARXTARGET
+    if (!acVal.get(varVal.GetVARIANT()))
+        PyThrowBadEs(eInvalidInput);
+#else
+    AcValueToVariant(acVal, varVal);
 #endif 
     PyThrowBadHr(impObj()->SetCellValue(row, col, varVal));
 }
@@ -842,35 +846,12 @@ void PyIAcadTableImpl::SetValue(int row, int col, int nContent, const AcValue& a
 #ifdef _GRXTARGET260
     throw PyNotimplementedByHost{};
 #else
-    //TODO: TEST
     _variant_t varVal = {};
 #ifdef _ARXTARGET
     if (!acVal.get(varVal.GetVARIANT()))
         PyThrowBadEs(eInvalidInput);
 #else
-    switch (acVal.dataType())
-    {
-        case AcValue::kLong:
-        {
-            Adesk::Int32 val = acVal;
-            varVal = _variant_t(int32_t(val));
-        }
-        break;
-        case AcValue::kDouble:
-        {
-            double val = acVal;
-            varVal = _variant_t(val);
-        }
-        break;
-        case AcValue::kString:
-        {
-            const wchar_t* val = acVal;
-            varVal = _variant_t(val);
-        }
-        break;
-        default:
-            PyThrowBadEs(eInvalidInput);
-    }
+    AcValueToVariant(acVal, varVal);
 #endif 
     PyThrowBadHr(impObj()->SetValue(row, col, nContent, varVal));
 #endif 
