@@ -1,5 +1,6 @@
-from pyrx import Ap,Db, Ed, Ge
 import traceback
+
+from pyrx import Ap, Db, Ed, Ge
 
 print("added command = pydynprops")
 print("added command = pymoddynprops")
