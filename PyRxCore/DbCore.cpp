@@ -794,7 +794,6 @@ void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool
     PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids), bQuiet));
 }
 
-//TODO make test class 
 boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
