@@ -1,14 +1,13 @@
 [build-system]
-requires = ["setuptools >= 61.0", "setuptools-scm>=8"]
+requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["pyrx*"]
 namespaces = false
 
-[tool.setuptools_scm]
-write_to = "pyrx/_version.py"
-local_scheme = "no-local-version"
+[tool.setuptools.dynamic]
+version = { attr = "pyrx.__version__" }
 
 [project]
 name = "cad-pyrx"
@@ -47,7 +46,7 @@ dependencies = [
     "wxpython>=4.2.3; os_name == 'nt'", # Hard to install on Ubuntu for the CI
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
-    "pydantic_settings>=2.10.0",
+    "pydantic_settings",
 ]
 
 [project.optional-dependencies]
