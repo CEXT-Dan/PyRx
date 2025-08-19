@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pyrx import Db, Ed, Ge, command
+from pyrx import Ap, Db, Ed, Ge, command
 from pyrx.db.block import (
     BlockNotFoundError,
     add_block_definition,
@@ -14,6 +14,7 @@ def OnPyInitApp():
     print("\nOnPyInitApp")
     print("Added command pyinsert")
     print("Added command pyinsertatt")
+    print("Added command pyinsertdyn")
     print("Added command pyinsert2")
     print("Added command pyinsert_interactive")
     print("Added command py_add_block")
@@ -35,7 +36,7 @@ def PyRxCmd_pyinsert() -> None:
     try:
         db = Db.HostApplicationServices().workingDatabase()
         block = Db.Database(False, True)
-        block.readDwgFile("./dwg/18X36RP.dwg")
+        block.readDwgFile("../dwg/18X36RP.dwg")
         block.closeInput(True)
         blockId = Db.ObjectId()
         db.insert(blockId, "WOOHOO", block, True)
@@ -60,7 +61,7 @@ def PyRxCmd_pyinsertatt() -> None:
 
         db = Db.HostApplicationServices().workingDatabase()
         block = Db.Database(False, True)
-        block.readDwgFile("./dwg/GRA.dwg")
+        block.readDwgFile("../dwg/GRA.dwg")
         block.closeInput(True)
         blockId = Db.ObjectId()
         db.insert(blockId, "GRA", block, True)
@@ -170,3 +171,27 @@ def py_add_block():
     except Exception:
         bref.erase()
         raise
+
+def do_insert_dyn(db, blockId):
+    blockRef = Db.BlockReference(Ge.Point3d(100, 100, 0), blockId)
+    return db.addToModelspace(blockRef)
+
+@Ap.Command()
+def pyinsertdyn():
+    try:
+        db = Db.curDb()
+        block = Db.Database(False, True)
+        block.readDwgFile("../dwg/screw.dwg")
+        block.closeInput(True)
+        blockId = Db.ObjectId()
+        db.insert(blockId, "screw", block, True)
+
+        #add a scope to close the new block
+        blockRefid = do_insert_dyn(db, blockId)
+
+        dynref = Db.DynBlockReference(blockRefid)
+        if dynref.isDynamicBlock():
+            print("true")
+    except Exception as err:
+        print(err)
+
