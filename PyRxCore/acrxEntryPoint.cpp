@@ -168,6 +168,7 @@ public:
         static bool doneOnce = false;
         if (!doneOnce)
         {
+            printPyRxBuldVersion();
             if (!PyRxApp::instance().init())
                 acutPrintf(_T("\nPyInit Failed"));
             doneOnce = true;
@@ -191,7 +192,7 @@ public:
 
     static void printPyRxBuldVersion()
     {
-        acutPrintf(_T("\nPyRx DLL version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
+        acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
     }
 
     static void handleCmdArgOnLoadInDocContext()
