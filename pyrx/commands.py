@@ -4,6 +4,8 @@ import inspect
 import traceback
 import typing as t
 from collections import defaultdict
+from contextlib import chdir
+from pathlib import Path
 
 from . import Ap
 from .ed.prompt import PromptExceptionCancel, PromptExceptionNone, PromptExceptionRejected
@@ -16,6 +18,7 @@ def command(
     *,
     name: str | None = None,
     flags: Ap.CmdFlags | None = None,
+    change_cwd: bool = True,
 ):
     """
     A decorator to register a function as a command in the application.
@@ -26,6 +29,8 @@ def command(
         func: The function to be registered as a command.
         name: The name of the command. If None, the function's name is used.
         flags: The flags for the command. If None, Ap.CmdFlags.MODAL is used.
+        change_cwd: Whether to change the current working directory to
+            the module directory when the command is executed. Defaults to True.
 
     Raises:
         TypeError: If the function has parameters without default values.
@@ -60,7 +65,12 @@ def command(
 
         def wrapper(*args, **kwargs):
             try:
-                f(*args, **kwargs)
+                if change_cwd:
+                    working_dir: str = str(Path(f.__globals__["__file__"]).parent)
+                    with chdir(working_dir):
+                        f(*args, **kwargs)
+                else:
+                    f(*args, **kwargs)
             except (PromptExceptionNone, PromptExceptionRejected, PromptExceptionCancel):
                 pass
             except Exception as e:
