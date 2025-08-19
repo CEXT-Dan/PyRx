@@ -1,6 +1,9 @@
+import ast
+import os
 import traceback
-from typing import no_type_check
-from pyrx import Ap, Ed, Db
+from html import escape
+
+from pyrx import Ap
 
 src_path = "../pyrx/"
 all_modules = [
@@ -20,11 +23,6 @@ all_modules = [
     ("PyBrxCv", "PyBrxCv.pyi"),
     ("PyBrxBim", "PyBrxBim.pyi"),
 ]
-
-import ast
-import os
-from html import escape
-
 
 def get_arg_str(arg):
     """Get a string representation of a function argument with optional type."""

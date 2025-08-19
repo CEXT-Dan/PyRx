@@ -1,7 +1,9 @@
-import traceback
-from pyrx import Rx, Ge, Gs, Db, Ap, Ed
-import wx
 import os
+import traceback
+
+import wx
+
+from pyrx import Ap, Db, Gs
 
 
 # extract the image and save it
