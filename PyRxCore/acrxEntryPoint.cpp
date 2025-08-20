@@ -429,7 +429,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        auto [ps, id, pnt] = entsel();
+        AcDbDatabase* pDb = acdbCurDwg();
+        AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(pDb));
+        auto [es, iter, lf] = makeBlockRefIterator2(*model);
     }
 #endif
 };
