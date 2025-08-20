@@ -666,7 +666,8 @@ PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoin
 
 PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation) const
 {
-    _bstr_t bstrname{ name };
+    std::filesystem::path path = (const TCHAR*)name;
+    _bstr_t bstrname{ path.make_preferred().c_str() };
     _variant_t vtinsertionPoint;
     IAcadBlockReference* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
