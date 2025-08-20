@@ -55,7 +55,7 @@ inline const char* appHostName()
 }
 
 //TODO:
-void        printExceptionMsg(const std::source_location& src = std::source_location::current());
+void printExceptionMsg(const std::source_location& src = std::source_location::current());
 
 //-----------------------------------------------------------------------------------
 // PyNullObject
@@ -187,6 +187,22 @@ private:
 };
 
 //-----------------------------------------------------------------------------------
+// PyRxEKeyError
+class PyRxEKeyError : std::exception
+{
+public:
+    explicit PyRxEKeyError(const std::string& key, const std::source_location& src = std::source_location::current());
+    void        generateformat();
+    const char* what() const noexcept;
+    static void translate(const PyRxEKeyError& e);
+
+private:
+    std::string m_key;
+    std::string m_fmt;
+    pysource_location m_src;
+};
+
+//-----------------------------------------------------------------------------------
 // function helpers
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
 {
@@ -217,4 +233,5 @@ inline void PyThrowFalse(bool es, const std::source_location& src = std::source_
     if (es == false) [[unlikely]]
         throw PyErrorStatusException(eInvalidInput, src);
 }
+
 #pragma pack (pop)

@@ -27,7 +27,7 @@ void makePyDbSymbolTableWrapper()
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
 
         .def("__iter__", range(&PyDbSymbolTable::begin, &PyDbBlockTable::end))
-        .def("__getitem__", &PyDbSymbolTable::getAt, DS.ARGS({ "val: str" }))
+        .def("__getitem__", &PyDbSymbolTable::getAtEx, DS.ARGS({ "val: str" }))
         .def("__contains__", &PyDbSymbolTable::has1)
         .def("__contains__", &PyDbSymbolTable::has2, DS.ARGS({ "val: str|PyDb.ObjectId" }))
         ;
@@ -59,6 +59,16 @@ PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
+    return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbSymbolTable::getAtEx(const std::string& entryName) const
+{
+    AcDbObjectId id;
+    const auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id);
+    if (es == Acad::eKeyNotFound)
+        throw PyRxEKeyError(entryName);
+    PyThrowBadEs(es);
     return PyDbObjectId(id);
 }
 

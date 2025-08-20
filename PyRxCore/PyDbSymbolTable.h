@@ -30,6 +30,7 @@ public:
     PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbSymbolTable() override = default;
     PyDbObjectId        getAt(const std::string& entryName) const;
+    PyDbObjectId        getAtEx(const std::string& entryName) const;
     bool                has1(const std::string& entryName) const;
     bool                has2(const PyDbObjectId& entryid) const;
     PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord) const;
