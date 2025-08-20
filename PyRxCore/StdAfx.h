@@ -277,7 +277,12 @@ extern AcApDataManager<CDocData> DocVars;
 const TCHAR* getappname();
 const AcString getPyRxBuldVersion();
 
-using AcRxClassArray = AcArray<AcRxClass*>;
+constexpr auto makeBlockRefIterator = [](const AcDbBlockTableRecord& record)
+    {
+        AcDbBlockReferenceIdIterator* pIter = nullptr;
+        Acad::ErrorStatus es = record.newBlockReferenceIdIterator(pIter);
+        return std::make_tuple(es, std::unique_ptr<AcDbBlockReferenceIdIterator>(pIter));
+    };
 
 template<typename IteratorType>
 constexpr auto makeIterator = [](const auto& record)
@@ -290,12 +295,49 @@ constexpr auto makeAcDbSymbolTableIterator = makeIterator<AcDbSymbolTableIterato
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
 
-constexpr auto makeBlockRefIterator = [](const AcDbBlockTableRecord& record)
+
+//-----------------------------------------------------------------------------
+// LifeTime for testing;
+struct LifeTime
+{
+    LifeTime()
     {
-        AcDbBlockReferenceIdIterator* pIter = nullptr;
-        Acad::ErrorStatus es = record.newBlockReferenceIdIterator(pIter);
-        return std::make_tuple(es, std::unique_ptr<AcDbBlockReferenceIdIterator>(pIter));
-    };
+        acutPrintf(L"\nDefault constructor called");
+    }
+    explicit LifeTime(int value) : data(value)
+    {
+        acutPrintf(L"\nParameterized constructor called");
+    }
+    LifeTime(const LifeTime& other) : data(other.data)
+    {
+        acutPrintf(L"\nCopy constructor called");
+    }
+    LifeTime(LifeTime&& other) noexcept : data(other.data)
+    {
+        acutPrintf(L"\nMove constructor called");
+    }
+    ~LifeTime()
+    {
+        acutPrintf(L"\nDestructor called");
+    }
+    LifeTime& operator=(const LifeTime& other)
+    {
+        acutPrintf(L"\nCopy assignment operator called");
+        if (&other == this)
+            return *this;
+        data = other.data;
+        return *this;
+    }
+    LifeTime& operator=(LifeTime&& other) noexcept
+    {
+        acutPrintf(L"\nMove assignment operator called");
+        if (&other == this)
+            return *this;
+        data = other.data;
+        return *this;
+    }
+    int data = 0;
+};
 
 class PerfTimer
 {
@@ -345,7 +387,7 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 using AcDbEntityUPtr = AcDbObjectUPtr<AcDbEntity>;
 using AcDbAcDbPolylineUPtr = AcDbObjectUPtr<AcDbPolyline>;
 
-
+//-------------------------------------------------------------------------------------
 // Import Python and wxPython headers
 #include <wxPython/sip.h>
 #include <wxPython/wxpy_api.h>
@@ -454,7 +496,7 @@ public:
     }
     bool set(Adesk::Int16 mode) const noexcept
     {
-        resbuf buf;
+        resbuf buf{};
         buf.restype = RTSHORT;
         buf.resval.rint = mode;
         return acedSetVar(_cmdecho, &buf) == RTNORM;
@@ -484,6 +526,7 @@ inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs)
 typedef std::vector<AcGiPixelBGRA32> PyGiPixelBGRA32Array;
 typedef std::vector<AcGePoint2d> PyGePoint2dArray;
 typedef std::vector<AcGePoint3d> PyGePoint3dArray;
+typedef AcArray<AcRxClass*> AcRxClassArray;
 
 //-----------------------------------------------------------------------------------
 //AcGe converters
