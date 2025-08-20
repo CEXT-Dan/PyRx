@@ -220,8 +220,8 @@ void makePyAcadHyperlinksWrapper()
     class_<PyAcadHyperlinks>("AcadHyperlinks", boost::python::no_init)
         .def("count", &PyAcadHyperlinks::count, DS.ARGS())
         .def("item", &PyAcadHyperlinks::item, DS.ARGS({ "index: int" }))
-        .def("add", &PyAcadHyperlinks::add, DS.ARGS({ "index: int" }))
-        .def("__getitem__", &PyAcadHyperlinks::item, DS.ARGS({ "name: str", "description: str","namedLocation: str" }))
+        .def("add", &PyAcadHyperlinks::add, DS.ARGS({ "name: str", "description: str","namedLocation: str" }))
+        .def("__getitem__", &PyAcadHyperlinks::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadHyperlinks::className, DS.SARGS()).staticmethod("className")
         ;
 }
