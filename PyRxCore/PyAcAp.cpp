@@ -59,6 +59,8 @@ static BOOST_PYTHON_MODULE(PyAp)
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
     register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
+    register_exception_translator<PyRxEKeyError>(&PyRxEKeyError::translate);
+
 #if defined(_BRXTARGET)
     register_exception_translator<PyBrxBimError>(PyBrxBimError::translator);
 #endif
