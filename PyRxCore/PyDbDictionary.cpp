@@ -41,7 +41,7 @@ void makePyDbDictionaryWrapper()
         .def("desc", &PyDbDictionary::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDictionary::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-        .def("__getitem__", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }, 3762))
+        .def("__getitem__", &PyDbDictionary::getAtEx, DS.ARGS({ "val : str" }, 3762))
         .def("__contains__", &PyDbDictionary::has1)
         .def("__contains__", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }, 3764))
         ;
@@ -80,6 +80,16 @@ PyDbObjectId PyDbDictionary::getAt(const std::string& entryName) const
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
     return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbDictionary::getAtEx(const std::string& entryName) const
+{
+    AcDbObjectId id;
+    const auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id);
+    if (es == Acad::eKeyNotFound)
+        throw PyRxEKeyError(entryName);
+    PyThrowBadEs(es);
+    return id;
 }
 
 bool PyDbDictionary::has1(const std::string& entryName) const

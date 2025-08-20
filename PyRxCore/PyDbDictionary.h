@@ -16,6 +16,7 @@ public:
     PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbDictionary() override = default;
     PyDbObjectId            getAt(const std::string& entryName) const;
+    PyDbObjectId            getAtEx(const std::string& entryName) const;
     bool                    has1(const std::string& entryName) const;
     bool                    has2(const PyDbObjectId& id) const;
     std::string             nameAt(const PyDbObjectId& id) const;
