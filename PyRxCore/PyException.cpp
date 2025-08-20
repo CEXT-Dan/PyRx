@@ -423,7 +423,7 @@ PyRxEKeyError::PyRxEKeyError(const std::string& key, const std::source_location&
 
 void PyRxEKeyError::generateformat()
 {
-    constexpr std::string_view fmtstr("KeyError({}), function {}, Line {}, File {}: ");
+    constexpr std::string_view fmtstr("eKeyNotFound({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
     m_fmt = std::format(fmtstr, m_key.c_str(), fname.c_str(), m_src.line(), m_src.file_name());
 }
