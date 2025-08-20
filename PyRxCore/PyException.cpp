@@ -202,7 +202,7 @@ void PyNullObject::translator(const PyNullObject& x)
 //-----------------------------------------------------------------------------------
 // PyAcadHrError
 PyAcadHrError::PyAcadHrError(const HRESULT hr, const std::source_location& src /*= std::source_location::current()*/)
-    : m_hr(hr), m_src(src) 
+    : m_hr(hr), m_src(src)
 {
     generateformat();
 }
@@ -254,7 +254,7 @@ void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
 //-----------------------------------------------------------------------------------
 // PyBrxBimError
 PyBrxBimError::PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src /*= std::source_location::current()*/)
-    : m_rs(rs), m_src(src) 
+    : m_rs(rs), m_src(src)
 {
     generateformat();
 }
@@ -411,4 +411,29 @@ void PyBrErrorStatusException::generateformat()
     constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
     m_fmt = std::format(fmtstr, acadBrStatusText(m_es), fname.c_str(), m_src.line(), m_src.file_name());
+}
+
+//-----------------------------------------------------------------------------------
+// PyRxEKeyError
+PyRxEKeyError::PyRxEKeyError(const std::string& key, const std::source_location& src /*= std::source_location::current()*/)
+    :m_key(key), m_src(src)
+{
+    generateformat();
+}
+
+void PyRxEKeyError::generateformat()
+{
+    constexpr std::string_view fmtstr("KeyError({}), function {}, Line {}, File {}: ");
+    const auto& fname = formatfname(m_src.function_name());
+    m_fmt = std::format(fmtstr, m_key.c_str(), fname.c_str(), m_src.line(), m_src.file_name());
+}
+
+const char* PyRxEKeyError::what() const noexcept
+{
+    return m_fmt.c_str();
+}
+
+void PyRxEKeyError::translate(const PyRxEKeyError& e)
+{
+    PyErr_SetString(PyExc_KeyError, e.what());
 }
