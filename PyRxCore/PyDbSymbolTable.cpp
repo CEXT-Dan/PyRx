@@ -184,7 +184,6 @@ std::vector<PyDbObjectId>::iterator PyDbSymbolTable::end()
     return m_iterable.end();
 }
 
-
 //---------------------------------------------------------------------------------------- -
 //AcDbDimStyleTable
 void makePyDbDimStyleTableWrapper()
@@ -258,7 +257,6 @@ AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbDimStyleTable*>(m_pyImp.get());
 }
-
 
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTable

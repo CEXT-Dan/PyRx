@@ -715,12 +715,13 @@ boost::python::dict PyDbDatabase::getBlocks() const
     boost::python::dict pydict;
     AcDbBlockTablePointer bt(impObj()->blockTableId());
     auto [es, iter] = makeBlockTableIterator(*bt);
+    PyThrowBadEs(es);
     for (iter->start(); !iter->done(); iter->step())
     {
+        AcString name;
         PyDbObjectId id;
         PyThrowBadEs(iter->getRecordId(id.m_id));
         AcDbBlockTableRecordPointer blk(id.m_id);
-        AcString name;
         PyThrowBadEs(blk->getName(name));
         pydict[wstr_to_utf8(name)] = id;
     }
