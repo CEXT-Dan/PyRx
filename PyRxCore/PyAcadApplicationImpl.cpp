@@ -1350,10 +1350,17 @@ PyIAcadUtilityPtr PyIAcadDocumentImpl::GetUtility() const
     return std::make_unique<PyIAcadUtilityImpl>(ptr);
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path) const
+static bool isSDI()
 {
     resbuf rb;
-    if (acedGetVar(_T("SDI"), &rb) == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
+    if (acedGetVar(_T("SDI"), &rb) == RTNORM && rb.restype == RTSHORT && rb.resval.rint != 0)
+        return true;
+    return false;
+}
+
+PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path) const
+{
+    if (!isSDI())
     {
         acutPrintf(_T("\nPlease use Documents.open with SDI 0: \n"));
         PyThrowBadEs(eInvalidInput);
