@@ -29,12 +29,12 @@ class TestApplication:
 
     def test_listFilesInPath(self):
         path = Ap.Application.listFilesInPath(str(MEDIA_DIR), ".dwg")
-        assert len(path) == 13
+        assert len(path) == 14
         path = Ap.Application.listFilesInPath(str(MEDIA_DIR), ".dWg")
-        assert len(path) == 13
+        assert len(path) == 14
 
     def test_listFilesInPathRecursive(self):
         path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dwg")
-        assert len(path) == 14
+        assert len(path) == 15
         path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dWg")
-        assert len(path) == 14
+        assert len(path) == 15
