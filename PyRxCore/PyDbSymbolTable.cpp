@@ -93,11 +93,11 @@ PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord) const
 
 boost::python::list PyDbSymbolTable::recordIds() const
 {
+    auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
+    PyThrowBadEs(es);
     PyAutoLockGIL lock;
-    AcDbSymbolTableIterator* pIter = nullptr;
-    PyThrowBadEs(impObj()->newIterator(pIter));
     boost::python::list _items;
-    for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
+    for (iter->start(); !iter->done(); iter->step())
     {
         PyDbObjectId id;
         if (iter->getRecordId(id.m_id) == eOk)
@@ -108,25 +108,21 @@ boost::python::list PyDbSymbolTable::recordIds() const
 
 boost::python::dict PyDbSymbolTable::toDict() const
 {
+    auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
+    PyThrowBadEs(es);
     PyAutoLockGIL lock;
-
-    AcDbSymbolTableIterator* pIter = nullptr;
-    PyThrowBadEs(impObj()->newIterator(pIter));
     boost::python::dict _items;
-    for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
+    for (iter->start(); !iter->done(); iter->step())
     {
+        AcString name;
         PyDbObjectId id;
         if (iter->getRecordId(id.m_id) == eOk)
         {
             AcDbSymbolTableRecordPointer<AcDbSymbolTableRecord> record(id.m_id, AcDb::kForRead);
             if (record.openStatus() == eOk)
             {
-                const TCHAR* name = nullptr;
                 if (record->getName(name) == eOk)
-                {
-                    const std::string& utf8name = wstr_to_utf8(name);
-                    _items[utf8name] = id;
-                }
+                    _items[wstr_to_utf8(name)] = id;
             }
         }
     }
