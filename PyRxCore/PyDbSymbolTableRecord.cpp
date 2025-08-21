@@ -2650,13 +2650,11 @@ boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python
 
 boost::python::list PyDbBlockTableRecord::objectIds() const
 {
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    PyThrowBadEs(es);
+    PyDbObjectId id;
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
-    PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
         if (iter->getEntityId(id.m_id) == eOk)
@@ -2671,9 +2669,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     boost::python::list pyList;
     const auto _desc = _class.impObj();
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
+    PyThrowBadEs(es);
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
@@ -2689,9 +2685,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::pytho
     boost::python::list pyList;
 
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
+    PyThrowBadEs(es);
     std::unordered_set<AcRxClass*> _set;
     for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
         _set.insert(item.impObj());
@@ -2709,9 +2703,7 @@ PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray1() const
 {
     PyDbObjectIdArray pyList;
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
+    PyThrowBadEs(es);
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
@@ -2726,9 +2718,7 @@ PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray2(const PyRxClass& _class) 
     PyDbObjectIdArray pyList;
     const auto _desc = _class.impObj();
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
+    PyThrowBadEs(es);
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
@@ -2741,15 +2731,11 @@ PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray2(const PyRxClass& _class) 
 PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray3(const boost::python::list& _classes) const
 {
     PyDbObjectIdArray pyList;
-
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es != eOk)
-        return pyList;
-
+    PyThrowBadEs(es);
     std::unordered_set<AcRxClass*> _set;
     for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
         _set.insert(item.impObj());
-
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
@@ -2955,6 +2941,7 @@ boost::python::list PyDbBlockTableRecord::getBlockReferences2(AcDb::OpenMode mod
     PyAutoLockGIL lock;
     boost::python::list pylist;
     auto [es, iter] = makeBlockRefIterator(*impObj());
+    PyThrowBadEs(es);
     for (iter->start(); !iter->done(); iter->step())
     {
         AcDbBlockReference* pref = nullptr;
