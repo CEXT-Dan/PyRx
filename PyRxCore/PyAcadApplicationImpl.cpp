@@ -1352,6 +1352,12 @@ PyIAcadUtilityPtr PyIAcadDocumentImpl::GetUtility() const
 
 PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path) const
 {
+    resbuf rb;
+    if (acedGetVar(_T("SDI"), &rb) == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
+    {
+        acutPrintf(_T("\nPlease use Documents.open with SDI 0: \n"));
+        PyThrowBadEs(eInvalidInput);
+    }
     std::filesystem::path stdpath = (const TCHAR*)path;
     _bstr_t bstrpath{ stdpath.make_preferred().c_str() };
     IAcadDocument* ptr = nullptr;
