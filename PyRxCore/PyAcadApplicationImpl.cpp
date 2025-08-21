@@ -109,7 +109,8 @@ CString PyIAcadBlockImpl::GetPath() const
 
 void PyIAcadBlockImpl::SetPath(const CString& val) const
 {
-    _bstr_t bstrVal{ val };
+    std::filesystem::path path = (const TCHAR*)val;
+    _bstr_t bstrVal{ path.make_preferred().c_str() };
     PyThrowBadHr(impObj()->put_Path(bstrVal));
 }
 
