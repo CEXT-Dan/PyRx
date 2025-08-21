@@ -3056,7 +3056,7 @@ std::string PyDbBlockTableRecord::effectiveName() const
         AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
         for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
         {
-            if (pTail->restype == 1005)
+            if (pTail->restype == AcDb::kDxfXdHandle)
             {
                 AcDbHandle hnd(pTail->resval.rstring);
                 if (AcDbObjectId id; impObj()->database()->getAcDbObjectId(id, false, hnd) == eOk && id.isValid())
