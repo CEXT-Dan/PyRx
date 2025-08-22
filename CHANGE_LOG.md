@@ -1,3 +1,13 @@
+## v2.2.26
+
+* [#417] raise KeyError instead of ErrorStatusException(eKeyNotFound) for SymbolTable and Dictionary 
+* [#416] added  std::filesystem::path::make_preferred() for OS in Ax methods
+* [#414] add change_cwd parameter to command decorator
+* [#389] Package Versioning
+* [#399] add version pydantic_settings>=2.10.0
+* Document::Open checks for SDI mode
+* Refactor Database::getBlocks, PyDbSymbolTable
+
 ## v2.2.25
 
 * [#413] fix dispose issue with CvDbLabelStyle
