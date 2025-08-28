@@ -79,7 +79,6 @@ public:
         acdbModelerEnd();
         acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRemoveWatchWinMsg(PyWatchWinMsgFn);
-        PyRxApp::instance().uninit();
         try
         {
             if (PyRxApp::instance().funcNameMap.size() != 0)
@@ -94,6 +93,7 @@ public:
                     }
                 }
             }
+            PyRxApp::instance().uninit();
         }
         catch (...) { /*@exit*/ }
         return (retCode);
