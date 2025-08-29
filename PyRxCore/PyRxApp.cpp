@@ -20,7 +20,6 @@
 
 #include "wx/setup.h"
 #include "wx/wx.h"
-#include "wx/evtloop.h"
 
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
@@ -135,9 +134,9 @@ static bool initWxApp()
     HINSTANCE hInst = AfxGetInstanceHandle();
 #endif // BRXAP
     wxSetInstance(hInst);
+    wxApp::SetInstance(new WxRxApp());
     if (hInst == nullptr || !wxEntryStart(hInst))
         return false;
-    wxApp::SetInstance(new WxRxApp());
     if (wxTheApp && wxTheApp->CallOnInit())
         return true;
     return false;
@@ -314,8 +313,8 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
-    wxSetInstance(NULL);
     wxEntryCleanup();
+    wxSetInstance(NULL);
 #ifdef GRXAPP
     wxExit();
 #endif
