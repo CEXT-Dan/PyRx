@@ -35,6 +35,7 @@ public:
     WxRxApp() = default;
     virtual ~WxRxApp() override = default;
     virtual bool    OnInit() override;
+    virtual int     OnExit() override;
     virtual void    WakeUpIdle() override;
     bool            Init_wxPython();
 };
