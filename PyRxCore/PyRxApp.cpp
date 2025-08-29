@@ -26,7 +26,7 @@ WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
-WinFrame::WinFrame(HWND hwnd)
+ArxTopLevelWindow::ArxTopLevelWindow(HWND hwnd)
 {
     this->SetHWND(hwnd);
     this->AdoptAttributesFromHWND();
@@ -36,37 +36,14 @@ WinFrame::WinFrame(HWND hwnd)
 
 //------------------------------------------------------------------------------------------------
 // the wxApp
-WxRxApp& WxRxApp::instance()
-{
-    static WxRxApp mthis;
-    return mthis;
-}
-
 bool WxRxApp::OnInit()
 {
-    frame.reset(new WinFrame(adsw_acadMainWnd()));
-    wxTheApp->SetTopWindow(frame.get());
+    wxTheApp->SetTopWindow(new ArxTopLevelWindow(adsw_acadMainWnd()));
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;
     if (Init_wxPython() == false)
         return false;
-    SetExitOnFrameDelete(false);
     return true;
-}
-
-int WxRxApp::OnExit()
-{
-    frame->Disconnect();
-    frame->SetHWND(0);
-    wxTheApp->SetTopWindow(nullptr);
-#ifdef _GRXTARGET
-    wxTheApp->CleanUp();
-#endif
-#ifdef NEVER //TODO!
-    wxPyEndAllowThreads(wxPyBeginAllowThreads());
-    wxUninitialize();
-#endif
-    return 0;
 }
 
 void WxRxApp::WakeUpIdle()
@@ -76,11 +53,6 @@ void WxRxApp::WakeUpIdle()
     {
         ::PostMessage(mfcApp->m_pMainWnd->m_hWnd, WM_NULL, 0, 0);
     }
-}
-
-void WxRxApp::ExitMainLoop()
-{
-    ::PostQuitMessage(0);
 }
 
 static bool initializeFromConfig()
@@ -157,20 +129,17 @@ bool WxRxApp::Init_wxPython()
 // initWxApp
 static bool initWxApp()
 {
-    wxApp::SetInstance(&WxRxApp::instance());
-    if (wxInitialize())
-    {
 #ifdef BRXAPP
-        HINSTANCE hInst = _hdllInstance;
+    HINSTANCE hInst = _hdllInstance;
 #else
-        HINSTANCE hInst = AfxGetInstanceHandle();
+    HINSTANCE hInst = AfxGetInstanceHandle();
 #endif // BRXAP
-        if (hInst == nullptr || !wxEntryStart(hInst))
-            return false;
-        wxSetInstance(hInst);
-        if (wxTheApp && wxTheApp->CallOnInit())
-            return true;
-    }
+    wxSetInstance(hInst);
+    if (hInst == nullptr || !wxEntryStart(hInst))
+        return false;
+    wxApp::SetInstance(new WxRxApp());
+    if (wxTheApp && wxTheApp->CallOnInit())
+        return true;
     return false;
 }
 
@@ -345,25 +314,12 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
-    try
-    {
-        wxTheApp->OnExit();
-        // Py_FinalizeEx throws because something is still in python 
-        // I think it's wxPython since the main window was attached
-        // acrxLockApplication so we just let the OS do our dirty work
-#ifdef NEVER //TODO!
-        PyGILState_STATE state = PyGILState_Ensure();
-        if (Py_IsInitialized())
-        {
-            wxTheApp->OnExit();
-        }
+    wxSetInstance(NULL);
+    wxEntryCleanup();
+#ifdef GRXAPP
+    wxExit();
 #endif
-    }
-    catch (...)
-    {
-        acutPrintf(_T("exception in uninit"));
-    }
-    return false;
+    return true;
 }
 
 static void print_list(PyObject* pylist)

@@ -21,10 +21,10 @@ struct PyRxMethod;
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
-class WinFrame : public wxTopLevelWindow
+class ArxTopLevelWindow : public wxTopLevelWindow
 {
 public:
-    WinFrame(HWND hwnd);
+    ArxTopLevelWindow(HWND hwnd);
 };
 
 //------------------------------------------------------------------------------------------------
@@ -35,13 +35,8 @@ public:
     WxRxApp() = default;
     virtual ~WxRxApp() override = default;
     virtual bool    OnInit() override;
-    virtual int     OnExit() override;
     virtual void    WakeUpIdle() override;
-    virtual void    ExitMainLoop() override;
     bool            Init_wxPython();
-    static WxRxApp& instance();
-public:
-    std::unique_ptr<WinFrame> frame;
 };
 
 //------------------------------------------------------------------------------------------------
