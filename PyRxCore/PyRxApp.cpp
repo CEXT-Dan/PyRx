@@ -45,6 +45,11 @@ bool WxRxApp::OnInit()
     return true;
 }
 
+int WxRxApp::OnExit()
+{
+    return 0;
+}
+
 void WxRxApp::WakeUpIdle()
 {
     const CWinApp* mfcApp = AfxGetApp();
@@ -313,11 +318,11 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
+    wxTheApp->OnExit();
     wxEntryCleanup();
     wxSetInstance(NULL);
 #ifdef GRXAPP
     wxExit();//TODO: 
-    //Exception thrown at 0x00007FFFCA66BFAC (wxmsw32u_core_vc140_x64.dll) in gcad.exe: 0xC0000005 :
 #endif
     return true;
 }
