@@ -316,12 +316,13 @@ bool PyRxApp::uninit()
     wxEntryCleanup();
     wxSetInstance(NULL);
 #ifdef GRXAPP
-    wxExit();
+    wxExit();//TODO: 
+    //Exception thrown at 0x00007FFFCA66BFAC (wxmsw32u_core_vc140_x64.dll) in gcad.exe: 0xC0000005 :
 #endif
     return true;
 }
 
-static void print_list(PyObject* pylist)
+static void printPythonList(PyObject* pylist)
 {
     for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
     {
@@ -355,6 +356,8 @@ bool PyRxApp::setPyConfig()
     return true;
 }
 
+// during pyload, we insert the modules to the front of sys.path, load, then move it 
+// to the end. this is to ensure correct module is loaded
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath, bool pyload /*= false*/)
 {
     PyObjectPtr sys(PyImport_ImportModule("sys"));
@@ -413,7 +416,7 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
 #ifdef PYRXDEBUG
 #ifdef NEVER // sanity 
     acutPrintf(_T("\nBefore: \n"));
-    print_list(path.get());
+    printPythonList(path.get());
 #endif
 #endif
 
@@ -424,7 +427,7 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
 #ifdef PYRXDEBUG
 #ifdef NEVER // sanity 
     acutPrintf(_T("\nAfter: \n"));
-    print_list(path.get());
+    printPythonList(path.get());
 #endif
 #endif
 
