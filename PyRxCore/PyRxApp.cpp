@@ -25,9 +25,9 @@ WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
-ArxTopLevelWindow::ArxTopLevelWindow(HWND hwnd)
+ArxTopLevelWindow::ArxTopLevelWindow()
 {
-    this->SetHWND(hwnd);
+    this->SetHWND(adsw_acadMainWnd());
     this->AdoptAttributesFromHWND();
     this->m_isShown = true;
     wxTopLevelWindows.Append(this);
@@ -37,7 +37,7 @@ ArxTopLevelWindow::ArxTopLevelWindow(HWND hwnd)
 // the wxApp
 bool WxRxApp::OnInit()
 {
-    wxTheApp->SetTopWindow(new ArxTopLevelWindow(adsw_acadMainWnd()));
+    wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;
     if (Init_wxPython() == false)
@@ -318,7 +318,6 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
-    wxTheApp->OnExit();
     wxEntryCleanup();
     wxSetInstance(NULL);
 #ifdef GRXAPP

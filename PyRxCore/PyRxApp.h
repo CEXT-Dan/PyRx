@@ -24,7 +24,8 @@ struct PyRxMethod;
 class ArxTopLevelWindow : public wxTopLevelWindow
 {
 public:
-    ArxTopLevelWindow(HWND hwnd);
+    ArxTopLevelWindow();
+    virtual ~ArxTopLevelWindow() override = default;
 };
 
 //------------------------------------------------------------------------------------------------
