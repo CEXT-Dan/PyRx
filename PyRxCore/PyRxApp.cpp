@@ -47,6 +47,7 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
+    wxPyEndAllowThreads(m_mainTState);
     return 0;
 }
 
@@ -124,7 +125,7 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(_T("\n*****Error importing the wxPython API!*****: \n"));
         return false;
     }
-    wxPyBeginAllowThreads();
+    m_mainTState = wxPyBeginAllowThreads();
     PyAutoLockGIL::canLock = true;
     return true;
 }
@@ -318,8 +319,12 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
+    wxTheApp->OnExit();
+    PyGILState_Ensure();
+    Py_FinalizeEx();
     wxEntryCleanup();
     wxSetInstance(NULL);
+    PyAutoLockGIL::canLock = false;
 #ifdef GRXAPP
     wxExit();//TODO: 
 #endif
