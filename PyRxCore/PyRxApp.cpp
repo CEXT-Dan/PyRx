@@ -53,10 +53,9 @@ int WxRxApp::OnExit()
 
 void WxRxApp::WakeUpIdle()
 {
-    const CWinApp* mfcApp = AfxGetApp();
-    if (mfcApp != nullptr && mfcApp->m_pMainWnd)
+    if (auto hwnd = adsw_acadMainWnd(); hwnd != 0)
     {
-        ::PostMessage(mfcApp->m_pMainWnd->m_hWnd, WM_NULL, 0, 0);
+        ::PostMessage(hwnd, WM_NULL, 0, 0);
     }
 }
 
@@ -326,6 +325,7 @@ bool PyRxApp::uninit()
     wxSetInstance(NULL);
     PyAutoLockGIL::canLock = false;
 #ifdef GRXAPP
+    //in some cases GRX has issues;
     wxExit();//TODO: 
 #endif
     return true;
@@ -439,7 +439,6 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     printPythonList(path.get());
 #endif
 #endif
-
     return true;
 }
 

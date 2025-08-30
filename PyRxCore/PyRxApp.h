@@ -25,7 +25,7 @@ class ArxTopLevelWindow : public wxTopLevelWindow
 {
 public:
     ArxTopLevelWindow();
-    virtual ~ArxTopLevelWindow() override = default;
+    ~ArxTopLevelWindow() override = default;
 };
 
 //------------------------------------------------------------------------------------------------
