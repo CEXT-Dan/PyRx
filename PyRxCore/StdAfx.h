@@ -418,8 +418,11 @@ typedef PyAutoLockGIL WxPyAutoLock;
 
 inline void PyDecRef(PyObject* ptr) noexcept
 {
-    PyAutoLockGIL lock;
-    Py_XDECREF(ptr);
+    if (PyAutoLockGIL::canLock)
+    {
+        PyAutoLockGIL lock;
+        Py_XDECREF(ptr);
+    }
 }
 
 using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexcept

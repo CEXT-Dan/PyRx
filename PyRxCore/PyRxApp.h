@@ -39,6 +39,8 @@ public:
     virtual int     OnExit() override;
     virtual void    WakeUpIdle() override;
     bool            Init_wxPython();
+private:
+    PyThreadState* m_mainTState = nullptr;
 };
 
 //------------------------------------------------------------------------------------------------
