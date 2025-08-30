@@ -97,3 +97,6 @@ class TestDialog(wx.Dialog):
         Ap.Application.setTitleThemeDark(self.GetHandle())
         Ap.Application.applyHostIcon(self.GetHandle())
         self.pltpanel.draw()
+
+    def OnClose(self, event):
+        self.Destroy()
