@@ -19,6 +19,8 @@ def PyRxCmd_wxpyxrc():
         print(res)
     except Exception as err:
         print(err)
+    finally:
+        dlg.Destroy()
 
 
 class TestDialog(wx.Dialog):
@@ -57,3 +59,6 @@ class TestDialog(wx.Dialog):
         ps, dist = Ed.Editor.getDist("\nGetDist: ")
         if ps == Ed.PromptStatus.eNormal:
             self.textDistResult.SetValue(dist.__str__())
+
+    def OnClose(self, event):
+        self.Destroy()
