@@ -73,6 +73,12 @@ public:
         return (retCode);
     }
 
+    virtual AcRx::AppRetCode On_kQuitMsg(void* pkt) override
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kQuitMsg(pkt);
+        return (retCode);
+    }
+
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
