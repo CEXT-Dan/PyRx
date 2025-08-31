@@ -210,8 +210,7 @@ void PyCAdUiPaletteSet::setVisible(bool show)
     if (impObj() != nullptr && create())
     {
         impObj()->RestoreControlBar();
-        CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
-        pAcadFrame->ShowControlBar(impObj(), show ? TRUE : FALSE, FALSE);
+        acedGetAcadFrame()->ShowControlBar(impObj(), show ? TRUE : FALSE, FALSE);
     }
 }
 
