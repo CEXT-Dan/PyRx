@@ -116,7 +116,6 @@ public:
     AcGiGeometry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyGiWorldGeometry
 void makePyGiWorldGeometryWrapper();
