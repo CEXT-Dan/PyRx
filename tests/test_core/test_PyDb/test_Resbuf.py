@@ -39,6 +39,30 @@ class TestResbuf:
         ]
         result = Db.Core.resbufTest(args)
         assert expected == result
+        
+    def test_xdata_enum(self):
+        args = [
+            (Db.DxfCode.kDxfXdControlString, "{"),
+            (Db.DxfCode.kDxfXdInteger16, 1),
+            (Db.DxfCode.kDxfXdControlString, "{"),
+            (Db.DxfCode.kDxfXdInteger16, 2),
+            (Db.DxfCode.kDxfXdInteger16, 3),
+            (Db.DxfCode.kDxfXdControlString, "}"),
+            (Db.DxfCode.kDxfXdInteger16, 4),
+            (Db.DxfCode.kDxfXdControlString, "}"),
+        ]
+        expected = [
+            (Db.DxfCode.kDxfXdControlString, "{"),
+            (Db.DxfCode.kDxfXdInteger16, 1),
+            (Db.DxfCode.kDxfXdControlString, "{"),
+            (Db.DxfCode.kDxfXdInteger16, 2),
+            (Db.DxfCode.kDxfXdInteger16, 3),
+            (Db.DxfCode.kDxfXdControlString, "}"),
+            (Db.DxfCode.kDxfXdInteger16, 4),
+            (Db.DxfCode.kDxfXdControlString, "}"),
+        ]
+        result = Db.Core.resbufTest(args)
+        assert expected == result
 
     def test_xdata(self):
         args = [
