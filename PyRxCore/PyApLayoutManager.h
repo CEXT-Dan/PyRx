@@ -42,8 +42,8 @@ public:
     PyDbObjectId        createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb) const;
 
 public:
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcApLayoutManager* impObj(const std::source_location& src = std::source_location::current()) const;
 

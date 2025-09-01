@@ -13,7 +13,7 @@ int PyCmd::getCommandFlags(AcString& str)
 
 int PyCmd::getCommandFlags(PyObject* pCommand)
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
 
     if (pCommand == nullptr)
         return 1;
