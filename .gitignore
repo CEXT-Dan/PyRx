@@ -359,3 +359,4 @@ $RECYCLE.BIN/
 /PyRxCore/PyRxV26.0
 /PyRxLoader/RxLoaderV26.0
 pyrx/_version.py
+/PyRxAcSetupEB/Include/pyrx_embedded.bundle

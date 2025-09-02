@@ -151,6 +151,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxV26.0", "PyRxCore\PyRxV
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxLoaderV26.0", "PyRxLoader\RxLoaderV26.0.vcxproj", "{A217C0D2-3564-46DE-9B1E-3E6AEF8605A2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxEbSetup", "PyRxEbSetup\PyRxEbSetup.vdproj", "{6D074FF2-4B2C-306B-B191-543547D62D7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -412,6 +414,10 @@ Global
 		{A217C0D2-3564-46DE-9B1E-3E6AEF8605A2}.Release|x64.Build.0 = Release|x64
 		{A217C0D2-3564-46DE-9B1E-3E6AEF8605A2}.Release|x86.ActiveCfg = Release|x64
 		{A217C0D2-3564-46DE-9B1E-3E6AEF8605A2}.Release|x86.Build.0 = Release|x64
+		{6D074FF2-4B2C-306B-B191-543547D62D7C}.Debug|x64.ActiveCfg = Debug
+		{6D074FF2-4B2C-306B-B191-543547D62D7C}.Debug|x86.ActiveCfg = Debug
+		{6D074FF2-4B2C-306B-B191-543547D62D7C}.Release|x64.ActiveCfg = Release
+		{6D074FF2-4B2C-306B-B191-543547D62D7C}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
