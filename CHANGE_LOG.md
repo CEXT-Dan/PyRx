@@ -1,3 +1,8 @@
+## v2.2.27
+
+* [#418] refactored wxWidgets startup and shutdown. This release should also properly shuts down Python.  
+* added support for BricsCAD beta 3, Other versions of BricsCAD are disabled 
+
 ## v2.2.26
 
 * [#417] raise KeyError instead of ErrorStatusException(eKeyNotFound) for SymbolTable and Dictionary 
