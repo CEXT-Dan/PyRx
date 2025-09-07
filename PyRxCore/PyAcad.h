@@ -902,11 +902,11 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 //helpers impl in PyAcadObjectImpl.cpp
 [[nodiscard]] HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids);
 [[nodiscard]] HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids);
-[[nodiscard]] HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids);
-[[nodiscard]] HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids);
-[[nodiscard]] HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids);
-[[nodiscard]] HRESULT VariantToInt32Array(VARIANT& var, std::vector<int>& ids);
-[[nodiscard]] HRESULT VariantToInt16Array(VARIANT& var, std::vector<int>& ids);
+[[nodiscard]] HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& vec);
+[[nodiscard]] HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& vec);
+[[nodiscard]] HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& vec);
+[[nodiscard]] HRESULT VariantToInt32Array(VARIANT& var, std::vector<int>& vec);
+[[nodiscard]] HRESULT VariantToInt16Array(VARIANT& var, std::vector<int>& vec);
 [[nodiscard]] HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val);
 [[nodiscard]] HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt);
 [[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);

@@ -31,7 +31,7 @@ HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
     return InitVariantFromInt64Array(data.data(), data.size(), &var);
 }
 
-HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids)
+HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& vec)
 {
     ULONG pcElem = 0;
     double* prgn = nullptr;
@@ -40,13 +40,13 @@ HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids)
     {
         std::span<double>data(prgn, pcElem);
         for (auto item : data)
-            ids.push_back(item);
+            vec.push_back(item);
         CoTaskMemFree(prgn);
     }
     return hr;
 }
 
-HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids)
+HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& vec)
 {
     ULONG pcElem = 0;
     long* prgn = nullptr;
@@ -55,13 +55,13 @@ HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids)
     {
         std::span<long>data(prgn, pcElem);
         for (auto item : data)
-            ids.push_back(item);
+            vec.push_back(item);
         CoTaskMemFree(prgn);
     }
     return hr;
 }
 
-HRESULT VariantToInt32Array(VARIANT& var, std::vector<int32_t>& ids)
+HRESULT VariantToInt32Array(VARIANT& var, std::vector<int32_t>& vec)
 {
     ULONG pcElem = 0;
     long* prgn = nullptr;
@@ -70,13 +70,13 @@ HRESULT VariantToInt32Array(VARIANT& var, std::vector<int32_t>& ids)
     {
         std::span<long>data(prgn, pcElem);
         for (auto item : data)
-            ids.push_back(int32_t(item));
+            vec.push_back(int32_t(item));
         CoTaskMemFree(prgn);
     }
     return hr;
 }
 
-HRESULT VariantToInt16Array(VARIANT& var, std::vector<int16_t>& ids)
+HRESULT VariantToInt16Array(VARIANT& var, std::vector<int16_t>& vec)
 {
     ULONG pcElem = 0;
     short* prgn = nullptr;
@@ -85,16 +85,16 @@ HRESULT VariantToInt16Array(VARIANT& var, std::vector<int16_t>& ids)
     {
         std::span<short>data(prgn, pcElem);
         for (auto item : data)
-            ids.push_back(int16_t(item));
+            vec.push_back(int16_t(item));
         CoTaskMemFree(prgn);
     }
     return hr;
 }
 
 
-HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids)
+HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& vec)
 {
-    return InitVariantFromDoubleArray(ids.data(), ids.size(), &var);
+    return InitVariantFromDoubleArray(vec.data(), vec.size(), &var);
 }
 
 HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val)
@@ -167,7 +167,7 @@ HRESULT VariantToAcGePoint2ds(const VARIANT& var, std::vector<AcGePoint2d>& poin
     {
         CComSafeArray<double> sa;
         sa.Attach(var.parray);
-        auto numItems = sa.GetCount();
+        const auto numItems = sa.GetCount();
         for (int idx = 1; idx < numItems; idx += 2)
             points.emplace_back(AcGePoint2d{ sa[idx - 1], sa[idx] });
         sa.Detach();
@@ -185,7 +185,7 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
     {
         CComSafeArray<double> sa;
         sa.Attach(var.parray);
-        auto numItems = sa.GetCount();
+        const auto numItems = sa.GetCount();
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGePoint3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
         sa.Detach();
@@ -216,7 +216,7 @@ HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& po
     {
         CComSafeArray<double> sa;
         sa.Attach(var.parray);
-        auto numItems = sa.GetCount();
+        const auto numItems = sa.GetCount();
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGeVector3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
         sa.Detach();
@@ -234,7 +234,7 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
     {
         CComSafeArray<VARIANT> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
@@ -246,7 +246,7 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
         sa.Detach();
@@ -274,7 +274,7 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
     {
         CComSafeArray<VARIANT> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
@@ -286,7 +286,7 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadAttributeReferenceImpl>((IAcadAttributeReference*)sa[idx].p));
         sa.Detach();
@@ -304,7 +304,7 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
     {
         CComSafeArray<VARIANT> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
@@ -316,7 +316,7 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
-        auto numEnts = sa.GetCount();
+        const auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadDynamicBlockReferencePropertyImpl>((IAcadDynamicBlockReferenceProperty*)sa[idx].p));
         sa.Detach();
