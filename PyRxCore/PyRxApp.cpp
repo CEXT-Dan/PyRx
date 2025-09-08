@@ -38,7 +38,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 bool WxRxApp::OnInit()
 {
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
-    if (wxTheApp->GetMainTopWindow() == nullptr)
+    if (wxTheApp->GetTopWindow() == nullptr)
         return false;
     if (Init_wxPython() == false)
         return false;
@@ -55,6 +55,9 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
+    auto top = wxTheApp->GetTopWindow();
+    if (top != nullptr)
+        top->DissociateHandle();
     wxPyEndAllowThreads(m_mainTState);
     return 0;
 }
