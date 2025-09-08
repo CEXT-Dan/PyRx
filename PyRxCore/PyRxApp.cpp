@@ -37,19 +37,20 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
-    wxTheApp->SetTopWindow(new ArxTopLevelWindow());
-    if (wxTheApp->GetTopWindow() == nullptr)
-        return false;
-    if (Init_wxPython() == false)
-        return false;
 #ifdef WXWIN33
     resbuf rb;
-    if (auto rt = acedGetVar(_T("COLORTHEME"), &rb); rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
+    const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
+    if (rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
     {
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
 #endif
+    wxTheApp->SetTopWindow(new ArxTopLevelWindow());
+    if (wxTheApp->GetTopWindow() == nullptr)
+        return false;
+    if (Init_wxPython() == false)
+        return false;
     return true;
 }
 
