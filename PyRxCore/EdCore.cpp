@@ -91,7 +91,7 @@ double Util::cvUnit(double val, const std::string& oldunit, const std::string& n
 
 double Util::distance(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
-    return acutDistance(asDblArray(pt1), asDblArray(pt1));
+    return acutDistance(asDblArray(pt1), asDblArray(pt2));
 }
 
 AcGePoint3d Util::polar(const AcGePoint3d& pt, double angle, double dist)
