@@ -92,6 +92,7 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 - **PYCMDPROMPT**: Provides simple access to the python interpreter
 - **PYRXVER**: Prints the ARX module version
 - **PYRXLOADLOG**: Prints the ARX module load logs
+- **PYPIP**: List, install, or uninstall Python packages 
 
 **Autolisp commands:**  
 ``(adspyload PATH)`` returns T or nil  
