@@ -76,6 +76,7 @@ public:
     virtual AcRx::AppRetCode On_kQuitMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kQuitMsg(pkt);
+        wxTheApp->OnExit();
         return (retCode);
     }
 
