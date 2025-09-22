@@ -165,7 +165,6 @@ static bool uninitWxApp()
     PyGILState_Ensure();
     Py_FinalizeEx();
     wxEntryCleanup();
-    wxUninitialize();
     wxSetInstance(NULL);
     PyAutoLockGIL::canLock = false;
 #ifdef GRXAPP
