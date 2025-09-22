@@ -21,7 +21,7 @@ struct PyRxMethod;
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
-class ArxTopLevelWindow : public wxTopLevelWindow
+class ArxTopLevelWindow : public wxWindow
 {
 public:
     ArxTopLevelWindow();
