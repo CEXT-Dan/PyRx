@@ -97,25 +97,25 @@ void makePyEdUserInteractionWrapper()
 
 PyEdUserInteraction::PyEdUserInteraction()
 {
-    userInteraction(acDocManagerPtr()->curDocument(), true);
+    beginUserInteraction(acDocManagerPtr()->curDocument(), true);
 }
 
 PyEdUserInteraction::PyEdUserInteraction(AcApDocument* pDocument, bool prompting)
 {
-    userInteraction(pDocument, prompting);
+    beginUserInteraction(pDocument, prompting);
 }
 
 PyEdUserInteraction::PyEdUserInteraction(PyApDocument& pDocument, bool prompting)
 {
-    userInteraction(pDocument.impObj(), prompting);
+    beginUserInteraction(pDocument.impObj(), prompting);
 }
 
 PyEdUserInteraction::~PyEdUserInteraction(void)
 {
-    undoUserInteraction();
+    endUserInteraction();
 }
 
-void PyEdUserInteraction::userInteraction(AcApDocument* pDocument, bool prompting)
+void PyEdUserInteraction::beginUserInteraction(AcApDocument* pDocument, bool prompting)
 {
     AcApDocManager* pDocMan = acDocManagerPtr();
     if (pDocMan->curDocument() == pDocument)
@@ -144,7 +144,7 @@ void PyEdUserInteraction::userInteraction(AcApDocument* pDocument, bool promptin
     }
 }
 
-void PyEdUserInteraction::undoUserInteraction()
+void PyEdUserInteraction::endUserInteraction()
 {
     acDocManagerPtr()->enableDocumentActivation();
     if (m_wnds.size() > 0)
