@@ -159,6 +159,22 @@ static bool initWxApp()
     return false;
 }
 
+static bool uninitWxApp()
+{
+    wxTheApp->CleanUp();
+    PyGILState_Ensure();
+    Py_FinalizeEx();
+    wxEntryCleanup();
+    wxUninitialize();
+    wxSetInstance(NULL);
+    PyAutoLockGIL::canLock = false;
+#ifdef GRXAPP
+    //in some cases GRX has issues;
+    wxExit();//TODO: 
+#endif
+    return true;
+}
+
 //------------------------------------------------------------------------------------------------
 // the PyRxApp, holds the command objects
 const std::filesystem::path& PyRxApp::modulePath()
@@ -330,17 +346,7 @@ void PyRxApp::initTestFlags()
 
 bool PyRxApp::uninit()
 {
-    wxTheApp->OnExit();
-    PyGILState_Ensure();
-    Py_FinalizeEx();
-    wxEntryCleanup();
-    wxSetInstance(NULL);
-    PyAutoLockGIL::canLock = false;
-#ifdef GRXAPP
-    //in some cases GRX has issues;
-    wxExit();//TODO: 
-#endif
-    return true;
+    return uninitWxApp();
 }
 
 static void printPythonList(PyObject* pylist)
