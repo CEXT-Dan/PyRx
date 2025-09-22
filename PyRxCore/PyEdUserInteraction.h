@@ -45,8 +45,8 @@ public:
     PyEdUserInteraction(AcApDocument* pDocument, bool prompting);
     ~PyEdUserInteraction(void);
 protected:
-    void userInteraction(AcApDocument* pDocument, bool prompting);
-    void undoUserInteraction();
+    void beginUserInteraction(AcApDocument* pDocument, bool prompting);
+    void endUserInteraction();
 };
 
 //-----------------------------------------------------------------------------------------
