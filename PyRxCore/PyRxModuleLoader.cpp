@@ -284,7 +284,7 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
     PyObject* pKey = nullptr, * pValue = nullptr;
     for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
     {
-        const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+        const AcString key = PyUnicode_AsAcString(pKey);
         if (key.find(PyCommandPrefix) != -1)
         {
             const AcString commandName = towupper(key.substr(PyCommandPrefix.length(), key.length() - 1));
@@ -309,7 +309,7 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
     PyObject* pKey = nullptr, * pValue = nullptr;
     for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
     {
-        AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+        const AcString key = PyUnicode_AsAcString(pKey);
         if (key.find(PyCommandPrefix) != -1)
         {
             const AcString commandName = towupper(key.substr(PyCommandPrefix.length(), key.length() - 1));

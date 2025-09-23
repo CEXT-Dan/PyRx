@@ -384,6 +384,33 @@ inline PyObject* acstr_to_py(const AcString& str)
     return PyUnicode_FromWideChar(str.constPtr(), str.length());
 }
 
+inline std::string PyUnicode_AsString(PyObject* my_unicode_object)
+{
+    Py_ssize_t size = 0;
+    const char* data = PyUnicode_AsUTF8AndSize(my_unicode_object, &size);
+    if (data != NULL)
+        return std::string(data, size);
+    return std::string{};
+}
+
+inline std::wstring PyUnicode_AsWString(PyObject* my_unicode_object)
+{
+    Py_ssize_t size = 0;
+    const wchar_t* data = PyUnicode_AsWideCharString(my_unicode_object, &size);
+    if (data != NULL)
+        return std::wstring(data, size);
+    return std::wstring{};
+}
+
+inline AcString PyUnicode_AsAcString(PyObject* my_unicode_object)
+{
+    Py_ssize_t size = 0;
+    const wchar_t* data = PyUnicode_AsWideCharString(my_unicode_object, &size);
+    if (data != NULL && size)
+        return AcString(data);
+    return AcString{};
+}
+
 //use for functions that have not been converted to AcString
 class RxAutoOutStr
 {
