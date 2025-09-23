@@ -54,7 +54,6 @@ public:
     static int                  cmdUndefine(const std::string& name, int undefIt);
     static boost::python::dict  getCommands();
     static boost::python::tuple calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle);
-    static void                 convertEntityToHatch(const PyDbHatch& hatch, const PyDbEntity& entity, bool transferId);
     static AcGePoint3d          coordFromPixelToWorld1(const boost::python::tuple& tin);
     static AcGePoint3d          coordFromPixelToWorld2(int windnum, const boost::python::tuple& tin);
     static boost::python::tuple coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt);

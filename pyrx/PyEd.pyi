@@ -227,19 +227,6 @@ class Core:
         command as though it is undefined in the same way that internal AutoCAD commands are
         treated if they have been undefined via the AutoCAD UNDEFINE command.
         """
-    @staticmethod
-    def convertEntityToHatch(hatch: PyDb.Hatch, entity: PyDb.Entity, transferId: bool, /) -> None:
-        """
-        Converts a block reference or a solid to a hatch. If transferId is true, the calling
-        AcDbHatch assumes the AcDbObjectId, handle, any extended entity data, extension
-        dictionaries, or reactors, as well as any hatch associativity of pEnt. This is the only way
-        the associativity with the boundary objects can be transferred. pEnt will then be deleted
-        and set to NULL. If transferId is false, pEnt remains in the database as is and the caller
-        is responsible for closing it. The resulting AcDbHatch is not database-resident and, as
-        such, cannot assume any of the associativity with pEnt boundary objects. The caller can
-        later call pEnt->handOverTo() to exchange the new AcDbHatch for pEnt in the database, but
-        the associativity cannot be re-established.
-        """
     @overload
     @staticmethod
     def coordFromPixelToWorld(pt: tuple[int, int], /) -> PyGe.Point3d:
