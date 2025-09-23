@@ -58,8 +58,13 @@ extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 bool                            acedLoadMainMenu(const ACHAR*);
 extern Adesk::Boolean           acedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 
-//acedLinetypeDialog()
-//acedLineWeightDialog()
+#ifdef PYRXDEBUG
+extern BOOL                     acedLinetypeDialog(AcDbDatabase*, AcDbObjectId, BOOL, wchar_t*, AcDbObjectId&);
+extern BOOL                     acedLinetypeDialog(AcDbObjectId, BOOL, wchar_t*, class AcDbObjectId&);
+extern BOOL                     acedLineWeightDialog(AcDb::LineWeight, BOOL, AcDb::LineWeight&);
+extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
+#endif
+
 #endif
 
 //-----------------------------------------------------------------------------------------
