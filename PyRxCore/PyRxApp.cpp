@@ -21,8 +21,6 @@
 #include "wx/setup.h"
 #include "wx/wx.h"
 
-WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
-
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
 ArxTopLevelWindow::ArxTopLevelWindow()
@@ -151,7 +149,6 @@ static bool initWxApp()
 #else
     HINSTANCE hInst = AfxGetInstanceHandle();
 #endif // BRXAP
-    wxSetInstance(hInst);
     wxApp::SetInstance(new WxRxApp());
     if (hInst == nullptr || !wxEntryStart(hInst))
         return false;
@@ -165,7 +162,6 @@ static bool uninitWxApp()
     PyGILState_Ensure();
     Py_FinalizeEx();
     wxEntryCleanup();
-    wxSetInstance(NULL);
     PyAutoLockGIL::canLock = false;
 #ifdef GRXAPP
     //in some cases GRX has issues;
