@@ -172,7 +172,6 @@ void makePyEdCoreWrapper()
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2, DS.SOVRL(coordFromPixelToWorldOverloads, 10775)).staticmethod("coordFromPixelToWorld")
         .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel, DS.SARGS({ "windnum: int ","pnt: PyGe.Point3d" }, 10776)).staticmethod("coordFromWorldToPixel")
-        .def("convertEntityToHatch", &EdCore::convertEntityToHatch, DS.SARGS({ "hatch: PyDb.Hatch","entity: PyDb.Entity", "transferId: bool" }, 10774)).staticmethod("convertEntityToHatch")
         .def("createInternetShortcut", &EdCore::createInternetShortcut, DS.SARGS({ "szURL: str","szShortcutPath: str" }, 10779)).staticmethod("createInternetShortcut")
         .def("createViewportByView", &EdCore::createViewportByView, DS.SARGS({ "db: PyDb.Database","view: PyDb.ObjectId","pt: PyGe.Point2d","scale: float" }, 10783)).staticmethod("createViewportByView")
         .def("cmdS", &EdCore::cmdS1)
@@ -502,16 +501,6 @@ boost::python::tuple EdCore::calcTextExtents(const std::string& strval, const Py
     auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
     PyAutoLockGIL lock;
     return boost::python::make_tuple(pnt.x, pnt.y);
-}
-
-void EdCore::convertEntityToHatch(const PyDbHatch& hatch, const PyDbEntity& entity, bool transferId)
-{
-#if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
-#else
-    AcDbEntity* pEnt = entity.impObj();
-    PyThrowBadEs(acedConvertEntityToHatch(hatch.impObj(), pEnt, transferId));
-#endif
 }
 
 AcGePoint3d EdCore::coordFromPixelToWorld1(const boost::python::tuple& tin)
