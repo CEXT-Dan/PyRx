@@ -59,6 +59,7 @@ int WxRxApp::OnExit()
     auto top = wxTheApp->GetTopWindow();
     if (top != nullptr)
         top->DissociateHandle();
+    wxTopLevelWindows.clear();
     wxPyEndAllowThreads(m_mainTState);
     return 0;
 }
@@ -161,7 +162,6 @@ static bool initWxApp()
 
 static bool uninitWxApp()
 {
-    wxTheApp->CleanUp();
     PyGILState_Ensure();
     Py_FinalizeEx();
     wxEntryCleanup();
