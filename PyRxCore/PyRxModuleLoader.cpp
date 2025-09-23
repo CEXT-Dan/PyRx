@@ -339,7 +339,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 {
     std::error_code ec;
     auto& rxApp = PyRxApp::instance();
-    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(path.modulePath));
+    AutoCWD pAutoCWD(path.modulePath);
 
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
@@ -388,7 +388,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 bool reloadPythonModule(const PyModulePath& path, bool silent)
 {
     auto& rxApp = PyRxApp::instance();
-    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(path.modulePath));
+    AutoCWD pAutoCWD(path.modulePath);
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
         callOnPyUnloadAppBeforeReloading(path.moduleName);
