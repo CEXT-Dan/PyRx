@@ -164,8 +164,7 @@ static bool uninitWxApp()
     wxEntryCleanup();
     PyAutoLockGIL::canLock = false;
 #ifdef GRXAPP
-    //in some cases GRX has issues;
-    wxExit();//TODO: 
+    wxExit();//Issue [#422]
 #endif
     return true;
 }

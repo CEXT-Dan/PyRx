@@ -133,7 +133,7 @@ AcEdJig::DragStatus PyJig::dragwr1()
 #if !defined(_BRXTARGET260)
 AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
-    return  this->drag(style);
+    return this->drag(style);
 }
 #endif
 
@@ -194,15 +194,14 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
     PyAutoLockGIL lock;
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
 #endif
 
 #ifdef _ARXTARGET
-    PyAutoLockGIL lock;
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
@@ -394,15 +393,14 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
     PyAutoLockGIL lock;
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
 #endif
 
 #ifdef _ARXTARGET 
-    PyAutoLockGIL lock;
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
