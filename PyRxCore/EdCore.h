@@ -127,9 +127,7 @@ public:
     static bool                 loadMainMenu(const std::string& mnu);
     static boost::python::tuple linetypeDialog1(const PyDbObjectId& id, bool IncludeByBlockByLayer);
     static boost::python::tuple linetypeDialog2(const PyDbDatabase& db, const PyDbObjectId& id, bool IncludeByBlockByLayer);
-
     static boost::python::tuple lineWeightDialog(AcDb::LineWeight, bool);
-
     static void                 markForDelayXRefRelativePathResolve(const PyDbObjectId& id);
     static int                  menuCmd(const std::string& mnu);
     static void                 mSpace();
