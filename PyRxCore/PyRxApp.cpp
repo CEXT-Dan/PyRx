@@ -52,7 +52,7 @@ bool WxRxApp::OnInit()
     {
         // Hold a ref so wxPython wx.App.Get() returns our app 
         PyAutoLockGIL lock;
-        _wxapp.reset(wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true));
+        m_wxapp.reset(wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true));
     }
     return true;
 }
@@ -63,7 +63,7 @@ int WxRxApp::OnExit()
     if (top != nullptr)
         top->DissociateHandle();
     wxTopLevelWindows.clear();
-    _wxapp.reset(nullptr);
+    m_wxapp.reset(nullptr);
     wxPyEndAllowThreads(m_mainTState);
     return 0;
 }
@@ -487,7 +487,7 @@ std::wstring PyRxApp::the_error()
                     PyFrameObject* frame = pTrace->tb_frame;
                     PyCodeObject* code = PyFrame_GetCode(frame);
                     int lineNr = PyFrame_GetLineNumber(frame);
-                    const char* sCodeName = PyUnicode_AsUTF8AndSize(code->co_name,nullptr);
+                    const char* sCodeName = PyUnicode_AsUTF8AndSize(code->co_name, nullptr);
                     const char* sFileName = PyUnicode_AsUTF8AndSize(code->co_filename, nullptr);
                     the_traceback_string += std::format("\nAt {} ({}:{})", sCodeName, sFileName, lineNr);
                     pTrace = pTrace->tb_next;

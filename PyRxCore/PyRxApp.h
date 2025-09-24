@@ -41,7 +41,7 @@ public:
     bool            Init_wxPython();
 private:
     PyThreadState* m_mainTState = nullptr;
-    PyObjectPtr _wxapp;
+    PyObjectPtr m_wxapp;
 };
 wxDECLARE_APP(WxRxApp);
 
