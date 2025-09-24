@@ -14,6 +14,6 @@ def ads_lineWeightDialog(args):
     buff = []
     flag, lw = Ed.Core.lineWeightDialog(db.celweight(), True)
     if flag:
-        return(Rx.LispType.kInt32, lw)
+        return (Rx.LispType.kInt32, lw)
     else:
-       return (Rx.LispType.kNil, 0)
+        return (Rx.LispType.kNil, 0)

@@ -69,13 +69,10 @@ extern void                     acedGetLastCommandLines(AcStringArray&, int, boo
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 bool                            acedLoadMainMenu(const ACHAR*);
 extern Adesk::Boolean           acedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
-
-
-extern bool                     acedLinetypeDialog(AcDbObjectId,bool,ACHAR*&,AcDbObjectId&);
+extern bool                     acedLinetypeDialog(AcDbObjectId, bool, ACHAR*&, AcDbObjectId&);
 extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId, bool, ACHAR*&, AcDbObjectId&);
-
 extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
-extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
+//extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
 
 #endif
 
@@ -1054,7 +1051,7 @@ boost::python::tuple EdCore::linetypeDialog2(const PyDbDatabase& db, const PyDbO
     PyAutoLockGIL lock;
     PyDbObjectId new_linetypeId;
     RxAutoOutStr new_linetypename;
-    bool flag = acedLinetypeDialog(db.impObj(),id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+    bool flag = acedLinetypeDialog(db.impObj(), id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
     return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
 #endif
 }
@@ -1063,11 +1060,11 @@ boost::python::tuple EdCore::lineWeightDialog(AcDb::LineWeight lt, bool IncludeB
 {
     AcDb::LineWeight outlt = AcDb::LineWeight::kLnWt000;
 #if defined(_GRXTARGET)
-    bool flag = gcedLineWeightDialog(lt, flag, outlt);
+    bool flag = gcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
 #elif defined(_ZRXTARGET)
-    bool flag = zcedLineWeightDialog(lt, flag, outlt);
+    bool flag = zcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
 #else
-    bool flag = acedLineWeightDialog(lt, flag, outlt);
+    bool flag = acedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
 #endif
     return boost::python::make_tuple(flag, outlt);
 }
