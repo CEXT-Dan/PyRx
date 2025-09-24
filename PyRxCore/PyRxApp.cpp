@@ -59,12 +59,14 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
+#ifdef NEVER
     auto top = wxTheApp->GetTopWindow();
     if (top != nullptr)
         top->DissociateHandle();
     wxTopLevelWindows.clear();
-    m_wxapp.reset(nullptr);
     wxPyEndAllowThreads(m_mainTState);
+    m_wxapp.reset(nullptr);
+#endif
     return 0;
 }
 
@@ -165,10 +167,16 @@ static bool initWxApp()
 
 static bool uninitWxApp()
 {
+// Issue, if the user has a global python variable, then Py_FinalizeEx barfs.
+// Assume this is always the case. Since PyRx is locked, just let it leak into the process
+// ARX, BRX, ZRX have a clean call stack on exit.
+// GRX has an access violation long after PyRx is unloaded
+#ifdef NEVER
     PyGILState_Ensure();
     Py_FinalizeEx();
     wxEntryCleanup();
     PyAutoLockGIL::canLock = false;
+#endif
 #ifdef GRXAPP
     wxExit();//Issue [#422]
 #endif
