@@ -49,6 +49,11 @@ bool WxRxApp::OnInit()
         return false;
     if (Init_wxPython() == false)
         return false;
+    {
+        // Hold a ref so wxPython wx.App.Get() returns our app 
+        PyAutoLockGIL lock;
+        _wxapp.reset(wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true));
+    }
     return true;
 }
 
@@ -58,6 +63,7 @@ int WxRxApp::OnExit()
     if (top != nullptr)
         top->DissociateHandle();
     wxTopLevelWindows.clear();
+    _wxapp.reset(nullptr);
     wxPyEndAllowThreads(m_mainTState);
     return 0;
 }
@@ -496,6 +502,4 @@ std::wstring PyRxApp::the_error()
     }
     return std::wstring{ __FUNCTIONW__ };
 }
-
-wxDECLARE_APP(WxRxApp);
-IMPLEMENT_APP_NO_MAIN(WxRxApp)
+wxIMPLEMENT_APP_NO_MAIN(WxRxApp);

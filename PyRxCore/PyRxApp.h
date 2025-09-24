@@ -41,7 +41,9 @@ public:
     bool            Init_wxPython();
 private:
     PyThreadState* m_mainTState = nullptr;
+    PyObjectPtr _wxapp;
 };
+wxDECLARE_APP(WxRxApp);
 
 //------------------------------------------------------------------------------------------------
 // the PyRxApp, holds the command objects
@@ -96,4 +98,3 @@ public:
     bool isLoaded = false;
 
 };
-

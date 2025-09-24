@@ -85,14 +85,8 @@ def pyrx_onload() -> None:
     onload.load()
 
 
-wxRxApp = None
-
-
 def main() -> None:
     try:
-        global wxRxApp
-        wxRxApp = Ap.Application.wxApp()
-        
         # reload all pyrx modules if this module is reloaded
         reload("pyrx")
         # add PYDEBUG command
