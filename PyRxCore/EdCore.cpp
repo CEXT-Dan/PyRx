@@ -29,7 +29,7 @@ int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& resu
 extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
 
 extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-extern Adesk::Boolean           zcedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
 #endif
 
@@ -39,7 +39,7 @@ extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::B
 extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
 
 extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-extern Adesk::Boolean           gcedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     gcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
 #endif
 
@@ -52,7 +52,7 @@ extern  bool                    acedHatchPalletteDialog(const wchar_t*, bool, wc
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 
 extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-//extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
 #endif
 
@@ -71,10 +71,10 @@ bool                            acedLoadMainMenu(const ACHAR*);
 extern Adesk::Boolean           acedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 
 
-extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId,bool IncludeByBlockByLayer,ACHAR*& new_linetypeName,AcDbObjectId& new_linetypeId);
-extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     acedLinetypeDialog(AcDbObjectId,bool,ACHAR*&,AcDbObjectId&);
+extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId, bool, ACHAR*&, AcDbObjectId&);
 
-extern BOOL                     acedLineWeightDialog(AcDb::LineWeight, BOOL, AcDb::LineWeight&);
+extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
 
 #endif
@@ -256,6 +256,7 @@ void makePyEdCoreWrapper()
         .def("loadMainMenu", &EdCore::loadMainMenu, DS.SARGS({ "mnu: str" })).staticmethod("loadMainMenu")
         .def("linetypeDialog", &EdCore::linetypeDialog1, DS.SARGS({ "id: PyDb.ObjectId", "includeByBlockByLayer: bool" }))
         .def("linetypeDialog", &EdCore::linetypeDialog2, DS.SARGS({ "db: PyDb.Database" "id: PyDb.ObjectId", "includeByBlockByLayer: bool" })).staticmethod("linetypeDialog")
+        .def("lineWeightDialog", &EdCore::lineWeightDialog, DS.SARGS({ "lt: PyDb.LineWeight", "includeByBlockByLayer: bool" })).staticmethod("lineWeightDialog")
         .def("menuCmd", &EdCore::menuCmd, DS.SARGS({ "cmd: str" })).staticmethod("menuCmd")
         .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve, DS.SARGS({ "id: PyDb.ObjectId" }, 11221)).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace, DS.SARGS(11223)).staticmethod("mSpace")
@@ -1056,6 +1057,19 @@ boost::python::tuple EdCore::linetypeDialog2(const PyDbDatabase& db, const PyDbO
     bool flag = acedLinetypeDialog(db.impObj(),id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
     return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
 #endif
+}
+
+boost::python::tuple EdCore::lineWeightDialog(AcDb::LineWeight lt, bool IncludeByBlockByLayer)
+{
+    AcDb::LineWeight outlt = AcDb::LineWeight::kLnWt000;
+#if defined(_GRXTARGET)
+    bool flag = gcedLineWeightDialog(lt, flag, outlt);
+#elif defined(_ZRXTARGET)
+    bool flag = zcedLineWeightDialog(lt, flag, outlt);
+#else
+    bool flag = acedLineWeightDialog(lt, flag, outlt);
+#endif
+    return boost::python::make_tuple(flag, outlt);
 }
 
 void EdCore::markForDelayXRefRelativePathResolve(const PyDbObjectId& id)
