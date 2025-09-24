@@ -125,6 +125,8 @@ public:
     static void                 loadJSScript(const std::string& pUriOfJSFile);
     static bool                 loadPartialMenu(const std::string& mnu);
     static bool                 loadMainMenu(const std::string& mnu);
+    static boost::python::tuple linetypeDialog1(const PyDbObjectId& id, bool IncludeByBlockByLayer);
+    static boost::python::tuple linetypeDialog2(const PyDbDatabase& db, const PyDbObjectId& id, bool IncludeByBlockByLayer);
     static void                 markForDelayXRefRelativePathResolve(const PyDbObjectId& id);
     static int                  menuCmd(const std::string& mnu);
     static void                 mSpace();

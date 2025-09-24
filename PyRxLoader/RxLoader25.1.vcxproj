@@ -14,7 +14,7 @@
     <ProjectGuid>{f1b30806-b1ca-430c-a9a5-8d0626d1833a}</ProjectGuid>
     <RootNamespace>RxLoader</RootNamespace>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <ProjectName>RxLoader25.1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -27,12 +27,20 @@ void                            ads_regen(void);
 #ifdef ZRXAPP
 int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
+
+extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern Adesk::Boolean           zcedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+
 #endif
 
 #ifdef GRXAPP
 int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
+
+extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern Adesk::Boolean           gcedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+
 #endif
 
 #ifdef BRXAPP
@@ -42,6 +50,10 @@ extern Adesk::Boolean           acedGetPredefinedPattens(AcStringArray& patterns
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern  bool                    acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
+
+extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+//extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+
 #endif
 
 
@@ -58,12 +70,12 @@ extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 bool                            acedLoadMainMenu(const ACHAR*);
 extern Adesk::Boolean           acedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 
-#ifdef PYRXDEBUG
-extern BOOL                     acedLinetypeDialog(AcDbDatabase*, AcDbObjectId, BOOL, wchar_t*, AcDbObjectId&);
-extern BOOL                     acedLinetypeDialog(AcDbObjectId, BOOL, wchar_t*, class AcDbObjectId&);
+
+extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId,bool IncludeByBlockByLayer,ACHAR*& new_linetypeName,AcDbObjectId& new_linetypeId);
+extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+
 extern BOOL                     acedLineWeightDialog(AcDb::LineWeight, BOOL, AcDb::LineWeight&);
 extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
-#endif
 
 #endif
 
@@ -242,6 +254,8 @@ void makePyEdCoreWrapper()
         .def("loadJSScript", &EdCore::loadJSScript, DS.SARGS({ "scr: str" })).staticmethod("loadJSScript")
         .def("loadPartialMenu", &EdCore::loadPartialMenu, DS.SARGS({ "mnu: str" }, 11219)).staticmethod("loadPartialMenu")
         .def("loadMainMenu", &EdCore::loadMainMenu, DS.SARGS({ "mnu: str" })).staticmethod("loadMainMenu")
+        .def("linetypeDialog", &EdCore::linetypeDialog1, DS.SARGS({ "id: PyDb.ObjectId", "includeByBlockByLayer: bool" }))
+        .def("linetypeDialog", &EdCore::linetypeDialog2, DS.SARGS({ "db: PyDb.Database" "id: PyDb.ObjectId", "includeByBlockByLayer: bool" })).staticmethod("linetypeDialog")
         .def("menuCmd", &EdCore::menuCmd, DS.SARGS({ "cmd: str" })).staticmethod("menuCmd")
         .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve, DS.SARGS({ "id: PyDb.ObjectId" }, 11221)).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace, DS.SARGS(11223)).staticmethod("mSpace")
@@ -1013,6 +1027,34 @@ bool EdCore::loadMainMenu(const std::string& mnu)
     throw PyNotimplementedByHost();
 #else
     return acedLoadMainMenu(utf8_to_wstr(mnu).c_str());
+#endif
+}
+
+boost::python::tuple EdCore::linetypeDialog1(const PyDbObjectId& id, bool IncludeByBlockByLayer)
+{
+    PyAutoLockGIL lock;
+    PyDbObjectId new_linetypeId;
+    RxAutoOutStr new_linetypename;
+#if defined(_GRXTARGET)
+    bool flag = gcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+#elif defined(_ZRXTARGET)
+    bool flag = zcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+#else
+    bool flag = acedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+#endif
+    return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
+}
+
+boost::python::tuple EdCore::linetypeDialog2(const PyDbDatabase& db, const PyDbObjectId& id, bool IncludeByBlockByLayer)
+{
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    PyDbObjectId new_linetypeId;
+    RxAutoOutStr new_linetypename;
+    bool flag = acedLinetypeDialog(db.impObj(),id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+    return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
 #endif
 }
 
