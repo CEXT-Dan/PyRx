@@ -1,3 +1,13 @@
+v2.2.28
+
+* added Ed.Core.lineWeightDialog
+* added Ed.Core.linetypeDialog
+* remove convertEntityToHatch (this was a function for old R13 hatches)
+* fixed PyEdSelectionSet iterator, the buffer was not cleared on subsequent iterations
+* progress on exit, the goal was to remove acrxLockApplication, make PyRx unloadable, differed
+* internal, changed loading sequence of wxPython and Python
+* PyUnicode_AsUTF8 is depreciated, use PyUnicode_AsUTF8AndSize
+
 ## v2.2.27
 
 * [#418] refactored wxWidgets startup and shutdown. This release should also properly shuts down Python.  
