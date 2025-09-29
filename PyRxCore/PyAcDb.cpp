@@ -2053,6 +2053,42 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kCanBeEvaluatedAssocEvaluationPriority", AcDbAssocEvaluationPriority::kCanBeEvaluatedAssocEvaluationPriority)
         .export_values()
         ;
+
+    enum_<AcDbAssocConstraintType>("AssocConstraintType")
+        .value("kNoneAssocConstraintType", AcDbAssocConstraintType::kNoneAssocConstraintType)
+        .value("kDistanceAssocConstraintType", AcDbAssocConstraintType::kDistanceAssocConstraintType)
+        .value("kHorizontalDistanceAssocConstraintType", AcDbAssocConstraintType::kHorizontalDistanceAssocConstraintType)
+        .value("kVerticalDistanceAssocConstraintType", AcDbAssocConstraintType::kVerticalDistanceAssocConstraintType)
+        .value("kAngle0AssocConstraintType", AcDbAssocConstraintType::kAngle0AssocConstraintType)
+        .value("kAngle1AssocConstraintType", AcDbAssocConstraintType::kAngle1AssocConstraintType)
+        .value("kAngle2AssocConstraintType", AcDbAssocConstraintType::kAngle2AssocConstraintType)
+        .value("kAngle3AssocConstraintType", AcDbAssocConstraintType::kAngle3AssocConstraintType)
+        .value("kRadiusAssocConstraintType", AcDbAssocConstraintType::kRadiusAssocConstraintType)
+        .value("kDiameterAssocConstraintType", AcDbAssocConstraintType::kDiameterAssocConstraintType)
+        .export_values()
+        ;
+
+    enum_<AcDbAssocEvaluationMode>("AssocEvaluationMode")
+        .value("kModifyObjectsAssocEvaluationMode", AcDbAssocEvaluationMode::kModifyObjectsAssocEvaluationMode)
+        .value("kModifyActionAssocEvaluationMode", AcDbAssocEvaluationMode::kModifyActionAssocEvaluationMode)
+        .export_values()
+        ;
+
+    enum_<AcDbAssocDraggingState>("AssocDraggingState")
+        .value("kNotDraggingAssocDraggingState", AcDbAssocDraggingState::kNotDraggingAssocDraggingState)
+        .value("kFirstSampleAssocDraggingState", AcDbAssocDraggingState::kFirstSampleAssocDraggingState)
+        .value("kIntermediateSampleAssocDraggingState", AcDbAssocDraggingState::kIntermediateSampleAssocDraggingState)
+        .value("kLastSampleAssocDraggingState", AcDbAssocDraggingState::kLastSampleAssocDraggingState)
+        .export_values()
+        ;
+
+    enum_<AcDbAssocTransformationType>("AssocTransformationType")
+        .value("kNotSpecified", AcDbAssocTransformationType::kNotSpecified)
+        .value("kStretch", AcDbAssocTransformationType::kStretch)
+        .value("kRotate", AcDbAssocTransformationType::kRotate)
+        .value("kMove", AcDbAssocTransformationType::kMove)
+        .export_values()
+        ;
 };
 
 void initPyDbModule()
