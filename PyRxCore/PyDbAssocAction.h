@@ -88,16 +88,24 @@ public:
     void                removeAllParams(bool alsoEraseThem);
     int                 paramCount() const;
     boost::python::list ownedParams() const;
+    int                 addParam1(const PyDbObjectId& paramId) const;
+    int                 addParam2(const std::string& paramName, const PyRxClass& pParamClass, PyDbObjectId& paramId) const;
+    void                removeParam(const PyDbObjectId& paramId, bool alsoEraseIt) const;
+    boost::python::list paramsAtName(const std::string& paramName) const;
+    PyDbObjectId        paramAtName1(const std::string& paramName) const;
+    PyDbObjectId        paramAtName2(const std::string& paramName, int index) const;
+    PyDbObjectId        paramAtIndex(int paramIndex) const;
+    boost::python::list ownedValueParamNames() const;
+    boost::python::tuple getValueParamArray(const std::string& paramName) const;
+    boost::python::tuple getValueParam(const std::string& paramName, int idx) const;
+
 
 
     static boost::python::list getActionsDependentOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted);
-
     static void             removeActionsControllingObject1(const PyDbObjectId& objectToRemoveActionsFrom);
     static void             removeActionsControllingObject2(const PyDbObjectId& objectToRemoveActionsFrom, int readOnlyDependencyHandling, const PyDbObjectId& objectToRedirectReadOnlyDependenciesTo);
     static void             markDependentActionsToEvaluate(const PyDbObjectId& actionId);
     static bool             doesObjectHaveActiveActions(const PyDbObject& pObject);
-
-
     static PyDbObjectId     getActionBody(const PyDbObjectId& actionId);
     static PyRxClass        desc();
     static std::string      className();
