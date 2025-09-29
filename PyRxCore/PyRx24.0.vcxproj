@@ -156,6 +156,7 @@
     <ClCompile Include="PyAcadObjectImpl.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
+    <ClCompile Include="PyDbAssocAction.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
     <ClCompile Include="PyDbGraph.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
@@ -304,6 +305,7 @@
     <ClInclude Include="PyAcadObjectImpl.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
+    <ClInclude Include="PyDbAssocAction.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
     <ClInclude Include="PyDbGraph.h" />
     <ClInclude Include="PyDbGripData.h" />

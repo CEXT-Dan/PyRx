@@ -484,6 +484,9 @@
     <ClCompile Include="PyBrxCvAttribVariant.cpp">
       <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbAssocAction.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -974,6 +977,9 @@
     </ClInclude>
     <ClInclude Include="PyBrxCvAttribVariant.h">
       <Filter>Header Files\PyBrxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbAssocAction.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
