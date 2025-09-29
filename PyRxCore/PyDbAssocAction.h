@@ -5,9 +5,10 @@
 #include "AcDbAssocAction.h"
 #include "AcDbAssocDependency.h"
 
-//AcDbAssocDependency
 //AcDbAssocGeomDependency
 //AcDbAssocGeomDependency
+//AcDbAssocNotificationData
+//AcDbAssocEvaluationCallback
 
 //-----------------------------------------------------------------------------------
 //PyDbAssocDependency
@@ -61,8 +62,41 @@ public:
     void                removeDependency(const PyDbObjectId& dependencyId, bool alsoEraseIt) const;
     void                removeAllDependencies(bool alsoEraseThem)  const;
     boost::python::list getDependentObjects(bool readDependenciesWanted, bool writeDependenciesWanted) const;
-    //bool isOwnedDependency(const AcDbAssocDependency* pDependency) const;
-    //bool isExternalDependency(const AcDbAssocDependency* pDependency) const;
+    bool                isOwnedDependency(const PyDbAssocDependency& pDependency) const;
+    bool                isExternalDependency(const PyDbAssocDependency& pDependency) const;
+    bool                isRelevantDependencyChange(const PyDbAssocDependency& pDependency) const;
+    bool                hasDependencyCachedValue(const PyDbAssocDependency& pDependency) const;
+    bool                areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1,const PyDbAssocDependency& pDependency2) const;
+    bool                areDependenciesEqual(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const;
+    //Acad::ErrorStatus  notification(AcDbAssocNotificationData* pNotifData);
+    void                dependentObjectCloned(const PyDbAssocDependency& pDependency,const PyDbObject& pDbObj,const PyDbObject& pNewObj) const;
+    boost::python::list addMoreObjectsToDeepClone(const PyDbIdMapping& idMap, boost::python::list& additionalObjectsToClone) const;
+    void                postProcessAfterDeepClone(PyDbIdMapping& idMap);
+    void                postProcessAfterDeepCloneCancel(PyDbIdMapping& idMap);
+    bool                isActionEvaluationInProgress() const;
+    //AcDbAssocEvaluationCallback* currentEvaluationCallback() const;
+    void                evaluateDependencies() const;
+    void                evaluateDependency(PyDbAssocDependency& pDependency) const;
+    void                ownedDependencyStatusChanged(PyDbAssocDependency& pOwnedDependency, AcDbAssocStatus previousStatus) const;
+    void                transformActionBy(const AcGeMatrix3d& transform) const;
+    bool                isEqualTo(const PyDbAssocAction& pOtherAction) const;
+    AcDbAssocEvaluationPriority evaluationPriority() const;
+    //void getDependentActionsToEvaluate(AcDbActionsToEvaluateCallback* pActionsToEvaluateCallback) const;
+    //void evaluate(AcDbAssocEvaluationCallback* pEvaluationCallback);
+    PyDbObjectId        objectThatOwnsNetworkInstance() const;
+    void                dragStatus(const AcDb::DragStat status) const;
+    void                removeAllParams(bool alsoEraseThem);
+    int                 paramCount() const;
+    boost::python::list ownedParams() const;
+
+
+    static boost::python::list getActionsDependentOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted);
+
+    static void             removeActionsControllingObject1(const PyDbObjectId& objectToRemoveActionsFrom);
+    static void             removeActionsControllingObject2(const PyDbObjectId& objectToRemoveActionsFrom, int readOnlyDependencyHandling, const PyDbObjectId& objectToRedirectReadOnlyDependenciesTo);
+    static void             markDependentActionsToEvaluate(const PyDbObjectId& actionId);
+    static bool             doesObjectHaveActiveActions(const PyDbObject& pObject);
+
 
     static PyDbObjectId     getActionBody(const PyDbObjectId& actionId);
     static PyRxClass        desc();
