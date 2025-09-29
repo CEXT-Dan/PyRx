@@ -8,9 +8,50 @@
 //AcDbAssocGeomDependency
 //AcDbAssocGeomDependency
 //AcDbAssocNotificationData
-//AcDbAssocEvaluationCallback
+
 
 class PyDbEvalVariant;
+
+//-----------------------------------------------------------------------------------
+//PyDbActionsToEvaluateCallback
+void makePyDbActionsToEvaluateCallbackWrapper();
+
+class PyDbActionsToEvaluateCallback : public AcDbActionsToEvaluateCallback, public boost::python::wrapper<AcDbActionsToEvaluateCallback>
+{
+public:
+    PyDbActionsToEvaluateCallback() = default;
+    virtual ~PyDbActionsToEvaluateCallback() override = default;
+#if defined(_BRXTARGET260)
+    virtual void needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
+#else
+    virtual void needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
+#endif
+    static std::string  className();
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocEvaluationCallback
+void makePyDbAssocEvaluationCallbackWrapper();
+
+class PyDbAssocEvaluationCallback : public AcDbAssocEvaluationCallback, public boost::python::wrapper<PyDbAssocEvaluationCallback>
+{
+public:
+    PyDbAssocEvaluationCallback() = default;
+    virtual ~PyDbAssocEvaluationCallback() override = default;
+
+    virtual AcDbAssocEvaluationMode evaluationMode() const override;
+    virtual void beginActionEvaluation(AcDbAssocAction* pAction) override;
+    virtual void endActionEvaluation(AcDbAssocAction* pAction) override;
+    virtual void setActionEvaluationErrorStatus(AcDbAssocAction* pAction, Acad::ErrorStatus errorStatus, const AcDbObjectId& objectId = AcDbObjectId::kNull, AcDbObject* pObject = NULL, void* pErrorInfo = NULL)  override;
+    virtual void beginActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, bool objectIsGoingToBeUsed, bool objectIsGoingToBeModified, AcDbObject*& pSubstituteObject) override;
+    virtual void endActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, AcDbObject* pObject) override;
+    virtual void allDependentActionsMarkedToEvaluate(AcDbAssocNetwork* /*pNetwork*/) override;
+    virtual AcDbAssocDraggingState draggingState() const override;
+    virtual bool cancelActionEvaluation() override;
+    virtual AcDbEvalContext* getAdditionalData() const override;
+    virtual AcDbAssocTransformationType getTransformationType() const override;
+    static std::string      className();
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbAssocDependency
@@ -68,10 +109,10 @@ public:
     bool                isExternalDependency(const PyDbAssocDependency& pDependency) const;
     bool                isRelevantDependencyChange(const PyDbAssocDependency& pDependency) const;
     bool                hasDependencyCachedValue(const PyDbAssocDependency& pDependency) const;
-    bool                areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1,const PyDbAssocDependency& pDependency2) const;
+    bool                areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const;
     bool                areDependenciesEqual(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const;
     //Acad::ErrorStatus  notification(AcDbAssocNotificationData* pNotifData);
-    void                dependentObjectCloned(const PyDbAssocDependency& pDependency,const PyDbObject& pDbObj,const PyDbObject& pNewObj) const;
+    void                dependentObjectCloned(const PyDbAssocDependency& pDependency, const PyDbObject& pDbObj, const PyDbObject& pNewObj) const;
     boost::python::list addMoreObjectsToDeepClone(const PyDbIdMapping& idMap, boost::python::list& additionalObjectsToClone) const;
     void                postProcessAfterDeepClone(PyDbIdMapping& idMap);
     void                postProcessAfterDeepCloneCancel(PyDbIdMapping& idMap);
@@ -83,8 +124,8 @@ public:
     void                transformActionBy(const AcGeMatrix3d& transform) const;
     bool                isEqualTo(const PyDbAssocAction& pOtherAction) const;
     AcDbAssocEvaluationPriority evaluationPriority() const;
-    //void getDependentActionsToEvaluate(AcDbActionsToEvaluateCallback* pActionsToEvaluateCallback) const;
-    //void evaluate(AcDbAssocEvaluationCallback* pEvaluationCallback);
+    void                getDependentActionsToEvaluate(PyDbActionsToEvaluateCallback& pActionsToEvaluateCallback) const;
+    void                evaluate(PyDbAssocEvaluationCallback& pEvaluationCallback);
     PyDbObjectId        objectThatOwnsNetworkInstance() const;
     void                dragStatus(const AcDb::DragStat status) const;
     void                removeAllParams(bool alsoEraseThem);
