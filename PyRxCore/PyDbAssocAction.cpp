@@ -409,7 +409,7 @@ PyDbObjectId PyDbAssocAction::paramAtName1(const std::string& paramName) const
 
 PyDbObjectId PyDbAssocAction::paramAtName2(const std::string& paramName, int index) const
 {
-    return PyDbObjectId(impObj()->paramAtName(utf8_to_wstr(paramName).c_str(),index));
+    return PyDbObjectId(impObj()->paramAtName(utf8_to_wstr(paramName).c_str(), index));
 }
 
 PyDbObjectId PyDbAssocAction::paramAtIndex(int paramIndex) const
@@ -446,9 +446,88 @@ boost::python::tuple PyDbAssocAction::getValueParam(const std::string& paramName
     AcDbEvalVariant value;
     AcString expression;
     AcString evaluatorId;
-    PyThrowBadEs(impObj()->getValueParam(utf8_to_wstr(paramName).c_str(), value, expression, evaluatorId,idx));
+    PyThrowBadEs(impObj()->getValueParam(utf8_to_wstr(paramName).c_str(), value, expression, evaluatorId, idx));
     PyAutoLockGIL lock;;
     return boost::python::make_tuple(PyDbEvalVariant(value), wstr_to_utf8(expression), wstr_to_utf8(evaluatorId));
+}
+
+boost::python::list PyDbAssocAction::setValueParamArray(const std::string& paramName, const boost::python::list& values, const boost::python::list& expressions, const boost::python::list& evaluatorIds, bool silentMode) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    AcArray<AcDbEvalVariant> acvalues;
+    for (const auto& item : py_list_to_std_vector<PyDbEvalVariant>(values))
+        acvalues.append(*item.impObj());
+    AcArray<AcString> acexpressions;
+    for (const auto& item : py_list_to_std_vector<std::string>(expressions))
+        acexpressions.append(utf8_to_wstr(item).c_str());
+    AcArray<AcString> acevaluatorIds;
+    for (const auto& item : py_list_to_std_vector<std::string>(evaluatorIds))
+        acevaluatorIds.append(utf8_to_wstr(item).c_str());
+    AcArray<AcString> errorMessage;
+    PyThrowBadEs(impObj()->setValueParamArray(utf8_to_wstr(paramName).c_str(), acvalues, acexpressions, acevaluatorIds, errorMessage, silentMode));
+    return AcStringArrayToPyList(errorMessage);
+#endif
+}
+
+std::string PyDbAssocAction::setValueParam(const std::string& paramName, const PyDbEvalVariant& value, const std::string& expression, const std::string& evaluatorId, bool silentMode, int valueIndex) const
+{
+    AcString errorMessage;
+    PyThrowBadEs(impObj()->setValueParam(utf8_to_wstr(paramName).c_str(), *value.impObj(), utf8_to_wstr(expression).c_str(), utf8_to_wstr(evaluatorId).c_str(), errorMessage, silentMode, valueIndex));
+    return wstr_to_utf8(errorMessage);
+}
+
+AcValue::UnitType PyDbAssocAction::valueParamUnitType(const std::string& paramName) const
+{
+    return impObj()->valueParamUnitType(utf8_to_wstr(paramName).c_str());
+}
+
+void PyDbAssocAction::setValueParamUnitType(const std::string& paramName, AcValue::UnitType unitType) const
+{
+    PyThrowBadEs(impObj()->setValueParamUnitType(utf8_to_wstr(paramName).c_str(), unitType));
+}
+
+void PyDbAssocAction::removeValueParam(const std::string& paramName) const
+{
+    PyThrowBadEs(impObj()->removeValueParam(utf8_to_wstr(paramName).c_str()));
+}
+
+boost::python::list PyDbAssocAction::valueParamInputVariables(const std::string& paramName) const
+{
+    AcDbObjectIdArray variableIds;
+    PyThrowBadEs(impObj()->valueParamInputVariables(utf8_to_wstr(paramName).c_str(), variableIds));
+    return ObjectIdArrayToPyList(variableIds);
+}
+
+void PyDbAssocAction::setValueParamControlledObjectDep(const std::string& paramName, const PyDbObjectId& controlledObjectDepId) const
+{
+    PyThrowBadEs(impObj()->setValueParamControlledObjectDep(utf8_to_wstr(paramName).c_str(), controlledObjectDepId.m_id));
+}
+
+void PyDbAssocAction::updateValueParamControlledObject(const std::string& paramName) const
+{
+    PyThrowBadEs(impObj()->updateValueParamControlledObject(utf8_to_wstr(paramName).c_str()));
+}
+
+void PyDbAssocAction::updateValueParamFromControlledObject(const std::string& paramName) const
+{
+    PyThrowBadEs(impObj()->updateValueParamFromControlledObject(utf8_to_wstr(paramName).c_str()));
+}
+
+void PyDbAssocAction::updateAllObjectsControlledByValueParams() const
+{
+    PyThrowBadEs(impObj()->updateAllObjectsControlledByValueParams());
+}
+
+void PyDbAssocAction::transformAllConstantGeometryParams(const AcGeMatrix3d& transform) const
+{
+    PyThrowBadEs(impObj()->transformAllConstantGeometryParams(transform));
+}
+
+void PyDbAssocAction::scaleAllDistanceValueParams(double scaleFactor) const
+{
+    PyThrowBadEs(impObj()->scaleAllDistanceValueParams(scaleFactor));
 }
 
 boost::python::list PyDbAssocAction::getActionsDependentOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted)
