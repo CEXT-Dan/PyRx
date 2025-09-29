@@ -2046,6 +2046,13 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kUnresolvedAssocStatus", AcDbAssocStatus::kUnresolvedAssocStatus)
         .export_values()
         ;
+
+    enum_<AcDbAssocEvaluationPriority>("AssocEvaluationPriority")
+        .value("kIsUpToDateAssocStatus", AcDbAssocEvaluationPriority::kCannotBeEvaluatedAssocEvaluationPriority)
+        .value("kCannotDermineAssocEvaluationPriority", AcDbAssocEvaluationPriority::kCannotDermineAssocEvaluationPriority)
+        .value("kCanBeEvaluatedAssocEvaluationPriority", AcDbAssocEvaluationPriority::kCanBeEvaluatedAssocEvaluationPriority)
+        .export_values()
+        ;
 };
 
 void initPyDbModule()

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyDbAssocAction.h"
+#include "PyDbIdMapping.h"
 
 using namespace boost::python;
 
@@ -55,7 +56,6 @@ PyDbAssocDependency::PyDbAssocDependency(const PyDbObjectId& id)
 PyDbAssocDependency::PyDbAssocDependency(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbAssocDependency(openAcDbObject<AcDbAssocDependency>(id, mode), false)
 {
-
 }
 
 PyDbAssocDependency::PyDbAssocDependency(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
@@ -148,7 +148,6 @@ PyDbAssocAction::PyDbAssocAction(const PyDbObjectId& id)
 PyDbAssocAction::PyDbAssocAction(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbAssocAction(openAcDbObject<AcDbAssocAction>(id, mode), false)
 {
-
 }
 
 PyDbAssocAction::PyDbAssocAction(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
@@ -203,9 +202,8 @@ void PyDbAssocAction::setOwningNetwork(const PyDbObjectId& networkId, bool alsoS
 
 boost::python::list PyDbAssocAction::getDependencies(bool readDependenciesWanted, bool writeDependenciesWanted) const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    PyThrowBadEs(impObj()->getDependencies(readDependenciesWanted, writeDependenciesWanted,ids));
+    PyThrowBadEs(impObj()->getDependencies(readDependenciesWanted, writeDependenciesWanted, ids));
     return ObjectIdArrayToPyList(ids);
 }
 
@@ -233,10 +231,194 @@ void PyDbAssocAction::removeAllDependencies(bool alsoEraseThem) const
 
 boost::python::list PyDbAssocAction::getDependentObjects(bool readDependenciesWanted, bool writeDependenciesWanted) const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     PyThrowBadEs(impObj()->getDependentObjects(readDependenciesWanted, writeDependenciesWanted, ids));
     return ObjectIdArrayToPyList(ids);
+}
+
+bool PyDbAssocAction::isOwnedDependency(const PyDbAssocDependency& pDependency) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isOwnedDependency(pDependency.impObj());
+#endif
+}
+
+bool PyDbAssocAction::isExternalDependency(const PyDbAssocDependency& pDependency) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isExternalDependency(pDependency.impObj());
+#endif
+}
+
+bool PyDbAssocAction::isRelevantDependencyChange(const PyDbAssocDependency& pDependency) const
+{
+    return impObj()->isRelevantDependencyChange(pDependency.impObj());
+}
+
+bool PyDbAssocAction::hasDependencyCachedValue(const PyDbAssocDependency& pDependency) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->hasDependencyCachedValue(pDependency.impObj());
+#endif
+}
+
+bool PyDbAssocAction::areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->areDependenciesOnTheSameThing(pDependency1.impObj(), pDependency2.impObj());
+#endif
+}
+
+bool PyDbAssocAction::areDependenciesEqual(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->areDependenciesEqual(pDependency1.impObj(), pDependency2.impObj());
+#endif
+}
+
+void PyDbAssocAction::dependentObjectCloned(const PyDbAssocDependency& pDependency, const PyDbObject& pDbObj, const PyDbObject& pNewObj) const
+{
+    impObj()->dependentObjectCloned(pDependency.impObj(), pDbObj.impObj(), pNewObj.impObj());
+}
+
+boost::python::list PyDbAssocAction::addMoreObjectsToDeepClone(const PyDbIdMapping& idMap, boost::python::list& additionalObjectsToClone) const
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids = PyListToObjectIdArray(additionalObjectsToClone);
+    PyThrowBadEs(impObj()->addMoreObjectsToDeepClone(*idMap.impObj(), ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyDbAssocAction::postProcessAfterDeepClone(PyDbIdMapping& idMap)
+{
+    PyThrowBadEs(impObj()->postProcessAfterDeepClone(*idMap.impObj()));
+}
+
+void PyDbAssocAction::postProcessAfterDeepCloneCancel(PyDbIdMapping& idMap)
+{
+    PyThrowBadEs(impObj()->postProcessAfterDeepCloneCancel(*idMap.impObj()));
+}
+
+bool PyDbAssocAction::isActionEvaluationInProgress() const
+{
+    return impObj()->isActionEvaluationInProgress();
+}
+
+void PyDbAssocAction::evaluateDependencies() const
+{
+    PyThrowBadEs(impObj()->evaluateDependencies());
+}
+
+void PyDbAssocAction::evaluateDependency(PyDbAssocDependency& pDependency) const
+{
+    impObj()->evaluateDependency(pDependency.impObj());
+}
+
+void PyDbAssocAction::ownedDependencyStatusChanged(PyDbAssocDependency& pOwnedDependency, AcDbAssocStatus previousStatus) const
+{
+    PyThrowBadEs(impObj()->ownedDependencyStatusChanged(pOwnedDependency.impObj(), previousStatus));
+}
+
+void PyDbAssocAction::transformActionBy(const AcGeMatrix3d& transform) const
+{
+    PyThrowBadEs(impObj()->transformActionBy(transform));
+}
+
+bool PyDbAssocAction::isEqualTo(const PyDbAssocAction& pOtherAction) const
+{
+    return impObj()->isEqualTo(pOtherAction.impObj());
+}
+
+AcDbAssocEvaluationPriority PyDbAssocAction::evaluationPriority() const
+{
+    return impObj()->evaluationPriority();
+}
+
+PyDbObjectId PyDbAssocAction::objectThatOwnsNetworkInstance() const
+{
+    return PyDbObjectId(impObj()->objectThatOwnsNetworkInstance());
+}
+
+void PyDbAssocAction::dragStatus(const AcDb::DragStat status) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->dragStatus(status);
+#endif
+}
+
+void PyDbAssocAction::removeAllParams(bool alsoEraseThem)
+{
+    PyThrowBadEs(impObj()->removeAllParams(alsoEraseThem));
+}
+
+int PyDbAssocAction::paramCount() const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->paramCount();
+#endif
+}
+
+boost::python::list PyDbAssocAction::ownedParams() const
+{
+    return ObjectIdArrayToPyList(impObj()->ownedParams());
+}
+
+boost::python::list PyDbAssocAction::getActionsDependentOnObject(const PyDbObject& pObject,bool readDependenciesWanted, bool writeDependenciesWanted)
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(AcDbAssocAction::getActionsDependentOnObject(pObject.impObj(),readDependenciesWanted, writeDependenciesWanted, ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyDbAssocAction::removeActionsControllingObject1(const PyDbObjectId& objectToRemoveActionsFrom)
+{
+#if defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(AcDbAssocAction::removeActionsControllingObject(objectToRemoveActionsFrom.m_id));
+#endif
+}
+
+void PyDbAssocAction::removeActionsControllingObject2(const PyDbObjectId& objectToRemoveActionsFrom, int readOnlyDependencyHandling, const PyDbObjectId& objectToRedirectReadOnlyDependenciesTo)
+{
+#if defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(AcDbAssocAction::removeActionsControllingObject(objectToRemoveActionsFrom.m_id, readOnlyDependencyHandling, objectToRedirectReadOnlyDependenciesTo.m_id));
+#endif
+}
+
+void PyDbAssocAction::markDependentActionsToEvaluate(const PyDbObjectId& actionId)
+{
+#if defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(AcDbAssocAction::markDependentActionsToEvaluate(actionId.m_id));
+#endif
+}
+
+bool PyDbAssocAction::doesObjectHaveActiveActions(const PyDbObject& pObject)
+{
+#if defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    return AcDbAssocAction::doesObjectHaveActiveActions(pObject.impObj());
+#endif
 }
 
 PyDbObjectId PyDbAssocAction::getActionBody(const PyDbObjectId& actionId)
