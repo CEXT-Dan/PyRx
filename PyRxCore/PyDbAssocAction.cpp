@@ -6,6 +6,96 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
+//PyDbActionsToEvaluateCallback
+void makePyDbActionsToEvaluateCallbackWrapper()
+{
+
+}
+
+#if defined(_BRXTARGET260)
+void PyDbActionsToEvaluateCallback::needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso /*= true*/)
+{
+}
+#else
+void PyDbActionsToEvaluateCallback::needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso /*= true*/)
+{
+}
+#endif
+
+std::string PyDbActionsToEvaluateCallback::className()
+{
+    return "AcDbActionsToEvaluateCallback";
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocEvaluationCallback
+void makePyDbAssocEvaluationCallbackWrapper()
+{
+
+}
+
+AcDbAssocEvaluationMode PyDbAssocEvaluationCallback::evaluationMode() const
+{
+    return AcDbAssocEvaluationCallback::evaluationMode();
+}
+
+
+void PyDbAssocEvaluationCallback::beginActionEvaluation(AcDbAssocAction* pAction)
+{
+
+}
+
+void PyDbAssocEvaluationCallback::endActionEvaluation(AcDbAssocAction* pAction)
+{
+
+}
+
+void PyDbAssocEvaluationCallback::setActionEvaluationErrorStatus(AcDbAssocAction* pAction, Acad::ErrorStatus errorStatus, const AcDbObjectId& objectId /*= AcDbObjectId::kNull*/, AcDbObject* pObject /*= NULL*/, void* pErrorInfo /*= NULL*/)
+{
+
+}
+
+void PyDbAssocEvaluationCallback::beginActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, bool objectIsGoingToBeUsed, bool objectIsGoingToBeModified, AcDbObject*& pSubstituteObject)
+{
+
+}
+
+void PyDbAssocEvaluationCallback::endActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, AcDbObject* pObject)
+{
+
+}
+
+void PyDbAssocEvaluationCallback::allDependentActionsMarkedToEvaluate(AcDbAssocNetwork* /*pNetwork*/)
+{
+
+}
+
+AcDbAssocDraggingState PyDbAssocEvaluationCallback::draggingState() const
+{
+    return AcDbAssocEvaluationCallback::draggingState();
+}
+
+bool PyDbAssocEvaluationCallback::cancelActionEvaluation()
+{
+    return AcDbAssocEvaluationCallback::cancelActionEvaluation();
+}
+
+AcDbEvalContext* PyDbAssocEvaluationCallback::getAdditionalData() const
+{
+    return AcDbAssocEvaluationCallback::getAdditionalData();
+}
+
+AcDbAssocTransformationType PyDbAssocEvaluationCallback::getTransformationType() const
+{
+    return AcDbAssocEvaluationCallback::getTransformationType();
+}
+
+std::string PyDbAssocEvaluationCallback::className()
+{
+    return "AcDbAssocEvaluationCallback";
+}
+
+//-----------------------------------------------------------------------------------
 //PyDbAssocDependency
 void makePyDbAssocDependencyWrapper()
 {
@@ -343,6 +433,16 @@ bool PyDbAssocAction::isEqualTo(const PyDbAssocAction& pOtherAction) const
 AcDbAssocEvaluationPriority PyDbAssocAction::evaluationPriority() const
 {
     return impObj()->evaluationPriority();
+}
+
+void PyDbAssocAction::getDependentActionsToEvaluate(PyDbActionsToEvaluateCallback& pActionsToEvaluateCallback) const
+{
+    impObj()->getDependentActionsToEvaluate(std::addressof(pActionsToEvaluateCallback));
+}
+
+void PyDbAssocAction::evaluate(PyDbAssocEvaluationCallback& pEvaluationCallback)
+{
+    impObj()->evaluate(std::addressof(pEvaluationCallback));
 }
 
 PyDbObjectId PyDbAssocAction::objectThatOwnsNetworkInstance() const
