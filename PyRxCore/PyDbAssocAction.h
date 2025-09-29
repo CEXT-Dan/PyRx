@@ -10,6 +10,8 @@
 //AcDbAssocNotificationData
 //AcDbAssocEvaluationCallback
 
+class PyDbEvalVariant;
+
 //-----------------------------------------------------------------------------------
 //PyDbAssocDependency
 void makePyDbAssocDependencyWrapper();
@@ -98,8 +100,18 @@ public:
     boost::python::list ownedValueParamNames() const;
     boost::python::tuple getValueParamArray(const std::string& paramName) const;
     boost::python::tuple getValueParam(const std::string& paramName, int idx) const;
-
-
+    boost::python::list setValueParamArray(const std::string& paramName, const boost::python::list& values, const boost::python::list& expressions, const boost::python::list& evaluatorIds, bool silentMode) const;
+    std::string         setValueParam(const std::string& paramName, const PyDbEvalVariant& value, const std::string& expression, const std::string& evaluatorId, bool silentMode, int valueIndex) const;
+    AcValue::UnitType   valueParamUnitType(const std::string& paramName) const;
+    void                setValueParamUnitType(const std::string& paramName, AcValue::UnitType unitType) const;
+    void                removeValueParam(const std::string& paramName) const;
+    boost::python::list valueParamInputVariables(const std::string& paramName) const;
+    void                setValueParamControlledObjectDep(const std::string& paramName, const PyDbObjectId& controlledObjectDepId) const;
+    void                updateValueParamControlledObject(const std::string& paramName) const;
+    void                updateValueParamFromControlledObject(const std::string& paramName) const;
+    void                updateAllObjectsControlledByValueParams() const;
+    void                transformAllConstantGeometryParams(const AcGeMatrix3d& transform) const;
+    void                scaleAllDistanceValueParams(double scaleFactor) const;
 
     static boost::python::list getActionsDependentOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted);
     static void             removeActionsControllingObject1(const PyDbObjectId& objectToRemoveActionsFrom);
