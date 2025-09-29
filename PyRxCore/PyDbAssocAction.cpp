@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbAssocAction.h"
 #include "PyDbIdMapping.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -377,11 +378,84 @@ boost::python::list PyDbAssocAction::ownedParams() const
     return ObjectIdArrayToPyList(impObj()->ownedParams());
 }
 
-boost::python::list PyDbAssocAction::getActionsDependentOnObject(const PyDbObject& pObject,bool readDependenciesWanted, bool writeDependenciesWanted)
+int PyDbAssocAction::addParam1(const PyDbObjectId& paramId) const
+{
+    int idx = -1;
+    PyThrowBadEs(impObj()->addParam(paramId.m_id, idx));
+    return idx;
+}
+
+int PyDbAssocAction::addParam2(const std::string& paramName, const PyRxClass& pParamClass, PyDbObjectId& paramId) const
+{
+    int idx = -1;
+    PyThrowBadEs(impObj()->addParam(utf8_to_wstr(paramName).c_str(), pParamClass.impObj(), paramId.m_id, idx));
+    return idx;
+}
+
+void PyDbAssocAction::removeParam(const PyDbObjectId& paramId, bool alsoEraseIt) const
+{
+    PyThrowBadEs(impObj()->removeParam(paramId.m_id, alsoEraseIt));
+}
+
+boost::python::list PyDbAssocAction::paramsAtName(const std::string& paramName) const
+{
+    return ObjectIdArrayToPyList(impObj()->paramsAtName(utf8_to_wstr(paramName).c_str()));
+}
+
+PyDbObjectId PyDbAssocAction::paramAtName1(const std::string& paramName) const
+{
+    return PyDbObjectId(impObj()->paramAtName(utf8_to_wstr(paramName).c_str()));
+}
+
+PyDbObjectId PyDbAssocAction::paramAtName2(const std::string& paramName, int index) const
+{
+    return PyDbObjectId(impObj()->paramAtName(utf8_to_wstr(paramName).c_str(),index));
+}
+
+PyDbObjectId PyDbAssocAction::paramAtIndex(int paramIndex) const
+{
+    return PyDbObjectId(impObj()->paramAtIndex(paramIndex));
+}
+
+boost::python::list PyDbAssocAction::ownedValueParamNames() const
+{
+    AcArray<AcString> paramNames;
+    impObj()->ownedValueParamNames(paramNames);
+    return AcStringArrayToPyList(paramNames);
+}
+
+boost::python::tuple PyDbAssocAction::getValueParamArray(const std::string& paramName) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    AcArray<AcDbEvalVariant> values;
+    AcArray<AcString> expressions;
+    AcArray<AcString> evaluatorIds;
+    PyThrowBadEs(impObj()->getValueParamArray(utf8_to_wstr(paramName).c_str(), values, expressions, evaluatorIds));
+    PyAutoLockGIL lock;
+    boost::python::list pyvalues;
+    for (const auto& item : values)
+        pyvalues.append(PyDbEvalVariant(item));
+    return boost::python::make_tuple(pyvalues, AcStringArrayToPyList(expressions), AcStringArrayToPyList(evaluatorIds));
+#endif
+}
+
+boost::python::tuple PyDbAssocAction::getValueParam(const std::string& paramName, int idx) const
+{
+    AcDbEvalVariant value;
+    AcString expression;
+    AcString evaluatorId;
+    PyThrowBadEs(impObj()->getValueParam(utf8_to_wstr(paramName).c_str(), value, expression, evaluatorId,idx));
+    PyAutoLockGIL lock;;
+    return boost::python::make_tuple(PyDbEvalVariant(value), wstr_to_utf8(expression), wstr_to_utf8(evaluatorId));
+}
+
+boost::python::list PyDbAssocAction::getActionsDependentOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted)
 {
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    PyThrowBadEs(AcDbAssocAction::getActionsDependentOnObject(pObject.impObj(),readDependenciesWanted, writeDependenciesWanted, ids));
+    PyThrowBadEs(AcDbAssocAction::getActionsDependentOnObject(pObject.impObj(), readDependenciesWanted, writeDependenciesWanted, ids));
     return ObjectIdArrayToPyList(ids);
 }
 
