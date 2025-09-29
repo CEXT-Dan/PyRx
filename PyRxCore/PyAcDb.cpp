@@ -52,6 +52,7 @@
 #include "PyDbGraph.h"
 #include "PyGeLinearEnt2d.h"
 #include "PyGeLinearEnt3d.h"
+#include "PyDbAssocAction.h"
 
 
 using namespace boost::python;
@@ -2031,6 +2032,18 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kUnitDecisec", AcDbGeoCoordinateSystem::Unit::kUnitDecisec)
         .value("kUnitCentisec", AcDbGeoCoordinateSystem::Unit::kUnitCentisec)
         .value("kUnitMillisec", AcDbGeoCoordinateSystem::Unit::kUnitMillisec)
+        .export_values()
+        ;
+
+    enum_<AcDbAssocStatus>("AssocStatus")
+        .value("kIsUpToDateAssocStatus", AcDbAssocStatus::kIsUpToDateAssocStatus)
+        .value("kChangedDirectlyAssocStatus", AcDbAssocStatus::kChangedDirectlyAssocStatus)
+        .value("kChangedTransitivelyAssocStatus", AcDbAssocStatus::kChangedTransitivelyAssocStatus)
+        .value("kChangedNoDifferenceAssocStatus", AcDbAssocStatus::kChangedNoDifferenceAssocStatus)
+        .value("kFailedToEvaluateAssocStatus", AcDbAssocStatus::kFailedToEvaluateAssocStatus)
+        .value("kErasedAssocStatus", AcDbAssocStatus::kErasedAssocStatus)
+        .value("kSuppressedAssocStatus", AcDbAssocStatus::kSuppressedAssocStatus)
+        .value("kUnresolvedAssocStatus", AcDbAssocStatus::kUnresolvedAssocStatus)
         .export_values()
         ;
 };
