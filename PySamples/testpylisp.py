@@ -1,4 +1,4 @@
-from pyrx import Ed, Ge, Rx
+from pyrx import Ap, Ed, Ge, Rx
 
 
 def OnPyInitApp():
@@ -15,6 +15,14 @@ def OnPyLoadDwg():
 
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
+
+# (mylispfunc '("hello world" 1 2 3 4 (1 10 100)))
+@Ap.LispFunction()
+def mylispfunc(args):
+    try:
+        return args
+    except Exception as err:
+        print(err)
 
 
 # (pylisp)
