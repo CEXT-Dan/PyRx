@@ -27,7 +27,13 @@ public:
 #else
     virtual void needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
 #endif
+
+    void needsToEvaluateWr(const PyDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso);
+
     static std::string  className();
+
+public:
+    bool reg_needsToEvaluate = true;
 };
 
 //-----------------------------------------------------------------------------------
@@ -55,7 +61,6 @@ public:
     //
     void beginActionEvaluationWr(const PyDbAssocAction& pAction);
     void endActionEvaluationWr(const PyDbAssocAction& pAction);
-
 
     static std::string      className();
 
