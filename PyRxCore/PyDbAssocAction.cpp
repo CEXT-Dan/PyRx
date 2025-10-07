@@ -9,18 +9,50 @@ using namespace boost::python;
 //PyDbActionsToEvaluateCallback
 void makePyDbActionsToEvaluateCallbackWrapper()
 {
-
+    PyDocString DS("PyDb.ActionsToEvaluateCallback");
+    class_<PyDbActionsToEvaluateCallback>("ActionsToEvaluateCallback")
+        .def(init<>())
+        .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluate, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool"}))
+        .def("className", &PyDbActionsToEvaluateCallback::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 #if defined(_BRXTARGET260)
 void PyDbActionsToEvaluateCallback::needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso /*= true*/)
 {
+    if (reg_needsToEvaluate)
+    {
+        PyDbObjectId pyid(objectId);
+        needsToEvaluateWr(pyid, newStatus, ownedActionsAlso);
+    }
 }
 #else
 void PyDbActionsToEvaluateCallback::needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso /*= true*/)
 {
+    if (reg_needsToEvaluate)
+    {
+        PyDbObjectId pyid(objectId);
+        needsToEvaluateWr(pyid, newStatus, ownedActionsAlso);
+    }
 }
 #endif
+
+void PyDbActionsToEvaluateCallback::needsToEvaluateWr(const PyDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("needsToEvaluate"))
+            f(objectId, newStatus, ownedActionsAlso);
+        else
+            reg_needsToEvaluate = false;
+    }
+    catch (...)
+    {
+        reg_needsToEvaluate = false;
+        printExceptionMsg();
+    }
+}
 
 std::string PyDbActionsToEvaluateCallback::className()
 {
@@ -31,14 +63,19 @@ std::string PyDbActionsToEvaluateCallback::className()
 //PyDbAssocEvaluationCallback
 void makePyDbAssocEvaluationCallbackWrapper()
 {
-
+    PyDocString DS("PyDb.AssocEvaluationCallback");
+    class_<PyDbAssocEvaluationCallback>("AssocEvaluationCallback")
+        .def(init<>())
+        .def("beginActionEvaluation", &PyDbAssocEvaluationCallback::beginActionEvaluation, DS.ARGS({ "action: PyDb.AssocAction" }))
+        .def("endActionEvaluation", &PyDbAssocEvaluationCallback::endActionEvaluation, DS.ARGS({ "action: PyDb.AssocAction" }))
+        .def("className", &PyDbAssocEvaluationCallback::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 AcDbAssocEvaluationMode PyDbAssocEvaluationCallback::evaluationMode() const
 {
     return AcDbAssocEvaluationCallback::evaluationMode();
 }
-
 
 void PyDbAssocEvaluationCallback::beginActionEvaluation(AcDbAssocAction* pAction)
 {
