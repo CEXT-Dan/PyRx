@@ -11,6 +11,7 @@ constexpr int leafSize = 12;
 struct PyGePoint2dTreeAdapter
 {
     PyGePoint2dTreeAdapter(const PyGePoint2dArray& points);
+    PyGePoint2dTreeAdapter(PyGePoint2dArray&& points);
     ~PyGePoint2dTreeAdapter() = default;
     size_t kdtree_get_point_count() const;
     double kdtree_get_pt(const size_t idx, const size_t dim) const;
@@ -46,6 +47,11 @@ public:
 //PyGePoint2dTreeAdapter
 PyGePoint2dTreeAdapter::PyGePoint2dTreeAdapter(const PyGePoint2dArray& points)
     : mpoints(points)
+{
+}
+
+PyGePoint2dTreeAdapter::PyGePoint2dTreeAdapter(PyGePoint2dArray&& points)
+    : mpoints(std::move(points))
 {
 }
 
@@ -87,7 +93,7 @@ PyGePoint2dTree::PyGePoint2dTree(const PyGePoint2dArray& points)
 }
 
 PyGePoint2dTree::PyGePoint2dTree(const boost::python::list& points)
-    : adapter(py_list_to_std_vector<AcGePoint2d>(points))
+    : adapter(std::move(py_list_to_std_vector<AcGePoint2d>(points)))
 {
     create();
 }
@@ -146,6 +152,7 @@ std::string PyGePoint2dTree::className()
 struct PyGePoint3dTreeAdapter
 {
     PyGePoint3dTreeAdapter(const PyGePoint3dArray& points);
+    PyGePoint3dTreeAdapter(PyGePoint3dArray&& points);
     ~PyGePoint3dTreeAdapter() = default;
     size_t kdtree_get_point_count() const;
     double kdtree_get_pt(const size_t idx, const size_t dim) const;
@@ -166,7 +173,7 @@ class PyGePoint3dTree
 
 public:
     PyGePoint3dTree(const PyGePoint3dArray& points);
-    PyGePoint3dTree(const  boost::python::list& points);
+    PyGePoint3dTree(const boost::python::list& points);
     ~PyGePoint3dTree() = default;
     void                 create();
     boost::python::tuple radiusSearch(const AcGePoint3d& point, double radius) const;
@@ -182,6 +189,11 @@ public:
 //PyGePoint3dTreeAdapter
 PyGePoint3dTreeAdapter::PyGePoint3dTreeAdapter(const PyGePoint3dArray& points)
     : mpoints(points)
+{
+}
+
+PyGePoint3dTreeAdapter::PyGePoint3dTreeAdapter(PyGePoint3dArray&& points)
+    : mpoints(std::move(points))
 {
 }
 
@@ -225,7 +237,7 @@ PyGePoint3dTree::PyGePoint3dTree(const PyGePoint3dArray& points)
 }
 
 PyGePoint3dTree::PyGePoint3dTree(const boost::python::list& points)
-    : adapter(py_list_to_std_vector<AcGePoint3d>(points))
+    : adapter(std::move(py_list_to_std_vector<AcGePoint3d>(points)))
 {
     create();
 }
