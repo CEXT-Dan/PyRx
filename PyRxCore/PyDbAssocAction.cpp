@@ -42,12 +42,20 @@ AcDbAssocEvaluationMode PyDbAssocEvaluationCallback::evaluationMode() const
 
 void PyDbAssocEvaluationCallback::beginActionEvaluation(AcDbAssocAction* pAction)
 {
-
+    if (reg_beginActionEvaluation)
+    {
+        PyDbAssocAction pyAction(pAction, false);
+        beginActionEvaluationWr(pyAction);
+    }
 }
 
 void PyDbAssocEvaluationCallback::endActionEvaluation(AcDbAssocAction* pAction)
 {
-
+    if (reg_endActionEvaluation)
+    {
+        PyDbAssocAction pyAction(pAction, false);
+        endActionEvaluationWr(pyAction);
+    }
 }
 
 void PyDbAssocEvaluationCallback::setActionEvaluationErrorStatus(AcDbAssocAction* pAction, Acad::ErrorStatus errorStatus, const AcDbObjectId& objectId /*= AcDbObjectId::kNull*/, AcDbObject* pObject /*= NULL*/, void* pErrorInfo /*= NULL*/)
@@ -88,6 +96,40 @@ AcDbEvalContext* PyDbAssocEvaluationCallback::getAdditionalData() const
 AcDbAssocTransformationType PyDbAssocEvaluationCallback::getTransformationType() const
 {
     return AcDbAssocEvaluationCallback::getTransformationType();
+}
+
+void PyDbAssocEvaluationCallback::beginActionEvaluationWr(const PyDbAssocAction& pAction)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("beginActionEvaluation"))
+            f(pAction);
+        else
+            reg_beginActionEvaluation = false;
+    }
+    catch (...)
+    {
+        reg_beginActionEvaluation = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbAssocEvaluationCallback::endActionEvaluationWr(const PyDbAssocAction& pAction)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("endActionEvaluation"))
+            f(pAction);
+        else
+            reg_endActionEvaluation = false;
+    }
+    catch (...)
+    {
+        reg_endActionEvaluation = false;
+        printExceptionMsg();
+    }
 }
 
 std::string PyDbAssocEvaluationCallback::className()

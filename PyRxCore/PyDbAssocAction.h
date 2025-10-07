@@ -11,6 +11,7 @@
 
 
 class PyDbEvalVariant;
+class PyDbAssocAction;
 
 //-----------------------------------------------------------------------------------
 //PyDbActionsToEvaluateCallback
@@ -50,7 +51,17 @@ public:
     virtual bool cancelActionEvaluation() override;
     virtual AcDbEvalContext* getAdditionalData() const override;
     virtual AcDbAssocTransformationType getTransformationType() const override;
+
+    //
+    void beginActionEvaluationWr(const PyDbAssocAction& pAction);
+    void endActionEvaluationWr(const PyDbAssocAction& pAction);
+
+
     static std::string      className();
+
+public:
+    bool reg_beginActionEvaluation = true;
+    bool reg_endActionEvaluation = true;
 };
 
 //-----------------------------------------------------------------------------------
