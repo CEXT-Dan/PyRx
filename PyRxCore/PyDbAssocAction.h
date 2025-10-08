@@ -17,11 +17,12 @@ class PyDbAssocAction;
 //PyDbActionsToEvaluateCallback
 void makePyDbActionsToEvaluateCallbackWrapper();
 
-class PyDbActionsToEvaluateCallback : public AcDbActionsToEvaluateCallback, public boost::python::wrapper<AcDbActionsToEvaluateCallback>
+class PyDbActionsToEvaluateCallback : public AcDbActionsToEvaluateCallback, public boost::python::wrapper<PyDbActionsToEvaluateCallback>
 {
 public:
     PyDbActionsToEvaluateCallback() = default;
     virtual ~PyDbActionsToEvaluateCallback() override = default;
+
 #if defined(_BRXTARGET260)
     virtual void needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
 #else
