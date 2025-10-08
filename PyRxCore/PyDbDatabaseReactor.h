@@ -23,6 +23,7 @@ public:
     virtual void headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, Adesk::Boolean bSuccess) override;
     virtual void proxyResurrectionCompleted(const AcDbDatabase* pDb, const ACHAR* appname, AcDbObjectIdArray& objects) override;
     virtual void goodbye(const AcDbDatabase* pDb) override;
+
 public:
     PyDbDatabaseReactor* impObj(const std::source_location& src = std::source_location::current()) const;
     PyDbDatabaseReactor* m_backPtr = nullptr;
@@ -33,16 +34,17 @@ class PyDbDatabaseReactor : public PyRxObject, public boost::python::wrapper<PyD
 public:
     PyDbDatabaseReactor();
     virtual ~PyDbDatabaseReactor() override = default;
-    virtual void objectAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
-    virtual void objectUnAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
-    virtual void objectReAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
-    virtual void objectOpenedForModify(const PyDbDatabase& pDb, const PyDbObject& pObj);
-    virtual void objectModified(const PyDbDatabase& pDb, const PyDbObject& pObj);
-    virtual void objectErased(const PyDbDatabase& pDb, const PyDbObject& pObj, bool bErased);
-    virtual void headerSysVarWillChange(const PyDbDatabase& pDb, const std::string& name);
-    virtual void headerSysVarChanged(const PyDbDatabase& pDb, const std::string& name, bool bSuccess);
-    virtual void proxyResurrectionCompleted(const PyDbDatabase& pDb, const std::string& appname, boost::python::list& objects);
-    virtual void goodbye(const PyDbDatabase& pDb);
+    void objectAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
+    void objectUnAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
+    void objectReAppended(const PyDbDatabase& pDb, const PyDbObject& pObj);
+    void objectOpenedForModify(const PyDbDatabase& pDb, const PyDbObject& pObj);
+    void objectModified(const PyDbDatabase& pDb, const PyDbObject& pObj);
+    void objectErased(const PyDbDatabase& pDb, const PyDbObject& pObj, bool bErased);
+    void headerSysVarWillChange(const PyDbDatabase& pDb, const std::string& name);
+    void headerSysVarChanged(const PyDbDatabase& pDb, const std::string& name, bool bSuccess);
+    void proxyResurrectionCompleted(const PyDbDatabase& pDb, const std::string& appname, boost::python::list& objects);
+    void goodbye(const PyDbDatabase& pDb);
+
 public:
     static PyRxClass    desc();
     static std::string  className();
