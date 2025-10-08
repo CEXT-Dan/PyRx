@@ -12,7 +12,7 @@ void makePyDbActionsToEvaluateCallbackWrapper()
     PyDocString DS("PyDb.ActionsToEvaluateCallback");
     class_<PyDbActionsToEvaluateCallback>("ActionsToEvaluateCallback")
         .def(init<>())
-        .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluate, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool"}))
+        .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluateWr, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool"}))
         .def("className", &PyDbActionsToEvaluateCallback::className, DS.SARGS()).staticmethod("className")
         ;
 }
