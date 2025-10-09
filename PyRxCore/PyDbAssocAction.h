@@ -1,6 +1,9 @@
 #pragma once
 
 #pragma pack (push, 8)
+
+#ifdef PYRX_IN_PROGRESS
+
 #include "PyDbObject.h"
 #include "AcDbAssocAction.h"
 #include "AcDbAssocDependency.h"
@@ -22,15 +25,14 @@ class PyDbActionsToEvaluateCallback : public AcDbActionsToEvaluateCallback, publ
 public:
     PyDbActionsToEvaluateCallback() = default;
     virtual ~PyDbActionsToEvaluateCallback() override = default;
-
 #if defined(_BRXTARGET260)
     virtual void needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
 #else
     virtual void needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
 #endif
-
     void needsToEvaluateWr(const PyDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso);
 
+public:
     static std::string  className();
 
 public:
@@ -185,5 +187,6 @@ public:
     AcDbAssocAction* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#endif //PYRX_IN_PROGRESS
 
 #pragma pack (pop)

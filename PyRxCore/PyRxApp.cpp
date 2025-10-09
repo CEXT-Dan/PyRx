@@ -50,7 +50,6 @@ bool WxRxApp::OnInit()
     wxTheApp->SetExitOnFrameDelete(false);
     if (Init_wxPython() == false)
         return false;
-    wxTheApp->SetExitOnFrameDelete(false);
     {
         // Hold a ref so wxPython wx.App.Get() returns our app 
         PyAutoLockGIL lock;

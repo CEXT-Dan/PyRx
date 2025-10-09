@@ -2035,6 +2035,7 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
+#ifdef PYRX_IN_PROGRESS
     enum_<AcDbAssocStatus>("AssocStatus")
         .value("kIsUpToDateAssocStatus", AcDbAssocStatus::kIsUpToDateAssocStatus)
         .value("kChangedDirectlyAssocStatus", AcDbAssocStatus::kChangedDirectlyAssocStatus)
@@ -2089,6 +2090,8 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kMove", AcDbAssocTransformationType::kMove)
         .export_values()
         ;
+#endif
+
 };
 
 void initPyDbModule()
