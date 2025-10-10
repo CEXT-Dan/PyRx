@@ -2,7 +2,9 @@
 
 #pragma pack (push, 8)
 
-#ifdef PYRX_IN_PROGRESS
+//#define PYRX_CONSTRAINTS_API
+
+#ifdef PYRX_CONSTRAINTS_API
 
 #include "PyDbObject.h"
 #include "AcDbAssocAction.h"
@@ -11,7 +13,6 @@
 //AcDbAssocGeomDependency
 //AcDbAssocGeomDependency
 //AcDbAssocNotificationData
-
 
 class PyDbEvalVariant;
 class PyDbAssocAction;
@@ -187,6 +188,6 @@ public:
     AcDbAssocAction* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-#endif //PYRX_IN_PROGRESS
+#endif //PYRX_CONSTRAINTS_API
 
 #pragma pack (pop)

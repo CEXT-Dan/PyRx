@@ -33,6 +33,7 @@
 #include "PyRxAppSettings.h"
 #include "PyAcRx.h"
 #include "acedCmdNF.h"
+#include "AcDbAssocAction.h"
 
 //for testing
 #ifdef PYRXDEBUG
