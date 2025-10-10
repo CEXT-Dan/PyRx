@@ -35,6 +35,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
+// TODO: support wxWidgets with dark mode
 #ifdef WXWIN33
     resbuf rb;
     const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
@@ -61,6 +62,8 @@ bool WxRxApp::OnInit()
 int WxRxApp::OnExit()
 {
 #ifdef NEVER
+    // GRX's main window is dead in On_kUnloadAppMsg
+    // call it On_kQuitMsg
     auto top = wxTheApp->GetTopWindow();
     if (top != nullptr)
         top->DissociateHandle();

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#ifdef PYRX_IN_PROGRESS
+#ifdef PYRX_CONSTRAINTS_API
 
 #include "PyDbAssocAction.h"
 #include "PyDbIdMapping.h"
@@ -788,4 +788,4 @@ AcDbAssocAction* PyDbAssocAction::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcDbAssocAction*>(m_pyImp.get());
 }
-#endif //PYRX_IN_PROGRESS
+#endif //PYRX_CONSTRAINTS_API
