@@ -3,6 +3,8 @@
 #include "PyLispService.h"
 #include "PyRxContainers.h"
 
+//#define PYRX_CLEAN_EXIT
+
 enum class PyRxTestFlags : __int64
 {
     kPyTfNone = 0,
