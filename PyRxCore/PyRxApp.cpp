@@ -35,7 +35,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
-// TODO: support wxWidgets with dark mode
+    // TODO: support wxWidgets with dark mode
 #ifdef WXWIN33
     resbuf rb;
     const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
@@ -61,7 +61,7 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
-#ifdef NEVER
+#ifdef PYRX_CLEAN_EXIT
     // GRX's main window is dead in On_kUnloadAppMsg
     // call it On_kQuitMsg
     auto top = wxTheApp->GetTopWindow();
@@ -171,18 +171,20 @@ static bool initWxApp()
 
 static bool uninitWxApp()
 {
-// Issue, if the user has a global python variable, then Py_FinalizeEx barfs.
-// Assume this is always the case. Since PyRx is locked, just let it leak into the process
-// ARX, BRX, ZRX have a clean call stack on exit.
-// GRX has an access violation long after PyRx is unloaded
-#ifdef NEVER
+    // Issue, if the user has a global python variable, then Py_FinalizeEx barfs.
+    // Assume this is always the case. Since PyRx is locked, just let it leak into the process
+    // ARX, BRX, ZRX have a clean call stack on exit.
+    // GRX has an access violation long after PyRx is unloaded
+#ifdef PYRX_CLEAN_EXIT
     PyGILState_Ensure();
     Py_FinalizeEx();
     wxEntryCleanup();
     PyAutoLockGIL::canLock = false;
 #endif
 #ifdef GRXAPP
+#ifndef PYRX_CLEAN_EXIT
     wxExit();//Issue [#422]
+#endif
 #endif
     return true;
 }
