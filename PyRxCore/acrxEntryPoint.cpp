@@ -435,78 +435,9 @@ public:
         return std::make_tuple(es, id);
     }
 
-    static size_t foo(const AcDbObjectIdArray& ids)
-    {
-        size_t err = 0;
-        for (auto id : ids)
-        {
-            AcDbEntityPointer pEnt(id);
-            if (pEnt.openStatus() == eOk)
-            {
-                AcString layer = pEnt->layer();
-                if (layer.isEmpty())
-                    err++;
-                //simulate work
-                std::this_thread::sleep_for(std::chrono::nanoseconds(5));
-            }
-            else
-            {
-                err++;
-            }
-        }
-        return err;
-    }
-
-    static std::vector<std::filesystem::path> listFilesInPath(const AcString& spath, const AcString& ext)
-    {
-        std::error_code ec;
-        std::vector<std::filesystem::path> result;
-        for (const auto& entry : std::filesystem::directory_iterator((const TCHAR*)spath, std::filesystem::directory_options::skip_permission_denied, ec))
-        {
-            if (!ec)
-            {
-                const auto& epath = entry.path();
-                if (!epath.has_extension())
-                    continue;
-                if (ext.compareNoCase(epath.extension().c_str()) == 0)
-                    result.emplace_back(epath);
-            }
-        }
-        return result;
-    }
-
     static void AcRxPyApp_idoit(void)
     {
-        PerfTimer timer(__FUNCTIONW__);
-        const auto files = listFilesInPath(_T("E:\\TEMP\\parse"), _T(".dwg"));
-        std::map<std::filesystem::path, std::unique_ptr<AcDbDatabase>> dbm;
-        for (const auto& file : files)
-        {
-            dbm.insert({ file, std::unique_ptr<AcDbDatabase>(new AcDbDatabase(false,true))});
-        }
-#if defined(_ZRXTARGET)
-        std::for_each(std::execution::par, files.begin(), files.end(), [&](const std::filesystem::path& _path)
-#else
-        std::for_each(std::execution::seq, files.begin(), files.end(), [&](const std::filesystem::path& _path)
-#endif
-            {
-                const auto& db = dbm.at(_path);
-                db->readDwgFile(_path.c_str());
-                db->closeInput(true);
-                AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(db.get()));
-                const auto [iteres, iter] = makeBlockTableRecordIterator(*model);
 
-                AcDbObjectId id;
-                AcDbObjectIdArray ids;
-                for (iter->start(); !iter->done(); iter->step())
-                {
-                    if (iter->getEntityId(id) == eOk)
-                        ids.append(id);
-                }
-                foo(ids);
-            });
-
-        timer.end(_T(""));
     }
 #endif
 };
