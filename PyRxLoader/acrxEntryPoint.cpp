@@ -394,7 +394,7 @@ public:
 
     static void PyRxLoader_loader(void)
     {
-#if defined(_BRXTARGET) && _BRXTARGET == 260
+#ifdef NEVER
         CString ver = _T("26.1.3.0");
         if (!checkFileVersionInfo(ver))
         {
