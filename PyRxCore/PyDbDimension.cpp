@@ -401,7 +401,7 @@ double PyDbDimension::measurement() const
 
 std::string PyDbDimension::formatMeasurement1(double measurement) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -412,7 +412,7 @@ std::string PyDbDimension::formatMeasurement1(double measurement) const
 
 std::string PyDbDimension::formatMeasurement2(double measurement, const std::string& dimensionText) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -533,7 +533,7 @@ AcGeMatrix3d PyDbDimension::blockTransform() const
 
 bool PyDbDimension::inspection() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->inspection();
@@ -542,7 +542,7 @@ bool PyDbDimension::inspection() const
 
 void PyDbDimension::setInspection(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInspection(val));
@@ -551,7 +551,7 @@ void PyDbDimension::setInspection(bool val) const
 
 int PyDbDimension::inspectionFrame() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->inspectionFrame();
@@ -560,7 +560,7 @@ int PyDbDimension::inspectionFrame() const
 
 void PyDbDimension::setInspectionFrame(int frame) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInspectionFrame(frame));
@@ -569,7 +569,7 @@ void PyDbDimension::setInspectionFrame(int frame) const
 
 const std::string PyDbDimension::inspectionLabel() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->inspectionLabel());
@@ -578,7 +578,7 @@ const std::string PyDbDimension::inspectionLabel() const
 
 void PyDbDimension::setInspectionLabel(const std::string& label) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInspectionLabel(utf8_to_wstr(label).c_str()));
@@ -645,7 +645,7 @@ double PyDbDimension::centerMarkSize() const
 
 std::string PyDbDimension::prefix() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString sPrefix;
@@ -656,7 +656,7 @@ std::string PyDbDimension::prefix() const
 
 void PyDbDimension::setPrefix(const std::string& val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPrefix(utf8_to_wstr(val).c_str()));
@@ -665,7 +665,7 @@ void PyDbDimension::setPrefix(const std::string& val) const
 
 std::string PyDbDimension::suffix() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString _suffix;
@@ -676,7 +676,7 @@ std::string PyDbDimension::suffix() const
 
 void PyDbDimension::setSuffix(const std::string& val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSuffix(utf8_to_wstr(val).c_str()));
@@ -685,7 +685,7 @@ void PyDbDimension::setSuffix(const std::string& val) const
 
 std::string PyDbDimension::alternateSuffix() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString _sval;
@@ -696,7 +696,7 @@ std::string PyDbDimension::alternateSuffix() const
 
 void PyDbDimension::setAlternateSuffix(const std::string& val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAlternateSuffix(utf8_to_wstr(val).c_str()));
@@ -705,7 +705,7 @@ void PyDbDimension::setAlternateSuffix(const std::string& val) const
 
 std::string PyDbDimension::alternatePrefix() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString _sval;
@@ -716,7 +716,7 @@ std::string PyDbDimension::alternatePrefix() const
 
 void PyDbDimension::setAlternatePrefix(const std::string& val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAlternatePrefix(utf8_to_wstr(val).c_str()));
@@ -745,7 +745,7 @@ void PyDbDimension::setSuppressAngularTrailingZeros(bool val) const
 
 bool PyDbDimension::altSuppressZeroInches() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->altSuppressZeroInches();
@@ -754,7 +754,7 @@ bool PyDbDimension::altSuppressZeroInches() const
 
 void PyDbDimension::setAltSuppressZeroInches(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAltSuppressZeroInches(val));
@@ -763,7 +763,7 @@ void PyDbDimension::setAltSuppressZeroInches(bool val) const
 
 bool PyDbDimension::altSuppressZeroFeet() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->altSuppressZeroFeet();
@@ -772,7 +772,7 @@ bool PyDbDimension::altSuppressZeroFeet() const
 
 void PyDbDimension::setAltSuppressZeroFeet(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAltSuppressZeroFeet(val));
@@ -801,7 +801,7 @@ void PyDbDimension::setAltToleranceSuppressLeadingZeros(bool val) const
 
 bool PyDbDimension::altToleranceSuppressZeroInches() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->altToleranceSuppressZeroInches();
@@ -810,7 +810,7 @@ bool PyDbDimension::altToleranceSuppressZeroInches() const
 
 void PyDbDimension::setAltToleranceSuppressZeroInches(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAltToleranceSuppressZeroInches(val));
@@ -819,7 +819,7 @@ void PyDbDimension::setAltToleranceSuppressZeroInches(bool val) const
 
 bool PyDbDimension::altToleranceSuppressZeroFeet() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->altToleranceSuppressZeroFeet();
@@ -828,7 +828,7 @@ bool PyDbDimension::altToleranceSuppressZeroFeet() const
 
 void PyDbDimension::setAltToleranceSuppressZeroFeet(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setAltToleranceSuppressZeroFeet(val));
@@ -847,7 +847,7 @@ void PyDbDimension::setAltToleranceSuppressTrailingZeros(bool val) const
 
 bool PyDbDimension::suppressZeroFeet() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->suppressZeroFeet();
@@ -856,7 +856,7 @@ bool PyDbDimension::suppressZeroFeet() const
 
 void PyDbDimension::setSuppressZeroFeet(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSuppressZeroFeet(val));
@@ -885,7 +885,7 @@ void PyDbDimension::setSuppressLeadingZeros(bool val) const
 
 bool PyDbDimension::suppressZeroInches() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->suppressZeroInches();
@@ -894,7 +894,7 @@ bool PyDbDimension::suppressZeroInches() const
 
 void PyDbDimension::setSuppressZeroInches(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSuppressZeroInches(val));
@@ -913,7 +913,7 @@ void PyDbDimension::setAltSuppressLeadingZeros(bool val) const
 
 bool PyDbDimension::toleranceSuppressZeroFeet() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->toleranceSuppressZeroFeet();
@@ -922,7 +922,7 @@ bool PyDbDimension::toleranceSuppressZeroFeet() const
 
 void PyDbDimension::setToleranceSuppressZeroFeet(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setToleranceSuppressZeroFeet(val));
@@ -951,7 +951,7 @@ void PyDbDimension::setToleranceSuppressLeadingZeros(bool val) const
 
 bool PyDbDimension::toleranceSuppressZeroInches() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->toleranceSuppressZeroInches();
@@ -960,7 +960,7 @@ bool PyDbDimension::toleranceSuppressZeroInches() const
 
 void PyDbDimension::setToleranceSuppressZeroInches(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setToleranceSuppressZeroInches(val));
