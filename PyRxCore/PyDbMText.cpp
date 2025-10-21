@@ -1248,7 +1248,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
     AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
     if (ptr == nullptr)
         throw PyNullObject(std::source_location::current());
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     return PyDbMText(static_cast<AcDbMText*>(ptr->clone()), true);
 #else
     return PyDbMText(ptr, true);
