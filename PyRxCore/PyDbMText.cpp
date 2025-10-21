@@ -1258,7 +1258,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt) const
 {
     // clones are missing setMTextAttributeDefinitionConst
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET250)
     // [BRX - SR 192611] this should crash BricsCAD
     PyThrowBadEs(impObj()->setMTextAttributeDefinition(mt.impObj()));
 #elif defined(_GRXTARGET250) || defined(_ZRXTARGET260)  
