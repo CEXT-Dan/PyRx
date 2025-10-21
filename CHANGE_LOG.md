@@ -1,3 +1,11 @@
+v2.2.30
+
+* Support for BricsVAD V26
+
+v2.2.29
+
+* change from AVX2 to AVX to prevent crashes on older computers
+
 v2.2.28
 
 * added Ed.Core.lineWeightDialog
