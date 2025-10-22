@@ -16,43 +16,6 @@ using namespace boost::python;
 #include "AcConstraints3d.h"
 #endif
 
-#if defined(_BRXTARGET)
-extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ARXTARGET) && _ARXTARGET < 250
-extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ARXTARGET) && _ARXTARGET >= 250
-extern HRESULT AcAxGetVisible(const AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_GRXTARGET) && _GRXTARGET <= 250
-extern HRESULT GcAxGetVisible(GcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_GRXTARGET) && _GRXTARGET > 250
-extern HRESULT GcAxGetVisible(const GcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 260
-extern HRESULT ZcAxGetVisible(ZcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-static bool getIsVisable(const AcDbObjectId& id)
-{
-    AcDbObjectId _id = id;
-    VARIANT_BOOL rtVal = VARIANT_FALSE;
-#if defined(_ZRXTARGET)
-    return SUCCEEDED(ZcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#elif defined(_GRXTARGET)
-    return SUCCEEDED(GcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#elif defined(_ARXTARGET) || defined(_BRXTARGET)
-    return SUCCEEDED(AcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#endif
-}
-
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
 void makePyDbSymbolTableRecordWrapper()
@@ -2795,7 +2758,7 @@ boost::python::list PyDbBlockTableRecord::visibleObjectIds() const
     {
         if (iter->getEntityId(id.m_id) == eOk)
         {
-            if (getIsVisable(id.m_id))
+            if (acdbIsVisible(id.m_id))
                 pyList.append(id);
         }
     }
@@ -2812,7 +2775,7 @@ PyDbObjectIdArray PyDbBlockTableRecord::visibleObjectIdArray() const
     {
         if (iter->getEntityId(id.m_id) == eOk)
         {
-            if (getIsVisable(id.m_id))
+            if (acdbIsVisible(id.m_id))
                 pyList.emplace_back(id);
         }
     }

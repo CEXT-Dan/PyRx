@@ -131,7 +131,7 @@ public:
     static Acad::ErrorStatus    evaluateFields2(const boost::python::object& ids, int context);
     static void                 resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, bool doNewOnly);
     static AcDb::DwgDataType    groupCodeToType(AcDb::DxfCode pCode);
-
+    static bool                 isVisible(const PyDbObjectId& id);
 };
 
 #pragma pack (pop)
