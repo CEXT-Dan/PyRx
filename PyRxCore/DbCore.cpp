@@ -164,6 +164,7 @@ void makeDbCoreWrapper()
         .def("stringtoupper", &DbCore::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
         .def("icompare", &DbCore::icompare, DS.SARGS({ "left: str","right: str" })).staticmethod("icompare")
         .def("groupCodeToType", &DbCore::groupCodeToType, DS.SARGS({ "code: PyDb.DxfCode" })).staticmethod("groupCodeToType")
+        .def("isVisible", &DbCore::isVisible, DS.SARGS({ "entityId: PyDb.ObjectId" })).staticmethod("isVisible")
         ;
 }
 
@@ -1054,4 +1055,9 @@ void DbCore::resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, b
 AcDb::DwgDataType DbCore::groupCodeToType(AcDb::DxfCode pCode)
 {
     return acdbGroupCodeToType(pCode);
+}
+
+bool DbCore::isVisible(const PyDbObjectId& id)
+{
+    return acdbIsVisible(id.m_id);
 }
