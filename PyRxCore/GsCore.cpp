@@ -107,8 +107,11 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
         {
             AcDbExtents subex;
             AcDbEntityPointer pEnt(id);
-            if (pEnt->getGeomExtents(subex) == eOk)
-                ex.addExt(subex);
+            if (pEnt->visibility() == AcDb::kVisible)
+            {
+                if (pEnt->getGeomExtents(subex) == eOk)
+                    ex.addExt(subex);
+            }
         }
     }
     return ex;
