@@ -480,6 +480,8 @@ public:
     PyDbObjectIdArray   objectIdArray1() const;
     PyDbObjectIdArray   objectIdArray2(const PyRxClass& _class) const;
     PyDbObjectIdArray   objectIdArray3(const boost::python::list& _classes) const;
+    boost::python::list visibleObjectIds() const;
+    PyDbObjectIdArray   visibleObjectIdArray() const;
     std::string         comments() const;
     void                setComments(const std::string& pString) const;
     std::string         pathName() const;
