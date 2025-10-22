@@ -5230,6 +5230,8 @@ class Core:
         sensitive.
         """
     @staticmethod
+    def isVisible(entityId: PyDb.ObjectId, /) -> bool: ...
+    @staticmethod
     def loadLineTypeFile(ltname: str, fname: str, db: PyDb.Database, /) -> None:
         """
         This function loads the linetype specified by ltname from the file specified by fname and

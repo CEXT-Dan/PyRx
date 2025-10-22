@@ -6,6 +6,9 @@ class PyCmColor;
 class PyGePlane;
 class PyDbFullSubentPath;
 
+
+bool acdbIsVisible(const AcDbObjectId& id);
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbEntity
 void makePyDbEntityWrapper();
