@@ -37,7 +37,6 @@
 
 //for testing
 #ifdef PYRXDEBUG
-
 #endif
 
 //-----------------------------------------------------------------------------
@@ -394,7 +393,7 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ",const AcRxClass* desc = AcDbEntity::desc()) 
+    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", const AcRxClass* desc = AcDbEntity::desc())
         -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
@@ -437,7 +436,6 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-
     }
 #endif
 };
