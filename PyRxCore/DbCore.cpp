@@ -1059,5 +1059,6 @@ AcDb::DwgDataType DbCore::groupCodeToType(AcDb::DxfCode pCode)
 
 bool DbCore::isVisible(const PyDbObjectId& id)
 {
-    return acdbIsVisible(id.m_id);
+    AcDbEntityPointer ptr(id.m_id);
+    return ptr->visibility() == AcDb::kVisible;
 }

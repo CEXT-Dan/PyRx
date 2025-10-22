@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PyDbSymbolTableRecord.h"
-#include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
 #include "PyGsView.h"
 #include "PyDbEnts.h"
@@ -2758,7 +2757,8 @@ boost::python::list PyDbBlockTableRecord::visibleObjectIds() const
     {
         if (iter->getEntityId(id.m_id) == eOk)
         {
-            if (acdbIsVisible(id.m_id))
+            AcDbEntityPointer ptr(id.m_id);
+            if (ptr->visibility() == AcDb::kVisible)
                 pyList.append(id);
         }
     }
@@ -2775,7 +2775,8 @@ PyDbObjectIdArray PyDbBlockTableRecord::visibleObjectIdArray() const
     {
         if (iter->getEntityId(id.m_id) == eOk)
         {
-            if (acdbIsVisible(id.m_id))
+            AcDbEntityPointer ptr(id.m_id);
+            if (ptr->visibility() == AcDb::kVisible)
                 pyList.emplace_back(id);
         }
     }

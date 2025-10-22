@@ -8,45 +8,6 @@
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
-//acdbIsVisible
-#if defined(_BRXTARGET)
-extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ARXTARGET) && _ARXTARGET < 250
-extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ARXTARGET) && _ARXTARGET >= 250
-extern HRESULT AcAxGetVisible(const AcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_GRXTARGET) && _GRXTARGET <= 250
-extern HRESULT GcAxGetVisible(GcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_GRXTARGET) && _GRXTARGET > 250
-extern HRESULT GcAxGetVisible(const GcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 260
-extern HRESULT ZcAxGetVisible(ZcDbObjectId& objId, VARIANT_BOOL* pVisible);
-#endif
-
-bool acdbIsVisible(const AcDbObjectId& id)
-{
-    AcDbObjectId _id = id;
-    VARIANT_BOOL rtVal = VARIANT_FALSE;
-#if defined(_ZRXTARGET)
-    return SUCCEEDED(ZcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#elif defined(_GRXTARGET)
-    return SUCCEEDED(GcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#elif defined(_ARXTARGET) || defined(_BRXTARGET)
-    return SUCCEEDED(AcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
-#endif
-}
-
-//----------------------------------------------------------------------------------------------------
 //wrapper
 void makePyDbEntityWrapper()
 {
