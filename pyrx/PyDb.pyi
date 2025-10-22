@@ -599,10 +599,6 @@ kAlwaysRightReadingAngle: MLeaderTextAngleType  # 2
 kAngLineEnd: DimAssocPointType  # 3
 kAngLineStart: DimAssocPointType  # 2
 kAngle: ValueUnitType  # 2
-kAngle0AssocConstraintType: AssocConstraintType  # 4
-kAngle1AssocConstraintType: AssocConstraintType  # 5
-kAngle2AssocConstraintType: AssocConstraintType  # 6
-kAngle3AssocConstraintType: AssocConstraintType  # 7
 kAngleNotTransformed: ValueUnitType  # 65536
 kAngstroms: ImageUnits  # 11
 kAngular: DynUnitsType  # 1
@@ -691,8 +687,6 @@ kByColor: ReservedStringEnumType  # 9
 kByLayer: ReservedStringEnumType  # 0
 kByStyle: MTextFlowDirection  # 5
 kCairo: TimeZone  # 2002
-kCanBeEvaluatedAssocEvaluationPriority: AssocEvaluationPriority  # 1000
-kCannotDermineAssocEvaluationPriority: AssocEvaluationPriority  # 0
 kCapeVerde: TimeZone  # -1001
 kCapsHeight: MTextFragmentType  # 7
 kCaracas: TimeZone  # -4001
@@ -747,9 +741,6 @@ kCentimeter: ImageUnits  # 2
 kCentral: TimeZone  # -6000
 kCentralAmerica: TimeZone  # -6001
 kChangeDataType: ValueParseOption  # 8
-kChangedDirectlyAssocStatus: AssocStatus  # 1
-kChangedNoDifferenceAssocStatus: AssocStatus  # 3
-kChangedTransitivelyAssocStatus: AssocStatus  # 2
 kChildObjectReference: FieldCodeFlag  # 2048
 kChordPoint: DimAssocPointType  # 0
 kCirArc: HatchEdgeType  # 2
@@ -860,12 +851,10 @@ kDestinationNewBlock: SectionGeneration  # 16
 kDestinationReplaceBlock: SectionGeneration  # 32
 kDetachChildren: FieldCodeFlag  # 1024
 kDhaka: TimeZone  # 6001
-kDiameterAssocConstraintType: AssocConstraintType  # 9
 kDirection: MTextFragmentType  # 2
 kDisable: FieldEvalOption  # 0
 kDisplay: PlotType  # 0
 kDistance: ValueUnitType  # 1
-kDistanceAssocConstraintType: AssocConstraintType  # 1
 kDoesNotSupportScale: HatchLoopType  # 1024
 kDoglegLength: MLeaderPropertyOverrideType  # 7
 kDoglegMark: MLeaderGsMarkType  # 10001
@@ -1083,7 +1072,6 @@ kEndCapRound: EndCaps  # 1
 kEndCapSquare: EndCaps  # 3
 kEndFragmentTypes: MTextFragmentType  # 23
 kEnglish: MeasurementValue  # 0
-kErasedAssocStatus: AssocStatus  # 5
 kEscapeBackslash: FieldCodeFlag  # 32
 kEsriDarkGray: AcGeoMapType  # 8
 kEsriImagery: AcGeoMapType  # 4
@@ -1105,7 +1093,6 @@ kExtents: PlotType  # 1
 kExterior: MPolygonloopDir  # 0
 kExternal: HatchLoopType  # 1
 kFaceSubentType: SubentType  # 1
-kFailedToEvaluateAssocStatus: AssocStatus  # 4
 kFalse: AnnotativeStates  # 1
 kFarChordPoint: DimAssocPointType  # 1
 kFcf: AnnoType  # 1
@@ -1116,7 +1103,6 @@ kFine: AcGeoMapResolution  # 1
 kFiner: AcGeoMapResolution  # 2
 kFirstLevel: GraphNodeFlags  # 16
 kFirstPointRef: AssocFlags  # 1
-kFirstSampleAssocDraggingState: AssocDraggingState  # 1
 kFitPoints: SplineType  # 0
 kFont: MTextFragmentType  # 4
 kFontFile: FindFileHint  # 1
@@ -1173,7 +1159,6 @@ kHidden: ShadePlotType  # 2
 kHidePoints: PointCloudDispOptionOutOfRange  # 2
 kHobart: TimeZone  # 10003
 kHorizontalAngle: MLeaderTextAngleType  # 1
-kHorizontalDistanceAssocConstraintType: AssocConstraintType  # 2
 kHorz: MLeaderSegmentAngleType  # 12
 kHorzBottom: GridLineType  # 4
 kHorzGridLineTypes: GridLineType  # 7
@@ -1195,7 +1180,6 @@ kInsertAngle: MLeaderTextAngleType  # 0
 kIntensity: PointCloudProperty  # 2
 kIntensityRamp: PointCloudStylizationType  # 5
 kInterior: MPolygonloopDir  # 1
-kIntermediateSampleAssocDraggingState: AssocDraggingState  # 2
 kInternationalDateLine: TimeZone  # -12000
 kIntersectionBoundary: SectionGeometry  # 1
 kIntersectionFill: SectionGeometry  # 2
@@ -1207,7 +1191,6 @@ kInvisible: Visibility  # 1
 kIrkutsk: TimeZone  # 8003
 kIsAnnotative: HatchLoopType  # 512
 kIsAnnotativeBlock: HatchLoopType  # 8192
-kIsUpToDateAssocStatus: AssocEvaluationPriority  # -1000
 kIslamabad: TimeZone  # 5001
 kIsolines: SurfaceWireframeType  # 0
 kIsoparms: SurfaceWireframeType  # 1
@@ -1225,7 +1208,6 @@ kKolkata: TimeZone  # 5300
 kKrasnoyarsk: TimeZone  # 7001
 kLandingGap: MLeaderPropertyOverrideType  # 5
 kLastRestored: LayerStateMask  # 65536
-kLastSampleAssocDraggingState: AssocDraggingState  # 3
 kLayout: PlotType  # 5
 kLeaderLineColor: MLeaderPropertyOverrideType  # 1
 kLeaderLineMark: MLeaderGsMarkType  # 5001
@@ -1312,12 +1294,9 @@ kMissing: ReservedStringEnumType  # 8
 kMlineSubentCache: SubentType  # 4
 kModel: ReservedStringEnumType  # 10
 kModified: FieldState  # 4
-kModifyActionAssocEvaluationMode: AssocEvaluationMode  # 1
-kModifyObjectsAssocEvaluationMode: AssocEvaluationMode  # 0
 kMonrovia: TimeZone  # 2
 kMoscow: TimeZone  # 3000
 kMountain: TimeZone  # -7000
-kMove: AssocTransformationType  # 3
 kMoveAllExceptArrowHeaderPoints: MLeaderMoveType  # 1
 kMoveAllPoints: MLeaderMoveType  # 0
 kMoveContentAndDoglegPoints: MLeaderMoveType  # 2
@@ -1334,14 +1313,11 @@ kNoUnits: DynUnitsType  # 0
 kNonOrthoView: OrthographicView  # 0
 kNonPlanar: Planarity  # 0
 kNone: ReservedStringEnumType  # 2
-kNoneAssocConstraintType: AssocConstraintType  # 0
 kNoneContent: MLeaderContentType  # 0
 kNormal: ReservedStringEnumType  # 5
 kNormalRamp: PointCloudStylizationType  # 3
 kNotApplicable: AnnotativeStates  # 2
 kNotClosed: HatchLoopType  # 32
-kNotDraggingAssocDraggingState: AssocDraggingState  # 0
-kNotSpecified: AssocTransformationType  # 0
 kNotYetEvaluated: FieldEvalStatus  # 1
 kNullSubentType: SubentType  # 0
 kObjectId: ValueDataType  # 64
@@ -1526,7 +1502,6 @@ kProjectionCodeWccsl: GeoCoordinateSystemProjectionCode  # 39
 kProjectionCodeWccst: GeoCoordinateSystemProjectionCode  # 40
 kProjectionCodeWinkl: GeoCoordinateSystemProjectionCode  # 63
 kPurgeFiler: FilerType  # 8
-kRadiusAssocConstraintType: AssocConstraintType  # 8
 kRangoon: TimeZone  # 6300
 kRasterResolution: RemapFileContext  # 2
 kRect: ClipBoundaryType  # 1
@@ -1543,7 +1518,6 @@ kRightMask: CellEdgeMask  # 2
 kRightView: OrthographicView  # 6
 kRiyadh: TimeZone  # 3001
 kRoad: AcGeoMapType  # 2
-kRotate: AssocTransformationType  # 2
 kRtoL: MTextFlowDirection  # 2
 kSantiago: TimeZone  # -4002
 kSarajevo: TimeZone  # 1003
@@ -1589,14 +1563,12 @@ kStandard: ReservedStringEnumType  # 4
 kStateIsHidden: LayerStateMask  # 32768
 kStaticColumns: MTextColumnType  # 1
 kStraightLeader: MLeaderLeaderType  # 1
-kStretch: AssocTransformationType  # 1
 kStretchEdge: SurfaceEdgeExtensionType  # 1
 kStrikePoints: MTextFragmentType  # 19
 kStrikethrough: MTextFragmentType  # 16
 kString: ValueDataType  # 4
 kStripOptions: FieldCodeFlag  # 64
 kSuccess: FieldEvalStatus  # 2
-kSuppressedAssocStatus: AssocStatus  # 6
 kSydney: TimeZone  # 10000
 kSyntaxError: FieldEvalStatus  # 8
 kTableBreakAllowManualHeights: TableBreakOption  # 16
@@ -1799,7 +1771,6 @@ kUnknownCell: CellType  # 0
 kUnknownLeader: MLeaderLeaderDirectionType  # 0
 kUnknownRow: RowType  # 0
 kUnresTree: GraphNodeFlags  # 32
-kUnresolvedAssocStatus: AssocStatus  # 7
 kUpdateDirDataToSource: UpdateDirection  # 2
 kUpdateDirSourceToData: UpdateDirection  # 1
 kUpdateOptionAllowSourceUpdate: UpdateOption  # 1048576
@@ -1833,7 +1804,6 @@ kVertLeft: GridLineType  # 8
 kVertRight: GridLineType  # 32
 kVertexPoint: DimAssocPointType  # 2
 kVertexSubentType: SubentType  # 3
-kVerticalDistanceAssocConstraintType: AssocConstraintType  # 3
 kVerticalLineBottom: SectionSubItem  # 128
 kVerticalLineTop: SectionSubItem  # 64
 kView: PlotType  # 3
@@ -2984,33 +2954,6 @@ class ArcDimension(PyDb.Dimension):
         Returns the start point for the arc length dimension's second extension line.
         """
 
-class AssocConstraintType(_BoostPythonEnum):
-    kNoneAssocConstraintType: ClassVar[Self]  # 0
-    kDistanceAssocConstraintType: ClassVar[Self]  # 1
-    kHorizontalDistanceAssocConstraintType: ClassVar[Self]  # 2
-    kVerticalDistanceAssocConstraintType: ClassVar[Self]  # 3
-    kAngle0AssocConstraintType: ClassVar[Self]  # 4
-    kAngle1AssocConstraintType: ClassVar[Self]  # 5
-    kAngle2AssocConstraintType: ClassVar[Self]  # 6
-    kAngle3AssocConstraintType: ClassVar[Self]  # 7
-    kRadiusAssocConstraintType: ClassVar[Self]  # 8
-    kDiameterAssocConstraintType: ClassVar[Self]  # 9
-
-class AssocDraggingState(_BoostPythonEnum):
-    kNotDraggingAssocDraggingState: ClassVar[Self]  # 0
-    kFirstSampleAssocDraggingState: ClassVar[Self]  # 1
-    kIntermediateSampleAssocDraggingState: ClassVar[Self]  # 2
-    kLastSampleAssocDraggingState: ClassVar[Self]  # 3
-
-class AssocEvaluationMode(_BoostPythonEnum):
-    kModifyObjectsAssocEvaluationMode: ClassVar[Self]  # 0
-    kModifyActionAssocEvaluationMode: ClassVar[Self]  # 1
-
-class AssocEvaluationPriority(_BoostPythonEnum):
-    kIsUpToDateAssocStatus: ClassVar[Self]  # -1000
-    kCannotDermineAssocEvaluationPriority: ClassVar[Self]  # 0
-    kCanBeEvaluatedAssocEvaluationPriority: ClassVar[Self]  # 1000
-
 class AssocFlags(_BoostPythonEnum):
     kFirstPointRef: ClassVar[Self]  # 1
     kSecondPointRef: ClassVar[Self]  # 2
@@ -3094,22 +3037,6 @@ class AssocPersSubentIdPE(PyRx.RxObject):
         Gets the coordinates of a vertex subentity. The default implementation just returns
         Acad::eNotImplemented.
         """
-
-class AssocStatus(_BoostPythonEnum):
-    kIsUpToDateAssocStatus: ClassVar[Self]  # 0
-    kChangedDirectlyAssocStatus: ClassVar[Self]  # 1
-    kChangedTransitivelyAssocStatus: ClassVar[Self]  # 2
-    kChangedNoDifferenceAssocStatus: ClassVar[Self]  # 3
-    kFailedToEvaluateAssocStatus: ClassVar[Self]  # 4
-    kErasedAssocStatus: ClassVar[Self]  # 5
-    kSuppressedAssocStatus: ClassVar[Self]  # 6
-    kUnresolvedAssocStatus: ClassVar[Self]  # 7
-
-class AssocTransformationType(_BoostPythonEnum):
-    kNotSpecified: ClassVar[Self]  # 0
-    kStretch: ClassVar[Self]  # 1
-    kRotate: ClassVar[Self]  # 2
-    kMove: ClassVar[Self]  # 3
 
 class AttributeDefinition(PyDb.Text):
     @overload
@@ -4343,6 +4270,8 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
+    def visibleObjectIdArray(self, /) -> ObjectIdArray: ...
+    def visibleObjectIds(self, /) -> list: ...
     def xrefDatabase(self, val: bool, /) -> Database:
         """
         This function returns a pointer to the AcDbDatabase that defines this block table record's

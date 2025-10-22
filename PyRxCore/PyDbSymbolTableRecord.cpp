@@ -16,6 +16,43 @@ using namespace boost::python;
 #include "AcConstraints3d.h"
 #endif
 
+#if defined(_BRXTARGET)
+extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+#if defined(_ARXTARGET) && _ARXTARGET < 250
+extern HRESULT AcAxGetVisible(AcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+#if defined(_ARXTARGET) && _ARXTARGET >= 250
+extern HRESULT AcAxGetVisible(const AcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+#if defined(_GRXTARGET) && _GRXTARGET <= 250
+extern HRESULT GcAxGetVisible(GcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+#if defined(_GRXTARGET) && _GRXTARGET > 250
+extern HRESULT GcAxGetVisible(const GcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 260
+extern HRESULT ZcAxGetVisible(ZcDbObjectId& objId, VARIANT_BOOL* pVisible);
+#endif
+
+static bool getIsVisable(const AcDbObjectId& id)
+{
+    AcDbObjectId _id = id;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+#if defined(_ZRXTARGET)
+    return SUCCEEDED(ZcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
+#elif defined(_GRXTARGET)
+    return SUCCEEDED(GcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
+#elif defined(_ARXTARGET) || defined(_BRXTARGET)
+    return SUCCEEDED(AcAxGetVisible(_id, &rtVal)) && rtVal != VARIANT_FALSE;
+#endif
+}
+
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
 void makePyDbSymbolTableRecordWrapper()
@@ -2530,6 +2567,8 @@ void makePyDbBlockTableRecordWrapper()
         .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray1)
         .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray2)
         .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray3, DS.OVRL(objectIdsOverloads))
+        .def("visibleObjectIds", &PyDbBlockTableRecord::visibleObjectIds, DS.ARGS())
+        .def("visibleObjectIdArray", &PyDbBlockTableRecord::visibleObjectIdArray, DS.ARGS())
         .def("comments", &PyDbBlockTableRecord::comments, DS.ARGS(2558))
         .def("setComments", &PyDbBlockTableRecord::setComments, DS.ARGS({ "val : str" }, 2585))
         .def("pathName", &PyDbBlockTableRecord::pathName, DS.ARGS(2581))
@@ -2741,6 +2780,41 @@ PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray3(const boost::python::list
     {
         if (const auto es = iter->getEntityId(id.m_id); es == eOk && _set.contains(id.m_id.objectClass()))
             pyList.emplace_back(id);
+    }
+    return pyList;
+}
+
+boost::python::list PyDbBlockTableRecord::visibleObjectIds() const
+{
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    PyThrowBadEs(es);
+    PyDbObjectId id;
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (iter->getEntityId(id.m_id) == eOk)
+        {
+            if (getIsVisable(id.m_id))
+                pyList.append(id);
+        }
+    }
+    return pyList;
+}
+
+PyDbObjectIdArray PyDbBlockTableRecord::visibleObjectIdArray() const
+{
+    PyDbObjectIdArray pyList;
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    PyThrowBadEs(es);
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (iter->getEntityId(id.m_id) == eOk)
+        {
+            if (getIsVisable(id.m_id))
+                pyList.emplace_back(id);
+        }
     }
     return pyList;
 }
