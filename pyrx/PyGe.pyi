@@ -1121,7 +1121,7 @@ class Curve3d(PyGe.Entity3d):
         AcGePointOnCurve3d object instead of a AcGePoint3d object.
         """
     def getProjClosestPointsTo(
-        self, pt: PyGe.Curve3d, projDir: PyGe.Vector3d, tol: PyGe.Tol = ..., /
+        self, curve: PyGe.Curve3d, projDir: PyGe.Vector3d, tol: PyGe.Tol = ..., /
     ) -> tuple[PyGe.PointOnCurve3d, PyGe.PointOnCurve3d]:
         """
         Finds the point on the curve which when projected onto a plane whose normal is
