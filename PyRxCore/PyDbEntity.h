@@ -228,7 +228,6 @@ inline boost::python::list SubentIdArrayToPyList(const AcArray<AcDbSubentId>& su
     return pylist;
 }
 
-
 //-------------------------------------------------------------------------------------------------------------
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper();
