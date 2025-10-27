@@ -319,13 +319,12 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 }
                 case AcDb::kDwgHandle:
-#ifdef never
-                    //kDwgHandle  ads_name in a resbuf
+                {
                     AcDbHandle hand;
                     hand.copyFromOldType(pTail->resval.ihandle);
                     list.append(boost::python::make_tuple(pTail->restype, PyDbHandle(hand)));
                     break;
-#endif
+                }
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
                 case AcDb::kDwgHardPointerId:
