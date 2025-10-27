@@ -243,8 +243,7 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         const PyEdSelectionSet ss = extract<PyEdSelectionSet>(tpl[1]);
                         {
                             const auto& adsn = ss.adsname();
-                            name[0] = adsn.m_data[0];
-                            name[1] = adsn.m_data[1];
+                            memcpy_s(name, sizeof(name), adsn.m_data.data(), sizeof(adsn.m_data));
                             pTail->rbnext = acutBuildList(code, name, 0);
                             if (pTail->rbnext != nullptr)
                                 pTail = pTail->rbnext;
