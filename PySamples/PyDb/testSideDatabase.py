@@ -1,4 +1,19 @@
-from pyrx import Db
+from pyrx import Ap, Db
+
+@Ap.Command()
+def doitscope():
+    try:
+        for file in Ap.Application.listFilesInPath("E:\\temp", ".dwg"):
+            sdb = Db.Database(False, True)
+            sdb.readDwgFile(file)
+            sdb.closeInput(True)
+
+            @Ap.using_scope()
+            def using() -> None:
+                ms = sdb.modelSpace()
+                crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
+    except Exception as err:
+        print(err)
 
 
 # option A, create a new function scope
