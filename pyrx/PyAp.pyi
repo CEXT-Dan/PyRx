@@ -1370,3 +1370,11 @@ def fireOnbeginConsole(*args) -> bool:
     C++ signature :
         bool fireOnbeginConsole()
     """
+
+def using_scope(*args) -> object:
+    """
+    using_scope() -> object :
+
+    C++ signature :
+        class boost::python::api::object using_scope()
+    """
