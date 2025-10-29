@@ -73,6 +73,7 @@ class TestResbuf:
             (1070, 3),
             (1002, "}"),
             (1070, 4),
+            (1005, "1"),
             (1002, "}"),
         ]
         expected = [
@@ -83,6 +84,7 @@ class TestResbuf:
             (1070, 3),
             (1002, "}"),
             (1070, 4),
+            (1005, "1"),
             (1002, "}"),
         ]
         result = Db.Core.resbufTest(args)

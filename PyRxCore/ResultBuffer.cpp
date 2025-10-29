@@ -111,18 +111,17 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         pTail->rbnext = makebin(tpl[1], code);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
+                        break;
                     }
-                    break;
                     case AcDb::kDwgHandle:
-#ifdef never
-                        //kDwgHandle  ads_name in a resbuf
+                    {
                         PyDbHandle hwnd = extract<PyDbHandle>(tpl[1]);
                         pTail->rbnext = acutNewRb(code);
                         hwnd.m_hnd.copyToOldType(pTail->rbnext->resval.ihandle);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
-#endif
+                    }
                     case AcDb::kDwgHardOwnershipId:
                     case AcDb::kDwgSoftOwnershipId:
                     case AcDb::kDwgHardPointerId:
@@ -136,8 +135,9 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                             if (pTail->rbnext != nullptr)
                                 pTail = pTail->rbnext;
                         }
-                        break;
                     }
+                    break;
+
                 }
             }
             else
@@ -252,7 +252,6 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     }
                     case RTENAME:
                     {
-
                         ads_name name = { 0L };
                         const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
                         if (acdbGetAdsName(name, id.m_id) == eOk)
