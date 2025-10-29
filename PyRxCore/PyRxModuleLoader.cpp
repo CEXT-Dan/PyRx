@@ -87,6 +87,18 @@ bool showNavFileDialog(PyModulePath& path)
     return false;
 }
 
+boost::python::object PyUsingDecorator()
+{
+    struct UsingObject
+    {
+        static void usingfunc(const boost::python::object& _pyfunc)
+        {
+            boost::python::call<void>(_pyfunc.ptr());
+        }
+    };
+    return boost::python::make_function(UsingObject::usingfunc);
+}
+
 boost::python::object PyCommandDecorator1(int flags /*= kMODAL*/)
 {
     return PyCommandDecorator2("", flags);
