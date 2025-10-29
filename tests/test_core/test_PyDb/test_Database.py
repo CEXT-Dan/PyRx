@@ -5,8 +5,9 @@ import time
 import unittest
 
 import pytest
+from tests import MEDIA_DIR
 
-from pyrx import Db, Ed, Ge, Rx
+from pyrx import Ap, Db, Ed, Ge, Rx
 
 
 def do_capture_audit() -> str:
@@ -360,3 +361,14 @@ class TestDatabase:
         self.assertions.assertTrue(db.layerZero() in lt)
         bt = Db.BlockTable(db.blockTableId())
         self.assertions.assertTrue(Db.SymUtilServices().blockModelSpaceName() in bt)
+        
+    def test_using_decorator(self):
+        sdb = Db.Database(False, True)
+        sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
+        sdb.closeInput(True)
+
+        @Ap.using_scope()
+        def using() -> None:
+            ms = sdb.modelSpace()
+            crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
+            assert(len(crvs) != 0)
