@@ -93,6 +93,7 @@ boost::python::object PyUsingDecorator()
     {
         static void usingfunc(const boost::python::object& _pyfunc)
         {
+            PyAutoLockGIL lock;
             boost::python::call<void>(_pyfunc.ptr());
         }
     };
