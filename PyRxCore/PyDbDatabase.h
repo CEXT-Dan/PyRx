@@ -133,7 +133,7 @@ public:
     PyDbObjectId        getSectionManagerId() const;
     boost::python::list getViewportArray1() const;
     boost::python::list getViewportArray2(bool bGetPaperspaceVports) const;
-    boost::python::list getVisualStyleList() const; //TODO test
+    boost::python::list getVisualStyleList() const;
     PyDbObjectId        globalMaterial() const;
     PyDbObjectId        groupDictionaryId() const;
     void                insert1(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase) const;
