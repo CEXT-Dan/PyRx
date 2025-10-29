@@ -319,9 +319,9 @@ boost::python::list resbufToList(resbuf* pRb)
                 }
                 case AcDb::kDwgHandle:
                 {
-                    AcDbHandle hand;
-                    hand.copyFromOldType(pTail->resval.ihandle);
-                    list.append(boost::python::make_tuple(pTail->restype, PyDbHandle(hand)));
+                    PyDbHandle hand;
+                    hand.m_hnd.copyFromOldType(pTail->resval.ihandle);
+                    list.append(boost::python::make_tuple(pTail->restype, hand));
                     break;
                 }
                 case AcDb::kDwgHardOwnershipId:
@@ -329,9 +329,9 @@ boost::python::list resbufToList(resbuf* pRb)
                 case AcDb::kDwgHardPointerId:
                 case AcDb::kDwgSoftPointerId:
                 {
-                    AcDbObjectId id;
-                    acdbGetObjectId(id, pTail->resval.rlname);
-                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+                    PyDbObjectId id;
+                    acdbGetObjectId(id.m_id, pTail->resval.rlname);
+                    list.append(boost::python::make_tuple(pTail->restype, id));
                     break;
                 }
             }
