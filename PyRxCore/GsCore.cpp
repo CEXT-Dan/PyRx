@@ -4,7 +4,6 @@
 #include "PyGsView.h"
 #include "PyDbObjectId.h"
 #include "AcGsManager.h"
-//#include "PyDbEntity.h" //TODO: don't add invisible objects to calcBlockExtents
 //#include "format_codecs/PngFormatCodec.h"
 
 
