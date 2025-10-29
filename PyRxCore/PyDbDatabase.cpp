@@ -1283,7 +1283,7 @@ boost::python::list PyDbDatabase::getVisualStyleList() const
     PyAutoLockGIL lock;
     boost::python::list pyvstyleList;
     for (const auto& item : vstyleList)
-        pyvstyleList(wstr_to_utf8(item));
+        pyvstyleList.append(wstr_to_utf8(item));
     return pyvstyleList;
 }
 
