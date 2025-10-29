@@ -145,6 +145,7 @@ static BOOST_PYTHON_MODULE(PyAp)
     def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL), DSCmd.SOVRL(CommandOverloads));
     def("LispFunction", PyLispFuncDecorator1);
     def("LispFunction", PyLispFuncDecorator2, DSLsp.SOVRL(LispOverloads));
+    def("using_scope", PyUsingDecorator);
 };
 
 void initPyApModule()
