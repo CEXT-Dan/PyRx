@@ -366,9 +366,11 @@ class TestDatabase:
         sdb = Db.Database(False, True)
         sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
         sdb.closeInput(True)
+        crvs = []
 
         @Ap.using_scope()
-        def using() -> None:
+        def _() -> None:
             ms = sdb.modelSpace()
-            crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
-            assert(len(crvs) != 0)
+            crvs.extend([Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())])
+            
+        assert(len(crvs) != 0)
