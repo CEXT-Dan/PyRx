@@ -1,12 +1,22 @@
-v2.2.30
+## v2.2.31
+
+pip install cad-pyrx
+
+* Added @Ap.using_scope(), provides a scope for managing object lifetimes
+* Fix Database.getVisualStyleList()
+* Improve GsCore::getBlockImage() ignores non visible entities when computing view extents
+* BlockTableRecord::visibleObjectIds(), ignores non visible entities, useful for dynamic blocks
+* Improve ResultBuffer, added support AcDbHandle
+
+## v2.2.30
 
 * Support for BricsVAD V26
 
-v2.2.29
+## v2.2.29
 
 * change from AVX2 to AVX to prevent crashes on older computers
 
-v2.2.28
+## v2.2.28
 
 * added Ed.Core.lineWeightDialog
 * added Ed.Core.linetypeDialog
