@@ -58,7 +58,7 @@ void makePyDbDatabaseWrapper()
         .def("attmode", &PyDbDatabase::attmode, DS.ARGS(2872))
         .def("aunits", &PyDbDatabase::aunits, DS.ARGS(2875))
         .def("auprec", &PyDbDatabase::auprec, DS.ARGS(2876))
-        .def("audit", &PyDbDatabase::audit, DS.ARGS({"fixErrors: bool", "cmdLineEcho: bool"}, 10721))
+        .def("audit", &PyDbDatabase::audit, DS.ARGS({ "fixErrors: bool", "cmdLineEcho: bool" }, 10721))
         .def("blipmode", &PyDbDatabase::blipmode, DS.ARGS(2877))
         .def("byBlockLinetype", &PyDbDatabase::byBlockLinetype, DS.ARGS(2879))
         .def("byBlockMaterial", &PyDbDatabase::byBlockMaterial, DS.ARGS(2880))
@@ -1064,9 +1064,9 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
-static std::vector<AcDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
+static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
 {
-    std::vector<AcDbObjectId> ids;
+    std::vector<PyDbObjectId> ids;
     if (pDb == nullptr)
         return ids;
     ids.reserve(pDb->approxNumObjects());
@@ -1074,11 +1074,10 @@ static std::vector<AcDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
     AcDbHandle hndzero{ Adesk::UInt64(0) };
     while (hnd > hndzero)
     {
-        AcDbObjectId id;
-        if (pDb->getAcDbObjectId(id, false, hnd) == eOk)
+        if (PyDbObjectId id; pDb->getAcDbObjectId(id.m_id, false, hnd) == eOk)
         {
-            if (id.isValid() && !id.isErased() && !id.isEffectivelyErased())
-                ids.emplace_back(id);
+            if (id.m_id.isValid() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
+                ids.emplace_back(id.m_id);
         }
         hnd.decrement();
     }
@@ -1093,8 +1092,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
         return pyList;
     for (const auto& id : getAllIdsFromDatabase(pDb))
     {
-        if (id.objectClass()->isDerivedFrom(pClass))
-            pyList.append(PyDbObjectId{ id });
+        if (id.m_id.objectClass()->isDerivedFrom(pClass))
+            pyList.append(id);
     }
     return pyList;
 }
@@ -1111,8 +1110,8 @@ boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class) const
     auto _desc = _class.impObj();
     for (const auto& id : getAllIdsFromDatabase(impObj()))
     {
-        if (id.objectClass()->isDerivedFrom(_desc))
-            pyList.append(PyDbObjectId{ id });
+        if (id.m_id.objectClass()->isDerivedFrom(_desc))
+            pyList.append(id);
     }
     return pyList;
 }
@@ -1128,8 +1127,8 @@ boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list&
     }
     for (const auto& id : getAllIdsFromDatabase(impObj()))
     {
-        if (_set.contains(id.objectClass()))
-            pyList.append(PyDbObjectId{ id });
+        if (_set.contains(id.m_id.objectClass()))
+            pyList.append(id);
     }
     return pyList;
 }
@@ -1141,8 +1140,8 @@ static PyDbObjectIdArray PyDbDatabaseObjectArray(AcDbDatabase* pDb, AcRxClass* p
         return pyList;
     for (const auto& id : getAllIdsFromDatabase(pDb))
     {
-        if (id.objectClass()->isDerivedFrom(pClass))
-            pyList.push_back(PyDbObjectId{ id });
+        if (id.m_id.objectClass()->isDerivedFrom(pClass))
+            pyList.push_back(id);
     }
     return pyList;
 }
@@ -1158,8 +1157,8 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray2(const PyRxClass& _class) const
     auto _desc = _class.impObj();
     for (const auto& id : getAllIdsFromDatabase(impObj()))
     {
-        if (id.objectClass()->isDerivedFrom(_desc))
-            pyList.push_back(PyDbObjectId{ id });
+        if (id.m_id.objectClass()->isDerivedFrom(_desc))
+            pyList.push_back(id);
     }
     return pyList;
 }
@@ -1174,8 +1173,8 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _class
     }
     for (const auto& id : getAllIdsFromDatabase(impObj()))
     {
-        if (_set.contains(id.objectClass()))
-            pyList.push_back(PyDbObjectId{ id });
+        if (_set.contains(id.m_id.objectClass()))
+            pyList.push_back(id);
     }
     return pyList;
 }
