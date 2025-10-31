@@ -194,9 +194,9 @@ std::string PyDbEntity::plotStyleName() const
 
 PyDbObjectId PyDbEntity::getPlotStyleNameId() const
 {
-    AcDbObjectId id;
-    impObj()->getPlotStyleNameId(id);
-    return PyDbObjectId(id);
+    PyDbObjectId id;
+    impObj()->getPlotStyleNameId(id.m_id);
+    return id;
 }
 
 void PyDbEntity::setColor1(const AcCmColor& color) const

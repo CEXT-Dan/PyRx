@@ -166,15 +166,14 @@ void PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val) const
 
 PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att) const
 {
-    AcDbObjectId id;
-    PyThrowBadEs(impObj()->appendAttribute(id, att.impObj()));
-    return PyDbObjectId(id);
+    PyDbObjectId id;
+    PyThrowBadEs(impObj()->appendAttribute(id.m_id, att.impObj()));
+    return id;
 }
 
 boost::python::list PyDbBlockReference::attributeIds() const
 {
     PyAutoLockGIL lock;
-    AcDbObjectId id;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
         ids.append(PyDbObjectId(iter->objectId()));
