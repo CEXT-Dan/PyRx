@@ -1,5 +1,12 @@
 from pyrx import Ap, Db
 
+# when working with side dababases, it's important to make sure
+# the database is diposed last
+
+# other ideas
+# https://discuss.python.org/t/add-using-scope/104613/4
+# https://discuss.python.org/t/delay-gc-on-object/104602/9
+
 @Ap.Command()
 def doitscope():
     try:
@@ -9,7 +16,7 @@ def doitscope():
             sdb.closeInput(True)
 
             @Ap.using_scope()
-            def using() -> None:
+            def _() -> None:
                 ms = sdb.modelSpace()
                 crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
     except Exception as err:
@@ -24,7 +31,8 @@ def doSomething(sideDb: Db.Database):
     print(dbo.isA().dxfName())
 
 
-def PyRxCmd_pydoit1():
+@Ap.Command()
+def doitfuncscope():
     sideDb = Db.Database(False, True)
     sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/unit tests/testmedia/06457.dwg")
     sideDb.closeInput(True)
@@ -32,7 +40,8 @@ def PyRxCmd_pydoit1():
 
 
 # option B, create a nested scope
-def PyRxCmd_pydoit2():
+@Ap.Command()
+def doitnfuncscope():
     sideDb = Db.Database(False, True)
     sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/unit tests/testmedia/06457.dwg")
     sideDb.closeInput(True)
@@ -47,7 +56,8 @@ def PyRxCmd_pydoit2():
 
 
 # option c, try finally
-def PyRxCmd_pydoit3():
+@Ap.Command()
+def pydoit3():
     sideDb = Db.Database(False, True)
     sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/unit tests/testmedia/06457.dwg")
     sideDb.closeInput(True)
@@ -61,7 +71,8 @@ def PyRxCmd_pydoit3():
 
 
 # option D, call dispose
-def PyRxCmd_pydoit4():
+@Ap.Command()
+def pydoit4():
     sideDb = Db.Database(False, True)
     sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/unit tests/testmedia/06457.dwg")
     sideDb.closeInput(True)
