@@ -35,9 +35,6 @@ struct PyRxObjectDeleter
     {
     }
 
-    // in the case of a side database GC'd before one of its member objects 
-    // we crash. p is invalid. this can be handled in python. but there could be 
-    // a clever solution
     inline bool isDbroThenClose(AcRxObject* p) const
     {
         if (m_isDbObject)
@@ -53,8 +50,6 @@ struct PyRxObjectDeleter
         return false;
     }
 
-    // TODO: this could be a little cleaner, 
-    // consider making a PyDisposableObject
     inline void operator()(AcRxObject* p) const
     {
         if (p == nullptr)
