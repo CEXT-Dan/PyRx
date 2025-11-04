@@ -85,12 +85,12 @@ static double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.sx;
-    case 1:
-        return p.sy;
-    default:
-        throw std::out_of_range{ "IndexError " };
+        case 0:
+            return p.sx;
+        case 1:
+            return p.sy;
+        default:
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -98,14 +98,14 @@ static void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.sx = val;
-        break;
-    case 1:
-        p.sy = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError " };
+        case 0:
+            p.sx = val;
+            break;
+        case 1:
+            p.sy = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -279,12 +279,12 @@ static double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -292,14 +292,14 @@ static void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -385,26 +385,26 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
         idxs[i] = i;
 
     // Sort indices by (x, y)
-    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b) 
+    std::sort(idxs.begin(), idxs.end(), [&](size_t a, size_t b)
         {
-        const auto& pa = src[a];
-        const auto& pb = src[b];
-        if (pa.x != pb.x)
-            return pa.x < pb.x;
-        return pa.y < pb.y;
+            const auto& pa = src[a];
+            const auto& pb = src[b];
+            if (pa.x != pb.x)
+                return pa.x < pb.x;
+            return pa.y < pb.y;
         });
 
     // 2D cross product of OA and OB vectors, returns z-component
-    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B) 
+    const auto cross = [&](const AcGePoint2d& O, const AcGePoint2d& A, const AcGePoint2d& B)
         {
-        return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
+            return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
         };
 
     std::vector<size_t> hull;
     hull.reserve(2 * n);
 
     // Lower hull
-    for (size_t i = 0; i < n; ++i) 
+    for (size_t i = 0; i < n; ++i)
     {
         while (hull.size() >= 2 &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
@@ -413,7 +413,7 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
     }
     // Upper hull
     size_t t = hull.size() + 1;
-    for (size_t i = n; i-- > 0;) 
+    for (size_t i = n; i-- > 0;)
     {
         while (hull.size() >= t &&
             cross(src[hull[hull.size() - 2]], src[hull[hull.size() - 1]], src[idxs[i]]) <= 0)
@@ -571,12 +571,12 @@ static double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -584,14 +584,14 @@ static void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -616,7 +616,6 @@ static void makePyGeVector2dWrapper()
     constexpr const std::string_view setToProductOverloads = "Overloads:\n"
         "- vec: PyGe.Vector2d, s: float\n"
         "- xform: PyGe.Matrix2d, vec: PyGe.Vector3d\n";
-
 
     constexpr const std::string_view rmulOverloads = "Overloads:\n"
         "- val: float\n"
@@ -914,14 +913,14 @@ static double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.sx;
-    case 1:
-        return p.sy;
-    case 2:
-        return p.sz;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            return p.sx;
+        case 1:
+            return p.sy;
+        case 2:
+            return p.sz;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -929,17 +928,17 @@ static void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.sx = val;
-        break;
-    case 1:
-        p.sy = val;
-        break;
-    case 2:
-        p.sz = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            p.sx = val;
+            break;
+        case 1:
+            p.sy = val;
+            break;
+        case 2:
+            p.sz = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1063,14 +1062,14 @@ static double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    case 2:
-        return p.z;
-    default:
-        throw std::out_of_range{ "IndexError " };
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -1078,17 +1077,17 @@ static void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    case 2:
-        p.z = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError " };
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -1432,14 +1431,14 @@ static double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
     {
-    case 0:
-        return p.x;
-    case 1:
-        return p.y;
-    case 2:
-        return p.z;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1447,17 +1446,17 @@ static void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
     switch (idx)
     {
-    case 0:
-        p.x = val;
-        break;
-    case 1:
-        p.y = val;
-        break;
-    case 2:
-        p.z = val;
-        break;
-    default:
-        throw std::out_of_range{ "IndexError" };
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
