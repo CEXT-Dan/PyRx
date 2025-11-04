@@ -387,6 +387,11 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 
 using AcDbEntityUPtr = AcDbObjectUPtr<AcDbEntity>;
 using AcDbAcDbPolylineUPtr = AcDbObjectUPtr<AcDbPolyline>;
+using AcDbObjectIteratorUPtr = std::unique_ptr<AcDbObjectIterator>;
+
+//-------------------------------------------------------------------------------------
+//AcDbObjectPointer
+using AcDbAttributePointer = AcDbObjectPointer<AcDbAttribute>;
 
 //-------------------------------------------------------------------------------------
 // Import Python and wxPython headers
