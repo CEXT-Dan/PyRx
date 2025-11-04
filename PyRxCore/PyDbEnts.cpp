@@ -177,7 +177,7 @@ boost::python::list PyDbBlockReference::attributeIds() const
 {
     PyAutoLockGIL lock;
     boost::python::list ids;
-    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+    for (AcDbObjectIteratorUPtr iter(impObj()->attributeIterator()); !iter->done(); iter->step())
         ids.append(PyDbObjectId(iter->objectId()));
     return ids;
 }
@@ -186,9 +186,9 @@ boost::python::dict PyDbBlockReference::attdict() const
 {
     PyAutoLockGIL lock;
     boost::python::dict pydict;
-    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+    for (AcDbObjectIteratorUPtr iter(impObj()->attributeIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDbAttribute> attref(iter->objectId());
+        AcDbAttributePointer attref(iter->objectId());
         if (attref.openStatus() == eOk)
             pydict[wstr_to_utf8(attref->tagConst())] = wstr_to_utf8(attref->textStringConst());
     }
@@ -199,9 +199,9 @@ boost::python::list PyDbBlockReference::attlist() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+    for (AcDbObjectIteratorUPtr iter(impObj()->attributeIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDbAttribute> attref(iter->objectId());
+        AcDbAttributePointer attref(iter->objectId());
         if (attref.openStatus() == eOk)
             pylist.append(boost::python::make_tuple(wstr_to_utf8(attref->tagConst()), wstr_to_utf8(attref->textStringConst())));
     }
