@@ -74,7 +74,7 @@ public:
     bool                showHistory() const;
     void                setShowHistory(bool bShow) const;
     void                chamferEdges(const boost::python::list& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist) const;
-    void                filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback) const;
+    void                filletEdges(const boost::python::list& edgeSubentIds, const boost::python::list& radius, const boost::python::list& startSetback, const boost::python::list& endSetback) const;
     bool                usesGraphicsCache() const;
     void                createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags) const;
     boost::python::list projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const;
