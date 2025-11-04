@@ -419,7 +419,7 @@ void PyDb3dSolid::chamferEdges(const boost::python::list& edgeSubentIds, const P
     return PyThrowBadEs(impObj()->chamferEdges(PyListToPyDbSubentIdPtrArray(edgeSubentIds), *baseFaceSubentId.impObj(), baseDist, otherDist));
 }
 
-void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback) const
+void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, const boost::python::list& radius, const boost::python::list& startSetback, const boost::python::list& endSetback) const
 {
     const auto& _edgeSubentIds = PyListToPyDbSubentIdPtrArray(edgeSubentIds);
     const AcGeDoubleArray& _radius = PyListToDoubleArray(radius);
@@ -505,7 +505,7 @@ void makePyDbRegionWrapper()
         .def("getPerimeter", &PyDbRegion::getPerimeter, DS.ARGS())
         .def("getArea", &PyDbRegion::getArea, DS.ARGS())
         .def("getNormal", &PyDbRegion::getNormal, DS.ARGS())
-        .def("booleanOper", &PyDbRegion::booleanOper, DS.ARGS({"operation : PyDb.BoolOperType","otherRegion : PyDb.Region" }))
+        .def("booleanOper", &PyDbRegion::booleanOper, DS.ARGS({ "operation : PyDb.BoolOperType","otherRegion : PyDb.Region" }))
         .def("numChanges", &PyDbRegion::numChanges, DS.ARGS())
         .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: list[PyDb.Curve]" })).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
