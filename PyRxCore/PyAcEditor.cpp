@@ -209,10 +209,6 @@ boost::python::tuple PyAcEditor::getInteger2(const std::string& prompt, PromptCo
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &val));
-    if (stat != Acad::eNormal || condition == eNone)
-    {
-        return boost::python::make_tuple(stat, val);
-    }
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (val == 0)
@@ -237,10 +233,6 @@ boost::python::tuple PyAcEditor::getDouble2(const std::string& prompt, PromptCon
     PyEdUserInteraction ui;
     double val = 0;
     Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &val));
-    if (stat != Acad::eNormal || condition == eNone)
-    {
-        return boost::python::make_tuple(stat, val);
-    }
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (std::fabs(val) < AcGeContext::gTol.equalPoint())
@@ -333,10 +325,6 @@ boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& promp
     RxAutoOutStr val;
     Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetFullString(cronly, utf8_to_wstr(prompt).c_str(), val.buf));
     const std::string sval = val.str();
-    if (stat != Acad::eNormal || condition == eNone)
-    {
-        return boost::python::make_tuple(stat, sval);
-    }
     if (GETBIT(condition, PromptCondition::eNoEmpty))
     {
         if (sval.empty())
