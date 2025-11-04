@@ -47,6 +47,8 @@ public:
     void                setBlockTransform(const AcGeMatrix3d& val) const;
     PyDbObjectId        appendAttribute(PyDbAttribute& att) const;
     boost::python::list attributeIds() const;
+    boost::python::dict attdict() const;
+    boost::python::list attlist() const;
     Adesk::Boolean      treatAsAcDbBlockRefForExplode() const;
     AcDbExtents         geomExtentsBestFit1() const;
     AcDbExtents         geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;

@@ -57,6 +57,8 @@ void makePyDbBlockReferenceWrapper()
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2, DS.ARGS({ "val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity" }, 2517))
         .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace, DS.ARGS(2516))
         .def("getBlockName", &PyDbBlockReference::getBlockName, DS.ARGS())
+        .def("attdict", &PyDbBlockReference::attdict, DS.ARGS())
+        .def("attlist", &PyDbBlockReference::attlist, DS.ARGS())
         .def("className", &PyDbBlockReference::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -178,6 +180,32 @@ boost::python::list PyDbBlockReference::attributeIds() const
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
         ids.append(PyDbObjectId(iter->objectId()));
     return ids;
+}
+
+boost::python::dict PyDbBlockReference::attdict() const
+{
+    PyAutoLockGIL lock;
+    boost::python::dict pydict;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDbAttribute> attref(iter->objectId());
+        if (attref.openStatus() == eOk)
+            pydict[wstr_to_utf8(attref->tagConst())] = wstr_to_utf8(attref->textStringConst());
+    }
+    return pydict;
+}
+
+boost::python::list PyDbBlockReference::attlist() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDbAttribute> attref(iter->objectId());
+        if (attref.openStatus() == eOk)
+            pylist.append(boost::python::make_tuple(wstr_to_utf8(attref->tagConst()), wstr_to_utf8(attref->textStringConst())));
+    }
+    return pylist;
 }
 
 Adesk::Boolean PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
