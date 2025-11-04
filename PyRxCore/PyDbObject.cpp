@@ -32,10 +32,6 @@ void makePyDbObjectWrapper()
         .def("setOwnerId", &PyDbObject::setOwnerId, DS.ARGS({ "owner: PyDb.ObjectId" }, 7232))
         .def("database", &PyDbObject::database, DS.ARGS(7160))
         .def("databaseToUse", &PyDbObject::databaseToUse, DS.ARGS(7161))
-#ifdef NEVER
-        .def("intendedDatabase", &PyDbObject::intendedDatabase)
-        .def("setIntendedDatabase", &PyDbObject::setIntendedDatabase)
-#endif
         .def("createExtensionDictionary", &PyDbObject::createExtensionDictionary, DS.ARGS(7159))
         .def("extensionDictionary", &PyDbObject::extensionDictionary, DS.ARGS(7178))
         .def("releaseExtensionDictionary", &PyDbObject::releaseExtensionDictionary, DS.ARGS(7223))
