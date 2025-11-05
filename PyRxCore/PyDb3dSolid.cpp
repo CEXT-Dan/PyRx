@@ -271,7 +271,7 @@ void PyDb3dSolid::stlOut2(const std::string& fileName, Adesk::Boolean asciiForma
     return PyThrowBadEs(impObj()->stlOut(utf8_to_wstr(fileName).c_str(), asciiFormat, maxSurfaceDeviation));
 }
 
-void PyDb3dSolid::booleanOper(AcDb::BoolOperType operation, PyDb3dSolid& solid) const
+void PyDb3dSolid::booleanOper(AcDb::BoolOperType operation, const PyDb3dSolid& solid) const
 {
     return PyThrowBadEs(impObj()->booleanOper(operation, solid.impObj()));
 }
@@ -556,7 +556,7 @@ AcGeVector3d PyDbRegion::getNormal() const
     return val;
 }
 
-void PyDbRegion::booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion) const
+void PyDbRegion::booleanOper(AcDb::BoolOperType operation, const PyDbRegion& otherRegion) const
 {
     PyThrowBadEs(impObj()->booleanOper(operation, otherRegion.impObj()));
 }
