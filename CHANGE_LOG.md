@@ -1,6 +1,10 @@
-## v2.2.31
+## v2.2.32
 
-pip install cad-pyrx
+* add helper function BlockReference.attlist, returns a list [(tag, value)]
+* add helper function BlockReference.attdict, returns a dictionary {tag , value}
+* Internal improvements
+
+## v2.2.31
 
 * Added @Ap.using_scope(), provides a scope for managing object lifetimes
 * Fix Database.getVisualStyleList()
