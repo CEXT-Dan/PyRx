@@ -10,28 +10,28 @@
 #pragma comment( lib , "propsys.lib" )
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 260)
-#import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#import "axbricscadapp1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscaddb1.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscadapp1.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
-#import "acax24ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax24ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) && (_ARXTARGET <= 251)
-#import "acax25ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax25ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
-#import "zwcad21.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "zwcad21.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ZRXTARGET) && (_ZRXTARGET >= 250) && (_ZRXTARGET <= 260)
-#import "zwcad25.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "zwcad25.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_GRXTARGET) && (_GRXTARGET >= 240) && (_GRXTARGET <= 260)
-#import "acax.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ZRXTARGET)
