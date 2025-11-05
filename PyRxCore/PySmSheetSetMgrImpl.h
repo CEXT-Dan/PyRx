@@ -5,18 +5,18 @@
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 260)
-#import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscaddb1.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "axbricscadsm.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
-#import "acax24ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax24ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents24.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) && (_ARXTARGET <= 251)
-#import "acax25ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax25ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents25.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
 class PySmDatabaseImpl;
