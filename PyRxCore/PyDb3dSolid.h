@@ -48,7 +48,7 @@ public:
     PyDbRegion          getSection(const PyGePlane& plane) const;
     void                stlOut1(const std::string& fileName, Adesk::Boolean asciiFormat) const;
     void                stlOut2(const std::string& fileName, Adesk::Boolean asciiFormat, double maxSurfaceDeviation) const;
-    void                booleanOper(AcDb::BoolOperType operation, PyDb3dSolid& solid) const;
+    void                booleanOper(AcDb::BoolOperType operation, const PyDb3dSolid& solid) const;
     PyDb3dSolid         getSlice1(const PyGePlane& plane, Adesk::Boolean getNegHalfToo) const;
     PyDb3dSolid         getSlice2(const PyDbSurface& plane, Adesk::Boolean getNegHalfToo) const;
     Adesk::UInt32       numChanges() const;
@@ -103,7 +103,7 @@ public:
     double              getPerimeter() const;
     double              getArea() const;
     AcGeVector3d        getNormal() const;
-    void                booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion) const;
+    void                booleanOper(AcDb::BoolOperType operation, const PyDbRegion& otherRegion) const;
     Adesk::UInt32       numChanges() const;
     Adesk::Boolean      isNull() const;
 
