@@ -99,9 +99,24 @@ protected:
     virtual Adesk::Boolean subWorldDraw(AcGiWorldDraw* mode) override;
     virtual Adesk::UInt32 subSetAttributes(AcGiDrawableTraits* traits) override;
 
+private:
+    AcGePoint3d m_pos;
+    AcGeVector3d m_dir;
+    AcGeVector3d m_normal;
+
+    AcString m_guid;
+    AcString m_name;
+    AcString m_descr;
+
+    Adesk::Int64 m_type = 0;
+
+    std::vector<Adesk::Int32> m_ints;
+    std::vector<double> m_reals;
+    std::vector<AcString> m_strings;
+    std::vector<AcGePoint3d> m_points;
 };
 
-#ifdef ARXOVERRULEOBJ_MODULE
+#ifdef PYRX_MODULE
 ACDB_REGISTER_OBJECT_ENTRY_AUTO(AcDbOverrulableEntity)
 #endif
 

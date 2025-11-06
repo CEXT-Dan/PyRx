@@ -42,7 +42,7 @@ ACRX_DXF_DEFINE_MEMBERS(
 )
 
 //-----------------------------------------------------------------------------
-AcDbOverrulableEntity::AcDbOverrulableEntity() : AcDbEntity() 
+AcDbOverrulableEntity::AcDbOverrulableEntity() : AcDbEntity()
 {
 }
 
@@ -56,44 +56,155 @@ AcDbOverrulableEntity::~AcDbOverrulableEntity()
 Acad::ErrorStatus AcDbOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) const
 {
     assertReadEnabled();
-    //----- Save parent class information first.
     Acad::ErrorStatus es = AcDbEntity::dwgOutFields(pFiler);
     if (es != Acad::eOk)
         return (es);
-    //----- Object version number needs to be saved first
     if ((es = pFiler->writeUInt32(AcDbOverrulableEntity::kCurrentVersionNumber)) != Acad::eOk)
         return (es);
-    //----- Output params
-    //.....
-
+    if (auto es = pFiler->writePoint3d(m_pos); es != eOk)
+        return es;
+    if (auto es = pFiler->writeVector3d(m_dir); es != eOk)
+        return es;
+    if (auto es = pFiler->writeVector3d(m_normal); es != eOk)
+        return es;
+    if (auto es = pFiler->writeString(m_guid); es != eOk)
+        return es;
+    if (auto es = pFiler->writeString(m_name); es != eOk)
+        return es;
+    if (auto es = pFiler->writeString(m_descr); es != eOk)
+        return es;
+    if (auto es = pFiler->writeInt64(m_type); es != eOk)
+        return es;
+    { //m_ints
+        if (auto es = pFiler->writeInt64(m_ints.size()); es != eOk)
+            return es;
+        for (auto v : m_ints)
+        {
+            if (auto es = pFiler->writeInt32(v); es != eOk)
+                return es;
+        }
+    }
+    { //m_reals
+        if (auto es = pFiler->writeInt64(m_reals.size()); es != eOk)
+            return es;
+        for (auto v : m_reals)
+        {
+            if (auto es = pFiler->writeDouble(v); es != eOk)
+                return es;
+        }
+    }
+    { //m_strings
+        if (auto es = pFiler->writeInt64(m_strings.size()); es != eOk)
+            return es;
+        for (const auto& v : m_strings)
+        {
+            if (auto es = pFiler->writeString(v); es != eOk)
+                return es;
+        }
+    }
+    { //m_points
+        if (auto es = pFiler->writeInt64(m_points.size()); es != eOk)
+            return es;
+        for (const auto& v : m_points)
+        {
+            if (auto es = pFiler->writePoint3d(v); es != eOk)
+                return es;
+        }
+    }
     return (pFiler->filerStatus());
 }
 
 Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
 {
     assertWriteEnabled();
-    //----- Read parent class information first.
     Acad::ErrorStatus es = AcDbEntity::dwgInFields(pFiler);
     if (es != Acad::eOk)
         return (es);
-    //----- Object version number needs to be read first
     Adesk::UInt32 version = 0;
     if ((es = pFiler->readUInt32(&version)) != Acad::eOk)
         return (es);
-    if (version > AcDbOverrulableEntity::kCurrentVersionNumber)
+    if (version != AcDbOverrulableEntity::kCurrentVersionNumber)
         return (Acad::eMakeMeProxy);
-    //- Uncomment the 2 following lines if your current object implementation cannot
-    //- support previous version of that object.
-    //if ( version < AcDbOverrulableEntity::kCurrentVersionNumber )
-    //	return (Acad::eMakeMeProxy) ;
-    //----- Read params
-    //.....
+    if (auto es = pFiler->readPoint3d(&m_pos); es != eOk)
+        return es;
+    if (auto es = pFiler->readVector3d(&m_dir); es != eOk)
+        return es;
+    if (auto es = pFiler->readVector3d(&m_normal); es != eOk)
+        return es;
+    if (auto es = pFiler->readString(m_guid); es != eOk)
+        return es;
+    if (auto es = pFiler->readString(m_name); es != eOk)
+        return es;
+    if (auto es = pFiler->readString(m_descr); es != eOk)
+        return es;
+    if (auto es = pFiler->readInt64(&m_type); es != eOk)
+        return es;
 
+    {// m_ints
+        Adesk::UInt64 nints = 0;
+        if (es = pFiler->readUInt64(&nints); es != eOk)
+            return es;
+        m_ints.clear();
+        m_ints.reserve(nints);
+        for (Adesk::Int64 idx = 0; idx < nints; idx++)
+        {
+            Adesk::Int32 v = 0;
+            if (es = pFiler->readInt32(&v); es != eOk)
+                return es;
+            else
+                m_ints.emplace_back(v);
+        }
+    }
+    {// m_reals
+        Adesk::UInt64 nreals = 0;
+        if (es = pFiler->readUInt64(&nreals); es != eOk)
+            return es;
+        m_reals.clear();
+        m_reals.reserve(nreals);
+        for (Adesk::Int64 idx = 0; idx < nreals; idx++)
+        {
+            double v = 0;
+            if (es = pFiler->readDouble(&v); es != eOk)
+                return es;
+            else
+                m_reals.emplace_back(v);
+        }
+    }
+    {// m_strings
+        Adesk::UInt64 nstrings = 0;
+        if (es = pFiler->readUInt64(&nstrings); es != eOk)
+            return es;
+        m_strings.clear();
+        m_strings.reserve(nstrings);
+        for (Adesk::Int64 idx = 0; idx < nstrings; idx++)
+        {
+            AcString v;
+            if (es = pFiler->readString(v); es != eOk)
+                return es;
+            else
+                m_strings.emplace_back(v);
+        }
+    }
+    {// m_points
+        Adesk::UInt64 npoints = 0;
+        if (es = pFiler->readUInt64(&npoints); es != eOk)
+            return es;
+        m_points.clear();
+        m_points.reserve(npoints);
+        for (Adesk::Int64 idx = 0; idx < npoints; idx++)
+        {
+            AcGePoint3d v;
+            if (es = pFiler->readPoint3d(&v); es != eOk)
+                return es;
+            else
+                m_points.emplace_back(v);
+        }
+    }
     return (pFiler->filerStatus());
 }
 
 //- Dxf Filing protocol
-Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) const 
+Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) const
 {
     assertReadEnabled();
     //----- Save parent class information first.
@@ -112,7 +223,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) cons
     return (pFiler->filerStatus());
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler) 
+Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
 {
     assertWriteEnabled();
     //----- Read parent class information first.
@@ -122,7 +233,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
     //----- Object version number needs to be read first
     struct resbuf rb;
     pFiler->readItem(&rb);
-    if (rb.restype != AcDb::kDxfInt32) 
+    if (rb.restype != AcDb::kDxfInt32)
     {
         pFiler->pushBackItem();
         pFiler->setError(Acad::eInvalidDxfCode, _RXST("\nError: expected group code %d (version #)"), AcDb::kDxfInt32);
@@ -136,7 +247,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
     //if ( version < AcDbOverrulableEntity::kCurrentVersionNumber )
     //	return (Acad::eMakeMeProxy) ;
     //----- Read params in non order dependant manner
-    while (es == Acad::eOk && (es = pFiler->readResBuf(&rb)) == Acad::eOk) 
+    while (es == Acad::eOk && (es = pFiler->readResBuf(&rb)) == Acad::eOk)
     {
         switch (rb.restype) {
             //----- Read params by looking at their DXF code (example below)
@@ -166,100 +277,100 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
 }
 
 //- SubXXX() methods (self notification)
-Acad::ErrorStatus AcDbOverrulableEntity::subOpen(AcDb::OpenMode mode) 
+Acad::ErrorStatus AcDbOverrulableEntity::subOpen(AcDb::OpenMode mode)
 {
     return (AcDbEntity::subOpen(mode));
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subErase(Adesk::Boolean erasing) 
+Acad::ErrorStatus AcDbOverrulableEntity::subErase(Adesk::Boolean erasing)
 {
     return (AcDbEntity::subErase(erasing));
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subCancel() 
+Acad::ErrorStatus AcDbOverrulableEntity::subCancel()
 {
     return (AcDbEntity::subCancel());
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subClose() 
+Acad::ErrorStatus AcDbOverrulableEntity::subClose()
 {
     return (AcDbEntity::subClose());
 }
 
 //- Persistent reactor callbacks
-void AcDbOverrulableEntity::openedForModify(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::openedForModify(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::openedForModify(pDbObj);
 }
 
-void AcDbOverrulableEntity::cancelled(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::cancelled(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::cancelled(pDbObj);
 }
 
-void AcDbOverrulableEntity::objectClosed(const AcDbObjectId objId) 
+void AcDbOverrulableEntity::objectClosed(const AcDbObjectId objId)
 {
     assertReadEnabled();
     AcDbEntity::objectClosed(objId);
 }
 
-void AcDbOverrulableEntity::goodbye(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::goodbye(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::goodbye(pDbObj);
 }
 
-void AcDbOverrulableEntity::copied(const AcDbObject* pDbObj, const AcDbObject* pNewObj) 
+void AcDbOverrulableEntity::copied(const AcDbObject* pDbObj, const AcDbObject* pNewObj)
 {
     assertReadEnabled();
     AcDbEntity::copied(pDbObj, pNewObj);
 }
 
-void AcDbOverrulableEntity::erased(const AcDbObject* pDbObj, Adesk::Boolean bErasing) 
+void AcDbOverrulableEntity::erased(const AcDbObject* pDbObj, Adesk::Boolean bErasing)
 {
     assertReadEnabled();
     AcDbEntity::erased(pDbObj, bErasing);
 }
 
-void AcDbOverrulableEntity::modified(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::modified(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modified(pDbObj);
 }
 
-void AcDbOverrulableEntity::modifiedGraphics(const AcDbEntity* pDbEnt) 
+void AcDbOverrulableEntity::modifiedGraphics(const AcDbEntity* pDbEnt)
 {
     assertReadEnabled();
     AcDbEntity::modifiedGraphics(pDbEnt);
 }
 
-void AcDbOverrulableEntity::modifiedXData(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::modifiedXData(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modifiedXData(pDbObj);
 }
 
-void AcDbOverrulableEntity::subObjModified(const AcDbObject* pMainbObj, const AcDbObject* pSubObj) 
+void AcDbOverrulableEntity::subObjModified(const AcDbObject* pMainbObj, const AcDbObject* pSubObj)
 {
     assertReadEnabled();
     AcDbEntity::subObjModified(pMainbObj, pSubObj);
 }
 
-void AcDbOverrulableEntity::modifyUndone(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::modifyUndone(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modifyUndone(pDbObj);
 }
 
-void AcDbOverrulableEntity::reappended(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::reappended(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::reappended(pDbObj);
 }
 
-void AcDbOverrulableEntity::unappended(const AcDbObject* pDbObj) 
+void AcDbOverrulableEntity::unappended(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::unappended(pDbObj);
@@ -267,13 +378,14 @@ void AcDbOverrulableEntity::unappended(const AcDbObject* pDbObj)
 
 //-----------------------------------------------------------------------------
 //----- AcDbEntity protocols
-Adesk::Boolean AcDbOverrulableEntity::subWorldDraw(AcGiWorldDraw* mode) 
+Adesk::Boolean AcDbOverrulableEntity::subWorldDraw(AcGiWorldDraw* mode)
 {
     assertReadEnabled();
-    return (AcDbEntity::subWorldDraw(mode));
+    auto& geo = mode->geometry();
+    return geo.polypoint(1, &m_pos);
 }
 
-Adesk::UInt32 AcDbOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits) 
+Adesk::UInt32 AcDbOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits)
 {
     assertReadEnabled();
     return (AcDbEntity::subSetAttributes(traits));
