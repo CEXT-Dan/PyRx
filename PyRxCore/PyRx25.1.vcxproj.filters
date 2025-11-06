@@ -433,6 +433,9 @@
     <ClCompile Include="PyDbAssocAction.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="AcDbOverrulableEntity.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -872,6 +875,9 @@
     </ClInclude>
     <ClInclude Include="PyDbAssocAction.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="AcDbOverrulableEntity.h">
+      <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

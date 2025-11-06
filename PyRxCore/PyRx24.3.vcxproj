@@ -67,7 +67,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=243;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;PYRX_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=243;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ARX2024)\inc;$(ARX2024)\inc-$(PlatformName);$(ARX2024)\utils\brep\inc;$(ARX2024)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -102,7 +102,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=243;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;PYRX_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=243;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ARX2024)\inc;$(ARX2024)\inc-$(PlatformName);$(ARX2024)\utils\brep\inc;$(ARX2024)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -134,6 +134,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AcDbOverrulableEntity.cpp" />
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="DbCore.cpp" />
     <ClCompile Include="dllmain.cpp" />
@@ -283,6 +284,7 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AcDbOverrulableEntity.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
