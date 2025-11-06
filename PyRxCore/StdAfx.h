@@ -183,13 +183,9 @@
 
 #ifdef PYRXDEBUG
 #define PYRX_IN_PROGRESS_GS_GI 
+#define PYRX_IN_PROGRESS_OVERULE
 //#define PYRX_IN_PROGRESS
 //#define PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR not in BRX
-#endif
-
-//#define PYPERFPROFILER
-#ifdef PYPERFPROFILER
-#pragma message ("PYPERFPROFILER is on")
 #endif
 
 #ifdef PYRXDEBUG
