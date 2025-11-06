@@ -255,8 +255,10 @@ static boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    pylist.append(p.x);
-    pylist.append(p.y);
+    {
+        pylist.append(p.x);
+        pylist.append(p.y);
+    }
     return pylist;
 }
 
@@ -527,8 +529,10 @@ static boost::python::list AcGeVector2ToList(const AcGeVector2d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
-    l.append(p.x);
-    l.append(p.y);
+    {
+        l.append(p.x);
+        l.append(p.y);
+    }
     return l;
 }
 
@@ -707,21 +711,29 @@ static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
 {
     PyAutoLockGIL lock;
     boost::python::list r0;
-    r0.append(x.entry[0][0]);
-    r0.append(x.entry[0][1]);
-    r0.append(x.entry[0][2]);
+    {
+        r0.append(x.entry[0][0]);
+        r0.append(x.entry[0][1]);
+        r0.append(x.entry[0][2]);
+    }
     boost::python::list r1;
-    r1.append(x.entry[1][0]);
-    r1.append(x.entry[1][1]);
-    r1.append(x.entry[1][2]);
+    {
+        r1.append(x.entry[1][0]);
+        r1.append(x.entry[1][1]);
+        r1.append(x.entry[1][2]);
+    }
     boost::python::list r2;
-    r2.append(x.entry[2][0]);
-    r2.append(x.entry[2][1]);
-    r2.append(x.entry[2][2]);
+    {
+        r2.append(x.entry[2][0]);
+        r2.append(x.entry[2][1]);
+        r2.append(x.entry[2][2]);
+    }
     boost::python::list m;
-    m.append(r0);
-    m.append(r1);
-    m.append(r2);
+    {
+        m.append(r0);
+        m.append(r1);
+        m.append(r2);
+    }
     return m;
 }
 
@@ -1022,9 +1034,11 @@ static boost::python::list AcGePoint3dToList(const AcGePoint3d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
-    l.append(p.x);
-    l.append(p.y);
-    l.append(p.z);
+    {
+        l.append(p.x);
+        l.append(p.y);
+        l.append(p.z);
+    }
     return l;
 }
 
@@ -1381,9 +1395,11 @@ static boost::python::list AcGeVector3dToList(const AcGeVector3d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
-    l.append(p.x);
-    l.append(p.y);
-    l.append(p.z);
+    {
+        l.append(p.x);
+        l.append(p.y);
+        l.append(p.z);
+    }
     return l;
 }
 
@@ -1681,30 +1697,40 @@ static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
     boost::python::list r0;
-    r0.append(x.entry[0][0]);
-    r0.append(x.entry[0][1]);
-    r0.append(x.entry[0][2]);
-    r0.append(x.entry[0][3]);
+    {
+        r0.append(x.entry[0][0]);
+        r0.append(x.entry[0][1]);
+        r0.append(x.entry[0][2]);
+        r0.append(x.entry[0][3]);
+    }
     boost::python::list r1;
-    r1.append(x.entry[1][0]);
-    r1.append(x.entry[1][1]);
-    r1.append(x.entry[1][2]);
-    r1.append(x.entry[1][3]);
+    {
+        r1.append(x.entry[1][0]);
+        r1.append(x.entry[1][1]);
+        r1.append(x.entry[1][2]);
+        r1.append(x.entry[1][3]);
+    }
     boost::python::list r2;
-    r2.append(x.entry[2][0]);
-    r2.append(x.entry[2][1]);
-    r2.append(x.entry[2][2]);
-    r2.append(x.entry[2][3]);
+    {
+        r2.append(x.entry[2][0]);
+        r2.append(x.entry[2][1]);
+        r2.append(x.entry[2][2]);
+        r2.append(x.entry[2][3]);
+    }
     boost::python::list r3;
-    r3.append(x.entry[3][0]);
-    r3.append(x.entry[3][1]);
-    r3.append(x.entry[3][2]);
-    r3.append(x.entry[3][3]);
+    {
+        r3.append(x.entry[3][0]);
+        r3.append(x.entry[3][1]);
+        r3.append(x.entry[3][2]);
+        r3.append(x.entry[3][3]);
+    }
     boost::python::list m;
-    m.append(r0);
-    m.append(r1);
-    m.append(r2);
-    m.append(r3);
+    {
+        m.append(r0);
+        m.append(r1);
+        m.append(r2);
+        m.append(r3);
+    }
     return m;
 }
 
