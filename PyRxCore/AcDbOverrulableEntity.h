@@ -24,6 +24,8 @@
 //-----------------------------------------------------------------------------
 #pragma once
 
+#ifdef PYRX_IN_PROGRESS_OVERULE
+
 #ifdef PYRX_MODULE
 #define DLLIMPEXP __declspec(dllexport)
 #else
@@ -48,56 +50,59 @@
 #include "dbmain.h"
 
 //-----------------------------------------------------------------------------
-class DLLIMPEXP AcDbOverrulableEntity : public AcDbEntity {
+class DLLIMPEXP AcDbOverrulableEntity : public AcDbEntity
+{
 
 public:
-	ACRX_DECLARE_MEMBERS(AcDbOverrulableEntity) ;
+    ACRX_DECLARE_MEMBERS(AcDbOverrulableEntity);
 
 protected:
-	static Adesk::UInt32 kCurrentVersionNumber ;
+    static Adesk::UInt32 kCurrentVersionNumber;
 
 public:
-	AcDbOverrulableEntity () ;
-	virtual ~AcDbOverrulableEntity () ;
+    AcDbOverrulableEntity();
+    virtual ~AcDbOverrulableEntity() override;
 
-	//----- AcDbObject protocols
-	//- Dwg Filing protocol
-	virtual Acad::ErrorStatus dwgOutFields (AcDbDwgFiler *pFiler) const ;
-	virtual Acad::ErrorStatus dwgInFields (AcDbDwgFiler *pFiler) ;
+    //----- AcDbObject protocols
+    //- Dwg Filing protocol
+    virtual Acad::ErrorStatus dwgOutFields(AcDbDwgFiler* pFiler) const override;
+    virtual Acad::ErrorStatus dwgInFields(AcDbDwgFiler* pFiler) override;
 
-	//- Dxf Filing protocol
-	virtual Acad::ErrorStatus dxfOutFields (AcDbDxfFiler *pFiler) const ;
-	virtual Acad::ErrorStatus dxfInFields (AcDbDxfFiler *pFiler) ;
+    //- Dxf Filing protocol
+    virtual Acad::ErrorStatus dxfOutFields(AcDbDxfFiler* pFiler) const override;
+    virtual Acad::ErrorStatus dxfInFields(AcDbDxfFiler* pFiler) override;
 
-	//- SubXXX() methods (self notification)
-	virtual Acad::ErrorStatus subOpen (AcDb::OpenMode mode) ;
-	virtual Acad::ErrorStatus subErase (Adesk::Boolean erasing) ;
-	virtual Acad::ErrorStatus subCancel () ;
-	virtual Acad::ErrorStatus subClose () ;
+    //- SubXXX() methods (self notification)
+    virtual Acad::ErrorStatus subOpen(AcDb::OpenMode mode) override;
+    virtual Acad::ErrorStatus subErase(Adesk::Boolean erasing) override;
+    virtual Acad::ErrorStatus subCancel() override;
+    virtual Acad::ErrorStatus subClose() override;
 
-	//- Persistent reactor callbacks
-	virtual void openedForModify (const AcDbObject *pDbObj) ;
-	virtual void cancelled (const AcDbObject *pDbObj) ;
-	virtual void objectClosed (const AcDbObjectId objId) ;
-	virtual void goodbye (const AcDbObject *pDbObj) ;
-	virtual void copied (const AcDbObject *pDbObj, const AcDbObject *pNewObj) ;
-	virtual void erased (const AcDbObject *pDbObj, Adesk::Boolean bErasing =true) ;
-	virtual void modified (const AcDbObject *pDbObj) ;
-	virtual void modifiedGraphics (const AcDbEntity *pDbEnt) ;
-	virtual void modifiedXData (const AcDbObject *pDbObj) ;
-	virtual void subObjModified (const AcDbObject *pMainbObj, const AcDbObject *pSubObj) ;
-	virtual void modifyUndone (const AcDbObject *pDbObj) ;
-	virtual void reappended (const AcDbObject *pDbObj) ;
-	virtual void unappended (const AcDbObject *pDbObj) ;
+    //- Persistent reactor callbacks
+    virtual void openedForModify(const AcDbObject* pDbObj) override;
+    virtual void cancelled(const AcDbObject* pDbObj) override;
+    virtual void objectClosed(const AcDbObjectId objId) override;
+    virtual void goodbye(const AcDbObject* pDbObj) override;
+    virtual void copied(const AcDbObject* pDbObj, const AcDbObject* pNewObj) override;
+    virtual void erased(const AcDbObject* pDbObj, Adesk::Boolean bErasing = true) override;
+    virtual void modified(const AcDbObject* pDbObj) override;
+    virtual void modifiedGraphics(const AcDbEntity* pDbEnt) override;
+    virtual void modifiedXData(const AcDbObject* pDbObj) override;
+    virtual void subObjModified(const AcDbObject* pMainbObj, const AcDbObject* pSubObj) override;
+    virtual void modifyUndone(const AcDbObject* pDbObj) override;
+    virtual void reappended(const AcDbObject* pDbObj)override;
+    virtual void unappended(const AcDbObject* pDbObj) override;
 
-	//----- AcDbEntity protocols
-	//- Graphics protocol
+    //----- AcDbEntity protocols
+    //- Graphics protocol
 protected:
-	virtual Adesk::Boolean subWorldDraw (AcGiWorldDraw *mode) ;
-	virtual Adesk::UInt32 subSetAttributes (AcGiDrawableTraits *traits) ;
+    virtual Adesk::Boolean subWorldDraw(AcGiWorldDraw* mode) override;
+    virtual Adesk::UInt32 subSetAttributes(AcGiDrawableTraits* traits) override;
 
-} ;
+};
 
 #ifdef ARXOVERRULEOBJ_MODULE
 ACDB_REGISTER_OBJECT_ENTRY_AUTO(AcDbOverrulableEntity)
 #endif
+
+#endif //PYRX_IN_PROGRESS_OVERULE

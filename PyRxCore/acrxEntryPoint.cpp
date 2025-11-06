@@ -37,6 +37,7 @@
 
 //for testing
 #ifdef PYRXDEBUG
+#include "AcDbOverrulableEntity.h"
 #endif
 
 //-----------------------------------------------------------------------------
