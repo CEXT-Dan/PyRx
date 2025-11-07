@@ -26,7 +26,40 @@
 #include "AcDbOverrulableEntity.h"
 
 #ifdef PYRX_IN_PROGRESS_OVERULE
+//-----------------------------------------------------------------------------
+// TestOverrule
+bool TestOverrule::isApplicable(const AcRxObject*) const
+{
+    return true;
+}
 
+Adesk::Boolean TestOverrule::worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd)
+{
+    AcDbOverrulableEntity* ptr = static_cast<AcDbOverrulableEntity*>(pSubject);
+    auto& geo = wd->geometry();
+    for (const auto& pnt : ptr->points())
+        geo.circle(pnt, 0.05, ptr->normal());
+    return true;
+}
+
+TestOverrule& TestOverrule::instance()
+{
+    static TestOverrule m_this{};
+    return m_this;
+}
+
+Acad::ErrorStatus TestOverrule::start()
+{
+    return TestOverrule::addOverrule(AcDbOverrulableEntity::desc(), &TestOverrule::instance());
+}
+
+Acad::ErrorStatus TestOverrule::stop()
+{
+    return TestOverrule::removeOverrule(AcDbOverrulableEntity::desc(), &TestOverrule::instance());
+}
+
+//-----------------------------------------------------------------------------
+// AcDbOverrulableEntity
 //-----------------------------------------------------------------------------
 Adesk::UInt32 AcDbOverrulableEntity::kCurrentVersionNumber = 1;
 
@@ -38,7 +71,7 @@ ACRX_DXF_DEFINE_MEMBERS(
     PYRXAPP
     | Product Desc : AcDbOverrulableEntity
     | Company : CAD_PyRx
-    | WEB Address : github.com/CEXT-Dan/PyRx
+    | WEB Address : github.com / CEXT - Dan / PyRx
 )
 
 //-----------------------------------------------------------------------------
@@ -143,7 +176,6 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
         return es;
     if (auto es = pFiler->readInt64(&m_mask); es != eOk)
         return es;
-
     {// m_ints
         Adesk::UInt64 nints = 0;
         if (es = pFiler->readUInt64(&nints); es != eOk)
@@ -546,3 +578,5 @@ Acad::ErrorStatus AcDbOverrulableEntity::subTransformBy(const AcGeMatrix3d& xfor
 }
 
 #endif //PYRX_IN_PROGRESS_OVERULE
+
+
