@@ -61,6 +61,14 @@ public:
     {
         return true;
     }
+    virtual Adesk::Boolean worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd) override
+    {
+        AcDbOverrulableEntity* ptr = static_cast<AcDbOverrulableEntity*>(pSubject);
+        auto& geo = wd->geometry();
+        for (const auto& pnt : ptr->points())
+            geo.circle(pnt, 0.05, ptr->normal());
+        return true;
+    }
 };
 #endif
 
@@ -201,9 +209,6 @@ public:
         static bool doneOnce = false;
         if (!doneOnce)
         {
-#ifdef PYRXDEBUG
-            //TestOverrule::addOverrule(AcDbOverrulableEntity::desc(), rule.get());
-#endif
             printPyRxBuldVersion();
             if (!PyRxApp::instance().init())
                 acutPrintf(_T("\nPyInit Failed"));
@@ -463,12 +468,39 @@ public:
         return std::make_tuple(es, id);
     }
 
-    static void AcRxPyApp_idoit(void)
+    static void AcRxPyApp_idoit1(void)
     {
         AcDbObjectUPtr<AcDbOverrulableEntity> ptr(new AcDbOverrulableEntity());
-        /*ptr->m_pos = AcGePoint3d(1, 1, 0);
-        ptr->m_points.push_back(AcGePoint3d::kOrigin);*/
+        std::vector<AcString> strings{ _T("hello"), _T("World") };
+        std::vector<AcGePoint3d> points{ AcGePoint3d::kOrigin,AcGePoint3d::kOrigin + (AcGeVector3d::kXAxis * 5) };
+
+        ptr->setStrings(strings);
+        ptr->setPoints(points);
+
         postToModelSpace(*ptr.get());
+    }
+
+    static void AcRxPyApp_idoit2(void)
+    {
+        auto [ps, id, pnt] = entsel();
+        if (ps != Acad::PromptStatus::eNormal)
+            return;
+
+        AcDbOverrulableEntityPointer ptr(id);
+        if (ptr.openStatus() != eOk)
+            return;
+
+        for (const auto& item : ptr->strings())
+            acutPrintf(_T("\n%ls"), (const wchar_t*)item);
+
+        for (const auto& item : ptr->points())
+            acutPrintf(_T("\n(%f,%f,%f)"), item.x, item.y, item.z);
+    }
+
+    static void AcRxPyApp_idoit3(void)
+    {
+        auto es = TestOverrule::addOverrule(AcDbOverrulableEntity::desc(), rule.get());
+        acutPrintf(acadErrorStatusText(es));
     }
 #endif
 };
@@ -490,6 +522,8 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit2, idoit2, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit3, idoit3, ACRX_CMD_MODAL, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )
