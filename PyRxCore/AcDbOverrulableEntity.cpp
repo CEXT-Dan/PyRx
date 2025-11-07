@@ -35,10 +35,10 @@ ACRX_DXF_DEFINE_MEMBERS(
     AcDbOverrulableEntity, AcDbEntity,
     AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
     AcDbProxyEntity::kAllAllowedBits, ACDBOVERRULABLEENTITY,
-    ARXOVERRULEOBJAPP
+    PYRXAPP
     | Product Desc : AcDbOverrulableEntity
     | Company : CAD_PyRx
-    | WEB Address : https://github.com/CEXT-Dan/PyRx
+    | WEB Address : github.com/CEXT-Dan/PyRx
 )
 
 //-----------------------------------------------------------------------------
@@ -526,7 +526,6 @@ Adesk::UInt32 AcDbOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits
     assertReadEnabled();
     return (AcDbEntity::subSetAttributes(traits));
 }
-
 
 Acad::ErrorStatus AcDbOverrulableEntity::subGetGripPoints(AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) const
 {
