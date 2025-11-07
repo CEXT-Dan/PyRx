@@ -36,7 +36,7 @@
 #include "AcDbAssocAction.h"
 
 //for testing
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_OVERULE
 #include "AcDbOverrulableEntity.h"
 #endif
 
@@ -51,35 +51,10 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-#ifdef PYRXDEBUG
-class TestOverrule : public AcGiDrawableOverrule
-{
-public:
-    TestOverrule() = default;
-    virtual ~TestOverrule() override = default;
-    virtual bool isApplicable(const AcRxObject*) const override
-    {
-        return true;
-    }
-    virtual Adesk::Boolean worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd) override
-    {
-        AcDbOverrulableEntity* ptr = static_cast<AcDbOverrulableEntity*>(pSubject);
-        auto& geo = wd->geometry();
-        for (const auto& pnt : ptr->points())
-            geo.circle(pnt, 0.05, ptr->normal());
-        return true;
-    }
-};
-#endif
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-#ifdef PYRXDEBUG
-    inline static std::unique_ptr<TestOverrule> rule;
-#endif
-
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -96,11 +71,6 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-
-#ifdef PYRXDEBUG
-        rule.reset(new TestOverrule());
-#endif
-
         return (retCode);
     }
 
@@ -114,9 +84,6 @@ public:
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-#ifdef PYRXDEBUG
-        rule.reset(nullptr);
-#endif
         acdbModelerEnd();
         acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRemoveWatchWinMsg(PyWatchWinMsgFn);
@@ -473,10 +440,8 @@ public:
         AcDbObjectUPtr<AcDbOverrulableEntity> ptr(new AcDbOverrulableEntity());
         std::vector<AcString> strings{ _T("hello"), _T("World") };
         std::vector<AcGePoint3d> points{ AcGePoint3d::kOrigin,AcGePoint3d::kOrigin + (AcGeVector3d::kXAxis * 5) };
-
         ptr->setStrings(strings);
         ptr->setPoints(points);
-
         postToModelSpace(*ptr.get());
     }
 
@@ -485,21 +450,24 @@ public:
         auto [ps, id, pnt] = entsel();
         if (ps != Acad::PromptStatus::eNormal)
             return;
-
         AcDbOverrulableEntityPointer ptr(id);
         if (ptr.openStatus() != eOk)
             return;
-
         for (const auto& item : ptr->strings())
             acutPrintf(_T("\n%ls"), (const wchar_t*)item);
-
         for (const auto& item : ptr->points())
             acutPrintf(_T("\n(%f,%f,%f)"), item.x, item.y, item.z);
     }
 
     static void AcRxPyApp_idoit3(void)
     {
-        auto es = TestOverrule::addOverrule(AcDbOverrulableEntity::desc(), rule.get());
+        auto es = TestOverrule::start();
+        acutPrintf(acadErrorStatusText(es));
+    }
+
+    static void AcRxPyApp_idoit4(void)
+    {
+        auto es = TestOverrule::stop();
         acutPrintf(acadErrorStatusText(es));
     }
 #endif
@@ -525,5 +493,6 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit2, idoit2, ACRX_CMD_MODAL, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit3, idoit3, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit4, idoit4, ACRX_CMD_MODAL, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )

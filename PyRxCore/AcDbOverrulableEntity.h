@@ -26,6 +26,18 @@
 
 #ifdef PYRX_IN_PROGRESS_OVERULE
 
+class TestOverrule : public AcGiDrawableOverrule
+{
+public:
+    TestOverrule() = default;
+    virtual ~TestOverrule() override = default;
+    virtual bool                isApplicable(const AcRxObject*) const override;
+    virtual Adesk::Boolean      worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd) override;
+    static TestOverrule&        instance();
+    static Acad::ErrorStatus    start();
+    static Acad::ErrorStatus    stop();
+};
+
 #ifdef PYRX_MODULE
 #define DLLIMPEXP __declspec(dllexport)
 #else
