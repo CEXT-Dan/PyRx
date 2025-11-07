@@ -125,22 +125,24 @@ protected:
     virtual Acad::ErrorStatus   subTransformBy(const AcGeMatrix3d& xform) override;
 
 private:
-    AcGePoint3d m_pos;     // Transformed
-    AcGeVector3d m_dir;    // Transformed
-    AcGeVector3d m_normal; // Transformed
+    AcGePoint3d m_pos = AcGePoint3d::kOrigin;   // Transformed
+    AcGeVector3d m_dir = AcGeVector3d::kXAxis;  // Transformed
+    AcGeVector3d m_normal = AcGeVector3d::kZAxis;// Transformed
 
-    AcString m_guid;
-    AcString m_name;
-    AcString m_descr;
+    AcString m_guid; // a developer key?
+    AcString m_name; // anything
+    AcString m_descr;// anything
 
-    Adesk::Int64 m_type = 0;
-    Adesk::Int64 m_mask = 0;
+    Adesk::Int64 m_type = 0; // anything
+    Adesk::Int64 m_mask = 0; // anything
 
-    std::vector<Adesk::Int32> m_ints;
-    std::vector<double> m_reals;
-    std::vector<AcString> m_strings;
-    std::vector<AcGePoint3d> m_points; // Transformed
+    std::vector<Adesk::Int32> m_ints; // data
+    std::vector<double> m_reals;      // " "
+    std::vector<AcString> m_strings;  // " "
+    std::vector<AcGePoint3d> m_points;//Transformed
 };
+
+using AcDbOverrulableEntityPointer = AcDbObjectPointer<AcDbOverrulableEntity>;
 
 #ifdef PYRX_MODULE
 ACDB_REGISTER_OBJECT_ENTRY_AUTO(AcDbOverrulableEntity)
