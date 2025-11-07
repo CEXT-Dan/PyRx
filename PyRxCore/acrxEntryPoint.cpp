@@ -36,8 +36,8 @@
 #include "AcDbAssocAction.h"
 
 //for testing
-#ifdef PYRX_IN_PROGRESS_OVERULE
-#include "AcDbOverrulableEntity.h"
+#ifdef PYRXDEBUG
+#include "PyRxOverrulableEntity.h"
 #endif
 
 //-----------------------------------------------------------------------------
@@ -437,7 +437,7 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        AcDbObjectUPtr<AcDbOverrulableEntity> ptr(new AcDbOverrulableEntity());
+        AcDbObjectUPtr<PyRxOverrulableEntity> ptr(new PyRxOverrulableEntity());
         std::vector<AcString> strings{ _T("hello"), _T("World") };
         std::vector<AcGePoint3d> points{ AcGePoint3d::kOrigin,AcGePoint3d::kOrigin + (AcGeVector3d::kXAxis * 5) };
         ptr->setStrings(strings);

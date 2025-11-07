@@ -24,8 +24,7 @@
 //-----------------------------------------------------------------------------
 #pragma once
 
-#ifdef PYRX_IN_PROGRESS_OVERULE
-
+#ifdef PYRXDEBUG
 class TestOverrule : public AcGiDrawableOverrule
 {
 public:
@@ -37,6 +36,7 @@ public:
     static Acad::ErrorStatus    start();
     static Acad::ErrorStatus    stop();
 };
+#endif
 
 #ifdef PYRX_MODULE
 #define DLLIMPEXP __declspec(dllexport)
@@ -62,18 +62,18 @@ public:
 #include "dbmain.h"
 
 //-----------------------------------------------------------------------------
-class DLLIMPEXP AcDbOverrulableEntity : public AcDbEntity
+class DLLIMPEXP PyRxOverrulableEntity : public AcDbEntity
 {
 
 public:
-    ACRX_DECLARE_MEMBERS(AcDbOverrulableEntity);
+    ACRX_DECLARE_MEMBERS(PyRxOverrulableEntity);
 
 protected:
     static Adesk::UInt32 kCurrentVersionNumber;
 
 public:
-    AcDbOverrulableEntity();
-    virtual ~AcDbOverrulableEntity() override;
+    PyRxOverrulableEntity();
+    virtual ~PyRxOverrulableEntity() override;
 
     //----- AcDbObject protocols
     //- Dwg Filing protocol
@@ -116,6 +116,8 @@ public:
     void         setGuid(const AcString& val);
     AcString     name() const;
     void         setName(const AcString& val);
+    AcString     description() const;
+    void         setdescription(const AcString& val);
     Adesk::Int64 entType() const;
     void         setEntType(Adesk::Int64 val);
     Adesk::Int64 mask() const;
@@ -154,10 +156,8 @@ private:
     std::vector<AcGePoint3d> m_points;//Transformed
 };
 
-using AcDbOverrulableEntityPointer = AcDbObjectPointer<AcDbOverrulableEntity>;
+using AcDbOverrulableEntityPointer = AcDbObjectPointer<PyRxOverrulableEntity>;
 
 #ifdef PYRX_MODULE
-ACDB_REGISTER_OBJECT_ENTRY_AUTO(AcDbOverrulableEntity)
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(PyRxOverrulableEntity)
 #endif
-
-#endif //PYRX_IN_PROGRESS_OVERULE

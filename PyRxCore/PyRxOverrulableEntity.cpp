@@ -23,9 +23,9 @@
 //----- AcDbOverrulableEntity.cpp : Implementation of AcDbOverrulableEntity
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
-#include "AcDbOverrulableEntity.h"
+#include "PyRxOverrulableEntity.h"
 
-#ifdef PYRX_IN_PROGRESS_OVERULE
+#ifdef PYRXDEBUG
 //-----------------------------------------------------------------------------
 // TestOverrule
 bool TestOverrule::isApplicable(const AcRxObject*) const
@@ -35,10 +35,10 @@ bool TestOverrule::isApplicable(const AcRxObject*) const
 
 Adesk::Boolean TestOverrule::worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd)
 {
-    AcDbOverrulableEntity* ptr = static_cast<AcDbOverrulableEntity*>(pSubject);
+    PyRxOverrulableEntity* ptr = static_cast<PyRxOverrulableEntity*>(pSubject);
     auto& geo = wd->geometry();
     for (const auto& pnt : ptr->points())
-        geo.circle(pnt, 0.05, ptr->normal());
+        geo.circle(pnt, 0.5, ptr->normal());
     return true;
 }
 
@@ -50,49 +50,51 @@ TestOverrule& TestOverrule::instance()
 
 Acad::ErrorStatus TestOverrule::start()
 {
-    return TestOverrule::addOverrule(AcDbOverrulableEntity::desc(), &TestOverrule::instance());
+    return TestOverrule::addOverrule(PyRxOverrulableEntity::desc(), &TestOverrule::instance());
 }
 
 Acad::ErrorStatus TestOverrule::stop()
 {
-    return TestOverrule::removeOverrule(AcDbOverrulableEntity::desc(), &TestOverrule::instance());
+    return TestOverrule::removeOverrule(PyRxOverrulableEntity::desc(), &TestOverrule::instance());
 }
+
+#endif
 
 //-----------------------------------------------------------------------------
 // AcDbOverrulableEntity
 //-----------------------------------------------------------------------------
-Adesk::UInt32 AcDbOverrulableEntity::kCurrentVersionNumber = 1;
+Adesk::UInt32 PyRxOverrulableEntity::kCurrentVersionNumber = 1;
 
 //-----------------------------------------------------------------------------
 ACRX_DXF_DEFINE_MEMBERS(
-    AcDbOverrulableEntity, AcDbEntity,
+    PyRxOverrulableEntity, AcDbEntity,
     AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
-    AcDbProxyEntity::kAllAllowedBits, ACDBOVERRULABLEENTITY,
+    AcDbProxyEntity::kAllAllowedBits, PYRXOVERRULABLEENTITY,
     PYRXAPP
-    | Product Desc : AcDbOverrulableEntity
+    | Product Desc : PyRxOverrulableEntity
     | Company : CAD_PyRx
-    | WEB Address : github.com / CEXT - Dan / PyRx
+    | WEB Address : github.com/CEXT-Dan/PyRx
 )
 
 //-----------------------------------------------------------------------------
-AcDbOverrulableEntity::AcDbOverrulableEntity() : AcDbEntity()
+PyRxOverrulableEntity::PyRxOverrulableEntity() : AcDbEntity()
 {
 }
 
-AcDbOverrulableEntity::~AcDbOverrulableEntity()
+PyRxOverrulableEntity::~PyRxOverrulableEntity()
 {
 }
 
 //-----------------------------------------------------------------------------
 //----- AcDbObject protocols
 //- Dwg Filing protocol
-Acad::ErrorStatus AcDbOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) const
+Acad::ErrorStatus PyRxOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) const
 {
     assertReadEnabled();
     Acad::ErrorStatus es = AcDbEntity::dwgOutFields(pFiler);
     if (es != Acad::eOk)
         return (es);
-    if ((es = pFiler->writeUInt32(AcDbOverrulableEntity::kCurrentVersionNumber)) != Acad::eOk)
+    if ((es = pFiler->writeUInt32(PyRxOverrulableEntity::kCurrentVersionNumber)) != Acad::eOk)
         return (es);
     if (auto es = pFiler->writePoint3d(m_pos); es != eOk)
         return es;
@@ -149,7 +151,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) cons
     return (pFiler->filerStatus());
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
+Acad::ErrorStatus PyRxOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
 {
     assertWriteEnabled();
     Acad::ErrorStatus es = AcDbEntity::dwgInFields(pFiler);
@@ -158,7 +160,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
     Adesk::UInt32 version = 0;
     if ((es = pFiler->readUInt32(&version)) != Acad::eOk)
         return (es);
-    if (version != AcDbOverrulableEntity::kCurrentVersionNumber)
+    if (version != PyRxOverrulableEntity::kCurrentVersionNumber)
         return (Acad::eMakeMeProxy);
     if (auto es = pFiler->readPoint3d(&m_pos); es != eOk)
         return es;
@@ -240,7 +242,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
 }
 
 //- Dxf Filing protocol
-Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) const
+Acad::ErrorStatus PyRxOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) const
 {
     assertReadEnabled();
     //----- Save parent class information first.
@@ -251,7 +253,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) cons
     if (es != Acad::eOk)
         return (es);
     //----- Object version number needs to be saved first
-    if ((es = pFiler->writeUInt32(kDxfInt32, AcDbOverrulableEntity::kCurrentVersionNumber)) != Acad::eOk)
+    if ((es = pFiler->writeUInt32(kDxfInt32, PyRxOverrulableEntity::kCurrentVersionNumber)) != Acad::eOk)
         return (es);
     //----- Output params
     //.....
@@ -259,7 +261,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfOutFields(AcDbDxfFiler* pFiler) cons
     return (pFiler->filerStatus());
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
+Acad::ErrorStatus PyRxOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
 {
     assertWriteEnabled();
     //----- Read parent class information first.
@@ -276,7 +278,7 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
         return (pFiler->filerStatus());
     }
     Adesk::UInt32 version = (Adesk::UInt32)rb.resval.rlong;
-    if (version > AcDbOverrulableEntity::kCurrentVersionNumber)
+    if (version > PyRxOverrulableEntity::kCurrentVersionNumber)
         return (Acad::eMakeMeProxy);
     //- Uncomment the 2 following lines if your current object implementation cannot
     //- support previous version of that object.
@@ -313,232 +315,244 @@ Acad::ErrorStatus AcDbOverrulableEntity::dxfInFields(AcDbDxfFiler* pFiler)
 }
 
 //- SubXXX() methods (self notification)
-Acad::ErrorStatus AcDbOverrulableEntity::subOpen(AcDb::OpenMode mode)
+Acad::ErrorStatus PyRxOverrulableEntity::subOpen(AcDb::OpenMode mode)
 {
     return (AcDbEntity::subOpen(mode));
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subErase(Adesk::Boolean erasing)
+Acad::ErrorStatus PyRxOverrulableEntity::subErase(Adesk::Boolean erasing)
 {
     return (AcDbEntity::subErase(erasing));
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subCancel()
+Acad::ErrorStatus PyRxOverrulableEntity::subCancel()
 {
     return (AcDbEntity::subCancel());
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subClose()
+Acad::ErrorStatus PyRxOverrulableEntity::subClose()
 {
     return (AcDbEntity::subClose());
 }
 
 //- Persistent reactor callbacks
-void AcDbOverrulableEntity::openedForModify(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::openedForModify(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::openedForModify(pDbObj);
 }
 
-void AcDbOverrulableEntity::cancelled(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::cancelled(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::cancelled(pDbObj);
 }
 
-void AcDbOverrulableEntity::objectClosed(const AcDbObjectId objId)
+void PyRxOverrulableEntity::objectClosed(const AcDbObjectId objId)
 {
     assertReadEnabled();
     AcDbEntity::objectClosed(objId);
 }
 
-void AcDbOverrulableEntity::goodbye(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::goodbye(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::goodbye(pDbObj);
 }
 
-void AcDbOverrulableEntity::copied(const AcDbObject* pDbObj, const AcDbObject* pNewObj)
+void PyRxOverrulableEntity::copied(const AcDbObject* pDbObj, const AcDbObject* pNewObj)
 {
     assertReadEnabled();
     AcDbEntity::copied(pDbObj, pNewObj);
 }
 
-void AcDbOverrulableEntity::erased(const AcDbObject* pDbObj, Adesk::Boolean bErasing)
+void PyRxOverrulableEntity::erased(const AcDbObject* pDbObj, Adesk::Boolean bErasing)
 {
     assertReadEnabled();
     AcDbEntity::erased(pDbObj, bErasing);
 }
 
-void AcDbOverrulableEntity::modified(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::modified(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modified(pDbObj);
 }
 
-void AcDbOverrulableEntity::modifiedGraphics(const AcDbEntity* pDbEnt)
+void PyRxOverrulableEntity::modifiedGraphics(const AcDbEntity* pDbEnt)
 {
     assertReadEnabled();
     AcDbEntity::modifiedGraphics(pDbEnt);
 }
 
-void AcDbOverrulableEntity::modifiedXData(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::modifiedXData(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modifiedXData(pDbObj);
 }
 
-void AcDbOverrulableEntity::subObjModified(const AcDbObject* pMainbObj, const AcDbObject* pSubObj)
+void PyRxOverrulableEntity::subObjModified(const AcDbObject* pMainbObj, const AcDbObject* pSubObj)
 {
     assertReadEnabled();
     AcDbEntity::subObjModified(pMainbObj, pSubObj);
 }
 
-void AcDbOverrulableEntity::modifyUndone(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::modifyUndone(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::modifyUndone(pDbObj);
 }
 
-void AcDbOverrulableEntity::reappended(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::reappended(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::reappended(pDbObj);
 }
 
-void AcDbOverrulableEntity::unappended(const AcDbObject* pDbObj)
+void PyRxOverrulableEntity::unappended(const AcDbObject* pDbObj)
 {
     assertReadEnabled();
     AcDbEntity::unappended(pDbObj);
 }
 
-AcGePoint3d AcDbOverrulableEntity::position() const
+AcGePoint3d PyRxOverrulableEntity::position() const
 {
     assertReadEnabled();
     return m_pos;
 }
 
-void AcDbOverrulableEntity::setPosition(const AcGePoint3d& val)
+void PyRxOverrulableEntity::setPosition(const AcGePoint3d& val)
 {
     assertWriteEnabled();
     m_pos = val;
 }
 
-AcGeVector3d AcDbOverrulableEntity::direction() const
+AcGeVector3d PyRxOverrulableEntity::direction() const
 {
     assertReadEnabled();
     return m_dir;
 }
 
-void AcDbOverrulableEntity::setDirection(const AcGeVector3d& val)
+void PyRxOverrulableEntity::setDirection(const AcGeVector3d& val)
 {
     assertWriteEnabled();
     m_dir = val;
 }
 
-AcGeVector3d AcDbOverrulableEntity::normal() const
+AcGeVector3d PyRxOverrulableEntity::normal() const
 {
     assertReadEnabled();
     return m_normal;
 }
 
-void AcDbOverrulableEntity::setNormal(const AcGeVector3d& val)
+void PyRxOverrulableEntity::setNormal(const AcGeVector3d& val)
 {
     assertWriteEnabled();
     m_normal = val;
 }
 
-AcString AcDbOverrulableEntity::guid() const
+AcString PyRxOverrulableEntity::guid() const
 {
     assertReadEnabled();
     return m_guid;
 }
 
-void AcDbOverrulableEntity::setGuid(const AcString& val)
+void PyRxOverrulableEntity::setGuid(const AcString& val)
 {
     assertWriteEnabled();
     m_guid = val;
 }
 
-AcString AcDbOverrulableEntity::name() const
+AcString PyRxOverrulableEntity::name() const
 {
     assertReadEnabled();
     return m_name;
 }
 
-void AcDbOverrulableEntity::setName(const AcString& val)
+void PyRxOverrulableEntity::setName(const AcString& val)
 {
     assertWriteEnabled();
     m_name = val;
 }
 
-Adesk::Int64 AcDbOverrulableEntity::entType() const
+AcString PyRxOverrulableEntity::description() const
+{
+    assertReadEnabled();
+    return m_descr;
+}
+
+void PyRxOverrulableEntity::setdescription(const AcString& val)
+{
+    assertWriteEnabled();
+    m_descr = val;
+}
+
+Adesk::Int64 PyRxOverrulableEntity::entType() const
 {
     assertReadEnabled();
     return m_type;
 }
 
-void AcDbOverrulableEntity::setEntType(Adesk::Int64 val)
+void PyRxOverrulableEntity::setEntType(Adesk::Int64 val)
 {
     assertWriteEnabled();
     m_type = val;
 }
 
-Adesk::Int64 AcDbOverrulableEntity::mask() const
+Adesk::Int64 PyRxOverrulableEntity::mask() const
 {
     assertReadEnabled();
     return m_mask;
 }
 
-void AcDbOverrulableEntity::setMask(Adesk::Int64 val)
+void PyRxOverrulableEntity::setMask(Adesk::Int64 val)
 {
     assertWriteEnabled();
     m_mask = val;
 }
 
-std::vector<Adesk::Int32> AcDbOverrulableEntity::ints() const
+std::vector<Adesk::Int32> PyRxOverrulableEntity::ints() const
 {
     assertReadEnabled();
     return m_ints;
 }
 
-void AcDbOverrulableEntity::setInts(const std::vector<Adesk::Int32>& vals)
+void PyRxOverrulableEntity::setInts(const std::vector<Adesk::Int32>& vals)
 {
     assertWriteEnabled();
     m_ints = vals;
 }
 
-std::vector<double> AcDbOverrulableEntity::doubles() const
+std::vector<double> PyRxOverrulableEntity::doubles() const
 {
     assertReadEnabled();
     return m_reals;
 }
 
-void AcDbOverrulableEntity::setDoubles(const std::vector<double>& vals)
+void PyRxOverrulableEntity::setDoubles(const std::vector<double>& vals)
 {
     assertWriteEnabled();
     m_reals = vals;
 }
 
-std::vector<AcString> AcDbOverrulableEntity::strings() const
+std::vector<AcString> PyRxOverrulableEntity::strings() const
 {
     assertReadEnabled();
     return m_strings;
 }
 
-void AcDbOverrulableEntity::setStrings(const std::vector<AcString>& vals)
+void PyRxOverrulableEntity::setStrings(const std::vector<AcString>& vals)
 {
     assertWriteEnabled();
     m_strings = vals;
 }
 
-std::vector<AcGePoint3d> AcDbOverrulableEntity::points() const
+std::vector<AcGePoint3d> PyRxOverrulableEntity::points() const
 {
     assertReadEnabled();
     return m_points;
 }
 
-void AcDbOverrulableEntity::setPoints(const std::vector<AcGePoint3d>& vals)
+void PyRxOverrulableEntity::setPoints(const std::vector<AcGePoint3d>& vals)
 {
     assertWriteEnabled();
     m_points = vals;
@@ -546,27 +560,27 @@ void AcDbOverrulableEntity::setPoints(const std::vector<AcGePoint3d>& vals)
 
 //-----------------------------------------------------------------------------
 //----- AcDbEntity protocols
-Adesk::Boolean AcDbOverrulableEntity::subWorldDraw(AcGiWorldDraw* mode)
+Adesk::Boolean PyRxOverrulableEntity::subWorldDraw(AcGiWorldDraw* mode)
 {
     assertReadEnabled();
     auto& geo = mode->geometry();
     return geo.polypoint(1, &m_pos);
 }
 
-Adesk::UInt32 AcDbOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits)
+Adesk::UInt32 PyRxOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits)
 {
     assertReadEnabled();
     return (AcDbEntity::subSetAttributes(traits));
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subGetGripPoints(AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) const
+Acad::ErrorStatus PyRxOverrulableEntity::subGetGripPoints(AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) const
 {
     assertReadEnabled();
     gripPoints.append(m_pos);
     return eOk;
 }
 
-Acad::ErrorStatus AcDbOverrulableEntity::subTransformBy(const AcGeMatrix3d& xform)
+Acad::ErrorStatus PyRxOverrulableEntity::subTransformBy(const AcGeMatrix3d& xform)
 {
     assertWriteEnabled();
     m_pos.transformBy(xform);
@@ -576,7 +590,3 @@ Acad::ErrorStatus AcDbOverrulableEntity::subTransformBy(const AcGeMatrix3d& xfor
         pnt.transformBy(xform);
     return xDataTransformBy(xform);
 }
-
-#endif //PYRX_IN_PROGRESS_OVERULE
-
-

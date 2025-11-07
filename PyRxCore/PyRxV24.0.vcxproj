@@ -134,7 +134,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AcDbOverrulableEntity.cpp" />
+    <ClCompile Include="PyRxOverrulableEntity.cpp" />
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="DbCore.cpp" />
     <ClCompile Include="dllmain.cpp" />
@@ -300,7 +300,7 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AcDbOverrulableEntity.h" />
+    <ClInclude Include="PyRxOverrulableEntity.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />

@@ -522,6 +522,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbHyperlinkWrapper();
     makePyDbHyperlinkCollectionWrapper();
     makePyDbEntityHyperlinkPEWrapper();
+    makePyDbOverrulableEntity();
     makeDbCoreWrapper();//LAST?
 
     //convenience 
