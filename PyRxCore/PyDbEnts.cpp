@@ -7,6 +7,7 @@
 #include "PyGeCurve3d.h"
 #include "PyDbMText.h"
 #include "PyDbEval.h"
+#include "PyRxOverrulableEntity.h"
 #include <ppl.h>
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/linestring.hpp>
@@ -3996,4 +3997,252 @@ AcDbShape* PyDbShape::impObj(const std::source_location& src /*= std::source_loc
         throw PyNullObject(src);
     }
     return static_cast<AcDbShape*>(m_pyImp.get());
+}
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbOverrulableEntity
+void makePyDbOverrulableEntity()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.OverrulableEntity");
+    class_<PyDbOverrulableEntity, bases<PyDbEntity>>("OverrulableEntity")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("position", &PyDbOverrulableEntity::position, DS.ARGS())
+        .def("setPosition", &PyDbOverrulableEntity::setPosition, DS.ARGS({ "pt: PyGe.Point3d"}))
+        .def("direction", &PyDbOverrulableEntity::direction, DS.ARGS())
+        .def("direction", &PyDbOverrulableEntity::setDirection, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("normal", &PyDbOverrulableEntity::normal, DS.ARGS())
+        .def("setNormal", &PyDbOverrulableEntity::setNormal, DS.ARGS({ "vec: PyGe.Vector3d" }))
+        .def("guid", &PyDbOverrulableEntity::guid, DS.ARGS())
+        .def("setGuid", &PyDbOverrulableEntity::setGuid, DS.ARGS({ "val: str" }))
+        .def("name", &PyDbOverrulableEntity::name, DS.ARGS())
+        .def("setName", &PyDbOverrulableEntity::setName, DS.ARGS({ "val: str" }))
+        .def("description", &PyDbOverrulableEntity::description, DS.ARGS())
+        .def("setdescription", &PyDbOverrulableEntity::setdescription, DS.ARGS({ "val: str" }))
+        .def("entType", &PyDbOverrulableEntity::entType, DS.ARGS())
+        .def("setEntType", &PyDbOverrulableEntity::setEntType, DS.ARGS({ "val: int" }))
+        .def("mask", &PyDbOverrulableEntity::mask, DS.ARGS())
+        .def("setMask", &PyDbOverrulableEntity::setMask, DS.ARGS({ "val: int" }))
+        .def("ints", &PyDbOverrulableEntity::ints, DS.ARGS())
+        .def("setInts", &PyDbOverrulableEntity::setInts, DS.ARGS({ "vals: list[int]" }))
+        .def("doubles", &PyDbOverrulableEntity::doubles, DS.ARGS())
+        .def("setDoubles", &PyDbOverrulableEntity::setDoubles, DS.ARGS({ "vals: list[float]" }))
+        .def("strings", &PyDbOverrulableEntity::strings, DS.ARGS())
+        .def("setStrings", &PyDbOverrulableEntity::setStrings, DS.ARGS({ "vals: list[str]" }))
+        .def("points", &PyDbOverrulableEntity::points, DS.ARGS())
+        .def("setPoints", &PyDbOverrulableEntity::setPoints, DS.ARGS({ "vals: list[PyGe.Point3d]" }))
+        .def("className", &PyDbOverrulableEntity::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbOverrulableEntity::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbOverrulableEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbOverrulableEntity::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbOverrulableEntity::PyDbOverrulableEntity()
+    : PyDbOverrulableEntity(new PyRxOverrulableEntity(),true)
+{
+}
+
+PyDbOverrulableEntity::PyDbOverrulableEntity(PyRxOverrulableEntity* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbOverrulableEntity::PyDbOverrulableEntity(const PyDbObjectId& id)
+    : PyDbOverrulableEntity(openAcDbObject<PyRxOverrulableEntity>(id), false)
+{
+}
+
+PyDbOverrulableEntity::PyDbOverrulableEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbOverrulableEntity(openAcDbObject<PyRxOverrulableEntity>(id, mode), false)
+{
+}
+
+PyDbOverrulableEntity::PyDbOverrulableEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbOverrulableEntity(openAcDbObject<PyRxOverrulableEntity>(id, mode, erased), false)
+{
+}
+
+AcGePoint3d PyDbOverrulableEntity::position() const
+{
+    return impObj()->position();
+}
+
+void PyDbOverrulableEntity::setPosition(const AcGePoint3d& val) const
+{
+    impObj()->setPosition(val);
+}
+
+AcGeVector3d PyDbOverrulableEntity::direction() const
+{
+    return impObj()->direction();
+}
+
+void PyDbOverrulableEntity::setDirection(const AcGeVector3d& val) const
+{
+    impObj()->setDirection(val);
+}
+
+AcGeVector3d PyDbOverrulableEntity::normal() const
+{
+    return impObj()->normal();
+}
+
+void PyDbOverrulableEntity::setNormal(const AcGeVector3d& val) const
+{
+    impObj()->setNormal(val);
+}
+
+std::string PyDbOverrulableEntity::guid() const
+{
+    return wstr_to_utf8(impObj()->guid());
+}
+
+void PyDbOverrulableEntity::setGuid(const std::string& val) const
+{
+    impObj()->setGuid(utf8_to_wstr(val).c_str());
+}
+
+std::string PyDbOverrulableEntity::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+void PyDbOverrulableEntity::setName(const std::string& val) const
+{
+    impObj()->setName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyDbOverrulableEntity::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyDbOverrulableEntity::setdescription(const std::string& val) const
+{
+    impObj()->setdescription(utf8_to_wstr(val).c_str());
+}
+
+Adesk::Int64 PyDbOverrulableEntity::entType() const
+{
+    return impObj()->entType();
+}
+
+void PyDbOverrulableEntity::setEntType(Adesk::Int64 val) const
+{
+    impObj()->setEntType(val);
+}
+
+Adesk::Int64 PyDbOverrulableEntity::mask() const
+{
+    return impObj()->mask();
+}
+
+void PyDbOverrulableEntity::setMask(Adesk::Int64 val) const
+{
+    impObj()->setMask(val);
+}
+
+boost::python::list PyDbOverrulableEntity::ints() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : impObj()->ints())
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+void PyDbOverrulableEntity::setInts(const boost::python::list& vals) const
+{
+    PyAutoLockGIL lock;
+    impObj()->setInts(std::vector<Adesk::Int32>(boost::python::stl_input_iterator<Adesk::Int32>(vals),
+        boost::python::stl_input_iterator<Adesk::Int32>()));
+}
+
+boost::python::list PyDbOverrulableEntity::doubles() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : impObj()->doubles())
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+void PyDbOverrulableEntity::setDoubles(boost::python::list& vals) const
+{
+    PyAutoLockGIL lock;
+    impObj()->setDoubles(std::vector<double>(boost::python::stl_input_iterator<double>(vals),
+        boost::python::stl_input_iterator<double>()));
+}
+
+boost::python::list PyDbOverrulableEntity::strings() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto& item : impObj()->strings())
+        pyPyList.append(wstr_to_utf8(item));
+    return pyPyList;
+}
+
+void PyDbOverrulableEntity::setStrings(boost::python::list& vals) const
+{
+    PyAutoLockGIL lock;
+    std::vector<AcString> acstrings;
+    for (const auto& item : std::vector<std::string>(boost::python::stl_input_iterator<std::string>(vals), boost::python::stl_input_iterator<std::string>()))
+    {
+        acstrings.push_back(utf8_to_wstr(item).c_str());
+    }
+    impObj()->setStrings(acstrings);
+}
+
+boost::python::list PyDbOverrulableEntity::points() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto& item : impObj()->points())
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+void PyDbOverrulableEntity::setPoints(const boost::python::list& vals) const
+{
+    PyAutoLockGIL lock;
+    impObj()->setPoints(std::vector<AcGePoint3d>(boost::python::stl_input_iterator<AcGePoint3d>(vals),
+        boost::python::stl_input_iterator<AcGePoint3d>()));
+}
+
+std::string PyDbOverrulableEntity::className()
+{
+    return "PyRxOverrulableEntity";
+}
+
+PyRxClass PyDbOverrulableEntity::desc()
+{
+    return PyRxClass(PyRxOverrulableEntity::desc(), false);
+}
+
+PyDbOverrulableEntity PyDbOverrulableEntity::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbOverrulableEntity, PyRxOverrulableEntity>(src);
+}
+
+PyDbOverrulableEntity PyDbOverrulableEntity::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbOverrulableEntity>(src);
+}
+
+PyRxOverrulableEntity* PyDbOverrulableEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyRxOverrulableEntity*>(m_pyImp.get());
 }
