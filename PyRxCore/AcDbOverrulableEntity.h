@@ -99,7 +99,7 @@ protected:
     virtual Adesk::Boolean subWorldDraw(AcGiWorldDraw* mode) override;
     virtual Adesk::UInt32 subSetAttributes(AcGiDrawableTraits* traits) override;
 
-private:
+public:
     AcGePoint3d m_pos;
     AcGeVector3d m_dir;
     AcGeVector3d m_normal;
