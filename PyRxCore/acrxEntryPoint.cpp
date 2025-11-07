@@ -466,8 +466,8 @@ public:
     static void AcRxPyApp_idoit(void)
     {
         AcDbObjectUPtr<AcDbOverrulableEntity> ptr(new AcDbOverrulableEntity());
-        ptr->m_pos = AcGePoint3d(1, 1, 0);
-        ptr->m_points.push_back(AcGePoint3d::kOrigin);
+        /*ptr->m_pos = AcGePoint3d(1, 1, 0);
+        ptr->m_points.push_back(AcGePoint3d::kOrigin);*/
         postToModelSpace(*ptr.get());
     }
 #endif

@@ -75,6 +75,8 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) cons
         return es;
     if (auto es = pFiler->writeInt64(m_type); es != eOk)
         return es;
+    if (auto es = pFiler->writeInt64(m_mask); es != eOk)
+        return es;
     { //m_ints
         if (auto es = pFiler->writeInt64(m_ints.size()); es != eOk)
             return es;
@@ -138,6 +140,8 @@ Acad::ErrorStatus AcDbOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
     if (auto es = pFiler->readString(m_descr); es != eOk)
         return es;
     if (auto es = pFiler->readInt64(&m_type); es != eOk)
+        return es;
+    if (auto es = pFiler->readInt64(&m_mask); es != eOk)
         return es;
 
     {// m_ints
@@ -376,6 +380,138 @@ void AcDbOverrulableEntity::unappended(const AcDbObject* pDbObj)
     AcDbEntity::unappended(pDbObj);
 }
 
+AcGePoint3d AcDbOverrulableEntity::position() const
+{
+    assertReadEnabled();
+    return m_pos;
+}
+
+void AcDbOverrulableEntity::setPosition(const AcGePoint3d& val)
+{
+    assertWriteEnabled();
+    m_pos = val;
+}
+
+AcGeVector3d AcDbOverrulableEntity::direction() const
+{
+    assertReadEnabled();
+    return m_dir;
+}
+
+void AcDbOverrulableEntity::setDirection(const AcGeVector3d& val)
+{
+    assertWriteEnabled();
+    m_dir = val;
+}
+
+AcGeVector3d AcDbOverrulableEntity::normal() const
+{
+    assertReadEnabled();
+    return m_normal;
+}
+
+void AcDbOverrulableEntity::setNormal(const AcGeVector3d& val)
+{
+    assertWriteEnabled();
+    m_normal = val;
+}
+
+AcString AcDbOverrulableEntity::guid() const
+{
+    assertReadEnabled();
+    return m_guid;
+}
+
+void AcDbOverrulableEntity::setGuid(const AcString& val)
+{
+    assertWriteEnabled();
+    m_guid = val;
+}
+
+AcString AcDbOverrulableEntity::name() const
+{
+    assertReadEnabled();
+    return m_name;
+}
+
+void AcDbOverrulableEntity::setName(const AcString& val)
+{
+    assertWriteEnabled();
+    m_name = val;
+}
+
+Adesk::Int64 AcDbOverrulableEntity::entType() const
+{
+    assertReadEnabled();
+    return m_type;
+}
+
+void AcDbOverrulableEntity::setEntType(Adesk::Int64 val)
+{
+    assertWriteEnabled();
+    m_type = val;
+}
+
+Adesk::Int64 AcDbOverrulableEntity::mask() const
+{
+    assertReadEnabled();
+    return m_mask;
+}
+
+void AcDbOverrulableEntity::setMask(Adesk::Int64 val)
+{
+    assertWriteEnabled();
+    m_mask = val;
+}
+
+std::vector<Adesk::Int32> AcDbOverrulableEntity::ints() const
+{
+    assertReadEnabled();
+    return m_ints;
+}
+
+void AcDbOverrulableEntity::setInts(const std::vector<Adesk::Int32>& vals)
+{
+    assertWriteEnabled();
+    m_ints = vals;
+}
+
+std::vector<double> AcDbOverrulableEntity::doubles() const
+{
+    assertReadEnabled();
+    return m_reals;
+}
+
+void AcDbOverrulableEntity::setDoubles(const std::vector<double>& vals)
+{
+    assertWriteEnabled();
+    m_reals = vals;
+}
+
+std::vector<AcString> AcDbOverrulableEntity::strings() const
+{
+    assertReadEnabled();
+    return m_strings;
+}
+
+void AcDbOverrulableEntity::setStrings(const std::vector<AcString>& vals)
+{
+    assertWriteEnabled();
+    m_strings = vals;
+}
+
+std::vector<AcGePoint3d> AcDbOverrulableEntity::points() const
+{
+    assertReadEnabled();
+    return m_points;
+}
+
+void AcDbOverrulableEntity::setPoints(const std::vector<AcGePoint3d>& vals)
+{
+    assertWriteEnabled();
+    m_points = vals;
+}
+
 //-----------------------------------------------------------------------------
 //----- AcDbEntity protocols
 Adesk::Boolean AcDbOverrulableEntity::subWorldDraw(AcGiWorldDraw* mode)
@@ -391,5 +527,23 @@ Adesk::UInt32 AcDbOverrulableEntity::subSetAttributes(AcGiDrawableTraits* traits
     return (AcDbEntity::subSetAttributes(traits));
 }
 
+
+Acad::ErrorStatus AcDbOverrulableEntity::subGetGripPoints(AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) const
+{
+    assertReadEnabled();
+    gripPoints.append(m_pos);
+    return eOk;
+}
+
+Acad::ErrorStatus AcDbOverrulableEntity::subTransformBy(const AcGeMatrix3d& xform)
+{
+    assertWriteEnabled();
+    m_pos.transformBy(xform);
+    m_dir.transformBy(xform);
+    m_normal.transformBy(xform);
+    for (auto& pnt : m_points)
+        pnt.transformBy(xform);
+    return xDataTransformBy(xform);
+}
 
 #endif //PYRX_IN_PROGRESS_OVERULE

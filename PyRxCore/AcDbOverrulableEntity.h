@@ -93,27 +93,53 @@ public:
     virtual void reappended(const AcDbObject* pDbObj)override;
     virtual void unappended(const AcDbObject* pDbObj) override;
 
-    //----- AcDbEntity protocols
-    //- Graphics protocol
-protected:
-    virtual Adesk::Boolean subWorldDraw(AcGiWorldDraw* mode) override;
-    virtual Adesk::UInt32 subSetAttributes(AcGiDrawableTraits* traits) override;
+    //- members
+    AcGePoint3d  position() const;
+    void         setPosition(const AcGePoint3d& val);
+    AcGeVector3d direction() const;
+    void         setDirection(const AcGeVector3d& val);
+    AcGeVector3d normal() const;
+    void         setNormal(const AcGeVector3d& val);
+    AcString     guid() const;
+    void         setGuid(const AcString& val);
+    AcString     name() const;
+    void         setName(const AcString& val);
+    Adesk::Int64 entType() const;
+    void         setEntType(Adesk::Int64 val);
+    Adesk::Int64 mask() const;
+    void         setMask(Adesk::Int64 val);
+    std::vector<Adesk::Int32> ints() const;
+    void         setInts(const std::vector<Adesk::Int32>& vals);
+    std::vector<double> doubles() const;
+    void         setDoubles(const std::vector<double>& vals);
+    std::vector<AcString> strings() const;
+    void         setStrings(const std::vector<AcString>& vals);
+    std::vector<AcGePoint3d> points() const;
+    void         setPoints(const std::vector<AcGePoint3d>& vals);
 
-public:
-    AcGePoint3d m_pos;
-    AcGeVector3d m_dir;
-    AcGeVector3d m_normal;
+    //----- AcDbEntity protocols
+protected:
+    virtual Adesk::Boolean      subWorldDraw(AcGiWorldDraw* mode) override;
+    virtual Adesk::UInt32       subSetAttributes(AcGiDrawableTraits* traits) override;
+    virtual Acad::ErrorStatus   subGetGripPoints(AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) const;
+    virtual Acad::ErrorStatus   subTransformBy(const AcGeMatrix3d& xform) override;
+
+private:
+    AcGePoint3d m_pos;     // Transformed
+    AcGeVector3d m_dir;    // Transformed
+    AcGeVector3d m_normal; // Transformed
 
     AcString m_guid;
     AcString m_name;
     AcString m_descr;
 
     Adesk::Int64 m_type = 0;
+    Adesk::Int64 m_mask = 0;
 
     std::vector<Adesk::Int32> m_ints;
     std::vector<double> m_reals;
     std::vector<AcString> m_strings;
-    std::vector<AcGePoint3d> m_points;
+    std::vector<AcGePoint3d> m_points; // Transformed
 };
 
 #ifdef PYRX_MODULE
