@@ -16,6 +16,7 @@ class PyDbHardPointerId;
 class PyGeCompositeCurve3d;
 class PyGeCompositeCurve2d;
 class PyDbAttribute;
+class PyRxOverrulableEntity;
 
 
 //-----------------------------------------------------------------------------------
@@ -794,6 +795,50 @@ public:
     AcDbShape* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDbOverrulableEntity
+void makePyDbOverrulableEntity();
 
+class PyDbOverrulableEntity : public PyDbEntity
+{
+public:
+    PyDbOverrulableEntity();
+    PyDbOverrulableEntity(PyRxOverrulableEntity* ptr, bool autoDelete);
+    PyDbOverrulableEntity(const PyDbObjectId& id);
+    PyDbOverrulableEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbOverrulableEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    virtual ~PyDbOverrulableEntity() = default;
+public:
+    AcGePoint3d  position() const;
+    void         setPosition(const AcGePoint3d& val) const;
+    AcGeVector3d direction() const;
+    void         setDirection(const AcGeVector3d& val) const;
+    AcGeVector3d normal() const;
+    void         setNormal(const AcGeVector3d& val) const;
+    std::string  guid() const;
+    void         setGuid(const std::string& val) const;
+    std::string  name() const;
+    void         setName(const std::string& val) const;
+    std::string  description() const;
+    void         setdescription(const std::string& val) const;
+    Adesk::Int64 entType() const;
+    void         setEntType(Adesk::Int64 val) const;
+    Adesk::Int64 mask() const;
+    void         setMask(Adesk::Int64 val) const;
+    boost::python::list ints() const;
+    void                setInts(const boost::python::list& vals) const;
+    boost::python::list doubles() const;
+    void                setDoubles(boost::python::list& vals) const;
+    boost::python::list strings() const;
+    void                setStrings(boost::python::list& vals) const;
+    boost::python::list points() const;
+    void                setPoints(const boost::python::list& vals) const;
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbOverrulableEntity   cloneFrom(const PyRxObject& src);
+    static PyDbOverrulableEntity   cast(const PyRxObject& src);
+public:
+    PyRxOverrulableEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #pragma pack (pop)
