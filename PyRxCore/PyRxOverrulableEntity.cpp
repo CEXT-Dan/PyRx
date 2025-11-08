@@ -73,7 +73,7 @@ ACRX_DXF_DEFINE_MEMBERS(
     PYRXAPP
     | Product Desc : PyRxOverrulableEntity
     | Company : CAD_PyRx
-    | WEB Address : github.com/CEXT-Dan/PyRx
+    | WEB Address : github.com / CEXT - Dan / PyRx
 )
 
 //-----------------------------------------------------------------------------
@@ -112,6 +112,17 @@ Acad::ErrorStatus PyRxOverrulableEntity::dwgOutFields(AcDbDwgFiler* pFiler) cons
         return es;
     if (auto es = pFiler->writeInt64(m_mask); es != eOk)
         return es;
+    if (auto es = pFiler->writeInt64(m_index); es != eOk)
+        return es;
+    { //m_flags
+        if (auto es = pFiler->writeInt64(m_flags.size()); es != eOk)
+            return es;
+        for (auto v : m_flags)
+        {
+            if (auto es = pFiler->writeInt32(v); es != eOk)
+                return es;
+        }
+    }
     { //m_ints
         if (auto es = pFiler->writeInt64(m_ints.size()); es != eOk)
             return es;
@@ -178,6 +189,23 @@ Acad::ErrorStatus PyRxOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
         return es;
     if (auto es = pFiler->readInt64(&m_mask); es != eOk)
         return es;
+    if (auto es = pFiler->readInt64(&m_index); es != eOk)
+        return es;
+    {// m_flags
+        Adesk::UInt64 nflags = 0;
+        if (es = pFiler->readUInt64(&nflags); es != eOk)
+            return es;
+        m_flags.clear();
+        m_flags.reserve(nflags);
+        for (Adesk::Int64 idx = 0; idx < nflags; idx++)
+        {
+            Adesk::Int32 v = 0;
+            if (es = pFiler->readInt32(&v); es != eOk)
+                return es;
+            else
+                m_flags.emplace_back(v);
+        }
+    }
     {// m_ints
         Adesk::UInt64 nints = 0;
         if (es = pFiler->readUInt64(&nints); es != eOk)
@@ -486,13 +514,13 @@ void PyRxOverrulableEntity::setdescription(const AcString& val)
     m_descr = val;
 }
 
-Adesk::Int64 PyRxOverrulableEntity::entType() const
+Adesk::Int64 PyRxOverrulableEntity::typing() const
 {
     assertReadEnabled();
     return m_type;
 }
 
-void PyRxOverrulableEntity::setEntType(Adesk::Int64 val)
+void PyRxOverrulableEntity::setTyping(Adesk::Int64 val)
 {
     assertWriteEnabled();
     m_type = val;
@@ -508,6 +536,30 @@ void PyRxOverrulableEntity::setMask(Adesk::Int64 val)
 {
     assertWriteEnabled();
     m_mask = val;
+}
+
+Adesk::Int64 PyRxOverrulableEntity::index() const
+{
+    assertReadEnabled();
+    return m_index;
+}
+
+void PyRxOverrulableEntity::setIndex(Adesk::Int64 val)
+{
+    assertWriteEnabled();
+    m_index = val;
+}
+
+std::vector<Adesk::Int32> PyRxOverrulableEntity::flags() const
+{
+    assertReadEnabled();
+    return m_flags;
+}
+
+void PyRxOverrulableEntity::setFlags(const std::vector<Adesk::Int32>& vals)
+{
+    assertWriteEnabled();
+    m_flags = vals;
 }
 
 std::vector<Adesk::Int32> PyRxOverrulableEntity::ints() const

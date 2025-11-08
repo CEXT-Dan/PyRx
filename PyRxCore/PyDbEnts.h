@@ -821,10 +821,14 @@ public:
     void         setName(const std::string& val) const;
     std::string  description() const;
     void         setdescription(const std::string& val) const;
-    Adesk::Int64 entType() const;
-    void         setEntType(Adesk::Int64 val) const;
+    Adesk::Int64 typing() const;
+    void         setTyping(Adesk::Int64 val) const;
     Adesk::Int64 mask() const;
     void         setMask(Adesk::Int64 val) const;
+    Adesk::Int64 index() const;
+    void         setIndex(Adesk::Int64 val) const;
+    boost::python::list flags() const;
+    void                setFlags(const boost::python::list& vals) const;
     boost::python::list ints() const;
     void                setInts(const boost::python::list& vals) const;
     boost::python::list doubles() const;

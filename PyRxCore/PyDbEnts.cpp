@@ -4016,7 +4016,7 @@ void makePyDbOverrulableEntity()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def("position", &PyDbOverrulableEntity::position, DS.ARGS())
-        .def("setPosition", &PyDbOverrulableEntity::setPosition, DS.ARGS({ "pt: PyGe.Point3d"}))
+        .def("setPosition", &PyDbOverrulableEntity::setPosition, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("direction", &PyDbOverrulableEntity::direction, DS.ARGS())
         .def("direction", &PyDbOverrulableEntity::setDirection, DS.ARGS({ "vec: PyGe.Vector3d" }))
         .def("normal", &PyDbOverrulableEntity::normal, DS.ARGS())
@@ -4027,10 +4027,14 @@ void makePyDbOverrulableEntity()
         .def("setName", &PyDbOverrulableEntity::setName, DS.ARGS({ "val: str" }))
         .def("description", &PyDbOverrulableEntity::description, DS.ARGS())
         .def("setdescription", &PyDbOverrulableEntity::setdescription, DS.ARGS({ "val: str" }))
-        .def("entType", &PyDbOverrulableEntity::entType, DS.ARGS())
-        .def("setEntType", &PyDbOverrulableEntity::setEntType, DS.ARGS({ "val: int" }))
+        .def("typing", &PyDbOverrulableEntity::typing, DS.ARGS())
+        .def("setTyping", &PyDbOverrulableEntity::setTyping, DS.ARGS({ "val: int" }))
         .def("mask", &PyDbOverrulableEntity::mask, DS.ARGS())
         .def("setMask", &PyDbOverrulableEntity::setMask, DS.ARGS({ "val: int" }))
+        .def("index", &PyDbOverrulableEntity::index, DS.ARGS())
+        .def("setIndex", &PyDbOverrulableEntity::setIndex, DS.ARGS({ "val: int" }))
+        .def("flags", &PyDbOverrulableEntity::flags, DS.ARGS())
+        .def("setFlags", &PyDbOverrulableEntity::setFlags, DS.ARGS({ "vals: list[int]" }))
         .def("ints", &PyDbOverrulableEntity::ints, DS.ARGS())
         .def("setInts", &PyDbOverrulableEntity::setInts, DS.ARGS({ "vals: list[int]" }))
         .def("doubles", &PyDbOverrulableEntity::doubles, DS.ARGS())
@@ -4047,7 +4051,7 @@ void makePyDbOverrulableEntity()
 }
 
 PyDbOverrulableEntity::PyDbOverrulableEntity()
-    : PyDbOverrulableEntity(new PyRxOverrulableEntity(),true)
+    : PyDbOverrulableEntity(new PyRxOverrulableEntity(), true)
 {
 }
 
@@ -4131,14 +4135,14 @@ void PyDbOverrulableEntity::setdescription(const std::string& val) const
     impObj()->setdescription(utf8_to_wstr(val).c_str());
 }
 
-Adesk::Int64 PyDbOverrulableEntity::entType() const
+Adesk::Int64 PyDbOverrulableEntity::typing() const
 {
-    return impObj()->entType();
+    return impObj()->typing();
 }
 
-void PyDbOverrulableEntity::setEntType(Adesk::Int64 val) const
+void PyDbOverrulableEntity::setTyping(Adesk::Int64 val) const
 {
-    impObj()->setEntType(val);
+    impObj()->setTyping(val);
 }
 
 Adesk::Int64 PyDbOverrulableEntity::mask() const
@@ -4149,6 +4153,32 @@ Adesk::Int64 PyDbOverrulableEntity::mask() const
 void PyDbOverrulableEntity::setMask(Adesk::Int64 val) const
 {
     impObj()->setMask(val);
+}
+
+Adesk::Int64 PyDbOverrulableEntity::index() const
+{
+    return impObj()->index();
+}
+
+void PyDbOverrulableEntity::setIndex(Adesk::Int64 val) const
+{
+    impObj()->setIndex(val);
+}
+
+boost::python::list PyDbOverrulableEntity::flags() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : impObj()->flags())
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+void PyDbOverrulableEntity::setFlags(const boost::python::list& vals) const
+{
+    PyAutoLockGIL lock;
+    impObj()->setFlags(std::vector<Adesk::Int32>(boost::python::stl_input_iterator<Adesk::Int32>(vals),
+        boost::python::stl_input_iterator<Adesk::Int32>()));
 }
 
 boost::python::list PyDbOverrulableEntity::ints() const

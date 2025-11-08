@@ -32,7 +32,7 @@ public:
     virtual ~TestOverrule() override = default;
     virtual bool                isApplicable(const AcRxObject*) const override;
     virtual Adesk::Boolean      worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd) override;
-    static TestOverrule&        instance();
+    static TestOverrule& instance();
     static Acad::ErrorStatus    start();
     static Acad::ErrorStatus    stop();
 };
@@ -118,12 +118,20 @@ public:
     void         setName(const AcString& val);
     AcString     description() const;
     void         setdescription(const AcString& val);
-    Adesk::Int64 entType() const;
-    void         setEntType(Adesk::Int64 val);
+    Adesk::Int64 typing() const;
+    void         setTyping(Adesk::Int64 val);
     Adesk::Int64 mask() const;
     void         setMask(Adesk::Int64 val);
+    Adesk::Int64 index() const;
+    void         setIndex(Adesk::Int64 val);
+
+
+    std::vector<Adesk::Int32> flags() const;
+    void         setFlags(const std::vector<Adesk::Int32>& vals);
+
     std::vector<Adesk::Int32> ints() const;
     void         setInts(const std::vector<Adesk::Int32>& vals);
+
     std::vector<double> doubles() const;
     void         setDoubles(const std::vector<double>& vals);
     std::vector<AcString> strings() const;
@@ -149,7 +157,9 @@ private:
 
     Adesk::Int64 m_type = 0; // anything
     Adesk::Int64 m_mask = 0; // anything
+    Adesk::Int64 m_index = 0; // anything
 
+    std::vector<Adesk::Int32> m_flags;//
     std::vector<Adesk::Int32> m_ints; // data
     std::vector<double> m_reals;      // " "
     std::vector<AcString> m_strings;  // " "
