@@ -80,10 +80,6 @@ public:
     virtual Acad::ErrorStatus dwgOutFields(AcDbDwgFiler* pFiler) const override;
     virtual Acad::ErrorStatus dwgInFields(AcDbDwgFiler* pFiler) override;
 
-    //- Dxf Filing protocol
-    virtual Acad::ErrorStatus dxfOutFields(AcDbDxfFiler* pFiler) const override;
-    virtual Acad::ErrorStatus dxfInFields(AcDbDxfFiler* pFiler) override;
-
     //- SubXXX() methods (self notification)
     virtual Acad::ErrorStatus subOpen(AcDb::OpenMode mode) override;
     virtual Acad::ErrorStatus subErase(Adesk::Boolean erasing) override;
