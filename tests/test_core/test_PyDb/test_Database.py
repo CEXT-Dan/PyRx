@@ -373,4 +373,25 @@ class TestDatabase:
             ms = sdb.modelSpace()
             crvs.extend([Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())])
             
-        assert(len(crvs) != 0)
+        assert len(crvs) != 0
+        
+    def test_overrulableEntity(self, db_06457: Db.Database):
+        objHnd = Db.Handle("2c97d0")
+        objId = db_06457.getObjectId(False, objHnd)
+        ore = Db.OverrulableEntity(objId)
+        assert ore.position() == Ge.Point3d(1, 1, 1)
+        assert ore.direction() == Ge.Vector3d.kYAxis
+        assert ore.normal() == Ge.Vector3d.kXAxis
+        assert ore.guid() == "12345"
+        assert ore.name() == "name"
+        assert ore.description() == "description"
+        assert ore.typing() == 1
+        assert ore.mask() == 2
+        assert ore.index() == 3
+        assert ore.flags() == [1, 2, 3]
+        assert ore.ints() == [4, 5, 6]
+        assert ore.doubles() == [7, 8, 9]
+        assert ore.strings() == ["1", "2", "3"]
+        assert ore.points() == [Ge.Point3d(1, 1, 1), Ge.Point3d(2, 2, 2)]
+
+
