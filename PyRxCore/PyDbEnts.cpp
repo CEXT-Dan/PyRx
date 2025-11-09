@@ -260,9 +260,8 @@ std::string PyDbBlockReference::getBlockName() const
 
 bool PyDbBlockReference::hasAttributes() const
 {
-    for (AcDbObjectIteratorUPtr iter(impObj()->attributeIterator()); !iter->done(); iter->step())
-        return true;
-    return false;
+    AcDbObjectIteratorUPtr iter(impObj()->attributeIterator());
+    return !iter->done();
 }
 
 std::string PyDbBlockReference::className()
