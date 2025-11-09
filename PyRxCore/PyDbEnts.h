@@ -55,6 +55,7 @@ public:
     AcDbExtents         geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;
     void                explodeToOwnerSpace() const;
     std::string         getBlockName() const;
+    bool                hasAttributes() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
