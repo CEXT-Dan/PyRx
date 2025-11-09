@@ -60,6 +60,7 @@ void makePyDbBlockReferenceWrapper()
         .def("getBlockName", &PyDbBlockReference::getBlockName, DS.ARGS())
         .def("attdict", &PyDbBlockReference::attdict, DS.ARGS())
         .def("attlist", &PyDbBlockReference::attlist, DS.ARGS())
+        .def("hasAttributes", &PyDbBlockReference::hasAttributes, DS.ARGS())
         .def("className", &PyDbBlockReference::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -255,6 +256,13 @@ std::string PyDbBlockReference::getBlockName() const
         PyThrowBadEs(bBlock->getName(name));
     }
     return wstr_to_utf8(name);
+}
+
+bool PyDbBlockReference::hasAttributes() const
+{
+    for (AcDbObjectIteratorUPtr iter(impObj()->attributeIterator()); !iter->done(); iter->step())
+        return true;
+    return false;
 }
 
 std::string PyDbBlockReference::className()

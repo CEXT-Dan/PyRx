@@ -3751,6 +3751,7 @@ class BlockReference(PyDb.Entity):
         Acad::eInvalidInput. Returns Acad::eOk if successful.
         """
     def getBlockName(self, /) -> str: ...
+    def hasAttributes(self, /) -> bool: ...
     def nonAnnotationBlockTransform(self, /) -> PyGe.Matrix3d:
         """
         Returns the block transformation matrix independent of annotation scaling.
