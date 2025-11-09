@@ -84,8 +84,9 @@ def PyRxCmd_pyremdimassoc():
     except Exception as err:
         traceback.print_exception(err)
 
-#------------------------------------------
-#leader
+
+# ------------------------------------------
+# leader
 def makeLeader(db: Db.Database):
     mtext = Db.MText()
     mtext.setDatabaseDefaults()
