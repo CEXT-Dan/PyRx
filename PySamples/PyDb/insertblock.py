@@ -172,9 +172,11 @@ def py_add_block():
         bref.erase()
         raise
 
+
 def do_insert_dyn(db, blockId):
     blockRef = Db.BlockReference(Ge.Point3d(100, 100, 0), blockId)
     return db.addToModelspace(blockRef)
+
 
 @Ap.Command()
 def pyinsertdyn():
@@ -186,7 +188,7 @@ def pyinsertdyn():
         blockId = Db.ObjectId()
         db.insert(blockId, "screw", block, True)
 
-        #add a scope to close the new block
+        # add a scope to close the new block
         blockRefid = do_insert_dyn(db, blockId)
 
         dynref = Db.DynBlockReference(blockRefid)
@@ -194,4 +196,3 @@ def pyinsertdyn():
             print("true")
     except Exception as err:
         print(err)
-

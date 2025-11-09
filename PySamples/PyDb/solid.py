@@ -6,21 +6,23 @@ from pyrx import Db, Ed, Ge
 def PyRxCmd_pyproject():
     try:
 
-        box =  Db.Solid3d() 
+        box = Db.Solid3d()
         box.setDatabaseDefaults()
-        box.createBox(20.0,20.0,1.0)
-        
-        circle =  Db.Circle(Ge.Point3d(3.0,3.0,7.0),Ge.Vector3d(-0.537925, -0.651525, -0.534932), 1.0)
-        ents = box.projectOnToSolid(circle, Ge.Vector3d(0.0,0.0,1.0))
-        
+        box.createBox(20.0, 20.0, 1.0)
+
+        circle = Db.Circle(
+            Ge.Point3d(3.0, 3.0, 7.0), Ge.Vector3d(-0.537925, -0.651525, -0.534932), 1.0
+        )
+        ents = box.projectOnToSolid(circle, Ge.Vector3d(0.0, 0.0, 1.0))
+
         model = Db.BlockTableRecord(Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(box)
-        
+
         for e in ents:
             model.appendAcDbEntity(e)
-            
+
         print(box.getMassProp())
-        
+
     except Exception as err:
         print(err)
 
@@ -46,13 +48,12 @@ def PyRxCmd_pyrevolve():
         rob.setCloseToAxis(False)
         rob.setDraftAngle(0)
         rob.setTwistAngle(0)
-        
-        solid = Db.Solid3d()
-        vec =  line.getEndPoint() - line.getStartPoint()
-        solid.createRevolvedSolid(curve, line.getStartPoint(), vec , math.pi * 2, 0, rob)
 
-        model = Db.BlockTableRecord(
-            Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
+        solid = Db.Solid3d()
+        vec = line.getEndPoint() - line.getStartPoint()
+        solid.createRevolvedSolid(curve, line.getStartPoint(), vec, math.pi * 2, 0, rob)
+
+        model = Db.BlockTableRecord(Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(solid)
 
     except Exception as err:
@@ -84,8 +85,7 @@ def PyRxCmd_pyextrudepath():
         path = Db.Curve(pathsel[1])
         solid = Db.Solid3d()
         solid.extrudeAlongPath(regions[0], path)
-        model = Db.BlockTableRecord(
-            Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
+        model = Db.BlockTableRecord(Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(solid)
 
     except Exception as err:
@@ -110,8 +110,7 @@ def PyRxCmd_pyextrude():
 
         solid = Db.Solid3d()
         solid.extrude(regions[0], 25.4)
-        model = Db.BlockTableRecord(
-            Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
+        model = Db.BlockTableRecord(Db.curDb().modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(solid)
 
     except Exception as err:

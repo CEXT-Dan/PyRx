@@ -7,6 +7,7 @@ from pyrx import Ap, Db
 # https://discuss.python.org/t/add-using-scope/104613/4
 # https://discuss.python.org/t/delay-gc-on-object/104602/9
 
+
 @Ap.Command()
 def doitscope():
     try:
@@ -19,6 +20,7 @@ def doitscope():
             def _() -> None:
                 ms = sdb.modelSpace()
                 crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
+
     except Exception as err:
         print(err)
 

@@ -22,7 +22,7 @@ def doit():
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("GetPoint Error! {}: ".format(ps))
 
-        ps, pt2 = Ed.Editor.getCorner(pt1,"\nGet top right: ")
+        ps, pt2 = Ed.Editor.getCorner(pt1, "\nGet top right: ")
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("GetPoint Error! {}: ".format(ps))
 
@@ -30,7 +30,7 @@ def doit():
         mat = addFilter_getmat(refid, filter)
 
         pts2d = []
-        for pt in [pt1,pt2]:
+        for pt in [pt1, pt2]:
             pt.transformBy(mat)
             pts2d.append(Ge.Point2d(pt.x, pt.y))
 

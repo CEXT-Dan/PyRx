@@ -121,6 +121,7 @@ def PyRxCmd_pyflip():
     except Exception as err:
         print(err)
 
+
 @Ap.Command()
 def pyinsert():
     try:
@@ -129,31 +130,31 @@ def pyinsert():
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("Selection Error! {}: ".format(ps))
 
-        #check if it's dynamic
+        # check if it's dynamic
         dynref = Db.DynBlockReference(id)
         if not dynref.isDynamicBlock():
             print("oof")
             return
-        
-        #this should return the effective name
+
+        # this should return the effective name
         ref = Db.BlockReference(id)
         print("\n{}".format(ref.getBlockName()))
-        
-        #better to put this in its own function for a GC scope and remove the close()
-        newref = Db.BlockReference(Ge.Point3d(2229, 1390, 0),dynref.dynamicBlockTableRecord())
+
+        # better to put this in its own function for a GC scope and remove the close()
+        newref = Db.BlockReference(Ge.Point3d(2229, 1390, 0), dynref.dynamicBlockTableRecord())
         newref.setScaleFactors(Ge.Scale3d(25.4))
         newrefid = db.addToModelspace(newref)
         newref.close()
-        
-        # create a new DynBlockReference from the new reference 
-        # and set the properties 
+
+        # create a new DynBlockReference from the new reference
+        # and set the properties
         newdynref = Db.DynBlockReference(newrefid)
         props = newdynref.getBlockProperties()
         for prop in props:
-            if prop.propertyName() == 'Distance':
+            if prop.propertyName() == "Distance":
                 prop.setValue(Db.EvalVariant(50.08))
-            if prop.propertyName() == 'Distance1':
+            if prop.propertyName() == "Distance1":
                 prop.setValue(Db.EvalVariant(48.8156))
-   
+
     except Exception as err:
         traceback.print_exception(err)

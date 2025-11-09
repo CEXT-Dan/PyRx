@@ -14,6 +14,7 @@ def PyRxCmd_doit1():
     except Exception as err:
         traceback.print_exception(err)
 
+
 def PyRxCmd_doit2():
     try:
         ps, id, _ = Ed.Editor.entSel("\nSelect: ")
