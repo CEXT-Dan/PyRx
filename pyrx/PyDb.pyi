@@ -3717,6 +3717,7 @@ class BlockReference(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
+    def effectiveName(self, /) -> str: ...
     def explodeToOwnerSpace(self, /) -> None:
         """
         This method's behavior corresponds to the AcDbBlockReference::explode() function, except
