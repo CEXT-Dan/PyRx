@@ -836,10 +836,10 @@ PyPlPlotInfo::PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete)
 {
 }
 
-PyPlPlotInfo::PyPlPlotInfo(const AcPlPlotInfo& entry)
-    : PyPlPlotInfo(new AcPlPlotInfo(entry), true)
-{
-}
+//PyPlPlotInfo::PyPlPlotInfo(const AcPlPlotInfo& entry)
+//    : PyPlPlotInfo(new AcPlPlotInfo(entry), true)
+//{
+//}
 
 void PyPlPlotInfo::copyFrom(const PyRxObject& pOther) const
 {

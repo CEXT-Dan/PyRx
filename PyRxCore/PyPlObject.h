@@ -179,7 +179,7 @@ class PyPlPlotInfo : public PyPlObject
 public:
     PyPlPlotInfo();
     PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete);
-    PyPlPlotInfo(const AcPlPlotInfo& entry);
+    //PyPlPlotInfo(const AcPlPlotInfo& entry);
     virtual ~PyPlPlotInfo() override = default;
     void                    copyFrom(const PyRxObject& pOther) const;
     void                    setLayout(PyDbObjectId& layoutId) const;
