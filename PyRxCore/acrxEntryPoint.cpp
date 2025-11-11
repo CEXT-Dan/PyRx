@@ -178,7 +178,7 @@ public:
         {
             printPyRxBuldVersion();
             if (!PyRxApp::instance().init())
-                acutPrintf(_T("\nPyInit Failed"));
+                acedAlert(_T("\nPyInit Failed"));
             doneOnce = true;
         }
     }
