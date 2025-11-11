@@ -5,9 +5,7 @@
 
 using namespace boost::python;
 
-#if defined(_BRXTARGET260)
-//
-#else
+
 void makePyPlCoreWrapper()
 {
     PyDocString DS("Core");
@@ -33,4 +31,3 @@ std::string PlCore::className()
 {
     return "PlCore";
 }
-#endif

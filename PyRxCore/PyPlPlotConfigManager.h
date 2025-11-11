@@ -1,8 +1,5 @@
 #pragma once
 #pragma pack (push, 8)
-#if defined(_BRXTARGET260)
-// dead
-#else
 
 class PyPlPlotConfig;
 class PyPlPlotConfig;
@@ -32,5 +29,4 @@ public:
     AcPlPlotConfigManager* m_imp = nullptr;
 };
 
-#endif
 #pragma pack (pop)

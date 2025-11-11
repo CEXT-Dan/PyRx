@@ -10,9 +10,6 @@ using namespace boost::python;
 static BOOST_PYTHON_MODULE(PyPl)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
-#if defined(_BRXTARGET260)
-    // dead
-#else
     makePyPlObjectWrapper();
     makePyPlDSDDataWrapper();
     makePyPlDSDEntryWrapper();
@@ -24,10 +21,11 @@ static BOOST_PYTHON_MODULE(PyPl)
     makePyPlPlotInfoValidatorWrapper();
     makePyPlPlotProgressDialogWrapper();
     makePyPlPlotConfigInfoWrapper();
+#if !defined(_BRXTARGET260)
     makePyPlPrecisionEntryWrapper();
+#endif
     makePyPlPlotConfigManagerWrapper();
     makePyPlCoreWrapper();
-#endif
 }
 
 void initPyPlModule()

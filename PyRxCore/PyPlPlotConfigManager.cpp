@@ -5,9 +5,6 @@
 using namespace boost::python;
 
 
-#if defined(_BRXTARGET260)
-// dead
-#else
 void makePyPlPlotConfigManagerWrapper()
 {
     PyDocString DS("PlotConfigManager");
@@ -15,7 +12,7 @@ void makePyPlPlotConfigManagerWrapper()
         .def("getDevicesList", &PyPlPlotConfigManager::getDevicesList, DS.ARGS())
         .def("getStyleList", &PyPlPlotConfigManager::getStyleList, DS.ARGS())
         .def("refreshList", &PyPlPlotConfigManager::refreshList1)
-        .def("refreshList", &PyPlPlotConfigManager::refreshList2, DS.ARGS({"refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll"}))
+        .def("refreshList", &PyPlPlotConfigManager::refreshList2, DS.ARGS({ "refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll" }))
         .def("getCurrentConfig", &PyPlPlotConfigManager::getCurrentConfig)
         .def("setCurrentConfig", &PyPlPlotConfigManager::setCurrentConfig, DS.ARGS({ "deviceName: str" }))
         .def("getStdConfigName", &PyPlPlotConfigManager::getStdConfigName)
@@ -57,6 +54,7 @@ void makePyPlPlotConfigManagerWrapper()
         .value("kPublishToWebDWF", AcPlPlotConfigManager::StdConfigs::kPublishToWebDWF)
         .value("kPublishToWebJPG", AcPlPlotConfigManager::StdConfigs::kPublishToWebJPG)
         .value("kPublishToWebPNG", AcPlPlotConfigManager::StdConfigs::kPublishToWebPNG)
+#if !defined(_BRXTARGET260)
         .value("kDWFxePlot", AcPlPlotConfigManager::StdConfigs::kDWFxePlot)
         .value("kPublishToWebDWFx", AcPlPlotConfigManager::StdConfigs::kPublishToWebDWFx)
         .value("kPDFePlot", AcPlPlotConfigManager::StdConfigs::kPDFePlot)
@@ -65,6 +63,7 @@ void makePyPlPlotConfigManagerWrapper()
         .value("kPDFePlotSmallerFile", AcPlPlotConfigManager::StdConfigs::kPDFePlotSmallerFile)
         .value("kPDFePlotWebMobile", AcPlPlotConfigManager::StdConfigs::kPDFePlotWebMobile)
         .value("kSVFePlot", AcPlPlotConfigManager::StdConfigs::kSVFePlot)
+#endif
         .export_values()
         ;
 }
@@ -141,4 +140,3 @@ AcPlPlotConfigManager* PyPlPlotConfigManager::impObj(const std::source_location&
     }
     return m_imp;
 }
-#endif
