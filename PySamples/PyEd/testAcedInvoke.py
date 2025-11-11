@@ -4,7 +4,8 @@ from pyrx import Ap, Ed, Rx
 
 
 #  (defun C:ADDNUM ( x / ) (+ x x))
-def PyRxCmd_doit1(CmDFlags=Ap.CmdFlags.SESSION):
+@Ap.Command()
+def doit1(CmDFlags=Ap.CmdFlags.SESSION):
     try:
         args = [(Rx.LispType.kText, "C:ADDNUM"), (Rx.LispType.kInt16, 10), (Rx.LispType.kNone, 0)]
         result = Ed.Core.invoke(args)
@@ -15,8 +16,8 @@ def PyRxCmd_doit1(CmDFlags=Ap.CmdFlags.SESSION):
 
     #  (defun C:GETLASTENT () (entget(entlast)))
 
-
-def PyRxCmd_doit2(CmDFlags=Ap.CmdFlags.SESSION):
+@Ap.Command()
+def doit2(CmDFlags=Ap.CmdFlags.SESSION):
     try:
         args = [(Rx.LispType.kText, "C:GETLASTENT"), (Rx.LispType.kNone, 0)]
         result = Ed.Core.invoke(args)
@@ -27,7 +28,8 @@ def PyRxCmd_doit2(CmDFlags=Ap.CmdFlags.SESSION):
 
 
 #  (defun C:GETENTSEL () (entget(car(entsel))))
-def PyRxCmd_doit3():
+@Ap.Command()
+def doit3():
     try:
         args = [(Rx.LispType.kText, "C:GETENTSEL"), (Rx.LispType.kNone, 0)]
         result = Ed.Core.invoke(args)
