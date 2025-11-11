@@ -18,7 +18,7 @@ void makePyPlPlotProgressDialogWrapper()
         .def(init<bool, int, bool>())
         .def(init<UINT_PTR, bool, int, bool>(DS.CTOR(ctor)))
         .def("isPlotCancelled", &PyPlPlotProgressDialog::isPlotCancelled, DS.ARGS())
-        .def("setPlotCancelStatus", &PyPlPlotProgressDialog::setPlotCancelStatus, DS.ARGS({"val:PyPl.PlotCancelStatus"}))
+        .def("setPlotCancelStatus", &PyPlPlotProgressDialog::setPlotCancelStatus, DS.ARGS({ "val:PyPl.PlotCancelStatus" }))
         .def("plotCancelStatus", &PyPlPlotProgressDialog::plotCancelStatus, DS.ARGS())
         .def("setPlotProgressRange", &PyPlPlotProgressDialog::setPlotProgressRange, DS.ARGS({ "lower: int" , "upper: int" }))
         .def("getPlotProgressRange", &PyPlPlotProgressDialog::getPlotProgressRange, DS.ARGS())
@@ -41,7 +41,7 @@ void makePyPlPlotProgressDialogWrapper()
         .def("onBeginSheet", &PyPlPlotProgressDialog::onBeginSheet, DS.ARGS())
         .def("onEndSheet", &PyPlPlotProgressDialog::onEndSheet, DS.ARGS())
         .def("setPlotMsgString", &PyPlPlotProgressDialog::setPlotMsgString, DS.ARGS({ "index:PyPl.PlotMSGIndex", "val: str" }))
-        .def("getPlotMsgString", &PyPlPlotProgressDialog::getPlotMsgString, DS.ARGS({ "index:PyPl.PlotMSGIndex"}))
+        .def("getPlotMsgString", &PyPlPlotProgressDialog::getPlotMsgString, DS.ARGS({ "index:PyPl.PlotMSGIndex" }))
         .def("isSingleSheetPlot", &PyPlPlotProgressDialog::isSingleSheetPlot, DS.ARGS())
         .def("destroy", &PyPlPlotProgressDialog::destroy, DS.ARGS())
         .def("className", &PyPlPlotProgressDialog::className, DS.SARGS()).staticmethod("className")
@@ -86,7 +86,7 @@ struct PyPlPlotProgressDialogDeleter
     {
         if (p == nullptr) [[unlikely]]
             return;
-            p->destroy();
+        p->destroy();
     };
 };
 
