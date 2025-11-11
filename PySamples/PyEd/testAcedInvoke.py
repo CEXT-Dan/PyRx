@@ -16,6 +16,7 @@ def doit1(CmDFlags=Ap.CmdFlags.SESSION):
 
     #  (defun C:GETLASTENT () (entget(entlast)))
 
+
 @Ap.Command()
 def doit2(CmDFlags=Ap.CmdFlags.SESSION):
     try:
