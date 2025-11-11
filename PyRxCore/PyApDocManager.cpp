@@ -718,17 +718,20 @@ void makePyAutoDocLockWrapper()
 PyAutoDocLockImp::PyAutoDocLockImp()
     : pDoc(curDoc())
 {
+    PyThrowBadEs(acDocManagerPtr()->disableDocumentActivation());
     PyThrowBadEs(acDocManagerPtr()->lockDocument(pDoc));
 }
 
 PyAutoDocLockImp::PyAutoDocLockImp(AcApDocument* doc)
     : pDoc(doc)
 {
+    PyThrowBadEs(acDocManagerPtr()->disableDocumentActivation());
     PyThrowBadEs(acDocManagerPtr()->lockDocument(pDoc));
 }
 
 PyAutoDocLockImp::~PyAutoDocLockImp()
 {
+    PyThrowBadEs(acDocManagerPtr()->enableDocumentActivation());
     PyThrowBadEs(acDocManagerPtr()->unlockDocument(pDoc));
 }
 
