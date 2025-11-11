@@ -3,10 +3,6 @@
 
 #pragma pack (push, 8)
 
-#if defined(_BRXTARGET260)
-//
-#else
-
 class PyDbObjectId;
 class PyPlDSDEntry;
 class PyDbPlotSettings;
@@ -179,7 +175,6 @@ class PyPlPlotInfo : public PyPlObject
 public:
     PyPlPlotInfo();
     PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete);
-    //PyPlPlotInfo(const AcPlPlotInfo& entry);
     virtual ~PyPlPlotInfo() override = default;
     void                    copyFrom(const PyRxObject& pOther) const;
     void                    setLayout(PyDbObjectId& layoutId) const;
@@ -295,6 +290,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyPlPrecisionEntry
+#if !defined(_BRXTARGET260)
 void makePyPlPrecisionEntryWrapper();
 class PyPlPrecisionEntry : public PyPlObject
 {
@@ -324,6 +320,7 @@ public:
 public:
     AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
@@ -350,5 +347,4 @@ public:
     AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-#endif
 #pragma pack (pop)
