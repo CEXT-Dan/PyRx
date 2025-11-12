@@ -3,7 +3,7 @@ from pyrx import Ap, Ed, Rx
 # args must end with (Rx.LispType.kNone,0)
 
 
-#  (defun C:ADDNUM ( x / ) (+ x x))
+# (defun C:ADDNUM ( x / ) (+ x x))
 @Ap.Command()
 def doit1(CmDFlags=Ap.CmdFlags.SESSION):
     try:
@@ -14,9 +14,8 @@ def doit1(CmDFlags=Ap.CmdFlags.SESSION):
     except Exception as err:
         print(err)
 
-    #  (defun C:GETLASTENT () (entget(entlast)))
 
-
+# (defun C:GETLASTENT () (entget(entlast)))
 @Ap.Command()
 def doit2(CmDFlags=Ap.CmdFlags.SESSION):
     try:
@@ -28,7 +27,7 @@ def doit2(CmDFlags=Ap.CmdFlags.SESSION):
         print(err)
 
 
-#  (defun C:GETENTSEL () (entget(car(entsel))))
+# (defun C:GETENTSEL () (entget(car(entsel))))
 @Ap.Command()
 def doit3():
     try:
