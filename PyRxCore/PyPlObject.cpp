@@ -369,12 +369,12 @@ boost::python::tuple PyPlDSDData::getUnrecognizedData() const
 {
     PyAutoLockGIL lock;
 #if defined(_BRXTARGET260)
-    AcArray<ACHAR*> _sectionArray;
-    AcArray<ACHAR*> _dataArray;//leak?
+    throw PyNotimplementedByHost();
+    // AcArray<ACHAR*> _sectionArray;
+    // AcArray<ACHAR*> _dataArray;//leak?
 #else
     AcStringArray _sectionArray;
     AcStringArray _dataArray;
-#endif
     boost::python::list sectionArray;
     boost::python::list dataArray;
     impObj()->getUnrecognizedData(_sectionArray, _dataArray);
@@ -383,6 +383,7 @@ boost::python::tuple PyPlDSDData::getUnrecognizedData() const
     for (const auto& item : _dataArray)
         dataArray.append(wstr_to_utf8(item));
     return boost::python::make_tuple(sectionArray, dataArray);
+#endif
 }
 
 void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData) const
@@ -640,31 +641,19 @@ void PyPlDSDData::setPromptForPassword(bool bPromptForPassword) const
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#if _ZRXTARGET <= 260 || _GRXTARGET == 240
-    throw PyNotimplementedByHost();
-#endif
-
-#ifdef _ARXTARGET
-#if _ARXTARGET <= 240
+#if defined(_ZRXTARGET250) || defined(_GRXTARGET250) || defined(_ARXTARGET240) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->initializeLayouts();
-#endif
 #endif
 }
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts) const
 {
-#if _ZRXTARGET <= 250 || _GRXTARGET == 240
-    throw PyNotimplementedByHost();
-#endif
-
-#ifdef _ARXTARGET
-#if _ARXTARGET <= 240
+#if defined(_ZRXTARGET250) || defined(_GRXTARGET250) || defined(_ARXTARGET240) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setInitializeLayouts(initLayouts);
-#endif
 #endif
 }
 
@@ -826,7 +815,7 @@ void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType) const
 
 std::string PyPlDSDEntry::orgSheetPath() const
 {
-#if defined(_GRXTARGET) && (_GRXTARGET <= 260)
+#if defined(_GRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->orgSheetPath());
@@ -835,16 +824,10 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#if _ZRXTARGET <= 260 || _GRXTARGET == 260
-    throw PyNotimplementedByHost();
-#endif
-
-#ifdef _ARXTARGET
-#if _ARXTARGET <= 240
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET240) || defined(_BRXTARGET260) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->traceSession());
-#endif
 #endif
 }
 
