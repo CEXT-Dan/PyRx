@@ -7,7 +7,6 @@ using namespace boost::python;
 //PyGeBoundBlock2d wrapper
 void makePyGeBoundBlock2dWrapper()
 {
-#if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- pt1: PyGe.Point2d, pt2: PyGe.Point2d\n"
@@ -39,10 +38,8 @@ void makePyGeBoundBlock2dWrapper()
         .def("copycast", &PyGeBoundBlock2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeBoundBlock2d::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET260)
 PyGeBoundBlock2d::PyGeBoundBlock2d()
     : PyGeEntity2d(new AcGeBoundBlock2d())
 {
@@ -168,4 +165,3 @@ AcGeBoundBlock2d* PyGeBoundBlock2d::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcGeBoundBlock2d*>(m_imp.get());
 }
-#endif

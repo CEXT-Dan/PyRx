@@ -1095,15 +1095,11 @@ std::string PyPlPlotConfig::getLocalMediaName(const std::string& pCanonicalMedia
 
 boost::python::tuple PyPlPlotConfig::getMediaBounds(const std::string& pCanonicalMediaName) const
 {
-#if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint2d pageSize;
     AcGeBoundBlock2d printableArea;
     impObj()->getMediaBounds(utf8_to_wstr(pCanonicalMediaName).c_str(), pageSize, printableArea);
     return boost::python::make_tuple(pageSize, PyGeBoundBlock2d(printableArea));
-#endif
 }
 
 void PyPlPlotConfig::refreshMediaNameList() const
