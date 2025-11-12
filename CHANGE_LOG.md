@@ -1,3 +1,35 @@
+## v2.2.33
+
+* BRX PyGeBoundBlock2d
+* Enable PL namespace for BRX
+* improve AutoDocLock, prevents document switching, with this lock, users cannot switch drawing tabs.
+* added BlockReference.effectiveName() as an alias for BlockReference.getBlockName, the latter might be depreciated at some point
+* added Db.BlockReference.hasAttributes
+* Added custom object, Db.OverrulableEntity (beta), the goal is to have an object that any user can use to overrule without having to overrule an existing type. OverrulableEntity has filers that will persist through drawing sessions. Since it is a custom object, users that do not have PyRx installed will see the last Proxy graphic. If there are no overrules for the object, the graphic is a point.  The Fields I added should cover most any type of custom graphic.
+
+This is still beta, so it’s best not to share any drawings that have this entity yet.
+
+```C++
+//data
+ AcGePoint3d m_pos = AcGePoint3d::kOrigin;   // Transformed
+ AcGeVector3d m_dir = AcGeVector3d::kXAxis;  // Transformed
+ AcGeVector3d m_normal = AcGeVector3d::kZAxis;// Transformed
+
+ AcString m_guid; // a developer key?
+ AcString m_name; // anything
+ AcString m_descr;// anything
+
+ Adesk::Int64 m_type = 0; // anything
+ Adesk::Int64 m_mask = 0; // anything
+ Adesk::Int64 m_index = 0; // anything
+
+ std::vector<Adesk::Int32> m_flags;//
+ std::vector<Adesk::Int32> m_ints; // data
+ std::vector<double> m_reals;      // " "
+ std::vector<AcString> m_strings;  // " "
+ std::vector<AcGePoint3d> m_points;//Transformed
+```
+
 ## v2.2.32
 
 * add helper function BlockReference.attlist, returns a list [(tag, value)]
