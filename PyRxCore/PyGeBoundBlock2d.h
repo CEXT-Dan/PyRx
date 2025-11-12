@@ -8,7 +8,6 @@ void makePyGeBoundBlock2dWrapper();
 
 class PyGeBoundBlock2d : public PyGeEntity2d
 {
-#if !defined(_BRXTARGET260)
 public:
     PyGeBoundBlock2d();
     PyGeBoundBlock2d(const AcGePoint2d& point1, const AcGePoint2d& point2);
@@ -34,7 +33,6 @@ public:
     static std::string  className();
 public:
     AcGeBoundBlock2d* impObj(const std::source_location& src = std::source_location::current()) const;
-#endif
 };
 #pragma pack (pop)
 
