@@ -45,6 +45,11 @@ static void objectIdArrayClear(PyDbObjectIdArray& inIds)
     inIds.clear();
 }
 
+static void objectIdArraySort(PyDbObjectIdArray& inIds)
+{
+    std::sort(inIds.begin(), inIds.end());
+}
+
 //---------------------------------------------------------------------------------
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
@@ -60,6 +65,7 @@ void makePyDbObjectIdWrapper()
         .def("getIdsOfType", &objectIdArrayFilter2, DSIDA.OVRL(ObjectIdArrayOverloads))
         .def("removeErased", &objectIdArrayRemoveErased, DSIDA.ARGS())
         .def("clear", &objectIdArrayClear, DSIDA.ARGS())
+        .def("sort", &objectIdArraySort, DSIDA.ARGS())
         ;
 
     PyDocString DS("PyDb.ObjectId");
