@@ -2359,12 +2359,12 @@ class Line2d(PyGe.LinearEnt2d):
         Represents an unbounded line in 2D space.
         """
     @overload
-    def __init__(self, start: PyGe.Point3d, direction: PyGe.Vector2d, /) -> None:
+    def __init__(self, start: PyGe.Point2d, direction: PyGe.Vector2d, /) -> None:
         """
         Represents an unbounded line in 2D space.
         """
     @overload
-    def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
+    def __init__(self, start: PyGe.Point2d, end: PyGe.Point2d, /) -> None:
         """
         Represents an unbounded line in 2D space.
         """
@@ -2383,9 +2383,9 @@ class Line2d(PyGe.LinearEnt2d):
     kXAxis: PyGe.Line2d
     kYAxis: PyGe.Line2d
     @overload
-    def set(self, start: PyGe.Point3d, direction: PyGe.Vector2d, /) -> None: ...
+    def set(self, start: PyGe.Point2d, direction: PyGe.Vector2d, /) -> None: ...
     @overload
-    def set(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None: ...
+    def set(self, start: PyGe.Point2d, end: PyGe.Point2d, /) -> None: ...
     @overload
     def set(self, *args) -> None: ...
 
