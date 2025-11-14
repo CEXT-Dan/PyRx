@@ -50,6 +50,11 @@ static void objectIdArraySort(PyDbObjectIdArray& inIds)
     std::sort(inIds.begin(), inIds.end());
 }
 
+static void objectIdArrayReverse(PyDbObjectIdArray& inIds)
+{
+    std::reverse(inIds.begin(), inIds.end());
+}
+
 //---------------------------------------------------------------------------------
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
@@ -66,6 +71,7 @@ void makePyDbObjectIdWrapper()
         .def("removeErased", &objectIdArrayRemoveErased, DSIDA.ARGS())
         .def("clear", &objectIdArrayClear, DSIDA.ARGS())
         .def("sort", &objectIdArraySort, DSIDA.ARGS())
+        .def("reverse", &objectIdArrayReverse, DSIDA.ARGS())
         ;
 
     PyDocString DS("PyDb.ObjectId");
@@ -373,9 +379,9 @@ PyDbSoftPointerId& PyDbSoftPointerId::operator=(const PyDbSoftPointerId& rhs)
     m_id = rhs.m_id;
     return *this;
 }
+
 //-----------------------------------------------------------------------------------------
 //PyDbSoftOwnershipId
-
 void makePyDbSoftOwnershipIdWrapper()
 {
     PyDocString DS("SoftOwnershipId");
