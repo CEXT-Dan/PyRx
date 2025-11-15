@@ -1230,7 +1230,7 @@ class Curve3d(PyGe.Entity3d):
         not infinite. The line parameter contains meaningful data only if this function returns a
         value of Adesk::kTrue.
         """
-    def isOn(self, pt: float | PyGe.Point3d, tol: PyGe.Tol = ..., /) -> tuple:
+    def isOn(self, val: float | PyGe.Point3d, tol: PyGe.Tol = ..., /) -> tuple:
         """
         Determines if input parameter value is within valid parametric range of curve.
         """
