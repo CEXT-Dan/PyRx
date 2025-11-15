@@ -20,6 +20,10 @@ void makePyDbCurveWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 2760)))
         .def("isClosed", &PyDbCurve::isClosed, DS.ARGS(2796))
         .def("isPeriodic", &PyDbCurve::isPeriodic, DS.ARGS(2797))
+        .def("isOn", &PyDbCurve::isOn1)
+        .def("isOn", &PyDbCurve::isOn2)
+        .def("isOn", &PyDbCurve::isOn3)
+        .def("isOn", &PyDbCurve::isOn4, DS.ARGS({ "val : float | PyGe.Point3d","tol : PyGe.Tol = ..." }, 11867))
         .def("getStartParam", &PyDbCurve::getStartParam, DS.ARGS(2794))
         .def("getEndParam", &PyDbCurve::getEndParam, DS.ARGS(2780))
         .def("getStartPoint", &PyDbCurve::getStartPoint, DS.ARGS(2795))
@@ -98,6 +102,33 @@ Adesk::Boolean PyDbCurve::isClosed() const
 Adesk::Boolean PyDbCurve::isPeriodic() const
 {
     return impObj()->isPeriodic();
+}
+
+static std::unique_ptr<AcGeCurve3d> getSafeCurve(AcDbCurve* pCurve)
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(pCurve->getAcGeCurve(pGeCurve));
+    return std::unique_ptr<AcGeCurve3d>(pGeCurve);
+}
+
+Adesk::Boolean PyDbCurve::isOn1(const AcGePoint3d& pnt) const
+{
+    return getSafeCurve(impObj())->isOn(pnt);
+}
+
+Adesk::Boolean PyDbCurve::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+{
+    return getSafeCurve(impObj())->isOn(pnt, tol);
+}
+
+Adesk::Boolean PyDbCurve::isOn3(double param) const
+{
+    return getSafeCurve(impObj())->isOn(param);
+}
+
+Adesk::Boolean PyDbCurve::isOn4(double param, const AcGeTol& tol) const
+{
+    return getSafeCurve(impObj())->isOn(param, tol);
 }
 
 double PyDbCurve::getStartParam() const

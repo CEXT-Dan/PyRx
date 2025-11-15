@@ -6173,6 +6173,10 @@ class Curve(PyDb.Entity):
         point is identical to its end point. Otherwise, it returns Adesk::kFalse. Returns
         Acad::kFalse in the default implementation.
         """
+    def isOn(self, val: float | PyGe.Point3d, tol: PyGe.Tol = ..., /) -> bool:
+        """
+        Determines if input parameter value is within valid parametric range of curve.
+        """
     def isPeriodic(self, /) -> bool:
         """
         This function returns Adesk::kTrue if, and only if, the curve has an infinite range in both
