@@ -377,6 +377,15 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
         });
 }
 
+static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
+{
+    std::string buffer = "[";
+    for (const auto& s : src)
+        buffer.append(std::format("{}.Point2d({:.14f},{:.14f})", PyGeNamespace, s.x, s.y));
+    buffer.append("]");
+    return buffer;
+}
+
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
 static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArray& src)
@@ -460,6 +469,7 @@ static void makePyGePoint2dWrapper()
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
         .def("sortByY", &PyGePoint2dArraySortByY, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
+        .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -1297,6 +1307,15 @@ static bool PyGePoint3dIsPlanar(const PyGePoint3dArray& src)
     return true;
 }
 
+static std::string PyGePoint3dArrayRepr(const PyGePoint3dArray& src)
+{
+    std::string buffer = "[";
+    for (const auto& p : src)
+        buffer.append(std::format("{}.Point3d({:.14f},{:.14f},{:.14f})", PyGeNamespace, p.x, p.y, p.z));
+    buffer.append("]");
+    return buffer;
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -1311,6 +1330,7 @@ static void makePyGePoint3dWrapper()
         .def("sortByY", &PyGePoint3dArraySortByY, DSPA.ARGS())
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
+        .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
