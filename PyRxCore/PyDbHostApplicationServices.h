@@ -9,12 +9,10 @@ class PyDbPlotSettings;
 class PyDbPlotSettingsValidator;
 class AcadInternalServices;
 
-#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
-#define SCVOVERRIDE
-#elif defined(_BRXTARGET260)
-#define SCVOVERRIDE
+#if (defined(_ARXTARGET) && (_ARXTARGET >= 260)) || defined(_BRXTARGET260)
+#define PYRXOVERRIDE
 #else
-#define SCVOVERRIDE override
+#define PYRXOVERRIDE override
 #endif
 
 //---------------------------------------------------------------------------------------- -
@@ -25,8 +23,8 @@ public:
     OutputDisplayServiceImpl();
     virtual ~OutputDisplayServiceImpl() override;
     virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault) override;
-    virtual AcadInternalServices* acadInternalServices() SCVOVERRIDE;
-#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+    virtual AcadInternalServices* acadInternalServices() PYRXOVERRIDE;
+#if (defined(_ARXTARGET) && (_ARXTARGET >= 260))
     virtual bool notifyCorruptDrawingFoundOnOpen(AcDbObjectId id, Acad::ErrorStatus es) override;
 #endif
     virtual const ProdIdCode prodcode() override;
