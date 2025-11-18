@@ -22,6 +22,10 @@
 #import "acax25ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260) && (_ARXTARGET <= 261)
+#import "acax26ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
 #if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
 #import "zwcad21.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif

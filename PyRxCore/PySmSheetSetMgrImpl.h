@@ -19,6 +19,11 @@
 #import "acsmcomponents25.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+#import "acax26ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acsmcomponents26.tlb" no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
 class PySmDatabaseImpl;
 class PySmObjectIdImpl;
 class PySmComponentImpl;
