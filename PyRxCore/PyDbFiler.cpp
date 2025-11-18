@@ -106,11 +106,13 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt8(Adesk::Int8 val)
     return eOk;
 }
 
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+#else
 Acad::ErrorStatus PyDbSnoopDwgFiler::readString(ACHAR** pVal)
 {
     return eOk;
 }
-
+#endif
 Acad::ErrorStatus PyDbSnoopDwgFiler::readString(AcString& val)
 {
     return eOk;

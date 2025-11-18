@@ -97,6 +97,9 @@
 #if defined(_ARXTARGET) && (_ARXTARGET == 251)
 #define _ARXTARGET250 250
 #endif
+#if defined(_ARXTARGET) && (_ARXTARGET <= 260)
+#define _ARXTARGET260 260
+#endif
 
 //- ObjectARX and OMF headers needs this
 #include <map>

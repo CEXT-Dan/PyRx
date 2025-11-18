@@ -34,10 +34,16 @@ Acad::ErrorStatus OutputDisplayServiceImpl::findFile(ACHAR* pthOut, int nBufLeng
     return Acad::ErrorStatus::eNotImplemented;
 }
 
-#if !defined(_BRXTARGET260)
 AcadInternalServices* OutputDisplayServiceImpl::acadInternalServices()
 {
-    return m_pOldHostServices->acadInternalServices();
+    PyThrowBadEs(eNotImplemented);
+    return nullptr;
+}
+
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+bool OutputDisplayServiceImpl::notifyCorruptDrawingFoundOnOpen(AcDbObjectId id, Acad::ErrorStatus es)
+{
+    return false;
 }
 #endif
 
@@ -70,7 +76,6 @@ std::wstring OutputDisplayServiceImpl::getOutput() const
 {
     return ms_buffer;
 }
-
 
 //---------------------------------------------------------------------------------------- -
 //PyOutputDisplayService
