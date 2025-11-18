@@ -107,6 +107,7 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt8(Adesk::Int8 val)
 }
 
 #if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+//depreciated
 #else
 Acad::ErrorStatus PyDbSnoopDwgFiler::readString(ACHAR** pVal)
 {

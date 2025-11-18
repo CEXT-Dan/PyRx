@@ -34,6 +34,7 @@ public:
     virtual Acad::ErrorStatus   readInt8(Adesk::Int8* pVal) override;
     virtual Acad::ErrorStatus   writeInt8(Adesk::Int8 val) override;
 #if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+    //depreciated
 #else
     virtual Acad::ErrorStatus   readString(ACHAR** pVal) override;
 #endif
