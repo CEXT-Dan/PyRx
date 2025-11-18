@@ -33,7 +33,10 @@ public:
     virtual Acad::ErrorStatus   writeSoftPointerId(const AcDbSoftPointerId& val) override;
     virtual Acad::ErrorStatus   readInt8(Adesk::Int8* pVal) override;
     virtual Acad::ErrorStatus   writeInt8(Adesk::Int8 val) override;
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+#else
     virtual Acad::ErrorStatus   readString(ACHAR** pVal) override;
+#endif
     virtual Acad::ErrorStatus   writeString(const ACHAR* pVal) override;
     virtual Acad::ErrorStatus   readString(AcString& val) override;
     virtual Acad::ErrorStatus   writeString(const AcString& pVal) override;
