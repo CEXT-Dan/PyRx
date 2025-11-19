@@ -135,6 +135,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PyBrxComponentCustomProperties.cpp" />
+    <ClCompile Include="PyBrxComponents.cpp" />
+    <ClCompile Include="PyBrxConstraints3d.cpp" />
     <ClCompile Include="PyRxOverrulableEntity.cpp" />
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="DbCore.cpp" />
@@ -303,6 +305,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyBrxComponentCustomProperties.h" />
+    <ClInclude Include="PyBrxComponents.h" />
+    <ClInclude Include="PyBrxConstraints3d.h" />
     <ClInclude Include="PyRxOverrulableEntity.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
