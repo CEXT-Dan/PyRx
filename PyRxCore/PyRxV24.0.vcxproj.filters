@@ -484,7 +484,7 @@
     <ClCompile Include="PyRxOverrulableEntity.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
-    <ClCompile Include="PyBrxComponents.cpp">
+    <ClCompile Include="PyBrxComponentCustomProperties.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
   </ItemGroup>
@@ -978,7 +978,7 @@
     <ClInclude Include="PyRxOverrulableEntity.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
-    <ClInclude Include="PyBrxComponents.h">
+    <ClInclude Include="PyBrxComponentCustomProperties.h">
       <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
   </ItemGroup>

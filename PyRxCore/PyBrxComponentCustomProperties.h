@@ -4,6 +4,7 @@
 #include "AcComponentCustomProperties.h"
 #include "AcComponents.h"
 
+
 class PyBrxMechanicalPropertyDefinition;
 
 //---------------------------------------------------------------------
