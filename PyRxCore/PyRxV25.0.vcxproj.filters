@@ -490,6 +490,12 @@
     <ClCompile Include="PyBrxComponentCustomProperties.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxComponents.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxConstraints3d.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -985,6 +991,12 @@
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxComponentCustomProperties.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxComponents.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxConstraints3d.h">
       <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
   </ItemGroup>
