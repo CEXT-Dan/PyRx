@@ -1,8 +1,7 @@
 #include "stdafx.h"
-#include "PyBrxComponents.h"
+#include "PyBrxComponentCustomProperties.h"
 
 #ifdef BRXAPP
-
 
 using namespace boost::python;
 //---------------------------------------------------------------------

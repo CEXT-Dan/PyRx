@@ -3,7 +3,7 @@
 #include "PyBrxDbProperties.h"
 #include "PyBrxCore.h"
 #include "PyBrxPanel.h"
-#include "PyBrxComponents.h"
+#include "PyBrxComponentCustomProperties.h"
 
 #ifdef BRXAPP
 
