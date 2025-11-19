@@ -98,7 +98,7 @@ eIFC4: IfcSchemaId  # 1
 eIFC4X1: IfcSchemaId  # 2
 eIfcGlobalOrigin: IfcImportModelOrigin  # 0
 eIfcProjectLocation: IfcImportModelOrigin  # 2
-eIfcSchemaLast: IfcSchemaId  # 2
+eIfcSchemaLast: IfcSchemaId  # 3
 eIfcSiteLocation: IfcImportModelOrigin  # 1
 eIncludeFrozenHidden: IfcExportOptionFlags  # 2
 eInstantSave: BimPolicyOptions  # 1
@@ -3179,7 +3179,7 @@ class IfcSchemaId(_BoostPythonEnum):
     eIFC2X3: ClassVar[Self]  # 0
     eIFC4: ClassVar[Self]  # 1
     eIFC4X1: ClassVar[Self]  # 2
-    eIfcSchemaLast: ClassVar[Self]  # 2
+    eIfcSchemaLast: ClassVar[Self]  # 3
 
 class IfcSelectValue:
     def __init__(self) -> None:
