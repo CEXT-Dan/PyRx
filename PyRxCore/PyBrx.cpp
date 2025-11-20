@@ -22,6 +22,7 @@ static BOOST_PYTHON_MODULE(PyBrx)
     makePyBrxPanelWrapper();
     makePyBrxMechanicalPropertySet();
     makePyBrxMechanicalPropertyDefinition();
+    makePyBrxConstraintArgument();
 
     enum_<BricsCAD::LicensedFeature>("LicensedFeature")
         .value("eCore", BricsCAD::LicensedFeature::eCore)
@@ -81,6 +82,17 @@ static BOOST_PYTHON_MODULE(PyBrx)
         .value("ePlacementOutside", AcConstraint::Placement::ePlacementOutside)
         .value("ePlacementInside", AcConstraint::Placement::ePlacementInside)
         .value("ePlacementKeep", AcConstraint::Placement::ePlacementKeep)
+        .export_values()
+        ;
+
+    enum_<AcConstraintArgument::CoordinateSystemObject>("ConstraintArgCoordSysObj")
+        .value("eCSOrigin", AcConstraintArgument::CoordinateSystemObject::eCSOrigin)
+        .value("eCSX", AcConstraintArgument::CoordinateSystemObject::eCSX)
+        .value("eCSY", AcConstraintArgument::CoordinateSystemObject::eCSY)
+        .value("eCSZ", AcConstraintArgument::CoordinateSystemObject::eCSZ)
+        .value("eCSXY", AcConstraintArgument::CoordinateSystemObject::eCSXY)
+        .value("eCSYZ", AcConstraintArgument::CoordinateSystemObject::eCSYZ)
+        .value("eCSZX", AcConstraintArgument::CoordinateSystemObject::eCSZX)
         .export_values()
         ;
 }
