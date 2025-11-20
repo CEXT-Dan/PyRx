@@ -26,8 +26,7 @@ void makePyBrxCoreWrapper()
         .def("effectiveBlockTableRecord", &PyBrxCore::effectiveBlockTableRecord, DS.SARGS({ "blockRefId:PyDb.ObjectId" })).staticmethod("effectiveBlockTableRecord")
         .def("removeConstraints", &PyBrxCore::removeConstraints, DS.SARGS({ "id:PyDb.ObjectId" })).staticmethod("removeConstraints")
         .def("removeConstraintsFromDatabase", &PyBrxCore::removeConstraintsFromDatabase, DS.SARGS({ "db:PyDb.Database" })).staticmethod("removeConstraintsFromDatabase")
-        ;
-        
+        ;  
 }
 
 bool PyBrxCore::isLicenseAvailable(BricsCAD::LicensedFeature feature)
