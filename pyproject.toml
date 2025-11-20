@@ -101,7 +101,7 @@ files = [
     "pyrx/PyAp.pyi",
     "pyrx/PyAx.pyi",
     "pyrx/PyBr.pyi",
-    "pyrx/PyBrx.pyi",
+    #    "pyrx/PyBrx.pyi", #MyPy error #433
     #    "pyrx/PyBrxBim.pyi",  # Needs extra work
     #    "pyrx/PyBrxCv.pyi",  # Needs extra work
     #    "pyrx/PyDb.pyi",  # Needs extra work
