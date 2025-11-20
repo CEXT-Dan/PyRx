@@ -67,4 +67,20 @@ public:
     std::shared_ptr<AcVariable> m_pyImp;
 };
 
+//---------------------------------------------------------------------
+//PyBrxConstraint
+void makePyBrxConstraint();
+
+class PyBrxConstraint
+{
+public:
+    PyBrxConstraint(AcConstraint* scr);
+    PyDbObjectId    getBlockId() const;
+
+    static std::string className();
+public:
+    AcConstraint* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<AcConstraint> m_pyImp;
+};
+
 #endif
