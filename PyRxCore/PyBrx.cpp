@@ -23,6 +23,7 @@ static BOOST_PYTHON_MODULE(PyBrx)
     makePyBrxMechanicalPropertySet();
     makePyBrxMechanicalPropertyDefinition();
     makePyBrxConstraintArgument();
+    makePyBrxVariable();
 
     enum_<BricsCAD::LicensedFeature>("LicensedFeature")
         .value("eCore", BricsCAD::LicensedFeature::eCore)
@@ -93,6 +94,20 @@ static BOOST_PYTHON_MODULE(PyBrx)
         .value("eCSXY", AcConstraintArgument::CoordinateSystemObject::eCSXY)
         .value("eCSYZ", AcConstraintArgument::CoordinateSystemObject::eCSYZ)
         .value("eCSZX", AcConstraintArgument::CoordinateSystemObject::eCSZX)
+        .export_values()
+        ;
+
+    enum_<AcVariable::ExposeMode>("VariableExposeMode")
+        .value("eOff", AcVariable::ExposeMode::eOff)
+        .value("eOn", AcVariable::ExposeMode::eOn)
+        .value("eUndefined", AcVariable::ExposeMode::eUndefined)
+        .export_values()
+        ;
+
+    enum_<AcVariable::EGdMode>("VariableEGdMode")
+        .value("eOff", AcVariable::EGdMode::eOff)
+        .value("eOn", AcVariable::EGdMode::eOn)
+        .value("eAuto", AcVariable::EGdMode::eAuto)
         .export_values()
         ;
 }
