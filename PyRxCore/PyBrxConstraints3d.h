@@ -11,6 +11,7 @@ class PyBrxConstraintArgument
 {
 public:
     PyBrxConstraintArgument();
+    PyBrxConstraintArgument(const AcConstraintArgument& other);
     explicit PyBrxConstraintArgument(const PyDbFullSubentPath& path);
     explicit PyBrxConstraintArgument(AcConstraintArgument::CoordinateSystemObject cs);
     PyBrxConstraintArgument(const PyDbFullSubentPath& path, AcConstraintArgument::CoordinateSystemObject cs);
@@ -75,7 +76,26 @@ class PyBrxConstraint
 {
 public:
     PyBrxConstraint(AcConstraint* scr);
-    PyDbObjectId    getBlockId() const;
+    PyDbObjectId        getBlockId() const;
+    bool                isDimensional() const;
+    PyBrxVariable       parameter() const;
+    PyDbObjectId        getDimension() const;
+    boost::python::list arguments() const;
+    boost::python::list getArguments() const;
+    std::string         name() const;
+    void                setName(const std::string& name) const;
+    AcConstraint::ConstraintType getType() const;
+    Adesk::UInt32       nodeId() const;
+    bool                isEnabled() const;
+    void                setEnabled(bool flag) const;
+    AcConstraint::Directions getDirections() const;
+    void                setDirections(AcConstraint::Directions flag) const;
+
+    AcConstraint::MeasurementMode getMeasurementMode(unsigned int argIndex) const;
+    void                setMeasurementMode(AcConstraint::MeasurementMode newMeasureMode, unsigned int argIndex) const;
+
+    AcConstraint::Placement getPlacement(unsigned int argIndex) const;
+    void                setPlacement(AcConstraint::Placement newPlacement, unsigned int argIndex) const;
 
     static std::string className();
 public:
