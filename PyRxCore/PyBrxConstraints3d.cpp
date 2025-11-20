@@ -11,9 +11,9 @@ void makePyBrxConstraintArgument()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- path: PyDb.FullSubentPath\n"
+        "- subpath: PyDb.FullSubentPath\n"
         "- cs: PyBrx.ConstraintArgCoordSysObj\n"
-        "- path: PyDb.FullSubentPath, cs: PyBrx.ConstraintArgCoordSysObj\n";
+        "- subpath: PyDb.FullSubentPath, cs: PyBrx.ConstraintArgCoordSysObj\n";
 
     PyDocString DS("PyBrx.ConstraintArgument");
     class_<PyBrxConstraintArgument>("ConstraintArgument")
