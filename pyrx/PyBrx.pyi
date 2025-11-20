@@ -1,11 +1,20 @@
 from __future__ import annotations
-
-from typing import Any, ClassVar, Self, overload
-
-import wx
-
-from pyrx import Brx as PyBrx
+from typing import Any, ClassVar, Collection, Iterator, Self, overload
+from pyrx import Ap as PyAp
+from pyrx import Ax as PyAx
+from pyrx import Br as PyBr
 from pyrx import Db as PyDb
+from pyrx import Ed as PyEd
+from pyrx import Ge as PyGe
+from pyrx import Gi as PyGi
+from pyrx import Gs as PyGs
+from pyrx import Pl as PyPl
+from pyrx import Rx as PyRx
+from pyrx import Sm as PySm
+from pyrx import Cv as PyBrxCv
+from pyrx import Bim as PyBrxBim
+from pyrx import Brx as PyBrx
+import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 
 eAc3DAngle: ConstraintType  # 1
@@ -25,8 +34,16 @@ eAcCircularArray: ConstraintType  # 14
 eAcObjectAngle: ConstraintType  # 15
 eAcPath: ConstraintType  # 16
 eAcUnknown: ConstraintType  # 0
+eAuto: VariableEGdMode  # 2
 eBim: LicensedFeature  # 2
 eBoolean: MechanicalPropertyType  # 3
+eCSOrigin: ConstraintArgCoordSysObj  # 0
+eCSX: ConstraintArgCoordSysObj  # 1
+eCSXY: ConstraintArgCoordSysObj  # 4
+eCSY: ConstraintArgCoordSysObj  # 2
+eCSYZ: ConstraintArgCoordSysObj  # 5
+eCSZ: ConstraintArgCoordSysObj  # 3
+eCSZX: ConstraintArgCoordSysObj  # 6
 eCommunicator: LicensedFeature  # 1
 eCore: LicensedFeature  # 0
 eDirectionsAny: ConstraintDirections  # 0
@@ -38,13 +55,44 @@ eMeasurementModeBoundary: ConstraintMeasurementMode  # 1
 eMeasurementModeCenter: ConstraintMeasurementMode  # 0
 eMeasurementModeCentralPoint: ConstraintMeasurementMode  # 2
 eMechanical: LicensedFeature  # 3
+eOff: VariableEGdMode  # 0
+eOn: VariableEGdMode  # 1
 ePlacementAny: ConstraintPlacement  # 0
 ePlacementInside: ConstraintPlacement  # 2
 ePlacementKeep: ConstraintPlacement  # 3
 ePlacementOutside: ConstraintPlacement  # 1
 eReal: MechanicalPropertyType  # 2
 eString: MechanicalPropertyType  # 4
-eUndefined: MechanicalPropertyType  # 0
+eUndefined: VariableExposeMode  # 2
+
+class ConstraintArgCoordSysObj(_BoostPythonEnum):
+    eCSOrigin: ClassVar[Self]  # 0
+    eCSX: ClassVar[Self]  # 1
+    eCSY: ClassVar[Self]  # 2
+    eCSZ: ClassVar[Self]  # 3
+    eCSXY: ClassVar[Self]  # 4
+    eCSYZ: ClassVar[Self]  # 5
+    eCSZX: ClassVar[Self]  # 6
+
+class ConstraintArgument:
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, path: PyDb.AcDbFullSubentPath, /) -> None: ...
+    @overload
+    def __init__(self, cs: PyBrx.ConstraintArgCoordSysObj, /) -> None: ...
+    @overload
+    def __init__(
+        self, path: PyDb.AcDbFullSubentPath, cs: PyBrx.ConstraintArgCoordSysObj, /
+    ) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    def coordinateSystemObject(self, /) -> ConstraintArgCoordSysObj: ...
+    def isCoordinateSystemObject(self, /) -> bool: ...
+    def path(self, /) -> PyDb.FullSubentPath: ...
 
 class ConstraintDirections(_BoostPythonEnum):
     eDirectionsAny: ClassVar[Self]  # 0
@@ -207,3 +255,48 @@ class PyBrxPanel:
     def isFloating(self, /) -> bool: ...
     def setIcon(self, imagePath: str, /) -> None: ...
     def tabTextColor(self, /) -> int: ...
+
+class Variable:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    def erase(self, /) -> None: ...
+    def exposed(self, /) -> VariableExposeMode: ...
+    def expression(self, /) -> str: ...
+    def geometryDrivenMode(self, /) -> VariableEGdMode: ...
+    def getBlockId(self, /) -> PyDb.ObjectId: ...
+    @staticmethod
+    def getByName(
+        blockId: PyDb.ObjectId, name: str, createIfNotExist: bool = false, /
+    ) -> Variable: ...
+    @staticmethod
+    def getFromBlock(blockId: PyDb.ObjectId, /) -> list: ...
+    def hasLowerBound(self, /) -> bool: ...
+    def hasUpperBound(self, /) -> bool: ...
+    def isAnonymous(self, /) -> bool: ...
+    def lowerBound(self, /) -> float: ...
+    def name(self, /) -> str: ...
+    def setExposed(self, val: PyBrx.VariableExposeMode, /) -> None: ...
+    def setExpression(self, name: str, /) -> None: ...
+    def setGeometryDrivenMode(self, val: PyBrx.VariableEGdMode, /) -> None: ...
+    def setLowerBound(self, val: float, /) -> None: ...
+    def setName(self, name: str, /) -> None: ...
+    def setValue(self, val: float, /) -> None: ...
+    def unsetUpperBound(self, val: float, /) -> None: ...
+    def upperBound(self, /) -> float: ...
+    def value(self, /) -> float: ...
+
+class VariableEGdMode(_BoostPythonEnum):
+    eOff: ClassVar[Self]  # 0
+    eOn: ClassVar[Self]  # 1
+    eAuto: ClassVar[Self]  # 2
+
+class VariableExposeMode(_BoostPythonEnum):
+    eOff: ClassVar[Self]  # 0
+    eOn: ClassVar[Self]  # 1
+    eUndefined: ClassVar[Self]  # 2
