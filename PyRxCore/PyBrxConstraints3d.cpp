@@ -94,7 +94,7 @@ void makePyBrxVariable()
         .def("geometryDrivenMode", &PyBrxVariable::geometryDrivenMode, DS.ARGS())
         .def("setGeometryDrivenMode", &PyBrxVariable::setGeometryDrivenMode, DS.ARGS({ "val:PyBrx.VariableEGdMode" }))
         .def("getByName", &PyBrxVariable::getByName1)
-        .def("getByName", &PyBrxVariable::getByName2, DS.SARGS({ "blockId: PyDb.ObjectId", "name:str", "createIfNotExist: bool = false" })).staticmethod("getByName")
+        .def("getByName", &PyBrxVariable::getByName2, DS.SARGS({ "blockId: PyDb.ObjectId", "name:str", "createIfNotExist: bool = False" })).staticmethod("getByName")
         .def("getFromBlock", &PyBrxVariable::getFromBlock, DS.SARGS({ "blockId: PyDb.ObjectId" })).staticmethod("getFromBlock")
         .def("className", &PyBrxVariable::className, DS.SARGS()).staticmethod("className")
         ;
@@ -217,7 +217,6 @@ PyBrxVariable PyBrxVariable::getByName1(const PyDbObjectId& blockId, const std::
 
 PyBrxVariable PyBrxVariable::getByName2(const PyDbObjectId& blockId, const std::string& name, bool createIfNotExist)
 {
-    //TODO TEST!
     auto result = AcVariable::getByName(blockId.m_id, utf8_to_wstr(name).c_str(), createIfNotExist);
     if (result.refCount() != 1)
         PyThrowBadEs(eInvalidInput);
@@ -227,7 +226,6 @@ PyBrxVariable PyBrxVariable::getByName2(const PyDbObjectId& blockId, const std::
 
 boost::python::list PyBrxVariable::getFromBlock(const PyDbObjectId& blockId)
 {
-    //TODO TEST!
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (auto& item : AcVariable::getFromBlock(blockId.m_id))

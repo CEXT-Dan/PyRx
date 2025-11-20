@@ -1,20 +1,11 @@
 from __future__ import annotations
-from typing import Any, ClassVar, Collection, Iterator, Self, overload
-from pyrx import Ap as PyAp
-from pyrx import Ax as PyAx
-from pyrx import Br as PyBr
-from pyrx import Db as PyDb
-from pyrx import Ed as PyEd
-from pyrx import Ge as PyGe
-from pyrx import Gi as PyGi
-from pyrx import Gs as PyGs
-from pyrx import Pl as PyPl
-from pyrx import Rx as PyRx
-from pyrx import Sm as PySm
-from pyrx import Cv as PyBrxCv
-from pyrx import Bim as PyBrxBim
-from pyrx import Brx as PyBrx
+
+from typing import Any, ClassVar, Self, overload
+
 import wx
+
+from pyrx import Brx as PyBrx
+from pyrx import Db as PyDb
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 
 eAc3DAngle: ConstraintType  # 1
@@ -272,7 +263,7 @@ class Variable:
     def getBlockId(self, /) -> PyDb.ObjectId: ...
     @staticmethod
     def getByName(
-        blockId: PyDb.ObjectId, name: str, createIfNotExist: bool = false, /
+        blockId: PyDb.ObjectId, name: str, createIfNotExist: bool = False, /
     ) -> Variable: ...
     @staticmethod
     def getFromBlock(blockId: PyDb.ObjectId, /) -> list: ...
