@@ -12,8 +12,8 @@ void makePyBrxConstraintArgument()
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- subpath: PyDb.FullSubentPath\n"
-        "- arg1: PyBrx.ConstraintArgCoordSysObj\n"
-        "- subpath: PyDb.FullSubentPath, arg2: PyBrx.ConstraintArgCoordSysObj\n";
+        "- val: PyBrx.ConstraintArgCoordSysObj\n"
+        "- subpath: PyDb.FullSubentPath, val: PyBrx.ConstraintArgCoordSysObj\n";
 
     PyDocString DS("PyBrx.ConstraintArgument");
     class_<PyBrxConstraintArgument>("ConstraintArgument")
@@ -248,6 +248,41 @@ AcVariable* PyBrxVariable::impObj(const std::source_location& src /*= std::sourc
         throw PyNullObject(src);
     }
     return static_cast<AcVariable*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------
+//PyBrxConstraint
+void makePyBrxConstraint()
+{
+
+    PyDocString DS("PyBrx.Constraint");
+    class_<PyBrxConstraint>("Constraint", no_init)
+        .def("getBlockId", &PyBrxConstraint::getBlockId, DS.ARGS())
+        .def("className", &PyBrxConstraint::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxConstraint::PyBrxConstraint(AcConstraint* scr)
+    : m_pyImp(scr)
+{
+}
+
+PyDbObjectId PyBrxConstraint::getBlockId() const
+{
+    return PyDbObjectId(impObj()->getBlockId());
+}
+
+std::string PyBrxConstraint::className()
+{
+    return "AcConstraint";
+}
+
+AcConstraint* PyBrxConstraint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcConstraint*>(m_pyImp.get());
 }
 
 #endif

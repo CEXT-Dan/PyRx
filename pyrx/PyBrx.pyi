@@ -56,6 +56,17 @@ eReal: MechanicalPropertyType  # 2
 eString: MechanicalPropertyType  # 4
 eUndefined: VariableExposeMode  # 2
 
+class Constraint:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    def getBlockId(self, /) -> PyDb.ObjectId: ...
+
 class ConstraintArgCoordSysObj(_BoostPythonEnum):
     eCSOrigin: ClassVar[Self]  # 0
     eCSX: ClassVar[Self]  # 1
@@ -71,10 +82,10 @@ class ConstraintArgument:
     @overload
     def __init__(self, subpath: PyDb.FullSubentPath, /) -> None: ...
     @overload
-    def __init__(self, arg1: PyBrx.ConstraintArgCoordSysObj, /) -> None: ...
+    def __init__(self, val: PyBrx.ConstraintArgCoordSysObj, /) -> None: ...
     @overload
     def __init__(
-        self, subpath: PyDb.FullSubentPath, arg2: PyBrx.ConstraintArgCoordSysObj, /
+        self, subpath: PyDb.FullSubentPath, val: PyBrx.ConstraintArgCoordSysObj, /
     ) -> None: ...
     @overload
     def __init__(self, *args) -> None: ...
