@@ -48,6 +48,12 @@ PyBrxConstraintArgument::PyBrxConstraintArgument(const PyDbFullSubentPath& path,
 {
 }
 
+PyBrxConstraintArgument::PyBrxConstraintArgument(const AcConstraintArgument& other)
+    : m_imp()
+{
+    memcpy_s(&m_imp, sizeof(AcConstraintArgument), &other, sizeof(AcConstraintArgument));
+}
+
 PyDbFullSubentPath PyBrxConstraintArgument::path() const
 {
     return PyDbFullSubentPath(m_imp.path());
@@ -270,6 +276,105 @@ PyBrxConstraint::PyBrxConstraint(AcConstraint* scr)
 PyDbObjectId PyBrxConstraint::getBlockId() const
 {
     return PyDbObjectId(impObj()->getBlockId());
+}
+
+bool PyBrxConstraint::isDimensional() const
+{
+    return impObj()->isDimensional();
+}
+
+PyBrxVariable PyBrxConstraint::parameter() const
+{
+    auto result = impObj()->parameter();;
+    if (result.refCount() != 1)
+        PyThrowBadEs(eInvalidInput);
+    return PyBrxVariable(result.detach());
+}
+
+PyDbObjectId PyBrxConstraint::getDimension() const
+{
+    return PyDbObjectId(impObj()->getDimension());
+}
+
+boost::python::list PyBrxConstraint::arguments() const
+{
+    return FullSubentPathArrayToPyList(impObj()->arguments());
+}
+
+boost::python::list PyBrxConstraint::getArguments() const
+{
+    //TODO: test
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->getArguments())
+        pylist.append(PyBrxConstraintArgument(item));
+    return pylist;
+}
+
+std::string PyBrxConstraint::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+void PyBrxConstraint::setName(const std::string& name) const
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+}
+
+AcConstraint::ConstraintType PyBrxConstraint::getType() const
+{
+    return impObj()->getType();
+}
+
+Adesk::UInt32 PyBrxConstraint::nodeId() const
+{
+    return impObj()->nodeId();
+}
+
+bool PyBrxConstraint::isEnabled() const
+{
+    return impObj()->isEnabled();
+}
+
+void PyBrxConstraint::setEnabled(bool flag) const
+{
+    PyThrowBadEs(impObj()->setEnabled(flag));
+}
+
+AcConstraint::Directions PyBrxConstraint::getDirections() const
+{
+    AcConstraint::Directions flag = AcConstraint::Directions::eDirectionsAny;
+    PyThrowBadEs(impObj()->getDirections(flag));
+    return flag;
+}
+
+void PyBrxConstraint::setDirections(AcConstraint::Directions flag) const
+{
+    PyThrowBadEs(impObj()->setDirections(flag));
+}
+
+AcConstraint::MeasurementMode PyBrxConstraint::getMeasurementMode(unsigned int argIndex) const
+{
+    AcConstraint::MeasurementMode flag = AcConstraint::MeasurementMode::eMeasurementModeCenter;
+    PyThrowBadEs(impObj()->getMeasurementMode(flag, argIndex));
+    return flag;
+}
+
+void PyBrxConstraint::setMeasurementMode(AcConstraint::MeasurementMode newMeasureMode, unsigned int argIndex) const
+{
+    PyThrowBadEs(impObj()->setMeasurementMode(newMeasureMode, argIndex));
+}
+
+AcConstraint::Placement PyBrxConstraint::getPlacement(unsigned int argIndex) const
+{
+    AcConstraint::Placement flag = AcConstraint::Placement::ePlacementAny;
+    PyThrowBadEs(impObj()->getPlacement(flag, argIndex));
+    return flag;
+}
+
+void PyBrxConstraint::setPlacement(AcConstraint::Placement newPlacement, unsigned int argIndex) const
+{
+    PyThrowBadEs(impObj()->setPlacement(newPlacement, argIndex));
 }
 
 std::string PyBrxConstraint::className()
