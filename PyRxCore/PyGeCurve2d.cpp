@@ -467,12 +467,13 @@ boost::python::tuple PyGeCurve2d::evalPoint2(double param, int numDeriv) const
     return boost::python::make_tuple(pnt, vecs);
 }
 
-boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
+boost::python::tuple PyGeCurve2d::getSamplePoints1(int numSample) const
 {
     PyAutoLockGIL lock;
+    AcGeDoubleArray paramArray;
     AcGePoint2dArray pointArray;
     impObj()->getSamplePoints(numSample, pointArray);
-    return Point2dArrayToPyList(pointArray);
+    return boost::python::make_tuple(Point2dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
 boost::python::tuple PyGeCurve2d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
