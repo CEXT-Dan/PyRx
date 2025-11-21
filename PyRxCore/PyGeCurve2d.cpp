@@ -477,11 +477,7 @@ boost::python::tuple PyGeCurve2d::getSamplePoints1(int numSample) const
     AcGeTol tol;
     tol.setEqualPoint(0.0001);
     for (const auto& sp : pointArray)
-    {
-        double param = -1;
-        impObj()->isOn(sp, param, tol);
-        paramArray.append(param);
-    }
+        paramArray.append(impObj()->paramOf(sp, tol));
     return boost::python::make_tuple(Point2dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
