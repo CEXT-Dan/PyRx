@@ -473,6 +473,15 @@ boost::python::tuple PyGeCurve2d::getSamplePoints1(int numSample) const
     AcGeDoubleArray paramArray;
     AcGePoint2dArray pointArray;
     impObj()->getSamplePoints(numSample, pointArray);
+
+    AcGeTol tol;
+    tol.setEqualPoint(0.0001);
+    for (const auto& sp : pointArray)
+    {
+        double param = -1;
+        impObj()->isOn(sp, param, tol);
+        paramArray.append(param);
+    }
     return boost::python::make_tuple(Point2dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
