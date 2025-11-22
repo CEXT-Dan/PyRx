@@ -102,7 +102,6 @@ public:
     std::shared_ptr<AcConstraint> m_pyImp;
 };
 
-
 //---------------------------------------------------------------------
 //PyBrxConstraintsGroup
 void makePyBrxConstraintsGroup();

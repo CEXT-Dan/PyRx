@@ -53,11 +53,4 @@ SupportedLocales="Enu">
 		</ComponentEntry>
 	</Components>
 
-	<Components Description="2027 Parts">
-		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R26.0" SeriesMax="R26.0" />
-		<ComponentEntry AppName="Python wrappers" ModuleName="./Contents/RxLoader26.0.arx"
-		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
-		</ComponentEntry>
-	</Components>
-
 </ApplicationPackage>
