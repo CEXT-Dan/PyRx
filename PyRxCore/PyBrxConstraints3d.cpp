@@ -2,6 +2,7 @@
 #include "PyBrxConstraints3d.h"
 
 #ifdef BRXAPP
+#include "PyGePlane.h"
 
 using namespace boost::python;
 
@@ -225,7 +226,7 @@ PyBrxVariable PyBrxVariable::getByName2(const PyDbObjectId& blockId, const std::
 {
     auto result = AcVariable::getByName(blockId.m_id, utf8_to_wstr(name).c_str(), createIfNotExist);
     if (result.refCount() != 1)
-        PyThrowBadEs(eInvalidInput);
+        PyThrowBadEs(eInvalidOpenState);
     return PyBrxVariable(result.detach());
 }
 
@@ -237,7 +238,7 @@ boost::python::list PyBrxVariable::getFromBlock(const PyDbObjectId& blockId)
     for (auto& item : AcVariable::getFromBlock(blockId.m_id))
     {
         if (item.refCount() != 1)
-            PyThrowBadEs(eInvalidInput);
+            PyThrowBadEs(eInvalidOpenState);
         pylist.append(PyBrxVariable(item.detach()));
     }
     return pylist;
@@ -260,7 +261,6 @@ AcVariable* PyBrxVariable::impObj(const std::source_location& src /*= std::sourc
 //PyBrxConstraint
 void makePyBrxConstraint()
 {
-
     PyDocString DS("PyBrx.Constraint");
     class_<PyBrxConstraint>("Constraint", no_init)
         .def("getBlockId", &PyBrxConstraint::getBlockId, DS.ARGS())
@@ -304,7 +304,7 @@ PyBrxVariable PyBrxConstraint::parameter() const
 {
     auto result = impObj()->parameter();;
     if (result.refCount() != 1)
-        PyThrowBadEs(eInvalidInput);
+        PyThrowBadEs(eInvalidOpenState);
     return PyBrxVariable(result.detach());
 }
 
@@ -320,7 +320,6 @@ boost::python::list PyBrxConstraint::arguments() const
 
 boost::python::list PyBrxConstraint::getArguments() const
 {
-    //TODO: test
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& item : impObj()->getArguments())
@@ -405,6 +404,115 @@ AcConstraint* PyBrxConstraint::impObj(const std::source_location& src /*= std::s
         throw PyNullObject(src);
     }
     return static_cast<AcConstraint*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------
+//PyBrxConstraintsGroup
+void makePyBrxConstraintsGroup()
+{
+    PyDocString DS("PyBrx.ConstraintsGroup");
+    class_<PyBrxConstraint>("ConstraintsGroup", no_init)
+        .def("getBlockId", &PyBrxConstraintsGroup::getBlockId, DS.ARGS())
+        .def("hasSketchPlane", &PyBrxConstraintsGroup::hasSketchPlane, DS.ARGS())
+        .def("isTransient", &PyBrxConstraintsGroup::isTransient, DS.ARGS())
+        .def("getSketchPlane", &PyBrxConstraintsGroup::getSketchPlane, DS.ARGS())
+        .def("constraints", &PyBrxConstraintsGroup::constraints, DS.ARGS())
+        .def("getConstraintByNodeId", &PyBrxConstraintsGroup::getConstraintByNodeId, DS.ARGS({ "nodeId: int" }))
+        .def("addConstraintSubents", &PyBrxConstraintsGroup::addConstraintSubents, DS.ARGS({ "type: PyBrx.ConstraintType", "paths: list[PyDb.FullSubentPath]" }))
+        .def("addConstraintArgs", &PyBrxConstraintsGroup::addConstraintArgs, DS.ARGS({ "type: PyBrx.ConstraintType", "args: list[PyBrx.ConstraintArgument]" }))
+        .def("deleteConstraint", &PyBrxConstraintsGroup::deleteConstraint, DS.ARGS({ "constraint: PyBrx.Constraint" }))
+        .def("evaluate", &PyBrxConstraintsGroup::evaluate, DS.ARGS())
+        .def("className", &PyBrxConstraintsGroup::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxConstraintsGroup::PyBrxConstraintsGroup(AcConstraintsGroup* scr)
+    : m_pyImp(scr)
+{
+}
+
+PyDbObjectId PyBrxConstraintsGroup::getBlockId() const
+{
+    return PyDbObjectId(impObj()->getBlockId());
+}
+
+bool PyBrxConstraintsGroup::hasSketchPlane() const
+{
+    return impObj()->hasSketchPlane();
+}
+
+bool PyBrxConstraintsGroup::isTransient() const
+{
+    return impObj()->hasSketchPlane();
+}
+
+PyGePlane PyBrxConstraintsGroup::getSketchPlane() const
+{
+    return PyGePlane(impObj()->getSketchPlane());
+}
+
+boost::python::list PyBrxConstraintsGroup::constraints() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto& item : impObj()->constraints())
+    {
+        if (item.refCount() != 1)
+            PyThrowBadEs(eInvalidOpenState);
+        pylist.append(PyBrxConstraint(item.detach()));
+    }
+    return pylist;
+}
+
+PyBrxConstraint PyBrxConstraintsGroup::getConstraintByNodeId(Adesk::UInt32 nodeId) const
+{
+    auto result = impObj()->getConstraintByNodeId(nodeId);
+    if (result.refCount() != 1)
+        PyThrowBadEs(eInvalidOpenState);
+    return PyBrxConstraint(result.detach());
+}
+
+PyBrxConstraint PyBrxConstraintsGroup::addConstraintSubents(AcConstraint::ConstraintType type, const boost::python::list& paths) const
+{
+    auto result = impObj()->addConstraint(type, PyListToPyDbFullSubentPathArray(paths));
+    if (result.refCount() != 1)
+        PyThrowBadEs(eInvalidOpenState);
+    return PyBrxConstraint(result.detach());
+}
+
+PyBrxConstraint PyBrxConstraintsGroup::addConstraintArgs(AcConstraint::ConstraintType type, const boost::python::list& arguments) const
+{
+    AcConstraintArgumentArray arr;
+    const auto& vec = py_list_to_std_vector<PyBrxConstraintArgument>(arguments);
+    for (const auto& item : vec)
+        arr.append(item.m_imp);
+    auto result = impObj()->addConstraint(type, arr);
+    if (result.refCount() != 1)
+        PyThrowBadEs(eInvalidOpenState);
+    return PyBrxConstraint(result.detach());
+}
+
+void PyBrxConstraintsGroup::deleteConstraint(const PyBrxConstraint& pConstraint) const
+{
+    PyThrowBadEs(impObj()->deleteConstraint(pConstraint.impObj()));
+}
+
+void PyBrxConstraintsGroup::evaluate() const
+{
+    PyThrowBadEs(impObj()->evaluate());
+}
+
+std::string PyBrxConstraintsGroup::className()
+{
+    return "AcConstraintsGroup";
+}
+
+AcConstraintsGroup* PyBrxConstraintsGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcConstraintsGroup*>(m_pyImp.get());
 }
 
 #endif
