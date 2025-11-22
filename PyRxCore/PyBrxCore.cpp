@@ -6,14 +6,21 @@
 #include "AcConstraints3d.h"
 #include "brxDevHelper.h"
 #include "PyDbObject.h"
+#include "PyBrxConstraints3d.h"
 
 using namespace boost::python;
+
+//---------------------------------------------------------------------
+//PyBrxCore
 void makePyBrxCoreWrapper()
 {
     PyDocString DS("Core");
     class_<PyBrxCore>("Core", boost::python::no_init)
         .def("isLicenseAvailable", &PyBrxCore::isLicenseAvailable, DS.SARGS({ "val: PyBrx.LicensedFeature" })).staticmethod("isLicenseAvailable")
         .def("getOpenObjects", &PyBrxCore::getOpenObjects, DS.SARGS()).staticmethod("getOpenObjects")
+        .def("getConstraintsGroup", &PyBrxCore::getConstraintsGroup1)
+        .def("getConstraintsGroup", &PyBrxCore::getConstraintsGroup2, DS.SARGS({ "blockRefId: PyDb.ObjectId" , "createIfNotExist:bool = False" })).staticmethod("getConstraintsGroup")
+        .def("getAllConstraintsGroups", &PyBrxCore::getAllConstraintsGroups, DS.SARGS({ "db:PyDb.Database" })).staticmethod("getAllConstraintsGroups")
         .def("getBlockParametersNames", &PyBrxCore::getBlockParametersNames, DS.SARGS({ "blockRefId: PyDb.ObjectId" })).staticmethod("getBlockParametersNames")
         .def("setBlockParameterExpression", &PyBrxCore::setBlockParameterExpression, DS.SARGS({ "blockRefId:PyDb.ObjectId","name:str","expr:str" })).staticmethod("setBlockParameterExpression")
         .def("getBlockParameterExpression", &PyBrxCore::getBlockParameterExpression, DS.SARGS({ "blockRefId:PyDb.ObjectId","name:str" })).staticmethod("getBlockParameterExpression")
@@ -22,11 +29,11 @@ void makePyBrxCoreWrapper()
         .def("setEntityGuiName", &PyBrxCore::setEntityGuiName, DS.SARGS({ "entId:PyDb.ObjectId","name:str" })).staticmethod("setEntityGuiName")
         .def("blockParameterHasStringValue", &PyBrxCore::blockParameterHasStringValue, DS.SARGS({ "blockRefId:PyDb.ObjectId","name:str" })).staticmethod("blockParameterHasStringValue")
         .def("getBlockParameterStringValue", &PyBrxCore::getBlockParameterStringValue, DS.SARGS({ "blockRefId:PyDb.ObjectId","name:str" })).staticmethod("getBlockParameterStringValue")
-        .def("effectiveBlockRefName", &PyBrxCore::effectiveBlockRefName, DS.SARGS({ "blockRefId:PyDb.ObjectId"})).staticmethod("effectiveBlockRefName")
+        .def("effectiveBlockRefName", &PyBrxCore::effectiveBlockRefName, DS.SARGS({ "blockRefId:PyDb.ObjectId" })).staticmethod("effectiveBlockRefName")
         .def("effectiveBlockTableRecord", &PyBrxCore::effectiveBlockTableRecord, DS.SARGS({ "blockRefId:PyDb.ObjectId" })).staticmethod("effectiveBlockTableRecord")
         .def("removeConstraints", &PyBrxCore::removeConstraints, DS.SARGS({ "id:PyDb.ObjectId" })).staticmethod("removeConstraints")
         .def("removeConstraintsFromDatabase", &PyBrxCore::removeConstraintsFromDatabase, DS.SARGS({ "db:PyDb.Database" })).staticmethod("removeConstraintsFromDatabase")
-        ;  
+        ;
 }
 
 bool PyBrxCore::isLicenseAvailable(BricsCAD::LicensedFeature feature)
@@ -42,6 +49,33 @@ boost::python::list PyBrxCore::getOpenObjects()
     boost::python::list _pylist;
     for (auto item : objs)
         _pylist.append(PyDbObject(item, false));
+    return _pylist;
+}
+
+PyBrxConstraintsGroup PyBrxCore::getConstraintsGroup1(const PyDbObjectId& blockId)
+{
+    return getConstraintsGroup2(blockId, false);
+}
+
+PyBrxConstraintsGroup PyBrxCore::getConstraintsGroup2(const PyDbObjectId& blockId, bool createIfNotExist)
+{
+    auto item = acdbGetConstraintsGroup(blockId.m_id, createIfNotExist);
+    if (item.refCount() != 1)
+        PyThrowBadEs(eInvalidOpenState);
+    return PyBrxConstraintsGroup(item.detach());
+}
+
+boost::python::list PyBrxCore::getAllConstraintsGroups(const PyDbDatabase& db)
+{
+    auto arr = acdbGetAllConstraintsGroups(db.impObj());
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (auto& item : arr)
+    {
+        if (item.refCount() != 1)
+            PyThrowBadEs(eInvalidOpenState);
+        _pylist.append(PyBrxConstraintsGroup(item.detach()));
+    }
     return _pylist;
 }
 

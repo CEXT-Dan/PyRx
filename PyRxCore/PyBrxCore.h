@@ -3,7 +3,10 @@
 #ifdef BRXAPP
 
 class PyRxObject;
+class PyBrxConstraintsGroup;
 
+//---------------------------------------------------------------------
+//PyBrxCore
 void makePyBrxCoreWrapper();
 
 class PyBrxCore
@@ -13,9 +16,9 @@ public:
     static boost::python::list getOpenObjects();
 
     //TODO
-    //static void getConstraintsGroup1(const PyDbObjectId& blockId);
-    //static void getConstraintsGroup2(const PyDbObjectId& blockId, bool createIfNotExist);
-    //static void getAllConstraintsGroups(const PyDbDatabase& db);
+    static PyBrxConstraintsGroup getConstraintsGroup1(const PyDbObjectId& blockId);
+    static PyBrxConstraintsGroup getConstraintsGroup2(const PyDbObjectId& blockId, bool createIfNotExist);
+    static boost::python::list   getAllConstraintsGroups(const PyDbDatabase& db);
 
     static boost::python::list  getBlockParametersNames(const PyDbObjectId& blockRefId);
     static void                 setBlockParameterExpression(const PyDbObjectId& blockRefId, const std::string& name, const std::string& expr);
