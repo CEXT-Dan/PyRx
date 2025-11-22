@@ -17,11 +17,9 @@ public:
     explicit PyBrxConstraintArgument(const PyDbFullSubentPath& path);
     explicit PyBrxConstraintArgument(AcConstraintArgument::CoordinateSystemObject cs);
     PyBrxConstraintArgument(const PyDbFullSubentPath& path, AcConstraintArgument::CoordinateSystemObject cs);
-
     PyDbFullSubentPath path() const;
     bool isCoordinateSystemObject() const;
     AcConstraintArgument::CoordinateSystemObject coordinateSystemObject() const;
-
     static std::string className();
 
 public:
@@ -59,6 +57,7 @@ public:
     AcVariable::EGdMode     geometryDrivenMode() const;
     void                    setGeometryDrivenMode(AcVariable::EGdMode) const;
 
+    static bool           hasByName(const PyDbObjectId& blockId, const std::string& name);
     static PyBrxVariable  getByName1(const PyDbObjectId& blockId, const std::string& name);
     static PyBrxVariable  getByName2(const PyDbObjectId& blockId, const std::string& name, bool createIfNotExist);
     static boost::python::list getFromBlock(const PyDbObjectId& blockId);
