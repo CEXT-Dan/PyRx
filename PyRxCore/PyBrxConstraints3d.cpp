@@ -50,9 +50,8 @@ PyBrxConstraintArgument::PyBrxConstraintArgument(const PyDbFullSubentPath& path,
 }
 
 PyBrxConstraintArgument::PyBrxConstraintArgument(const AcConstraintArgument& other)
-    : m_imp()
+    : m_imp(other)
 {
-    memcpy_s(&m_imp, sizeof(AcConstraintArgument), &other, sizeof(AcConstraintArgument));
 }
 
 PyDbFullSubentPath PyBrxConstraintArgument::path() const
@@ -100,6 +99,7 @@ void makePyBrxVariable()
         .def("setExposed", &PyBrxVariable::setExposed, DS.ARGS({ "val:PyBrx.VariableExposeMode" }))
         .def("geometryDrivenMode", &PyBrxVariable::geometryDrivenMode, DS.ARGS())
         .def("setGeometryDrivenMode", &PyBrxVariable::setGeometryDrivenMode, DS.ARGS({ "val:PyBrx.VariableEGdMode" }))
+        .def("has", &PyBrxVariable::hasByName, DS.SARGS({ "blockId: PyDb.ObjectId", "name:str"})).staticmethod("has")
         .def("getByName", &PyBrxVariable::getByName1)
         .def("getByName", &PyBrxVariable::getByName2, DS.SARGS({ "blockId: PyDb.ObjectId", "name:str", "createIfNotExist: bool = False" })).staticmethod("getByName")
         .def("getFromBlock", &PyBrxVariable::getFromBlock, DS.SARGS({ "blockId: PyDb.ObjectId" })).staticmethod("getFromBlock")
@@ -217,6 +217,12 @@ void PyBrxVariable::setGeometryDrivenMode(AcVariable::EGdMode val) const
     PyThrowBadEs(impObj()->setGeometryDrivenMode(val));
 }
 
+bool PyBrxVariable::hasByName(const PyDbObjectId& blockId, const std::string& name)
+{
+    auto result = AcVariable::getByName(blockId.m_id, utf8_to_wstr(name).c_str(), false);
+    return !result.isNull();
+}
+
 PyBrxVariable PyBrxVariable::getByName1(const PyDbObjectId& blockId, const std::string& name)
 {
     return getByName2(blockId, name, false);
@@ -271,7 +277,7 @@ void makePyBrxConstraint()
         .def("getArguments", &PyBrxConstraint::getArguments, DS.ARGS())
         .def("name", &PyBrxConstraint::name, DS.ARGS())
         .def("setName", &PyBrxConstraint::setName, DS.ARGS({ "name:str" }))
-        .def("name", &PyBrxConstraint::getType, DS.ARGS())
+        .def("getType", &PyBrxConstraint::getType, DS.ARGS())
         .def("nodeId", &PyBrxConstraint::nodeId, DS.ARGS())
         .def("isEnabled", &PyBrxConstraint::isEnabled, DS.ARGS())
         .def("setEnabled", &PyBrxConstraint::setEnabled, DS.ARGS({ "flag:bool" }))
