@@ -411,7 +411,7 @@ AcConstraint* PyBrxConstraint::impObj(const std::source_location& src /*= std::s
 void makePyBrxConstraintsGroup()
 {
     PyDocString DS("PyBrx.ConstraintsGroup");
-    class_<PyBrxConstraint>("ConstraintsGroup", no_init)
+    class_<PyBrxConstraintsGroup>("ConstraintsGroup", no_init)
         .def("getBlockId", &PyBrxConstraintsGroup::getBlockId, DS.ARGS())
         .def("hasSketchPlane", &PyBrxConstraintsGroup::hasSketchPlane, DS.ARGS())
         .def("isTransient", &PyBrxConstraintsGroup::isTransient, DS.ARGS())
