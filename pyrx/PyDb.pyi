@@ -13200,6 +13200,9 @@ class Entity(PyDb.DbObject):
         responsible for deallocating the returned string. The plotStyleName value is used for DXF
         group code 390.
         """
+    def pushHighlight(
+        self, path: PyDb.FullSubentPath, highlightStyle: PyGi.HighlightStyle, /
+    ) -> None: ...
     def receiveShadows(self, /) -> bool:
         """
         Returns a boolean value indicating whether this entity can receive shadows.

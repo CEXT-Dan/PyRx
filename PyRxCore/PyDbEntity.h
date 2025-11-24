@@ -100,6 +100,9 @@ public:
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack) const;
     void                highlight1() const;
     void                highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll)const;
+#if !defined (_BRXTARGET260)
+    void                pushHighlight(const PyDbFullSubentPath& subId, AcGiHighlightStyle highlightStyle)const;
+#endif
     PyDbEntity          subentPtr(const PyDbFullSubentPath& subId) const;
     static std::string  className();
     static PyRxClass    desc();

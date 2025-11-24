@@ -25,6 +25,12 @@ kAcGiFillNever: FillType  # 2
 kAcGiForExplode: RegenType  # 5
 kAcGiHideOrShadeCommand: RegenType  # 3
 kAcGiHighlight: TransientDrawingMode  # 3
+kAcGiHighlightCustom: HighlightStyle  # 1
+kAcGiHighlightDashedAndThicken: HighlightStyle  # 2
+kAcGiHighlightDim: HighlightStyle  # 3
+kAcGiHighlightGlow: HighlightStyle  # 5
+kAcGiHighlightNone: HighlightStyle  # 0
+kAcGiHighlightThickDim: HighlightStyle  # 4
 kAcGiInvisible: Visibility  # 0
 kAcGiMain: TransientDrawingMode  # 0
 kAcGiNoOrientation: OrientationType  # 0
@@ -708,6 +714,14 @@ class GiKernelDescriptor:
         This used by a consumer of an AcGsGraphicsKernel to determine which features are supported
         by the kernel.
         """
+
+class HighlightStyle(_BoostPythonEnum):
+    kAcGiHighlightNone: ClassVar[Self]  # 0
+    kAcGiHighlightCustom: ClassVar[Self]  # 1
+    kAcGiHighlightDashedAndThicken: ClassVar[Self]  # 2
+    kAcGiHighlightDim: ClassVar[Self]  # 3
+    kAcGiHighlightThickDim: ClassVar[Self]  # 4
+    kAcGiHighlightGlow: ClassVar[Self]  # 5
 
 class OrientationTransformBehavior(_BoostPythonEnum):
     kAcGiWorldOrientation: ClassVar[Self]  # 0
