@@ -19,6 +19,7 @@ public:
     ~PyEdSelectionSet() = default;
     bool			    isInitialized() const;
     size_t              size() const;
+    PyDbObjectId        getAt(size_t index) const;
     size_t              subentLength(size_t index) const;
     void                clear();
     void                add(const PyDbObjectId& objId) const;
