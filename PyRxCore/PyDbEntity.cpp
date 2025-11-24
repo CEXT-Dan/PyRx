@@ -112,6 +112,9 @@ void makePyDbEntityWrapper()
         .def("highlight", &PyDbEntity::highlight1)
         .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = ...","highlightAll : bool = False" }, 4322))
         .def("subent", &PyDbEntity::subentPtr, DS.ARGS({ "path: PyDb.FullSubentPath" }))
+#if !defined (_BRXTARGET260)
+        .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
+#endif
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -618,6 +621,13 @@ void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolea
 {
     PyThrowBadEs(impObj()->highlight(subId.pyImp, highlightAll));
 }
+
+#if !defined (_BRXTARGET260)
+void PyDbEntity::pushHighlight(const PyDbFullSubentPath& subId, AcGiHighlightStyle highlightStyle) const
+{
+    PyThrowBadEs(impObj()->pushHighlight(subId.pyImp, highlightStyle));
+}
+#endif
 
 PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId) const
 {

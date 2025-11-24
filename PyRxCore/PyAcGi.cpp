@@ -140,6 +140,18 @@ BOOST_PYTHON_MODULE(PyGi)
 #endif
         .export_values()
         ;
+
+#if !defined (_BRXTARGET260)
+    enum_<AcGiHighlightStyle>("HighlightStyle")
+        .value("kAcGiHighlightNone", AcGiHighlightStyle::kAcGiHighlightNone)
+        .value("kAcGiHighlightCustom", AcGiHighlightStyle::kAcGiHighlightCustom)
+        .value("kAcGiHighlightDashedAndThicken", AcGiHighlightStyle::kAcGiHighlightDashedAndThicken)
+        .value("kAcGiHighlightDim", AcGiHighlightStyle::kAcGiHighlightDim)
+        .value("kAcGiHighlightThickDim", AcGiHighlightStyle::kAcGiHighlightThickDim)
+        .value("kAcGiHighlightGlow", AcGiHighlightStyle::kAcGiHighlightGlow)
+        .export_values()
+        ;
+#endif
 }
 
 void initPyGiModule()

@@ -2,6 +2,7 @@
 #include "PyEdSelectionSet.h"
 #include "ResultBuffer.h"
 #include "PyRxObject.h"
+#include "acedsubsel.h"
 
 using namespace boost::python;
 
@@ -31,6 +32,8 @@ void makePyEdSelectionSetWrapper()
         .def("adsname", &PyEdSelectionSet::adsname, DS.ARGS())
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2, DS.ARGS({ "val: int = 0" }))
+        .def("subentLength", &PyEdSelectionSet::subentLength, DS.ARGS({ "index: int" }))
+        .def("subentName", &PyEdSelectionSet::subentName, DS.ARGS({ "index: int", "subentIndex: int" }))
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
@@ -96,6 +99,16 @@ size_t PyEdSelectionSet::size() const
     return sslen;
 }
 
+size_t PyEdSelectionSet::subentLength(size_t index) const
+{
+    if (!isInitialized())
+        return 0;
+    Adesk::Int32 sslen = 0;
+    if (acedSSSubentLength(impObj()->data(), index, &sslen) != RTNORM)
+        return 0;
+    return sslen;
+}
+
 void PyEdSelectionSet::clear()
 {
     m_pSet.reset(new PySSName());
@@ -135,6 +148,15 @@ AdsName PyEdSelectionSet::adsname() const
     AdsName _name = { 0L };
     memcpy(&_name, m_pSet->data(), sizeof(_name));
     return _name;
+}
+
+PyDbFullSubentPath PyEdSelectionSet::subentName(size_t entIndex, size_t subentIndex) const
+{
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+    AcDbFullSubentPath _path;
+    PyThrowBadRt(acedSSSubentName(m_pSet->data(), entIndex, subentIndex, _path));
+    return PyDbFullSubentPath(_path);
 }
 
 bool PyEdSelectionSet::ssSetFirst() const
