@@ -32,6 +32,7 @@ void makePyEdSelectionSetWrapper()
         .def("adsname", &PyEdSelectionSet::adsname, DS.ARGS())
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2, DS.ARGS({ "val: int = 0" }))
+        .def("getAt", &PyEdSelectionSet::getAt, DS.ARGS({ "val: int" }))
         .def("subentLength", &PyEdSelectionSet::subentLength, DS.ARGS({ "index: int" }))
         .def("subentName", &PyEdSelectionSet::subentName, DS.ARGS({ "index: int", "subentIndex: int" }))
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
@@ -97,6 +98,17 @@ size_t PyEdSelectionSet::size() const
     if (acedSSLength(impObj()->data(), &sslen) != RTNORM)
         return 0;
     return sslen;
+}
+
+PyDbObjectId PyEdSelectionSet::getAt(size_t index) const
+{
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+    PyDbObjectId id;
+    ads_name ename = { 0 };
+    PyThrowBadRt(acedSSName(impObj()->data(), index, ename));
+    PyThrowBadEs(acdbGetObjectId(id.m_id, ename));
+    return id;
 }
 
 size_t PyEdSelectionSet::subentLength(size_t index) const
