@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Db, Ed, Ge, Gi
 
 print("added command = pyselectall")
 print("added command = pyselectallf")
@@ -141,5 +141,19 @@ def PyRxCmd_pyssget4():
         ssResult = Ed.Editor.selectPrompt("Add", "Remove")
         if ssResult[0] == Ed.PromptStatus.eNormal:
             print(len(ssResult[1].toList()))
+    except Exception as err:
+        traceback.print_exception(err)
+
+# :v Forces subentity selection 
+# solids, surfaces, regions 
+@Ap.Command()
+def pyssget5():
+    try:
+        ps, ss = Ed.Editor.ssget("_:v", None, None)
+        for idx in range(ss.size()):
+            ent = Db.Entity(ss.getAt(idx),Db.OpenMode.kForWrite)
+            for sidx in range(ss.subentLength(idx)):
+                sep = ss.subentName(idx, sidx)
+                ent.pushHighlight(sep,Gi.HighlightStyle.kAcGiHighlightDashedAndThicken)
     except Exception as err:
         traceback.print_exception(err)
