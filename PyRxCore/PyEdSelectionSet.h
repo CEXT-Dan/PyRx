@@ -19,11 +19,13 @@ public:
     ~PyEdSelectionSet() = default;
     bool			    isInitialized() const;
     size_t              size() const;
+    size_t              subentLength(size_t index) const;
     void                clear();
     void                add(const PyDbObjectId& objId) const;
     void                remove(const PyDbObjectId& objId) const;
     bool                hasMember(const PyDbObjectId& objId) const;
     AdsName             adsname() const;
+    PyDbFullSubentPath  subentName(size_t entIndex, size_t subentIndex) const;
     bool                ssSetFirst() const;
     Acad::PromptStatus  ssXform(const AcGeMatrix3d& xform) const;
     boost::python::list ssNameX1() const;
