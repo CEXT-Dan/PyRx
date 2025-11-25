@@ -27,6 +27,7 @@ public:
     bool                hasMember(const PyDbObjectId& objId) const;
     AdsName             adsname() const;
     PyDbFullSubentPath  subentName(size_t entIndex, size_t subentIndex) const;
+    boost::python::list subentNameX(size_t entIndex, size_t subentIndex, int flags) const;
     bool                ssSetFirst() const;
     Acad::PromptStatus  ssXform(const AcGeMatrix3d& xform) const;
     boost::python::list ssNameX1() const;
