@@ -80,6 +80,7 @@ public:
     PyDbObjectId        getBlockId() const;
     bool                isDimensional() const;
     PyBrxVariable       parameter() const;
+    bool                hasParameter() const;
     PyDbObjectId        getDimension() const;
     boost::python::list arguments() const;
     boost::python::list getArguments() const;

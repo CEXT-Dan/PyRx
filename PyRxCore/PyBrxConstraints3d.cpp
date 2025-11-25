@@ -272,6 +272,7 @@ void makePyBrxConstraint()
         .def("getBlockId", &PyBrxConstraint::getBlockId, DS.ARGS())
         .def("isDimensional", &PyBrxConstraint::isDimensional, DS.ARGS())
         .def("parameter", &PyBrxConstraint::parameter, DS.ARGS())
+        .def("hasParameter", &PyBrxConstraint::hasParameter, DS.ARGS())
         .def("getDimension", &PyBrxConstraint::getDimension, DS.ARGS())
         .def("arguments", &PyBrxConstraint::arguments, DS.ARGS())
         .def("getArguments", &PyBrxConstraint::getArguments, DS.ARGS())
@@ -308,10 +309,16 @@ bool PyBrxConstraint::isDimensional() const
 
 PyBrxVariable PyBrxConstraint::parameter() const
 {
-    auto result = impObj()->parameter();;
+    auto result = impObj()->parameter();
     if (result.refCount() != 1)
         PyThrowBadEs(eInvalidOpenState);
     return PyBrxVariable(result.detach());
+}
+
+bool PyBrxConstraint::hasParameter() const
+{
+    auto result = impObj()->parameter();
+    return !result.isNull();
 }
 
 PyDbObjectId PyBrxConstraint::getDimension() const
