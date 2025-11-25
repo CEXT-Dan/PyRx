@@ -35,6 +35,7 @@ void makePyEdSelectionSetWrapper()
         .def("getAt", &PyEdSelectionSet::getAt, DS.ARGS({ "val: int" }))
         .def("subentLength", &PyEdSelectionSet::subentLength, DS.ARGS({ "index: int" }))
         .def("subentName", &PyEdSelectionSet::subentName, DS.ARGS({ "index: int", "subentIndex: int" }))
+        .def("subentNameX", &PyEdSelectionSet::subentNameX, DS.ARGS({ "index: int", "subentIndex: int","flags: int" }))
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
@@ -169,6 +170,16 @@ PyDbFullSubentPath PyEdSelectionSet::subentName(size_t entIndex, size_t subentIn
     AcDbFullSubentPath _path;
     PyThrowBadRt(acedSSSubentName(m_pSet->data(), entIndex, subentIndex, _path));
     return PyDbFullSubentPath(_path);
+}
+
+boost::python::list PyEdSelectionSet::subentNameX(size_t entIndex, size_t subentIndex, int flags) const
+{
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+    resbuf* pRb = nullptr;
+    PyThrowBadRt(acedSSSubentNameX(&pRb, m_pSet->data(), entIndex, subentIndex, flags));
+    AcResBufPtr holder(pRb);
+    return resbufToList(pRb);
 }
 
 bool PyEdSelectionSet::ssSetFirst() const
