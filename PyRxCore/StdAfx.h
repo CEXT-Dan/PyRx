@@ -172,7 +172,6 @@
 
 // python
 #include <Python.h>
-#pragma comment( lib , "python312.lib" )
 
 // boost
 #include <boost/python.hpp>
