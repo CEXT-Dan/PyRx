@@ -703,7 +703,7 @@ void makePyBrxDesignTable()
         .def("name", &PyBrxDesignTable::name, DS.ARGS())
         .def("configurations", &PyBrxDesignTable::configurations, DS.ARGS())
         .def("currentConfiguration", &PyBrxDesignTable::currentConfiguration, DS.ARGS())
-        .def("getAllDesignTables", &PyBrxDesignTable::getAllDesignTables, DS.SARGS({ "PyDb.ObjectId" })).staticmethod("getAllDesignTables")
+        .def("getAllDesignTables", &PyBrxDesignTable::getAllDesignTables, DS.SARGS({ "blockId: PyDb.ObjectId" })).staticmethod("getAllDesignTables")
         .def("className", &PyBrxDesignTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
