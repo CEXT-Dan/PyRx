@@ -4,6 +4,7 @@
 #include "AcConstraints3d.h"
 
 class PyGePlane;
+class PyDbObjectId;
 
 //---------------------------------------------------------------------
 //PyBrxConstraintArgument
@@ -125,6 +126,25 @@ public:
 public:
     AcConstraintsGroup* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<AcConstraintsGroup> m_pyImp;
+};
+
+//---------------------------------------------------------------------
+//PyBrxBlockParameter
+void makePyBrxBlockParameter();
+
+class PyBrxBlockParameter
+{
+public:
+    PyBrxBlockParameter(PyDbObjectId id, std::string name);
+    bool        hasStringValue() const;
+    std::string stringValue() const;
+    double      value() const;
+    std::string expression() const;
+    void        setExpression(const std::string& expr) const;
+    static std::string  className();
+public:
+    AcDbObjectId m_id;
+    AcString m_name;
 };
 
 #endif

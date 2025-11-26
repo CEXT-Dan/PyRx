@@ -33,6 +33,7 @@ void makePyBrxCoreWrapper()
         .def("effectiveBlockTableRecord", &PyBrxCore::effectiveBlockTableRecord, DS.SARGS({ "blockRefId:PyDb.ObjectId" })).staticmethod("effectiveBlockTableRecord")
         .def("removeConstraints", &PyBrxCore::removeConstraints, DS.SARGS({ "id:PyDb.ObjectId" })).staticmethod("removeConstraints")
         .def("removeConstraintsFromDatabase", &PyBrxCore::removeConstraintsFromDatabase, DS.SARGS({ "db:PyDb.Database" })).staticmethod("removeConstraintsFromDatabase")
+        .def("getBlockParameter", &PyBrxCore::getBlockParameter, DS.SARGS({ "blockRefId:PyDb.ObjectId","name:str" })).staticmethod("getBlockParameter")
         ;
 }
 
@@ -152,6 +153,11 @@ bool PyBrxCore::removeConstraintsFromDatabase(const PyDbDatabase& db)
 #else
     return acdbRemoveConstraints(db.impObj());
 #endif
+}
+
+PyBrxBlockParameter PyBrxCore::getBlockParameter(const PyDbObjectId& blockRefId, const std::string& name)
+{
+    return PyBrxBlockParameter(blockRefId,name);
 }
 
 #endif

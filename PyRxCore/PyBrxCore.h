@@ -4,6 +4,7 @@
 
 class PyRxObject;
 class PyBrxConstraintsGroup;
+class PyBrxBlockParameter;
 
 //---------------------------------------------------------------------
 //PyBrxCore
@@ -29,6 +30,7 @@ public:
     static PyDbObjectId             effectiveBlockTableRecord(const PyDbObjectId& blockRefId);
     static bool                     removeConstraints(const PyDbObjectId& id);
     static bool                     removeConstraintsFromDatabase(const PyDbDatabase& db);
+    static PyBrxBlockParameter      getBlockParameter(const PyDbObjectId& blockRefId, const std::string& name);
 };
 
 

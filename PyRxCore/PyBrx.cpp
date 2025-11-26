@@ -26,6 +26,7 @@ static BOOST_PYTHON_MODULE(PyBrx)
     makePyBrxVariable();
     makePyBrxConstraint();
     makePyBrxConstraintsGroup();
+    makePyBrxBlockParameter();
 
     enum_<BricsCAD::LicensedFeature>("LicensedFeature")
         .value("eCore", BricsCAD::LicensedFeature::eCore)

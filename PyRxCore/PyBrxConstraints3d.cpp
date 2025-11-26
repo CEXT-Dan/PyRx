@@ -528,4 +528,56 @@ AcConstraintsGroup* PyBrxConstraintsGroup::impObj(const std::source_location& sr
     return static_cast<AcConstraintsGroup*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------
+//PyBrxBlockParameter
+void makePyBrxBlockParameter()
+{
+    PyDocString DS("PyBrx.BlockParameter");
+    class_<PyBrxBlockParameter>("BlockParameter", no_init)
+        .def("hasStringValue", &PyBrxBlockParameter::hasStringValue, DS.ARGS())
+        .def("stringValue", &PyBrxBlockParameter::stringValue, DS.ARGS())
+        .def("value", &PyBrxBlockParameter::value, DS.ARGS())
+        .def("expression", &PyBrxBlockParameter::expression, DS.ARGS())
+        .def("setExpression", &PyBrxBlockParameter::setExpression, DS.ARGS({"expr:str"}))
+        .def("className", &PyBrxBlockParameter::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBlockParameter::PyBrxBlockParameter(PyDbObjectId id, std::string name)
+    : m_id(id.m_id), m_name(utf8_to_wstr(name).c_str())
+{
+}
+
+bool PyBrxBlockParameter::hasStringValue() const
+{
+    return acdbBlockParameterHasStringValue(m_id, m_name);
+}
+
+std::string PyBrxBlockParameter::stringValue() const
+{
+    return wstr_to_utf8(acdbGetBlockParameterStringValue(m_id, m_name));
+}
+
+double PyBrxBlockParameter::value() const
+{
+    double resValue = 0.0;
+    PyThrowBadEs(acdbGetBlockParameterValue(m_id, m_name, resValue));
+    return resValue;
+}
+
+std::string PyBrxBlockParameter::expression() const
+{
+    return wstr_to_utf8(acdbGetBlockParameterExpression(m_id, m_name));
+}
+
+void PyBrxBlockParameter::setExpression(const std::string& expr) const
+{
+    PyThrowBadEs(acdbSetBlockParameterExpression(m_id, m_name, utf8_to_wstr(expr).c_str()));
+}
+
+std::string PyBrxBlockParameter::className()
+{
+    return "BlockParameter";
+}
+
 #endif
