@@ -157,7 +157,7 @@ bool PyBrxCore::removeConstraintsFromDatabase(const PyDbDatabase& db)
 
 PyBrxBlockParameter PyBrxCore::getBlockParameter(const PyDbObjectId& blockRefId, const std::string& name)
 {
-    return PyBrxBlockParameter(blockRefId,name);
+    return PyBrxBlockParameter(blockRefId, name);
 }
 
 #endif

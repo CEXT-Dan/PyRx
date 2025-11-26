@@ -119,7 +119,7 @@ public:
     boost::python::list constraints() const;
     PyBrxConstraint     getConstraintByNodeId(Adesk::UInt32 nodeId) const;
     PyBrxConstraint     addConstraintSubents(AcConstraint::ConstraintType type, const boost::python::list& paths) const;
-    PyBrxConstraint     addConstraintArgs(AcConstraint::ConstraintType type,const boost::python::list& arguments) const;
+    PyBrxConstraint     addConstraintArgs(AcConstraint::ConstraintType type, const boost::python::list& arguments) const;
     void                deleteConstraint(const PyBrxConstraint& pConstraint) const;
     void                evaluate() const;
     static std::string  className();
