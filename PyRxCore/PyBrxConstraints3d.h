@@ -147,4 +147,57 @@ public:
     AcString m_name;
 };
 
+//---------------------------------------------------------------------
+//PyBrxDesignTableConfigurationEntry
+void makePyBrxDesignTableConfigurationEntry();
+
+class PyBrxDesignTableConfigurationEntry
+{
+public:
+    PyBrxDesignTableConfigurationEntry(AcDesignTableConfigurationEntry* src);
+    std::string variableName() const;
+    std::string value() const;
+    bool isDoubleValue() const;
+    double valueAsDouble() const;
+    static std::string  className();
+public:
+    AcDesignTableConfigurationEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<AcDesignTableConfigurationEntry> m_pyImp;
+};
+
+//---------------------------------------------------------------------
+//PyBrxDesignTableConfiguration
+void makePyBrxDesignTableConfiguration();
+
+class PyBrxDesignTableConfiguration
+{
+public:
+    PyBrxDesignTableConfiguration(AcDesignTableConfiguration* src);
+    std::string         name() const;
+    boost::python::list variables() const;
+    static std::string  className();
+public:
+    AcDesignTableConfiguration* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<AcDesignTableConfiguration> m_pyImp;
+};
+
+//---------------------------------------------------------------------
+//PyBrxDesignTable
+void makePyBrxDesignTable();
+
+class PyBrxDesignTable
+{
+public:
+    PyBrxDesignTable(AcDesignTable* src);
+    PyDbObjectId        getBlockId() const;
+    std::string         keyName() const;
+    std::string         name() const;
+    boost::python::list configurations() const;
+    PyBrxDesignTableConfiguration currentConfiguration();
+    static boost::python::list getAllDesignTables(const PyDbObjectId& fromBlockId);
+    static std::string  className();
+public:
+    AcDesignTable* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<AcDesignTable> m_pyImp;
+};
 #endif
