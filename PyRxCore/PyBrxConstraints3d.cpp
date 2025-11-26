@@ -580,4 +580,210 @@ std::string PyBrxBlockParameter::className()
     return "BlockParameter";
 }
 
+//---------------------------------------------------------------------
+//PyBrxDesignTableConfigurationEntry
+void makePyBrxDesignTableConfigurationEntry()
+{
+    PyDocString DS("PyBrx.DesignTableConfigurationEntry");
+    class_<PyBrxDesignTableConfigurationEntry>("DesignTableConfigurationEntry", no_init)
+        .def("variableName", &PyBrxDesignTableConfigurationEntry::variableName, DS.ARGS())
+        .def("value", &PyBrxDesignTableConfigurationEntry::value, DS.ARGS())
+        .def("isDoubleValue", &PyBrxDesignTableConfigurationEntry::isDoubleValue, DS.ARGS())
+        .def("valueAsDouble", &PyBrxDesignTableConfigurationEntry::valueAsDouble, DS.ARGS())
+        .def("className", &PyBrxDesignTableConfigurationEntry::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxDesignTableConfigurationEntry::PyBrxDesignTableConfigurationEntry(AcDesignTableConfigurationEntry* src)
+    : m_pyImp(src)
+{
+}
+
+std::string PyBrxDesignTableConfigurationEntry::variableName() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->variableName(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyBrxDesignTableConfigurationEntry::value() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->value(val));
+    return wstr_to_utf8(val);
+}
+
+bool PyBrxDesignTableConfigurationEntry::isDoubleValue() const
+{
+    bool val;
+    PyThrowBadEs(impObj()->isDoubleValue(val));
+    return val;
+}
+
+double PyBrxDesignTableConfigurationEntry::valueAsDouble() const
+{
+    double val;
+    PyThrowBadEs(impObj()->valueAsDouble(val));
+    return val;
+}
+
+std::string PyBrxDesignTableConfigurationEntry::className()
+{
+    return "AcDesignTableConfigurationEntry";
+}
+
+AcDesignTableConfigurationEntry* PyBrxDesignTableConfigurationEntry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDesignTableConfigurationEntry*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------
+//PyBrxDesignTableConfiguration
+void makePyBrxDesignTableConfiguration()
+{
+    PyDocString DS("PyBrx.DesignTableConfiguration");
+    class_<PyBrxDesignTableConfiguration>("DesignTableConfiguration", no_init)
+        .def("name", &PyBrxDesignTableConfiguration::name, DS.ARGS())
+        .def("variables", &PyBrxDesignTableConfiguration::variables, DS.ARGS())
+        .def("className", &PyBrxDesignTableConfiguration::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxDesignTableConfiguration::PyBrxDesignTableConfiguration(AcDesignTableConfiguration* src)
+    : m_pyImp(src)
+{
+}
+
+std::string PyBrxDesignTableConfiguration::name() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->name(val));
+    return wstr_to_utf8(val);
+}
+
+boost::python::list PyBrxDesignTableConfiguration::variables() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDesignTableConfigurationEntryArray configArray;
+    PyThrowBadEs(impObj()->variables(configArray));
+    for (auto& item : configArray)
+    {
+        if (item.refCount() != 1)
+            PyThrowBadEs(eInvalidOpenState);
+        pylist.append(PyBrxDesignTableConfigurationEntry(item.detach()));
+    }
+    return pylist;
+}
+
+std::string PyBrxDesignTableConfiguration::className()
+{
+    return "AcDesignTableConfiguration";
+}
+
+AcDesignTableConfiguration* PyBrxDesignTableConfiguration::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDesignTableConfiguration*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------
+//PyBrxDesignTable
+void makePyBrxDesignTable()
+{
+    PyDocString DS("PyBrx.DesignTable");
+    class_<PyBrxDesignTable>("DesignTable", no_init)
+        .def("getBlockId", &PyBrxDesignTable::getBlockId, DS.ARGS())
+        .def("keyName", &PyBrxDesignTable::keyName, DS.ARGS())
+        .def("name", &PyBrxDesignTable::name, DS.ARGS())
+        .def("configurations", &PyBrxDesignTable::configurations, DS.ARGS())
+        .def("currentConfiguration", &PyBrxDesignTable::currentConfiguration, DS.ARGS())
+        .def("getAllDesignTables", &PyBrxDesignTable::getAllDesignTables, DS.SARGS({ "PyDb.ObjectId" })).staticmethod("getAllDesignTables")
+        .def("className", &PyBrxDesignTable::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxDesignTable::PyBrxDesignTable(AcDesignTable* src)
+    : m_pyImp(src)
+{
+}
+
+PyDbObjectId PyBrxDesignTable::getBlockId() const
+{
+    PyDbObjectId val;
+    PyThrowBadEs(impObj()->getBlockId(val.m_id));
+    return val;
+}
+
+std::string PyBrxDesignTable::keyName() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->keyName(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyBrxDesignTable::name() const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->name(val));
+    return wstr_to_utf8(val);
+}
+
+boost::python::list PyBrxDesignTable::configurations() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDesignTableConfigurationArray allConfigs;
+    PyThrowBadEs(impObj()->configurations(allConfigs));
+    for (auto& item : allConfigs)
+    {
+        if (item.refCount() != 1)
+            PyThrowBadEs(eInvalidOpenState);
+        pylist.append(PyBrxDesignTableConfiguration(item.detach()));
+    }
+    return pylist;
+}
+
+PyBrxDesignTableConfiguration PyBrxDesignTable::currentConfiguration()
+{
+    AcDesignTableConfigurationPtr curConfig;
+    PyThrowBadEs(impObj()->currentConfiguration(curConfig));
+    if (curConfig.refCount() != 1)
+        PyThrowBadEs(eInvalidOpenState);
+    return PyBrxDesignTableConfiguration(curConfig.detach());
+}
+
+boost::python::list PyBrxDesignTable::getAllDesignTables(const PyDbObjectId& fromBlockId)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDesignTableArray designTables;
+    PyThrowBadEs(AcDesignTable::getAllDesignTables(fromBlockId.m_id, designTables));
+    for (auto& item : designTables)
+    {
+        if (item.refCount() != 1)
+            PyThrowBadEs(eInvalidOpenState);
+        pylist.append(PyBrxDesignTable(item.detach()));
+    }
+    return pylist;
+}
+
+std::string PyBrxDesignTable::className()
+{
+    return "AcDesignTable";
+}
+
+AcDesignTable* PyBrxDesignTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDesignTable*>(m_pyImp.get());
+}
+
 #endif
