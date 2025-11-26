@@ -27,7 +27,7 @@ Use ``APPLOAD`` command or the startup suite to load PyRx in CAD application, ex
 
 ```raw
 _APPLOAD
-%localappdata%\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderZ25.0.zrx
+%localappdata%\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderZ26.0.zrx
 or
 RxLoader24.0.arx = 2021
 RxLoader24.1.arx = 2022
@@ -35,7 +35,7 @@ RxLoader24.2.arx = 2023
 RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025
 RxLoader25.1.arx = 2026
-RxLoaderV25.0.brx = BricsCAD v26
+RxLoaderV26.0.brx = BricsCAD v26
 ```
 
 ## Sample
