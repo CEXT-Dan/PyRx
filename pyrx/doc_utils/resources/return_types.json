@@ -2701,6 +2701,58 @@
         [
             "PyDb::SymbolTable::toDict",
             "dict[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyBrx::Constraint::arguments",
+            "list[PyDb.FullSubentPath]"
+        ],
+        [
+            "PyBrx::Constraint::getArguments",
+            "list[PyBrx.ConstraintArgument]"
+        ],
+        [
+            "PyBrx::ConstraintsGroup::constraints",
+            "list[PyBrx.Constraint]"
+        ],
+        [
+            "PyBrx::Core::getAllConstraintsGroups",
+            "list[PyBrx.ConstraintsGroup]"
+        ],
+        [
+            "PyBrx::Core::getBlockParametersNames",
+            "list[str]"
+        ],
+        [
+            "PyBrx::Core::getOpenObjects",
+            "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyBrx::DbProperties::listAll",
+            "list[str]"
+        ],
+        [
+            "PyBrx::DesignTable::configurations",
+            "list[PyBrx.DesignTableConfiguration]"
+        ],
+        [
+            "PyBrx::DesignTable::getAllDesignTables",
+            "list[PyBrx.DesignTable]"
+        ],
+        [
+            "PyBrx::DesignTableConfiguration::variables",
+            "list[PyBrx.DesignTableConfigurationEntry]"
+        ],
+        [
+            "PyBrx::MechanicalPropertyDefinition::enumValues",
+            "list[tuple[str,str]]"
+        ],
+        [
+            "PyBrx::MechanicalPropertySet::getAllCustomProperties",
+            "list[PyBrx.MechanicalPropertyDefinition]"
+        ],
+        [
+            "PyBrx::Variable::getFromBlock",
+            "list[PyBrx.Variable]"
         ]
     ]
 }
