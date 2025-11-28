@@ -59,11 +59,15 @@ public:
     virtual ~AcDbDoubleClickOverrulableEntity() = default;
     void finishEdit(void)
     {
-        acutPrintf(_T("\nfinishEdit: "));
+        // check state 
     }
     void startEdit(AcDbEntity* pEnt, AcGePoint3d pt)
     {
-        acutPrintf(_T("\nstartEdit %ld (%f, %f, %f): "), pEnt, pt.x, pt.y, pt.z);
+        auto ovrent =  static_cast<PyRxOverrulableEntity*>(pEnt);
+        if (ovrent->guid() == L"MYGUID")
+        {
+            //do something 
+        }
     }
 };
 #endif
