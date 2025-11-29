@@ -3018,6 +3018,8 @@ class AssocAction(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
+    def evaluateDependencies(self, /) -> None: ...
+    def updateAllObjectsControlledByValueParams(self, /) -> None: ...
 
 class AssocConstraintType(_BoostPythonEnum):
     kNoneAssocConstraintType: ClassVar[Self]  # 0

@@ -284,6 +284,8 @@ void makePyDbAssocActionWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
 
+        .def("evaluateDependencies", &PyDbAssocAction::evaluateDependencies, DS.ARGS())
+        .def("updateAllObjectsControlledByValueParams", &PyDbAssocAction::updateAllObjectsControlledByValueParams, DS.ARGS())
         .def("className", &PyDbAssocAction::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocAction::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocAction::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
