@@ -2093,6 +2093,12 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kMove", AcDbAssocTransformationType::kMove)
         .export_values()
         ;
+    enum_<AcDb::DragStat>("DragStat")
+        .value("kDragStart", AcDb::DragStat::kDragStart)
+        .value("kDragEnd", AcDb::DragStat::kDragEnd)
+        .value("kDragAbort", AcDb::DragStat::kDragAbort)
+        .export_values()
+        ;
 };
 
 void initPyDbModule()
