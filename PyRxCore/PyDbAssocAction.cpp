@@ -800,10 +800,17 @@ void makePyDbAssocNetworkWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
-
         .def("getActions", &PyDbAssocNetwork::getActions, DS.ARGS())
         .def("getActionsToEvaluate", &PyDbAssocNetwork::getActionsToEvaluate, DS.ARGS())
-
+        .def("addAction", &PyDbAssocNetwork::addAction, DS.ARGS({ "actionId: PyDb.ObjectId","alsoSetAsDatabaseOwner: bool" }))
+        .def("removeAction", &PyDbAssocNetwork::removeAction, DS.ARGS({ "actionId: PyDb.ObjectId","alsoEraseIt: bool" }))
+        .def("removeAllActions", &PyDbAssocNetwork::removeAllActions, DS.ARGS({ "alsoEraseThem: bool" }))
+        .def("ownedActionStatusChanged", &PyDbAssocNetwork::ownedActionStatusChanged, DS.ARGS({ "pOwnedAction: PyDb.AssocAction","previousStatus: PyDb.AssocStatus" }))
+        .def("getInstanceFromDatabase", &PyDbAssocNetwork::getInstanceFromDatabase, DS.SARGS({ "db: PyDb.Database","createIfDoesNotExist: bool", "dictionaryKey:str" })).staticmethod("getInstanceFromDatabase")
+        .def("getInstanceFromObject", &PyDbAssocNetwork::getInstanceFromObject, DS.SARGS({ "owningId:PyDb.ObjectId","createIfDoesNotExist:bool","createIfDoesNotExist:bool","dictionaryKey:str" })).staticmethod("getInstanceFromObject")
+        .def("removeInstanceFromDatabase", &PyDbAssocNetwork::removeInstanceFromDatabase, DS.SARGS({ "db:PyDb.Database","alsoEraseIt:bool","dictionaryKey:str" })).staticmethod("removeInstanceFromDatabase")
+        .def("removeInstanceFromObject", &PyDbAssocNetwork::removeInstanceFromObject, DS.SARGS({ "owningObjectId:PyDb.ObjectId","alsoEraseIt: bool","dictionaryKey:str" })).staticmethod("removeInstanceFromObject")
+        .def("assocNetworkIterator", &PyDbAssocNetwork::assocNetworkIterator, DS.ARGS())
         .def("className", &PyDbAssocNetwork::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocNetwork::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocNetwork::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -871,9 +878,19 @@ void PyDbAssocNetwork::ownedActionStatusChanged(const PyDbAssocAction& pOwnedAct
     PyThrowBadEs(impObj()->ownedActionStatusChanged(pOwnedAction.impObj(), previousStatus));
 }
 
+boost::python::list PyDbAssocNetwork::assocNetworkIterator() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDbAssocNetworkIterator iter(impObj());
+    while (iter.moveNext())
+        pylist.append(PyDbObjectId(iter.current()));
+    return pylist;
+}
+
 PyDbObjectId PyDbAssocNetwork::getInstanceFromDatabase(const PyDbDatabase& pDatabase, bool createIfDoesNotExist, const std::string& dictionaryKey)
 {
-   return PyDbObjectId(AcDbAssocNetwork::getInstanceFromDatabase(pDatabase.impObj(), createIfDoesNotExist, utf8_to_wstr(dictionaryKey).c_str()));
+    return PyDbObjectId(AcDbAssocNetwork::getInstanceFromDatabase(pDatabase.impObj(), createIfDoesNotExist, utf8_to_wstr(dictionaryKey).c_str()));
 }
 
 PyDbObjectId PyDbAssocNetwork::getInstanceFromObject(const PyDbObjectId& owningObjectId, bool createIfDoesNotExist, bool addToTopLevelNetwork, const std::string& dictionaryKey)
@@ -937,6 +954,21 @@ void makePyDbAssocVariableWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
 
+        .def("name", &PyDbAssocVariable::name, DS.ARGS())
+        .def("expression", &PyDbAssocVariable::expression1)
+        .def("expression", &PyDbAssocVariable::expression2, DS.ARGS({ "convertSymbolNamesFromCanonicalForm:bool = False" }))
+        .def("value", &PyDbAssocVariable::value, DS.ARGS())
+        .def("setValue", &PyDbAssocVariable::setValue, DS.ARGS({ "evalId:PyDb.EvalVariant" }))
+        .def("description", &PyDbAssocVariable::description, DS.ARGS())
+        .def("isAnonymous", &PyDbAssocVariable::isAnonymous, DS.ARGS())
+        .def("setName", &PyDbAssocVariable::isAnonymous, DS.ARGS({ "newName:str","updateReferencingExpressions:bool" }))
+        .def("findObjectByName", &PyDbAssocVariable::findObjectByName, DS.ARGS({ "objectName:str","pObjectClass:PyRx.RxClass" }))
+        .def("validateNameAndExpression", &PyDbAssocVariable::validateNameAndExpression, DS.ARGS({ "nameToValidate:str","expressionToValidate:str" }))
+        .def("setExpression", &PyDbAssocVariable::setExpression1)
+        .def("setExpression", &PyDbAssocVariable::setExpression2, DS.ARGS({ "newExpression:str","evaluatorId:str","checkForCyclicalDependencies:bool","updateDependenciesOnReferencedSymbol:bool","silentMode:bool = False" }))
+        .def("evaluatorId", &PyDbAssocVariable::evaluatorId, DS.ARGS())
+        .def("setEvaluatorId", &PyDbAssocVariable::setEvaluatorId, DS.ARGS({ "evalId:str" }))
+        .def("setDescription", &PyDbAssocVariable::setDescription, DS.ARGS())
         .def("className", &PyDbAssocVariable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocVariable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocVariable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -967,6 +999,91 @@ PyDbAssocVariable::PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode
 PyDbAssocVariable::PyDbAssocVariable(AcDbAssocVariable* ptr, bool autoDelete)
     :PyDbAssocAction(ptr, autoDelete)
 {
+}
+
+std::string PyDbAssocVariable::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+std::string PyDbAssocVariable::expression1() const
+{
+    return wstr_to_utf8(impObj()->expression());
+}
+
+std::string PyDbAssocVariable::expression2(bool convertSymbolNamesFromCanonicalForm) const
+{
+    return wstr_to_utf8(impObj()->expression(convertSymbolNamesFromCanonicalForm));
+}
+
+PyDbEvalVariant PyDbAssocVariable::value() const
+{
+    return PyDbEvalVariant(impObj()->value());
+}
+
+std::string PyDbAssocVariable::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+bool PyDbAssocVariable::isAnonymous() const
+{
+    return impObj()->isAnonymous();
+}
+
+void PyDbAssocVariable::setName(const std::string& newName, bool updateReferencingExpressions) const
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(newName).c_str(), updateReferencingExpressions));
+}
+
+PyDbObjectId PyDbAssocVariable::findObjectByName(const std::string& objectName, const PyRxClass& pObjectClass) const
+{
+    return PyDbObjectId(impObj()->findObjectByName(utf8_to_wstr(objectName).c_str(), pObjectClass.impObj()));
+}
+
+boost::python::tuple PyDbAssocVariable::validateNameAndExpression(const std::string& nameToValidate, const std::string& expressionToValidate) const
+{
+    AcString errorMessage;
+    auto es = impObj()->validateNameAndExpression(utf8_to_wstr(nameToValidate).c_str(), utf8_to_wstr(expressionToValidate).c_str(), errorMessage);
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
+}
+
+boost::python::tuple PyDbAssocVariable::setExpression1(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol) const
+{
+    AcString errorMessage;
+    auto es = impObj()->setExpression(utf8_to_wstr(newExpression).c_str(), utf8_to_wstr(evaluatorId).c_str(), checkForCyclicalDependencies, updateDependenciesOnReferencedSymbol, errorMessage);
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
+}
+
+boost::python::tuple PyDbAssocVariable::setExpression2(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol, bool silentMode) const
+{
+    AcString errorMessage;
+    auto es = impObj()->setExpression(utf8_to_wstr(newExpression).c_str(), utf8_to_wstr(evaluatorId).c_str(), checkForCyclicalDependencies, updateDependenciesOnReferencedSymbol, errorMessage, silentMode);
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
+}
+
+std::string PyDbAssocVariable::evaluatorId() const
+{
+#if defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    return wstr_to_utf8(impObj()->evaluatorId());
+#endif
+}
+
+void PyDbAssocVariable::setEvaluatorId(const std::string& evalId) const
+{
+    PyThrowBadEs(impObj()->setEvaluatorId(utf8_to_wstr(evalId).c_str()));
+}
+
+void PyDbAssocVariable::setValue(const PyDbEvalVariant& evalId) const
+{
+    PyThrowBadEs(impObj()->setValue(*evalId.impObj()));
+}
+
+void PyDbAssocVariable::setDescription(const std::string& newDescription) const
+{
+    PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(newDescription).c_str()));
 }
 
 PyRxClass PyDbAssocVariable::desc()
