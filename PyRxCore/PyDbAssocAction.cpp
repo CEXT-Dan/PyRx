@@ -280,6 +280,10 @@ void makePyDbAssocActionWrapper()
         "- paramId: PyDb.ObjectId\n"
         "- paramName: str, paramClass: PyRx.RxClass, paramId: PyDb.ObjectId\n";
 
+    constexpr const std::string_view removeActionsControllingObjectOverloads = "Overloads:\n"
+        "- objectToRemoveActionsFrom: PyDb.ObjectId\n"
+        "- objectToRemoveActionsFrom: PyDb.ObjectId, readOnlyDependencyHandling:bool, objectToRedirectReadOnlyDependenciesTo:PyDb.ObjectId\n";
+
 
     PyDocString DS("PyDb.AssocAction");
     class_<PyDbAssocAction, bases<PyDbObject>>("AssocAction")
@@ -337,8 +341,24 @@ void makePyDbAssocActionWrapper()
         .def("ownedValueParamNames", &PyDbAssocAction::ownedValueParamNames, DS.ARGS())
         .def("getValueParamArray", &PyDbAssocAction::getValueParamArray, DS.ARGS({ "paramName:str"}))
         .def("getValueParam", &PyDbAssocAction::getValueParam, DS.ARGS({ "paramName:str","index:int"}))
-
+        .def("setValueParamArray", &PyDbAssocAction::setValueParamArray, DS.ARGS({ "paramName:str","values:list[PyDb.EvalVariant]","expressions:list[str]","evaluatorIds:list[str]","silentMode:bool"}))
+        .def("setValueParam", &PyDbAssocAction::setValueParam, DS.ARGS({ "paramName:str","value:PyDb.EvalVariant","expression:str","evaluatorId:str","silentMode:bool","valueIndex:int" }))
+        .def("valueParamUnitType", &PyDbAssocAction::valueParamUnitType, DS.ARGS({ "paramName:str"}))
+        .def("setValueParamUnitType", &PyDbAssocAction::setValueParamUnitType, DS.ARGS({ "paramName:str","unitType:PyDb.ValueUnitType"}))
+        .def("removeValueParam", &PyDbAssocAction::removeValueParam, DS.ARGS({ "paramName:str" }))
+        .def("valueParamInputVariables", &PyDbAssocAction::valueParamInputVariables, DS.ARGS({ "paramName:str" }))
+        .def("setValueParamControlledObjectDep", &PyDbAssocAction::setValueParamControlledObjectDep, DS.ARGS({ "paramName:str","controlledObjectDepId:PyDb.ObjectId"}))
+        .def("updateValueParamControlledObject", &PyDbAssocAction::updateValueParamControlledObject, DS.ARGS({ "paramName:str" }))
+        .def("updateValueParamFromControlledObject", &PyDbAssocAction::updateValueParamFromControlledObject, DS.ARGS({ "paramName:str" }))
         .def("updateAllObjectsControlledByValueParams", &PyDbAssocAction::updateAllObjectsControlledByValueParams, DS.ARGS())
+        .def("transformAllConstantGeometryParams", &PyDbAssocAction::transformAllConstantGeometryParams, DS.ARGS({ "transform:PyGe.Matrix3d" }))
+        .def("scaleAllDistanceValueParams", &PyDbAssocAction::scaleAllDistanceValueParams, DS.ARGS({ "scaleFactor:float" }))
+
+        .def("getActionsDependentOnObject", &PyDbAssocAction::getActionsDependentOnObject, DS.SARGS({"pObject:PyDb.DbObject","readDependenciesWanted:bool","writeDependenciesWanted:bool"})).staticmethod("getActionsDependentOnObject")
+        .def("removeActionsControllingObject", &PyDbAssocAction::removeActionsControllingObject1)
+        .def("removeActionsControllingObject", &PyDbAssocAction::removeActionsControllingObject2,DS.SOVRL(removeActionsControllingObjectOverloads)).staticmethod("removeActionsControllingObject")
+        .def("doesObjectHaveActiveActions", &PyDbAssocAction::doesObjectHaveActiveActions, DS.SARGS({ "pObject:PyDb.DbObject" })).staticmethod("doesObjectHaveActiveActions")
+        .def("getActionBody", &PyDbAssocAction::getActionBody, DS.SARGS({ "actionId:PyDb.ObjectId" })).staticmethod("getActionBody")
         .def("className", &PyDbAssocAction::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocAction::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocAction::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
