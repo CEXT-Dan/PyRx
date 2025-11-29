@@ -2,17 +2,11 @@
 
 #pragma pack (push, 8)
 
-//#define PYRX_CONSTRAINTS_API
-
-#ifdef PYRX_CONSTRAINTS_API
-
 #include "PyDbObject.h"
 #include "AcDbAssocAction.h"
 #include "AcDbAssocDependency.h"
-
-//AcDbAssocGeomDependency
-//AcDbAssocGeomDependency
-//AcDbAssocNotificationData
+#include "AcDbAssocNetwork.h"
+#include "AcDbAssocVariable.h"
 
 class PyDbEvalVariant;
 class PyDbAssocAction;
@@ -88,8 +82,8 @@ public:
     PyDbAssocDependency(AcDbAssocDependency* ptr, bool autoDelete);
     virtual ~PyDbAssocDependency() override = default;
 
-    static PyRxClass        desc();
-    static std::string      className();
+    static PyRxClass            desc();
+    static std::string          className();
     static PyDbAssocDependency  cloneFrom(const PyRxObject& src);
     static PyDbAssocDependency  cast(const PyRxObject& src);
 public:
@@ -188,6 +182,123 @@ public:
     AcDbAssocAction* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-#endif //PYRX_CONSTRAINTS_API
+//-----------------------------------------------------------------------------------
+//PyDbAssocNetwork
+void makePyDbAssocNetworkWrapper();
+
+class PyDbAssocNetwork : public PyDbAssocAction
+{
+public:
+    PyDbAssocNetwork();
+    PyDbAssocNetwork(const PyDbObjectId& id);
+    PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbAssocNetwork(AcDbAssocNetwork* ptr, bool autoDelete);
+    virtual ~PyDbAssocNetwork() override = default;
+
+    boost::python::list getActions() const;
+    boost::python::list getActionsToEvaluate() const;
+    void                addAction(const PyDbObjectId& actionId, bool alsoSetAsDatabaseOwner) const;
+    void                removeAction(const PyDbObjectId& actionId, bool alsoEraseIt) const;
+    void                addActions(const boost::python::list& actionIds, bool alsoSetAsDatabaseOwner) const;
+    void                removeAllActions(bool alsoEraseThem) const;
+    void                ownedActionStatusChanged(const PyDbAssocAction& pOwnedAction, AcDbAssocStatus  previousStatus) const;
+
+    static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDatabase, bool createIfDoesNotExist, const std::string& dictionaryKey);
+    static PyDbObjectId getInstanceFromObject(const PyDbObjectId& owningObjectId, bool createIfDoesNotExist, bool addToTopLevelNetwork, const std::string& dictionaryKey);
+
+    static void         removeInstanceFromDatabase(const PyDbDatabase& pDatabase, bool alsoEraseIt, const std::string& dictionaryKey);
+    static void         removeInstanceFromObject(const PyDbObjectId& owningObjectId, bool alsoEraseIt,const std::string& dictionaryKey);
+
+
+    //static Acad::ErrorStatus removeInstanceFromObject(const AcDbObjectId& owningObjectId, bool alsoEraseIt, const AcString& dictionaryKey = ACRX_T(""));
+    //static Acad::ErrorStatus removeInstanceFromDatabase(AcDbDatabase* pDatabase, bool alsoEraseIt, const AcString& dictionaryKey = ACRX_T(""));
+
+    static PyRxClass        desc();
+    static std::string      className();
+    static PyDbAssocNetwork cloneFrom(const PyRxObject& src);
+    static PyDbAssocNetwork cast(const PyRxObject& src);
+public:
+    AcDbAssocNetwork* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocVariable
+void makePyDbAssocVariableWrapper();
+
+class PyDbAssocVariable : public PyDbAssocAction
+{
+public:
+    PyDbAssocVariable();
+    PyDbAssocVariable(const PyDbObjectId& id);
+    PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbAssocVariable(AcDbAssocVariable* ptr, bool autoDelete);
+    virtual ~PyDbAssocVariable() override = default;
+
+
+    //const AcString& name() const;
+    //const AcString& expression() const;
+    //const AcString& expression(bool convertSymbolNamesFromCanonicalForm) const;
+    //const AcDbEvalVariant& value() const;
+    //const AcString& description() const;
+    //Acad::ErrorStatus setName(const AcString& newName, bool updateReferencingExpressions);
+    //bool isAnonymous() const;
+
+
+    //ACDBCORE2D_PORT AcDbObjectId findObjectByName(const AcString& objectName,
+    //    const AcRxClass* pObjectClass) const;
+
+
+    //ACDBCORE2D_PORT Acad::ErrorStatus validateNameAndExpression(const AcString& nameToValidate,
+    //    const AcString& expressionToValidate,
+    //    AcString& errorMessage) const;
+
+
+    //ACDBCORE2D_PORT Acad::ErrorStatus setExpression(const AcString& newExpression,
+    //    const AcString& evaluatorId,
+    //    bool checkForCyclicalDependencies,
+    //    bool updateDependenciesOnReferencedSymbols,
+    //    AcString& errorMessage = dummyString(),
+    //    bool silentMode = false);
+
+
+    //ACDBCORE2D_PORT const AcString& evaluatorId() const;
+    //ACDBCORE2D_PORT Acad::ErrorStatus setEvaluatorId(const AcString& evalId);
+    //ACDBCORE2D_PORT Acad::ErrorStatus setValue(const AcDbEvalVariant& newValue);
+    //ACDBCORE2D_PORT Acad::ErrorStatus setDescription(const AcString& newDescription);
+
+
+    //ACDBCORE2D_PORT bool     isMergeable() const;
+    //ACDBCORE2D_PORT bool     mustMerge() const;
+    //ACDBCORE2D_PORT AcString mergeableVariableName() const;
+    //ACDBCORE2D_PORT void setIsMergeable(bool isMerg, bool mustMerg = false, const AcString& mergeableVariableName = AcString());
+
+
+    //ACDBCORE2D_PORT Acad::ErrorStatus evaluateExpression(AcDbEvalVariant& evaluatedExpressionValue,
+    //    AcString& errorMessage = dummyString()) const;
+
+    //ACDBCORE2D_PORT Acad::ErrorStatus evaluateExpression(AcDbObjectIdArray& objectIds,    // in/out argument
+    //    AcArray<AcDbEvalVariant>& objectValues, // in/out argument
+    //    AcDbEvalVariant& evaluatedExpressionValue,
+    //    AcString& errorMessage = dummyString()) const;
+
+    //ACDBCORE2D_PORT static Acad::ErrorStatus evaluateExpression(const AcString& expression,
+    //    const AcString& evaluatorId,
+    //    const AcDbObjectId& networkId, // Provides context for the names
+    //    AcDbEvalVariant& evaluatedExpressionValue,
+    //    AcString& assignedToSymbolName,
+    //    AcString& errorMessage = dummyString());
+    //ACDBCORE2D_PORT static void addGlobalCallback(class AcDbAssocVariableCallback* pCallback);
+    //ACDBCORE2D_PORT static void removeGlobalCallback(class AcDbAssocVariableCallback* pCallback);
+    //ACDBCORE2D_PORT static class AcDbAssocVariableCallback* globalCallback();
+
+    static PyRxClass        desc();
+    static std::string      className();
+    static PyDbAssocVariable cloneFrom(const PyRxObject& src);
+    static PyDbAssocVariable cast(const PyRxObject& src);
+public:
+    AcDbAssocVariable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #pragma pack (pop)
