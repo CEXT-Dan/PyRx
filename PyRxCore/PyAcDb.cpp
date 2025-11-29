@@ -523,6 +523,10 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbHyperlinkCollectionWrapper();
     makePyDbEntityHyperlinkPEWrapper();
     makePyDbOverrulableEntity();
+    makePyDbAssocDependencyWrapper();
+    makePyDbAssocActionWrapper();
+    makePyDbAssocNetworkWrapper();
+    makePyDbAssocVariableWrapper();
     makeDbCoreWrapper();//LAST?
 
     //convenience 
@@ -2035,7 +2039,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
-#ifdef PYRX_CONSTRAINTS_API
     enum_<AcDbAssocStatus>("AssocStatus")
         .value("kIsUpToDateAssocStatus", AcDbAssocStatus::kIsUpToDateAssocStatus)
         .value("kChangedDirectlyAssocStatus", AcDbAssocStatus::kChangedDirectlyAssocStatus)
@@ -2090,8 +2093,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kMove", AcDbAssocTransformationType::kMove)
         .export_values()
         ;
-#endif //PYRX_CONSTRAINTS_API
-
 };
 
 void initPyDbModule()
