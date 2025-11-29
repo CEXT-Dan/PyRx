@@ -276,6 +276,11 @@ void makePyDbAssocActionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
+    constexpr const std::string_view paramOverloads = "Overloads:\n"
+        "- paramId: PyDb.ObjectId\n"
+        "- paramName: str, paramClass: PyRx.RxClass, paramId: PyDb.ObjectId\n";
+
+
     PyDocString DS("PyDb.AssocAction");
     class_<PyDbAssocAction, bases<PyDbObject>>("AssocAction")
         .def(init<>())
@@ -319,7 +324,19 @@ void makePyDbAssocActionWrapper()
         .def("evaluate", &PyDbAssocAction::evaluate, DS.ARGS({ "refEvaluate:PyDb.ActionsToEvaluateCallback" }))
         .def("objectThatOwnsNetworkInstance", &PyDbAssocAction::objectThatOwnsNetworkInstance, DS.ARGS())
         .def("dragStatus", &PyDbAssocAction::dragStatus, DS.ARGS({"status:PyDb.DragStat"}))
-
+        .def("removeAllParams", &PyDbAssocAction::removeAllParams, DS.ARGS({ "alsoEraseThem:bool" }))
+        .def("paramCount", &PyDbAssocAction::paramCount, DS.ARGS())
+        .def("ownedParams", &PyDbAssocAction::ownedParams, DS.ARGS())
+        .def("addParam", &PyDbAssocAction::addParam1)
+        .def("addParam", &PyDbAssocAction::addParam2, DS.OVRL(paramOverloads))
+        .def("removeParam", &PyDbAssocAction::addParam2, DS.ARGS({ "paramName:str","alsoEraseIt:bool" }))
+        .def("paramsAtName", &PyDbAssocAction::paramsAtName, DS.ARGS({ "paramName:str" }))
+        .def("paramAtName", &PyDbAssocAction::paramAtName1)
+        .def("paramAtName", &PyDbAssocAction::paramAtName2, DS.ARGS({ "paramName:str", "index:int = 0"}))
+        .def("paramAtIndex", &PyDbAssocAction::paramAtIndex, DS.ARGS({ "index:int" }))
+        .def("ownedValueParamNames", &PyDbAssocAction::ownedValueParamNames, DS.ARGS())
+        .def("getValueParamArray", &PyDbAssocAction::getValueParamArray, DS.ARGS({ "paramName:str"}))
+        .def("getValueParam", &PyDbAssocAction::getValueParam, DS.ARGS({ "paramName:str","index:int"}))
 
         .def("updateAllObjectsControlledByValueParams", &PyDbAssocAction::updateAllObjectsControlledByValueParams, DS.ARGS())
         .def("className", &PyDbAssocAction::className, DS.SARGS()).staticmethod("className")
