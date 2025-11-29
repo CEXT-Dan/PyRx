@@ -1,7 +1,4 @@
 #include "stdafx.h"
-
-#ifdef PYRX_CONSTRAINTS_API
-
 #include "PyDbAssocAction.h"
 #include "PyDbIdMapping.h"
 #include "PyDbEval.h"
@@ -15,7 +12,7 @@ void makePyDbActionsToEvaluateCallbackWrapper()
     PyDocString DS("PyDb.ActionsToEvaluateCallback");
     class_<PyDbActionsToEvaluateCallback>("ActionsToEvaluateCallback")
         .def(init<>())
-        .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluateWr, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool"}))
+        .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluateWr, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool" }))
         .def("className", &PyDbActionsToEvaluateCallback::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -100,22 +97,22 @@ void PyDbAssocEvaluationCallback::endActionEvaluation(AcDbAssocAction* pAction)
 
 void PyDbAssocEvaluationCallback::setActionEvaluationErrorStatus(AcDbAssocAction* pAction, Acad::ErrorStatus errorStatus, const AcDbObjectId& objectId /*= AcDbObjectId::kNull*/, AcDbObject* pObject /*= NULL*/, void* pErrorInfo /*= NULL*/)
 {
-
+    PyThrowBadEs(eNotImplementedYet);
 }
 
 void PyDbAssocEvaluationCallback::beginActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, bool objectIsGoingToBeUsed, bool objectIsGoingToBeModified, AcDbObject*& pSubstituteObject)
 {
-
+    PyThrowBadEs(eNotImplementedYet);
 }
 
 void PyDbAssocEvaluationCallback::endActionEvaluationUsingObject(AcDbAssocAction* pAction, const AcDbObjectId& objectId, AcDbObject* pObject)
 {
-
+    PyThrowBadEs(eNotImplementedYet);
 }
 
 void PyDbAssocEvaluationCallback::allDependentActionsMarkedToEvaluate(AcDbAssocNetwork* /*pNetwork*/)
 {
-
+    PyThrowBadEs(eNotImplementedYet);
 }
 
 AcDbAssocDraggingState PyDbAssocEvaluationCallback::draggingState() const
@@ -188,14 +185,13 @@ void makePyDbAssocDependencyWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-
     PyDocString DS("PyDb.AssocDependency");
     class_<PyDbAssocDependency, bases<PyDbObject>>("AssocDependency")
         .def(init<>())
         .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 2501)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
 
         .def("className", &PyDbAssocDependency::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocDependency::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -280,14 +276,13 @@ void makePyDbAssocActionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-
     PyDocString DS("PyDb.AssocAction");
     class_<PyDbAssocAction, bases<PyDbObject>>("AssocAction")
         .def(init<>())
         .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 2501)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
 
         .def("className", &PyDbAssocAction::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocAction::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -788,4 +783,216 @@ AcDbAssocAction* PyDbAssocAction::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcDbAssocAction*>(m_pyImp.get());
 }
-#endif //PYRX_CONSTRAINTS_API
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocNetwork
+void makePyDbAssocNetworkWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.AssocNetwork");
+    class_<PyDbAssocNetwork, bases<PyDbAssocAction>>("AssocNetwork")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+
+        .def("getActions", &PyDbAssocNetwork::getActions, DS.ARGS())
+        .def("getActionsToEvaluate", &PyDbAssocNetwork::getActionsToEvaluate, DS.ARGS())
+
+        .def("className", &PyDbAssocNetwork::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAssocNetwork::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbAssocNetwork::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAssocNetwork::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork()
+    : PyDbAssocNetwork(new AcDbAssocNetwork(), true)
+{
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork(const PyDbObjectId& id)
+    : PyDbAssocNetwork(openAcDbObject<AcDbAssocNetwork>(id), false)
+{
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbAssocNetwork(openAcDbObject<AcDbAssocNetwork>(id, mode), false)
+{
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbAssocNetwork(openAcDbObject<AcDbAssocNetwork>(id, mode, erased), false)
+{
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork(AcDbAssocNetwork* ptr, bool autoDelete)
+    :PyDbAssocAction(ptr, autoDelete)
+{
+}
+
+boost::python::list PyDbAssocNetwork::getActions() const
+{
+    return ObjectIdArrayToPyList(impObj()->getActions());
+}
+
+boost::python::list PyDbAssocNetwork::getActionsToEvaluate() const
+{
+    return ObjectIdArrayToPyList(impObj()->getActionsToEvaluate());
+}
+
+void PyDbAssocNetwork::addAction(const PyDbObjectId& actionId, bool alsoSetAsDatabaseOwner) const
+{
+    PyThrowBadEs(impObj()->addAction(actionId.m_id, alsoSetAsDatabaseOwner));
+}
+
+void PyDbAssocNetwork::removeAction(const PyDbObjectId& actionId, bool alsoEraseIt) const
+{
+    PyThrowBadEs(impObj()->removeAction(actionId.m_id, alsoEraseIt));
+}
+
+void PyDbAssocNetwork::addActions(const boost::python::list& actionIds, bool alsoSetAsDatabaseOwner) const
+{
+    PyThrowBadEs(impObj()->addActions(PyListToObjectIdArray(actionIds), alsoSetAsDatabaseOwner));
+}
+
+void PyDbAssocNetwork::removeAllActions(bool alsoEraseThem) const
+{
+    PyThrowBadEs(impObj()->removeAllActions(alsoEraseThem));
+}
+
+void PyDbAssocNetwork::ownedActionStatusChanged(const PyDbAssocAction& pOwnedAction, AcDbAssocStatus previousStatus) const
+{
+    PyThrowBadEs(impObj()->ownedActionStatusChanged(pOwnedAction.impObj(), previousStatus));
+}
+
+PyDbObjectId PyDbAssocNetwork::getInstanceFromDatabase(const PyDbDatabase& pDatabase, bool createIfDoesNotExist, const std::string& dictionaryKey)
+{
+   return PyDbObjectId(AcDbAssocNetwork::getInstanceFromDatabase(pDatabase.impObj(), createIfDoesNotExist, utf8_to_wstr(dictionaryKey).c_str()));
+}
+
+PyDbObjectId PyDbAssocNetwork::getInstanceFromObject(const PyDbObjectId& owningObjectId, bool createIfDoesNotExist, bool addToTopLevelNetwork, const std::string& dictionaryKey)
+{
+    return PyDbObjectId(AcDbAssocNetwork::getInstanceFromObject(owningObjectId.m_id, createIfDoesNotExist, addToTopLevelNetwork, utf8_to_wstr(dictionaryKey).c_str()));
+}
+
+void PyDbAssocNetwork::removeInstanceFromDatabase(const PyDbDatabase& pDatabase, bool alsoEraseIt, const std::string& dictionaryKey)
+{
+    PyThrowBadEs(AcDbAssocNetwork::removeInstanceFromDatabase(pDatabase.impObj(), alsoEraseIt, utf8_to_wstr(dictionaryKey).c_str()));
+}
+
+void PyDbAssocNetwork::removeInstanceFromObject(const PyDbObjectId& owningObjectId, bool alsoEraseIt, const std::string& dictionaryKey)
+{
+    PyThrowBadEs(AcDbAssocNetwork::removeInstanceFromObject(owningObjectId.m_id, alsoEraseIt, utf8_to_wstr(dictionaryKey).c_str()));
+}
+
+PyRxClass PyDbAssocNetwork::desc()
+{
+    return PyRxClass(AcDbAssocNetwork::desc(), false);
+}
+
+std::string PyDbAssocNetwork::className()
+{
+    return "AcDbAssocNetwork";
+}
+
+PyDbAssocNetwork PyDbAssocNetwork::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbAssocNetwork, AcDbAssocNetwork>(src);
+}
+
+PyDbAssocNetwork PyDbAssocNetwork::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbAssocNetwork>(src);
+}
+
+AcDbAssocNetwork* PyDbAssocNetwork::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbAssocNetwork*>(m_pyImp.get());
+}
+
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocVariable
+void makePyDbAssocVariableWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.AssocVariable");
+    class_<PyDbAssocVariable, bases<PyDbAssocAction>>("AssocVariable")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+
+        .def("className", &PyDbAssocVariable::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAssocVariable::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbAssocVariable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAssocVariable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbAssocVariable::PyDbAssocVariable()
+    : PyDbAssocVariable(new AcDbAssocVariable(), true)
+{
+}
+
+PyDbAssocVariable::PyDbAssocVariable(const PyDbObjectId& id)
+    : PyDbAssocVariable(openAcDbObject<AcDbAssocVariable>(id), false)
+{
+}
+
+PyDbAssocVariable::PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbAssocVariable(openAcDbObject<AcDbAssocVariable>(id, mode), false)
+{
+}
+
+PyDbAssocVariable::PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbAssocVariable(openAcDbObject<AcDbAssocVariable>(id, mode, erased), false)
+{
+}
+
+PyDbAssocVariable::PyDbAssocVariable(AcDbAssocVariable* ptr, bool autoDelete)
+    :PyDbAssocAction(ptr, autoDelete)
+{
+}
+
+PyRxClass PyDbAssocVariable::desc()
+{
+    return PyRxClass(AcDbAssocVariable::desc(), false);
+}
+
+std::string PyDbAssocVariable::className()
+{
+    return "AcDbAssocVariable";
+}
+
+PyDbAssocVariable PyDbAssocVariable::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbAssocVariable, AcDbAssocVariable>(src);
+}
+
+PyDbAssocVariable PyDbAssocVariable::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbAssocVariable>(src);
+}
+
+AcDbAssocVariable* PyDbAssocVariable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbAssocVariable*>(m_pyImp.get());
+}
