@@ -1,14 +1,22 @@
 from __future__ import annotations
-
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
-
+from pyrx import Ap as PyAp
 from pyrx import Ax as PyAx
+from pyrx import Br as PyBr
 from pyrx import Db as PyDb
+from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
+from pyrx import Pl as PyPl
 from pyrx import Rx as PyRx
+from pyrx import Sm as PySm
+import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
+from __future__ import annotations
+
+from pyrx import Db as PyDb
 
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
@@ -253,7 +261,7 @@ eInvalidMeshVertexIndex: ErrorStatus  # 56
 eInvalidNormal: ErrorStatus  # 291
 eInvalidObjectId: ErrorStatus  # 600
 eInvalidOffset: ErrorStatus  # 157
-eInvalidOpenState: ErrorStatus  # 8
+eInvalidOpenState : ErrorStatus  # 8
 eInvalidOwnerObject: ErrorStatus  # 221
 eInvalidParameterName: ErrorStatus  # 20084
 eInvalidPlotArea: ErrorStatus  # 513
@@ -475,7 +483,7 @@ eTooManyVertices: ErrorStatus  # 231
 eTransactionOpenWhileCommandEnded: ErrorStatus  # 252
 eUnableToGetLabelBlock: ErrorStatus  # 607
 eUnableToGetViewAssociation: ErrorStatus  # 605
-eUnableToRemoveAssociation: ErrorStatus  # 608
+eUnableToRemoveAssociation : ErrorStatus  # 608
 eUnableToRemoveOverrides: ErrorStatus  # 574
 eUnableToRetrieveOverrides: ErrorStatus  # 572
 eUnableToSetLabelBlock: ErrorStatus  # 606
@@ -1865,7 +1873,6 @@ kXrfUnresolved: XrefStatus  # 5
 kYakutsk: TimeZone  # 9002
 kYard: ImageUnits  # 7
 kZero: MlineJustification  # 1
-
 class ACIcolorMethod(_BoostPythonEnum):
     kACIbyBlock: ClassVar[Self]  # 0
     kACIforeground: ClassVar[Self]  # 7
@@ -1876,15 +1883,8 @@ class ACIcolorMethod(_BoostPythonEnum):
     kACInone: ClassVar[Self]  # 257
     kACIminimum: ClassVar[Self]  # -255
     kACIfrozenLayer: ClassVar[Self]  # -32700
-
 class AbstractViewTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
@@ -1914,15 +1914,8 @@ class AbstractViewTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         This class is the base class for the AcDbViewTableRecord and AcDbViewportTableRecord
         classes.
@@ -2019,7 +2012,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         information on clipping planes. The front clipping plane On/Off setting is reflected in the
         second bit of DXF group code 71 (if the bit is set, front clipping is On).
         """
-    def getUcs(self, /) -> tuple[PyGe.Point3d, PyGe.Vector3d, PyGe.Vector3d]:
+    def getUcs(self, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]:
         """
         This function returns eOk unless it is called for an AcDbViewTableRecord and the view does
         not have an associated UCS. If this function returns eOk, then origin, xAxis, and yAxis are
@@ -2036,7 +2029,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         """
         Returns true if any kind of default lighting is on.
         """
-    def isUcsOrthographic(self, /) -> tuple[bool, PyDb.OrthographicView]:
+    def isUcsOrthographic(self, /) -> tuple[bool,PyDb.OrthographicView]:
         """
         Returns false if the record's associated UCS does not have an orthographic view whose
         reference UCS matches the database's UCSBASE system variable, or if called for an
@@ -2048,7 +2041,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         the time this function is called must point to the pertinent AcDbDatabase object.
         Otherwise, this function generates incorrect results.
         """
-    def isViewOrthographic(self, /) -> tuple[bool, PyDb.OrthographicView]:
+    def isViewOrthographic(self, /) -> tuple[bool,PyDb.OrthographicView]:
         """
         Returns true if the view direction is orthographic relative to the UCSBASE system variable.
         If this function returns true, view is set to the orthographic view. For example, if the
@@ -2068,11 +2061,11 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         information on perspective mode. The perspective mode On/Off setting is reflected in the
         first bit of DXF group code 71 (if the bit is set, perspective mode is On).
         """
-    def setAmbientLightColor(self, val: PyDb.Color, /) -> None:
+    def setAmbientLightColor(self, val : PyDb.Color, /) -> None:
         """
         Sets the ambient light color for the viewport. Returns Acad::eOk on success.
         """
-    def setBackClipDistance(self, val: float, /) -> None:
+    def setBackClipDistance(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use distance as the distance (along the camera-target
         line) from the target to the back clipping plane. Positive values indicate that the
@@ -2081,7 +2074,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         DVIEW command documentation for more information on clipping planes. The back clipping
         plane distance value is used for DXF group code 44.
         """
-    def setBackClipEnabled(self, val: bool, /) -> None:
+    def setBackClipEnabled(self, val : bool, /) -> None:
         """
         If enabled == true, this function sets the back clipping to On in the TableRecord. If
         enabled == false, then back clipping is set to Off. See the AutoCAD DVIEW command
@@ -2089,26 +2082,26 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         setting is reflected in the third bit of DXF group code 71 (if bit is set then back clip is
         enabled).
         """
-    def setBackground(self, val: PyDb.ObjectId, /) -> None:
+    def setBackground(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets a new background to be associated with this view. To unset, pass in NULL as the object
         ID. Returns Acad::eOk on success.
         """
-    def setBrightness(self, val: float, /) -> None:
+    def setBrightness(self, val : float, /) -> None:
         """
         Sets the overall brightness factor for this viewport. Returns Acad::eOk on success.
         """
-    def setCenterPoint(self, val: PyGe.Point2d, /) -> None:
+    def setCenterPoint(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets the TableRecord to use center (in DCS coordinates ) as the center point
         of the view. The center point value is used for DXF group code 10 in the
         AcDbViewTableRecord class and group code 12 in the AcDbViewportTableRecord class.
         """
-    def setContrast(self, val: float, /) -> None:
+    def setContrast(self, val : float, /) -> None:
         """
         Sets the contrast factor for the viewport. Returns Acad::eOk on success.
         """
-    def setDefaultLightingOn(self, val: bool, /) -> None:
+    def setDefaultLightingOn(self, val : bool, /) -> None:
         """
         Sets the state of default lighting for the viewport. Returns Acad::eOk on success.
         """
@@ -2116,11 +2109,11 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         """
         Sets the type of default lighting in the viewport. Returns Acad::eOk on success.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, val : float, /) -> None:
         """
         This function sets the elevation for the view or viewport table record.
         """
-    def setFrontClipAtEye(self, val: bool, /) -> None:
+    def setFrontClipAtEye(self, val : bool, /) -> None:
         """
         Sets the front clipping plane for perspective views. If atEye == true, then the front
         clipping plane is located at the camera (eye) regardless of the frontClipDistance value. If
@@ -2129,7 +2122,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         clipping plane at Eye setting is reflected in the fifth bit of DXF group code 71 (if the
         bit is not set, the clipping plane is at the camera).
         """
-    def setFrontClipDistance(self, val: float, /) -> None:
+    def setFrontClipDistance(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use distance as the distance (along the camera-target
         line) from the target to the front clipping plane. Positive values indicate that the
@@ -2138,7 +2131,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         command documentation for more information on clipping planes. The front clipping plane
         distance value is used for DXF group code 43.
         """
-    def setFrontClipEnabled(self, val: bool, /) -> None:
+    def setFrontClipEnabled(self, val : bool, /) -> None:
         """
         If enabled == true, this function sets the front clipping to On in the TableRecord. If
         enabled == false, then front clipping is set to Off. See the AutoCAD DVIEW command
@@ -2146,20 +2139,20 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         setting is reflected in the second bit of DXF group code 71 (if the bit is set, front
         clipping is On).
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use height (in DCS coordinates) as the height of the
         view. Zooming out within the viewport (and then resaving the view if it's an
         AcDbViewTableRecord) will increase this value. Zooming in (and resaving if appropriate)
         will decrease this value. The view height is used for DXF group code 40.
         """
-    def setLensLength(self, val: float, /) -> None:
+    def setLensLength(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use length as the lens length when perspective mode
         is on in the TableRecord. See the AutoCAD DVIEW command documentation for more information
         on perspective mode and lens length. The lens length value is used for DXF group code 42.
         """
-    def setPerspectiveEnabled(self, val: bool, /) -> None:
+    def setPerspectiveEnabled(self, val : bool, /) -> None:
         """
         If enabled == true, this function sets perspective mode to On in the TableRecord. If
         enabled == false, then perspective mode is set to Off. See the AutoCAD DVIEW command
@@ -2167,19 +2160,19 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         is reflected in the first bit of DXF group code 71 (if the bit is set, perspective mode is
         On).
         """
-    def setSun(self, retId: PyDb.ObjectId, pSun: PyDb.Object, eraseOldSun: bool = True, /) -> None:
+    def setSun(self, retId : PyDb.ObjectId, pSun : PyDb.Object, eraseOldSun : bool=True, /) -> None:
         """
         Sets the object Id of the AcDbSun object associated with this viewport. Returns Acad::eOk
         if the object isn't already associated with another viewport.
         """
-    def setTarget(self, val: PyGe.Point3d, /) -> None:
+    def setTarget(self, val : PyGe.Point3d, /) -> None:
         """
         This function sets the TableRecord to use target (in WCS coordinates) as the location of
         the view's target. The view target is used for DXF group code 12 in AcDbViewTableRecords
         and group code 17 in AcDbViewportTableRecords.
         """
     @overload
-    def setUcs(self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis: PyGe.Vector3d, /) -> None:
+    def setUcs(self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d, /) -> None:
         """
         This function sets the UCS for the view or viewport table record. The new UCS will be
         unnamed and is defined by origin, xAxis, and yAxis.
@@ -2236,7 +2229,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         direction is used for DXF group code 11 in AcDbViewTableRecords and group code 16 in
         AcDbViewportTableRecords.
         """
-    def setViewTwist(self, val: float, /) -> None:
+    def setViewTwist(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use angle (in radians) as the twist angle of the view
         represented by the TableRecord. The twist angle is a rotation around the view's line of
@@ -2246,11 +2239,11 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         twist angle, see the AutoCAD DVIEW command documentation. The view twist angle is used for
         DXF group code 50 in AcDbViewTableRecords and group code 51 in AcDbViewportTableRecords.
         """
-    def setVisualStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setVisualStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the visual style for the viewport. Returns Acad::eOk if successful.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, val : float, /) -> None:
         """
         This function sets the TableRecord to use width (in DCS coordinates) as the width of the
         view (in DCS coordinates). Zooming out within the viewport (and then resaving the view if
@@ -2306,18 +2299,15 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         used for DXF group code 41 for AcDbViewTableRecords. For AcDbViewportTableRecords, the DXF
         group code 41 contains the ratio of the view width to height.
         """
-
 class AcCmDialogTabs(_BoostPythonEnum):
     kACITab: ClassVar[Self]  # 1
     kTrueColorTab: ClassVar[Self]  # 2
     kColorBookTab: ClassVar[Self]  # 4
-
 class AcGeoMapResolution(_BoostPythonEnum):
     kCoarse: ClassVar[Self]  # -1
     kOptimal: ClassVar[Self]  # 0
     kFine: ClassVar[Self]  # 1
     kFiner: ClassVar[Self]  # 2
-
 class AcGeoMapType(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1
@@ -2331,7 +2321,6 @@ class AcGeoMapType(_BoostPythonEnum):
     kEsriStreets: ClassVar[Self]  # 6
     kEsriLightGray: ClassVar[Self]  # 7
     kEsriDarkGray: ClassVar[Self]  # 8
-
 class AcValue(PyRx.RxObject):
     @overload
     def __init__(self, /) -> None: ...
@@ -2368,9 +2357,7 @@ class AcValue(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def format(
-        self, val: PyDb.ValueFormatOption = PyDb.ValueFormatOption.kFormatOptionNone, /
-    ) -> str: ...
+    def format(self, val: PyDb.ValueFormatOption=PyDb.ValueFormatOption.kFormatOptionNone, /) -> str: ...
     def getDouble(self, /) -> float: ...
     def getFormat(self, /) -> str: ...
     def getInt32(self, /) -> int: ...
@@ -2379,7 +2366,7 @@ class AcValue(PyRx.RxObject):
     def getPoint3d(self, /) -> PyGe.Point3d: ...
     def getString(self, /) -> str: ...
     def isValid(self, /) -> bool: ...
-    def reset(self, nDataType: PyDb.ValueDataType = PyDb.ValueDataType.kUnknown, /) -> bool: ...
+    def reset(self, nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown, /) -> bool: ...
     def resetValue(self, /) -> bool: ...
     def setDouble(self, val: float, /) -> None: ...
     def setFormat(self, val: str, /) -> bool: ...
@@ -2390,13 +2377,11 @@ class AcValue(PyRx.RxObject):
     def setString(self, val: str, /) -> None: ...
     def setUnitType(self, val: PyDb.ValueUnitType, /) -> bool: ...
     def unitType(self, /) -> ValueUnitType: ...
-
 class AdsName:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def fromObjectId(self, id: PyDb.ObjectId, /) -> None: ...
     def toObjectId(self, /) -> ObjectId: ...
-
 class AlignedDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -2407,9 +2392,7 @@ class AlignedDimension(PyDb.Dimension):
         as the definition points for the start of the two dimension extension lines.
         """
     @overload
-    def __init__(
-        self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, /) -> None:
         """
         The AcDbAlignedDimension class is used to represent the dimension type that dimensions the
         distance between two points located anywhere in space. The dimension's normal vector must
@@ -2417,14 +2400,7 @@ class AlignedDimension(PyDb.Dimension):
         as the definition points for the start of the two dimension extension lines.
         """
     @overload
-    def __init__(
-        self,
-        xLine1Point: PyGe.Point3d,
-        xLine2Point: PyGe.Point3d,
-        dimLinePoint: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, /) -> None:
         """
         The AcDbAlignedDimension class is used to represent the dimension type that dimensions the
         distance between two points located anywhere in space. The dimension's normal vector must
@@ -2432,15 +2408,7 @@ class AlignedDimension(PyDb.Dimension):
         as the definition points for the start of the two dimension extension lines.
         """
     @overload
-    def __init__(
-        self,
-        xLine1Point: PyGe.Point3d,
-        xLine2Point: PyGe.Point3d,
-        dimLinePoint: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDbAlignedDimension class is used to represent the dimension type that dimensions the
         distance between two points located anywhere in space. The dimension's normal vector must
@@ -2530,22 +2498,22 @@ class AlignedDimension(PyDb.Dimension):
         default,' which is the same as an obliquing angle of pi / 2 (90 degrees). The obliquing
         angle is used for DXF group code 52.
         """
-    def setDimLinePoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDimLinePoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that specifies where the dimension line will be (that is, this point will be somewhere on
         the dimension line).
         """
-    def setJogSymbolOn(self, val: bool, /) -> None:
+    def setJogSymbolOn(self, val : bool, /) -> None:
         """
         This function sets the jog symbol status. Returns Acad::eOk if successful. Otherwise, it
         returns Acad::eInvalidInput.
         """
-    def setJogSymbolPosition(self, pt: PyGe.Point3d, /) -> None:
+    def setJogSymbolPosition(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the jog symbol position. Returns Acad::eOk if successful.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, val : float, /) -> None:
         """
         This function sets the dimension to use oblique (in radians) as the extension line
         obliquing angle for the dimension. This angle is relative to the line that contains the
@@ -2562,7 +2530,7 @@ class AlignedDimension(PyDb.Dimension):
         (90 degrees). The obliquing angle is used for DXF group code 52. This function always
         returns Acad::eOk.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used as the start point for the first extension line of the dimension. The AutoCAD
@@ -2570,7 +2538,7 @@ class AlignedDimension(PyDb.Dimension):
         point. The first extension line start point is used for DXF group code 13. This function
         always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used as the start point for the second extension line of the dimension. The AutoCAD
@@ -2592,13 +2560,11 @@ class AlignedDimension(PyDb.Dimension):
         will affect how the extension line is displayed relative to this point. The second
         extension line start point is used for DXF group code 14.
         """
-
 class AnnoType(_BoostPythonEnum):
     kMText: ClassVar[Self]  # 0
     kFcf: ClassVar[Self]  # 1
     kBlockRef: ClassVar[Self]  # 2
     kNoAnno: ClassVar[Self]  # 3
-
 class AnnotationScale(PyDb.ObjectContext):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -2625,15 +2591,13 @@ class AnnotationScale(PyDb.ObjectContext):
     def getIsTemporaryScale(self, /) -> bool: ...
     def getPaperUnits(self, /) -> float: ...
     def getScale(self, /) -> float: ...
-    def matchScaleId(self, val: int, /) -> bool: ...
-    def setDrawingUnits(self, val: float, /) -> None: ...
-    def setPaperUnits(self, val: float, /) -> None: ...
-
+    def matchScaleId(self, val : int, /) -> bool: ...
+    def setDrawingUnits(self, val : float, /) -> None: ...
+    def setPaperUnits(self, val : float, /) -> None: ...
 class AnnotativeStates(_BoostPythonEnum):
     kTrue: ClassVar[Self]  # 0
     kFalse: ClassVar[Self]  # 1
     kNotApplicable: ClassVar[Self]  # 2
-
 class Arc(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -2641,22 +2605,12 @@ class Arc(PyDb.Curve):
         The AcDbArc class represents the arc entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float, /
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float, /) -> None:
         """
         The AcDbArc class represents the arc entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        normal: PyGe.Vector2d,
-        radius: float,
-        startAngle: float,
-        endAngle: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d,normal: PyGe.Vector2d, radius: float, startAngle: float, endAngle: float, /) -> None:
         """
         The AcDbArc class represents the arc entity within AutoCAD.
         """
@@ -2713,7 +2667,7 @@ class Arc(PyDb.Curve):
         towards the origin. The OCS X axis is determined by using the arc's normal, the WCS Z axis,
         and the arbitrary axis algorithm. The end angle value is used for DXF group code 51.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CircArc3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.CircArc3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -2731,13 +2685,13 @@ class Arc(PyDb.Curve):
         This function returns the radius of the arc. The radius value is used for DXF group code
         40.
         """
-    def setCenter(self, val: PyGe.Point3d, /) -> None:
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
         """
         This function sets center to be the center point for the arc. center must be in WCS
         coordinates. The center point value is the WCS equivalent of DXF group code 10. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setEndAngle(self, val: float, /) -> None:
+    def setEndAngle(self, val:float, /) -> None:
         """
         This function sets endAngle as the end angle of the arc. endAngle must be in radians. The
         angle is relative to the OCS X axis for the arc with positive angles going counterclockwise
@@ -2748,20 +2702,20 @@ class Arc(PyDb.Curve):
         -1.5708 (-90 degrees). The end angle value is used for DXF group code 51. Returns Acad::eOk
         if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector of the plane containing the arc. normal
         must be in WCS coordinates and must be non-zero length. The normal value is used for DXF
         group code 210. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed
         in is not acceptable.
         """
-    def setRadius(self, val: float, /) -> None:
+    def setRadius(self, val:float, /) -> None:
         """
         This function sets radius to be the radius of the arc. radius must be greater than 0. The
         radius value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartAngle(self, val: float, /) -> None:
+    def setStartAngle(self, val:float, /) -> None:
         """
         This function sets startAngle to be the start angle of the arc. startAngle must be in
         radians. The angle is relative to the OCS X axis for the arc with positive angles going
@@ -2773,7 +2727,7 @@ class Arc(PyDb.Curve):
         code 50. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is
         not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val:float, /) -> None:
         """
         This function sets the arc's thickness to be thickness. The thickness is the arc's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -2798,7 +2752,6 @@ class Arc(PyDb.Curve):
         """
         This is totalAngle, a member of class AcDbArc.
         """
-
 class ArcDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -2806,41 +2759,17 @@ class ArcDimension(PyDb.Dimension):
         This class represents an arc length dimension.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xLine1Point: PyGe.Point3d,
-        xLine2Point: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, /) -> None:
         """
         This class represents an arc length dimension.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xLine1Point: PyGe.Point3d,
-        xLine2Point: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, /) -> None:
         """
         This class represents an arc length dimension.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xLine1Point: PyGe.Point3d,
-        xLine2Point: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         This class represents an arc length dimension.
         """
@@ -2926,52 +2855,52 @@ class ArcDimension(PyDb.Dimension):
         """
         Returns the end point for the arc length dimension's extra leader, if drawn.
         """
-    def setArcEndParam(self, val: float, /) -> None:
+    def setArcEndParam(self, val : float, /) -> None:
         """
         Sets the parameter of the arc being dimensioned corresponding to the arc length dimension's
         second definition point.
         """
-    def setArcPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setArcPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the point through which the arc length dimension's dimension arc passes.
         """
-    def setArcStartParam(self, val: float, /) -> None:
+    def setArcStartParam(self, val : float, /) -> None:
         """
         Sets the parameter of the arc being dimensioned corresponding to the arc length dimension's
         first definition point.
         """
-    def setArcSymbolType(self, val: int, /) -> None:
+    def setArcSymbolType(self, val : int, /) -> None:
         """
         Sets the type of symbol to use in the arc length dimension's text string. A value of 0
         indicates that the arc symbol precedes text, 1 indicates that the arc symbol is above text,
         and 2 indicates that no arc symbol is used. This overrides the setting of this value in the
         dimension's style.
         """
-    def setCenterPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the center point of the arc dimensioned by the arc length dimension.
         """
-    def setHasLeader(self, val: bool, /) -> None:
+    def setHasLeader(self, val : bool, /) -> None:
         """
         Sets whether the arc length dimension has an extra leader drawn to resolve ambiguity.
         """
-    def setIsPartial(self, val: bool, /) -> None:
+    def setIsPartial(self, val : bool, /) -> None:
         """
         Reserved for future use.
         """
-    def setLeader1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setLeader1Point(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's extra leader, if drawn.
         """
-    def setLeader2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setLeader2Point(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the end point for the arc length dimension's extra leader, if drawn.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's first extension line.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's second extension line.
         """
@@ -2983,7 +2912,6 @@ class ArcDimension(PyDb.Dimension):
         """
         Returns the start point for the arc length dimension's second extension line.
         """
-
 class AssocAction(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None: ...
@@ -3018,7 +2946,6 @@ class AssocAction(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class AssocConstraintType(_BoostPythonEnum):
     kNoneAssocConstraintType: ClassVar[Self]  # 0
     kDistanceAssocConstraintType: ClassVar[Self]  # 1
@@ -3030,7 +2957,6 @@ class AssocConstraintType(_BoostPythonEnum):
     kAngle3AssocConstraintType: ClassVar[Self]  # 7
     kRadiusAssocConstraintType: ClassVar[Self]  # 8
     kDiameterAssocConstraintType: ClassVar[Self]  # 9
-
 class AssocDependency(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None: ...
@@ -3065,28 +2991,23 @@ class AssocDependency(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class AssocDraggingState(_BoostPythonEnum):
     kNotDraggingAssocDraggingState: ClassVar[Self]  # 0
     kFirstSampleAssocDraggingState: ClassVar[Self]  # 1
     kIntermediateSampleAssocDraggingState: ClassVar[Self]  # 2
     kLastSampleAssocDraggingState: ClassVar[Self]  # 3
-
 class AssocEvaluationMode(_BoostPythonEnum):
     kModifyObjectsAssocEvaluationMode: ClassVar[Self]  # 0
     kModifyActionAssocEvaluationMode: ClassVar[Self]  # 1
-
 class AssocEvaluationPriority(_BoostPythonEnum):
     kIsUpToDateAssocStatus: ClassVar[Self]  # -1000
     kCannotDermineAssocEvaluationPriority: ClassVar[Self]  # 0
     kCanBeEvaluatedAssocEvaluationPriority: ClassVar[Self]  # 1000
-
 class AssocFlags(_BoostPythonEnum):
     kFirstPointRef: ClassVar[Self]  # 1
     kSecondPointRef: ClassVar[Self]  # 2
     kThirdPointRef: ClassVar[Self]  # 4
     kFourthPointRef: ClassVar[Self]  # 8
-
 class AssocNetwork(PyDb.AssocAction):
     @overload
     def __init__(self, /) -> None: ...
@@ -3099,6 +3020,8 @@ class AssocNetwork(PyDb.AssocAction):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
+    def addAction(self, actionId: PyDb.ObjectId, alsoSetAsDatabaseOwner: bool, /) -> None: ...
+    def assocNetworkIterator(self, /) -> list: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AssocNetwork: ...
     @staticmethod
@@ -3121,7 +3044,17 @@ class AssocNetwork(PyDb.AssocAction):
         """
     def getActions(self, /) -> list: ...
     def getActionsToEvaluate(self, /) -> list: ...
-
+    @staticmethod
+    def getInstanceFromDatabase(db: PyDb.Database,createIfDoesNotExist: bool,dictionaryKey:str, /) -> ObjectId: ...
+    @staticmethod
+    def getInstanceFromObject(owningId:PyDb.ObjectId,createIfDoesNotExist:bool,createIfDoesNotExist:bool,dictionaryKey:str, /) -> ObjectId: ...
+    def ownedActionStatusChanged(self, pOwnedAction: PyDb.AssocAction, previousStatus: PyDb.AssocStatus, /) -> None: ...
+    def removeAction(self, actionId: PyDb.ObjectId, alsoEraseIt: bool, /) -> None: ...
+    def removeAllActions(self, alsoEraseThem: bool, /) -> None: ...
+    @staticmethod
+    def removeInstanceFromDatabase(db:PyDb.Database,alsoEraseIt:bool,dictionaryKey:str, /) -> None: ...
+    @staticmethod
+    def removeInstanceFromObject(owningObjectId:PyDb.ObjectId,alsoEraseIt: bool,dictionaryKey:str, /) -> None: ...
 class AssocPersSubentIdPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -3141,32 +3074,24 @@ class AssocPersSubentIdPE(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAllSubentities(
-        self, primaryEntity: PyDb.Entity, subentType: PyDb.SubentType | PyRx.RxObject, /
-    ) -> list[PyDb.SubentId]:
+    def getAllSubentities(self, primaryEntity : PyDb.Entity, subentType : PyDb.SubentType|PyRx.RxObject, /) -> list[PyDb.SubentId]:
         """
         Gets all subentities of the given type.
         """
-    def getEdgeSubentityGeometry(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> PyGe.Curve3d:
+    def getEdgeSubentityGeometry(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> PyGe.Curve3d:
         """
         Gets curves of edge subentities corresponding to the internally held AcDbAssocPersSubentId,
         which must identify an edge subentity type. Notice that one AcDbAssocPersSubentId may
         generally correspond to any number of subentities, though in most cases it will be just one
         subentity. The caller will become the owner of the returned curves.
         """
-    def getEdgeVertexSubentities(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> tuple[PyDb.SubentId, PyDb.SubentId, list[PyDb.SubentId]]:
+    def getEdgeVertexSubentities(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId]]:
         """
         Gets the vertex AcDbSubentIds corresponding to the given edge AcDbSubentId. This protocol
         is needed to query the relations between the edge and vertex subentities. The default
         implementation just returns Acad::eNotImplemented.
         """
-    def getFaceSubentityGeometry(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> PyGe.Surface:
+    def getFaceSubentityGeometry(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> PyGe.Surface:
         """
         Gets surfaces of face subentities corresponding to the internally held
         AcDbAssocPersSubentId, which must identify a face subentity type. Notice that one
@@ -3174,17 +3099,13 @@ class AssocPersSubentIdPE(PyRx.RxObject):
         cases it will be just one subentity. The caller will become the owner of the returned
         surfaces.
         """
-    def getSplineEdgeVertexSubentities(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> tuple[PyDb.SubentId, PyDb.SubentId, list[PyDb.SubentId], list[PyDb.SubentId]]:
+    def getSplineEdgeVertexSubentities(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId],list[PyDb.SubentId]]:
         """
         Gets the vertex AcDbSubentIds corresponding to the given edge AcDbSubentId whose geometry
         is defined by a spline. This protocol is needed to query the relations between the edge and
         vertex subentities. The default implementation just returns Acad::eNotImplemented.
         """
-    def getSubentityGeometry(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> PyGe.Entity3d:
+    def getSubentityGeometry(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> PyGe.Entity3d:
         """
         Gets the geometry of a subentity. For AcDb::kFaceSubentTpe, AcDb::kEdgeSubentType,
         AcDb::kVertexSubentType the default implementation calls
@@ -3192,14 +3113,11 @@ class AssocPersSubentIdPE(PyRx.RxObject):
         implementation returns Acad::eNotImplemented. Geometry of a vertex subentity is returned in
         an AcGePosition3d object.
         """
-    def getVertexSubentityGeometry(
-        self, primaryEntity: PyDb.Entity, subentId: PyDb.SubentId, /
-    ) -> PyGe.Point3d:
+    def getVertexSubentityGeometry(self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId, /) -> PyGe.Point3d:
         """
         Gets the coordinates of a vertex subentity. The default implementation just returns
         Acad::eNotImplemented.
         """
-
 class AssocStatus(_BoostPythonEnum):
     kIsUpToDateAssocStatus: ClassVar[Self]  # 0
     kChangedDirectlyAssocStatus: ClassVar[Self]  # 1
@@ -3209,13 +3127,11 @@ class AssocStatus(_BoostPythonEnum):
     kErasedAssocStatus: ClassVar[Self]  # 5
     kSuppressedAssocStatus: ClassVar[Self]  # 6
     kUnresolvedAssocStatus: ClassVar[Self]  # 7
-
 class AssocTransformationType(_BoostPythonEnum):
     kNotSpecified: ClassVar[Self]  # 0
     kStretch: ClassVar[Self]  # 1
     kRotate: ClassVar[Self]  # 2
     kMove: ClassVar[Self]  # 3
-
 class AssocVariable(PyDb.AssocAction):
     @overload
     def __init__(self, /) -> None: ...
@@ -3248,14 +3164,24 @@ class AssocVariable(PyDb.AssocAction):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
+    def description(self, /) -> str: ...
+    def evaluatorId(self, /) -> str: ...
+    def expression(self, convertSymbolNamesFromCanonicalForm:bool = False, /) -> str: ...
+    def findObjectByName(self, objectName:str, pObjectClass:PyRx.RxClass, /) -> ObjectId: ...
+    def isAnonymous(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, /) -> None: ...
+    def setEvaluatorId(self, evalId:str, /) -> None: ...
+    def setExpression(self, newExpression:str, evaluatorId:str, checkForCyclicalDependencies:bool, updateDependenciesOnReferencedSymbol:bool, silentMode:bool = False, /) -> tuple: ...
+    def setName(self, newName:str, updateReferencingExpressions:bool, /) -> bool: ...
+    def setValue(self, evalId:PyDb.EvalVariant, /) -> None: ...
+    def validateNameAndExpression(self, nameToValidate:str, expressionToValidate:str, /) -> tuple: ...
+    def value(self, /) -> EvalVariant: ...
 class AttributeDefinition(PyDb.Text):
     @overload
     def __init__(self, /) -> None: ...
     @overload
-    def __init__(
-        self, position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId, /
-    ) -> None: ...
+    def __init__(self, position: PyGe.Point3d, text: str, tag: str, prompt: str, styleid: PyDb.ObjectId, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
@@ -3265,7 +3191,7 @@ class AttributeDefinition(PyDb.Text):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def adjustAlignment(self, val: Database, /) -> None:
+    def adjustAlignment(self, val : Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
         adjusted according to the text's justification settings and the text style. But, if the
@@ -3288,7 +3214,7 @@ class AttributeDefinition(PyDb.Text):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeDefinition: ...
-    def convertIntoMTextAttributeDefinition(self, val: bool, /) -> None:
+    def convertIntoMTextAttributeDefinition(self, val : bool, /) -> None:
         """
         Converts this attribute definition into a multi-line attribute definition. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -3371,7 +3297,7 @@ class AttributeDefinition(PyDb.Text):
         by the returned string. The C++ delete [] should be used for this purpose. The prompt
         string is used for DXF group code 3.
         """
-    def setConstant(self, val: bool, /) -> None:
+    def setConstant(self, val : bool, /) -> None:
         """
         This function sets the constant flag of the AcDbAttributeDefinition. If constant is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be constant. If constant is
@@ -3383,13 +3309,13 @@ class AttributeDefinition(PyDb.Text):
         AcDbAttributeDefinition. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setFieldLength(self, val: int, /) -> None:
+    def setFieldLength(self, val : int, /) -> None:
         """
         Sets length to be the attribute's field length value. This value is not currently used
         within AutoCAD. The field length value is used for DXF group code 73. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setInvisible(self, val: bool, /) -> None:
+    def setInvisible(self, val : bool, /) -> None:
         """
         This function sets the visibility flag of the AcDbAttributeDefinition. If invisible is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be invisible. If invisible
@@ -3399,19 +3325,19 @@ class AttributeDefinition(PyDb.Text):
         Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setLockPositionInBlock(self, val: bool, /) -> None:
+    def setLockPositionInBlock(self, val : bool, /) -> None:
         """
         This function sets the lock position property of the AcDbAttributeDefinition. If bValue is
         true, then the AcDbAttributeDefinition object is set to be immovable relative to the
         geometry in the block.
         """
-    def setMTextAttributeDefinition(self, val: MText, /) -> None:
+    def setMTextAttributeDefinition(self, val : MText, /) -> None:
         """
         This function can be called on multi-line attribute definitions, to replace the internal
         AcDbMText entity with a new or modified one. Returns Acad::eOk on success. Returns other
         error codes on failure.
         """
-    def setPreset(self, val: bool, /) -> None:
+    def setPreset(self, val : bool, /) -> None:
         """
         This function sets the preset flag of the AcDbAttributeDefinition. If preset is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be preset. If preset is
@@ -3421,7 +3347,7 @@ class AttributeDefinition(PyDb.Text):
         value and not prompt for user input). Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPrompt(self, val: str, /) -> None:
+    def setPrompt(self, val : str, /) -> None:
         """
         This function sets the AcDbAttributeDefinition to use a copy of newPrompt for its prompt
         string. When the blockTableRecord containing the AcDbAttributeDefinition is inserted and an
@@ -3430,14 +3356,14 @@ class AttributeDefinition(PyDb.Text):
         The prompt string is used for DXF group code 3. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTag(self, val: str, /) -> None:
+    def setTag(self, val : str, /) -> None:
         """
         This function sets the AcDbAttributeDefinition's tag to be a copy of the newTag string. The
         tag string is the identifier you see on screen to represent the AcDbAttributeDefinition.
         The tag string is used for DXF group code 2. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setVerifiable(self, val: bool, /) -> None:
+    def setVerifiable(self, val : bool, /) -> None:
         """
         This function sets the verifiable flag of the AcDbAttributeDefinition. If verifiable is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be verifiable. If
@@ -3459,14 +3385,11 @@ class AttributeDefinition(PyDb.Text):
         """
         Updates the internal AcDbMText entity from the basic AcDbAttributeDefinition properties
         """
-
 class AttributeReference(PyDb.Text):
     @overload
     def __init__(self, /) -> None: ...
     @overload
-    def __init__(
-        self, position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId, /
-    ) -> None: ...
+    def __init__(self, position: PyGe.Point3d, text: str, tag: str, styleid: PyDb.ObjectId, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
@@ -3482,7 +3405,7 @@ class AttributeReference(PyDb.Text):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeReference: ...
-    def convertIntoMTextAttribute(self, val: bool, /) -> None:
+    def convertIntoMTextAttribute(self, val : bool, /) -> None:
         """
         Converts an attribute into a multi-line attribute. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
@@ -3563,9 +3486,7 @@ class AttributeReference(PyDb.Text):
         properties data is left alone. Returns Acad::eOk if successful.
         """
     @overload
-    def setAttributeFromBlock(
-        self, pAttdef: PyDb.AttributeDefinition, blkXform: PyGe.Matrix3d, /
-    ) -> None:
+    def setAttributeFromBlock(self, pAttdef: PyDb.AttributeDefinition, blkXform: PyGe.Matrix3d, /) -> None:
         """
         Applies blkXform to the attribute's geometric data to transform the position, sizing, and
         obliquing as would be done by the INSERT command. The attribute's textual and entity
@@ -3578,13 +3499,13 @@ class AttributeReference(PyDb.Text):
         obliquing as would be done by the INSERT command. The attribute's textual and entity
         properties data is left alone. Returns Acad::eOk if successful.
         """
-    def setFieldLength(self, val: int, /) -> None:
+    def setFieldLength(self, val : int, /) -> None:
         """
         Sets length to be the attribute's field length value. This value is not currently used
         within AutoCAD. The field length value is used for DXF group code 73. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setInvisible(self, val: bool, /) -> None:
+    def setInvisible(self, val : bool, /) -> None:
         """
         This function sets the visibility flag of the attribute. If invisible is Adesk::kTrue, then
         the attribute object is set to be invisible. If invisible is Adesk::kFalse, then the
@@ -3592,18 +3513,18 @@ class AttributeReference(PyDb.Text):
         group code 70 (that is, if bit 1 is set, then the attribute will be invisible). Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setLockPositionInBlock(self, val: bool, /) -> None:
+    def setLockPositionInBlock(self, val : bool, /) -> None:
         """
         This function sets the lock property of this object. If bValue is true, then this object is
         set to be immovable relative to geometry in the block. Returns Acad::eOk if successful.
         """
-    def setMTextAttribute(self, val: MText, /) -> None:
+    def setMTextAttribute(self, val : MText, /) -> None:
         """
         This function can be called on multi-line attributes, to replace the internal AcDbMText
         entity with a new or modified one. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def setTag(self, val: str, /) -> None:
+    def setTag(self, val : str, /) -> None:
         """
         This function sets the attribute's tag to be a copy of the newTag string. The tag string is
         the identifier you see if you explode the AcDbBlockReference that owns the attribute, so
@@ -3625,12 +3546,10 @@ class AttributeReference(PyDb.Text):
         Updates the internal AcDbMText entity from the basic AcDbAttribute properties. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-
 class AutoWorkingDatabase:
     def __init__(self, db: PyDb.Database, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def wdb(self, /) -> Database: ...
-
 class BlockBegin(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -3693,7 +3612,6 @@ class BlockBegin(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class BlockEnd(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -3752,7 +3670,6 @@ class BlockEnd(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class BlockReference(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -3881,7 +3798,7 @@ class BlockReference(PyDb.Entity):
         for the other modes, then return Acad::eOk.
         """
     def __reduce__(self, /) -> Any: ...
-    def appendAttribute(self, val: PyDb.AttributeReference, /) -> ObjectId:
+    def appendAttribute(self, val : PyDb.AttributeReference, /) -> ObjectId:
         """
         This function appends the AcDbAttribute object pointed to by pNewAttrib to the attribute
         list of the block reference, establishes the block reference as the attribute's owner, and
@@ -3938,7 +3855,7 @@ class BlockReference(PyDb.Entity):
         Acad::eNotInDatabase if the AcDbBlockReference on which it is called has not been added to
         a database. Returns Acad::eNotApplicable if the AcDbBlockReference is not uniformly scaled.
         """
-    def geomExtentsBestFit(self, val: PyGe.Matrix3d = PyGe.Matrix3d.kIdentity, /) -> Extents:
+    def geomExtentsBestFit(self, val : PyGe.Matrix3d=PyGe.Matrix3d.kIdentity, /) -> Extents:
         """
         When working in non-WCS coordinate systems, the extents returned from
         AcDbBlockReference::geomExtents() can be somewhat larger that the actual geometry because
@@ -4000,7 +3917,7 @@ class BlockReference(PyDb.Entity):
         is used for DXF group code 41. The Y scale factor value is used for DXF group code 42. The
         Z scale factor value is used for DXF group code 43.
         """
-    def setBlockTableRecord(self, val: ObjectId, /) -> None:
+    def setBlockTableRecord(self, val : ObjectId, /) -> None:
         """
         This function sets objId as the object ID of the AcDbBlockTableRecord referenced by the
         block reference. The referenced block table record contains the entities that the block
@@ -4008,7 +3925,7 @@ class BlockReference(PyDb.Entity):
         that is used with the group code -2 in AutoLISP and ADS entity information listings of the
         block reference.
         """
-    def setBlockTransform(self, val: PyGe.Matrix3d, /) -> None:
+    def setBlockTransform(self, val : PyGe.Matrix3d, /) -> None:
         """
         This function resets the block reference's position (insertion point), normal vector, scale
         factors, and rotation so that the resulting MCS-to-drawing-WCS transform is the same as the
@@ -4016,7 +3933,7 @@ class BlockReference(PyDb.Entity):
         eCannotScaleNonUniformly when called on a block reference that refers to a block that
         cannot be scaled nonuniformly.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         This function sets newVal to be the normal vector of the plane containing the block
         reference. newVal must be in WCS coordinates and must be nonzero length. Warning This
@@ -4031,14 +3948,14 @@ class BlockReference(PyDb.Entity):
         210. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the block reference to use pt as the position value (often referred to as the
         insertion point). pt must be in WCS coordinates. The position value is the WCS equivalent
         of the DXF group code 10. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, val : float, /) -> None:
         """
         This function sets newVal to be the rotation value (in radians) of the block reference. The
         rotation value is relative to the X axis of a coordinate system that is parallel to the OCS
@@ -4048,7 +3965,7 @@ class BlockReference(PyDb.Entity):
         used for DXF group code 50. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setScaleFactors(self, val: PyGe.Scale3d, /) -> None:
+    def setScaleFactors(self, val : PyGe.Scale3d, /) -> None:
         """
         This function sets the block reference to use the X, Y, and Z scale factors contained in
         scale. The X, Y, and Z scaling of the block reference is applied to the entities in the
@@ -4071,21 +3988,13 @@ class BlockReference(PyDb.Entity):
         and will use AutoCAD's internal code (using deepClone() of the referenced
         BlockTableRecord's contents) to do the explode operation.
         """
-
 class BlockScaling(_BoostPythonEnum):
     kAny: ClassVar[Self]  # 0
     kUniform: ClassVar[Self]  # 1
-
 class BlockTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def add(self, block: BlockTableRecord, /) -> ObjectId:
+    def add(self, block : BlockTableRecord, /) -> ObjectId:
         """
         This function adds the record, pointed to by pRecord, to both the database containing the
         table and the table itself. If the addition succeeds, recordId is set to the AcDbObjectId
@@ -4113,7 +4022,6 @@ class BlockTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class BlockTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -4197,12 +4105,12 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         """
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
     def __reduce__(self, /) -> Any: ...
-    def addAnnoScalestoBlkRefs(self, scale: bool, /) -> None:
+    def addAnnoScalestoBlkRefs(self, scale : bool, /) -> None:
         """
         Loops through and adds annotation data to each block reference that points to this block
         table record. Also forces each block reference's user scale to one.
         """
-    def appendAcDbEntities(self, entities: Collection[PyDb.Entity], /) -> list[PyDb.ObjectId]:
+    def appendAcDbEntities(self, entities : Collection[PyDb.Entity], /) -> list[PyDb.ObjectId]:
         """
         This function adds pEntity to the database and the block table record. If the operation is
         successful, then pOutputId is set to the AcDbObjectId of the newly added entity. If pEntity
@@ -4211,7 +4119,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         pEntity does not point to an object of a class derived from AcDbEntity (either directly or
         indirectly), then Acad::eNotAnEntity will be returned.
         """
-    def appendAcDbEntity(self, entity: PyDb.Entity, /) -> ObjectId:
+    def appendAcDbEntity(self, entity : PyDb.Entity, /) -> ObjectId:
         """
         This function adds pEntity to the database and the block table record. If the operation is
         successful, then pOutputId is set to the AcDbObjectId of the newly added entity. If pEntity
@@ -4220,7 +4128,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         pEntity does not point to an object of a class derived from AcDbEntity (either directly or
         indirectly), then Acad::eNotAnEntity will be returned.
         """
-    def assumeOwnershipOf(self, entities: Collection[PyDb.Entity], /) -> None:
+    def assumeOwnershipOf(self, entities : Collection[PyDb.Entity], /) -> None:
         """
         This method causes the invoked block table record to assume the ownership of all the
         entities listed in the input entitiesToMove array, and provides an optimized way of moving
@@ -4294,9 +4202,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Specifies whether block references associated with this block table record can be exploded.
         Returns true if the block can be exploded or false if it cannot.
         """
-    def getBlockReferenceIds(
-        self, directOnly: bool = True, bForceValidity: bool = False, /
-    ) -> list[PyDb.ObjectId]:
+    def getBlockReferenceIds(self, directOnly : bool = True, bForceValidity : bool = False, /) -> list[PyDb.ObjectId]:
         """
         This function returns a list of AcDbBlockReferences that either directly or indirectly,
         through block nesting, reference this block. It only returns those block references that
@@ -4312,9 +4218,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         bForceValidity is false, it will return Acad::eSomeInputDataLeftUnread if it encounters an
         older drawing that does not have the reference information in its blocks.
         """
-    def getBlockReferences(
-        self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> list[PyDb.BlockReference]: ...
+    def getBlockReferences(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> list[PyDb.BlockReference]: ...
     def getErasedBlockReferenceIds(self, /) -> list[PyDb.ObjectId]:
         """
         This function returns a list of AcDbBlockReferences that directly reference this block. It
@@ -4330,9 +4234,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Retrieves the preview icon data from the block table record. If the block table record does
         not have a preview icon, the length of the previewIcon array will be 0. Returns Acad::eOk.
         """
-    def getSortentsTable(
-        self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, createIfNecessary: bool = False, /
-    ) -> SortentsTable:
+    def getSortentsTable(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, createIfNecessary:bool = False, /) -> SortentsTable:
         """
         Returns the sortents table opened as requested, sparing the caller the work of getting the
         extension dictionary and looking the sortents dictionary up in it. If the dictionary is
@@ -4384,13 +4286,13 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         if isUnloaded() returns Adesk::kTrue).
         """
     @overload
-    def objectIdArray(self, desc: PyRx.RxClass = PyDb.Entity, /) -> ObjectIdArray: ...
+    def objectIdArray(self, desc: PyRx.RxClass=PyDb.Entity, /) -> ObjectIdArray: ...
     @overload
     def objectIdArray(self, descList: list[PyRx.RxClass], /) -> ObjectIdArray: ...
     @overload
     def objectIdArray(self, *args) -> ObjectIdArray: ...
     @overload
-    def objectIds(self, desc: PyRx.RxClass = PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
+    def objectIds(self, desc: PyRx.RxClass=PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
     @overload
@@ -4418,35 +4320,35 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         block table record). Returns Acad::eOk if successful. The sPath value is used for DXF group
         code 1.
         """
-    def postProcessAnnotativeBTR(self, bqueryOnly: bool = False, bScale: bool = True, /) -> int:
+    def postProcessAnnotativeBTR(self, bqueryOnly  : bool = False, bScale : bool = True, /) -> int:
         """
         This function post-processes a block after it is defined or redefined to be annotative. Any
         annotative entities in the block definition are stripped of their annotative property and
         any nested annotative blocks are exploded into non-annotative entities.
         """
-    def setBlockInsertUnits(self, val: PyDb.UnitsValue, /) -> None:
+    def setBlockInsertUnits(self, val : PyDb.UnitsValue, /) -> None:
         """
         Allows applications to save an INSUNITS value on a block table record. Returns Acad::eOk if
         successful.
         """
-    def setBlockScaling(self, val: PyDb.BlockScaling, /) -> None:
+    def setBlockScaling(self, val : PyDb.BlockScaling, /) -> None:
         """
         Sets whether block references associated with this block table record can be uniformly or
         nonuniformly scaled. Returns Acad::eOk if successful.
         """
-    def setComments(self, val: str, /) -> None:
+    def setComments(self, val : str, /) -> None:
         """
         This function makes a copy of the string pointed to by pString and then sets the
         BlockTableRecord to use the copy as its description text. Returns Acad::eOk if successful.
         If there is not sufficient memory for the copy, then Acad::eOutOfMemory is returned. The
         description string is used for DXF group code 4.
         """
-    def setExplodable(self, val: bool, /) -> None:
+    def setExplodable(self, val : bool, /) -> None:
         """
         Sets whether block references associated with this block table record can be exploded.
         Returns Acad::eOk if successful.
         """
-    def setIsFromOverlayReference(self, val: bool, /) -> None:
+    def setIsFromOverlayReference(self, val : bool, /) -> None:
         """
         This function will set this AcDbBlockTableRecord to be an overlay if bIsOverlay is true;
         otherwise, it will set it to be in insert type xref. This just sets the BlockTableRecord's
@@ -4456,7 +4358,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         BlockReference that references it was created. This is necessary so that the
         BlockTableRecord's list of referencing BlockReferences is up to date.
         """
-    def setIsUnloaded(self, val: bool, /) -> None:
+    def setIsUnloaded(self, val : bool, /) -> None:
         """
         This function marks the xref block table record as unloaded, but does not perform the
         actual unload process. This function can only be used on block table records in the
@@ -4465,18 +4367,18 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         in the database currently loaded in the AutoCAD editor. The isUnloaded value is used for
         the first bit DXF group code 71 (the bit is set if isUnloaded() returns Adesk::kTrue).
         """
-    def setLayoutId(self, val: PyDb.ObjectId, /) -> None:
+    def setLayoutId(self, val : PyDb.ObjectId, /) -> None:
         """
         This function sets the forward pointer from the block table record to the corresponding
         AcDbLayout object in the Layouts dictionary.
         """
-    def setOrigin(self, val: PyGe.Point3d, /) -> None:
+    def setOrigin(self, val : PyGe.Point3d, /) -> None:
         """
         Sets pt to be the insertion point of the block table record in WCS coordinates. This point
         is the origin of the MCS (which is the local WCS for the entities within the block table
         record).
         """
-    def setPathName(self, val: str, /) -> None:
+    def setPathName(self, val : str, /) -> None:
         """
         Sets the block table record to use a copy of pathStr as path and name of the xref drawing.
         If this block table record is not an xref, then this string will be copied into the block
@@ -4487,7 +4389,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         """
     def visibleObjectIdArray(self, /) -> ObjectIdArray: ...
     def visibleObjectIds(self, /) -> list: ...
-    def xrefDatabase(self, val: bool, /) -> Database:
+    def xrefDatabase(self, val : bool, /) -> Database:
         """
         This function returns a pointer to the AcDbDatabase that defines this block table record's
         contents. If incUnres is true, then a pointer will be returned, even if the xref block
@@ -4500,7 +4402,6 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         This function returns an AcDb::XrefStatus enumerated type value indicating the xref status
         of the block table record on which this method is called.
         """
-
 class Body(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -4547,15 +4448,13 @@ class Body(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class BoolOperType(_BoostPythonEnum):
     kBoolUnite: ClassVar[Self]  # 0
     kBoolIntersect: ClassVar[Self]  # 1
     kBoolSubtract: ClassVar[Self]  # 2
-
 class Cell:
     def __getitem__(self, idx: int, /) -> int: ...
-    def __init__(self, row: int = -1, column: int = -1, /) -> None: ...
+    def __init__(self, row : int=-1, column : int=-1, /) -> None: ...
     def __ne__(self, /) -> bool: ...
     def __reduce__(self, /) -> Any: ...
     def __setitem__(self, idx: int, val: int, /) -> None: ...
@@ -4563,7 +4462,6 @@ class Cell:
     def column(self, /) -> int: ...
     @property
     def row(self, /) -> int: ...
-
 class CellAlignment(_BoostPythonEnum):
     kTopLeft: ClassVar[Self]  # 1
     kTopCenter: ClassVar[Self]  # 2
@@ -4574,24 +4472,20 @@ class CellAlignment(_BoostPythonEnum):
     kBottomLeft: ClassVar[Self]  # 7
     kBottomCenter: ClassVar[Self]  # 8
     kBottomRight: ClassVar[Self]  # 9
-
 class CellContentLayout(_BoostPythonEnum):
     kCellStateNone: ClassVar[Self]  # 1
     kCellContentLayoutStackedHorizontal: ClassVar[Self]  # 2
     kCellContentLayoutStackedVertical: ClassVar[Self]  # 4
-
 class CellContentType(_BoostPythonEnum):
     kCellContentTypeUnknown: ClassVar[Self]  # 0
     kCellContentTypeValue: ClassVar[Self]  # 1
     kCellContentTypeField: ClassVar[Self]  # 2
     kCellContentTypeBlock: ClassVar[Self]  # 4
-
 class CellEdgeMask(_BoostPythonEnum):
     kTopMask: ClassVar[Self]  # 1
     kRightMask: ClassVar[Self]  # 2
     kBottomMask: ClassVar[Self]  # 4
     kLeftMask: ClassVar[Self]  # 8
-
 class CellMargin(_BoostPythonEnum):
     kCellMarginTop: ClassVar[Self]  # 1
     kCellMarginLeft: ClassVar[Self]  # 2
@@ -4599,11 +4493,9 @@ class CellMargin(_BoostPythonEnum):
     kCellMarginRight: ClassVar[Self]  # 8
     kCellMarginHorzSpacing: ClassVar[Self]  # 16
     kCellMarginVertSpacing: ClassVar[Self]  # 32
-
 class CellOption(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1
-
 class CellProperty(_BoostPythonEnum):
     kCellPropInvalid: ClassVar[Self]  # 0
     kCellPropDataType: ClassVar[Self]  # 1
@@ -4629,12 +4521,9 @@ class CellProperty(_BoostPythonEnum):
     kCellPropContent: ClassVar[Self]  # 495
     kCellPropBitProperties: ClassVar[Self]  # 98560
     kCellPropAll: ClassVar[Self]  # 524287
-
 class CellRange:
     def __getitem__(self, idx: int, /) -> int: ...
-    def __init__(
-        self, topRow: int = -1, leftColumn: int = -1, bottomRow: int = -1, rightColumn: int = -1, /
-    ) -> None: ...
+    def __init__(self, topRow : int=-1, leftColumn : int=-1, bottomRow : int=-1, rightColumn : int=-1, /) -> None: ...
     def __ne__(self, /) -> bool: ...
     def __reduce__(self, /) -> Any: ...
     def __setitem__(self, idx: int, val: int, /) -> None: ...
@@ -4646,7 +4535,6 @@ class CellRange:
     def rightColumn(self, /) -> int: ...
     @property
     def topRow(self, /) -> int: ...
-
 class CellState(_BoostPythonEnum):
     kCellStateNone: ClassVar[Self]  # 0
     kCellStateContentLocked: ClassVar[Self]  # 1
@@ -4657,18 +4545,15 @@ class CellState(_BoostPythonEnum):
     kCellStateFormatReadOnly: ClassVar[Self]  # 32
     kCellStateFormatModifiedAfterUpdate: ClassVar[Self]  # 64
     kAllCellStates: ClassVar[Self]  # 127
-
 class CellType(_BoostPythonEnum):
     kUnknownCell: ClassVar[Self]  # 0
     kTextCell: ClassVar[Self]  # 1
     kBlockCell: ClassVar[Self]  # 2
     kMultipleContentCell: ClassVar[Self]  # 3
-
 class CenterMarkType(_BoostPythonEnum):
     kMark: ClassVar[Self]  # 0
     kLine: ClassVar[Self]  # 1
     kNone: ClassVar[Self]  # 2
-
 class Circle(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -4734,7 +4619,7 @@ class Circle(PyDb.Curve):
         """
         Returns the diameter of the circle.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CircArc3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.CircArc3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -4746,34 +4631,34 @@ class Circle(PyDb.Curve):
         """
         Returns the radius of the circle. The radius value is used for DXF group code 40.
         """
-    def setCenter(self, val: PyGe.Point3d, /) -> None:
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
         """
         Sets the center of the circle to the point center, which must be in WCS coordinates. The
         center point value is the WCS equivalent of DXF group code 10. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setCircumference(self, val: float, /) -> None:
+    def setCircumference(self, val:float, /) -> None:
         """
         Sets the circumference of the circle to the value of circ.
         """
-    def setDiameter(self, val: float, /) -> None:
+    def setDiameter(self, val:float, /) -> None:
         """
         Sets the diameter of the circle to the value of dia.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the normal of the plane containing the circle. normal must be in WCS
         coordinates and must be nonzero length. The normal value is used for DXF group code 210.
         Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setRadius(self, val: float, /) -> None:
+    def setRadius(self, val:float, /) -> None:
         """
         Sets radius to be the radius of the circle. radius must be greater than zero. The radius
         value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val:float, /) -> None:
         """
         Sets the thickness of the circle to thickness. The thickness is the circle's dimension
         along its normal vector direction (sometimes called the extrusion direction). The thickness
@@ -4786,16 +4671,13 @@ class Circle(PyDb.Curve):
         normal vector direction (sometimes called the extrusion direction). The thickness value is
         used for DXF group code 39.
         """
-
 class ClipBoundaryType(_BoostPythonEnum):
     kInvalid: ClassVar[Self]  # 0
     kRect: ClassVar[Self]  # 1
     kPoly: ClassVar[Self]  # 2
-
 class CollisionType(_BoostPythonEnum):
     kCollisionTypeNone: ClassVar[Self]  # 0
     kCollisionTypeSolid: ClassVar[Self]  # 1
-
 class Color:
     def __init__(self, /) -> None:
         """
@@ -4819,10 +4701,9 @@ class Color:
     def isNone(self, /) -> bool: ...
     def penIndex(self, /) -> int: ...
     def red(self, /) -> int: ...
-    def setColorIndex(self, val: int, /) -> ErrorStatus: ...
-    def setPenIndex(self, val: int, /) -> ErrorStatus: ...
-    def setRGB(self, red: int, green: int, blue: int, /) -> ErrorStatus: ...
-
+    def setColorIndex(self, val : int, /) -> ErrorStatus: ...
+    def setPenIndex(self, val : int, /) -> ErrorStatus: ...
+    def setRGB(self, red : int, green : int, blue : int, /) -> ErrorStatus: ...
 class ColorMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 192
     kByBlock: ClassVar[Self]  # 193
@@ -4833,7 +4714,6 @@ class ColorMethod(_BoostPythonEnum):
     kLayerOff: ClassVar[Self]  # 198
     kLayerFrozen: ClassVar[Self]  # 199
     kNone: ClassVar[Self]  # 200
-
 class Core:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -4843,7 +4723,7 @@ class Core:
         Get the array of currently active databases.
         """
     @staticmethod
-    def angToF(value: str, unit: int, /) -> float:
+    def angToF(value:str,unit:int, /) -> float:
         """
         Converts a string representation of an angle to a double-precision floating-point value.
         The unit value should correspond to a valid value for the AutoCAD system variable AUNITS,
@@ -4857,7 +4737,7 @@ class Core:
         both calls. On success returns RTNORM, otherwise returns an error code.
         """
     @staticmethod
-    def angToS(value: float, unit: int, prec: int, /) -> str:
+    def angToS(value:float,unit:int,prec:int, /) -> str:
         """
         Deprecated. Formats an angle into a string. The value to format should correspond to values
         allowed for the AutoCAD system variable AUNITS, which are described in acdbAngToF(). The
@@ -4866,26 +4746,18 @@ class Core:
         DIMZIN. On success returns RTNORM, otherwise returns an error code.
         """
     @staticmethod
-    def assignGelibCurveToAcDbCurve(
-        geCurve: PyGe.Curve3d,
-        dbCurve: PyDb.Curve,
-        norm: PyGe.Vector3d = PyGe.Vector3d.kZAxis,
-        tol: PyGe.Tol = "tol",
-        /,
-    ) -> None:
+    def assignGelibCurveToAcDbCurve(geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm: PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol', /) -> None:
         """
         This function takes an AcGeCurve3d and sets the specified AcDbCurve to be geometrically
         identical to the AcGeCurve3d.
         """
     @staticmethod
-    def attachPointCloudExEntity(
-        path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database, /
-    ) -> ObjectId:
+    def attachPointCloudExEntity(path: str,pos: PyGe.Point3d,scale: float,rotation: float,db: PyDb.Database, /) -> ObjectId:
         """
         Create an AcDbPointCloudEx entity.
         """
     @staticmethod
-    def attachXref(db: PyDb.Database, fname: str, blkname: str, /) -> ObjectId:
+    def attachXref(db: PyDb.Database,fname: str,blkname: str, /) -> ObjectId:
         """
         Attaches the xref file specified by pFilename to the database specified by pDb, thus
         creating a new xref AcDbBlockTableRecord. The new block table record's name is specified in
@@ -4899,14 +4771,7 @@ class Core:
         if either pDb or pFilename is null.
         """
     @staticmethod
-    def bindXrefs(
-        db: PyDb.Database,
-        ids: list[PyDb.ObjectId],
-        bInsertBind: bool,
-        bAllowUnresolved: bool = False,
-        bequite: bool = True,
-        /,
-    ) -> None:
+    def bindXrefs(db: PyDb.Database,ids: list[PyDb.ObjectId],bInsertBind: bool,bAllowUnresolved: bool=False,bequite: bool=True, /) -> None:
         """
         This function binds the xrefs whose AcDbBlockTableRecord object IDs are in xrefBlkIds. If
         bInsertBind is true, then the symbolTable record names will be changed from the xref naming
@@ -4921,7 +4786,7 @@ class Core:
         successful.
         """
     @staticmethod
-    def canonicalToSystemRange(units: int, val: str, /) -> str:
+    def canonicalToSystemRange(units: int,val: str, /) -> str:
         """
         This function converts the canonical value represented by strIn to a value within the
         system range. It returns the converted value, expressed as a string in the units specified
@@ -4935,25 +4800,19 @@ class Core:
         contextHandle. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def convertAcDbCurveToGelibCurve(
-        geCurve: PyGe.Curve2d, tol: PyGe.Tol = "tol", /
-    ) -> PyGe.Curve3d:
+    def convertAcDbCurveToGelibCurve(geCurve:PyGe.Curve2d,tol:PyGe.Tol='tol', /) -> PyGe.Curve3d:
         """
         This function takes an AcDbCurve and returns an AcGeCurve3d that is geometrically identical
         to the AcDbCurve.
         """
     @staticmethod
-    def convertGelibCurveToAcDbCurve(
-        geCurve: PyGe.Curve3d, norm: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = "tol", /
-    ) -> Curve:
+    def convertGelibCurveToAcDbCurve(geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=PyGe.Vector3d.kZAxis,tol:PyGe.Tol='tol', /) -> Curve:
         """
         This function takes an AcGeCurve3d and returns an AcDbCurve that is geometrically identical
         to the AcGeCurve3d.
         """
     @staticmethod
-    def createViewByViewport(
-        db: PyDb.Database, vpid: PyDb.ObjectId, name: str, cat: str, labelblock: PyDb.ObjectId, /
-    ) -> ObjectId:
+    def createViewByViewport(db: PyDb.Database,vpid: PyDb.ObjectId,name: str,cat: str,labelblock: PyDb.ObjectId, /) -> ObjectId:
         """
         This function creates a view from the given viewport. It is a view of the viewport in its
         layout. The size of the view is stretched to include any associated label block as well as
@@ -4963,18 +4822,18 @@ class Core:
         viewport, or the label block could not be opened.
         """
     @staticmethod
-    def detachXref(db: PyDb.Database, xrefid: PyDb.ObjectId, /) -> None:
+    def detachXref(db: PyDb.Database,xrefid: PyDb.ObjectId, /) -> None:
         """
         This function detaches the xref in pDb whose AcDbBlockTableRecord is specified by
         xrefBlkId. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def dictAdd(dictname: PyDb.ObjectId, symname: str, newid: PyDb.ObjectId, /) -> bool:
+    def dictAdd(dictname: PyDb.ObjectId,symname: str,newid: PyDb.ObjectId, /) -> bool:
         """
         Adds a non-graphical object to the specified dictionary.
         """
     @staticmethod
-    def dictNext(dictname: PyDb.ObjectId, rewind: int, /) -> list:
+    def dictNext(dictname: PyDb.ObjectId,rewind: int, /) -> list:
         """
         Advances the program pointer to the next entry in the specified dictionary and returns a
         pointer to the entry as a linked list of result buffers with DXF group codes and values.
@@ -4993,7 +4852,7 @@ class Core:
         variable ERRNO to a value that indicates the reason for the failure.
         """
     @staticmethod
-    def dictRemove(id: PyDb.ObjectId, name: str, /) -> bool:
+    def dictRemove(id: PyDb.ObjectId,name: str, /) -> bool:
         """
         Removes the specified dictionary entry from the specified dictionary . If acdbDictRemove()
         succeeds, it returns RTNORM. If dictname is invalid or symname is not found, it returns
@@ -5001,7 +4860,7 @@ class Core:
         failure.
         """
     @staticmethod
-    def dictRename(id: PyDb.ObjectId, name: str, newname: str, /) -> bool:
+    def dictRename(id: PyDb.ObjectId,name: str,newname: str, /) -> bool:
         """
         Renames a dictionary entry's key name. If acdbDictRename() succeeds, it returns RTNORM. If
         the old name is not present in the dictionary, the dictname is invalid, the new name is
@@ -5009,7 +4868,7 @@ class Core:
         the system variable ERRNO to a value that indicates the reason for the failure.
         """
     @staticmethod
-    def dictSearch(id: PyDb.ObjectId, name: str, next: int, /) -> list:
+    def dictSearch(id: PyDb.ObjectId,name: str,next: int, /) -> list:
         """
         Scans the specified dictionary for an entry and returns it as a result-buffer list. This
         function is similar to acdbTblSearch(). To obtain the entity name of symbol table entry,
@@ -5022,7 +4881,7 @@ class Core:
         to a value that indicates the reason for the failure.
         """
     @staticmethod
-    def disToF(val: str, unit: int, /) -> float:
+    def disToF(val: str,unit: int, /) -> float:
         """
         Converts a string that displays a real (double-precision floating-point) value expressed in
         the specified display format into a real value. The unit value should correspond to values
@@ -5037,7 +4896,7 @@ class Core:
         mode in both calls; see the following note).
         """
     @staticmethod
-    def displayPreviewFromDwg(name: str, handle: int, /) -> bool:
+    def displayPreviewFromDwg(name: str,handle: int, /) -> bool:
         """
         This function obtains the preview image (if any) of the drawing specified by pszDwgfilename
         and displays it in the window identified by the HWND argument pPreviewWnd. The image size
@@ -5061,32 +4920,27 @@ class Core:
         null.
         """
     @staticmethod
-    def dxfOutAs2000(db: PyDb.Database, name: str, precision: int, /) -> None:
+    def dxfOutAs2000(db: PyDb.Database,name: str,precision: int, /) -> None:
         """
         This functions saves the AcDbDatabase object pointed to by pDb to a DXF file whose name is
         fileName. The file is saved in AutoCAD 2000 format using the precision specified by
         precision.
         """
     @staticmethod
-    def dxfOutAs2004(db: PyDb.Database, name: str, precision: int, /) -> None:
+    def dxfOutAs2004(db: PyDb.Database,name: str,precision: int, /) -> None:
         """
         This functions saves the AcDbDatabase object pointed to by pDb to a DXF file whose name is
         fileName. The file is saved in AutoCAD 2004 format using the precision specified by
         precision.
         """
     @staticmethod
-    def dxfOutAsR12(db: PyDb.Database, name: str, precision: int, /) -> None:
+    def dxfOutAsR12(db: PyDb.Database,name: str,precision: int, /) -> None:
         """
         This function writes out a drawing database in the DXF file format corresponding to AutoCAD
         Release 12.
         """
     @staticmethod
-    def ecs2Wcs(
-        p: PyGe.Point3d | PyGe.Vector3d,
-        normal: PyGe.Vector3d,
-        qout: PyGe.Point3d | PyGe.Vector3d,
-        /,
-    ) -> bool:
+    def ecs2Wcs(p: PyGe.Point3d|PyGe.Vector3d,normal: PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d, /) -> bool:
         """
         This function translates the point p from the OCS (formerly ECS) coordinates of the
         coordinate system determined by norm into WCS coordinates. q is filled in with the
@@ -5094,13 +4948,13 @@ class Core:
         rather than a point. Returns Adesk::kTrue if successful; otherwise, returns Adesk::kFalse.
         """
     @staticmethod
-    def entDel(id: PyDb.ObjectId, /) -> bool:
+    def entDel(id : PyDb.ObjectId, /) -> bool:
         """
         Deletes the specified entity if it is currently in the drawing and undeletes it (restores
         it to the drawing) if it was deleted during the current editing session.
         """
     @staticmethod
-    def entGet(id: PyDb.ObjectId, /) -> list:
+    def entGet(id : PyDb.ObjectId, /) -> list:
         """
         Retrieves the specified entity from the drawing database and returns its definition data as
         a linked list of result buffers. This function is used also to examine dictionaries. The
@@ -5122,7 +4976,7 @@ class Core:
         pass the entity name to acdbEntGet().
         """
     @staticmethod
-    def entGetX(id: PyDb.ObjectId, xdata: list, /) -> list:
+    def entGetX(id : PyDb.ObjectId,xdata: list, /) -> list:
         """
         Retrieves the entity specified by ent from the drawing database including extended entity
         data that is registered to the application, and returns its definition data as a linked
@@ -5154,7 +5008,7 @@ class Core:
         that indicates the reason for the failure.
         """
     @staticmethod
-    def entMake(resultBuffer: Collection[tuple[int, Any]], /) -> bool:
+    def entMake(resultBuffer : Collection[tuple[int,Any]], /) -> bool:
         """
         Makes a new entity, which can be an empty dictionary, by appending the entity specified by
         ent to the drawing database. The ent argument is a linked list of result buffers that
@@ -5191,7 +5045,7 @@ class Core:
         definition with acdbEntMake(), but it is accepted if passed.
         """
     @staticmethod
-    def entMakeX(resultBuffer: Collection[tuple[int, Any]], /) -> ObjectId:
+    def entMakeX(resultBuffer : Collection[tuple[int,Any]], /) -> ObjectId:
         """
         Makes a new object or entity (such as an empty dictionary, an xrecord, a circle, and so
         on), gives it a handle and entity name, but does not give it an owner (unlike
@@ -5203,14 +5057,14 @@ class Core:
         indicates the reason for the failure.
         """
     @staticmethod
-    def entMod(resultBuffer: list, /) -> bool:
+    def entMod(resultBuffer : list, /) -> bool:
         """
         Updates the definition data of the specified entity. The entity that acdbEntMod() modifies
         is specified by the result buffer that contains the entity's name (restype == -1); this
         should be the first result buffer in ent.
         """
     @staticmethod
-    def entNext(id: PyDb.ObjectId, /) -> ObjectId:
+    def entNext(id : PyDb.ObjectId, /) -> ObjectId:
         """
         Gets the name of the entity following the specified entity in the drawing database. The
         acdbEntNext() function can be used with acedSSGet(), which selects only main entities. To
@@ -5227,7 +5081,7 @@ class Core:
         for the failure.
         """
     @staticmethod
-    def entUpd(id: PyDb.ObjectId, /) -> bool:
+    def entUpd(id : PyDb.ObjectId, /) -> bool:
         """
         Updates the screen image of the specified entity. It redraws the entire entity; for complex
         entities, this includes subentities such as polyline vertices or block attributes. If ent
@@ -5279,7 +5133,7 @@ class Core:
         recoverable error is encountered.
         """
     @staticmethod
-    def findField(val: str, idxfrom: int, /) -> tuple[bool, int, int]:
+    def findField(val: str,idxfrom: int, /) -> tuple[bool,int,int]:
         """
         This function can be used to extract the embedded fields in text. It can be called in a
         loop to extract all the fields in the text. Returns true if a field is found; otherwise,
@@ -5328,7 +5182,7 @@ class Core:
         Acad::eOk if true.
         """
     @staticmethod
-    def getDimStyleId(db: PyDb.Database, name: str, lockname: str, /) -> ObjectId:
+    def getDimStyleId(db: PyDb.Database,name: str,lockname: str, /) -> ObjectId:
         """
         Returns the object ID for the specified dimension style, if the dimension style doesn't
         exist it is created.
@@ -5356,14 +5210,12 @@ class Core:
         or NULL if there is no substitution.
         """
     @staticmethod
-    def getProxyInfo(id: PyDb.DbObject, /) -> tuple[str, str, str]:
+    def getProxyInfo(id: PyDb.DbObject, /) -> tuple[str,str,str]:
         """
         Returns the proxy's DXF, class, and application names in the appropriate arguments.
         """
     @staticmethod
-    def getReservedString(
-        reservedType: PyDb.ReservedStringEnumType, bGetLocalized: bool, /
-    ) -> str:
+    def getReservedString(reservedType: PyDb.ReservedStringEnumType,bGetLocalized: bool, /) -> str:
         """
         This function returns the reserved string of type reservedType. If bGetLocalized is true,
         the returned string is localized. When bGetLocalized is false, this function returns the
@@ -5381,7 +5233,7 @@ class Core:
         function returns Acad::eOk if successful.
         """
     @staticmethod
-    def getUnitsConversion(ufrom: PyDb.UnitsValue, to: PyDb.UnitsValue, /) -> float:
+    def getUnitsConversion(ufrom: PyDb.UnitsValue,to: PyDb.UnitsValue, /) -> float:
         """
         Obtains the double value that represents the difference in scale between two
         AcDb::UnitsValue enumerations. For example, if from is AcDb::kUnitsInches and to is
@@ -5413,16 +5265,9 @@ class Core:
     @staticmethod
     def hasGeoData(db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def icompare(left: str, right: str, /) -> bool: ...
+    def icompare(left: str,right: str, /) -> bool: ...
     @staticmethod
-    def inters(
-        from1: PyGe.Point3d,
-        to1: PyGe.Point3d,
-        from2: PyGe.Point3d,
-        to2: PyGe.Point3d,
-        teston: int,
-        /,
-    ) -> PyGe.Point3d:
+    def inters(from1: PyGe.Point3d,to1: PyGe.Point3d,from2: PyGe.Point3d,to2: PyGe.Point3d,teston: int, /) -> PyGe.Point3d:
         """
         Examines two lines and returns the point where they intersect. All four point arguments are
         three-dimensional points; acdbInters() checks for intersection in 3D space. All points
@@ -5438,7 +5283,7 @@ class Core:
         AcDbSurface, and AcDbRegion entities.
         """
     @staticmethod
-    def isReservedString(val: str, reservedType: PyDb.ReservedStringEnumType, /) -> bool:
+    def isReservedString(val: str,reservedType: PyDb.ReservedStringEnumType, /) -> bool:
         """
         This function returns true if strString is a localized or English version of the reserved
         string specified by reservedType. Otherwise, it returns false. strString is not case
@@ -5447,7 +5292,7 @@ class Core:
     @staticmethod
     def isVisible(entityId: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def loadLineTypeFile(ltname: str, fname: str, db: PyDb.Database, /) -> None:
+    def loadLineTypeFile(ltname: str,fname: str,db: PyDb.Database, /) -> None:
         """
         This function loads the linetype specified by ltname from the file specified by fname and
         stores it in the database specified by pDb. If pDb is NULL, then the database currently
@@ -5463,7 +5308,7 @@ class Core:
         is specified and the transfer is not successful.
         """
     @staticmethod
-    def loadMlineStyleFile(ltname: str, fname: str, /) -> None:
+    def loadMlineStyleFile(ltname: str,fname: str, /) -> None:
         """
         This function loads the MlineStyle specified by sname from the file specified by fname. If
         fname is not a URL and does not contain any path information, then the AutoCAD library
@@ -5481,12 +5326,7 @@ class Core:
         program can access nongraphical objects.
         """
     @staticmethod
-    def openDbEntities(
-        ids: list[PyDb.ObjectId],
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> list[PyDb.Entity]:
+    def openDbEntities(ids: list[PyDb.ObjectId],mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,erased: bool=False, /) -> list[PyDb.Entity]:
         """
         This function provides a means to open database-resident objects that are derived from
         AcDbEntity (that is, have graphics). The function is passed in an empty pointer, pEnt. id
@@ -5506,9 +5346,7 @@ class Core:
         will fail and this function will return Acad::eNullObjectId.
         """
     @staticmethod
-    def openDbEntity(
-        id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool = False, /
-    ) -> Entity:
+    def openDbEntity(id: PyDb.ObjectId,mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,erased: bool=False, /) -> Entity:
         """
         This function provides a means to open database-resident objects that are derived from
         AcDbEntity (that is, have graphics). The function is passed in an empty pointer, pEnt. id
@@ -5528,9 +5366,7 @@ class Core:
         will fail and this function will return Acad::eNullObjectId.
         """
     @staticmethod
-    def openDbObject(
-        id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool = False, /
-    ) -> DbObject:
+    def openDbObject(id: PyDb.ObjectId,mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,erased: bool=False, /) -> DbObject:
         """
         This function provides a means to open database-resident objects. pObj is passed in as an
         empty pointer. The mode argument may be one of the following: AcDb::kForRead,
@@ -5549,12 +5385,7 @@ class Core:
         this function will return Acad::eLockViolation.
         """
     @staticmethod
-    def openDbObjects(
-        ids: list[PyDb.ObjectId],
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> list[PyDb.DbObject]:
+    def openDbObjects(ids: list[PyDb.ObjectId],mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,erased: bool=False, /) -> list[PyDb.DbObject]:
         """
         This function provides a means to open database-resident objects. pObj is passed in as an
         empty pointer. The mode argument may be one of the following: AcDb::kForRead,
@@ -5573,15 +5404,13 @@ class Core:
         this function will return Acad::eLockViolation.
         """
     @staticmethod
-    def postDimAssoc(
-        dimId: PyDb.ObjectId, assoc: PyDb.DimAssoc, isActive: bool = True, /
-    ) -> ObjectId:
+    def postDimAssoc(dimId: PyDb.ObjectId,assoc: PyDb.DimAssoc,isActive: bool=True, /) -> ObjectId:
         """
         This functions posts the pDimAssoc object to the database. It uses the extension dictionary
         of the provided dimension. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def putSummaryInfo(info: PyDb.DatabaseSummaryInfo, db: PyDb.Database, /) -> None:
+    def putSummaryInfo(info: PyDb.DatabaseSummaryInfo,db: PyDb.Database, /) -> None:
         """
         This function stores the Summary Info data in its persistent data format in the database,
         and returns Acad::eOk if successful.
@@ -5619,7 +5448,7 @@ class Core:
         AcDbRegAppTableRecord or AcDbRegAppTable classes directly.
         """
     @staticmethod
-    def reloadXrefs(db: PyDb.Database, ids: list[PyDb.ObjectId], bQuiet: bool = True, /) -> None:
+    def reloadXrefs(db: PyDb.Database,ids: list[PyDb.ObjectId],bQuiet: bool=True, /) -> None:
         """
         This function reloads the xrefs whose AcDbBlockTableRecord ObjectIds are in xrefBlkIds. The
         ObjectIds in xrefBlkIds must all be from pHostDb. If pHostDb is NULL, then the database
@@ -5630,11 +5459,9 @@ class Core:
     @staticmethod
     def resbufTest(resultBuffer: list, /) -> list: ...
     @staticmethod
-    def resolveCurrentXRefs(
-        db: PyDb.Database, useThreadEngine: bool, doNewOnly: bool, /
-    ) -> None: ...
+    def resolveCurrentXRefs(db: PyDb.Database,useThreadEngine: bool,doNewOnly: bool, /) -> None: ...
     @staticmethod
-    def rtos(val: float, unit: int, prec: int, /) -> str:
+    def rtos(val: float,unit: int,prec: int, /) -> str:
         """
         Deprecated. Formats a floating-point value as a string. The following table lists the valid
         values for the units argument. Linear units values: 1 Scientific 2 Decimal 3 Engineering
@@ -5650,7 +5477,7 @@ class Core:
         AcDb3dSolid, AcDbSurface, and AcDbRegion entities.
         """
     @staticmethod
-    def snValid(val: str, pipetest: int, /) -> bool:
+    def snValid(val: str,pipetest: int, /) -> bool:
         """
         Tests a symbol table name for validity, including symbol table names with out-of-code-page
         escape sequences. For applications that read a symbol table name from the keyboard, set
@@ -5673,7 +5500,7 @@ class Core:
         typedef to abbreviate the longer name AcDbSymbolUtilities::Services().
         """
     @staticmethod
-    def tblNext(name: str, rewind: int, /) -> list:
+    def tblNext(name: str,rewind: int, /) -> list:
         """
         Scans the specified symbol table and returns either the next entry or the first entry as a
         result-buffer list. acdbTblNext() returns information consistent with AutoCAD Release 12
@@ -5703,13 +5530,13 @@ class Core:
         ERRNO to a value that indicates the reason for the failure.
         """
     @staticmethod
-    def tblObjName(tblname: str, sym: str, /) -> ObjectId:
+    def tblObjName(tblname: str,sym: str, /) -> ObjectId:
         """
         Returns an entity identifier for passing to acdbEntGet() or acdbEntMod() to locate the
         actual entity.
         """
     @staticmethod
-    def tblSearch(tblname: str, sym: str, setnext: int, /) -> list:
+    def tblSearch(tblname: str,sym: str,setnext: int, /) -> list:
         """
         Scans the specified symbol table for the specified entry. To obtain the entity name of the
         symbol table entry, call the acdbTblObjName() function. The tblname argument is the name of
@@ -5759,14 +5586,7 @@ class Core:
         """
     @overload
     @staticmethod
-    def textFind(
-        db: PyDb.Database,
-        findString: str,
-        replaceString: str,
-        searchOptions: int,
-        ids: list[PyDb.ObjectId],
-        /,
-    ) -> list[PyDb.ObjectId]:
+    def textFind(db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId], /) -> list[PyDb.ObjectId]:
         """
         This function searches the set of entities for text that matches findString. If a match is
         found, the object ID of the entity is added to the resultSet array. Wildcards are not
@@ -5816,7 +5636,7 @@ class Core:
         This function returns the AcDbTransactionManager object for the current document.
         """
     @staticmethod
-    def ucs2Wcs(p: PyGe.Point3d | PyGe.Vector3d, qout: PyGe.Point3d | PyGe.Vector3d, /) -> bool:
+    def ucs2Wcs(p: PyGe.Point3d|PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d, /) -> bool:
         """
         This function translates the point p from UCS coordinates into WCS coordinates and fills q
         in with the translated value. If vec is true, then p is treated as a vector for translation
@@ -5830,7 +5650,7 @@ class Core:
         successful and false if not.
         """
     @staticmethod
-    def unloadXrefs(db: PyDb.Database, ids: list[PyDb.ObjectId], bequiet: bool = True, /) -> None:
+    def unloadXrefs(db: PyDb.Database,ids: list[PyDb.ObjectId],bequiet: bool=True, /) -> None:
         """
         Unloads the xrefs whose AcDbBlockTableRecord ObjectIds are in xrefBlkIds. The ObjectIds in
         xrefBlkIds must all be from pHostDb. If pHostDb is NULL, then the database specified by
@@ -5846,19 +5666,14 @@ class Core:
         Acad::eOk if successful.
         """
     @staticmethod
-    def validateCustomSummaryInfoKey(val: str, info: PyDb.DatabaseSummaryInfo, /) -> bool:
+    def validateCustomSummaryInfoKey(val: str,info: PyDb.DatabaseSummaryInfo, /) -> bool:
         """
         Validates the custom summary info key to ensure the characters are appropriate and the key
         is not a duplicate. Invalid characters include any of the following: < > / \\ ' : ; ? * | ,
         = `
         """
     @staticmethod
-    def wcs2Ecs(
-        p: PyGe.Point3d | PyGe.Vector3d,
-        normal: PyGe.Vector3d,
-        qout: PyGe.Point3d | PyGe.Vector3d,
-        /,
-    ) -> bool:
+    def wcs2Ecs(p: PyGe.Point3d|PyGe.Vector3d,normal: PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d, /) -> bool:
         """
         This function translates the point p from WCS coordinates to the OCS (formerly ECS)
         coordinates of the coordinate system determined by norm. q is filled in with the translated
@@ -5866,21 +5681,14 @@ class Core:
         Returns true if successful and false if not.
         """
     @staticmethod
-    def wcs2Ucs(p: PyGe.Point3d | PyGe.Vector3d, qout: PyGe.Point3d | PyGe.Vector3d, /) -> bool:
+    def wcs2Ucs(p: PyGe.Point3d|PyGe.Vector3d,qout: PyGe.Point3d|PyGe.Vector3d, /) -> bool:
         """
         This function translates the point p from WCS coordinates into UCS coordinates and fills q
         in with the translated value. If vec is true, then p is treated as a vector for translation
         rather than as a point. Returns true if successful and false if not.
         """
-
 class Curve(PyDb.Entity):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbCurve class is the base class for all the entity classes that are variations of a
         curve such as AcDbArc, AcDbCircle, AcDbEllipse, AcDbSpline, and others. This base class
@@ -5895,12 +5703,7 @@ class Curve(PyDb.Entity):
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Curve: ...
     @staticmethod
-    def createFromAcGeCurve(
-        curve: PyGe.Curve3d,
-        normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,
-        tol: PyGe.Tol = "default",
-        /,
-    ) -> Curve:
+    def createFromAcGeCurve(curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default', /) -> Curve:
         """
         This is createFromAcGeCurve, a member of class AcDbCurve.
         """
@@ -5969,7 +5772,7 @@ class Curve(PyDb.Entity):
         example, if its first period lies within the existing curve so that it would be a trim
         rather than an extension). The default implementation returns Acad::eNotImplemented.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.Curve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.Curve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -5988,9 +5791,7 @@ class Curve(PyDb.Entity):
         Acad::eInvalidInput The area was not calculable (for example, the curve was not planar).
         The default implementation's return value is Acad::eNotImplemented.
         """
-    def getClosestPointTo(
-        self, point3d: PyGe.Point3d, direction: PyGe.Vector3d = ..., extend: bool = False, /
-    ) -> PyGe.Point3d:
+    def getClosestPointTo(self, point3d: PyGe.Point3d, direction: PyGe.Vector3d = ..., extend: bool=False, /) -> PyGe.Point3d:
         """
         This function projects the curve onto the plane defined by givenPnt and normal, finds the
         point on the projected curve that is nearest to givenPnt, then projects this nearest point
@@ -6035,7 +5836,7 @@ class Curve(PyDb.Entity):
         point (in WCS coordinates) of the curve. Returns Acad::eOk if successful. The default
         implementation returns Acad::eNotImplemented.
         """
-    def getFirstDeriv(self, param: float | PyGe.Point3d, /) -> PyGe.Vector3d:
+    def getFirstDeriv(self, param: float|PyGe.Point3d, /) -> PyGe.Vector3d:
         """
         Here and in derived classes, this function is implemented to evaluate the first derivative
         at the location on the curve specified by param, and sets firstDeriv to the result (in WCS
@@ -6077,9 +5878,7 @@ class Curve(PyDb.Entity):
         an error occurs in the ShapeManager modeler. Other ErrorStatus return values are
         implementation-dependent. The default implementation returns Acad::eNotImplemented.
         """
-    def getOffsetCurvesGivenPlaneNormal(
-        self, normal: PyGe.Vector3d, dist: float, /
-    ) -> list[PyDb.Curve]:
+    def getOffsetCurvesGivenPlaneNormal(self, normal: PyGe.Vector3d, dist: float, /) -> list[PyDb.Curve]:
         """
         This function creates one or more entities that, together, make up the result of offsetting
         the curve by the distance offsetDist in the plane with normal vector normal. For many
@@ -6170,7 +5969,7 @@ class Curve(PyDb.Entity):
         in the ShapeManager modeler. Other ErrorStatus values are implementation-dependent. The
         default implementation returns Acad::eNotImplemented.
         """
-    def getSecondDeriv(self, param: float | PyGe.Point3d, /) -> PyGe.Vector3d:
+    def getSecondDeriv(self, param: float|PyGe.Point3d, /) -> PyGe.Vector3d:
         """
         Evaluates the second derivative at the location on the curve specified by param and sets
         secDeriv to the result (in WCS coordinates). Returns Acad::eOk if successful. If param is
@@ -6384,7 +6183,7 @@ class Curve(PyDb.Entity):
         point is identical to its end point. Otherwise, it returns Adesk::kFalse. Returns
         Acad::kFalse in the default implementation.
         """
-    def isOn(self, val: float | PyGe.Point3d, tol: PyGe.Tol = ..., /) -> bool:
+    def isOn(self, val : float | PyGe.Point3d, tol : PyGe.Tol = ..., /) -> bool:
         """
         Determines if input parameter value is within valid parametric range of curve.
         """
@@ -6399,23 +6198,16 @@ class Curve(PyDb.Entity):
         """
         Reverses the parameterization of the curve. The start becomes the end and visa versa.
         """
-    def setFromAcGeCurve(
-        self,
-        curve: PyGe.Curve3d,
-        normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,
-        tol: PyGe.Tol = "default",
-        /,
-    ) -> None:
+    def setFromAcGeCurve(self, curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = 'default', /) -> None:
         """
         This is setFromAcGeCurve, a member of class AcDbCurve.
         """
-
 class Database(PyRx.RxObject):
     def UCSTableId(self, /) -> ObjectId:
         """
         Returns the object ID of the database's AcDbUCSTable.
         """
-    def __init__(self, buildDefaultDrawing: bool = True, noDocument: bool = False, /) -> None:
+    def __init__(self, buildDefaultDrawing : bool=True, noDocument: bool=False, /) -> None:
         """
         Default constructor.If buildDefaultDrawing == true, then the new AcDbDatabase object
         contains the minimum necessary for a complete database. If buildDefaultDrawing == false,
@@ -6432,24 +6224,22 @@ class Database(PyRx.RxObject):
         """
         Returns the ActiveX instance of the database (AcadDatabase)
         """
-    def addObject(self, object: PyDb.DbObject, /) -> ObjectId:
+    def addObject(self, object : PyDb.DbObject, /) -> ObjectId:
         """
         Adds the object pointed to by pObj to the database, giving it a handle and an object ID.
         """
-    def addReactor(self, reactor: PyDb.DatabaseReactor, /) -> None:
+    def addReactor(self, reactor : PyDb.DatabaseReactor, /) -> None:
         """
         Adds the reactor object pointed to by pReactor to the reactor list for the database.
         """
-    def addToBlock(
-        self, btrid: PyDb.ObjectId, entity: PyDb.Entity | list[PyDb.Entity], /
-    ) -> ObjectId: ...
-    def addToCurrentspace(self, entity: PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
+    def addToBlock(self, btrid : PyDb.ObjectId, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId: ...
+    def addToCurrentspace(self, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
         """
         A convenience method to append an entity, or a list of entities to the current space
         BlockTableRecord. Returns an ObjectId or list of ObjectIds, throws on error. This function
         does not close the entities
         """
-    def addToModelspace(self, entity: PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
+    def addToModelspace(self, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
         """
         A convenience method to append an entity, or a list of entities to the modelspace
         BlockTableRecord. Returns an ObjectId or list of ObjectIds, throws on error. This function
@@ -6584,7 +6374,7 @@ class Database(PyRx.RxObject):
         Returns the current CHAMFERD value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on CHAMFERD.
         """
-    def classDxfName(self, pClass: PyRx.RxClass, /) -> str:
+    def classDxfName(self, pClass : PyRx.RxClass, /) -> str:
         """
         This function returns a pointer to the DXF name for this database.
         """
@@ -6596,7 +6386,7 @@ class Database(PyRx.RxObject):
         See the System Variables section of the AutoCAD Command Reference for information on
         CLAYER.
         """
-    def closeInput(self, close: bool, /) -> None:
+    def closeInput(self, close : bool, /) -> None:
         """
         If a drawing file is associated with this database, then this function forces an immediate
         read of all necessary information from the file into the database object. If bCloseFile is
@@ -6640,11 +6430,11 @@ class Database(PyRx.RxObject):
         for an AutoCAD session, please use the acedGetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on COORDS.
         """
-    def countEmptyObjects(self, flag: int, /) -> int:
+    def countEmptyObjects(self, flag : int, /) -> int:
         """
         Counts the empty objects (zero length curves and/or empty TEXT/MTEXT) in the database.
         """
-    def countHardReferences(self, ids: list[PyDb.ObjectId], /) -> int:
+    def countHardReferences(self, ids : list[PyDb.ObjectId], /) -> int:
         """
         This function traverses the database looking for objects with a hard reference to any of
         the objects whose objectId entities are in the ids array. Each time such a hard reference
@@ -6657,22 +6447,13 @@ class Database(PyRx.RxObject):
         size. Returns Acad::eOk if successful.
         """
     def currentLayoutId(self, /) -> ObjectId: ...
-    def currentSpace(
-        self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> BlockTableRecord: ...
+    def currentSpace(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> BlockTableRecord: ...
     def currentSpaceId(self, /) -> ObjectId:
         """
         Returns the object ID of the AcDbBlockTableRecord of the current space (e.g., model space
         or paper space.)
         """
-    def deepCloneObjects(
-        self,
-        ids: list[PyDb.ObjectId],
-        owner: PyDb.ObjectId,
-        idmap: PyDb.IdMapping,
-        deferXlation: bool = False,
-        /,
-    ) -> None:
+    def deepCloneObjects(self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, deferXlation:bool=False, /) -> None:
         """
         Clones all objects in the objectId array and appends them to the container object specified
         by owner. The idMap is filled with AcDbIdPair objects that contain the objectId entities of
@@ -6771,7 +6552,7 @@ class Database(PyRx.RxObject):
         When called during partial open notification, this function vetoes the partial open
         operation and causes the entire drawing database to be loaded.
         """
-    def disableUndoRecording(self, disable: bool, /) -> None:
+    def disableUndoRecording(self, disable : bool, /) -> None:
         """
         This function turns Undo recording on or off for operations performed on the database. If
         disable==Adesk::kTrue, then Undo recording is turned off. If disable==Adesk::kFalse, then
@@ -6821,7 +6602,7 @@ class Database(PyRx.RxObject):
         This method returns true if it determines that the database was last saved by Autodesk
         software (such as AutoCAD or AutoCAD LT).
         """
-    def dxfIn(self, filename: str, /) -> None:
+    def dxfIn(self, filename : str, /) -> None:
         """
         This function reads a DXF file from the stream pointed to by pInputStream to the database.
         This function does not close or delete the stream when it is done. The default for
@@ -6829,14 +6610,7 @@ class Database(PyRx.RxObject):
         output character-by-character through the displayChar() method in
         AcDbHostApplicationServices.
         """
-    def dxfOut(
-        self,
-        dxfFilename: str,
-        precision: int = 16,
-        dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT,
-        saveThumbnailImage: bool = False,
-        /,
-    ) -> None:
+    def dxfOut(self, dxfFilename : str, precision : int=16, dwgVer:PyDb.DwgVersion=PyDb.DwgVersion.kDHL_CURRENT,saveThumbnailImage: bool=False, /) -> None:
         """
         This function creates a DXF file and returns Acad::eOk if successful.
         """
@@ -6845,7 +6619,7 @@ class Database(PyRx.RxObject):
         Returns the current Model Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION.
         """
-    def eraseEmptyObjects(self, flag: int, /) -> int:
+    def eraseEmptyObjects(self, flag : int, /) -> int:
         """
         Erase empty objects (zero length curves and/or empty TEXT/MTEXT) in the database.
         """
@@ -6896,7 +6670,7 @@ class Database(PyRx.RxObject):
         """
         Returns the 3D DWF precision setting in this database.
         """
-    def getBlockTable(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> BlockTable:
+    def getBlockTable(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> BlockTable:
         """
         Opens the database's block table in the mode specified by mode. The pTable pointer is
         filled in with the address of the block table. Returns Acad::eOk if open is successful.
@@ -6933,15 +6707,13 @@ class Database(PyRx.RxObject):
         getLayerStateManager() returns a pointer to the current AcDbLayerStateManager object.
         """
     @staticmethod
-    def getNearestLineWeight(weight: int, /) -> LineWeight:
+    def getNearestLineWeight(weight : int, /) -> LineWeight:
         """
         The getNearestLineWeight() method takes a lineweight and returns the nearest
         AcDb::LineWeight enum value. For example, if you pass in 4, then the value AcDb::kLnWt005
         is returned.
         """
-    def getObjectId(
-        self, createIfNotFound: bool, objHandle: Handle, xRefId: int = 0, /
-    ) -> ObjectId:
+    def getObjectId(self, createIfNotFound : bool, objHandle : Handle, xRefId : int=0, /) -> ObjectId:
         """
         Fills in retId with the objectId of the object that has the handle value contained in
         objHandle. If createIfNotFound is true and the handle is not found in the database, then a
@@ -6957,7 +6729,7 @@ class Database(PyRx.RxObject):
         This function returns the object ID of the section manager. The ID may be null if the
         database has never contained any section planes since it's creation.
         """
-    def getViewportArray(self, val: bool = True, /) -> list[PyDb.ObjectId]:
+    def getViewportArray(self, val: bool=True, /) -> list[PyDb.ObjectId]:
         """
         This function enumerates the AcDbViewports in a drawing. These are the viewports in
         layouts, in other words, tilemode 0.
@@ -6991,7 +6763,7 @@ class Database(PyRx.RxObject):
         and LISP/ADS in hexadecimal form as a string. In hexadecimal, a 64-bit integer can be up to
         16 digits.
         """
-    def hasClass(self, pClass: PyRx.RxClass, /) -> bool:
+    def hasClass(self, pClass : PyRx.RxClass, /) -> bool:
         """
         This function returns true if the class represented by the AcRxClass object pointed to by
         pClass is present in the class dictionary of this AcDbDatabase. Otherwise false is
@@ -7017,28 +6789,11 @@ class Database(PyRx.RxObject):
         Returns the INDEXCTL header variable value.
         """
     @overload
-    def insert(
-        self,
-        blockId: PyDb.ObjectId,
-        pBlockName: str,
-        db: PyDb.Database,
-        preserveSourceDatabase: bool,
-        /,
-    ) -> None: ...
+    def insert(self, blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool, /) -> None: ...
     @overload
-    def insert(
-        self,
-        blockId: PyDb.ObjectId,
-        pBlockName: str,
-        pDestinationBlockName: str,
-        db: PyDb.Database,
-        preserveSourceDatabase: bool,
-        /,
-    ) -> None: ...
+    def insert(self, blockId: PyDb.ObjectId, pBlockName: str, pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool, /) -> None: ...
     @overload
-    def insert(
-        self, xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool, /
-    ) -> None: ...
+    def insert(self, xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool, /) -> None: ...
     @overload
     def insert(self, *args) -> None: ...
     def insunits(self, /) -> UnitsValue:
@@ -7062,7 +6817,7 @@ class Database(PyRx.RxObject):
         Returns the INTERSECTIONDISPLAY header variable value for the database. See the System
         Variables section of the AutoCAD Command Reference for information on INTERSECTIONDISPLAY.
         """
-    def isAppRegistered(self, pszAppName: str, /) -> bool:
+    def isAppRegistered(self, pszAppName : str, /) -> bool:
         """
         Checks for a registered application name.
         """
@@ -7077,7 +6832,7 @@ class Database(PyRx.RxObject):
         producttrue is returned if the drawing was saved by an EMR product at least once
         """
     @staticmethod
-    def isObjectNonPersistent(id: ObjectId, /) -> bool:
+    def isObjectNonPersistent(id : ObjectId, /) -> bool:
         """
         Returns true if the object denoted by id is non-persistent. Otherwise, returns false.
         """
@@ -7085,7 +6840,7 @@ class Database(PyRx.RxObject):
         """
         Returns true if the database is in a partially opened state; false otherwise.
         """
-    def isPucsOrthographic(self, orthoView: OrthographicView, /) -> bool:
+    def isPucsOrthographic(self, orthoView : OrthographicView, /) -> bool:
         """
         Returns false if the database's paper space UCS does not have an orthographic view whose
         reference UCS matches the database's PUCSBASE system variable. If this function returns
@@ -7096,7 +6851,7 @@ class Database(PyRx.RxObject):
         AcDbHostApplicationServices::workingDatabase() at the time this function is called must
         point to this AcDbDatabase object. Otherwise, this function generates incorrect results.
         """
-    def isUcsOrthographic(self, orthoView: OrthographicView, /) -> bool:
+    def isUcsOrthographic(self, orthoView : OrthographicView, /) -> bool:
         """
         Returns false if the database's model space UCS does not have an orthographic view whose
         reference UCS matches the database's UCSBASE system variable. If this function returns
@@ -7108,7 +6863,7 @@ class Database(PyRx.RxObject):
         point to this AcDbDatabase object. Otherwise, this function generates incorrect results.
         """
     @staticmethod
-    def isValidLineWeight(weight: int, /) -> bool:
+    def isValidLineWeight(weight : int, /) -> bool:
         """
         Returns true for lineweights that match one of the predefined lineweights, and false
         otherwise.
@@ -7211,7 +6966,7 @@ class Database(PyRx.RxObject):
         """
         Returns the object ID of the database's AcDbLinetypeTable.
         """
-    def loadLineTypeFile(self, ltn: str, filename: str, /) -> None:
+    def loadLineTypeFile(self, ltn : str, filename : str, /) -> None:
         """
         This function loads the linetype specified by ltn from the file specified by filename and
         stores it in the database on which this method is called. The ltn parameter may contain
@@ -7287,7 +7042,7 @@ class Database(PyRx.RxObject):
         following: R14 0 R14.1 1 R14.2 2 etc.
         """
     @staticmethod
-    def markObjectNonPersistent(id: ObjectId, value: bool, /) -> None:
+    def markObjectNonPersistent(id : ObjectId,value : bool, /) -> None:
         """
         Marks an object non-persistent or persistent. Objects in the drawing database are
         persistent by default (if they have an owner). This function allows objects to be marked
@@ -7331,7 +7086,7 @@ class Database(PyRx.RxObject):
         Gets the object ID of the MLeader style specified by the current CMLEADERSTYLE value of the
         database
         """
-    def modelSpace(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> BlockTableRecord: ...
+    def modelSpace(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> BlockTableRecord: ...
     def modelSpaceId(self, /) -> ObjectId: ...
     def msOleScale(self, /) -> float:
         """
@@ -7370,13 +7125,13 @@ class Database(PyRx.RxObject):
         Returns the object context manager.
         """
     @overload
-    def objectIdArray(self, desc: PyRx.RxClass = PyDb.DbObject, /) -> ObjectIdArray: ...
+    def objectIdArray(self, desc: PyRx.RxClass=PyDb.DbObject, /) -> ObjectIdArray: ...
     @overload
     def objectIdArray(self, descList: list[PyRx.RxClass], /) -> ObjectIdArray: ...
     @overload
     def objectIdArray(self, *args) -> ObjectIdArray: ...
     @overload
-    def objectIds(self, desc: PyRx.RxClass = PyDb.DbObject, /) -> list[PyDb.ObjectId]: ...
+    def objectIds(self, desc: PyRx.RxClass=PyDb.DbObject, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
     @overload
@@ -7608,7 +7363,7 @@ class Database(PyRx.RxObject):
         information on QTEXTMODE.
         """
     @overload
-    def readDwgFile(self, fileName: str, /) -> None:
+    def readDwgFile(self, fileName:str, /) -> None:
         """
         Reads the drawing file specified by fileName into the database object executing this
         function. fileName must include the extension of the file (which does not have to be .dwg)
@@ -7637,14 +7392,7 @@ class Database(PyRx.RxObject):
         including a previous call to this function), then memory leaks (or worse) will result.
         """
     @overload
-    def readDwgFile(
-        self,
-        fileName: str,
-        mode: PyDb.DatabaseOpenMode,
-        bAllowCPConversion: bool,
-        password: str,
-        /,
-    ) -> None:
+    def readDwgFile(self, fileName:str, mode: PyDb.DatabaseOpenMode,bAllowCPConversion:bool,password:str, /) -> None:
         """
         Reads the drawing file specified by fileName into the database object executing this
         function. fileName must include the extension of the file (which does not have to be .dwg)
@@ -7701,7 +7449,7 @@ class Database(PyRx.RxObject):
         Adesk::kTrue, or an AcDbDatabase that already has information in it (for any reason
         including a previous call to this function), then memory leaks (or worse) will result.
         """
-    def reclaimMemoryFromErasedObjects(self, ids: list[PyDb.ObjectId], /) -> None:
+    def reclaimMemoryFromErasedObjects(self, ids : list[PyDb.ObjectId], /) -> None:
         """
         This member function deletes the objects underneath the input object ids and performs some
         related cleanup. The object ids in the input array must already be erased, and they should
@@ -7726,11 +7474,11 @@ class Database(PyRx.RxObject):
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on REGENMODE.
         """
-    def registerApp(self, appName: str, /) -> None:
+    def registerApp(self, appName : str, /) -> None:
         """
         Registers an application name (for use by Xdata).
         """
-    def removeReactor(self, reactor: PyDb.DatabaseReactor, /) -> None:
+    def removeReactor(self, reactor : PyDb.DatabaseReactor, /) -> None:
         """
         Removes the reactor object pointed to by pReactor from the list of reactors for the
         database executing this function.
@@ -7803,13 +7551,7 @@ class Database(PyRx.RxObject):
         status is FALSE by default. If it is toggled to TRUE, the AcDbDatabase will always try to
         retain the original image, no matter what other action is taken.
         """
-    def saveAs(
-        self,
-        filename: str,
-        bBakAndRename: bool = False,
-        dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT,
-        /,
-    ) -> None:
+    def saveAs(self, filename: str, bBakAndRename: bool = False, dwgVer: PyDb.DwgVersion = PyDb.DwgVersion.kDHL_CURRENT, /) -> None:
         """
         Runs the save process on the database and writes the drawing information out to fileName.
         The fileName argument is taken as is. If no file extension is present, .dwg is not
@@ -7840,86 +7582,86 @@ class Database(PyRx.RxObject):
         This method returns the Object ID of the AcDbDictionary that contains the section view
         styles.
         """
-    def set3dDwfPrec(self, dwfPrec: float, /) -> None:
+    def set3dDwfPrec(self, dwfPrec : float, /) -> None:
         """
         Sets the 3D DWF precision for this database. The valid range is from 1 to 6, with higher
         settings resulting in finer precision.
         """
-    def setAngbase(self, angle: float, /) -> None:
+    def setAngbase(self, angle : float, /) -> None:
         """
         Sets the database to use angle as the ANGBASE value. See the System Variables section of
         the AutoCAD Command Reference for information on ANGBASE. Returns Acad::eOk if successful.
         """
-    def setAngdir(self, dir: bool, /) -> None:
+    def setAngdir(self, dir : bool, /) -> None:
         """
         Sets dir to be the ANGDIR value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on ANGDIR. Returns Acad::eOk if successful.
         """
-    def setAnnoAllVisible(self, allvis: bool, /) -> None:
+    def setAnnoAllVisible(self, allvis : bool, /) -> None:
         """
         Set the desired ANNOALLVISIBLE value for the model space tab. Returns Acad::eOk if
         successful.
         """
-    def setAttdia(self, val: bool, /) -> None:
+    def setAttdia(self, val : bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the ATTDIA system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on ATTDIA.
         """
-    def setAttmode(self, val: int, /) -> None:
+    def setAttmode(self, val : int, /) -> None:
         """
         Sets mode to be the ATTMODE value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on ATTMODE. Returns Acad::eOk if successful.
         """
-    def setAttreq(self, val: bool, /) -> None:
+    def setAttreq(self, val : bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the ATTREQ system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on ATTREQ.
         """
-    def setAunits(self, val: int, /) -> None:
+    def setAunits(self, val : int, /) -> None:
         """
         Sets aunits to be the AUNITS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on AUNITS. Returns Acad::eOk if successful.
         """
-    def setAuprec(self, val: int, /) -> None:
+    def setAuprec(self, val : int, /) -> None:
         """
         Sets auprec to be the AUPREC value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on AUPREC. Returns Acad::eOk if successful.
         """
-    def setBlipmode(self, val: bool, /) -> None:
+    def setBlipmode(self, val : bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the BLIPMODE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on BLIPMODE.
         """
-    def setCDynDisplayMode(self, val: int, /) -> None:
+    def setCDynDisplayMode(self, val : int, /) -> None:
         """
         Sets a new value for the CDYNDISPLAYMODE value for the database. It is a drawing variable
         unique across different drawing files. Returns Acad::eOk if successful.
         """
-    def setCameraDisplay(self, val: bool, /) -> None:
+    def setCameraDisplay(self, val : bool, /) -> None:
         """
         Sets the new value of the CAMERADISPLAY sysvar to display or hide cameras. Returns
         Acad::eOk on success.
         """
-    def setCameraHeight(self, val: float, /) -> None:
+    def setCameraHeight(self, val : float, /) -> None:
         """
         Sets the CAMERAHEIGHT system variable. This value is used as the default value for creating
         new cameras. Returns Acad::eOk on success.
         """
-    def setCannoscale(self, val: AnnotationScale, /) -> None:
+    def setCannoscale(self, val : AnnotationScale, /) -> None:
         """
         Sets an AcDbAnnotationScale object which will be the CANNOSCALE value for the database when
         model space is current. See the System Variables section of the AutoCAD Command Reference
         for information on CANNOSCALE. This is an AcDbDatabase Header Variable Edit Function.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setCePlotStyleName(self, val: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, /) -> None:
+    def setCePlotStyleName(self, val : PyDb.PlotStyleNameType, newId : PyDb.ObjectId, /) -> None:
         """
         The possible values for type are shown in the following table: AcDb::kPlotStyleNameByLayer
         Use the plot style name of the layer table record referenced by the entity
@@ -7932,136 +7674,136 @@ class Database(PyRx.RxObject):
         Acad::eInvalidInput if type is not a valid value, or if id is not valid when type is
         AcDb::kPlotStyleNameById.
         """
-    def setCecolor(self, val: Color, /) -> None:
+    def setCecolor(self, val : Color, /) -> None:
         """
         Sets the AutoCAD color index in color to be the CECOLOR value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on CECOLOR.
         Returns Acad::eOk if successful.
         """
-    def setCeltscale(self, val: float, /) -> None:
+    def setCeltscale(self, val : float, /) -> None:
         """
         Sets scale to be the CELTSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on CELTSCALE. Returns Acad::eOk if
         successful.
         """
-    def setCeltype(self, val: ObjectId, /) -> None:
+    def setCeltype(self, val : ObjectId, /) -> None:
         """
         Sets the LinetypeTableRecord with object ID objId to be the CELTYPE value of the database.
         See the System Variables section of the AutoCAD Command Reference for information on
         CELTYPE. Returns Acad::eOk if successful.
         """
-    def setCelweight(self, val: LineWeight, /) -> None:
+    def setCelweight(self, val : LineWeight, /) -> None:
         """
         Sets weight to be the current lineweight (CELWEIGHT) for the database. See the System
         Variables section of the AutoCAD Command Reference for information on CELWEIGHT. Returns
         Acad::eOk if successful.
         """
-    def setCetransparency(self, val: Transparency, /) -> None:
+    def setCetransparency(self, val : Transparency, /) -> None:
         """
         Sets the transparency value for the entity.
         """
-    def setChamfera(self, val: float, /) -> None:
+    def setChamfera(self, val : float, /) -> None:
         """
         Sets val to be the CHAMFERA value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERA. Returns Acad::eOk if successful.
         """
-    def setChamferb(self, val: float, /) -> None:
+    def setChamferb(self, val : float, /) -> None:
         """
         Sets val to be the CHAMFERB value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERB. Returns Acad::eOk if successful.
         """
-    def setChamferc(self, val: float, /) -> None:
+    def setChamferc(self, val : float, /) -> None:
         """
         Sets val to be the CHAMFERC value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERC. Returns Acad::eOk if successful.
         """
-    def setChamferd(self, val: float, /) -> None:
+    def setChamferd(self, val : float, /) -> None:
         """
         Sets val to be the CHAMFERD value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERD. Returns Acad::eOk if successful.
         """
-    def setClayer(self, val: ObjectId, /) -> None:
+    def setClayer(self, val : ObjectId, /) -> None:
         """
         Sets the LayerTableRecord with object ID objId to be the CLAYER value of the database. See
         the System Variables section of the AutoCAD Command Reference for information on CLAYER.
         Returns Acad::eOk if successful.
         """
-    def setCmaterial(self, val: ObjectId, /) -> None:
+    def setCmaterial(self, val : ObjectId, /) -> None:
         """
         This function sets the current material and provides a default material for new entities.
         The specified Id must correspond to a valid AcDbMaterial object. Returns Acad::eOk if
         successful.
         """
-    def setCmljust(self, val: int, /) -> None:
+    def setCmljust(self, val : int, /) -> None:
         """
         Sets just to be the CMLJUST value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CMLJUST. Returns Acad::eOk if successful.
         """
-    def setCmlscale(self, val: float, /) -> None:
+    def setCmlscale(self, val : float, /) -> None:
         """
         Sets scale to be the CMLSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on CMLSCALE. Returns Acad::eOk if successful.
         """
-    def setCmlstyleID(self, val: ObjectId, /) -> None:
+    def setCmlstyleID(self, val : ObjectId, /) -> None:
         """
         Sets the MlineStyle with object ID objId to be the CMLSTYLEID value of the database. See
         the System Variables section of the AutoCAD Command Reference for information on
         CMLSTYLEID. Returns Acad::eOk if successful.
         """
-    def setCoords(self, val: int, /) -> None:
+    def setCoords(self, val : int, /) -> None:
         """
         Beginning with AutoCAD 2000, the COORDS system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on COORDS.
         """
-    def setCshadow(self, val: int, /) -> None:
+    def setCshadow(self, val : int, /) -> None:
         """
         Sets the value of the CSHADOW system variable. Returns Acad::eOk if successful. If val is
         outside of the valid range, returns Acad::eInvalidInput.
         """
-    def setDelUsedObj(self, val: int, /) -> None:
+    def setDelUsedObj(self, val : int, /) -> None:
         """
         Beginning with AutoCAD 2000, the DELOBJ system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on DELOBJ.
         """
-    def setDgnframe(self, val: int, /) -> None:
+    def setDgnframe(self, val : int, /) -> None:
         """
         Reserved for future use.
         """
-    def setDimAssoc(self, val: int, /) -> None:
+    def setDimAssoc(self, val : int, /) -> None:
         """
         Sets the database's DIMASSOC system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on DIMASSOC. Returns Acad::eOk if successful.
         """
-    def setDimaso(self, val: bool, /) -> None:
+    def setDimaso(self, val : bool, /) -> None:
         """
         Sets v to be the DIMASO value for the database. The value of false is 0. The value of true
         is 1. See the System Variables section of the AutoCAD Command Reference for information on
         DIMASO. Returns Acad::eOk if successful.
         """
-    def setDimfit(self, val: int, /) -> None:
+    def setDimfit(self, val : int, /) -> None:
         """
         Sets the database values of DIMATFIT and DIMTMOVE according the Release 14 variable DIMFIT
         value of fit. See the System Variables section of the AutoCAD Command Reference for
         information on DIMATFIT and DIMTMOVE. Returns Acad::eOk if successful. This method is
         deprecated and may be removed in a future release.
         """
-    def setDimsho(self, val: bool, /) -> None:
+    def setDimsho(self, val : bool, /) -> None:
         """
         Sets sho to be the DIMSHO value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on DIMSHO. Returns Acad::eOk if successful.
         """
-    def setDimstyle(self, val: ObjectId, /) -> None:
+    def setDimstyle(self, val : ObjectId, /) -> None:
         """
         Sets the AcDbDimStyleTableRecord with object ID styleId to be the DIMSTYLE value for the
         database. See the System Variables section of the AutoCAD Command Reference for information
         on DIMSTYLE. Returns Acad::eOk if successful.
         """
-    def setDimstyleData(self, val: PyDb.DimStyleTableRecord | PyDb.ObjectId, /) -> None:
+    def setDimstyleData(self, val : PyDb.DimStyleTableRecord | PyDb.ObjectId, /) -> None:
         """
         This function copies the dimension variable information in the DimStyleTableRecord
         identified by id into the database on which this method is called, making those dimension
@@ -8069,33 +7811,33 @@ class Database(PyRx.RxObject):
         not have to reside in the database on which this method is called. Returns Acad::eOk if
         operation is successful.
         """
-    def setDimunit(self, val: int, /) -> None:
+    def setDimunit(self, val : int, /) -> None:
         """
         Sets the database values of DIMLUNIT and DIMFRAC according the Release 14 variable DIMUNIT
         value of unit. See the System Variables section of the AutoCAD Command Reference for
         information on DIMLUNIT and DIMFRAC. Returns Acad::eOk if successful. This method is
         deprecated and may be removed in a future release.
         """
-    def setDispSilh(self, val: bool, /) -> None:
+    def setDispSilh(self, val : bool, /) -> None:
         """
         Sets silh to be the DISPSILH value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on DISPSILH. Returns Acad::eOk if successful.
         """
-    def setDragVisStyle(self, val: ObjectId, /) -> None:
+    def setDragVisStyle(self, val : ObjectId, /) -> None:
         """
         Sets the visual style for to be used while creating 3D solid primitives and extruded solids
         and surfaces defined by the DRAGVS system variable. See the System Variables section of the
         AutoCAD Command Reference for information on DRAGVS.
         """
-    def setDragmode(self, val: int, /) -> None:
+    def setDragmode(self, val : int, /) -> None:
         """
         Beginning with AutoCAD 2000, the DRAGMODE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on DRAGMODE.
         """
-    def setDrawOrderCtl(self, val: int, /) -> None:
+    def setDrawOrderCtl(self, val : int, /) -> None:
         """
         Sets the value of the DRAWORDERCTL system variable, which enables users to revert to legacy
         draw order mode if required. This system variable is per drawing in order to be consistent
@@ -8110,52 +7852,52 @@ class Database(PyRx.RxObject):
         outside of the 0-3 range is passed into setDrawOrderCtl(), it will return eInvalidInput.
         Otherwise, it will return eOk.
         """
-    def setDwfframe(self, val: int, /) -> None:
+    def setDwfframe(self, val : int, /) -> None:
         """
         Sets the DWFFRAME value for the database. See the System Variables section of the AutoCAD
         Command Reference for information on DWFFRAME. Returns Acad::eOk if successful.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, val : float, /) -> None:
         """
         Sets elev to be the Model Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION. Returns Acad::eOk if
         successful.
         """
-    def setEndCaps(self, val: EndCaps, /) -> None:
+    def setEndCaps(self, val : EndCaps, /) -> None:
         """
         Sets the database's endCaps header variable to type. Possible values for type are
         AcDb::kEndCapNone, AcDb::kEndCapRound, AcDb::kEndCapAngle, or AcDb::kEndCapSquare. Returns
         Acad::eOk if successful.
         """
-    def setExtmax(self, val: PyGe.Point3d, /) -> None:
+    def setExtmax(self, val : PyGe.Point3d, /) -> None:
         """
         Sets max to the EXTMAX value of the current model space for this database. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMAX.
         """
-    def setExtmin(self, val: PyGe.Point3d, /) -> None:
+    def setExtmin(self, val : PyGe.Point3d, /) -> None:
         """
         Sets min to be the EXTMIN value for the current model space of this database. See the
         system variables documentation in the AutoCAD Command Reference for information on EXTMIN.
         """
-    def setFacetres(self, val: float, /) -> None:
+    def setFacetres(self, val : float, /) -> None:
         """
         Sets facetres to be the FACETRES value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on FACETRES. Returns Acad::eOk if
         successful.
         """
-    def setFilletrad(self, val: float, /) -> None:
+    def setFilletrad(self, val : float, /) -> None:
         """
         Sets radius to be the FILLETRAD value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on FILLETRAD. Returns Acad::eOk if
         successful.
         """
-    def setFillmode(self, val: bool, /) -> None:
+    def setFillmode(self, val : bool, /) -> None:
         """
         Sets mode to be the FILLMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on FILLMODE. Returns Acad::eOk if successful.
         """
-    def setFingerprintGuid(self, guid: str, /) -> None:
+    def setFingerprintGuid(self, guid : str, /) -> None:
         """
         Sets the database's fingerprintguid header variable to be a copy of the string pointed to
         by pNewGuid. Returns Acad::eOk if successful.
@@ -8165,389 +7907,387 @@ class Database(PyRx.RxObject):
         This function sets a non-persistent flag in the AcDbDatabase so that the next save will be
         a full save. The flag is cleared when that save takes place.
         """
-    def setGeoMarkerVisibility(self, val: bool, /) -> None:
+    def setGeoMarkerVisibility(self, val : bool, /) -> None:
         """
         This function set the visible state for a GeoMarker object
         """
-    def setHaloGap(self, val: int, /) -> None:
+    def setHaloGap(self, val : int, /) -> None:
         """
         Sets the database's HALOGAP system variable to val. See the System Variables section of the
         AutoCAD Command Reference for information on HALOGAP. Returns Acad::eOk if successful.
         """
-    def setHandseed(self, val: Handle, /) -> None:
+    def setHandseed(self, val : Handle, /) -> None:
         """
         Sets the database to use handle as the next available handle for new objects added to the
         database. WarningThis function must be used only with extreme caution. If the handle value
         passed in is lower than handles already in use by the database, serious problems could
         occur. Returns Acad::eOk if successful.
         """
-    def setHideText(self, val: int, /) -> None:
+    def setHideText(self, val : int, /) -> None:
         """
         Sets the database's HIDETEXT system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on HIDETEXT. Returns Acad::eOk if successful.
         """
-    def setHpInherit(self, val: bool, /) -> None:
+    def setHpInherit(self, val : bool, /) -> None:
         """
         Sets inherit to be the HPINHERIT value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on HPINHERIT. Returns Acad::eOk if
         successful.
         """
-    def setHpOrigin(self, val: PyGe.Point2d, /) -> None:
+    def setHpOrigin(self, val : PyGe.Point2d, /) -> None:
         """
         Sets origin to be the HPORIGIN value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on HPORIGIN. Returns Acad::eOk if successful.
         """
-    def setHyperlinkBase(self, val: str, /) -> None:
+    def setHyperlinkBase(self, val : str, /) -> None:
         """
         Sets the database to use a copy of path as the new value for the HYPERLINKBASE header
         variable. See the system variables documentation in the AutoCAD Command Reference for
         information on HYPERLINKBASE. Returns Acad::eOk if successful.
         """
-    def setIndexctl(self, val: int, /) -> None:
+    def setIndexctl(self, val : int, /) -> None:
         """
         Sets the value of the INDEXCTL header variable. Returns Acad::eOk if successful.
         """
-    def setInsbase(self, val: PyGe.Point3d, /) -> None:
+    def setInsbase(self, val : PyGe.Point3d, /) -> None:
         """
         Sets base (in WCS coordinates) to be the Model Space INSBASE value for the database. See
         the System Variables section of the AutoCAD Command Reference for information on INSBASE.
         Returns Acad::eOk if successful.
         """
-    def setInsunits(self, val: UnitsValue, /) -> None:
+    def setInsunits(self, val : UnitsValue, /) -> None:
         """
         Sets the INSUNITS variable for the database.
         """
-    def setInterfereColor(self, val: Color, /) -> None:
+    def setInterfereColor(self, val : Color, /) -> None:
         """
         Sets the database's INTERFERECOLOR system variable to val. See the System Variables section
         of the AutoCAD Command Reference for information on INTERFERECOLOR.
         """
-    def setInterfereObjVisStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setInterfereObjVisStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the database's INTERFEREOBJVS system variable to the visual style pointed to byid. See
         the System Variables section of the AutoCAD Command Reference for information on
         INTERFEREOBJVS.
         """
-    def setInterfereVpVisStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setInterfereVpVisStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the database's INTERFEREVPVS system variable to the visual style pointed to by id. See
         the System Variables section of the AutoCAD Command Reference for information on
         INTERFEREVPVS.
         """
-    def setIntersectColor(self, val: int, /) -> None:
+    def setIntersectColor(self, val : int, /) -> None:
         """
         Sets the database's INTERSECTIONCOLOR system variable to val. See the System Variables
         section of the AutoCAD Command Reference for information on INTERSECTIONCOLOR.
         """
-    def setIntersectDisplay(self, val: int, /) -> None:
+    def setIntersectDisplay(self, val : int, /) -> None:
         """
         Sets the database's INTERSECTIONDISPLAY system variable to val. See the System Variables
         section of the AutoCAD Command Reference for information on INTERSECTIONDISPLAY.
         """
-    def setIsolines(self, val: int, /) -> None:
+    def setIsolines(self, val : int, /) -> None:
         """
         Sets isolines to be the ISOLINES value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on ISOLINES. Returns Acad::eOk if
         successful.
         """
-    def setJoinStyle(self, val: JoinStyle, /) -> None:
+    def setJoinStyle(self, val : JoinStyle, /) -> None:
         """
         Sets style to be the new value for the database's joinstyle header variable. style may be
         one of the following values: AcDb::kJnStylNone, AcDb::kJnStylRound, AcDb::kJnStylAngle,
         AcDb::kJnStylFlat. Returns Acad::eOk if successful.
         """
-    def setLatitude(self, val: float, /) -> None:
+    def setLatitude(self, val : float, /) -> None:
         """
         Sets the latitude of the site where the drawing model is located. Returns Acad::eOk if a
         valid value is passed in; Acad::eOutOfRange otherwise. The drawing latitude, longitude, and
         north direction are used by the Sun, along with the Sun's date and time, to calculate the
         correct angle for sunlight.
         """
-    def setLayerEval(self, val: int, /) -> None:
+    def setLayerEval(self, val : int, /) -> None:
         """
         Sets the value of the LAYEREVAL header variable. Returns Acad::eOk if successful.
         """
-    def setLayerNotify(self, val: int, /) -> None:
+    def setLayerNotify(self, val : int, /) -> None:
         """
         Sets the value of the LAYERNOTIFY header variable. Returns Acad::eOk if successful.
         """
-    def setLensLength(self, val: float, /) -> None:
+    def setLensLength(self, val : float, /) -> None:
         """
         Sets the LENSLENGTH system variable. Returns Acad::eOk on success.
         """
-    def setLightGlyphDisplay(self, val: int, /) -> None:
+    def setLightGlyphDisplay(self, val : int, /) -> None:
         """
         Set whether light objects are displayed in the viewport. Returns Acad::eOk if 0 or 1 is
         passed in, Acad::eOutOfRange otherwise.
         """
-    def setLightingUnits(self, val: int, /) -> None:
+    def setLightingUnits(self, val : int, /) -> None:
         """
         Sets the lighting units for the drawing, where 0 = Generic, 1 = International, and 2 =
         American. The default setting is 0. Returns Acad::eOk if a valid lighting units value is
         passed in.
         """
-    def setLightsInBlocks(self, val: bool, /) -> None:
+    def setLightsInBlocks(self, val : bool, /) -> None:
         """
         Specify whether all lights in blocks are ignored and do not contribute lighting to the
         scene. The default setting is true. Returns Acad::eOk on success.
         """
-    def setLimcheck(self, val: bool, /) -> None:
+    def setLimcheck(self, val : bool, /) -> None:
         """
         Specify whether all lights in blocks are ignored and do not contribute lighting to the
         scene. The default setting is true. Returns Acad::eOk on success.
         """
-    def setLimmax(self, val: PyGe.Point2d, /) -> None:
+    def setLimmax(self, val : PyGe.Point2d, /) -> None:
         """
         Sets max (in WCS coordinates) to be the Model Space LIMMAX value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMAX.
         Returns Acad::eOk if successful.
         """
-    def setLimmin(self, val: PyGe.Point2d, /) -> None:
+    def setLimmin(self, val : PyGe.Point2d, /) -> None:
         """
         Sets min (in WCS coordinates) to be the Model Space LIMMIN value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMIN.
         Returns Acad::eOk if successful.
         """
-    def setLineWeightDisplay(self, val: bool, /) -> None:
+    def setLineWeightDisplay(self, val : bool, /) -> None:
         """
         Sets display to be the current lineweight display (LWDISPLAY) for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LWDISPLAY.
         Returns Acad::eOk if successful.
         """
-    def setLoftAng1(self, val: float, /) -> None:
+    def setLoftAng1(self, val : float, /) -> None:
         """
         Sets ang1 to be the LOFTANG1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTANG1. Returns Acad::eOk if successful.
         """
-    def setLoftAng2(self, val: float, /) -> None:
+    def setLoftAng2(self, val : float, /) -> None:
         """
         Sets ang2 to be the LOFTANG2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTANG2. Returns Acad::eOk if successful.
         """
-    def setLoftMag1(self, val: float, /) -> None:
+    def setLoftMag1(self, val : float, /) -> None:
         """
         Sets mag1 to be the LOFTMAG1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTMAG1. Returns Acad::eOk if successful.
         """
-    def setLoftMag2(self, val: float, /) -> None:
+    def setLoftMag2(self, val : float, /) -> None:
         """
         Sets mag2 to be the LOFTMAG2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTMAG2. Returns Acad::eOk if successful.
         """
-    def setLoftNormals(self, val: int, /) -> None:
+    def setLoftNormals(self, val : int, /) -> None:
         """
         Sets value to be the LOFTNORMALS value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on LOFTNORMALS. Returns Acad::eOk if
         successful.
         """
-    def setLoftParam(self, flags: int, /) -> None:
+    def setLoftParam(self, flags : int, /) -> None:
         """
         Sets flags to be the LOFTPARAM value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTPARAM. Returns Acad::eOk if
         successful.
         """
-    def setLongitude(self, val: float, /) -> None:
+    def setLongitude(self, val : float, /) -> None:
         """
         Sets the longitude of the site where the drawing model is located. Returns Acad::eOk if a
         valid value is passed in; Acad::eOutOfRange otherwise. The drawing latitude, longitude, and
         north direction are used by the Sun, along with the Sun's date and time, to calculate the
         correct angle for sunlight.
         """
-    def setLtscale(self, val: float, /) -> None:
+    def setLtscale(self, val : float, /) -> None:
         """
         Sets scale to be the LTSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LTSCALE. Returns Acad::eOk if successful.
         """
-    def setLunits(self, val: int, /) -> None:
+    def setLunits(self, val : int, /) -> None:
         """
         Sets lunits to be the LUNITS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LUNITS. Returns Acad::eOk if successful.
         """
-    def setLuprec(self, val: int, /) -> None:
+    def setLuprec(self, val : int, /) -> None:
         """
         Sets prec to be the LUPREC value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on LUPREC. Returns Acad::eOk if successful.
         """
-    def setMLeaderscale(self, val: float, /) -> None:
+    def setMLeaderscale(self, val : float, /) -> None:
         """
         Sets the MLeader scale value. Returns Acad::eOk if successful.
         """
-    def setMLeaderstyle(self, val: ObjectId, /) -> None:
+    def setMLeaderstyle(self, val : ObjectId, /) -> None:
         """
         Sets the style of this MLeader object. Returns Acad::eOk if successful; otherwise, returns
         an AutoCAD error status.
         """
-    def setMaxactvp(self, val: int, /) -> None:
+    def setMaxactvp(self, val : int, /) -> None:
         """
         Sets max to be the MAXACTVP value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on MAXACTVP. Returns Acad::eOk if successful.
         """
-    def setMeasurement(self, val: MeasurementValue, /) -> None:
+    def setMeasurement(self, val : MeasurementValue, /) -> None:
         """
         Sets the current MEASUREMENT value for the database. type must be one of the
         AcDb::MeasurementValue enumeration values (kEnglish or kMetric). See the System Variables
         section of the AutoCAD Command Reference for information on MEASUREMENT.
         """
-    def setMirrtext(self, val: bool, /) -> None:
+    def setMirrtext(self, val : bool, /) -> None:
         """
         Sets mirror to be the MIRRTEXT value for the database. The value of false is 0. The value
         of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on MIRRTEXT. Returns Acad::eOk if successful.
         """
-    def setMsOleScale(self, val: float, /) -> None:
+    def setMsOleScale(self, val : float, /) -> None:
         """
         Sets the value of the MSOLESCALE header variable. Returns Acad::eOk if successful.
         """
-    def setMsltscale(self, val: bool, /) -> None:
+    def setMsltscale(self, val : bool, /) -> None:
         """
         Sets the MSLTSCALE variable. Returns Acad::eOk if successful.
         """
-    def setNorthDirection(self, val: float, /) -> None:
+    def setNorthDirection(self, val : float, /) -> None:
         """
         Sets the angle representing a direction towards North, based on the orientation of the
         drawing model in the WCS. Returns Acad::eOk if successful. The drawing latitude, longitude,
         and north direction are used by the Sun, along with the Sun's date and time, to calculate
         the correct angle for sunlight.
         """
-    def setObscuredColor(self, val: int, /) -> None:
+    def setObscuredColor(self, val : int, /) -> None:
         """
         Sets database's OBSCUREDCOLOR system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on OBSCUREDCOLOR. Returns Acad::eOk if
         successful.
         """
-    def setObscuredLineType(self, val: int, /) -> None:
+    def setObscuredLineType(self, val : int, /) -> None:
         """
         Sets database's OBSCUREDLINETYPE system variable to val. See the System Variables section
         of the AutoCAD Command Reference for information on OBSCUREDLINETYPE. Returns Acad::eOk if
         successful.
         """
-    def setOleStartUp(self, val: bool, /) -> None:
+    def setOleStartUp(self, val : bool, /) -> None:
         """
         Sets the database to use val as the new OLESTARTUP value. See the system variables
         documentation in the AutoCAD Command Reference for information on OLESTARTUP.Returns
         Acad::eOk if successful.
         """
-    def setOrthomode(self, val: bool, /) -> None:
+    def setOrthomode(self, val : bool, /) -> None:
         """
         Sets mode to be the ORTHOMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on ORTHMODE. Returns Acad::eOk if successful.
         """
-    def setPdfframe(self, val: int, /) -> None:
+    def setPdfframe(self, val : int, /) -> None:
         """
         Sets the PDFFRAME header variable which controls visibility of frames from PDF Underlays.
         """
-    def setPdmode(self, val: int, /) -> None:
+    def setPdmode(self, val : int, /) -> None:
         """
         Sets mode to be the current PDMODE value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on PDMODE. Returns Acad::eOk if
         successful.
         """
-    def setPdsize(self, val: float, /) -> None:
+    def setPdsize(self, val : float, /) -> None:
         """
         Sets size to be the PDSIZE value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on PDSIZE. Returns Acad::eOk if successful.
         """
-    def setPelevation(self, val: float, /) -> None:
+    def setPelevation(self, val : float, /) -> None:
         """
         Sets elev to be the Paper Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION. Returns Acad::eOk if
         successful.
         """
-    def setPextmax(self, val: PyGe.Point3d, /) -> None:
+    def setPextmax(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the EXTMAX value of this database's current paper space to max. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMAX.
         """
-    def setPextmin(self, val: PyGe.Point3d, /) -> None:
+    def setPextmin(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the EXTMIN value of this database's current paper space to min. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMIN.
         """
-    def setPickstyle(self, val: int, /) -> None:
+    def setPickstyle(self, val : int, /) -> None:
         """
         Beginning with AutoCAD 2000, the PICKSTYLE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on PICKSTYLE.
         """
-    def setPinsbase(self, val: PyGe.Point3d, /) -> None:
+    def setPinsbase(self, val : PyGe.Point3d, /) -> None:
         """
         Sets base to be the Paper Space INSBASE value for the database. The point is in WCS
         coordinates. See the System Variables section of the AutoCAD Command Reference for
         information on INSBASE. Returns Acad::eOk if successful.
         """
-    def setPlimcheck(self, val: bool, /) -> None:
+    def setPlimcheck(self, val : bool, /) -> None:
         """
         Sets check to be the Paper Space LIMCHECK value for the database. The value of false is 0.
         The value of true is 1. See the System Variables section of the AutoCAD Command Reference
         for information on LIMCHECK. Returns Acad::eOk if successful.
         """
-    def setPlimmax(self, val: PyGe.Point2d, /) -> None:
+    def setPlimmax(self, val : PyGe.Point2d, /) -> None:
         """
         Sets max (in WCS coordinates) to be the Paper Space LIMMAX value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMAX.
         Returns Acad::eOk if successful.
         """
-    def setPlimmin(self, val: PyGe.Point2d, /) -> None:
+    def setPlimmin(self, val : PyGe.Point2d, /) -> None:
         """
         Sets min (in WCS coordinates) to be the Paper Space LIMMIN value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMIN.
         Returns Acad::eOk if successful.
         """
-    def setPlineEllipse(self, val: bool, /) -> None:
+    def setPlineEllipse(self, val : bool, /) -> None:
         """
         Sets pline to be the PELLIPSE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PELLIPSE. Returns Acad::eOk if successful.
         """
-    def setPlinegen(self, val: bool, /) -> None:
+    def setPlinegen(self, val : bool, /) -> None:
         """
         Sets pline to be the PELLIPSE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PELLIPSE. Returns Acad::eOk if successful.
         """
-    def setPlinewid(self, val: float, /) -> None:
+    def setPlinewid(self, val : float, /) -> None:
         """
         Sets width to be the PLINEWID value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on PLINEWID. Returns Acad::eOk if successful.
         """
-    def setPreviewType(self, val: int, /) -> None:
+    def setPreviewType(self, val : int, /) -> None:
         """
         Sets the value of the preview type. Returns Acad::eOk if successful.
         """
-    def setProjectName(self, val: str, /) -> None:
+    def setProjectName(self, val : str, /) -> None:
         """
         Sets the database to use a copy of the string pointed to by pName as the new PROJECTNAME
         header variable value. See the system variables documentation in the AutoCAD Command
         Reference for information on PROJECTNAME. Returns Acad::eOk if successful.
         """
-    def setPsltscale(self, val: bool, /) -> None:
+    def setPsltscale(self, val : bool, /) -> None:
         """
         Sets scale to be the PSLTSCALE value for the database. The value of false is 0. The value
         of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PSLTSCALE. Returns Acad::eOk if successful.
         """
-    def setPsolHeight(self, val: float, /) -> None:
+    def setPsolHeight(self, val : float, /) -> None:
         """
         Sets height to be the PSOLHEIGHT value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on PSOLHEIGHT. Returns Acad::eOk if
         successful.
         """
-    def setPsolWidth(self, val: float, /) -> None:
+    def setPsolWidth(self, val : float, /) -> None:
         """
         Sets width to be the PSOLWIDTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on PSOLWIDTH. Returns Acad::eOk if
         successful.
         """
-    def setPucs(
-        self, ucsOrigin: PyGe.Point3d, ucsXDir: PyGe.Vector3d, ucsYDir: PyGe.Vector3d, /
-    ) -> None:
+    def setPucs(self, ucsOrigin : PyGe.Point3d, ucsXDir : PyGe.Vector3d, ucsYDir : PyGe.Vector3d, /) -> None:
         """
         This method sets the Paper Space UCS to the UCS defined by ucsOrigin, ucsXDir, and ucsYDir.
         The pucsorg(), pucsxdir(), and pucsydir() are the query functions for this UCS.
         """
-    def setPucsBase(self, ucsid: ObjectId, /) -> None:
+    def setPucsBase(self, ucsid : ObjectId, /) -> None:
         """
         Sets the database to use the AcDbUcsTableRecord associated with ucsid to define the origin
         and orientation of orthographic UCS settings for the database's current paper space. The
@@ -8555,184 +8295,184 @@ class Database(PyRx.RxObject):
         variables documentation in the AutoCAD Command Reference for information on PUCSNAME.
         Returns Acad::eOk if successful.
         """
-    def setPucsname(self, ucsrec: ObjectId, /) -> None:
+    def setPucsname(self, ucsrec : ObjectId, /) -> None:
         """
         This method sets the Paper Space UCS to the AcDbUCSTableRecord whose ObjectId is ucsRecId.
         This is the Paper Space value of UCSNAME. See the System Variables section of the AutoCAD
         Command Reference for information on UCSNAME.
         """
-    def setQtextmode(self, mode: bool, /) -> None:
+    def setQtextmode(self, mode : bool, /) -> None:
         """
         Sets mode to be the QTEXTMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE. Returns Acad::eOk if successful.
         """
-    def setRealWorldScale(self, realWorldScale: float, /) -> None:
+    def setRealWorldScale(self, realWorldScale : float, /) -> None:
         """
         Reserved for future use.
         """
-    def setRegenmode(self, mode: bool, /) -> None:
+    def setRegenmode(self, mode : bool, /) -> None:
         """
         Sets mode to be the current REGENMODE value for the database. The value of false is 0. The
         value of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on REGENMODE. Returns Acad::eOk if successful.
         """
-    def setRetainOriginalThumbnailBitmap(self, retain: bool, /) -> None:
+    def setRetainOriginalThumbnailBitmap(self, retain : bool, /) -> None:
         """
         This function will set the database to use retain as the flag indicating whether or not to
         retain the existing thumbnail bitmap during saves.
         """
-    def setSaveproxygraphics(self, val: int, /) -> None:
+    def setSaveproxygraphics(self, val : int, /) -> None:
         """
         Sets saveimg to be the PROXYGRAPHICS value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on PROXYGRAPHICS. Returns
         Acad::eOk if successful.
         """
-    def setSectionViewStyle(self, val: ObjectId, /) -> None:
+    def setSectionViewStyle(self, val : ObjectId, /) -> None:
         """
         This method sets the current section view style using the given Object ID for an
         AcDbSectionViewStyle object.
         """
-    def setShadedge(self, val: int, /) -> None:
+    def setShadedge(self, val : int, /) -> None:
         """
         Sets mode to be the SHADEDGE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SHADEDGE. Returns Acad::eOk if successful.
         """
-    def setShadedif(self, val: int, /) -> None:
+    def setShadedif(self, val : int, /) -> None:
         """
         Sets dif to be the SHADEDIF value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SHADEDIF. Returns Acad::eOk if successful.
         """
-    def setShadowPlaneLocation(self, val: float, /) -> None:
+    def setShadowPlaneLocation(self, val : float, /) -> None:
         """
         Sets the current ground plane z position in world coordinates. The ground plane is always
         parallel to the X-Y world plane and this is the distance either above or below the X-Y
         plane.
         """
-    def setShowHist(self, val: int, /) -> None:
+    def setShowHist(self, val : int, /) -> None:
         """
         Sets val to be the SHOWHIST value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SHOWHIST. Returns Acad::eOk if successful.
         """
-    def setSketchinc(self, val: float, /) -> None:
+    def setSketchinc(self, val : float, /) -> None:
         """
         Sets inc to be the SKETCHINC value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SKETCHINC. Returns Acad::eOk if
         successful.
         """
-    def setSkpoly(self, val: bool, /) -> None:
+    def setSkpoly(self, val : bool, /) -> None:
         """
         Sets asPoly to be the SKPOLY value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on SKPOLY. Returns Acad::eOk if successful.
         """
-    def setSolidHist(self, val: int, /) -> None:
+    def setSolidHist(self, val : int, /) -> None:
         """
         Sets val to be the SOLIDHIST value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SOLIDHIST. Returns Acad::eOk if
         successful.
         """
-    def setSortEnts(self, val: int, /) -> None:
+    def setSortEnts(self, val : int, /) -> None:
         """
         Sets the database's SORTENTS system variable to the value of sortEnts.
         """
-    def setSplframe(self, val: bool, /) -> None:
+    def setSplframe(self, val : bool, /) -> None:
         """
         Sets disp to be the SPLFRAME value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on SPLFRAME. Returns Acad::eOk if successful.
         """
-    def setSplinesegs(self, val: int, /) -> None:
+    def setSplinesegs(self, val : int, /) -> None:
         """
         Sets segs to be the SPLINESEGS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SPLINESEGS. Returns Acad::eOk if
         successful.
         """
-    def setSplinetype(self, val: int, /) -> None:
+    def setSplinetype(self, val : int, /) -> None:
         """
         Sets type to be the SPLINETYPE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SPLINETYPE. Returns Acad::eOk if
         successful.
         """
-    def setStepSize(self, val: float, /) -> None:
+    def setStepSize(self, val : float, /) -> None:
         """
         Sets stepSize to be the STEPSIZE value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on STEPSIZE. Returns Acad::eOk if
         successful.
         """
-    def setStepsPerSec(self, val: float, /) -> None:
+    def setStepsPerSec(self, val : float, /) -> None:
         """
         Sets stepsPerSec to be the STEPSPERSEC value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on STEPSPERSEC. Returns Acad::eOk
         if successful.
         """
-    def setStyleSheet(self, val: str, /) -> None:
+    def setStyleSheet(self, val : str, /) -> None:
         """
         Sets the database to use a copy of the string pointed to by pName as the plot style sheet
         for the database. Returns Acad::eOk if successful.
         """
-    def setSurftab1(self, val: int, /) -> None:
+    def setSurftab1(self, val : int, /) -> None:
         """
         Sets tab1 to be the SURFTAB1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SURFTAB1. Returns Acad::eOk if successful.
         """
-    def setSurftab2(self, val: int, /) -> None:
+    def setSurftab2(self, val : int, /) -> None:
         """
         Sets tab2 to be the SURFTAB2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SURFTAB2. Returns Acad::eOk if successful.
         """
-    def setSurftype(self, val: int, /) -> None:
+    def setSurftype(self, val : int, /) -> None:
         """
         Sets type to be the current SURFTYPE value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on SURFTYPE. Returns Acad::eOk if
         successful.
         """
-    def setSurfu(self, val: int, /) -> None:
+    def setSurfu(self, val : int, /) -> None:
         """
         Sets u to be the SURFU value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SURFU. Returns Acad::eOk if successful.
         """
-    def setSurfv(self, val: int, /) -> None:
+    def setSurfv(self, val : int, /) -> None:
         """
         Sets v to be the SURFV value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SURFV. Returns Acad::eOk if successful.
         """
-    def setTStackAlign(self, val: int, /) -> None:
+    def setTStackAlign(self, val : int, /) -> None:
         """
         Sets the database to use val as its TSTACKALIGN value. See the system variables
         documentation in the AutoCAD Command Reference for information on TSTACKALIGN. Returns
         Acad::eOk if successful.
         """
-    def setTStackSize(self, val: int, /) -> None:
+    def setTStackSize(self, val : int, /) -> None:
         """
         Sets the database to use val as its TSTACKSIZE value. See the system variables
         documentation in the AutoCAD Command Reference for information on TSTACKSIZE . Returns
         Acad::eOk if successful.
         """
-    def setTablestyle(self, val: ObjectId, /) -> None:
+    def setTablestyle(self, val : ObjectId, /) -> None:
         """
         Sets the object ID of the table style specified by the current CTABLESTYLE value of the
         database. See the System Variables section of the AutoCAD Command Reference for information
         on CTABLESTYLE. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setTextsize(self, val: float, /) -> None:
+    def setTextsize(self, val : float, /) -> None:
         """
         Sets size to be the TEXTSIZE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TEXTSIZE. Returns Acad::eOk if successful.
         """
-    def setTextstyle(self, val: ObjectId, /) -> None:
+    def setTextstyle(self, val : ObjectId, /) -> None:
         """
         Sets the database to use the TextStyleTableRecord with object ID objId as the TEXTSTYLE
         value. See the System Variables section of the AutoCAD Command Reference for information on
         TEXTSTYLE. Returns Acad::eOk if successful.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val : float, /) -> None:
         """
         Sets thickness to be the THICKNESS value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on THICKNESS. Returns Acad::eOk if
         successful.
         """
-    def setTilemode(self, val: bool, /) -> None:
+    def setTilemode(self, val : bool, /) -> None:
         """
         Sets mode to be the TILEMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
@@ -8740,108 +8480,106 @@ class Database(PyRx.RxObject):
         when invoked while the current document is editing a block (BLOCKEDITOR=1) where the new
         tile mode is different than the current tile mode.
         """
-    def setTimeZone(self, val: TimeZone, /) -> None:
+    def setTimeZone(self, val : TimeZone, /) -> None:
         """
         Sets the time zone for this drawing.Time zone is best set through the Geographic Location
         dialog. Returns Acad::eOk if a valid time zone is passed in.
         """
-    def setTimeZoneAsUtcOffset(self, val: float, /) -> None:
+    def setTimeZoneAsUtcOffset(self, val : float, /) -> None:
         """
         Sets the time zone for this drawing using a time-based value, as opposed to the
         AcDb::TimeZone enum. Time zone is best set through the Geographic Location dialog. Returns
         Acad::eOk if a valid time zone offset is passed in.
         """
-    def setTracewid(self, val: float, /) -> None:
+    def setTracewid(self, val : float, /) -> None:
         """
         Sets width to be the TRACEWID value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TRACEWID. Returns Acad::eOk if successful.
         """
-    def setTreedepth(self, val: int, /) -> None:
+    def setTreedepth(self, val : int, /) -> None:
         """
         Sets depth to be the TREEDEPTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TREEDEPTH. Returns Acad::eOk if
         successful.
         """
-    def setUcs(
-        self, ucsOrigin: PyGe.Point3d, ucsXDir: PyGe.Vector3d, ucsYDir: PyGe.Vector3d, /
-    ) -> None:
+    def setUcs(self, ucsOrigin : PyGe.Point3d, ucsXDir : PyGe.Vector3d, ucsYDir : PyGe.Vector3d, /) -> None:
         """
         This method sets the Model Space UCS to the UCS defined by ucsOrigin, ucsXDir, and ucsYDir.
         The ucsorg(), ucsxdir(), and ucsydir() are the query functions for this UCS.
         """
-    def setUcsBase(self, ucsid: ObjectId, /) -> None:
+    def setUcsBase(self, ucsid : ObjectId, /) -> None:
         """
         Sets the database to use the AcDbUcsTableRecord associated with ucsid to define the origin
         and orientation of orthographic UCS settings for the database's model space. The name of
         this AcDbUcsTableRecord is used as the database's UCSNAME value. See the system variables
         documentation in the AutoCAD Command Reference for information on UCSNAME.
         """
-    def setUcsname(self, ucsrecId: ObjectId, /) -> None:
+    def setUcsname(self, ucsrecId : ObjectId, /) -> None:
         """
         This method sets the Model Space UCS to the AcDbUCSTableRecord whose ObjectId is ucsRecId.
         This is the Model Space value of UCSNAME. See the System Variables section of the AutoCAD
         Command Reference for information on UCSNAME.
         """
-    def setUnitmode(self, val: int, /) -> None:
+    def setUnitmode(self, val : int, /) -> None:
         """
         Sets mode to be the UNITMODE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on UNITMODE. Returns Acad::eOk if successful.
         """
-    def setUpdateThumbnail(self, val: int, /) -> None:
+    def setUpdateThumbnail(self, val : int, /) -> None:
         """
         Sets the value of the UPDATETHUMBNAIL header variable. Returns Acad::eOk if successful.
         """
-    def setUseri1(self, val: int, /) -> None:
+    def setUseri1(self, val : int, /) -> None:
         """
         Sets val to be the USERI1 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI1. Returns Acad::eOk if successful.
         """
-    def setUseri2(self, val: int, /) -> None:
+    def setUseri2(self, val : int, /) -> None:
         """
         Sets val to be the USERI2 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI2. Returns Acad::eOk if successful.
         """
-    def setUseri3(self, val: int, /) -> None:
+    def setUseri3(self, val : int, /) -> None:
         """
         Sets val to be the USERI3 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI3. Returns Acad::eOk if successful.
         """
-    def setUseri4(self, val: int, /) -> None:
+    def setUseri4(self, val : int, /) -> None:
         """
         Sets val to be the USERI4 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI4. Returns Acad::eOk if successful.
         """
-    def setUseri5(self, val: int, /) -> None:
+    def setUseri5(self, val : int, /) -> None:
         """
         Sets val to be the USERI5 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI5. Returns Acad::eOk if successful.
         """
-    def setUserr1(self, val: float, /) -> None:
+    def setUserr1(self, val : float, /) -> None:
         """
         Sets val to be the USERR1 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR1. Returns Acad::eOk if successful.
         """
-    def setUserr2(self, val: float, /) -> None:
+    def setUserr2(self, val : float, /) -> None:
         """
         Sets val to be the USERR2 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR2. Returns Acad::eOk if successful.
         """
-    def setUserr3(self, val: float, /) -> None:
+    def setUserr3(self, val : float, /) -> None:
         """
         Sets val to be the USERR3 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR3. Returns Acad::eOk if successful.
         """
-    def setUserr4(self, val: float, /) -> None:
+    def setUserr4(self, val : float, /) -> None:
         """
         Sets val to be the USERR4 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR4. Returns Acad::eOk if successful.
         """
-    def setUserr5(self, val: float, /) -> None:
+    def setUserr5(self, val : float, /) -> None:
         """
         Sets val to be the USERR5 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR5. Returns Acad::eOk if successful.
         """
-    def setUsrtimer(self, val: bool, /) -> None:
+    def setUsrtimer(self, val : bool, /) -> None:
         """
         If timer==true, then the user timer is turned on in the database. If timer==false, then the
         user timer is turned off in the database. The user timer for the database currently loaded
@@ -8849,51 +8587,47 @@ class Database(PyRx.RxObject):
         The TDUSRTIMER system variable and the AcDbDatabase::tdusrtimer() method both report the
         time kept by this timer. Returns Acad::eOk if successful.
         """
-    def setVersionGuid(self, val: str, /) -> None:
+    def setVersionGuid(self, val : str, /) -> None:
         """
         This function sets the database to use a copy of the pNewGuid string as the Version GUID
         for the database. Returns Acad::eOk if successful.
         """
-    def setViewportScaleDefault(self, newDefaultVPScale: float, /) -> None:
+    def setViewportScaleDefault(self, newDefaultVPScale : float, /) -> None:
         """
         This function sets the database to use newDefaultVPScale as the scale value for all
         viewports created subsequent to calling this function. newDefaultVPScale must be greater
         than or equal to 0.0. A value of 0.0 causes viewports to be scaled to fit. Returns
         Acad::eOk if successful. Returns Acad::eInvalidInput if newDefaultVPScale is less than 0.
         """
-    def setVisretain(self, val: bool, /) -> None:
+    def setVisretain(self, val : bool, /) -> None:
         """
         Sets retain to be the current VISRETAIN value for the database. The value of false is 0.
         The value of true is 1. See the System Variables section of the AutoCAD Command Reference
         for information on VISRETAIN. Returns Acad::eOk if successful.
         """
-    def setWorldPucsBaseOrigin(
-        self, ucsOrigin: PyGe.Point3d, orthoView: OrthographicView, /
-    ) -> None:
+    def setWorldPucsBaseOrigin(self, ucsOrigin : PyGe.Point3d, orthoView : OrthographicView, /) -> None:
         """
         This function sets origin to be the new paperspace 'default' UCS origin point for the view
         specified by orthoView. orthoView may be any one of the AcDb::OrthographicView enumerators.
         Returns Acad::eOk if successful.
         """
-    def setWorldUcsBaseOrigin(
-        self, ucsOrigin: PyGe.Point3d, orthoView: OrthographicView, /
-    ) -> None:
+    def setWorldUcsBaseOrigin(self, ucsOrigin : PyGe.Point3d, orthoView : OrthographicView, /) -> None:
         """
         This function sets origin to be the new model space 'default' UCS origin point for the view
         specified by orthoView. orthoView may be any one of the AcDb::OrthographicView enumerators.
         Returns Acad::eOk if successful.
         """
-    def setWorldview(self, view: bool, /) -> None:
+    def setWorldview(self, view : bool, /) -> None:
         """
         Sets view to be the WORLDVIEW value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on WORLDVIEW. Returns Acad::eOk if successful.
         """
-    def setXclipFrame(self, disp: int, /) -> None:
+    def setXclipFrame(self, disp : int, /) -> None:
         """
         Sets the value of the XCLIPFRAME header variable.
         """
-    def setXrefEditEnabled(self, enable: bool, /) -> None:
+    def setXrefEditEnabled(self, enable : bool, /) -> None:
         """
         If enable is true, the XEDIT value of this database is set to 1. Otherwise, it is set to 0.
         See the system variables documentation in the AutoCAD Command Reference for information on
@@ -9081,9 +8815,7 @@ class Database(PyRx.RxObject):
         Returns the current TREEDEPTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TREEDEPTH.
         """
-    def tryGetObjectId(
-        self, createIfNotFound: bool, objHandle: Handle, xRefId: int = 0, /
-    ) -> ObjectId: ...
+    def tryGetObjectId(self, createIfNotFound : bool, objHandle : Handle, xRefId : int=0, /) -> ObjectId: ...
     def tstackalign(self, /) -> int:
         """
         Returns the database's TSTACKALIGN value. See the system variables documentation in the
@@ -9133,12 +8865,12 @@ class Database(PyRx.RxObject):
         Returns the current UNITMODE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on UNITMODE.
         """
-    def updateDataLink(self, nDir: UpdateDirection, opt: UpdateOption, /) -> None:
+    def updateDataLink(self, nDir : UpdateDirection, opt : UpdateOption, /) -> None:
         """
         Updates the data link manager. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def updateExt(self, doBestFit: bool, /) -> None:
+    def updateExt(self, doBestFit : bool, /) -> None:
         """
         This function iterates through all the entities in the database's Model Space and updates
         the database's Model Space extents variables EXTMAX and EXTMIN to the values determined
@@ -9245,7 +8977,7 @@ class Database(PyRx.RxObject):
         in the AutoCAD online help for more information on base point.
         """
     @overload
-    def wblock(self, blockId: PyDb.ObjectId, /) -> Database:
+    def wblock(self, blockId : PyDb.ObjectId, /) -> Database:
         """
         Creates a new AcDbDatabase object, sets pOutputDb to point to it, and then uses the
         wblockClone mechanism to write the array of objects specified by outObjId entities out to
@@ -9256,7 +8988,7 @@ class Database(PyRx.RxObject):
         in the AutoCAD online help for more information on base point.
         """
     @overload
-    def wblock(self, blockIds: list[PyDb.ObjectId], basePoint: PyGe.Point3d, /) -> Database:
+    def wblock(self, blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d, /) -> Database:
         """
         Creates a new AcDbDatabase object, sets pOutputDb to point to it, and then uses the
         wblockClone mechanism to write the array of objects specified by outObjId entities out to
@@ -9277,14 +9009,7 @@ class Database(PyRx.RxObject):
         point to. Returns Acad::eOk if operation is successful. See the BASE command documentation
         in the AutoCAD online help for more information on base point.
         """
-    def wblockByRef(
-        self,
-        dbByRef: PyDb.Database,
-        ids: list[PyDb.ObjectId],
-        basePoint: PyGe.Point3d,
-        drc: PyDb.DuplicateRecordCloning,
-        /,
-    ) -> None:
+    def wblockByRef(self, dbByRef: PyDb.Database, ids: list[PyDb.ObjectId],  basePoint : PyGe.Point3d, drc : PyDb.DuplicateRecordCloning, /) -> None:
         """
         This method uses the wblockClone() mechanism to write the array of objects specified by
         outObjIds to the model space block table record of the database pointed to by pOutputDb,
@@ -9296,15 +9021,7 @@ class Database(PyRx.RxObject):
         duplicates already exist in the destination database. drc must keep the same setting in
         multiple calls, and can be only one of the following:
         """
-    def wblockCloneObjects(
-        self,
-        ids: list[PyDb.ObjectId],
-        owner: PyDb.ObjectId,
-        idmap: PyDb.IdMapping,
-        drc: PyDb.DuplicateRecordCloning,
-        deferXlation: bool = False,
-        /,
-    ) -> None:
+    def wblockCloneObjects(self, ids:list[PyDb.ObjectId], owner:PyDb.ObjectId, idmap: PyDb.IdMapping, drc: PyDb.DuplicateRecordCloning, deferXlation:bool=False, /) -> None:
         """
         Clones all objects in the objectIds array and appends them to the container object
         specified by owner. The objects can be from multiple source databases, and must match the
@@ -9338,13 +9055,13 @@ class Database(PyRx.RxObject):
         databaseeIllegalEntityType -- if the objects being cloned do not accept the owner passed
         in.
         """
-    def worldPucsBaseOrigin(self, view: OrthographicView, /) -> PyGe.Point3d:
+    def worldPucsBaseOrigin(self, view : OrthographicView, /) -> PyGe.Point3d:
         """
         This function returns the database's paperspace 'default' UCS origin point (in WCS
         coordinates) for the view specified by orthoView. orthoView may be any one of the
         AcDb::OrthographicView enumerators.
         """
-    def worldUcsBaseOrigin(self, view: OrthographicView, /) -> PyGe.Point3d:
+    def worldUcsBaseOrigin(self, view : OrthographicView, /) -> PyGe.Point3d:
         """
         This function returns the database's model space 'default' UCS origin point (in WCS
         coordinates) for the view specified by orthoView. orthoView may be any one of the
@@ -9376,13 +9093,11 @@ class Database(PyRx.RxObject):
         1. See the system variables documentation in the AutoCAD Command Reference for information
         on XEDIT.
         """
-
 class DatabaseOpenMode(_BoostPythonEnum):
     kForReadAndReadShare: ClassVar[Self]  # 1
     kForReadAndWriteNoShare: ClassVar[Self]  # 2
     kForReadAndAllShare: ClassVar[Self]  # 3
     kTryForReadShare: ClassVar[Self]  # 4
-
 class DatabaseReactor(PyRx.RxObject):
     def __init__(self, /) -> None:
         """
@@ -9472,16 +9187,13 @@ class DatabaseReactor(PyRx.RxObject):
         This notification occurs when the object pointed to by dbObj has its addition to the
         AcDbDatabasedwg undone by an Undo operation.
         """
-    def proxyResurrectionCompleted(
-        self, db: PyDb.Database, name: str, ids: list[PyDb.ObjectId], /
-    ) -> None:
+    def proxyResurrectionCompleted(self, db: PyDb.Database, name: str, ids: list[PyDb.ObjectId], /) -> None:
         """
         This function is invoked when the loading of an ObjectARX or ObjectDBX module resurrects
         proxy objects in the DWG database. This function is invoked only if the application that
         was loaded has registered a logical appname. The notification is sent after the application
         is loaded and all affected proxies are resurrected.
         """
-
 class DatabaseSummaryInfo(PyRx.RxObject):
     def __getitem__(self, index: int, /) -> tuple: ...
     def __init__(self) -> None:
@@ -9503,11 +9215,11 @@ class DatabaseSummaryInfo(PyRx.RxObject):
     def getAuthor(self, /) -> str: ...
     def getComments(self, /) -> str: ...
     @overload
-    def getCustomSummaryInfo(self, index: int, /) -> tuple[str, str]: ...
+    def getCustomSummaryInfo(self, index: int, /) -> tuple[str,str]: ...
     @overload
-    def getCustomSummaryInfo(self, key: str, /) -> tuple[str, str]: ...
+    def getCustomSummaryInfo(self, key: str, /) -> tuple[str,str]: ...
     @overload
-    def getCustomSummaryInfo(self, *args) -> tuple[str, str]: ...
+    def getCustomSummaryInfo(self, *args) -> tuple[str,str]: ...
     def getHyperlinkBase(self, /) -> str: ...
     def getKeywords(self, /) -> str: ...
     def getLastSavedBy(self, /) -> str: ...
@@ -9530,7 +9242,6 @@ class DatabaseSummaryInfo(PyRx.RxObject):
     def setRevisionNumber(self, val: str, /) -> None: ...
     def setSubject(self, val: str, /) -> None: ...
     def setTitle(self, val: str, /) -> None: ...
-
 class Date:
     def __add__(self, val: PyDb.Date, /) -> Date: ...
     def __ge__(self, val: PyDb.Date, /) -> bool: ...
@@ -9554,7 +9265,7 @@ class Date:
         """
         Returns a number in the range 1 to 31 indicating the day of the month.
         """
-    def getDate(self, /) -> tuple[int, int, int]:
+    def getDate(self, /) -> tuple[int,int,int]:
         """
         Gets the date through the parameters month, day, and year. month is in the range 1 to 12.
         day is in the range 1 to 31. year is a standard year value such as 1998.
@@ -9567,7 +9278,7 @@ class Date:
         """
         Sets the AcDbDate object to the current time based on the local machine's time.
         """
-    def getTime(self, /) -> tuple[int, int, int, int]:
+    def getTime(self, /) -> tuple[int,int,int,int]:
         """
         This method fills st with this AcDbDate's time_t information.
         """
@@ -9617,13 +9328,13 @@ class Date:
         Returns the seconds past the minute (the minute is the minute past the hour past midnight)
         a number in the range 0 to 59.
         """
-    def setDate(self, month: int, day: int, year: int, /) -> None:
+    def setDate(self, month : int, day : int, year : int, /) -> None:
         """
         Sets month, day, and year to be the month, day, and year portion of the AcDbDate object's
         value. The month must be in the range 1 to 12, the day in the range 1 to 31, and the year
         is a value such as 1998.
         """
-    def setDay(self, day: int, /) -> None:
+    def setDay(self, day : int, /) -> None:
         """
         Sets day to be the day of the month portion of the AcDbDate object's value. Must be in the
         range 1 to 31. WarningThis class does not rationalize or validate input. Be careful to
@@ -9636,36 +9347,36 @@ class Date:
         date is now 10/21 instead of 9/21For best consistency and efficiency, use the setDate()
         function.
         """
-    def setHour(self, hour: int, /) -> None:
+    def setHour(self, hour : int, /) -> None:
         """
         Sets hour to be the hour of the day portion of the AcDbDate object's value. Must be in the
         range 0 to 23.
         """
-    def setJulianDate(self, julianDay: int, msec: int, /) -> None:
+    def setJulianDate(self, julianDay : int, msec : int, /) -> None:
         """
         Sets the Julian day value of the AcDbDate object to julianDay and the milliseconds past
         midnight value of the Date object to msec. The Julian day is a number from 1 to 366.
         """
-    def setJulianDay(self, day: int, /) -> None:
+    def setJulianDay(self, day : int, /) -> None:
         """
         Sets the Julian day value of the AcDbDate object to julianDay. The Julian day is a number
         from 1 to 366.
         """
-    def setJulianFraction(self, val: float, /) -> None:
+    def setJulianFraction(self, val : float, /) -> None:
         """
         Sets the Julian fraction portion of the AcDbDate object to fraction.
         """
-    def setMillisecond(self, msec: int, /) -> None:
+    def setMillisecond(self, msec : int, /) -> None:
         """
         Sets msec to be the AcDbDate object's milliseconds past the second value (the second is the
         second past the minute past the hour past midnight). Must be in the range 0 to 999.
         """
-    def setMinute(self, min: int, /) -> None:
+    def setMinute(self, min : int, /) -> None:
         """
         Sets min to be the AcDbDate object's minutes past the hour value (the hour is the hour past
         midnight). Must be in the range 0 to 59.
         """
-    def setMonth(self, month: int, /) -> None:
+    def setMonth(self, month : int, /) -> None:
         """
         Sets month to be the AcDbDate object's month of the year value. Must be in the range 1 to
         12. WarningThis class does not rationalize or validate input. Be careful to check the state
@@ -9677,17 +9388,17 @@ class Date:
         existmydate.setMonth(9);// date has been 'rolled over' to 10/1mydate.setDay(21);// date is
         now 10/21 instead of 9/21For best consistency and efficiency, use the setDate() function.
         """
-    def setMsecsPastMidnight(self, msec: int, /) -> None:
+    def setMsecsPastMidnight(self, msec : int, /) -> None:
         """
         Sets msec to be the milliseconds past midnight (not milliseconds past the second) value for
         the AcDbDate object. msec must be in the range 0 to 86,399,999.
         """
-    def setSecond(self, sec: int, /) -> None:
+    def setSecond(self, sec : int, /) -> None:
         """
         Sets second to be the AcDbDate object's seconds past the minute value (the minute is the
         minute past the hour past midnight). Must be in the range 0 to 59.
         """
-    def setTime(self, hour: int, min: int, sec: int, msec: int, /) -> None:
+    def setTime(self, hour : int, min : int, sec : int, msec : int, /) -> None:
         """
         This method sets this AcDbDate from the information in st.
         """
@@ -9695,7 +9406,7 @@ class Date:
         """
         This method sets the AcDbDate's date to 0.
         """
-    def setYear(self, year: int, /) -> None:
+    def setYear(self, year : int, /) -> None:
         """
         Sets year to be the year part of the Julian date in the AcDbDate object in standard format,
         such as 1998.
@@ -9709,15 +9420,8 @@ class Date:
         """
         Returns the year (for example, 2001).
         """
-
 class DbObject(PyGi.Drawable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbObject class is the base class for all objects that reside in an AcDbDatabase
         object. This class provides all the functionality for database residency such as objectId,
@@ -9765,7 +9469,7 @@ class DbObject(PyGi.Drawable):
         new[] and delete[] operators.
         """
     def __reduce__(self, /) -> Any: ...
-    def addContext(self, obj: PyDb.ObjectContext, /) -> None: ...
+    def addContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     def addPersistentReactor(self, id: PyDb.ObjectId, /) -> None:
         """
         Adds the database-resident object specified by objId to the reactor list of the AcDbObject
@@ -9853,9 +9557,7 @@ class DbObject(PyGi.Drawable):
         otherwise a pointer to the current AcDbHostApplicationServices' workingDatabase will be
         returned.
         """
-    def deepClone(
-        self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary: bool = True, /
-    ) -> DbObject:
+    def deepClone(self, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary:bool=True, /) -> DbObject:
         """
         This function gives control of deep clone operations to the object. In the default
         implementation, the object is cloned and appended to the owner object (pOwnerObject). The
@@ -9896,7 +9598,7 @@ class DbObject(PyGi.Drawable):
         proper open status. This function must have been preceded by a call to upgradeFromNotify().
         Returns Acad::eOk if successful.
         """
-    def erase(self, erasing: bool = True, /) -> None:
+    def erase(self, erasing : bool=True, /) -> None:
         """
         Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on.
         If erasing == Adesk::kFalse, then the erase bit is set off.
@@ -9907,7 +9609,7 @@ class DbObject(PyGi.Drawable):
         not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.
         """
     def getBinaryData(self, key: str, /) -> object: ...
-    def getField(self, prop: str = "TEXT", /) -> ObjectId:
+    def getField(self, prop: str='TEXT', /) -> ObjectId:
         """
         Gets the field ID. A field can be stored in an object using the property name as the key.
         Returns Acad::eOk if the object has a field for the specified property. Otherwise, returns
@@ -10076,8 +9778,8 @@ class DbObject(PyGi.Drawable):
         Acad::eOk if successful. If the dictionary is not empty, then this function fails and
         returns Acad::eContainerNotEmpty.
         """
-    def removeContext(self, obj: PyDb.ObjectContext, /) -> None: ...
-    def removeField(self, id: str | PyDb.ObjectId, /) -> None:
+    def removeContext(self, obj : PyDb.ObjectContext, /) -> None: ...
+    def removeField(self, id: str|PyDb.ObjectId, /) -> None:
         """
         Removes the specified field. Returns Acad::eOk if successful. Otherwise, returns an AutoCAD
         error status.
@@ -10101,7 +9803,7 @@ class DbObject(PyGi.Drawable):
         correct objects. The references can be translated only when the entire deep clone operation
         is complete. The flag is cleared at that time.
         """
-    def setAnnotative(self, state: PyDb.AnnotativeStates, /) -> None: ...
+    def setAnnotative(self, state : PyDb.AnnotativeStates, /) -> None: ...
     def setBinaryData(self, key: str, data: memoryview, /) -> ObjectId: ...
     @overload
     def setField(self, field: PyDb.Field, /) -> ObjectId: ...
@@ -10116,7 +9818,7 @@ class DbObject(PyGi.Drawable):
         Returns Acad::eOk if successful.
         """
     def setXDBinaryData(self, key: str, data: memoryview, /) -> None: ...
-    def setXData(self, xdata: list[tuple[int, Any]], /) -> None:
+    def setXData(self, xdata: list[tuple[int,Any]], /) -> None:
         """
         Each regapp sublist (delimited by a resbuf with restype == 1001 and resval.rstring == a
         valid regappName string) within the resbuf chain pointed to by xdata, is placed in the
@@ -10141,8 +9843,8 @@ class DbObject(PyGi.Drawable):
         in the xdata area of the object, then Acad::eXdataSizeExceeded is returned. If any of the
         regappNames in xdata are not in the APPID table, then Acad::eRegappIdNotFound is returned.
         """
-    def snoop(self, filer: PyDb.SnoopDwgFiler, /) -> None: ...
-    def snoopdxf(self, filer: PyDb.SnoopDxfFiler, /) -> None: ...
+    def snoop(self,  filer : PyDb.SnoopDwgFiler, /) -> None: ...
+    def snoopdxf(self,  filer : PyDb.SnoopDxfFiler, /) -> None: ...
     def swapIdWith(self, otherId: PyDb.ObjectId, swapXdata: bool, swapExtDict: bool, /) -> None:
         """
         This function swaps objectIds and handles between the object specified by otherId and the
@@ -10179,9 +9881,7 @@ class DbObject(PyGi.Drawable):
         Acad::eWasOpenForWrite is returned. If the object is currently sending notification, then
         the open status is not changed and Acad::eWasNotifying is returned.
         """
-    def wblockClone(
-        self, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary: bool = True, /
-    ) -> DbObject:
+    def wblockClone(self, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary:bool=True, /) -> DbObject:
         """
         This function is almost identical to AcDbObject::deepClone, except that an
         AcDbWblockCloneFiler is used and ownership is not carried across database boundaries.
@@ -10236,7 +9936,6 @@ class DbObject(PyGi.Drawable):
         recvPropagateModify() (passing in its 'this' pointer) to 'propagate' the notification
         information to the 'root' owner to be sent out.
         """
-
 class DbObjectOverrule(PyRx.Overrule):
     def __init__(self, /) -> None:
         """
@@ -10248,36 +9947,15 @@ class DbObjectOverrule(PyRx.Overrule):
     def __reduce__(self, /) -> Any: ...
     def baseCancel(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
     def baseClose(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
-    def baseDeepClone(
-        self,
-        subject: PyDb.DbObject,
-        owner: PyDb.DbObject,
-        mapping: PyDb.IdMapping,
-        isPrimary: bool,
-        /,
-    ) -> DbObject: ...
-    def baseErase(self, object: PyDb.DbObject, erased: bool, /) -> ErrorStatus: ...
+    def baseDeepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
+    def baseErase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus: ...
     def baseOpen(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus: ...
-    def baseWblockClone(
-        self,
-        subject: PyDb.DbObject,
-        owner: PyRx.RxObject,
-        mapping: PyDb.IdMapping,
-        isPrimary: bool,
-        /,
-    ) -> DbObject: ...
+    def baseWblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
     def cancel(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
     @staticmethod
     def className() -> str: ...
     def close(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
-    def deepClone(
-        self,
-        subject: PyDb.DbObject,
-        owner: PyDb.DbObject,
-        mapping: PyDb.IdMapping,
-        isPrimary: bool,
-        /,
-    ) -> DbObject: ...
+    def deepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -10292,18 +9970,10 @@ class DbObjectOverrule(PyRx.Overrule):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def erase(self, object: PyDb.DbObject, erased: bool, /) -> ErrorStatus: ...
+    def erase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus: ...
     def isApplicable(self, object: PyRx.RxObject, /) -> bool: ...
     def open(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus: ...
-    def wblockClone(
-        self,
-        subject: PyDb.DbObject,
-        owner: PyRx.RxObject,
-        mapping: PyDb.IdMapping,
-        isPrimary: bool,
-        /,
-    ) -> DbObject: ...
-
+    def wblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
 class DbObjectReactor(PyRx.RxObject):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -10335,7 +10005,6 @@ class DbObjectReactor(PyRx.RxObject):
     def reappended(self, obj: PyDb.DbObject, /) -> None: ...
     def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None: ...
     def unappended(self, obj: PyDb.DbObject, /) -> None: ...
-
 class DeepCloneType(_BoostPythonEnum):
     kDcCopy: ClassVar[Self]  # 0
     kDcExplode: ClassVar[Self]  # 1
@@ -10348,7 +10017,6 @@ class DeepCloneType(_BoostPythonEnum):
     kDcXrefInsert: ClassVar[Self]  # 9
     kDcInsertCopy: ClassVar[Self]  # 10
     kDcWblkObjects: ClassVar[Self]  # 11
-
 class DiametricDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -10361,9 +10029,7 @@ class DiametricDimension(PyDb.Dimension):
         before doing a horizontal dogleg (if necessary) to the annotation text.
         """
     @overload
-    def __init__(
-        self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, /
-    ) -> None:
+    def __init__(self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, /) -> None:
         """
         The AcDbDiametricDimension class represents the diameter dimension type in AutoCAD. This
         dimension type requires two points that define a diameter chord on the curve being
@@ -10373,14 +10039,7 @@ class DiametricDimension(PyDb.Dimension):
         before doing a horizontal dogleg (if necessary) to the annotation text.
         """
     @overload
-    def __init__(
-        self,
-        chordPoint: PyGe.Point3d,
-        farChordPoint: PyGe.Point3d,
-        leaderLength: float,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, /) -> None:
         """
         The AcDbDiametricDimension class represents the diameter dimension type in AutoCAD. This
         dimension type requires two points that define a diameter chord on the curve being
@@ -10390,15 +10049,7 @@ class DiametricDimension(PyDb.Dimension):
         before doing a horizontal dogleg (if necessary) to the annotation text.
         """
     @overload
-    def __init__(
-        self,
-        chordPoint: PyGe.Point3d,
-        farChordPoint: PyGe.Point3d,
-        leaderLength: float,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDbDiametricDimension class represents the diameter dimension type in AutoCAD. This
         dimension type requires two points that define a diameter chord on the curve being
@@ -10493,30 +10144,30 @@ class DiametricDimension(PyDb.Dimension):
         This function is obsolete and always returns 0 unless the length has been set at time of
         the dimension's creation.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point where the
         dimension line intersects the curve being dimensioned and extends outside the curve, if the
         text is outside the curve. The chord point is used for DXF group code 15. This function
         always returns Acad::eOk.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setFarChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setFarChordPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point on the curve
         that is diametrically opposite the point where the dimension line extends outside the
         curve, if the text is outside the curve.
         """
-    def setLeaderLength(self, val: float, /) -> None:
+    def setLeaderLength(self, val : float, /) -> None:
         """
         This function sets the dimension to use length as the distance from the chordPoint
         dimension definition point, out to where the dimension will do a horizontal dogleg to the
@@ -10527,75 +10178,73 @@ class DiametricDimension(PyDb.Dimension):
         new setting will be stored and will show up in DXF, LISP, ObjectARX, and the leaderLength()
         method. leaderLength is used for DXF group code 40. This function always returns Acad::eOk.
         """
-
 class DictUtil:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def dictionaryGetAt(name: str, owner: PyDb.ObjectId, /) -> ObjectId: ...
+    def dictionaryGetAt(name: str,owner: PyDb.ObjectId, /) -> ObjectId: ...
     @staticmethod
-    def dictionaryNameAt(id: PyDb.ObjectId, owner: PyDb.ObjectId.kNull, /) -> str: ...
+    def dictionaryNameAt(id: PyDb.ObjectId,owner: PyDb.ObjectId.kNull, /) -> str: ...
     @staticmethod
     def getColorName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getGroupId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getGroupId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getGroupName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getLayoutId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getLayoutId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getLayoutName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getMLStyleId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getMLStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getMLStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getMaterialId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getMaterialId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getMaterialName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getPlotSettingsId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getPlotSettingsId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getPlotSettingsName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getPlotStyleNameId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getPlotStyleNameId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getPlotStyleNameName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getTableStyleId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getTableStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getTableStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getVisualStyleId(val: str, db: PyDb.Database, /) -> ObjectId: ...
+    def getVisualStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def getVisualStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def hasColor(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasColor(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasGroup(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasGroup(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasLayout(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasLayout(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasMLStyle(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasMLStyle(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasMaterial(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasMaterial(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasPlotSettings(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasPlotSettings(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasPlotStyleName(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasPlotStyleName(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasTableStyle(val: str, db: PyDb.Database, /) -> bool: ...
+    def hasTableStyle(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasVisualStyle(val: str, db: PyDb.Database, /) -> bool: ...
-
+    def hasVisualStyle(val: str,db: PyDb.Database, /) -> bool: ...
 class Dictionary(PyDb.DbObject):
-    def __contains__(self, val: str | PyDb.ObjectId, /) -> bool:
+    def __contains__(self, val : str|PyDb.ObjectId, /) -> bool:
         """
         This function reports whether the entry specified by entryName is contained in the
         dictionary. The search for entryName is not case sensitive. Returns true if the entry is
         found, false if it is not found.
         """
-    def __getitem__(self, val: str, /) -> ObjectId:
+    def __getitem__(self, val : str, /) -> ObjectId:
         """
         This is just a templated version of the pre-existing getAt() method. The template version
         uses the acdbOpenObject template which does type checking and will return an error if the
@@ -10704,20 +10353,20 @@ class Dictionary(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAt(self, val: str, /) -> ObjectId:
+    def getAt(self, val : str, /) -> ObjectId:
         """
         This is just a templated version of the pre-existing getAt() method. The template version
         uses the acdbOpenObject template which does type checking and will return an error if the
         object being opened is not the correct type. The pre-existing getObject() method does not
         do type checking.
         """
-    def has(self, val: str | PyDb.ObjectId, /) -> bool:
+    def has(self, val : str|PyDb.ObjectId, /) -> bool:
         """
         This function reports whether the entry specified by entryName is contained in the
         dictionary. The search for entryName is not case sensitive. Returns true if the entry is
         found, false if it is not found.
         """
-    def nameAt(self, val: PyDb.ObjectId, /) -> str:
+    def nameAt(self, val : PyDb.ObjectId, /) -> str:
         """
         Searches the dictionary for an entry with object ID objId and returns the search key name
         of the dictionary entry in name.
@@ -10782,17 +10431,15 @@ class Dictionary(PyDb.DbObject):
         replaced by the newValue object is added to the dictionary in its place. The name of the
         object is specified by srchKey. The object's objectId entry is returned in retObjId.
         """
-    def setName(self, old: str, new: str, /) -> bool:
+    def setName(self, old : str, new : str, /) -> bool:
         """
         This function renames the entry specified by oldName to the new name specified by newName.
         Returns true if successful; otherwise, returns false.
         """
     def toDict(self, /) -> dict[str, PyDb.ObjectId]: ...
-
 class DimArrowFlags(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1
-
 class DimAssoc(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -10820,7 +10467,7 @@ class DimAssoc(PyDb.DbObject):
         This class is the main class used to associate dimensions to geometry.
         """
     def __reduce__(self, /) -> Any: ...
-    def addToDimensionReactor(self, add: bool = True, /) -> None:
+    def addToDimensionReactor(self, add : bool=True, /) -> None:
         """
         Add or remove the reactor between the dimension and the AcDbDimAssoc object. For internal
         use.
@@ -10890,18 +10537,18 @@ class DimAssoc(PyDb.DbObject):
         Return true if the dimension in paper space is associated to geometry in model space;
         returns false if the dimension is associated to geometry in the same space.
         """
-    def osnapPointRef(self, _type: int, /) -> OsnapPointRef: ...
-    def pointRef(self, _type: int, /) -> PointRef:
+    def osnapPointRef(self, _type : int, /) -> OsnapPointRef: ...
+    def pointRef(self, _type : int, /) -> PointRef:
         """
         Returns the point reference for the given point reference index.
         """
-    def post(self, id: PyDb.ObjectId, isAcive: bool = True, /) -> ObjectId:
+    def post(self, id : PyDb.ObjectId, isAcive : bool=True, /) -> ObjectId:
         """
         Posts the AcDbDimAssoc object to the database and establishes a reactor between it and its
         associated dimension. If Acad::eOk is returned the post was successful. Anything else means
         an error occurred.
         """
-    def removeAssociativity(self, force: bool = True, /) -> None:
+    def removeAssociativity(self, force : bool=True, /) -> None:
         """
         Remove all association between the dimension, the AcDbDimAssoc object, and all point
         reference objects. If Acad::eOk is returned the point reference at the given point
@@ -10912,7 +10559,7 @@ class DimAssoc(PyDb.DbObject):
         Remove and delete the reactor based mechanism that monitors for an OOPS command invocation.
         For internal use.
         """
-    def removePointRef(self, _type: int, /) -> None:
+    def removePointRef(self, _type : int, /) -> None:
         """
         Removes the point reference at the given point reference index. If Acad::eOk is returned
         the point reference at the given point reference index was removed properly. Anything else
@@ -10950,25 +10597,25 @@ class DimAssoc(PyDb.DbObject):
         flag. If Acad::eOk is returned the index of the point reference used and the association
         flag was set properly. Anything else means an error occurred.
         """
-    def setDimObjId(self, id: PyDb.ObjectId, /) -> None:
+    def setDimObjId(self, id : PyDb.ObjectId, /) -> None:
         """
         Sets the object ID of the associative dimension managed by this class. If Acad::eOk is
         returned the object ID of the associative dimension was set properly. Anything else means
         an error occurred.
         """
-    def setPointRef(self, _type: int, ptRef: PyDb.PointRef, /) -> None:
+    def setPointRef(self, _type : int, ptRef : PyDb.PointRef, /) -> None:
         """
         Sets the point reference at the given index using the given point reference object. If
         Acad::eOk is returned the point reference at the given index was set properly. Anything
         else means an error occurred.
         """
-    def setRotatedDimType(self, dimType: PyDb.RotatedDimType, /) -> None:
+    def setRotatedDimType(self, dimType : PyDb.RotatedDimType, /) -> None:
         """
         Sets the rotated dimension type flag for our associative dimension. If Acad::eOk is
         returned the rotated dimension type flag was set properly. Anything else means an error
         occurred.
         """
-    def setTransSpatial(self, val: bool, /) -> None:
+    def setTransSpatial(self, val : bool, /) -> None:
         """
         Sets a flag noting whether the dimension is associated to geometry in a different space. If
         Acad::eOk is returned the flag was set properly. Anything else means an error occurred.
@@ -10979,13 +10626,13 @@ class DimAssoc(PyDb.DbObject):
         dimensions associated to them. If Acad::eOk is returned the watcher was started properly.
         Anything else means an error occurred. For internal use.
         """
-    def startOopsWatcher(self, val: bool = True, /) -> None:
+    def startOopsWatcher(self, val : bool=True, /) -> None:
         """
         Start the reactor based mechanism that monitors for an OOPS command invocation. If
         Acad::eOk is returned the watcher was started properly. Anything else means an error
         occurred. For internal use.
         """
-    def swapReferences(self, val: PyDb.IdMapping, /) -> None:
+    def swapReferences(self, val : PyDb.IdMapping, /) -> None:
         """
         This method is called during AcDbLongTransaction::checkIn(). In checkIn(), the long
         transaction manager first clones the workset objects back into the origin block, and then
@@ -11007,30 +10654,30 @@ class DimAssoc(PyDb.DbObject):
         this method must super-message their parent. Failure to super-message will cause the
         process to abort at runtime. This method returns Acad::eOk if successful.
         """
-    def updateAssociativity(self, ids: list[PyDb.ObjectId], /) -> None:
+    def updateAssociativity(self, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function performs a re-association after the BREAK, TRIM, and PEDIT commands are
         performed. If Acad::eOk is returned, the re-associations were completed properly. Anything
         else means an error occurred. For internal use.
         """
-    def updateDimension(self, update: bool = True, skipReactors: bool = False, /) -> None:
+    def updateDimension(self, update : bool=True, skipReactors : bool=False, /) -> None:
         """
         Updates a rotated dimension when the geometry it is associated to is changed. If Acad::eOk
         is returned, the dimension was updated or its associations were removed properly. Anything
         else means an error occurred.
         """
-    def updateDueToMirror(self, val: bool, /) -> None:
+    def updateDueToMirror(self, val : bool, /) -> None:
         """
         This functions handles updating associations due to the MIRROR command. For internal use.
         """
-    def updateFillet(self, ids: list[PyDb.ObjectId], /) -> None:
+    def updateFillet(self, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function performs re-associations after FILLET/CHAMFER commands for light weight
         polylines using INT, APINT, CEN, NEAR and QUAD osnap modes. If Acad::eOk is returned, the
         re-associations were completed properly. Anything else means an error occurred. For
         internal use.
         """
-    def updateSubentPath(self, val: PyDb.IdMapping, /) -> None:
+    def updateSubentPath(self, val : PyDb.IdMapping, /) -> None:
         """
         This function updates the idPath using an AcDbIdMapping. Since subent paths may refer to
         objects in block references whose IDs are changed when the block reference is saved in the
@@ -11042,7 +10689,6 @@ class DimAssoc(PyDb.DbObject):
         This function updates the idPath for associated xref geometry. If Acad::eOk is returned,
         IDs were updated properly. Anything else means an error occurred. For internal use.
         """
-
 class DimAssocPointType(_BoostPythonEnum):
     kXline1Point: ClassVar[Self]  # 0
     kXline2Point: ClassVar[Self]  # 1
@@ -11061,7 +10707,6 @@ class DimAssocPointType(_BoostPythonEnum):
     kJogPoint: ClassVar[Self]  # 3
     kAngLineEnd: ClassVar[Self]  # 3
     kLeaderPoint: ClassVar[Self]  # 0
-
 class DimInspect(_BoostPythonEnum):
     kShapeRemove: ClassVar[Self]  # 0
     kShapeRound: ClassVar[Self]  # 1
@@ -11069,15 +10714,8 @@ class DimInspect(_BoostPythonEnum):
     kShapeNone: ClassVar[Self]  # 4
     kShapeLabel: ClassVar[Self]  # 16
     kShapeRate: ClassVar[Self]  # 32
-
 class DimStyleTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.DimStyleTableRecord, /) -> ObjectId:
         """
@@ -11107,7 +10745,6 @@ class DimStyleTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class DimStyleTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -11250,93 +10887,86 @@ class DimStyleTableRecord(PyDb.SymbolTableRecord):
     def dimupt(self, /) -> bool: ...
     def dimzin(self, /) -> int: ...
     def isModifiedForRecompute(self, /) -> bool: ...
-    def setDimadec(self, val: int, /) -> None: ...
-    def setDimalt(self, val: bool, /) -> None: ...
-    def setDimaltd(self, val: int, /) -> None: ...
-    def setDimaltf(self, val: float, /) -> None: ...
-    def setDimaltmzf(self, val: float, /) -> None: ...
-    def setDimaltmzs(self, val: str, /) -> None: ...
-    def setDimaltrnd(self, val: float, /) -> None: ...
-    def setDimalttd(self, val: int, /) -> None: ...
-    def setDimalttz(self, val: int, /) -> None: ...
-    def setDimaltu(self, val: int, /) -> None: ...
-    def setDimaltz(self, val: int, /) -> None: ...
-    def setDimapost(self, val: str, /) -> None: ...
-    def setDimarcsym(self, val: int, /) -> None: ...
-    def setDimasz(self, val: float, /) -> None: ...
-    def setDimatfit(self, val: int, /) -> None: ...
-    def setDimaunit(self, val: int, /) -> None: ...
-    def setDimazin(self, val: int, /) -> None: ...
-    def setDimblk(self, val: str | PyDb.ObjectId, /) -> None: ...
-    def setDimblk1(self, val: str | PyDb.ObjectId, /) -> None: ...
-    def setDimblk2(self, val: str | PyDb.ObjectId, /) -> None: ...
-    def setDimcen(self, val: float, /) -> None: ...
-    def setDimclrd(self, val: PyDb.AcCmColor, /) -> None: ...
-    def setDimclre(self, val: PyDb.AcCmColor, /) -> None: ...
-    def setDimclrt(self, val: PyDb.AcCmColor, /) -> None: ...
-    def setDimdec(self, val: int, /) -> None: ...
-    def setDimdle(self, val: float, /) -> None: ...
-    def setDimdli(self, val: float, /) -> None: ...
-    def setDimdsep(self, val: int, /) -> None: ...
-    def setDimexe(self, val: float, /) -> None: ...
-    def setDimexo(self, val: float, /) -> None: ...
-    def setDimfrac(self, val: int, /) -> None: ...
-    def setDimfxlen(self, val: float, /) -> None: ...
-    def setDimfxlenOn(self, val: bool, /) -> None: ...
-    def setDimgap(self, val: float, /) -> None: ...
-    def setDimjogang(self, val: float, /) -> None: ...
-    def setDimjust(self, val: int, /) -> None: ...
-    def setDimldrblk(self, val: str | PyDb.ObjectId, /) -> None: ...
-    def setDimlfac(self, val: float, /) -> None: ...
-    def setDimlim(self, val: bool, /) -> None: ...
+    def setDimadec(self, val : int, /) -> None: ...
+    def setDimalt(self, val : bool, /) -> None: ...
+    def setDimaltd(self, val : int, /) -> None: ...
+    def setDimaltf(self, val : float, /) -> None: ...
+    def setDimaltmzf(self, val : float, /) -> None: ...
+    def setDimaltmzs(self, val : str, /) -> None: ...
+    def setDimaltrnd(self, val : float, /) -> None: ...
+    def setDimalttd(self, val : int, /) -> None: ...
+    def setDimalttz(self, val : int, /) -> None: ...
+    def setDimaltu(self, val : int, /) -> None: ...
+    def setDimaltz(self, val : int, /) -> None: ...
+    def setDimapost(self, val : str, /) -> None: ...
+    def setDimarcsym(self, val : int, /) -> None: ...
+    def setDimasz(self, val : float, /) -> None: ...
+    def setDimatfit(self, val : int, /) -> None: ...
+    def setDimaunit(self, val : int, /) -> None: ...
+    def setDimazin(self, val : int, /) -> None: ...
+    def setDimblk(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimblk1(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimblk2(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimcen(self, val : float, /) -> None: ...
+    def setDimclrd(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimclre(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimclrt(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimdec(self, val : int, /) -> None: ...
+    def setDimdle(self, val : float, /) -> None: ...
+    def setDimdli(self, val : float, /) -> None: ...
+    def setDimdsep(self, val : int, /) -> None: ...
+    def setDimexe(self, val : float, /) -> None: ...
+    def setDimexo(self, val : float, /) -> None: ...
+    def setDimfrac(self, val : int, /) -> None: ...
+    def setDimfxlen(self, val : float, /) -> None: ...
+    def setDimfxlenOn(self, val : bool, /) -> None: ...
+    def setDimgap(self, val : float, /) -> None: ...
+    def setDimjogang(self, val : float, /) -> None: ...
+    def setDimjust(self, val : int, /) -> None: ...
+    def setDimldrblk(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimlfac(self, val : float, /) -> None: ...
+    def setDimlim(self, val : bool, /) -> None: ...
     def setDimltex1(self, val: PyDb.ObjectId, /) -> None: ...
     def setDimltex2(self, val: PyDb.ObjectId, /) -> None: ...
     def setDimltype(self, val: PyDb.ObjectId, /) -> None: ...
-    def setDimlunit(self, val: int, /) -> None: ...
+    def setDimlunit(self, val : int, /) -> None: ...
     def setDimlwd(self, val: PyDb.LineWeight, /) -> None: ...
     def setDimlwe(self, val: PyDb.LineWeight, /) -> None: ...
-    def setDimmzf(self, val: float, /) -> None: ...
-    def setDimmzs(self, val: str, /) -> None: ...
-    def setDimpost(self, val: str, /) -> None: ...
-    def setDimrnd(self, val: float, /) -> None: ...
-    def setDimsah(self, val: bool, /) -> None: ...
-    def setDimscale(self, val: float, /) -> None: ...
-    def setDimsd1(self, val: bool, /) -> None: ...
-    def setDimsd2(self, val: bool, /) -> None: ...
-    def setDimse1(self, val: bool, /) -> None: ...
-    def setDimse2(self, val: bool, /) -> None: ...
-    def setDimsoxd(self, val: bool, /) -> None: ...
-    def setDimtad(self, val: int, /) -> None: ...
-    def setDimtdec(self, val: int, /) -> None: ...
-    def setDimtfac(self, val: float, /) -> None: ...
-    def setDimtfill(self, val: int, /) -> None: ...
-    def setDimtfillclr(self, val: PyDb.AcCmColor, /) -> None: ...
-    def setDimtih(self, val: bool, /) -> None: ...
-    def setDimtix(self, val: bool, /) -> None: ...
-    def setDimtm(self, val: float, /) -> None: ...
-    def setDimtmove(self, val: int, /) -> None: ...
-    def setDimtofl(self, val: bool, /) -> None: ...
-    def setDimtoh(self, val: bool, /) -> None: ...
-    def setDimtol(self, val: bool, /) -> None: ...
-    def setDimtolj(self, val: int, /) -> None: ...
-    def setDimtp(self, val: float, /) -> None: ...
-    def setDimtsz(self, val: float, /) -> None: ...
-    def setDimtvp(self, val: float, /) -> None: ...
-    def setDimtxsty(self, val: PyDb.ObjectId, /) -> None: ...
+    def setDimmzf(self, val : float, /) -> None: ...
+    def setDimmzs(self, val : str, /) -> None: ...
+    def setDimpost(self, val : str, /) -> None: ...
+    def setDimrnd(self, val : float, /) -> None: ...
+    def setDimsah(self, val : bool, /) -> None: ...
+    def setDimscale(self, val : float, /) -> None: ...
+    def setDimsd1(self, val : bool, /) -> None: ...
+    def setDimsd2(self, val : bool, /) -> None: ...
+    def setDimse1(self, val : bool, /) -> None: ...
+    def setDimse2(self, val : bool, /) -> None: ...
+    def setDimsoxd(self, val : bool, /) -> None: ...
+    def setDimtad(self, val : int, /) -> None: ...
+    def setDimtdec(self, val : int, /) -> None: ...
+    def setDimtfac(self, val : float, /) -> None: ...
+    def setDimtfill(self, val : int, /) -> None: ...
+    def setDimtfillclr(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimtih(self, val : bool, /) -> None: ...
+    def setDimtix(self, val : bool, /) -> None: ...
+    def setDimtm(self, val : float, /) -> None: ...
+    def setDimtmove(self, val : int, /) -> None: ...
+    def setDimtofl(self, val : bool, /) -> None: ...
+    def setDimtoh(self, val : bool, /) -> None: ...
+    def setDimtol(self, val : bool, /) -> None: ...
+    def setDimtolj(self, val : int, /) -> None: ...
+    def setDimtp(self, val : float, /) -> None: ...
+    def setDimtsz(self, val : float, /) -> None: ...
+    def setDimtvp(self, val : float, /) -> None: ...
+    def setDimtxsty(self, val : PyDb.ObjectId, /) -> None: ...
     def setDimtxt(self, val: float, /) -> None: ...
-    def setDimtxtdirection(self, val: bool, /) -> None: ...
-    def setDimtzin(self, val: int, /) -> None: ...
-    def setDimupt(self, val: bool, /) -> None: ...
-    def setDimzin(self, val: int, /) -> None: ...
-
+    def setDimtxtdirection(self, val : bool, /) -> None: ...
+    def setDimtzin(self, val : int, /) -> None: ...
+    def setDimupt(self, val : bool, /) -> None: ...
+    def setDimzin(self, val : int, /) -> None: ...
 class Dimension(PyDb.Entity):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbDimension class is the base class for the classes that represent all the dimension
         entity types within AutoCAD. The appearance of dimensions is controlled by dimension
@@ -11474,12 +11104,12 @@ class Dimension(PyDb.Entity):
         This function returns a copy of the dimension's elevation value. Elevation defines the
         distance from WCS origin to the plane on which the dimension lies.
         """
-    def fieldFromMText(self, ref: PyDb.MText, /) -> None:
+    def fieldFromMText(self, ref : PyDb.MText, /) -> None:
         """
         If pDimMText contains a text field, this function copies that field and adds the copy to
         this object. Returns Acad::eOk if successful.
         """
-    def fieldToMText(self, ref: PyDb.MText, /) -> None:
+    def fieldToMText(self, ref : PyDb.MText, /) -> None:
         """
         If this object contains a text field, this function copies the field and adds the copy to
         pDimMText. Returns Acad::eOk if successful.
@@ -11620,7 +11250,7 @@ class Dimension(PyDb.Entity):
         This function returns a string for the inspection label.
         """
     def isConstraintDynamic(self, /) -> bool: ...
-    def isConstraintObject(self, /) -> tuple[bool, bool]: ...
+    def isConstraintObject(self, /) -> tuple[bool,bool]: ...
     def isDynamicDimension(self, /) -> bool:
         """
         Returns true if the dimension object is a dynamic dimension type. Otherwise, returns false.
@@ -11649,7 +11279,7 @@ class Dimension(PyDb.Entity):
         """
         This is prefix, a member of class AcDbDimension.
         """
-    def recomputeDimBlock(self, force: bool = False, /) -> None:
+    def recomputeDimBlock(self, force : bool=False, /) -> None:
         """
         This function updates the block table record the dimension references to match any changes
         made to the dimension since the last time the block table record was updated. If
@@ -11669,80 +11299,80 @@ class Dimension(PyDb.Entity):
         """
         Resets dimension text defined width and defined height to MText in dimension block.
         """
-    def setAltSuppressLeadingZeros(self, val: bool, /) -> None:
+    def setAltSuppressLeadingZeros(self, val : bool, /) -> None:
         """
         This is setAltSuppressLeadingZeros, a member of class AcDbDimension.
         """
-    def setAltSuppressTrailingZeros(self, val: bool, /) -> None:
+    def setAltSuppressTrailingZeros(self, val : bool, /) -> None:
         """
         This is setAltSuppressTrailingZeros, a member of class AcDbDimension.
         """
-    def setAltSuppressZeroFeet(self, val: bool, /) -> None:
+    def setAltSuppressZeroFeet(self, val : bool, /) -> None:
         """
         This is setAltSuppressZeroFeet, a member of class AcDbDimension.
         """
-    def setAltSuppressZeroInches(self, val: bool, /) -> None:
+    def setAltSuppressZeroInches(self, val : bool, /) -> None:
         """
         This is setAltSuppressZeroInches, a member of class AcDbDimension.
         """
-    def setAltToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+    def setAltToleranceSuppressLeadingZeros(self, val : bool, /) -> None:
         """
         This is setAltToleranceSuppressLeadingZeros, a member of class AcDbDimension.
         """
-    def setAltToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+    def setAltToleranceSuppressTrailingZeros(self, val : bool, /) -> None:
         """
         This is setAltToleranceSuppressTrailingZeros, a member of class AcDbDimension.
         """
-    def setAltToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+    def setAltToleranceSuppressZeroFeet(self, val : bool, /) -> None:
         """
         This is setAltToleranceSuppressZeroFeet, a member of class AcDbDimension.
         """
-    def setAltToleranceSuppressZeroInches(self, val: bool, /) -> None:
+    def setAltToleranceSuppressZeroInches(self, val : bool, /) -> None:
         """
         This is setAltToleranceSuppressZeroInches, a member of class AcDbDimension.
         """
-    def setAlternatePrefix(self, val: str, /) -> None:
+    def setAlternatePrefix(self, val : str, /) -> None:
         """
         This is setAlternatePrefix, a member of class AcDbDimension.
         """
-    def setAlternateSuffix(self, val: str, /) -> None:
+    def setAlternateSuffix(self, val : str, /) -> None:
         """
         This is setAlternateSuffix, a member of class AcDbDimension.
         """
-    def setArrowFirstIsFlipped(self, val: bool, /) -> None:
+    def setArrowFirstIsFlipped(self, val : bool, /) -> None:
         """
         This function flips the first arrowhead of the dimension. Returns Acad::eOk if successful.
         """
-    def setArrowSecondIsFlipped(self, val: bool, /) -> None:
+    def setArrowSecondIsFlipped(self, val : bool, /) -> None:
         """
         This function flips the second arrowhead of the dimension. Returns Acad::eOk if successful.
         """
-    def setConstraintDynamic(self, val: bool, /) -> None: ...
-    def setDimBlockId(self, val: PyDb.ObjectId, /) -> None:
+    def setConstraintDynamic(self, val : bool, /) -> None: ...
+    def setDimBlockId(self, val : PyDb.ObjectId, /) -> None:
         """
         This function sets the dimension to use blkId as the object ID of the AcDbBlockTableRecord
         containing the entities this dimension displays. The text string name within the referenced
         block table record is used for DXF group code 2. This function returns Acad::eOk.
         """
-    def setDimBlockPosition(self, val: PyGe.Point3d, /) -> None:
+    def setDimBlockPosition(self, val : PyGe.Point3d, /) -> None:
         """
         This function is not to be used by an ObjectARX Developer. It is intended for internal use
         only. The dimension update code will always force the value to (0,0,0). This function
         returns Acad::eNotApplicable.
         """
-    def setDimExt1Linetype(self, val: PyDb.ObjectId, /) -> None:
+    def setDimExt1Linetype(self, val : PyDb.ObjectId, /) -> None:
         """
         For internal use only.
         """
-    def setDimExt2Linetype(self, val: PyDb.ObjectId, /) -> None:
+    def setDimExt2Linetype(self, val : PyDb.ObjectId, /) -> None:
         """
         For internal use only.
         """
-    def setDimLineLinetype(self, val: PyDb.ObjectId, /) -> None:
+    def setDimLineLinetype(self, val : PyDb.ObjectId, /) -> None:
         """
         For internal use only.
         """
-    def setDimensionStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setDimensionStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         This function sets the dimension to use the AcDbDimStyleTableRecord with the object ID
         styleId. If styleId is AcDbObjectId::kNull (or just NULL), then when the dimension is
@@ -11750,7 +11380,7 @@ class Dimension(PyDb.Entity):
         string name within the referenced DimStyleTableRecord is used for DXF group code 3. This
         function returns Acad::eOk.
         """
-    def setDimensionText(self, val: str, /) -> None:
+    def setDimensionText(self, val : str, /) -> None:
         """
         This function sets the dimension to use a copy of text as the user-supplied dimension
         annotation text string. This string will need to contain any desired multiline text
@@ -11794,23 +11424,23 @@ class Dimension(PyDb.Entity):
         not have to reside in the database on which this method is called. Returns Acad::eOk if
         operation is successful.
         """
-    def setDynamicDimension(self, val: bool, /) -> None:
+    def setDynamicDimension(self, val : bool, /) -> None:
         """
         This function allows an application to set a flag (true/false) to an AcDbDimension object
         indicating that it is a dynamic dimension type. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, val : float, /) -> None:
         """
         This function sets the dimension's elevation value. Elevation defines the distance from WCS
         origin to the plane on which the dimension lies. The default elevation is 0. This function
         returns Acad::eOk.
         """
-    def setHorizontalRefTextRotation(self, val: bool, /) -> None:
+    def setHorizontalRefTextRotation(self, val : bool, /) -> None:
         """
         For internal use only.
         """
-    def setHorizontalRotation(self, val: float, /) -> None:
+    def setHorizontalRotation(self, val : float, /) -> None:
         """
         This function sets the dimension to use newVal as the horizontal rotation value (in
         radians) for the dimension. This is the angle from the dimension's positive horizontal axis
@@ -11821,12 +11451,12 @@ class Dimension(PyDb.Entity):
         left-to-right direction for the dimension text. The horizontal rotation value is used for
         DXF group code 51. This function returns Acad::eOk.
         """
-    def setInspection(self, val: bool, /) -> None:
+    def setInspection(self, val : bool, /) -> None:
         """
         This function turns the inspection dimension flag on or off. Returns Acad::eOk if
         successful. Otherwise, it returns Acad::eInvalidInput.
         """
-    def setInspectionFrame(self, val: int, /) -> None:
+    def setInspectionFrame(self, val : int, /) -> None:
         """
         This function sets the inspection frame for the dimension. The input argument can be set to
         0. The highest integer representation of a valid combination of flags is Label (0x10) and
@@ -11835,77 +11465,77 @@ class Dimension(PyDb.Entity):
         0x020 (1 = On, 0 = Off) Returns Acad::eOk if successful. Otherwise, it returns
         Acad::eInvalidInput.
         """
-    def setInspectionLabel(self, val: str, /) -> None:
+    def setInspectionLabel(self, val : str, /) -> None:
         """
         This function sets the inspection frame for the dimension. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the dimension's plane normal vector. normal must be in WCS
         coordinates. The normal vector is used for DXF group code 210. This function returns
         Acad::eOk.
         """
-    def setPrefix(self, val: str, /) -> None:
+    def setPrefix(self, val : str, /) -> None:
         """
         This is setPrefix, a member of class AcDbDimension.
         """
-    def setShouldParticipateInOPM(self, val: bool, /) -> None: ...
-    def setSuffix(self, val: str, /) -> None:
+    def setShouldParticipateInOPM(self, val : bool, /) -> None: ...
+    def setSuffix(self, val : str, /) -> None:
         """
         This is setSuffix, a member of class AcDbDimension.
         """
-    def setSuppressAngularTrailingZeros(self, val: bool, /) -> None:
+    def setSuppressAngularTrailingZeros(self, val : bool, /) -> None:
         """
         This is suppressAngularTrailingZeros, a member of class AcDbDimension.
         """
-    def setSuppressLeadingZeros(self, val: bool, /) -> None:
+    def setSuppressLeadingZeros(self, val : bool, /) -> None:
         """
         This is setSuppressLeadingZeros, a member of class AcDbDimension.
         """
-    def setSuppressTrailingZeros(self, val: bool, /) -> None:
+    def setSuppressTrailingZeros(self, val : bool, /) -> None:
         """
         This is setSuppressTrailingZeros, a member of class AcDbDimension.
         """
-    def setSuppressZeroFeet(self, val: bool, /) -> None:
+    def setSuppressZeroFeet(self, val : bool, /) -> None:
         """
         This is setSuppressZeroFeet, a member of class AcDbDimension.
         """
-    def setSuppressZeroInches(self, val: bool, /) -> None:
+    def setSuppressZeroInches(self, val : bool, /) -> None:
         """
         This is setSuppressZeroInches, a member of class AcDbDimension.
         """
-    def setTextAttachment(self, val: PyDb.MTextAttachmentPoint, /) -> None:
+    def setTextAttachment(self, val : PyDb.MTextAttachmentPoint, /) -> None:
         """
         Sets the dimension's attachment point value to eAtt. See AcDbMText::AttachmentPoint enum
         for possible eAtt values. See the AcDbMText::attachment() function for an explanation of
         what this value means. Returns Acad::eOk if successful.
         """
-    def setTextDefinedSize(self, width: float, height: float, /) -> None:
+    def setTextDefinedSize(self, width : float, height : float, /) -> None:
         """
         Sets text defined width and defined height to MText in dimension block.
         """
-    def setTextLineSpacingFactor(self, val: float, /) -> None:
+    def setTextLineSpacingFactor(self, val : float, /) -> None:
         """
         Sets dFactor to be the line spacing factor. A value of 1.0 is single-spaced, 2.0 is
         double-spaced, and so on. The spacing factor must be between 0.25 and 4.00, inclusive. Thsi
         method returns Acad::eOk if successful, or Acad::eInvalidInput if dFactor is not within the
         valid range. See the AcDb::LineSpacingStyle enum for more information and examples.
         """
-    def setTextLineSpacingStyle(self, val: PyDb.LineSpacingStyle, /) -> None:
+    def setTextLineSpacingStyle(self, val : PyDb.LineSpacingStyle, /) -> None:
         """
         This function sets the dimension's line spacing style to eStyle. See the
         AcDb::LineSpacingStyle enum for for more information and examples. Returns Acad::eOk if
         successful.
         """
-    def setTextPosition(self, val: PyGe.Point3d, /) -> None:
+    def setTextPosition(self, val : PyGe.Point3d, /) -> None:
         """
         This function sets pt (in WCS coordinates) to be the dimension's text position point. This
         is the middle center point of the text (which is itself an MText object with middle-center
         justification). The text position point is the WCS equivalent of DXF group code 11. This
         function returns Acad::eOk.
         """
-    def setTextRotation(self, val: float, /) -> None:
+    def setTextRotation(self, val : float, /) -> None:
         """
         This function sets the dimension to use rot as the rotation angle (in radians) for its
         annotation text. This is the angle from the dimension's horizontal axis to the horizontal
@@ -11918,23 +11548,23 @@ class Dimension(PyDb.Entity):
         function. The text rotation angle is used for DXF group code 53. This function returns
         Acad::eOk.
         """
-    def setToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+    def setToleranceSuppressLeadingZeros(self, val : bool, /) -> None:
         """
         This is setToleranceSuppressLeadingZeros, a member of class AcDbDimension.
         """
-    def setToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+    def setToleranceSuppressTrailingZeros(self, val : bool, /) -> None:
         """
         This is setToleranceSuppressTrailingZeros, a member of class AcDbDimension.
         """
-    def setToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+    def setToleranceSuppressZeroFeet(self, val : bool, /) -> None:
         """
         This is setToleranceSuppressZeroFeet, a member of class AcDbDimension.
         """
-    def setToleranceSuppressZeroInches(self, val: bool, /) -> None:
+    def setToleranceSuppressZeroInches(self, val : bool, /) -> None:
         """
         This is setToleranceSuppressZeroInches, a member of class AcDbDimension.
         """
-    def setUsingDefaultTextPosition(self, val: bool, /) -> None:
+    def setUsingDefaultTextPosition(self, val : bool, /) -> None:
         """
         This is setUsingDefaultTextPosition, a member of class AcDbDimension.
         """
@@ -11973,7 +11603,7 @@ class Dimension(PyDb.Entity):
         AcDbMText::AttachmentPoint enum for possible values. See the AcDbMText::attachment()
         function for an explanation of what this value means.
         """
-    def textDefinedSize(self, /) -> tuple[float, float]:
+    def textDefinedSize(self, /) -> tuple[float,float]:
         """
         Resets dimension text defined width and defined height to MText in dimension block.
         """
@@ -12035,15 +11665,12 @@ class Dimension(PyDb.Entity):
         text position updates will occur). Setting the dimension not to use the default text
         position sets the eighth bit of the DXF group code 70. This function returns Acad::eOk.
         """
-
 class DrawLeaderOrderType(_BoostPythonEnum):
     kDrawLeaderHeadFirst: ClassVar[Self]  # 0
     kDrawLeaderTailFirst: ClassVar[Self]  # 1
-
 class DrawMLeaderOrderType(_BoostPythonEnum):
     kDrawContentFirst: ClassVar[Self]  # 0
     kDrawLeaderFirst: ClassVar[Self]  # 1
-
 class DuplicateRecordCloning(_BoostPythonEnum):
     kDrcNotApplicable: ClassVar[Self]  # 0
     kDrcIgnore: ClassVar[Self]  # 1
@@ -12051,7 +11678,6 @@ class DuplicateRecordCloning(_BoostPythonEnum):
     kDrcXrefMangleName: ClassVar[Self]  # 3
     kDrcMangleName: ClassVar[Self]  # 4
     kDrcUnmangleName: ClassVar[Self]  # 5
-
 class DwgDataType(_BoostPythonEnum):
     kDwgNull: ClassVar[Self]  # 0
     kDwgReal: ClassVar[Self]  # 1
@@ -12068,7 +11694,6 @@ class DwgDataType(_BoostPythonEnum):
     kDwg3Real: ClassVar[Self]  # 12
     kDwgInt64: ClassVar[Self]  # 13
     kDwgNotRecognized: ClassVar[Self]  # 19
-
 class DwgVersion(_BoostPythonEnum):
     kDHL_MC0_0: ClassVar[Self]  # 0
     kDHL_AC1_2: ClassVar[Self]  # 1
@@ -12108,7 +11733,6 @@ class DwgVersion(_BoostPythonEnum):
     kDHL_CURRENT: ClassVar[Self]  # 33
     kDHL_Unknown: ClassVar[Self]  # 254
     kDHL_Max: ClassVar[Self]  # 255
-
 class DxfCode(_BoostPythonEnum):
     kDxfInvalid: ClassVar[Self]  # -9999
     kDxfXDictionary: ClassVar[Self]  # -6
@@ -12279,9 +11903,8 @@ class DxfCode(_BoostPythonEnum):
     kDxfXdInteger16: ClassVar[Self]  # 1070
     kDxfXdInteger32: ClassVar[Self]  # 1071
     kDxfXdMax: ClassVar[Self]  # 1071
-
 class DynBlockReference:
-    def __init__(self, val: PyDb.ObjectId, /) -> None:
+    def __init__(self, val :  PyDb.ObjectId, /) -> None:
         """
         A utility class for accessing information about block references to dynamic blocks.
         """
@@ -12302,7 +11925,7 @@ class DynBlockReference:
         """
     @staticmethod
     def className() -> str: ...
-    def convertToStaticBlock(self, val: str = ..., /) -> None:
+    def convertToStaticBlock(self, val : str = ..., /) -> None:
         """
         Converts the dynamic block instance to a legacy (nondynamic) block. When successful, the
         dynamic block properties are frozen at their current values and the reference ceases to be
@@ -12322,7 +11945,7 @@ class DynBlockReference:
         property information, the returned array is empty.
         """
     @staticmethod
-    def getIsDynamicBlock(otherObject: PyDb.ObjectId, /) -> bool: ...
+    def getIsDynamicBlock(otherObject:  PyDb.ObjectId, /) -> bool: ...
     def isDynamicBlock(self, /) -> bool:
         """
         Determines whether the AcDbBlockReference passed to the class constructor contains dynamic
@@ -12335,7 +11958,6 @@ class DynBlockReference:
         the AcDbBlockReference are set to match the values in the block definition. Returns
         Acad::eOk if successful.
         """
-
 class DynBlockReferenceProperty:
     def __init__(self, /) -> None:
         """
@@ -12400,9 +12022,8 @@ class DynBlockReferenceProperty:
         """
         Indicates whether the property is visible in the current visibility state.
         """
-
 class DynBlockTableRecord:
-    def __init__(self, val: PyDb.ObjectId, /) -> None:
+    def __init__(self, val : PyDb.ObjectId, /) -> None:
         """
         A utility class for accessing information about dynamic block definitions and managing the
         associated anonymous blocks.
@@ -12421,7 +12042,7 @@ class DynBlockTableRecord:
         geometry. This function returns those IDs. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def getIsDynamicBlock(otherObject: PyDb.ObjectId | PyDb.BlockTableRecord, /) -> bool: ...
+    def getIsDynamicBlock(otherObject: PyDb.ObjectId|PyDb.BlockTableRecord, /) -> bool: ...
     def isDynamicBlock(self, /) -> bool:
         """
         Determines whether the AcDbBlockTableRecord passed to the class constructor contains
@@ -12439,13 +12060,11 @@ class DynBlockTableRecord:
         properties that no longer exist. When complete, all references to the dynamic block reflect
         the new state of the block definition.
         """
-
 class DynUnitsType(_BoostPythonEnum):
     kNoUnits: ClassVar[Self]  # 0
     kAngular: ClassVar[Self]  # 1
     kDistance: ClassVar[Self]  # 2
     kArea: ClassVar[Self]  # 3
-
 class Ellipse(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -12454,29 +12073,13 @@ class Ellipse(PyDb.Curve):
         modify, and obtain properties of the ellipse.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatio: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, /) -> None:
         """
         This class represents the ELLIPSE entity in AutoCAD. It contains the methods to create,
         modify, and obtain properties of the ellipse.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatio: float,
-        startAngle: float,
-        endAngle: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float, /) -> None:
         """
         This class represents the ELLIPSE entity in AutoCAD. It contains the methods to create,
         modify, and obtain properties of the ellipse.
@@ -12506,7 +12109,7 @@ class Ellipse(PyDb.Curve):
         modify, and obtain properties of the ellipse.
         """
     def __reduce__(self, /) -> Any: ...
-    def angleAtParam(self, val: float, /) -> float:
+    def angleAtParam(self, val : float, /) -> float:
         """
         This function returns the first period equivalent of the angle at the param location on the
         ellipse. The returned angle will be in the range -pi to pi. The Ellipse's majorAxis vector
@@ -12584,7 +12187,7 @@ class Ellipse(PyDb.Curve):
         Returns the unit normal vector (in WCS coordinates) of the ellipse. The normal vector
         specifies the plane that contains the ellipse.
         """
-    def paramAtAngle(self, val: float, /) -> float:
+    def paramAtAngle(self, val : float, /) -> float:
         """
         Returns the first period parameter value at angle (in radians). The parameter value is in
         the range 0 to 2pi. The ellipse's majorAxis vector is the zero angle for angle. Positive
@@ -12597,14 +12200,7 @@ class Ellipse(PyDb.Curve):
         will be in the range 1e-6 to 1.0.
         """
     @overload
-    def set(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatio: float,
-        /,
-    ) -> None:
+    def set(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, /) -> None:
         """
         This function sets the properties of the ellipse to the values specified in the arguments.
         center, unitNormal, and majorAxis are in WCS coordinates. startAngle and endAngle are in
@@ -12617,16 +12213,7 @@ class Ellipse(PyDb.Curve):
         acceptable, then this method fails and Acad::eGeneralModelingFailure is returned.
         """
     @overload
-    def set(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatio: float,
-        startAngle: float,
-        endAngle: float,
-        /,
-    ) -> None:
+    def set(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float, /) -> None:
         """
         This function sets the properties of the ellipse to the values specified in the arguments.
         center, unitNormal, and majorAxis are in WCS coordinates. startAngle and endAngle are in
@@ -12651,18 +12238,18 @@ class Ellipse(PyDb.Curve):
         greater than 1E-6. Returns Acad::eOk if successful. If any of the parameters are not
         acceptable, then this method fails and Acad::eGeneralModelingFailure is returned.
         """
-    def setCenter(self, val: PyGe.Point3d, /) -> None:
+    def setCenter(self, val : PyGe.Point3d, /) -> None:
         """
         Sets center (in WCS coordinates) to be the center point of the ellipse. Returns Acad::eOk
         if successful, otherwise Acad::eGeneralModelingFailure is returned.
         """
-    def setEndAngle(self, val: float, /) -> None:
+    def setEndAngle(self, val : float, /) -> None:
         """
         Sets endAngle to be the end angle of the ellipse. Returns Acad::eOk if successful. If the
         Ellipse has no gelib object (that is, AcDbEllipse::isNull() returns Adesk::kTrue), then
         Acad::eDegenerateGeometry is returned.
         """
-    def setEndParam(self, val: float, /) -> None:
+    def setEndParam(self, val : float, /) -> None:
         """
         Sets endParam to be the new end parameter of the ellipse. If endParam is less than the
         current start parameter, then it is incremented in steps of 2pi until it is larger than the
@@ -12670,27 +12257,27 @@ class Ellipse(PyDb.Curve):
         object (that is, AcDbEllipse::isNull() returns Adesk::kTrue), then
         Acad::eDegenerateGeometry is returned.
         """
-    def setMajorRadius(self, val: float, /) -> None:
+    def setMajorRadius(self, val : float, /) -> None:
         """
         This is setMajorRadius, a member of class AcDbEllipse.
         """
-    def setMinorRadius(self, val: float, /) -> None:
+    def setMinorRadius(self, val : float, /) -> None:
         """
         This is setMinorRadius, a member of class AcDbEllipse.
         """
-    def setRadiusRatio(self, val: float, /) -> None:
+    def setRadiusRatio(self, val : float, /) -> None:
         """
         Sets ratio to be the new radius ratio for the ellipse. ratio must be a value between 1e-6
         and 1.0. Returns Acad::eOk if successful. If the Ellipse has no gelib object (that is,
         AcDbEllipse::isNull() returns Adesk::kTrue), then Acad::eDegenerateGeometry is returned.
         """
-    def setStartAngle(self, val: float, /) -> None:
+    def setStartAngle(self, val : float, /) -> None:
         """
         Sets startAngle to be the new start angle for the ellipse. Returns Acad::eOk if successful.
         If the Ellipse has no gelib object (that is, AcDbEllipse::isNull() returns Adesk::kTrue),
         then Acad::eDegenerateGeometry is returned.
         """
-    def setStartParam(self, val: float, /) -> None:
+    def setStartParam(self, val : float, /) -> None:
         """
         Sets startParam to be the new start parameter of the ellipse. If startParam is larger than
         the current end parameter, then it is decremented in steps of 2pi until it is less than the
@@ -12704,21 +12291,13 @@ class Ellipse(PyDb.Curve):
         angle for startAngle and endAngle. Positive angles are counter-clockwise when looking down
         the normal vector (that is, right-hand rule).
         """
-
 class EndCaps(_BoostPythonEnum):
     kEndCapNone: ClassVar[Self]  # 0
     kEndCapRound: ClassVar[Self]  # 1
     kEndCapAngle: ClassVar[Self]  # 2
     kEndCapSquare: ClassVar[Self]  # 3
-
 class Entity(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         Base class for all database objects having a graphical representation.
         """
@@ -12845,7 +12424,7 @@ class Entity(PyDb.DbObject):
         """
     def getGeomExtents2d(self, /) -> Extents2d: ...
     @overload
-    def getGripPoints(self, /) -> tuple[list[PyGe.Point3d], list[int], list[int]]:
+    def getGripPoints(self, /) -> tuple[list[PyGe.Point3d],list[int],list[int]]:
         """
         Function usageThis function supports 'old style' grips, in applications that existed before
         the enhancement of grip functionality by the addition of the AcDbGripData class. This
@@ -12861,9 +12440,7 @@ class Entity(PyDb.DbObject):
         used.Default implementationImmediately returns Adesk::eNotImplemented.
         """
     @overload
-    def getGripPoints(
-        self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int, /
-    ) -> tuple[list[PyGe.Point3d], list[int], list[int]]:
+    def getGripPoints(self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int, /) -> tuple[list[PyGe.Point3d],list[int],list[int]]:
         """
         Function usageThis function supports 'old style' grips, in applications that existed before
         the enhancement of grip functionality by the addition of the AcDbGripData class. This
@@ -12879,7 +12456,7 @@ class Entity(PyDb.DbObject):
         used.Default implementationImmediately returns Adesk::eNotImplemented.
         """
     @overload
-    def getGripPoints(self, *args) -> tuple[list[PyGe.Point3d], list[int], list[int]]:
+    def getGripPoints(self, *args) -> tuple[list[PyGe.Point3d],list[int],list[int]]:
         """
         Function usageThis function supports 'old style' grips, in applications that existed before
         the enhancement of grip functionality by the addition of the AcDbGripData class. This
@@ -12932,14 +12509,7 @@ class Entity(PyDb.DbObject):
         have stretch points that are different from the grip points, there is no need to override
         this method.
         """
-    def getSubentPathsAtGsMarker(
-        self,
-        type: PyDb.SubentType,
-        gsMark: int,
-        pickPoint: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        /,
-    ) -> list[PyDb.FullSubentPath]:
+    def getSubentPathsAtGsMarker(self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> list[PyDb.FullSubentPath]:
         """
         Entities use various graphic primitives defined in AcGi to draw themselves. Part of this
         mechanism is the ability to associate an integer identifier called a graphics system marker
@@ -13049,7 +12619,7 @@ class Entity(PyDb.DbObject):
         return with pEnt set to point to the transformed clone. If xform is a non-uniformly scaled
         or a non-orthogonal matrix, then this function will return Acad::eNotImplemented.
         """
-    def highlight(self, path: PyDb.FullSubentPath = ..., highlightAll: bool = False, /) -> None:
+    def highlight(self, path: PyDb.FullSubentPath = ..., highlightAll : bool = False, /) -> None:
         """
         Function usageThis function uses the AcDbFullSubentPathid to determine which subentity in
         the entity is desired. It then highlights that subentity on screen. If no
@@ -13083,7 +12653,7 @@ class Entity(PyDb.DbObject):
         on the getGsMarkersAtSubentPath() or getSubentPathsAtGsMarker() methods.
         """
     @overload
-    def intersectWith(self, entity: PyDb.Entity, intType: PyDb.Intersect, /) -> list[PyGe.Point3d]:
+    def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, /) -> list[PyGe.Point3d]:
         """
         Function usageIt finds the intersections of the entity pointed to by pEnt and all the edges
         of the bounding box of this entity. The intType is used to determine how to deal with
@@ -13131,14 +12701,7 @@ class Entity(PyDb.DbObject):
         Default implementationImmediately returns Acad::eNotImplemented.
         """
     @overload
-    def intersectWith(
-        self,
-        entity: PyDb.Entity,
-        intType: PyDb.Intersect,
-        thisGsMarker: int,
-        otherGsMarker: int,
-        /,
-    ) -> list[PyGe.Point3d]:
+    def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]:
         """
         Function usageIt finds the intersections of the entity pointed to by pEnt and all the edges
         of the bounding box of this entity. The intType is used to determine how to deal with
@@ -13186,9 +12749,7 @@ class Entity(PyDb.DbObject):
         Default implementationImmediately returns Acad::eNotImplemented.
         """
     @overload
-    def intersectWith(
-        self, entity: PyDb.Entity, intType: PyDb.Intersect, plane: PyGe.Plane, /
-    ) -> list[PyGe.Point3d]:
+    def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, /) -> list[PyGe.Point3d]:
         """
         Function usageIt finds the intersections of the entity pointed to by pEnt and all the edges
         of the bounding box of this entity. The intType is used to determine how to deal with
@@ -13236,15 +12797,7 @@ class Entity(PyDb.DbObject):
         Default implementationImmediately returns Acad::eNotImplemented.
         """
     @overload
-    def intersectWith(
-        self,
-        entity: PyDb.Entity,
-        intType: PyDb.Intersect,
-        plane: PyGe.Plane,
-        thisGsMarker: int,
-        otherGsMarker: int,
-        /,
-    ) -> list[PyGe.Point3d]:
+    def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]:
         """
         Function usageIt finds the intersections of the entity pointed to by pEnt and all the edges
         of the bounding box of this entity. The intType is used to determine how to deal with
@@ -13339,7 +12892,7 @@ class Entity(PyDb.DbObject):
         for any such errors are up to the implementer -- there are no conventions in this regard.
         Default implementationImmediately returns Acad::eNotImplemented.
         """
-    def isPlanar(self, /) -> tuple[bool, PyGe.Plane]:
+    def isPlanar(self, /) -> tuple[bool,PyGe.Plane]:
         """
         This function returns Adesk::kTrue if and only if there is a plane that contains the
         entity. Otherwise Adesk::kFalse is returned.
@@ -13411,9 +12964,7 @@ class Entity(PyDb.DbObject):
         responsible for deallocating the returned string. The plotStyleName value is used for DXF
         group code 390.
         """
-    def pushHighlight(
-        self, path: PyDb.FullSubentPath, highlightStyle: PyGi.HighlightStyle, /
-    ) -> None: ...
+    def pushHighlight(self, path: PyDb.FullSubentPath, highlightStyle: PyGi.HighlightStyle, /) -> None: ...
     def receiveShadows(self, /) -> bool:
         """
         Returns a boolean value indicating whether this entity can receive shadows.
@@ -13435,29 +12986,25 @@ class Entity(PyDb.DbObject):
         """
         Sets the property to indicate whether the entity can cast shadows.
         """
-    def setColor(
-        self, clr: PyDb.AcCmColor, dosubents: bool = True, db: PyDb.Database = "current", /
-    ) -> None:
+    def setColor(self, clr: PyDb.AcCmColor, dosubents : bool=True, db : PyDb.Database='current', /) -> None:
         """
         Function usage This method sets the entity's color to the color specified by color. If the
         entity owns subentities and doSubents == Adesk::kTrue, the color change is applied to the
         subentities as well. Custom classes may override this method.
         """
-    def setColorIndex(self, clr: int, dosubents: bool = True, /) -> None:
+    def setColorIndex(self, clr: int, dosubents : bool=True, /) -> None:
         """
         Function usage This method sets the entity's color to the AutoCAD color index color. If the
         entity owns subentities and doSubents == Adesk::kTrue, then the color index change will be
         applied to the subentities as well.
         """
-    def setDatabaseDefaults(self, db: PyDb.Database = "current", /) -> None:
+    def setDatabaseDefaults(self, db: PyDb.Database = 'current', /) -> None:
         """
         This function sets the entity's: ColorLayerLinetypeLinetype scaleVisibilityPlot style
         nameLine weightto the default values of the database indicated by pDb: If pDb == NULL, then
         the current database in the AutoCAD editor is used.
         """
-    def setLayer(
-        self, val: str | PyDb.ObjectId, dosubents: bool = True, allowHiddenLayer: bool = False, /
-    ) -> None:
+    def setLayer(self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False, /) -> None:
         """
         This method sets entity to reference the AcDbLayerTableRecord identified by the name
         specified in newVal. If the entity owns subentities and doSubents == Adesk::kTrue, then the
@@ -13465,7 +13012,7 @@ class Entity(PyDb.DbObject):
         this method will also update any associated AcDbSequenceEnd subentity regardless of the
         doSubents setting.
         """
-    def setLineWeight(self, val: PyDb.LineWeight, dosubents: bool = True, /) -> None:
+    def setLineWeight(self, val: PyDb.LineWeight, dosubents : bool=True, /) -> None:
         """
         This method sets the entity to use lineweight. If the entity owns subentities and doSubents
         == Adesk::kTrue, then the line weight change will be applied to the subentities as well.
@@ -13478,7 +13025,7 @@ class Entity(PyDb.DbObject):
         is not an acceptable value, then this function should return Acad::eInvalidInput. Any other
         error return values are up to the implementer.
         """
-    def setLinetype(self, val: str | PyDb.ObjectId, dosubents: bool = True, /) -> None:
+    def setLinetype(self, val: str|PyDb.ObjectId, dosubents : bool=True, /) -> None:
         """
         Function usage This method sets the entity to reference the AcDbLinetypeTableRecord with
         the name specified in newVal. If the entity owns subentities and doSubents == Adesk::kTrue,
@@ -13486,13 +13033,13 @@ class Entity(PyDb.DbObject):
         AcDbBlockReference entity, this method will also update any associated AcDbSequenceEnd
         subentity regardless of the doSubents setting.
         """
-    def setLinetypeScale(self, val: float, dosubents: bool = True, /) -> None:
+    def setLinetypeScale(self, val: float, dosubents : bool=True, /) -> None:
         """
         This method sets the entity to use newval as its linetype scale factor. newVal must be
         nonnegative. If the entity owns subentities and doSubents == Adesk::kTrue, then the
         linetype scale change will be applied to the subentities as well.
         """
-    def setMaterial(self, val: str | PyDb.ObjectId, dosubents: bool = True, /) -> None:
+    def setMaterial(self, val: str|PyDb.ObjectId, dosubents : bool=True, /) -> None:
         """
         This method sets the material reference to the specified material. The specified name must
         correspond to an existing AcDbMaterial object. Returns Acad::eOk when successful
@@ -13528,9 +13075,7 @@ class Entity(PyDb.DbObject):
         DXF group code 390.
         """
     @overload
-    def setPlotStyleName(
-        self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool, /
-    ) -> None:
+    def setPlotStyleName(self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool, /) -> None:
         """
         This function searches the PlotStyleName dictionary for an entry with the name that matches
         newName and if found, sets the entity to use that plotStyleName entry. Because a lookup in
@@ -13559,7 +13104,7 @@ class Entity(PyDb.DbObject):
         for newName, then Acad::eKeyNotFound will be returned. The plotStyleName value is used for
         DXF group code 390.
         """
-    def setPropertiesFrom(self, entity: PyDb.Entity, dosubents: bool = True, /) -> None:
+    def setPropertiesFrom(self, entity: PyDb.Entity, dosubents : bool=True, /) -> None:
         """
         This method copies the ColorLayerLinetypeLinetype scaleVisibilityvalues from the entity
         pointed to by pEntity into this entity. If the entity owns subentities and doSubents ==
@@ -13570,7 +13115,7 @@ class Entity(PyDb.DbObject):
         """
         Sets the property indicating whether this entity can receive shadows.
         """
-    def setTransparency(self, transparency: PyDb.Transparency, dosubents: bool = True, /) -> None:
+    def setTransparency(self, transparency: PyDb.Transparency, dosubents : bool=True, /) -> None:
         """
         This function sets the transparency value for the entity. If the entity owns subentities
         and is Adesk::kTrue, the transparency change is applied to the subentities as well. The
@@ -13582,7 +13127,7 @@ class Entity(PyDb.DbObject):
         AcDbEntity::setTransparency(). If the transparency-setting operation is successful, the
         function returns Acad::eOk. Return values for errors are up to the implementer.
         """
-    def setVisibility(self, val: PyDb.Visibility, dosubents: bool = True, /) -> None:
+    def setVisibility(self, val: PyDb.Visibility, dosubents : bool=True, /) -> None:
         """
         This method sets the visibility of an entity to the value specified by newVal. If the
         entity owns subentities and doSubents == Adesk::kTrue, then the visibility change will be
@@ -13620,7 +13165,6 @@ class Entity(PyDb.DbObject):
         This method returns the entity's current visibility state, either AcDb::kVisible or
         AcDb::kInvisible.
         """
-
 class EntityColor:
     @staticmethod
     def ByBlock() -> EntityColor: ...
@@ -13660,23 +13204,22 @@ class EntityColor:
     def red(self, /) -> int: ...
     def setByBlock(self, /) -> None: ...
     def setByLayer(self, /) -> None: ...
-    def setCOLORREF(self, val: int, /) -> ErrorStatus: ...
-    def setColorIndex(self, val: int, /) -> ErrorStatus: ...
+    def setCOLORREF(self, val : int, /) -> ErrorStatus: ...
+    def setColorIndex(self, val : int, /) -> ErrorStatus: ...
     def setForeground(self, /) -> None: ...
-    def setLayerIndex(self, val: int, /) -> ErrorStatus: ...
+    def setLayerIndex(self, val : int, /) -> ErrorStatus: ...
     def setLayerOff(self, /) -> None: ...
     def setNone(self, /) -> None: ...
-    def setPenIndex(self, val: int, /) -> ErrorStatus: ...
+    def setPenIndex(self, val : int, /) -> ErrorStatus: ...
     @overload
     def setRGB(self, rgbquad: int, /) -> ErrorStatus: ...
     @overload
     def setRGB(self, r: int, g: int, b: int, /) -> ErrorStatus: ...
     @overload
     def setRGB(self, *args) -> ErrorStatus: ...
-    def setRGBM(self, val: int, /) -> ErrorStatus: ...
+    def setRGBM(self, val : int, /) -> ErrorStatus: ...
     @staticmethod
     def white() -> EntityColor: ...
-
 class EntityHyperlinkPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -13697,41 +13240,24 @@ class EntityHyperlinkPE(PyRx.RxObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @overload
-    def getHyperlinkCollection(
-        self, obj: PyDb.DbObject, bOneOnly: bool = False, bIgnoreBlockDefinition: bool = True, /
-    ) -> HyperlinkCollection: ...
+    def getHyperlinkCollection(self, obj: PyDb.DbObject, bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True, /) -> HyperlinkCollection: ...
     @overload
-    def getHyperlinkCollection(
-        self,
-        ids: list[PyDb.ObjectId],
-        bOneOnly: bool = False,
-        bIgnoreBlockDefinition: bool = True,
-        /,
-    ) -> HyperlinkCollection: ...
+    def getHyperlinkCollection(self, ids: list[PyDb.ObjectId], bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True, /) -> HyperlinkCollection: ...
     @overload
     def getHyperlinkCollection(self, *args) -> HyperlinkCollection: ...
     @overload
-    def getHyperlinkCount(
-        self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool = True, /
-    ) -> int: ...
+    def getHyperlinkCount(self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True, /) -> int: ...
     @overload
-    def getHyperlinkCount(
-        self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool = True, /
-    ) -> int: ...
+    def getHyperlinkCount(self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True, /) -> int: ...
     @overload
     def getHyperlinkCount(self, *args) -> int: ...
     @overload
-    def hasHyperlink(self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool = True, /) -> bool: ...
+    def hasHyperlink(self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True, /) -> bool: ...
     @overload
-    def hasHyperlink(
-        self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool = True, /
-    ) -> bool: ...
+    def hasHyperlink(self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True, /) -> bool: ...
     @overload
     def hasHyperlink(self, *args) -> bool: ...
-    def setHyperlinkCollection(
-        self, db: PyDb.DbObject, pcHCL: PyDb.HyperlinkCollection, /
-    ) -> None: ...
-
+    def setHyperlinkCollection(self, db: PyDb.DbObject, pcHCL: PyDb.HyperlinkCollection, /) -> None: ...
 class EntityReactor(PyRx.RxObject):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -13765,7 +13291,6 @@ class EntityReactor(PyRx.RxObject):
     def reappended(self, obj: PyDb.DbObject, /) -> None: ...
     def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None: ...
     def unappended(self, obj: PyDb.DbObject, /) -> None: ...
-
 class ErrorStatus(_BoostPythonEnum):
     Ok: ClassVar[Self]  # 0
     eOk: ClassVar[Self]  # 0
@@ -13776,7 +13301,7 @@ class ErrorStatus(_BoostPythonEnum):
     eAmbiguousOutput: ClassVar[Self]  # 5
     eOutOfMemory: ClassVar[Self]  # 6
     eBufferTooSmall: ClassVar[Self]  # 7
-    eInvalidOpenState: ClassVar[Self]  # 8
+    eInvalidOpenState : ClassVar[Self]  # 8
     eEntityInInactiveLayout: ClassVar[Self]  # 9
     eHandleExists: ClassVar[Self]  # 10
     eNullHandle: ClassVar[Self]  # 11
@@ -14111,7 +13636,7 @@ class ErrorStatus(_BoostPythonEnum):
     eUnableToGetViewAssociation: ClassVar[Self]  # 605
     eUnableToSetLabelBlock: ClassVar[Self]  # 606
     eUnableToGetLabelBlock: ClassVar[Self]  # 607
-    eUnableToRemoveAssociation: ClassVar[Self]  # 608
+    eUnableToRemoveAssociation : ClassVar[Self]  # 608
     eUnableToSyncModelView: ClassVar[Self]  # 609
     eDataLinkAdapterNotFound: ClassVar[Self]  # 650
     eDataLinkInvalidAdapterId: ClassVar[Self]  # 651
@@ -14283,7 +13808,6 @@ class ErrorStatusException(RuntimeError):
     code: PyDb.ErrorStatus
     message: str
     fullmessage: str
-
 class EvalVariant(PyRx.RxObject):
     def __ge__(self, /) -> bool: ...
     def __gt__(self, /) -> bool: ...
@@ -14431,7 +13955,6 @@ class EvalVariant(PyRx.RxObject):
     def setPoint3d(self, code: PyDb.DxfCode, pt: PyGe.Point3d, /) -> None: ...
     def setString(self, code: PyDb.DxfCode, val: str, /) -> None: ...
     def toString(self, /) -> str: ...
-
 class Extents:
     @overload
     def __init__(self, /) -> None: ...
@@ -14459,8 +13982,8 @@ class Extents:
         """
         Expand this box to also enclose the point pt.
         """
-    def contains(self, val: PyDb.Extents | PyGe.Point3d, /) -> bool: ...
-    def coords(self, /) -> tuple[float, ...]: ...
+    def contains(self, val: PyDb.Extents|PyGe.Point3d, /) -> bool: ...
+    def coords(self, /) -> tuple[float,...]: ...
     def expandBy(self, vec: PyGe.Vector3d, /) -> None:
         """
         Expand this box by the amount in the vector. This could be used for objects with a constant
@@ -14468,7 +13991,7 @@ class Extents:
         object's points calling addPoint(), then you would make a single expandBy() call to expand
         that box by the thickness amount.
         """
-    def intersectsWith(self, other: PyDb.Extents | PyGe.LinearEnt3d, /) -> bool: ...
+    def intersectsWith(self, other: PyDb.Extents|PyGe.LinearEnt3d, /) -> bool: ...
     def maxPoint(self, /) -> PyGe.Point3d:
         """
         Return the point of the Extents box that has the smallest X, Y, & Z coordinate values.
@@ -14489,7 +14012,6 @@ class Extents:
         Transform the eight corners of the current box by this matrix and compute the box that
         encloses the current box and those points.
         """
-
 class Extents2d:
     @overload
     def __init__(self, /) -> None: ...
@@ -14510,8 +14032,8 @@ class Extents2d:
         """
         Updates the extents to include point.
         """
-    def contains(self, val: PyDb.Extents2d | PyGe.Point2d, /) -> bool: ...
-    def coords(self, /) -> tuple[float, ...]: ...
+    def contains(self, val: PyDb.Extents2d|PyGe.Point2d, /) -> bool: ...
+    def coords(self, /) -> tuple[float,...]: ...
     def expandBy(self, vector: PyGe.Vector2d, /) -> None:
         """
         This method expands the extents by vec. This is essentially like adding vec to copies of
@@ -14536,15 +14058,8 @@ class Extents2d:
         Transform the four corners of the current extents rectangle by mat and compute the
         rectangle that encloses the current extents and the transformed corner points.
         """
-
 class ExtrudedSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ExtrudedSurface: ...
@@ -14566,7 +14081,6 @@ class ExtrudedSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class Face(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -14574,47 +14088,22 @@ class Face(PyDb.Entity):
         The AcDbFace class represents the 3dface entity within AutoCAD.
         """
     @overload
-    def __init__(self, pt0: PyGe.Point3d, pt1: PyGe.Point3d, pt2: PyGe.Point3d, /) -> None:
+    def __init__(self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d, /) -> None:
         """
         The AcDbFace class represents the 3dface entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, pt0: PyGe.Point3d, pt1: PyGe.Point3d, pt2: PyGe.Point3d, pt3: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d, /) -> None:
         """
         The AcDbFace class represents the 3dface entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        pt0: PyGe.Point3d,
-        pt1: PyGe.Point3d,
-        pt2: PyGe.Point3d,
-        e0vis: bool,
-        e1vis: bool,
-        e2vis: bool,
-        e3vis: bool,
-        e4vis: bool,
-        /,
-    ) -> None:
+    def __init__(self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool, /) -> None:
         """
         The AcDbFace class represents the 3dface entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        pt0: PyGe.Point3d,
-        pt1: PyGe.Point3d,
-        pt2: PyGe.Point3d,
-        pt3: PyGe.Point3d,
-        e0vis: bool,
-        e1vis: bool,
-        e2vis: bool,
-        e3vis: bool,
-        e4vis: bool,
-        /,
-    ) -> None:
+    def __init__(self, pt0 : PyGe.Point3d, pt1 : PyGe.Point3d, pt2 : PyGe.Point3d,pt3 : PyGe.Point3d, e0vis: bool, e1vis: bool, e2vis: bool, e3vis: bool, e4vis: bool, /) -> None:
         """
         The AcDbFace class represents the 3dface entity within AutoCAD.
         """
@@ -14659,14 +14148,14 @@ class Face(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getVertexAt(self, vIndex: int, /) -> PyGe.Point3d:
+    def getVertexAt(self, vIndex:int, /) -> PyGe.Point3d:
         """
         This function uses the position argument to return the WCS value of the vertex specified by
         vertexIndex. If successful, then Acad::eOk is returned. If vertexIndex is greater than 3,
         then Acad::eInvalidIndex is returned. The vertex positions are used for DXF group codes 10
         through 13.
         """
-    def isEdgeVisibleAt(self, vIndex: int, /) -> bool:
+    def isEdgeVisibleAt(self, vIndex:int, /) -> bool:
         """
         This function uses the visibility argument to return the visibility value for the edge that
         starts with the vertex specified by vertexIndex. A visibility value of Adesk::kTrue
@@ -14676,26 +14165,25 @@ class Face(PyDb.Entity):
         1 is for the first edge, bit 2 is for the second edge, etc. A set bit indicates the edge is
         invisible).
         """
-    def makeEdgeInvisibleAt(self, vIndex: int, /) -> None:
+    def makeEdgeInvisibleAt(self, vIndex:int, /) -> None:
         """
         This function sets the edge that starts at the vertex specified by vertexIndex to be
         invisible. If successful then Acad::eOk is returned. If vertexIndex greater than 3, then
         Acad::eInvalidIndex is returned.
         """
-    def makeEdgeVisibleAt(self, vIndex: int, /) -> None:
+    def makeEdgeVisibleAt(self, vIndex:int, /) -> None:
         """
         This function sets the edge that starts at the vertex specified by vertexIndex to be
         visible. If successful then Acad::eOk is returned. If vertexIndex greater than 3, then
         Acad::eInvalidIndex is returned.
         """
-    def setVertexAt(self, vIndex: int, pnt: PyGe.Point3d, /) -> None:
+    def setVertexAt(self, vIndex:int, pnt:PyGe.Point3d, /) -> None:
         """
         This function sets the vertex specified by vertexIndex to use the position value position,
         which must be in WCS coordinates. If successful then Acad::eOk is returned. If vertexIndex
         greater than 3, then Acad::eInvalidIndex is returned. The vertex positions are used for DXF
         group codes 10 through13.
         """
-
 class FaceRecord(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None:
@@ -14766,7 +14254,7 @@ class FaceRecord(PyDb.Vertex):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getVertexAt(self, val: int, /) -> int:
+    def getVertexAt(self, val : int, /) -> int:
         """
         This function uses the vtxIdx argument to return the index number of the PolyFaceMesh
         vertex used as the faceIdx corner of the face. Face corner indices start with 0, so faceIdx
@@ -14776,7 +14264,7 @@ class FaceRecord(PyDb.Vertex):
         indices are used for DXF group codes 71-74 (71 for faceIdx == 1, 72 for faceIdx == 2,
         etc.).
         """
-    def isEdgeVisibleAt(self, val: int, /) -> bool:
+    def isEdgeVisibleAt(self, val : int, /) -> bool:
         """
         This function uses the visible argument to return the visibility value for the edge that
         starts with the face corner specified by faceIndex. A visibility value of Adesk::kTrue
@@ -14788,7 +14276,7 @@ class FaceRecord(PyDb.Vertex):
         data value is positive, then the edge starting at that vertex will be visible. If the data
         value is negative, then the edge will be invisible.
         """
-    def makeEdgeInvisibleAt(self, val: int, /) -> None:
+    def makeEdgeInvisibleAt(self, val : int, /) -> None:
         """
         This function sets the edge that starts at the corner specified by faceIndex to be
         invisible. Face corner indices start with 0, so faceIndex must be 0, 1, 2, or 3. If
@@ -14797,7 +14285,7 @@ class FaceRecord(PyDb.Vertex):
         corresponding DXF group codes 71 - 74 to be negative (faceIndex == 1 sets group code 71 to
         be negative, faceIndex == 2 sets group code 72, etc.).
         """
-    def makeEdgeVisibleAt(self, val: int, /) -> None:
+    def makeEdgeVisibleAt(self, val : int, /) -> None:
         """
         This function sets the edge that starts at the corner specified by faceIndex to be visible.
         Face corner indices start with 0, so faceIndex must be 0, 1, 2, or 3. If successful, then
@@ -14806,7 +14294,7 @@ class FaceRecord(PyDb.Vertex):
         be positive (faceIndex == 1 sets group code 71 to be positive, faceIndex == 2 sets group
         code 72, etc.).
         """
-    def setVertexAt(self, val: int, idx: int, /) -> None:
+    def setVertexAt(self, val : int, idx : int, /) -> None:
         """
         This function sets the FaceRecord so that the PolyFaceMesh vertex list index number vtxIdx
         is used as the vertex index for the faceIdx corner of the face. Face corner indices start
@@ -14815,7 +14303,6 @@ class FaceRecord(PyDb.Vertex):
         faceIdx greater than 3, then Acad::eInvalidFaceVertexIndex is returned. The vertex indices
         are used for DXF group codes 71-74 (71 for faceIdx == 1, 72 for faceIdx == 2, etc.).
         """
-
 class Fcf(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -14829,9 +14316,7 @@ class Fcf(PyDb.Entity):
         control codes, see the AcDbFcf::setText() member function description.
         """
     @overload
-    def __init__(
-        self, val: str, pnt: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d, /
-    ) -> None:
+    def __init__(self, val: str, pnt: PyGe.Point3d, normal: PyGe.Vector3d, direction: PyGe.Vector3d, /) -> None:
         """
         The AcDbFcf class represents Feature Control Frames for Geometric Dimensioning and
         Tolerancing. It is the entity type created by the TOLERANCE command in the AutoCAD command
@@ -15002,30 +14487,30 @@ class Fcf(PyDb.Entity):
         future releases. Use a call to setDimensionStyle() followed by a call to setDimstyleData()
         instead.
         """
-    def setDimclrd(self, val: Color, /) -> None:
+    def setDimclrd(self, val:Color, /) -> None:
         """
         Sets the AutoCAD color index within val to be the DIMCLRD value for the feature control
         frame as an override. This function returns Acad::eOk if successful. See the System
         Variables section of the AutoCAD Command Reference manual for information on DIMCLRD.
         """
-    def setDimclrt(self, val: Color, /) -> None:
+    def setDimclrt(self, val:Color, /) -> None:
         """
         Sets the AutoCAD color index within val to be the DIMCLRT value for the feature control
         frame as an override. This function returns Acad::eOk if successful. See the System
         Variables section of the AutoCAD Command Reference manual for information on DIMCLRT.
         """
-    def setDimensionStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setDimensionStyle(self, val:PyDb.ObjectId, /) -> None:
         """
         Sets the Fcf object to reference the dimension style specified by the
         dimensionStyleobjectId.
         """
-    def setDimgap(self, val: float, /) -> None:
+    def setDimgap(self, val:float, /) -> None:
         """
         Overrides this feature control frame's DIMGAP value with val. Returns Acad::eOk if
         successful. See the System Variables section of the AutoCAD Command Reference for
         information on DIMGAP.
         """
-    def setDimscale(self, val: float, /) -> None:
+    def setDimscale(self, val:float, /) -> None:
         """
         Sets scale to be the DIMSCALE value for the feature control frame as an override. This
         function returns Acad::eOk if successful. See the System Variables section of the AutoCAD
@@ -15082,23 +14567,23 @@ class Fcf(PyDb.Entity):
         function returns Acad::eOk if successful. See the System Variables section of the AutoCAD
         Command Reference manual for information on DIMTXSTY.
         """
-    def setDimtxt(self, val: float, /) -> None:
+    def setDimtxt(self, val:float, /) -> None:
         """
         Sets val to be the DIMTXT value for the feature control frame as an override. This function
         returns Acad::eOk if successful. See the System Variables section of the AutoCAD Command
         Reference manual for information on DIMTXT.
         """
-    def setLocation(self, val: PyGe.Point3d, /) -> None:
+    def setLocation(self, val:PyGe.Point3d, /) -> None:
         """
         Sets the object to use loc as its new location ('insertion' point). The insertion point is
         the middle of the left edge of its first line. loc must be in WCS coordinates.
         """
-    def setOrientation(self, normal: PyGe.Vector3d, direction: PyGe.Vector3d, /) -> None:
+    def setOrientation(self, normal:PyGe.Vector3d, direction:PyGe.Vector3d, /) -> None:
         """
         Sets norm to be the Fcf plane normal and dir to be the X-direction for the Fcf. Both values
         are specified in WCS coordinates. dir must be perpendicular to norm.
         """
-    def setText(self, val: str, /) -> None:
+    def setText(self, val:str, /) -> None:
         """
         Sets a copy of text to be the text string used by the Fcf. This string contains the codes
         to specify which feature control symbols to use as well as the actual tolerance value. Here
@@ -15136,7 +14621,6 @@ class Fcf(PyDb.Entity):
         this function is responsible for deallocating the string returned by this function
         (acdbFree() should be used).
         """
-
 class Field(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -15220,7 +14704,7 @@ class Field(PyDb.DbObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @overload
-    def evaluate(self, /) -> tuple[int, int]:
+    def evaluate(self, /) -> tuple[int,int]:
         """
         This method evaluates the field. After creating a field object and setting the field code,
         call this method to evaluate the field. If pDb is null, the field's database will be used
@@ -15229,7 +14713,7 @@ class Field(PyDb.DbObject):
         successful. Otherwise, it returns an AutoCAD error status.
         """
     @overload
-    def evaluate(self, nFlag: PyDb.FieldEvalContext, /) -> tuple[int, int]:
+    def evaluate(self, nFlag: PyDb.FieldEvalContext, /) -> tuple[int,int]:
         """
         This method evaluates the field. After creating a field object and setting the field code,
         call this method to evaluate the field. If pDb is null, the field's database will be used
@@ -15238,7 +14722,7 @@ class Field(PyDb.DbObject):
         successful. Otherwise, it returns an AutoCAD error status.
         """
     @overload
-    def evaluate(self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database, /) -> tuple[int, int]:
+    def evaluate(self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database, /) -> tuple[int,int]:
         """
         This method evaluates the field. After creating a field object and setting the field code,
         call this method to evaluate the field. If pDb is null, the field's database will be used
@@ -15247,7 +14731,7 @@ class Field(PyDb.DbObject):
         successful. Otherwise, it returns an AutoCAD error status.
         """
     @overload
-    def evaluate(self, *args) -> tuple[int, int]:
+    def evaluate(self, *args) -> tuple[int,int]:
         """
         This method evaluates the field. After creating a field object and setting the field code,
         call this method to evaluate the field. If pDb is null, the field's database will be used
@@ -15271,7 +14755,7 @@ class Field(PyDb.DbObject):
         null if there is no evaluator set in the field, or if an evaluator could not be found and
         assigned to the field.
         """
-    def getChild(self, index: int, mode: PyDb.OpenMode, /) -> Field:
+    def getChild(self, index:int, mode: PyDb.OpenMode, /) -> Field:
         """
         Gets the child field. If this field is a text field, the child fields are the fields
         embedded in the text. If this field is not a text field, the child fields are the number of
@@ -15289,9 +14773,7 @@ class Field(PyDb.DbObject):
         status.
         """
     @overload
-    def getFieldCode(
-        self, nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode, /
-    ) -> str:
+    def getFieldCode(self, nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode, /) -> str:
         """
         This function can be used to get a field code in various forms. The child field codes in
         pChildFields are the embedded fields if this is a text field or nested fields if this is
@@ -15330,19 +14812,19 @@ class Field(PyDb.DbObject):
         AcDbObject::setField or AcDbField::setInObject. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status.
         """
-    def setData(self, key: str, value: PyDb.AcValue, bRecursive: bool = False, /) -> None: ...
-    def setEvaluationOption(self, val: PyDb.FieldEvalOption, /) -> None:
+    def setData(self, key: str, value: PyDb.AcValue, bRecursive:bool=False, /) -> None: ...
+    def setEvaluationOption(self, val : PyDb.FieldEvalOption, /) -> None:
         """
         Sets the evaluation option for the field. The field is evaluated only if the evaluation
         option set in the field matches the evaluation context in which it is evaluated. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setEvaluatorId(self, pszEvaluatorId: str, /) -> None:
+    def setEvaluatorId(self, pszEvaluatorId : str, /) -> None:
         """
         Sets the ID of the evaluator to be used for evaluating the field. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status.
         """
-    def setFormat(self, pszFormat: str, /) -> None:
+    def setFormat(self, pszFormat : str, /) -> None:
         """
         Sets the output format, which is used to format the evaluated value as string. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -15359,7 +14841,6 @@ class Field(PyDb.DbObject):
         """
         Returns the field state, which can be one or more of the AcDbField::State values.
         """
-
 class FieldCodeFlag(_BoostPythonEnum):
     kFieldCode: ClassVar[Self]  # 1
     kEvaluatedText: ClassVar[Self]  # 2
@@ -15374,7 +14855,6 @@ class FieldCodeFlag(_BoostPythonEnum):
     kDetachChildren: ClassVar[Self]  # 1024
     kChildObjectReference: ClassVar[Self]  # 2048
     kForExpression: ClassVar[Self]  # 4096
-
 class FieldEngine:
     def __init__(self) -> None:
         """
@@ -15388,11 +14868,10 @@ class FieldEngine:
     def evaluatorLoaderCount(self, /) -> int: ...
     @staticmethod
     def getEngine() -> FieldEngine: ...
-    def isEvaluatorLoaded(self, pszEvalId: str, /) -> bool: ...
-    def registerEvaluator(self, evaluator: PyDb.FieldEvaluator, /) -> None: ...
-    def setEvaluationOption(self, opt: PyDb.FieldEvalOption, /) -> None: ...
-    def unregisterEvaluator(self, evaluator: PyDb.FieldEvaluator, /) -> None: ...
-
+    def isEvaluatorLoaded(self, pszEvalId:str, /) -> bool: ...
+    def registerEvaluator(self, evaluator:PyDb.FieldEvaluator, /) -> None: ...
+    def setEvaluationOption(self, opt:PyDb.FieldEvalOption, /) -> None: ...
+    def unregisterEvaluator(self, evaluator:PyDb.FieldEvaluator, /) -> None: ...
 class FieldEvalContext(_BoostPythonEnum):
     kOpen: ClassVar[Self]  # 1
     kSave: ClassVar[Self]  # 2
@@ -15402,7 +14881,6 @@ class FieldEvalContext(_BoostPythonEnum):
     kDemand: ClassVar[Self]  # 32
     kPreview: ClassVar[Self]  # 64
     kPlotPreview: ClassVar[Self]  # 128
-
 class FieldEvalOption(_BoostPythonEnum):
     kDisable: ClassVar[Self]  # 0
     kOnOpen: ClassVar[Self]  # 1
@@ -15412,7 +14890,6 @@ class FieldEvalOption(_BoostPythonEnum):
     kOnRegen: ClassVar[Self]  # 16
     kOnDemand: ClassVar[Self]  # 32
     kAutomatic: ClassVar[Self]  # 63
-
 class FieldEvalStatus(_BoostPythonEnum):
     kNotYetEvaluated: ClassVar[Self]  # 1
     kSuccess: ClassVar[Self]  # 2
@@ -15421,20 +14898,17 @@ class FieldEvalStatus(_BoostPythonEnum):
     kInvalidCode: ClassVar[Self]  # 16
     kInvalidContext: ClassVar[Self]  # 32
     kOtherError: ClassVar[Self]  # 64
-
 class FieldEvaluator:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def beginEvaluateFields(self, context: int, db: PyDb.Database, /) -> None:
+    def beginEvaluateFields(self, context:int, db:PyDb.Database, /) -> None:
         """
         This method is called before one or more fields in a database are evaluated. The return
         value is ignored.
         """
     @staticmethod
     def className() -> str: ...
-    def compile(
-        self, field: PyDb.Field, db: PyDb.Database, result: PyDb.AcValue, /
-    ) -> FieldEvalStatus:
+    def compile(self, field:PyDb.Field, db:PyDb.Database, result:PyDb.AcValue, /) -> FieldEvalStatus:
         """
         The field framework calls this method to compile a field when the field code is changed.
         The evaluator can do any parsing of the field code here and store the parsed data in the
@@ -15442,14 +14916,12 @@ class FieldEvaluator:
         which is called whenever the field needs to be evaluated. Returns Acad::eOk if successful.
         Otherwise, returns an AutoCAD error status.
         """
-    def endEvaluateFields(self, context: int, db: PyDb.Database, /) -> None:
+    def endEvaluateFields(self, context:int, db:PyDb.Database, /) -> None:
         """
         This method is called after one or more fields in a database are evaluated. The return
         value is ignored.
         """
-    def evaluate(
-        self, field: PyDb.Field, context: int, db: PyDb.Database, result: PyDb.AcValue, /
-    ) -> FieldEvalStatus:
+    def evaluate(self, field:PyDb.Field, context:int, db:PyDb.Database, result:PyDb.AcValue, /) -> FieldEvalStatus:
         """
         The field framework calls this method to evaluate a field whenever the field needs to be
         evaluated. A field will be evaluated only when the evaluation option set in the field
@@ -15467,7 +14939,7 @@ class FieldEvaluator:
         substituted with an error string (for example, '#ERR'), which will be displayed as field
         value. Returns Acad::eOk if successful. Otherwise, returns an AutoCAD error status.
         """
-    def format(self, field: PyDb.Field, /) -> str:
+    def format(self, field:PyDb.Field, /) -> str:
         """
         The field framework calls this method when a field is queried to get the evaluated field
         value as a string. The evaluator can implement this method to support custom formatting of
@@ -15476,7 +14948,7 @@ class FieldEvaluator:
         """
     def getEvalName(self, /) -> str: ...
     def getName(self, /) -> str: ...
-    def initialize(self, field: PyDb.Field, /) -> ErrorStatus:
+    def initialize(self, field:PyDb.Field, /) -> ErrorStatus:
         """
         The field framework calls this method to initialize a new field. This method is called
         after setting a field code in the field and before compile() is called. The evaluator can
@@ -15484,7 +14956,6 @@ class FieldEvaluator:
         be called only once for a field. Returns Acad::eOk if successful. Otherwise, returns an
         AutoCAD error status.
         """
-
 class FieldState(_BoostPythonEnum):
     kInitialized: ClassVar[Self]  # 1
     kCompiled: ClassVar[Self]  # 2
@@ -15492,7 +14963,6 @@ class FieldState(_BoostPythonEnum):
     kEvaluated: ClassVar[Self]  # 8
     kHasCache: ClassVar[Self]  # 16
     kHasFormattedString: ClassVar[Self]  # 32
-
 class FilerType(_BoostPythonEnum):
     kFileFiler: ClassVar[Self]  # 0
     kCopyFiler: ClassVar[Self]  # 1
@@ -15504,7 +14974,6 @@ class FilerType(_BoostPythonEnum):
     kIdFiler: ClassVar[Self]  # 7
     kPurgeFiler: ClassVar[Self]  # 8
     kWblockCloneFiler: ClassVar[Self]  # 9
-
 class FindFileHint(_BoostPythonEnum):
     kDefault: ClassVar[Self]  # 0
     kFontFile: ClassVar[Self]  # 1
@@ -15520,7 +14989,6 @@ class FindFileHint(_BoostPythonEnum):
     kPhotometricWebFile: ClassVar[Self]  # 11
     kMaterialMapFile: ClassVar[Self]  # 12
     kCloudOrProjectFile: ClassVar[Self]  # 13
-
 class FullSubentPath:
     @overload
     def __init__(self, /) -> None: ...
@@ -15553,7 +15021,6 @@ class FullSubentPath:
         """
         Returns const copy of the embedded AcDbSubentId.
         """
-
 class GeoCoordinateSystem:
     def __init__(self) -> None:
         """
@@ -15564,11 +15031,11 @@ class GeoCoordinateSystem:
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def create(val: str, /) -> GeoCoordinateSystem: ...
+    def create(val : str, /) -> GeoCoordinateSystem: ...
     def getCartesianExtents(self, /) -> Extents2d: ...
-    def getDatum(self, /) -> tuple[str, str]: ...
+    def getDatum(self, /) -> tuple[str,str]: ...
     def getDescription(self, /) -> str: ...
-    def getEllipsoid(self, /) -> tuple[str, str, float, float]: ...
+    def getEllipsoid(self, /) -> tuple[str,str,float,float]: ...
     def getEpsgCode(self, /) -> int: ...
     def getGeoUnit(self, /) -> GeoCoordinateSystemUnit: ...
     def getGeodeticExtents(self, /) -> Extents2d: ...
@@ -15580,7 +15047,6 @@ class GeoCoordinateSystem:
     def getUnitScale(self, /) -> float: ...
     def getWktRepresentation(self, /) -> str: ...
     def getXmlRepresentation(self, /) -> str: ...
-
 class GeoCoordinateSystemProjectionCode(_BoostPythonEnum):
     kProjectionCodeUnknown: ClassVar[Self]  # 0
     kProjectionCodeAlber: ClassVar[Self]  # 4
@@ -15654,7 +15120,6 @@ class GeoCoordinateSystemProjectionCode(_BoostPythonEnum):
     kProjectionCodeEdcylE: ClassVar[Self]  # 67
     kProjectionCodePlateCarree: ClassVar[Self]  # 68
     kProjectionCodePvMercator: ClassVar[Self]  # 69
-
 class GeoCoordinateSystemTransformer:
     def __init__(self) -> None:
         """
@@ -15665,19 +15130,15 @@ class GeoCoordinateSystemTransformer:
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def create(
-        sourceCoordSysId: str, targetCoordSysId: str, /
-    ) -> GeoCoordinateSystemTransformer: ...
+    def create(sourceCoordSysId : str,targetCoordSysId : str, /) -> GeoCoordinateSystemTransformer: ...
     def getSourceCoordinateSystemId(self, /) -> str: ...
     def transformPoint(self, pt: PyGe.Point3d, /) -> PyGe.Point3d: ...
     def transformPoints(self, pts: list[PyGe.Point3d], /) -> list: ...
-
 class GeoCoordinateSystemType(_BoostPythonEnum):
     kTypeUnknown: ClassVar[Self]  # 0
     kTypeArbitrary: ClassVar[Self]  # 1
     kTypeGeographic: ClassVar[Self]  # 2
     kTypeProjected: ClassVar[Self]  # 3
-
 class GeoCoordinateSystemUnit(_BoostPythonEnum):
     kUnitUnknown: ClassVar[Self]  # 0
     kUnitMeter: ClassVar[Self]  # 1
@@ -15741,7 +15202,6 @@ class GeoCoordinateSystemUnit(_BoostPythonEnum):
     kUnitDecisec: ClassVar[Self]  # 1009
     kUnitCentisec: ClassVar[Self]  # 1010
     kUnitMillisec: ClassVar[Self]  # 1011
-
 class GeoData(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -15839,11 +15299,11 @@ class GeoData(PyDb.DbObject):
         comprehensive transformation results become available.
         """
     def __reduce__(self, /) -> Any: ...
-    def addMeshFace(self, idx: int, p0: int, p1: int, p2: int, /) -> None:
+    def addMeshFace(self, idx : int, p0 : int, p1 : int, p2 : int, /) -> None:
         """
         Sets 3 vertex indices for a triangle face specified by faceIndex.
         """
-    def addMeshPointMap(self, idx: int, src: PyGe.Point2d, dest: PyGe.Point2d, /) -> None:
+    def addMeshPointMap(self, idx : int, src : PyGe.Point2d, dest : PyGe.Point2d, /) -> None:
         """
         Inserts a new design/reference point association into the mesh.
         """
@@ -15909,16 +15369,16 @@ class GeoData(PyDb.DbObject):
         Returns the georss tag. This is automatically updated to the global point if set. For more
         information see http://georss.org/
         """
-    def getMeshFace(self, idx: int, /) -> tuple[int, int, int]:
+    def getMeshFace(self, idx : int, /) -> tuple[int,int,int]:
         """
         Gets 3 vertex indices at the triangle face for the given faceIndex.
         """
-    def getMeshPointMap(self, idx: int, /) -> tuple[PyGe.Point2d, PyGe.Point2d]:
+    def getMeshPointMap(self, idx : int, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
         """
         Returns a copy of design points, and the associated reference points, in the object's
         current transformation mesh.
         """
-    def getMeshPointMaps(self, /) -> tuple[list[PyGe.Point2d], list[PyGe.Point2d]]:
+    def getMeshPointMaps(self, /) -> tuple[list[PyGe.Point2d],list[PyGe.Point2d]]:
         """
         Returns a complete copy of the object's transformation mesh points.
         """
@@ -15998,107 +15458,107 @@ class GeoData(PyDb.DbObject):
         Returns the object's current value for the elevation which is to be used in the sea level
         correction algorithm.
         """
-    def setBlockTableRecordId(self, id: PyDb.ObjectId, /) -> None:
+    def setBlockTableRecordId(self, id : PyDb.ObjectId, /) -> None:
         """
         This function sets the object id of the model space block table record.
         """
-    def setCoordinateProjectionRadius(self, val: float, /) -> None:
+    def setCoordinateProjectionRadius(self, val : float, /) -> None:
         """
         Sets the radius, in meters, of the ellipsoid model to be used in the sea-level correction
         algorithm.
         """
-    def setCoordinateSystem(self, val: str, /) -> None:
+    def setCoordinateSystem(self, val : str, /) -> None:
         """
         This property method sets the coordinate system definition in string form. The value of
         this string is expected to be in the form of an XML string which upon successful parsing,
         produces a valid internal MAP coordinate reference system definition.
         """
-    def setCoordinateType(self, val: PyDb.GeoTypeOfCoordinates, /) -> None:
+    def setCoordinateType(self, val : PyDb.GeoTypeOfCoordinates, /) -> None:
         """
         Sets the type of the design coordinates; that is the type of the actual coordinates which
         appear in the host database entities. Creators of this object must specify this value, and
         consumers of this object should not change this value. Default = coordTypUnknown.
         """
-    def setDesignPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDesignPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the design coordinates of the point associated with the location specified by the
         setReferencePoint method. The coordinates provided to this method must be design
         coordinates.
         """
-    def setDoSeaLevelCorrection(self, val: bool, /) -> None:
+    def setDoSeaLevelCorrection(self, val : bool, /) -> None:
         """
         Enables and disables the sea-level correction feature for local to grid transformations
         (and vice versa).
         """
-    def setGeoRSSTag(self, val: str, /) -> None:
+    def setGeoRSSTag(self, val : str, /) -> None:
         """
         Sets a user generated georss tag.
         """
-    def setHorizontalUnitScale(self, val: float, /) -> None:
+    def setHorizontalUnitScale(self, val : float, /) -> None:
         """
         Sets the horizontal unit scale value.
         """
-    def setHorizontalUnits(self, val: PyDb.UnitsValue, /) -> None:
+    def setHorizontalUnits(self, val : PyDb.UnitsValue, /) -> None:
         """
         Sets the horizontal unit scale value.
         """
-    def setMeshPointMaps(self, src: list[PyGe.Point2d], dest: list[PyGe.Point2d], /) -> None:
+    def setMeshPointMaps(self, src : list[PyGe.Point2d], dest : list[PyGe.Point2d], /) -> None:
         """
         Replaces completely the object's transformation mesh point arrays.
         """
-    def setNorthDirectionVector(self, vec: PyGe.Vector2d, /) -> None:
+    def setNorthDirectionVector(self, vec : PyGe.Vector2d, /) -> None:
         """
         Sets the direction of true north in terms of design coordinates.
         """
-    def setObservationCoverage(self, val: str, /) -> None:
+    def setObservationCoverage(self, val : str, /) -> None:
         """
         Use this method to obtain access to the object's Observation Coverage property.
         """
-    def setObservationFrom(self, val: str, /) -> None:
+    def setObservationFrom(self, val : str, /) -> None:
         """
         Sets the value of the object's Observation From property.
         """
-    def setObservationTo(self, val: str, /) -> None:
+    def setObservationTo(self, val : str, /) -> None:
         """
         Sets the object's Observation To property.
         """
-    def setReferencePoint(self, pt: PyGe.Point3d, /) -> None:
+    def setReferencePoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Use this method to set the reference point to be associated with the design coordinates
         specified by the setDesignPoint method.
         """
-    def setScaleEstimationMethod(self, val: PyDb.GeoScaleEstimationMethod, /) -> None:
+    def setScaleEstimationMethod(self, val : PyDb.GeoScaleEstimationMethod, /) -> None:
         """
         Sets the value of the object's Scale Estimation Method property.
         """
-    def setScaleFactor(self, val: float, /) -> None:
+    def setScaleFactor(self, val : float, /) -> None:
         """
         Sets the user-specified scale factor to be used in the local to grid portion of any
         transformation when the scale estimation method is set to kScaleEstMethodUserDefined.
         """
-    def setSeaLevelElevation(self, val: float, /) -> None:
+    def setSeaLevelElevation(self, val : float, /) -> None:
         """
         Sets the average elevation above (or below) sea level for the local grid system described
         by this object.
         """
-    def setUpDirection(self, vec: PyGe.Vector3d, /) -> None:
+    def setUpDirection(self, vec : PyGe.Vector3d, /) -> None:
         """
         Sets the vector which defines the direction of the vertical axis of a local coordinate
         system.
         """
-    def setVerticalUnitScale(self, val: float, /) -> None:
+    def setVerticalUnitScale(self, val : float, /) -> None:
         """
         Returns the current vertical unit scale factor.
         """
-    def setVerticalUnits(self, val: PyDb.UnitsValue, /) -> None:
+    def setVerticalUnits(self, val : PyDb.UnitsValue, /) -> None:
         """
         Sets the vertical unit for the system
         """
-    def transformFromLonLatAlt(self, pt: PyGe.Point3d | float, /) -> PyGe.Point3d:
+    def transformFromLonLatAlt(self, pt : PyGe.Point3d | float, /) -> PyGe.Point3d:
         """
         Transforms the provided geographic coordinate to the design coordinate equivalent.
         """
-    def transformToLonLatAlt(self, pt: PyGe.Point3d | float, /) -> PyGe.Point3d:
+    def transformToLonLatAlt(self, pt : PyGe.Point3d | float, /) -> PyGe.Point3d:
         """
         Performs the transformation indicated by the current content of this object. The most
         accurate transformation available is performed.
@@ -16122,13 +15582,10 @@ class GeoData(PyDb.DbObject):
         """
         Obtains the vertical unit type.
         """
-
 class GeoMap(PyDb.RasterImage):
     def LOD(self, /) -> int: ...
     @overload
-    def __init__(
-        self, mapType: PyDb.AcGeoMapType, res: PyDb.AcGeoMapResolution, levelOfDetail: int, /
-    ) -> None:
+    def __init__(self, mapType: PyDb.AcGeoMapType, res: PyDb.AcGeoMapResolution, levelOfDetail: int, /) -> None:
         """
         The AcDbGeoMap class represents an embedded raster image which is captured from a portion
         of LiveMap
@@ -16192,11 +15649,10 @@ class GeoMap(PyDb.RasterImage):
     def isOutOfDate(self, /) -> bool: ...
     def mapType(self, /) -> AcGeoMapType: ...
     def resolution(self, /) -> AcGeoMapResolution: ...
-    def setMapType(self, val: PyDb.AcGeoMapType, /) -> None: ...
-    def setResolution(self, val: PyDb.AcGeoMapResolution, /) -> None: ...
-    def updateMapImage(self, reset: bool = False, /) -> bool: ...
+    def setMapType(self, val : PyDb.AcGeoMapType, /) -> None: ...
+    def setResolution(self, val : PyDb.AcGeoMapResolution, /) -> None: ...
+    def updateMapImage(self, reset : bool = False, /) -> bool: ...
     def width(self, /) -> float: ...
-
 class GeoPositionMarker(PyDb.Entity):
     @overload
     def __init__(self, /) -> None: ...
@@ -16234,45 +15690,41 @@ class GeoPositionMarker(PyDb.Entity):
     def enableFrameText(self, /) -> bool: ...
     def geoPosition(self, /) -> PyGe.Point3d: ...
     def landingGap(self, /) -> float: ...
-    def latLonAlt(self, /) -> tuple[float, float, float]: ...
+    def latLonAlt(self, /) -> tuple[float,float,float]: ...
     def mtext(self, /) -> MText: ...
     def mtextVisible(self, /) -> bool: ...
     def normal(self, /) -> PyGe.Vector3d: ...
     def notes(self, /) -> str: ...
     def position(self, /) -> PyGe.Point3d: ...
     def radius(self, /) -> float: ...
-    def setEnableFrameText(self, val: bool, /) -> None: ...
-    def setGeoPosition(self, pt: PyGe.Point3d, /) -> None: ...
-    def setLandingGap(self, val: float, /) -> None: ...
-    def setLatLonAlt(self, lat: float, lon: float, alt: float, /) -> None: ...
-    def setMText(self, val: PyDb.MText.M, /) -> None: ...
-    def setMTextVisible(self, val: bool, /) -> None: ...
-    def setNotes(self, val: str, /) -> None: ...
-    def setPosition(self, pt: PyGe.Point3d, /) -> None: ...
-    def setRadius(self, val: float, /) -> None: ...
-    def setText(self, val: str, /) -> None: ...
-    def setTextAlignmentType(self, val: PyDb.GeoTextAlignmentType, /) -> None: ...
+    def setEnableFrameText(self, val : bool, /) -> None: ...
+    def setGeoPosition(self, pt : PyGe.Point3d, /) -> None: ...
+    def setLandingGap(self, val : float, /) -> None: ...
+    def setLatLonAlt(self, lat : float, lon : float, alt : float, /) -> None: ...
+    def setMText(self, val : PyDb.MText.M, /) -> None: ...
+    def setMTextVisible(self, val : bool, /) -> None: ...
+    def setNotes(self, val : str, /) -> None: ...
+    def setPosition(self, pt : PyGe.Point3d, /) -> None: ...
+    def setRadius(self, val : float, /) -> None: ...
+    def setText(self, val : str, /) -> None: ...
+    def setTextAlignmentType(self, val : PyDb.GeoTextAlignmentType, /) -> None: ...
     def text(self, /) -> str: ...
     def textAlignmentType(self, /) -> GeoTextAlignmentType: ...
     def textStyle(self, /) -> ObjectId: ...
-
 class GeoScaleEstimationMethod(_BoostPythonEnum):
     kScaleEstMethodUnity: ClassVar[Self]  # 1
     kScaleEstMethodUserDefined: ClassVar[Self]  # 2
     kScaleEstMethodReferencePoint: ClassVar[Self]  # 3
     kScaleEstMethodPrismoidal: ClassVar[Self]  # 4
-
 class GeoTextAlignmentType(_BoostPythonEnum):
     kLeftAlignment: ClassVar[Self]  # 0
     kCenterAlignment: ClassVar[Self]  # 1
     kRightAlignment: ClassVar[Self]  # 2
-
 class GeoTypeOfCoordinates(_BoostPythonEnum):
     kCoordTypUnknown: ClassVar[Self]  # 0
     kCoordTypLocal: ClassVar[Self]  # 1
     kCoordTypGrid: ClassVar[Self]  # 2
     kCoordTypGeographic: ClassVar[Self]  # 3
-
 class Graph:
     def __init__(self) -> None:
         """
@@ -16280,21 +15732,20 @@ class Graph:
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
-    def addEdge(self, pfrom: PyDb.GraphNode, pto: PyDb.GraphNode, /) -> None: ...
-    def addNode(self, val: PyDb.GraphNode, /) -> None: ...
-    def breakCycleEdge(self, pfrom: PyDb.GraphNode, pto: PyDb.GraphNode, /) -> None: ...
+    def addEdge(self, pfrom:PyDb.GraphNode, pto:PyDb.GraphNode, /) -> None: ...
+    def addNode(self, val:PyDb.GraphNode, /) -> None: ...
+    def breakCycleEdge(self, pfrom:PyDb.GraphNode, pto:PyDb.GraphNode, /) -> None: ...
     @staticmethod
     def className() -> str: ...
-    def clearAll(self, flags: int, /) -> None: ...
-    def delNode(self, val: PyDb.GraphNode, /) -> None: ...
-    def findCycles(self, start: PyDb.GraphNode, /) -> bool: ...
+    def clearAll(self, flags:int, /) -> None: ...
+    def delNode(self, val:PyDb.GraphNode, /) -> None: ...
+    def findCycles(self, start:PyDb.GraphNode, /) -> bool: ...
     def isEmpty(self, /) -> bool: ...
-    def node(self, val: int, /) -> GraphNode: ...
+    def node(self, val:int, /) -> GraphNode: ...
     def numNodes(self, /) -> int: ...
     def reset(self, /) -> None: ...
     def rootNode(self, /) -> GraphNode: ...
-    def setNodeGrowthRate(self, val: int, /) -> None: ...
-
+    def setNodeGrowthRate(self, val:int, /) -> None: ...
 class GraphNode:
     def __init__(self) -> None:
         """
@@ -16302,27 +15753,26 @@ class GraphNode:
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
-    def addRefTo(self, val: PyDb.GraphNode, /) -> None: ...
+    def addRefTo(self, val:PyDb.GraphNode, /) -> None: ...
     @staticmethod
     def className() -> str: ...
-    def clear(self, val: int, /) -> None: ...
-    def cycleIn(self, val: int, /) -> GraphNode: ...
-    def cycleOut(self, val: int, /) -> GraphNode: ...
+    def clear(self, val:int, /) -> None: ...
+    def cycleIn(self, val:int, /) -> GraphNode: ...
+    def cycleOut(self, val:int, /) -> GraphNode: ...
     def disconnectAll(self, /) -> None: ...
-    def isCycleNode(self, val: int, /) -> bool: ...
-    def isMarkedAs(self, val: int, /) -> bool: ...
-    def markAs(self, val: int, /) -> None: ...
+    def isCycleNode(self, val:int, /) -> bool: ...
+    def isMarkedAs(self, val:int, /) -> bool: ...
+    def markAs(self, val:int, /) -> None: ...
     def nextCycleNode(self, /) -> GraphNode: ...
-    def nodeIn(self, val: int, /) -> GraphNode: ...
-    def nodeOut(self, val: int, /) -> GraphNode: ...
+    def nodeIn(self, val:int, /) -> GraphNode: ...
+    def nodeOut(self, val:int, /) -> GraphNode: ...
     def numCycleIn(self, /) -> int: ...
     def numCycleOut(self, /) -> int: ...
     def numIn(self, /) -> int: ...
     def numOut(self, /) -> int: ...
     def owner(self, /) -> Graph: ...
-    def removeRefTo(self, val: PyDb.GraphNode, /) -> None: ...
-    def setEdgeGrowthRate(self, outEdgeRate: int, inEdgeRate: int, /) -> None: ...
-
+    def removeRefTo(self, val:PyDb.GraphNode, /) -> None: ...
+    def setEdgeGrowthRate(self, outEdgeRate:int, inEdgeRate:int, /) -> None: ...
 class GraphNodeFlags(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kVisited: ClassVar[Self]  # 1
@@ -16333,11 +15783,9 @@ class GraphNodeFlags(_BoostPythonEnum):
     kFirstLevel: ClassVar[Self]  # 16
     kUnresTree: ClassVar[Self]  # 32
     kAll: ClassVar[Self]  # 47
-
 class GridLineStyle(_BoostPythonEnum):
     kGridLineStyleSingle: ClassVar[Self]  # 1
     kGridLineStyleDouble: ClassVar[Self]  # 2
-
 class GridLineType(_BoostPythonEnum):
     kInvalidGridLine: ClassVar[Self]  # 0
     kHorzTop: ClassVar[Self]  # 1
@@ -16351,7 +15799,6 @@ class GridLineType(_BoostPythonEnum):
     kOuterGridLineTypes: ClassVar[Self]  # 45
     kInnerGridLineTypes: ClassVar[Self]  # 18
     kAllGridLineTypes: ClassVar[Self]  # 63
-
 class GridProperty(_BoostPythonEnum):
     kGridPropInvalid: ClassVar[Self]  # 0
     kGridPropLineStyle: ClassVar[Self]  # 1
@@ -16361,7 +15808,6 @@ class GridProperty(_BoostPythonEnum):
     kGridPropVisibility: ClassVar[Self]  # 16
     kGridPropDoubleLineSpacing: ClassVar[Self]  # 32
     kGridPropAll: ClassVar[Self]  # 63
-
 class GripData:
     def __init__(self, /) -> None:
         """
@@ -16391,7 +15837,6 @@ class GripData:
         """
         This method sets the grip point for this grip.
         """
-
 class Group(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -16462,7 +15907,7 @@ class Group(PyDb.DbObject):
         This method fills in the id's array with the objectIds of the entities in the group.
         Returns the number of entities in a group.
         """
-    def append(self, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
+    def append(self, id : PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         This function appends the objects whose objectIds are in the ids array to the group.
         """
@@ -16512,7 +15957,7 @@ class Group(PyDb.DbObject):
         This method will look for the entity pointed to by pEntity. It returns true if pEntity is
         present in the group or false if pEntity is not part of the group.
         """
-    def insertAt(self, index: int, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
+    def insertAt(self, index : int, id: PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         Inserts the objects whose objectIds are in the ids array into the group just after the
         entry at index idx. The indices are zero based. Hence the first element in the group will
@@ -16542,17 +15987,17 @@ class Group(PyDb.DbObject):
         Returns the number of entities in the group.
         """
     def objectIds(self, /) -> list[PyDb.ObjectId]: ...
-    def prepend(self, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
+    def prepend(self, id : PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         This function prepends the objects whose objectIds are in the ids array to the group.
         """
-    def remove(self, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
+    def remove(self, id : PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         Removes from the group, all objects whose object IDs are in the ids array. Returns
         Acad::eOk if successful. If any of the objects are not in the group, then none of the
         objects whose objectIds are in the ids array are removed and Acad::eNotInGroup is returned.
         """
-    def removeAt(self, index: int, id: PyDb.ObjectId | list[PyDb.ObjectId], /) -> None:
+    def removeAt(self, index : int, id: PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         This is removeAt, a member of class AcDbGroup.
         """
@@ -16583,7 +16028,7 @@ class Group(PyDb.DbObject):
         All the entities in the group will be set to the color specified by color. Returns
         Acad::eOk if successful.
         """
-    def setDescription(self, grpDesc: str, /) -> None:
+    def setDescription(self, grpDesc : str, /) -> None:
         """
         AcDbGroup::setDescription
         """
@@ -16592,14 +16037,14 @@ class Group(PyDb.DbObject):
         If newVal == true, then all entities in the group will be highlighted. If newVal == false,
         then all entities in the group will be unhighlighted. Returns Acad::eOk if successful.
         """
-    def setLayer(self, id: str | PyDb.ObjectId, /) -> None:
+    def setLayer(self, id: str|PyDb.ObjectId, /) -> None:
         """
         Sets the LayerTableRecord with name newVal to be the layer for all entities in the group.
         If the layer specified by newVal exists, the entities will be modified to reference that
         layer. If the layer does not exist, a layer of name newVal is created before modifying the
         entities. Returns Acad::eOk if successful.
         """
-    def setLinetype(self, id: str | PyDb.ObjectId, /) -> None:
+    def setLinetype(self, id: str|PyDb.ObjectId, /) -> None:
         """
         Sets the LinetypeTableRecord with name newVal to be the line type for all entities in the
         group. This function will succeed only if the specified linetype is already loaded. Returns
@@ -16610,11 +16055,11 @@ class Group(PyDb.DbObject):
         Sets the line type scale to newVal for all entities in the group. Returns Acad::eOk if
         successful.
         """
-    def setMaterial(self, id: str | PyDb.ObjectId, /) -> None:
+    def setMaterial(self, id: str|PyDb.ObjectId, /) -> None:
         """
         Sets the material for this group.
         """
-    def setName(self, val: str, /) -> None:
+    def setName(self, val : str, /) -> None:
         """
         Sets a copy of newName as the name for the group. If newName's first character is a '*',
         then the group will be set to be anonymous and all characters after the '*' in newName will
@@ -16622,7 +16067,7 @@ class Group(PyDb.DbObject):
         and the group is currently anonymous, then the group will also be changed to not be
         anonymous. Returns Acad::eOk if successful.
         """
-    def setSelectable(self, val: bool, /) -> None:
+    def setSelectable(self, val : bool, /) -> None:
         """
         If selectable == true, then the entire group is selected and manipulated as one unit.
         selectable == false allows users to manipulate individual entities within the group.
@@ -16641,7 +16086,6 @@ class Group(PyDb.DbObject):
         no numItems of objects at and above fromIndex, then no transfer takes place and
         Acad::eInvalidInput is returned.
         """
-
 class Handle:
     def __getinitargs__(self, /) -> tuple: ...
     def __hash__(self, /) -> int: ...
@@ -16669,15 +16113,12 @@ class Handle:
     def setValue(self, val: int, /) -> None: ...
     def toString(self, /) -> str: ...
     def value(self, /) -> int: ...
-
 class HardOwnershipId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None: ...
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-
 class HardPointerId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None: ...
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-
 class Hatch(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -17040,7 +16481,7 @@ class Hatch(PyDb.Entity):
         with existing geometry in the AutoCAD database in most cases.
         """
     def __reduce__(self, /) -> Any: ...
-    def appendLoop(self, loopType: int, ids: list[PyDb.ObjectId], /) -> None:
+    def appendLoop(self, loopType : int, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function appends a new boundary loop (path) to the hatch entity. loopType specifies
         the type for the loop, which is an enum number of kDefault or kExternal. edgePtrs is a set
@@ -17049,7 +16490,7 @@ class Hatch(PyDb.Entity):
         kEllArc, and kSpline. edgePtrs and edgeTypes must be correspondent and have the same array
         length. This function returns Acad::eOk when successful or Acad::eInvalidInput when failed.
         """
-    def appendLoopBulges(self, loopType: int, vertices: list, bulges: list, /) -> None:
+    def appendLoopBulges(self, loopType : int, vertices : list, bulges : list, /) -> None:
         """
         This function appends a new boundary loop (path) to the hatch entity. loopType specifies
         the type for the loop, which is an enum number of kDefault or kExternal. edgePtrs is a set
@@ -17058,7 +16499,7 @@ class Hatch(PyDb.Entity):
         kEllArc, and kSpline. edgePtrs and edgeTypes must be correspondent and have the same array
         length. This function returns Acad::eOk when successful or Acad::eInvalidInput when failed.
         """
-    def appendLoopEdges(self, loopType: int, edges: list, edgeTypes: list, /) -> None:
+    def appendLoopEdges(self, loopType : int, edges : list, edgeTypes : list, /) -> None:
         """
         This function appends a new boundary loop (path) to the hatch entity. loopType specifies
         the type for the loop, which is an enum number of kDefault or kExternal. edgePtrs is a set
@@ -17112,7 +16553,7 @@ class Hatch(PyDb.Entity):
         evaluation is indicated by the argument value. Returns Acad::eOk if the operation is
         successful. Returns Acad::eNotApplicable if the object is currently a classic hatch.
         """
-    def evaluateHatch(self, val: bool = False, /) -> None:
+    def evaluateHatch(self, val : bool=False, /) -> None:
         """
         This function evaluates the hatch lines or solid fill for the hatch entity using the
         specified hatch pattern. For regular hatch patterns, except for solid, this function
@@ -17122,7 +16563,7 @@ class Hatch(PyDb.Entity):
         This function returns Acad::eOk when successful. Returns Acad::eHatchTooDense if the number
         of hatch lines is very high (above 100,000). Otherwise, it returns Acad::eInvalidInput.
         """
-    def evaluateHatchAllScales(self, val: bool = False, /) -> None:
+    def evaluateHatchAllScales(self, val : bool=False, /) -> None:
         """
         This is evaluateHatchAllScales, a member of class AcDbHatch.
         """
@@ -17144,7 +16585,7 @@ class Hatch(PyDb.Entity):
         selected loop. This function returns Acad::eOk when successful and Acad::eInvalidIndex if
         the specified loopIndex is out of range.
         """
-    def getGradientColors(self, /) -> tuple[list[PyDb.Color], list[float]]:
+    def getGradientColors(self, /) -> tuple[list[PyDb.Color],list[float]]:
         """
         This method returns the colors and interpolation values describing how the gradient fill
         definition will be applied. The gradient will transition from colors[0] to colors[count-1].
@@ -17164,13 +16605,13 @@ class Hatch(PyDb.Entity):
         luminance version is the 'shade.' Returns true if the object is using one color. Returns
         false otherwise.
         """
-    def getHatchLineDataAt(self, val: int, /) -> tuple[PyGe.Point2d, PyGe.Point2d]:
+    def getHatchLineDataAt(self, val : int, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
         """
         This function gets the hatch line data from the hatch entity. This function returns
         Acad::eOk when successful. It returns Acad::eInvalidIndex when the index is out of range,
         or Acad::eNotApplicable if the current object type is gradient.
         """
-    def getHatchLinesData(self, /) -> tuple[list[PyGe.Point2d], list[PyGe.Point2d]]:
+    def getHatchLinesData(self, /) -> tuple[list[PyGe.Point2d],list[PyGe.Point2d]]:
         """
         This function gets the hatch line data from the hatch entity. startPts is an AcGePoint2d
         array containing the start points of all hatch lines. endPts is an AcGePoint2d array
@@ -17179,7 +16620,7 @@ class Hatch(PyDb.Entity):
         endpoint of the first hatch line. This function returns Acad::eNotApplicable if the current
         object type is gradient. Normally, it returns Acad::eOk.
         """
-    def getLoopBulgesAt(self, val: int, /) -> tuple:
+    def getLoopBulgesAt(self, val : int, /) -> tuple:
         """
         This function gets the loop definition data (path) of a selected hatch boundary loop from
         the hatch entity. loopIndex specifies the index of the selected loop. loopType is an enum
@@ -17191,7 +16632,7 @@ class Hatch(PyDb.Entity):
         Acad::eOk when successful or Acad::eInvalidIndex when the loopIndex is out of the range. It
         may also return Acad::eNotApplicable when the loopType is a kPolyline.
         """
-    def getLoopEdgesAt(self, val: int, /) -> tuple:
+    def getLoopEdgesAt(self, val : int, /) -> tuple:
         """
         This function gets the loop definition data (path) of a selected hatch boundary loop from
         the hatch entity. loopIndex specifies the index of the selected loop. loopType is an enum
@@ -17203,7 +16644,7 @@ class Hatch(PyDb.Entity):
         Acad::eOk when successful or Acad::eInvalidIndex when the loopIndex is out of the range. It
         may also return Acad::eNotApplicable when the loopType is a kPolyline.
         """
-    def getPatternDefinitionAt(self, val: int, /) -> tuple:
+    def getPatternDefinitionAt(self, val : int, /) -> tuple:
         """
         This function gets the pattern definition line data from the hatch entity at the selected
         pattern line. index specifies the number at which the pattern line data will be returned.
@@ -17253,7 +16694,7 @@ class Hatch(PyDb.Entity):
         This function returns the hatch style of the hatch entity. The hatch style is an enumerated
         number of kNormal, kOuter, or kIgnore.
         """
-    def insertLoopAt(self, idx: int, loopType: int, ids: list[PyDb.ObjectId], /) -> None:
+    def insertLoopAt(self, idx : int, loopType : int, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function inserts a new boundary loop (path) to the hatch entity. loopIndex specifies
         the index at which the loop will be inserted into the boundary loop list. loopType
@@ -17350,12 +16791,12 @@ class Hatch(PyDb.Entity):
         """
         This function removes the hatch lines of non-solid and non-gradient hatches.
         """
-    def removeLoopAt(self, idx: int, /) -> None:
+    def removeLoopAt(self, idx : int, /) -> None:
         """
         This function removes a loop and its data from the hatch entity. It returns Acad::eOk when
         successful and Acad::eInvalidIndex if loopIndex is out of range.
         """
-    def setAssociative(self, val: bool, /) -> None:
+    def setAssociative(self, val : bool, /) -> None:
         """
         This function sets the associativity flag to true or false for the hatch entity. To create
         an associative hatch entity, you must use this function and set the associativity flag to
@@ -17363,11 +16804,11 @@ class Hatch(PyDb.Entity):
         or insertLoopAt(loopIndex, loopType, dbObjIds) functions. This function always returns
         Acad::eOk.
         """
-    def setBackgroundColor(self, val: PyDb.AcCmColor, /) -> None:
+    def setBackgroundColor(self, val : PyDb.AcCmColor, /) -> None:
         """
         This function sets the hatch's background color to the color specified by color.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, val : float, /) -> None:
         """
         This function sets the elevation for the hatch entity. The function always returns
         Acad::eOk.
@@ -17384,13 +16825,13 @@ class Hatch(PyDb.Entity):
         Acad::eInvalidInput if the gradient name could not be found. Returns
         Acad::eNotImplementedYet if gradType is kUserDefinedGradient.
         """
-    def setGradientAngle(self, val: float, /) -> None:
+    def setGradientAngle(self, val : float, /) -> None:
         """
         Sets the angle, in radians, at which the gradient definition will be applied. Returns
         Acad::eOK if the operation is successful. Returns Acad::eNotApplicable if the object is
         currently a classic hatch.
         """
-    def setGradientColors(self, colors: list, values: list, /) -> None:
+    def setGradientColors(self, colors : list, values : list, /) -> None:
         """
         This method provides the mechanism for defining the colors to be applied to the gradient
         definition. In the simplest case, the color definition consists of the starting and ending
@@ -17406,14 +16847,14 @@ class Hatch(PyDb.Entity):
         Acad::eNotImplementedYet if count is greater than 2. Returns Acad::eOutOfMemory if an
         allocation error occurs.
         """
-    def setGradientOneColorMode(self, val: bool, /) -> None:
+    def setGradientOneColorMode(self, val : bool, /) -> None:
         """
         This function sets the gradient hatch to transition either from a start to a stop color
         (two-color) or from a color to an adjusted luminance version of the same color (one-color).
         In the latter case, the full luminance version is the 'tint' and the zero luminance version
         is the 'shade.' Returns Acad::eOk if successful.
         """
-    def setGradientShift(self, val: float, /) -> None:
+    def setGradientShift(self, val : float, /) -> None:
         """
         This method sets the interpolation value between the gradient definition's default and
         shifted values. A value of 0.0 evaluates as a fully unshifted gradient. A value of 1.0
@@ -17432,16 +16873,16 @@ class Hatch(PyDb.Entity):
         function returns Acad::eNotApplicable if the current object type is gradient. Otherwise, it
         returns Acad::eOk.
         """
-    def setLineGenerationEnabled(self, val: bool, /) -> bool:
+    def setLineGenerationEnabled(self, val : bool, /) -> bool:
         """
         Enable or disable line generation.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         This function sets the normal vector for the hatch entity. The normal vector must be
         expressed in WCS and normalized to unit length.
         """
-    def setOriginPoint(self, val: PyGe.Point2d, /) -> None:
+    def setOriginPoint(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets pt to be the origin point for the hatch pattern of the hatch entity.
         Returns Acad::eOk if successful.
@@ -17462,13 +16903,13 @@ class Hatch(PyDb.Entity):
         scale and angle in order to modify the hatch's appearance. This function returns Acad::eOk
         when successful. Otherwise, it returns the Acad::eInvalidInput.
         """
-    def setPatternAngle(self, val: float, /) -> None:
+    def setPatternAngle(self, val : float, /) -> None:
         """
         This function sets the pattern angle for the hatch entity. angle specifies the angle in
         radians. This function returns Acad::eNotApplicable if the current object type is gradient.
         Otherwise, it returns Acad::eOk.
         """
-    def setPatternDouble(self, val: bool, /) -> None:
+    def setPatternDouble(self, val : bool, /) -> None:
         """
         This function sets the double pattern flag for the hatch entity. Double patterns apply a
         second set of hatch lines at 90 degrees to the original hatch lines. This function is used
@@ -17476,7 +16917,7 @@ class Hatch(PyDb.Entity):
         kPreDefined and kCustomDefined pattern types. This function returns Acad::eNotApplicable if
         the current object type is gradient. Otherwise, it returns Acad::eOk.
         """
-    def setPatternScale(self, val: float, /) -> None:
+    def setPatternScale(self, val : float, /) -> None:
         """
         This function sets the pattern scale for the hatch entity. scale must be a non-zero and
         positive number. It is used to set a scale applying to the original pattern definition for
@@ -17484,14 +16925,14 @@ class Hatch(PyDb.Entity):
         Acad::eNotApplicable if the current object type is gradient. Otherwise, it returns
         Acad::eOk.
         """
-    def setPatternSpace(self, val: float, /) -> None:
+    def setPatternSpace(self, val : float, /) -> None:
         """
         This function sets the pattern space for the hatch entity. space is the distance between
         two parallel hatch lines. It is used to define pattern data for the kUserDefined pattern
         type only. This function returns Acad::eNotApplicable if the current object type is
         gradient. Otherwise, it returns Acad::eOk.
         """
-    def setShadeTintValue(self, val: float, /) -> None:
+    def setShadeTintValue(self, val : float, /) -> None:
         """
         Sets the one-color tint shade (luminance) value. If the gradient is using one-color mode,
         this function sets the luminance value applied to the first color. Returns Acad::eOk if
@@ -17505,17 +16946,14 @@ class Hatch(PyDb.Entity):
         range; returns Acad::eInvalidContext if the hatch is not set for color by shade tint or no
         hatch colors have been set yet.
         """
-
 class HatchEdgeType(_BoostPythonEnum):
     kLine: ClassVar[Self]  # 1
     kCirArc: ClassVar[Self]  # 2
     kEllArc: ClassVar[Self]  # 3
     kSpline: ClassVar[Self]  # 4
-
 class HatchGradientPatternType(_BoostPythonEnum):
     kPreDefinedGradient: ClassVar[Self]  # 0
     kUserDefinedGradient: ClassVar[Self]  # 1
-
 class HatchLoopType(_BoostPythonEnum):
     kDefault: ClassVar[Self]  # 0
     kExternal: ClassVar[Self]  # 1
@@ -17532,25 +16970,19 @@ class HatchLoopType(_BoostPythonEnum):
     kForceAnnoAllVisible: ClassVar[Self]  # 2048
     kOrientToPaper: ClassVar[Self]  # 4096
     kIsAnnotativeBlock: ClassVar[Self]  # 8192
-
 class HatchObjectType(_BoostPythonEnum):
     kHatchObject: ClassVar[Self]  # 0
     kGradientObject: ClassVar[Self]  # 1
-
 class HatchPatternType(_BoostPythonEnum):
     kUserDefined: ClassVar[Self]  # 0
     kPreDefined: ClassVar[Self]  # 1
     kCustomDefined: ClassVar[Self]  # 2
-
 class HatchStyle(_BoostPythonEnum):
     kNormal: ClassVar[Self]  # 0
     kOuter: ClassVar[Self]  # 1
     kIgnore: ClassVar[Self]  # 2
-
 class Helix(PyDb.Spline):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def axisPoint(self, /) -> PyGe.Point3d: ...
     def axisVector(self, /) -> PyGe.Vector3d: ...
@@ -17579,16 +17011,16 @@ class Helix(PyDb.Spline):
         """
     def height(self, /) -> float: ...
     def reverseCurve(self, /) -> None: ...
-    def setAxisPoint(self, axisPoint: PyGe.Point3d, bMoveStartPoint: bool = True, /) -> None: ...
-    def setAxisVector(self, val: PyGe.Vector3d, /) -> None: ...
-    def setBaseRadius(self, val: float, /) -> None: ...
-    def setConstrain(self, val: PyDb.HelixConstrainType, /) -> None: ...
-    def setHeight(self, val: float, /) -> None: ...
-    def setStartPoint(self, val: PyGe.Point3d, /) -> None: ...
-    def setTopRadius(self, val: float, /) -> None: ...
-    def setTurnHeight(self, val: float, /) -> None: ...
-    def setTurns(self, val: float, /) -> None: ...
-    def setTwist(self, val: bool, /) -> None: ...
+    def setAxisPoint(self, axisPoint : PyGe.Point3d, bMoveStartPoint : bool = True, /) -> None: ...
+    def setAxisVector(self, val : PyGe.Vector3d, /) -> None: ...
+    def setBaseRadius(self, val : float, /) -> None: ...
+    def setConstrain(self, val : PyDb.HelixConstrainType, /) -> None: ...
+    def setHeight(self, val : float, /) -> None: ...
+    def setStartPoint(self, val : PyGe.Point3d, /) -> None: ...
+    def setTopRadius(self, val : float, /) -> None: ...
+    def setTurnHeight(self, val : float, /) -> None: ...
+    def setTurns(self, val : float, /) -> None: ...
+    def setTwist(self, val : bool, /) -> None: ...
     def startPoint(self, /) -> PyGe.Point3d: ...
     def topRadius(self, /) -> float: ...
     def totalLength(self, /) -> float: ...
@@ -17596,12 +17028,10 @@ class Helix(PyDb.Spline):
     def turnSlope(self, /) -> float: ...
     def turns(self, /) -> float: ...
     def twist(self, /) -> bool: ...
-
 class HelixConstrainType(_BoostPythonEnum):
     kTurnHeight: ClassVar[Self]  # 0
     kTurns: ClassVar[Self]  # 1
     kHeight: ClassVar[Self]  # 2
-
 class HostApplicationServices:
     def LayoutManager(self, /) -> LayoutManager:
         """
@@ -17688,7 +17118,7 @@ class HostApplicationServices:
         valid value. If they do not, then the default value returned will be the same as AutoCAD's
         version of the same year.
         """
-    def setWorkingDatabase(self, val: PyDb.Database, /) -> None:
+    def setWorkingDatabase(self, val : PyDb.Database, /) -> None:
         """
         This method may not be overridden. setWorkingDatabase() may be called by the host
         application, by database code, and by both dependent and independent ObjectARX
@@ -17711,7 +17141,6 @@ class HostApplicationServices:
         return a pointer to the primary database open in whichever document (window) has focus. In
         other host applications, the meaning of working database will be application-defined.
         """
-
 class Hyperlink:
     def __init__(self) -> None:
         """
@@ -17732,7 +17161,6 @@ class Hyperlink:
     def setName(self, val: str, /) -> None: ...
     def setSubLocation(self, val: str, /) -> None: ...
     def subLocation(self, /) -> str: ...
-
 class HyperlinkCollection:
     def __init__(self) -> None:
         """
@@ -17741,9 +17169,7 @@ class HyperlinkCollection:
         """
     def __reduce__(self, /) -> Any: ...
     @overload
-    def addAt(
-        self, index: int, sName: str, sDescription: str, sSubLocation: str = ..., /
-    ) -> None: ...
+    def addAt(self, index: int, sName: str, sDescription: str, sSubLocation: str = ..., /) -> None: ...
     @overload
     def addAt(self, index: int, pHLink: PyDb.Hyperlink, /) -> None: ...
     @overload
@@ -17757,7 +17183,6 @@ class HyperlinkCollection:
     def removeAt(self, index: int, /) -> None: ...
     def removeHead(self, /) -> None: ...
     def removeTail(self, /) -> None: ...
-
 class IdMapping:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -17831,7 +17256,6 @@ class IdMapping:
         destination database is not NULL and it is not the same as that pointed to by db, then no
         change will take place and Acad::eWrongDatabase will be returned.
         """
-
 class IdPair:
     @overload
     def __init__(self, /) -> None:
@@ -17855,15 +17279,7 @@ class IdPair:
         cloned object's ID.
         """
     @overload
-    def __init__(
-        self,
-        key: PyDb.ObjectId,
-        val: PyDb.ObjectId,
-        isCloned: bool,
-        isPrimary: bool,
-        isOwnerXlated: bool,
-        /,
-    ) -> None:
+    def __init__(self, key: PyDb.ObjectId, val: PyDb.ObjectId, isCloned: bool, isPrimary: bool, isOwnerXlated: bool, /) -> None:
         """
         AcDbIdPair is the element class for AcDbIdMapping, which is used in deep clone operations.
         It holds a pair of AcDbObjectIds. The key is the original object's ID, and the value is the
@@ -17894,32 +17310,32 @@ class IdPair:
         """
         Returns the key (which is the objectId of the original object).
         """
-    def setIsCloned(self, val: bool, /) -> None:
+    def setIsCloned(self, val : bool, /) -> None:
         """
         Sets the isCloned status of the AcDbIdPair object. If isCloned == true, then the status is
         set to indicate that the object identified by the key objectId has already been cloned. If
         isCloned == false, then the status is set to indicate that the object has not been cloned
         yet..
         """
-    def setIsOwnerXlated(self, val: bool, /) -> None:
+    def setIsOwnerXlated(self, val : bool, /) -> None:
         """
         Sets the isOwnerXlated status of the AcDbIdPair object. If isOwnerXlated == true, then the
         status is set to indicate that the owner of the object identified by the key objectId has
         already been translated. If isCloned == false, then the status is set to indicate that the
         object's owner has not been translated yet..
         """
-    def setIsPrimary(self, val: bool, /) -> None:
+    def setIsPrimary(self, val : bool, /) -> None:
         """
         Sets the isPrimary status of the AcDbIdPair object. If isPrimary == true, then the status
         is set to indicate that the object identified by the key objectId is a primary object. If
         isPrimary == false, then the status is set to indicate that the object is not a primary
         object..
         """
-    def setKey(self, val: PyDb.ObjectId, /) -> None:
+    def setKey(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets key to be the key (the original object) objectId for the AcDbIdPair object.
         """
-    def setValue(self, val: PyDb.ObjectId, /) -> None:
+    def setValue(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets value to be the value (the cloned object) objectId for the AcDbIdPair object.
         """
@@ -17927,15 +17343,8 @@ class IdPair:
         """
         Returns the value (which is the objectId of the cloned object).
         """
-
 class Image(PyDb.Entity):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         Abstract base class for immediate mode raster-based entities, including AcDbRasterImage.
         Every time entities derived from this class are drawn on the screen or plotted, the
@@ -17977,13 +17386,11 @@ class Image(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class ImageDisplayOpt(_BoostPythonEnum):
     kShow: ClassVar[Self]  # 1
     kShowUnAligned: ClassVar[Self]  # 2
     kClip: ClassVar[Self]  # 4
     kTransparent: ClassVar[Self]  # 8
-
 class ImageUnits(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kMillimeter: ClassVar[Self]  # 1
@@ -18006,7 +17413,6 @@ class ImageUnits(_BoostPythonEnum):
     kAstronomical: ClassVar[Self]  # 18
     kLightYears: ClassVar[Self]  # 19
     kParsecs: ClassVar[Self]  # 20
-
 class IndexFilterManager:
     def __init__(self, /) -> None:
         """
@@ -18015,7 +17421,7 @@ class IndexFilterManager:
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addFilter(blkRef: PyDb.BlockReference, filter: PyDb.SpatialFilter, /) -> None:
+    def addFilter(blkRef:PyDb.BlockReference,filter:PyDb.SpatialFilter, /) -> None:
         """
         This function adds a filter to the provided block reference. It replaces the AcDbFilter of
         the same AcRxClass if such a filter exists. Returns Acad::eOk if successful.
@@ -18024,9 +17430,7 @@ class IndexFilterManager:
     def className() -> str: ...
     @overload
     @staticmethod
-    def getFilter(
-        ref: PyDb.BlockReference, key: PyRx.Class, mode: PyDb.OpenMode, /
-    ) -> SpatialFilter:
+    def getFilter(ref: PyDb.BlockReference,key: PyRx.Class, mode: PyDb.OpenMode, /) -> SpatialFilter:
         """
         This function is used to get at an AcDbFilter in a block reference. This function is
         usually called in conjunction with the numFilters function that gives the total number of
@@ -18035,9 +17439,7 @@ class IndexFilterManager:
         """
     @overload
     @staticmethod
-    def getFilter(
-        ref: PyDb.BlockReference, index: int, mode: PyDb.OpenMode, erased: bool, /
-    ) -> SpatialFilter:
+    def getFilter(ref: PyDb.BlockReference,index: int, mode: PyDb.OpenMode, erased: bool, /) -> SpatialFilter:
         """
         This function is used to get at an AcDbFilter in a block reference. This function is
         usually called in conjunction with the numFilters function that gives the total number of
@@ -18054,24 +17456,22 @@ class IndexFilterManager:
         if the index does not exist.
         """
     @staticmethod
-    def numIndexes(blkRef: PyDb.BlockTableRecord, /) -> int:
+    def numIndexes(blkRef:PyDb.BlockTableRecord, /) -> int:
         """
         This function returns the number of indexes within the provided block table record. It
         returns 0 if no indexes exist within the block table record.
         """
     @staticmethod
-    def removeFilter(blkRef: PyDb.BlockReference, key: PyRx.Class, /) -> None:
+    def removeFilter(blkRef:PyDb.BlockReference,key:PyRx.Class, /) -> None:
         """
         This function removes a filter from the provided block. Returns Acad::eOk if successful or
         Acad::eKeyNotFound if the index does not exist.
         """
-
 class Intersect(_BoostPythonEnum):
     kOnBothOperands: ClassVar[Self]  # 0
     kExtendThis: ClassVar[Self]  # 1
     kExtendArg: ClassVar[Self]  # 2
     kExtendBoth: ClassVar[Self]  # 3
-
 class JoinEntityPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -18091,23 +17491,13 @@ class JoinEntityPE(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def joinEntities(
-        self,
-        primaryEntity: PyDb.Entity,
-        secondaryEntities: list[PyDb.Entity],
-        tol: PyGe.Tol = ...,
-        /,
-    ) -> list[int]: ...
-    def joinEntity(
-        self, primaryEntity: PyDb.Entity, secondaryEntity: PyDb.Entity, tol: PyGe.Tol = ..., /
-    ) -> bool: ...
-
+    def joinEntities(self, primaryEntity : PyDb.Entity, secondaryEntities : list[PyDb.Entity], tol : PyGe.Tol = ..., /) -> list[int]: ...
+    def joinEntity(self, primaryEntity : PyDb.Entity, secondaryEntity : PyDb.Entity, tol : PyGe.Tol = ..., /) -> bool: ...
 class JoinStyle(_BoostPythonEnum):
     kJnStylNone: ClassVar[Self]  # 0
     kJnStylRound: ClassVar[Self]  # 1
     kJnStylAngle: ClassVar[Self]  # 2
     kJnStylFlat: ClassVar[Self]  # 3
-
 class LayerFilter(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -18150,7 +17540,7 @@ class LayerFilter(PyDb.DbObject):
         purposes of xref demand loading efficiency.
         """
     def __reduce__(self, /) -> Any: ...
-    def add(self, val: str, /) -> None: ...
+    def add(self, val : str, /) -> None: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LayerFilter: ...
     @staticmethod
@@ -18171,12 +17561,11 @@ class LayerFilter(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAt(self, val: int, /) -> str: ...
+    def getAt(self, val : int, /) -> str: ...
     def indexClass(self, /) -> PyRx.RxClass: ...
     def isValid(self, /) -> bool: ...
     def layerCount(self, /) -> int: ...
-    def remove(self, val: str, /) -> None: ...
-
+    def remove(self, val : str, /) -> None: ...
 class LayerStateManager(PyRx.RxObject):
     def __init__(self, db: PyDb.Database = ..., /) -> None:
         """
@@ -18246,7 +17635,7 @@ class LayerStateManager(PyRx.RxObject):
         """
         Returns a pointer to the hosting database for AcDbLayerStateManager.
         """
-    def getLastRestoredLayerState(self, /) -> tuple[str, PyDb.ObjectId]:
+    def getLastRestoredLayerState(self, /) -> tuple[str,PyDb.ObjectId]:
         """
         Returns the name and objectId of the last layer state restored in the drawing. This value
         is saved by the restoreLayerState() method so any means of restoring a layer state will
@@ -18312,7 +17701,7 @@ class LayerStateManager(PyRx.RxObject):
         with it. A layer state has viewport data if saveLayerState() was called with a non-null
         idVp parameter.
         """
-    def layerStatesDictionaryId(self, bCreateIfNotPresent: bool = False, /) -> ObjectId:
+    def layerStatesDictionaryId(self, bCreateIfNotPresent: bool=False, /) -> ObjectId:
         """
         Returns AcDbObjectId of the layer states extension dictionary (within the layer table
         extension dictionary) or AcDbObjectId(NULL) if the database is Null, or if the symbol table
@@ -18334,9 +17723,7 @@ class LayerStateManager(PyRx.RxObject):
         Null Other Acad::ErrorStatus values unequal to Acad::eOk can come from an internal call to
         acdbOpenObject() while opening the layer states dictionary.
         """
-    def restoreLayerState(
-        self, sName: str, vpId: PyDb.ObjectId, flags: int = 0, mask: PyDb.LayerStateMask = ..., /
-    ) -> None:
+    def restoreLayerState(self, sName: str, vpId: PyDb.ObjectId, flags: int = 0, mask: PyDb.LayerStateMask = ..., /) -> None:
         """
         Restores the layer state sName and the VPLAYER settings for the viewport specified. Also
         restores attributes specified in pClientMask. nUndefOff may be used to turn off or freeze
@@ -18358,9 +17745,7 @@ class LayerStateManager(PyRx.RxObject):
         layerAcDbLayerTableRecord::setIsPlottable() while setting or resetting the plottable state
         of a layerAcDbLayerTableRecord::setLineWeight() while setting a layer's lineweight
         """
-    def saveLayerState(
-        self, sName: str, mask: PyDb.LayerStateMask, id: PyDb.ObjectId = ..., /
-    ) -> None:
+    def saveLayerState(self, sName: str, mask: PyDb.LayerStateMask, id: PyDb.ObjectId = ..., /) -> None:
         """
         Saves the current state of the layer table to the layer state specified by sName. This
         function also captures the VPLAYER settings for the viewport specified. Specify
@@ -18386,7 +17771,6 @@ class LayerStateManager(PyRx.RxObject):
         Xrecord Other possible Acad::ErrorStatus values unequal to Acad::eOk can come from an
         internal call to acdbOpenObject() while opening the layer states dictionary.
         """
-
 class LayerStateMask(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kOn: ClassVar[Self]  # 1
@@ -18404,15 +17788,8 @@ class LayerStateMask(_BoostPythonEnum):
     kStateIsHidden: ClassVar[Self]  # 32768
     kLastRestored: ClassVar[Self]  # 65536
     kDecomposition: ClassVar[Self]  # 133119
-
 class LayerTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LayerTableRecord, /) -> ObjectId:
         """
@@ -18441,7 +17818,6 @@ class LayerTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class LayerTableRecord(PyDb.SymbolTableRecord):
     def VPDFLT(self, /) -> bool:
         """
@@ -18492,7 +17868,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerTableRecord: ...
-    def color(self, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> Color:
+    def color(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> Color:
         """
         This function returns an AcCmColor object that contains the color value of the layer.
         """
@@ -18542,7 +17918,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         support this flag. Returns true if the layer is hidden. Otherwise, returns false.
         """
     @staticmethod
-    def isHiddenS(val: PyDb.ObjectId, /) -> bool: ...
+    def isHiddenS(val : PyDb.ObjectId, /) -> bool: ...
     def isInUse(self, /) -> bool:
         """
         Returns false if the layer was not in use when AcDbLayerTable::generateUsageData() was last
@@ -18573,8 +17949,8 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         Returns true if this layer has been marked as reconciled.
         """
     @staticmethod
-    def isReconciledS(val: PyDb.ObjectId, /) -> bool: ...
-    def lineWeight(self, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> LineWeight:
+    def isReconciledS(val : PyDb.ObjectId, /) -> bool: ...
+    def lineWeight(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> LineWeight:
         """
         This function returns the AcDb::LineWeight of the layer table record. The lineWeight value
         is used for DXF group code 370.
@@ -18591,13 +17967,13 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         This function returns the material that is assigned to the layer. The default value is the
         id of the global material. Returns the object Id of the associated AcDbMaterial object.
         """
-    def plotStyleName(self, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> str:
+    def plotStyleName(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> str:
         """
         This function returns a copy of the plotStyleName string of the layer table record. The
         caller is responsible for deallocating the returned string. The plotStyleName value is used
         for DXF group code 390.
         """
-    def plotStyleNameId(self, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> ObjectId:
+    def plotStyleNameId(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> ObjectId:
         """
         This function returns a copy of the plotStyleName string of the layer table record. The
         caller is responsible for deallocating the returned string. The plotStyleName value is used
@@ -18643,7 +18019,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD
         error status.
         """
-    def setColor(self, clr: PyDb.AcCmColor, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:
+    def setColor(self, clr: PyDb.AcCmColor, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
         """
         This function sets the layer to use the color specified by color. The color value is used
         for DXF group code 62.
@@ -18693,9 +18069,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         (enumerated constant AcDbLayerTableRecord::kDxfLayerPlotBit). Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the layer can be made plottable.
         """
-    def setLineWeight(
-        self, weight: PyDb.LineWeight, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /
-    ) -> None:
+    def setLineWeight(self, weight: PyDb.LineWeight, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
         """
         Sets a layer line weight override for the supplied viewport. You cannot change the global
         line weight through this method. Returns an error status if an illegal line weight value is
@@ -18711,18 +18085,14 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         This function sets the referenced material. The provided Id must refer to an existing
         AcDbMaterial. Returns Acad::eOk if successful.
         """
-    def setPlotStyleName(
-        self, val: str | PyDb.ObjectId, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /
-    ) -> None:
+    def setPlotStyleName(self, val: str|PyDb.ObjectId, vpid : PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:
         """
         Sets a layer plot style override for the supplied viewport. You cannot change the global
         plot style through this method. Returns an error status if the plot style cannot be found
         in the current plot style table, or if the drawing's PlotStyleMode is set to use
         color-based plot styles.
         """
-    def setTransparency(
-        self, clr: PyDb.Transparency, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /
-    ) -> None:
+    def setTransparency(self, clr: PyDb.Transparency, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
         """
         Defines a transparency value to override the layer transparency for the given viewport.
         """
@@ -18732,11 +18102,10 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         false, then the layer will be thawed by default in new viewports. The frozen value is used
         for the second bit of DXF group code 70.
         """
-    def transparency(self, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> Transparency:
+    def transparency(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> Transparency:
         """
         This function returns the transparency value of the layer table record.
         """
-
 class Layout(PyDb.PlotSettings):
     @overload
     def __init__(self, /) -> None:
@@ -18797,19 +18166,18 @@ class Layout(PyDb.PlotSettings):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def getBlockTableRecordId(self, /) -> ObjectId: ...
-    def getExtents(self, /) -> tuple[PyGe.Point2d, PyGe.Point2d]: ...
+    def getExtents(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
     def getLayoutName(self, /) -> str: ...
-    def getLimits(self, /) -> tuple[PyGe.Point2d, PyGe.Point2d]: ...
+    def getLimits(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
     def getTabOrder(self, /) -> int: ...
     def getTabSelected(self, /) -> bool: ...
     def getViewportArray(self, /) -> list[PyDb.ObjectId]: ...
-    def initialize(self, id: PyDb.ObjectId = "default", /) -> None: ...
+    def initialize(self, id: PyDb.ObjectId='default', /) -> None: ...
     def setAnnoAllVisible(self, val: bool, /) -> None: ...
     def setBlockTableRecordId(self, id: PyDb.ObjectId, /) -> None: ...
     def setLayoutName(self, val: str, /) -> None: ...
     def setTabOrder(self, val: int, /) -> None: ...
     def setTabSelected(self, val: bool, /) -> None: ...
-
 class LayoutManager(PyRx.RxObject):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -18817,14 +18185,10 @@ class LayoutManager(PyRx.RxObject):
     def className() -> str: ...
     @staticmethod
     def clearSetupForLayouts(handle: int, /) -> None: ...
-    def cloneLayout(
-        self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database = ..., /
-    ) -> None: ...
+    def cloneLayout(self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database = ..., /) -> None: ...
     def copyLayout(self, name: str, newname: str, db: PyDb.Database = ..., /) -> None: ...
     def countLayouts(self, db: PyDb.Database = ..., /) -> int: ...
-    def createLayout(
-        self, name: str, db: PyDb.Database = ..., /
-    ) -> tuple[PyDb.ObjectId, PyDb.ObjectId]: ...
+    def createLayout(self, name: str, db: PyDb.Database = ..., /) -> tuple[PyDb.ObjectId,PyDb.ObjectId]: ...
     def deleteLayout(self, name: str, db: PyDb.Database = ..., /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
@@ -18852,7 +18216,6 @@ class LayoutManager(PyRx.RxObject):
     def setCurrentLayoutId(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
     def setupForLayouts(db: PyDb.Database, /) -> int: ...
-
 class Leader(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -18990,7 +18353,7 @@ class Leader(PyDb.Curve):
     def dimtxsty(self, /) -> ObjectId: ...
     def dimtxt(self, /) -> float: ...
     def disableArrowHead(self, /) -> None: ...
-    def erased(self, obj: PyDb.DbObject, val: bool = True, /) -> None: ...
+    def erased(self, obj: PyDb.DbObject, val: bool=True, /) -> None: ...
     def evaluateLeader(self, /) -> None: ...
     def firstVertex(self, /) -> PyGe.Point3d: ...
     def goodbye(self, obj: PyDb.DbObject, /) -> None: ...
@@ -19004,12 +18367,12 @@ class Leader(PyDb.Curve):
     def removeLastVertex(self, /) -> None: ...
     def setAnnotationObjId(self, id: PyDb.ObjectId, /) -> None: ...
     def setAnnotationOffset(self, vec: PyGe.Vector3d, /) -> None: ...
-    def setColorIndex(self, idx: int, dosubents: bool = True, /) -> None: ...
+    def setColorIndex(self, idx: int, dosubents: bool=True, /) -> None: ...
     def setDimasz(self, val: float, /) -> None: ...
     def setDimclrd(self, clr: PyDb.AcCmColor, /) -> None: ...
     def setDimensionStyle(self, id: PyDb.ObjectId, /) -> None: ...
     def setDimgap(self, val: float, /) -> None: ...
-    def setDimldrblk(self, id: str | PyDb.ObjectId, /) -> None: ...
+    def setDimldrblk(self, id: str|PyDb.ObjectId, /) -> None: ...
     def setDimlwd(self, val: PyDb.LineWeight, /) -> None: ...
     def setDimsah(self, val: bool, /) -> None: ...
     def setDimscale(self, val: float, /) -> None: ...
@@ -19024,7 +18387,6 @@ class Leader(PyDb.Curve):
     def setToStraightLeader(self, /) -> None: ...
     def setVertexAt(self, val: int, pt: PyGe.Point3d, /) -> bool: ...
     def vertexAt(self, val: int, /) -> PyGe.Point3d: ...
-
 class Line(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -19035,7 +18397,7 @@ class Line(PyDb.Curve):
         normal vector direction (that is, height or 'extrusion').
         """
     @overload
-    def __init__(self, start: PyGe.Point3d, end: PyGe.Point3d, /) -> None:
+    def __init__(self, start: PyGe.Point3d,end: PyGe.Point3d, /) -> None:
         """
         The [AcDbLine](https://cext-dan.github.io/CADPyRxDoc/PyDb.html#Line) class represents the
         line entity in AutoCAD. A line object is a 3D object that is specified by its start point,
@@ -19101,13 +18463,11 @@ class Line(PyDb.Curve):
         This function returns the line's endpoint in WCS coordinates. The end point value is used
         for DXF group code 11.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.LineSeg3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.LineSeg3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
-    def getOffsetCurvesGivenPlaneNormal(
-        self, val: PyGe.Vector3d, offset: float, /
-    ) -> list[PyDb.Curve]:
+    def getOffsetCurvesGivenPlaneNormal(self, val:PyGe.Vector3d, offset:float, /) -> list[PyDb.Curve]:
         """
         This function creates one or more entities that, together, make up the result of offsetting
         the curve by the distance offsetDist in the plane with normal vector normal. For many
@@ -19143,25 +18503,25 @@ class Line(PyDb.Curve):
         This function returns the line's unit normal vector in WCS coordinates. The normal value is
         used for DXF group code 210.
         """
-    def setEndPoint(self, val: PyGe.Point3d, /) -> None:
+    def setEndPoint(self, val:PyGe.Point3d, /) -> None:
         """
         Sets endPt to be the line's new endpoint. endPt must be in WCS coordinates. The end point
         value is used for DXF group code 11. Returns Acad::eOk if successful or Acad::eInvalidInput
         if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the line's normal vector. normal must be in WCS coordinates. The normal
         value is used for DXF group code 210. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartPoint(self, val: PyGe.Point3d, /) -> None:
+    def setStartPoint(self, val:PyGe.Point3d, /) -> None:
         """
         Sets startPt to be the line's new start point. startPt must be in WCS coordinates. The
         start point value is used for DXF group code 10. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val:float, /) -> None:
         """
         Sets thickness to be the thickness value for the line. The thickness is the line's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -19179,7 +18539,6 @@ class Line(PyDb.Curve):
         along its normal vector direction (sometimes called the extrusion direction). The thickness
         value is used for DXF group code 39.
         """
-
 class LineAngularDimension2(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -19188,46 +18547,19 @@ class LineAngularDimension2(PyDb.Dimension):
         (as opposed to three points) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        xL2Start: PyGe.Point3d,
-        xL2End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        /,
-    ) -> None:
+    def __init__(self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, /) -> None:
         """
         The AcDb2LineAngularDimension class represents the angular dimension defined by two lines
         (as opposed to three points) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        xL2Start: PyGe.Point3d,
-        xL2End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, /) -> None:
         """
         The AcDb2LineAngularDimension class represents the angular dimension defined by two lines
         (as opposed to three points) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        xL2Start: PyGe.Point3d,
-        xL2End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, xL2Start: PyGe.Point3d, xL2End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDb2LineAngularDimension class represents the angular dimension defined by two lines
         (as opposed to three points) within AutoCAD.
@@ -19287,25 +18619,25 @@ class LineAngularDimension2(PyDb.Dimension):
         """
         Returns true if extension arc is on. Otherwise, it returns false.
         """
-    def setArcPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setArcPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used to determine the location of the arc for the dimension. The arc definition
         point is the WCS equivalent of the DXF group code 16. This function always returns
         Acad::eOk.
         """
-    def setExtArcOn(self, val: bool, /) -> None:
+    def setExtArcOn(self, val : bool, /) -> None:
         """
         This function turns the extension arc flag on or off. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setXLine1End(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1End(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point for
         the end point of the first extension line of the dimension. The first extension line
         endpoint is used for DXF group code 14. This function always returns Acad::eOk.
         """
-    def setXLine1Start(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Start(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point for
         the start point of the first extension line of the dimension. The AutoCAD DIMEXO dimension
@@ -19313,12 +18645,12 @@ class LineAngularDimension2(PyDb.Dimension):
         extension line start point is used for DXF group code 13. This function always returns
         Acad::eOk.
         """
-    def setXLine2End(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2End(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point for
         the end point of the second extension line of the dimension.
         """
-    def setXLine2Start(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Start(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point for
         the start point of the second extension line of the dimension. The AutoCAD DIMEXO dimension
@@ -19352,11 +18684,9 @@ class LineAngularDimension2(PyDb.Dimension):
         extension line start point is used for DXF group code 15. This function always returns
         Acad::eOk.
         """
-
 class LineSpacingStyle(_BoostPythonEnum):
     kAtLeast: ClassVar[Self]  # 1
     kExactly: ClassVar[Self]  # 2
-
 class LineWeight(_BoostPythonEnum):
     kLnWt000: ClassVar[Self]  # 0
     kLnWt005: ClassVar[Self]  # 5
@@ -19385,15 +18715,8 @@ class LineWeight(_BoostPythonEnum):
     kLnWtByLayer: ClassVar[Self]  # -1
     kLnWtByBlock: ClassVar[Self]  # -2
     kLnWtByLwDefault: ClassVar[Self]  # -3
-
 class LinetypeTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LinetypeTableRecord, /) -> ObjectId:
         """
@@ -19423,7 +18746,6 @@ class LinetypeTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class LinetypeTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -19537,15 +18859,8 @@ class LinetypeTableRecord(PyDb.SymbolTableRecord):
     def shapeScaleAt(self, idx: int, /) -> float: ...
     def shapeStyleAt(self, idx: int, /) -> ObjectId: ...
     def textAt(self, idx: int, /) -> str: ...
-
 class LoftedSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LoftedSurface: ...
@@ -19567,7 +18882,6 @@ class LoftedSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class MInsertBlock(PyDb.BlockReference):
     @overload
     def __init__(self, /) -> None:
@@ -19578,16 +18892,7 @@ class MInsertBlock(PyDb.BlockReference):
         create a AcDbBlockReference instead.
         """
     @overload
-    def __init__(
-        self,
-        position: PyGe.Point3d,
-        blockTableRec: PyDb.ObjectId,
-        columns: int,
-        rows: int,
-        colSpacing: float,
-        rowSpacing: float,
-        /,
-    ) -> None:
+    def __init__(self, position: PyGe.Point3d, blockTableRec: PyDb.ObjectId, columns: int, rows: int, colSpacing: float, rowSpacing: float, /) -> None:
         """
         The AcDbMInsertBlock class represents a special form of the INSERT entity in which an array
         of duplicate images of the entities within the referenced AcDbBlockTableRecord is
@@ -19668,34 +18973,33 @@ class MInsertBlock(PyDb.BlockReference):
         This function returns the number of rows of the BlockTableRecord image that will be
         displayed by the MInsert object. The row value is used for DXF group code 71.
         """
-    def setColumnSpacing(self, val: float, /) -> None:
+    def setColumnSpacing(self, val : float, /) -> None:
         """
         This function sets cSpacing to be the spacing between the columns of the BlockTableRecord
         image that will be displayed by the MInsert object. The column spacing value is used for
         DXF group code 44. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def setColumns(self, val: int, /) -> None:
+    def setColumns(self, val : int, /) -> None:
         """
         This function sets cCount to be the number of columns of the BlockTableRecord image that
         will be displayed by the MInsert object. The column value is used for DXF group code 70.
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setRowSpacing(self, val: float, /) -> None:
+    def setRowSpacing(self, val : float, /) -> None:
         """
         This function sets rSpacing to be the spacing between the rows of the BlockTableRecord
         image that will be displayed by the MInsert object. The row spacing value is used for DXF
         group code 45. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in
         is not acceptable.
         """
-    def setRows(self, val: int, /) -> None:
+    def setRows(self, val : int, /) -> None:
         """
         This function sets rCount to be the number of rows of the BlockTableRecord image that will
         be displayed by the MInsert object. The row value is used for DXF group code 71. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-
 class MLeader(PyDb.Entity):
     def MLeaderStyle(self, /) -> ObjectId: ...
     @overload
@@ -19712,7 +19016,7 @@ class MLeader(PyDb.Entity):
     def addFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
     def addLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
     def addLeader(self, /) -> int: ...
-    def addLeaderLine(self, val: int | PyGe.Point3d, /) -> int: ...
+    def addLeaderLine(self, val: int|PyGe.Point3d, /) -> int: ...
     def arrowSize(self, /) -> float: ...
     def arrowSymbolId(self, /) -> ObjectId: ...
     def blockColor(self, /) -> Color: ...
@@ -19729,9 +19033,7 @@ class MLeader(PyDb.Entity):
     @overload
     def connectionPoint(self, vec: PyGe.Vector3d, /) -> PyGe.Point3d: ...
     @overload
-    def connectionPoint(
-        self, vec: PyGe.Vector3d, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /
-    ) -> PyGe.Point3d: ...
+    def connectionPoint(self, vec: PyGe.Vector3d, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /) -> PyGe.Point3d: ...
     @overload
     def connectionPoint(self, *args) -> PyGe.Point3d: ...
     def contentType(self, /) -> MLeaderContentType: ...
@@ -19784,9 +19086,7 @@ class MLeader(PyDb.Entity):
     def leaderLineTypeId(self, /) -> ObjectId: ...
     def leaderLineWeight(self, /) -> LineWeight: ...
     def modified(self, id: PyDb.ObjectId, /) -> None: ...
-    def moveMLeader(
-        self, vec: PyGe.Vector3d, moveType: PyDb.MLeaderMoveType, bAutoSwitchDogleg: bool = True, /
-    ) -> None: ...
+    def moveMLeader(self, vec: PyGe.Vector3d, moveType: PyDb.MLeaderMoveType, bAutoSwitchDogleg: bool=True, /) -> None: ...
     def mtext(self, /) -> MText: ...
     def normal(self, /) -> PyGe.Vector3d: ...
     def numLeaderLines(self, /) -> int: ...
@@ -19859,27 +19159,16 @@ class MLeader(PyDb.Entity):
     def setLeaderLineWeight(self, *args) -> None: ...
     def setMLeaderStyle(self, id: PyDb.ObjectId, /) -> None: ...
     def setMText(self, val: PyDb.MText, /) -> None: ...
-    def setOverride(
-        self, val: PyDb.MLeaderPropertyOverrideType, isOverride: bool = True, /
-    ) -> None: ...
+    def setOverride(self, val: PyDb.MLeaderPropertyOverrideType, isOverride: bool=True, /) -> None: ...
     def setPlane(self, val: PyGe.Plane, /) -> None: ...
     def setScale(self, val: float, /) -> None: ...
     def setTextAlignmentType(self, val: PyDb.MLeaderTextAlignmentType, /) -> None: ...
     def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None: ...
-    def setTextAttachmentDirection(
-        self, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /
-    ) -> None: ...
+    def setTextAttachmentDirection(self, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /) -> None: ...
     @overload
-    def setTextAttachmentType(
-        self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /
-    ) -> None: ...
+    def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /) -> None: ...
     @overload
-    def setTextAttachmentType(
-        self,
-        textAttachmentType: PyDb.MLeaderTextAttachmentType,
-        val: PyDb.MLeaderLeaderDirectionType,
-        /,
-    ) -> None: ...
+    def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType, /) -> None: ...
     @overload
     def setTextAttachmentType(self, *args) -> None: ...
     def setTextColor(self, clr: PyDb.AcCmColor, /) -> None: ...
@@ -19894,26 +19183,21 @@ class MLeader(PyDb.Entity):
     @overload
     def textAttachmentType(self, /) -> MLeaderTextAttachmentType: ...
     @overload
-    def textAttachmentType(
-        self, val: PyDb.MLeaderLeaderDirectionType, /
-    ) -> MLeaderTextAttachmentType: ...
+    def textAttachmentType(self, val: PyDb.MLeaderLeaderDirectionType, /) -> MLeaderTextAttachmentType: ...
     @overload
     def textAttachmentType(self, *args) -> MLeaderTextAttachmentType: ...
     def textColor(self, /) -> Color: ...
     def textHeight(self, /) -> float: ...
     def textStyleId(self, /) -> ObjectId: ...
     def updateLeaderLinePosition(self, /) -> None: ...
-
 class MLeaderBlockConnectionType(_BoostPythonEnum):
     kConnectExtents: ClassVar[Self]  # 0
     kConnectBase: ClassVar[Self]  # 1
-
 class MLeaderContentType(_BoostPythonEnum):
     kNoneContent: ClassVar[Self]  # 0
     kBlockContent: ClassVar[Self]  # 1
     kMTextContent: ClassVar[Self]  # 2
     kToleranceContent: ClassVar[Self]  # 3
-
 class MLeaderGsMarkType(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kArrowMark: ClassVar[Self]  # 1
@@ -19924,24 +19208,20 @@ class MLeaderGsMarkType(_BoostPythonEnum):
     kToleranceMark: ClassVar[Self]  # 15003
     kBlockMark: ClassVar[Self]  # 15004
     kBlockAttribute: ClassVar[Self]  # 15005
-
 class MLeaderLeaderDirectionType(_BoostPythonEnum):
     kUnknownLeader: ClassVar[Self]  # 0
     kLeftLeader: ClassVar[Self]  # 1
     kRightLeader: ClassVar[Self]  # 2
     kTopLeader: ClassVar[Self]  # 3
     kBottomLeader: ClassVar[Self]  # 4
-
 class MLeaderLeaderType(_BoostPythonEnum):
     kInVisibleLeader: ClassVar[Self]  # 0
     kStraightLeader: ClassVar[Self]  # 1
     kSplineLeader: ClassVar[Self]  # 2
-
 class MLeaderMoveType(_BoostPythonEnum):
     kMoveAllPoints: ClassVar[Self]  # 0
     kMoveAllExceptArrowHeaderPoints: ClassVar[Self]  # 1
     kMoveContentAndDoglegPoints: ClassVar[Self]  # 2
-
 class MLeaderPropertyOverrideType(_BoostPythonEnum):
     kLeaderLineType: ClassVar[Self]  # 0
     kLeaderLineColor: ClassVar[Self]  # 1
@@ -19975,7 +19255,6 @@ class MLeaderPropertyOverrideType(_BoostPythonEnum):
     kTextBottomAttachmentType: ClassVar[Self]  # 29
     kExtendLeaderToText: ClassVar[Self]  # 30
     kSize: ClassVar[Self]  # 31
-
 class MLeaderSegmentAngleType(_BoostPythonEnum):
     kAny: ClassVar[Self]  # 0
     k15: ClassVar[Self]  # 1
@@ -19984,7 +19263,6 @@ class MLeaderSegmentAngleType(_BoostPythonEnum):
     k60: ClassVar[Self]  # 4
     k90: ClassVar[Self]  # 6
     kHorz: ClassVar[Self]  # 12
-
 class MLeaderStyle(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None: ...
@@ -20052,11 +19330,11 @@ class MLeaderStyle(PyDb.DbObject):
     def setAlignSpace(self, val: float, /) -> None: ...
     def setAnnotative(self, val: bool, /) -> None: ...
     def setArrowSize(self, val: float, /) -> None: ...
-    def setArrowSymbolId(self, val: str | PyDb.ObjectId, /) -> None: ...
+    def setArrowSymbolId(self, val: str|PyDb.ObjectId, /) -> None: ...
     def setBitFlags(self, val: int, /) -> None: ...
     def setBlockColor(self, clr: PyDb.AcCmColor, /) -> None: ...
     def setBlockConnectionType(self, val: PyDb.MLeaderBlockConnectionType, /) -> None: ...
-    def setBlockId(self, id: str | PyDb.ObjectId, /) -> None: ...
+    def setBlockId(self, id: str|PyDb.ObjectId, /) -> None: ...
     def setBlockRotation(self, val: float, /) -> None: ...
     def setBlockScale(self, pt: PyGe.Scale3d, /) -> None: ...
     def setBreakSize(self, val: float, /) -> None: ...
@@ -20075,7 +19353,7 @@ class MLeaderStyle(PyDb.DbObject):
     def setFirstSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None: ...
     def setLandingGap(self, val: float, /) -> None: ...
     def setLeaderLineColor(self, clr: PyDb.AcCmColor, /) -> None: ...
-    def setLeaderLineType(self, val: PyDb.MLeaderLeaderType, /) -> None: ...
+    def setLeaderLineType(self, val:  PyDb.MLeaderLeaderType, /) -> None: ...
     def setLeaderLineTypeId(self, id: PyDb.ObjectId, /) -> None: ...
     def setLeaderLineWeight(self, val: PyDb.LineWeight, /) -> None: ...
     def setMaxLeaderSegmentsPoints(self, maxLeaderSegmentsPoints: int, /) -> None: ...
@@ -20083,20 +19361,13 @@ class MLeaderStyle(PyDb.DbObject):
     def setScale(self, val: float, /) -> None: ...
     def setSecondSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None: ...
     def setTextAlignAlwaysLeft(self, val: bool, /) -> None: ...
-    def setTextAlignmentType(self, val: PyDb.MLeaderTextAlignmentType, /) -> None: ...
+    def setTextAlignmentType(self, val:  PyDb.MLeaderTextAlignmentType, /) -> None: ...
     def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None: ...
     def setTextAttachmentDirection(self, val: PyDb.MLeaderTextAttachmentDirection, /) -> None: ...
     @overload
-    def setTextAttachmentType(
-        self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /
-    ) -> None: ...
+    def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /) -> None: ...
     @overload
-    def setTextAttachmentType(
-        self,
-        textAttachmentType: PyDb.MLeaderTextAttachmentType,
-        val: PyDb.MLeaderLeaderDirectionType,
-        /,
-    ) -> None: ...
+    def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType, /) -> None: ...
     @overload
     def setTextAttachmentType(self, *args) -> None: ...
     def setTextColor(self, clr: PyDb.AcCmColor, /) -> None: ...
@@ -20109,29 +19380,23 @@ class MLeaderStyle(PyDb.DbObject):
     @overload
     def textAttachmentType(self, /) -> MLeaderTextAttachmentType: ...
     @overload
-    def textAttachmentType(
-        self, val: PyDb.MLeaderLeaderDirectionType, /
-    ) -> MLeaderTextAttachmentType: ...
+    def textAttachmentType(self, val: PyDb.MLeaderLeaderDirectionType, /) -> MLeaderTextAttachmentType: ...
     @overload
     def textAttachmentType(self, *args) -> MLeaderTextAttachmentType: ...
     def textColor(self, /) -> Color: ...
     def textHeight(self, /) -> float: ...
     def textStyleId(self, /) -> ObjectId: ...
-
 class MLeaderTextAlignmentType(_BoostPythonEnum):
     kLeftAlignment: ClassVar[Self]  # 0
     kCenterAlignment: ClassVar[Self]  # 1
     kRightAlignment: ClassVar[Self]  # 2
-
 class MLeaderTextAngleType(_BoostPythonEnum):
     kInsertAngle: ClassVar[Self]  # 0
     kHorizontalAngle: ClassVar[Self]  # 1
     kAlwaysRightReadingAngle: ClassVar[Self]  # 2
-
 class MLeaderTextAttachmentDirection(_BoostPythonEnum):
     kAttachmentHorizontal: ClassVar[Self]  # 0
     kAttachmentVertical: ClassVar[Self]  # 1
-
 class MLeaderTextAttachmentType(_BoostPythonEnum):
     kAttachmentTopOfTop: ClassVar[Self]  # 0
     kAttachmentMiddleOfTop: ClassVar[Self]  # 1
@@ -20144,7 +19409,6 @@ class MLeaderTextAttachmentType(_BoostPythonEnum):
     kAttachmentAllLine: ClassVar[Self]  # 8
     kAttachmentCenter: ClassVar[Self]  # 9
     kAttachmentLinedCenter: ClassVar[Self]  # 10
-
 class MPolygon(PyDb.Entity):
     @overload
     def __init__(self, /) -> None: ...
@@ -20158,27 +19422,14 @@ class MPolygon(PyDb.Entity):
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @overload
-    def appendLoopFromBoundary(
-        self, circle: PyDb.Circle, excludeCrossing: bool, tol: float, /
-    ) -> None: ...
+    def appendLoopFromBoundary(self, circle: PyDb.Circle, excludeCrossing: bool, tol: float, /) -> None: ...
     @overload
-    def appendLoopFromBoundary(
-        self, pline: PyDb.Polyline, excludeCrossing: bool, tol: float, /
-    ) -> None: ...
+    def appendLoopFromBoundary(self, pline: PyDb.Polyline, excludeCrossing: bool, tol: float, /) -> None: ...
     @overload
-    def appendLoopFromBoundary(
-        self, pline2d: PyDb.Polyline2d, excludeCrossing: bool, tol: float, /
-    ) -> None: ...
+    def appendLoopFromBoundary(self, pline2d: PyDb.Polyline2d, excludeCrossing: bool, tol: float, /) -> None: ...
     @overload
     def appendLoopFromBoundary(self, *args) -> None: ...
-    def appendMPolygonLoop(
-        self,
-        vertices: list[PyGe.Point2d],
-        bulges: list[float],
-        excludeCrossing: bool,
-        tol: float,
-        /,
-    ) -> None: ...
+    def appendMPolygonLoop(self, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None: ...
     def balanceDisplay(self, /) -> None: ...
     def balanceTree(self, /) -> None: ...
     @staticmethod
@@ -20187,9 +19438,7 @@ class MPolygon(PyDb.Entity):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> MPolygon: ...
-    def createLoopsFromBoundaries(
-        self, ids: list[PyDb.ObjectId], excludeCrossing: bool, tol: float, /
-    ) -> list[int]: ...
+    def createLoopsFromBoundaries(self, ids: list[PyDb.ObjectId], excludeCrossing: bool, tol: float, /) -> list[int]: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20205,34 +19454,24 @@ class MPolygon(PyDb.Entity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def elevation(self, /) -> float: ...
-    def evaluateHatch(self, val: bool = False, /) -> None: ...
+    def evaluateHatch(self, val : bool=False, /) -> None: ...
     def getArea(self, /) -> float: ...
-    def getChildLoops(self, curLoop: int, /) -> list[int]: ...
-    def getClosestLoopTo(self, val: PyGe.Point3d, /) -> int: ...
-    def getLoopAtGsMarker(self, gsMark: int, /) -> int: ...
-    def getLoopDirection(self, val: int, /) -> MPolygonloopDir: ...
-    def getMPolygonLoopAt(self, loopIndex: int, /) -> tuple[list[PyGe.Point2d], list[float]]: ...
+    def getChildLoops(self, curLoop : int, /) -> list[int]: ...
+    def getClosestLoopTo(self, val : PyGe.Point3d, /) -> int: ...
+    def getLoopAtGsMarker(self, gsMark : int, /) -> int: ...
+    def getLoopDirection(self, val : int, /) -> MPolygonloopDir: ...
+    def getMPolygonLoopAt(self, loopIndex : int, /) -> tuple[list[PyGe.Point2d],list[float]]: ...
     def getOffsetVector(self, /) -> PyGe.Vector2d: ...
-    def getParentLoop(self, curLoop: int, /) -> int: ...
-    def getPatternDefinitionAt(self, val: int, /) -> tuple: ...
+    def getParentLoop(self, curLoop : int, /) -> int: ...
+    def getPatternDefinitionAt(self, val : int, /) -> tuple: ...
     def getPerimeter(self, /) -> float: ...
     def hatch(self, /) -> Hatch: ...
-    def includesTouchingLoops(self, val: float, /) -> bool: ...
-    def insertMPolygonLoopAt(
-        self,
-        loopIndex: int,
-        vertices: list[PyGe.Point2d],
-        bulges: list[float],
-        excludeCrossing: bool,
-        tol: float,
-        /,
-    ) -> None: ...
+    def includesTouchingLoops(self, val : float, /) -> bool: ...
+    def insertMPolygonLoopAt(self, loopIndex: int, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None: ...
     def isBalanced(self, /) -> bool: ...
-    def isPointInsideMPolygon(self, val: PyGe.Point3d, tol: float, /) -> list[int]: ...
-    def isPointOnLoopBoundary(self, val: PyGe.Point3d, loop: int, tol: float, /) -> bool: ...
-    def loopCrossesItself(
-        self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /
-    ) -> bool: ...
+    def isPointInsideMPolygon(self, val : PyGe.Point3d, tol : float, /) -> list[int]: ...
+    def isPointOnLoopBoundary(self, val : PyGe.Point3d, loop : int, tol : float, /) -> bool: ...
+    def loopCrossesItself(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool: ...
     def normal(self, /) -> PyGe.Vector3d: ...
     def numMPolygonLoops(self, /) -> int: ...
     def numPatternDefinitions(self, /) -> int: ...
@@ -20243,30 +19482,26 @@ class MPolygon(PyDb.Entity):
     def patternScale(self, /) -> float: ...
     def patternSpace(self, /) -> float: ...
     def patternType(self, /) -> HatchPatternType: ...
-    def removeMPolygonLoopAt(self, val: int, /) -> None: ...
-    def selfCrosses(
-        self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /
-    ) -> bool: ...
-    def setElevation(self, val: float, /) -> None: ...
+    def removeMPolygonLoopAt(self, val : int, /) -> None: ...
+    def selfCrosses(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool: ...
+    def setElevation(self, val : float, /) -> None: ...
     def setGradient(self, val: PyDb.HatchGradientPatternType, name: str, /) -> None: ...
-    def setGradientAngle(self, val: float, /) -> None: ...
+    def setGradientAngle(self, val : float, /) -> None: ...
     def setGradientColors(self, colors: list[PyDb.AcCmColor], values: list[float], /) -> None: ...
-    def setGradientOneColorMode(self, val: bool, /) -> None: ...
-    def setGradientShift(self, val: float, /) -> None: ...
+    def setGradientOneColorMode(self, val : bool, /) -> None: ...
+    def setGradientShift(self, val : float, /) -> None: ...
     def setLoopDirection(self, lindex: int, dir: PyDb.MPolygonloopDir, /) -> None: ...
-    def setNormal(self, val: PyGe.Vector3d, /) -> None: ...
-    def setPattern(self, val: PyDb.HatchPatternType, name: str, /) -> None: ...
-    def setPatternAngle(self, val: float, /) -> None: ...
+    def setNormal(self, val : PyGe.Vector3d, /) -> None: ...
+    def setPattern(self, val : PyDb.HatchPatternType, name : str, /) -> None: ...
+    def setPatternAngle(self, val : float, /) -> None: ...
     def setPatternColor(self, clr: PyDb.AcCmColor, /) -> None: ...
-    def setPatternDouble(self, val: float, /) -> None: ...
-    def setPatternScale(self, val: float, /) -> None: ...
-    def setPatternSpace(self, val: float, /) -> None: ...
-
+    def setPatternDouble(self, val : float, /) -> None: ...
+    def setPatternScale(self, val : float, /) -> None: ...
+    def setPatternSpace(self, val : float, /) -> None: ...
 class MPolygonloopDir(_BoostPythonEnum):
     kExterior: ClassVar[Self]  # 0
     kInterior: ClassVar[Self]  # 1
     kAnnotation: ClassVar[Self]  # 2
-
 class MText(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -20444,7 +19679,7 @@ class MText(PyDb.Entity):
         Gets the column gutter width. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def getColumnHeight(self, idx: int, /) -> float:
+    def getColumnHeight(self, idx : int, /) -> float:
         """
         Gets the height of the specified column. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status. Only valid for dynamic, manual height columns.
@@ -20483,7 +19718,7 @@ class MText(PyDb.Entity):
         """
         Returns the height of this object.
         """
-    def hitTest(self, val: PyGe.Point3d, /) -> bool:
+    def hitTest(self, val : PyGe.Point3d, /) -> bool:
         """
         This function tests for the existence of an AcDbMText object in a specified location when
         the TEXTGAPSELECTION system variable is enabled.
@@ -20515,7 +19750,7 @@ class MText(PyDb.Entity):
         plane of the AutoCAD editor's current UCS. The rotation value is in radians, with positive
         angles as counterclockwise when looking down the UCS normal towards the UCS origin.
         """
-    def setAttachment(self, val: PyDb.MTextAttachmentPoint, /) -> None:
+    def setAttachment(self, val : PyDb.MTextAttachmentPoint, /) -> None:
         """
         This function sets type to be the AttachmentPoint type for the MText object. The
         AttachmentPoint value determines how the text will be oriented around the initial insertion
@@ -20543,126 +19778,126 @@ class MText(PyDb.Entity):
         setAttachment: + - - - -| : ABC| : XYZ| --+--+--+--*--+--+--+-- | | | using
         setAttachmentMovingLocation: | | | --+--+--+--+--+--+--+-- | ABC: | XYZ: |- - - - *
         """
-    def setBackgroundFill(self, val: bool, /) -> None:
+    def setBackgroundFill(self, val : bool, /) -> None:
         """
         Toggles the background fill on or off, as indicated by the value of enable. If enable is
         true, background color is turned off, and no background fill color has been specified, this
         function sets the background fill color to an RGB value of 200,200,200. This function
         always returns Acad::eOk.
         """
-    def setBackgroundFillColor(self, val: PyDb.AcCmColor, /) -> None:
+    def setBackgroundFillColor(self, val : PyDb.AcCmColor, /) -> None:
         """
         Sets this object's background fill color to color. Returns Acad::eOk if successful.
         """
-    def setBackgroundScaleFactor(self, val: float, /) -> None:
+    def setBackgroundScaleFactor(self, val : float, /) -> None:
         """
         Sets the background scale factor for this object to scale. Returns Acad::eOk if successful.
         """
-    def setBackgroundTransparency(self, val: PyDb.AcCmTransparency, /) -> None:
+    def setBackgroundTransparency(self, val : PyDb.AcCmTransparency, /) -> None:
         """
         Sets the background transparency for this object to transp. Returns Acad::eOk if
         successful.
         """
-    def setColumnAutoHeight(self, val: bool, /) -> None:
+    def setColumnAutoHeight(self, val : bool, /) -> None:
         """
         Sets whether heights for each dynamic column is equal to the MText height (auto-height), or
         user-controlled for each dynamic column (manual-height). Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status. Only valid for dynamic columns.
         """
-    def setColumnCount(self, val: int, /) -> None:
+    def setColumnCount(self, val : int, /) -> None:
         """
         Sets the number of columns. Returns Acad::eOk if successful; otherwise, returns an AutoCAD
         error status.
         """
-    def setColumnFlowReversed(self, val: bool, /) -> None:
+    def setColumnFlowReversed(self, val : bool, /) -> None:
         """
         Sets whether columns are added 'reversed' from the flow of the MText. If true, columns are
         added to the left for right-to-left flowing MText, or above for top-to-bottom flowing
         MText. If false, columns are added to the right and below (respectively) Returns if
         successful; otherwise, returns an AutoCAD error status.
         """
-    def setColumnGutterWidth(self, val: float, /) -> None:
+    def setColumnGutterWidth(self, val : float, /) -> None:
         """
         Sets the column gutter width. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status. Must be positive or zero.
         """
-    def setColumnHeight(self, idx: int, val: float, /) -> None:
+    def setColumnHeight(self, idx : int, val : float, /) -> None:
         """
         Sets the height of the specified column. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status. Only valid for dynamic, manual height columns.
         """
-    def setColumnType(self, val: PyDb.MTextColumnType, /) -> None:
+    def setColumnType(self, val : PyDb.MTextColumnType, /) -> None:
         """
         Sets the column type to be one of the following: AcDbMText::kNoColumns
         AcDbMText::kStaticColumns AcDbMText::kDynamicColumns Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def setColumnWidth(self, val: float, /) -> None:
+    def setColumnWidth(self, val : float, /) -> None:
         """
         Sets the width of each column. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status. Must be a positive value. Applies to every column.
         """
-    def setContents(self, val: str, /) -> int:
+    def setContents(self, val : str, /) -> int:
         """
         A copy of text is stored in the MText object to be used as the text contents for the MText
         object.
         """
-    def setContentsRTF(self, val: str, /) -> int:
+    def setContentsRTF(self, val : str, /) -> int:
         """
         This method sets the contents of the AcDbMText object from the RTF-encoded text string
         pointed to by unnamed. RTF codes are translated to MText codes. Fonts, colors, tabs, and
         indents are preserved. Bullets and numbered lists are mapped to hanging paragraphs using
         the implied setting for tabs and indents. Returns 0 if successful.
         """
-    def setDirection(self, val: PyGe.Vector3d, /) -> None:
+    def setDirection(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets dir as the direction that the MText object will consider to be its 'horizontal' axis.
         The direction vector dir should be in the WCS coordinates. Returns Acad::eOk if successful
         or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setDynamicColumns(self, width: float, gutter: float, autoHeight: bool, /) -> None:
+    def setDynamicColumns(self, width : float, gutter : float, autoHeight : bool, /) -> None:
         """
         Sets column type to AcDbMText::kDynamicColumns with specified width, gutter, and auto
         height setting Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setFlowDirection(self, val: PyDb.MTextFlowDirection, /) -> None:
+    def setFlowDirection(self, val : PyDb.MTextFlowDirection, /) -> None:
         """
         Sets flow to be the FlowDirection for the MText object (see AcDbMText::flowDirection() for
         details of the FlowDirection enumerated type). Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         Sets the height of this object.
         """
-    def setLineSpacingFactor(self, val: float, /) -> None:
+    def setLineSpacingFactor(self, val : float, /) -> None:
         """
         Sets dFactor to be the line spacing factor where a value of 1.0 is single-spaced, 2.0 is
         double-spaced, and so on. The spacing factor must be between 0.25 and 4.00, inclusive. The
         method returns Acad::eOk if successful, or Acad::eInvalidInput if dFactor is not within the
         valid range. See AcDb::LineSpacingStyle for more information and examples.
         """
-    def setLineSpacingStyle(self, val: PyDb.LineSpacingStyle, /) -> None:
+    def setLineSpacingStyle(self, val : PyDb.LineSpacingStyle, /) -> None:
         """
         Sets the line spacing style to be either kAtLeast (the line spacing is a minimum value) or
         kExactly (the line spacing is absolute). See AcDb::LineSpacingStyle for more information
         and examples. The method returns Acad::eOk if successful, or Acad::eInvalidInput if eStyle
         is not a valid value.
         """
-    def setLocation(self, val: PyGe.Point3d, /) -> None:
+    def setLocation(self, val : PyGe.Point3d, /) -> None:
         """
         Sets loc to be the insertion point for the MText object. loc should be in WCS coordinates.
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the normal vector for the MText object. normal should be in WCS
         coordinates. When this function is used to change the normal, the direction value of the
         MText object is set to (1.0, 0.0, 0.0) in the Entity Coordinate System associated with the
         normal of the UCS current in the AutoCAD editor.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, val : float, /) -> None:
         """
         Sets the direction value for the MText object. To obtain the new direction vector from
         angle, ObjectARX first obtains the normal vector of the current User Coordinate System
@@ -20671,28 +19906,28 @@ class MText(PyDb.Entity):
         normal vector by angle. Positive angles are counterclockwise when looking down the UCS
         normal towards the UCS origin (right-hand rule).
         """
-    def setStaticColumns(self, width: float, gutter: float, count: int, /) -> None:
+    def setStaticColumns(self, width : float, gutter : float, count : int, /) -> None:
         """
         Sets column type to AcDbMText::kStaticColumns with specified width, gutter, and number of
         columns. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setTextHeight(self, val: float, /) -> None:
+    def setTextHeight(self, val : float, /) -> None:
         """
         Sets the MText object's text height to height. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTextStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setTextStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the MText object to use the AcDbTextStyle specified by Id. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setUseBackgroundColor(self, val: bool, /) -> None:
+    def setUseBackgroundColor(self, val : bool, /) -> None:
         """
         If enable is true, this function sets a flag that indicates that background color should be
         used for this object. Otherwise, it turns off the background color flag. This function
         always returns Acad::eOk.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, val : float, /) -> None:
         """
         Sets width to be the maximum width allowed for any line of text. This value is used during
         word wrap calculations as a maximum. It is possible that none of the lines resulting from
@@ -20727,7 +19962,6 @@ class MText(PyDb.Entity):
         text, regardless of the maximum width setting. If the return value is 0.0, then word wrap
         is currently disabled.
         """
-
 class MTextAttachmentPoint(_BoostPythonEnum):
     kTopLeft: ClassVar[Self]  # 1
     kTopCenter: ClassVar[Self]  # 2
@@ -20753,19 +19987,16 @@ class MTextAttachmentPoint(_BoostPythonEnum):
     kBottomMid: ClassVar[Self]  # 22
     kMiddleMid: ClassVar[Self]  # 23
     kTopMid: ClassVar[Self]  # 24
-
 class MTextColumnType(_BoostPythonEnum):
     kNoColumns: ClassVar[Self]  # 0
     kStaticColumns: ClassVar[Self]  # 1
     kDynamicColumns: ClassVar[Self]  # 2
-
 class MTextFlowDirection(_BoostPythonEnum):
     kLtoR: ClassVar[Self]  # 1
     kRtoL: ClassVar[Self]  # 2
     kTtoB: ClassVar[Self]  # 3
     kBtoT: ClassVar[Self]  # 4
     kByStyle: ClassVar[Self]  # 5
-
 class MTextFragmentType(_BoostPythonEnum):
     kLocation: ClassVar[Self]  # 0
     kNormal: ClassVar[Self]  # 1
@@ -20791,18 +20022,15 @@ class MTextFragmentType(_BoostPythonEnum):
     kBold: ClassVar[Self]  # 21
     kItalic: ClassVar[Self]  # 22
     kEndFragmentTypes: ClassVar[Self]  # 23
-
 class MeasurementValue(_BoostPythonEnum):
     kEnglish: ClassVar[Self]  # 0
     kMetric: ClassVar[Self]  # 1
-
 class MergeCellStyleOption(_BoostPythonEnum):
     kMergeCellStyleNone: ClassVar[Self]  # 0
     kMergeCellStyleCopyDuplicates: ClassVar[Self]  # 1
     kMergeCellStyleOverwriteDuplicates: ClassVar[Self]  # 2
     kMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
     kMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
-
 class Mline(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -20840,8 +20068,8 @@ class Mline(PyDb.Entity):
         linetype. The space between these parallel lines can be filled if desired.
         """
     def __reduce__(self, /) -> Any: ...
-    def appendSeg(self, val: PyGe.Point3d, /) -> None: ...
-    def axisAt(self, val: int, /) -> PyGe.Vector3d: ...
+    def appendSeg(self, val : PyGe.Point3d, /) -> None: ...
+    def axisAt(self, val : int, /) -> PyGe.Vector3d: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Mline: ...
     @staticmethod
@@ -20863,43 +20091,36 @@ class Mline(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def element(self, val: PyGe.Point3d, /) -> int: ...
+    def element(self, val : PyGe.Point3d, /) -> int: ...
     @overload
     def getClosestPointTo(self, givenPoint: PyGe.Point3d, extend: bool, /) -> PyGe.Point3d: ...
     @overload
-    def getClosestPointTo(
-        self, givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool, /
-    ) -> PyGe.Point3d: ...
+    def getClosestPointTo(self, givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool, /) -> PyGe.Point3d: ...
     @overload
-    def getClosestPointTo(
-        self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, /
-    ) -> PyGe.Point3d: ...
+    def getClosestPointTo(self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, /) -> PyGe.Point3d: ...
     @overload
-    def getClosestPointTo(
-        self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool, /
-    ) -> PyGe.Point3d: ...
+    def getClosestPointTo(self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool, /) -> PyGe.Point3d: ...
     @overload
     def getClosestPointTo(self, *args) -> PyGe.Point3d: ...
     def getPlane(self, /) -> PyGe.Plane: ...
     def justification(self, /) -> int: ...
-    def miterAt(self, val: int, /) -> PyGe.Vector3d: ...
-    def moveVertexAt(self, index: int, val: PyGe.Point3d, /) -> None: ...
+    def miterAt(self, val : int, /) -> PyGe.Vector3d: ...
+    def moveVertexAt(self, index : int, val : PyGe.Point3d, /) -> None: ...
     def normal(self, /) -> PyGe.Vector3d: ...
     def numVertices(self, /) -> int: ...
-    def removeLastSeg(self, val: PyGe.Point3d, /) -> None: ...
+    def removeLastSeg(self, val : PyGe.Point3d, /) -> None: ...
     def scale(self, /) -> float: ...
-    def setClosedMline(self, val: bool, /) -> None: ...
-    def setJustification(self, val: MlineJustification, /) -> None: ...
-    def setNormal(self, val: PyGe.Vector3d, /) -> None: ...
-    def setScale(self, val: float, /) -> None: ...
-    def setStyle(self, val: PyDb.ObjectId, /) -> None: ...
-    def setSupressEndCaps(self, val: bool, /) -> None: ...
-    def setSupressStartCaps(self, val: bool, /) -> None: ...
+    def setClosedMline(self, val : bool, /) -> None: ...
+    def setJustification(self, val : MlineJustification, /) -> None: ...
+    def setNormal(self, val : PyGe.Vector3d, /) -> None: ...
+    def setScale(self, val : float, /) -> None: ...
+    def setStyle(self, val : PyDb.ObjectId, /) -> None: ...
+    def setSupressEndCaps(self, val : bool, /) -> None: ...
+    def setSupressStartCaps(self, val : bool, /) -> None: ...
     def style(self, /) -> ObjectId: ...
     def supressEndCaps(self, /) -> bool: ...
     def supressStartCaps(self, /) -> bool: ...
-    def vertexAt(self, val: int, /) -> PyGe.Point3d: ...
-
+    def vertexAt(self, val : int, /) -> PyGe.Point3d: ...
 class MlineJustification(_BoostPythonEnum):
     kTop: ClassVar[Self]  # 0
     kZero: ClassVar[Self]  # 1
@@ -20907,24 +20128,10 @@ class MlineJustification(_BoostPythonEnum):
     kOpen: ClassVar[Self]  # 0
     kClosed: ClassVar[Self]  # 1
     kMerged: ClassVar[Self]  # 2
-
 class MlineStyle(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def addElement(
-        self,
-        offset: float,
-        clr: PyDb.AcCmColor,
-        ltid: PyDb.ObjectId,
-        checkIfReferenced: bool = True,
-        /,
-    ) -> int: ...
+    def addElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, checkIfReferenced: bool=True, /) -> int: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> MlineStyle: ...
     @staticmethod
@@ -20952,12 +20159,12 @@ class MlineStyle(PyDb.DbObject):
     def endSquareCap(self, /) -> bool: ...
     def fillColor(self, /) -> Color: ...
     def filled(self, /) -> bool: ...
-    def getElementAt(self, val: int, /) -> tuple[float, PyDb.Color, PyDb.ObjectId]: ...
+    def getElementAt(self, val: int, /) -> tuple[float,PyDb.Color,PyDb.ObjectId]: ...
     def initMlineStyle(self, /) -> None: ...
     def name(self, /) -> str: ...
     def numElements(self, /) -> int: ...
     def removeElementAt(self, val: int, /) -> None: ...
-    def set(self, src: PyDb.MlineStyle, checkIfReferenced: bool = True, /) -> None: ...
+    def set(self, src: PyDb.MlineStyle, checkIfReferenced: bool=True, /) -> None: ...
     def setDescription(self, val: str, /) -> None: ...
     def setElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, /) -> int: ...
     def setEndAngle(self, val: float, /) -> None: ...
@@ -20977,15 +20184,8 @@ class MlineStyle(PyDb.DbObject):
     def startInnerArcs(self, /) -> bool: ...
     def startRoundCap(self, /) -> bool: ...
     def startSquareCap(self, /) -> bool: ...
-
 class NurbSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> NurbSurface: ...
@@ -21007,7 +20207,6 @@ class NurbSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class ObjectContext(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -21033,9 +20232,8 @@ class ObjectContext(PyRx.RxObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def getName(self, /) -> str: ...
-    def setName(self, name: str, /) -> None: ...
+    def setName(self, name : str, /) -> None: ...
     def uniqueIdentifier(self, /) -> int: ...
-
 class ObjectContextCollection(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -21043,10 +20241,10 @@ class ObjectContextCollection(PyRx.RxObject):
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
-    def addContext(self, obj: PyDb.ObjectContext, /) -> None: ...
+    def addContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     @staticmethod
     def className() -> str: ...
-    def currentContext(self, obj: PyDb.Object, /) -> ObjectContext: ...
+    def currentContext(self, obj : PyDb.Object, /) -> ObjectContext: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21061,16 +20259,15 @@ class ObjectContextCollection(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getContext(self, name: str, /) -> ObjectContext: ...
-    def hasContext(self, name: str, /) -> bool: ...
-    def lockContext(self, obj: PyDb.ObjectContext, /) -> None: ...
+    def getContext(self, name : str, /) -> ObjectContext: ...
+    def hasContext(self, name : str, /) -> bool: ...
+    def lockContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     def locked(self, /) -> bool: ...
     def name(self, /) -> str: ...
-    def removeContext(self, name: str, /) -> None: ...
-    def setCurrentContext(self, obj: PyDb.ObjectContext, /) -> None: ...
-    def toList(self, desc: PyRx.RxClass = PyDb.ObjectContext, /) -> list[PyDb.ObjectContext]: ...
+    def removeContext(self, name : str, /) -> None: ...
+    def setCurrentContext(self, obj : PyDb.ObjectContext, /) -> None: ...
+    def toList(self, desc:PyRx.RxClass=PyDb.ObjectContext, /) -> list[PyDb.ObjectContext]: ...
     def unlockContext(self, /) -> None: ...
-
 class ObjectContextManager(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -21080,7 +20277,7 @@ class ObjectContextManager(PyRx.RxObject):
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
-    def contextCollection(self, name: str, /) -> ObjectContextCollection: ...
+    def contextCollection(self, name : str, /) -> ObjectContextCollection: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21095,11 +20292,8 @@ class ObjectContextManager(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def registerContextCollection(
-        self, name: str, collection: PyDb.ObjectContextCollection, /
-    ) -> None: ...
-    def unregisterContextCollection(self, name: str, /) -> None: ...
-
+    def registerContextCollection(self, name : str, collection : PyDb.ObjectContextCollection, /) -> None: ...
+    def unregisterContextCollection(self, name : str, /) -> None: ...
 class ObjectId:
     def __ge__(self, /) -> bool: ...
     def __gt__(self, /) -> bool: ...
@@ -21148,7 +20342,7 @@ class ObjectId:
         object ID is NULL, then NULL is returned.
         """
     @staticmethod
-    def fromOldId(oldId: int, /) -> ObjectId:
+    def fromOldId(oldId : int, /) -> ObjectId:
         """
         This function allows the passing of unsigned 64-bit data.
         """
@@ -21156,7 +20350,7 @@ class ObjectId:
         """
         This function returns the handle of the object associated with the object ID.
         """
-    def isDerivedFrom(self, desc: PyRx.RxClass, /) -> bool:
+    def isDerivedFrom(self, desc : PyRx.RxClass, /) -> bool:
         """
         Static method for checking if first (left) class arg is derived from second (right) one.
         """
@@ -21216,11 +20410,10 @@ class ObjectId:
         database. If the object associated with this object ID is not from an xref database or is
         not redirected, then this method is the same as AcDbObjectId::database().
         """
-    def setFromOldId(self, oldId: int, /) -> None:
+    def setFromOldId(self, oldId : int, /) -> None:
         """
         This function allows the passing of unsigned 64-bit data.
         """
-
 class ObjectIdArray:
     def __contains__(self, /) -> bool: ...
     def __delitem__(self, /) -> None: ...
@@ -21234,7 +20427,7 @@ class ObjectIdArray:
     def clear(self, /) -> None: ...
     def extend(self, /) -> None: ...
     @overload
-    def getIdsOfType(self, desc: PyRx.RxClass = PyDb.Entity, /) -> ObjectIdArray: ...
+    def getIdsOfType(self, desc: PyRx.RxClass=PyDb.Entity, /) -> ObjectIdArray: ...
     @overload
     def getIdsOfType(self, descList: list[PyRx.RxClass], /) -> ObjectIdArray: ...
     @overload
@@ -21242,7 +20435,6 @@ class ObjectIdArray:
     def removeErased(self, /) -> None: ...
     def reverse(self, /) -> None: ...
     def sort(self, /) -> None: ...
-
 class ObjectIdGraph(PyDb.Graph):
     def __init__(self, /) -> None:
         """
@@ -21252,15 +20444,14 @@ class ObjectIdGraph(PyDb.Graph):
         object ID to another.
         """
     def __reduce__(self, /) -> Any: ...
-    def addNode(self, val: PyDb.ObjectIdGraphNode, /) -> None: ...
+    def addNode(self, val:PyDb.ObjectIdGraphNode, /) -> None: ...
     @staticmethod
     def className() -> str: ...
-    def delNode(self, val: PyDb.ObjectIdGraphNode, /) -> None: ...
-    def findNode(self, val: PyDb.ObjectId, /) -> ObjectIdGraphNode: ...
-    def idNode(self, val: int, /) -> ObjectIdGraphNode: ...
-
+    def delNode(self, val:PyDb.ObjectIdGraphNode, /) -> None: ...
+    def findNode(self, val:PyDb.ObjectId, /) -> ObjectIdGraphNode: ...
+    def idNode(self, val:int, /) -> ObjectIdGraphNode: ...
 class ObjectIdGraphNode(PyDb.GraphNode):
-    def __init__(self, val: PyDb.ObjectId, /) -> None:
+    def __init__(self, val:PyDb.ObjectId, /) -> None:
         """
         AcDbObjectIdGraphNode is derived from AcDbGraphNode and is used for representing an object
         ID in a database.
@@ -21269,7 +20460,6 @@ class ObjectIdGraphNode(PyDb.GraphNode):
     @staticmethod
     def className() -> str: ...
     def id(self, /) -> ObjectId: ...
-
 class OpenMode(_BoostPythonEnum):
     ForRead: ClassVar[Self]  # 0
     ForWrite: ClassVar[Self]  # 1
@@ -21277,7 +20467,6 @@ class OpenMode(_BoostPythonEnum):
     kForRead: ClassVar[Self]  # 0
     kForWrite: ClassVar[Self]  # 1
     kForNotify: ClassVar[Self]  # 2
-
 class OrdinateDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -21291,9 +20480,7 @@ class OrdinateDimension(PyDb.Dimension):
         the end of the leader.
         """
     @overload
-    def __init__(
-        self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, /) -> None:
         """
         The AcDbOrdinateDimension class represents the ordinate dimension type within AutoCAD.
         Ordinate dimensions measure the 'horizontal' (X axis) or 'vertical' (Y axis) distance from
@@ -21304,14 +20491,7 @@ class OrdinateDimension(PyDb.Dimension):
         the end of the leader.
         """
     @overload
-    def __init__(
-        self,
-        useXAxis: bool,
-        definingPoint: PyGe.Point3d,
-        leaderEndPoint: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str, /) -> None:
         """
         The AcDbOrdinateDimension class represents the ordinate dimension type within AutoCAD.
         Ordinate dimensions measure the 'horizontal' (X axis) or 'vertical' (Y axis) distance from
@@ -21322,15 +20502,7 @@ class OrdinateDimension(PyDb.Dimension):
         the end of the leader.
         """
     @overload
-    def __init__(
-        self,
-        useXAxis: bool,
-        definingPoint: PyGe.Point3d,
-        leaderEndPoint: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, useXAxis: bool, definingPoint: PyGe.Point3d, leaderEndPoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDbOrdinateDimension class represents the ordinate dimension type within AutoCAD.
         Ordinate dimensions measure the 'horizontal' (X axis) or 'vertical' (Y axis) distance from
@@ -21435,29 +20607,29 @@ class OrdinateDimension(PyDb.Dimension):
         This function returns the point (in WCS coordinates) that the dimension treats as (0,0,0)
         for distance calculations.
         """
-    def setDefiningPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDefiningPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the ordinate point to be
         measured. The dimension measures the X or Y distance between this point and the dimension's
         origin point. The defining point is used for DXF group code 13. This function always
         returns Acad::eOk.
         """
-    def setLeaderEndPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setLeaderEndPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the dimension leader's
         endpoint. This point is also used in the text position calculations. The leaderEndPoint is
         used for DXF group code 14. This function always returns Acad::eOk.
         """
-    def setOrigin(self, pt: PyGe.Point3d, /) -> None:
+    def setOrigin(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point that the
         dimension treats as (0,0,0) for distance calculations.
         """
-    def setUsingXAxis(self, val: bool, /) -> None:
+    def setUsingXAxis(self, val : bool, /) -> None:
         """
         This is setUsingXAxis, a member of class AcDbOrdinateDimension.
         """
-    def setUsingYAxis(self, val: bool, /) -> None:
+    def setUsingYAxis(self, val : bool, /) -> None:
         """
         This is setUsingYAxis, a member of class AcDbOrdinateDimension.
         """
@@ -21473,7 +20645,6 @@ class OrdinateDimension(PyDb.Dimension):
         origin point and the definingPoint. Setting the dimension to measure along the Y axis
         clears bit 7 of DXF group code 70. This function always returns Acad::eOk.
         """
-
 class OrthographicView(_BoostPythonEnum):
     kNonOrthoView: ClassVar[Self]  # 0
     kTopView: ClassVar[Self]  # 1
@@ -21482,7 +20653,6 @@ class OrthographicView(_BoostPythonEnum):
     kBackView: ClassVar[Self]  # 4
     kLeftView: ClassVar[Self]  # 5
     kRightView: ClassVar[Self]  # 6
-
 class OsnapMask(_BoostPythonEnum):
     kOsMaskEnd: ClassVar[Self]  # 1
     kOsMaskMid: ClassVar[Self]  # 2
@@ -21503,7 +20673,6 @@ class OsnapMask(_BoostPythonEnum):
     kOsMaskRelCartesian: ClassVar[Self]  # 524288
     kOsMaskRelPolar: ClassVar[Self]  # 1048576
     kOsMaskNoneOverride: ClassVar[Self]  # 2097152
-
 class OsnapMode(_BoostPythonEnum):
     kOsModeEnd: ClassVar[Self]  # 1
     kOsModeMid: ClassVar[Self]  # 2
@@ -21515,31 +20684,11 @@ class OsnapMode(_BoostPythonEnum):
     kOsModeTan: ClassVar[Self]  # 9
     kOsModeNear: ClassVar[Self]  # 10
     kOsModeCentroid: ClassVar[Self]  # 11
-
 class OsnapOverrule(PyRx.Overrule):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def baseGetOsnapPoints(
-        self,
-        pSubject: PyDb.Entity,
-        osMode: PyDb.OsnapMode,
-        gsMark: int,
-        pickPnt: PyGe.Point3d,
-        lastPnt: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        /,
-    ) -> tuple[int, list[PyGe.Point3d]]: ...
-    def baseGetOsnapPointsX(
-        self,
-        pSubject: PyDb.Entity,
-        osMode: PyDb.OsnapMode,
-        gsMark: int,
-        pickPnt: PyGe.Point3d,
-        lastPnt: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        insertionMat: PyGe.Matrix3d,
-        /,
-    ) -> tuple[int, list[PyGe.Point3d]]: ...
+    def baseGetOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def baseGetOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
     def baseIsContentSnappable(self, object: PyDb.Entity, /) -> bool: ...
     @staticmethod
     def className() -> str: ...
@@ -21557,30 +20706,10 @@ class OsnapOverrule(PyRx.Overrule):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getOsnapPoints(
-        self,
-        pSubject: PyDb.Entity,
-        osMode: PyDb.OsnapMode,
-        gsMark: int,
-        pickPnt: PyGe.Point3d,
-        lastPnt: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        /,
-    ) -> tuple[int, list[PyGe.Point3d]]: ...
-    def getOsnapPointsX(
-        self,
-        pSubject: PyDb.Entity,
-        osMode: PyDb.OsnapMode,
-        gsMark: int,
-        pickPnt: PyGe.Point3d,
-        lastPnt: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        insertionMat: PyGe.Matrix3d,
-        /,
-    ) -> tuple[int, list[PyGe.Point3d]]: ...
+    def getOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def getOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
     def isApplicable(self, object: PyRx.RxObject, /) -> bool: ...
     def isContentSnappable(self, object: PyDb.Entity, /) -> bool: ...
-
 class OsnapPointRef(PyDb.PointRef):
     @overload
     def __init__(self, /) -> None:
@@ -21650,7 +20779,6 @@ class OsnapPointRef(PyDb.PointRef):
         This function set a single point for a non-associative geometry. Returns Acad::eOk if
         successful.
         """
-
 class OsnapType(_BoostPythonEnum):
     kOsnapNone: ClassVar[Self]  # 0
     kOsnapEnd: ClassVar[Self]  # 1
@@ -21666,7 +20794,6 @@ class OsnapType(_BoostPythonEnum):
     kOsnapApint: ClassVar[Self]  # 11
     kOsnapStart: ClassVar[Self]  # 13
     kOsnapCentroid: ClassVar[Self]  # 14
-
 class OutputDisplayService:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -21674,8 +20801,7 @@ class OutputDisplayService:
     def className() -> str: ...
     def getMuteCmdLine(self, /) -> bool: ...
     def output(self, /) -> str: ...
-    def setMuteCmdLine(self, forward: bool, /) -> None: ...
-
+    def setMuteCmdLine(self, forward:bool, /) -> None: ...
 class OverrulableEntity(PyDb.Entity):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -21727,7 +20853,6 @@ class OverrulableEntity(PyDb.Entity):
     def setdescription(self, val: str, /) -> None: ...
     def strings(self, /) -> list: ...
     def typing(self, /) -> int: ...
-
 class PdfDefinition(PyDb.UnderlayDefinition):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         """
@@ -21755,7 +20880,6 @@ class PdfDefinition(PyDb.UnderlayDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class PdfReference(PyDb.UnderlayReference):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         """
@@ -21783,20 +20907,12 @@ class PdfReference(PyDb.UnderlayReference):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class Planarity(_BoostPythonEnum):
     kNonPlanar: ClassVar[Self]  # 0
     kPlanar: ClassVar[Self]  # 1
     kLinear: ClassVar[Self]  # 2
-
 class PlaneSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PlaneSurface: ...
@@ -21818,18 +20934,15 @@ class PlaneSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class PlotPaperUnits(_BoostPythonEnum):
     kInches: ClassVar[Self]  # 0
     kMillimeters: ClassVar[Self]  # 1
     kPixels: ClassVar[Self]  # 2
-
 class PlotRotation(_BoostPythonEnum):
     k0degrees: ClassVar[Self]  # 0
     k90degrees: ClassVar[Self]  # 1
     k180degrees: ClassVar[Self]  # 2
     k270degrees: ClassVar[Self]  # 3
-
 class PlotSettings(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -21892,14 +21005,14 @@ class PlotSettings(PyDb.DbObject):
     def drawViewportsFirst(self, /) -> bool: ...
     def getCanonicalMediaName(self, /) -> str: ...
     def getCurrentStyleSheet(self, /) -> str: ...
-    def getCustomPrintScale(self, /) -> tuple[float, float]: ...
+    def getCustomPrintScale(self, /) -> tuple[float,float]: ...
     def getPlotCfgName(self, /) -> str: ...
-    def getPlotOrigin(self, /) -> tuple[float, float]: ...
-    def getPlotPaperMargins(self, /) -> tuple[float, float, float, float]: ...
-    def getPlotPaperSize(self, /) -> tuple[float, float]: ...
+    def getPlotOrigin(self, /) -> tuple[float,float]: ...
+    def getPlotPaperMargins(self, /) -> tuple[float,float,float,float]: ...
+    def getPlotPaperSize(self, /) -> tuple[float,float]: ...
     def getPlotSettingsName(self, /) -> str: ...
     def getPlotViewName(self, /) -> str: ...
-    def getPlotWindowArea(self, /) -> tuple[float, float, float, float]: ...
+    def getPlotWindowArea(self, /) -> tuple[float,float,float,float]: ...
     def getStdScale(self, /) -> float: ...
     def modelType(self, /) -> bool: ...
     def plotAsRaster(self, /) -> bool: ...
@@ -21938,7 +21051,6 @@ class PlotSettings(PyDb.DbObject):
     def showPlotStyles(self, /) -> bool: ...
     def stdScaleType(self, /) -> StdScaleType: ...
     def useStandardScale(self, /) -> bool: ...
-
 class PlotSettingsValidator:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -21955,63 +21067,37 @@ class PlotSettingsValidator:
     def plotStyleSheetList(self, /) -> list[str]: ...
     def refreshLists(self, settings: PyDb.PlotSettings, /) -> None: ...
     def setCanonicalMediaName(self, settings: PyDb.PlotSettings, mediaName: str, /) -> None: ...
-    def setClosestMediaName(
-        self,
-        settings: PyDb.PlotSettings,
-        paperWidth: float,
-        paperHeight: float,
-        units: PyDb.PlotPaperUnits,
-        matchPrintableArea: bool,
-        /,
-    ) -> None: ...
-    def setCurrentStyleSheet(
-        self, settings: PyDb.PlotSettings, styleSheetName: str, /
-    ) -> None: ...
-    def setCustomPrintScale(
-        self, settings: PyDb.PlotSettings, numerator: float, denominator: float, /
-    ) -> None: ...
+    def setClosestMediaName(self, settings: PyDb.PlotSettings, paperWidth: float, paperHeight: float, units: PyDb.PlotPaperUnits, matchPrintableArea: bool, /) -> None: ...
+    def setCurrentStyleSheet(self, settings: PyDb.PlotSettings, styleSheetName: str, /) -> None: ...
+    def setCustomPrintScale(self, settings: PyDb.PlotSettings, numerator: float, denominator: float, /) -> None: ...
     def setDefaultPlotConfig(self, settings: PyDb.PlotSettings, /) -> None: ...
     def setPlotCentered(self, settings: PyDb.PlotSettings, isCentered: bool, /) -> None: ...
     @overload
     def setPlotCfgName(self, settings: PyDb.PlotSettings, plotDeviceName: str, /) -> None: ...
     @overload
-    def setPlotCfgName(
-        self, settings: PyDb.PlotSettings, plotDeviceName: str, mediaName: str, /
-    ) -> None: ...
+    def setPlotCfgName(self, settings: PyDb.PlotSettings, plotDeviceName: str, mediaName: str, /) -> None: ...
     @overload
     def setPlotCfgName(self, *args) -> None: ...
-    def setPlotOrigin(
-        self, settings: PyDb.PlotSettings, xCoordinate: float, yCoordinate: float, /
-    ) -> None: ...
-    def setPlotPaperUnits(
-        self, settings: PyDb.PlotSettings, units: PyDb.PlotPaperUnits, /
-    ) -> None: ...
-    def setPlotRotation(
-        self, settings: PyDb.PlotSettings, rotationType: PyDb.PlotRotation, /
-    ) -> None: ...
+    def setPlotOrigin(self, settings: PyDb.PlotSettings, xCoordinate: float, yCoordinate: float, /) -> None: ...
+    def setPlotPaperUnits(self, settings: PyDb.PlotSettings, units: PyDb.PlotPaperUnits, /) -> None: ...
+    def setPlotRotation(self, settings: PyDb.PlotSettings, rotationType: PyDb.PlotRotation, /) -> None: ...
     def setPlotType(self, settings: PyDb.PlotSettings, plotAreaType: PyDb.PlotType, /) -> None: ...
     def setPlotViewName(self, settings: PyDb.PlotSettings, viewName: str, /) -> None: ...
     @overload
     def setPlotWindowArea(self, settings: PyDb.PlotSettings, ex: PyDb.Extents2d, /) -> None: ...
     @overload
-    def setPlotWindowArea(
-        self, settings: PyDb.PlotSettings, xmin: float, ymin: float, xmax: float, ymax: float, /
-    ) -> None: ...
+    def setPlotWindowArea(self, settings: PyDb.PlotSettings, xmin: float, ymin: float, xmax: float, ymax: float, /) -> None: ...
     @overload
     def setPlotWindowArea(self, *args) -> None: ...
     def setStdScale(self, settings: PyDb.PlotSettings, scale: float, /) -> None: ...
-    def setStdScaleType(
-        self, settings: PyDb.PlotSettings, scaleType: PyDb.StdScaleType, /
-    ) -> None: ...
+    def setStdScaleType(self, settings: PyDb.PlotSettings, scaleType: PyDb.StdScaleType, /) -> None: ...
     def setUseStandardScale(self, settings: PyDb.PlotSettings, useStandard: bool, /) -> None: ...
     def setZoomToPaperOnUpdate(self, settings: PyDb.PlotSettings, doZoom: bool, /) -> None: ...
-
 class PlotStyleNameType(_BoostPythonEnum):
     kPlotStyleNameByLayer: ClassVar[Self]  # 0
     kPlotStyleNameByBlock: ClassVar[Self]  # 1
     kPlotStyleNameIsDictDefault: ClassVar[Self]  # 2
     kPlotStyleNameById: ClassVar[Self]  # 3
-
 class PlotType(_BoostPythonEnum):
     kDisplay: ClassVar[Self]  # 0
     kExtents: ClassVar[Self]  # 1
@@ -22019,7 +21105,6 @@ class PlotType(_BoostPythonEnum):
     kView: ClassVar[Self]  # 3
     kWindow: ClassVar[Self]  # 4
     kLayout: ClassVar[Self]  # 5
-
 class Point(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -22032,7 +21117,7 @@ class Point(PyDb.Entity):
         direction of its normal vector (that is, its extrusion length).
         """
     @overload
-    def __init__(self, pos: PyGe.Point3d, /) -> None:
+    def __init__(self, pos : PyGe.Point3d, /) -> None:
         """
         The AcDbPoint class represents the point entity within AutoCAD. A point entity has a
         position value to locate it in space. It also has a normal vector, which is used to
@@ -22121,7 +21206,7 @@ class Point(PyDb.Entity):
         Returns the points position value in WCS coordinates. The position value is used for DXF
         group code 10.
         """
-    def setEcsRotation(self, val: float, /) -> None:
+    def setEcsRotation(self, val : float, /) -> None:
         """
         Sets newVal to be the angle (in radians) between the OCS (formerly ECS) X axis for the
         point (based on the point's normal vector) and the X axis that will be used when displaying
@@ -22129,7 +21214,7 @@ class Point(PyDb.Entity):
         '.'. The OCS Rotation is used for DXF group code 50. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets newVal to be the normal vector for the point. newVal must be in WCS coordinates. The
         normal is used as the extrusion direction when the point has non-zero thickness. The normal
@@ -22137,13 +21222,13 @@ class Point(PyDb.Entity):
         as something other than a '.'. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets pt to be the points position value. pt must be in WCS coordinates. The position value
         is used for DXF group code 10. Returns Acad::eOk if successful or Acad::eInvalidInput if
         the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val : float, /) -> None:
         """
         Sets thickness to be the thickness value for the point. The thickness is the point's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -22156,7 +21241,6 @@ class Point(PyDb.Entity):
         along its normal vector direction (sometimes called the extrusion direction). The thickness
         value is used for DXF group code 39.
         """
-
 class Point3AngularDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -22165,43 +21249,19 @@ class Point3AngularDimension(PyDb.Dimension):
         points (as opposed to two lines) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, /) -> None:
         """
         The AcDb3PointAngularDimension class represents the angular dimension defined by three
         points (as opposed to two lines) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, /) -> None:
         """
         The AcDb3PointAngularDimension class represents the angular dimension defined by three
         points (as opposed to two lines) within AutoCAD.
         """
     @overload
-    def __init__(
-        self,
-        centerPoint: PyGe.Point3d,
-        xL1Start: PyGe.Point3d,
-        xL1End: PyGe.Point3d,
-        arcPnt: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDb3PointAngularDimension class represents the angular dimension defined by three
         points (as opposed to two lines) within AutoCAD.
@@ -22267,23 +21327,23 @@ class Point3AngularDimension(PyDb.Dimension):
         """
         Returns true if extension arc is on. Otherwise, it returns false.
         """
-    def setArcPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setArcPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used to determine the location of the arc for the dimension.
         """
-    def setCenterPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the vertex of the angle being dimensioned. The vertex definition point is
         used for DXF group code 15. This function always returns Acad::eOk.
         """
-    def setExtArcOn(self, val: bool, /) -> None:
+    def setExtArcOn(self, val : bool, /) -> None:
         """
         This function turns the extension arc flag on or off. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the start point of the first extension line of the dimension. This point
@@ -22292,7 +21352,7 @@ class Point3AngularDimension(PyDb.Dimension):
         extension line is displayed relative to this point. The first extension line start point is
         used for DXF group code 13. This function always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the start point of the second extension line of the dimension. This point
@@ -22319,7 +21379,6 @@ class Point3AngularDimension(PyDb.Dimension):
         extension line is displayed relative to this point. The first extension line start point is
         used for DXF group code 14.
         """
-
 class PointCloudClassificationColorRamp:
     def __init__(self, /) -> None:
         """
@@ -22337,15 +21396,8 @@ class PointCloudClassificationColorRamp:
     def setName(self, val: str, /) -> None: ...
     def setVisibility(self, val: int, visibility: bool, /) -> None: ...
     def visibility(self, val: int, /) -> bool: ...
-
 class PointCloudColorMap(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbPointCloudColorMap class stores all color map ramp definitions. There is only one
         AcDbPointCloudColorMap object per database. The user can use getColorMap() to retrieve the
@@ -22360,13 +21412,11 @@ class PointCloudColorMap(PyDb.DbObject):
     def cast(otherObject: PyRx.RxObject, /) -> PointCloudColorMap: ...
     @staticmethod
     def className() -> str: ...
-    def classificationScheme(
-        self, guid: str, /
-    ) -> tuple[bool, PyDb.PointCloudClassificationColorRamp]: ...
+    def classificationScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudClassificationColorRamp]: ...
     def classificationSchemeGUIDs(self, /) -> list[str]: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudColorMap: ...
-    def colorScheme(self, guid: str, /) -> tuple[bool, PyDb.PointCloudColorRamp]: ...
+    def colorScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudColorRamp]: ...
     def colorSchemeGUIDs(self, /) -> list[str]: ...
     def defaultClassificationColorScheme(self, /) -> str: ...
     def defaultElevationColorScheme(self, /) -> str: ...
@@ -22389,18 +21439,15 @@ class PointCloudColorMap(PyDb.DbObject):
         """
     def getClassificationColorSchemeInUse(self, /) -> list[str]: ...
     @staticmethod
-    def getColorMap(val: PyDb.Database, /) -> ObjectId: ...
+    def getColorMap(val : PyDb.Database, /) -> ObjectId: ...
     def getColorSchemeInUse(self, /) -> list[str]: ...
     def hasClassificationScheme(self, guid: str, /) -> bool: ...
     def hasColorScheme(self, guid: str, /) -> bool: ...
-    def setClassificationScheme(
-        self, guid: str, val: PyDb.PointCloudClassificationColorRamp, /
-    ) -> bool: ...
+    def setClassificationScheme(self, guid: str, val: PyDb.PointCloudClassificationColorRamp, /) -> bool: ...
     def setColorScheme(self, guid: str, val: PyDb.PointCloudColorRamp, /) -> bool: ...
     def setDefaultClassificationColorScheme(self, guid: str, /) -> bool: ...
     def setDefaultElevationColorScheme(self, guid: str, /) -> bool: ...
     def setDefaultIntensityColorScheme(self, guid: str, /) -> bool: ...
-
 class PointCloudColorRamp:
     def __init__(self, /) -> None:
         """
@@ -22419,7 +21466,6 @@ class PointCloudColorRamp:
     def setNumColors(self, val: int, /) -> None: ...
     def setVisibility(self, val: int, visibility: bool, /) -> None: ...
     def visibility(self, val: int, /) -> bool: ...
-
 class PointCloudCrop:
     def __init__(self, /) -> None:
         """
@@ -22433,7 +21479,7 @@ class PointCloudCrop:
     def className() -> str: ...
     def clear(self, /) -> None: ...
     def get(self, /) -> list[PyGe.Point3d]: ...
-    def getCropPlane(self, /) -> tuple[bool, PyGe.Plane]: ...
+    def getCropPlane(self, /) -> tuple[bool,PyGe.Plane]: ...
     def isInside(self, /) -> bool: ...
     def isInverted(self, /) -> bool: ...
     def isValid(self, /) -> bool: ...
@@ -22444,21 +21490,13 @@ class PointCloudCrop:
     def setInside(self, val: bool, /) -> None: ...
     def setInvert(self, val: bool, /) -> None: ...
     def type(self, /) -> PointCloudCropType: ...
-
 class PointCloudCropType(_BoostPythonEnum):
     kInvalid: ClassVar[Self]  # 0
     kRectangular: ClassVar[Self]  # 1
     kPolygonal: ClassVar[Self]  # 2
     kCircular: ClassVar[Self]  # 3
-
 class PointCloudDefEx(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbPointCloudDefEx object (or 'point cloud extension definition object') controls the
         actual point cloud data associated with one or more AcDbPointCloudEx entities (or 'point
@@ -22481,7 +21519,7 @@ class PointCloudDefEx(PyDb.DbObject):
     def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudDefEx: ...
     def coordinateSystemName(self, /) -> str: ...
     @staticmethod
-    def createPointCloudExDictionary(val: PyDb.Database, id: PyDb.ObjectId, /) -> None: ...
+    def createPointCloudExDictionary(val : PyDb.Database,id : PyDb.ObjectId, /) -> None: ...
     def defaultHeight(self, /) -> float: ...
     def defaultLength(self, /) -> float: ...
     def defaultWidth(self, /) -> float: ...
@@ -22499,37 +21537,29 @@ class PointCloudDefEx(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def entityCount(self, /) -> tuple[int, bool]: ...
+    def entityCount(self, /) -> tuple[int,bool]: ...
     def extents(self, /) -> Extents: ...
     def fileType(self, /) -> str: ...
     def getAllRcsFilePaths(self, /) -> list[str]: ...
-    def getRcsFilePath(self, guid: str, /) -> str: ...
-    def hasProperty(self, prop: PyDb.PointCloudProperty, /) -> PointCloudPropertyState: ...
+    def getRcsFilePath(self, guid : str, /) -> str: ...
+    def hasProperty(self, prop : PyDb.PointCloudProperty, /) -> PointCloudPropertyState: ...
     def isLoaded(self, /) -> bool: ...
     def load(self, /) -> None: ...
     @staticmethod
-    def pointCloudExDictionary(val: PyDb.Database, /) -> ObjectId: ...
-    def setActiveFileName(self, path: str, /) -> None: ...
-    def setSourceFileName(self, path: str, /) -> None: ...
+    def pointCloudExDictionary(val : PyDb.Database, /) -> ObjectId: ...
+    def setActiveFileName(self, path : str, /) -> None: ...
+    def setSourceFileName(self, path : str, /) -> None: ...
     def sourceFileName(self, /) -> str: ...
     def totalPointsCount(self, /) -> int: ...
     def totalRegionsCount(self, /) -> int: ...
     def totalScansCount(self, /) -> int: ...
     def unload(self, /) -> None: ...
-
 class PointCloudDispOptionOutOfRange(_BoostPythonEnum):
     kUseMinMaxColors: ClassVar[Self]  # 0
     kUseRGBScanColors: ClassVar[Self]  # 1
     kHidePoints: ClassVar[Self]  # 2
-
 class PointCloudEx(PyDb.Entity):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         The AcDbPointCloudEx entity (or 'point cloud extension entity') works with the
         AcDbPointCloudDefEx object (or 'point cloud extension definition object') to manage point
@@ -22553,9 +21583,7 @@ class PointCloudEx(PyDb.Entity):
     @overload
     def applyGeoLocation(self, *args) -> None: ...
     @staticmethod
-    def attachPointCloud(
-        path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database, /
-    ) -> ObjectId: ...
+    def attachPointCloud(path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PointCloudEx: ...
     @staticmethod
@@ -22579,42 +21607,27 @@ class PointCloudEx(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def detectPointBelonger(self, ptWCS: PyGe.Point3d, /) -> tuple[str, int]: ...
+    def detectPointBelonger(self, ptWCS: PyGe.Point3d, /) -> tuple[str,int]: ...
     def elevationApplyToFixedRange(self, /) -> bool: ...
     def elevationOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange: ...
     def geolocate(self, /) -> bool: ...
-    def getActiveFileName(self, /) -> tuple[bool, str]: ...
+    def getActiveFileName(self, /) -> tuple[bool,str]: ...
     def getCandidatePlane(self, x: int, y: int, /) -> tuple: ...
     def getColorSchemeForStylization(self, val: PyDb.PointCloudStylizationType, /) -> str: ...
     def getCroppingCount(self, /) -> int: ...
     def getCroppingInvert(self, /) -> bool: ...
     def getCurrentColorScheme(self, /) -> str: ...
-    def getCustomOsnapInfo(
-        self,
-        snapMode: PyDb.PointCloudOSnapMode,
-        pickPoint: PyGe.Point3d,
-        lastPoint: PyGe.Point3d,
-        viewXform: PyGe.Matrix3d,
-        /,
-    ) -> list[PyGe.Point3d]: ...
-    def getCylinderAt(
-        self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /
-    ) -> tuple[PyGe.Point3d, PyGe.Vector3d, float, float]: ...
+    def getCustomOsnapInfo(self, snapMode: PyDb.PointCloudOSnapMode, pickPoint: PyGe.Point3d, lastPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> list[PyGe.Point3d]: ...
+    def getCylinderAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,float,float]: ...
     def getDisplayedVisiblePointCount(self, /) -> int: ...
     def getLoadedVisiblePointCount(self, /) -> int: ...
     def getMinDistPrecision(self, /) -> float: ...
     def getNativeCloudExtent(self, /) -> Extents: ...
-    def getPlaneBoundaryAt(
-        self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /
-    ) -> tuple[bool, list[PyGe.Point3d]]: ...
-    def getPlaneOrPointAt(
-        self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /
-    ) -> tuple[bool, list[PyGe.Point3d]]: ...
+    def getPlaneBoundaryAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]: ...
+    def getPlaneOrPointAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]: ...
     def getPointCloudCropping(self, index: int, /) -> PointCloudCrop: ...
     def getPointCloudName(self, /) -> str: ...
-    def getScanViewInfo(
-        self, scanGuid: str, /
-    ) -> tuple[bool, str, PyGe.Point3d, PyDb.Extents]: ...
+    def getScanViewInfo(self, scanGuid: str, /) -> tuple[bool,str,PyGe.Point3d,PyDb.Extents]: ...
     def getVisiblePointCount(self, /) -> int: ...
     def intensityOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange: ...
     def location(self, /) -> PyGe.Point3d: ...
@@ -22632,36 +21645,26 @@ class PointCloudEx(PyDb.Entity):
     def rotation(self, /) -> float: ...
     def scale(self, /) -> float: ...
     def setActiveFileName(self, val: str, /) -> bool: ...
-    def setAllRegionHighlight(
-        self, bHighlight: bool, includeUnassigned: bool = False, /
-    ) -> None: ...
-    def setAllRegionsVisibility(
-        self, bVisible: bool, includeUnassigned: bool = False, /
-    ) -> None: ...
+    def setAllRegionHighlight(self, bHighlight: bool, includeUnassigned: bool=False, /) -> None: ...
+    def setAllRegionsVisibility(self, bVisible: bool, includeUnassigned: bool=False, /) -> None: ...
     def setAllScanHighlight(self, val: bool, /) -> None: ...
     def setAllScansVisibility(self, bVisible: bool, /) -> None: ...
     def setAllScansVisibilityByRegion(self, regionId: int, bVisible: bool, /) -> None: ...
-    def setColorSchemeForStylization(
-        self, guid: str, val: PyDb.PointCloudStylizationType, /
-    ) -> None: ...
+    def setColorSchemeForStylization(self, guid: str, val: PyDb.PointCloudStylizationType, /) -> None: ...
     def setCroppingInvert(self, val: bool, /) -> None: ...
     def setCurrentColorScheme(self, guid: str, /) -> None: ...
     def setElevationApplyToFixedRange(self, /) -> None: ...
-    def setElevationOutOfRangeBehavior(
-        self, val: PyDb.PointCloudDispOptionOutOfRange, /
-    ) -> None: ...
+    def setElevationOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None: ...
     def setHighlightLimitboxBoundary(self, val: bool, /) -> None: ...
     def setInCreatingCroppingMode(self, val: bool, /) -> None: ...
-    def setIntensityOutOfRangeBehavior(
-        self, val: PyDb.PointCloudDispOptionOutOfRange, /
-    ) -> None: ...
+    def setIntensityOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None: ...
     def setLocation(self, pt: PyGe.Point3d, /) -> None: ...
-    def setLocked(self, val: bool, /) -> None: ...
+    def setLocked(self, val : bool, /) -> None: ...
     def setMinMaxElevation(self, min: float, max: float, /) -> None: ...
     def setMinMaxIntensity(self, min: int, max: int, /) -> None: ...
-    def setPointCloudDefExId(self, val: PyDb.ObjectId, /) -> None: ...
+    def setPointCloudDefExId(self, val : PyDb.ObjectId, /) -> None: ...
     def setPointCloudName(self, val: str, /) -> None: ...
-    def setReactorId(self, val: PyDb.ObjectId, /) -> None: ...
+    def setReactorId(self, val : PyDb.ObjectId, /) -> None: ...
     def setRegionVisibility(self, regionId: int, bVisible: bool, /) -> None: ...
     def setRotation(self, val: float, /) -> None: ...
     def setScale(self, val: float, /) -> None: ...
@@ -22674,7 +21677,6 @@ class PointCloudEx(PyDb.Entity):
     def showIntensityAsGradient(self, /) -> bool: ...
     def stylizationType(self, /) -> PointCloudStylizationType: ...
     def updateGeoLocation(self, /) -> None: ...
-
 class PointCloudOSnapMode(_BoostPythonEnum):
     kOsModePNod: ClassVar[Self]  # 0
     kOsModePNea: ClassVar[Self]  # 1
@@ -22684,7 +21686,6 @@ class PointCloudOSnapMode(_BoostPythonEnum):
     kOsModePInt: ClassVar[Self]  # 5
     kOsModePCL: ClassVar[Self]  # 6
     kOsModePCorner: ClassVar[Self]  # 7
-
 class PointCloudProperty(_BoostPythonEnum):
     kColor: ClassVar[Self]  # 1
     kIntensity: ClassVar[Self]  # 2
@@ -22692,12 +21693,10 @@ class PointCloudProperty(_BoostPythonEnum):
     kNormal: ClassVar[Self]  # 4
     kSegmentation: ClassVar[Self]  # 5
     kGeoGraphic: ClassVar[Self]  # 6
-
 class PointCloudPropertyState(_BoostPythonEnum):
     kNone: ClassVar[Self]  # -1
     kSome: ClassVar[Self]  # 0
     kAll: ClassVar[Self]  # 1
-
 class PointCloudStylizationType(_BoostPythonEnum):
     kTrueColor: ClassVar[Self]  # 1
     kSingleColor: ClassVar[Self]  # 2
@@ -22705,7 +21704,6 @@ class PointCloudStylizationType(_BoostPythonEnum):
     kHeightRamp: ClassVar[Self]  # 4
     kIntensityRamp: ClassVar[Self]  # 5
     kClassificationRamp: ClassVar[Self]  # 6
-
 class PointRef(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -22729,18 +21727,15 @@ class PointRef(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class Poly2dType(_BoostPythonEnum):
     k2dSimplePoly: ClassVar[Self]  # 0
     k2dFitCurvePoly: ClassVar[Self]  # 1
     k2dQuadSplinePoly: ClassVar[Self]  # 2
     k2dCubicSplinePoly: ClassVar[Self]  # 3
-
 class Poly3dType(_BoostPythonEnum):
     k3dSimplePoly: ClassVar[Self]  # 0
     k3dQuadSplinePoly: ClassVar[Self]  # 1
     k3dCubicSplinePoly: ClassVar[Self]  # 2
-
 class PolyFaceMeshVertex(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None:
@@ -22804,13 +21799,12 @@ class PolyFaceMeshVertex(PyDb.Vertex):
         Returns the WCS point value of this vertex. The position value is used for the DXF group
         code 10
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates. The
         position value is used for the DXF group code 10. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-
 class PolygonMeshVertex(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None:
@@ -22867,7 +21861,7 @@ class PolygonMeshVertex(PyDb.Vertex):
         """
         Returns the WCS point value of this vertex.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
@@ -22883,7 +21877,6 @@ class PolygonMeshVertex(PyDb.Vertex):
         follows: Return values Group Code 70 (bit value) k3dSimpleVertex 64 k3dControlVertex 16
         k3dFitVertex 8
         """
-
 class Polyline(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -23084,15 +22077,7 @@ class Polyline(PyDb.Curve):
         object and cannot vary between individual segments.
         """
     def __reduce__(self, /) -> Any: ...
-    def addVertexAt(
-        self,
-        idx: int,
-        pt2d: PyGe.Point2d,
-        bulge: float = 0.0,
-        startWidth: float = -1.0,
-        endWidth: float = -1.0,
-        /,
-    ) -> None:
+    def addVertexAt(self, idx:int, pt2d:PyGe.Point2d, bulge:float=0.0, startWidth:float=-1.0, endWidth:float=-1.0, /) -> None:
         """
         This function adds a vertex to the polyline. If index is 0, the vertex will become the
         first vertex of the polyline. If index is the value returned by AcDbPolyline::numverts(),
@@ -23123,24 +22108,24 @@ class Polyline(PyDb.Curve):
         """
         This returns the distance from the WCS origin to the plane of the polyline.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CompositeCurve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.CompositeCurve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
     def getAcGeCurve2d(self, /) -> PyGe.CompositeCurve2d: ...
-    def getArcSeg2dAt(self, idx: int, /) -> PyGe.CircArc2d:
+    def getArcSeg2dAt(self, idx:int, /) -> PyGe.CircArc2d:
         """
         If the segment at vertex index is an arc, then this function will fill in arc with the 3D
         arc information (radius, center, and so on) from the polyline in WCS. Returns Acad::eOk if
         successful or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getArcSeg3dAt(self, idx: int, /) -> PyGe.CircArc3d:
+    def getArcSeg3dAt(self, idx:int, /) -> PyGe.CircArc3d:
         """
         If the segment at vertex index is an arc, then this function will fill in arc with the 3D
         arc information (radius, center, and so on) from the polyline in WCS. Returns Acad::eOk if
         successful or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getBulgeAt(self, idx: int, /) -> float:
+    def getBulgeAt(self, idx:int, /) -> float:
         """
         This function gets the bulge factor value at the index vertex. The bulge factor is used to
         indicate how much of an arc segment is present at this vertex. The bulge factor is the
@@ -23167,35 +22152,35 @@ class Polyline(PyDb.Curve):
         matrix will be the identity matrix. Then this function will not need to be overridden since
         the identity matrix is this function's default return.
         """
-    def getEndWidthAt(self, idx: int, /) -> float:
+    def getEndWidthAt(self, idx:int, /) -> float:
         """
         This returns with startWidth set to the start width and endWidth set to the end width at
         the vertex index. Returns Acad::eOk if successful or Acad::eInvalidIndex if index is not
         valid for the polyline.
         """
-    def getLineSeg2dAt(self, idx: int, /) -> PyGe.LineSeg2d:
+    def getLineSeg2dAt(self, idx:int, /) -> PyGe.LineSeg2d:
         """
         If the segment at vertex index is a line, then ln will be set to be a representative 3D
         copy of that segment in World Coordinates. Returns Acad::eOk if successful, or
         Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getLineSeg3dAt(self, idx: int, /) -> PyGe.LineSeg3d:
+    def getLineSeg3dAt(self, idx:int, /) -> PyGe.LineSeg3d:
         """
         If the segment at vertex index is a line, then ln will be set to be a representative 3D
         copy of that segment in World Coordinates. Returns Acad::eOk if successful, or
         Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getPoint2dAt(self, idx: int, /) -> PyGe.Point2d:
+    def getPoint2dAt(self, idx:int, /) -> PyGe.Point2d:
         """
         This function sets pt to the 3D location of the vertex index in World Coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getPoint3dAt(self, idx: int, /) -> PyGe.Point3d:
+    def getPoint3dAt(self, idx:int, /) -> PyGe.Point3d:
         """
         This function sets pt to the 3D location of the vertex index in World Coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getStartWidthAt(self, idx: int, /) -> float:
+    def getStartWidthAt(self, idx:int, /) -> float:
         """
         This returns with startWidth set to the start width and endWidth set to the end width at
         the vertex index. Returns Acad::eOk if successful or Acad::eInvalidIndex if index is not
@@ -23231,7 +22216,7 @@ class Polyline(PyDb.Curve):
         if not.
         """
     def isPointInside(self, pointWcs: PyGe.Point3d, /) -> bool: ...
-    def makeClosedIfStartAndEndVertexCoincide(self, distTol: float, /) -> None:
+    def makeClosedIfStartAndEndVertexCoincide(self, distTol:float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDbPolyline.
         """
@@ -23255,7 +22240,7 @@ class Polyline(PyDb.Curve):
         """
         This function returns the number of vertices in the polyline.
         """
-    def onSegAt(self, idx: int, pt2d: PyGe.Point2d, param: float, /) -> bool:
+    def onSegAt(self, idx:int, pt2d:PyGe.Point2d, param:float, /) -> bool:
         """
         This function determines whether or not pt2d (specified in the polyline's Entity Coordinate
         System) is on the segment of the polyline starting at vertex index . If pt2d is on the
@@ -23263,70 +22248,70 @@ class Polyline(PyDb.Curve):
         will be in the parametric form of the segment type (in other words, linear or arc). Returns
         Adesk::kTrue if the point is on the polyline, or Adesk::kFalse if not.
         """
-    def removeVertexAt(self, idx: int, /) -> None:
+    def removeVertexAt(self, idx:int, /) -> None:
         """
         This function removes the vertex at index. Returns Acad::eOk if successful. Returns
         Acad::eInvalidIndex if index is not valid for the polyline or eDegenerateGeometry if there
         is only one vertex.
         """
-    def reset(self, reuse: bool, numVerts: int, /) -> None:
+    def reset(self, reuse:bool, numVerts:int, /) -> None:
         """
         This function resets the polyline's vertex data. If reuse is Adesk::kTrue, then the
         numVerts number of vertices are left intact and all vertices beyond that number are
         deleted. If reuse is Adesk::kFalse, then numVerts is ignored and all existing vertex
         information will be deleted.
         """
-    def segType(self, idx: int, /) -> SegType:
+    def segType(self, idx:int, /) -> SegType:
         """
         This function returns the type of segment (AcDbPolyline::SegType) that is headed by the
         vertex index. If index is invalid, then this function will assume start and end vertex
         values of 0.0 and will return a SegType of kCoincident.
         """
-    def setBulgeAt(self, idx: int, bulge: float, /) -> None:
+    def setBulgeAt(self, idx:int, bulge:float, /) -> None:
         """
         This function sets bulge to be the bulge value for the index vertex. This will determine
         the bulge for the polyline segment which follows the index vertex. Returns Acad::eOk if
         successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, val:bool, /) -> None:
         """
         If closed is Adesk::kTrue, this function sets the polyline to be closed (that is, there is
         a segment drawn from the last vertex to the first). If closed is Adesk::kFalse, then the
         polyline is open (no segment between the last and first vertices).
         """
-    def setConstantWidth(self, width: float, /) -> None:
+    def setConstantWidth(self, width:float, /) -> None:
         """
         This function sets the polyline to a constant width of width, which must be greater than or
         equal to zero. Returns Acad::eOk if successful or Acad::eInvalidIndex if width is less than
         0.0.
         """
-    def setElevation(self, elev: float, /) -> None:
+    def setElevation(self, elev:float, /) -> None:
         """
         This function sets elev , the distance of the polyline's plane from the WCS origin.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector (in WCS) for the plane containing the
         polyline.
         """
-    def setPlinegen(self, val: bool, /) -> None:
+    def setPlinegen(self, val:bool, /) -> None:
         """
         This function sets the polyline so it displays its linetype across vertices, if plineGen ==
         Adesk::kTrue. If plineGen == Adesk::kFalse, the linetype generation starts over at each
         vertex.
         """
-    def setPointAt(self, idx: int, pt2d: PyGe.Point2d, /) -> None:
+    def setPointAt(self, idx:int, pt2d:PyGe.Point2d, /) -> None:
         """
         This sets pt (in polyline OCS coordinates) to be the location of the index vertex.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val:float, /) -> None:
         """
         This sets thickness to be the thickness (extrusion depth or height) of the polyline. If
         thickness is greater than zero, then the extrusion is done with along the polyline's
         normal. If thickness is less than zero, the extrusion is done along the direction opposite
         the polyline's normal. Returns Acad::eOk if successful.
         """
-    def setWidthsAt(self, idx: int, startWidth: float, endWidth: float, /) -> None:
+    def setWidthsAt(self, idx:int, startWidth:float, endWidth:float, /) -> None:
         """
         This function sets startWidth to be the start width and endWidth to be the end width for
         vertex index. Returns Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid
@@ -23339,10 +22324,9 @@ class Polyline(PyDb.Curve):
         is an extrusion relative to the normal of the polyline; if the thickness is negative, then
         the extrusion is in the opposite sense of the normal.
         """
-    def toList(self, /) -> list[tuple[float, float]]: ...
+    def toList(self, /) -> list[tuple[float,float]]: ...
     def toPoint2dList(self, /) -> list[PyGe.Point2d]: ...
     def toPoint3dList(self, /) -> list[PyGe.Point3d]: ...
-
 class Polyline2d(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -23350,9 +22334,7 @@ class Polyline2d(PyDb.Curve):
         The AcDb2dPolyline class represents the 2D polyline entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool, /
-    ) -> None:
+    def __init__(self, ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool, /) -> None:
         """
         The AcDb2dPolyline class represents the 2D polyline entity within AutoCAD.
         """
@@ -23393,7 +22375,7 @@ class Polyline2d(PyDb.Curve):
         polyline is not yet database-resident, then Acad::eNoDatabase will be returned.
         """
     @overload
-    def appendVertex(self, outVertexId: PyDb.ObjectId, vertex: PyDb.Vertex2d, /) -> None:
+    def appendVertex(self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d, /) -> None:
         """
         This function appends the AcDb2dVertex object pointed to by pNewVert to the vertex list of
         the polyline, establishes the polyline as the vertex's owner, and adds the vertex the
@@ -23484,9 +22466,7 @@ class Polyline2d(PyDb.Curve):
         the polyline is not yet database-resident, then Acad::eNoDatabase will be returned.
         """
     @overload
-    def insertVertexAt(
-        self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d, /
-    ) -> None:
+    def insertVertexAt(self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d, /) -> None:
         """
         This function inserts the AcDb2dVertex object pointed to by pNewVertex into the vertex list
         of the polyline just after the AcDb2dVertex object with objectId indexVertId, establishes
@@ -23528,7 +22508,7 @@ class Polyline2d(PyDb.Curve):
         code 70. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is
         not acceptable.
         """
-    def makeClosedIfStartAndEndVertexCoincide(self, val: float, /) -> None:
+    def makeClosedIfStartAndEndVertexCoincide(self, val : float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDb2dPolyline.
         """
@@ -23559,7 +22539,7 @@ class Polyline2d(PyDb.Curve):
         will return Acad::eWasOpenForUndo. If the Seqend is currently open AcDb::kForWrite, then
         the open attempt will fail and this function will return Acad::eWasOpenForWrite.
         """
-    def openVertex(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> Vertex2d:
+    def openVertex(self, id : PyDb.ObjectId, mode: PyDb.OpenMode, /) -> Vertex2d:
         """
         This function provides access to the polyline's vertices. The function is passed in an
         empty pointer pVertex. The object ID of the vertex to open is vertId. The mode to open in
@@ -23589,15 +22569,15 @@ class Polyline2d(PyDb.Curve):
         that has a Cubic B-spline path. This reflects that the third bit of DXF group code 70 is
         set and that DXF group code 75 is set to 6.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, val : bool, /) -> None:
         """
         This is setClosed, a member of class AcDb2dPolyline.
         """
-    def setConstantWidth(self, val: float, /) -> None:
+    def setConstantWidth(self, val : float, /) -> None:
         """
         This is setConstantWidth, a member of class AcDb2dPolyline.
         """
-    def setDefaultEndWidth(self, val: float, /) -> None:
+    def setDefaultEndWidth(self, val : float, /) -> None:
         """
         Sets newVal to be the default polyline segment ending width value for the polyline. This
         value is used as the default end width for all vertices within the polyline. So, for
@@ -23606,7 +22586,7 @@ class Polyline2d(PyDb.Curve):
         non-zero, the default end width value is used for the polyline's DXF group code 41. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setDefaultStartWidth(self, val: float, /) -> None:
+    def setDefaultStartWidth(self, val : float, /) -> None:
         """
         Sets newVal to be the default polyline segment starting width value for the polyline. This
         value is used as the default start width for all vertices within the polyline. So, for
@@ -23616,7 +22596,7 @@ class Polyline2d(PyDb.Curve):
         40. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, val : float, /) -> None:
         """
         Sets newVal to be the elevation of the polyline. The elevation is the OCS Z axis value of
         the polyline (that is, the shortest distance from the WCS origin to the plane containing
@@ -23638,7 +22618,7 @@ class Polyline2d(PyDb.Curve):
         set bit 8 of DXF group code 70. Returns Acad::eOk if successful, or Acad::eInvalidInput if
         the data passed in is not acceptable.
         """
-    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normal : PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the polyline.
         normal must be non-zero in length. The normal value is used for DXF group code 210. Returns
@@ -23655,7 +22635,7 @@ class Polyline2d(PyDb.Curve):
         spline-fit polyline that has a Cubic B-spline path. This reflects that the third bit of DXF
         group code 70 is set and that DXF group code 75 is set to 6.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val : float, /) -> None:
         """
         This function sets thickness to be the thickness for the polyline. The thickness is the
         polyline's dimension along its normal vector direction. The normal vector direction is
@@ -23705,7 +22685,7 @@ class Polyline2d(PyDb.Curve):
         thickness value is used for DXF group code 39.
         """
     def vertexIds(self, /) -> list[PyDb.ObjectId]: ...
-    def vertexPosition(self, vt: PyDb.Vertex2d, /) -> PyGe.Point3d:
+    def vertexPosition(self, vt : PyDb.Vertex2d, /) -> PyGe.Point3d:
         """
         This function returns the WCS coordinate position value of vert. This function uses the X
         and Y coordinates from the vertex along with the Z coordinate from the polyline and applies
@@ -23713,7 +22693,6 @@ class Polyline2d(PyDb.Curve):
         will work with vertex objects that are not owned by the polyline. The position returned
         will be as though the vertex was owned by the polyline.
         """
-
 class Polyline3d(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -23721,9 +22700,7 @@ class Polyline3d(PyDb.Curve):
         The AcDb3dPolyline class represents the 3D polyline entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool, /
-    ) -> None:
+    def __init__(self, ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool, /) -> None:
         """
         The AcDb3dPolyline class represents the 3D polyline entity within AutoCAD.
         """
@@ -23764,7 +22741,7 @@ class Polyline3d(PyDb.Curve):
         polyline is not yet database-resident, then Acad::eNoDatabase will be returned.
         """
     @overload
-    def appendVertex(self, outVertexId: PyDb.ObjectId, vertex: PyDb.Polyline3dVertex, /) -> None:
+    def appendVertex(self, outVertexId: PyDb.ObjectId,vertex: PyDb.Polyline3dVertex, /) -> None:
         """
         This function appends the AcDb3dPolylineVertex object pointed to by pNewVert to the vertex
         list of the polyline, establishes the polyline as the vertex's owner, and adds the vertex
@@ -23789,7 +22766,7 @@ class Polyline3d(PyDb.Curve):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3d: ...
-    def convertToPolyType(self, val: PyDb.Poly3dType, /) -> None:
+    def convertToPolyType(self, val : PyDb.Poly3dType, /) -> None:
         """
         Uses the splineFit() method to convert the polyline to the type specified by the type
         argument value. Possible values for type are: k3dSimplePoly A standard polyline with no
@@ -23814,14 +22791,12 @@ class Polyline3d(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CompositeCurve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = 'default', /) -> PyGe.CompositeCurve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
     @overload
-    def insertVertexAt(
-        self, indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex, /
-    ) -> None:
+    def insertVertexAt(self, indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex, /) -> None:
         """
         This function inserts the AcDb3dPolylineVertex object pointed to by pNewVertex into the
         vertex list of the polyline just after the AcDb3dPolylineVertex object with objectId
@@ -23834,13 +22809,7 @@ class Polyline3d(PyDb.Curve):
         Acad::eNoDatabase will be returned.
         """
     @overload
-    def insertVertexAt(
-        self,
-        outVertexId: PyDb.ObjectId,
-        indexVtId: PyDb.ObjectId,
-        newVertex: PyDb.Polyline3dVertex,
-        /,
-    ) -> None:
+    def insertVertexAt(self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex, /) -> None:
         """
         This function inserts the AcDb3dPolylineVertex object pointed to by pNewVertex into the
         vertex list of the polyline just after the AcDb3dPolylineVertex object with objectId
@@ -23896,7 +22865,7 @@ class Polyline3d(PyDb.Curve):
         will return Acad::eWasOpenForUndo. If the Seqend is currently open AcDb::kForWrite, then
         the open attempt will fail and this function will return Acad::eWasOpenForWrite.
         """
-    def openVertex(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> Polyline3dVertex:
+    def openVertex(self, id : PyDb.ObjectId, mode: PyDb.OpenMode, /) -> Polyline3dVertex:
         """
         This function provides access to the polyline's vertices. pVertex passes in an empty
         pointer to the function. vertId is the object ID of the vertex to open. openMode is the
@@ -23925,11 +22894,11 @@ class Polyline3d(PyDb.Curve):
         reflects that the third bit of DXF group code 70 is set and that DXF group code 75 is set
         to 6.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, val : bool, /) -> None:
         """
         This is setClosed, a member of class AcDb3dPolyline.
         """
-    def setPolyType(self, val: PyDb.Poly3dType, /) -> None:
+    def setPolyType(self, val : PyDb.Poly3dType, /) -> None:
         """
         Sets type to be the AcDb::Poly3dType for the polyline. The AcDb::Poly3dType indicates the
         spline-fit type for this polyline. Possible values for type are: k3dSimplePoly A standard
@@ -23976,7 +22945,6 @@ class Polyline3d(PyDb.Curve):
         as the PEDIT command 'Decurve' option. Returns Acad::eOk.
         """
     def vertexIds(self, /) -> list[PyDb.ObjectId]: ...
-
 class Polyline3dVertex(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None:
@@ -24033,7 +23001,7 @@ class Polyline3dVertex(PyDb.Vertex):
         """
         Returns the WCS point value of this vertex.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
@@ -24049,7 +23017,6 @@ class Polyline3dVertex(PyDb.Vertex):
         follows: Return values Group Code 70 (bit value) k3dSimpleVertex 32 k3dControlVertex 16
         k3dFitVertex 8
         """
-
 class Profile3d(PyRx.RxObject):
     @overload
     def __init__(self, /) -> None:
@@ -24095,10 +23062,9 @@ class Profile3d(PyRx.RxObject):
     def isClosed(self, /) -> bool: ...
     def isEdge(self, /) -> bool: ...
     def isFace(self, /) -> bool: ...
-    def isPlanar(self, /) -> tuple[bool, PyGe.Plane]: ...
+    def isPlanar(self, /) -> tuple[bool,PyGe.Plane]: ...
     def isSubent(self, /) -> bool: ...
     def isValid(self, /) -> bool: ...
-
 class RadialDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -24111,7 +23077,7 @@ class RadialDimension(PyDb.Dimension):
         annotation text.
         """
     @overload
-    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, length: float, /) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, /) -> None:
         """
         The AcDbRadialDimension class represents the radius dimension type in AutoCAD. This
         dimension type requires a center point and a point on the curve being dimensioned in order
@@ -24121,9 +23087,7 @@ class RadialDimension(PyDb.Dimension):
         annotation text.
         """
     @overload
-    def __init__(
-        self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, length: float, dimText: str, /
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str, /) -> None:
         """
         The AcDbRadialDimension class represents the radius dimension type in AutoCAD. This
         dimension type requires a center point and a point on the curve being dimensioned in order
@@ -24133,15 +23097,7 @@ class RadialDimension(PyDb.Dimension):
         annotation text.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        chordPoint: PyGe.Point3d,
-        length: float,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d,length:float, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDbRadialDimension class represents the radius dimension type in AutoCAD. This
         dimension type requires a center point and a point on the curve being dimensioned in order
@@ -24229,28 +23185,28 @@ class RadialDimension(PyDb.Dimension):
         This function returns the extension arc start angle.
         """
     def leaderLength(self, /) -> float: ...
-    def setCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setCenter(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the center point of the
         curve being dimensioned.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point where the
         dimension line intersects the curve being dimensioned. The chord point is used for DXF
         group code 15. This function always returns Acad::eOk.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setLeaderLength(self, val: float, /) -> None:
+    def setLeaderLength(self, val : float, /) -> None:
         """
         This function sets the dimension to use length as the distance from the chordPoint
         dimension definition point out to where the dimension does a horizontal dogleg to the
@@ -24261,7 +23217,6 @@ class RadialDimension(PyDb.Dimension):
         setting is stored and shows up in DXF, AutoLISP, ADSRX, and the leaderLength() method.
         leaderLength is used for DXF group code 40. This function always returns Acad::eOk.
         """
-
 class RadialDimensionLarge(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -24269,44 +23224,17 @@ class RadialDimensionLarge(PyDb.Dimension):
         This class represents a large radial dimension, also known as a jogged radius dimension.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        chordPoint: PyGe.Point3d,
-        overrideCenter: PyGe.Point3d,
-        jogPoint: PyGe.Point3d,
-        jogAngle: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, /) -> None:
         """
         This class represents a large radial dimension, also known as a jogged radius dimension.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        chordPoint: PyGe.Point3d,
-        overrideCenter: PyGe.Point3d,
-        jogPoint: PyGe.Point3d,
-        jogAngle: float,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str, /) -> None:
         """
         This class represents a large radial dimension, also known as a jogged radius dimension.
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        chordPoint: PyGe.Point3d,
-        overrideCenter: PyGe.Point3d,
-        jogPoint: PyGe.Point3d,
-        jogAngle: float,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, chordPoint: PyGe.Point3d, overrideCenter: PyGe.Point3d, jogPoint: PyGe.Point3d, jogAngle: float, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         This class represents a large radial dimension, also known as a jogged radius dimension.
         """
@@ -24379,49 +23307,48 @@ class RadialDimensionLarge(PyDb.Dimension):
         """
         Returns the overidden center point used by the jogged radius dimension.
         """
-    def setCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setCenter(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the center point of the arc dimensioned by the jogged radius dimension.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the chord point on the arc dimensioned by the jogged radius dimension.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, val : float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setJogAngle(self, val: float, /) -> None:
+    def setJogAngle(self, val : float, /) -> None:
         """
         Sets the jog angle used by the jogged radius dimension.
         """
-    def setJogPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setJogPoint(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the jog point used by the jogged radius dimension.
         """
-    def setJogPointPP(self, pt: PyGe.Point3d, /) -> None:
+    def setJogPointPP(self, pt : PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
-    def setOverrideCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setOverrideCenter(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the overidden center point to use for the jogged radius dimension.
         """
-    def setOverrideCenterPP(self, pt: PyGe.Point3d, /) -> None:
+    def setOverrideCenterPP(self, pt : PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
-    def setTextPositionPP(self, pt: PyGe.Point3d, /) -> None:
+    def setTextPositionPP(self, pt : PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
-
 class RasterImage(PyDb.Image):
     @overload
     def __init__(self, /) -> None: ...
@@ -24459,13 +23386,13 @@ class RasterImage(PyDb.Image):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def fade(self, /) -> int: ...
-    def getOrientation(self, /) -> tuple[PyGe.Point3d, PyGe.Vector3d, PyGe.Vector3d]: ...
+    def getOrientation(self, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]: ...
     def getPixelToModelTransform(self, /) -> PyGe.Matrix3d: ...
     def getVertices(self, /) -> list[PyGe.Point3d]: ...
     def height(self, /) -> float: ...
     def imageDefId(self, /) -> ObjectId: ...
     def imageHeight(self, /) -> float: ...
-    def imageSize(self, val: bool = True, /) -> PyGe.Vector2d: ...
+    def imageSize(self, val: bool=True, /) -> PyGe.Vector2d: ...
     def imageWidth(self, /) -> float: ...
     def isClipInverted(self, /) -> bool: ...
     def isClipped(self, /) -> bool: ...
@@ -24493,7 +23420,6 @@ class RasterImage(PyDb.Image):
     def setShowImage(self, val: bool, /) -> None: ...
     def setWidth(self, val: float, /) -> None: ...
     def width(self, /) -> float: ...
-
 class RasterImageDef(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -24642,10 +23568,9 @@ class RasterImageDef(PyDb.DbObject):
     def size(self, /) -> PyGe.Vector2d: ...
     def sourceFileName(self, /) -> str: ...
     @staticmethod
-    def suggestName(db: PyDb.Dictionary, name: str, /) -> str: ...
-    def unload(self, val: bool = True, /) -> None: ...
+    def suggestName(db: PyDb.Dictionary,name: str, /) -> str: ...
+    def unload(self, val: bool=True, /) -> None: ...
     def updateEntities(self, /) -> None: ...
-
 class RasterImageDefReactor(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -24718,15 +23643,8 @@ class RasterImageDefReactor(PyDb.DbObject):
         """
     @staticmethod
     def setEnable(val: bool, /) -> None: ...
-
 class RegAppTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.RegAppTableRecord, /) -> ObjectId:
         """
@@ -24755,7 +23673,6 @@ class RegAppTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class RegAppTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -24813,7 +23730,6 @@ class RegAppTableRecord(PyDb.SymbolTableRecord):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class Region(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -24852,7 +23768,7 @@ class Region(PyDb.Entity):
         representation.
         """
     def __reduce__(self, /) -> Any: ...
-    def booleanOper(self, operation: PyDb.BoolOperType, otherRegion: PyDb.Region, /) -> None: ...
+    def booleanOper(self, operation : PyDb.BoolOperType, otherRegion : PyDb.Region, /) -> None: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Region: ...
     @staticmethod
@@ -24880,13 +23796,11 @@ class Region(PyDb.Entity):
     def getPerimeter(self, /) -> float: ...
     def isNull(self, /) -> bool: ...
     def numChanges(self, /) -> int: ...
-
 class RemapFileContext(_BoostPythonEnum):
     kDrawingOpen: ClassVar[Self]  # 0
     kXrefResolution: ClassVar[Self]  # 1
     kRasterResolution: ClassVar[Self]  # 2
     kAfterXrefResolution: ClassVar[Self]  # 3
-
 class ReservedStringEnumType(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 0
     kByBlock: ClassVar[Self]  # 1
@@ -24914,7 +23828,6 @@ class ReservedStringEnumType(_BoostPythonEnum):
     kVSShadedWithEdges: ClassVar[Self]  # 23
     kVSShaded: ClassVar[Self]  # 24
     kReservedStringCount: ClassVar[Self]  # 25
-
 class RevolveOptions:
     def __init__(self, /) -> None:
         """
@@ -24924,29 +23837,15 @@ class RevolveOptions:
         options.
         """
     def __reduce__(self, /) -> Any: ...
-    def checkRevolveCurve(
-        self,
-        ent: PyDb.Entity,
-        axisPnt: PyGe.Point3d,
-        axisDir: PyGe.Vector3d,
-        displayErrorMessages: bool = False,
-        /,
-    ) -> tuple[bool, bool, bool]: ...
+    def checkRevolveCurve(self, ent: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, displayErrorMessages: bool=False, /) -> tuple[bool,bool,bool]: ...
     def closeToAxis(self, /) -> bool: ...
     def draftAngle(self, /) -> float: ...
     def setCloseToAxis(self, val: bool, /) -> None: ...
     def setDraftAngle(self, val: float, /) -> None: ...
     def setTwistAngle(self, val: float, /) -> None: ...
     def twistAngle(self, /) -> float: ...
-
 class RevolvedSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RevolvedSurface: ...
@@ -24968,12 +23867,10 @@ class RevolvedSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class RotatedDimType(_BoostPythonEnum):
     kUnknown: ClassVar[Self]  # 0
     kParallel: ClassVar[Self]  # 1
     kPerpendicular: ClassVar[Self]  # 2
-
 class RotatedDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None:
@@ -24987,9 +23884,7 @@ class RotatedDimension(PyDb.Dimension):
         'horizontal' dimension.
         """
     @overload
-    def __init__(
-        self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, /) -> None:
         """
         The AcDbRotatedDimension class represents the dimension type that dimensions the distance
         between two points in space when they are projected onto a line at a specific angle (the
@@ -25000,15 +23895,7 @@ class RotatedDimension(PyDb.Dimension):
         'horizontal' dimension.
         """
     @overload
-    def __init__(
-        self,
-        rotation: float,
-        xl1: PyGe.Point3d,
-        xl2: PyGe.Point3d,
-        dimLinePoint: PyGe.Point3d,
-        dimText: str,
-        /,
-    ) -> None:
+    def __init__(self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, /) -> None:
         """
         The AcDbRotatedDimension class represents the dimension type that dimensions the distance
         between two points in space when they are projected onto a line at a specific angle (the
@@ -25019,16 +23906,7 @@ class RotatedDimension(PyDb.Dimension):
         'horizontal' dimension.
         """
     @overload
-    def __init__(
-        self,
-        rotation: float,
-        xl1: PyGe.Point3d,
-        xl2: PyGe.Point3d,
-        dimLinePoint: PyGe.Point3d,
-        dimText: str,
-        id: PyDb.ObjectId,
-        /,
-    ) -> None:
+    def __init__(self, rotation: float, xl1: PyGe.Point3d, xl2: PyGe.Point3d, dimLinePoint: PyGe.Point3d, dimText: str, id: PyDb.ObjectId, /) -> None:
         """
         The AcDbRotatedDimension class represents the dimension type that dimensions the distance
         between two points in space when they are projected onto a line at a specific angle (the
@@ -25140,7 +24018,7 @@ class RotatedDimension(PyDb.Dimension):
         Positive angles are counterclockwise when looking down the OCS positive Z axis towards the
         origin. The rotation angle is used for DXF group code 50.
         """
-    def setDimLinePoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDimLinePoint(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that specifies where the dimension line will be (that is, this point will be somewhere on
@@ -25148,16 +24026,16 @@ class RotatedDimension(PyDb.Dimension):
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setJogSymbolOn(self, val: bool, /) -> None:
+    def setJogSymbolOn(self, val : bool, /) -> None:
         """
         This function sets the jog symbol status. Returns Acad::eOk if successful. Otherwise, it
         returns Acad::eInvalidInput.
         """
-    def setJogSymbolPosition(self, pt: PyGe.Point3d, /) -> None:
+    def setJogSymbolPosition(self, pt : PyGe.Point3d, /) -> None:
         """
         Sets the jog symbol position. Returns Acad::eOk if successful.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, val : float, /) -> None:
         """
         This function sets the dimension to use oblique (in radians) as the extension line
         obliquing angle for the dimension. This angle is relative to the
@@ -25173,7 +24051,7 @@ class RotatedDimension(PyDb.Dimension):
         default' which is the same as an obliquing angle of pi / 2 (90 degrees). The obliquing
         angle is used for DXF group code 52. This function always returns Acad::eOk.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, val : float, /) -> None:
         """
         This function sets the dimension to use rot (in radians) as the rotation angle. The
         rotation angle is the angle between the dimension's OCS X axis and the axis of the distance
@@ -25181,7 +24059,7 @@ class RotatedDimension(PyDb.Dimension):
         Z axis towards the origin. The rotation angle is used for DXF group code 50. This function
         always returns Acad::eOk.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that's used as the start point for the first extension line of the dimension. The AutoCAD
@@ -25189,7 +24067,7 @@ class RotatedDimension(PyDb.Dimension):
         point. The first extension line start point is used for DXF group code 13. This function
         always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that's used as the start point for the second extension line of the dimension. The AutoCAD
@@ -25211,21 +24089,18 @@ class RotatedDimension(PyDb.Dimension):
         affects how the extension line is displayed relative to this point. The second extension
         line start point is used for DXF group code 14.
         """
-
 class RotationAngle(_BoostPythonEnum):
     kDegreesUnknown: ClassVar[Self]  # -1
     kDegrees000: ClassVar[Self]  # 0
     kDegrees090: ClassVar[Self]  # 1
     kDegrees180: ClassVar[Self]  # 2
     kDegrees270: ClassVar[Self]  # 3
-
 class RowType(_BoostPythonEnum):
     kUnknownRow: ClassVar[Self]  # 0
     kDataRow: ClassVar[Self]  # 1
     kTitleRow: ClassVar[Self]  # 2
     kHeaderRow: ClassVar[Self]  # 4
     kAllRowTypes: ClassVar[Self]  # 7
-
 class Section(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -25238,9 +24113,7 @@ class Section(PyDb.Entity):
         Constructs a section plane using the specified points, normal, and viewing direction.
         """
     @overload
-    def __init__(
-        self, pts: list[PyGe.Point3d], verticalDir: PyGe.Vector3d, vecViewingDir: PyGe.Vector3d, /
-    ) -> None:
+    def __init__(self, pts: list[PyGe.Point3d], verticalDir: PyGe.Vector3d, vecViewingDir: PyGe.Vector3d, /) -> None:
         """
         Constructs a section plane using the specified points, normal, and viewing direction.
         """
@@ -25297,16 +24170,14 @@ class Section(PyDb.Entity):
     def getVertices(self, /) -> list[PyGe.Point3d]: ...
     def hasJogs(self, /) -> bool: ...
     def height(self, /) -> float: ...
-    def hitTest(
-        self, pt: PyGe.Point3d, /
-    ) -> tuple[bool, int, PyGe.Poin3d, PyDb.SectionSubItem]: ...
+    def hitTest(self, pt: PyGe.Point3d, /) -> tuple[bool,int,PyGe.Poin3d,PyDb.SectionSubItem]: ...
     def indicatorFillColor(self, /) -> Color: ...
     def indicatorTransparency(self, /) -> int: ...
     def isLiveSectionEnabled(self, /) -> bool: ...
     def isSlice(self, /) -> bool: ...
     def normal(self, /) -> PyGe.Vector3d: ...
     def numVertices(self, /) -> int: ...
-    def plane(self, /) -> tuple[PyGe.Vector3d, PyGe.Vector3d]: ...
+    def plane(self, /) -> tuple[PyGe.Vector3d,PyGe.Vector3d]: ...
     def removeVertex(self, val: int, /) -> None: ...
     def sectionPlaneOffset(self, /) -> float: ...
     def setBottomPlane(self, val: float, /) -> None: ...
@@ -25329,33 +24200,23 @@ class Section(PyDb.Entity):
     def topPlane(self, /) -> float: ...
     def verticalDirection(self, /) -> PyGe.Vector3d: ...
     def viewingDirection(self, /) -> PyGe.Vector3d: ...
-
 class SectionGeneration(_BoostPythonEnum):
     kSourceAllObjects: ClassVar[Self]  # 1
     kSourceSelectedObjects: ClassVar[Self]  # 2
     kDestinationNewBlock: ClassVar[Self]  # 16
     kDestinationReplaceBlock: ClassVar[Self]  # 32
     kDestinationFile: ClassVar[Self]  # 64
-
 class SectionGeometry(_BoostPythonEnum):
     kIntersectionBoundary: ClassVar[Self]  # 1
     kIntersectionFill: ClassVar[Self]  # 2
     kBackgroundGeometry: ClassVar[Self]  # 4
     kForegroundGeometry: ClassVar[Self]  # 8
     kCurveTangencyLines: ClassVar[Self]  # 16
-
 class SectionHeight(_BoostPythonEnum):
     kHeightAboveSectionLine: ClassVar[Self]  # 1
     kHeightBelowSectionLine: ClassVar[Self]  # 2
-
 class SectionManager(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         This class is used to manage the section planes in a database. This class cannot be
         instantiated. An object of this class can be obtained form the database using the
@@ -25405,15 +24266,8 @@ class SectionManager(PyDb.DbObject):
         This function returns the number of section planes in the database.
         """
     def objectIds(self, /) -> list[PyDb.ObjectId]: ...
-
 class SectionSettings(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         This class stores section geometry settings.
         """
@@ -25442,123 +24296,54 @@ class SectionSettings(PyDb.DbObject):
         """
     def destinationBlock(self, nSecType: PyDb.SectionType, /) -> ObjectId: ...
     def destinationFile(self, nSecType: PyDb.SectionType, /) -> str: ...
-    def divisionLines(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> bool: ...
-    def edgeTransparency(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> int: ...
-    def faceTransparency(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> int: ...
+    def divisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
+    def edgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int: ...
+    def faceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int: ...
     def generationOptions(self, nSecType: PyDb.SectionType, /) -> SectionGeneration: ...
-    def getHatchPattern(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> tuple[PyDb.HatchPatternType, str]: ...
+    def getHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> tuple[PyDb.HatchPatternType,str]: ...
     def getSourceObjects(self, nSecType: PyDb.SectionType, /) -> list[PyDb.ObjectId]: ...
-    def hatchAngle(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> float: ...
-    def hatchScale(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> float: ...
-    def hatchSpacing(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> float: ...
-    def hatchVisibility(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> bool: ...
-    def hiddenLine(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> bool: ...
+    def hatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
+    def hiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
     def layer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
-    def lineWeight(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> LineWeight: ...
+    def lineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> LineWeight: ...
     def linetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
-    def linetypeScale(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> float: ...
-    def plotStyleName(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> str: ...
+    def linetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def plotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
     @overload
     def reset(self, /) -> None: ...
     @overload
     def reset(self, nSecType: PyDb.SectionType, /) -> None: ...
     @overload
     def reset(self, *args) -> None: ...
-    def setColor(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, clr: PyDb.Color, /
-    ) -> None: ...
+    def setColor(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, clr: PyDb.Color, /) -> None: ...
     def setCurrentSectionType(self, nSecType: PyDb.SectionType, /) -> None: ...
     def setDestinationBlock(self, nSecType: PyDb.SectionType, id: PyDb.ObjectId, /) -> None: ...
     def setDestinationFile(self, nSecType: PyDb.SectionType, fileName: str, /) -> None: ...
-    def setDivisionLines(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, show: bool, /
-    ) -> None: ...
-    def setEdgeTransparency(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /
-    ) -> None: ...
-    def setFaceTransparency(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /
-    ) -> None: ...
-    def setGenerationOptions(
-        self, nSecType: PyDb.SectionType, opts: PyDb.SectionGeneration, /
-    ) -> None: ...
-    def setHatchAngle(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /
-    ) -> None: ...
-    def setHatchPattern(
-        self,
-        nSecType: PyDb.SectionType,
-        nGeometry: PyDb.SectionGeometry,
-        pattern: PyDb.HatchPatternType,
-        name: str,
-        /,
-    ) -> None: ...
-    def setHatchScale(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /
-    ) -> None: ...
-    def setHatchSpacing(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /
-    ) -> None: ...
-    def setHatchVisibility(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /
-    ) -> None: ...
-    def setHiddenLine(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /
-    ) -> None: ...
-    def setLayer(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, name: str, /
-    ) -> None: ...
-    def setLineWeight(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: PyDb.LineWeight, /
-    ) -> None: ...
-    def setLinetype(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, lineType: str, /
-    ) -> None: ...
-    def setLinetypeScale(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /
-    ) -> None: ...
-    def setPlotStyleName(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: str, /
-    ) -> None: ...
-    def setSourceObjects(
-        self, nSecType: PyDb.SectionType, ids: list[PyDb.ObjectId], /
-    ) -> None: ...
-    def setVisibility(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, flag: bool, /
-    ) -> None: ...
-    def visibility(
-        self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /
-    ) -> bool: ...
-
+    def setDivisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, show: bool, /) -> None: ...
+    def setEdgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None: ...
+    def setFaceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None: ...
+    def setGenerationOptions(self, nSecType: PyDb.SectionType, opts: PyDb.SectionGeneration, /) -> None: ...
+    def setHatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, pattern: PyDb.HatchPatternType, name: str, /) -> None: ...
+    def setHatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None: ...
+    def setHiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None: ...
+    def setLayer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, name: str, /) -> None: ...
+    def setLineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: PyDb.LineWeight, /) -> None: ...
+    def setLinetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, lineType: str, /) -> None: ...
+    def setLinetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setPlotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: str, /) -> None: ...
+    def setSourceObjects(self, nSecType: PyDb.SectionType, ids: list[PyDb.ObjectId], /) -> None: ...
+    def setVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, flag: bool, /) -> None: ...
+    def visibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
 class SectionState(_BoostPythonEnum):
     kPlane: ClassVar[Self]  # 1
     kBoundary: ClassVar[Self]  # 2
     kVolume: ClassVar[Self]  # 4
-
 class SectionSubItem(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kSectionLine: ClassVar[Self]  # 1
@@ -25569,19 +24354,16 @@ class SectionSubItem(_BoostPythonEnum):
     kBackLineBottom: ClassVar[Self]  # 32
     kVerticalLineTop: ClassVar[Self]  # 64
     kVerticalLineBottom: ClassVar[Self]  # 128
-
 class SectionType(_BoostPythonEnum):
     kLiveSection: ClassVar[Self]  # 1
     k2dSection: ClassVar[Self]  # 2
     k3dSection: ClassVar[Self]  # 4
-
 class SegType(_BoostPythonEnum):
     kLine: ClassVar[Self]  # 0
     kArc: ClassVar[Self]  # 1
     kCoincident: ClassVar[Self]  # 2
     kPoint: ClassVar[Self]  # 3
     kEmpty: ClassVar[Self]  # 4
-
 class SequenceEnd(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -25644,7 +24426,6 @@ class SequenceEnd(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class ShadePlotResLevel(_BoostPythonEnum):
     kAsDisplayed: ClassVar[Self]  # 0
     kPreview: ClassVar[Self]  # 1
@@ -25652,7 +24433,6 @@ class ShadePlotResLevel(_BoostPythonEnum):
     kPresentation: ClassVar[Self]  # 3
     kMaximum: ClassVar[Self]  # 4
     kCustom: ClassVar[Self]  # 5
-
 class ShadePlotType(_BoostPythonEnum):
     kAsDisplayed: ClassVar[Self]  # 0
     kWireframe: ClassVar[Self]  # 1
@@ -25660,7 +24440,6 @@ class ShadePlotType(_BoostPythonEnum):
     kRendered: ClassVar[Self]  # 3
     kVisualStyle: ClassVar[Self]  # 4
     kRenderPreset: ClassVar[Self]  # 5
-
 class Shape(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -25668,9 +24447,7 @@ class Shape(PyDb.Entity):
         The AcDbShape class represents the SHAPE entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, pnt: PyGe.Point3d, size: float, rotation: float, widthFactor: float, /
-    ) -> None:
+    def __init__(self, pnt: PyGe.Point3d, size: float, rotation: float, widthFactor: float, /) -> None:
         """
         The AcDbShape class represents the SHAPE entity within AutoCAD.
         """
@@ -25855,27 +24632,22 @@ class Shape(PyDb.Entity):
         will be drawn with a width that is 80% of its normal 'unadjusted' width. The width factor
         value is used for DXF group code 41.
         """
-
 class SnoopDwgFiler:
     def __getitem__(self, /) -> object: ...
     def __init__(self, filerType: PyDb.FilerType, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def buffer(self, /) -> list: ...
-
 class SnoopDxfFiler:
     def __getitem__(self, /) -> object: ...
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def buffer(self, /) -> list: ...
-
 class SoftOwnershipId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None: ...
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-
 class SoftPointerId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None: ...
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-
 class Solid(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -25892,9 +24664,7 @@ class Solid(PyDb.Entity):
         AcDbBody classes.
         """
     @overload
-    def __init__(
-        self, pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d, /) -> None:
         """
         The AcDbSolid class is the representation for the SOLID entity within AutoCAD. The SOLID
         entity is a 2D entity, not the 3D solids that are represented by the AcDb3dSolid and
@@ -25994,7 +24764,6 @@ class Solid(PyDb.Entity):
         along its normal vector direction (sometimes called the extrusion direction). The thickness
         value is used for DXF group code 39.
         """
-
 class Solid3d(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -26055,17 +24824,8 @@ class Solid3d(PyDb.Entity):
     def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Solid3d: ...
-    def chamferEdges(
-        self,
-        edgeSubentIds: list[PyDb.SubentId],
-        faceSubentId: PyDb.SubentId,
-        baseDist: float,
-        otherDist: float,
-        /,
-    ) -> None: ...
-    def checkInterference(
-        self, val: PyDb.Solid3d, createNewSolid: bool, /
-    ) -> tuple[bool, PyDb.Solid3d]: ...
+    def chamferEdges(self, edgeSubentIds: list[PyDb.SubentId], faceSubentId: PyDb.SubentId, baseDist: float, otherDist: float, /) -> None: ...
+    def checkInterference(self, val: PyDb.Solid3d, createNewSolid: bool, /) -> tuple[bool,PyDb.Solid3d]: ...
     @staticmethod
     def className() -> str: ...
     def cleanBody(self, /) -> None: ...
@@ -26075,82 +24835,28 @@ class Solid3d(PyDb.Entity):
     def copyFace(self, subentId: PyDb.SubentId, /) -> Entity: ...
     def createBox(self, xLen: float, yLen: float, zLen: float, /) -> None: ...
     @overload
-    def createExtrudedSolid(
-        self,
-        pSweepEnt: PyDb.Entity,
-        directionVec: PyGe.Vector3d,
-        sweepOptions: PyDb.SweepOptions,
-        /,
-    ) -> None: ...
+    def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
-    def createExtrudedSolid(
-        self,
-        pSweepEnt: PyDb.Entity,
-        faceSubentId: PyDb.SubentId,
-        directionVec: PyGe.Vector3d,
-        sweepOptions: PyDb.SweepOptions,
-        /,
-    ) -> None: ...
+    def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
-    def createExtrudedSolid(
-        self,
-        pSweepEnt: PyDb.Entity,
-        faceSubentId: PyDb.SubentId,
-        height: float,
-        sweepOptions: PyDb.SweepOptions,
-        /,
-    ) -> None: ...
+    def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, height: float, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
     def createExtrudedSolid(self, *args) -> None: ...
     def createFrom(self, val: PyDb.Entity, /) -> None: ...
-    def createFrustum(
-        self, height: float, xRadius: float, yRadius: float, topXRadius: float, /
-    ) -> None: ...
-    def createPyramid(
-        self, height: float, sides: int, radius: float, topRadius: float = 0.0, /
-    ) -> None: ...
+    def createFrustum(self, height: float, xRadius: float, yRadius: float, topXRadius: float, /) -> None: ...
+    def createPyramid(self, height: float, sides: int, radius: float, topRadius: float=0.0, /) -> None: ...
     @overload
-    def createRevolvedSolid(
-        self,
-        pRevEnt: PyDb.Entity,
-        axisPnt: PyGe.Point3d,
-        axisDir: PyGe.Vector3d,
-        revAngle: float,
-        startAngle: float,
-        revolveOptions: PyDb.RevolveOptions,
-        /,
-    ) -> None: ...
+    def createRevolvedSolid(self, pRevEnt: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions, /) -> None: ...
     @overload
-    def createRevolvedSolid(
-        self,
-        pRevEnt: PyDb.Entity,
-        faceSubentId: PyDb.SubentId,
-        axisPnt: PyGe.Point3d,
-        axisDir: PyGe.Vector3d,
-        revAngle: float,
-        startAngle: float,
-        revolveOptions: PyDb.RevolveOptions,
-        /,
-    ) -> None: ...
+    def createRevolvedSolid(self, pRevEnt: PyDb.Entity,faceSubentId:PyDb.SubentId, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions, /) -> None: ...
     @overload
     def createRevolvedSolid(self, *args) -> None: ...
-    def createSculptedSolid(
-        self, limitingBodies: list[PyDb.Entity], limitingFlags: list[int], /
-    ) -> None: ...
+    def createSculptedSolid(self, limitingBodies: list[PyDb.Entity], limitingFlags: list[int], /) -> None: ...
     def createSphere(self, radius: float, /) -> None: ...
     @overload
-    def createSweptSolid(
-        self, pSweepEnt: PyDb.Entity, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /
-    ) -> None: ...
+    def createSweptSolid(self, pSweepEnt: PyDb.Entity, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
-    def createSweptSolid(
-        self,
-        pSweepEnt: PyDb.Entity,
-        faceSubentId: PyDb.SubentId,
-        pPathEnt: PyDb.Entity,
-        sweepOptions: PyDb.SweepOptions,
-        /,
-    ) -> None: ...
+    def createSweptSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
     def createSweptSolid(self, *args) -> None: ...
     def createTorus(self, majorRadius: float, minorRadius: float, /) -> None: ...
@@ -26169,40 +24875,23 @@ class Solid3d(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def extrude(self, region: PyDb.Region, height: float, taperAngle: float = 0.0, /) -> None: ...
-    def extrudeAlongPath(
-        self, region: PyDb.Region, path: PyDb.Curve, taperAngle: float = 0.0, /
-    ) -> None: ...
-    def extrudeFaces(
-        self, subentIds: list[PyDb.SubentId], height: float, taper: float, /
-    ) -> None: ...
-    def extrudeFacesAlongPath(
-        self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /
-    ) -> None: ...
-    def filletEdges(
-        self,
-        edgeSubentIds: list[PyDb.SubentId],
-        radius: list[float],
-        startSetback: list[float],
-        endSetback: list[float],
-        /,
-    ) -> None: ...
+    def extrude(self, region: PyDb.Region, height: float, taperAngle: float=0.0, /) -> None: ...
+    def extrudeAlongPath(self, region: PyDb.Region, path: PyDb.Curve, taperAngle: float=0.0, /) -> None: ...
+    def extrudeFaces(self, subentIds: list[PyDb.SubentId], height: float, taper: float, /) -> None: ...
+    def extrudeFacesAlongPath(self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /) -> None: ...
+    def filletEdges(self, edgeSubentIds: list[PyDb.SubentId], radius: list[float], startSetback: list[float], endSetback: list[float], /) -> None: ...
     def getArea(self, /) -> float: ...
     def getMassProp(self, /) -> tuple: ...
     def getSection(self, plane: PyGe.Plane, /) -> Region: ...
-    def getSlice(self, plane: PyGe.Plane | PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d: ...
+    def getSlice(self, plane: PyGe.Plane|PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d: ...
     def getSubentColor(self, faceSubentId: PyDb.SubentId, /) -> Color: ...
     def getSubentMaterial(self, faceSubentId: PyDb.SubentId, /) -> ObjectId: ...
     def imprintEntity(self, pEntity: PyDb.Entity, /) -> None: ...
     def isNull(self, /) -> bool: ...
     def numChanges(self, /) -> int: ...
     def offsetBody(self, offsetDistance: float, /) -> None: ...
-    def offsetFaces(
-        self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /
-    ) -> None: ...
-    def projectOnToSolid(
-        self, pEntityToProject: PyDb.Entity, projectionDirection: PyGe.Vector3d, /
-    ) -> list[PyDb.Entity]: ...
+    def offsetFaces(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None: ...
+    def projectOnToSolid(self, pEntityToProject: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]: ...
     def recordHistory(self, /) -> bool: ...
     def removeFaces(self, faceSubentIds: list[PyDb.SubentId], /) -> None: ...
     def separateBody(self, /) -> list[PyDb.Solid3d]: ...
@@ -26212,22 +24901,10 @@ class Solid3d(PyDb.Entity):
     def setSubentMaterial(self, faceSubentId: PyDb.SubentId, id: PyDb.ObjectId, /) -> None: ...
     def shellBody(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None: ...
     def showHistory(self, /) -> bool: ...
-    def stlOut(
-        self, fileName: str, asciiFormat: bool, maxSurfaceDeviation: float = 0.0, /
-    ) -> None: ...
-    def taperFaces(
-        self,
-        faceSubentIds: list[PyDb.SubentId],
-        basePoint: PyGe.Point3d,
-        draftVector: PyGe.Vector3d,
-        draftAngle: float,
-        /,
-    ) -> None: ...
-    def transformFaces(
-        self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /
-    ) -> None: ...
+    def stlOut(self, fileName: str, asciiFormat: bool, maxSurfaceDeviation: float = 0.0, /) -> None: ...
+    def taperFaces(self, faceSubentIds: list[PyDb.SubentId], basePoint: PyGe.Point3d, draftVector: PyGe.Vector3d, draftAngle: float, /) -> None: ...
+    def transformFaces(self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /) -> None: ...
     def usesGraphicsCache(self, /) -> bool: ...
-
 class SortentsTable(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -26414,14 +25091,12 @@ class SortentsTable(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def firstEntityIsDrawnBeforeSecond(
-        self, first: PyDb.ObjectId, second: PyDb.ObjectId, /
-    ) -> bool:
+    def firstEntityIsDrawnBeforeSecond(self, first: PyDb.ObjectId, second: PyDb.ObjectId, /) -> bool:
         """
         Sets result to true if first is drawn before second. Returns eInvalidInput if any object ID
         is not in the associated block.
         """
-    def getFullDrawOrder(self, mask: int, /) -> list:
+    def getFullDrawOrder(self, mask:int, /) -> list:
         """
         Returns an array of the entity object IDs of the block in the order in which they would be
         drawn in SORTENTS-enabled contexts. The caller supplies an empty object ID array, and
@@ -26430,7 +25105,7 @@ class SortentsTable(PyDb.DbObject):
         bits are off, it returns the object IDs in natural database order rather than the order
         specified by the sortents table. Returns eOk unless the system runs out of memory.
         """
-    def getRelativeDrawOrder(self, mask: int, /) -> list:
+    def getRelativeDrawOrder(self, mask:int, /) -> list:
         """
         Rearranges the object IDs in the input array into their current relative draw order. When
         one or more bits of the honorSortentsMask parameter is set to 1, the function tests the
@@ -26446,28 +25121,28 @@ class SortentsTable(PyDb.DbObject):
         do with the object ID, and may no longer even exist in the database. Its numerical value is
         what is of use, not the object it points to.
         """
-    def moveAbove(self, ids: Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+    def moveAbove(self, ids:Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
         """
         Places all the entities specified in the input object ID array above the specified target
         entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveBelow(self, ids: Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+    def moveBelow(self, ids:Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
         """
         Places all the entities specified in the input object ID array below the specified target
         entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveToBottom(self, ids: Collection[PyDb.ObjectId], /) -> None:
+    def moveToBottom(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Places all the entities specified in the input object ID array at the beginning of the draw
         order. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveToTop(self, ids: Collection[PyDb.ObjectId], /) -> None:
+    def moveToTop(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Places all the entities specified in the input object ID array at the ending of the draw
         order. The entities being moved retain their relative draw order. Returns eInvalidInput if
@@ -26483,7 +25158,7 @@ class SortentsTable(PyDb.DbObject):
         Sets the object ID for the associated block table record. Returns eInvalidInput if the
         input object ID is invalid or is not that of a block table record.
         """
-    def setRelativeDrawOrder(self, ids: Collection[PyDb.ObjectId], /) -> None:
+    def setRelativeDrawOrder(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Takes the object IDs in the input array and moves them in their current associated draw
         order slots so that they are drawn in the specified order. If you wish to move or
@@ -26504,7 +25179,6 @@ class SortentsTable(PyDb.DbObject):
         Swaps the draw order positions of the entities. Returns eInvalidInput if either object ID
         is not in the associated block.
         """
-
 class SpatialFilter(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -26541,7 +25215,7 @@ class SpatialFilter(PyDb.DbObject):
     def cast(otherObject: PyRx.RxObject, /) -> SpatialFilter: ...
     @staticmethod
     def className() -> str: ...
-    def clipVolumeIntersectsExtents(self, val: PyDb.Extents, /) -> bool:
+    def clipVolumeIntersectsExtents(self, val : PyDb.Extents, /) -> bool:
         """
         This function is used to determine whether an object with extents exts intersects this
         AcDbSpatialFilter object's clipping volume. Returns Adesk::kTrue if exts intersects this
@@ -26585,7 +25259,7 @@ class SpatialFilter(PyDb.DbObject):
         AcDbBlockReference when the Filter was last set. Returns a reference to the matrix argument
         passed in.
         """
-    def getVolume(self, /) -> tuple[PyGe.Point3d, PyGe.Point3d, PyGe.Vector3d, PyGe.Vector3d]:
+    def getVolume(self, /) -> tuple[PyGe.Point3d,PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]:
         """
         Transforms the AcDbSpatialFilter object's clip boundary definition into the coordinate
         space of the associated block or xref, and sets output parameters fromPt, toPt, upDir, and
@@ -26610,35 +25284,25 @@ class SpatialFilter(PyDb.DbObject):
         """
         Returns true if the filter's inverted flag is set.
         """
-    def queryBounds(self, ref: PyDb.BlockReference = ..., /) -> Extents:
+    def queryBounds(self, ref : PyDb.BlockReference = ..., /) -> Extents:
         """
         This function is used to get the boundary area of this AcDbSpatialFilter object. This
         function has no return value.
         """
-    def setDefinition(
-        self,
-        pnt2d: list[PyGe.Point2d],
-        normal: PyGe.Vector3d,
-        elev: float,
-        frontclip: float,
-        backclip: float,
-        enabled: bool,
-        /,
-    ) -> None:
+    def setDefinition(self, pnt2d: list[PyGe.Point2d], normal: PyGe.Vector3d, elev: float, frontclip: float, backclip: float, enabled: bool, /) -> None:
         """
         This function is used to set the definition of the AcDbSpatialFilter object. The points
         described in the pts argument must be expressed in the ECS of the block or xref definition.
         Returns Acad::eOk if successful.
         """
-    def setInverted(self, val: bool, /) -> None:
+    def setInverted(self, val : bool, /) -> None:
         """
         This method is used to set or clear the filter's inverted flag.
         """
-    def setPerspectiveCamera(self, val: PyGe.Point3d, /) -> None:
+    def setPerspectiveCamera(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the perspective camera position to the location specified by fromPt.
         """
-
 class Spline(PyDb.Curve):
     @overload
     def __init__(self, /) -> None:
@@ -26711,9 +25375,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self, idfitPoints: list[PyGe.Point3d], order: int, fitTolerance: float, /
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], order: int, fitTolerance: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26727,13 +25389,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        /,
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26747,15 +25403,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        order: int,
-        fitTolerance: float,
-        /,
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, order: int, fitTolerance: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26783,15 +25431,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        periodic: bool,
-        knotParam: PyGe.KnotParameterization,
-        order: int,
-        fitTolerance: float,
-        /,
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26805,14 +25445,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        knotParam: PyGe.KnotParameterization,
-        /,
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26826,16 +25459,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        knotParam: PyGe.KnotParameterization,
-        order: int,
-        fitTolerance: float,
-        /,
-    ) -> None:
+    def __init__(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26849,17 +25473,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        degree: int,
-        rational: bool,
-        closed: bool,
-        periodic: bool,
-        controlPoints: list[PyGe.Point3d],
-        knots: list[float],
-        weights: list[float],
-        /,
-    ) -> None:
+    def __init__(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26873,19 +25487,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        degree: int,
-        rational: bool,
-        closed: bool,
-        periodic: bool,
-        controlPoints: list[PyGe.Point3d],
-        knots: list[float],
-        weights: list[float],
-        controlPtTol: float,
-        knotTol: float,
-        /,
-    ) -> None:
+    def __init__(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26899,14 +25501,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatioL: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26920,16 +25515,7 @@ class Spline(PyDb.Curve):
         Bartels, John C. Beatty, and Brian A Barsky
         """
     @overload
-    def __init__(
-        self,
-        center: PyGe.Point3d,
-        unitNormal: PyGe.Vector3d,
-        majorAxis: PyGe.Vector3d,
-        radiusRatioL: float,
-        startAngle: float,
-        endAngle: float,
-        /,
-    ) -> None:
+    def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float, startAngle: float, endAngle: float, /) -> None:
         """
         This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
         embedded gelib object to maintain the actual spline information. The spline itself may
@@ -26982,7 +25568,7 @@ class Spline(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elevateDegree(self, val: int, /) -> None:
+    def elevateDegree(self, val : int, /) -> None:
         """
         Increases the degree (which is the same as the order -1) of the spline to newDegree. Once
         incremented it cannot be decremented. The valid range is between (current degree) and 25.
@@ -26992,7 +25578,7 @@ class Spline(PyDb.Curve):
         Returns the tolerance value used for curve fitting. This is the maximum distance (in
         drawing units) that the spline curve is allowed to deviate from the fit points.
         """
-    def getControlPointAt(self, idx: int, /) -> PyGe.Point3d:
+    def getControlPointAt(self, idx:int, /) -> PyGe.Point3d:
         """
         Returns, via point (in WCS coordinates), the value of the control point at position index
         in the list of control points. If index is negative or more than the number of control
@@ -27004,14 +25590,14 @@ class Spline(PyDb.Curve):
         This function has been deprecated and will be removed in a future release.
         """
     def getFitDataKnot(self, /) -> tuple: ...
-    def getFitPointAt(self, idx: int, /) -> PyGe.Point3d:
+    def getFitPointAt(self, idx:int, /) -> PyGe.Point3d:
         """
         Returns with point set to the value of the fit point at position index. Returns Acad::eOk
         if successful, otherwise Acad::eGeneralModelingFailure is returned (for example, if the
         spline doesn't have fit data or index is greater than the number of fit points in the
         spline).
         """
-    def getFitTangents(self, /) -> tuple[PyGe.Vector3d, PyGe.Vector3d]:
+    def getFitTangents(self, /) -> tuple[PyGe.Vector3d,PyGe.Vector3d]:
         """
         Returns with startTangent and endTangent set to the start point and end point tangent
         vectors in WCS coordinates. Returns Acad::eOk is successful, otherwise
@@ -27024,9 +25610,7 @@ class Spline(PyDb.Curve):
         always has NURBS data if it has an underlying gelib object within it (that is, as long as
         AcDbSpline::isNull() == Adesk::kFalse).
         """
-    def getOffsetCurvesGivenPlaneNormal(
-        self, normal: PyGe.Vector3d, dist: float, /
-    ) -> list[PyDb.Curve]:
+    def getOffsetCurvesGivenPlaneNormal(self, normal: PyGe.Vector3d, dist: float, /) -> list[PyDb.Curve]:
         """
         This function creates one or more entities that, together, make up the result of offsetting
         the curve by the distance offsetDist in the plane with normal vector normal. For many
@@ -27068,7 +25652,7 @@ class Spline(PyDb.Curve):
         non-rational, the weight value will be ingored.
         """
     @overload
-    def insertControlPointAt(self, knotParam: int, ctrlPt: PyGe.Point3d, weight: float, /) -> None:
+    def insertControlPointAt(self, knotParam: int, ctrlPt: PyGe.Point3d,weight: float, /) -> None:
         """
         Add a control point on the spline at the given knot parameter. If the spline is
         non-rational, the weight value will be ingored.
@@ -27079,7 +25663,7 @@ class Spline(PyDb.Curve):
         Add a control point on the spline at the given knot parameter. If the spline is
         non-rational, the weight value will be ingored.
         """
-    def insertFitPointAt(self, idx: int, pnt: PyGe.Point3d, /) -> None:
+    def insertFitPointAt(self, idx:int, pnt:PyGe.Point3d, /) -> None:
         """
         Adds point to the list of fit points and refits the spline. point is added at the index
         position in the fit points list. If index is negative, then point is added at the beginning
@@ -27087,7 +25671,7 @@ class Spline(PyDb.Curve):
         is added at the end of the spline. Returns Acad::eOk if successful, otherwise returns
         Acad::eGeneralModelingFailure.
         """
-    def insertKnot(self, val: float, /) -> None:
+    def insertKnot(self, val : float, /) -> None:
         """
         Inserts a new knot into the spline at the location on the spline defined by param. The
         param value must be within the spline's parameter range. To obtain the spline's parameter
@@ -27127,11 +25711,11 @@ class Spline(PyDb.Curve):
         Rebuild the spline with the degree and number of control points. This will change the shape
         of the spline. The degree can't be higher than 11.
         """
-    def removeControlPointAt(self, val: int, /) -> None:
+    def removeControlPointAt(self, val : int, /) -> None:
         """
         Remove a control point at the given index
         """
-    def removeFitPointAt(self, idx: int, /) -> None:
+    def removeFitPointAt(self, idx:int, /) -> None:
         """
         Removes the fit point at index in the list of fit points of the spline and refits the
         spline. There must be at least three fit points in the spline for this function to succeed.
@@ -27140,94 +25724,46 @@ class Spline(PyDb.Curve):
         points is only two or gelib is not successful in refitting the spline, then
         Acad::eGeneralModelingFailure is returned.
         """
-    def setControlPointAt(self, idx: int, pnt: PyGe.Point3d, /) -> None:
+    def setControlPointAt(self, idx:int, pnt:PyGe.Point3d, /) -> None:
         """
         Sets point (in WCS coordinates) to be the control point at the index position in the
         control points list replacing the point value that was previously at index position.
         Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure is returned.
         """
-    def setFitData(
-        self,
-        fitPoints: list[PyGe.Point3d],
-        degree: int,
-        fitTolerance: float,
-        startTan: PyGe.Vector3d,
-        endTan: PyGe.Vector3d,
-        /,
-    ) -> None:
+    def setFitData(self, fitPoints: list[PyGe.Point3d], degree: int, fitTolerance: float, startTan : PyGe.Vector3d, endTan : PyGe.Vector3d, /) -> None:
         """
         This function has been deprecated and will be removed in a future release.
         """
     @overload
-    def setFitDataKnot(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        periodic: bool,
-        knotParam: PyGe.KnotParameterization,
-        /,
-    ) -> None: ...
+    def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, /) -> None: ...
     @overload
-    def setFitDataKnot(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        periodic: bool,
-        knotParam: PyGe.KnotParameterization,
-        degree: int,
-        fitTolerance: float,
-        /,
-    ) -> None: ...
+    def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], periodic: bool, knotParam: PyGe.KnotParameterization, degree: int, fitTolerance: float, /) -> None: ...
     @overload
-    def setFitDataKnot(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        knotParam: PyGe.KnotParameterization,
-        /,
-    ) -> None: ...
+    def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, /) -> None: ...
     @overload
-    def setFitDataKnot(
-        self,
-        idfitPoints: list[PyGe.Point3d],
-        startTangent: PyGe.Vector3d,
-        endTangent: PyGe.Vector3d,
-        knotParam: PyGe.KnotParameterization,
-        order: int,
-        fitTolerance: float,
-        /,
-    ) -> None: ...
+    def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float, /) -> None: ...
     @overload
     def setFitDataKnot(self, *args) -> None: ...
-    def setFitPointAt(self, idx: int, pnt: PyGe.Point3d, /) -> None:
+    def setFitPointAt(self, idx:int, pnt:PyGe.Point3d, /) -> None:
         """
         Sets point (in WCS coordinates) to be the fit point at the index position in the fit points
         list (replacing the point value previously at index) and then refits the spline. Returns
         Acad::eOk if successful, otherwise returns Acad::eGeneralModelingFailure.
         """
-    def setFitTangents(self, start: PyGe.Vector3d, end: PyGe.Vector3d, /) -> None:
+    def setFitTangents(self, start : PyGe.Vector3d, end : PyGe.Vector3d, /) -> None:
         """
         Sets the start end tangents of spline to be startTangent and endTangent respectively and
         refits the spline. Returns Acad::eOk if successful, otherwise Acad::eGeneralModelingFailure
         is returned.
         """
-    def setFitTol(self, val: float, /) -> None:
+    def setFitTol(self, val : float, /) -> None:
         """
         Sets tol to be the new fit point tolerance for the spline and then refits the spline curve.
         If tol is 0, then the spline passes through all the fit points. Returns Acad::eOk if
         successful, otherwise Acad::eGeneralModelingFailure is returned.
         """
     @overload
-    def setNurbsData(
-        self,
-        degree: int,
-        rational: bool,
-        closed: bool,
-        periodic: bool,
-        controlPoints: list[PyGe.Point3d],
-        knots: list[float],
-        weights: list[float],
-        /,
-    ) -> None:
+    def setNurbsData(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], /) -> None:
         """
         This function replaces any existing spline data with the data passed in via degree,
         rational, closed, periodic, controlPoints, knots, weights, controlPtTol and knotTol. If the
@@ -27252,19 +25788,7 @@ class Spline(PyDb.Curve):
         spline, then Acad::eGeneralModelingFailure is returned.
         """
     @overload
-    def setNurbsData(
-        self,
-        degree: int,
-        rational: bool,
-        closed: bool,
-        periodic: bool,
-        controlPoints: list[PyGe.Point3d],
-        knots: list[float],
-        weights: list[float],
-        controlPtTol: float,
-        knotTol: float,
-        /,
-    ) -> None:
+    def setNurbsData(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float, /) -> None:
         """
         This function replaces any existing spline data with the data passed in via degree,
         rational, closed, periodic, controlPoints, knots, weights, controlPtTol and knotTol. If the
@@ -27333,17 +25857,15 @@ class Spline(PyDb.Curve):
         will be used by the spline). Returns Acad::eOk if successful, otherwise returns
         Acad::eGeneralModelingFailure.
         """
-    def weightAt(self, val: int, /) -> float:
+    def weightAt(self, val : int, /) -> float:
         """
         Returns the weight of the control point at index. Weights can only exist for rational
         splines, so if the spline is not rational, -1 is returned. If index is negative or greater
         than the number of control points, then 1 is returned.
         """
-
 class SplineType(_BoostPythonEnum):
     kFitPoints: ClassVar[Self]  # 0
     kControlPoints: ClassVar[Self]  # 1
-
 class StandardScaleType(_BoostPythonEnum):
     kScaleToFit: ClassVar[Self]  # 0
     kCustomScale: ClassVar[Self]  # 1
@@ -27380,7 +25902,6 @@ class StandardScaleType(_BoostPythonEnum):
     k3in_1ft: ClassVar[Self]  # 32
     k6in_1ft: ClassVar[Self]  # 33
     k1ft_1ft: ClassVar[Self]  # 34
-
 class StdScaleType(_BoostPythonEnum):
     kScaleToFit: ClassVar[Self]  # 0
     k1_128in_1ft: ClassVar[Self]  # 1
@@ -27417,7 +25938,6 @@ class StdScaleType(_BoostPythonEnum):
     k100_1: ClassVar[Self]  # 32
     k1000_1: ClassVar[Self]  # 33
     k1and1_2in_1ft: ClassVar[Self]  # 34
-
 class SubDMesh(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -27450,7 +25970,7 @@ class SubDMesh(PyDb.Entity):
         Caps given edges.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SubDMesh: ...
+    def cast(otherObject:  PyRx.RxObject, /) -> SubDMesh: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
@@ -27506,25 +26026,12 @@ class SubDMesh(PyDb.Entity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @overload
-    def extrudeConnectedFaces(
-        self,
-        subentPaths: list[PyDb.FullSubentPath],
-        length: float,
-        dir: PyGe.Vector3d,
-        taper: float,
-        /,
-    ) -> None:
+    def extrudeConnectedFaces(self, subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float, /) -> None:
         """
         Connects and extrudes faces along given direction and taper angle
         """
     @overload
-    def extrudeConnectedFaces(
-        self,
-        subentPaths: list[PyDb.FullSubentPath],
-        alongPath: list[PyGe.Point3d],
-        taper: float,
-        /,
-    ) -> None:
+    def extrudeConnectedFaces(self, subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float, /) -> None:
         """
         Connects and extrudes faces along given direction and taper angle
         """
@@ -27534,25 +26041,12 @@ class SubDMesh(PyDb.Entity):
         Connects and extrudes faces along given direction and taper angle
         """
     @overload
-    def extrudeFaces(
-        self,
-        subentPaths: list[PyDb.FullSubentPath],
-        length: float,
-        dir: PyGe.Vector3d,
-        taper: float,
-        /,
-    ) -> None:
+    def extrudeFaces(self, subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float, /) -> None:
         """
         Extrudes faces in the given direction and taper angle.
         """
     @overload
-    def extrudeFaces(
-        self,
-        subentPaths: list[PyDb.FullSubentPath],
-        alongPath: list[PyGe.Point3d],
-        taper: float,
-        /,
-    ) -> None:
+    def extrudeFaces(self, subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float, /) -> None:
         """
         Extrudes faces in the given direction and taper angle.
         """
@@ -27561,24 +26055,22 @@ class SubDMesh(PyDb.Entity):
         """
         Extrudes faces in the given direction and taper angle.
         """
-    def getAdjacentSubentPath(
-        self, path: PyDb.FullSubentPath, stype: PyDb.SubentType, /
-    ) -> list[list[PyDb.FullSubentPath]]:
+    def getAdjacentSubentPath(self, path: PyDb.FullSubentPath, stype: PyDb.SubentType, /) -> list[list[PyDb.FullSubentPath]]:
         """
         Returns adjacent subentities for a specified mesh sub-entity.
         """
     @overload
-    def getCrease(self, id: int | PyDb.SubentId, /) -> list[float] | float:
+    def getCrease(self, id: int|PyDb.SubentId, /) -> list[float]|float:
         """
         Gets the crease value for a mesh subentity.
         """
     @overload
-    def getCrease(self, subentPaths: list[PyDb.FullSubentPath], /) -> list[float] | float:
+    def getCrease(self, subentPaths: list[PyDb.FullSubentPath], /) -> list[float]|float:
         """
         Gets the crease value for a mesh subentity.
         """
     @overload
-    def getCrease(self, *args) -> list[float] | float:
+    def getCrease(self, *args) -> list[float]|float:
         """
         Gets the crease value for a mesh subentity.
         """
@@ -27606,7 +26098,7 @@ class SubDMesh(PyDb.Entity):
         """
         Returns smoothed mesh vertex normal array.
         """
-    def getSubDividedVertexAt(self, id: int | PyDb.SubentId, /) -> PyGe.Point3d:
+    def getSubDividedVertexAt(self, id: int|PyDb.SubentId, /) -> PyGe.Point3d:
         """
         Returns the vertex at the specified position of the smoothed mesh.
         """
@@ -27622,14 +26114,12 @@ class SubDMesh(PyDb.Entity):
         """
         Returns the object id of the material assigned to the specified subentity.
         """
-    def getSubentPath(
-        self, index: int, stype: PyDb.SubentType, /
-    ) -> list[list[PyDb.FullSubentPath]]:
+    def getSubentPath(self, index: int, stype: PyDb.SubentType, /) -> list[list[PyDb.FullSubentPath]]:
         """
         Returns the array of AcDbFullSubentPath representing the subentity base for the specified
         subentity type and index.
         """
-    def getVertexAt(self, id: int | PyDb.SubentId, /) -> PyGe.Point3d:
+    def getVertexAt(self, id: int|PyDb.SubentId, /) -> PyGe.Point3d:
         """
         Returns the vertex at the specified position of the base mesh.
         """
@@ -27670,32 +26160,11 @@ class SubDMesh(PyDb.Entity):
         """
         Returns the number for Level 0 (base) mesh vertices.
         """
-    def setBox(
-        self,
-        xLen: float,
-        yLen: float,
-        zLen: float,
-        divX: int,
-        divY: int,
-        divZ: int,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setBox(self, xLen: float, yLen: float, zLen: float, divX: int, divY: int, divZ: int, subDLevel: int, /) -> None:
         """
         Creates a box mesh primitive.
         """
-    def setCone(
-        self,
-        majorRadius: float,
-        minorRadius: float,
-        height: float,
-        divAxis: int,
-        divHeight: int,
-        divCap: int,
-        radiusRatio: float,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setCone(self, majorRadius: float, minorRadius: float, height: float, divAxis: int, divHeight: int, divCap: int, radiusRatio: float, subDLevel: int, /) -> None:
         """
         Creates a cone mesh primitive.
         """
@@ -27714,32 +26183,11 @@ class SubDMesh(PyDb.Entity):
         """
         Makes all edges of the MESH object 'sharp.'
         """
-    def setCylinder(
-        self,
-        majorRadius: float,
-        minorRadius: float,
-        height: float,
-        divAxis: int,
-        divHeight: int,
-        divCap: int,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setCylinder(self, majorRadius: float, minorRadius: float, height: float, divAxis: int, divHeight: int, divCap: int, subDLevel: int, /) -> None:
         """
         Creates a cylinder mesh primitive.
         """
-    def setPyramid(
-        self,
-        radius: float,
-        height: float,
-        divLength: int,
-        divHeight: int,
-        divCap: int,
-        nSides: int,
-        radiusRatio: float,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setPyramid(self, radius: float, height: float, divLength: int, divHeight: int, divCap: int, nSides: int, radiusRatio: float, subDLevel: int, /) -> None:
         """
         Creates a pyramid mesh primitive.
         """
@@ -27747,9 +26195,7 @@ class SubDMesh(PyDb.Entity):
         """
         Creates a sphere mesh primitive.
         """
-    def setSubDMesh(
-        self, vertexArray: list[PyGe.Point3d], faceArray: list[int], subDLevel: int, /
-    ) -> None:
+    def setSubDMesh(self, vertexArray: list[PyGe.Point3d], faceArray: list[int], subDLevel: int, /) -> None:
         """
         Creates a mesh for a given vertex array and face list array.
         """
@@ -27761,36 +26207,15 @@ class SubDMesh(PyDb.Entity):
         """
         Sets the material for the specified subentity.
         """
-    def setTorus(
-        self,
-        majorRadius: float,
-        divSection: int,
-        divSweepPath: int,
-        sectionRadiusRatio: float,
-        sectionRotate: float,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setTorus(self, majorRadius: float, divSection: int, divSweepPath: int, sectionRadiusRatio: float, sectionRotate: float, subDLevel: int, /) -> None:
         """
         Creates a torus mesh primitive.
         """
-    def setVertexAt(self, id: int | PyDb.SubentId, pt: PyGe.Point3d, /) -> None:
+    def setVertexAt(self, id: int|PyDb.SubentId, pt: PyGe.Point3d, /) -> None:
         """
         Sets the vertex at the given position for the base mesh.
         """
-    def setWedge(
-        self,
-        xLen: float,
-        yLen: float,
-        zLen: float,
-        divLength: int,
-        divWidth: int,
-        divHeight: int,
-        divSlope: int,
-        divCap: int,
-        subDLevel: int,
-        /,
-    ) -> None:
+    def setWedge(self, xLen: float, yLen: float, zLen: float, divLength: int, divWidth: int, divHeight: int, divSlope: int, divCap: int, subDLevel: int, /) -> None:
         """
         Creates a wedge mesh primitive.
         """
@@ -27798,15 +26223,7 @@ class SubDMesh(PyDb.Entity):
         """
         Spin edge of mesh face
         """
-    def splitFace(
-        self,
-        subentFaceId: PyDb.SubentId,
-        subent0: PyDb.SubentId,
-        point0: PyGe.Point3d,
-        subent1: PyDb.SubentId,
-        point1: PyGe.Point3d,
-        /,
-    ) -> None:
+    def splitFace(self, subentFaceId: PyDb.SubentId, subent0: PyDb.SubentId, point0: PyGe.Point3d, subent1: PyDb.SubentId, point1: PyGe.Point3d, /) -> None:
         """
         Split a face in two by specifying two points on two different face edges.
         """
@@ -27827,7 +26244,6 @@ class SubDMesh(PyDb.Entity):
         Adds definition to the Smooth mesh by re-assigning any level of smoothness to the
         representation of certain faces, to become the new Level 0.
         """
-
 class SubentId:
     @overload
     def __init__(self, /) -> None: ...
@@ -27869,7 +26285,6 @@ class SubentId:
         Returns the AcRxClass* of the subentity. Returns the AcRxClass* of the subentity if the
         AcDbSubentId::type() is AcDb::kClassSubentType, otherwise it returns NULL.
         """
-
 class SubentType(_BoostPythonEnum):
     kNullSubentType: ClassVar[Self]  # 0
     kFaceSubentType: ClassVar[Self]  # 1
@@ -27879,7 +26294,6 @@ class SubentType(_BoostPythonEnum):
     kClassSubentType: ClassVar[Self]  # 5
     kAxisSubentType: ClassVar[Self]  # 6
     kSilhouetteSubentType: ClassVar[Self]  # 7
-
 class Surface(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -27924,9 +26338,7 @@ class Surface(PyDb.Entity):
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> PyDb.Surface: ...
     @staticmethod
-    def createExtrudedSurface(
-        pSweep: PyDb.Profile3d, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions, /
-    ) -> ExtrudedSurface:
+    def createExtrudedSurface(pSweep: PyDb.Profile3d,directionVec: PyGe.Vector3d,sweepOptions: PyDb.SweepOptions, /) -> ExtrudedSurface:
         """
         Creates an extruded surface from the given profile using the specified options and adds the
         surface to the current database.
@@ -27934,15 +26346,7 @@ class Surface(PyDb.Entity):
     @staticmethod
     def createFrom(val: PyDb.Entity, /) -> PyDb.Surface: ...
     @staticmethod
-    def createRevolvedSurface(
-        pRev: PyDb.Profile3d,
-        axisPnt: PyGe.Point3d,
-        axisDir: PyGe.Vector3d,
-        revAngle: float,
-        startAngle: float,
-        sweepOptions: PyDb.SweepOptions,
-        /,
-    ) -> RevolvedSurface:
+    def createRevolvedSurface(pRev: PyDb.Profile3d,axisPnt: PyGe.Point3d,axisDir: PyGe.Vector3d,revAngle: float,startAngle: float,sweepOptions: PyDb.SweepOptions, /) -> RevolvedSurface:
         """
         Creates a revolved surface from the given profile using the specified options.
         """
@@ -27961,51 +26365,35 @@ class Surface(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def extendEdges(
-        self,
-        subEnts: list[PyDb.FullSubentPath],
-        extDist: float,
-        extOption: SurfaceEdgeExtensionType,
-        bAssociativeEnabled: bool,
-        /,
-    ) -> None: ...
+    def extendEdges(self, subEnts: list[PyDb.FullSubentPath], extDist: float, extOption: SurfaceEdgeExtensionType, bAssociativeEnabled: bool, /) -> None: ...
     def getArea(self, /) -> float: ...
     def getPerimeter(self, /) -> float: ...
     def getWireframeType(self, /) -> SurfaceWireframeType: ...
     def modificationActionBodyIds(self, /) -> list[PyDb.ObjectId]: ...
-    def projectOnToSurface(
-        self, object: PyDb.Entity, projectionDirection: PyGe.Vector3d, /
-    ) -> list[PyDb.Entity]: ...
-    def rayTest(
-        self, rayBasePoint: PyGe.Point3d, rayDir: PyGe.Vector3d, rayRadius: float, /
-    ) -> tuple[list[PyDb.SubentId], list[float]]: ...
+    def projectOnToSurface(self, object: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]: ...
+    def rayTest(self, rayBasePoint: PyGe.Point3d, rayDir: PyGe.Vector3d, rayRadius: float, /) -> tuple[list[PyDb.SubentId],list[float]]: ...
     def setUIsolineDensity(self, numIsolines: int, /) -> None: ...
     def setVIsolineDensity(self, numIsolines: int, /) -> None: ...
     def setWireframeType(self, val: PyDb.SurfaceWireframeType, /) -> None: ...
     def uIsolineDensity(self, /) -> int: ...
     def vIsolineDensity(self, /) -> int: ...
-
 class SurfaceEdgeExtensionType(_BoostPythonEnum):
     kExtendEdge: ClassVar[Self]  # 0
     kStretchEdge: ClassVar[Self]  # 1
-
 class SurfaceWireframeType(_BoostPythonEnum):
     kIsolines: ClassVar[Self]  # 0
     kIsoparms: ClassVar[Self]  # 1
-
 class SweepAlignOption(_BoostPythonEnum):
     kNoAlignment: ClassVar[Self]  # 0
     kAlignSweepEntityToPath: ClassVar[Self]  # 1
     kTranslateSweepEntityToPath: ClassVar[Self]  # 2
     kTranslatePathToSweepEntity: ClassVar[Self]  # 3
-
 class SweepMiterOption(_BoostPythonEnum):
     kDefaultMiter: ClassVar[Self]  # 0
     kOldMiter: ClassVar[Self]  # 1
     kNewMiter: ClassVar[Self]  # 2
     kCrimpMiter: ClassVar[Self]  # 3
     kBendMiter: ClassVar[Self]  # 4
-
 class SweepOptions:
     def __init__(self, /) -> None:
         """
@@ -28020,12 +26408,8 @@ class SweepOptions:
     def bank(self, /) -> bool: ...
     def basePoint(self, /) -> PyGe.Point3d: ...
     def checkIntersections(self, /) -> bool: ...
-    def checkPathCurve(
-        self, pPathEnt: PyDb.Entity, displayErrorMessages: bool = False, /
-    ) -> None: ...
-    def checkSweepCurve(
-        self, pPathEnt: PyDb.Entity, displayErrorMessages: bool = False, /
-    ) -> tuple[PyDb.Planarity, PyGe.Point3d, PyGe.Vector3d, bool, float]: ...
+    def checkPathCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> None: ...
+    def checkSweepCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> tuple[PyDb.Planarity,PyGe.Point3d,PyGe.Vector3d,bool,float]: ...
     def draftAngle(self, /) -> float: ...
     def endDraftDist(self, /) -> float: ...
     def getPathEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool: ...
@@ -28046,9 +26430,7 @@ class SweepOptions:
     @overload
     def setPathEntityTransform(self, pPathEnt: PyDb.Entity, /) -> None: ...
     @overload
-    def setPathEntityTransform(
-        self, pPathEnt: PyDb.Entity, displayErrorMessages: bool, /
-    ) -> None: ...
+    def setPathEntityTransform(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool, /) -> None: ...
     @overload
     def setPathEntityTransform(self, *args) -> None: ...
     def setScaleFactor(self, val: float, /) -> None: ...
@@ -28058,9 +26440,7 @@ class SweepOptions:
     @overload
     def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], /) -> None: ...
     @overload
-    def setSweepEntityTransform(
-        self, sweepEntities: list[PyDb.Entity], displayErrorMessages: bool, /
-    ) -> None: ...
+    def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], displayErrorMessages: bool, /) -> None: ...
     @overload
     def setSweepEntityTransform(self, *args) -> None: ...
     def setTwistAngle(self, val: float, /) -> None: ...
@@ -28068,15 +26448,8 @@ class SweepOptions:
     def startDraftDist(self, /) -> float: ...
     def twistAngle(self, /) -> float: ...
     def twistRefVec(self, /) -> PyGe.Vector3d: ...
-
 class SweptSurface(PyDb.Surface):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SweptSurface: ...
@@ -28098,7 +26471,6 @@ class SweptSurface(PyDb.Surface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class SymUtilServices:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -28141,25 +26513,14 @@ class SymUtilServices:
     def repairSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> str: ...
     def textStyleStandardId(self, db: PyDb.Database, /) -> ObjectId: ...
     def textStyleStandardName(self, /) -> str: ...
-    def validateCompatibleSymbolName(
-        self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool, /
-    ) -> ErrorStatus: ...
-    def validatePreExtendedSymbolName(
-        self, oldname: str, allowVerticalBar: bool, /
-    ) -> ErrorStatus: ...
+    def validateCompatibleSymbolName(self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool, /) -> ErrorStatus: ...
+    def validatePreExtendedSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> ErrorStatus: ...
     def validateSymbolName(self, name: str, allowVerticalBar: bool, /) -> ErrorStatus: ...
     def viewportActiveName(self, /) -> str: ...
-
 class SymbolTable(PyDb.DbObject):
-    def __contains__(self, val: str | PyDb.ObjectId, /) -> bool: ...
+    def __contains__(self, val: str|PyDb.ObjectId, /) -> bool: ...
     def __getitem__(self, val: str, /) -> ObjectId: ...
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.SymbolTableRecord, /) -> ObjectId:
@@ -28199,22 +26560,15 @@ class SymbolTable(PyDb.DbObject):
         Acad::ePermanentlyErased, Acad::eAtMaxReaders, Acad::eWasOpenForNotify,
         Acad::eWasNotifying, Acad::eWasOpenForUndo, Acad::eWasOpenForWrite, Acad::eWasOpenForRead
         """
-    def has(self, val: str | PyDb.ObjectId, /) -> bool:
+    def has(self, val: str|PyDb.ObjectId, /) -> bool:
         """
         This function returns true if the table contains a record with a name that matches name. If
         no matches are found, then false is returned.
         """
     def recordIds(self, /) -> list[PyDb.ObjectId]: ...
     def toDict(self, /) -> dict[str, PyDb.ObjectId]: ...
-
 class SymbolTableRecord(PyDb.DbObject):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SymbolTableRecord: ...
@@ -28274,7 +26628,6 @@ class SymbolTableRecord(PyDb.DbObject):
         successful. If there is insufficient memory for the string copy, then Acad::eOutOfMemory is
         returned. The SymbolTableRecord name string is used for DXF group code 2.
         """
-
 class Table(PyDb.BlockReference):
     @overload
     def __init__(self, /) -> None: ...
@@ -28358,7 +26711,7 @@ class Table(PyDb.BlockReference):
         This function returns the table break flow direction of the table. The break flow direction
         determines the positioning of the tables when the table break is enabled.
         """
-    def breakHeight(self, val: int, /) -> float:
+    def breakHeight(self, val : int, /) -> float:
         """
         Returns the break height of the specified table when table breaking is enabled.
         """
@@ -28375,8 +26728,8 @@ class Table(PyDb.BlockReference):
         This function gets the spacing between multiple tables when table breaking is enabled.
         """
     @staticmethod
-    def calcTextExtents(val: str, textStyleId: PyDb.ObjectId, /) -> tuple[float, float]: ...
-    def canDelete(self, row: int, col: int, brow: bool, /) -> bool:
+    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]: ...
+    def canDelete(self, row: int, col: int, brow : bool, /) -> bool:
         """
         This function checks if the row or column can be deleted Returns true if the row or column
         can be deleted, false if not.
@@ -28400,29 +26753,27 @@ class Table(PyDb.BlockReference):
         cell may change as new states are added.
         """
     @overload
-    def cellStrValues(self, /) -> list[tuple[int, int, str]]:
+    def cellStrValues(self, /) -> list[tuple[int,int,str]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellStrValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int, int, str]]:
+    def cellStrValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int,int,str]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellStrValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, str]]:
+    def cellStrValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int,int,str]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellStrValues(
-        self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /
-    ) -> list[tuple[int, int, str]]:
+    def cellStrValues(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[tuple[int,int,str]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellStrValues(self, *args) -> list[tuple[int, int, str]]:
+    def cellStrValues(self, *args) -> list[tuple[int,int,str]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
@@ -28442,29 +26793,27 @@ class Table(PyDb.BlockReference):
         Possible values for cell type are: AcDbTable::kTextCellAcDbTable::kBlockCell
         """
     @overload
-    def cellValues(self, /) -> list[tuple[int, int, Any]]:
+    def cellValues(self, /) -> list[tuple[int,int,Any]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int, int, Any]]:
+    def cellValues(self, nOption: PyDb.TableIteratorOption, /) -> list[tuple[int,int,Any]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int, int, Any]]:
+    def cellValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int,int,Any]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellValues(
-        self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /
-    ) -> list[tuple[int, int, Any]]:
+    def cellValues(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[tuple[int,int,Any]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
     @overload
-    def cellValues(self, *args) -> list[tuple[int, int, Any]]:
+    def cellValues(self, *args) -> list[tuple[int,int,Any]]:
         """
         Returns the iterator. The returned pointer should be deleted after using it.
         """
@@ -28513,7 +26862,7 @@ class Table(PyDb.BlockReference):
         """
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Table: ...
-    def columnWidth(self, col: int, /) -> float:
+    def columnWidth(self, col : int, /) -> float:
         """
         This function returns the column width at the specified column index in the table.
         """
@@ -28634,12 +26983,12 @@ class Table(PyDb.BlockReference):
         This function returns the unit horizontal direction vector for the table in WCS
         coordinates.
         """
-    def enableBreak(self, val: bool, /) -> None:
+    def enableBreak(self, val : bool, /) -> None:
         """
         Enables or disables table breaking. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def enableMergeAll(self, row: int, col: int, val: bool, /) -> None:
+    def enableMergeAll(self, row: int, col: int, val : bool, /) -> None:
         """
         Enables or disables the merge all flag in row or column Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status. To specify row pass a valid row index and pass
@@ -28690,9 +27039,7 @@ class Table(PyDb.BlockReference):
         with attributes.
         """
     @overload
-    def getBlockAttributeValue(
-        self, row: int, col: int, content: int, val: str, id: PyDb.ObjectId, /
-    ) -> str:
+    def getBlockAttributeValue(self, row: int, col: int, content: int, val: str, id: PyDb.ObjectId, /) -> str:
         """
         Gets the block attribute value if the content at the specified content index is a block
         with attributes.
@@ -28730,29 +27077,25 @@ class Table(PyDb.BlockReference):
         cell can be any cell in a linked range.
         """
     @overload
-    def getDataType(
-        self, rowType: PyDb.RowType, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, rowType: PyDb.RowType, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def getDataType(self, row: int, col: int, /) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, row: int, col: int, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def getDataType(
-        self, row: int, col: int, content: int, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, row: int, col: int, content: int, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -28762,9 +27105,7 @@ class Table(PyDb.BlockReference):
         This function returns the formula if the content at the specified content index has a
         formula; otherwise it returns an empty string.
         """
-    def getGridOverride(
-        self, row: int, col: int, nGridLineType: PyDb.GridLineType, /
-    ) -> GridProperty: ...
+    def getGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridProperty: ...
     def getGridProperty(self, row: int, col: int, nGridLineType: GridLineType, /) -> object:
         """
         Gets the grid line properties of cell, row, or column. To specify cell, pass a valid row
@@ -28819,9 +27160,7 @@ class Table(PyDb.BlockReference):
     def gridEdgeColor(self, row: int, col: int, content: CellEdgeMask, /) -> Color: ...
     def gridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, /) -> LineWeight: ...
     def gridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, /) -> Visibility: ...
-    def gridLineStyle(
-        self, row: int, col: int, nGridLineType: PyDb.GridLineType, /
-    ) -> GridLineStyle:
+    def gridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridLineStyle:
         """
         Gets the grid line style of cell, row, or column. Returns the grid line style of cell, row,
         or column. To specify cell, pass a valid row and column indices. To specify row, pass a
@@ -28895,9 +27234,7 @@ class Table(PyDb.BlockReference):
         """
         This function returns the total height for the table.
         """
-    def hitTest(
-        self, wpt: PyGe.Point3d, viewvec: PyGe.Vector3d, wx: float = 0.0, wy: float = 0.0, /
-    ) -> tuple[bool, int, int, int, int]:
+    def hitTest(self, wpt: PyGe.Point3d, viewvec: PyGe.Vector3d, wx: float=0.0, wy: float=0.0, /) -> tuple[bool,int,int,int,int]:
         """
         This function performs a hit test for the specified point and viewing direction. The cell
         hit by the ray will be returned in the output arguments resultRowIndex and
@@ -28908,7 +27245,7 @@ class Table(PyDb.BlockReference):
         This function returns the horizontal cell margin for the table. This method is deprecated
         and may be removed in a future release.
         """
-    def insertColumns(self, row: int, width: float, nCols: int, /) -> None:
+    def insertColumns(self, row: int, width : float, nCols: int, /) -> None:
         """
         This function inserts one or more columns at the specified index. Returns the starting
         index of the inserted columns
@@ -28918,7 +27255,7 @@ class Table(PyDb.BlockReference):
         This function inserts the specified number of new columns into the table at the column
         index col. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def insertRows(self, row: int, height: float, nRows: int, /) -> None:
+    def insertRows(self, row: int, height : float, nRows: int, /) -> None:
         """
         This function inserts one or more rows at the specified index. Returns Acad::eOk if
         successful. Otherwise, returns Acad::eInvalidInput .
@@ -29011,7 +27348,7 @@ class Table(PyDb.BlockReference):
         Determines whether the merge-all flag is enabled in a row or column Returns true if the
         flag is enabled; false if not.
         """
-    def isMergedCell(self, row: int, col: int, /) -> tuple[bool, int, int, int, int]:
+    def isMergedCell(self, row: int, col: int, /) -> tuple[bool,int,int,int,int]:
         """
         This function returns true if the specified cell is within merged cells. It also returns
         the range of the merged cells if minRow, maxRow, minCol, and maxCol are not null. The
@@ -29071,7 +27408,7 @@ class Table(PyDb.BlockReference):
         """
         This function returns a non-negative integer representing the number of rows in the table.
         """
-    def recomputeTableBlock(self, val: bool, /) -> None:
+    def recomputeTableBlock(self, val : bool, /) -> None:
         """
         This function updates the block table record the table object references to match any
         changes made to the table object since the last time the block table record was updated. If
@@ -29086,7 +27423,7 @@ class Table(PyDb.BlockReference):
         Removes all the overrides in cell, row, or column. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def removeDataLink(self, row: int = -1, col: int = -1, /) -> None:
+    def removeDataLink(self, row: int=-1, col: int=-1, /) -> None:
         """
         This function removes all the data links in the table. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
@@ -29095,7 +27432,7 @@ class Table(PyDb.BlockReference):
         """
         Returns the rotation.
         """
-    def rowHeight(self, row: int, /) -> float:
+    def rowHeight(self, row : int, /) -> float:
         """
         This function returns the row height of the specified row in the table.
         """
@@ -29143,7 +27480,7 @@ class Table(PyDb.BlockReference):
         successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setAutoScale(self, row: int, col: int, content: int, flag: bool, /) -> None:
+    def setAutoScale(self, row: int, col: int, content: int, flag:bool, /) -> None:
         """
         Sets the auto scale flag for the block at the specified content index. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status.
@@ -29198,9 +27535,7 @@ class Table(PyDb.BlockReference):
         status.
         """
     @overload
-    def setBlockAttributeValue(
-        self, row: int, col: int, content: int, id: PyDb.ObjectId, val: str, /
-    ) -> None:
+    def setBlockAttributeValue(self, row: int, col: int, content: int, id: PyDb.ObjectId, val: str, /) -> None:
         """
         Sets the block attribute value if the content at the specified content index is a block
         with attributes. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
@@ -29213,30 +27548,26 @@ class Table(PyDb.BlockReference):
         with attributes. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
         status.
         """
-    def setBlockRotation(self, row: int, col: int, rotAng: float, /) -> None:
+    def setBlockRotation(self, row: int, col: int, rotAng : float, /) -> None:
         """
         This function sets the rotation angle of the block reference at the specified cell in the
         table. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput. This method
         is deprecated and may be removed in a future release.
         """
-    def setBlockScale(self, row: int, col: int, scale: float, /) -> None:
+    def setBlockScale(self, row: int, col: int, scale : float, /) -> None:
         """
         This function sets the scale factor of the block reference at the specified cell in the
         table. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput. This method
         is deprecated and may be removed in a future release.
         """
     @overload
-    def setBlockTableRecordId(
-        self, row: int, col: int, id: PyDb.ObjectId, autoFit: bool, /
-    ) -> None:
+    def setBlockTableRecordId(self, row: int, col: int, id: PyDb.ObjectId, autoFit: bool, /) -> None:
         """
         Sets the id of the block table record for the content at the specified content index.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setBlockTableRecordId(
-        self, row: int, col: int, content: int, id: PyDb.ObjectId, autoFit: bool, /
-    ) -> None:
+    def setBlockTableRecordId(self, row: int, col: int, content: int, id: PyDb.ObjectId, autoFit: bool, /) -> None:
         """
         Sets the id of the block table record for the content at the specified content index.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -29253,7 +27584,7 @@ class Table(PyDb.BlockReference):
         positioning of the tables when the table break is enabled. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def setBreakHeight(self, val: int, height: float, /) -> None:
+    def setBreakHeight(self, val : int, height : float, /) -> None:
         """
         Sets the break height of the specified table when table breaking is enabled. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -29268,15 +27599,13 @@ class Table(PyDb.BlockReference):
         Sets the table break option. Returns Acad::eOk if successful; otherwise, returns an AutoCAD
         error status.
         """
-    def setBreakSpacing(self, val: float, /) -> None:
+    def setBreakSpacing(self, val : float, /) -> None:
         """
         Sets the table break spacing. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def setCellOverride(
-        self, row: int, col: int, content: int, nOverride: PyDb.CellProperty, /
-    ) -> None: ...
-    def setCellState(self, row: int, col: int, val: PyDb.CellState, /) -> None:
+    def setCellOverride(self, row: int, col: int, content: int, nOverride: PyDb.CellProperty, /) -> None: ...
+    def setCellState(self, row: int, col: int, val : PyDb.CellState, /) -> None:
         """
         Sets the cell state. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error
         status.
@@ -29294,7 +27623,7 @@ class Table(PyDb.BlockReference):
         deprecated and may be removed in a future release.
         """
     @overload
-    def setColumnWidth(self, column: int, width: float, /) -> None:
+    def setColumnWidth(self, column:int, width: float, /) -> None:
         """
         This function sets the column width at the specified column index in the table. Returns
         Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
@@ -29363,7 +27692,7 @@ class Table(PyDb.BlockReference):
         Sets the data format of the content at the specified content index. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status.
         """
-    def setDataLink(self, row: int, col: int, id: PyDb.ObjectId, update: bool, /) -> None:
+    def setDataLink(self, row: int, col: int, id : PyDb.ObjectId, update : bool, /) -> None:
         """
         Sets the specified data link in a cell. If the specified cell is top-left cell of an
         existing linked range this will overwrite the current data link. If it is any other cell in
@@ -29378,25 +27707,19 @@ class Table(PyDb.BlockReference):
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setDataType(
-        self, nDataType: ValueDataType, nUnitType: ValueUnitType, rowType: PyDb.RowType, /
-    ) -> None:
+    def setDataType(self, nDataType: ValueDataType, nUnitType: ValueUnitType, rowType: PyDb.RowType, /) -> None:
         """
         Sets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setDataType(
-        self, row: int, col: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /
-    ) -> None:
+    def setDataType(self, row: int, col: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None:
         """
         Sets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setDataType(
-        self, row: int, col, nContent: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /
-    ) -> None:
+    def setDataType(self, row: int, col, nContent: int,  nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None:
         """
         Sets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -29407,21 +27730,19 @@ class Table(PyDb.BlockReference):
         Sets the data type and unit type of the content at the specified content index. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setDirection(self, val: PyGe.Vector3d, /) -> None:
+    def setDirection(self, val : PyGe.Vector3d, /) -> None:
         """
         This function sets the horizontal direction (X axis, in WCS coordinates) for the table.
         Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setFieldId(self, row: int, col: int, id: PyDb.ObjectId, /) -> None:
+    def setFieldId(self, row: int, col: int,id: PyDb.ObjectId, /) -> None:
         """
         Sets the id of the field at the specified index. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setFieldId(
-        self, row: int, col: int, content: int, id: PyDb.ObjectId, nFlag: PyDb.CellOption, /
-    ) -> None:
+    def setFieldId(self, row: int, col: int, content: int,id: PyDb.ObjectId, nFlag: PyDb.CellOption, /) -> None:
         """
         Sets the id of the field at the specified index. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
@@ -29432,13 +27753,13 @@ class Table(PyDb.BlockReference):
         Sets the id of the field at the specified index. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None:
+    def setFlowDirection(self, val : PyDb.TableFlowDirection, /) -> None:
         """
         This function sets the flow direction for the table. Possible values for
         AcDb::FlowDirection are AcDb::kTtoB (top to bottom) and AcDb::kBtoT (bottom to top).
         Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setFormat(self, row: int, col: int, format: str, /) -> None:
+    def setFormat(self, row: int, col: int, format : str, /) -> None:
         """
         For internal use only.
         """
@@ -29454,9 +27775,7 @@ class Table(PyDb.BlockReference):
         successful. Otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setGridColor(
-        self, nRow: int, nCol: int, nGridLineTypes: GridLineType, color: PyDb.Color, /
-    ) -> None:
+    def setGridColor(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, color: PyDb.Color, /) -> None:
         """
         This function sets the grid color of the specified edge of the cell. Returns Acad::eOk if
         successful. Otherwise, returns Acad::eInvalidInput.
@@ -29467,9 +27786,7 @@ class Table(PyDb.BlockReference):
         This function sets the grid color of the specified edge of the cell. Returns Acad::eOk if
         successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setGridDoubleLineSpacing(
-        self, row: int, col: int, nGridLineType: GridLineType, spacing: float, /
-    ) -> None:
+    def setGridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, spacing: float, /) -> None:
         """
         Sets the grid double line spacing in a cell, row, or column. To specify cell, pass a valid
         row and column indices. To specify row, pass a valid row index and pass -1 as column index.
@@ -29477,23 +27794,10 @@ class Table(PyDb.BlockReference):
         value in multiple grid line types combine multiple grid line types using the OR and pass
         it. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setGridEdgeColor(
-        self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor, /
-    ) -> None: ...
-    def setGridEdgeLineWeight(
-        self, row: int, col: int, content: CellEdgeMask, val: PyDb.LineWeight, /
-    ) -> None: ...
-    def setGridEdgeVisibility(
-        self, row: int, col: int, content: CellEdgeMask, val: PyDb.Visibility, /
-    ) -> None: ...
-    def setGridLineStyle(
-        self,
-        row: int,
-        col: int,
-        nGridLineType: PyDb.GridLineType,
-        nLineStyle: PyDb.GridLineStyle,
-        /,
-    ) -> None:
+    def setGridEdgeColor(self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor, /) -> None: ...
+    def setGridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, val: PyDb.LineWeight, /) -> None: ...
+    def setGridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, val: PyDb.Visibility, /) -> None: ...
+    def setGridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nLineStyle: PyDb.GridLineStyle, /) -> None:
         """
         Sets the grid line style in a cell, row, or column. To specify cell, pass a valid row and
         column indices. To specify row, pass a valid row index and pass -1 as column index. To
@@ -29508,9 +27812,7 @@ class Table(PyDb.BlockReference):
         if successful. Otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setGridLineWeight(
-        self, nRow: int, nCol: int, nGridLineTypes: GridLineType, nLineWeight: LineWeight, /
-    ) -> None:
+    def setGridLineWeight(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, nLineWeight: LineWeight, /) -> None:
         """
         This function sets the grid lineweight of the specified edge of the cell. Returns Acad::eOk
         if successful. Otherwise, returns Acad::eInvalidInput.
@@ -29521,9 +27823,7 @@ class Table(PyDb.BlockReference):
         This function sets the grid lineweight of the specified edge of the cell. Returns Acad::eOk
         if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setGridLinetype(
-        self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId, /
-    ) -> None:
+    def setGridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId, /) -> None:
         """
         Sets the grid line type in a cell, row, or column. To specify cell, pass a valid row and
         column indices. To specify row, pass a valid row index and pass -1 as column index. To
@@ -29531,9 +27831,7 @@ class Table(PyDb.BlockReference):
         in multiple grid line types combine multiple grid line types using the OR and pass it.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setGridOverride(
-        self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty, /
-    ) -> None: ...
+    def setGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty, /) -> None: ...
     @overload
     def setGridVisibility(self, visible: PyDb.Visibility, nBorders: int, nRows: int, /) -> None:
         """
@@ -29541,9 +27839,7 @@ class Table(PyDb.BlockReference):
         if successful. Otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setGridVisibility(
-        self, nRow: int, nCol: int, nGridLineTypes: GridLineType, visible: PyDb.Visibility, /
-    ) -> None:
+    def setGridVisibility(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, visible: PyDb.Visibility, /) -> None:
         """
         This function sets the grid visibility of the specified edge of the cell. Returns Acad::eOk
         if successful. Otherwise, returns Acad::eInvalidInput.
@@ -29554,13 +27850,13 @@ class Table(PyDb.BlockReference):
         This function sets the grid visibility of the specified edge of the cell. Returns Acad::eOk
         if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         This function sets the total row height for the table. The individual row heights may be
         increased or decreased proportionally. Returns Acad::eOk if successful. Otherwise, returns
         Acad::eInvalidInput.
         """
-    def setHorzCellMargin(self, val: float, /) -> None:
+    def setHorzCellMargin(self, val : float, /) -> None:
         """
         This function sets the horizontal cell margin (space between the cell text and the cell
         border) for the table. In general, the horizontal cell margin should not greater than five
@@ -29568,22 +27864,22 @@ class Table(PyDb.BlockReference):
         returns Acad::eInvalidInput. This method is deprecated and may be removed in a future
         release.
         """
-    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val: float, /) -> None:
+    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val : float, /) -> None:
         """
         Sets the margin of cell, row, or column. To specify cell pass a valid row and column
         indices; to specify row pass a valid row index and pass -1 as column index; to specify
         column pass a valid column index and pass -1 as row index. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         Overridden method from AcDbBlockReference. See AcDbBlockReference::setNormal.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Overridden method from AcDbBlockReference. See AcDbBlockReference::setPosition.
         """
-    def setRecomputeTableBlock(self, val: bool, /) -> None:
+    def setRecomputeTableBlock(self, val : bool, /) -> None:
         """
         This function updates the block table record that the table object references to match any
         changes made to the table object since the last time the block table record was updated. If
@@ -29603,7 +27899,7 @@ class Table(PyDb.BlockReference):
         successful; otherwise, returns an AutoCAD error status
         """
     @overload
-    def setRowHeight(self, row: int, height: float, /) -> None:
+    def setRowHeight(self, row:int, height: float, /) -> None:
         """
         This function sets the row height for the specified row index in the table. Returns
         Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
@@ -29620,7 +27916,7 @@ class Table(PyDb.BlockReference):
         This function sets the row height for the specified row index in the table. Returns
         Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setScale(self, row: int, col: int, content: int, val: float, /) -> None:
+    def setScale(self, row: int, col: int, content: int, val : float, /) -> None:
         """
         Sets the scale of the content at the specified content index. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status.
@@ -29629,7 +27925,7 @@ class Table(PyDb.BlockReference):
         """
         Resizes the table. Returns Acad::eOk if successful.
         """
-    def setSubSelection(self, val: PyDb.CellRange, /) -> None:
+    def setSubSelection(self, val : PyDb.CellRange, /) -> None:
         """
         This function sets the row and column indexes of cells to the subselection set. Returns
         Acad::eOk if successful. Returns Acad::eInvalidInput if the input indexes of row and column
@@ -29640,7 +27936,7 @@ class Table(PyDb.BlockReference):
         Sets the rotation angle of the content at the specified content index. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status
         """
-    def setTableStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setTableStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         This function sets the table to use the AcDbTableStyle with the given object ID. Returns
         Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
@@ -29745,9 +28041,7 @@ class Table(PyDb.BlockReference):
         argument is invalid.
         """
     @overload
-    def setValue(
-        self, row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption, /
-    ) -> None:
+    def setValue(self, row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption, /) -> None:
         """
         Parses the specified text, converts it to a value of appropriate data type and sets it in
         the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
@@ -29757,9 +28051,7 @@ class Table(PyDb.BlockReference):
         argument is invalid.
         """
     @overload
-    def setValue(
-        self, row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption, /
-    ) -> None:
+    def setValue(self, row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption, /) -> None:
         """
         Parses the specified text, converts it to a value of appropriate data type and sets it in
         the cell. If nOption is set to AcValue::kParseOptionNone it does default parsing. If it is
@@ -29778,29 +28070,29 @@ class Table(PyDb.BlockReference):
         text if it is present. Returns Acad::eOk if successful or Acad::eInvalidInput if the input
         argument is invalid.
         """
-    def setVertCellMargin(self, val: float, /) -> None:
+    def setVertCellMargin(self, val : float, /) -> None:
         """
         This function sets the vertical cell margin (space between the cell text and the cell
         border) for the table. In general, the vertical cell margin should not greater than five
         times the standard data row text height. Returns Acad::eOk if successful. Otherwise,
         returns Acad::eInvalidInput.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, val : float, /) -> None:
         """
         This function sets the total width for the table. The individual column widths may be
         widened or narrowed proportionally. Returns Acad::eOk if successful. Otherwise, returns
         Acad::eInvalidInput.
         """
-    def suppressHeaderRow(self, val: bool, /) -> None:
+    def suppressHeaderRow(self, val : bool, /) -> None:
         """
         This function suppresses or enables the header row for the table. This method is deprecated
         and may be removed in a future release.
         """
-    def suppressInvisibleGrid(self, val: bool, /) -> None:
+    def suppressInvisibleGrid(self, val : bool, /) -> None:
         """
         For internal use only.
         """
-    def suppressRegenerateTable(self, val: bool, /) -> None:
+    def suppressRegenerateTable(self, val : bool, /) -> None:
         """
         This method allows the user to temporarily disable the regeneration of the table object
         during changes in one or more of its properties. WarningThis method is provided for VBA
@@ -29811,7 +28103,7 @@ class Table(PyDb.BlockReference):
         drawing file, the user should either call this function with false value or call
         recomputeTableBlock(true). Otherwise, the table object will never be displayed.
         """
-    def suppressTitleRow(self, val: bool, /) -> None:
+    def suppressTitleRow(self, val : bool, /) -> None:
         """
         This function suppresses or enables the title row for the table. This method is deprecated
         and may be removed in a future release.
@@ -29886,9 +28178,7 @@ class Table(PyDb.BlockReference):
         of the content.
         """
     @overload
-    def textStringFmt(
-        self, row: int, col: int, content: int, nOption: ValueFormatOption, /
-    ) -> str:
+    def textStringFmt(self, row: int, col: int, content: int, nOption: ValueFormatOption, /) -> str:
         """
         Gets the formatted text string of the content at the specified content index. Returns text
         of the content.
@@ -29938,9 +28228,7 @@ class Table(PyDb.BlockReference):
         otherwise, returns an AutoCAD error status.
         """
     @overload
-    def updateDataLink(
-        self, row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption, /
-    ) -> None:
+    def updateDataLink(self, row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption, /) -> None:
         """
         This function updates the data link at the specified cell Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
@@ -29980,12 +28268,10 @@ class Table(PyDb.BlockReference):
         """
         This function returns the total width for the table.
         """
-
 class TableBreakFlowDirection(_BoostPythonEnum):
     kTableIteratorNone: ClassVar[Self]  # 1
     kTableBreakFlowDownOrUp: ClassVar[Self]  # 2
     kTableBreakFlowLeft: ClassVar[Self]  # 4
-
 class TableBreakOption(_BoostPythonEnum):
     kTableBreakNone: ClassVar[Self]  # 0
     kTableBreakEnableBreaking: ClassVar[Self]  # 1
@@ -29993,18 +28279,15 @@ class TableBreakOption(_BoostPythonEnum):
     kTableBreakRepeatBottomLabels: ClassVar[Self]  # 4
     kTableBreakAllowManualPositions: ClassVar[Self]  # 8
     kTableBreakAllowManualHeights: ClassVar[Self]  # 16
-
 class TableFlowDirection(_BoostPythonEnum):
     kTtoB: ClassVar[Self]  # 0
     kExactly: ClassVar[Self]  # 1
-
 class TableHitItem(_BoostPythonEnum):
     kTableHitNone: ClassVar[Self]  # 0
     kTableHitCell: ClassVar[Self]  # 1
     kTableHitRowIndicator: ClassVar[Self]  # 2
     kTableHitColumnIndicator: ClassVar[Self]  # 4
     kTableHitGridLine: ClassVar[Self]  # 8
-
 class TableIteratorOption(_BoostPythonEnum):
     kTableIteratorNone: ClassVar[Self]  # 0
     kTableIteratorIterateSelection: ClassVar[Self]  # 1
@@ -30015,7 +28298,6 @@ class TableIteratorOption(_BoostPythonEnum):
     kTableIteratorSkipReadOnlyContent: ClassVar[Self]  # 16
     kTableIteratorSkipReadOnlyFormat: ClassVar[Self]  # 32
     kTableIteratorSkipMerged: ClassVar[Self]  # 64
-
 class TableStyle(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -30235,19 +28517,17 @@ class TableStyle(PyDb.DbObject):
         Returns the number of cell styles in the table style.
         """
     @overload
-    def getDataType(
-        self, rowType: PyDb.RowType, /
-    ) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, rowType: PyDb.RowType, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type.
         """
     @overload
-    def getDataType(self, cellStyle: str, /) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, cellStyle: str, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type.
         """
     @overload
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType, PyDb.ValueUnitType]:
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
         """
         Gets the data type.
         """
@@ -30266,12 +28546,12 @@ class TableStyle(PyDb.DbObject):
         not contain a template, then the returned objectId will be set to AcDbObjectId::kNull.
         """
     @overload
-    def gridColor(self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /) -> Color:
+    def gridColor(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> Color:
         """
         Returns the grid color of the specified cell style.
         """
     @overload
-    def gridColor(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Color:
+    def gridColor(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> Color:
         """
         Returns the grid color of the specified cell style.
         """
@@ -30280,27 +28560,21 @@ class TableStyle(PyDb.DbObject):
         """
         Returns the grid color of the specified cell style.
         """
-    def gridDoubleLineSpacing(
-        self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> float:
+    def gridDoubleLineSpacing(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> float:
         """
         Returns the grid double line spacing of the specified cell style.
         """
-    def gridLineStyle(
-        self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> GridLineStyle:
+    def gridLineStyle(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> GridLineStyle:
         """
         Returns the grid line style of the specified cell style.
         """
     @overload
-    def gridLineWeight(
-        self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> LineWeight:
+    def gridLineWeight(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> LineWeight:
         """
         Gets the grid line weight of the specified cell style.
         """
     @overload
-    def gridLineWeight(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> LineWeight:
+    def gridLineWeight(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> LineWeight:
         """
         Gets the grid line weight of the specified cell style.
         """
@@ -30314,14 +28588,12 @@ class TableStyle(PyDb.DbObject):
         Returns the grid line type of the specified cell style.
         """
     @overload
-    def gridVisibility(
-        self, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> Visibility:
+    def gridVisibility(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> Visibility:
         """
         Gets the grid visibility of the specified cell style.
         """
     @overload
-    def gridVisibility(self, gridLineType: PyDb.GridLineType, cellStyle: str, /) -> Visibility:
+    def gridVisibility(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> Visibility:
         """
         Gets the grid visibility of the specified cell style.
         """
@@ -30390,7 +28662,7 @@ class TableStyle(PyDb.DbObject):
         Returns a cell's rotation value.
         """
     @overload
-    def setAlignment(self, val: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None:
+    def setAlignment(self, val:  PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None:
         """
         This function sets the cell alignment for the specified row types. Different row types can
         be combined using the OR operator. The possible row types are AcDb::kDataRow,
@@ -30401,7 +28673,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setAlignment(self, val: PyDb.CellAlignment, cellStyle: str, /) -> None:
+    def setAlignment(self, val:  PyDb.CellAlignment, cellStyle: str, /) -> None:
         """
         This function sets the cell alignment for the specified row types. Different row types can
         be combined using the OR operator. The possible row types are AcDb::kDataRow,
@@ -30423,7 +28695,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setBackgroundColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+    def setBackgroundColor(self, val:  PyDb.Color, rowType: PyDb.RowType, /) -> None:
         """
         This function sets the background color for the specified row types. Different row types
         can be OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and
@@ -30432,7 +28704,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eInvalidInput.
         """
     @overload
-    def setBackgroundColor(self, val: PyDb.Color, cellStyle: str, /) -> None:
+    def setBackgroundColor(self, val:  PyDb.Color, cellStyle: str, /) -> None:
         """
         This function sets the background color for the specified row types. Different row types
         can be OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and
@@ -30469,7 +28741,7 @@ class TableStyle(PyDb.DbObject):
         Sets the class of a cell, by style. Returns Acad::eOk if successful.
         """
     @overload
-    def setColor(self, val: PyDb.Color, rowType: PyDb.RowType, /) -> None:
+    def setColor(self, val:  PyDb.Color, rowType: PyDb.RowType, /) -> None:
         """
         This function sets the text color for the specified row types. Different row types can be
         OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If
@@ -30477,7 +28749,7 @@ class TableStyle(PyDb.DbObject):
         Returns Acad::eOk if successful; otherwise, returns Acad::eInvalidInput.
         """
     @overload
-    def setColor(self, val: PyDb.Color, cellStyle: str, /) -> None:
+    def setColor(self, val:  PyDb.Color, cellStyle: str, /) -> None:
         """
         This function sets the text color for the specified row types. Different row types can be
         OR'd. The possible row types are AcDb::kDataRow, AcDb::kTitleRow, and AcDb::kHeaderRow. If
@@ -30499,21 +28771,13 @@ class TableStyle(PyDb.DbObject):
         Returns Acad::eOk if successful.
         """
     @overload
-    def setDataType(
-        self,
-        nDataType: PyDb.ValueDataType,
-        nUnitType: PyDb.ValueDataType,
-        rowType: PyDb.RowType,
-        /,
-    ) -> None:
+    def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, rowType: PyDb.RowType, /) -> None:
         """
         Sets the data type and unit type of the specified row type of the table style object.
         Returns Acad::eOk if successful.
         """
     @overload
-    def setDataType(
-        self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, cellStyle: str, /
-    ) -> None:
+    def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, cellStyle: str, /) -> None:
         """
         Sets the data type and unit type of the specified row type of the table style object.
         Returns Acad::eOk if successful.
@@ -30559,9 +28823,7 @@ class TableStyle(PyDb.DbObject):
         AutoCAD error status if the function fails.
         """
     @overload
-    def setGridColor(
-        self, clr: PyDb.Color, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> None:
+    def setGridColor(self, clr: PyDb.Color, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None:
         """
         This function sets the grid color for the specified grid line types and row types.
         Different border and row types can be combined using the OR operator. The possible values
@@ -30571,9 +28833,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eInvalidInput.
         """
     @overload
-    def setGridColor(
-        self, clr: PyDb.Color, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None:
+    def setGridColor(self, clr: PyDb.Color, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None:
         """
         This function sets the grid color for the specified grid line types and row types.
         Different border and row types can be combined using the OR operator. The possible values
@@ -30592,28 +28852,18 @@ class TableStyle(PyDb.DbObject):
         AcDb::kTitleRow, and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
         Acad::eInvalidInput.
         """
-    def setGridDoubleLineSpacing(
-        self, val: float, gridLineTypes: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None:
+    def setGridDoubleLineSpacing(self, val: float, gridLineTypes: PyDb.GridLineType, pszCellStyle: str, /) -> None:
         """
         Sets the grid double line spacing in the specified cell style. Returns Acad::eOk if
         successful; otherwise, returns an AutoCAD error status.
         """
-    def setGridLineStyle(
-        self, nLineStyle: PyDb.GridLineStyle, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None:
+    def setGridLineStyle(self, nLineStyle: PyDb.GridLineStyle, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
         """
         Sets the grid line style of the specified cell style. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setGridLineWeight(
-        self,
-        lineWeight: PyDb.LineWeight,
-        gridLineType: PyDb.GridLineType,
-        rowType: PyDb.RowType,
-        /,
-    ) -> None:
+    def setGridLineWeight(self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None:
         """
         This function sets the lineweight for the specified grid line types and row types.
         Different grid line and row types can be OR'd. The possible values of gridLineType are
@@ -30623,9 +28873,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eInvalidInput.
         """
     @overload
-    def setGridLineWeight(
-        self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None:
+    def setGridLineWeight(self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None:
         """
         This function sets the lineweight for the specified grid line types and row types.
         Different grid line and row types can be OR'd. The possible values of gridLineType are
@@ -30644,24 +28892,18 @@ class TableStyle(PyDb.DbObject):
         and AcDb::kHeaderRow. Returns Acad::eOk if successful; otherwise, returns
         Acad::eInvalidInput.
         """
-    def setGridLinetype(
-        self, id: PyDb.ObjectId, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None:
+    def setGridLinetype(self, id: PyDb.ObjectId, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
         """
         Sets the grid line type for a cell style. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status.
         """
-    def setGridProperty(
-        self, gridProp: PyDb.GridProperty, gridLineType: PyDb.GridLineType, pszCellStyle: str, /
-    ) -> None:
+    def setGridProperty(self, gridProp: PyDb.GridProperty, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
         """
         Sets the grid line properties of the specified cell style. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
     @overload
-    def setGridVisibility(
-        self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType, rowType: PyDb.RowType, /
-    ) -> None:
+    def setGridVisibility(self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None:
         """
         This function sets the grid visibility for the specified grid line types and row types.
         Different grid line and row types can be OR'd. The possible values of gridLineType are
@@ -30671,9 +28913,7 @@ class TableStyle(PyDb.DbObject):
         Acad::eInvalidInput.
         """
     @overload
-    def setGridVisibility(
-        self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType, cellStyle: str, /
-    ) -> None:
+    def setGridVisibility(self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None:
         """
         This function sets the grid visibility for the specified grid line types and row types.
         Different grid line and row types can be OR'd. The possible values of gridLineType are
@@ -30817,16 +29057,13 @@ class TableStyle(PyDb.DbObject):
         This function returns the vertical cell margin value used by the table style. This method
         is deprecated and may be removed in a future release.
         """
-
 class Text(PyDb.Entity):
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, position: PyGe.Point3d, text: str, /) -> None: ...
     @overload
-    def __init__(
-        self, position: PyGe.Point3d, text: str, height: float, rotation: float, /
-    ) -> None: ...
+    def __init__(self, position: PyGe.Point3d, text: str, height: float, rotation: float, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
@@ -30836,7 +29073,7 @@ class Text(PyDb.Entity):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def adjustAlignment(self, val: Database, /) -> None:
+    def adjustAlignment(self, val : Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
         adjusted according to the text's justification settings and the text style. But, if the
@@ -30914,7 +29151,7 @@ class Text(PyDb.Entity):
         for both height and width of the text. In addition, the width factor is applied to the text
         width. The height value is used for DXF group code 40.
         """
-    def hitTest(self, val: PyGe.Point3d, /) -> bool:
+    def hitTest(self, val : PyGe.Point3d, /) -> bool:
         """
         This function tests for the existence of an AcDbText object in a specified location when
         the TEXTGAPSELECTION system variable is enabled.
@@ -30948,7 +29185,7 @@ class Text(PyDb.Entity):
         Returns a constant value of the AcTextAlignment enum type that represents the justification
         of the text object.
         """
-    def mirrorInX(self, val: bool, /) -> None:
+    def mirrorInX(self, val : bool, /) -> None:
         """
         If mirror is Adesk::kTrue, the text is displayed so that it appears to be mirrored in the X
         direction (that is, it appears to be backward in the horizontal direction). If mirror is
@@ -30956,7 +29193,7 @@ class Text(PyDb.Entity):
         in DXF group code 71. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def mirrorInY(self, val: bool, /) -> None:
+    def mirrorInY(self, val : bool, /) -> None:
         """
         If invert is Adesk::kTrue, then the text is displayed so that it appears to be mirrored in
         the Y direction (that is, it appears to be upside down). If invert is Adesk::kFalse, then
@@ -30994,7 +29231,7 @@ class Text(PyDb.Entity):
         Z axis towards the origin. The OCS X axis is determined by using the text's normal, the WCS
         Z axis, and the arbitrary axis algorithm. The rotation value is used for DXF group code 50.
         """
-    def setAlignmentPoint(self, val: PyGe.Point3d, /) -> None:
+    def setAlignmentPoint(self, val : PyGe.Point3d, /) -> None:
         """
         This function sets pt to be the alignment point for the text object. If vertical mode is
         AcDb::kTextBase and horizontal mode is either AcDb::kTextLeft, AcDb::kTextAlign, or
@@ -31008,14 +29245,14 @@ class Text(PyDb.Entity):
         Acad::eNotApplicable if the text object's horizontal mode is AcDb::kTextLeft and vertical
         mode is AcDb::kTextBase.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         This function sets ht to be the height of the text. The height value is used as a scale
         factor for both height and width of the text. In addition, the width factor is applied to
         the text width. The height value is used for DXF group code 40. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the input value is less than or equal to 0.0.
         """
-    def setHorizontalMode(self, val: PyDb.TextHorzMode, /) -> None:
+    def setHorizontalMode(self, val : PyDb.TextHorzMode, /) -> None:
         """
         This function sets hMode to be the horizontal mode of the text. The allowable values for
         hMode are: AcDb::kTextLeft AcDb::kTextCenter AcDb::kTextRight AcDb::kTextAlign
@@ -31027,17 +29264,17 @@ class Text(PyDb.Entity):
         AcDb::kTextLeft, then the position point is used to determine the text's position and the
         alignment point is recalculated based on the text string and the position point's value.
         """
-    def setJustification(self, val: PyDb.TextAlignment, /) -> None:
+    def setJustification(self, val : PyDb.TextAlignment, /) -> None:
         """
         Sets the justification for the text object.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the text. normal
         must be non-zero in length. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, val : float, /) -> None:
         """
         This function sets angle (in radians) to be the obliquing angle for the text. The obliquing
         angle is the angle from the text's vertical; that is, the top of the text 'slants' relative
@@ -31046,7 +29283,7 @@ class Text(PyDb.Entity):
         positive equivalent. The oblique value is used for DXF group code 51. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPosition(self, pos: PyGe.Point3d, /) -> None:
+    def setPosition(self, pos : PyGe.Point3d, /) -> None:
         """
         This function sets pos to be the position point for the text. pos must be in WCS
         coordinates. If vertical mode is AcDb::kTextBase and horizontal mode is either
@@ -31059,7 +29296,7 @@ class Text(PyDb.Entity):
         replaced by the newly calculated value. The position value is the WCS equivalent of DXF
         group code 10. Returns Acad::eOk if successful.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, val : float, /) -> None:
         """
         This function sets rotation to be the rotation angle of the text. The rotation angle is
         relative to the X axis of the text's OCS, with positive angles going counterclockwise when
@@ -31068,7 +29305,7 @@ class Text(PyDb.Entity):
         for DXF group code 50. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def setTextString(self, val: str, /) -> None:
+    def setTextString(self, val : str, /) -> None:
         """
         This function makes a copy of newText and uses the copy as the text string to display. The
         string must be a standard null-terminated string and cannot be more than 256 bytes long
@@ -31078,7 +29315,7 @@ class Text(PyDb.Entity):
         group code 1. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in
         is not acceptable.
         """
-    def setTextStyle(self, val: ObjectId, /) -> None:
+    def setTextStyle(self, val : ObjectId, /) -> None:
         """
         This function sets styleId as the object ID of the AcDbTextStyleTableRecord to be
         referenced by the AcDbText object. styleId must be the object ID of an
@@ -31086,14 +29323,14 @@ class Text(PyDb.Entity):
         name within the AcDbTextStyleTableRecord specified by the text style object ID is used for
         DXF group code 7.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, val : float, /) -> None:
         """
         This function sets thickness to be the thickness for the text. The thickness is the text's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
         thickness value is used for DXF group code 39. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setVerticalMode(self, val: PyDb.TextVertMode, /) -> None:
+    def setVerticalMode(self, val : PyDb.TextVertMode, /) -> None:
         """
         This function sets vMode to be the vertical mode of the text. The allowable values for
         vMode are: AcDb::kTextBase AcDb::kTextBottom AcDb::kTextVertMid AcDb::kTextTop The vertical
@@ -31105,7 +29342,7 @@ class Text(PyDb.Entity):
         used to determine the text's position. The alignment point is recalculated based on the
         text string and the position point's value.
         """
-    def setWidthFactor(self, val: float, /) -> None:
+    def setWidthFactor(self, val : float, /) -> None:
         """
         This function sets width to be the width factor (also referred to as the relative X-scale
         factor) for the text. The widthFactor is applied to the text's width to allow the width to
@@ -31150,7 +29387,6 @@ class Text(PyDb.Entity):
         referencing a text style that has a width other than 1.0, or if the text's horizontal mode
         is AcDb::kTextFit. The width factor value is used for DXF group code 41.
         """
-
 class TextAlignment(_BoostPythonEnum):
     kTextAlignmentLeft: ClassVar[Self]  # 0
     kTextAlignmentCenter: ClassVar[Self]  # 1
@@ -31167,7 +29403,6 @@ class TextAlignment(_BoostPythonEnum):
     kTextAlignmentBottomLeft: ClassVar[Self]  # 12
     kTextAlignmentBottomCenter: ClassVar[Self]  # 13
     kTextAlignmentBottomRight: ClassVar[Self]  # 14
-
 class TextHorzMode(_BoostPythonEnum):
     kTextLeft: ClassVar[Self]  # 0
     kTextCenter: ClassVar[Self]  # 1
@@ -31175,15 +29410,8 @@ class TextHorzMode(_BoostPythonEnum):
     kTextAlign: ClassVar[Self]  # 3
     kTextMid: ClassVar[Self]  # 4
     kTextFit: ClassVar[Self]  # 5
-
 class TextStyleTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.TextStyleTableRecord, /) -> ObjectId:
         """
@@ -31212,7 +29440,6 @@ class TextStyleTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class TextStyleTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -31327,14 +29554,14 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         if the textSize is set to 0 so that users are prompted for a height. The priorSize value is
         used for DXF group code 42
         """
-    def setBigFontFileName(self, val: str, /) -> None:
+    def setBigFontFileName(self, val : str, /) -> None:
         """
         Sets the TextStyleRecord to use a copy of the string pointed to by filename as the name of
         the big font file for this text style. Returns Acad::eOk if successful. If there is
         insufficient memory for the string copy, then Acad::eOutOfMemory is returned. The bigfont
         file name is used for DXF group code 4.
         """
-    def setFileName(self, val: str, /) -> None:
+    def setFileName(self, val : str, /) -> None:
         """
         Sets the TextStyleRecord to use a copy of the string pointed to by filename as the name of
         the font file for this text style in the case that the big font file is not supplied.
@@ -31348,17 +29575,7 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         is, mirrored in X). If the third bit is set it indicates that the text is drawn upside down
         (that is, mirrored in Y). The flagBits are used for DXF group code 71!
         """
-    def setFont(
-        self,
-        tFace: str,
-        bold: bool,
-        italic: bool,
-        charset: int,
-        pitch: int,
-        family: int,
-        allowMissing: bool,
-        /,
-    ) -> None:
+    def setFont(self, tFace: str, bold: bool, italic: bool, charset: int, pitch: int, family: int, allowMissing: bool, /) -> None:
         """
         This method sets the TextStyleTableRecord to use the Windows font as specified by the
         passed in arguments. If pTypeFace == NULL or points to an empty string, and the other
@@ -31369,20 +29586,20 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         should not be used to set an old style SHX font. To set the TextStyleTableRecord to use an
         SHX font, you need to use the AcDbTextStyleTableRecord::setFileName() method.
         """
-    def setIsShapeFile(self, val: bool, /) -> None:
+    def setIsShapeFile(self, val : bool, /) -> None:
         """
         Passing Adesk::kTrue causes the text font file to be interpreted at as a shape file,
         otherwise passing Adesk::kFalse causes it to be interpreted as a text font file. The
         isShapeFile value is represented in bit 1 of DXF group code 70 (if bit 1 is set then the
         style describes a shape).
         """
-    def setIsVertical(self, val: bool, /) -> None:
+    def setIsVertical(self, val : bool, /) -> None:
         """
         Passing Adesk::kTrue causes text drawn with this text style to be drawn vertically. Passing
         Adesk::kFalse causes text to be drawn horizontally. The isVertical value is represented in
         bit 3 of DXF group code 70 (if bit 3 is set then the text is vertical).
         """
-    def setObliquingAngle(self, val: float, /) -> None:
+    def setObliquingAngle(self, val : float, /) -> None:
         """
         This function sets obliquingAngle (in radians) to be the obliquing angle for the
         TextStyleTableRecord. The obliquing angle is the angle from the text's vertical; that is,
@@ -31392,7 +29609,7 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         DXF group code 50. Returns Acad::eOk if successful. Returns Acad::eInvalidInput if
         obliquingAngle is not a valid value.
         """
-    def setPriorSize(self, val: int, /) -> None:
+    def setPriorSize(self, val : int, /) -> None:
         """
         Sets priorSize to be the priorSize value for the TextStyleTableRecord. This value
         represents the text height used for the last text created using this Text Style. This value
@@ -31402,7 +29619,7 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         using this Text Style. The priorSize value is used for DXF group code 42 Returns Acad::eOk
         if successful. Returns Acad::eInvalidInput if obliquingAngle is not a valid value.
         """
-    def setTextSize(self, val: float, /) -> None:
+    def setTextSize(self, val : float, /) -> None:
         """
         Sets size to be the default size of the text drawn with this textStyle. If the text size is
         set to 0, then each use of the AutoCAD text and dtext commands prompt for a text height to
@@ -31410,7 +29627,7 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         not prompt for a text height and will use this value. The text size is used for DXF group
         code 40. If size is negative, the function returns Acad::eInvalidInput.
         """
-    def setXScale(self, val: float, /) -> None:
+    def setXScale(self, val : float, /) -> None:
         """
         This function sets xScale to be the width factor (also referred to as the relative X-scale
         factor) for the TextStyleTableRecord. The widthFactor is applied to the text's width to
@@ -31435,13 +29652,11 @@ class TextStyleTableRecord(PyDb.SymbolTableRecord):
         0.8, then the text is drawn with a width that is 80% of its normal 'unadjusted' width. The
         X-scale factor is used for DXF group code 41.
         """
-
 class TextVertMode(_BoostPythonEnum):
     kTextBase: ClassVar[Self]  # 0
     kTextBottom: ClassVar[Self]  # 1
     kTextVertMid: ClassVar[Self]  # 2
     kTextTop: ClassVar[Self]  # 3
-
 class TimeZone(_BoostPythonEnum):
     kInternationalDateLine: ClassVar[Self]  # -12000
     kMidwayIsland: ClassVar[Self]  # -11000
@@ -31519,7 +29734,6 @@ class TimeZone(_BoostPythonEnum):
     kWellington: ClassVar[Self]  # 12000
     kFiji: ClassVar[Self]  # 12001
     kTonga: ClassVar[Self]  # 13000
-
 class Trace(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -31527,9 +29741,7 @@ class Trace(PyDb.Entity):
         The AcDbTrace class is the representation for the TRACE entity within AutoCAD.
         """
     @overload
-    def __init__(
-        self, pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d, /
-    ) -> None:
+    def __init__(self, pnt0: PyGe.Point3d, pnt1: PyGe.Point3d, pnt2: PyGe.Point3d, pnt3: PyGe.Point3d, /) -> None:
         """
         The AcDbTrace class is the representation for the TRACE entity within AutoCAD.
         """
@@ -31614,7 +29826,6 @@ class Trace(PyDb.Entity):
         along its normal vector direction (sometimes called the extrusion direction). The thickness
         value is used for DXF group code 39.
         """
-
 class Transaction(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -31639,11 +29850,8 @@ class Transaction(PyRx.RxObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def getAllObjects(self, /) -> list[PyDb.DbObject]: ...
-    def getObject(
-        self, id: ObjectId, mode: OpenMode = OpenMode.kForRead, openErasedObject: bool = False, /
-    ) -> DbObject: ...
+    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject: ...
     def numOpenedObjects(self, /) -> int: ...
-
 class TransactionManager(PyRx.RxObject):
     def __init__(self, /) -> None:
         """
@@ -31656,7 +29864,7 @@ class TransactionManager(PyRx.RxObject):
         """
     def __reduce__(self, /) -> Any: ...
     def abortTransaction(self, /) -> None: ...
-    def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool = True, /) -> None: ...
+    def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool=True, /) -> None: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
@@ -31675,17 +29883,14 @@ class TransactionManager(PyRx.RxObject):
         """
     def endTransaction(self, /) -> None: ...
     def getAllObjects(self, /) -> list[PyDb.DbObject]: ...
-    def getObject(
-        self, id: ObjectId, mode: OpenMode = OpenMode.kForRead, openErasedObject: bool = False, /
-    ) -> DbObject: ...
+    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject: ...
     def numActiveTransactions(self, /) -> int: ...
     def numOpenedObjects(self, /) -> int: ...
     def queueForGraphicsFlush(self, /) -> None: ...
     def startTransaction(self, /) -> Transaction: ...
     def topTransaction(self, /) -> Transaction: ...
-
 class Transparency:
-    def __init__(self, alpha: int | float, /) -> None: ...
+    def __init__(self, alpha : int|float, /) -> None: ...
     def __ne__(self, /) -> bool: ...
     def __reduce__(self, /) -> Any: ...
     def alpha(self, /) -> int: ...
@@ -31696,24 +29901,16 @@ class Transparency:
     def isClear(self, /) -> bool: ...
     def isInvalid(self, /) -> bool: ...
     def isSolid(self, /) -> bool: ...
-    def setAlpha(self, alpha: int, /) -> None: ...
-    def setAlphaPercent(self, alphaPercent: float, /) -> None: ...
+    def setAlpha(self, alpha : int, /) -> None: ...
+    def setAlphaPercent(self, alphaPercent : float, /) -> None: ...
     def setMethod(self, method: PyDb.TransparencyMethod, /) -> None: ...
-
 class TransparencyMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 0
     kByBlock: ClassVar[Self]  # 1
     kByAlpha: ClassVar[Self]  # 2
     kErrorValue: ClassVar[Self]  # 3
-
 class UCSTable(PyDb.SymbolTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.UCSTableRecord, /) -> ObjectId:
         """
@@ -31742,7 +29939,6 @@ class UCSTable(PyDb.SymbolTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class UCSTableRecord(PyDb.SymbolTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -31805,13 +30001,13 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         Returns an AcGePoint3d, which contains WCS coordinates of the origin of the UCS that the
         AcDbUCSTableRecord represents. The origin value is used for DXF group code 10.
         """
-    def setOrigin(self, val: PyGe.Point3d, /) -> None:
+    def setOrigin(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the AcDbUCSTableRecord to use newOrigin as the UCS origin point for the UCS it
         represents. newOrigin must be in WCS coordinates. The newOrigin value is used for DXF group
         code 10.
         """
-    def setUcsBaseOrigin(self, val: PyGe.Point3d, view: PyDb.OrthographicView, /) -> None:
+    def setUcsBaseOrigin(self, val : PyGe.Point3d, view : PyDb.OrthographicView, /) -> None:
         """
         Sets the origin point of the input orthographic view when UCSBASE is set to this UCS. For
         instance, if this UCS is named 'MYUCS' and UCSBASE is set to 'MYUCS', then after this
@@ -31819,19 +30015,19 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         'FRONT' (relative to MYUCS) and the origin of the new UCS will be the origin point that is
         passed into this function with the second parameter set to AcDb::kFrontView.
         """
-    def setXAxis(self, val: PyGe.Vector3d, /) -> None:
+    def setXAxis(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets the AcDbUCSTableRecord to use xAxis as the new X axis for the UCS it represents. xAxis
         must be in WCS coordinates and must have non-zero in length. The xAxis value is used for
         DXF group code 11.
         """
-    def setYAxis(self, val: PyGe.Vector3d, /) -> None:
+    def setYAxis(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets the AcDbUCSTableRecord to use yAxis as the new Y axis for the UCS it represents. yAxis
         must be in WCS coordinates and must be non-zero in length. The yAxis value is used for DXF
         group code 12.
         """
-    def ucsBaseOrigin(self, view: PyDb.OrthographicView, /) -> PyGe.Point3d:
+    def ucsBaseOrigin(self, view : PyDb.OrthographicView, /) -> PyGe.Point3d:
         """
         Returns the origin point of the input orthographic view when UCSBASE is set to this UCS.
         For instance if this UCS is named 'MYUCS' and UCSBASE is set to 'MYUCS', then the command
@@ -31849,7 +30045,6 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         Returns the Y axis vector (in WCS coordinates) of the UCS that the AcDbUCSTableRecord
         represents. The yAxis value is used for DXF group code 12.
         """
-
 class UnderlayDefinition(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         """
@@ -31912,18 +30107,18 @@ class UnderlayDefinition(PyDb.DbObject):
         Gets a Boolean value indicating whether the underlay is currently loaded. Returns true if
         the underlay is loaded.
         """
-    def load(self, passwd: str = ..., /) -> None:
+    def load(self, passwd : str = ..., /) -> None:
         """
         Attempts to load the file returned by the getActiveFileName() function. If password is null
         but is necessary to open the file, this function will prompt the user. Returns Acad::eOk if
         successful.
         """
-    def setItemName(self, item: str, /) -> None:
+    def setItemName(self, item : str, /) -> None:
         """
         Sets the name of the underlay item that this underlay should reference. Returns Acad::eOk
         if successful.
         """
-    def setSourceFileName(self, file: str, /) -> None:
+    def setSourceFileName(self, file : str, /) -> None:
         """
         Sets the name of the file that this underlay references. This name can be expressed in any
         of the following forms: relative path (relative to the host drawing)file name only (will be
@@ -31933,7 +30128,6 @@ class UnderlayDefinition(PyDb.DbObject):
         """
         Unloads the underlay file. References will behave as if the file was never loaded.
         """
-
 class UnderlayLayer:
     def __init__(self, /) -> None:
         """
@@ -31950,11 +30144,11 @@ class UnderlayLayer:
         """
         Returns the name of the underlay layer as an AcString.
         """
-    def setName(self, name: str, /) -> None:
+    def setName(self, name : str, /) -> None:
         """
         Sets the name for the underlay layer.
         """
-    def setState(self, state: bool, /) -> None:
+    def setState(self, state : bool, /) -> None:
         """
         Sets the state of the underlay layer.
         """
@@ -31962,7 +30156,6 @@ class UnderlayLayer:
         """
         Returns the state of the underlay later.
         """
-
 class UnderlayReference(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -32088,11 +30281,11 @@ class UnderlayReference(PyDb.Entity):
         """
         Returns the upper limit of the legal fade values.
         """
-    def generateClipBoundaryFromPline(self, val: PyDb.ObjectId, /) -> None:
+    def generateClipBoundaryFromPline(self, val : PyDb.ObjectId, /) -> None:
         """
         Generates the clip boundary from a polyline.
         """
-    def getUnderlayLayer(self, val: int, /) -> UnderlayLayer:
+    def getUnderlayLayer(self, val : int, /) -> UnderlayLayer:
         """
         Get underlay layer information (layer name and layer on/off state) for the layer name
         passed in. Returns Acad::eOk if successful
@@ -32149,82 +30342,82 @@ class UnderlayReference(PyDb.Entity):
         """
         Returns the scale factors used to scale the underlay.
         """
-    def setClipBoundary(self, pnts: list[PyGe.Point2d], /) -> None:
+    def setClipBoundary(self, pnts : list[PyGe.Point2d], /) -> None:
         """
         Sets the clip boundary of the underlay. The boundary is defined in model coordinates. (i.e.
         Given WCS points one must use the inverse of the transformation matrix return by tranform()
         to obtain points that can be passed to this function.) Returns Acad::eOk if succesful.
         """
-    def setClipInverted(self, val: bool, /) -> None:
+    def setClipInverted(self, val : bool, /) -> None:
         """
         Sets whether the clip is inverted.
         """
-    def setContrast(self, val: int, /) -> None:
+    def setContrast(self, val : int, /) -> None:
         """
         Sets the contrast value for the underlay ([0-100]). Returns Acad::eOk if succesful.
         """
-    def setDefinitionId(self, val: PyDb.ObjectId, /) -> None:
+    def setDefinitionId(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the object ID of the AcDbUnderlayDefinition that this underlay references.
         """
-    def setFade(self, val: int, /) -> None:
+    def setFade(self, val : int, /) -> None:
         """
         Sets the fade value for the underlay ([0-100]). Returns Acad::eOk if succesful.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         This is setHeight, a member of class AcDbUnderlayReference.
         """
-    def setIsAdjustedForBackground(self, val: bool, /) -> None:
+    def setIsAdjustedForBackground(self, val : bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is adjusted for the current background
         color. Not all underlay types observe this setting. Returns Acad::eOk if successful.
         """
-    def setIsClipped(self, val: bool, /) -> None:
+    def setIsClipped(self, val : bool, /) -> None:
         """
         Sets a Boolean indicating whether the clip boundary should be used. Returns Acad::eOk if
         succesful.
         """
-    def setIsMonochrome(self, val: bool, /) -> None:
+    def setIsMonochrome(self, val : bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is shown in monochrome. Returns
         Acad::eOk if succesful.
         """
-    def setIsOn(self, val: bool, /) -> None:
+    def setIsOn(self, val : bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is shown. This variable governs the
         visibilty of the underlay content, not its frame or clipping boundary. Returns Acad::eOk if
         succesful.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, val : PyGe.Vector3d, /) -> None:
         """
         Sets the normal of the underlay. Returns Acad::eOk if successful.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets the position of the underlay in WCS (or block space coordinates if the reference is
         part of a block). Returns Acad::eOk if successful.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, val : float, /) -> None:
         """
         Sets the rotation value around the axis defined by the point returned by position() and the
         vector returned by normal(). Returns Acad::eOk if successful.
         """
-    def setScaleFactors(self, val: PyGe.Scale3d, /) -> None:
+    def setScaleFactors(self, val : PyGe.Scale3d, /) -> None:
         """
         Sets the scale factors used to scale the underlay. Most underlays only allow uniform
         scaling. Returns Acad::eOk if successful.
         """
-    def setTransform(self, val: PyGe.Matrix3d, /) -> None:
+    def setTransform(self, val : PyGe.Matrix3d, /) -> None:
         """
         Sets the transformation matrix of the underlay. Returns Acad::eOk if succesful.
         """
-    def setUnderlayLayer(self, val: int, layer: PyDb.UnderlayLayer, /) -> None:
+    def setUnderlayLayer(self, val : int, layer : PyDb.UnderlayLayer, /) -> None:
         """
         Sets the underlay layer information (layer name and layer on/off state). Returns Acad::eOk
         if successful
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, val : float, /) -> None:
         """
         This is setWidth, a member of class AcDbUnderlayReference.
         """
@@ -32243,7 +30436,6 @@ class UnderlayReference(PyDb.Entity):
         """
         This is width, a member of class AcDbUnderlayReference.
         """
-
 class UnitsValue(_BoostPythonEnum):
     kUnitsUndefined: ClassVar[Self]  # 0
     kUnitsInches: ClassVar[Self]  # 1
@@ -32271,11 +30463,9 @@ class UnitsValue(_BoostPythonEnum):
     kUnitsUSSurveyYard: ClassVar[Self]  # 23
     kUnitsUSSurveyMile: ClassVar[Self]  # 24
     kUnitsMax: ClassVar[Self]  # 24
-
 class UpdateDirection(_BoostPythonEnum):
     kUpdateDirSourceToData: ClassVar[Self]  # 1
     kUpdateDirDataToSource: ClassVar[Self]  # 2
-
 class UpdateOption(_BoostPythonEnum):
     kUpdateOptionNone: ClassVar[Self]  # 0
     kUpdateOptionSkipFormat: ClassVar[Self]  # 131072
@@ -32288,7 +30478,6 @@ class UpdateOption(_BoostPythonEnum):
     kUpdateOptionForPreview: ClassVar[Self]  # 16777216
     kUpdateOptionIncludeXrefs: ClassVar[Self]  # 33554432
     kSkipFormatAfterFirstUpdate: ClassVar[Self]  # 67108864
-
 class ValueDataType(_BoostPythonEnum):
     kUnknown: ClassVar[Self]  # 0
     kLong: ClassVar[Self]  # 1
@@ -32302,14 +30491,12 @@ class ValueDataType(_BoostPythonEnum):
     kResbuf: ClassVar[Self]  # 256
     kGeneral: ClassVar[Self]  # 512
     kColor: ClassVar[Self]  # 1024
-
 class ValueFormatOption(_BoostPythonEnum):
     kFormatOptionNone: ClassVar[Self]  # 0
     kForEditing: ClassVar[Self]  # 1
     kForExpression: ClassVar[Self]  # 2
     kUseMaximumPrecision: ClassVar[Self]  # 4
     kIgnoreMtextFormat: ClassVar[Self]  # 8
-
 class ValueParseOption(_BoostPythonEnum):
     kParseOptionNone: ClassVar[Self]  # 0
     kSetDefaultFormat: ClassVar[Self]  # 1
@@ -32317,7 +30504,6 @@ class ValueParseOption(_BoostPythonEnum):
     kConvertTextToValue: ClassVar[Self]  # 4
     kChangeDataType: ClassVar[Self]  # 8
     kParseTextForFieldCode: ClassVar[Self]  # 16
-
 class ValueUnitType(_BoostPythonEnum):
     kUnitless: ClassVar[Self]  # 0
     kDistance: ClassVar[Self]  # 1
@@ -32327,7 +30513,6 @@ class ValueUnitType(_BoostPythonEnum):
     kCurrency: ClassVar[Self]  # 16
     kPercentage: ClassVar[Self]  # 32
     kAngleNotTransformed: ClassVar[Self]  # 65536
-
 class Vertex(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -32395,7 +30580,6 @@ class Vertex(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class Vertex2d(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None:
@@ -32406,16 +30590,7 @@ class Vertex2d(PyDb.Vertex):
         working in two dimensions, it may be better to use an AcDb3dPolyline, or an AcDbSpline.
         """
     @overload
-    def __init__(
-        self,
-        pos: PyGe.Point3d,
-        bulge: float,
-        startWidth: float,
-        endWidth: float,
-        tangent: float,
-        vertexId: int,
-        /,
-    ) -> None:
+    def __init__(self, pos : PyGe.Point3d, bulge: float, startWidth: float, endWidth: float, tangent:float, vertexId: int, /) -> None:
         """
         The AcDb2dVertex class represents the vertices in 2D polylines. AcDb2dVertex is the only
         ObjectARX API entity that still passes its position in OCS. This is because the Z
@@ -32508,7 +30683,7 @@ class Vertex2d(PyDb.Vertex):
         argument. To get the OCS Z coordinate, use the owning polyline's
         AcDb2dPolyline::elevation() method. The position value is used for DXF group code 10.
         """
-    def setBulge(self, val: float, /) -> None:
+    def setBulge(self, val : float, /) -> None:
         """
         Sets newVal to be the vertex's bulge value. The bulge is the tangent of 1/4 of the included
         angle for the arc between the vertex and the next vertex in the polyline's vertex list. A
@@ -32516,14 +30691,14 @@ class Vertex2d(PyDb.Vertex):
         The bulge value is used for DXF group code 42. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setEndWidth(self, val: float, /) -> None:
+    def setEndWidth(self, val : float, /) -> None:
         """
         Sets newVal to be the end width for the vertex. The end width is used as the width at the
         end of the polyline segment from this vertex to the next vertex. The end width value is
         used for DXF group code 41. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, val : PyGe.Point3d, /) -> None:
         """
         Sets pt to be the position value of the vertex. The Z value in pt is not used. pt must be
         in OCS coordinates (the OCS of the polyline containing the vertex), not WCS. The Z
@@ -32531,25 +30706,25 @@ class Vertex2d(PyDb.Vertex):
         value is used for DXF group code 10. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartWidth(self, val: float, /) -> None:
+    def setStartWidth(self, val : float, /) -> None:
         """
         Sets newVal to be the start width for the vertex. The start width is used as the width at
         this vertex for the polyline segment between this vertex and the next vertex. The end width
         value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTangent(self, val: float, /) -> None:
+    def setTangent(self, val : float, /) -> None:
         """
         Sets newVal to be the curve-fit tangent direction for the vertex. This is the angle (in
         radians) between the OCS axis for the polyline containing the vertex and the tangent
         direction vector. The tangent direction value is used for DXF group code 50. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTangentUsed(self, val: bool, /) -> None:
+    def setTangentUsed(self, val : bool, /) -> None:
         """
         This is setTangentUsed, a member of class AcDb2dVertex.
         """
-    def setVertexIdentifier(self, val: int, /) -> None: ...
+    def setVertexIdentifier(self, val : int, /) -> None: ...
     def startWidth(self, /) -> float:
         """
         Returns the start width for the vertex. The start width is used as the width at this vertex
@@ -32582,21 +30757,13 @@ class Vertex2d(PyDb.Vertex):
         the value for the DXF group code 70 as follows: Return Values Group Code 70 (bit value)
         k2dVertex 0 k2dSplineCtlVertex 16 k2dSplineFitVertex 8 k2dCurveFitVertex 1
         """
-
 class Vertex2dType(_BoostPythonEnum):
     k2dVertex: ClassVar[Self]  # 0
     k2dSplineCtlVertex: ClassVar[Self]  # 1
     k2dSplineFitVertex: ClassVar[Self]  # 2
     k2dCurveFitVertex: ClassVar[Self]  # 3
-
 class ViewTable(PyDb.AbstractViewTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
@@ -32625,7 +30792,6 @@ class ViewTable(PyDb.AbstractViewTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class ViewTableRecord(PyDb.AbstractViewTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -32767,42 +30933,42 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         Sets the AcDbAnnotationScale object to be the annotation scale of the viewport.Returns
         Acad::eOk if successful.
         """
-    def setCamera(self, val: PyDb.ObjectId, /) -> None:
+    def setCamera(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the camera for this view. Return Acad::eOk if successful.
         """
-    def setCategoryName(self, val: str, /) -> None:
+    def setCategoryName(self, val : str, /) -> None:
         """
         Sets the name of the category of the view. Returns eOk on success. Returns an error if the
         category information could not be stored.
         """
-    def setIsCameraPlottable(self, val: bool, /) -> None:
+    def setIsCameraPlottable(self, val : bool, /) -> None:
         """
         Sets the flag indicating whether the camera can be plotted. Returrns Acad::eOk if
         successful.
         """
-    def setIsPaperspaceView(self, val: bool, /) -> None:
+    def setIsPaperspaceView(self, val : bool, /) -> None:
         """
         If pspace == true, then the ViewTableRecord is set to be a Paper Space view. If pspace ==
         false, then the ViewTableRecord is set to be a Model Space view. The isPaperSpaceView flag
         is represented as bit 1 of DXF group code 70 (if bit 1 is set, then the view is a Paper
         Space view).
         """
-    def setLayerState(self, val: str, /) -> None:
+    def setLayerState(self, val : str, /) -> None:
         """
         Sets the name of the layer state. The caller is responsible for creating the layer state
         and storing it into the ACAD_LAYERSTATES dictionary. Passing in null will clear the layer
         state from the view. Returns eOk on success. Returns an error if the layer state name could
         not be stored.
         """
-    def setLayout(self, val: PyDb.ObjectId, /) -> None:
+    def setLayout(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the layout of the view. Returns eOk on success. Returns an error if the layout ID
         could not be stored. Because paperspace views refer to a position on a specific layout
         rather than just an arbitrary paper region, this field is required to accurately restore a
         paperspace view.
         """
-    def setLiveSection(self, val: PyDb.ObjectId, /) -> None:
+    def setLiveSection(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets a live section to be associated with a view. During the restoration of a view, it's
         associated live section is enabled. Returns Acad::eOk if successful.
@@ -32816,12 +30982,12 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         Acad::eWasErased, Acad::eAtMaxReaders, Acad::eWasNotifying, Acad::eWasOpenForUndo, or
         Acad::eNullObjectId.
         """
-    def setSun(self, retId: PyDb.ObjectId, pSun: PyDb.Object, eraseOldSun: bool = True, /) -> None:
+    def setSun(self, retId : PyDb.ObjectId, pSun : PyDb.Object, eraseOldSun : bool=True, /) -> None:
         """
         Sets the object Id of the AcDbSun object associated with this viewport. Returns Acad::eOk
         if the object isn't already associated with another viewport.
         """
-    def setViewAssociatedToViewport(self, val: bool, /) -> None:
+    def setViewAssociatedToViewport(self, val : bool, /) -> None:
         """
         Sets a flag to indicate whether or not the view is associated with a paperspace viewport.
         Returns eOk on success. Returns an error if the flag could not be stored.
@@ -32830,7 +30996,6 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         """
         Returns the object ID of the sun used by this background.
         """
-
 class Viewport(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
@@ -32963,7 +31128,7 @@ class Viewport(PyDb.Entity):
         Adesk::kTrue then the object is being erased. If erasing == Adesk::kFalse, then the object
         is being unerased.
         """
-    def freezeLayersInViewport(self, ids: list[PyDb.ObjectId], /) -> None:
+    def freezeLayersInViewport(self, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function Freezes, in this viewport only, the layers whose ids are in layerIds. Returns
         Acad::eOk if successful.
@@ -33006,7 +31171,7 @@ class Viewport(PyDb.Entity):
         Acad::eUnableToGetViewAssociation if the call is unsuccessful because the application is
         unable to retrieve the view table record.
         """
-    def getUcs(self, /) -> tuple[PyGe.Point3d, PyGe.Vector3d, PyGe.Vector3d]:
+    def getUcs(self, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]:
         """
         This function returns the origin, x-axis, and y-axis of the ucs for this viewport. Returns
         Acad::eOk if successful.
@@ -33092,7 +31257,7 @@ class Viewport(PyDb.Entity):
         Returns true if subdivisions are allowed below the minor grid spacing in the viewport. This
         setting is ignored if isGridAdaptive() returns false.
         """
-    def isLayerFrozenInViewport(self, val: PyDb.ObjectId, /) -> bool:
+    def isLayerFrozenInViewport(self, val : PyDb.ObjectId, /) -> bool:
         """
         This function returns true if the AcDbLayerTableRecord with objectId layerId is frozen in
         the viewport. Otherwise false is returned.
@@ -33166,7 +31331,7 @@ class Viewport(PyDb.Entity):
         information on the UCS icon visibility. The UCS icon visibility setting is reflected in the
         fifth DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def isUcsOrthographic(self, /) -> tuple[bool, PyDb.OrthographicView]:
+    def isUcsOrthographic(self, /) -> tuple[bool,PyDb.OrthographicView]:
         """
         Returns false if this viewport's UCS does not have an orthographic view whose reference UCS
         matches the database's UCSBASE system variable. If this function returns true, then view is
@@ -33189,7 +31354,7 @@ class Viewport(PyDb.Entity):
         view direction Z value is used for the second DXF group code 1030 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def isViewOrthographic(self, /) -> tuple[bool, PyDb.OrthographicView]:
+    def isViewOrthographic(self, /) -> tuple[bool,PyDb.OrthographicView]:
         """
         Returns true if the view direction is orthographic relative to UCSBASE. If this function
         returns true, view is set to the orthographic view. For example, if the current view
@@ -33227,9 +31392,7 @@ class Viewport(PyDb.Entity):
         Determines whether or not the viewport will plot as a vector output based on the viewport's
         current shade plot settings.
         """
-    def previousBackground(
-        self, type: PyGi.DrawableType = "AcGiDrawable::kGeometry", /
-    ) -> ObjectId:
+    def previousBackground(self, type: PyGi.DrawableType = 'AcGiDrawable::kGeometry', /) -> ObjectId:
         """
         Returns the viewport's previously set background of the specified type.
         """
@@ -33237,7 +31400,7 @@ class Viewport(PyDb.Entity):
         """
         Returns true if the previous background has been forced to switch.
         """
-    def removeHiddenLines(self, val: bool = True, /) -> None:
+    def removeHiddenLines(self, val: bool=True, /) -> None:
         """
         This function sets the viewport to remove hidden lines during plotting. For more
         information on viewport specific hidden line removal during plotting, see MVIEW and the
@@ -33286,29 +31449,29 @@ class Viewport(PyDb.Entity):
         planes. Turning the back clipping plane off clears the third bit in the second DXF group
         code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setBackClipOn(self, val: bool = True, /) -> None:
+    def setBackClipOn(self, val: bool=True, /) -> None:
         """
         This function turns the back clipping plane on in the viewport. See DVIEW in the AutoCAD
         Command Reference for more information on clipping planes. Turning the back clipping plane
         on sets the third bit in the second DXF group code 1070 in the 'ACAD' appId xdata attached
         to the viewport.
         """
-    def setBackground(self, val: PyDb.ObjectId, /) -> None:
+    def setBackground(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets a new viewport background. To unset, pass in a NULL object ID. Returns Acad::eOk on
         success.
         """
-    def setBrightness(self, val: float, /) -> None:
+    def setBrightness(self, val : float, /) -> None:
         """
         Sets the brightness factor for this viewport. Returns Acad::eOk on success.
         """
-    def setCenterPoint(self, val: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, val : PyGe.Point3d, /) -> None:
         """
         This function sets pt (in Paper Space WCS coordinates) to be the center point of the
         viewport. Returns Acad::eOk if successful. The center point value is used for DXF group
         code 10.
         """
-    def setCircleSides(self, val: int, /) -> None:
+    def setCircleSides(self, val : int, /) -> None:
         """
         This function sets newVal to be the circle zoom percent for the viewport. newVal must be
         between 1 and 20000 The circle zoom percent controls the number of sides to the
@@ -33318,7 +31481,7 @@ class Viewport(PyDb.Entity):
         Acad::eOk if successful. The circle zoom percent value is used for the third DXF group code
         1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setContrast(self, val: float, /) -> None:
+    def setContrast(self, val : float, /) -> None:
         """
         Sets the contrast factor for the viewport. Returns Acad::eOk on success.
         """
@@ -33328,7 +31491,7 @@ class Viewport(PyDb.Entity):
         relationship of units in paperspace to units in the viewport. For example, a custom scale
         of 0.5 would indicate that 1 unit in the viewport maps to 0.5 units in paperspace.
         """
-    def setDefaultLightingOn(self, val: bool, /) -> None:
+    def setDefaultLightingOn(self, val : bool, /) -> None:
         """
         Sets the state of default lighting for the viewport. Returns Acad::eOk on success.
         """
@@ -33346,7 +31509,7 @@ class Viewport(PyDb.Entity):
         This function always returns Acad::eOk. It is obsolete and will be removed in a future
         release.
         """
-    def setFastZoomOn(self, val: bool = True, /) -> None:
+    def setFastZoomOn(self, val: bool=True, /) -> None:
         """
         This function always returns Acad::eOk. It is obsolete and will be removed in a future
         release.
@@ -33360,7 +31523,7 @@ class Viewport(PyDb.Entity):
         clipping planes. Turning the front clipping plane off clears the fifth bit in the second
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setFrontClipAtEyeOn(self, val: bool = True, /) -> None:
+    def setFrontClipAtEyeOn(self, val: bool=True, /) -> None:
         """
         This function sets the front clipping plane to ignore the front clip distance and instead
         pass through the camera in the viewport. This does not turn the front clipping plane on if
@@ -33385,14 +31548,14 @@ class Viewport(PyDb.Entity):
         planes. Turning the front clipping plane off clears the second bit in the second DXF group
         code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setFrontClipOn(self, val: bool = True, /) -> None:
+    def setFrontClipOn(self, val: bool=True, /) -> None:
         """
         This function turns the front clipping plane on in the viewport. See DVIEW in the AutoCAD
         Command Reference for more information on clipping planes. Turning the front clipping plane
         on sets the second bit in the second DXF group code 1070 in the 'ACAD' appId xdata attached
         to the viewport.
         """
-    def setGridAdaptive(self, val: bool, /) -> None:
+    def setGridAdaptive(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display fewer lines in the
         viewport than specified by the GRIDUNIT setting. When zooming out, the grid gets too dense
@@ -33400,18 +31563,18 @@ class Viewport(PyDb.Entity):
         lines are displayed. The gridlines always adhere to a multiple of the XY grid spacing
         values. Returns Acad::eOk if successful.
         """
-    def setGridBoundToLimits(self, val: bool, /) -> None:
+    def setGridBoundToLimits(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid is drawn beyond the limits for the WCS and
         user-defined UCS in the viewport. Returns Acad::eOK if successful.
         """
-    def setGridFollow(self, val: bool, /) -> None:
+    def setGridFollow(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid is drawn when dynamic UCS switching occurs
         after a point is specified for a command that support dynamic UCS switching. This setting
         is ignored if the UCSDETECT system variable is off. Returns Acad::eOk if succcessful.
         """
-    def setGridIncrement(self, val: PyGe.Vector2d, /) -> None:
+    def setGridIncrement(self, val : PyGe.Vector2d, /) -> None:
         """
         This function sets the viewport to use vec.x as the X spacing (in drawing units) of the
         grid and vec.y as the Y spacing of the grid. Returns Acad::eOk if successful. For
@@ -33420,7 +31583,7 @@ class Viewport(PyDb.Entity):
         appId xdata attached to the viewport. The Y spacing value is used for the fourteenth DXF
         group code 1040 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setGridMajor(self, val: int, /) -> None:
+    def setGridMajor(self, val : int, /) -> None:
         """
         This function sets the number of major grid lines that are displayed for every nGridLines
         number of minor grid lines. For example, if nGridLines is set to 5, a major grid line will
@@ -33433,32 +31596,32 @@ class Viewport(PyDb.Entity):
         sets the seventh DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport to
         0.
         """
-    def setGridOn(self, val: bool = True, /) -> None:
+    def setGridOn(self, val: bool=True, /) -> None:
         """
         This function turns the grid on in the viewport. For more information about the grid, see
         GRID in the AutoCAD Command Reference. Turning the grid on sets the seventh DXF group code
         1070 in the 'ACAD' appId xdata attached to the viewport to 1.
         """
-    def setGridSubdivisionRestricted(self, val: bool, /) -> None:
+    def setGridSubdivisionRestricted(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display more lines in the
         viewport than specified by the GRIDUNIT setting. This suddivisdes the grid when zooming in.
         The gridlines always adhere to a multiple of the XY grid spacing values. This setting is
         ignored if isGridAdaptive() returns false. Returns Acad::eOk if successful.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, val : float, /) -> None:
         """
         This function sets the viewport's window to be height drawing units high. Returns Acad::eOk
         if successful. The viewport height is used for DXF group code 41.
         """
-    def setIsOn(self, val: bool, /) -> None:
+    def setIsOn(self, val : bool, /) -> None:
         """
         Sets the visibility state of the viewport. If viewport is not in a database, then the call
         fails and returns Acad::eNotInDatabase. If the viewport is not owned by the Paper Space
         BlockTableRecord, then the call fails and returns Acad::eNotInPaperspace. The current
         visibility state of the viewport is stored in the DXF group 68.
         """
-    def setLabelBlock(self, val: PyDb.ObjectId, /) -> None:
+    def setLabelBlock(self, val : PyDb.ObjectId, /) -> None:
         """
         This function associates a label block with this viewport. The label block is an
         AcDbBlockReference. Possible return values are Acad::eOk if successful,
@@ -33466,7 +31629,7 @@ class Viewport(PyDb.Entity):
         or Acad::eUnableToSetViewAssociation if the application is unable to associate the label
         block with this viewport.
         """
-    def setLensLength(self, val: float, /) -> None:
+    def setLensLength(self, val : float, /) -> None:
         """
         This function sets the viewport to use length as the lens length when perspective mode is
         on in the viewport. Returns Acad::eOk if successful. See DVIEW in the AutoCAD Command
@@ -33474,7 +31637,7 @@ class Viewport(PyDb.Entity):
         is used for the fifth DXF group code 1040 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setLocked(self, val: bool = True, /) -> None:
+    def setLocked(self, val : bool=True, /) -> None:
         """
         This function locks a viewport's scale. When a viewport is locked, its zoom factor relative
         to Paper Space cannot be changed via AutoCAD commands such as ZOOM and VIEW.
@@ -33501,7 +31664,7 @@ class Viewport(PyDb.Entity):
         """
         This function disables non-rectangular clipping for this viewport.
         """
-    def setNonRectClipOn(self, val: bool = True, /) -> None:
+    def setNonRectClipOn(self, val: bool=True, /) -> None:
         """
         This function enables non-rectangular clipping for this viewport. In order for
         non-rectangular clipping to be enabled, a clipping entity must have been assigned to this
@@ -33545,24 +31708,18 @@ class Viewport(PyDb.Entity):
         mode off clears the first bit in the second DXF group code 1070 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def setPerspectiveOn(self, val: bool = True, /) -> None:
+    def setPerspectiveOn(self, val: bool=True, /) -> None:
         """
         This function turns perspective mode on in the viewport. If perspective mode is already on,
         then calling this function does no harm. See DVIEW in the AutoCAD Command Reference for
         more information on perspective mode. Turning perspective mode on sets the first bit in the
         second DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setPlotStyleSheet(self, val: str, /) -> None:
+    def setPlotStyleSheet(self, val : str, /) -> None:
         """
         This function has not been implemented. Returns eNotImplimentedYet.
         """
-    def setPreviousBackground(
-        self,
-        id: PyDb.ObjectId,
-        type: PyGi.DrawableType = "AcGiDrawable::kGeometry",
-        force: bool = True,
-        /,
-    ) -> None:
+    def setPreviousBackground(self, id : PyDb.ObjectId, type: PyGi.DrawableType = 'AcGiDrawable::kGeometry', force: bool=True, /) -> None:
         """
         Sets the the previous background for the viewport. Returns Acad::eOk if a valid object ID
         is passed in.
@@ -33577,7 +31734,7 @@ class Viewport(PyDb.Entity):
         point to a valid AcDbVisualStyle or AcDbRenderSettings object. Returns Acad::eOk on
         success.
         """
-    def setSheetView(self, val: PyDb.ObjectId, /) -> None:
+    def setSheetView(self, val : PyDb.ObjectId, /) -> None:
         """
         This function associates a sheet view with this viewport. The input parameter objId is an
         identifier for an AcDbViewTableRecord. Possible return values are Acad::eOk if successful,
@@ -33585,7 +31742,7 @@ class Viewport(PyDb.Entity):
         or Acad::eUnableToSetViewAssociation if the application is unable to associate the view
         with this viewport.
         """
-    def setSnapAngle(self, val: float, /) -> None:
+    def setSnapAngle(self, val : float, /) -> None:
         """
         This function sets the viewport to use angle (in radians) as the snap angle setting. The
         snap angle is measured within the UCS XY plane, with zero being the UCS X axis, and
@@ -33595,7 +31752,7 @@ class Viewport(PyDb.Entity):
         Command Reference. The snap angle value is used for the eighth DXF group code 1040 in the
         'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapBasePoint(self, val: PyGe.Point2d, /) -> None:
+    def setSnapBasePoint(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets pt (in UCS coordinates) as the viewport's snap basepoint. Returns
         Acad::eOk if successful. For more information about snap basepoint, see SNAPBASE in
@@ -33603,7 +31760,7 @@ class Viewport(PyDb.Entity):
         Command Reference. The snap basepoint X and Y coordinates are used for the ninth and tenth
         (respectively) DXF group code 1040s in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapIncrement(self, val: PyGe.Vector2d, /) -> None:
+    def setSnapIncrement(self, val : PyGe.Vector2d, /) -> None:
         """
         This function sets the viewport to use vec.x as the X spacing of the snap grid and vec.y as
         the Y spacing of the snap grid. Both values are in drawing units. Returns Acad::eOk if
@@ -33612,7 +31769,7 @@ class Viewport(PyDb.Entity):
         attached to the viewport. The Y spacing value is used for the twelfth DXF group code 1040
         in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapIsoPair(self, val: int, /) -> None:
+    def setSnapIsoPair(self, val : int, /) -> None:
         """
         This function sets the viewport to use newVal as the snap IsoPair setting. The snap IsoPair
         indicates the current isometric plane for the viewport. Valid values for newVal are: 0 Left
@@ -33620,7 +31777,7 @@ class Viewport(PyDb.Entity):
         value is used for the ninth DXF group code 1070 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setSnapIsometric(self, val: bool = True, /) -> None:
+    def setSnapIsometric(self, val: bool=True, /) -> None:
         """
         This function sets the viewport's snap mode to isometric. See SNAP in the AutoCAD Command
         Reference for more information on the isometric snap mode. Setting snap to Isometric sets
@@ -33632,7 +31789,7 @@ class Viewport(PyDb.Entity):
         SNAP in the AutoCAD Command Reference for more information on snap. Turning snap off sets
         the sixth DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport to 0.
         """
-    def setSnapOn(self, val: bool = True, /) -> None:
+    def setSnapOn(self, val: bool=True, /) -> None:
         """
         This function turns snap mode on in the viewport. See SNAP in the AutoCAD Command Reference
         for more information on snap. Turning snap on sets the sixth DXF group code 1070 in the
@@ -33660,16 +31817,16 @@ class Viewport(PyDb.Entity):
         any of the standard scales, the kCustomScale is returned. Calling setCustomScale() with a
         scale of kCustomScale is an invalid operation.
         """
-    def setSun(self, retid: PyDb.ObjectId, sun: PyDb.Object, erase: bool = True, /) -> None:
+    def setSun(self, retid: PyDb.ObjectId, sun: PyDb.Object, erase: bool=True, /) -> None:
         """
         Sets the object Id of the AcDbSun object associated with this viewport. Returns Acad::eOk
         if the object isn't already associated with another viewport.
         """
-    def setTransparent(self, val: bool = True, /) -> None:
+    def setTransparent(self, val : bool=True, /) -> None:
         """
         Returns the current transparency state of the viewport.
         """
-    def setTwistAngle(self, val: float, /) -> None:
+    def setTwistAngle(self, val : float, /) -> None:
         """
         This function sets the viewport to use angle (in radians) as the twist angle of the view in
         the viewport. The twist angle is a rotation around the view's line of sight (that is, the
@@ -33713,7 +31870,7 @@ class Viewport(PyDb.Entity):
         fourth bit of the second DXF group code 1070 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setUcsFollowModeOn(self, val: bool = True, /) -> None:
+    def setUcsFollowModeOn(self, val: bool=True, /) -> None:
         """
         This function turns on UCS follow mode in the viewport. This means that the viewport will
         generate and display a plan view whenever the UCS changes in the viewport See UCSFOLLOW in
@@ -33729,7 +31886,7 @@ class Viewport(PyDb.Entity):
         Setting the UCS icon to stay in the lower left corner clears the second bit in the fifth
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setUcsIconAtOrigin(self, val: bool = True, /) -> None:
+    def setUcsIconAtOrigin(self, val: bool=True, /) -> None:
         """
         This function sets the viewport to have the UCS icon follow the current UCS origin, as long
         as the origin is far enough within the viewport to allow the icon to display properly. See
@@ -33744,7 +31901,7 @@ class Viewport(PyDb.Entity):
         Returns Acad::eOk if successful. Turning off the UCS icon clears the first bit in the fifth
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setUcsIconVisible(self, val: bool = True, /) -> None:
+    def setUcsIconVisible(self, val: bool=True, /) -> None:
         """
         This function turns on the UCS icon in the viewport so that it displays in the view. See
         UCSICON in the AutoCAD Command Reference for more information on the UCS icon. Turning on
@@ -33765,7 +31922,7 @@ class Viewport(PyDb.Entity):
         This method unlocks a viewport's scale. When a viewport is locked, its zoom factor relative
         to paperspace cannot be changed via AutoCAD commands such as ZOOM and VIEW.
         """
-    def setViewCenter(self, val: PyGe.Point2d, /) -> None:
+    def setViewCenter(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets pt to be the new center point of the viewport's view. Returns Acad::eOk
         if successful.
@@ -33809,11 +31966,11 @@ class Viewport(PyDb.Entity):
         view direction Z value is used for the second DXF group code 1030 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def setViewHeight(self, val: float, /) -> None:
+    def setViewHeight(self, val : float, /) -> None:
         """
         This function sets ht to be the new viewport view height. Returns Acad::eOk if successful.
         """
-    def setViewTarget(self, val: PyGe.Point3d, /) -> None:
+    def setViewTarget(self, val : PyGe.Point3d, /) -> None:
         """
         This function sets the viewport to use pt (in Model Space WCS coordinates) as the location
         of the view's target. Returns Acad::eOk if successful. The view target X coordinate is used
@@ -33822,11 +31979,11 @@ class Viewport(PyDb.Entity):
         xdata attached to the viewport. The view target Z coordinate is used for the first DXF
         group code 1030 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setVisualStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setVisualStyle(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets the visual style for the viewport. Returns Acad::eOk if successful.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, val : float, /) -> None:
         """
         This function sets width to be the width of the viewport entity's window in drawing units.
         This is the width in paperspace of the viewport itself, not the width of the model space
@@ -33923,7 +32080,7 @@ class Viewport(PyDb.Entity):
         This function thaws, in this viewport only, all the layers currently frozen in the
         viewport. Returns Acad::eOk if successful.
         """
-    def thawLayersInViewport(self, ids: list[PyDb.ObjectId], /) -> None:
+    def thawLayersInViewport(self, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function thaws, in this viewport only, the layers whose IDs are in layerIds. Returns
         Acad::eOk if successful.
@@ -33997,15 +32154,8 @@ class Viewport(PyDb.Entity):
         the width in Paper Space of the viewport itself, not the width of the Model Space view
         within the viewport. The viewport height is used for DXF group code 40.
         """
-
 class ViewportTable(PyDb.AbstractViewTable):
-    def __init__(
-        self,
-        id: PyDb.ObjectId,
-        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
-        erased: bool = False,
-        /,
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
@@ -34034,7 +32184,6 @@ class ViewportTable(PyDb.AbstractViewTable):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-
 class ViewportTableRecord(PyDb.AbstractViewTableRecord):
     @overload
     def __init__(self, /) -> None:
@@ -34214,9 +32363,7 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         Returns the viewport number if the viewport table record corresponds to an active tilemode
         window in the AutoCAD editor. Otherwise it returns 0.
         """
-    def previousBackground(
-        self, val: PyGi.DrawableType = PyGi.DrawableType.kGeometry, /
-    ) -> ObjectId:
+    def previousBackground(self, val: PyGi.DrawableType=PyGi.DrawableType.kGeometry, /) -> ObjectId:
         """
         Returns the viewport's previously set background of the specified type .
         """
@@ -34224,12 +32371,12 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         """
         Returns true if the previous background was forced to switch.
         """
-    def setBackground(self, val: PyDb.ObjectId, /) -> None:
+    def setBackground(self, val : PyDb.ObjectId, /) -> None:
         """
         Sets a new background to be associated with this view. To unset, pass in NULL as the object
         ID. Returns Acad::eOk on success.
         """
-    def setCircleSides(self, val: int, /) -> None:
+    def setCircleSides(self, val : int, /) -> None:
         """
         This function sets circleSides to be the circle zoom percent for the ViewportTableRecord.
         circleSides must be between 1 and 20000. The circle zoom percent controls the number of
@@ -34238,50 +32385,50 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         tessellation. See VIEWRES in the AutoCAD Command Reference for more information on circle
         zoom percent. The circle zoom percent value is used for DXF group code 72.
         """
-    def setFastZoomsEnabled(self, val: bool, /) -> None:
+    def setFastZoomsEnabled(self, val : bool, /) -> None:
         """
         This function is obsolete and will be removed in a future release. It is a no-op, currently
         for backwards compatablity.
         """
-    def setGridAdaptive(self, val: bool, /) -> None:
+    def setGridAdaptive(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display fewer lines in the
         viewport than the GRIDUNIT setting. When zooming out the grid gets too dense, so fewer
         lines are displayed. The gridlines always adhere to a multiple of the XY grid spacing
         values. Returns Acad::eOk if successful.
         """
-    def setGridBoundToLimits(self, val: bool, /) -> None:
+    def setGridBoundToLimits(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid is drawn beyond the limits for the WCS and
         user-defined UCS in the viewport. Returns Acad::eOk if successful.
         """
-    def setGridEnabled(self, val: bool, /) -> None:
+    def setGridEnabled(self, val : bool, /) -> None:
         """
         This function turns the grid on or off in the ViewportTableRecord. If enabled == true, the
         grid is turned on. If enabled == false, the grid is turned off. See GRID in the AutoCAD
         Command Reference for more information on grids. The grid on or off setting is reflected in
         DXF group code 76.
         """
-    def setGridFollow(self, val: bool, /) -> None:
+    def setGridFollow(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid is drawn when dynamic UCS switching occurs
         after a point is specified for a command that supports dynamic UCS switching. This setting
         is ignored it the UCSDETECT system variable is off. Returns Acad::eOk if successful.
         """
-    def setGridIncrements(self, val: PyGe.Point2d, /) -> None:
+    def setGridIncrements(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets the ViewportTableRecord to use base.x as the X spacing (in drawing
         units) of the grid and base.y as the Y spacing of the grid. For information on what the
         grid is and how it's used, see GRID in the AutoCAD Command Reference. The X spacing value
         is used for DXF group code 15. The Y spacing value is used for DXF group code 25.
         """
-    def setGridMajor(self, val: int, /) -> None:
+    def setGridMajor(self, val : int, /) -> None:
         """
         This function sets the number of major grid lines that are displayed. A major grid lines
         will be displayed for every nGridLines number of minor grid lines. Returns Acad::eOk if
         successful.
         """
-    def setGridSubdivisionRestricted(self, val: bool, /) -> None:
+    def setGridSubdivisionRestricted(self, val : bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display more lines in the
         viewport than specified by the GRIDUNIT setting. When zooming in, the gridlines may become
@@ -34289,12 +32436,12 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         the XY grid spacing values. This setting is ignored if isGridAdaptive() returns false.
         Returns Acad::eOk if succesful.
         """
-    def setGsView(self, val: PyGs.GsView, /) -> None:
+    def setGsView(self, val : PyGs.GsView, /) -> None:
         """
         This release of AutoCAD does nothing with the specified pointer other than return it in
         gsView.
         """
-    def setIconAtOrigin(self, val: bool, /) -> None:
+    def setIconAtOrigin(self, val : bool, /) -> None:
         """
         If atOrigin == true, this function sets the ViewportTableRecord to have the UCS icon follow
         the current UCS origin as long as the origin is far enough within the viewport to allow the
@@ -34303,7 +32450,7 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         icon following origin. The UCS icon setting is reflected in the second bit DXF group code
         74 (if the bit is set, then the icon will follow the origin).
         """
-    def setIconEnabled(self, val: bool, /) -> None:
+    def setIconEnabled(self, val : bool, /) -> None:
         """
         This function turns the UCS icon on or off in the ViewportTableRecord. If enabled == true,
         the UCS icon is turned on. If enabled == false, the UCS icon is turned off. See UCSICON in
@@ -34311,14 +32458,14 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         visibility setting is reflected in the first bit of DXF group code 74 (if set, the icon
         displays).
         """
-    def setIsometricSnapEnabled(self, val: bool, /) -> None:
+    def setIsometricSnapEnabled(self, val : bool, /) -> None:
         """
         This function sets the snap mode to be isometric or standard in the ViewportTableRecord. If
         enabled == true, isometric snap is used. If enabled == false, standard snap is used. See
         SNAP in the AutoCAD Command Reference for more information on the isometric snap mode. The
         snap Isometric setting is reflected in DXF group code 77.
         """
-    def setLowerLeftCorner(self, val: PyGe.Point2d, /) -> None:
+    def setLowerLeftCorner(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets the ViewportTableRecord to use pt as the lower left corner for the
         ViewportTableRecord. The X and Y values of pt must be expressed as a value between (0.0,
@@ -34335,9 +32482,7 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         is passed in.
         """
     @overload
-    def setPreviousBackground(
-        self, id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool, /
-    ) -> None:
+    def setPreviousBackground(self, id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool, /) -> None:
         """
         Sets the the previous background for the viewport. Returns Acad::eOk if a valid object ID
         is passed in.
@@ -34348,7 +32493,7 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         Sets the the previous background for the viewport. Returns Acad::eOk if a valid object ID
         is passed in.
         """
-    def setSnapAngle(self, val: float, /) -> None:
+    def setSnapAngle(self, val : float, /) -> None:
         """
         This function sets the ViewportTableRecord to use angle (in radians) as the snap angle
         setting. The snap angle is within the UCS XY plane with zero being the UCS X axis and
@@ -34357,35 +32502,35 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         documentation and SNAP in the AutoCAD Command Reference. The snap angle value is used for
         DXF group code 50.
         """
-    def setSnapBase(self, val: PyGe.Point2d, /) -> None:
+    def setSnapBase(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets base the snap basepoint (in UCS coordinates) for the
         ViewportTableRecord. For more information about snap basepoint, see SNAPBASE in the AutoCAD
         system variable documentation and SNAP in the AutoCAD Command Reference. The snap basepoint
         is used for DXF group code 13.
         """
-    def setSnapEnabled(self, val: bool, /) -> None:
+    def setSnapEnabled(self, val : bool, /) -> None:
         """
         This function sets the snap to be on or off in the ViewportTableRecord. If enabled == true,
         snap mode is turned on. If enabled == false, snap mode is turned off. See SNAP in the
         AutoCAD Command Reference for more information on snap. The snap on or off setting is
         reflected in DXF group code 75.
         """
-    def setSnapIncrements(self, val: PyGe.Point2d, /) -> None:
+    def setSnapIncrements(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets the ViewportTableRecord to use base.x as the X spacing of the snap grid
         and base.y as the Y spacing of the snap grid. Both values are in drawing units. For
         information on the snap grid, see SNAP in the AutoCAD Command Reference. The X spacing
         value is used for DXF group code 14. The Y spacing value is used for DXF group code 24.
         """
-    def setSnapPair(self, val: int, /) -> None:
+    def setSnapPair(self, val : int, /) -> None:
         """
         This function sets the ViewportTableRecord to use pairType as the snap IsoPair setting. The
         snap IsoPair indicates the current isometric plane for the ViewportTableRecord. Possible
         values are: 0 Left isoplane 1 Top isoplane 2 Right isoplane The snap IsoPair value is used
         for DXF group code 78.
         """
-    def setUcsFollowMode(self, val: bool, /) -> None:
+    def setUcsFollowMode(self, val : bool, /) -> None:
         """
         This function sets the UCS follow mode to be on or off in the ViewportTableRecord. If
         enabled == true, UCS follow mode is turned on. If enabled == false, UCS follow mode is
@@ -34393,12 +32538,12 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         on UCSFOLLOW mode. The UCSFOLLOW setting is reflected in the fourth bit of DXF group code
         71 (if the bit is set, then follow mode is on).
         """
-    def setUcsPerViewport(self, val: bool, /) -> None:
+    def setUcsPerViewport(self, val : bool, /) -> None:
         """
         This function sets the value of UCSVP for the viewport. If ucsvp is true, then the UCS that
         is saved with this viewport will become active whenever the viewport is made active.
         """
-    def setUpperRightCorner(self, val: PyGe.Point2d, /) -> None:
+    def setUpperRightCorner(self, val : PyGe.Point2d, /) -> None:
         """
         This function sets the ViewportTableRecord to use pt as the upper right corner for the
         ViewportTableRecord. The X and Y values of pt must be expressed as a value between (0.0,
@@ -34463,16 +32608,13 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         area, midway between the left and right edges of the graphics area. The upper right corner
         is used for DXF group code 11.
         """
-
 class Visibility(_BoostPythonEnum):
     kVisible: ClassVar[Self]  # 0
     kInvisible: ClassVar[Self]  # 1
-
 class VpFreezeOps(_BoostPythonEnum):
     kFreeze: ClassVar[Self]  # 0
     kThaw: ClassVar[Self]  # 1
     kReset: ClassVar[Self]  # 2
-
 class VpShadePlotType(_BoostPythonEnum):
     kAsDisplayed: ClassVar[Self]  # 0
     kWireframe: ClassVar[Self]  # 1
@@ -34480,7 +32622,6 @@ class VpShadePlotType(_BoostPythonEnum):
     kRendered: ClassVar[Self]  # 3
     kVisualStyle: ClassVar[Self]  # 4
     kRenderPreset: ClassVar[Self]  # 5
-
 class Wipeout(PyDb.RasterImage):
     @overload
     def __init__(self, /) -> None:
@@ -34552,8 +32693,7 @@ class Wipeout(PyDb.RasterImage):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def frame(self, /) -> bool: ...
-    def setFrom(self, points: list[PyGe.Point2d], normal: PyGe.Vector3d, /) -> None: ...
-
+    def setFrom(self, points : list[PyGe.Point2d], normal : PyGe.Vector3d, /) -> None: ...
 class Xrecord(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None:
@@ -34658,7 +32798,7 @@ class Xrecord(PyDb.DbObject):
         """
         This function returns the merge style of the dictionary. See AcDb::DuplicateRecordCloning.
         """
-    def rbChain(self, auxDb: PyDb.Database = ..., /) -> list:
+    def rbChain(self, auxDb : PyDb.Database = ..., /) -> list:
         """
         Sets the pointer pointed to by ppRb to point to a linked list of resbuf structures, which
         is a copy of the data that this xrecord contains. The application calling this function is
@@ -34673,7 +32813,7 @@ class Xrecord(PyDb.DbObject):
         complete resbuf list, then Acad::eOutOfMemory is returned and *ppRb may point to a partial
         data list of resbuf structures which need to be freed.
         """
-    def setFromRbChain(self, resbuf: list, auxDb: PyDb.Database = ..., /) -> None:
+    def setFromRbChain(self, resbuf : list, auxDb : PyDb.Database = ..., /) -> None:
         """
         Sets the list whose head is rb to be the data list for the xrecord. Object IDs (group codes
         330-369) must be stored in the resbuf's resval.rlname field. Each resbuf must have a valid
@@ -34698,12 +32838,11 @@ class Xrecord(PyDb.DbObject):
         This function sets the merge style for insert operations. See AcDb::DuplicateRecordCloning
         for possible styles.
         """
-    def setXlateReferences(self, val: bool, /) -> None:
+    def setXlateReferences(self, val : bool, /) -> None:
         """
         If translate is true, then the xrecord translates any object IDs in its data chain during
         any subsequent deepClone or wblockClone operations. Otherwise, the translation is not done.
         """
-
 class XrefGraph(PyDb.Graph):
     def __init__(self, /) -> None:
         """
@@ -34732,7 +32871,6 @@ class XrefGraph(PyDb.Graph):
     def xrefNode(self, val: PyDb.Database, /) -> XrefGraphNode: ...
     @overload
     def xrefNode(self, *args) -> XrefGraphNode: ...
-
 class XrefGraphNode(PyDb.GraphNode):
     def __init__(self, /) -> None:
         """
@@ -34753,15 +32891,14 @@ class XrefGraphNode(PyDb.GraphNode):
     def database(self, /) -> Database: ...
     def isNested(self, /) -> bool: ...
     def name(self, /) -> str: ...
-    def setBtrId(self, val: PyDb.ObjectId, /) -> None: ...
-    def setDatabase(self, val: PyDb.Database, /) -> None: ...
-    def setName(self, val: str, /) -> None: ...
-    def setXrefNotificationStatus(self, val: PyDb.XrefNotificationStatus, /) -> None: ...
-    def setXrefStatus(self, val: PyDb.XrefStatus, /) -> None: ...
+    def setBtrId(self, val:PyDb.ObjectId, /) -> None: ...
+    def setDatabase(self, val:PyDb.Database, /) -> None: ...
+    def setName(self, val:str, /) -> None: ...
+    def setXrefNotificationStatus(self, val:PyDb.XrefNotificationStatus, /) -> None: ...
+    def setXrefStatus(self, val:PyDb.XrefStatus, /) -> None: ...
     def xrefNotificationStatus(self, /) -> object: ...
     def xrefReadSubstatus(self, /) -> ErrorStatus: ...
     def xrefStatus(self, /) -> XrefStatus: ...
-
 class XrefObjectId:
     def __init__(self, /) -> None: ...
     def __ne__(self, /) -> bool: ...
@@ -34775,7 +32912,6 @@ class XrefObjectId:
     def setLocalId(self, id: PyDb.ObjectId, /) -> None: ...
     def setNull(self, /) -> None: ...
     def setXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None: ...
-
 class XrefStatus(_BoostPythonEnum):
     kXrfNotAnXref: ClassVar[Self]  # 0
     kXrfResolved: ClassVar[Self]  # 1
@@ -34783,7 +32919,6 @@ class XrefStatus(_BoostPythonEnum):
     kXrfUnreferenced: ClassVar[Self]  # 3
     kXrfFileNotFound: ClassVar[Self]  # 4
     kXrfUnresolved: ClassVar[Self]  # 5
-
 def curDb(*args) -> Database:
     """
     curDb() -> Database :
@@ -34791,7 +32926,6 @@ def curDb(*args) -> Database:
     C++ signature :
         class PyDbDatabase curDb()
     """
-
 def setWorkingDb(*args) -> None:
     """
     setWorkingDb( (Database)arg1) -> None :
@@ -34799,7 +32933,6 @@ def setWorkingDb(*args) -> None:
     C++ signature :
         void setWorkingDb(class PyDbDatabase {lvalue})
     """
-
 def workingDb(*args) -> Database:
     """
     workingDb() -> Database :

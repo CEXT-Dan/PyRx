@@ -203,16 +203,12 @@ public:
     void                addActions(const boost::python::list& actionIds, bool alsoSetAsDatabaseOwner) const;
     void                removeAllActions(bool alsoEraseThem) const;
     void                ownedActionStatusChanged(const PyDbAssocAction& pOwnedAction, AcDbAssocStatus  previousStatus) const;
+    boost::python::list assocNetworkIterator() const;
 
     static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDatabase, bool createIfDoesNotExist, const std::string& dictionaryKey);
     static PyDbObjectId getInstanceFromObject(const PyDbObjectId& owningObjectId, bool createIfDoesNotExist, bool addToTopLevelNetwork, const std::string& dictionaryKey);
-
     static void         removeInstanceFromDatabase(const PyDbDatabase& pDatabase, bool alsoEraseIt, const std::string& dictionaryKey);
     static void         removeInstanceFromObject(const PyDbObjectId& owningObjectId, bool alsoEraseIt,const std::string& dictionaryKey);
-
-
-    //static Acad::ErrorStatus removeInstanceFromObject(const AcDbObjectId& owningObjectId, bool alsoEraseIt, const AcString& dictionaryKey = ACRX_T(""));
-    //static Acad::ErrorStatus removeInstanceFromDatabase(AcDbDatabase* pDatabase, bool alsoEraseIt, const AcString& dictionaryKey = ACRX_T(""));
 
     static PyRxClass        desc();
     static std::string      className();
@@ -236,38 +232,22 @@ public:
     PyDbAssocVariable(AcDbAssocVariable* ptr, bool autoDelete);
     virtual ~PyDbAssocVariable() override = default;
 
+    std::string     name() const;
+    std::string     expression1() const;
+    std::string     expression2(bool convertSymbolNamesFromCanonicalForm) const;
+    PyDbEvalVariant value() const;
+    std::string     description() const;
+    bool            isAnonymous() const;
+    void            setName(const std::string& newName, bool updateReferencingExpressions) const;
+    PyDbObjectId    findObjectByName(const std::string& objectName, const PyRxClass& pObjectClass) const;
+    boost::python::tuple validateNameAndExpression(const std::string& nameToValidate,const std::string& expressionToValidate) const;
+    boost::python::tuple setExpression1(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol) const;
+    boost::python::tuple setExpression2(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol, bool silentMode) const;
 
-    //const AcString& name() const;
-    //const AcString& expression() const;
-    //const AcString& expression(bool convertSymbolNamesFromCanonicalForm) const;
-    //const AcDbEvalVariant& value() const;
-    //const AcString& description() const;
-    //Acad::ErrorStatus setName(const AcString& newName, bool updateReferencingExpressions);
-    //bool isAnonymous() const;
-
-
-    //ACDBCORE2D_PORT AcDbObjectId findObjectByName(const AcString& objectName,
-    //    const AcRxClass* pObjectClass) const;
-
-
-    //ACDBCORE2D_PORT Acad::ErrorStatus validateNameAndExpression(const AcString& nameToValidate,
-    //    const AcString& expressionToValidate,
-    //    AcString& errorMessage) const;
-
-
-    //ACDBCORE2D_PORT Acad::ErrorStatus setExpression(const AcString& newExpression,
-    //    const AcString& evaluatorId,
-    //    bool checkForCyclicalDependencies,
-    //    bool updateDependenciesOnReferencedSymbols,
-    //    AcString& errorMessage = dummyString(),
-    //    bool silentMode = false);
-
-
-    //ACDBCORE2D_PORT const AcString& evaluatorId() const;
-    //ACDBCORE2D_PORT Acad::ErrorStatus setEvaluatorId(const AcString& evalId);
-    //ACDBCORE2D_PORT Acad::ErrorStatus setValue(const AcDbEvalVariant& newValue);
-    //ACDBCORE2D_PORT Acad::ErrorStatus setDescription(const AcString& newDescription);
-
+    std::string     evaluatorId() const;
+    void            setEvaluatorId(const std::string& evalId) const;
+    void            setValue(const PyDbEvalVariant& evalId) const;
+    void            setDescription(const std::string& newDescription) const;
 
     //ACDBCORE2D_PORT bool     isMergeable() const;
     //ACDBCORE2D_PORT bool     mustMerge() const;
