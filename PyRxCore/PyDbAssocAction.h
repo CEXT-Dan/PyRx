@@ -126,12 +126,12 @@ public:
     bool                areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const;
     bool                areDependenciesEqual(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const;
     //Acad::ErrorStatus  notification(AcDbAssocNotificationData* pNotifData);
+    //AcDbAssocEvaluationCallback* currentEvaluationCallback() const;
     void                dependentObjectCloned(const PyDbAssocDependency& pDependency, const PyDbObject& pDbObj, const PyDbObject& pNewObj) const;
     boost::python::list addMoreObjectsToDeepClone(const PyDbIdMapping& idMap, boost::python::list& additionalObjectsToClone) const;
     void                postProcessAfterDeepClone(PyDbIdMapping& idMap);
     void                postProcessAfterDeepCloneCancel(PyDbIdMapping& idMap);
     bool                isActionEvaluationInProgress() const;
-    //AcDbAssocEvaluationCallback* currentEvaluationCallback() const;
     void                evaluateDependencies() const;
     void                evaluateDependency(PyDbAssocDependency& pDependency) const;
     void                ownedDependencyStatusChanged(PyDbAssocDependency& pOwnedDependency, AcDbAssocStatus previousStatus) const;
@@ -254,7 +254,6 @@ public:
     //ACDBCORE2D_PORT AcString mergeableVariableName() const;
     //ACDBCORE2D_PORT void setIsMergeable(bool isMerg, bool mustMerg = false, const AcString& mergeableVariableName = AcString());
 
-
     //ACDBCORE2D_PORT Acad::ErrorStatus evaluateExpression(AcDbEvalVariant& evaluatedExpressionValue,
     //    AcString& errorMessage = dummyString()) const;
 
@@ -269,6 +268,7 @@ public:
     //    AcDbEvalVariant& evaluatedExpressionValue,
     //    AcString& assignedToSymbolName,
     //    AcString& errorMessage = dummyString());
+    
     //ACDBCORE2D_PORT static void addGlobalCallback(class AcDbAssocVariableCallback* pCallback);
     //ACDBCORE2D_PORT static void removeGlobalCallback(class AcDbAssocVariableCallback* pCallback);
     //ACDBCORE2D_PORT static class AcDbAssocVariableCallback* globalCallback();
