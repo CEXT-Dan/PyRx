@@ -249,26 +249,15 @@ public:
     void            setValue(const PyDbEvalVariant& evalId) const;
     void            setDescription(const std::string& newDescription) const;
 
-    //ACDBCORE2D_PORT bool     isMergeable() const;
-    //ACDBCORE2D_PORT bool     mustMerge() const;
-    //ACDBCORE2D_PORT AcString mergeableVariableName() const;
-    //ACDBCORE2D_PORT void setIsMergeable(bool isMerg, bool mustMerg = false, const AcString& mergeableVariableName = AcString());
+    bool            isMergeable() const;
+    bool            mustMerge() const;
+    std::string     mergeableVariableName() const;
+    void            setIsMergeable1(bool isMerg) const;
+    void            setIsMergeable2(bool isMerg, bool mustMerg, const std::string& mergeableVariableName) const;
+    boost::python::tuple  evaluateExpression() const;
+    boost::python::tuple  evaluateExpression(const boost::python::list& objectIds, const boost::python::list& objectValues) const;
+    boost::python::tuple  evaluateExpression(const std::string& expression,const std::string& evaluatorId, const PyDbObjectId& networkId) const;
 
-    //ACDBCORE2D_PORT Acad::ErrorStatus evaluateExpression(AcDbEvalVariant& evaluatedExpressionValue,
-    //    AcString& errorMessage = dummyString()) const;
-
-    //ACDBCORE2D_PORT Acad::ErrorStatus evaluateExpression(AcDbObjectIdArray& objectIds,    // in/out argument
-    //    AcArray<AcDbEvalVariant>& objectValues, // in/out argument
-    //    AcDbEvalVariant& evaluatedExpressionValue,
-    //    AcString& errorMessage = dummyString()) const;
-
-    //ACDBCORE2D_PORT static Acad::ErrorStatus evaluateExpression(const AcString& expression,
-    //    const AcString& evaluatorId,
-    //    const AcDbObjectId& networkId, // Provides context for the names
-    //    AcDbEvalVariant& evaluatedExpressionValue,
-    //    AcString& assignedToSymbolName,
-    //    AcString& errorMessage = dummyString());
-    
     //ACDBCORE2D_PORT static void addGlobalCallback(class AcDbAssocVariableCallback* pCallback);
     //ACDBCORE2D_PORT static void removeGlobalCallback(class AcDbAssocVariableCallback* pCallback);
     //ACDBCORE2D_PORT static class AcDbAssocVariableCallback* globalCallback();
