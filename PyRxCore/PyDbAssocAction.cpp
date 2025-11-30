@@ -314,20 +314,20 @@ void makePyDbAssocActionWrapper()
         .def("areDependenciesOnTheSameThing", &PyDbAssocAction::areDependenciesOnTheSameThing, DS.ARGS({ "dependency1:PyDb.AssocDependency", "dependency2:PyDb.AssocDependency" }))
         .def("areDependenciesEqual", &PyDbAssocAction::areDependenciesEqual, DS.ARGS({ "dependency1:PyDb.AssocDependency", "dependency2:PyDb.AssocDependency" }))
         .def("dependentObjectCloned", &PyDbAssocAction::dependentObjectCloned, DS.ARGS({ "dependency:PyDb.AssocDependency", "dbObj:PyDb.DbObject","newObj:PyDb.DbObject" }))
-        .def("addMoreObjectsToDeepClone", &PyDbAssocAction::addMoreObjectsToDeepClone, DS.ARGS({ "idMap:PyDb.PIdMapping","additionalObjectsToClone:list[PyDb.DbObject]"}))
+        .def("addMoreObjectsToDeepClone", &PyDbAssocAction::addMoreObjectsToDeepClone, DS.ARGS({ "idMap:PyDb.PIdMapping","additionalObjectsToClone:list[PyDb.DbObject]" }))
         .def("postProcessAfterDeepClone", &PyDbAssocAction::postProcessAfterDeepClone, DS.ARGS({ "idMap:PyDb.PIdMapping" }))
         .def("postProcessAfterDeepCloneCancel", &PyDbAssocAction::postProcessAfterDeepCloneCancel, DS.ARGS({ "idMap:PyDb.PIdMapping" }))
         .def("isActionEvaluationInProgress", &PyDbAssocAction::isActionEvaluationInProgress, DS.ARGS())
         .def("evaluateDependencies", &PyDbAssocAction::evaluateDependencies, DS.ARGS())
         .def("evaluateDependency", &PyDbAssocAction::evaluateDependency, DS.ARGS({ "dependency:PyDb.AssocDependency" }))
-        .def("ownedDependencyStatusChanged", &PyDbAssocAction::ownedDependencyStatusChanged, DS.ARGS({ "ownedDependency:PyDb.AssocDependency","previousStatus:PyDb.AssocStatus"}))
+        .def("ownedDependencyStatusChanged", &PyDbAssocAction::ownedDependencyStatusChanged, DS.ARGS({ "ownedDependency:PyDb.AssocDependency","previousStatus:PyDb.AssocStatus" }))
         .def("transformActionBy", &PyDbAssocAction::transformActionBy, DS.ARGS({ "transform:PyGe.AcGeMatrix3d" }))
         .def("isEqualTo", &PyDbAssocAction::isEqualTo, DS.ARGS({ "otherAction:PyDb.AssocAction" }))
         .def("evaluationPriority", &PyDbAssocAction::evaluationPriority, DS.ARGS())
-        .def("getDependentActionsToEvaluate", &PyDbAssocAction::getDependentActionsToEvaluate, DS.ARGS({"refActionsToEvaluateCallback:PyDb.ActionsToEvaluateCallback"}))
+        .def("getDependentActionsToEvaluate", &PyDbAssocAction::getDependentActionsToEvaluate, DS.ARGS({ "refActionsToEvaluateCallback:PyDb.ActionsToEvaluateCallback" }))
         .def("evaluate", &PyDbAssocAction::evaluate, DS.ARGS({ "refEvaluate:PyDb.ActionsToEvaluateCallback" }))
         .def("objectThatOwnsNetworkInstance", &PyDbAssocAction::objectThatOwnsNetworkInstance, DS.ARGS())
-        .def("dragStatus", &PyDbAssocAction::dragStatus, DS.ARGS({"status:PyDb.DragStat"}))
+        .def("dragStatus", &PyDbAssocAction::dragStatus, DS.ARGS({ "status:PyDb.DragStat" }))
         .def("removeAllParams", &PyDbAssocAction::removeAllParams, DS.ARGS({ "alsoEraseThem:bool" }))
         .def("paramCount", &PyDbAssocAction::paramCount, DS.ARGS())
         .def("ownedParams", &PyDbAssocAction::ownedParams, DS.ARGS())
@@ -336,27 +336,27 @@ void makePyDbAssocActionWrapper()
         .def("removeParam", &PyDbAssocAction::addParam2, DS.ARGS({ "paramName:str","alsoEraseIt:bool" }))
         .def("paramsAtName", &PyDbAssocAction::paramsAtName, DS.ARGS({ "paramName:str" }))
         .def("paramAtName", &PyDbAssocAction::paramAtName1)
-        .def("paramAtName", &PyDbAssocAction::paramAtName2, DS.ARGS({ "paramName:str", "index:int = 0"}))
+        .def("paramAtName", &PyDbAssocAction::paramAtName2, DS.ARGS({ "paramName:str", "index:int = 0" }))
         .def("paramAtIndex", &PyDbAssocAction::paramAtIndex, DS.ARGS({ "index:int" }))
         .def("ownedValueParamNames", &PyDbAssocAction::ownedValueParamNames, DS.ARGS())
-        .def("getValueParamArray", &PyDbAssocAction::getValueParamArray, DS.ARGS({ "paramName:str"}))
-        .def("getValueParam", &PyDbAssocAction::getValueParam, DS.ARGS({ "paramName:str","index:int"}))
-        .def("setValueParamArray", &PyDbAssocAction::setValueParamArray, DS.ARGS({ "paramName:str","values:list[PyDb.EvalVariant]","expressions:list[str]","evaluatorIds:list[str]","silentMode:bool"}))
+        .def("getValueParamArray", &PyDbAssocAction::getValueParamArray, DS.ARGS({ "paramName:str" }))
+        .def("getValueParam", &PyDbAssocAction::getValueParam, DS.ARGS({ "paramName:str","index:int" }))
+        .def("setValueParamArray", &PyDbAssocAction::setValueParamArray, DS.ARGS({ "paramName:str","values:list[PyDb.EvalVariant]","expressions:list[str]","evaluatorIds:list[str]","silentMode:bool" }))
         .def("setValueParam", &PyDbAssocAction::setValueParam, DS.ARGS({ "paramName:str","value:PyDb.EvalVariant","expression:str","evaluatorId:str","silentMode:bool","valueIndex:int" }))
-        .def("valueParamUnitType", &PyDbAssocAction::valueParamUnitType, DS.ARGS({ "paramName:str"}))
-        .def("setValueParamUnitType", &PyDbAssocAction::setValueParamUnitType, DS.ARGS({ "paramName:str","unitType:PyDb.ValueUnitType"}))
+        .def("valueParamUnitType", &PyDbAssocAction::valueParamUnitType, DS.ARGS({ "paramName:str" }))
+        .def("setValueParamUnitType", &PyDbAssocAction::setValueParamUnitType, DS.ARGS({ "paramName:str","unitType:PyDb.ValueUnitType" }))
         .def("removeValueParam", &PyDbAssocAction::removeValueParam, DS.ARGS({ "paramName:str" }))
         .def("valueParamInputVariables", &PyDbAssocAction::valueParamInputVariables, DS.ARGS({ "paramName:str" }))
-        .def("setValueParamControlledObjectDep", &PyDbAssocAction::setValueParamControlledObjectDep, DS.ARGS({ "paramName:str","controlledObjectDepId:PyDb.ObjectId"}))
+        .def("setValueParamControlledObjectDep", &PyDbAssocAction::setValueParamControlledObjectDep, DS.ARGS({ "paramName:str","controlledObjectDepId:PyDb.ObjectId" }))
         .def("updateValueParamControlledObject", &PyDbAssocAction::updateValueParamControlledObject, DS.ARGS({ "paramName:str" }))
         .def("updateValueParamFromControlledObject", &PyDbAssocAction::updateValueParamFromControlledObject, DS.ARGS({ "paramName:str" }))
         .def("updateAllObjectsControlledByValueParams", &PyDbAssocAction::updateAllObjectsControlledByValueParams, DS.ARGS())
         .def("transformAllConstantGeometryParams", &PyDbAssocAction::transformAllConstantGeometryParams, DS.ARGS({ "transform:PyGe.Matrix3d" }))
         .def("scaleAllDistanceValueParams", &PyDbAssocAction::scaleAllDistanceValueParams, DS.ARGS({ "scaleFactor:float" }))
 
-        .def("getActionsDependentOnObject", &PyDbAssocAction::getActionsDependentOnObject, DS.SARGS({"pObject:PyDb.DbObject","readDependenciesWanted:bool","writeDependenciesWanted:bool"})).staticmethod("getActionsDependentOnObject")
+        .def("getActionsDependentOnObject", &PyDbAssocAction::getActionsDependentOnObject, DS.SARGS({ "pObject:PyDb.DbObject","readDependenciesWanted:bool","writeDependenciesWanted:bool" })).staticmethod("getActionsDependentOnObject")
         .def("removeActionsControllingObject", &PyDbAssocAction::removeActionsControllingObject1)
-        .def("removeActionsControllingObject", &PyDbAssocAction::removeActionsControllingObject2,DS.SOVRL(removeActionsControllingObjectOverloads)).staticmethod("removeActionsControllingObject")
+        .def("removeActionsControllingObject", &PyDbAssocAction::removeActionsControllingObject2, DS.SOVRL(removeActionsControllingObjectOverloads)).staticmethod("removeActionsControllingObject")
         .def("doesObjectHaveActiveActions", &PyDbAssocAction::doesObjectHaveActiveActions, DS.SARGS({ "pObject:PyDb.DbObject" })).staticmethod("doesObjectHaveActiveActions")
         .def("getActionBody", &PyDbAssocAction::getActionBody, DS.SARGS({ "actionId:PyDb.ObjectId" })).staticmethod("getActionBody")
         .def("className", &PyDbAssocAction::className, DS.SARGS()).staticmethod("className")
@@ -1118,6 +1118,7 @@ PyDbObjectId PyDbAssocVariable::findObjectByName(const std::string& objectName, 
 
 boost::python::tuple PyDbAssocVariable::validateNameAndExpression(const std::string& nameToValidate, const std::string& expressionToValidate) const
 {
+    PyAutoLockGIL lock;
     AcString errorMessage;
     auto es = impObj()->validateNameAndExpression(utf8_to_wstr(nameToValidate).c_str(), utf8_to_wstr(expressionToValidate).c_str(), errorMessage);
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
@@ -1125,6 +1126,7 @@ boost::python::tuple PyDbAssocVariable::validateNameAndExpression(const std::str
 
 boost::python::tuple PyDbAssocVariable::setExpression1(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol) const
 {
+    PyAutoLockGIL lock;
     AcString errorMessage;
     auto es = impObj()->setExpression(utf8_to_wstr(newExpression).c_str(), utf8_to_wstr(evaluatorId).c_str(), checkForCyclicalDependencies, updateDependenciesOnReferencedSymbol, errorMessage);
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
@@ -1132,6 +1134,7 @@ boost::python::tuple PyDbAssocVariable::setExpression1(const std::string& newExp
 
 boost::python::tuple PyDbAssocVariable::setExpression2(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol, bool silentMode) const
 {
+    PyAutoLockGIL lock;
     AcString errorMessage;
     auto es = impObj()->setExpression(utf8_to_wstr(newExpression).c_str(), utf8_to_wstr(evaluatorId).c_str(), checkForCyclicalDependencies, updateDependenciesOnReferencedSymbol, errorMessage, silentMode);
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage));
@@ -1159,6 +1162,74 @@ void PyDbAssocVariable::setValue(const PyDbEvalVariant& evalId) const
 void PyDbAssocVariable::setDescription(const std::string& newDescription) const
 {
     PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(newDescription).c_str()));
+}
+
+bool PyDbAssocVariable::isMergeable() const
+{
+    return impObj()->isMergeable();
+}
+
+bool PyDbAssocVariable::mustMerge() const
+{
+    return impObj()->mustMerge();
+}
+
+std::string PyDbAssocVariable::mergeableVariableName() const
+{
+    return wstr_to_utf8(impObj()->mergeableVariableName());
+}
+
+void PyDbAssocVariable::setIsMergeable1(bool isMerg) const
+{
+    impObj()->setIsMergeable(isMerg);
+}
+
+void PyDbAssocVariable::setIsMergeable2(bool isMerg, bool mustMerg, const std::string& mergeableVariableName) const
+{
+    impObj()->setIsMergeable(isMerg, mustMerg, utf8_to_wstr(mergeableVariableName).c_str());
+}
+
+boost::python::tuple PyDbAssocVariable::evaluateExpression() const
+{
+    AcString errorMessage;
+    AcDbEvalVariant evaluatedExpressionValue;
+    auto es = impObj()->evaluateExpression(evaluatedExpressionValue, errorMessage);
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), PyDbEvalVariant(evaluatedExpressionValue));
+}
+
+static AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    auto vec{ py_list_to_std_vector<PyDbEvalVariant>(iterable) };
+    AcArray<AcDbEvalVariant> arr;
+    arr.setPhysicalLength(vec.size());
+    for (auto& item : vec)
+        arr.append(*item.impObj());
+    return arr;
+}
+
+boost::python::tuple PyDbAssocVariable::evaluateExpression(const boost::python::list& objectIds, const boost::python::list& objectValues) const
+{
+    PyAutoLockGIL lock;
+    AcString errorMessage;
+    AcDbEvalVariant evaluatedExpressionValue;
+    AcDbObjectIdArray acids = PyListToObjectIdArray(objectIds);
+    AcArray<AcDbEvalVariant> acobjectValues = PyListToAcDbEvalVariantArray(objectValues);
+    auto es = impObj()->evaluateExpression(acids, acobjectValues, evaluatedExpressionValue, errorMessage);
+    boost::python::list outobjectValues;
+    for (const auto& item : acobjectValues)
+        outobjectValues.append(PyDbEvalVariant(item));
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), ObjectIdArrayToPyList(acids), outobjectValues, PyDbEvalVariant(evaluatedExpressionValue));
+}
+
+boost::python::tuple PyDbAssocVariable::evaluateExpression(const std::string& expression, const std::string& evaluatorId, const PyDbObjectId& networkId) const
+{
+    PyAutoLockGIL lock;
+    AcString errorMessage;
+    AcString assignedToSymbolName;
+    AcDbEvalVariant evaluatedExpressionValue;
+    auto es = impObj()->evaluateExpression(utf8_to_wstr(expression).c_str(),utf8_to_wstr(evaluatorId).c_str(), networkId.m_id, evaluatedExpressionValue, assignedToSymbolName, errorMessage);
+    return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), PyDbEvalVariant(evaluatedExpressionValue), wstr_to_utf8(assignedToSymbolName));
 }
 
 PyRxClass PyDbAssocVariable::desc()
