@@ -4055,8 +4055,35 @@ void makePyDbOverrulableEntity()
         .def("desc", &PyDbOverrulableEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbOverrulableEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbOverrulableEntity::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("registerOnDoubleClick", &PyDbOverrulableEntity::registerOnDoubleClick, DS.SARGS({ "func: Any" })).staticmethod("registerOnDoubleClick")
+        .def("removeOnDoubleClick", &PyDbOverrulableEntity::removeOnDoubleClick, DS.SARGS({ "func: Any" })).staticmethod("removeOnDoubleClick")
         ;
 }
+
+class AcDbDoubleClickOverrulableEntity : public AcDbDoubleClickEdit
+{
+public:
+    AcDbDoubleClickOverrulableEntity()
+    {
+        PyRxOverrulableEntity::desc()->addX(AcDbDoubleClickEdit::desc(), this);
+    }
+    virtual ~AcDbDoubleClickOverrulableEntity()
+    {
+        PyRxOverrulableEntity::desc()->delX(AcDbDoubleClickEdit::desc());
+    }
+    void finishEdit(void)
+    {
+    }
+    void startEdit(AcDbEntity* pEnt, AcGePoint3d pt)
+    {
+        PyDbOverrulableEntity::OnDblClkFn(pEnt, pt);
+    }
+    static AcDbDoubleClickOverrulableEntity& instance()
+    {
+        static AcDbDoubleClickOverrulableEntity mthis;
+        return mthis;
+    }
+};
 
 PyDbOverrulableEntity::PyDbOverrulableEntity()
     : PyDbOverrulableEntity(new PyRxOverrulableEntity(), true)
@@ -4277,10 +4304,62 @@ PyDbOverrulableEntity PyDbOverrulableEntity::cast(const PyRxObject& src)
     return PyDbObjectCast<PyDbOverrulableEntity>(src);
 }
 
+void PyDbOverrulableEntity::registerOnDoubleClick(const boost::python::object& obj)
+{
+    PyAutoLockGIL lock;
+    AcDbDoubleClickOverrulableEntity::instance();
+    if (PyCallable_Check(obj.ptr()))
+    {
+        onDblClkFuncs[obj.ptr()] = obj;
+        return;
+    }
+    acutPrintf(_T("parameter must be callable:"));
+}
+
+void PyDbOverrulableEntity::removeOnDoubleClick(const boost::python::object& obj)
+{
+    onDblClkFuncs.erase(obj.ptr());
+}
+
 PyRxOverrulableEntity* PyDbOverrulableEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
     }
     return static_cast<PyRxOverrulableEntity*>(m_pyImp.get());
+}
+
+static bool executeOnDblClkFunc(const boost::python::object& func, const PyDbOverrulableEntity& ent, AcGePoint3d pt)
+{
+    try
+    {
+        PyErr_Clear();
+        if (func.ptr() != nullptr)
+        {
+            boost::python::call<void>(func.ptr(), ent, pt);
+            return true;
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nException in %ls:"), __FUNCTIONW__);
+    }
+    return false;
+}
+
+void PyDbOverrulableEntity::OnDblClkFn(AcDbEntity* pEnt, AcGePoint3d pt)
+{
+    if (onDblClkFuncs.size() != 0)
+    {
+        PyAutoLockGIL lock;
+        PyDbOverrulableEntity pyent(static_cast<PyRxOverrulableEntity*>(pEnt), false);
+        for (const auto& func : onDblClkFuncs)
+        {
+            if (!executeOnDblClkFunc(func.second, pyent,pt))
+            {
+                onDblClkFuncs.erase(func.first);
+                return;
+            }
+        }
+    }
 }

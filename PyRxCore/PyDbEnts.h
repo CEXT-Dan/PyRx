@@ -842,8 +842,15 @@ public:
     static PyRxClass    desc();
     static PyDbOverrulableEntity   cloneFrom(const PyRxObject& src);
     static PyDbOverrulableEntity   cast(const PyRxObject& src);
+
+    static void         registerOnDoubleClick(const boost::python::object& obj);
+    static void         removeOnDoubleClick(const boost::python::object& obj);
+    static void         OnDblClkFn(AcDbEntity* pEnt, AcGePoint3d pt);
+
 public:
     PyRxOverrulableEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+
+    inline static std::map<PyObject*, boost::python::object> onDblClkFuncs;
 };
 
 #pragma pack (pop)
