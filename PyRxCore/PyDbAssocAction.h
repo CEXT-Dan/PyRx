@@ -190,6 +190,7 @@ class PyDbAssocNetwork : public PyDbAssocAction
 {
 public:
     PyDbAssocNetwork();
+    PyDbAssocNetwork(bool createImpObject);
     PyDbAssocNetwork(const PyDbObjectId& id);
     PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAssocNetwork(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
@@ -226,6 +227,7 @@ class PyDbAssocVariable : public PyDbAssocAction
 {
 public:
     PyDbAssocVariable();
+    PyDbAssocVariable(bool createImpObject);
     PyDbAssocVariable(const PyDbObjectId& id);
     PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAssocVariable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
