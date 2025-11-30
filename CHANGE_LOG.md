@@ -1,3 +1,14 @@
+## v2.2.34
+
+* add objectIdArray.Sort
+* add objectIdArray.reverse
+* added Db.Curve.isOn, alias of Ge.Curve, more user friendly as it only returns a bool instead of a tuple
+* added PyGePoint2dArrayRepr and PyGePoint3dArrayRepr
+* [#432] progress on Brx Mechanical
+* [#423] progress on PyDb.AssocAction classes
+* [#429] add AcDbDoubleClickOverrulableEntity
+* fix  PyGeCurve2d::getSamplePoints
+
 ## v2.2.33
 
 * BRX PyGeBoundBlock2d
