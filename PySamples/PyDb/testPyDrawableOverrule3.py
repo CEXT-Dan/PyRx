@@ -52,6 +52,9 @@ class OrDrawOverrule(Gi.DrawableOverrule):
 
 overrulableEntityDraw = None
 
+def OnDblClk(ent : Db.OverrulableEntity, pnt : Ge.Point3d):
+    print(ent.isA().name(),pnt )
+
 
 def PyRxCmd_pycreateoverrule():
     try:
@@ -84,6 +87,8 @@ def PyRxCmd_pydrawoverrule():
         overrulableEntityDraw.addOverrule(Db.OverrulableEntity.desc(), overrulableEntityDraw)
         overrulableEntityDraw.setIsOverruling(True)
         print("overruling is on, please regen: ")
+        
+        Db.OverrulableEntity.registerOnDoubleClick(OnDblClk)
     except Exception as err:
         traceback.print_exception(err)
 
@@ -102,5 +107,7 @@ def PyRxCmd_pystopoverrule():
             overrulableEntityDraw.setIsOverruling(False)
         overrulableEntityDraw = None
         print("overruling is off, please regen: ")
+        
+        Db.OverrulableEntity.removeOnDoubleClick(OnDblClk)
     except Exception as err:
         traceback.print_exception(err)

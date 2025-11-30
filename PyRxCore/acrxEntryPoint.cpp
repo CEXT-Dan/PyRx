@@ -51,34 +51,11 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-#ifdef PYRXDEBUG
-class AcDbDoubleClickOverrulableEntity : public AcDbDoubleClickEdit
-{
-public:
-    AcDbDoubleClickOverrulableEntity() = default;
-    virtual ~AcDbDoubleClickOverrulableEntity() = default;
-    void finishEdit(void)
-    {
-        // check state 
-    }
-    void startEdit(AcDbEntity* pEnt, AcGePoint3d pt)
-    {
-        auto ovrent =  static_cast<PyRxOverrulableEntity*>(pEnt);
-        if (ovrent->guid() == L"MYGUID")
-        {
-            //do something 
-        }
-    }
-};
-#endif
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-#ifdef PYRXDEBUG
-    std::unique_ptr<AcDbDoubleClickOverrulableEntity> pRefClick;
-#endif
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -95,10 +72,6 @@ public:
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#ifdef PYRXDEBUG
-        pRefClick.reset(new AcDbDoubleClickOverrulableEntity());
-        PyRxOverrulableEntity::desc()->addX(AcDbDoubleClickEdit::desc(), pRefClick.get());
-#endif
         return (retCode);
     }
 
