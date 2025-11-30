@@ -865,6 +865,7 @@ void makePyDbAssocNetworkWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- createImpObject: bool\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -872,6 +873,7 @@ void makePyDbAssocNetworkWrapper()
     PyDocString DS("PyDb.AssocNetwork");
     class_<PyDbAssocNetwork, bases<PyDbAssocAction>>("AssocNetwork")
         .def(init<>())
+        .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
@@ -896,6 +898,18 @@ void makePyDbAssocNetworkWrapper()
 PyDbAssocNetwork::PyDbAssocNetwork()
     : PyDbAssocNetwork(new AcDbAssocNetwork(), true)
 {
+}
+
+PyDbAssocNetwork::PyDbAssocNetwork(bool createImpObject)
+#if defined(_BRXTARGET)
+    : PyDbAssocNetwork(new AcDbAssocNetwork(), true)
+#else
+    : PyDbAssocNetwork(new AcDbAssocNetwork(createImpObject ? kAcDbAssocCreateImpObject : kAcDbAssocDoNotCreateImpObject), true)
+#endif
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
 }
 
 PyDbAssocNetwork::PyDbAssocNetwork(const PyDbObjectId& id)
@@ -1018,6 +1032,7 @@ void makePyDbAssocVariableWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- createImpObject: bool\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -1034,6 +1049,7 @@ void makePyDbAssocVariableWrapper()
     PyDocString DS("PyDb.AssocVariable");
     class_<PyDbAssocVariable, bases<PyDbAssocAction>>("AssocVariable")
         .def(init<>())
+        .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
@@ -1070,6 +1086,18 @@ void makePyDbAssocVariableWrapper()
 PyDbAssocVariable::PyDbAssocVariable()
     : PyDbAssocVariable(new AcDbAssocVariable(), true)
 {
+}
+
+PyDbAssocVariable::PyDbAssocVariable(bool createImpObject)
+#if defined(_BRXTARGET)
+    : PyDbAssocVariable(new AcDbAssocVariable(), true)
+#else
+    : PyDbAssocVariable(new AcDbAssocVariable(createImpObject ? kAcDbAssocCreateImpObject : kAcDbAssocDoNotCreateImpObject), true)
+#endif
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
 }
 
 PyDbAssocVariable::PyDbAssocVariable(const PyDbObjectId& id)
