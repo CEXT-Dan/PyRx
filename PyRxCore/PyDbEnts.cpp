@@ -4062,11 +4062,12 @@ void makePyDbOverrulableEntity()
 
 class AcDbDoubleClickOverrulableEntity : public AcDbDoubleClickEdit
 {
-public:
+protected:
     AcDbDoubleClickOverrulableEntity()
     {
         PyRxOverrulableEntity::desc()->addX(AcDbDoubleClickEdit::desc(), this);
     }
+public:
     virtual ~AcDbDoubleClickOverrulableEntity()
     {
         PyRxOverrulableEntity::desc()->delX(AcDbDoubleClickEdit::desc());
