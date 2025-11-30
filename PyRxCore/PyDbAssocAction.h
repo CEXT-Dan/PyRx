@@ -208,7 +208,7 @@ public:
     static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDatabase, bool createIfDoesNotExist, const std::string& dictionaryKey);
     static PyDbObjectId getInstanceFromObject(const PyDbObjectId& owningObjectId, bool createIfDoesNotExist, bool addToTopLevelNetwork, const std::string& dictionaryKey);
     static void         removeInstanceFromDatabase(const PyDbDatabase& pDatabase, bool alsoEraseIt, const std::string& dictionaryKey);
-    static void         removeInstanceFromObject(const PyDbObjectId& owningObjectId, bool alsoEraseIt,const std::string& dictionaryKey);
+    static void         removeInstanceFromObject(const PyDbObjectId& owningObjectId, bool alsoEraseIt, const std::string& dictionaryKey);
 
     static PyRxClass        desc();
     static std::string      className();
@@ -240,7 +240,7 @@ public:
     bool            isAnonymous() const;
     void            setName(const std::string& newName, bool updateReferencingExpressions) const;
     PyDbObjectId    findObjectByName(const std::string& objectName, const PyRxClass& pObjectClass) const;
-    boost::python::tuple validateNameAndExpression(const std::string& nameToValidate,const std::string& expressionToValidate) const;
+    boost::python::tuple validateNameAndExpression(const std::string& nameToValidate, const std::string& expressionToValidate) const;
     boost::python::tuple setExpression1(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol) const;
     boost::python::tuple setExpression2(const std::string& newExpression, const std::string& evaluatorId, bool checkForCyclicalDependencies, bool updateDependenciesOnReferencedSymbol, bool silentMode) const;
 
@@ -254,9 +254,9 @@ public:
     std::string     mergeableVariableName() const;
     void            setIsMergeable1(bool isMerg) const;
     void            setIsMergeable2(bool isMerg, bool mustMerg, const std::string& mergeableVariableName) const;
-    boost::python::tuple  evaluateExpression() const;
-    boost::python::tuple  evaluateExpression(const boost::python::list& objectIds, const boost::python::list& objectValues) const;
-    boost::python::tuple  evaluateExpression(const std::string& expression,const std::string& evaluatorId, const PyDbObjectId& networkId) const;
+    boost::python::tuple  evaluateExpression1() const;
+    boost::python::tuple  evaluateExpression2(const boost::python::list& objectIds, const boost::python::list& objectValues) const;
+    boost::python::tuple  evaluateExpression3(const std::string& expression, const std::string& evaluatorId, const PyDbObjectId& networkId) const;
 
     //ACDBCORE2D_PORT static void addGlobalCallback(class AcDbAssocVariableCallback* pCallback);
     //ACDBCORE2D_PORT static void removeGlobalCallback(class AcDbAssocVariableCallback* pCallback);

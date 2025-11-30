@@ -1022,13 +1022,21 @@ void makePyDbAssocVariableWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
+    constexpr const std::string_view setIsMergeableOverloads = "Overloads:\n"
+        "- isMerg: bool\n"
+        "- isMerg: bool, mustMerg: bool, mergeableVariableName: bool\n";
+
+    constexpr const std::string_view evaluateExpressionOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- expression: str, evaluatorId: str, networkId: PyDb.ObjectId\n"
+        "- objectIds: list[PyDb.ObjectId], objectValues: list[PyDb.EvalVariant]\n";
+
     PyDocString DS("PyDb.AssocVariable");
     class_<PyDbAssocVariable, bases<PyDbAssocAction>>("AssocVariable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
-
         .def("name", &PyDbAssocVariable::name, DS.ARGS())
         .def("expression", &PyDbAssocVariable::expression1)
         .def("expression", &PyDbAssocVariable::expression2, DS.ARGS({ "convertSymbolNamesFromCanonicalForm:bool = False" }))
@@ -1044,6 +1052,14 @@ void makePyDbAssocVariableWrapper()
         .def("evaluatorId", &PyDbAssocVariable::evaluatorId, DS.ARGS())
         .def("setEvaluatorId", &PyDbAssocVariable::setEvaluatorId, DS.ARGS({ "evalId:str" }))
         .def("setDescription", &PyDbAssocVariable::setDescription, DS.ARGS())
+        .def("isMergeable", &PyDbAssocVariable::isMergeable, DS.ARGS())
+        .def("mustMerge", &PyDbAssocVariable::mustMerge, DS.ARGS())
+        .def("mergeableVariableName", &PyDbAssocVariable::mergeableVariableName, DS.ARGS())
+        .def("setIsMergeable", &PyDbAssocVariable::setIsMergeable1)
+        .def("setIsMergeable", &PyDbAssocVariable::setIsMergeable2, DS.OVRL(setIsMergeableOverloads))
+        .def("evaluateExpression", &PyDbAssocVariable::evaluateExpression1)
+        .def("evaluateExpression", &PyDbAssocVariable::evaluateExpression2)
+        .def("evaluateExpression", &PyDbAssocVariable::evaluateExpression3, DS.OVRL(evaluateExpressionOverloads))
         .def("className", &PyDbAssocVariable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocVariable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocVariable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1189,7 +1205,7 @@ void PyDbAssocVariable::setIsMergeable2(bool isMerg, bool mustMerg, const std::s
     impObj()->setIsMergeable(isMerg, mustMerg, utf8_to_wstr(mergeableVariableName).c_str());
 }
 
-boost::python::tuple PyDbAssocVariable::evaluateExpression() const
+boost::python::tuple PyDbAssocVariable::evaluateExpression1() const
 {
     AcString errorMessage;
     AcDbEvalVariant evaluatedExpressionValue;
@@ -1197,18 +1213,7 @@ boost::python::tuple PyDbAssocVariable::evaluateExpression() const
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), PyDbEvalVariant(evaluatedExpressionValue));
 }
 
-static AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable)
-{
-    PyAutoLockGIL lock;
-    auto vec{ py_list_to_std_vector<PyDbEvalVariant>(iterable) };
-    AcArray<AcDbEvalVariant> arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto& item : vec)
-        arr.append(*item.impObj());
-    return arr;
-}
-
-boost::python::tuple PyDbAssocVariable::evaluateExpression(const boost::python::list& objectIds, const boost::python::list& objectValues) const
+boost::python::tuple PyDbAssocVariable::evaluateExpression2(const boost::python::list& objectIds, const boost::python::list& objectValues) const
 {
     PyAutoLockGIL lock;
     AcString errorMessage;
@@ -1222,13 +1227,13 @@ boost::python::tuple PyDbAssocVariable::evaluateExpression(const boost::python::
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), ObjectIdArrayToPyList(acids), outobjectValues, PyDbEvalVariant(evaluatedExpressionValue));
 }
 
-boost::python::tuple PyDbAssocVariable::evaluateExpression(const std::string& expression, const std::string& evaluatorId, const PyDbObjectId& networkId) const
+boost::python::tuple PyDbAssocVariable::evaluateExpression3(const std::string& expression, const std::string& evaluatorId, const PyDbObjectId& networkId) const
 {
     PyAutoLockGIL lock;
     AcString errorMessage;
     AcString assignedToSymbolName;
     AcDbEvalVariant evaluatedExpressionValue;
-    auto es = impObj()->evaluateExpression(utf8_to_wstr(expression).c_str(),utf8_to_wstr(evaluatorId).c_str(), networkId.m_id, evaluatedExpressionValue, assignedToSymbolName, errorMessage);
+    auto es = impObj()->evaluateExpression(utf8_to_wstr(expression).c_str(), utf8_to_wstr(evaluatorId).c_str(), networkId.m_id, evaluatedExpressionValue, assignedToSymbolName, errorMessage);
     return boost::python::make_tuple(es, wstr_to_utf8(errorMessage), PyDbEvalVariant(evaluatedExpressionValue), wstr_to_utf8(assignedToSymbolName));
 }
 
