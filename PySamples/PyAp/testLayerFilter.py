@@ -1,29 +1,42 @@
 import traceback
-
 from pyrx import Ap, Db
 
+# using drawing ..\tests\media\06457.dwg
+print("Added command = pylayerfilter")
 
-def PyRxCmd_doit():
+@Ap.Command()
+def pylayerfilter():
     try:
-        layersNames = ["layer_1", "layer_2", "layer_3", "layer_4", "layer_5"]
+        
+        # create a set of existing layer names we want to filter
+        layersNames = set(["1_1_WALLS", "1_8_TEXT", "1_7_DIMS", "1_5_TOPS", "1_CRP_DIMS"])
+        
+        # get the current database 
         db = Db.curDb()
-
+        
+        # get the layer manager, w're going to att to the root
         lm = Ap.LayerFilterManager()
-        fliter = lm.getFilters()
+        root, _current= lm.getFilters()
 
+        # create a new filter
         newFilter = Ap.LayerGroup()
-
-        lt = Db.LayerTable(db.layerTableId(), Db.OpenMode.kForWrite)
-        for name in layersNames:
-            ltr = Db.LayerTableRecord()
-            ltr.setName(name)
-            newFilter.addLayerId(lt.add(ltr))
-            ltr.close()  # must be closed
-        lt.close()  # must be closed
-
-        newFilter.setName("My Filter")
-        fliter[0].addNested(newFilter)
-        lm.setFilters(fliter[0], newFilter)
-
+        newFilter.setName("My Happy Filter")
+        
+        # add a scope so the layer table is disposed
+        @Ap.using_scope()
+        def _():
+            # get layer table
+            lt = Db.LayerTable(db.layerTableId())
+            for name , id in lt.toDict().items():
+                if name in layersNames:
+                    newFilter.addLayerId(id)
+               
+        # add and set to current      
+        root.addNested(newFilter)
+        lm.setFilters(root, newFilter)
+ 
     except Exception as err:
         traceback.print_exception(err)
+
+
+
