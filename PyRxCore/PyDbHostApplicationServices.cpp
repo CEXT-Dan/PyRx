@@ -77,6 +77,11 @@ std::wstring OutputDisplayServiceImpl::getOutput() const
     return ms_buffer;
 }
 
+AcDbTransactionManager* OutputDisplayServiceImpl::workingTransactionManager()
+{
+    throw PyNotimplementedByHost{};
+}
+
 //---------------------------------------------------------------------------------------- -
 //PyOutputDisplayService
 void makePyOutputDisplayServiceWrapper()

@@ -156,7 +156,7 @@ private:
 private:
     pysource_location m_src;
     std::string m_fmt;
-    Acad::ErrorStatus m_es = Acad::eNotImplemented;
+    Acad::ErrorStatus m_es = eNotImplementedYet;
 };
 
 //-----------------------------------------------------------------------------------

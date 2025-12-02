@@ -30,6 +30,10 @@ extern int acedNEntSelPEx(
 void ads_regen(void);
 #endif
 
+#ifdef IRXAPP
+void ads_regen(void);
+#endif
+
 #ifdef ARXAPP
 void ads_regen(void);
 
@@ -443,7 +447,7 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGe
 
 static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 260 || defined(_GRXTARGET) && _GRXTARGET <= 260
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 260 || defined(_GRXTARGET) && _GRXTARGET <= 260 ||  defined(_IRXTARGET) && _IRXTARGET <= 140
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

@@ -56,6 +56,8 @@ extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcD
 
 #endif
 
+#ifdef IRXAPP
+#endif
 
 #ifdef ARXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
@@ -606,7 +608,7 @@ void EdCore::disableUsrbrk()
 
 bool EdCore::displayBorder(bool flag)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250) 
     throw PyNotimplementedByHost();
 #else
     return acedDisplayBorder(flag);
@@ -626,7 +628,7 @@ void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& c
 
 void EdCore::dropOpenFile(const std::string& value)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     acedDropOpenFile(utf8_to_wstr(value).c_str());
@@ -745,7 +747,7 @@ std::string EdCore::findTrustedFile(const std::string& file)
 
 boost::python::list EdCore::getPredefinedPattens()
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -788,7 +790,7 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
 
 std::string EdCore::getCommandPromptString()
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     CString str;
@@ -800,7 +802,7 @@ std::string EdCore::getCommandPromptString()
 
 boost::python::list EdCore::getLastCommandLines(int lineCount, bool ignoreNull)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     AcStringArray strs;
@@ -869,7 +871,7 @@ float EdCore::getDpiScalingValue()
 
 std::string EdCore::getUserFavoritesDir()
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #endif
 #ifdef _ARXTARGET
@@ -1007,7 +1009,7 @@ bool EdCore::isUsrbrkDisabled()
 
 void EdCore::loadJSScript(const std::string& pUriOfJSFile)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     acedLoadJSScript(utf8_to_wstr(pUriOfJSFile).c_str());
@@ -1021,7 +1023,7 @@ bool EdCore::loadPartialMenu(const std::string& mnu)
 
 bool EdCore::loadMainMenu(const std::string& mnu)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     return acedLoadMainMenu(utf8_to_wstr(mnu).c_str());
@@ -1030,22 +1032,25 @@ bool EdCore::loadMainMenu(const std::string& mnu)
 
 boost::python::tuple EdCore::linetypeDialog1(const PyDbObjectId& id, bool IncludeByBlockByLayer)
 {
+    bool flag = false;
     PyAutoLockGIL lock;
     PyDbObjectId new_linetypeId;
     RxAutoOutStr new_linetypename;
 #if defined(_GRXTARGET)
-    bool flag = gcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+    flag = gcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
 #elif defined(_ZRXTARGET)
-    bool flag = zcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+    flag = zcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+#elif defined(_ARXTARGET) || defined(_BRXTARGET)
+    flag = acedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
 #else
-    bool flag = acedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
+    throw PyNotimplementedByHost{};
 #endif
     return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
 }
 
 boost::python::tuple EdCore::linetypeDialog2(const PyDbDatabase& db, const PyDbObjectId& id, bool IncludeByBlockByLayer)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1058,13 +1063,16 @@ boost::python::tuple EdCore::linetypeDialog2(const PyDbDatabase& db, const PyDbO
 
 boost::python::tuple EdCore::lineWeightDialog(AcDb::LineWeight lt, bool IncludeByBlockByLayer)
 {
+    bool flag = false;
     AcDb::LineWeight outlt = AcDb::LineWeight::kLnWt000;
 #if defined(_GRXTARGET)
-    bool flag = gcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
+    flag = gcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
 #elif defined(_ZRXTARGET)
-    bool flag = zcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
+    flag = zcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
+#elif defined(_ARXTARGET) || defined(_BRXTARGET)
+    flag = acedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
 #else
-    bool flag = acedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
+    throw PyNotimplementedByHost{};
 #endif
     return boost::python::make_tuple(flag, outlt);
 }
@@ -1577,7 +1585,7 @@ AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor
 
 void EdCore::setUndoMark(bool flag)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedSetUndoMark(flag));
@@ -1670,7 +1678,7 @@ int EdCore::setStatusBarProgressMeterPos(int pos)
 
 void EdCore::setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedSetXrefResolvedWithUpdateStatus(rec.impObj()));
@@ -1684,7 +1692,7 @@ bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPag
 
 bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
@@ -1698,7 +1706,7 @@ UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriO
 
 UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET260) || defined(_IRXTARGET140)
     throw PyNotimplementedByHost();
 #else
     return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);

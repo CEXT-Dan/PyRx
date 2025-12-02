@@ -441,7 +441,7 @@ struct std::hash<std::filesystem::path>
 };
 #endif
 
-#if defined _ARXTARGET240 || ( _BRXTARGET )  || ( _GRXTARGET250 ) || ( _ZRXTARGET )
+#if defined _ARXTARGET240 || ( _BRXTARGET )  || ( _GRXTARGET250 ) || ( _ZRXTARGET ) || (_IRXTARGET140)
 template <>
 struct std::hash<AcString>
 {

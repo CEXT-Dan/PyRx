@@ -1632,16 +1632,23 @@ AcCellRange PyDbTable::getMergeRange(int nRow, int nCol) const
 
 boost::python::list PyDbTable::getIterator1() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     const auto range = cellRange();
@@ -1649,30 +1656,42 @@ boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) c
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getStrValueIterator1() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     AcDbMText mt;
     boost::python::list l;
@@ -1684,10 +1703,14 @@ boost::python::list PyDbTable::getStrValueIterator1() const
         l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getStrValueIterator2(AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     AcDbMText mt;
     boost::python::list l;
@@ -1700,10 +1723,14 @@ boost::python::list PyDbTable::getStrValueIterator2(AcDb::TableIteratorOption nO
         l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getStrValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     AcDbMText mt;
     boost::python::list l;
@@ -1715,10 +1742,14 @@ boost::python::list PyDbTable::getStrValueIterator3(const AcCellRange& pRange, A
         l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getStrValueIterator4(const AcCellRange& pRange) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     AcDbMText mt;
     boost::python::list l;
@@ -1730,6 +1761,7 @@ boost::python::list PyDbTable::getStrValueIterator4(const AcCellRange& pRange) c
         l.append(boost::python::make_tuple(c.mnRow, c.mnColumn, wstr_to_utf8(mt.text())));
     }
     return l;
+#endif
 }
 
 static boost::python::tuple acValueToPyVal(const AcDbTable& table, int r, int c)
@@ -1771,6 +1803,9 @@ static boost::python::tuple acValueToPyVal(const AcDbTable& table, int r, int c)
 
 boost::python::list PyDbTable::getValueIterator1() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
@@ -1780,10 +1815,14 @@ boost::python::list PyDbTable::getValueIterator1() const
         l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getValueIterator2(AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     const auto range = cellRange();
@@ -1794,10 +1833,14 @@ boost::python::list PyDbTable::getValueIterator2(AcDb::TableIteratorOption nOpti
         l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getValueIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
@@ -1807,10 +1850,14 @@ boost::python::list PyDbTable::getValueIterator3(const AcCellRange& pRange, AcDb
         l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getValueIterator4(const AcCellRange& pRange) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#else
     AcDbMText mt;
     PyAutoLockGIL lock;
     boost::python::list l;
@@ -1821,6 +1868,7 @@ boost::python::list PyDbTable::getValueIterator4(const AcCellRange& pRange) cons
         l.append(acValueToPyVal(*impObj(), c.mnRow, c.mnColumn));
     }
     return l;
+#endif
 }
 
 bool PyDbTable::isContentEditable(int nRow, int nCol) const

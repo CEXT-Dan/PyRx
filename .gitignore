@@ -363,3 +363,5 @@ pyrx/_version.py
 /PyRxEbSetup/Include/pyrx_embedded.bundle
 /PyRxCore/PyRx26.0
 /PyRxLoader/RxLoader26.0
+/PyRxCore/PyRxI14.0
+/PyRxLoader/RxLoaderI14.0
