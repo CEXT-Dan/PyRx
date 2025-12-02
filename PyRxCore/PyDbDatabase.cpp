@@ -15,6 +15,15 @@
 #include "PyDbSymbolTable.h"
 
 using namespace boost::python;
+
+static AcDbObjectId getblockModelSpaceId(AcDbDatabase* pDb)
+{
+    AcDbObjectId recid;
+    AcDbBlockTablePointer bt(pDb->blockTableId());
+    bt->getIdAt(L"*MODEL_SPACE", recid);
+    return recid;
+}
+
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
 void makePyDbDatabaseWrapper()
@@ -611,12 +620,20 @@ boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boos
 
 PyDbObjectId PyDbDatabase::addToModelspace1(PyDbEntity& ent) const
 {
+#if defined(_IRXTARGET140)
+    return addToBlock1(PyDbObjectId(getblockModelSpaceId(impObj())), ent);
+#else
     return addToBlock1(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ent);
+#endif
 }
 
 boost::python::list PyDbDatabase::addToModelspace2(const boost::python::list& ents) const
 {
+#if defined(_IRXTARGET140)
+    return addToBlock2(PyDbObjectId(getblockModelSpaceId(impObj())), ents);
+#else
     return addToBlock2(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ents);
+#endif
 }
 
 PyDbObjectId PyDbDatabase::addToCurrentspace1(PyDbEntity& ent) const
@@ -2374,17 +2391,29 @@ PyDbObjectId PyDbDatabase::blockTableId() const
 
 PyDbObjectId PyDbDatabase::modelSpaceId() const
 {
+#if defined(_IRXTARGET140)
+    return PyDbObjectId(getblockModelSpaceId(impObj()));
+#else
     return PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj()));
+#endif
 }
 
 PyDbBlockTableRecord PyDbDatabase::modelSpace1() const
 {
+#if defined(_IRXTARGET140)
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(getblockModelSpaceId(impObj())), false);
+#else
     return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(acdbSymUtil()->blockModelSpaceId(impObj())), false);
+#endif
 }
 
 PyDbBlockTableRecord PyDbDatabase::modelSpace2(AcDb::OpenMode mode) const
 {
+#if defined(_IRXTARGET140)
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(getblockModelSpaceId(impObj()), mode), false);
+#else
     return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(acdbSymUtil()->blockModelSpaceId(impObj()), mode), false);
+#endif
 }
 
 PyDbBlockTableRecord PyDbDatabase::currentSpace1() const
