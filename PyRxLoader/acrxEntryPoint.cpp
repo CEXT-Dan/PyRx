@@ -134,6 +134,8 @@ public:
         return L"PyRxZ25.0.Zrx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 260
         return L"PyRxZ26.0.Zrx";
+#elif defined(_IRXTARGET) && _IRXTARGET == 140
+        return L"PyRxI14.0.Irx";
 #endif
         acutPrintf(_T("Error in getNameOfModuleToLoad: "));
         return L"!ERROR!";
@@ -317,7 +319,11 @@ public:
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer = pathToAddLower + buffer;
+#if defined(_IRXTARGET) && _IRXTARGET == 140
+            if(acedSetEnv(_T("PATH"), buffer.c_str()) == RTNORM)
+#else
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
+#endif
             {
                 appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
                 return false;

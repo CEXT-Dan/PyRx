@@ -33,6 +33,8 @@ public:
     std::wstring getOutput() const;
     bool getMuteCmdLine() const { return m_muteCmdLine; }
     void setMuteCmdLine(bool val) { m_muteCmdLine = val; }
+    virtual AcDbTransactionManager* workingTransactionManager() override;
+
 private:
     inline static std::wstring ms_buffer;
     AcDbHostApplicationServices* m_pOldHostServices = acdbHostApplicationServices();
