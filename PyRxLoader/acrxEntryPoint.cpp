@@ -96,11 +96,11 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxDbxApp::On_kLoadDwgMsg(pkt);
 #if defined(_IRXTARGET)
-        const AcString fname = curDoc()->fileName();
-        if (!fname.isEmpty())
+        static bool once = false;
+        if (!once)
         {
-            static bool once = false;
-            if (!once)
+            const AcString fname = curDoc()->fileName();
+            if (!fname.isEmpty())
             {
                 once = true;
                 std::array<wchar_t, 8> buffer = { 0 };

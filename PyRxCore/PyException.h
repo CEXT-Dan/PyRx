@@ -108,10 +108,9 @@ public:
     static void translator(const PyNotimplementedByHost& x);
 };
 
-#if defined(_BRXTARGET)
-
 //-----------------------------------------------------------------------------------
 // PyBrxBimError
+#if defined(_BRXTARGET)
 class PyBrxBimError
 {
     pysource_location m_src;
@@ -132,7 +131,6 @@ inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& s
     if (FAILED(hr)) [[unlikely]]
         throw PyAcadHrError(hr, src);
 }
-
 #endif
 
 //-----------------------------------------------------------------------------------
