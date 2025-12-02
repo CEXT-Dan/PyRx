@@ -322,6 +322,9 @@ void makePyEdDrawJigWrapper()
 
 PyDrawJig::PyDrawJig()
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     this->setDatabaseDefaults();
 }
 
