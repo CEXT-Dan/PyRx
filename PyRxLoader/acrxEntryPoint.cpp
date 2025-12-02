@@ -70,6 +70,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acrxLockApplication(pkt);
+#if !defined(_IRXTARGET)
         std::array<wchar_t, 8> buffer = { 0 };
         if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
         {
@@ -80,6 +81,7 @@ public:
         }
         PyRxLoader_loader();
         envToRestoreFrom = getPathEnvironmentVariable();
+#endif
         return (retCode);
     }
 
@@ -93,6 +95,27 @@ public:
     virtual AcRx::AppRetCode On_kLoadDwgMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxDbxApp::On_kLoadDwgMsg(pkt);
+#if defined(_IRXTARGET)
+        const AcString fname = curDoc()->fileName();
+        if (!fname.isEmpty())
+        {
+            static bool once = false;
+            if (!once)
+            {
+                once = true;
+                std::array<wchar_t, 8> buffer = { 0 };
+                if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
+                {
+                    if (_wtoi(buffer.data()) == 1)
+                        PYRX_LOG = 1;
+                    else
+                        PYRX_LOG = 0;
+                }
+                PyRxLoader_loader();
+                envToRestoreFrom = getPathEnvironmentVariable();
+            }
+        }
+#endif  
         return retCode;
     }
 
@@ -270,7 +293,7 @@ public:
         {
             std::error_code ec;
             const std::wstring exepath = (path / PYTHONEXEC);
-            if (std::filesystem::exists(exepath,ec))
+            if (std::filesystem::exists(exepath, ec))
                 acedSetEnv(_T("PYRX_PYEXE_PATH"), exepath.c_str());
             else
                 appendLog(std::format(_T("PyExePath Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
@@ -320,7 +343,7 @@ public:
         {
             buffer = pathToAddLower + buffer;
 #if defined(_IRXTARGET) && _IRXTARGET == 140
-            if(acedSetEnv(_T("PATH"), buffer.c_str()) == RTNORM)
+            if (acedSetEnv(_T("PATH"), buffer.c_str()) == RTNORM)
 #else
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
 #endif
