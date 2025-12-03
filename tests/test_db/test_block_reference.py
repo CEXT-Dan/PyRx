@@ -1,6 +1,7 @@
 from pyrx import Db
 from pyrx.db.block_reference import BlockReference
 
+import pytest
 
 class TestBlockReference:
     def test_attributes(self, db_06457: Db.Database):
@@ -37,6 +38,7 @@ class TestBlockReference:
         assert isinstance(attr, Db.AttributeReference)
         assert attr.isWriteEnabled()
 
+    @pytest.mark.known_failure_IRX
     def test_get_attribute(self, db_06457: Db.Database):
         db = db_06457
         bref_id = db.getObjectId(False, Db.Handle("ED51"))

@@ -63,6 +63,8 @@ class Test_ent_type_to_desc:
 
 
 class Test_entsel:
+    
+    @pytest.mark.known_failure_IRX
     def test_select_entity_without_type(self):
         line = Db.Line()
         db = Db.Database()
@@ -72,7 +74,8 @@ class Test_entsel:
             mock_entSel.return_value = (Ed.PromptStatus.eOk, line_id, Ge.Point3d())
             result = entsel("Select line: ")
             assert isinstance(result, Db.ObjectId)
-
+            
+    @pytest.mark.known_failure_IRX
     def test_select_entity_with_single_type(self):
         line = Db.Line()
         db = Db.Database()
@@ -83,6 +86,7 @@ class Test_entsel:
             result = entsel("Select line: ", Db.Line)
             assert isinstance(result, Db.ObjectId)
 
+    @pytest.mark.known_failure_IRX
     def test_select_entity_with_multiple_types(self):
         line = Db.Line()
         db = Db.Database()

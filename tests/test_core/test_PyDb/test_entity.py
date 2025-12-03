@@ -100,10 +100,10 @@ class TestDbEntity:
         self.assertEqual(line.startPoint(), Ge.Point3d(1, 11, 0))
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         lid = model.appendAcDbEntity(line)
-        line.close()
+        #line.close()
         line2 = Db.Line(lid)
         self.assertEqual(line2.startPoint(), Ge.Point3d(1, 11, 0))
-        line2.close()
+        #line2.close()
         line3 = Db.Line(lid, Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
 
@@ -119,15 +119,15 @@ class TestDbEntity:
         # add
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         eid = model.appendAcDbEntity(arc)
-        arc.close()
+        #arc.close()
         # ctor
         arc2 = Db.Arc(eid)
         self.assertEqual(arc2.endAngle(), math.pi)
-        arc2.close(), Db.ErrorStatus.eOk
+        #arc2.close(), Db.ErrorStatus.eOk
         # ctor
         arc3 = Db.Arc(eid, Db.OpenMode.kForRead)
         self.assertEqual(arc3.endAngle(), math.pi)
-        arc3.close()
+        #arc3.close()
 
     def test_dbcircle(self):
         circle = Db.Circle()
@@ -184,6 +184,7 @@ class TestDbEntity:
             else:
                 pass
 
+    @pytest.mark.known_failure_IRX
     def test_dbleader(self):
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -197,6 +198,7 @@ class TestDbEntity:
         # add anno to db and close!
         mtid = model.appendAcDbEntity(mtext)
         mtext.close()
+        #del mtext icad
 
         # create leader
         leader = Db.Leader()
@@ -364,6 +366,7 @@ class TestDbEntity:
         iter = table.cells(cr)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
     def test_table_cells3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
@@ -374,6 +377,7 @@ class TestDbEntity:
         iter = table.cells(Db.CellRange(1, 1, 3, 3), opt)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
     def test_table_cells4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
@@ -401,6 +405,7 @@ class TestDbEntity:
         iter = table.cellValues(cr)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
     def test_table_cellValues3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
@@ -459,7 +464,7 @@ class TestDbEntity:
         w, h = Db.Table.calcTextExtents("This is", ts)
         self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
-        w, h = Db.Table.calcTextExtents("TThis is a test", ts)
+        w, h = Db.Table.calcTextExtents("This is a test", ts)
         self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
 

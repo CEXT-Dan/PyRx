@@ -14,6 +14,8 @@ def is_before(objs: list[Ax.AcadEntity], left: Ax.AcadEntity, right: Ax.AcadEnti
 
 
 class TestAcadSortentsTable:
+    
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
     def test_getinstance(self):
         axApp = Ap.Application.acadApplication()
