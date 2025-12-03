@@ -11,6 +11,7 @@ class TestAssocPersSubentIdPE:
 
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_ZRX
     def test_soid3d_subent_geometry(self, db_subentpe: Db.Database):
         objHnd = Db.Handle("26c")

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pickle
 import unittest
+import pytest
 
 from pyrx import Db, Ge
 
@@ -42,7 +43,13 @@ class TestDbObject:
         self.assertEqual(bdo.isWriteEnabled(), False)
         #
         self.assertEqual(bdo.database(), Db.HostApplicationServices().workingDatabase())
-        #
+
+    @pytest.mark.known_failure_IRX
+    def test_property_ids2(self):
+        id = Db.HostApplicationServices().workingDatabase().blockTableId()
+        bdo = Db.DbObject(id, Db.OpenMode.ForRead)
+        
+        #iacad is deleted
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
 

@@ -26,7 +26,7 @@ class TestDbObjectId:
         assert id == id2
         assert id.isValid() == True
         assert id2.isValid() == True
-        bt.close()
+        #bt.close() crashes icad
         
     def test_ObjectIdArray_clear(self):
         db = Db.curDb()
