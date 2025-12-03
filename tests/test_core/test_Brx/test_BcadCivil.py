@@ -6,7 +6,7 @@ import pytest
 
 from pyrx import Cv, Db
 
-
+@pytest.mark.known_failure_IRX
 @pytest.mark.known_failure_ARX
 @pytest.mark.known_failure_GRX
 @pytest.mark.known_failure_ZRX
