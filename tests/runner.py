@@ -29,6 +29,7 @@ PYTEST_MARKER = "--pytest"
 ACAD_EXE = os.getenv("ACAD_EXE", None)
 BCAD_EXE = os.getenv("BCAD_EXE", None)
 GCAD_EXE = os.getenv("GCAD_EXE", None)
+ICAD_EXE = os.getenv("ICAD_EXE", None)
 ZCAD_EXE = os.getenv("ZCAD_EXE", None)
 
 
@@ -44,6 +45,7 @@ class Host(str, enum.Enum):
     ACAD = "AutoCAD", ACAD_EXE
     BCAD = "BricsCAD", BCAD_EXE
     GCAD = "GstarCAD", GCAD_EXE
+    ICAD = "InellicadCAD", ICAD_EXE
     ZCAD = "ZwCAD", ZCAD_EXE
 
 

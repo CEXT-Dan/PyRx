@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap, Db, Ge
 
 
 class TestSortentsTable:
+    
+    @pytest.mark.known_failure_IRX
     def test_getinstance(self):
         db = Db.curDb()
         axApp = Ap.Application.acadApplication()
