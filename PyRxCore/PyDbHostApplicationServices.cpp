@@ -383,157 +383,256 @@ void makePyDbSymUtilServicesWrapper()
 
 bool PyDbSymUtilServices::isBlockLayoutName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isBlockLayoutName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isBlockModelSpaceName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    return icompare(name, "*MODEL_SPACE");
+#else
     return imp->isBlockModelSpaceName(utf8_to_wstr(name).c_str());
+#endif
 }
 
 bool PyDbSymUtilServices::isBlockPaperSpaceName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    return icompare(name, "*PAPER_SPACE");
+#else
     return imp->isBlockPaperSpaceName(utf8_to_wstr(name).c_str());
+#endif
 }
 
 bool PyDbSymUtilServices::isLayerDefpointsName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isLayerDefpointsName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isLayerZeroName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    return icompare(name, "0");
+#else
     return imp->isLayerZeroName(utf8_to_wstr(name).c_str());
+#endif
 }
 
 bool PyDbSymUtilServices::isLinetypeByBlockName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isLinetypeByBlockName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isLinetypeByLayerName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isLinetypeByLayerName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isLinetypeContinuousName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isLinetypeContinuousName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isRegAppAcadName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isRegAppAcadName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isTextStyleStandardName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isTextStyleStandardName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymUtilServices::isViewportActiveName(const std::string& name) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->isViewportActiveName(utf8_to_wstr(name).c_str());
 }
 
 PyDbObjectId PyDbSymUtilServices::blockModelSpaceId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    PyDbObjectId recid;
+    AcDbBlockTablePointer bt(pDb.impObj()->blockTableId());
+    bt->getIdAt(L"*MODEL_SPACE", recid.m_id);
+    return recid;
+#else
     return PyDbObjectId(imp->blockModelSpaceId(pDb.impObj()));
+#endif
 }
 
 PyDbObjectId PyDbSymUtilServices::blockPaperSpaceId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->blockPaperSpaceId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::layerDefpointsId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->layerDefpointsId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::layerZeroId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->layerZeroId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::linetypeByBlockId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->linetypeByBlockId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::linetypeByLayerId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->linetypeByLayerId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::linetypeContinuousId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->linetypeContinuousId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::regAppAcadId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->regAppAcadId(pDb.impObj()));
 }
 
 PyDbObjectId PyDbSymUtilServices::textStyleStandardId(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return PyDbObjectId(imp->textStyleStandardId(pDb.impObj()));
 }
 
 std::string PyDbSymUtilServices::blockModelSpaceName() const
 {
+#if defined(_IRXTARGET140)
+    return "*MODEL_SPACE";
+#else
     return wstr_to_utf8(imp->blockModelSpaceName());
+#endif
 }
 
 std::string PyDbSymUtilServices::blockPaperSpaceName() const
 {
+#if defined(_IRXTARGET140)
+    return "*PAPER_SPACE";
+#else
     return wstr_to_utf8(imp->blockPaperSpaceName());
+#endif
 }
 
 std::string PyDbSymUtilServices::layerDefpointsName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->layerDefpointsName());
 }
 
 std::string PyDbSymUtilServices::layerZeroName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->layerZeroName());
 }
 
 std::string PyDbSymUtilServices::linetypeByBlockName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->linetypeByBlockName());
 }
 
 std::string PyDbSymUtilServices::linetypeByLayerName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->linetypeByLayerName());
 }
 
 std::string PyDbSymUtilServices::linetypeContinuousName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->linetypeContinuousName());
 }
 
 std::string PyDbSymUtilServices::regAppAcadName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->regAppAcadName());
 }
 
 std::string PyDbSymUtilServices::textStyleStandardName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->textStyleStandardName());
 }
 
 std::string PyDbSymUtilServices::viewportActiveName() const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return wstr_to_utf8(imp->viewportActiveName());
 }
 
 int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const std::string& otherName) const
 {
-#if defined(_GRXTARGET250) || defined(_BRXTARGET260)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET260) || defined(_IRXTARGET140)
     if (thisName == otherName)
         return 0;
     else if (thisName > otherName)
@@ -546,7 +645,7 @@ int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const st
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 {
-#if defined(_GRXTARGET250) || defined(_BRXTARGET260)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET260) || defined(_IRXTARGET140)
     return name.find('|') != std::string::npos;
 #endif
     return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
@@ -554,6 +653,10 @@ bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 
 std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, const std::string& symbolName) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
+
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET == 260)
     AcString pNewName;
     PyThrowBadEs(imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()));
@@ -569,6 +672,10 @@ std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, c
 
 std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
+
     ACHAR* pNewName = nullptr;
     PyThrowBadEs(imp->repairPreExtendedSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
@@ -578,6 +685,10 @@ std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& 
 
 std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
+
     ACHAR* pNewName = nullptr;
     PyThrowBadEs(imp->repairSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
@@ -587,21 +698,33 @@ std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bo
 
 Acad::ErrorStatus PyDbSymUtilServices::validatePreExtendedSymbolName(const std::string& name, bool allowVerticalBar) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->validatePreExtendedSymbolName(utf8_to_wstr(name).c_str(), allowVerticalBar);
 }
 
 Acad::ErrorStatus PyDbSymUtilServices::validateSymbolName(const std::string& name, bool allowVerticalBar) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->validateSymbolName(utf8_to_wstr(name).c_str(), allowVerticalBar);
 }
 
 bool PyDbSymUtilServices::compatibilityMode(PyDbDatabase& pDb) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->compatibilityMode(pDb.impObj());
 }
 
 std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::string& pathName) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     ACHAR* pNewName = nullptr;
     PyThrowBadEs(imp->getBlockNameFromInsertPathName(pNewName, utf8_to_wstr(pathName).c_str()));
     std::string val = wstr_to_utf8(pNewName);
@@ -611,6 +734,10 @@ std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::strin
 
 std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::string& pathName) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
+
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET == 260) 
     AcString pNewName;
     PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()));
@@ -626,6 +753,9 @@ std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::strin
 
 std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& symbolName, const std::string& extensions) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     ACHAR* pNewName = nullptr;
     PyThrowBadEs(imp->getPathNameFromSymbolName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
     std::string val = wstr_to_utf8(pNewName);
@@ -635,6 +765,9 @@ std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& sy
 
 std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& symbolName, const std::string& extensions) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     ACHAR* pNewName = nullptr;
     PyThrowBadEs(imp->getSymbolNameFromPathName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
     std::string val = wstr_to_utf8(pNewName);
@@ -644,6 +777,9 @@ std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& sy
 
 Acad::ErrorStatus PyDbSymUtilServices::validateCompatibleSymbolName(const std::string& name, bool isNewName, bool allowVerticalBar, bool compatibilityMode) const
 {
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost{};
+#endif
     return imp->validateCompatibleSymbolName(utf8_to_wstr(name).c_str(), isNewName, allowVerticalBar, compatibilityMode);
 }
 
