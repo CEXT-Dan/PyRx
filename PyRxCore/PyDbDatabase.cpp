@@ -1093,7 +1093,7 @@ static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
     {
         if (PyDbObjectId id; pDb->getAcDbObjectId(id.m_id, false, hnd) == eOk)
         {
-            if (id.m_id.isValid() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
+            if (!id.m_id.isNull() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
                 ids.emplace_back(id.m_id);
         }
         hnd.decrement();

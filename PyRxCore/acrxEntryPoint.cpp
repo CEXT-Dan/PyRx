@@ -395,6 +395,14 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
+    static AcDbObjectId getblockModelSpaceId(AcDbDatabase* pDb)
+    {
+        AcDbObjectId recid;
+        AcDbBlockTablePointer bt(pDb->blockTableId());
+        bt->getIdAt(L"*MODEL_SPACE", recid);
+        return recid;
+    }
+
     static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", const AcRxClass* desc = AcDbEntity::desc())
         -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
@@ -409,12 +417,29 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
+    static Acad::ErrorStatus acedGetCurrentSelectionSet(ads_name ssname, AcDbObjectIdArray& ids)
+    {
+        AcDbObjectId id;
+        Adesk::Int32 nsize = 0;
+        acedSSLength(ssname, &nsize);
+        for (size_t i = 0; i < nsize; i++)
+        {
+            ads_name ename = { 0 };
+            if (acedSSName(ssname, i, ename) == RTNORM) [[likely]]
+            {
+                if (acdbGetObjectId(id, ename) == eOk) [[likely]]
+                    ids.append(id);
+            }
+        }
+        return eOk;
+    }
+
     static auto ssget() -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
     {
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
         int res = acedSSGet(NULL, NULL, NULL, NULL, ssname);
-        if (res != RTNORM || acedGetCurrentSelectionSet(ids) != eOk)
+        if (res != RTNORM || acedGetCurrentSelectionSet(ssname,ids) != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, ids);
         acedSSFree(ssname);
         return std::make_tuple(Acad::PromptStatus(res), std::move(ids));
@@ -431,46 +456,29 @@ public:
     {
         AcDbObjectId id;
         AcDbDatabase* pDb = acdbCurDwg();
-        AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
+        AcDbBlockTableRecordPointer model(getblockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
         Acad::ErrorStatus es = model->appendAcDbEntity(id, &pEnt);
         return std::make_tuple(es, id);
     }
 
     static void AcRxPyApp_idoit1(void)
     {
-        AcDbObjectUPtr<PyRxOverrulableEntity> ptr(new PyRxOverrulableEntity());
-        std::vector<AcString> strings{ _T("hello"), _T("World") };
-        std::vector<AcGePoint3d> points{ AcGePoint3d::kOrigin,AcGePoint3d::kOrigin + (AcGeVector3d::kXAxis * 5) };
-        ptr->setStrings(strings);
-        ptr->setPoints(points);
-        postToModelSpace(*ptr.get());
+        AcGeMatrix3d mat;
+        if (auto [es, ids] = ssget(); es == Acad::PromptStatus::eNormal)
+        {
+            PerfTimer timer(__FUNCTIONW__);
+            for (auto& id : ids)
+            {
+                if (id.objectClass()->isDerivedFrom(AcDbPoint::desc()))
+                {
+                    AcDbObjectPointer<AcDbPoint> pnt(id, AcDb::kForWrite);
+                    pnt->transformBy(mat);
+                }
+            }
+            timer.end(L"Done");
+        }
     }
 
-    static void AcRxPyApp_idoit2(void)
-    {
-        auto [ps, id, pnt] = entsel();
-        if (ps != Acad::PromptStatus::eNormal)
-            return;
-        AcDbOverrulableEntityPointer ptr(id);
-        if (ptr.openStatus() != eOk)
-            return;
-        for (const auto& item : ptr->strings())
-            acutPrintf(_T("\n%ls"), (const wchar_t*)item);
-        for (const auto& item : ptr->points())
-            acutPrintf(_T("\n(%f,%f,%f)"), item.x, item.y, item.z);
-    }
-
-    static void AcRxPyApp_idoit3(void)
-    {
-        auto es = TestOverrule::start();
-        acutPrintf(acadErrorStatusText(es));
-    }
-
-    static void AcRxPyApp_idoit4(void)
-    {
-        auto es = TestOverrule::stop();
-        acutPrintf(acadErrorStatusText(es));
-    }
 #endif
 };
 
@@ -492,8 +500,5 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit2, idoit2, ACRX_CMD_MODAL, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit3, idoit3, ACRX_CMD_MODAL, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit4, idoit4, ACRX_CMD_MODAL, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )
