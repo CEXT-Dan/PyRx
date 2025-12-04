@@ -527,6 +527,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbAssocActionWrapper();
     makePyDbAssocNetworkWrapper();
     makePyDbAssocVariableWrapper();
+    makePyDbAssocValueDependencyWrapper();
     makeDbCoreWrapper();//LAST?
 
     //convenience 

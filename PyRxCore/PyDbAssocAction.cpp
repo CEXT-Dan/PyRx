@@ -200,6 +200,7 @@ void makePyDbAssocDependencyWrapper()
         ;
 }
 
+
 PyDbAssocDependency::PyDbAssocDependency()
     : PyDbAssocDependency(new AcDbAssocDependency(), true)
 {
@@ -264,6 +265,101 @@ AcDbAssocDependency* PyDbAssocDependency::impObj(const std::source_location& src
     }
     return static_cast<AcDbAssocDependency*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocValueDependency
+void makePyDbAssocValueDependencyWrapper()
+{
+#if !defined(_BRXTARGET240)
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- createImpObject: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.AssocValueDependency");
+    class_<PyDbAssocValueDependency, bases<PyDbAssocDependency>>("AssocValueDependency")
+        .def(init<>())
+        .def(init<bool>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+
+        .def("className", &PyDbAssocValueDependency::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAssocValueDependency::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbAssocValueDependency::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAssocValueDependency::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+#endif
+}
+
+#if !defined(_BRXTARGET240)
+PyDbAssocValueDependency::PyDbAssocValueDependency()
+    : PyDbAssocValueDependency(new AcDbAssocValueDependency(), true)
+{
+}
+
+PyDbAssocValueDependency::PyDbAssocValueDependency(bool createImpObject)
+#if defined(_BRXTARGET)
+    : PyDbAssocValueDependency(new AcDbAssocValueDependency(), true)
+#else
+    : PyDbAssocValueDependency(new AcDbAssocValueDependency(createImpObject ? AcDbAssocCreateImpObject::kAcDbAssocCreateImpObject : AcDbAssocCreateImpObject::kAcDbAssocDoNotCreateImpObject), true)
+#endif
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#endif
+}
+
+PyDbAssocValueDependency::PyDbAssocValueDependency(const PyDbObjectId& id)
+    : PyDbAssocValueDependency(openAcDbObject<AcDbAssocValueDependency>(id), false)
+{
+}
+
+PyDbAssocValueDependency::PyDbAssocValueDependency(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbAssocValueDependency(openAcDbObject<AcDbAssocValueDependency>(id, mode), false)
+{
+}
+
+PyDbAssocValueDependency::PyDbAssocValueDependency(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbAssocValueDependency(openAcDbObject<AcDbAssocValueDependency>(id, mode, erased), false)
+{
+}
+
+PyDbAssocValueDependency::PyDbAssocValueDependency(AcDbAssocValueDependency* ptr, bool autoDelete)
+    : PyDbAssocDependency(ptr, autoDelete)
+{
+}
+
+PyRxClass PyDbAssocValueDependency::desc()
+{
+    return PyRxClass(AcDbAssocAction::desc(), false);
+}
+
+std::string PyDbAssocValueDependency::className()
+{
+    return "AcDbAssocAction";
+}
+
+PyDbAssocValueDependency PyDbAssocValueDependency::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbAssocValueDependency, AcDbAssocValueDependency>(src);
+}
+
+PyDbAssocValueDependency PyDbAssocValueDependency::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbAssocValueDependency>(src);
+}
+
+AcDbAssocValueDependency* PyDbAssocValueDependency::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbAssocValueDependency*>(m_pyImp.get());
+}
+#endif
 
 //-----------------------------------------------------------------------------------
 //PyDbAssocAction
