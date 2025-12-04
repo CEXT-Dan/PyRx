@@ -7,6 +7,9 @@
 #include "AcDbAssocDependency.h"
 #include "AcDbAssocNetwork.h"
 #include "AcDbAssocVariable.h"
+#if !defined(_BRXTARGET240)
+#include "AcDbAssocValueDependency.h"
+#endif
 
 class PyDbEvalVariant;
 class PyDbAssocAction;
@@ -82,6 +85,8 @@ public:
     PyDbAssocDependency(AcDbAssocDependency* ptr, bool autoDelete);
     virtual ~PyDbAssocDependency() override = default;
 
+    /*       todo            */
+
     static PyRxClass            desc();
     static std::string          className();
     static PyDbAssocDependency  cloneFrom(const PyRxObject& src);
@@ -89,6 +94,35 @@ public:
 public:
     AcDbAssocDependency* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyDbAssocValueDependency
+void makePyDbAssocValueDependencyWrapper();
+
+#if !defined(_BRXTARGET240)
+class PyDbAssocValueDependency : public PyDbAssocDependency
+{
+public:
+    PyDbAssocValueDependency();
+    PyDbAssocValueDependency(bool createImpObject);
+    PyDbAssocValueDependency(const PyDbObjectId& id);
+    PyDbAssocValueDependency(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAssocValueDependency(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbAssocValueDependency(AcDbAssocValueDependency* ptr, bool autoDelete);
+    virtual ~PyDbAssocValueDependency() override = default;
+
+
+    /*       todo            */
+
+
+    static PyRxClass                 desc();
+    static std::string               className();
+    static PyDbAssocValueDependency  cloneFrom(const PyRxObject& src);
+    static PyDbAssocValueDependency  cast(const PyRxObject& src);
+public:
+    AcDbAssocValueDependency* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
 
 //-----------------------------------------------------------------------------------
 //PyDbAssocAction
