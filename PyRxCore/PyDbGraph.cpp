@@ -25,7 +25,7 @@ void makePyDbGraphNodeWrapper()
         .def("cycleIn", &PyDbGraphNode::cycleIn, DS.ARGS({ "val:int" }))
         .def("cycleOut", &PyDbGraphNode::cycleOut, DS.ARGS({ "val:int" }))
         .def("nextCycleNode", &PyDbGraphNode::nextCycleNode, DS.ARGS())
-        .def("isCycleNode", &PyDbGraphNode::isCycleNode, DS.ARGS({ "val:int" }))
+        .def("isCycleNode", &PyDbGraphNode::isCycleNode, DS.ARGS())
         .def("setEdgeGrowthRate", &PyDbGraphNode::setEdgeGrowthRate, DS.ARGS({ "outEdgeRate:int","inEdgeRate:int" }))
         .def("className", &PyDbGraphNode::className).staticmethod("className")
         ;
