@@ -168,7 +168,7 @@ public:
         if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
             acutPrintf(_T("Failed to load %ls: "), acismobj.c_str());
         if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
-            acutPrintf(_T("Failed to load %ls: "), acismobj.c_str());
+            acutPrintf(_T("Failed to load %ls: "), acMPolygonObj.c_str());
 #endif
     }
 
