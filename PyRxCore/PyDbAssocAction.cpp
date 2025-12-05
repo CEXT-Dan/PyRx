@@ -238,6 +238,225 @@ PyDbAssocDependency::PyDbAssocDependency(AcDbAssocDependency* ptr, bool autoDele
 {
 }
 
+PyDbObjectId PyDbAssocDependency::dependencyBody() const
+{
+    return PyDbObjectId(impObj()->dependencyBody());
+}
+
+void PyDbAssocDependency::setDependencyBody(const PyDbObjectId& dependencyBodyId) const
+{
+    PyThrowBadEs(impObj()->setDependencyBody(dependencyBodyId.m_id));
+}
+
+AcDbAssocStatus PyDbAssocDependency::status() const
+{
+    return impObj()->status();
+}
+
+void PyDbAssocDependency::setStatus(AcDbAssocStatus newStatus, bool notifyOwningAction) const
+{
+    PyThrowBadEs(impObj()->setStatus(newStatus, notifyOwningAction));
+}
+
+bool PyDbAssocDependency::isReadDependency() const
+{
+    return impObj()->isReadDependency();
+}
+
+bool PyDbAssocDependency::isWriteDependency() const
+{
+    return impObj()->isWriteDependency();
+}
+
+void PyDbAssocDependency::setIsReadDependency(bool yesNo) const
+{
+    impObj()->setIsReadDependency(yesNo);
+}
+
+void PyDbAssocDependency::setIsWriteDependency(bool yesNo) const
+{
+    impObj()->setIsWriteDependency(yesNo);
+}
+
+bool PyDbAssocDependency::isObjectStateDependent() const
+{
+    return impObj()->isObjectStateDependent();
+}
+
+void PyDbAssocDependency::setIsObjectStateDependent(bool yesNo) const
+{
+    impObj()->setIsObjectStateDependent(yesNo);
+}
+
+int PyDbAssocDependency::order() const
+{
+    return impObj()->order();
+}
+
+void PyDbAssocDependency::setOrder(int newOrder) const
+{
+    impObj()->setOrder(newOrder);
+}
+
+PyDbObjectId PyDbAssocDependency::owningAction() const
+{
+    return PyDbObjectId(impObj()->owningAction());
+}
+
+void PyDbAssocDependency::setOwningAction(const PyDbObjectId& actionId) const
+{
+    impObj()->setOwningAction(actionId.m_id);
+}
+
+PyDbObjectId PyDbAssocDependency::dependentOnObject() const
+{
+    return PyDbObjectId(impObj()->dependentOnObject());
+}
+
+bool PyDbAssocDependency::isDependentOnCompoundObject() const
+{
+    return impObj()->isDependentOnCompoundObject();
+}
+
+PyDbObjectId PyDbAssocDependency::prevDependencyOnObject() const
+{
+    return PyDbObjectId(impObj()->prevDependencyOnObject());
+}
+
+PyDbObjectId PyDbAssocDependency::nextDependencyOnObject() const
+{
+    return PyDbObjectId(impObj()->nextDependencyOnObject());
+}
+
+bool PyDbAssocDependency::isAttachedToObject() const
+{
+    return impObj()->isAttachedToObject();
+}
+
+Acad::ErrorStatus PyDbAssocDependency::dependentOnObjectStatus() const
+{
+    return impObj()->dependentOnObjectStatus();
+}
+
+void PyDbAssocDependency::detachFromObject() const
+{
+    PyThrowBadEs(impObj()->detachFromObject());
+}
+
+void PyDbAssocDependency::updateDependentOnObject() const
+{
+    PyThrowBadEs(impObj()->updateDependentOnObject());
+}
+
+bool PyDbAssocDependency::isDelegatingToOwningAction() const
+{
+    return impObj()->isDelegatingToOwningAction();
+}
+
+void PyDbAssocDependency::setIsDelegatingToOwningAction(bool yesNo)
+{
+    impObj()->setIsDelegatingToOwningAction(yesNo);
+}
+
+bool PyDbAssocDependency::hasCachedValue() const
+{
+    return impObj()->hasCachedValue();
+}
+
+bool PyDbAssocDependency::isRelevantChange() const
+{
+    return impObj()->isRelevantChange();
+}
+
+bool PyDbAssocDependency::isDependentOnTheSameThingAs(const PyDbAssocDependency& pOtherDependency) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost{};
+#else
+    return impObj()->isDependentOnTheSameThingAs(pOtherDependency.impObj());
+#endif
+}
+
+bool PyDbAssocDependency::isDependentOnObjectReadOnly() const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost{};
+#else
+    return impObj()->isDependentOnObjectReadOnly();
+#endif
+}
+
+bool PyDbAssocDependency::isEqualTo(const PyDbAssocDependency& pOtherDependency) const
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost{};
+#else
+    return impObj()->isEqualTo(pOtherDependency.impObj());
+#endif
+}
+
+bool PyDbAssocDependency::isActionEvaluationInProgress() const
+{
+    return impObj()->isActionEvaluationInProgress();
+}
+
+void PyDbAssocDependency::evaluate() const
+{
+    impObj()->evaluate();
+}
+
+void PyDbAssocDependency::erased(const PyDbObject& dbObj, Adesk::Boolean isErasing) const
+{
+    impObj()->erased(dbObj.impObj(), isErasing);
+}
+
+void PyDbAssocDependency::modified(const PyDbObject& dbObj) const
+{
+    impObj()->modified(dbObj.impObj());
+}
+
+void PyDbAssocDependency::copied(const PyDbObject& dbObj, const PyDbObject& pNewObj) const
+{
+    impObj()->copied(dbObj.impObj(), pNewObj.impObj());
+}
+
+void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) const
+{
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET260) || defined(_ARXTARGET240)
+    throw PyNotimplementedByHost{};
+#else
+    impObj()->setPrevDependencyOnObject(depId.m_id);
+#endif
+}
+
+void PyDbAssocDependency::setNextDependencyOnObject(const PyDbObjectId& depId) const
+{
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET260) || defined(_ARXTARGET240)
+    throw PyNotimplementedByHost{};
+#else
+    impObj()->setNextDependencyOnObject(depId.m_id);
+#endif
+}
+
+PyDbObjectId PyDbAssocDependency::getFirstDependencyOnObject(const PyDbObject& pObject)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbAssocDependency::getFirstDependencyOnObject(pObject.impObj(), id.m_id));
+    return id;
+}
+
+boost::python::list PyDbAssocDependency::getDependenciesOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted)
+{
+    AcDbObjectIdArray dependencyIds;
+    PyThrowBadEs(AcDbAssocDependency::getDependenciesOnObject(pObject.impObj(), readDependenciesWanted, writeDependenciesWanted,dependencyIds));
+    return ObjectIdArrayToPyList(dependencyIds);
+}
+
+void PyDbAssocDependency::notifyDependenciesOnObject(const PyDbObject& pObject, AcDbAssocStatus newStatus)
+{
+    PyThrowBadEs(AcDbAssocDependency::notifyDependenciesOnObject(pObject.impObj(), newStatus));
+}
+
 PyRxClass PyDbAssocDependency::desc()
 {
     return PyRxClass(AcDbAssocAction::desc(), false);

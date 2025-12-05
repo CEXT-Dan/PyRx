@@ -85,7 +85,54 @@ public:
     PyDbAssocDependency(AcDbAssocDependency* ptr, bool autoDelete);
     virtual ~PyDbAssocDependency() override = default;
 
-    /*       todo            */
+    PyDbObjectId        dependencyBody() const;
+    void                setDependencyBody(const PyDbObjectId& dependencyBodyId) const;
+    AcDbAssocStatus     status() const;
+    void                setStatus(AcDbAssocStatus newStatus, bool notifyOwningAction) const;
+    bool                isReadDependency() const;
+    bool                isWriteDependency() const;
+    void                setIsReadDependency(bool yesNo) const;
+    void                setIsWriteDependency(bool yesNo) const;
+    bool                isObjectStateDependent() const;
+    void                setIsObjectStateDependent(bool yesNo) const;
+    int                 order() const;
+    void                setOrder(int newOrder) const;
+    PyDbObjectId        owningAction() const;
+    void                setOwningAction(const PyDbObjectId& actionId) const;
+    PyDbObjectId        dependentOnObject() const;
+    //void              getDependentOnCompoundObject(AcDbCompoundObjectId& compoundId) const;
+    //void              attachToObject(const AcDbCompoundObjectId& compoundId);
+    //void              transferToObject(const AcDbCompoundObjectId& compoundId);
+    //void              setDependentOnObject(const AcDbCompoundObjectId& compoundId);
+    bool                isDependentOnCompoundObject() const;
+    PyDbObjectId        prevDependencyOnObject() const;
+    PyDbObjectId        nextDependencyOnObject() const;
+    bool                isAttachedToObject() const;
+    Acad::ErrorStatus   dependentOnObjectStatus() const;
+    void                detachFromObject() const;
+    void                updateDependentOnObject() const;
+    bool                isDelegatingToOwningAction() const;
+    void                setIsDelegatingToOwningAction(bool yesNo);
+    bool                hasCachedValue() const;
+    bool                isRelevantChange() const;
+    //Acad::ErrorStatus notification(AcDbAssocNotificationData* pNotifData);
+    bool                isDependentOnTheSameThingAs(const PyDbAssocDependency& pOtherDependency) const;
+    bool                isDependentOnObjectReadOnly() const;
+    bool                isEqualTo(const PyDbAssocDependency& pOtherDependency) const;
+    bool                isActionEvaluationInProgress() const;
+    //AcDbAssocEvaluationCallback* currentEvaluationCallback() const;
+    void                evaluate() const;
+    void                erased(const PyDbObject& dbObj, Adesk::Boolean isErasing) const;
+    void                modified(const PyDbObject& dbObj) const;
+    void                copied(const PyDbObject& dbObj, const PyDbObject& pNewObj) const;
+    void                setPrevDependencyOnObject(const PyDbObjectId& depId) const;
+    void                setNextDependencyOnObject(const PyDbObjectId& depId) const;
+
+
+
+    static PyDbObjectId getFirstDependencyOnObject(const PyDbObject& pObject);
+    static boost::python::list getDependenciesOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted);
+    static void         notifyDependenciesOnObject(const PyDbObject& pObject, AcDbAssocStatus newStatus);
 
     static PyRxClass            desc();
     static std::string          className();
@@ -111,10 +158,7 @@ public:
     PyDbAssocValueDependency(AcDbAssocValueDependency* ptr, bool autoDelete);
     virtual ~PyDbAssocValueDependency() override = default;
 
-
-    /*       todo            */
-
-
+  
     static PyRxClass                 desc();
     static std::string               className();
     static PyDbAssocValueDependency  cloneFrom(const PyRxObject& src);
