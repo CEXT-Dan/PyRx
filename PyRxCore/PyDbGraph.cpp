@@ -376,7 +376,8 @@ void makePyDbGraphWrapper()
         .def("delNode", &PyDbGraph::delNode, DS.ARGS({ "val:PyDb.GraphNode" }))
         .def("reset", &PyDbGraph::reset, DS.ARGS())
         .def("clearAll", &PyDbGraph::clearAll, DS.ARGS({ "flags:int" }))
-        .def("findCycles", &PyDbGraph::findCycles, DS.ARGS({ "start:PyDb.GraphNode" }))
+        .def("findCycles", &PyDbGraph::findCycles1)
+        .def("findCycles", &PyDbGraph::findCycles2, DS.ARGS({ "start:PyDb.GraphNode = ..." }))
         .def("breakCycleEdge", &PyDbGraph::breakCycleEdge, DS.ARGS({ "pfrom:PyDb.GraphNode","pto:PyDb.GraphNode" }))
         .def("setNodeGrowthRate", &PyDbGraph::setNodeGrowthRate, DS.ARGS({ "val:int" }))
         .def("className", &PyDbGraph::className).staticmethod("className")
@@ -448,7 +449,12 @@ void PyDbGraph::clearAll(Adesk::UInt8 flags) const
 #endif
 }
 
-bool PyDbGraph::findCycles(const PyDbGraphNode& start) const
+bool PyDbGraph::findCycles1() const
+{
+    return impObj()->findCycles();
+}
+
+bool PyDbGraph::findCycles2(const PyDbGraphNode& start) const
 {
     return impObj()->findCycles(start.impObj());
 }

@@ -103,7 +103,8 @@ public:
     void            delNode(const PyDbGraphNode& node) const;
     void            reset() const;
     void            clearAll(Adesk::UInt8 flags) const;
-    bool            findCycles(const PyDbGraphNode& start) const;
+    bool            findCycles1() const;
+    bool            findCycles2(const PyDbGraphNode& start) const;
     void            breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto) const;
     void            setNodeGrowthRate(int rate) const;
     static std::string  className();
