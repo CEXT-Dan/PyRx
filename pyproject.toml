@@ -91,6 +91,7 @@ section-order = [
 ]
 
 [tool.mypy]
+disable_error_code = "overload-cannot-match"
 follow_imports = "skip"
 check_untyped_defs = true
 files = [
@@ -119,6 +120,7 @@ files = [
     "in_test_runner.py",
 ]
 ignore_missing_imports = true
+
 
 [[tool.mypy.overrides]]
 module = ["wx.*", "debugpy.*"]
