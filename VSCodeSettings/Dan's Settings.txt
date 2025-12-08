@@ -4,9 +4,9 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnType": true
     },
-    "autolispext.format.MaxLineChars": 120,
+    "isort.args":["--profile", "black"],
+    "autolispext.format.MaxLineChars": 100,
     "debug.allowBreakpointsEverywhere": true,
-    "debugpy.debugJustMyCode": false,
     "editor.fontFamily": "Cascadia Code Light",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
@@ -19,6 +19,7 @@
     "git.openRepositoryInParentFolders": "never",
     //debug configurations
     "launch": {
+        "version":"0.2.0",
         "compounds": [],
         "configurations": [
             {
@@ -31,6 +32,7 @@
                 "request": "attach",
                 "type": "debugpy"
             }
+
         ]
     },
     "python.analysis.autoImportCompletions": true,
@@ -57,5 +59,21 @@
         "--line-length",
         "99"
     ],
-    "autoDocstring.docstringFormat": "google-notypes"
+    "autoDocstring.docstringFormat": "google-notypes",
+    "python.defaultInterpreterPath": "C:\\Users\\Dan\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false,
+        "toml": false
+    },
+    "debugpy.debugJustMyCode": false,
+    "debugpy.showPythonInlineValues": false,
+    "debug.inlineValues": "off",
+    "[autolisp]": {
+        "editor.defaultFormatter": "Autodesk.autolispext"
+    }
+
 }
