@@ -99,12 +99,12 @@ void makePyDbObjectIdWrapper()
         .def("__repr__", &PyDbObjectId::repr)
         .def("__hash__", &PyDbObjectId::hash)
         //operators
-        .def("__eq__", &PyDbObjectId::operator==)
-        .def("__ne__", &PyDbObjectId::operator!=)
-        .def("__lt__", &PyDbObjectId::operator<)
-        .def("__gt__", &PyDbObjectId::operator>)
-        .def("__le__", &PyDbObjectId::operator<=)
-        .def("__ge__", &PyDbObjectId::operator>=)
+        .def("__eq__", &PyDbObjectId::operator==, DS.ARGS({ "other: PyDb.ObjectId" }))
+        .def("__ne__", &PyDbObjectId::operator!=, DS.ARGS({ "other: PyDb.ObjectId" }))
+        .def("__lt__", &PyDbObjectId::operator<, DS.ARGS({ "other: PyDb.ObjectId" }))
+        .def("__gt__", &PyDbObjectId::operator>, DS.ARGS({ "other: PyDb.ObjectId" }))
+        .def("__le__", &PyDbObjectId::operator<=, DS.ARGS({ "other: PyDb.ObjectId" }))
+        .def("__ge__", &PyDbObjectId::operator>=, DS.ARGS({ "other: PyDb.ObjectId" }))
         ;
 }
 

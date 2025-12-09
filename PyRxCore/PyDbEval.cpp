@@ -50,12 +50,12 @@ void makePyDbEvalVariantWrapper()
         .def("toString", &PyDbEvalVariant::toString, DS.ARGS())
 
         //operators
-        .def("__eq__", &PyDbEvalVariant::operator==)
-        .def("__ne__", &PyDbEvalVariant::operator!=)
-        .def("__lt__", &PyDbEvalVariant::operator<)
-        .def("__gt__", &PyDbEvalVariant::operator>)
-        .def("__le__", &PyDbEvalVariant::operator<=)
-        .def("__ge__", &PyDbEvalVariant::operator>=)
+        .def("__eq__", &PyDbEvalVariant::operator==, DS.ARGS({ "other: PyDb.EvalVariant" }))
+        .def("__ne__", &PyDbEvalVariant::operator!=, DS.ARGS({ "other: PyDb.EvalVariant" }))
+        .def("__lt__", &PyDbEvalVariant::operator<, DS.ARGS({ "other: PyDb.EvalVariant" }))
+        .def("__gt__", &PyDbEvalVariant::operator>, DS.ARGS({ "other: PyDb.EvalVariant" }))
+        .def("__le__", &PyDbEvalVariant::operator<=, DS.ARGS({ "other: PyDb.EvalVariant" }))
+        .def("__ge__", &PyDbEvalVariant::operator>=, DS.ARGS({ "other: PyDb.EvalVariant" }))
 
         // to string
         .def("__str__", &PyDbEvalVariant::toString, DS.ARGS())
