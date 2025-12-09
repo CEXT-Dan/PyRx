@@ -100,10 +100,10 @@ class TestDbEntity:
         self.assertEqual(line.startPoint(), Ge.Point3d(1, 11, 0))
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         lid = model.appendAcDbEntity(line)
-        #line.close()
+        line.close()
         line2 = Db.Line(lid)
         self.assertEqual(line2.startPoint(), Ge.Point3d(1, 11, 0))
-        #line2.close()
+        line2.close()
         line3 = Db.Line(lid, Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
 
@@ -119,15 +119,15 @@ class TestDbEntity:
         # add
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         eid = model.appendAcDbEntity(arc)
-        #arc.close()
+        arc.close()
         # ctor
         arc2 = Db.Arc(eid)
         self.assertEqual(arc2.endAngle(), math.pi)
-        #arc2.close(), Db.ErrorStatus.eOk
+        arc2.close()
         # ctor
         arc3 = Db.Arc(eid, Db.OpenMode.kForRead)
         self.assertEqual(arc3.endAngle(), math.pi)
-        #arc3.close()
+        arc3.close()
 
     def test_dbcircle(self):
         circle = Db.Circle()
