@@ -158,7 +158,11 @@ public:
     PyDbAssocValueDependency(AcDbAssocValueDependency* ptr, bool autoDelete);
     virtual ~PyDbAssocValueDependency() override = default;
 
-  
+    std::string     valueName() const;
+    void            setValueName(const std::string& val) const;
+    PyDbEvalVariant getDependentOnObjectValue() const;
+    void            setDependentOnObjectValue(const PyDbEvalVariant& val) const;
+
     static PyRxClass                 desc();
     static std::string               className();
     static PyDbAssocValueDependency  cloneFrom(const PyRxObject& src);

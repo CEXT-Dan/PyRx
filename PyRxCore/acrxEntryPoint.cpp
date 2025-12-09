@@ -439,7 +439,7 @@ public:
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
         int res = acedSSGet(NULL, NULL, NULL, NULL, ssname);
-        if (res != RTNORM || acedGetCurrentSelectionSet(ssname,ids) != eOk)
+        if (res != RTNORM || acedGetCurrentSelectionSet(ssname, ids) != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, ids);
         acedSSFree(ssname);
         return std::make_tuple(Acad::PromptStatus(res), std::move(ids));

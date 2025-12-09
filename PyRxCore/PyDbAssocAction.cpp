@@ -192,7 +192,44 @@ void makePyDbAssocDependencyWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
-
+        .def("dependencyBody", &PyDbAssocDependency::dependencyBody, DS.ARGS())
+        .def("setDependencyBody", &PyDbAssocDependency::setDependencyBody, DS.ARGS({"dependencyBodyId: PyDb.ObjectId"}))
+        .def("status", &PyDbAssocDependency::status, DS.ARGS())
+        .def("setStatus", &PyDbAssocDependency::setStatus, DS.ARGS({ "newStatus: PyDb.AssocStatus", "notifyOwningAction: bool"}))
+        .def("isReadDependency", &PyDbAssocDependency::isReadDependency, DS.ARGS())
+        .def("isWriteDependency", &PyDbAssocDependency::isWriteDependency, DS.ARGS())
+        .def("setIsReadDependency", &PyDbAssocDependency::setIsReadDependency, DS.ARGS({ "yesNo: bool" }))
+        .def("setIsWriteDependency", &PyDbAssocDependency::setIsWriteDependency, DS.ARGS({ "yesNo: bool" }))
+        .def("isObjectStateDependent", &PyDbAssocDependency::isObjectStateDependent, DS.ARGS())
+        .def("setIsObjectStateDependent", &PyDbAssocDependency::setIsObjectStateDependent, DS.ARGS({ "yesNo: bool" }))
+        .def("order", &PyDbAssocDependency::order, DS.ARGS())
+        .def("setOrder", &PyDbAssocDependency::setOrder, DS.ARGS({ "newOrder: int" }))
+        .def("owningAction", &PyDbAssocDependency::owningAction, DS.ARGS())
+        .def("setOwningAction", &PyDbAssocDependency::setOwningAction, DS.ARGS({ "actionId: PyDb.ObjectId" }))
+        .def("isDependentOnCompoundObject", &PyDbAssocDependency::isDependentOnCompoundObject, DS.ARGS())
+        .def("prevDependencyOnObject", &PyDbAssocDependency::prevDependencyOnObject, DS.ARGS())
+        .def("nextDependencyOnObject", &PyDbAssocDependency::nextDependencyOnObject, DS.ARGS())
+        .def("isAttachedToObject", &PyDbAssocDependency::isAttachedToObject, DS.ARGS())
+        .def("dependentOnObjectStatus", &PyDbAssocDependency::dependentOnObjectStatus, DS.ARGS())
+        .def("detachFromObject", &PyDbAssocDependency::detachFromObject, DS.ARGS())
+        .def("updateDependentOnObject", &PyDbAssocDependency::updateDependentOnObject, DS.ARGS())
+        .def("isDelegatingToOwningAction", &PyDbAssocDependency::isDelegatingToOwningAction, DS.ARGS())
+        .def("setIsDelegatingToOwningAction", &PyDbAssocDependency::setIsDelegatingToOwningAction, DS.ARGS({ "yesNo: bool" }))
+        .def("hasCachedValue", &PyDbAssocDependency::hasCachedValue, DS.ARGS())
+        .def("isRelevantChange", &PyDbAssocDependency::isRelevantChange, DS.ARGS())
+        .def("isDependentOnTheSameThingAs", &PyDbAssocDependency::isDependentOnTheSameThingAs, DS.ARGS({"otherDependency: PyDb.AssocDependency"}))
+        .def("isDependentOnObjectReadOnly", &PyDbAssocDependency::isDependentOnObjectReadOnly, DS.ARGS())
+        .def("isEqualTo", &PyDbAssocDependency::isEqualTo, DS.ARGS({ "otherDependency: PyDb.AssocDependency" }))
+        .def("isActionEvaluationInProgress", &PyDbAssocDependency::isActionEvaluationInProgress, DS.ARGS())
+        .def("evaluate", &PyDbAssocDependency::evaluate, DS.ARGS())
+        .def("erased", &PyDbAssocDependency::erased, DS.ARGS({"dbObj: PyDb.DbObject", "isErasing: bool"}))
+        .def("modified", &PyDbAssocDependency::modified, DS.ARGS({ "dbObj: PyDb.DbObject" }))
+        .def("copied", &PyDbAssocDependency::copied, DS.ARGS({ "dbObj: PyDb.DbObject", "pNewObj: PyDb.DbObject" }))
+        .def("setPrevDependencyOnObject", &PyDbAssocDependency::setPrevDependencyOnObject, DS.ARGS({ "depId: PyDb.ObjectId" }))
+        .def("setNextDependencyOnObject", &PyDbAssocDependency::setNextDependencyOnObject, DS.ARGS({ "depId: PyDb.ObjectId" }))
+        .def("getFirstDependencyOnObject", &PyDbAssocDependency::getFirstDependencyOnObject, DS.SARGS({ "pObject: PyRx.DbObject" })).staticmethod("getFirstDependencyOnObject")
+        .def("getDependenciesOnObject", &PyDbAssocDependency::getDependenciesOnObject, DS.SARGS({ "pObject: PyRx.DbObject","readDependenciesWanted: bool", "writeDependenciesWanted: bool"})).staticmethod("getDependenciesOnObject")
+        .def("notifyDependenciesOnObject", &PyDbAssocDependency::notifyDependenciesOnObject, DS.SARGS({ "pObject: PyRx.DbObject","newStatus: PyDb.AssocStatus"})).staticmethod("notifyDependenciesOnObject")
         .def("className", &PyDbAssocDependency::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocDependency::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocDependency::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -504,7 +541,10 @@ void makePyDbAssocValueDependencyWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
-
+        .def("valueName", &PyDbAssocValueDependency::valueName, DS.ARGS())
+        .def("setValueName", &PyDbAssocValueDependency::setValueName, DS.ARGS({ "val: str" }))
+        .def("getDependentOnObjectValue", &PyDbAssocValueDependency::getDependentOnObjectValue, DS.ARGS())
+        .def("setDependentOnObjectValue", &PyDbAssocValueDependency::setDependentOnObjectValue, DS.ARGS({ "val: PyDb.EvalVariant" }))
         .def("className", &PyDbAssocValueDependency::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbAssocValueDependency::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbAssocValueDependency::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -549,6 +589,28 @@ PyDbAssocValueDependency::PyDbAssocValueDependency(const PyDbObjectId& id, AcDb:
 PyDbAssocValueDependency::PyDbAssocValueDependency(AcDbAssocValueDependency* ptr, bool autoDelete)
     : PyDbAssocDependency(ptr, autoDelete)
 {
+}
+
+std::string PyDbAssocValueDependency::valueName() const
+{
+    return wstr_to_utf8(impObj()->valueName());
+}
+
+void PyDbAssocValueDependency::setValueName(const std::string& val) const
+{
+    PyThrowBadEs(impObj()->setValueName(utf8_to_wstr(val).c_str()));
+}
+
+PyDbEvalVariant PyDbAssocValueDependency::getDependentOnObjectValue() const
+{
+    AcDbEvalVariant objectValue;
+    PyThrowBadEs(impObj()->getDependentOnObjectValue(objectValue));
+    return PyDbEvalVariant(objectValue);
+}
+
+void PyDbAssocValueDependency::setDependentOnObjectValue(const PyDbEvalVariant& val) const
+{
+    PyThrowBadEs(impObj()->setDependentOnObjectValue(*val.impObj()));
 }
 
 PyRxClass PyDbAssocValueDependency::desc()
