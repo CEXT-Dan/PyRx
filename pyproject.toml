@@ -102,12 +102,12 @@ files = [
     "pyrx/PyAp.pyi",
     "pyrx/PyAx.pyi",
     "pyrx/PyBr.pyi",
-    #    "pyrx/PyBrx.pyi", #MyPy error #433
-    #    "pyrx/PyBrxBim.pyi",  # Needs extra work
-    #    "pyrx/PyBrxCv.pyi",  # Needs extra work
-    #    "pyrx/PyDb.pyi",  # Needs extra work
-    #    "pyrx/PyEd.pyi",  # Needs extra work
-    #    "pyrx/PyGe.pyi",  # Needs extra work
+    "pyrx/PyBrx.pyi",
+    "pyrx/PyBrxBim.pyi",
+    "pyrx/PyBrxCv.pyi", 
+    "pyrx/PyDb.pyi",
+    "pyrx/PyEd.pyi", 
+    "pyrx/PyGe.pyi", 
     "pyrx/PyGi.pyi",
     "pyrx/PyGs.pyi",
     "pyrx/PyPl.pyi",
