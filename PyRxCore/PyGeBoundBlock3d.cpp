@@ -9,11 +9,11 @@ void makePyGeBoundBlock3dWrapper()
 #if !defined(_BRXTARGET260)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
-        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d\n";
+        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d, dir3: PyGe.Vector3d\n";
 
     constexpr const std::string_view setOverloads = "Overloads:\n"
         "- pt1: PyGe.Point3d, pt2: PyGe.Point3d\n"
-        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d,dir3: PyGe.Vector3d\n";
+        "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d, dir3: PyGe.Vector3d\n";
 
     PyDocString DS("BoundBlock3d");
     class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
