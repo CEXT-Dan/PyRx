@@ -18942,7 +18942,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD
         error status.
         """
-    def setColor(self, clr: PyDb.AcCmColor, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:
+    def setColor(self, clr: PyDb.Color, vpid: PyDb.ObjectId = PyDb.ObjectId.kNull, /) -> None:
         """
         This function sets the layer to use the color specified by color. The color value is used
         for DXF group code 62.

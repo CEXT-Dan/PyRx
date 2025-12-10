@@ -74,7 +74,10 @@ class Application:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def acadApplication() -> PyAx.AcadApplication: ...
+    def acadApplication() -> PyAx.AcadApplication:
+        """
+        TEST19139
+        """
     @staticmethod
     def acadGetIDispatch() -> int: ...
     @staticmethod
@@ -757,6 +760,7 @@ class LayerFilter(PyRx.RxObject):
         <constant>::=A-Z0-9*?~@.,- <variable>::=#A-Z0-9 */This function may return null if the
         filter cannot be described this way.
         """
+    def filterExpressionTree(self, /) -> list: ...
     def generateNested(self, /) -> None:
         """
         Called by the ObjectDBX framework after a filter is loaded from persistent storage. This is

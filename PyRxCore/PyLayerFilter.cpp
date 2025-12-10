@@ -30,6 +30,7 @@ void makePyLyLayerFilterWrapper()
         .def("showEditor", &PyLyLayerFilter::showEditor, DS.ARGS(14672))
         .def("filterExpression", &PyLyLayerFilter::filterExpression, DS.ARGS(14659))
         .def("setFilterExpression", &PyLyLayerFilter::setFilterExpression, DS.ARGS({ "val : str" }, 14670))
+        .def("filterExpressionTree", &PyLyLayerFilter::filterExpressionTree, DS.ARGS())
         .def("compareTo", &PyLyLayerFilter::compareTo, DS.ARGS({ "other : PyAp.LayerFilter" }, 14655))
         .def("desc", &PyLyLayerFilter::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyLyLayerFilter::className, DS.SARGS()).staticmethod("className")
@@ -133,6 +134,27 @@ const std::string PyLyLayerFilter::filterExpression() const
 void PyLyLayerFilter::setFilterExpression(const std::string& expr) const
 {
     PyThrowBadEs(impObj()->setFilterExpression(utf8_to_wstr(expr).c_str()));
+}
+
+boost::python::list PyLyLayerFilter::filterExpressionTree() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    auto tree = impObj()->filterExpressionTree();
+    if (tree == nullptr)
+        return pylist;
+    for (const auto& item : tree->getAndExprs())
+    {
+        if (item == nullptr)
+            continue;
+        for (auto expr : item->getRelExprs())
+        {
+            if (expr == nullptr)
+                continue;
+            pylist.append(boost::python::make_tuple(wstr_to_utf8(expr->getConstant()), wstr_to_utf8(expr->getVariable())));
+        }
+    }
+    return pylist;
 }
 
 bool PyLyLayerFilter::compareTo(const PyLyLayerFilter& pOther) const
