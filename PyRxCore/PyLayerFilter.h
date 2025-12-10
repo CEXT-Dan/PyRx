@@ -7,33 +7,6 @@ class PyDbLayerTableRecord;
 class PyDbDatabase;
 class PyDbObjectId;
 
-//class AcLyRelExpr
-//{
-//public:
-//    virtual ~AcLyRelExpr() {}
-//
-//    virtual const ACHAR* getVariable() const = 0;
-//    virtual const ACHAR* getConstant() const = 0;
-//};
-//
-////represents a term of the form:
-////a AND b
-//class AcLyAndExpr
-//{
-//public:
-//    virtual ~AcLyAndExpr() {}
-//    virtual const AcArray<AcLyRelExpr*>& getRelExprs() const = 0;
-//};
-//
-////represents an expression of the form:
-////(a AND b) OR (c AND d) OR (e AND f)
-//class AcLyBoolExpr
-//{
-//public:
-//    virtual ~AcLyBoolExpr() {}
-//    virtual const AcArray<AcLyAndExpr*>& getAndExprs() const = 0;
-//};
-
 //------------------------------------------------------------------------------------
 //PyLyLayerFilter
 void makePyLyLayerFilterWrapper();
@@ -61,7 +34,7 @@ public:
     int                     showEditor() const;
     const std::string       filterExpression() const;
     void                    setFilterExpression(const std::string& expr) const;
-    //virtual const AcLyBoolExpr* filterExpressionTree() const;
+    boost::python::list     filterExpressionTree() const;
     bool                    compareTo(const PyLyLayerFilter& pOther) const;
 
     static PyRxClass    desc();
