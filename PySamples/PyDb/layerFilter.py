@@ -14,8 +14,8 @@ def doit():
 
         # get a list of the current filters
         filters = lm.getFilters()
-        for filter in filters:
-            print(filter.name())
+        # for filter in filters:
+        #     print(filter.name())
 
         # get the root filter we want to add to
         root = filters[0]
@@ -44,7 +44,6 @@ def doit():
 
         root.addNested(newFilter)
         lm.setFilters(root, newFilter)
-        
 
     except Exception as err:
         traceback.print_exception(err)
