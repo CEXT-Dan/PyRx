@@ -16,7 +16,7 @@ class TestDocStringJson:
     def lookupId(self, row: int):
         return self.json_data[row][0]
 
-    def test_datebase_valid(self):
+    def test_database_valid(self):
         assert self.lookupDocString(12) == "Description"
         assert self.lookupDocString(1035) == "Destructor."
         assert self.lookupDocString(2024) == "Description"
@@ -35,7 +35,7 @@ class TestDocStringJson:
         assert self.lookupDocString(19132) == "Description"
         assert self.lookupDocString(19139) == "TEST19139"
 
-    def test_datebase_unique(self):
+    def test_database_unique(self):
         json_data = {}
         rownum = 0
         with open(self._path, "r") as file:
