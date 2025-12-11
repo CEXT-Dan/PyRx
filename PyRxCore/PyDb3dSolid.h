@@ -23,8 +23,10 @@ public:
 
     virtual ~PyDb3dSolid() override = default;
     void                createBox(double xLen, double yLen, double zLen) const;
+
     void                createFrustum(double height, double xRadius, double yRadius, double topXRadius) const;
     void                createSphere(double radius) const;
+    void                createCylinder(double height, double radius) const;
     void                createTorus(double majorRadius, double minorRadius) const;
     void                createPyramid1(double height, int sides, double radius) const;
     void                createPyramid2(double height, int sides, double radius, double topRadius) const;

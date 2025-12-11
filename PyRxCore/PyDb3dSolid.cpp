@@ -36,6 +36,7 @@ void makePyDb3dSolidWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 1270)))
         .def("createBox", &PyDb3dSolid::createBox, DS.ARGS({ "xLen: float","yLen: float" ,"zLen: float" }))
         .def("createFrustum", &PyDb3dSolid::createFrustum, DS.ARGS({ "height: float","xRadius: float","yRadius: float","topXRadius: float" }))
+        .def("createCylinder", &PyDb3dSolid::createCylinder, DS.ARGS({ "height: float","radius: float" }))
         .def("createSphere", &PyDb3dSolid::createSphere, DS.ARGS({ "radius: float" }))
         .def("createTorus", &PyDb3dSolid::createTorus, DS.ARGS({ "majorRadius: float", "minorRadius: float" }))
         .def("createPyramid", &PyDb3dSolid::createPyramid1)
@@ -135,6 +136,11 @@ void PyDb3dSolid::createFrustum(double height, double xRadius, double yRadius, d
 void PyDb3dSolid::createSphere(double radius) const
 {
     return PyThrowBadEs(impObj()->createSphere(radius));
+}
+
+void PyDb3dSolid::createCylinder(double height, double radius) const
+{
+    return PyThrowBadEs(impObj()->createFrustum(height, radius, radius, radius));
 }
 
 void PyDb3dSolid::createTorus(double majorRadius, double minorRadius) const
