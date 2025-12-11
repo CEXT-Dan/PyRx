@@ -1,3 +1,15 @@
+## v2.2.36
+
+* add PyDb3dSolid::createCone
+* add PyDb3dSolid::createCylinder
+* [#423] PyDbAssocDependency
+* [#423] PyDbAssocValueDependency
+* improve PyDbGraph, added findCycles overload
+* add LayerFilter::filterExpressionTree returns a list of tuple[str,str] with the values 
+* fix bad stub LayerTableRecord
+* depreciated ObjectId::isValid() #has a warning, will be removed at some later date
+* improve stubs (.pyi)
+
 ## v2.2.35
 
 support CMS IntelliCAD 14.0
