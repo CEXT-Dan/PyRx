@@ -25154,7 +25154,17 @@ class Region(PyDb.Entity):
         representation.
         """
     def __reduce__(self, /) -> Any: ...
-    def booleanOper(self, operation: PyDb.BoolOperType, otherRegion: PyDb.Region, /) -> None: ...
+    def booleanOper(self, operation: PyDb.BoolOperType, otherRegion: PyDb.Region, /) -> None:
+        """
+        Performs Boolean operation between this region and otherRegion. If the Boolean operation is
+        successful, then the otherRegion ShapeManager object is deleted (so its isNull() method
+        returns Adesk::kTrue) and Acad::eOk is returned. If otherRegion is NULL, then
+        Acad::eInvalidInput is returned. If the Boolean operation between the two regions fails,
+        then the ShapeManager objects of both regions are deleted and either
+        Acad::eNonCoplanarGeometry or Acad::eGeneralModelingFailure is returned. The
+        Acad::eNonCoplanarGeometry status indicates the two regions were found to be in different
+        planes.
+        """
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Region: ...
     @staticmethod
@@ -25162,7 +25172,14 @@ class Region(PyDb.Entity):
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Region: ...
     @staticmethod
-    def createFromCurves(curves: list[PyDb.Curve], /) -> list[PyDb.Region]: ...
+    def createFromCurves(curves: list[PyDb.Curve], /) -> list[PyDb.Region]:
+        """
+        This static member function creates AcDbRegion objects from the closed loops represented by
+        the curves contained in the curveSegments array. The newly created region objects are
+        returned in the regions array. The curveSegments array must contain only pointers to
+        AcDbLine, AcDbArc, AcDbEllipse, AcDbCircle, AcDbSpline, AcDb3dPolyline, or AcDbPolyline
+        objects.
+        """
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25177,11 +25194,34 @@ class Region(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getArea(self, /) -> float: ...
-    def getNormal(self, /) -> PyGe.Vector3d: ...
-    def getPerimeter(self, /) -> float: ...
-    def isNull(self, /) -> bool: ...
-    def numChanges(self, /) -> int: ...
+    def getArea(self, /) -> float:
+        """
+        Returns with regionArea set to the surface area of the region. The area is in square
+        drawing units. Returns Acad::eOk if successful. If the region has no ShapeManager object,
+        then Acad::eInvalidInput is returned.
+        """
+    def getNormal(self, /) -> PyGe.Vector3d:
+        """
+        Returns with normal set to the normal vector of the region. normal is in WCS coordinates.
+        If the region isNull, then normal is set to (0,0,1). Returns Acad::eOk is successful. If
+        there is an error in the ShapeManager modeler while obtaining the area, then
+        Acad::eGeneralModelingFailure is returned.
+        """
+    def getPerimeter(self, /) -> float:
+        """
+        Returns with perimeter set to the perimeter length (in drawing units) of the region. If the
+        region isNull, then perimeter is set to 0.0. Returns Acad::eOk is successful. If there is
+        an error in the ShapeManager modeler while obtaining the area, then
+        Acad::eGeneralModelingFailure is returned.
+        """
+    def isNull(self, /) -> bool:
+        """
+        Returns Adesk::kTrue if the region has no ShapeManager object within itself.
+        """
+    def numChanges(self, /) -> int:
+        """
+        Returns the number of changes that have occurred to this region since it was first created.
+        """
 
 class RemapFileContext(_BoostPythonEnum):
     kDrawingOpen: ClassVar[Self]  # 0
@@ -25233,13 +25273,45 @@ class RevolveOptions:
         axisDir: PyGe.Vector3d,
         displayErrorMessages: bool = False,
         /,
-    ) -> tuple[bool, bool, bool]: ...
-    def closeToAxis(self, /) -> bool: ...
-    def draftAngle(self, /) -> float: ...
-    def setCloseToAxis(self, val: bool, /) -> None: ...
-    def setDraftAngle(self, val: float, /) -> None: ...
-    def setTwistAngle(self, val: float, /) -> None: ...
-    def twistAngle(self, /) -> float: ...
+    ) -> tuple[bool, bool, bool]:
+        """
+        Checks whether pRevEnt is valid for revolve operation. This function is called by
+        createRevolvedSurface() and createRevolvedSolid(), so it is not necessary for an
+        application to call this function. Returns Acad::eOk if pRevEnt is valid, or
+        Acad::eInvalidInput otherwise.
+        """
+    def closeToAxis(self, /) -> bool:
+        """
+        Gets the close to axis option. If this option is set for an open profile, then the ends of
+        the profile will be extended to the axis of revolution before revolving. The default value
+        of this option is false.
+        """
+    def draftAngle(self, /) -> float:
+        """
+        Returns the draft angle in radians. This is the angle by which profile will taper as it is
+        revolved around the axis. The default value of this option is 0.
+        """
+    def setCloseToAxis(self, val: bool, /) -> None:
+        """
+        Sets the close to axis option. If this option is set for an open profile, then the ends of
+        the profile will be extended to the axis of revolution before revolving. The default value
+        of this option is false.
+        """
+    def setDraftAngle(self, val: float, /) -> None:
+        """
+        Sets the angle by which the profile will taper as it is revolved around the axis. The
+        default value of this option is 0.
+        """
+    def setTwistAngle(self, val: float, /) -> None:
+        """
+        Sets the angle by which the profile will be twisted as it revolves around the axis. Default
+        value of this option is 0.
+        """
+    def twistAngle(self, /) -> float:
+        """
+        Gets the angle by which the profile will be twisted as it revolves around the axis in
+        radians. The default value of this option is 0.
+        """
 
 class RevolvedSurface(PyDb.Surface):
     def __init__(
@@ -26354,7 +26426,16 @@ class Solid3d(PyDb.Entity):
         representation.
         """
     def __reduce__(self, /) -> Any: ...
-    def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None: ...
+    def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None:
+        """
+        Performs Boolean operation between this solid and pSolid. Possible operation types are:
+        AcDb::kBoolUnite AcDb::kBoolIntersect AcDb::kBoolSubtract If the Boolean operation is
+        successful, then the pSolid ShapeManager object is deleted, Acad::eOk is returned, and the
+        ShapeManager object's isNull() method will return Adesk::kTrue. If pSolid is NULL, then
+        Acad::eInvalidInput is returned. If the Boolean operation between the two solids fails,
+        then the ShapeManager objects of both solids are deleted and Acad::eGeneralModelingFailure
+        is returned.
+        """
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Solid3d: ...
     def chamferEdges(
@@ -26364,20 +26445,95 @@ class Solid3d(PyDb.Entity):
         baseDist: float,
         otherDist: float,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This method creates chamfers at the edges of a solid. Returns Acad::eOk if successful. May
+        also return Acad::eFailedToSetEdgeChamfers, Acad::eNoConnectedBlendSet, or
+        Acad::eFailedToBlend.
+        """
     def checkInterference(
         self, val: PyDb.Solid3d, createNewSolid: bool, /
-    ) -> tuple[bool, PyDb.Solid3d]: ...
+    ) -> tuple[bool, PyDb.Solid3d]:
+        """
+        Checks whether this solid interferes with otherSolid and sets solidsInterfere to
+        Adesk::kTrue if there is interference or Adesk::kFalse if there is not. If createNewSolid
+        == Adesk::kTrue and there is interference, then a new solid is created that represents the
+        shared volume and pCommonVolumeSolid is set to point to it; otherwise, pCommonVolumeSolid
+        is set to NULL. Returns Acad::eOk if successful. If otherSolid == NULL or it points to an
+        invalid entity type, then Acad::eInvalidInput is returned. If this function fails in an
+        attempt to create a new AcDb3dSolid for pCommonVolumeSolid to point to, then
+        Acad::eOutOfMemory is returned. If creation of the commonVolume solid fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     @staticmethod
     def className() -> str: ...
-    def cleanBody(self, /) -> None: ...
+    def cleanBody(self, /) -> None:
+        """
+        Removes all edges and faces not necessary to support the topology of the solid. Returns
+        Acad::eOk if successful, or Acad::eGeneralModelingFailure if unsuccessful.
+        """
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Solid3d: ...
-    def copyEdge(self, subentId: PyDb.SubentId, /) -> Entity: ...
-    def copyFace(self, subentId: PyDb.SubentId, /) -> Entity: ...
-    def createBox(self, xLen: float, yLen: float, zLen: float, /) -> None: ...
-    def createCone(self, height: float, bRadius: float, tRadius: float, /) -> None: ...
-    def createCylinder(self, height: float, radius: float, /) -> None: ...
+    def copyEdge(self, subentId: PyDb.SubentId, /) -> Entity:
+        """
+        This method copies the specified edge as an AutoCAD entity, which can be an AcDbLine,
+        AcDbCircle, AcDbArc, AcDbEllipse, or AcDbSpline. The properties of the resulting entity
+        (color, layer, linetype, lineweight) are set from the corresponding current document
+        settings. The calling application is responsible for the resulting entity (either appending
+        it to a database or deleting it when it is no longer needed).
+        """
+    def copyFace(self, subentId: PyDb.SubentId, /) -> Entity:
+        """
+        This method copies the specified face as an AutoCAD entity, which can be an AcDbRegion if
+        the face is planar, or otherwise will be an AcDbBody. A pointer to the newly created entity
+        is returned in newEntity. The properties of the resulting entity (color, layer, linetype,
+        lineweight) are set from the corresponding current document settings. The calling
+        application is responsible for the resulting entity (either appending it to a database or
+        deleting it when it is no longer needed). Due to the graphics dependency of the
+        AcDbSubentId object, this function is not applicable for the RealDWG SDK. The method
+        returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
+        acceptable.
+        """
+    def createBox(self, xLen: float, yLen: float, zLen: float, /) -> None:
+        """
+        This method is used for creating a box solid primitive with centroid at world origin. The
+        length, width, and height axes of the box are aligned with the WCS X, Y, and Z axes,
+        respectively. Returns Acad::eOk if box creation is successful. If xLen, yLen, or zLen are
+        smaller than 1e-6, then Acad::eOutOfRange will be returned. If the ShapeManager object
+        creation fails, then Acad::eGeneralModelingFailure will be returned.
+        """
+    def createCone(self, height: float, bRadius: float, tRadius: float, /) -> None:
+        """
+        This method is used for creating a cylinder or cone with the world origin being centered
+        about its diameter and positioned at half of the height. If xRadius and yRadius are the
+        same and topXRadius is zero, then a normal circular cone is created. If xRadius and yRadius
+        are not the same and topXRadius is zero, then an elliptical cone is created. Otherwise,
+        based on xRadius and yRadius values, a circular or elliptical tapered cylinder is created.
+        If xRadius and topXRadius are the same, then a cylinder is created. Otherwise, a cone is
+        created. yRadius determines whether the created cone or cylinder is circular or elliptical,
+        based on whether yRadius is equal to xRadius or not. The base of the frustum lies in the
+        WCS X-Y plane. The direction from the base of the frustum to the top will be in the
+        direction of the positive WCS Z axis. Returns Acad::eOk if frustum creation is successful.
+        If height, xRadius, yRadius, or topXRadius are smaller than 1e-6, then Acad::eOutOfRange
+        will be returned. If the ShapeManager object creation fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
+    def createCylinder(self, height: float, radius: float, /) -> None:
+        """
+        This method is used for creating a cylinder or cone with the world origin being centered
+        about its diameter and positioned at half of the height. If xRadius and yRadius are the
+        same and topXRadius is zero, then a normal circular cone is created. If xRadius and yRadius
+        are not the same and topXRadius is zero, then an elliptical cone is created. Otherwise,
+        based on xRadius and yRadius values, a circular or elliptical tapered cylinder is created.
+        If xRadius and topXRadius are the same, then a cylinder is created. Otherwise, a cone is
+        created. yRadius determines whether the created cone or cylinder is circular or elliptical,
+        based on whether yRadius is equal to xRadius or not. The base of the frustum lies in the
+        WCS X-Y plane. The direction from the base of the frustum to the top will be in the
+        direction of the positive WCS Z axis. Returns Acad::eOk if frustum creation is successful.
+        If height, xRadius, yRadius, or topXRadius are smaller than 1e-6, then Acad::eOutOfRange
+        will be returned. If the ShapeManager object creation fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     @overload
     def createExtrudedSolid(
         self,
@@ -26385,7 +26541,14 @@ class Solid3d(PyDb.Entity):
         directionVec: PyGe.Vector3d,
         sweepOptions: PyDb.SweepOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid by sweeping a planar curve, region, or planar surface in the direction of
+        the given vector using a distance equal to the length of the vector. Optional parameters,
+        such as draft angle, may be set through the sweepOptions parameter. Returns Acad::eOk upon
+        successful creation, Acad::eInvalidInput if given data fails validation, or Acad::eFail if
+        the solid cannot be created.
+        """
     @overload
     def createExtrudedSolid(
         self,
@@ -26394,7 +26557,14 @@ class Solid3d(PyDb.Entity):
         directionVec: PyGe.Vector3d,
         sweepOptions: PyDb.SweepOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid by sweeping a planar curve, region, or planar surface in the direction of
+        the given vector using a distance equal to the length of the vector. Optional parameters,
+        such as draft angle, may be set through the sweepOptions parameter. Returns Acad::eOk upon
+        successful creation, Acad::eInvalidInput if given data fails validation, or Acad::eFail if
+        the solid cannot be created.
+        """
     @overload
     def createExtrudedSolid(
         self,
@@ -26403,16 +26573,61 @@ class Solid3d(PyDb.Entity):
         height: float,
         sweepOptions: PyDb.SweepOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid by sweeping a planar curve, region, or planar surface in the direction of
+        the given vector using a distance equal to the length of the vector. Optional parameters,
+        such as draft angle, may be set through the sweepOptions parameter. Returns Acad::eOk upon
+        successful creation, Acad::eInvalidInput if given data fails validation, or Acad::eFail if
+        the solid cannot be created.
+        """
     @overload
-    def createExtrudedSolid(self, *args) -> None: ...
-    def createFrom(self, val: PyDb.Entity, /) -> None: ...
+    def createExtrudedSolid(self, *args) -> None:
+        """
+        Creates a solid by sweeping a planar curve, region, or planar surface in the direction of
+        the given vector using a distance equal to the length of the vector. Optional parameters,
+        such as draft angle, may be set through the sweepOptions parameter. Returns Acad::eOk upon
+        successful creation, Acad::eInvalidInput if given data fails validation, or Acad::eFail if
+        the solid cannot be created.
+        """
+    def createFrom(self, val: PyDb.Entity, /) -> None:
+        """
+        This method will attempt to create a 3D solid from the given entity, pFromEntity, which
+        could be: an AcDbSurface or AcDbSubDMesh that encloses a volume, a closed curve with
+        thickness, a thick AcDbSolid, a thick AcDbTrace, or a polyline with constant width and
+        thickness.
+        """
     def createFrustum(
         self, height: float, xRadius: float, yRadius: float, topXRadius: float, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This method is used for creating a cylinder or cone with the world origin being centered
+        about its diameter and positioned at half of the height. If xRadius and yRadius are the
+        same and topXRadius is zero, then a normal circular cone is created. If xRadius and yRadius
+        are not the same and topXRadius is zero, then an elliptical cone is created. Otherwise,
+        based on xRadius and yRadius values, a circular or elliptical tapered cylinder is created.
+        If xRadius and topXRadius are the same, then a cylinder is created. Otherwise, a cone is
+        created. yRadius determines whether the created cone or cylinder is circular or elliptical,
+        based on whether yRadius is equal to xRadius or not. The base of the frustum lies in the
+        WCS X-Y plane. The direction from the base of the frustum to the top will be in the
+        direction of the positive WCS Z axis. Returns Acad::eOk if frustum creation is successful.
+        If height, xRadius, yRadius, or topXRadius are smaller than 1e-6, then Acad::eOutOfRange
+        will be returned. If the ShapeManager object creation fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     def createPyramid(
         self, height: float, sides: int, radius: float, topRadius: float = 0.0, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This method is used for creating a pyramid with the world origin being centered about its
+        base and positioned at half of the height. If radius and topRadius are the same, then a
+        prism is created. Otherwise, a pyramid is created. The base of the pyramid lies in the WCS
+        X-Y plane. The direction from the base of the pyramid to the top will be in the direction
+        of the positive WCS Z axis. Returns Acad::eOk if pyramid creation is successful. If height,
+        radius or topRadius are smaller than 1e-6, or sides is smaller than 3 or bigger than 64,
+        then Acad::eOutOfRange will be returned. If the ShapeManager object creation fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     @overload
     def createRevolvedSolid(
         self,
@@ -26423,7 +26638,14 @@ class Solid3d(PyDb.Entity):
         startAngle: float,
         revolveOptions: PyDb.RevolveOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid of revolution from a given curve, region, or planar surface and an axis of
+        revolution defined by a point and vector. The starting angle and revolve angles are also
+        specified. pRevEnt will be revolved counterclockwise about the axisDir vector. Returns
+        Acad::eOk upon successful creation, Acad::eInvalidInput if given data fails validation, or
+        Acad::eFail if the solid cannot be created.
+        """
     @overload
     def createRevolvedSolid(
         self,
@@ -26435,17 +26657,49 @@ class Solid3d(PyDb.Entity):
         startAngle: float,
         revolveOptions: PyDb.RevolveOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid of revolution from a given curve, region, or planar surface and an axis of
+        revolution defined by a point and vector. The starting angle and revolve angles are also
+        specified. pRevEnt will be revolved counterclockwise about the axisDir vector. Returns
+        Acad::eOk upon successful creation, Acad::eInvalidInput if given data fails validation, or
+        Acad::eFail if the solid cannot be created.
+        """
     @overload
-    def createRevolvedSolid(self, *args) -> None: ...
+    def createRevolvedSolid(self, *args) -> None:
+        """
+        Creates a solid of revolution from a given curve, region, or planar surface and an axis of
+        revolution defined by a point and vector. The starting angle and revolve angles are also
+        specified. pRevEnt will be revolved counterclockwise about the axisDir vector. Returns
+        Acad::eOk upon successful creation, Acad::eInvalidInput if given data fails validation, or
+        Acad::eFail if the solid cannot be created.
+        """
     def createSculptedSolid(
         self, limitingBodies: list[PyDb.Entity], limitingFlags: list[int], /
-    ) -> None: ...
-    def createSphere(self, radius: float, /) -> None: ...
+    ) -> None:
+        """
+        This method will attempt to create a 3D solid by trimming and / or extending the given
+        surfaces and 3d solids, which form an enclosed volume.
+        """
+    def createSphere(self, radius: float, /) -> None:
+        """
+        This method is used for creating a sphere with centroid at world origin and radius radius.
+        Returns Acad::eOk if this method succeeds. If radius is smaller than 1e-6, then
+        Acad::eOutOfRange will be returned. If the ShapeManager object creation fails, then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     @overload
     def createSweptSolid(
         self, pSweepEnt: PyDb.Entity, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a swept solid by sweeping a face (faceSubentId) along the path pPathEnt. Optional
+        parameters, such as draft angle, may be set through the sweepOptions paramater. The default
+        alignment for AcDbSweepOptions is kNoAlignment. You must set the alignment to
+        kAlignSweepEntityToPath before calling this function. Returns Acad::eOk upon successful
+        creation. Returns Acad::eInvalidInput if given data fails validation. Returns Acad::eFail
+        if solid cannot be created.
+        """
     @overload
     def createSweptSolid(
         self,
@@ -26454,11 +26708,45 @@ class Solid3d(PyDb.Entity):
         pPathEnt: PyDb.Entity,
         sweepOptions: PyDb.SweepOptions,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a swept solid by sweeping a face (faceSubentId) along the path pPathEnt. Optional
+        parameters, such as draft angle, may be set through the sweepOptions paramater. The default
+        alignment for AcDbSweepOptions is kNoAlignment. You must set the alignment to
+        kAlignSweepEntityToPath before calling this function. Returns Acad::eOk upon successful
+        creation. Returns Acad::eInvalidInput if given data fails validation. Returns Acad::eFail
+        if solid cannot be created.
+        """
     @overload
-    def createSweptSolid(self, *args) -> None: ...
-    def createTorus(self, majorRadius: float, minorRadius: float, /) -> None: ...
-    def createWedge(self, xLen: float, yLen: float, zLen: float, /) -> None: ...
+    def createSweptSolid(self, *args) -> None:
+        """
+        Creates a swept solid by sweeping a face (faceSubentId) along the path pPathEnt. Optional
+        parameters, such as draft angle, may be set through the sweepOptions paramater. The default
+        alignment for AcDbSweepOptions is kNoAlignment. You must set the alignment to
+        kAlignSweepEntityToPath before calling this function. Returns Acad::eOk upon successful
+        creation. Returns Acad::eInvalidInput if given data fails validation. Returns Acad::eFail
+        if solid cannot be created.
+        """
+    def createTorus(self, majorRadius: float, minorRadius: float, /) -> None:
+        """
+        This method is used for creating a torus with centroid at the WCS origin and using the WCS
+        Z axis as the axis of rotational symmetry for the torus. majorRadius specifies the radius
+        of the torus and minorRadius specifies the radius of the tube. majorRadius can have
+        positive or negative values but cannot be zero. The minorRadius value cannot be zero. If
+        majorRadius has a negative value, then minorRadius should have a larger value than the
+        absolute value of majorRadius. Returns Acad::eOk if this method succeeds. If the
+        minorRadius < 1e-6, or (absolute value of the majorRadius)< 1e-6, or minorRadius <=
+        majorRadius + 1e-6, then Acad::eOutOfRange will be returned. If the ShapeManager object
+        creation fails, then Acad::eGeneralModelingFailure will be returned.
+        """
+    def createWedge(self, xLen: float, yLen: float, zLen: float, /) -> None:
+        """
+        This method is used for creating a wedge solid with center at the WCS origin. The length,
+        width, and height of the wedge are aligned with the WCS's X, Y, and Z axes, respectively.
+        Returns Acad::eOk if this method succeeds. If xLen, xLen, or zLen are smaller than 1e-6,
+        then Acad::eOutOfRange will be returned. If the ShapeManager object creation fails then
+        Acad::eGeneralModelingFailure will be returned.
+        """
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -26473,16 +26761,56 @@ class Solid3d(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def extrude(self, region: PyDb.Region, height: float, taperAngle: float = 0.0, /) -> None: ...
+    def extrude(self, region: PyDb.Region, height: float, taperAngle: float = 0.0, /) -> None:
+        """
+        Creates a solid by extruding pRegion, a distance of height with a taper angle of taper. The
+        extrusion direction is along the normal of the region if the height is positive. taper
+        should be between half pi and -half pi. If the absolute value of taper < 1e-6, then the
+        taper angle is set to 0. If taper is nonzero, the region should only have lines, circles,
+        and circular arcs that join together smoothly (equal tangents at the points of connection).
+        The region should not have self-intersections. Any self-intersections caused by the sweep
+        will not be corrected. For more information, see the EXTRUDE command in the AutoCAD Command
+        Reference. Returns Acad::eOk if this method succeeds. If height <= 1e-6 or abs(taper) >=
+        (PI/2) - (1e-6), then Acad::eOutOfRange will be returned. If region == NULL or the region
+        has no ShapeManager object, then Acad::eInvalidInput is returned. If the ShapeManager
+        object creation fails, then Acad::eGeneralModelingFailure will be returned.
+        """
     def extrudeAlongPath(
         self, region: PyDb.Region, path: PyDb.Curve, taperAngle: float = 0.0, /
-    ) -> None: ...
-    def extrudeFaces(
-        self, subentIds: list[PyDb.SubentId], height: float, taper: float, /
-    ) -> None: ...
-    def extrudeFacesAlongPath(
-        self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Creates a solid by extruding region along the path curve. path must be an AcDbLine,
+        AcDbArc, AcDbCircle, AcDbEllipse, AcDbSpline, AcDb2dPolyline, or a non-spline fit
+        AcDb3dPolyline. path should not have self-intersections and, preferably, should not have
+        high curvature areas. If one of the endpoints of the path is not on the plane of the
+        region, then the path will be moved to make this true. taperAngle should be between 0.5 pi
+        and -0.5 pi. If the absolute value of taperAngle is less than 1e-6, the taper angle is set
+        to 0. If the path entity is closed, the taper angle parameter is ignored. Returns Acad::eOk
+        if successful. If the absolute value of taperAngle is greater than or equal to (pi/2) -
+        (1e-6), Acad::eOutOfRange is returned. If either path or region is null, or it the region
+        has self-intersections or path is not an acceptable type of AcDbCurve, then
+        Acad::eInvalidInput is returned. If the ShapeManager object creation for the extruded solid
+        fails, then Acad::eGeneralModelingFailure is returned. For more information, see the
+        EXTRUDE command in the AutoCAD Command Reference.
+        """
+    def extrudeFaces(self, subentIds: list[PyDb.SubentId], height: float, taper: float, /) -> None:
+        """
+        This method extrudes faces of a solid by a distance of height with a taper angle of taper.
+        The extrusion direction is along the normal of each face if the height is positive or in
+        the opposite direction if the height is negative. If the absolute value of taper < 1e-6,
+        then a taper angle of 0.0 will be used for the extrusion. If taper is nonzero, each face
+        should only have edges join together smoothly (equal tangents at the points of connection).
+        """
+    def extrudeFacesAlongPath(self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /) -> None:
+        """
+        This method extrudes the given faces along the given path curve entity, which must be an
+        AcDbLine, AcDbArc, AcDbCircle, AcDbEllipse, AcDbSpline, AcDb2dPolyline, or a non-spline fit
+        AcDb3dPolyline. The path should not have self-intersections and, preferably, should not
+        have high curvature areas. If one of the end points of the path is not on the plane of the
+        region, then the path will be moved to make this true. Returns Acad::eOk if successful. If
+        path is Null, or path is not an acceptable type of AcDbCurve, this method returns
+        Acad::eInvalidInput.
+        """
     def filletEdges(
         self,
         edgeSubentIds: list[PyDb.SubentId],
@@ -26490,35 +26818,149 @@ class Solid3d(PyDb.Entity):
         startSetback: list[float],
         endSetback: list[float],
         /,
-    ) -> None: ...
-    def getArea(self, /) -> float: ...
-    def getMassProp(self, /) -> tuple: ...
-    def getSection(self, plane: PyGe.Plane, /) -> Region: ...
-    def getSlice(self, plane: PyGe.Plane | PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d: ...
-    def getSubentColor(self, faceSubentId: PyDb.SubentId, /) -> Color: ...
-    def getSubentMaterial(self, faceSubentId: PyDb.SubentId, /) -> ObjectId: ...
-    def imprintEntity(self, pEntity: PyDb.Entity, /) -> None: ...
-    def isNull(self, /) -> bool: ...
-    def numChanges(self, /) -> int: ...
-    def offsetBody(self, offsetDistance: float, /) -> None: ...
-    def offsetFaces(
-        self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /
-    ) -> None: ...
+    ) -> None:
+        """
+        This method creates rounded fillets the edges of a solid. Returns Acad::eOk if successful.
+        May also return Acad::eFailedToSetEdgeRounds, Acad::eFailedToSetVertexRounds,
+        Acad::eNoConnectedBlendSet, or Acad::eFailedToBlend.
+        """
+    def getArea(self, /) -> float:
+        """
+        Returns with area set to the surface area of the solid. The area will be in square drawing
+        units. Returns Acad::eOk if successful. If the solid has no ShapeManager object, then
+        Acad::eInvalidInput is returned.
+        """
+    def getMassProp(self, /) -> tuple:
+        """
+        This method is used for getting the volume properties of the solid (for example, mass
+        properties with density == 1.0). All the properties are evaluated in the WCS. Returns
+        Acad::eOk if successful. If there is an error in the ShapeManager modeler, then
+        Acad::eGeneralModelingFailure is returned.
+        """
+    def getSection(self, plane: PyGe.Plane, /) -> Region:
+        """
+        This function creates an AcDbRegion entity that represents the intersection of plane with
+        the solid, and sets sectionRegion to point to the newly created region entity. Returns
+        Acad::eOk if successful. If the solid has no ShapeManager object, or the plane doesn't
+        intersect the solid, or the intersection is not a valid region (for example, it intersects
+        at a point, along a bounding face of the solid, and so on), then sectionRegion will be set
+        to NULL and Acad::eOk will be returned. If there is insufficient memory to create the new
+        AcDbRegion, then Acad::eOutOfMemory is returned. If there is an error in the ShapeManager
+        modeler, then Acad::eGeneralModelingFailure is returned.
+        """
+    def getSlice(self, plane: PyGe.Plane | PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d:
+        """
+        Slices the solid with plane and sets the solid to be the portion on the positive normal
+        side plane. If getNegHalfToo == Adesk::kTrue, then a new AcDb3dSolid object is created.
+        """
+    def getSubentColor(self, faceSubentId: PyDb.SubentId, /) -> Color:
+        """
+        Retrieves the color of the specified subentity. Returns Acad::eOk on success, or
+        Acad::eNotApplicable if no color is explicitly assigned.
+        """
+    def getSubentMaterial(self, faceSubentId: PyDb.SubentId, /) -> ObjectId:
+        """
+        This function returns the material of the specified subentity. Returns Acad::eOk on
+        success, or Acad::eNotApplicable if the subentity does not have an explicitly assigned
+        material.
+        """
+    def imprintEntity(self, pEntity: PyDb.Entity, /) -> None:
+        """
+        This method intersects the given entity with the solid and imprints their intersection
+        graph onto the solid. If a closed loop of new edges is created, a new face is made. An open
+        loop of edges can be added as a spur to an existing loop on a face or as a slit in the
+        face. The given entity must be a kind of AcDbCurve, AcDb3dSolid, AcDbBody, AcDbRegion,
+        AcDbTrace, AcDbSolid, or AcDbFace. imprintEntity() returns Acad::eOk if successful, or
+        Acad::eInvalidInput if the given entity is not a kind of AcDbCurve, AcDb3dSolid, AcDbBody,
+        AcDbRegion, AcDbTrace, AcDbSolid, or AcDbFace.
+        """
+    def isNull(self, /) -> bool:
+        """
+        Returns Adesk::kTrue if the solid does not have a ShapeManager object within itself.
+        """
+    def numChanges(self, /) -> int:
+        """
+        Returns the number of changes that have occurred to this solid since it was first created.
+        """
+    def offsetBody(self, offsetDistance: float, /) -> None:
+        """
+        This method offsets all faces of the solid by the given distance. Faces with surfaces that
+        cannot be offset are removed and the solid is healed, if possible.
+        """
+    def offsetFaces(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None:
+        """
+        Offsets the given faces of the solid by the given distance. Faces with surfaces that cannot
+        be offset are removed and the solid is healed, if possible.
+        """
     def projectOnToSolid(
         self, pEntityToProject: PyDb.Entity, projectionDirection: PyGe.Vector3d, /
-    ) -> list[PyDb.Entity]: ...
-    def recordHistory(self, /) -> bool: ...
-    def removeFaces(self, faceSubentIds: list[PyDb.SubentId], /) -> None: ...
-    def separateBody(self, /) -> list[PyDb.Solid3d]: ...
-    def setRecordHistory(self, val: bool, /) -> None: ...
-    def setShowHistory(self, val: bool, /) -> None: ...
-    def setSubentColor(self, faceSubentId: PyDb.SubentId, clr: PyDb.AcCmColor, /) -> None: ...
-    def setSubentMaterial(self, faceSubentId: PyDb.SubentId, id: PyDb.ObjectId, /) -> None: ...
-    def shellBody(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None: ...
-    def showHistory(self, /) -> bool: ...
+    ) -> list[PyDb.Entity]:
+        """
+        This method creates non-database resident entities by projecting the given entity along the
+        projection direction to this 3D solid.
+        """
+    def recordHistory(self, /) -> bool:
+        """
+        Returns whether the solid will record operations supported by solid history.
+        """
+    def removeFaces(self, faceSubentIds: list[PyDb.SubentId], /) -> None:
+        """
+        This method removes the given faces, growing the adjacent faces to fill the gaps.
+        """
+    def separateBody(self, /) -> list[PyDb.Solid3d]:
+        """
+        This method separates the solid into a list of solids representing the additional disjoint
+        volumes. This solid is reduced to a solid with one volume. The calling application is
+        responsible for the resulting entities (either appending them to a database or deleting
+        them when they are no longer needed). When the calling application closes this AcDb3dSolid,
+        the resulting solid will be committed to the database. So, if the other solids are not
+        appended to the database, you will lose some data. Returns Acad::eOk if successful;
+        otherwise, returns Acad::eGeneralModelingFailure.
+        """
+    def setRecordHistory(self, val: bool, /) -> None:
+        """
+        Set or unset the option to record history. Returns Acad::eOk if the operation succeeded.
+        May return an open failure on querying the solid's history object.
+        """
+    def setShowHistory(self, val: bool, /) -> None:
+        """
+        Returns Acad::eOk when successful. May return an open failure on querying the solid's
+        history object. Returns Acad::eNullObjectPointer if there is no history.
+        """
+    def setSubentColor(self, faceSubentId: PyDb.SubentId, clr: PyDb.AcCmColor, /) -> None:
+        """
+        Sets the color of the face or edge subentity of the AcDb3dSolid to the specified AutoCAD
+        color.
+        """
+    def setSubentMaterial(self, faceSubentId: PyDb.SubentId, id: PyDb.ObjectId, /) -> None:
+        """
+        This function sets a material on a specified subentity. You can remove a previously
+        assigned material by providing a null objectId for the matId parameter. Returns Acad::eOk
+        on success.
+        """
+    def shellBody(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None:
+        """
+        Changes the solid into a thin-walled solid shell with the faces offset to the outside of
+        the solid when given positive offset distances, and to the inside when given negative
+        distances. Faces with surfaces that cannot be offset by the thickness are removed and the
+        resulting wound healed by the surrounding face surfaces. Mergeable edges and vertices on
+        the supplied faces will be merged out. Isolated edges in tweaked faces and neighboring
+        faces may degenerate to a point and will be removed, but removal of a loop or face and
+        insertion of edges and other topology changes are not permitted.
+        """
+    def showHistory(self, /) -> bool:
+        """
+        Returns whether items in the history should be drawn when the sysvar SHOWHIST is 1.
+        """
     def stlOut(
         self, fileName: str, asciiFormat: bool, maxSurfaceDeviation: float = 0.0, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Writes out a Stereo Lithography (STL) representation of this solid to a file with the name
+        fileName. If asciiFormat'=='Adesk::kTrue then the STL file format will be ASCII text;
+        otherwise, it will be a binary format file. Any pre-existing fileName file will be
+        overwritten.
+        """
     def taperFaces(
         self,
         faceSubentIds: list[PyDb.SubentId],
@@ -26526,10 +26968,17 @@ class Solid3d(PyDb.Entity):
         draftVector: PyGe.Vector3d,
         draftAngle: float,
         /,
-    ) -> None: ...
-    def transformFaces(
-        self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Tapers the given faces of the solid about the given base point and supplied draft vector by
+        a given draft angle. The base point and draft vector define a draft plane about which faces
+        are tapered. Any face lying in the draft plane will not be modified.
+        """
+    def transformFaces(self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /) -> None:
+        """
+        Transforms the given faces of the solid by applying the transformation matrix to rotate and
+        or move the faces.
+        """
     def usesGraphicsCache(self, /) -> bool: ...
 
 class SortentsTable(PyDb.DbObject):
@@ -28317,60 +28766,183 @@ class SweepOptions:
         default constructor for this class assigns default values to these options.
         """
     def __reduce__(self, /) -> Any: ...
-    def align(self, /) -> SweepAlignOption: ...
-    def alignAngle(self, /) -> float: ...
-    def alignStart(self, /) -> bool: ...
-    def bank(self, /) -> bool: ...
-    def basePoint(self, /) -> PyGe.Point3d: ...
-    def checkIntersections(self, /) -> bool: ...
-    def checkPathCurve(
-        self, pPathEnt: PyDb.Entity, displayErrorMessages: bool = False, /
-    ) -> None: ...
+    def align(self, /) -> SweepAlignOption:
+        """
+        Gets the flag indicating which alignment option is in use.
+        """
+    def alignAngle(self, /) -> float:
+        """
+        Returns the align angle.
+        """
+    def alignStart(self, /) -> bool:
+        """
+        Returns a Boolean indicating whether to align to the start or the end of the curve.
+        """
+    def bank(self, /) -> bool:
+        """
+        Returns a Boolean indicating whether the sweep face or curve will be banked along the sweep
+        path.
+        """
+    def basePoint(self, /) -> PyGe.Point3d:
+        """
+        Returns the base point for alignment.
+        """
+    def checkIntersections(self, /) -> bool:
+        """
+        Returns the state of the self-intersection check option. WarningTurning off this check may
+        result in the creation of a self-intersecting surface or solid.
+        """
+    def checkPathCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool = False, /) -> None:
+        """
+        Checks whether path curve is valid for a sweep operation. This function is called by
+        createSweptSurface() and createSweptSolid(), so it is not necessary for an application to
+        call this function. Returns Acad::eOk if curves are valid and Acad::eInvalidInput
+        otherwise.
+        """
     def checkSweepCurve(
         self, pPathEnt: PyDb.Entity, displayErrorMessages: bool = False, /
-    ) -> tuple[PyDb.Planarity, PyGe.Point3d, PyGe.Vector3d, bool, float]: ...
-    def draftAngle(self, /) -> float: ...
-    def endDraftDist(self, /) -> float: ...
-    def getPathEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool: ...
-    def getSweepEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool: ...
-    def miterOption(self, /) -> SweepMiterOption: ...
-    def scaleFactor(self, /) -> float: ...
-    def setAlign(self, val: PyDb.SweepAlignOption, /) -> None: ...
-    def setAlignAngle(self, val: float, /) -> None: ...
-    def setAlignStart(self, val: bool, /) -> None: ...
-    def setBank(self, val: bool, /) -> None: ...
-    def setBasePoint(self, pt: PyGe.Point3d, /) -> None: ...
-    def setCheckIntersections(self, val: bool, /) -> None: ...
-    def setDraftAngle(self, val: float, /) -> None: ...
-    def setEndDraftDist(self, val: float, /) -> None: ...
-    def setMiterOption(self, val: PyDb.SweepMiterOption, /) -> None: ...
+    ) -> tuple[PyDb.Planarity, PyGe.Point3d, PyGe.Vector3d, bool, float]:
+        """
+        This function checks for a valid sweep entity. It returns the planarity of the input
+        entity. If planarity is kPlanar, then pnt and vec are set to a point on the plane and the
+        plane normal of the entity. If planarity is kLinear, then pnt and vec are set to a point on
+        the line and the line direction of the entity.
+        """
+    def draftAngle(self, /) -> float:
+        """
+        Gets the draft angle. This is the angle by which profile will taper as it is swept. The
+        default value of this option is 0. Returns the draft angle in radians.
+        """
+    def endDraftDist(self, /) -> float:
+        """
+        Returns the end draft distance. The default value of this option is 0.
+        """
+    def getPathEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool:
+        """
+        Returns the coordinate system at the start/end of the path curve.
+        """
+    def getSweepEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool:
+        """
+        This function returns the coordinate system for the sweep entity.
+        """
+    def miterOption(self, /) -> SweepMiterOption:
+        """
+        Returns the miter options.
+        """
+    def scaleFactor(self, /) -> float:
+        """
+        Returns the scale factor.,
+        """
+    def setAlign(self, val: PyDb.SweepAlignOption, /) -> None:
+        """
+        Sets the align option.
+        """
+    def setAlignAngle(self, val: float, /) -> None:
+        """
+        Sets the align angle.
+        """
+    def setAlignStart(self, val: bool, /) -> None:
+        """
+        Sets whether to align at the start or the end of the curve.
+        """
+    def setBank(self, val: bool, /) -> None:
+        """
+        Sets a flag indicating whether the sweep face or curve will be banked along the sweep path.
+        """
+    def setBasePoint(self, pt: PyGe.Point3d, /) -> None:
+        """
+        Sets the base point for alignment.
+        """
+    def setCheckIntersections(self, val: bool, /) -> None:
+        """
+        Enables or disabled the self-intersection check option. WarningTurning off this check may
+        result in the creation of a self-intersecting surface or solid.
+        """
+    def setDraftAngle(self, val: float, /) -> None:
+        """
+        Sets the draft angle. This is the angle by which the profile will taper as it is swept. The
+        default value of this option is 0.
+        """
+    def setEndDraftDist(self, val: float, /) -> None:
+        """
+        Sets the end draft distance. The default value of this option is 0.
+        """
+    def setMiterOption(self, val: PyDb.SweepMiterOption, /) -> None:
+        """
+        Sets the miter options.
+        """
     @overload
-    def setPathEntityTransform(self, mat: PyGe.Matrix3d, /) -> None: ...
+    def setPathEntityTransform(self, mat: PyGe.Matrix3d, /) -> None:
+        """
+        Sets the coordinate system at the start/end of the path curve.
+        """
     @overload
-    def setPathEntityTransform(self, pPathEnt: PyDb.Entity, /) -> None: ...
+    def setPathEntityTransform(self, pPathEnt: PyDb.Entity, /) -> None:
+        """
+        Sets the coordinate system at the start/end of the path curve.
+        """
     @overload
-    def setPathEntityTransform(
-        self, pPathEnt: PyDb.Entity, displayErrorMessages: bool, /
-    ) -> None: ...
+    def setPathEntityTransform(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool, /) -> None:
+        """
+        Sets the coordinate system at the start/end of the path curve.
+        """
     @overload
-    def setPathEntityTransform(self, *args) -> None: ...
-    def setScaleFactor(self, val: float, /) -> None: ...
-    def setStartDraftDist(self, val: float, /) -> None: ...
+    def setPathEntityTransform(self, *args) -> None:
+        """
+        Sets the coordinate system at the start/end of the path curve.
+        """
+    def setScaleFactor(self, val: float, /) -> None:
+        """
+        Sets the scale factor for the sweep operation.
+        """
+    def setStartDraftDist(self, val: float, /) -> None:
+        """
+        Sets start draft distance. The default value of this option is 0.
+        """
     @overload
-    def setSweepEntityTransform(self, mat: PyGe.Matrix3d, /) -> None: ...
+    def setSweepEntityTransform(self, mat: PyGe.Matrix3d, /) -> None:
+        """
+        Sets the coordinate system transformation matrix to be applied to the sweep entity.
+        """
     @overload
-    def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], /) -> None: ...
+    def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], /) -> None:
+        """
+        Sets the coordinate system transformation matrix to be applied to the sweep entity.
+        """
     @overload
     def setSweepEntityTransform(
         self, sweepEntities: list[PyDb.Entity], displayErrorMessages: bool, /
-    ) -> None: ...
+    ) -> None:
+        """
+        Sets the coordinate system transformation matrix to be applied to the sweep entity.
+        """
     @overload
-    def setSweepEntityTransform(self, *args) -> None: ...
-    def setTwistAngle(self, val: float, /) -> None: ...
-    def setTwistRefVec(self, vec: PyGe.Vector3d, /) -> None: ...
-    def startDraftDist(self, /) -> float: ...
-    def twistAngle(self, /) -> float: ...
-    def twistRefVec(self, /) -> PyGe.Vector3d: ...
+    def setSweepEntityTransform(self, *args) -> None:
+        """
+        Sets the coordinate system transformation matrix to be applied to the sweep entity.
+        """
+    def setTwistAngle(self, val: float, /) -> None:
+        """
+        Sets the twist angle. This is the angle by which the profile will be twisted as it is
+        swept. The default value of this option is 0.
+        """
+    def setTwistRefVec(self, vec: PyGe.Vector3d, /) -> None:
+        """
+        Sets the reference vector for controlling twist.
+        """
+    def startDraftDist(self, /) -> float:
+        """
+        Returns the start draft distance. The default value of this option is 0.
+        """
+    def twistAngle(self, /) -> float:
+        """
+        Gets the twist angle. This is the angle by which the profile will be twisted as it is
+        swept. The default value of this option is 0. Returns the twist angle in radians.
+        """
+    def twistRefVec(self, /) -> PyGe.Vector3d:
+        """
+        Returns the reference vector for controlling twist.
+        """
 
 class SweptSurface(PyDb.Surface):
     def __init__(
