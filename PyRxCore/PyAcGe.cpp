@@ -45,6 +45,14 @@ inline static double roundVectorComponentToGTOL(double value)
     return std::round(value / precision) * precision;
 }
 
+inline static std::size_t AcGeScale2dHash(const AcGeScale2d& p)
+{
+    std::size_t seed = 0;
+    boost::hash_combine(seed, roundPointComponentToGTol(p.sx));
+    boost::hash_combine(seed, roundPointComponentToGTol(p.sy));
+    return seed;
+}
+
 inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
@@ -58,6 +66,15 @@ inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p)
     std::size_t seed = 0;
     boost::hash_combine(seed, roundVectorComponentToGTOL(p.x));
     boost::hash_combine(seed, roundVectorComponentToGTOL(p.y));
+    return seed;
+}
+
+inline static std::size_t AcGeScale3dHash(const AcGeScale3d& p)
+{
+    std::size_t seed = 0;
+    boost::hash_combine(seed, roundPointComponentToGTol(p.sx));
+    boost::hash_combine(seed, roundPointComponentToGTol(p.sy));
+    boost::hash_combine(seed, roundPointComponentToGTol(p.sz));
     return seed;
 }
 
@@ -159,6 +176,7 @@ static void makePyGeScale2dWrapper()
         .def("__repr__", &AcGeScale2dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale2dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeScale2dSetItem, DS.ARGS({ "idx: int","val: float" }))
+        .def("__hash__", &AcGeScale2dHash, DS.ARGS())
         .def("__len__", &Scale2dLen, DS.ARGS())
         ;
 }
@@ -1015,6 +1033,7 @@ static void makePyGeScale3dWrapper()
         .def("__repr__", &AcGeScale3dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale3dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGeScale3dSetItem, DS.ARGS({ "idx: int", "val: float" }))
+        .def("__hash__", &AcGeScale3dHash, DS.ARGS())
         .def("__len__", &AcGeScale3dLen, DS.ARGS())
         ;
 }
