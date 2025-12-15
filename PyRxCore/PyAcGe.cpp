@@ -397,9 +397,17 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
 
 static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
 {
-    std::string buffer = "[";
-    for (const auto& s : src)
-        buffer.append(std::format("{}.Point2d({:.14f},{:.14f})", PyGeNamespace, s.x, s.y));
+    if (src.empty())
+        return "[]";
+    std::string buffer;
+    constexpr const std::string_view fmt = "{}.Point2d({:.14f},{:.14f})";
+    buffer.reserve(src.size() * (fmt.size()+1));
+    buffer.append("[");
+    for (size_t idx = 0, n = src.size(); idx < n; ++idx) {
+        buffer.append(std::format(fmt, PyGeNamespace, src[idx].x, src[idx].y));
+        if (idx + 1 < n)
+            buffer.append(",");
+    }
     buffer.append("]");
     return buffer;
 }
@@ -1328,9 +1336,17 @@ static bool PyGePoint3dIsPlanar(const PyGePoint3dArray& src)
 
 static std::string PyGePoint3dArrayRepr(const PyGePoint3dArray& src)
 {
-    std::string buffer = "[";
-    for (const auto& p : src)
-        buffer.append(std::format("{}.Point3d({:.14f},{:.14f},{:.14f})", PyGeNamespace, p.x, p.y, p.z));
+    if (src.empty())
+        return "[]";
+    std::string buffer;
+    constexpr const std::string_view fmt = "{}.Point3d({:.14f},{:.14f},{:.14f})";
+    buffer.reserve(src.size() * (fmt.size() + 1));
+    buffer.append("[");
+    for (size_t idx = 0, n = src.size(); idx < n; ++idx) {
+        buffer.append(std::format(fmt, PyGeNamespace, src[idx].x, src[idx].y, src[idx].z));
+        if (idx + 1 < n)
+            buffer.append(",");
+    }
     buffer.append("]");
     return buffer;
 }
