@@ -31,9 +31,17 @@ def OnPyUnloadDwg():
 
 # CmdFlags is optional, default is modal
 @Ap.Command()
-def mycommand(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+def mycommand():
     try:
         print("Hello world!")
+    except Exception as err:
+        traceback.print_exception(err)
+        
+# CmdFlags is optional, default is modal
+@Ap.Command("mycommand2", Ap.CmdFlags.TRANSPARENT)
+def foo(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+    try:
+        print("Hello world too!")
     except Exception as err:
         traceback.print_exception(err)
 
