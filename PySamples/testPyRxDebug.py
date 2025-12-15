@@ -1,17 +1,19 @@
 import traceback
 
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 # uncomment to set a break point manually
 # import debugpy
 
-print("added command = pystartdebug")
 print("added command = pytestdebug")
 
-# run the built-in command PYDEBUG
+# 1- run the built-in command PYDEBUG, 
+# 2- attach from VS code
+# 3- setup the break point in pytestdebug
+# 4- run pytestdebug
 
-
-def PyRxCmd_doit():
+@Ap.Command()
+def pytestdebug():
     try:
         # uncomment to set a break point manually
         # debugpy.breakpoint()
