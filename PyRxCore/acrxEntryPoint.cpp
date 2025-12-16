@@ -78,16 +78,6 @@ public:
     virtual AcRx::AppRetCode On_kQuitMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kQuitMsg(pkt);
-        wxTheApp->OnExit();
-        return (retCode);
-    }
-
-    virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
-    {
-        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
-        acdbModelerEnd();
-        acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
-        acedRemoveWatchWinMsg(PyWatchWinMsgFn);
         try
         {
             if (PyRxApp::instance().funcNameMap.size() != 0)
@@ -105,6 +95,16 @@ public:
             PyRxApp::instance().uninit();
         }
         catch (...) { /*@exit*/ }
+        return (retCode);
+    }
+
+    virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt) override
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
+        acdbModelerEnd();
+        acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
+        acedRemoveWatchWinMsg(PyWatchWinMsgFn);
+        
         return (retCode);
     }
 
