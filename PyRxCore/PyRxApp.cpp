@@ -48,6 +48,7 @@ bool WxRxApp::OnInit()
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
+    wxTheApp->SetExitOnFrameDelete(false);
     if (Init_wxPython() == false)
         return false;
     {
@@ -170,7 +171,6 @@ static bool initWxApp()
 
 static bool uninitWxApp()
 {
-    wxTheApp->OnExit();
     // Issue, if the user has a global python variable, then Py_FinalizeEx barfs.
     // Assume this is always the case. Since PyRx is locked, just let it leak into the process
     // ARX, BRX, ZRX have a clean call stack on exit.
