@@ -177,7 +177,9 @@ static bool uninitWxApp()
 {
     wxXmlResource::Get()->ClearHandlers();
     delete wxXmlResource::Get();
+#ifdef GRXAPP
     wxEntryCleanup();
+#endif
     return true;
 }
 
