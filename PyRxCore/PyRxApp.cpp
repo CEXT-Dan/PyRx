@@ -20,6 +20,7 @@
 
 #include "wx/setup.h"
 #include "wx/wx.h"
+#include <wx/xrc/xmlres.h>
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -53,9 +54,11 @@ bool WxRxApp::OnInit()
         return false;
     {
         // Hold a ref so wxPython wx.App.Get() returns our app 
-         PyAutoLockGIL lock;
-         wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
+        PyAutoLockGIL lock;
+        wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
     }
+    wxXmlInitResourceModule();
+    wxXmlResource::Get()->InitAllHandlers();
     return true;
 }
 
@@ -68,6 +71,7 @@ int WxRxApp::OnExit()
     {
         top->DissociateHandle();
         top->SetHWND(0);
+        top->Destroy();
     }
     wxTopLevelWindows.clear();
     wxPyEndAllowThreads(m_mainTState);
@@ -76,7 +80,7 @@ int WxRxApp::OnExit()
 
 void WxRxApp::WakeUpIdle()
 {
-    if (auto hwnd = adsw_acadMainWnd(); hwnd != 0)
+    if (auto hwnd = adsw_acadMainWnd(); ::IsWindow(hwnd))
     {
         ::PostMessage(hwnd, WM_NULL, 0, 0);
     }
@@ -171,10 +175,9 @@ static bool initWxApp()
 
 static bool uninitWxApp()
 {
-    //PyGILState_Ensure();
-    //Py_FinalizeEx();
+    wxXmlResource::Get()->ClearHandlers();
+    delete wxXmlResource::Get();
     wxEntryCleanup();
-    PyAutoLockGIL::canLock = false;
     return true;
 }
 
