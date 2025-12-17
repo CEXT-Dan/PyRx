@@ -3,8 +3,6 @@
 #include "PyLispService.h"
 #include "PyRxContainers.h"
 
-//#define PYRX_CLEAN_EXIT
-
 enum class PyRxTestFlags : __int64
 {
     kPyTfNone = 0,
@@ -43,7 +41,6 @@ public:
     bool            Init_wxPython();
 private:
     PyThreadState* m_mainTState = nullptr;
-    PyObjectPtr m_wxapp;
 };
 wxDECLARE_APP(WxRxApp);
 
