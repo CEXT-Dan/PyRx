@@ -21,6 +21,8 @@
 #include "wx/setup.h"
 #include "wx/wx.h"
 #include <wx/xrc/xmlres.h>
+#include <wx/dynlib.h>
+
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -57,22 +59,14 @@ bool WxRxApp::OnInit()
         PyAutoLockGIL lock;
         wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
     }
-    wxXmlInitResourceModule();
-    wxXmlResource::Get()->InitAllHandlers();
     return true;
 }
 
 int WxRxApp::OnExit()
 {
-    wxTheApp->ProcessPendingEvents();
-    wxTheApp->ExitMainLoop();
     auto top = wxTheApp->GetTopWindow();
     if (top != nullptr)
-    {
-        top->DissociateHandle();
         top->SetHWND(0);
-        top->Destroy();
-    }
     wxTopLevelWindows.clear();
     wxPyEndAllowThreads(m_mainTState);
     return 0;
@@ -173,12 +167,33 @@ static bool initWxApp()
     return false;
 }
 
+static bool hasWxXmlResourceModule()
+{
+    int found = 0;
+    wxDynamicLibraryDetailsArray modules = wxDynamicLibrary::ListLoaded();
+    for (size_t i = 0; i < modules.GetCount(); ++i)
+    {
+        const auto& name = modules[i].GetName();
+        if (name.Contains(_T("_xrc.cp")))
+            found++;
+        if (name.Contains(_T("_xml.cp")))
+            found++;
+        if (found == 2)
+            return true;
+    }
+    return false;
+}
+
 static bool uninitWxApp()
 {
-    wxXmlResource::Get()->ClearHandlers();
-    delete wxXmlResource::Get();
-#ifdef GRXAPP
+    wxTheApp->OnExit();
     wxEntryCleanup();
+#if defined(_GRXTARGET) && (_GRXTARGET >= 260)
+    if (hasWxXmlResourceModule())
+        wxExit();
+#elif defined(_GRXTARGET) && (_GRXTARGET < 260)
+    if (hasWxXmlResourceModule())
+        std::quick_exit(EXIT_SUCCESS);
 #endif
     return true;
 }
