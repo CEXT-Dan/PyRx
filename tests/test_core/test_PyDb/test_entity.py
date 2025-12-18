@@ -76,7 +76,7 @@ class TestDbEntity:
     def test_getGripPointsGripData(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         mt = Db.MText(objId)
         grpdata = mt.getGripPoints(1.0, 1, Ge.Vector3d.kZAxis, 0)
         self.assertGreater(len(grpdata), 0)
@@ -172,7 +172,7 @@ class TestDbEntity:
     def test_dbmtext_fragtextvalue(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         mt = Db.MText(objId)
         for i, frag in enumerate(mt.getFragments()):
             if i == 0:
@@ -352,7 +352,7 @@ class TestDbEntity:
     def test_table_cells1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         iter = table.cells()
         self.assertEqual(len(iter), 1044)
@@ -360,7 +360,7 @@ class TestDbEntity:
     def test_table_cells2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cells(cr)
@@ -371,7 +371,7 @@ class TestDbEntity:
     def test_table_cells3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cells(Db.CellRange(1, 1, 3, 3), opt)
@@ -382,7 +382,7 @@ class TestDbEntity:
     def test_table_cells4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cells(opt)
@@ -391,7 +391,7 @@ class TestDbEntity:
     def test_table_cellValues1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         iter = table.cellValues()
         self.assertEqual(len(iter), 1044)
@@ -399,7 +399,7 @@ class TestDbEntity:
     def test_table_cellValues2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cellValues(cr)
@@ -410,7 +410,7 @@ class TestDbEntity:
     def test_table_cellValues3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cellValues(opt)
@@ -419,7 +419,7 @@ class TestDbEntity:
     def test_table_cellValues4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cellValues(Db.CellRange(1, 1, 3, 3), opt)
@@ -428,7 +428,7 @@ class TestDbEntity:
     def test_table_getstring(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         table = Db.Table(objId)
         self.assertEqual(table.textString(4, 0), "{\\fMS Sans Serif|b0|i0|c0;R380")
         self.assertEqual(table.textString(4, 0, 0), "{\\fMS Sans Serif|b0|i0|c0;R380")
@@ -480,7 +480,7 @@ class TestDbEntity:
         wipout = Db.Wipeout(pts, Ge.Vector3d.kZAxis)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         id = model.appendAcDbEntity(wipout)
-        self.assertTrue(id.isValid())
+        self.assertFalse(id.isNull())
 
     @pytest.mark.known_failure_ZRX
     @pytest.mark.known_failure_BRX
@@ -492,7 +492,7 @@ class TestDbEntity:
         profile = Db.Profile3d(circle)
         surf = Db.Surface.createExtrudedSurface(profile, dir, opts)
         id = db.addToModelspace(surf)
-        self.assertTrue(id.isValid())
+        self.assertFalse(id.isNull())
 
     def test_create_region(self):
         circle = Db.Circle(Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, 10)

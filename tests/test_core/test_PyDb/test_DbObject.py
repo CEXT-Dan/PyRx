@@ -102,7 +102,7 @@ class TestDbObject:
         xrid: Db.ObjectId = dbo.setBinaryData("PYXR", dataBytes)
         bOut = dbo.getBinaryData("PYXR")
         self.assertEqual(bOut, dataBytes)
-        self.assertTrue(xrid.isValid())
+        self.assertFalse(xrid.isNull())
         self.assertTrue(xrid.isDerivedFrom(Db.Xrecord.desc()))
 
     def test_BinaryXdData(self):

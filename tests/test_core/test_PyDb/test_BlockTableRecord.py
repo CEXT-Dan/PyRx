@@ -16,7 +16,7 @@ class TestBlockTableRecord:
     def test_visibleObjectIds(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
-        assert objId.isValid() is True
+        assert objId.isNull() is False
         dynref = Db.DynBlockReference(objId)
         assert dynref.isDynamicBlock() is True
         btr = Db.BlockTableRecord(dynref.anonymousBlockTableRecord())

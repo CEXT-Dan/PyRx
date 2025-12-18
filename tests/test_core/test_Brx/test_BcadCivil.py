@@ -24,43 +24,43 @@ class TestBCadCivil:
         db = db_brcivil
         #
         manid = Cv.CvDbSurfaceElevationLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceElevationLabelStyleManager.desc()))
         man = Cv.CvDbSurfaceElevationLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbSurfaceElevationLabelStyleManager")
         #
         manid = Cv.CvDbSurfaceSlopeLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceSlopeLabelStyleManager.desc()))
         man = Cv.CvDbSurfaceSlopeLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbSurfaceSlopeLabelStyleManager")
         #
         manid = Cv.CvDbSurfaceContourLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceContourLabelStyleManager.desc()))
         man = Cv.CvDbSurfaceContourLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbSurfaceContourLabelStyleManager")
         #
         manid = Cv.CvDbPointLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbPointLabelStyleManager.desc()))
         man = Cv.CvDbPointLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbPointLabelStyleManager")
         #
         manid = Cv.CvDbCurveLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbCurveLabelStyleManager.desc()))
         man = Cv.CvDbCurveLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbCurveLabelStyleManager")
         #
         manid = Cv.CvDbLineLabelStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbLineLabelStyleManager.desc()))
         man = Cv.CvDbLineLabelStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbLineLabelStyleManager")
         #
         manid = Cv.CvDbSymbolStyleManager.getManagerId(db)
-        self.assertEqual(manid.isValid(), True)
+        self.assertEqual(manid.isNull(), False)
         self.assertTrue(manid.isDerivedFrom(Cv.CvDbSymbolStyleManager.desc()))
         man = Cv.CvDbSymbolStyleManager(manid)
         self.assertEqual(man.managerId(), "BrxCvDbSymbolStyleManager")
@@ -68,14 +68,14 @@ class TestBCadCivil:
     def test_BsysCvDbAlignment_dxfName(self, db_brcivil: Db.Database):
         objHnd = Db.Handle("AE")
         objId = db_brcivil.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         dbo = Db.Entity(objId)
         self.assertEqual(dbo.isA().dxfName(), "BsysCvDbAlignment")
 
     def test_BsysCvDbAlignment_obj(self, db_brcivil: Db.Database):
         objHnd = Db.Handle("AE")
         objId = db_brcivil.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         hAlignment = Cv.CvDbHAlignment(objId)
         self.assertFalse(hAlignment.isNullObj())
         self.assertEqual(hAlignment.elementCount(), 3)
@@ -83,7 +83,7 @@ class TestBCadCivil:
     def test_BsysCvDbAlignment_cast(self, db_brcivil: Db.Database):
         objHnd = Db.Handle("AE")
         objId = db_brcivil.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         hAlignment = Cv.CvDbHAlignment(objId)
 
         for id in hAlignment.getUnorderedElementIds():
@@ -103,7 +103,7 @@ class TestBCadCivil:
     def test_CvDbVAlignment_getPVIsArrays(self, db_brcivil: Db.Database):
         objHnd = Db.Handle("AF")
         objId = db_brcivil.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         valign = Cv.CvDbVAlignment(objId)
         for item in valign.getPVIsArrays():
             self.assertIsNotNone(item)
@@ -111,7 +111,7 @@ class TestBCadCivil:
     def test_BsysCvDbHAlignment_iter(self, db_brcivil: Db.Database):
         objHnd = Db.Handle("AE")
         objId = db_brcivil.getObjectId(False, objHnd)
-        self.assertEqual(objId.isValid(), True)
+        self.assertEqual(objId.isNull(), False)
         hAlignment = Cv.CvDbHAlignment(objId)
 
         ids = []

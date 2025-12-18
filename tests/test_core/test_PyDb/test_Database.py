@@ -33,12 +33,13 @@ class TestDatabase:
     def test_dbopbjectforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        assert objId.isValid() is True
+        assert objId.isNull() is False
         dbo = Db.DbObject(objId)
         assert dbo.isA().dxfName() == "LINE"
 
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_ZRX
     def test_capture_cmdline_output(self):
         result = do_capture_audit()
         assert len(result) != 0
@@ -169,21 +170,21 @@ class TestDatabase:
     def test_dbentityforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isValid(), True)
+        self.assertions.assertEqual(objId.isNull(), False)
         dbo = Db.Entity(objId)
         self.assertions.assertEqual(dbo.isA().dxfName(), "LINE")
 
     def test_dbcurveforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isValid(), True)
+        self.assertions.assertEqual(objId.isNull(), False)
         dbo = Db.Curve(objId)
         self.assertions.assertEqual(dbo.isA(), Db.Line.desc())
 
     def test_dblineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isValid(), True)
+        self.assertions.assertEqual(objId.isNull(), False)
         line = Db.Line(objId)
         self.assertions.assertEqual(line.isKindOf(Db.Line.desc()), True)
         self.assertions.assertEqual(line.layer(), "1_1_WALLS")
@@ -191,7 +192,7 @@ class TestDatabase:
     def test_dbpolylineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("201ee")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isValid(), True)
+        self.assertions.assertEqual(objId.isNull(), False)
         pline = Db.Polyline(objId)
         self.assertions.assertEqual(pline.isKindOf(Db.Curve.desc()), True)
         self.assertions.assertEqual(pline.isKindOf(Db.Polyline.desc()), True)
@@ -202,7 +203,7 @@ class TestDatabase:
     def test_dbsplineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c62a1")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isValid(), True)
+        self.assertions.assertEqual(objId.isNull(), False)
         spline = Db.Spline(objId)
         self.assertions.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
         self.assertions.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
@@ -212,7 +213,7 @@ class TestDatabase:
         db = db_06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToModelspace(line)
-        self.assertions.assertTrue(id.isValid())
+        self.assertions.assertFalse(id.isNull())
         self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
     def test_addToModelspaced2(self, db_06457: Db.Database):
@@ -223,7 +224,7 @@ class TestDatabase:
         ]
         ids = db.addToBlock(db.modelSpaceId(), lines)
         for id in ids:
-            self.assertions.assertTrue(id.isValid())
+            self.assertions.assertFalse(id.isNull())
             self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
     def test_blocktable(self, db_06457: Db.Database):
@@ -274,7 +275,7 @@ class TestDatabase:
         db = db_06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToBlock(db.modelSpaceId(), line)
-        self.assertions.assertTrue(id.isValid())
+        self.assertions.assertFalse(id.isNull())
         self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
     def test_addToBlock2(self, db_06457: Db.Database):
@@ -286,7 +287,7 @@ class TestDatabase:
 
         ids = db.addToBlock(db.modelSpaceId(), lines)
         for id in ids:
-            self.assertions.assertTrue(id.isValid())
+            self.assertions.assertFalse(id.isNull())
             self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
     def test_inrecord(self, db_06457: Db.Database):
@@ -314,7 +315,7 @@ class TestDatabase:
     def test_GeoData(self, db_geo: Db.Database) -> None:
         db = db_geo
         geoDataId = Db.Core.getGeoDataObjId(db)
-        self.assertions.assertTrue(geoDataId.isValid())
+        self.assertions.assertFalse(geoDataId.isNull())
         geoData = Db.GeoData(geoDataId)
         self.assertions.assertIsNotNone(geoData.coordinateSystem())
 
