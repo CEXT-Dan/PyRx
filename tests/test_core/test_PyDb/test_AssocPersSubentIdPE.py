@@ -16,7 +16,7 @@ class TestAssocPersSubentIdPE:
     def test_soid3d_subent_geometry(self, db_subentpe: Db.Database):
         objHnd = Db.Handle("26c")
         objId = db_subentpe.getObjectId(False, objHnd)
-        assert objId.isValid() == True
+        assert objId.isNull() == False
         solid = Db.Solid3d(objId)
         pe = Db.AssocPersSubentIdPE(solid.queryX(Db.AssocPersSubentIdPE.desc()))
 

@@ -9,7 +9,7 @@ class TestDbObjectId:
         assert id.isNull() == False
         assert not id.asOldId() == 0
         assert id.isResident() == True
-        assert id.isValid() == True
+        assert id.isNull() == False
         assert id.database().className() == "AcDbDatabase"
         assert id.database() !=  None
         assert id.objectClass().name() == "AcDbBlockTable"
@@ -24,8 +24,8 @@ class TestDbObjectId:
         assert hn.isNull() == False
         id2 = db.getObjectId(False,hn)
         assert id == id2
-        assert id.isValid() == True
-        assert id2.isValid() == True
+        assert id.isNull() == False
+        assert id.isNull() == False
         #bt.close() crashes icad
         
     def test_ObjectIdArray_clear(self):

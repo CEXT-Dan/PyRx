@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import wx
 
+from wx import xrc
 from pyrx import Ap
 
 wx_CallAfter = 1
@@ -27,7 +28,11 @@ class TestWxPython:
         assert isinstance(pyapp, wx.PyApp)
         topWin: wx.Window = pyapp.TopWindow
         assert topWin.Handle == Ap.Application.mainWnd()
-
+        
+    def test_get_xrc(self):  # just test possible types
+        _xrc = xrc.XmlResource()
+        assert _xrc != None
+        
     def test_get_wxapp(self):  # just test possible types
         pyapp: wx.App = wx.App.Get()
         assert isinstance(pyapp, wx.PyApp)
