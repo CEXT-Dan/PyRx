@@ -1,3 +1,9 @@
+## v2.2.37
+
+* [#422] fix crash on close for Gstar2025
+* improve PyGePoint2dArrayRepr and PyGePoint3dArrayRepr
+* fix v24 project,
+
 ## v2.2.36
 
 * add PyDb3dSolid::createCone

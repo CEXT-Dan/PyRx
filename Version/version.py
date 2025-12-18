@@ -5,7 +5,7 @@ from setuptools_scm import ScmVersion, get_version
 
 MAJOR = 2
 MINOR = 2
-REVISION= 36
+REVISION= 37
 
 BASE_DIR = Path(__file__).parent
 REPO_DIR = BASE_DIR / ".."
