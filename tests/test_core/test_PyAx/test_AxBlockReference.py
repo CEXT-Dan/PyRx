@@ -47,7 +47,7 @@ class TestAxDynBlockReference:
     def test_allowed_values(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
-        assert objId.isValid() is True
+        assert objId.isNull() is False
         axDyn = Ax.AcadBlockReference.cast(objId.acadObject())
         assert axDyn.objectName() == "AcDbBlockReference"
         assert axDyn.isDynamicBlock() == True
@@ -65,7 +65,7 @@ class TestAxDynBlockReference:
     def test_set_value(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
-        assert objId.isValid() is True
+        assert objId.isNull() is False
         axDyn = Ax.AcadBlockReference.cast(objId.acadObject())
         assert axDyn.objectName() == "AcDbBlockReference"
         assert axDyn.isDynamicBlock() == True

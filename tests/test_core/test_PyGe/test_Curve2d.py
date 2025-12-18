@@ -26,10 +26,10 @@ class TestCurve2d:
     def test_CurveCurveInt2d_inter(self, db_06457: Db.Database):
         objHnd1 = Db.Handle("2c959f")
         objId1 = db_06457.getObjectId(False, objHnd1)
-        assert objId1.isValid() == True
+        assert objId1.isNull() == False
         objHnd2 = Db.Handle("2c95a0")
         objId2 = db_06457.getObjectId(False, objHnd2)
-        assert objId2.isValid() == True
+        assert objId2.isNull() == False
         dbcurve1 = Db.Polyline(objId1)
         dbcurve2 = Db.Polyline(objId2)
         gecurve1 = dbcurve1.getAcGeCurve2d()
@@ -44,10 +44,10 @@ class TestCurve2d:
     def test_CurveCurveInt2d_overlap(self, db_06457: Db.Database):
         objHnd1 = Db.Handle("2c94f5")
         objId1 = db_06457.getObjectId(False, objHnd1)
-        assert objId1.isValid() == True
+        assert objId1.isNull() == False
         objHnd2 = Db.Handle("2c94f6")
         objId2 = db_06457.getObjectId(False, objHnd2)
-        assert objId2.isValid() == True
+        assert objId2.isNull() == False
         dbcurve1 = Db.Polyline(objId1)
         dbcurve2 = Db.Polyline(objId2)
         gecurve1 = dbcurve1.getAcGeCurve2d()
