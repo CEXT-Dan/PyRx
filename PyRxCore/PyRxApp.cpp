@@ -348,7 +348,6 @@ void PyRxApp::initTestFlags()
 {
     try
     {
-        std::error_code ec;
         const auto& args = PyRxAppSettings::getCommandLineArgs();
         for (const auto& item : args)
         {
