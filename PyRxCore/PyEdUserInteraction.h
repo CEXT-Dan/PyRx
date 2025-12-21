@@ -4,22 +4,6 @@
 class PyRxClass;
 class PyApDocument;
 
-class CModuleStateScope
-{
-public:
-    CModuleStateScope()
-        : m_pPrevState(AfxSetModuleState(AfxGetAppModuleState()))
-    {
-    }
-    ~CModuleStateScope()
-    {
-        if (m_pPrevState != nullptr)
-            AfxSetModuleState(m_pPrevState);
-    }
-private:
-    AFX_MODULE_STATE* m_pPrevState = nullptr;
-};
-
 //-----------------------------------------------------------------------------------------
 // PySysVar
 void makePySysVarWrapper();
@@ -49,13 +33,31 @@ private:
 };
 
 //-----------------------------------------------------------------------------------------
+// AutoAfxModuleState
+class AutoAfxModuleState
+{
+public:
+    AutoAfxModuleState()
+        : m_pPrevState(AfxSetModuleState(AfxGetAppModuleState()))
+    {
+    }
+    ~AutoAfxModuleState()
+    {
+        if (m_pPrevState != nullptr)
+            AfxSetModuleState(m_pPrevState);
+    }
+private:
+    AFX_MODULE_STATE* m_pPrevState = nullptr;
+};
+
+//-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
 void makePyEdUserInteractionWrapper();
 class PyEdUserInteraction
 {
     HWND m_activeWindow;
     std::vector<HWND> m_wnds;
-    CModuleStateScope m_state;
+    AutoAfxModuleState m_state;
 public:
     PyEdUserInteraction();
     PyEdUserInteraction(PyApDocument& pDocument, bool prompting);
