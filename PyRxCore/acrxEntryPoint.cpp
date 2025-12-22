@@ -427,11 +427,11 @@ public:
         return eOk;
     }
 
-    static auto ssget() -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
+    static auto ssget(resbuf* pFilter = nullptr) -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
     {
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
-        int res = acedSSGet(NULL, NULL, NULL, NULL, ssname);
+        int res = acedSSGet(NULL, NULL, NULL, pFilter, ssname);
         if (res != RTNORM || acedGetCurrentSelectionSet(ssname, ids) != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, ids);
         acedSSFree(ssname);
@@ -457,7 +457,8 @@ public:
     static void AcRxPyApp_idoit1(void)
     {
         AcGeMatrix3d mat;
-        if (auto [es, ids] = ssget(); es == Acad::PromptStatus::eNormal)
+        AcResBufPtr pFilter(acutBuildList(RTDXF0, _T("POINT"), RTNONE));
+        if (auto [es, ids] = ssget(pFilter.get()); es == Acad::PromptStatus::eNormal)
         {
             PerfTimer timer(__FUNCTIONW__);
             for (auto& id : ids)
