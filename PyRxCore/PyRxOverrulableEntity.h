@@ -120,6 +120,7 @@ public:
     void         setMask(Adesk::Int64 val);
     Adesk::Int64 index() const;
     void         setIndex(Adesk::Int64 val);
+    Adesk::UInt32 version() const;
 
 
     std::vector<Adesk::Int32> flags() const;
@@ -160,6 +161,8 @@ private:
     std::vector<double> m_reals;      // " "
     std::vector<AcString> m_strings;  // " "
     std::vector<AcGePoint3d> m_points;//Transformed
+
+    Adesk::UInt32 m_version = 0;
 };
 
 using AcDbOverrulableEntityPointer = AcDbObjectPointer<PyRxOverrulableEntity>;
