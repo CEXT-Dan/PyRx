@@ -256,6 +256,8 @@ boost::python::list PyEdSelectionSet::objectIdsOfTypeList(const boost::python::l
 
 PyDbObjectIdArray PyEdSelectionSet::objectIdArray1() const
 {
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
     const auto& m_ids = objectIdsImpl();
     PyDbObjectIdArray ids;
     ids.reserve(m_ids.length());
