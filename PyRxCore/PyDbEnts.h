@@ -838,6 +838,7 @@ public:
     void                setStrings(boost::python::list& vals) const;
     boost::python::list points() const;
     void                setPoints(const boost::python::list& vals) const;
+    Adesk::UInt32       version() const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbOverrulableEntity   cloneFrom(const PyRxObject& src);

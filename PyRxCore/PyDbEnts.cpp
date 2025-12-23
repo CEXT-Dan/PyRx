@@ -4051,6 +4051,7 @@ void makePyDbOverrulableEntity()
         .def("setStrings", &PyDbOverrulableEntity::setStrings, DS.ARGS({ "vals: list[str]" }))
         .def("points", &PyDbOverrulableEntity::points, DS.ARGS())
         .def("setPoints", &PyDbOverrulableEntity::setPoints, DS.ARGS({ "vals: list[PyGe.Point3d]" }))
+        .def("version", &PyDbOverrulableEntity::version, DS.ARGS())
         .def("className", &PyDbOverrulableEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbOverrulableEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbOverrulableEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -4283,6 +4284,11 @@ void PyDbOverrulableEntity::setPoints(const boost::python::list& vals) const
     PyAutoLockGIL lock;
     impObj()->setPoints(std::vector<AcGePoint3d>(boost::python::stl_input_iterator<AcGePoint3d>(vals),
         boost::python::stl_input_iterator<AcGePoint3d>()));
+}
+
+Adesk::UInt32 PyDbOverrulableEntity::version() const
+{
+    return impObj()->version();
 }
 
 std::string PyDbOverrulableEntity::className()

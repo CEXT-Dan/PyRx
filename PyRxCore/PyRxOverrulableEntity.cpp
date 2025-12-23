@@ -168,10 +168,10 @@ Acad::ErrorStatus PyRxOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
     Acad::ErrorStatus es = AcDbEntity::dwgInFields(pFiler);
     if (es != Acad::eOk)
         return (es);
-    Adesk::UInt32 version = 0;
-    if ((es = pFiler->readUInt32(&version)) != Acad::eOk)
+    
+    if ((es = pFiler->readUInt32(&m_version)) != Acad::eOk)
         return (es);
-    if (version != PyRxOverrulableEntity::kCurrentVersionNumber)
+    if (m_version != PyRxOverrulableEntity::kCurrentVersionNumber)
         return (Acad::eMakeMeProxy);
     if (auto es = pFiler->readPoint3d(&m_pos); es != eOk)
         return es;
@@ -475,6 +475,12 @@ void PyRxOverrulableEntity::setIndex(Adesk::Int64 val)
 {
     assertWriteEnabled();
     m_index = val;
+}
+
+Adesk::UInt32 PyRxOverrulableEntity::version() const
+{
+    assertReadEnabled();
+    return m_version;
 }
 
 std::vector<Adesk::Int32> PyRxOverrulableEntity::flags() const
