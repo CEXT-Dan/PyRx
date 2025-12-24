@@ -514,6 +514,7 @@ public:
     PyGeLineSeg3d       getAcGeCurve1() const;
     PyGeLineSeg3d       getAcGeCurve2(const AcGeTol& tol) const;
     AcGeVector3d        direction() const;
+    double              length() const;
 public:
     static std::string  className();
     static PyRxClass    desc();

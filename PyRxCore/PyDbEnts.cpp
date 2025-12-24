@@ -2320,6 +2320,7 @@ void makePyDbLineWrapper()
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
         .def("midPoint", &PyDbLine::midPoint, DS.ARGS())
         .def("direction", &PyDbLine::direction, DS.ARGS())
+        .def("length", &PyDbLine::length, DS.ARGS())
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2420,6 +2421,12 @@ PyGeLineSeg3d PyDbLine::getAcGeCurve2(const AcGeTol& tol) const
 AcGeVector3d PyDbLine::direction() const
 {
     return impObj()->endPoint() - impObj()->startPoint();
+}
+
+double PyDbLine::length() const
+{
+    AcGeLineSeg3d seg(impObj()->startPoint(), impObj()->endPoint());
+    return seg.length();
 }
 
 std::string PyDbLine::className()
@@ -4362,7 +4369,7 @@ void PyDbOverrulableEntity::OnDblClkFn(AcDbEntity* pEnt, AcGePoint3d pt)
         PyDbOverrulableEntity pyent(static_cast<PyRxOverrulableEntity*>(pEnt), false);
         for (const auto& func : onDblClkFuncs)
         {
-            if (!executeOnDblClkFunc(func.second, pyent,pt))
+            if (!executeOnDblClkFunc(func.second, pyent, pt))
             {
                 onDblClkFuncs.erase(func.first);
                 return;
