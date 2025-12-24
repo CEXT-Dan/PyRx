@@ -19436,6 +19436,7 @@ class Line(PyDb.Curve):
         the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are
         implementation dependent. The default implementation returns Acad::eNotImplemented.
         """
+    def length(self, /) -> float: ...
     def midPoint(self, /) -> PyGe.Point3d: ...
     def normal(self, /) -> PyGe.Vector3d:
         """
