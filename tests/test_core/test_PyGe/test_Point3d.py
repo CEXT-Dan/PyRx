@@ -89,3 +89,19 @@ class TestPoint3d:
         assert pnts[0] != Ge.Point3d(1, 1, 1)
         pnts.sortByDistFrom(Ge.Point3d(0, 0, 0))
         assert pnts[0] == Ge.Point3d(1, 1, 1)
+        
+    def test_Point3dTree_knn(self):
+        pnts = Ge.Point3dArray()
+        for x in range(10):
+            for y in range(10):
+                for z in range(10):
+                    pnts.append(Ge.Point3d(x, y, z))
+                    
+        tree = Ge.Point3dTree(pnts)
+        idxs , _ = tree.knnSearch(Ge.Point3d(0.4, 0.4, 0.4),1) 
+        assert pnts[0] == pnts[idxs[0]]
+        
+        idxs , _ = tree.knnSearch(Ge.Point3d(10.4, 10.4, 10.4),1) 
+        assert pnts[999] == pnts[idxs[0]]
+                   
+    
