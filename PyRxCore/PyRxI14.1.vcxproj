@@ -15,7 +15,7 @@
     <RootNamespace>PyRx</RootNamespace>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
-    <ProjectName>PyRxI14.0</ProjectName>
+    <ProjectName>PyRxI14.1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

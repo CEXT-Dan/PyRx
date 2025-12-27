@@ -15,7 +15,7 @@
     <RootNamespace>RxLoader</RootNamespace>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
-    <ProjectName>RxLoaderI14.0</ProjectName>
+    <ProjectName>RxLoaderI14.1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -41,14 +41,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
-    <OutDir>$(SolutionDir)\Bin\PyRxI14.0\$(PlatformName)\$(Configuration)/</OutDir>
+    <OutDir>$(SolutionDir)\Bin\PyRxI14.1\$(PlatformName)\$(Configuration)/</OutDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.irx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
-    <OutDir>$(SolutionDir)\Bin\PyRxI14.0\$(PlatformName)\$(Configuration)/</OutDir>
+    <OutDir>$(SolutionDir)\Bin\PyRxI14.1\$(PlatformName)\$(Configuration)/</OutDir>
     <TargetExt>.irx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
