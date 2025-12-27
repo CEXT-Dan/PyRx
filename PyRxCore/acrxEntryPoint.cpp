@@ -445,32 +445,24 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 
-    static auto postToModelSpace(AcDbEntity& pEnt)
+    static auto postToModelSpace(AcDbEntity* pEnt)
     {
+        if(pEnt == nullptr)
+            return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
         AcDbObjectId id;
         AcDbDatabase* pDb = acdbCurDwg();
         AcDbBlockTableRecordPointer model(getblockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
-        Acad::ErrorStatus es = model->appendAcDbEntity(id, &pEnt);
+        Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
         return std::make_tuple(es, id);
     }
 
     static void AcRxPyApp_idoit1(void)
     {
-        AcGeMatrix3d mat;
-        AcResBufPtr pFilter(acutBuildList(RTDXF0, _T("POINT"), RTNONE));
-        if (auto [es, ids] = ssget(pFilter.get()); es == Acad::PromptStatus::eNormal)
-        {
-            PerfTimer timer(__FUNCTIONW__);
-            for (auto& id : ids)
-            {
-                if (id.objectClass()->isDerivedFrom(AcDbPoint::desc()))
-                {
-                    AcDbObjectPointer<AcDbPoint> pnt(id, AcDb::kForWrite);
-                    pnt->transformBy(mat);
-                }
-            }
-            timer.end(L"Done");
-        }
+        AcDbLine* pline = new AcDbLine(AcGePoint3d(100., .0, .0), AcGePoint3d(110., .0, .0));
+        postToModelSpace(pline);
+        pline->close();
+        pline->close();
+        acutPrintf(pline->objectId().isNull() ? _T("True") : _T("False"));
     }
 
 #endif
