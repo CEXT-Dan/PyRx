@@ -16,7 +16,7 @@ def active_document(self):
     assert axDoc2.name() == axDoc3.name()
     axApp.setActiveDocument(odoc)
 
-
+@pytest.mark.known_failure_IRX
 class TestAxApplication:
     def test_getinstance(self):
         axApp = Ap.Application.acadApplication()

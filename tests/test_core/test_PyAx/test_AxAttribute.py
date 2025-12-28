@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap, Ax, Ge
 
-
+@pytest.mark.known_failure_IRX
 class TestAxAttribute:
 
     def setup_class(self):

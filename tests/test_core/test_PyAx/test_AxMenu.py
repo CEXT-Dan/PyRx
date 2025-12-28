@@ -6,6 +6,7 @@ import pytest
 
 
 @pytest.mark.known_failure_GRX
+@pytest.mark.known_failure_IRX
 class TestAxMenu:
 
     def setup_class(self):

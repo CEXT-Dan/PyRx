@@ -39,6 +39,7 @@ class TestCurve3d:
         self.assertions.assertAlmostEqual(r1.length(), 1142.86444953577)
         self.assertions.assertAlmostEqual(r2.length(), 1142.86444953577)
 
+    @pytest.mark.known_failure_IRX
     def test_Ge_lineseg3d_1(self):
         s1 = Ge.LineSeg3d(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         s2 = Ge.LineSeg3d(Ge.Point3d(0, 100, 0), Ge.Point3d(100, 0, 0))
@@ -65,6 +66,7 @@ class TestCurve3d:
 
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_ZRX
     def test_surfSurfInt(self):
         vec = Ge.Vector3d.kXAxis
@@ -74,6 +76,7 @@ class TestCurve3d:
         si = Ge.SurfSurfInt(p1, p3)
         assert si.numResults() == 1
 
+    @pytest.mark.known_failure_IRX
     def test_ge3dcurve_length(self):
         seg = Ge.LineSeg3d(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
         length = seg.length(0, 1)

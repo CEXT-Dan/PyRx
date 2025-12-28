@@ -4,7 +4,7 @@ import pytest
 
 from pyrx import Ap, Ge
 
-
+@pytest.mark.known_failure_IRX
 class TestAxLWPolyline:
 
     def setup_class(self):

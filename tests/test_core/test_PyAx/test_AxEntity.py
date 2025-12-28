@@ -4,7 +4,7 @@ import pytest
 
 from pyrx import Ap, Ax, Ge
 
-
+@pytest.mark.known_failure_IRX
 class TestAxEntity:
 
     def setup_class(self):

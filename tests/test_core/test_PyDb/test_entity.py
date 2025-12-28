@@ -137,6 +137,7 @@ class TestDbEntity:
         self.assertEqual(circle.radius(), 20)
 
     @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_IRX
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
@@ -349,6 +350,7 @@ class TestDbEntity:
         pline2 = Db.Polyline(objId2)
         assert pline2.isCCW() == True
 
+    @pytest.mark.known_failure_IRX
     def test_table_cells1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -357,6 +359,7 @@ class TestDbEntity:
         iter = table.cells()
         self.assertEqual(len(iter), 1044)
 
+    @pytest.mark.known_failure_IRX
     def test_table_cells2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -388,6 +391,7 @@ class TestDbEntity:
         iter = table.cells(opt)
         self.assertEqual(len(iter), 1036)
 
+    @pytest.mark.known_failure_IRX
     def test_table_cellValues1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -396,6 +400,7 @@ class TestDbEntity:
         iter = table.cellValues()
         self.assertEqual(len(iter), 1044)
 
+    @pytest.mark.known_failure_IRX
     def test_table_cellValues2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -416,6 +421,7 @@ class TestDbEntity:
         iter = table.cellValues(opt)
         self.assertEqual(len(iter), 1036)
 
+    @pytest.mark.known_failure_IRX
     def test_table_cellValues4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -457,6 +463,7 @@ class TestDbEntity:
         self.assertEqual(cr2.rightColumn, 4)
 
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     def test_table_calcTextExtents(self):
         db = Db.curDb()
         rec = Db.TableStyle(db.tablestyle())
@@ -468,6 +475,7 @@ class TestDbEntity:
         self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
 
+    @pytest.mark.known_failure_IRX
     def test_create_wipout(self):
         db = Db.curDb()
         pts = [
@@ -484,6 +492,7 @@ class TestDbEntity:
 
     @pytest.mark.known_failure_ZRX
     @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_IRX
     def test_create_extruded_surface(self):
         db = Db.curDb()
         opts = Db.SweepOptions()

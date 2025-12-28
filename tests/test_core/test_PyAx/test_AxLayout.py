@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap
 
-
+@pytest.mark.known_failure_IRX
 class TestAxLayout:
 
     def test_acadLayouts(self):
