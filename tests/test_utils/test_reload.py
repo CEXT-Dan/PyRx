@@ -59,7 +59,7 @@ def create_temp_module(name: str, is_package=False):
                         shutil.rmtree(pycache_path)
                     path.rmdir()
 
-
+@pytest.mark.known_failure_IRX #no evaluateLisp
 class Test_Reload:
     @pytest.mark.slow
     def test_reload(self):
@@ -136,6 +136,7 @@ class Test_Reload:
         )
 
 
+@pytest.mark.known_failure_IRX #no evaluateLisp
 class Test_reload_func:
     def test_valid(self, tmp_path: Path):
         with (
