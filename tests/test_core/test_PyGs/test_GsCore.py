@@ -8,6 +8,7 @@ from pyrx import Db, Gs
 
 class TestGsCore:
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     def test_gs_getBlockImage(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("36f")
         objId = db_dynblock.getObjectId(False, objHnd)

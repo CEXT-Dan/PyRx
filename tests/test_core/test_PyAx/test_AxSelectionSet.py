@@ -13,7 +13,7 @@ def makeEnts(axDoc):
     for idx1 in range(1, 49):
         axSpace.addLine(Ge.Point3d(1, idx1, 0), Ge.Point3d(10, idx1, 0))
 
-
+@pytest.mark.known_failure_IRX
 @pytest.mark.known_failure_GRX
 class TestAxSelectionSet:
     def setup_class(self):

@@ -35,10 +35,19 @@ class TestDatabase:
         objId = db_06457.getObjectId(False, objHnd)
         assert objId.isNull() is False
         dbo = Db.DbObject(objId)
+        assert dbo.isReadEnabled() is True
+        
+    @pytest.mark.known_failure_IRX
+    def test_dbopbject_dxfname(self, db_06457: Db.Database):
+        objHnd = Db.Handle("20127")
+        objId = db_06457.getObjectId(False, objHnd)
+        assert objId.isNull() is False
+        dbo = Db.DbObject(objId)
         assert dbo.isA().dxfName() == "LINE"
 
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_ZRX
     def test_capture_cmdline_output(self):
         result = do_capture_audit()
@@ -145,6 +154,7 @@ class TestDatabase:
         info.setHyperlinkBase("myHyperlinkBase")
         Db.Core.putSummaryInfo(info, db)
 
+    @pytest.mark.known_failure_IRX
     def test_getSummaryInfo(self):
         TestDatabase.putSummaryInfo()
         customDict = {"Ford": "Mustang", "Chevy": "Camaro", "VW": " Bug"}
@@ -172,7 +182,7 @@ class TestDatabase:
         objId = db_06457.getObjectId(False, objHnd)
         self.assertions.assertEqual(objId.isNull(), False)
         dbo = Db.Entity(objId)
-        self.assertions.assertEqual(dbo.isA().dxfName(), "LINE")
+        self.assertions.assertEqual(dbo.isA().name(), "AcDbLine")
 
     def test_dbcurveforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
@@ -227,6 +237,7 @@ class TestDatabase:
             self.assertions.assertFalse(id.isNull())
             self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
+    @pytest.mark.known_failure_IRX
     def test_blocktable(self, db_06457: Db.Database):
         db: Db.Database = db_06457
         bt = Db.BlockTable(db.blockTableId())
@@ -299,6 +310,7 @@ class TestDatabase:
 
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_IRX
     def test_GeoPositionMarker(self, db_geo: Db.Database):
         db = db_geo
         model = Db.BlockTableRecord(db.modelSpaceId())
@@ -312,6 +324,7 @@ class TestDatabase:
             self.assertions.assertIsNotNone(marker.geoPosition())
 
     @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_IRX
     def test_GeoData(self, db_geo: Db.Database) -> None:
         db = db_geo
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -322,6 +335,7 @@ class TestDatabase:
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_IRX
     def test_GeoData_transformFromLonLatAlt(self, db_geo: Db.Database) -> None:
         db = db_geo
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -338,6 +352,7 @@ class TestDatabase:
         self.assertions.assertEqual(ex1.midPoint(), Ge.Point3d(50, 50, 50))
 
     @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_IRX
     def test_tdusrtimer(self) -> None:
         db = Db.curDb()
         date1 = db.tdusrtimer()

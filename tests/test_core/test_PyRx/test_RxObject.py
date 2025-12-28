@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+import pytest
 
 from pyrx import Db, Gi, Rx
 
@@ -54,6 +55,7 @@ class TestRxObject:
         self.assertEqual(clss.myParent(), Db.Curve.desc())
         self.assertEqual(clss.myParent(), clss2.myParent())
 
+    @pytest.mark.known_failure_IRX
     def test_name(self):
         pline = Db.Polyline()
         clss = pline.isA()

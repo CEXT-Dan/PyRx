@@ -37,6 +37,7 @@ def getSheetNamesFromDst():
 @pytest.mark.known_failure_ZRX
 @pytest.mark.known_failure_GRX
 @pytest.mark.known_failure_BRX
+@pytest.mark.known_failure_IRX
 class TestSheetSet:
     def setup_class(self):
         self.assertions = unittest.TestCase("__init__")

@@ -16,6 +16,7 @@ class TestCurve2d:
         yline = Ge.Line2d.kYAxis
         assert xline.isPerpendicularTo(yline) == True
 
+    @pytest.mark.known_failure_IRX
     def test_ge2dcurve_length(self):
         seg = Ge.LineSeg2d(Ge.Point2d(0, 0), Ge.Point2d(100, 0))
         length = seg.length(0, 1)

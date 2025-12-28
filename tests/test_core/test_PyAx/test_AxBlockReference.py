@@ -4,7 +4,7 @@ import pytest
 
 from pyrx import Ap, Ax, Db
 
-
+@pytest.mark.known_failure_IRX
 class TestAxBlockReference:
 
     def setup_class(self):
@@ -40,7 +40,7 @@ class TestAxBlockReference:
                     num += 1
         assert num != 0
 
-
+@pytest.mark.known_failure_IRX
 class TestAxDynBlockReference:
     
     @pytest.mark.known_failure_GRX

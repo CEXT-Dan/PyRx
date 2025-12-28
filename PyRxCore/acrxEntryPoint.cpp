@@ -458,13 +458,10 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        AcDbLine* pline = new AcDbLine(AcGePoint3d(100., .0, .0), AcGePoint3d(110., .0, .0));
-        postToModelSpace(pline);
-        pline->close();
-        pline->close();
-        acutPrintf(pline->objectId().isNull() ? _T("True") : _T("False"));
+        AcDbDatabaseSummaryInfo* info = nullptr;
+        auto es = acdbGetSummaryInfo(acdbCurDwg(), info);
+        acutPrintf(acadErrorStatusText(es));
     }
-
 #endif
 };
 

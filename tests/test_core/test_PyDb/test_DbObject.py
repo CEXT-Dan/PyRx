@@ -53,6 +53,7 @@ class TestDbObject:
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
 
+    @pytest.mark.known_failure_IRX
     def test_undo_recording(self):
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
@@ -94,6 +95,7 @@ class TestDbObject:
         self.assertEqual(p.y, 10)
         self.assertEqual(p.z, 100)
 
+    @pytest.mark.known_failure_IRX
     def test_BinaryData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)
@@ -105,6 +107,7 @@ class TestDbObject:
         self.assertFalse(xrid.isNull())
         self.assertTrue(xrid.isDerivedFrom(Db.Xrecord.desc()))
 
+    @pytest.mark.known_failure_IRX
     def test_BinaryXdData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)

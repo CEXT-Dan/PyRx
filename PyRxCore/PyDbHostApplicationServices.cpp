@@ -551,7 +551,7 @@ PyDbObjectId PyDbSymUtilServices::textStyleStandardId(PyDbDatabase& pDb) const
 std::string PyDbSymUtilServices::blockModelSpaceName() const
 {
 #if defined(_IRXTARGET140)
-    return "*MODEL_SPACE";
+    return "*Model_Space";
 #else
     return wstr_to_utf8(imp->blockModelSpaceName());
 #endif
@@ -560,7 +560,7 @@ std::string PyDbSymUtilServices::blockModelSpaceName() const
 std::string PyDbSymUtilServices::blockPaperSpaceName() const
 {
 #if defined(_IRXTARGET140)
-    return "*PAPER_SPACE";
+    return "*Paper_Space";
 #else
     return wstr_to_utf8(imp->blockPaperSpaceName());
 #endif

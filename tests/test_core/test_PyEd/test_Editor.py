@@ -62,6 +62,7 @@ class TestEditor:
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_IRX
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")

@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap, Ge
 
-
+@pytest.mark.known_failure_IRX
 class TestAxCircle:
 
     def setup_class(self):

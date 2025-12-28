@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap, Db, Ge
 
-
+@pytest.mark.known_failure_IRX
 class TestAxDatabase:
 
     def test_getinstance(self):

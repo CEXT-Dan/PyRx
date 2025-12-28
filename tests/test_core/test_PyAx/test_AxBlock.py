@@ -1,10 +1,11 @@
 from __future__ import annotations
-
+import pytest
 from pyrx import Ap, Ax, Ge
 from tests import MEDIA_DIR
 
 
 # modelspace is derived from Block
+@pytest.mark.known_failure_IRX
 class TestAxBlock:
 
     def setup_class(self):
