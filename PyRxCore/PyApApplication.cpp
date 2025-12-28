@@ -106,6 +106,8 @@ void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
 #elif defined(_GRXTARGET260)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(1017));
+#elif defined(_IRXTARGET140)
+    hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
 #elif defined(_ARXTARGET)
     auto main = CWnd::FromHandle(adsw_acadMainWnd());
     if (main == nullptr)

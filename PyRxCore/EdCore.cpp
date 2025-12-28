@@ -57,6 +57,7 @@ extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcD
 #endif
 
 #ifdef IRXAPP
+int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 #endif
 
 #ifdef ARXAPP
@@ -690,6 +691,9 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
 #endif
 #ifdef _ARXTARGET 
+    acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+#endif
+#ifdef _IRXTARGET 
     acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
 #endif
     AcResBufPtr pSafeRb(pRb);
