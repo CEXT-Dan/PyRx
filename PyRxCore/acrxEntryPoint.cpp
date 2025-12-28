@@ -458,9 +458,7 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        AcDbDatabaseSummaryInfo* info = nullptr;
-        auto es = acdbGetSummaryInfo(acdbCurDwg(), info);
-        acutPrintf(acadErrorStatusText(es));
+        acutPrintf(L"HI");
     }
 #endif
 };
