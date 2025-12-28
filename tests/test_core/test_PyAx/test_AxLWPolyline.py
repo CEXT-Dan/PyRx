@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxLWPolyline:
 
     def setup_class(self):
@@ -36,7 +35,8 @@ class TestAxLWPolyline:
         pnts.reverse()
         ent.setCoordinates(pnts)
         assert ent.coordinates() == pnts
-
+        
+    @pytest.mark.known_failure_IRX
     def test_getcoordinate(self):
         pnts = [
             Ge.Point2d(0, 0),
@@ -48,6 +48,7 @@ class TestAxLWPolyline:
         ent = axSpace.addLightWeightPolyline(pnts)
         assert ent.coordinate(3) == pnts[3]
 
+    @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
     def test_setcoordinate(self):
         pnts = [
