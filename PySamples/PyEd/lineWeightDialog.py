@@ -11,7 +11,6 @@ def doit():
 @Ap.LispFunction()
 def ads_lineWeightDialog(args):
     db = Db.curDb()
-    buff = []
     flag, lw = Ed.Core.lineWeightDialog(db.celweight(), True)
     if flag:
         return (Rx.LispType.kInt32, lw)

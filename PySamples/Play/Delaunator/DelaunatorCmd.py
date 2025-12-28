@@ -1,5 +1,7 @@
 from time import perf_counter
+
 from Delaunator import Delaunator
+
 from pyrx import Ap, Db, Ed, Ge
 
 # PySamples\dwg\TestPoints.dwg
