@@ -20,6 +20,7 @@ def doitscope():
             def _() -> None:
                 ms = sdb.modelSpace()
                 crvs = [Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())]
+                print(crvs)
 
     except Exception as err:
         print(err)

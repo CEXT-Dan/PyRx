@@ -1,4 +1,4 @@
-from pyrx import Ap, Ax, Db, Ed, Ge
+from pyrx import Ap, Db
 
 
 @Ap.Command()
@@ -12,7 +12,7 @@ def dumpdxf():
                     dxf = Db.SnoopDxfFiler()
                     dbo.snoopdxf(dxf)
                     f.write("\n{} - {}".format(dbo.getHandle(), dxf.buffer()))
-                except:
+                except Exception:
                     print("\nFailed", dbo.isA().name())
     except Exception as err:
         print(err)
@@ -29,7 +29,7 @@ def dumpdwg():
                     dwg = Db.SnoopDwgFiler()
                     dbo.snoop(dwg)
                     f.write("\n{} - {}".format(dbo.getHandle(), dwg.buffer()))
-                except:
+                except Exception:
                     print("\nFailed", dbo.isA().name())
     except Exception as err:
         print(err)
