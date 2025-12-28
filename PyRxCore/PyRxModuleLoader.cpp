@@ -44,6 +44,8 @@ bool showNavFileDialog(PyModulePath& path)
     static wxString lastPath;
     if (getFileDia() == 1)
     {
+        CAcModuleResourceOverride resourceOverride;
+
         wxFileDialog OpenDialog(
             nullptr,
             _T("Select Python File"), lastPath, wxEmptyString,
