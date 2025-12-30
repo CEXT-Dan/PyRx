@@ -4,9 +4,10 @@ import pytest
 
 from pyrx import Ap
 
-@pytest.mark.known_failure_IRX
+
 class TestAxLayout:
 
+    @pytest.mark.known_failure_IRX
     def test_acadLayouts(self):
         axApp = Ap.Application.acadApplication()
         axDoc = axApp.activeDocument()

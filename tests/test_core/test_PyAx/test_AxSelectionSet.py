@@ -15,7 +15,7 @@ def makeEnts(axDoc):
 
 @pytest.mark.known_failure_IRX
 @pytest.mark.known_failure_GRX
-class TestAxSelectionSet:
+class TestAxSelectionSetFilter:
     def setup_class(self):
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
@@ -70,7 +70,7 @@ class TestAxSelectionSet:
 
     def test_selectCrossingFilter(self):
         axSets = self.axDoc.selectionSets()
-        axSet = axSets.add("PYRX3")
+        axSet = axSets.add("PYRX4")
         ll = Ge.Point3d(0, 0, 0)
         ur = Ge.Point3d(100, 100, 0)
         axSet.selectCrossing(ll, ur, [(0, "LINE")])
@@ -90,7 +90,7 @@ class TestAxSelectionSet:
 
     def test_selectFenceFilter(self):
         axSets = self.axDoc.selectionSets()
-        axSet = axSets.add("PYRX3")
+        axSet = axSets.add("PYRX5")
         filter = [(0, "LINE")]
         fence = [Ge.Point3d(5, 0, 0), Ge.Point3d(5, 100, 0)]
         axSet.selectFence(fence, filter)
@@ -110,7 +110,7 @@ class TestAxSelectionSet:
 
     def test_selectWindowPolygonFilter(self):
         axSets = self.axDoc.selectionSets()
-        axSet = axSets.add("PYRX4")
+        axSet = axSets.add("PYRX6")
         filter = [(0, "LINE")]
         poly = [
             Ge.Point3d(0, 0, 0),
@@ -135,7 +135,7 @@ class TestAxSelectionSet:
 
     def test_selectCrossingPolygonFilter(self):
         axSets = self.axDoc.selectionSets()
-        axSet = axSets.add("PYRX5")
+        axSet = axSets.add("PYRX7")
         filter = [(0, "LINE")]
         poly = [
             Ge.Point3d(0, 0, 0),
@@ -153,7 +153,7 @@ class TestAxSelectionSet:
             cnt2 += 1
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
-        assert axSet.name() == "PYRX5"
+        assert axSet.name() == "PYRX7"
         axSet.delete()
         assert count >= 48
         assert cnt1 >= 48
@@ -164,8 +164,8 @@ class TestAxSelectionSet:
         line1 = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(0, 100, 0))
         line2 = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
         axSets = self.axDoc.selectionSets()
-        axSet = axSets.add("PYRX6")
-        assert axSet.name() == "PYRX6"
+        axSet = axSets.add("PYRX8")
+        assert axSet.name() == "PYRX8"
         axSet.addItems([line1, line2])
         assert axSet.count() == 2
         axSet.removeItems([line1, line2])

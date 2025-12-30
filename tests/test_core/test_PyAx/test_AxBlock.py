@@ -5,7 +5,6 @@ from tests import MEDIA_DIR
 
 
 # modelspace is derived from Block
-@pytest.mark.known_failure_IRX
 class TestAxBlock:
 
     def setup_class(self):

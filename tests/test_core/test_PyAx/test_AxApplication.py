@@ -43,7 +43,7 @@ class TestAxApplication:
         assert len(apps) != 0
 
     @pytest.mark.known_failure_ZRX
-    @pytest.mark.known_failure_IRX
+    @pytest.mark.known_failure_IRX # TODO: This test causes other tests to fail, wrong document?
     def test_getset_active_document(self):
         Ap.DocManager().executeInApplicationContext(active_document, None)
 

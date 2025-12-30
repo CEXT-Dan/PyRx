@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Db, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxDatabase:
 
     def test_getinstance(self):
@@ -13,6 +12,7 @@ class TestAxDatabase:
         axDb = axDoc.database()
         assert axDb.className() == "AcadDatabase"
 
+    @pytest.mark.known_failure_IRX
     def test_copyObjects(self):
         axApp = Ap.Application.acadApplication()
         axDoc = axApp.activeDocument()
