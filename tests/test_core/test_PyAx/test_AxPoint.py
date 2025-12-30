@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxPoint:
 
     def setup_class(self):

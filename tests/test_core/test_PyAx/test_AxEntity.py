@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Ax, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxEntity:
 
     def setup_class(self):
@@ -21,6 +20,7 @@ class TestAxEntity:
         assert axColor.green() == axColor2.green()
         assert axColor.blue() == axColor2.blue()
 
+    @pytest.mark.known_failure_IRX
     def test_intersectWith(self):
         axSpace = self.axDoc.modelSpace()
         axLine1 = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))

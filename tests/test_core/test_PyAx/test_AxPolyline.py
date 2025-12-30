@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxPolyline:
 
     def setup_class(self):
@@ -23,6 +22,7 @@ class TestAxPolyline:
         assert ent.objectName() == "AcDb2dPolyline"
         assert ent.coordinates() == pnts
 
+    @pytest.mark.known_failure_IRX
     def test_setcoordinates(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -37,6 +37,7 @@ class TestAxPolyline:
         ent.setCoordinates(pnts)
         assert ent.coordinates() == pnts
 
+    @pytest.mark.known_failure_IRX
     def test_getcoordinate(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -49,6 +50,7 @@ class TestAxPolyline:
         assert ent.coordinate(3) == pnts[3]
 
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     def test_setcoordinate(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -61,6 +63,7 @@ class TestAxPolyline:
         ent.setCoordinate(0, Ge.Point3d(0, 1, 0))
         assert ent.coordinate(0) == Ge.Point3d(0, 1, 0)
 
+    @pytest.mark.known_failure_IRX
     def test_closed(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -74,6 +77,7 @@ class TestAxPolyline:
         ent.setClosed(True)
         assert ent.isClosed() == True
 
+    @pytest.mark.known_failure_IRX
     def test_length(self):
         pnts = [
             Ge.Point3d(0, 0, 0),

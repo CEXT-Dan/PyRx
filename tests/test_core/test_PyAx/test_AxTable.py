@@ -4,13 +4,13 @@ import pytest
 
 from pyrx import Ap, Ax, Ge, Db
 
-@pytest.mark.known_failure_IRX
 class TestAxTable:
 
     def setup_class(self):
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
         
+    @pytest.mark.known_failure_IRX
     def test_create_table_settext(self):
         axModel = self.axDoc.modelSpace()
         axTable = axModel.addTable(Ge.Point3d(0, 0, 0), 7, 5, 1, 5)
@@ -18,6 +18,7 @@ class TestAxTable:
         assert axTable.text(0, 0) == "woowhoo"
 
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     def test_create_table_setvalue(self):
         axModel = self.axDoc.modelSpace()
         axTable = axModel.addTable(Ge.Point3d(0, 0, 0), 7, 5, 1, 5)

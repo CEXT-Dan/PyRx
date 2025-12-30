@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap
 
-@pytest.mark.known_failure_IRX
 class TestAxDocument:
     def test_getinstance(self):
         axApp = Ap.Application.acadApplication()

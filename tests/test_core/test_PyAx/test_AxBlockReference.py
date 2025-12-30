@@ -4,13 +4,14 @@ import pytest
 
 from pyrx import Ap, Ax, Db
 
-@pytest.mark.known_failure_IRX
+
 class TestAxBlockReference:
 
     def setup_class(self):
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
 
+    @pytest.mark.known_failure_IRX  # axDb.modelSpace()
     def test_getDynamic(self, db_06457: Db.Database):
         axDb = db_06457.acadDatabase()
         axSpace = axDb.modelSpace()
@@ -24,6 +25,7 @@ class TestAxBlockReference:
                 num += 1
         assert num != 0
 
+    @pytest.mark.known_failure_IRX  # axDb.modelSpace()
     def test_getAttributes(self, db_06457: Db.Database):
         axDb = db_06457.acadDatabase()
         axSpace = axDb.modelSpace()
@@ -40,10 +42,11 @@ class TestAxBlockReference:
                     num += 1
         assert num != 0
 
-@pytest.mark.known_failure_IRX
+
 class TestAxDynBlockReference:
-    
+
     @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
     def test_allowed_values(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
@@ -61,7 +64,8 @@ class TestAxDynBlockReference:
         for prop in axDyn.dynamicBlockProperties():
             result.extend(prop.allowedValues())
         assert result == actual
-        
+
+    @pytest.mark.known_failure_IRX
     def test_set_value(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
@@ -75,10 +79,7 @@ class TestAxDynBlockReference:
             Db.EvalVariant("Limit Switch NC"),
             Db.EvalVariant("Limit Switch Held Open"),
         ]
-        prop : Ax.AcadDynamicBlockReferenceProperty = axDyn.dynamicBlockProperties()[0]
+        prop: Ax.AcadDynamicBlockReferenceProperty = axDyn.dynamicBlockProperties()[0]
         for item in actual:
             prop.setValue(item)
             assert prop.value() == item
-        
-
-        

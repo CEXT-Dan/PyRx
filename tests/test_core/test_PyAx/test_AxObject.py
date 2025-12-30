@@ -4,7 +4,6 @@ import pytest
 
 from pyrx import Ap, Ax, Ge
 
-@pytest.mark.known_failure_IRX
 class TestAxObject:
 
     def setup_class(self):
@@ -30,6 +29,7 @@ class TestAxObject:
         ent.setXdata(xdin)
         assert xdin == ent.xdata("PYRX_TESTXD")
 
+    @pytest.mark.known_failure_IRX
     def test_extensionDictionary(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
@@ -38,7 +38,7 @@ class TestAxObject:
             (10, Ge.Point3d(4.00000000000000, 5.00000000000000, 6.00000000000000)),
         ]
         xdict = ent.extensionDictionary()
-        xrec = xdict.addXRecord("PYRX_XREC_KEY")
+        xrec = xdict.addXRecord("PYRX_XREC_KEY") #fail
         xrec.setXRecordData(data)
         xrecout = Ax.AcadXRecord.cast(xdict.object("PYRX_XREC_KEY"))
         assert xrecout.xrecordData() == data
