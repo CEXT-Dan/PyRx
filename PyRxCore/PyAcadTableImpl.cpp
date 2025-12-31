@@ -343,15 +343,28 @@ PyAcRowType PyIAcadTableImpl::GetRowType(int row) const
 
 CString PyIAcadTableImpl::GetText(int row, int col) const
 {
+#ifdef _IRXTARGET140
+    AcAxDocLock lock;
+    AcDbObjectPointer<AcDbTable> pTable(id());
+    CString val = pTable->textString(row, col);
+    return val;
+#else
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->GetText(row, col, &bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
+#endif
 }
 
 void PyIAcadTableImpl::SetText(int row, int col, const CString& val) const
 {
+#ifdef _IRXTARGET140
+    AcAxDocLock lock;
+    AcDbObjectPointer<AcDbTable> pTable(id(), AcDb::kForWrite);
+    PyThrowBadEs(pTable->setTextString(row, col, val));
+#else
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->SetText(row, col, bstrval));
+#endif
 }
 
 CString PyIAcadTableImpl::GetCellTextStyle(int row, int col) const
