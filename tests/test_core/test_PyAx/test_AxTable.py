@@ -10,7 +10,6 @@ class TestAxTable:
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
         
-    @pytest.mark.known_failure_IRX
     def test_create_table_settext(self):
         axModel = self.axDoc.modelSpace()
         axTable = axModel.addTable(Ge.Point3d(0, 0, 0), 7, 5, 1, 5)
