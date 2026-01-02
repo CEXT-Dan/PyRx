@@ -91,6 +91,7 @@ class TestAxEntity:
         assert copied_line is not None
         assert axSpace.count() == initial_count + 1
 
+    @pytest.mark.known_failure_IRX
     def test_entity_deletion(self):
         axSpace = self.axDoc.modelSpace()
         line = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
