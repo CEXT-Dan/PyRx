@@ -408,6 +408,8 @@ using AcDbAttributePointer = AcDbObjectPointer<AcDbAttribute>;
 #include <wxPython/wxpy_api.h>
 #include "PyDocString.h"
 
+//-------------------------------------------------------------------------------------
+// PyAutoLockGIL
 struct PyAutoLockGIL
 {
     PyAutoLockGIL() noexcept
@@ -430,6 +432,8 @@ struct PyAutoLockGIL
     inline static bool canLock = false;
 };
 
+//-------------------------------------------------------------------------------------
+// PyObjectPtr
 inline void PyDecRef(PyObject* ptr) noexcept
 {
     if (PyAutoLockGIL::canLock)

@@ -190,13 +190,15 @@ static bool uninitWxApp()
 {
     wxTheApp->OnExit();
     wxEntryCleanup();
+#if defined(wxVERSION_NUMBER) && (wxVERSION_NUMBER < 3300)
 #if defined(_GRXTARGET) && (_GRXTARGET >= 260)
     if (hasWxXmlResourceModule())
         wxExit();
 #elif defined(_GRXTARGET) && (_GRXTARGET < 260)
     if (hasWxXmlResourceModule())
         std::quick_exit(EXIT_SUCCESS);
-#endif
+#endif //_GRXTARGET
+#endif //wxVERSION_NUMBER
     return true;
 }
 
