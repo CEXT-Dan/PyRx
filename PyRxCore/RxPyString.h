@@ -255,38 +255,42 @@ inline bool icompare(const std::string& l, const std::string& r, const _locale_t
     return true;
 }
 
-[[nodiscard]] inline std::wstring utf8_to_wstr(const char* str8) noexcept {
+[[nodiscard]] inline std::wstring utf8_to_wstr(const std::string& str)
+{
+    if (str.empty())
+        return {};
+    const int count = MultiByteToWideChar(CP_UTF8, 0, str.data(), static_cast<int>(str.size()), nullptr, 0);
+    if (count <= 0)
+        return {};
+    std::wstring wstr(count, L'\0');
+    MultiByteToWideChar(CP_UTF8, 0, str.data(), static_cast<int>(str.size()), wstr.data(), count);
+    return wstr;
+}
+
+[[nodiscard]] inline std::wstring utf8_to_wstr(const char* str8)
+{
     if (str8 == nullptr)
-        return std::wstring{};
-    const std::string str{ str8 };
-    const int count = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), NULL, 0);
-    std::wstring wstr(count, 0);
-    MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), &wstr[0], count);
-    return wstr;
+        return {};
+    return utf8_to_wstr(std::string{ str8 });
 }
 
-[[nodiscard]] inline std::wstring utf8_to_wstr(const std::string& str) noexcept {
-    const int count = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), NULL, 0);
-    std::wstring wstr(count, 0);
-    MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), &wstr[0], count);
-    return wstr;
-}
-
-[[nodiscard]] inline std::string wstr_to_utf8(const std::wstring& wstr) noexcept {
-    const int count = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), wstr.length(), NULL, 0, NULL, NULL);
-    std::string str(count, 0);
-    WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), -1, &str[0], count, NULL, NULL);
+[[nodiscard]] inline std::string wstr_to_utf8(const std::wstring& wstr)
+{
+    if (wstr.empty())
+        return {};
+    const int count = WideCharToMultiByte(CP_UTF8, 0, wstr.data(), static_cast<int>(wstr.size()), nullptr, 0, nullptr, nullptr);
+    if (count <= 0)
+        return {};
+    std::string str(count, '\0');
+    WideCharToMultiByte(CP_UTF8, 0, wstr.data(), static_cast<int>(wstr.size()), str.data(), count, nullptr, nullptr);
     return str;
 }
 
-[[nodiscard]] inline std::string wstr_to_utf8(const wchar_t* utf16wc) noexcept {
+[[nodiscard]] inline std::string wstr_to_utf8(const wchar_t* utf16wc)
+{
     if (utf16wc == nullptr)
-        return std::string{};
-    const std::wstring wstr{ utf16wc };
-    const int count = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), wstr.length(), NULL, 0, NULL, NULL);
-    std::string str(count, 0);
-    WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), -1, &str[0], count, NULL, NULL);
-    return str;
+        return {};
+    return wstr_to_utf8(std::wstring{ utf16wc });
 }
 
 template <typename Out>
