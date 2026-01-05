@@ -153,7 +153,7 @@ UINT_PTR PyApApplication::acadGetIDispatch()
 
 PyObject* PyApApplication::getwxApp()
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     if (!wxPyCheckForApp(false))
         throw PyNullObject();
     wxApp* pApp = wxTheApp;

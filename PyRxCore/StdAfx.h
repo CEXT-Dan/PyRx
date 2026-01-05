@@ -429,7 +429,6 @@ struct PyAutoLockGIL
     PyGILState_STATE gstate = PyGILState_UNLOCKED;
     inline static bool canLock = false;
 };
-typedef PyAutoLockGIL WxPyAutoLock;
 
 inline void PyDecRef(PyObject* ptr) noexcept
 {
