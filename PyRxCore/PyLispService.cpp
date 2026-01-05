@@ -346,7 +346,7 @@ void PyLispService::On_kLoadDwgMsg()
 
 void PyLispService::cleanup()
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     for (const auto& item : lispFuncCodes)
     {
         Py_DecRef(item.second);
