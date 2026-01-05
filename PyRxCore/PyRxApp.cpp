@@ -39,7 +39,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 bool WxRxApp::OnInit()
 {
     // TODO: support wxWidgets with dark mode
-#ifdef WXWIN33
+#if defined(wxVERSION_NUMBER) && (wxVERSION_NUMBER >= 3300)
     resbuf rb;
     const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
     if (rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
@@ -47,7 +47,7 @@ bool WxRxApp::OnInit()
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
-#endif
+#endif //wxVERSION_NUMBER
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
