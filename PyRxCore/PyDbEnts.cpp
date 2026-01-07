@@ -2490,8 +2490,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
         {
             const auto tmp = static_cast<const AcGeCircArc3d*>(pItem);
             AcGePoint3dArray samplePnts; //reserve?
-            const auto len = size_t(tmp->length(0, 1)) + 1;
-            tmp->getSamplePoints(std::min(len, size_t(10)), samplePnts);
+            tmp->getSamplePoints(5, samplePnts);
             for (const auto& pnt : samplePnts)
                 polypoints.append(pnt);
         }
