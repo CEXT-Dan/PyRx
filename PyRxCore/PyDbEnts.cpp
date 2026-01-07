@@ -8,7 +8,6 @@
 #include "PyDbMText.h"
 #include "PyDbEval.h"
 #include "PyRxOverrulableEntity.h"
-#include <ppl.h>
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/linestring.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
@@ -2512,20 +2511,20 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
 static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
 {
     const int n = polygon.length();
-    if (n < 3)
-        return false;
+    if (n < 3) return false;
+    bool inside = false;
     const double x = testPoint.x, y = testPoint.y;
-    std::atomic<int> count{ 0 };
-    concurrency::parallel_for(0, n, [&](int i)
+    for (int i = 0, j = n - 1; i < n; j = i++)
+    {
+        const double xi = polygon[i].x, yi = polygon[i].y;
+        const double xj = polygon[j].x, yj = polygon[j].y;
+        if (((yi > y) != (yj > y)) &&
+            (x < (xj - xi) * (y - yi) / (yj - yi) + xi))
         {
-            const int j = (i == 0) ? n - 1 : i - 1;
-            const double xi = polygon[i].x, yi = polygon[i].y;
-            const double xj = polygon[j].x, yj = polygon[j].y;
-            const bool intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi + 1e-12) + xi);
-            if (intersect)
-                count++;
-        });
-    return (count % 2) == 1;
+            inside = !inside;
+        }
+    }
+    return inside;
 }
 
 static bool isPolygonCCW(const AcGePoint3dArray& polygon, const AcGeVector3d& normal)
