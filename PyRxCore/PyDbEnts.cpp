@@ -2531,8 +2531,12 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
             const auto tmp = static_cast<const AcGeCircArc3d*>(pItem);
             AcGePoint3dArray samplePnts; //reserve?
             tessellateArc(*tmp, samplePnts);
+#if defined(_BRXTARGET260)
             for (const auto& pnt : samplePnts)
                 polypoints.append(pnt);
+#else
+            polypoints.appendMove(samplePnts);
+#endif
         }
         else
         {
