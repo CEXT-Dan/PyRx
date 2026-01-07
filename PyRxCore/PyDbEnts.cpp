@@ -2529,7 +2529,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     AcGePoint3d lastPt;
     if (cc.hasEndPoint(lastPt))
         polypoints.append(lastPt);
-    return polypoints;
+    return std::move(polypoints);
 }
 
 static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
