@@ -1,3 +1,4 @@
 known issues, 
 BricsCAD does not work with GDAL, SQLite, or PyQt6
 AutoCAD does not work with PyQt6
+BricsCAD’s Adesk::Boolean is still an integer type, Python sees this as an integer 1 , 0 vs True, False 
