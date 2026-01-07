@@ -48,7 +48,7 @@ static bool fireOnbeginConsole()
 }
 
 static PyApDocument curPyDoc()
-{   
+{
     if (curDoc() == nullptr)
         PyThrowBadEs(eNoDocument);
     return PyApDocument(curDoc(), false);
@@ -154,5 +154,3 @@ void initPyApModule()
 {
     PyImport_AppendInittab(PyApNamespace, &PyInit_PyAp);
 }
-
-

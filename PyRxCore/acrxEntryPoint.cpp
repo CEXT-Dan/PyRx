@@ -447,7 +447,7 @@ public:
 
     static auto postToModelSpace(AcDbEntity* pEnt)
     {
-        if(pEnt == nullptr)
+        if (pEnt == nullptr)
             return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
         AcDbObjectId id;
         AcDbDatabase* pDb = acdbCurDwg();

@@ -837,4 +837,3 @@ inline boost::python::tuple ColorRefToPyTuple(COLORREF val)
 //
 
 #pragma pack (pop)
-
