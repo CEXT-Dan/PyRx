@@ -2470,6 +2470,48 @@ static auto getCompositCurve(const AcDbPolyline& pline) -> std::unique_ptr<AcGeC
     return std::unique_ptr<AcGeCompositeCurve3d>(static_cast<AcGeCompositeCurve3d*>(pcurve));
 }
 
+static void tessellateArc(const AcGeCircArc3d& arc, AcGePoint3dArray& outPts, double tol = 0.0001)
+{
+    const double R = arc.radius();
+    const double sweep = fabs(arc.endAng() - arc.startAng());
+
+    // Degenerate or tiny arc
+    if (sweep < AcGeContext::gTol.equalPoint())
+    {
+        outPts.append(arc.startPoint());
+        outPts.append(arc.endPoint());
+        return;
+    }
+
+    // Nearly flat arc just endpoints
+    if (R <= tol)
+    {
+        outPts.append(arc.startPoint());
+        outPts.append(arc.endPoint());
+        return;
+    }
+
+    // Maximum angular step from sagitta
+    double thetaMax = 2.0 * acos(std::max(0.0, 1.0 - tol / R));
+
+    // Safety fallback
+    if (thetaMax <= 0.0)
+        thetaMax = sweep;
+
+    int nSegs = static_cast<int>(ceil(sweep / thetaMax));
+    nSegs = std::max(nSegs, 1);
+
+    const double dAng = sweep / nSegs;
+    const double start = arc.startAng();
+    const double sign = (arc.endAng() >= arc.startAng()) ? 1.0 : -1.0;
+
+    for (int i = 0; i <= nSegs; ++i)
+    {
+        double a = start + sign * dAng * i;
+        outPts.append(arc.evalPoint(a));
+    }
+}
+
 static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
 {
     AcGePoint3dArray polypoints;
@@ -2490,7 +2532,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
         {
             const auto tmp = static_cast<const AcGeCircArc3d*>(pItem);
             AcGePoint3dArray samplePnts; //reserve?
-            tmp->getSamplePoints(5, samplePnts);
+            tessellateArc(*tmp, samplePnts);
             for (const auto& pnt : samplePnts)
                 polypoints.append(pnt);
         }
