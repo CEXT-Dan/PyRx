@@ -2466,7 +2466,7 @@ static auto shallowClone(const AcDbPolyline& pline) -> AcDbAcDbPolylineUPtr
 static auto getCompositCurve(const AcDbPolyline& pline) -> std::unique_ptr<AcGeCompositeCurve3d>
 {
     AcGeCurve3d* pcurve = nullptr;
-    pline.getAcGeCurve(pcurve);
+    PyThrowBadEs(pline.getAcGeCurve(pcurve));
     return std::unique_ptr<AcGeCompositeCurve3d>(static_cast<AcGeCompositeCurve3d*>(pcurve));
 }
 
@@ -2475,14 +2475,14 @@ static void tessellateArc(const AcGeCircArc3d& arc, AcGePoint3dArray& outPts, do
     const double R = arc.radius();
     double start = arc.startAng();
     double end = arc.endAng();
-    if (end < start) 
+    if (end < start)
         end += 6.283185307179586; // 2 * PI
 
     double sweep = end - start;
-    if (sweep < 1e-9) 
+    if (sweep < 1e-9)
         return;
 
-    if (R <= tol) 
+    if (R <= tol)
     {
         outPts.append(arc.startPoint());
         return;
@@ -2491,7 +2491,7 @@ static void tessellateArc(const AcGeCircArc3d& arc, AcGePoint3dArray& outPts, do
     // Maximum angular step from sagitta: tol = R(1 - cos(theta/2))
     double thetaMax = 2.0 * acos(std::max(-1.0, std::min(1.0, 1.0 - tol / R)));
 
-    if (thetaMax <= 1e-9) 
+    if (thetaMax <= 1e-9)
         thetaMax = sweep;
 
     const int nSegs = std::max(static_cast<int>(ceil(sweep / thetaMax)), 1);
@@ -2511,22 +2511,23 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     cc.getCurveList(curveList);
     for (const auto* pvoid : curveList)
     {
-        if (!pvoid) 
-            continue;
-        const auto* pItem = static_cast<const AcGeCurve3d*>(pvoid);
-        if (pItem->type() == AcGe::kLineSeg3d)
+        if (pvoid != nullptr)
         {
-            const auto* tmp = static_cast<const AcGeLineSeg3d*>(pItem);
-            polypoints.append(tmp->startPoint());
-        }
-        else if (pItem->type() == AcGe::kCircArc3d)
-        {
-            const auto* tmp = static_cast<const AcGeCircArc3d*>(pItem);
-            tessellateArc(*tmp, polypoints);
+            const auto* pItem = static_cast<const AcGeEntity3d*>(pvoid);
+            if (pItem->type() == AcGe::kLineSeg3d)
+            {
+                const auto* tmp = static_cast<const AcGeLineSeg3d*>(pItem);
+                polypoints.append(tmp->startPoint());
+            }
+            else if (pItem->type() == AcGe::kCircArc3d)
+            {
+                const auto* tmp = static_cast<const AcGeCircArc3d*>(pItem);
+                tessellateArc(*tmp, polypoints);
+            }
         }
     }
     AcGePoint3d lastPt;
-    if (cc.hasEndPoint(lastPt)) 
+    if (cc.hasEndPoint(lastPt))
         polypoints.append(lastPt);
     return polypoints;
 }
@@ -2534,7 +2535,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
 static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
 {
     const int n = polygon.length();
-    if (n < 3) 
+    if (n < 3)
         return false;
 
     bool inside = false;
@@ -3062,9 +3063,6 @@ boost::python::list PyDbPolyline::toList() const
 
 bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
 {
-    //auto plineClone = shallowClone(*impObj());
-    //if (plineClone == nullptr)
-    //    PyThrowBadEs(eNullPtr);
     auto cc = getCompositCurve(*impObj());
     if (cc == nullptr)
         PyThrowBadEs(eNullPtr);
