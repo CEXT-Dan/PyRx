@@ -261,7 +261,7 @@ PyDbObjectIdArray PyEdSelectionSet::objectIdArray1() const
     const auto& m_ids = objectIdsImpl();
     PyDbObjectIdArray ids;
     ids.reserve(m_ids.length());
-    for (const auto& id : objectIdsImpl())
+    for (const auto& id : m_ids)
         ids.push_back(PyDbObjectId{ id });
     return ids;
 }
