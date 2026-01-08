@@ -415,6 +415,7 @@ public:
         AcDbObjectId id;
         Adesk::Int32 nsize = 0;
         acedSSLength(ssname, &nsize);
+        ids.setPhysicalLength(nsize);
         for (size_t i = 0; i < nsize; i++)
         {
             ads_name ename = { 0 };
