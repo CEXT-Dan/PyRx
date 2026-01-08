@@ -496,41 +496,42 @@ std::wstring PyRxApp::the_error()
     PyAutoLockGIL lock;
     if (PyErr_Occurred())
     {
-        PyObject* error_type = nullptr;
-        PyObject* the_error = nullptr;
-        PyObject* the_traceback = nullptr;
+        PyObject* error_type = nullptr, * the_error = nullptr, * the_traceback = nullptr;
         PyErr_Fetch(&error_type, &the_error, &the_traceback);
         PyErr_NormalizeException(&error_type, &the_error, &the_traceback);
-        if ((error_type != NULL))
+        std::string the_error_string = "Unknown Error";
+        std::string the_traceback_string;
+        if (the_error != nullptr)
         {
-            std::string the_error_string, the_traceback_string;
-            if (the_error != NULL)
+            PyObjectPtr pRep{ PyObject_Str(the_error) };
+            if (pRep) 
             {
-                PyObjectPtr pRep{ PyObject_Str(the_error) };
-                the_error_string = PyUnicode_AsString(pRep.get());
+                const char* utf8 = PyUnicode_AsUTF8(pRep.get());
+                if (utf8 != nullptr) 
+                    the_error_string = utf8;
             }
-            if (the_traceback != NULL && PyTraceBack_Check(the_traceback))
-            {
-                PyTracebackObject* traceRoot = (PyTracebackObject*)the_traceback;
-                PyTracebackObject* pTrace = traceRoot;
-                while (pTrace != NULL)
-                {
-                    PyFrameObject* frame = pTrace->tb_frame;
-                    PyCodeObject* code = PyFrame_GetCode(frame);
-                    int lineNr = PyFrame_GetLineNumber(frame);
-                    const char* sCodeName = PyUnicode_AsUTF8AndSize(code->co_name, nullptr);
-                    const char* sFileName = PyUnicode_AsUTF8AndSize(code->co_filename, nullptr);
-                    the_traceback_string += std::format("\nAt {} ({}:{})", sCodeName, sFileName, lineNr);
-                    pTrace = pTrace->tb_next;
-                }
-            }
-            std::string message(the_error_string + " ,Traceback - " + the_traceback_string);
-            Py_XDECREF(error_type);
-            Py_XDECREF(the_error);
-            Py_XDECREF(the_traceback);
-            return utf8_to_wstr(message);
         }
+        if (the_traceback != nullptr && PyTraceBack_Check(the_traceback))
+        {
+            PyTracebackObject* pTrace = (PyTracebackObject*)the_traceback;
+            while (pTrace != nullptr)
+            {
+                PyFrameObject* frame = pTrace->tb_frame;
+                PyCodeObject* code = PyFrame_GetCode(frame);
+                int lineNr = PyFrame_GetLineNumber(frame);
+                const char* sCodeName = PyUnicode_AsUTF8(code->co_name);
+                const char* sFileName = PyUnicode_AsUTF8(code->co_filename);
+                the_traceback_string += std::format("\n  File \"{}\", line {}, in {}", sFileName ? sFileName : "?", lineNr, sCodeName ? sCodeName : "?");
+                Py_DECREF(code);
+                pTrace = pTrace->tb_next;
+            }
+        }
+        std::string message = the_error_string + "\nTraceback (most recent call last):" + the_traceback_string;
+        Py_XDECREF(error_type);
+        Py_XDECREF(the_error);
+        Py_XDECREF(the_traceback);
+        return utf8_to_wstr(message);
     }
-    return std::wstring{ __FUNCTIONW__ };
+    return L"No Python Error Occurred";
 }
 wxIMPLEMENT_APP_NO_MAIN(WxRxApp);
