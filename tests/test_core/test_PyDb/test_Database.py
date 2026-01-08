@@ -35,7 +35,7 @@ class TestDatabase:
         objId = db_06457.getObjectId(False, objHnd)
         assert objId.isNull() is False
         dbo = Db.DbObject(objId)
-        assert dbo.isReadEnabled() is True
+        assert bool(dbo.isReadEnabled()) is True
         
     @pytest.mark.known_failure_IRX
     def test_dbopbject_dxfname(self, db_06457: Db.Database):
