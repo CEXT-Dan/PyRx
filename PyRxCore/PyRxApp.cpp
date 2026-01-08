@@ -380,6 +380,8 @@ bool PyRxApp::uninit()
     return uninitWxApp();
 }
 
+#ifdef PYRXDEBUG
+#ifdef NEVER // sanity 
 static void printPythonList(PyObject* pylist)
 {
     for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
@@ -393,6 +395,8 @@ static void printPythonList(PyObject* pylist)
         }
     }
 }
+#endif
+#endif
 
 bool PyRxApp::setPyConfig()
 {
