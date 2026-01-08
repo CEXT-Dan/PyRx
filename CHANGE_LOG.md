@@ -1,3 +1,13 @@
+## v2.2.39
+
+* improved performance converting AutoCAD’s strings to Python (wchar_t to char)
+* improved performance in function Db.Polyline.isPointInside when the polyline contains bulges.
+* [#443] (intellicad)implement missing AxTable methods in ICARX AxTable::GetText AxTable::SetText
+
+## v2.2.3*
+
+* test build for Intellicad
+
 ## v2.2.37
 
 * [#422] fix crash on close for Gstar2025
@@ -11,7 +21,7 @@
 * [#423] PyDbAssocDependency
 * [#423] PyDbAssocValueDependency
 * improve PyDbGraph, added findCycles overload
-* add LayerFilter::filterExpressionTree returns a list of tuple[str,str] with the values 
+* add LayerFilter::filterExpressionTree returns a list of tuple[str,str] with the values
 * fix bad stub LayerTableRecord
 * depreciated ObjectId::isValid() #has a warning, will be removed at some later date
 * improve stubs (.pyi)
@@ -98,11 +108,11 @@ This is still beta, so it’s best not to share any drawings that have this enti
 ## v2.2.27
 
 * [#418] refactored wxWidgets startup and shutdown. This release should also properly shuts down Python.  
-* added support for BricsCAD beta 3, Other versions of BricsCAD are disabled 
+* added support for BricsCAD beta 3, Other versions of BricsCAD are disabled
 
 ## v2.2.26
 
-* [#417] raise KeyError instead of ErrorStatusException(eKeyNotFound) for SymbolTable and Dictionary 
+* [#417] raise KeyError instead of ErrorStatusException(eKeyNotFound) for SymbolTable and Dictionary
 * [#416] added  std::filesystem::path::make_preferred() for OS in Ax methods
 * [#414] add change_cwd parameter to command decorator
 * [#389] Package Versioning
