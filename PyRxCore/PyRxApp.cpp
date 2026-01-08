@@ -220,9 +220,14 @@ const std::filesystem::path& PyRxApp::moduleName()
     static std::filesystem::path path;
     if (path.empty())
     {
-        std::wstring buffer(MAX_PATH, 0);
-        GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
-        path = buffer.c_str();
+        DWORD bufferSize = MAX_PATH;
+        std::wstring buffer(bufferSize, L'\0');
+        DWORD result = GetModuleFileName(_hdllInstance, buffer.data(), bufferSize);
+        if (result > 0 && result < bufferSize)
+        {
+            buffer.resize(result);
+            path = std::filesystem::path(buffer);
+        }
     }
     return path;
 }
