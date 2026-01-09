@@ -2846,7 +2846,20 @@ void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMod
 
 bool PyDbBlockTableRecord::hasAttributeDefinitions() const
 {
-    return impObj()->hasAttributeDefinitions();
+    const auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es == eOk)
+    {
+        AcDbObjectId id;
+        for (iter->start(); !iter->done(); iter->step())
+        {
+            if (iter->getEntityId(id) == eOk)
+            {
+                if (id.objectClass()->isDerivedFrom(AcDbAttributeDefinition::desc()))
+                    return true;
+            }
+        }
+    }
+    return false;
 }
 
 bool PyDbBlockTableRecord::hasPreviewIcon() const
