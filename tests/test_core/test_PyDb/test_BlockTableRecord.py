@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pyrx import Db
+import wx
 
 
 class TestBlockTableRecord:
@@ -22,5 +23,16 @@ class TestBlockTableRecord:
         btr = Db.BlockTableRecord(dynref.anonymousBlockTableRecord())
         assert len(btr.objectIds()) == 8
         assert len(btr.visibleObjectIds()) == 5
+        
+    def test_block_icon(self, db_06457: Db.Database):
+        for name, id in db_06457.getBlocks().items():
+            if name.casefold() == 'N'.casefold():
+                btr = Db.BlockTableRecord(id)
+                bmp: wx.Bitmap = btr.getPreviewIcon()
+                assert bmp.IsOk() is True
+                return 
+        assert False
+       
+
 
 

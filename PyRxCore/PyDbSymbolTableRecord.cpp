@@ -2888,16 +2888,19 @@ static void addBITMAPFILEHEADER(AcDbBlockTableRecord::PreviewIcon& ico)
 boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
 {
     PyAutoLockGIL lock;
+    if (impObj()->hasPreviewIcon() == false)
+        PyThrowBadEs(Acad::eInvalidPreviewImage);
     AcArray<Adesk::UInt8> previewIcon;
-    previewIcon.setLogicalLength(2048);
     PyThrowBadEs(impObj()->getPreviewIcon(previewIcon));
     addBITMAPFILEHEADER(previewIcon);
     wxMemoryInputStream stream(previewIcon.asArrayPtr(), previewIcon.length());
     wxImage img(stream);
-    wxBitmap* bmp = new wxBitmap(img);
-    if (!bmp->IsOk())
+    if (img.IsOk() == false)
         PyThrowBadEs(Acad::eInvalidPreviewImage);
-    return boost::python::object(boost::python::handle<>(wxPyConstructObject(bmp, wxT("wxBitmap"), true)));
+    wxBitmap bmp(img);
+    if (bmp.IsOk() == false)
+        PyThrowBadEs(Acad::eInvalidPreviewImage);
+    return boost::python::object(boost::python::handle<>(wxPyConstructObject(new wxBitmap(bmp), wxT("wxBitmap"), true)));
 }
 
 void PyDbBlockTableRecord::clearPreviewIcon() const
@@ -3363,7 +3366,6 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     : PyDbSymbolTableRecord(openAcDbObject<AcDbLayerTableRecord>(id, mode), false)
 {
 }
-
 
 PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
     : PyDbSymbolTableRecord(openAcDbObject<AcDbLayerTableRecord>(id, mode, erased), false)
