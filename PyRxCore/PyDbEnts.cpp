@@ -1918,7 +1918,7 @@ void makePyDbArcWrapper()
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float\n"
-        "- center: PyGe.Point3d,normal: PyGe.Vector2d, radius: float, startAngle: float, endAngle: float\n"
+        "- center: PyGe.Point3d, normal: PyGe.Vector3d, radius: float, startAngle: float, endAngle: float\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
