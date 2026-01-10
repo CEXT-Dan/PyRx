@@ -2654,7 +2654,7 @@ class Arc(PyDb.Curve):
     def __init__(
         self,
         center: PyGe.Point3d,
-        normal: PyGe.Vector2d,
+        normal: PyGe.Vector3d,
         radius: float,
         startAngle: float,
         endAngle: float,
