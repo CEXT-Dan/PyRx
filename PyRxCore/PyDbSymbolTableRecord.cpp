@@ -2867,24 +2867,22 @@ bool PyDbBlockTableRecord::hasPreviewIcon() const
     return impObj()->hasPreviewIcon();
 }
 
-//TODO remove hack
 static void addBITMAPFILEHEADER(AcDbBlockTableRecord::PreviewIcon& ico)
 {
-    //BITMAPFILEHEADER
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x36);//offset BITMAPFILEHEADER + BITMAPINFO
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x0);//0 file size? ico.length()ok
-    ico.insertAt(0, 0x0);
-    ico.insertAt(0, 0x4D);
-    ico.insertAt(0, 0x42);//BM0
+    //win32
+    const DWORD dibSize = static_cast<DWORD>(ico.length());
+
+    BITMAPFILEHEADER hdr{};
+    hdr.bfType = 0x4D42; // 'BM'
+    hdr.bfSize = sizeof(BITMAPFILEHEADER) + dibSize;
+    hdr.bfReserved1 = 0;
+    hdr.bfReserved2 = 0;
+    hdr.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+
+    // Prepend header byte-for-byte (reverse because insertAt(0))
+    const BYTE* p = reinterpret_cast<const BYTE*>(&hdr);
+    for (int i = sizeof(BITMAPFILEHEADER) - 1; i >= 0; --i)
+        ico.insertAt(0, p[i]);
 }
 
 boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
