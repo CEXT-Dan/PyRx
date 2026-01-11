@@ -45,8 +45,8 @@ def PyRxCmd_pyreaddwg():
     """
     try:
         # Create a new database instance
-        # False = don't load system variables (faster)
-        # True = allow external references to be loaded
+        # False = don't build default drawing (creates empty database)
+        # True = no document association (database not tied to current AutoCAD document)
         db = Db.Database(False, True)
         
         # Read the specified DWG file from the relative path
