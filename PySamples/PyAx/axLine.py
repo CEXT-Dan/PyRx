@@ -5,8 +5,32 @@ print("added command - axLine")
 
 @command
 def axLine():
-
-    # get the application, document, and modelspace
+    """
+    This function demonstrates the use of ActiveX automation with AutoCAD through PyRx.
+    
+    The API being used is ActiveX (Automation) which allows Python scripts to interact 
+    with AutoCAD by creating and manipulating AutoCAD objects through COM (Component Object Model)
+    interfaces. This approach uses the Ax module that provides ActiveX automation
+    capabilities for AutoCAD, enabling direct access to AutoCAD's object model and methods.
+    
+    Functionality:
+    - Creates an AutoCAD application instance using ActiveX automation
+    - Accesses the active document and modelspace through ActiveX interfaces
+    - Adds two lines to the modelspace using ActiveX methods
+    - Calculates intersection point of the two lines using ActiveX geometry operations
+    - Creates a circle at the intersection point with cyan color
+    
+    Note: This implementation leverages PyRx's Ax module which provides ActiveX automation 
+    bindings for AutoCAD, allowing direct access to AutoCAD's COM objects and their methods.
+    
+    Requirements:
+    - AutoCAD must be installed on the system
+    
+    Example usage:
+        Run from AutoCAD command line: 'axLine'
+    """
+    
+    # get the application, document, and modelspace using ActiveX automation
     axApp = Ap.Application.acadApplication()
     axDoc = axApp.activeDocument()
     axModel = axDoc.modelSpace()
@@ -18,7 +42,7 @@ def axLine():
 
     interdata = axLine1.intersectWith(axLine2, Ax.AcExtendOption.acExtendNone)
     if len(interdata) == 0:
-        print("\nDoes not interset:")
+        print("\nDoes not intersect:")
         return
 
     axCircle = axModel.addCircle(interdata[0], 10)
