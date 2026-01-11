@@ -1,10 +1,10 @@
 # import
 import traceback
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Db, Ed, Ge
 
-
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         db = Db.curDb()
         selres: tuple[Ed.PromptStatus, Db.ObjectId, Ge.Point3d, Ge.Matrix3d] = Ed.Editor.nEntSelP(

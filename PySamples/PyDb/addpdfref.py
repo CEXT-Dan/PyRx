@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db
+from pyrx import Ap, Db
 
 
 def OnPyInitApp():
@@ -14,8 +14,8 @@ def addToNod(nod, defDictKey):
     nod.setAt(defDictKey, dict)
     nod.downgradeOpen()
 
-
-def PyRxCmd_pyaddpdf():
+@Ap.Command()
+def pyaddpdf():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         nod = Db.Dictionary(db.namedObjectsDictionaryId(), Db.OpenMode.kForRead)

@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 print("added command = dwgsnoop")
 print("added command = dxfsnoop")
@@ -11,8 +11,8 @@ dumps the dwg filer for an AcDbObject into a list of tuples
 
 """
 
-
-def PyRxCmd_dwgsnoop():
+@Ap.Command()
+def dwgsnoop():
     try:
         snoop = Db.SnoopDwgFiler()
         ps, id, _ = Ed.Editor.entSel("\nSelect: ")

@@ -1,4 +1,4 @@
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 
 class MyReactor(Db.EntityReactor):
@@ -50,8 +50,8 @@ class MyReactor(Db.EntityReactor):
 
 myReactor = MyReactor()
 
-
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         _db = Db.curDb()
         entRes = Ed.Editor.entSel("\nSelect Ent: ")

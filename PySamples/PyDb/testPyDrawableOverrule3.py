@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db, Ge, Gi
+from pyrx import Ap, Db, Ge, Gi
 
 
 def OnPyInitApp() -> None:
@@ -55,8 +55,8 @@ overrulableEntityDraw = None
 def OnDblClk(ent : Db.OverrulableEntity, pnt : Ge.Point3d):
     print(ent.isA().name(),pnt )
 
-
-def PyRxCmd_pycreateoverrule():
+@Ap.Command()
+def pycreateoverrule():
     try:
         db = Db.curDb()
         ore = Db.OverrulableEntity()
@@ -78,7 +78,8 @@ def PyRxCmd_pycreateoverrule():
         traceback.print_exception(err)
 
 
-def PyRxCmd_pydrawoverrule():
+@Ap.Command()
+def pydrawoverrule():
     try:
         global overrulableEntityDraw
         if overrulableEntityDraw is not None:
@@ -92,8 +93,8 @@ def PyRxCmd_pydrawoverrule():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_pystopoverrule():
+@Ap.Command()
+def pystopoverrule():
     try:
         global overrulableEntityDraw
         if overrulableEntityDraw is None:

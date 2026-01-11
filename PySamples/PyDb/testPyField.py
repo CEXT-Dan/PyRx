@@ -1,7 +1,8 @@
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 
-def PyRxCmd_pygetfields():
+@Ap.Command()
+def pygetfields():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         nod = Db.Dictionary(db.namedObjectsDictionaryId(), Db.OpenMode.kForRead)
@@ -17,8 +18,8 @@ def PyRxCmd_pygetfields():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pymakefield():
+@Ap.Command()
+def pymakefield():
     try:
         db = Db.HostApplicationServices().workingDatabase()
 

@@ -1,10 +1,11 @@
 import traceback
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 
 # example using Db.AnnotationScale.cast
-def PyRxCmd_doit1() -> None:
+@Ap.Command()
+def doit1() -> None:
     try:
         db = Db.curDb()
 
@@ -38,8 +39,8 @@ def PyRxCmd_doit1() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit2() -> None:
+@Ap.Command()
+def doit2() -> None:
     try:
         db = Db.curDb()
 
@@ -63,7 +64,8 @@ def PyRxCmd_doit2() -> None:
 
 
 # example using Db.AnnotationScale.desc, no need to cast
-def PyRxCmd_doit3() -> None:
+@Ap.Command()
+def doit3() -> None:
     try:
         db = Db.curDb()
         ctxman = db.objectContextManager()

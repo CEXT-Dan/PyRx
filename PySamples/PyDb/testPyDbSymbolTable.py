@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Ap, Db
 
 
 def OnPyInitApp():
@@ -18,7 +18,8 @@ def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
 
-def PyRxCmd_pydbsymtabletest() -> None:
+@Ap.Command()
+def pydbsymtabletest() -> None:
     try:
         PyDbSymOpenForRead()
     except Exception as err:

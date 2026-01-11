@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Ap, Db
 
 
 # Db.LayoutManager.getLayouts
@@ -13,8 +13,8 @@ def remoteDb(path: str):
     finally:
         man.clearSetupForLayouts(token)
 
-
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         man = Db.LayoutManager()
         print(man.getLayouts())

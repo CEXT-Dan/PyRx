@@ -3,8 +3,8 @@ from pyrx import Ap, Db, Ge
 print("added command = pycreate_hatch")
 print("added command = create_hatch_pline")
 
-
-def PyRxCmd_pycreate_hatch():
+@Ap.Command()
+def pycreate_hatch():
     try:
         db = Db.HostApplicationServices().workingDatabase()
 

@@ -2,7 +2,7 @@ import traceback
 
 import wx
 
-from pyrx import Db, Ed, Ge, Gi
+from pyrx import Ap, Db, Ed, Ge, Gi
 
 vpids = []
 markers = []
@@ -49,8 +49,8 @@ class PointDrawOverrule(Gi.DrawableOverrule):
         finally:
             return flag
 
-
-def PyRxCmd_pydrawoverrule():
+@Ap.Command()
+def pydrawoverrule():
     try:
         global pointdraw
         if pointdraw is not None:
@@ -61,8 +61,8 @@ def PyRxCmd_pydrawoverrule():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_pystopoverrule():
+@Ap.Command()
+def pystopoverrule():
     try:
         global pointdraw
         if pointdraw is None:
@@ -82,7 +82,8 @@ def clear():
     markers.clear()
 
 
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         clear()
         vpids.append(Ed.Core.getVar("CVPORT"))

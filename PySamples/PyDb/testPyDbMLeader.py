@@ -1,8 +1,8 @@
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 print("added command = pytestMLeader")
 
-
+@Ap.Command()
 def PyRxCmd_pytestMLeader():
     try:
         # create anno

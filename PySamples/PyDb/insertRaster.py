@@ -1,9 +1,9 @@
-from pyrx import Db
+from pyrx import Ap, Db
 
 print("added command do_raster")
 
-
-def PyRxCmd_do_raster():
+@Ap.Command()
+def do_raster():
     try:
         dictName = "MY_IMAGE_NAME"
         db = Db.HostApplicationServices().workingDatabase()

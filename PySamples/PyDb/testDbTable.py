@@ -3,11 +3,12 @@ import traceback
 import openpyxl as xl
 import pandas as pd
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 
 # create from excel
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         wb = xl.load_workbook("E:\\ItsAlive.xlsx", read_only=True)
         ws = wb.active
@@ -33,7 +34,8 @@ def PyRxCmd_doit():
 
 
 # create from pandas
-def PyRxCmd_doit2() -> None:
+@Ap.Command()
+def doit2() -> None:
     try:
         db = Db.curDb()
 

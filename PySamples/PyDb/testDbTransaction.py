@@ -30,8 +30,8 @@ def make_objects(db, tmr):
         model.appendAcDbEntity(pnt)
         tmr.addNewlyCreatedDBRObject(pnt)
 
-
-def PyRxCmd_dodbtrans():
+@Ap.Command()
+def dodbtrans():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         tmr = Db.TransactionManager()
@@ -46,8 +46,8 @@ def PyRxCmd_dodbtrans():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_dodoctrans():
+@Ap.Command()
+def dodoctrans():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         tmr = Ap.DocManager().curDocument().transactionManager()

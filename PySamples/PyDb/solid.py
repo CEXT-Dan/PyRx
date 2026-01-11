@@ -1,9 +1,9 @@
 import math
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Db, Ed, Ge
 
-
-def PyRxCmd_pyproject():
+@Ap.Command()
+def pyproject():
     try:
 
         box = Db.Solid3d()
@@ -26,8 +26,8 @@ def PyRxCmd_pyproject():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pyrevolve():
+@Ap.Command()
+def pyrevolve():
     try:
         entsel = Ed.Editor.entSel("\nSelect curve to revolve: ")
         if entsel[0] != Ed.PromptStatus.eNormal:
@@ -59,8 +59,8 @@ def PyRxCmd_pyrevolve():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pyextrudepath():
+@Ap.Command()
+def pyextrudepath():
     try:
         entsel = Ed.Editor.entSel("\nSelect curve")
         if entsel[0] != Ed.PromptStatus.eNormal:
@@ -91,8 +91,8 @@ def PyRxCmd_pyextrudepath():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pyextrude():
+@Ap.Command()
+def pyextrude():
     try:
         entsel = Ed.Editor.entSel("Select curve")
         if entsel[0] != Ed.PromptStatus.eNormal:

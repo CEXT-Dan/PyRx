@@ -1,9 +1,9 @@
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 print("added command = pytestLeader")
 
-
-def PyRxCmd_pytestLeader():
+@Ap.Command()
+def pytestLeader():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)

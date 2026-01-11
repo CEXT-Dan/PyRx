@@ -4,8 +4,8 @@ from pyrx import Ap, Db, Ge
 
 print("added command = pycreate_mtext")
 
-
-def PyRxCmd_pycreate_mtext():
+@Ap.Command()
+def pycreate_mtext():
     try:
         db = Ap.Application().docManager().curDocument().database()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)

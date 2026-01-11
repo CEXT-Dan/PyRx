@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Ap, Db
 
 
 def OnPyInitApp():
@@ -67,8 +67,8 @@ class MyDboOverrule(Db.DbObjectOverrule):
 
 overrule = None
 
-
-def PyRxCmd_pydbooverrule():
+@Ap.Command()
+def pydbooverrule():
     try:
         global overrule
         if overrule is not None:
@@ -79,8 +79,8 @@ def PyRxCmd_pydbooverrule():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pystopdbooverrule():
+@Ap.Command()
+def pystopdbooverrule():
     try:
         global overrule
         if overrule is None:

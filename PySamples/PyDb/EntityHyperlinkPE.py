@@ -1,9 +1,9 @@
 import traceback
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
-
-def PyRxCmd_doit1():
+@Ap.Command()
+def doit1():
     try:
         ps, id, _ = Ed.Editor.entSel("\nSelect: ")
         ent = Db.Entity(id, Db.OpenMode.kForWrite)
@@ -14,8 +14,8 @@ def PyRxCmd_doit1():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit2():
+@Ap.Command()
+def doit2():
     try:
         ps, id, _ = Ed.Editor.entSel("\nSelect: ")
         ent = Db.Entity(id)

@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Ap,Db
 
 print("added command - addDbreactor")
 print("added command - remDbreactor")
@@ -41,8 +41,8 @@ class MyReactor(Db.DatabaseReactor):
 
 myReactor = MyReactor()
 
-
-def PyRxCmd_addDbreactor():
+@Ap.Command()
+def addDbreactor():
     try:
         db = Db.curDb()
         db.addReactor(myReactor)
@@ -50,8 +50,8 @@ def PyRxCmd_addDbreactor():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_remDbreactor():
+@Ap.Command()
+def remDbreactor():
     try:
         db = Db.curDb()
         db.removeReactor(myReactor)

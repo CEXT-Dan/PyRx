@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db, Ge, Rx
+from pyrx import Ap, Db, Ge, Rx
 
 fragKeyNames = list(Db.MTextFragmentType.names.keys())
 
@@ -44,7 +44,8 @@ def fragToList(frags, result):
 
 
 # (pydoit (car(entsel)))
-def PyRxLisp_pydoit(args):
+@Ap.Command()
+def pydoit(args):
     try:
         if len(args) < 1 or args[0][0] != int(Rx.LispType.kObjectId):
             print("Bad args")

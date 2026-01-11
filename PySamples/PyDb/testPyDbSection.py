@@ -1,11 +1,12 @@
 import traceback
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Db, Ed, Ge
 
 print("Added command ssdoit")
 
 
-def PyRxCmd_ssdoit() -> None:
+@Ap.Command()
+def ssdoit() -> None:
     try:
         db = Db.curDb()
         es = Ed.Editor.entSel("\nSelect: ", Db.Solid3d.desc())

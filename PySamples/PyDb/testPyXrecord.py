@@ -1,9 +1,9 @@
-from pyrx import Db
+from pyrx import Ap, Db
 
 print("added command = pyxrecord")
 
-
-def PyRxCmd_pyxrecord():
+@Ap.Command()
+def pyxrecord():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         nod = Db.Dictionary(db.namedObjectsDictionaryId(), Db.OpenMode.kForRead)
