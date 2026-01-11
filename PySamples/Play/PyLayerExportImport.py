@@ -2,16 +2,10 @@ import traceback
 
 import pandas as pd
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 print("added command - py_layerimport")
 print("added command - py_layerexport")
-
-
-def PyRxCmd_pydebug() -> None:
-    import PyRxDebug
-
-    PyRxDebug.startListener()
 
 
 def updateLayers(db, layers):
@@ -35,7 +29,8 @@ def updateLayers(db, layers):
     return layerMap
 
 
-def PyRxCmd_py_layerexport() -> None:
+@Ap.Command()
+def py_layerexport() -> None:
     try:
         path = Ed.Core.getFileD(
             "Enter file name for storing layer table", "mylayerfile.xlsx", "xlsx", 33
@@ -67,7 +62,8 @@ def PyRxCmd_py_layerexport() -> None:
         traceback.print_exception(err)
 
 
-def PyRxCmd_py_layerimport() -> None:
+@Ap.Command()
+def py_layerimport() -> None:
     try:
         path = Ed.Core.getFileD(
             "Enter file name for storing layer table", "mylayerfile.xlsx", "xlsx", 32

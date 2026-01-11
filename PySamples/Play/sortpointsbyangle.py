@@ -2,7 +2,7 @@ import traceback
 
 import numpy as np
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Db, Ed, Ge
 
 
 def calcCentroid2d(pnts):
@@ -12,7 +12,8 @@ def calcCentroid2d(pnts):
     centroids = (polypnts + polygon) / 3.0
     return np.average(centroids, axis=0, weights=signed_areas)
     
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         filter = [(Db.DxfCode.kDxfStart, "point")]
         ss = Ed.Editor.selectPrompt("\nSelect item", "\nRemove item",filter)

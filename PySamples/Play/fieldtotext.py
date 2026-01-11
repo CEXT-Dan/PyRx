@@ -1,10 +1,11 @@
 import traceback
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 
 # converts fields to text for seleted refs
-def PyRxCmd_fieldnuker5000() -> None:
+@Ap.Command()
+def fieldnuker5000() -> None:
     try:
         # modify filter
         filter = [(Db.DxfCode.kDxfStart, "INSERT")]
@@ -25,7 +26,8 @@ def PyRxCmd_fieldnuker5000() -> None:
 
 
 # converts fields to text for named block
-def PyRxCmd_fieldnuker9000() -> None:
+@Ap.Command()
+def fieldnuker9000() -> None:
     try:
         name = "Brdrtemplate"  # getname
 
