@@ -2,7 +2,8 @@ from pyrx import Ap, Db, Ed
 
 RSG_NONULL = 1
 
-def PyRxCmd_pydoit():
+@Ap.Command()
+def pyoffset():
     try:
         doc = Ap.Application().docManager().curDocument()
         ed = doc.editor()
