@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx import Db, Ge, Gi
+from pyrx import Ap, Db, Ge, Gi
 
 
 def OnPyInitApp() -> None:
@@ -55,8 +55,8 @@ class LineDrawOverrule(Gi.DrawableOverrule):
 
 linedraw = None
 
-
-def PyRxCmd_pydrawoverrule():
+@Ap.Command()
+def pydrawoverrule():
     try:
         global linedraw
         if linedraw is not None:
@@ -68,8 +68,8 @@ def PyRxCmd_pydrawoverrule():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_pystopoverrule():
+@Ap.Command()
+def pystopoverrule():
     try:
         global linedraw
         if linedraw is None:

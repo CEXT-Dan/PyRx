@@ -23,8 +23,8 @@ def print_value(item):
         case _:
             print("oops")
 
-
-def PyRxCmd_pydynprops():
+@Ap.Command()
+def pydynprops():
     try:
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
@@ -55,7 +55,8 @@ def PyRxCmd_pydynprops():
 
 
 # use the dynamic block sample drawing (North Arrow)
-def PyRxCmd_pymoddynprops():
+@Ap.Command()
+def pymoddynprops():
     try:
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
@@ -83,7 +84,8 @@ def PyRxCmd_pymoddynprops():
 
 
 # use the dynamic block sample drawing (flip)
-def PyRxCmd_pyflip():
+@Ap.Command()
+def pyflip():
     try:
         # python does not have a int32 or int16
         # flip actions want an int16

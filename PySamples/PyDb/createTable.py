@@ -1,10 +1,11 @@
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 print("added command - pycreate_table")
 
 
 # define a command
-def PyRxCmd_pycreate_table():
+@Ap.Command()
+def pycreate_table():
     try:
         # get the working database, database is also a property of Document
         db = Db.HostApplicationServices().workingDatabase()

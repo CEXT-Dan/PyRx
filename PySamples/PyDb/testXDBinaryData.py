@@ -1,10 +1,11 @@
 import pickle
 import traceback
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 
-def PyRxCmd_doit1() -> None:
+@Ap.Command()
+def doit1() -> None:
     try:
         esres = Ed.Editor.entSel("\nSelect: ")
         if esres[0] != Ed.PromptStatus.eOk:
@@ -17,8 +18,8 @@ def PyRxCmd_doit1() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit2() -> None:
+@Ap.Command()
+def doit2() -> None:
     try:
         esres = Ed.Editor.entSel("\nSelect: ")
         if esres[0] != Ed.PromptStatus.eOk:
@@ -35,7 +36,8 @@ def PyRxCmd_doit2() -> None:
         traceback.print_exception(err)
 
 
-def PyRxCmd_doit3() -> None:
+@Ap.Command()
+def doit3() -> None:
     try:
         filter = [(Db.DxfCode.kDxfXDataStart, 0), (Db.DxfCode.kDxfRegAppName, "PYXD")]
         ss = Ed.Editor.selectAll(filter)

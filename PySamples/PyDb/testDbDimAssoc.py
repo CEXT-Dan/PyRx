@@ -7,8 +7,8 @@ print("added command pydimassocread")
 print("added command pyremdimassoc")
 print("added command assocleader")
 
-
-def PyRxCmd_pydimassoc():
+@Ap.Command()
+def pydimassoc():
     try:
         pt1 = Ge.Point3d(0, 0, 0)
         pt2 = Ge.Point3d(15, 0, 0)
@@ -49,7 +49,8 @@ def PyRxCmd_pydimassoc():
         traceback.print_exception(err)
 
 
-def PyRxCmd_pydimassocread():
+@Ap.Command()
+def pydimassocread():
     try:
         res = Ed.Editor.entSel("\nPick a dim", Db.Dimension.desc())
         if res[0] != Ed.PromptStatus.eOk:
@@ -68,8 +69,8 @@ def PyRxCmd_pydimassocread():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_pyremdimassoc():
+@Ap.Command()
+def pyremdimassoc():
     try:
         res = Ed.Editor.entSel("\nPick a dim", Db.Dimension.desc())
         if res[0] != Ed.PromptStatus.eOk:

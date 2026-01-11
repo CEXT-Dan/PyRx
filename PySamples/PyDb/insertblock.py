@@ -31,8 +31,8 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
-
-def PyRxCmd_pyinsert() -> None:
+@Ap.Command()
+def pyinsert() -> None:
     try:
         db = Db.HostApplicationServices().workingDatabase()
         block = Db.Database(False, True)
@@ -51,8 +51,8 @@ def PyRxCmd_pyinsert() -> None:
 
 # https://adndevblog.typepad.com/autocad/2013/01/how-to-mimic-the-autocad-insert-command-in-arx-without-acedcommand-call.html
 
-
-def PyRxCmd_pyinsertatt() -> None:
+@Ap.Command()
+def pyinsertatt() -> None:
     try:
         ptres = Ed.Editor.getPoint("\nSpecify insertion point: ")
         if ptres[0] != Ed.PromptStatus.eOk:

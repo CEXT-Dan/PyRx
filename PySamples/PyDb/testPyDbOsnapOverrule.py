@@ -1,4 +1,4 @@
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 
 def OnPyInitApp() -> None:
@@ -70,7 +70,8 @@ overrule = None
 
 
 # start/stop the overrule
-def PyRxCmd_pyosnapoverrule() -> None:
+@Ap.Command()
+def pyosnapoverrule() -> None:
     try:
         global overrule
         if overrule is not None:
@@ -81,8 +82,8 @@ def PyRxCmd_pyosnapoverrule() -> None:
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pystoppyosnapoverrule():
+@Ap.Command()
+def pystoppyosnapoverrule():
     try:
         global overrule
         if overrule is None:

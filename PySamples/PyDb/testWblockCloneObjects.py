@@ -17,7 +17,8 @@ def importDimStyleFromDb(destDb: Db.Database, srcDb: Db.Database) -> None:
     )
 
 
-def PyRxCmd_pywbco() -> None:
+@Ap.Command()
+def pywbco() -> None:
     try:
         _lock = Ap.AutoDocLock()
         destDb = Db.curDb()
