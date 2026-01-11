@@ -1,5 +1,5 @@
 # Import the PyRx database module for AutoCAD database operations
-from pyrx import Db
+from pyrx import Ap, Db
 
 # Print confirmation that the command has been registered
 print("added command pyreaddwg")
@@ -32,7 +32,8 @@ def iterateDatabase(db: Db.Database, entities):
             # If this is a new entity type, initialize its count to 1
             entities[classname] = 1
 
-def PyRxCmd_pyreaddwg():
+@Ap.Command()
+def pyreaddwg():
     """
     Main command function that reads a DWG file and reports entity counts.
     
