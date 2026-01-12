@@ -1,9 +1,9 @@
 import traceback
 
-from pyrx import Ed
+from pyrx import Ap, Ed
 
-
-def PyRxCmd_entselkw():
+@Ap.Command()
+def entselkw():
     try:
         Ed.Editor.initGet(1, "Import Create")
         es, id, pnt = Ed.Editor.entSel("\nEnter an option [Import/Create]: ")
@@ -29,8 +29,8 @@ def PyRxCmd_entselkw():
     except Exception:
         traceback.print_exc()
 
-
-def PyRxCmd_doprompt1():
+@Ap.Command()
+def doprompt1():
     try:
 
         Ed.Editor.initGet(1, "Merge Create")
@@ -49,8 +49,8 @@ def PyRxCmd_doprompt1():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doprompt2():
+@Ap.Command()
+def doprompt2():
     try:
         Ed.Editor.initGet(0, "Merge Create")
         mgs = "\nEnter an option [Merge/Create] <{}>: ".format("Create")
@@ -72,8 +72,8 @@ def PyRxCmd_doprompt2():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doprompt3():
+@Ap.Command()
+def doprompt3():
     try:
         Ed.Editor.initGet(0, "Yes No")
         mgs = "\nEnter an option [Yes/No] <{}>: ".format("No")

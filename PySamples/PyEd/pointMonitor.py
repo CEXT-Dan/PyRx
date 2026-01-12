@@ -47,8 +47,8 @@ class MyPointMonitor(Ed.InputPointMonitor):
 # global space
 pm = MyPointMonitor()
 
-
-def PyRxCmd_pymon():
+@Ap.Command()
+def pymon():
     try:
         manager = Ap.curDoc().inputPointManager()
         manager.addPointMonitor(pm)
@@ -56,8 +56,8 @@ def PyRxCmd_pymon():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_pyunmon():
+@Ap.Command()
+def pyunmon():
     try:
         manager = Ap.curDoc().inputPointManager()
         manager.removePointMonitor(pm)

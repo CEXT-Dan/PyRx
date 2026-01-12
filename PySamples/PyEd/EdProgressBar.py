@@ -1,10 +1,10 @@
 import traceback
 from time import sleep
 
-from pyrx import Ed
+from pyrx import Ap, Ed
 
-
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
         Ed.Core.setStatusBarProgressMeter("Calculating", 0, 100)
         for i in range(100):
