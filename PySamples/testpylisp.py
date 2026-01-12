@@ -16,6 +16,7 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
+
 # (mylispfunc '("hello world" 1 2 3 4 (1 10 100)))
 @Ap.LispFunction()
 def mylispfunc(args):
@@ -26,7 +27,8 @@ def mylispfunc(args):
 
 
 # (pylisp)
-def PyRxLisp_pylisp(args):
+@Ap.LispFunction()
+def pylisp(args):
     try:
         return [
             (Rx.LispType.kListBegin, 0),
@@ -46,7 +48,8 @@ def PyRxLisp_pylisp(args):
 
 
 # (pylisp1)
-def PyRxLisp_pylisp1(args):
+@Ap.LispFunction()
+def pylisp1(args):
     try:
         return [(Rx.LispType.kText, "Text")]
     except Exception as err:
@@ -54,7 +57,8 @@ def PyRxLisp_pylisp1(args):
 
 
 # (pylisprt '("hello world" 1 2 3 4 (1 10 100)))
-def PyRxLisp_pylisprt(args):
+@Ap.LispFunction()
+def pylisprt(args):
     try:
         return args
     except Exception as err:
@@ -62,7 +66,8 @@ def PyRxLisp_pylisprt(args):
 
 
 # (pylispvoid)
-def PyRxLisp_pylispvoid(args):
+@Ap.LispFunction()
+def pylispvoid(args):
     try:
         print("yay!")
     except Exception as err:
@@ -70,7 +75,8 @@ def PyRxLisp_pylispvoid(args):
 
 
 # (pylispbool)
-def PyRxLisp_pylispbool(args):
+@Ap.LispFunction()
+def pylispbool(args):
     try:
         print("yay!")
         return True
@@ -79,7 +85,8 @@ def PyRxLisp_pylispbool(args):
 
 
 # (pylispint)
-def PyRxLisp_pylispint(args):
+@Ap.LispFunction()
+def pylispint(args):
     try:
         print("yay!")
         return 42
@@ -88,7 +95,8 @@ def PyRxLisp_pylispint(args):
 
 
 # (pylispreal)
-def PyRxLisp_pylispreal(args):
+@Ap.LispFunction()
+def pylispreal(args):
     try:
         print("yay!")
         return 1.1
@@ -97,7 +105,8 @@ def PyRxLisp_pylispreal(args):
 
 
 # (pylisp2p)
-def PyRxLisp_pylisp2p(args):
+@Ap.LispFunction()
+def pylisp2p(args):
     try:
         print("yay!")
         return Ge.Point2d(1.2, 1.4)
@@ -106,7 +115,8 @@ def PyRxLisp_pylisp2p(args):
 
 
 # (pylisp3p)
-def PyRxLisp_pylisp3p(args):
+@Ap.LispFunction()
+def pylisp3p(args):
     try:
         print("yay!")
         return Ge.Point3d(1.2, 1.4, 4.5)
@@ -115,7 +125,8 @@ def PyRxLisp_pylisp3p(args):
 
 
 # (pylisp3p2)
-def PyRxLisp_pylisp3p2(args):
+@Ap.LispFunction()
+def pylisp3p2(args):
     try:
         print("yay!")
         return (Rx.LispType.kPoint3d, Ge.Point3d(1.2, 1.4, 4.5))
@@ -124,7 +135,8 @@ def PyRxLisp_pylisp3p2(args):
 
 
 # (pylispstr)
-def PyRxLisp_pylispstr(args):
+@Ap.LispFunction()
+def pylispstr(args):
     try:
         print("yay!")
         return "woohoo"
@@ -136,7 +148,8 @@ def PyRxLisp_pylispstr(args):
 sslist = []
 
 
-def PyRxLisp_pylispss(args):
+@Ap.LispFunction()
+def pylispss(args):
     try:
         sslist.clear()
         ssres = Ed.Editor.selectAll()

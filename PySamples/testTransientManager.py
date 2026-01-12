@@ -15,8 +15,8 @@ def clear():
     vpids.clear()
     markers.clear()
 
-
-def PyRxCmd_pydrawtmp(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+@Ap.Command()
+def pydrawtmp(CmdFlags=Ap.CmdFlags.TRANSPARENT):
     try:
         clear()
 

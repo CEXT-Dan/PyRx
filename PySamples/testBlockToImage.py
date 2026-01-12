@@ -33,7 +33,8 @@ def doSideDb(db: Db.Database):
 
 
 # side database
-def PyRxCmd_doitsd():
+@Ap.Command()
+def doitsd():
     try:
         db = Db.Database(False, True)
         db.readDwgFile("M:/Dev/Projects/PyRxGit/PySamples/dwg/Floor Plan Sample.dwg ")
@@ -42,8 +43,8 @@ def PyRxCmd_doitsd():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit64():
+@Ap.Command()
+def doit64():
     try:
         start = timer()
 
@@ -70,7 +71,8 @@ def PyRxCmd_doit64():
 
 
 # SR176790 - AcGsView::getSnapShot differences
-def PyRxCmd_doit64W():
+@Ap.Command()
+def doit64W():
     try:
         start = timer()
 
@@ -95,8 +97,8 @@ def PyRxCmd_doit64W():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit64TR():
+@Ap.Command()
+def doit64TR():
     try:
         start = timer()
 
@@ -123,8 +125,8 @@ def PyRxCmd_doit64TR():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit128():
+@Ap.Command()
+def doit128():
     try:
         start = timer()
 
@@ -149,8 +151,8 @@ def PyRxCmd_doit128():
     except Exception as err:
         traceback.print_exception(err)
 
-
-def PyRxCmd_doit256():
+@Ap.Command()
+def doit256():
     try:
         start = timer()
 
