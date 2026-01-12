@@ -3670,9 +3670,7 @@ class AttributeDefinition(PyDb.Text):
         AcDbAttributeDefinition. When the blockTableRecord containing the AcDbAttributeDefinition
         is inserted and an AcDbAttribute object is created using the AcDbAttributeDefinition as the
         template, the prompt string is displayed to ask the user to input a text string for the
-        AcDbAttribute. The caller of this function is responsible for deallocating the memory used
-        by the returned string. The C++ delete [] should be used for this purpose. The prompt
-        string is used for DXF group code 3.
+        AcDbAttribute. The prompt string is used for DXF group code 3.
         """
     def setConstant(self, val: bool, /) -> None:
         """
@@ -3753,10 +3751,8 @@ class AttributeDefinition(PyDb.Text):
     def tag(self, /) -> str:
         """
         This function returns a pointer to a copy of the tag string for the attribute. The tag
-        string is the identifier you see on screen to represent the AcDbAttributeDefinition. The
-        caller of this function is responsible for deallocating the memory used by the returned
-        string. The acutDelString() global function should be used for this purpose. The tag string
-        is used for DXF group code 2.
+        string is the identifier you see on screen to represent the AcDbAttributeDefinition The tag
+        string is used for DXF group code 2.
         """
     def updateMTextAttributeDefinition(self, /) -> None:
         """
@@ -3919,9 +3915,7 @@ class AttributeReference(PyDb.Text):
         This function returns a pointer to a copy of the tag string for the attribute. The tag
         string is the identifier you see if you explode the AcDbBlockReference that owns the
         attribute, so that the attribute reverts back to the AcDbAttributeDefinition that was part
-        of the original reference's block definition. The caller of this function is responsible
-        for deallocating the memory used by the returned string. The acutDelString() global
-        function should be used for this purpose. The tag string is used for DXF group code 2.
+        of the original reference's block definition. The tag string is used for DXF group code 2.
         """
     def updateMTextAttribute(self, /) -> None:
         """
@@ -6365,17 +6359,13 @@ class Curve(PyDb.Entity):
         negative value has no meaning in terms of making the curve smaller, a negative offsetDist
         may be interpreted as an offset in the direction of smaller X,Y,Z WCS coordinates. This is
         not enforced, so custom entities can interpret the sign of the offsetDist value however
-        they want. The entities returned in the offsetCurves array are dynamically allocated, but
-        have not been added to an AcDbDatabase yet. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Returns Acad::eOk if
-        offsetting is successfully completed. If the offset distance is invalid (for example, if
-        you are offsetting an arc such that the offset result would be a negative radius), then
-        Acad::eInvalidInput is returned. For the AutoCAD built-in classes that use ShapeManager
-        (AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure will be returned if
-        an error occurs in the ShapeManager modeler. Other ErrorStatus return values are
-        implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        they want. Returns Acad::eOk if offsetting is successfully completed. If the offset
+        distance is invalid (for example, if you are offsetting an arc such that the offset result
+        would be a negative radius), then Acad::eInvalidInput is returned. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbBody, AcDbRegion, and AcDb3dSolid),
+        Acad::eGeneralModelingFailure will be returned if an error occurs in the ShapeManager
+        modeler. Other ErrorStatus return values are implementation-dependent. The default
+        implementation returns Acad::eNotImplemented.
         """
     def getOffsetCurvesGivenPlaneNormal(
         self, normal: PyGe.Vector3d, dist: float, /
@@ -6399,15 +6389,10 @@ class Curve(PyDb.Entity):
         the starting curve's radius). Or, if smaller has no meaning, then a negative offsetDist may
         be interpreted as an offset in the direction of smaller X,Y,Z WCS coordinates. However,
         this is not enforced, so custom entities can interpret the sign of the offsetDist value
-        however they wish. The entities returned in the offsetCurves arrays are dynamically
-        allocated, but have not been added to an AcDbDatabase yet. So, the application that calls
-        this function is responsible for their memory. If they are subsequently appended to a
-        database, then the database takes over responsibility for their memory. Otherwise, the
-        application is responsible for deleting them when they are no longer needed. Returns
-        Acad::eOk if offsetting is successfully completed. If the offset distance is invalid, or if
-        normal is a zero length vector or the entity is linear and normal is not perpendicular with
-        the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are
-        implementation dependent. The default implementation returns Acad::eNotImplemented.
+        however they wish. If the offset distance is invalid, or if normal is a zero length vector
+        or the entity is linear and normal is not perpendicular with the entity, then
+        Acad::eInvalidInput is returned. Other ErrorStatus return values are implementation
+        dependent. The default implementation returns Acad::eNotImplemented.
         """
     def getOrthoProjectedCurve(self, plane: PyGe.Plane, /) -> Curve:
         """
@@ -6415,11 +6400,7 @@ class Curve(PyDb.Entity):
         the projPlane's normal onto the projPlane and sets projCurve to point to the newly created
         curve. projCurve is declared as type AcDbCurve to allow the returned curve to be any class
         derived from AcDbCurve (for example, when an AcDbArc is projected onto a plane, the result
-        is an AcDbEllipse). The returned curve is dynamically allocated, but has not been added to
-        an AcDbDatabase yet. So, the application that calls this function is responsible for its
-        memory. If the curve is subsequently appended to a database, then the database takes over
-        responsibility for its memory. Otherwise, the application is responsible for deleting it
-        when it is no longer needed. Returns Acad::eOk if successful. Other ErrorStatus values are
+        is an AcDbEllipse). Returns Acad::eOk if successful. Other ErrorStatus values are
         implementation-dependent. Returns Acad::eNotImplemented in the default implementation.
         """
     def getParamAtDist(self, dist: float, /) -> float:
@@ -6460,15 +6441,12 @@ class Curve(PyDb.Entity):
         curve. projCurve is declared as type AcDbCurve in order to allow the returned curve to be
         any class derived from AcDbCurve. For example, when an AcDbArc is projected onto a plane,
         the result is an AcDbEllipse. The returned curve is dynamically allocated, but has not been
-        added to an AcDbDatabase yet. The application that calls this function is therefore
-        responsible for its memory. If the curve is subsequently appended to a database, then the
-        database takes over responsibility for its memory. Otherwise, the application is
-        responsible for deleting it when it is no longer needed. Returns Acad::eOk if successful.
-        If projDir is perpendicular to the projPlane's normal then Acad::eInvalidInput is returned.
-        For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody,
-        AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs
-        in the ShapeManager modeler. Other ErrorStatus values are implementation-dependent. The
-        default implementation returns Acad::eNotImplemented.
+        added to an AcDbDatabase yet. Returns Acad::eOk if successful. If projDir is perpendicular
+        to the projPlane's normal then Acad::eInvalidInput is returned. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus values are implementation-dependent. The default
+        implementation returns Acad::eNotImplemented.
         """
     def getSecondDeriv(self, param: float | PyGe.Point3d, /) -> PyGe.Vector3d:
         """
@@ -6484,13 +6462,10 @@ class Curve(PyDb.Entity):
         This function creates a new AcDbSpline entity, sets it to be as close an approximation as
         possible to the curve, and then returns with spline pointing to the newly created spline
         entity. The returned spline is dynamically allocated, but has not been added to an
-        AcDbDatabase yet. So, the application that calls this function is responsible for its
-        memory. If the spline is subsequently appended to a database, then the database takes over
-        responsibility for its memory. Otherwise, the application is responsible for deleting it
-        when it is no longer needed. Returns Acad::eOk if successful. If there is an error in the
-        ShapeManager modeler (which AcDbSpline uses), then Acad::eGeneralModelingFailure will be
-        returned. Other ErrorStatus values are implementation-dependent. Returns
-        Acad::eNotImplemented in the default implementation.
+        AcDbDatabase yet. Returns Acad::eOk if successful. If there is an error in the ShapeManager
+        modeler (which AcDbSpline uses), then Acad::eGeneralModelingFailure will be returned. Other
+        ErrorStatus values are implementation-dependent. Returns Acad::eNotImplemented in the
+        default implementation.
         """
     def getSplitCurves(self, paramsOrPoints: list, /) -> list[PyDb.Curve]:
         """
@@ -6505,27 +6480,24 @@ class Curve(PyDb.Entity):
         point and the last array point to the original curve's end), then no subcurve is created
         for that pair. Pointers to all new curves are appended to the curveSegments array. The
         entities that are returned in the curveSegments array are dynamically allocated, but are
-        not yet added to an AcDbDatabase. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Depending on how this
-        function is implemented, it is possible that the function might return an ErrorStatus other
-        than Acad::eOk and still have appended some pointers to subcurves to the curveSegments
-        array (AcDbArc does this). Typically, this would be the result of an invalid point
-        somewhere in the middle of the points array. So, it is very important to check the size of
-        the curveSegments array upon return to be sure that any subcurves that are created are
-        properly dealt with. To use the pointer(s) in the curveSegments array, the calling
-        application will need to cast the pointer(s) to the appropriate object type(s). For this
-        function, the objects pointed to by the pointers in the curveSegments array are usually
-        going to be of the same class as the original curve. However, this is not a requirement. To
-        be safe, the pointers should be cast using the appropriate class's cast method. Returns
-        Acad::eOk if successful. If points is empty or any of the points in points are not on the
-        curve, then Acad::eInvalidInput is returned. As mentioned above, it is possible for this
-        ErrorStatus to be returned and still have some subcurve pointers appended to the
-        curveSegments array. For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse,
-        AcDbSpline, AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is
-        returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
-        are implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        not yet added to an AcDbDatabase. Depending on how this function is implemented, it is
+        possible that the function might return an ErrorStatus other than Acad::eOk and still have
+        appended some pointers to subcurves to the curveSegments array (AcDbArc does this).
+        Typically, this would be the result of an invalid point somewhere in the middle of the
+        points array. So, it is very important to check the size of the curveSegments array upon
+        return to be sure that any subcurves that are created are properly dealt with. To use the
+        pointer(s) in the curveSegments array, the calling application will need to cast the
+        pointer(s) to the appropriate object type(s). For this function, the objects pointed to by
+        the pointers in the curveSegments array are usually going to be of the same class as the
+        original curve. However, this is not a requirement. To be safe, the pointers should be cast
+        using the appropriate class's cast method. Returns Acad::eOk if successful. If points is
+        empty or any of the points in points are not on the curve, then Acad::eInvalidInput is
+        returned. As mentioned above, it is possible for this ErrorStatus to be returned and still
+        have some subcurve pointers appended to the curveSegments array. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus return values are implementation-dependent. The
+        default implementation returns Acad::eNotImplemented.
         """
     def getSplitCurvesAtParam(self, param: float, /) -> list[PyDb.Curve]:
         """
@@ -6540,27 +6512,24 @@ class Curve(PyDb.Entity):
         point and the last array point to the original curve's end), then no subcurve is created
         for that pair. Pointers to all new curves are appended to the curveSegments array. The
         entities that are returned in the curveSegments array are dynamically allocated, but are
-        not yet added to an AcDbDatabase. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Depending on how this
-        function is implemented, it is possible that the function might return an ErrorStatus other
-        than Acad::eOk and still have appended some pointers to subcurves to the curveSegments
-        array (AcDbArc does this). Typically, this would be the result of an invalid point
-        somewhere in the middle of the points array. So, it is very important to check the size of
-        the curveSegments array upon return to be sure that any subcurves that are created are
-        properly dealt with. To use the pointer(s) in the curveSegments array, the calling
-        application will need to cast the pointer(s) to the appropriate object type(s). For this
-        function, the objects pointed to by the pointers in the curveSegments array are usually
-        going to be of the same class as the original curve. However, this is not a requirement. To
-        be safe, the pointers should be cast using the appropriate class's cast method. Returns
-        Acad::eOk if successful. If points is empty or any of the points in points are not on the
-        curve, then Acad::eInvalidInput is returned. As mentioned above, it is possible for this
-        ErrorStatus to be returned and still have some subcurve pointers appended to the
-        curveSegments array. For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse,
-        AcDbSpline, AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is
-        returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
-        are implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        not yet added to an AcDbDatabase. Depending on how this function is implemented, it is
+        possible that the function might return an ErrorStatus other than Acad::eOk and still have
+        appended some pointers to subcurves to the curveSegments array (AcDbArc does this).
+        Typically, this would be the result of an invalid point somewhere in the middle of the
+        points array. So, it is very important to check the size of the curveSegments array upon
+        return to be sure that any subcurves that are created are properly dealt with. To use the
+        pointer(s) in the curveSegments array, the calling application will need to cast the
+        pointer(s) to the appropriate object type(s). For this function, the objects pointed to by
+        the pointers in the curveSegments array are usually going to be of the same class as the
+        original curve. However, this is not a requirement. To be safe, the pointers should be cast
+        using the appropriate class's cast method. Returns Acad::eOk if successful. If points is
+        empty or any of the points in points are not on the curve, then Acad::eInvalidInput is
+        returned. As mentioned above, it is possible for this ErrorStatus to be returned and still
+        have some subcurve pointers appended to the curveSegments array. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus return values are implementation-dependent. The
+        default implementation returns Acad::eNotImplemented.
         """
     def getSplitCurvesAtParams(self, params: list[float], /) -> list[PyDb.Curve]:
         """
@@ -6575,27 +6544,24 @@ class Curve(PyDb.Entity):
         point and the last array point to the original curve's end), then no subcurve is created
         for that pair. Pointers to all new curves are appended to the curveSegments array. The
         entities that are returned in the curveSegments array are dynamically allocated, but are
-        not yet added to an AcDbDatabase. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Depending on how this
-        function is implemented, it is possible that the function might return an ErrorStatus other
-        than Acad::eOk and still have appended some pointers to subcurves to the curveSegments
-        array (AcDbArc does this). Typically, this would be the result of an invalid point
-        somewhere in the middle of the points array. So, it is very important to check the size of
-        the curveSegments array upon return to be sure that any subcurves that are created are
-        properly dealt with. To use the pointer(s) in the curveSegments array, the calling
-        application will need to cast the pointer(s) to the appropriate object type(s). For this
-        function, the objects pointed to by the pointers in the curveSegments array are usually
-        going to be of the same class as the original curve. However, this is not a requirement. To
-        be safe, the pointers should be cast using the appropriate class's cast method. Returns
-        Acad::eOk if successful. If points is empty or any of the points in points are not on the
-        curve, then Acad::eInvalidInput is returned. As mentioned above, it is possible for this
-        ErrorStatus to be returned and still have some subcurve pointers appended to the
-        curveSegments array. For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse,
-        AcDbSpline, AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is
-        returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
-        are implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        not yet added to an AcDbDatabase. Depending on how this function is implemented, it is
+        possible that the function might return an ErrorStatus other than Acad::eOk and still have
+        appended some pointers to subcurves to the curveSegments array (AcDbArc does this).
+        Typically, this would be the result of an invalid point somewhere in the middle of the
+        points array. So, it is very important to check the size of the curveSegments array upon
+        return to be sure that any subcurves that are created are properly dealt with. To use the
+        pointer(s) in the curveSegments array, the calling application will need to cast the
+        pointer(s) to the appropriate object type(s). For this function, the objects pointed to by
+        the pointers in the curveSegments array are usually going to be of the same class as the
+        original curve. However, this is not a requirement. To be safe, the pointers should be cast
+        using the appropriate class's cast method. Returns Acad::eOk if successful. If points is
+        empty or any of the points in points are not on the curve, then Acad::eInvalidInput is
+        returned. As mentioned above, it is possible for this ErrorStatus to be returned and still
+        have some subcurve pointers appended to the curveSegments array. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus return values are implementation-dependent. The
+        default implementation returns Acad::eNotImplemented.
         """
     def getSplitCurvesAtPoint(self, point: PyGe.Point3d, /) -> list[PyDb.Curve]:
         """
@@ -6610,27 +6576,24 @@ class Curve(PyDb.Entity):
         point and the last array point to the original curve's end), then no subcurve is created
         for that pair. Pointers to all new curves are appended to the curveSegments array. The
         entities that are returned in the curveSegments array are dynamically allocated, but are
-        not yet added to an AcDbDatabase. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Depending on how this
-        function is implemented, it is possible that the function might return an ErrorStatus other
-        than Acad::eOk and still have appended some pointers to subcurves to the curveSegments
-        array (AcDbArc does this). Typically, this would be the result of an invalid point
-        somewhere in the middle of the points array. So, it is very important to check the size of
-        the curveSegments array upon return to be sure that any subcurves that are created are
-        properly dealt with. To use the pointer(s) in the curveSegments array, the calling
-        application will need to cast the pointer(s) to the appropriate object type(s). For this
-        function, the objects pointed to by the pointers in the curveSegments array are usually
-        going to be of the same class as the original curve. However, this is not a requirement. To
-        be safe, the pointers should be cast using the appropriate class's cast method. Returns
-        Acad::eOk if successful. If points is empty or any of the points in points are not on the
-        curve, then Acad::eInvalidInput is returned. As mentioned above, it is possible for this
-        ErrorStatus to be returned and still have some subcurve pointers appended to the
-        curveSegments array. For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse,
-        AcDbSpline, AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is
-        returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
-        are implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        not yet added to an AcDbDatabase. Depending on how this function is implemented, it is
+        possible that the function might return an ErrorStatus other than Acad::eOk and still have
+        appended some pointers to subcurves to the curveSegments array (AcDbArc does this).
+        Typically, this would be the result of an invalid point somewhere in the middle of the
+        points array. So, it is very important to check the size of the curveSegments array upon
+        return to be sure that any subcurves that are created are properly dealt with. To use the
+        pointer(s) in the curveSegments array, the calling application will need to cast the
+        pointer(s) to the appropriate object type(s). For this function, the objects pointed to by
+        the pointers in the curveSegments array are usually going to be of the same class as the
+        original curve. However, this is not a requirement. To be safe, the pointers should be cast
+        using the appropriate class's cast method. Returns Acad::eOk if successful. If points is
+        empty or any of the points in points are not on the curve, then Acad::eInvalidInput is
+        returned. As mentioned above, it is possible for this ErrorStatus to be returned and still
+        have some subcurve pointers appended to the curveSegments array. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus return values are implementation-dependent. The
+        default implementation returns Acad::eNotImplemented.
         """
     def getSplitCurvesAtPoints(self, points: list[PyGe.Point3d], /) -> list[PyDb.Curve]:
         """
@@ -6645,27 +6608,24 @@ class Curve(PyDb.Entity):
         point and the last array point to the original curve's end), then no subcurve is created
         for that pair. Pointers to all new curves are appended to the curveSegments array. The
         entities that are returned in the curveSegments array are dynamically allocated, but are
-        not yet added to an AcDbDatabase. So, the application that calls this function is
-        responsible for their memory. If they are subsequently appended to a database, then the
-        database takes over responsibility for their memory. Otherwise, the application is
-        responsible for deleting them when they are no longer needed. Depending on how this
-        function is implemented, it is possible that the function might return an ErrorStatus other
-        than Acad::eOk and still have appended some pointers to subcurves to the curveSegments
-        array (AcDbArc does this). Typically, this would be the result of an invalid point
-        somewhere in the middle of the points array. So, it is very important to check the size of
-        the curveSegments array upon return to be sure that any subcurves that are created are
-        properly dealt with. To use the pointer(s) in the curveSegments array, the calling
-        application will need to cast the pointer(s) to the appropriate object type(s). For this
-        function, the objects pointed to by the pointers in the curveSegments array are usually
-        going to be of the same class as the original curve. However, this is not a requirement. To
-        be safe, the pointers should be cast using the appropriate class's cast method. Returns
-        Acad::eOk if successful. If points is empty or any of the points in points are not on the
-        curve, then Acad::eInvalidInput is returned. As mentioned above, it is possible for this
-        ErrorStatus to be returned and still have some subcurve pointers appended to the
-        curveSegments array. For the AutoCAD built-in classes that use ShapeManager (AcDbEllipse,
-        AcDbSpline, AcDbBody, AcDbRegion, and AcDb3dSolid), Acad::eGeneralModelingFailure is
-        returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
-        are implementation-dependent. The default implementation returns Acad::eNotImplemented.
+        not yet added to an AcDbDatabase. Depending on how this function is implemented, it is
+        possible that the function might return an ErrorStatus other than Acad::eOk and still have
+        appended some pointers to subcurves to the curveSegments array (AcDbArc does this).
+        Typically, this would be the result of an invalid point somewhere in the middle of the
+        points array. So, it is very important to check the size of the curveSegments array upon
+        return to be sure that any subcurves that are created are properly dealt with. To use the
+        pointer(s) in the curveSegments array, the calling application will need to cast the
+        pointer(s) to the appropriate object type(s). For this function, the objects pointed to by
+        the pointers in the curveSegments array are usually going to be of the same class as the
+        original curve. However, this is not a requirement. To be safe, the pointers should be cast
+        using the appropriate class's cast method. Returns Acad::eOk if successful. If points is
+        empty or any of the points in points are not on the curve, then Acad::eInvalidInput is
+        returned. As mentioned above, it is possible for this ErrorStatus to be returned and still
+        have some subcurve pointers appended to the curveSegments array. For the AutoCAD built-in
+        classes that use ShapeManager (AcDbEllipse, AcDbSpline, AcDbBody, AcDbRegion, and
+        AcDb3dSolid), Acad::eGeneralModelingFailure is returned if an error occurs in the
+        ShapeManager modeler. Other ErrorStatus return values are implementation-dependent. The
+        default implementation returns Acad::eNotImplemented.
         """
     def getStartParam(self, /) -> float:
         """
@@ -10491,14 +10451,12 @@ class DbObject(PyGi.Drawable):
         If regappName == NULL is passed in, all xdata is returned, otherwise only the xdata for the
         specified name is returned. If not all xdata is required, but the xdata for more than one
         regappName is desired, then multiple calls to this member function must be made--one for
-        each regappName. The caller of this function is responsible for releasing the memory used
-        by the resbuf list that is returned. The most commonly used way to deallocate such a list
-        is via the acutRelRb() function. This function is virtual because some objects or entities
-        may need to store some or all of their 'built-in' state as xdata. Classes defining such
-        objects can override this function in order to monitor and validate xdata requests as they
-        see fit. If an object does not care about what xdata is attached to it (which is the
-        preferred practice), then it need not override this member. If a failure accessing the
-        xdata occurs, NULL is returned.
+        each regappName. This function is virtual because some objects or entities may need to
+        store some or all of their 'built-in' state as xdata. Classes defining such objects can
+        override this function in order to monitor and validate xdata requests as they see fit. If
+        an object does not care about what xdata is attached to it (which is the preferred
+        practice), then it need not override this member. If a failure accessing the xdata occurs,
+        NULL is returned.
         """
     def xDataTransformBy(self, xform: PyGe.Matrix3d, /) -> None:
         """
@@ -11030,11 +10988,11 @@ class Dictionary(PyDb.DbObject):
         This function removes an entry specified by its 'key' from the dictionary, and also returns
         the object ID of the entry in returnId. Removal entails removing the key and object's
         objectId entry from the dictionary and removing the dictionary as a persistent reactor on
-        the object. The removed object is still in the database so you should not deallocate its
-        memory. The caller is responsible for erasing the removed object if that is desired (this
-        is not necessary to prevent it from being saved since it no longer has an owner). Returns
-        Acad::eOk if successful. If key == NULL, then Acad::eInvalidKey is returned. If key is not
-        found in the dictionary then Acad::eKeyNotFound is returned.
+        the object. The removed object is still in the database. The caller is responsible for
+        erasing the removed object if that is desired (this is not necessary to prevent it from
+        being saved since it no longer has an owner). Returns Acad::eOk if successful. If key ==
+        NULL, then Acad::eInvalidKey is returned. If key is not found in the dictionary then
+        Acad::eKeyNotFound is returned.
         """
     @overload
     def remove(self, key: PyDb.ObjectId, /) -> None:
@@ -11042,11 +11000,11 @@ class Dictionary(PyDb.DbObject):
         This function removes an entry specified by its 'key' from the dictionary, and also returns
         the object ID of the entry in returnId. Removal entails removing the key and object's
         objectId entry from the dictionary and removing the dictionary as a persistent reactor on
-        the object. The removed object is still in the database so you should not deallocate its
-        memory. The caller is responsible for erasing the removed object if that is desired (this
-        is not necessary to prevent it from being saved since it no longer has an owner). Returns
-        Acad::eOk if successful. If key == NULL, then Acad::eInvalidKey is returned. If key is not
-        found in the dictionary then Acad::eKeyNotFound is returned.
+        the object. The removed object is still in the database. The caller is responsible for
+        erasing the removed object if that is desired (this is not necessary to prevent it from
+        being saved since it no longer has an owner). Returns Acad::eOk if successful. If key ==
+        NULL, then Acad::eInvalidKey is returned. If key is not found in the dictionary then
+        Acad::eKeyNotFound is returned.
         """
     @overload
     def remove(self, key: str, returnId: PyDb.ObjectId, /) -> None:
@@ -11054,11 +11012,11 @@ class Dictionary(PyDb.DbObject):
         This function removes an entry specified by its 'key' from the dictionary, and also returns
         the object ID of the entry in returnId. Removal entails removing the key and object's
         objectId entry from the dictionary and removing the dictionary as a persistent reactor on
-        the object. The removed object is still in the database so you should not deallocate its
-        memory. The caller is responsible for erasing the removed object if that is desired (this
-        is not necessary to prevent it from being saved since it no longer has an owner). Returns
-        Acad::eOk if successful. If key == NULL, then Acad::eInvalidKey is returned. If key is not
-        found in the dictionary then Acad::eKeyNotFound is returned.
+        the object. The removed object is still in the database. The caller is responsible for
+        erasing the removed object if that is desired (this is not necessary to prevent it from
+        being saved since it no longer has an owner). Returns Acad::eOk if successful. If key ==
+        NULL, then Acad::eInvalidKey is returned. If key is not found in the dictionary then
+        Acad::eKeyNotFound is returned.
         """
     @overload
     def remove(self, *args) -> None:
@@ -11066,11 +11024,11 @@ class Dictionary(PyDb.DbObject):
         This function removes an entry specified by its 'key' from the dictionary, and also returns
         the object ID of the entry in returnId. Removal entails removing the key and object's
         objectId entry from the dictionary and removing the dictionary as a persistent reactor on
-        the object. The removed object is still in the database so you should not deallocate its
-        memory. The caller is responsible for erasing the removed object if that is desired (this
-        is not necessary to prevent it from being saved since it no longer has an owner). Returns
-        Acad::eOk if successful. If key == NULL, then Acad::eInvalidKey is returned. If key is not
-        found in the dictionary then Acad::eKeyNotFound is returned.
+        the object. The removed object is still in the database. The caller is responsible for
+        erasing the removed object if that is desired (this is not necessary to prevent it from
+        being saved since it no longer has an owner). Returns Acad::eOk if successful. If key ==
+        NULL, then Acad::eInvalidKey is returned. If key is not found in the dictionary then
+        Acad::eKeyNotFound is returned.
         """
     def setAt(self, /) -> ObjectId:
         """
@@ -11763,9 +11721,7 @@ class Dimension(PyDb.Entity):
         default measurement and computed text. Alternately, to identify the substring in the block
         table record is, you can look at the AcDbText entity within the block table record (the
         object ID for this block table record can be obtained via AcDbDimension::dimBlockId()). The
-        caller of this function is responsible for deallocating the memory used by the returned
-        text string using the C++ delete[] operator. The annotation text string is used for DXF
-        group code 1.
+        annotation text string is used for DXF group code 1.
         """
     def elevation(self, /) -> float:
         """
@@ -13270,56 +13226,54 @@ class Entity(PyDb.DbObject):
         list must then be converted to object IDs and reversed. Upon return, the subentPaths
         argument will point to a dynamically allocated array of one or more AcDbFullSubentPath
         objects. The numPaths argument will contain the number of AcDbFullSubentPath objects being
-        returned. The calling application is responsible for deallocating the memory used by the
-        subentPaths array. The C++ delete [ ] should be used. Return values for this function may
-        vary depending on how the function has been implemented (see below).Function implementation
-        in derived classesEntity classes which do not set GS markers probably should not implement
-        this function since the GS marker is the primary (and often the only) means of subentity
-        distinction. When implemented, this function must use the material provided in type,
-        gsMark, pickPoint, viewXform, numInserts, and entAndInsertStack to determine which
-        subentity or subentities meet the criteria in these arguments. Next it must create a
-        dynamically allocated array of AcDbFullSubentPaths (using the C++ new operator) with one
-        element for each subentity determined in the first step. Finally it must fill in each
-        AcDbFullSubentPath object in the array with the information appropriate to the subentity it
-        will represent. If numInserts == 0 and entAndInsertStack == NULL, it's important to check
-        to be sure that the entity's owner is indeed the model or paper space BlockTableRecord.
-        This can be done by using the entity's ownerId() method to obtain the objectId of its
-        owner, and then opening up that object and using its name() method to obtain its name
-        string. If the owner is not the model or paper space BlockTableRecord, and numInserts == 0
-        or entAndInsertStack == NULL, or both, then the input data is invalid and this function
-        should set numPaths to 0, set subentPaths to NULL and then return the error status
-        Acad::eInvalidInput. Each AcDbFullSubentPath object has two parts, an array of objectIds
-        containing all the container objects, and an embedded AcDbSubentId object which in turn has
-        two elements: an index value and a SubentityType. If the 'main' entity (the entity on which
-        this function is being called) is not nested within BlockReferences (that is, numInserts ==
-        0 and entAndInsertStack == NULL), then the objectId array should contain only the objectId
-        of the 'main' entity. If the 'main' entity is nested in one or more BlockReferences, then
-        the AcDbObjectIdArray is the same as entAndInsertStack, so copying the entAndInsertStack
-        elements into the AcDbObjectIdArray is all that's required. The SubentType data item within
-        the embedded AcDbSubentId should be set the same as type. The index data item within the
-        embedded AcDbSubentId can be any value you wish (it is often simply the GS marker), but if
-        implemented, the following functions must be able to interpret them to determine the
-        corresponding GS marker(s) or subentity (or subentities):
-        getGsMarkersAtSubentPath()subentPtr()The pickPoint and viewXform arguments are provided as
-        extra aids (if necessary) in determining which subentity is involved. For example, some
-        entity types might display differently depending on the display viewpoint. The viewXform
-        transformation matrix can be used in such cases. The viewXform argument provides a
-        transformation matrix to transform from WCS (World Coordinate System) to DCS (display
-        coordinate system). The display coordinate system is oriented such that the positive Z axis
-        is coming out of the display screen towards the user, the positive X axis is horizontally
-        from left to right on screen, and the positive Y axis is vertically upwards on screen. So,
-        if the current viewpoint is at (1,0,0) (the viewer is always looking towards (0,0,0)) then
-        the viewXform matrix would be: 0 1 0 00 0 1 01 0 0 00 0 0 1In this matrix the last row and
-        the last column are not used. Notice also that the third row is the DCS Z axis in WCS
-        coordinates (which is the WCS version of the AutoCAD VIEWPOINT system variable). When this
-        function returns, the return code to use is completely up to the implementer, but to be
-        consistent with other existing entity class implementations of this function the following
-        should be used: If the function succeeds, it should return Acad::eOk.If an invalid or
-        unsupported SubentType is passed in, then numPaths should be set to 0, subentPaths should
-        be set to NULL, and Acad::eWrongSubentityType should be returned.If an invalid GS marker
-        (or any other data item that turns out to be needed) is passed in, then numPaths should be
-        set to 0, subentPaths should be set to NULL, and Acad::eInvalidInput should be returned.
-        Default implementation Immediately returns Adesk::eNotApplicable.
+        returned. Return values for this function may vary depending on how the function has been
+        implemented (see below).Function implementation in derived classesEntity classes which do
+        not set GS markers probably should not implement this function since the GS marker is the
+        primary (and often the only) means of subentity distinction. When implemented, this
+        function must use the material provided in type, gsMark, pickPoint, viewXform, numInserts,
+        and entAndInsertStack to determine which subentity or subentities meet the criteria in
+        these arguments. Next it must create a dynamically allocated array of AcDbFullSubentPaths
+        (using the C++ new operator) with one element for each subentity determined in the first
+        step. Finally it must fill in each AcDbFullSubentPath object in the array with the
+        information appropriate to the subentity it will represent. If numInserts == 0 and
+        entAndInsertStack == NULL, it's important to check to be sure that the entity's owner is
+        indeed the model or paper space BlockTableRecord. This can be done by using the entity's
+        ownerId() method to obtain the objectId of its owner, and then opening up that object and
+        using its name() method to obtain its name string. If the owner is not the model or paper
+        space BlockTableRecord, and numInserts == 0 or entAndInsertStack == NULL, or both, then the
+        input data is invalid and this function should set numPaths to 0, set subentPaths to NULL
+        and then return the error status Acad::eInvalidInput. Each AcDbFullSubentPath object has
+        two parts, an array of objectIds containing all the container objects, and an embedded
+        AcDbSubentId object which in turn has two elements: an index value and a SubentityType. If
+        the 'main' entity (the entity on which this function is being called) is not nested within
+        BlockReferences (that is, numInserts == 0 and entAndInsertStack == NULL), then the objectId
+        array should contain only the objectId of the 'main' entity. If the 'main' entity is nested
+        in one or more BlockReferences, then the AcDbObjectIdArray is the same as
+        entAndInsertStack, so copying the entAndInsertStack elements into the AcDbObjectIdArray is
+        all that's required. The SubentType data item within the embedded AcDbSubentId should be
+        set the same as type. The index data item within the embedded AcDbSubentId can be any value
+        you wish (it is often simply the GS marker), but if implemented, the following functions
+        must be able to interpret them to determine the corresponding GS marker(s) or subentity (or
+        subentities): getGsMarkersAtSubentPath()subentPtr()The pickPoint and viewXform arguments
+        are provided as extra aids (if necessary) in determining which subentity is involved. For
+        example, some entity types might display differently depending on the display viewpoint.
+        The viewXform transformation matrix can be used in such cases. The viewXform argument
+        provides a transformation matrix to transform from WCS (World Coordinate System) to DCS
+        (display coordinate system). The display coordinate system is oriented such that the
+        positive Z axis is coming out of the display screen towards the user, the positive X axis
+        is horizontally from left to right on screen, and the positive Y axis is vertically upwards
+        on screen. So, if the current viewpoint is at (1,0,0) (the viewer is always looking towards
+        (0,0,0)) then the viewXform matrix would be: 0 1 0 00 0 1 01 0 0 00 0 0 1In this matrix the
+        last row and the last column are not used. Notice also that the third row is the DCS Z axis
+        in WCS coordinates (which is the WCS version of the AutoCAD VIEWPOINT system variable).
+        When this function returns, the return code to use is completely up to the implementer, but
+        to be consistent with other existing entity class implementations of this function the
+        following should be used: If the function succeeds, it should return Acad::eOk.If an
+        invalid or unsupported SubentType is passed in, then numPaths should be set to 0,
+        subentPaths should be set to NULL, and Acad::eWrongSubentityType should be returned.If an
+        invalid GS marker (or any other data item that turns out to be needed) is passed in, then
+        numPaths should be set to 0, subentPaths should be set to NULL, and Acad::eInvalidInput
+        should be returned. Default implementation Immediately returns Adesk::eNotApplicable.
         """
     def getTransformedCopy(self, matrix3d: PyGe.Matrix3d, /) -> Entity:
         """
@@ -13335,9 +13289,8 @@ class Entity(PyDb.DbObject):
         implementation in derived classes The default AcDbEntity implementation of this function
         should be adequate for most derived entity types. However, derived entity classes that wish
         to support non-uniform scaling or non-orthogonal transformations will need to override this
-        method with their own implementation. This function must create a copy of the entity (using
-        memory that has been dynamically allocated via the C++ new operator), apply the
-        transformation matrix xform to the copy and then return with pEnt pointing to the
+        method with their own implementation. This function must create a copy of the entity, apply
+        the transformation matrix xform to the copy and then return with pEnt pointing to the
         transformed copy. Determining what constitutes a valid transformation matrix and whether to
         do a shallow clone (that is, the entity's clone() method), a deepclone (if the entity owns
         other objects), or no clone at all (that is, make this function a no-op), is up to the
@@ -13650,12 +13603,11 @@ class Entity(PyDb.DbObject):
     def layer(self, /) -> str:
         """
         This function returns a copy of the name string in the AcDbLayerTableRecord object
-        referenced by the entity. The calling application is responsible for deallocating the
-        memory used by the returned string. The acutDelString() function is
-        recommended.WarningCalling this function before the entity has had its referenced layer
-        object ID set (that is, it's still set to AcDbObjectId::kNull) will terminate AutoCAD. If
-        the referenced layer objectId is AcDbObjectId::kNull when the entity is added to a
-        database, it will be set to the object ID of the database's current default layer.
+        referenced by the entity .WarningCalling this function before the entity has had its
+        referenced layer object ID set (that is, it's still set to AcDbObjectId::kNull) will
+        terminate AutoCAD. If the referenced layer objectId is AcDbObjectId::kNull when the entity
+        is added to a database, it will be set to the object ID of the database's current default
+        layer.
         """
     def layerId(self, /) -> ObjectId:
         """
@@ -13669,12 +13621,11 @@ class Entity(PyDb.DbObject):
     def linetype(self, /) -> str:
         """
         This function returns a copy of the name string in the AcDbLinetypeTableRecord object
-        referenced by the entity. The calling application is responsible for deallocating the
-        memory used by the returned string. Either the C++ delete [ ] or the C free() function may
-        be used. Warning Calling this function before the entity has had its referenced linetype
-        object ID set (that is, it's still set to AcDbObjectId::kNull) will terminate AutoCAD. If
-        the referenced linetype objectId is AcDbObjectId::kNull when the entity is added to a
-        database it will be set to the object ID of the database's current default linetype.
+        referenced by the entity. Warning Calling this function before the entity has had its
+        referenced linetype object ID set (that is, it's still set to AcDbObjectId::kNull) will
+        terminate AutoCAD. If the referenced linetype objectId is AcDbObjectId::kNull when the
+        entity is added to a database it will be set to the object ID of the database's current
+        default linetype.
         """
     def linetypeId(self, /) -> ObjectId:
         """
@@ -19427,14 +19378,11 @@ class Line(PyDb.Curve):
         be interpreted as an offset in the direction of smaller X,Y,Z WCS coordinates. However,
         this is not enforced, so custom entities can interpret the sign of the offsetDist value
         however they wish. The entities returned in the offsetCurves arrays are dynamically
-        allocated, but have not been added to an AcDbDatabase yet. So, the application that calls
-        this function is responsible for their memory. If they are subsequently appended to a
-        database, then the database takes over responsibility for their memory. Otherwise, the
-        application is responsible for deleting them when they are no longer needed. Returns
-        Acad::eOk if offsetting is successfully completed. If the offset distance is invalid, or if
-        normal is a zero length vector or the entity is linear and normal is not perpendicular with
-        the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are
-        implementation dependent. The default implementation returns Acad::eNotImplemented.
+        allocated, but have not been added to an AcDbDatabase yet. Returns Acad::eOk if offsetting
+        is successfully completed. If the offset distance is invalid, or if normal is a zero length
+        vector or the entity is linear and normal is not perpendicular with the entity, then
+        Acad::eInvalidInput is returned. Other ErrorStatus return values are implementation
+        dependent. The default implementation returns Acad::eNotImplemented.
         """
     def length(self, /) -> float: ...
     def midPoint(self, /) -> PyGe.Point3d: ...
@@ -20646,8 +20594,7 @@ class MText(PyDb.Entity):
         object. MText codes are translated to RTF codes. Fonts, colors, tabs, and indents are
         preserved. The conversion uses 24 as the default point size. That is, text with no height
         override will have a point size of 24 and text with a height override will have a point
-        size of the height override multiplied by 24. The caller is responsible for freeing the
-        memory used by the returned string (preferably by using acutDelString().
+        size of the height override multiplied by 24.
         """
     def convertFieldToText(self, /) -> None:
         """
@@ -26094,9 +26041,8 @@ class Shape(PyDb.Entity):
     def name(self, /) -> str:
         """
         This function returns the name of the shape. If no name has been set, then NULL is
-        returned. The caller of this function is responsible for freeing the memory used by the
-        returned string. The name value is used for DXF group code 2. The name of a shape is not
-        part of the shape but is derived from the shapeNumber() and the shapeIndex().
+        returned. The name value is used for DXF group code 2. The name of a shape is not part of
+        the shape but is derived from the shapeNumber() and the shapeIndex().
         """
     def normal(self, /) -> PyGe.Vector3d:
         """
@@ -27802,14 +27748,11 @@ class Spline(PyDb.Curve):
         be interpreted as an offset in the direction of smaller X,Y,Z WCS coordinates. However,
         this is not enforced, so custom entities can interpret the sign of the offsetDist value
         however they wish. The entities returned in the offsetCurves arrays are dynamically
-        allocated, but have not been added to an AcDbDatabase yet. So, the application that calls
-        this function is responsible for their memory. If they are subsequently appended to a
-        database, then the database takes over responsibility for their memory. Otherwise, the
-        application is responsible for deleting them when they are no longer needed. Returns
-        Acad::eOk if offsetting is successfully completed. If the offset distance is invalid, or if
-        normal is a zero length vector or the entity is linear and normal is not perpendicular with
-        the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are
-        implementation dependent. The default implementation returns Acad::eNotImplemented.
+        allocated, but have not been added to an AcDbDatabase yet. Returns Acad::eOk if offsetting
+        is successfully completed. If the offset distance is invalid, or if normal is a zero length
+        vector or the entity is linear and normal is not perpendicular with the entity, then
+        Acad::eInvalidInput is returned. Other ErrorStatus return values are implementation
+        dependent. The default implementation returns Acad::eNotImplemented.
         """
     def hasFitData(self, /) -> bool:
         """
@@ -31997,8 +31940,7 @@ class Text(PyDb.Entity):
         """
         This function returns a copy of the null-terminated text string used by the AcDbText
         object. The text string can be up to 256 bytes long (not including the null terminator).
-        The application calling this function is responsible for releasing the memory used by the
-        returned string. The text string is used for DXF group code 1.
+        The text string is used for DXF group code 1.
         """
     def textStyle(self, /) -> ObjectId:
         """
@@ -33557,8 +33499,7 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
     def annotationScale(self, /) -> AnnotationScale:
         """
         This function returns a pointer to the AcDbAnnotationScale object associated with the
-        viewport. The controlling application must explicitly delete the memory of the returned
-        pointer to AcDbAnnotationScale. Otherwise, a small memory leak will result.
+        viewport.
         """
     def camera(self, /) -> ObjectId:
         """
@@ -33740,9 +33681,7 @@ class Viewport(PyDb.Entity):
         """
     def annotationScale(self, /) -> AnnotationScale:
         """
-        Returns a pointer to object of AcDbAnnotationScale associated with the viewport The
-        controlling application must explicitly delete the memory of the returned pointer to
-        AcDbAnnotationScale, Otherwise, a small memory leak will result.
+        Returns a pointer to object of AcDbAnnotationScale associated with the viewport
         """
     def backClipDistance(self, /) -> float:
         """
