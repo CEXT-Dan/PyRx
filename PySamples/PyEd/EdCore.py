@@ -1,7 +1,7 @@
 from pyrx import Ap, Ed, Rx
 
-
-def PyRxCmd_pyofd():
+@Ap.Command()
+def pyofd():
     try:
         # acedGetFileD
         path = Ed.Core.getFileD("myfile.dwg", "", "dwg;eps;abc", 33)
@@ -9,8 +9,8 @@ def PyRxCmd_pyofd():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pyofd2():
+@Ap.Command()
+def pyofd2():
     try:
         # acedGetFileNavDialog
         paths = Ed.Core.getFileNavDialog(

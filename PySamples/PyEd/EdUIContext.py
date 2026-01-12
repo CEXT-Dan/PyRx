@@ -1,6 +1,6 @@
 import wx
 
-from pyrx import Db, Ed
+from pyrx import Ap, Db, Ed
 
 print("added command = pyaddmenu")
 print("added command = pyremovemenu")
@@ -42,8 +42,8 @@ class MyMenu(Ed.UIContext):
 # global, we don't want it to be garbage collected
 menus = []
 
-
-def PyRxCmd_pyaddmenu():
+@Ap.Command()
+def pyaddmenu():
     try:
         menus.append(MyMenu())
         flag = Ed.UIContext.addObjectContextMenu(Db.BlockReference.desc(), menus[0])
@@ -54,8 +54,8 @@ def PyRxCmd_pyaddmenu():
     except Exception as err:
         print(err)
 
-
-def PyRxCmd_pyremovemenu():
+@Ap.Command()
+def pyremovemenu():
     try:
         flag = Ed.UIContext.removeObjectContextMenu(Db.BlockReference.desc(), menus[0])
         if flag:
