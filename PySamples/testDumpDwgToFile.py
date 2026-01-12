@@ -1,6 +1,6 @@
 from timeit import default_timer as timer
 
-from pyrx import Db
+from pyrx import Ap, Db
 
 
 def writealltofile(ids):
@@ -35,8 +35,8 @@ def writetoTypesfile(ids):
         f.write("\n")
     f.close()
 
-
-def PyRxCmd_dodump():
+@Ap.Command()
+def dodump():
     try:
         start = timer()
         db = Db.Database(False, True)

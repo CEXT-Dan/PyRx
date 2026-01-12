@@ -8,7 +8,8 @@ from pyrx import Ap, Db, Ed, Ge, Pl
 
 
 # AutoCAD only?
-def PyRxCmd_doit():
+@Ap.Command()
+def doit():
     try:
 
         doc = Ap.curDoc()

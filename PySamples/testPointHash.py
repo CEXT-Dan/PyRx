@@ -1,9 +1,9 @@
 import traceback
 
-from pyrx import Ge
+from pyrx import Ap, Ge
 
-
-def PyRxCmd_testhash():
+@Ap.Command()
+def testhash():
     try:
         pnts = []
         pnts.append(Ge.Point3d(-2000.11111111111111, 2000.11111111111111, 2000.11111111111111))
