@@ -1,4 +1,4 @@
-from pyrx import Ed, Ge, Gi
+from pyrx import Ap, Ed, Ge, Gi
 
 print("command = pydrawjig")
 
@@ -43,8 +43,8 @@ class MyDrawJig(Ed.DrawJig):
         except Exception as err:
             print(err)
 
-
-def PyRxCmd_pydrawjig():
+@Ap.Command()
+def pydrawjig():
     try:
         jig = MyDrawJig(Ge.Point3d(0, 0, 0))
         jig.setDispPrompt("\nPick point:\n")
