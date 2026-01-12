@@ -30,8 +30,8 @@ class MyJig(Ed.Jig):
     def update(self):
         return True
 
-
-def PyRxCmd_pyjigstyle():
+@Ap.Command()
+def pyjigstyle():
     try:
         doc = Ap.Application().docManager().curDocument()
         db = doc.database()
@@ -65,7 +65,8 @@ def PyRxCmd_pyjigstyle():
         print(err)
 
 
-def PyRxCmd_pyjig():
+@Ap.Command()
+def pyjig():
     try:
         doc = Ap.Application().docManager().curDocument()
         db = doc.database()
