@@ -239,7 +239,7 @@ def mylisp(args):
         In AutoLISP console: (mylisp "hello world" 1 2 3 4 (1 10 100))
         
     Example Output:
-        ['hello world', 1, 2, 3, 4, [1, 10, 100]]
+        ('hello world', 1, 2, 3, 4, (1, 10, 100))
         
     Error Handling:
         - Catches and prints any exceptions during execution
