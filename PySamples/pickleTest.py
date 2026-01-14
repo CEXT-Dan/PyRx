@@ -14,7 +14,7 @@ Features:
 Usage:
     Load this script into AutoCAD's Python environment.
     Run any of the following commands:
-        - 'pickle': Save current system variables to E:\SysVar.p
+        - 'pickle1': Save current system variables to E:\SysVar.p
         - 'pickle2': Load and display saved system variables  
         - 'pickle3': Compare original save vs. load for consistency check
         - 'pickle4': Demonstrate state changes with OSMODE variable
@@ -26,7 +26,7 @@ Requirements:
 
 Example Output:
     Various console outputs depending on which command is run:
-    - pickle: No output (just saves file)
+    - pickle1: No output (just saves file)
     - pickle2: Displays all loaded system variables  
     - pickle3: Shows any mismatches between save/load operations
     - pickle4: Shows differences when OSMODE changes from 191 to 0
@@ -88,9 +88,9 @@ def depickleizer():
     return sysvars
 
 
-# === Command: pickle ===
+# === Command: pickle1 ===
 @Ap.Command()
-def pickle():
+def pickle1():
     """
     Save current AutoCAD system variables to E:\SysVar.p.
     

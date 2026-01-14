@@ -28,7 +28,6 @@ import traceback
 
 from pyrx import Ap, Ax
 
-
 # --- Registering Commands ---
 print("added command itermodel")
 

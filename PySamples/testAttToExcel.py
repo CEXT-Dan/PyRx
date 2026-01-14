@@ -26,6 +26,7 @@ Example Output:
 """
 
 import traceback
+
 import openpyxl as Ex  # using openpyxl
 
 from pyrx import Ap, Db, Ed

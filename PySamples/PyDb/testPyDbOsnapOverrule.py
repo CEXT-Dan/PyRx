@@ -7,7 +7,7 @@ def OnPyInitApp() -> None:
 
 
 def OnPyUnloadApp() -> None:
-    PyRxCmd_pystoppyosnapoverrule()
+    pystoppyosnapoverrule()
 
 
 class MyOsnapOverrule(Db.OsnapOverrule):

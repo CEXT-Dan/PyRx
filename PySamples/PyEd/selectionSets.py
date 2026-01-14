@@ -11,7 +11,6 @@ import traceback
 
 from pyrx import Ap, Db, Ed, Ge, Gi
 
-
 # --- Registering Commands ---
 print("Added command = pyselectall")
 print("Added command = pyselectallf")

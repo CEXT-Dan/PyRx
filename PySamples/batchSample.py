@@ -37,6 +37,7 @@ Note:
 """
 
 import traceback
+
 import wx
 
 from pyrx import Ap, Db

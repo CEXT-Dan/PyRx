@@ -1,5 +1,6 @@
 from pyrx import Ap, Ed, Rx
 
+
 @Ap.Command()
 def pyofd():
     try:
