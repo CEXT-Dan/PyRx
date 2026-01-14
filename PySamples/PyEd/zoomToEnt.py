@@ -56,7 +56,7 @@ def pyzoomx() -> None:
         ext = ent.getGeomExtents()
         
         # Calculate dimensions for zoom operation
-        v = ext.maxPoint() - ext.minPoint()
+        v : Ge.Vector3d = ext.maxPoint() - ext.minPoint()
         
         # Use ActiveX method to zoom center on entity with calculated size
         axapp.zoomCenter(ext.midPoint(), v.length())
@@ -102,7 +102,7 @@ def pyzoom() -> None:
         ext = ent.getGeomExtents()
         
         # Calculate dimensions for zoom operation
-        v = ext.maxPoint() - ext.minPoint()
+        v : Ge.Vector3d = ext.maxPoint() - ext.minPoint()
 
         # Get current view and modify it to fit the entity
         view = Ed.Core.getCurrentView()
