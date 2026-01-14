@@ -20,7 +20,6 @@ import wx
 
 from pyrx import Ap, Db, Ed
 
-
 # --- Registering Commands ---
 print("Added command = pyaddmenu")
 print("Added command = pyremovemenu")

@@ -2,6 +2,7 @@ import traceback
 
 from pyrx import Ap, Ge
 
+
 @Ap.Command()
 def testhash():
     try:

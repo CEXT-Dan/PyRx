@@ -1,4 +1,4 @@
-from pyrx import Ap,Db
+from pyrx import Ap, Db
 
 print("added command - addDbreactor")
 print("added command - remDbreactor")

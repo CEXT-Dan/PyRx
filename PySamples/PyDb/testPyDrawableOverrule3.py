@@ -11,7 +11,7 @@ def OnPyInitApp() -> None:
 
 def OnPyUnloadApp() -> None:
     # please exit cleanly
-    PyRxCmd_pystopoverrule()
+    pystopoverrule()
 
 
 class OrDrawOverrule(Gi.DrawableOverrule):

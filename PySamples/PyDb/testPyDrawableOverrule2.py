@@ -10,12 +10,12 @@ pointdraw = None
 
 
 def OnPyInitApp() -> None:
-    PyRxCmd_pydrawoverrule()
+    pydrawoverrule()
 
 
 def OnPyUnloadApp() -> None:
     # please exit cleanly
-    PyRxCmd_pystopoverrule()
+    pystopoverrule()
     clear()
 
 

@@ -3,6 +3,7 @@ from time import sleep
 
 from pyrx import Ap, Ed
 
+
 @Ap.Command()
 def doit():
     try:

@@ -8,7 +8,7 @@ def OnPyInitApp():
 
 def OnPyUnloadApp():
     # please exit cleanly
-    PyRxCmd_pystopdbooverrule()
+    pystopdbooverrule()
 
 
 class MyDboOverrule(Db.DbObjectOverrule):

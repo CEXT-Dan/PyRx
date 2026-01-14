@@ -30,6 +30,7 @@ class MyJig(Ed.Jig):
     def update(self):
         return True
 
+
 @Ap.Command()
 def pyjigstyle():
     try:
