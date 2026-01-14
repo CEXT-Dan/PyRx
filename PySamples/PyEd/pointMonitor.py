@@ -8,7 +8,7 @@ print("added command pyunmon")
 
 # exit clean
 def OnPyUnloadApp():
-    PyRxCmd_pyunmon()
+    pyunmon()
 
 
 class MyPointMonitor(Ed.InputPointMonitor):
