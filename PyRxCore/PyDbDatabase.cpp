@@ -556,9 +556,9 @@ void makePyDbDatabaseWrapper()
         .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 3114))
         .def("purgeGraph", &PyDbDatabase::purgeGraph, DS.ARGS({ "ids: PyDb.ObjectIdGraph" }, 3114))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }, 3144))
-        .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "val : Color" }, 3146))
-        .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "val : Transparency" }, 3151))
-        .def("setInterfereColor", &PyDbDatabase::setInterfereColor, DS.ARGS({ "val : Color" }, 3197))
+        .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "val : PyDb.Color" }, 3146))
+        .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "val : PyDb.Transparency" }, 3151))
+        .def("setInterfereColor", &PyDbDatabase::setInterfereColor, DS.ARGS({ "val : PyDb.Color" }, 3197))
         .def("className", &PyDbDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
