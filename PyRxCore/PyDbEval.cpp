@@ -19,7 +19,7 @@ void makePyDbEvalVariantWrapper()
         "- pnt2dval: PyGe.Point2d\n"
         "- pnt3dval: PyGe.Point3d\n";
 
-    PyDocString DS("PyDb.EvalVariant");
+    PyDocString DS("EvalVariant");
     class_<PyDbEvalVariant, bases<PyRxObject>>("EvalVariant")
         .def(init<>())
         .def(init<double>())
@@ -413,7 +413,7 @@ AcDbEvalVariant* PyDbEvalVariant::impObj(const std::source_location& src /*= std
 //PyDbDynBlockReferenceProperty
 void makePyDbDynBlockReferencePropertyWrapper()
 {
-    PyDocString DS("PyDb.DynBlockReferenceProperty");
+    PyDocString DS("DynBlockReferenceProperty");
     class_<PyDbDynBlockReferenceProperty>("DynBlockReferenceProperty")
         .def(init<>(DS.ARGS(4193)))
         .def("blockId", &PyDbDynBlockReferenceProperty::blockId, DS.ARGS(4197))
@@ -547,7 +547,7 @@ constexpr const std::string_view ctords = "Overloads:\n"
 
 void makePyDbAcValueWrapper()
 {
-    PyDocString DS("PyDb.AcValue");
+    PyDocString DS("AcValue");
     class_<PyDbAcValue, bases<PyRxObject>>("AcValue")
         .def(init<>())
         .def(init<double>())

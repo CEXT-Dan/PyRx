@@ -210,7 +210,7 @@ void makePyDbIndexFilterManagerWrapper()
         "- ref: PyDb.BlockReference,key: PyRx.Class, mode: PyDb.OpenMode\n"
         "- ref: PyDb.BlockReference,index: int, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.IndexFilterManager");
+    PyDocString DS("IndexFilterManager");
     class_<PyDbIndexFilterManager>("IndexFilterManager")
         .def(init<>(DS.ARGS(5632)))
         .def("numIndexes", &PyDbIndexFilterManager::numIndexes, DS.SARGS({ "blkRef:PyDb.BlockTableRecord" }, 5638)).staticmethod("numIndexes")

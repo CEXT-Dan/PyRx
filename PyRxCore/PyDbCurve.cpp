@@ -13,7 +13,7 @@ void makePyDbCurveWrapper()
         "- newParam: float\n"
         "- extendStart: bool, toPoint: PyGe.Point3d\n";
 
-    PyDocString DS("PyDb.Curve");
+    PyDocString DS("Curve");
     class_<PyDbCurve, bases<PyDbEntity>>("Curve", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

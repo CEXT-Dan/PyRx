@@ -26,7 +26,7 @@ void makePyDbEntityWrapper()
         "- nameType: PyDb.PlotStyleNameType, doSubents: bool\n"
         "- nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool\n";
 
-    PyDocString DS("PyDb.Entity");
+    PyDocString DS("Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -878,7 +878,7 @@ void makePyDbSubentIdWrapper()
         "- type: PyDb.SubentType, indexMarker: int\n"
         "- pTypeClass: PyRx.RxClass, indexMarker: int\n";
 
-    PyDocString DS("PyDb.SubentId");
+    PyDocString DS("SubentId");
     class_<PyDbSubentId>("SubentId")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
@@ -980,7 +980,7 @@ void makePyDbFullSubentPathWrapper()
         "- id: PyDb.ObjectId, sub: PyDb.SubentId\n"
         "- ids: list[PyDb.ObjectId], sub: PyDb.SubentId\n";
 
-    PyDocString DS("PyDb.FullSubentPath");
+    PyDocString DS("FullSubentPath");
     class_<PyDbFullSubentPath>("FullSubentPath")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())

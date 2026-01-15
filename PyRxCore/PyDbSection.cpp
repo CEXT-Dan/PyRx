@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbSectionManager
 void makePyDbSectionManagerWrapper()
 {
-    PyDocString DS("PyDb.SectionManager");
+    PyDocString DS("SectionManager");
     class_<PyDbSectionManager, bases<PyDbObject>>("SectionManager", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -132,7 +132,7 @@ void makePyDbSectionSettingsWrapper()
         "- nSecType: PyDb.SectionType\n";
 
 
-    PyDocString DS("PyDb.SectionSettings");
+    PyDocString DS("SectionSettings");
     class_<PyDbSectionSettings, bases<PyDbObject>>("SectionSettings")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -509,7 +509,7 @@ void makePyDbSectionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.Section");
+    PyDocString DS("Section");
     class_<PyDbSection, bases<PyDbEntity>>("Section")
         .def(init<>())
         .def(init<const boost::python::list&, const AcGeVector3d&>())

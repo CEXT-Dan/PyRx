@@ -18,7 +18,7 @@ void makePyDbPlotSettingsWrapper()
         "- val: PyDb.ShadePlotType, id: PyDb.ObjectId\n";
 
 
-    PyDocString DS("PyDb.PlotSettings");
+    PyDocString DS("PlotSettings");
     class_<PyDbPlotSettings, bases<PyDbObject>>("PlotSettings")
         .def(init<>())
         .def(init<bool>())
@@ -502,7 +502,7 @@ void makePyDbLayoutWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.Layout");
+    PyDocString DS("Layout");
     class_<PyDbLayout, bases<PyDbPlotSettings>>("Layout")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

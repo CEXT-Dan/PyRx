@@ -18,7 +18,7 @@ void makePyDbObjectWrapper()
         "- field: PyDb.Field\n"
         "- propName: str, field: PyDb.Field\n";
 
-    PyDocString DS("PyDb.DbObject");
+    PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

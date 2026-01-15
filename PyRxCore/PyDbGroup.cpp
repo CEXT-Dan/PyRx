@@ -15,7 +15,7 @@ void makePyDbGroupWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.Group");
+    PyDocString DS("Group");
     class_<PyDbGroup, bases<PyDbObject>>("Group")
         .def(init<>())
         .def(init<const std::string&>())

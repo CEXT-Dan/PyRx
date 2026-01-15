@@ -74,7 +74,7 @@ void makePyDbObjectIdWrapper()
         .def("reverse", &objectIdArrayReverse, DSIDA.ARGS())
         ;
 
-    PyDocString DS("PyDb.ObjectId");
+    PyDocString DS("ObjectId");
     class_<PyDbObjectId>("ObjectId")
         .def(init<>(DS.ARGS(7057)))
         .def("asOldId", &PyDbObjectId::asOldId, DS.ARGS(7075))
@@ -437,7 +437,7 @@ void makePyDbHandleWrapper()
         "- strVal: str\n"
         "- int64Val: int\n";
 
-    PyDocString DS("PyDb.Handle");
+    PyDocString DS("Handle");
     class_<PyDbHandle>("Handle")
         .def(init<>())
         .def(init<int, int>())

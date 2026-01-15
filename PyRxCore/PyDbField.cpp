@@ -23,7 +23,7 @@ void makePyDbFieldWrapper()
         "- nContext: PyDb.FieldCodeFlag\n"
         "- nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode\n";
 
-    PyDocString DS("PyDb.Field");
+    PyDocString DS("Field");
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
         .def(init<const std::string&>())
@@ -350,7 +350,7 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
 //PyDdFieldEvaluator
 void makePyDdFieldEvaluatorWrapper()
 {
-    PyDocString DS("PyDb.FieldEvaluator");
+    PyDocString DS("FieldEvaluator");
     class_<PyDdFieldEvaluator, boost::noncopyable>("FieldEvaluator", boost::python::no_init)
         .def(init<const std::string&, const std::string&>())
         .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }, 11617))
@@ -603,7 +603,7 @@ void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& eva
 //PyDbFieldEngine
 void makePyDbFieldEngineWrapper()
 {
-    PyDocString DS("PyDb.FieldEngine");
+    PyDocString DS("FieldEngine");
     class_<PyDbFieldEngine, boost::noncopyable>("FieldEngine", boost::python::no_init)
         .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))

@@ -5,7 +5,7 @@ using namespace boost::python;
 
 void makePyDbDateWrapper()
 {
-    PyDocString DS("PyDb.Date");
+    PyDocString DS("Date");
     class_<PyDbDate>("Date")
         .def(init<>(DS.ARGS(3512)))
         .def("getDate", &PyDbDate::getDate, DS.ARGS(3525))

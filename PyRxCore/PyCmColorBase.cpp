@@ -130,7 +130,7 @@ void makePyCmEntityColorWrapper()
         "- rgbquad: int\n"
         "- r: int, g: int, b: int\n";
 
-    PyDocString DS("PyDb.EntityColor");
+    PyDocString DS("EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.ARGS({ "r: int","g: int","b: int" })))
 #if defined(_BRXTARGET260) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)

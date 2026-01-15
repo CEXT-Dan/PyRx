@@ -2319,7 +2319,7 @@ void makePyDbSortentsTableWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.SortentsTable");
+    PyDocString DS("SortentsTable");
     class_<PyDbSortentsTable, bases<PyDbObject>>("SortentsTable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -3292,7 +3292,7 @@ void makeXRefLayerPropertyOverride()
         "- hostDb: PyDb.Database\n";
 
     PyDocString DS("XRefLayerPropertyOverride");
-    class_<PyXRefLayerPropertyOverride>("XRefLayerPropertyOverride", no_init)
+    class_<PyXRefLayerPropertyOverride>("XRefLayerPropertyOverride")
         .def("hasXRefLayerOverride", &PyXRefLayerPropertyOverride::hasXRefLayerOverride1)
         .def("hasXRefLayerOverride", &PyXRefLayerPropertyOverride::hasXRefLayerOverride2, DS.SOVRL(hasXRefLayerOverride)).staticmethod("hasXRefLayerOverride")
         .def("hasAnyXRefLayerOverrides", &PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides1)
@@ -3373,7 +3373,7 @@ std::string PyXRefLayerPropertyOverride::className()
 {
     return "AcXRefLayerPropertyOverride";
 }
-#endif
+#endif //_ARXTARGET
 
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper

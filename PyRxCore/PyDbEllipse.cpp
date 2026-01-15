@@ -21,7 +21,7 @@ void makePyDbEllipseWrapper()
         "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float\n"
         "- center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float\n";
 
-    PyDocString DS("PyDb.Ellipse");
+    PyDocString DS("Ellipse");
     class_<PyDbEllipse, bases<PyDbCurve>>("Ellipse")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double>())

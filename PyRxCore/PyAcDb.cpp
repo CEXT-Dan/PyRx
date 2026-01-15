@@ -140,7 +140,7 @@ static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLin
     AcGePoint2d _tmp;
     if (other.impObj()->intersectWith(AcGeLineSeg2d(ul, extents.minPoint()), _tmp))
         return true;
-    if (other.impObj()->intersectWith(AcGeLineSeg2d(ul,extents.minPoint()), _tmp))
+    if (other.impObj()->intersectWith(AcGeLineSeg2d(ul, extents.minPoint()), _tmp))
         return true;
     if (other.impObj()->intersectWith(AcGeLineSeg2d(extents.maxPoint(), lr), _tmp))
         return true;
@@ -227,11 +227,11 @@ static bool AcDbExtentsContains1(const AcDbExtents& extents, const AcGePoint3d& 
 
 static bool AcDbExtents3dIntersects1(const AcDbExtents& b1, const AcDbExtents& b2)
 {
-    if (b1.maxPoint().x < b2.minPoint().x || b1.minPoint().x > b2.maxPoint().x) 
+    if (b1.maxPoint().x < b2.minPoint().x || b1.minPoint().x > b2.maxPoint().x)
         return false;
-    if (b1.maxPoint().y < b2.minPoint().y || b1.minPoint().y > b2.maxPoint().y) 
+    if (b1.maxPoint().y < b2.minPoint().y || b1.minPoint().y > b2.maxPoint().y)
         return false;
-    if (b1.maxPoint().z < b2.minPoint().z || b1.minPoint().z > b2.maxPoint().z) 
+    if (b1.maxPoint().z < b2.minPoint().z || b1.minPoint().z > b2.maxPoint().z)
         return false;
     return true;
 }
@@ -2106,17 +2106,17 @@ static BOOST_PYTHON_MODULE(PyDb)
 
 #if defined(_ARXTARGET)
     enum_<AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType>("XRefLayerPropertyOverrideType")
-        .value("On", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::On)
-        .value("Freeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Freeze)
-        .value("Lock", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lock)
-        .value("Plot", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Plot)
-        .value("Color", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Color)
-        .value("Linetype", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Linetype)
-        .value("Lineweight", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lineweight)
-        .value("Transparency", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Transparency)
-        .value("PlotStyle", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::PlotStyle)
-        .value("NewVPFreeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::NewVPFreeze)
-        .value("Description", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Description)
+        .value("kOn", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::On)
+        .value("kFreeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Freeze)
+        .value("kLock", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lock)
+        .value("kPlot", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Plot)
+        .value("kColor", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Color)
+        .value("kLinetype", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Linetype)
+        .value("kLineweight", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lineweight)
+        .value("kTransparency", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Transparency)
+        .value("kPlotStyle", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::PlotStyle)
+        .value("kNewVPFreeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::NewVPFreeze)
+        .value("kDescription", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Description)
         .export_values()
         ;
 #endif

@@ -19,7 +19,7 @@ void makePyDbDictionaryWrapper()
         "- key: PyDb.ObjectId\n"
         "- key: str, returnId: PyDb.ObjectId\n";
 
-    PyDocString DS("PyDb.Dictionary");
+    PyDocString DS("Dictionary");
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

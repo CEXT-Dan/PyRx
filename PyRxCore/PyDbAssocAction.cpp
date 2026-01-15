@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyDbActionsToEvaluateCallback
 void makePyDbActionsToEvaluateCallbackWrapper()
 {
-    PyDocString DS("PyDb.ActionsToEvaluateCallback");
+    PyDocString DS("ActionsToEvaluateCallback");
     class_<PyDbActionsToEvaluateCallback>("ActionsToEvaluateCallback")
         .def(init<>())
         .def("needsToEvaluate", &PyDbActionsToEvaluateCallback::needsToEvaluateWr, DS.ARGS({ "objectId: PyDb.ObjectId","newStatus: PyDb.AssocStatus", "ownedActionsAlso: bool" }))
@@ -63,7 +63,7 @@ std::string PyDbActionsToEvaluateCallback::className()
 //PyDbAssocEvaluationCallback
 void makePyDbAssocEvaluationCallbackWrapper()
 {
-    PyDocString DS("PyDb.AssocEvaluationCallback");
+    PyDocString DS("AssocEvaluationCallback");
     class_<PyDbAssocEvaluationCallback>("AssocEvaluationCallback")
         .def(init<>())
         .def("beginActionEvaluation", &PyDbAssocEvaluationCallback::beginActionEvaluation, DS.ARGS({ "action: PyDb.AssocAction" }))
@@ -185,7 +185,7 @@ void makePyDbAssocDependencyWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.AssocDependency");
+    PyDocString DS("AssocDependency");
     class_<PyDbAssocDependency, bases<PyDbObject>>("AssocDependency")
         .def(init<>())
         .def(init<bool>())
@@ -534,7 +534,7 @@ void makePyDbAssocValueDependencyWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.AssocValueDependency");
+    PyDocString DS("AssocValueDependency");
     class_<PyDbAssocValueDependency, bases<PyDbAssocDependency>>("AssocValueDependency")
         .def(init<>())
         .def(init<bool>())
@@ -662,7 +662,7 @@ void makePyDbAssocActionWrapper()
         "- objectToRemoveActionsFrom: PyDb.ObjectId, readOnlyDependencyHandling:bool, objectToRedirectReadOnlyDependenciesTo:PyDb.ObjectId\n";
 
 
-    PyDocString DS("PyDb.AssocAction");
+    PyDocString DS("AssocAction");
     class_<PyDbAssocAction, bases<PyDbObject>>("AssocAction")
         .def(init<>())
         .def(init<bool>())
@@ -1247,7 +1247,7 @@ void makePyDbAssocNetworkWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.AssocNetwork");
+    PyDocString DS("AssocNetwork");
     class_<PyDbAssocNetwork, bases<PyDbAssocAction>>("AssocNetwork")
         .def(init<>())
         .def(init<bool>())
@@ -1423,7 +1423,7 @@ void makePyDbAssocVariableWrapper()
         "- expression: str, evaluatorId: str, networkId: PyDb.ObjectId\n"
         "- objectIds: list[PyDb.ObjectId], objectValues: list[PyDb.EvalVariant]\n";
 
-    PyDocString DS("PyDb.AssocVariable");
+    PyDocString DS("AssocVariable");
     class_<PyDbAssocVariable, bases<PyDbAssocAction>>("AssocVariable")
         .def(init<>())
         .def(init<bool>())

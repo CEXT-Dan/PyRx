@@ -35,7 +35,7 @@ void makePyDbSubDMeshWrapper()
         "- bConvertAsSmooth: bool, id: PyDb.SubentId\n"
         "- bConvertAsSmooth: bool, optimize: bool\n";
 
-    PyDocString DS("PyDb.SubDMesh");
+    PyDocString DS("SubDMesh");
     class_<PyDbSubDMesh, bases<PyDbEntity>>("SubDMesh")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
