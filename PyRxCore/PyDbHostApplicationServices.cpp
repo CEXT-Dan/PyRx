@@ -86,7 +86,7 @@ AcDbTransactionManager* OutputDisplayServiceImpl::workingTransactionManager()
 //PyOutputDisplayService
 void makePyOutputDisplayServiceWrapper()
 {
-    PyDocString DS("PyDb.OutputDisplayService");
+    PyDocString DS("OutputDisplayService");
     class_<PyOutputDisplayService>("OutputDisplayService")
         .def(init<>(DS.ARGS()))
         .def("getMuteCmdLine", &PyOutputDisplayService::getMuteCmdLine, DS.ARGS())

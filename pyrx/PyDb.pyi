@@ -10,21 +10,10 @@ from pyrx import Gs as PyGs
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 
-Color: XRefLayerPropertyOverrideType  # 4
-Description: XRefLayerPropertyOverrideType  # 10
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
 ForWrite: OpenMode  # 1
-Freeze: XRefLayerPropertyOverrideType  # 1
-Linetype: XRefLayerPropertyOverrideType  # 5
-Lineweight: XRefLayerPropertyOverrideType  # 6
-Lock: XRefLayerPropertyOverrideType  # 2
-NewVPFreeze: XRefLayerPropertyOverrideType  # 9
 Ok: ErrorStatus  # 0
-On: XRefLayerPropertyOverrideType  # 0
-Plot: XRefLayerPropertyOverrideType  # 3
-PlotStyle: XRefLayerPropertyOverrideType  # 8
-Transparency: XRefLayerPropertyOverrideType  # 7
 eAbortPreview: ErrorStatus  # 20117
 eAllInSameRigidSet: ErrorStatus  # 20083
 eAlreadyActive: ErrorStatus  # 20051
@@ -774,7 +763,7 @@ kCloudOrProjectFile: FindFileHint  # 13
 kCoarse: AcGeoMapResolution  # -1
 kCollisionTypeNone: CollisionType  # 0
 kCollisionTypeSolid: CollisionType  # 1
-kColor: ValueDataType  # 1024
+kColor: XRefLayerPropertyOverrideType  # 4
 kColorBookTab: AcCmDialogTabs  # 4
 kCompiled: FieldState  # 2
 kCompiledShapeFile: FindFileHint  # 2
@@ -866,6 +855,7 @@ kDegreesUnknown: RotationAngle  # -1
 kDekameters: ImageUnits  # 15
 kDemand: FieldEvalContext  # 32
 kDerived: HatchLoopType  # 4
+kDescription: XRefLayerPropertyOverrideType  # 10
 kDestinationFile: SectionGeneration  # 64
 kDestinationNewBlock: SectionGeneration  # 16
 kDestinationReplaceBlock: SectionGeneration  # 32
@@ -1149,7 +1139,7 @@ kForceAnnoAllVisible: HatchLoopType  # 2048
 kForegroundGeometry: SectionGeometry  # 8
 kFormatOptionNone: ValueFormatOption  # 0
 kFourthPointRef: AssocFlags  # 8
-kFreeze: VpFreezeOps  # 0
+kFreeze: XRefLayerPropertyOverrideType  # 1
 kFrontView: OrthographicView  # 3
 kFrozen: LayerStateMask  # 2
 kGMT: TimeZone  # 1
@@ -1257,6 +1247,8 @@ kLine: CenterMarkType  # 1
 kLineType: LayerStateMask  # 64
 kLineWeight: LayerStateMask  # 128
 kLinear: Planarity  # 2
+kLinetype: XRefLayerPropertyOverrideType  # 5
+kLineweight: XRefLayerPropertyOverrideType  # 6
 kListAll: GraphNodeFlags  # 14
 kLiveSection: SectionType  # 1
 kLnWt000: LineWeight  # 0
@@ -1287,6 +1279,7 @@ kLnWtByBlock: LineWeight  # -2
 kLnWtByLayer: LineWeight  # -1
 kLnWtByLwDefault: LineWeight  # -3
 kLocation: MTextFragmentType  # 0
+kLock: XRefLayerPropertyOverrideType  # 2
 kLocked: LayerStateMask  # 4
 kLong: ValueDataType  # 1
 kLtoR: MTextFlowDirection  # 1
@@ -1338,6 +1331,7 @@ kMoveContentAndDoglegPoints: MLeaderMoveType  # 2
 kMultipleContentCell: CellType  # 3
 kNanometers: ImageUnits  # 12
 kNewMiter: SweepMiterOption  # 2
+kNewVPFreeze: XRefLayerPropertyOverrideType  # 9
 kNewViewport: LayerStateMask  # 16
 kNewfoundland: TimeZone  # -3300
 kNoAlignment: SweepAlignOption  # 0
@@ -1362,7 +1356,7 @@ kObjectId: ValueDataType  # 64
 kObjectReference: FieldCodeFlag  # 8
 kObliqueAngle: MTextFragmentType  # 9
 kOldMiter: SweepMiterOption  # 1
-kOn: LayerStateMask  # 1
+kOn: XRefLayerPropertyOverrideType  # 0
 kOnBothOperands: Intersect  # 0
 kOnDemand: FieldEvalOption  # 32
 kOnEtransmit: FieldEvalOption  # 8
@@ -1448,9 +1442,9 @@ kPhotometricWebFile: FindFileHint  # 11
 kPixels: PlotPaperUnits  # 2
 kPlanar: Planarity  # 1
 kPlane: SectionState  # 1
-kPlot: LayerStateMask  # 8
+kPlot: XRefLayerPropertyOverrideType  # 3
 kPlotPreview: FieldEvalContext  # 128
-kPlotStyle: LayerStateMask  # 256
+kPlotStyle: XRefLayerPropertyOverrideType  # 8
 kPlotStyleNameByBlock: PlotStyleNameType  # 1
 kPlotStyleNameById: PlotStyleNameType  # 3
 kPlotStyleNameByLayer: PlotStyleNameType  # 0
@@ -1699,7 +1693,7 @@ kTopView: OrthographicView  # 1
 kTrackingFactor: MTextFragmentType  # 10
 kTranslatePathToSweepEntity: SweepAlignOption  # 3
 kTranslateSweepEntityToPath: SweepAlignOption  # 2
-kTransparency: LayerStateMask  # 1024
+kTransparency: XRefLayerPropertyOverrideType  # 7
 kTransparent: ImageDisplayOpt  # 8
 kTrue: AnnotativeStates  # 0
 kTrueColor: PointCloudStylizationType  # 1
@@ -5101,6 +5095,32 @@ class ClipBoundaryType(_BoostPythonEnum):
 class CollisionType(_BoostPythonEnum):
     kCollisionTypeNone: ClassVar[Self]  # 0
     kCollisionTypeSolid: ClassVar[Self]  # 1
+
+class Color:
+    def __init__(self, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
+    def __reduce__(self, /) -> Any: ...
+    def blue(self, /) -> int: ...
+    def colorIndex(self, /) -> int: ...
+    def entityColor(self, /) -> EntityColor: ...
+    def green(self, /) -> int: ...
+    def isByACI(self, /) -> bool: ...
+    def isByBlock(self, /) -> bool: ...
+    def isByColor(self, /) -> bool: ...
+    def isByLayer(self, /) -> bool: ...
+    def isByPen(self, /) -> bool: ...
+    def isForeground(self, /) -> bool: ...
+    def isNone(self, /) -> bool: ...
+    def penIndex(self, /) -> int: ...
+    def red(self, /) -> int: ...
+    def setColorIndex(self, val: int, /) -> ErrorStatus: ...
+    def setPenIndex(self, val: int, /) -> ErrorStatus: ...
+    def setRGB(self, red: int, green: int, blue: int, /) -> ErrorStatus: ...
 
 class ColorMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 192
@@ -32488,6 +32508,21 @@ class TransactionManager(PyRx.RxObject):
     def startTransaction(self, /) -> Transaction: ...
     def topTransaction(self, /) -> Transaction: ...
 
+class Transparency:
+    def __init__(self, alpha: int | float, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def alpha(self, /) -> int: ...
+    def alphaPercent(self, /) -> float: ...
+    def isByAlpha(self, /) -> bool: ...
+    def isByBlock(self, /) -> bool: ...
+    def isByLayer(self, /) -> bool: ...
+    def isClear(self, /) -> bool: ...
+    def isInvalid(self, /) -> bool: ...
+    def isSolid(self, /) -> bool: ...
+    def setAlpha(self, alpha: int, /) -> None: ...
+    def setAlphaPercent(self, alphaPercent: float, /) -> None: ...
+    def setMethod(self, method: PyDb.TransparencyMethod, /) -> None: ...
+
 class TransparencyMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 0
     kByBlock: ClassVar[Self]  # 1
@@ -35340,11 +35375,7 @@ class Wipeout(PyDb.RasterImage):
     def setFrom(self, points: list[PyGe.Point2d], normal: PyGe.Vector3d, /) -> None: ...
 
 class XRefLayerPropertyOverride:
-    def __init__(self) -> None:
-        """
-        Raises an exception.
-        This class cannot be instantiated from Python.
-        """
+    def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def addXRefLayerOverride(
@@ -35402,17 +35433,17 @@ class XRefLayerPropertyOverride:
     def removeXRefLayerOverrides(*args) -> None: ...
 
 class XRefLayerPropertyOverrideType(_BoostPythonEnum):
-    On: ClassVar[Self]  # 0
-    Freeze: ClassVar[Self]  # 1
-    Lock: ClassVar[Self]  # 2
-    Plot: ClassVar[Self]  # 3
-    Color: ClassVar[Self]  # 4
-    Linetype: ClassVar[Self]  # 5
-    Lineweight: ClassVar[Self]  # 6
-    Transparency: ClassVar[Self]  # 7
-    PlotStyle: ClassVar[Self]  # 8
-    NewVPFreeze: ClassVar[Self]  # 9
-    Description: ClassVar[Self]  # 10
+    kOn: ClassVar[Self]  # 0
+    kFreeze: ClassVar[Self]  # 1
+    kLock: ClassVar[Self]  # 2
+    kPlot: ClassVar[Self]  # 3
+    kColor: ClassVar[Self]  # 4
+    kLinetype: ClassVar[Self]  # 5
+    kLineweight: ClassVar[Self]  # 6
+    kTransparency: ClassVar[Self]  # 7
+    kPlotStyle: ClassVar[Self]  # 8
+    kNewVPFreeze: ClassVar[Self]  # 9
+    kDescription: ClassVar[Self]  # 10
 
 class Xrecord(PyDb.DbObject):
     @overload

@@ -46,7 +46,7 @@ void makePyDbDatabaseWrapper()
         "- fileName:str\n"
         "- fileName:str, mode: PyDb.DatabaseOpenMode,bAllowCPConversion:bool,password:str\n";
 
-    PyDocString DS("PyDb.Database");
+    PyDocString DS("Database");
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" }, 19135)))

@@ -599,7 +599,7 @@ public:
     static bool isXRefLayerPropertyOverrideRecordingEnabled();
     static std::string  className();
 };
-#endif
+#endif//_ARXTARGET
 
 //---------------------------------------------------------------------------------------- -
 // PyDbLayerTableRecord

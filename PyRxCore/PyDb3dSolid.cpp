@@ -28,7 +28,7 @@ void makePyDb3dSolidWrapper()
         "- pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions\n"
         "- pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, height: float, sweepOptions: PyDb.SweepOptions\n";
 
-    PyDocString DS("PyDb.Solid3d");
+    PyDocString DS("Solid3d");
     class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -508,7 +508,7 @@ void makePyDbRegionWrapper()
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
 
-    PyDocString DS("PyDb.Region");
+    PyDocString DS("Region");
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

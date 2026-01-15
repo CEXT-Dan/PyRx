@@ -731,7 +731,7 @@ void makePyDbTextWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.Text");
+    PyDocString DS("Text");
     class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
@@ -1085,7 +1085,7 @@ void makePyDbAttributeDefinitionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.AttributeDefinition");
+    PyDocString DS("AttributeDefinition");
     class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
@@ -1321,7 +1321,7 @@ void makePyDbAttributeWrapper()
         "- blkXform: PyGe.Matrix3d\n"
         "- pAttdef: PyDb.AttributeDefinition, blkXform: PyGe.Matrix3d\n";
 
-    PyDocString DS("PyDb.AttributeReference");
+    PyDocString DS("AttributeReference");
     class_<PyDbAttribute, bases<PyDbText>>("AttributeReference")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())

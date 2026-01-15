@@ -19,7 +19,7 @@ void makePyDbDimensionWrapper()
         "- measurement: float\n"
         "- measurement: float, dimensionText: str\n";
 
-    PyDocString DS("PyDb.Dimension");
+    PyDocString DS("Dimension");
     class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1015,7 +1015,7 @@ void makePyDb2LineAngularDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.LineAngularDimension2");
+    PyDocString DS("LineAngularDimension2");
     class_<PyDb2LineAngularDimension, bases<PyDbDimension>>("LineAngularDimension2")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1196,7 +1196,7 @@ void makePyDb3PointAngularDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.Point3AngularDimension");
+    PyDocString DS("Point3AngularDimension");
     class_<PyDb3PointAngularDimension, bases<PyDbDimension>>("Point3AngularDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1361,7 +1361,7 @@ void makePyDbAlignedDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.AlignedDimension");
+    PyDocString DS("AlignedDimension");
     class_<PyDbAlignedDimension, bases<PyDbDimension>>("AlignedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1546,7 +1546,7 @@ void makePyDbArcDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.ArcDimension");
+    PyDocString DS("ArcDimension");
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1783,7 +1783,7 @@ void makePyDbDiametricDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.DiametricDimension");
+    PyDocString DS("DiametricDimension");
     class_<PyDbDiametricDimension, bases<PyDbDimension>>("DiametricDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1956,7 +1956,7 @@ void makePyDbOrdinateDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.OrdinateDimension");
+    PyDocString DS("OrdinateDimension");
     class_<PyDbOrdinateDimension, bases<PyDbDimension>>("OrdinateDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2134,7 +2134,7 @@ void makePyDbRadialDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.RadialDimension");
+    PyDocString DS("RadialDimension");
     class_<PyDbRadialDimension, bases<PyDbDimension>>("RadialDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2291,7 +2291,7 @@ void makePyDbRadialDimensionLargeWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.RadialDimensionLarge");
+    PyDocString DS("RadialDimensionLarge");
     class_<PyDbRadialDimensionLarge, bases<PyDbDimension>>("RadialDimensionLarge")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2518,7 +2518,7 @@ void makePyDbRotatedDimensionWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PyDb.RotatedDimension");
+    PyDocString DS("RotatedDimension");
     class_<PyDbRotatedDimension, bases<PyDbDimension>>("RotatedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

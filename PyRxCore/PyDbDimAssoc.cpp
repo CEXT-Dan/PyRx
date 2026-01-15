@@ -22,7 +22,7 @@ void makePyDbDimAssocWrapper()
         "- flag: int\n"
         "- flag: int, val: bool\n";
 
-    PyDocString DS("PyDb.DimAssoc");
+    PyDocString DS("DimAssoc");
     class_<PyDbDimAssoc, bases<PyDbObject>>("DimAssoc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
