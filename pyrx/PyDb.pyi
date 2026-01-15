@@ -763,7 +763,7 @@ kCloudOrProjectFile: FindFileHint  # 13
 kCoarse: AcGeoMapResolution  # -1
 kCollisionTypeNone: CollisionType  # 0
 kCollisionTypeSolid: CollisionType  # 1
-kColor: XRefLayerPropertyOverrideType  # 4
+kColor: ValueDataType  # 1024
 kColorBookTab: AcCmDialogTabs  # 4
 kCompiled: FieldState  # 2
 kCompiledShapeFile: FindFileHint  # 2
@@ -855,7 +855,6 @@ kDegreesUnknown: RotationAngle  # -1
 kDekameters: ImageUnits  # 15
 kDemand: FieldEvalContext  # 32
 kDerived: HatchLoopType  # 4
-kDescription: XRefLayerPropertyOverrideType  # 10
 kDestinationFile: SectionGeneration  # 64
 kDestinationNewBlock: SectionGeneration  # 16
 kDestinationReplaceBlock: SectionGeneration  # 32
@@ -1139,7 +1138,7 @@ kForceAnnoAllVisible: HatchLoopType  # 2048
 kForegroundGeometry: SectionGeometry  # 8
 kFormatOptionNone: ValueFormatOption  # 0
 kFourthPointRef: AssocFlags  # 8
-kFreeze: XRefLayerPropertyOverrideType  # 1
+kFreeze: VpFreezeOps  # 0
 kFrontView: OrthographicView  # 3
 kFrozen: LayerStateMask  # 2
 kGMT: TimeZone  # 1
@@ -1247,8 +1246,6 @@ kLine: CenterMarkType  # 1
 kLineType: LayerStateMask  # 64
 kLineWeight: LayerStateMask  # 128
 kLinear: Planarity  # 2
-kLinetype: XRefLayerPropertyOverrideType  # 5
-kLineweight: XRefLayerPropertyOverrideType  # 6
 kListAll: GraphNodeFlags  # 14
 kLiveSection: SectionType  # 1
 kLnWt000: LineWeight  # 0
@@ -1279,7 +1276,6 @@ kLnWtByBlock: LineWeight  # -2
 kLnWtByLayer: LineWeight  # -1
 kLnWtByLwDefault: LineWeight  # -3
 kLocation: MTextFragmentType  # 0
-kLock: XRefLayerPropertyOverrideType  # 2
 kLocked: LayerStateMask  # 4
 kLong: ValueDataType  # 1
 kLtoR: MTextFlowDirection  # 1
@@ -1331,7 +1327,6 @@ kMoveContentAndDoglegPoints: MLeaderMoveType  # 2
 kMultipleContentCell: CellType  # 3
 kNanometers: ImageUnits  # 12
 kNewMiter: SweepMiterOption  # 2
-kNewVPFreeze: XRefLayerPropertyOverrideType  # 9
 kNewViewport: LayerStateMask  # 16
 kNewfoundland: TimeZone  # -3300
 kNoAlignment: SweepAlignOption  # 0
@@ -1356,7 +1351,7 @@ kObjectId: ValueDataType  # 64
 kObjectReference: FieldCodeFlag  # 8
 kObliqueAngle: MTextFragmentType  # 9
 kOldMiter: SweepMiterOption  # 1
-kOn: XRefLayerPropertyOverrideType  # 0
+kOn: LayerStateMask  # 1
 kOnBothOperands: Intersect  # 0
 kOnDemand: FieldEvalOption  # 32
 kOnEtransmit: FieldEvalOption  # 8
@@ -1442,9 +1437,9 @@ kPhotometricWebFile: FindFileHint  # 11
 kPixels: PlotPaperUnits  # 2
 kPlanar: Planarity  # 1
 kPlane: SectionState  # 1
-kPlot: XRefLayerPropertyOverrideType  # 3
+kPlot: LayerStateMask  # 8
 kPlotPreview: FieldEvalContext  # 128
-kPlotStyle: XRefLayerPropertyOverrideType  # 8
+kPlotStyle: LayerStateMask  # 256
 kPlotStyleNameByBlock: PlotStyleNameType  # 1
 kPlotStyleNameById: PlotStyleNameType  # 3
 kPlotStyleNameByLayer: PlotStyleNameType  # 0
@@ -1693,7 +1688,7 @@ kTopView: OrthographicView  # 1
 kTrackingFactor: MTextFragmentType  # 10
 kTranslatePathToSweepEntity: SweepAlignOption  # 3
 kTranslateSweepEntityToPath: SweepAlignOption  # 2
-kTransparency: XRefLayerPropertyOverrideType  # 7
+kTransparency: LayerStateMask  # 1024
 kTransparent: ImageDisplayOpt  # 8
 kTrue: AnnotativeStates  # 0
 kTrueColor: PointCloudStylizationType  # 1
@@ -1863,6 +1858,17 @@ kXline1Start: DimAssocPointType  # 0
 kXline2End: DimAssocPointType  # 3
 kXline2Point: DimAssocPointType  # 1
 kXline2Start: DimAssocPointType  # 2
+kXrColor: XRefLayerPropertyOverrideType  # 4
+kXrDescription: XRefLayerPropertyOverrideType  # 10
+kXrFreeze: XRefLayerPropertyOverrideType  # 1
+kXrLinetype: XRefLayerPropertyOverrideType  # 5
+kXrLineweight: XRefLayerPropertyOverrideType  # 6
+kXrLock: XRefLayerPropertyOverrideType  # 2
+kXrNewVPFreeze: XRefLayerPropertyOverrideType  # 9
+kXrOn: XRefLayerPropertyOverrideType  # 0
+kXrPlot: XRefLayerPropertyOverrideType  # 3
+kXrPlotStyle: XRefLayerPropertyOverrideType  # 8
+kXrTransparency: XRefLayerPropertyOverrideType  # 7
 kXrefResolution: RemapFileContext  # 1
 kXrfFileNotFound: XrefStatus  # 4
 kXrfNotAnXref: XrefStatus  # 0
@@ -35433,17 +35439,17 @@ class XRefLayerPropertyOverride:
     def removeXRefLayerOverrides(*args) -> None: ...
 
 class XRefLayerPropertyOverrideType(_BoostPythonEnum):
-    kOn: ClassVar[Self]  # 0
-    kFreeze: ClassVar[Self]  # 1
-    kLock: ClassVar[Self]  # 2
-    kPlot: ClassVar[Self]  # 3
-    kColor: ClassVar[Self]  # 4
-    kLinetype: ClassVar[Self]  # 5
-    kLineweight: ClassVar[Self]  # 6
-    kTransparency: ClassVar[Self]  # 7
-    kPlotStyle: ClassVar[Self]  # 8
-    kNewVPFreeze: ClassVar[Self]  # 9
-    kDescription: ClassVar[Self]  # 10
+    kXrOn: ClassVar[Self]  # 0
+    kXrFreeze: ClassVar[Self]  # 1
+    kXrLock: ClassVar[Self]  # 2
+    kXrPlot: ClassVar[Self]  # 3
+    kXrColor: ClassVar[Self]  # 4
+    kXrLinetype: ClassVar[Self]  # 5
+    kXrLineweight: ClassVar[Self]  # 6
+    kXrTransparency: ClassVar[Self]  # 7
+    kXrPlotStyle: ClassVar[Self]  # 8
+    kXrNewVPFreeze: ClassVar[Self]  # 9
+    kXrDescription: ClassVar[Self]  # 10
 
 class Xrecord(PyDb.DbObject):
     @overload
