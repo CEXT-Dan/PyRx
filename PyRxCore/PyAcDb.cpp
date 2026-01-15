@@ -564,6 +564,7 @@ static BOOST_PYTHON_MODULE(PyDb)
 #endif
         .export_values()
         ;
+
     enum_<AcDb::CellOption>("CellOption")
         .value("kNoMap", AcDb::CellOption::kCellOptionNone)
         .value("kAerial", AcDb::CellOption::kInheritCellFormat)
@@ -2120,6 +2121,13 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 #endif
+
+    enum_<Adesk::Boolean>("AdskBoolean")
+        .value("kFalse", Adesk::kFalse)
+        .value("kTrue", Adesk::kTrue)
+        .export_values()
+        ;
+
 };
 
 void initPyDbModule()
