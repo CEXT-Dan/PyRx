@@ -8177,7 +8177,7 @@ class Database(PyRx.RxObject):
         Acad::eInvalidInput if type is not a valid value, or if id is not valid when type is
         AcDb::kPlotStyleNameById.
         """
-    def setCecolor(self, val: Color, /) -> None:
+    def setCecolor(self, val: PyDb.Color, /) -> None:
         """
         Sets the AutoCAD color index in color to be the CECOLOR value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on CECOLOR.
@@ -8201,7 +8201,7 @@ class Database(PyRx.RxObject):
         Variables section of the AutoCAD Command Reference for information on CELWEIGHT. Returns
         Acad::eOk if successful.
         """
-    def setCetransparency(self, val: Transparency, /) -> None:
+    def setCetransparency(self, val: PyDb.Transparency, /) -> None:
         """
         Sets the transparency value for the entity.
         """
@@ -8462,7 +8462,7 @@ class Database(PyRx.RxObject):
         """
         Sets the INSUNITS variable for the database.
         """
-    def setInterfereColor(self, val: Color, /) -> None:
+    def setInterfereColor(self, val: PyDb.Color, /) -> None:
         """
         Sets the database's INTERFERECOLOR system variable to val. See the System Variables section
         of the AutoCAD Command Reference for information on INTERFERECOLOR.
