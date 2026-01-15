@@ -3,12 +3,18 @@
 #include "PyDbObjectId.h"
 #include "dbdynblk.h"
 
+#if defined(_ARXTARGET)
+#include "AcXRefLayerPropertyOverride.h"
+#endif
+
+
 #pragma pack (push, 8)
 class PyDbEntity;
 class PyDbBlockBegin;
 class PyDbBlockEnd;
 class PyDbAnnotationScale;
 class PyGsView;
+class PyDbBlockReference;
 
 
 void makePyDbSymbolTableRecordWrapper();
@@ -571,6 +577,29 @@ public:
     std::shared_ptr<AcDbDynBlockTableRecord> m_imp;
 };
 
+#if defined(_ARXTARGET)
+//---------------------------------------------------------------------------------------- -
+// PyXRefLayerPropertyOverride
+void makeXRefLayerPropertyOverride();
+
+class PyXRefLayerPropertyOverride
+{
+public:
+    static bool hasXRefLayerOverride1(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property);
+    static bool hasXRefLayerOverride2(const PyDbBlockReference& pRef);
+    static bool hasAnyXRefLayerOverrides1(const PyDbObjectId& hostLayerId);
+    static bool hasAnyXRefLayerOverrides2(const PyDbDatabase& pHostDb);
+    static void addXRefLayerOverride(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property);
+    static void removeXRefLayerOverride1(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property);
+    static void removeXRefLayerOverride2(const PyDbDatabase& pHostDb, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property);
+    static void removeXRefLayerOverrides1(const PyDbObjectId& hostLayerId);
+    static void removeXRefLayerOverrides2(const PyDbDatabase& pHostDb);
+    static void enableXRefLayerPropertyOverrideRecording();
+    static void disableXRefLayerPropertyOverrideRecording();
+    static bool isXRefLayerPropertyOverrideRecordingEnabled();
+    static std::string  className();
+};
+#endif
 
 //---------------------------------------------------------------------------------------- -
 // PyDbLayerTableRecord

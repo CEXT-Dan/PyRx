@@ -528,6 +528,9 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbAssocNetworkWrapper();
     makePyDbAssocVariableWrapper();
     makePyDbAssocValueDependencyWrapper();
+#if defined(_ARXTARGET)
+    makeXRefLayerPropertyOverride();
+#endif
     makeDbCoreWrapper();//LAST?
 
     //convenience 
@@ -2100,6 +2103,23 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDragAbort", AcDb::DragStat::kDragAbort)
         .export_values()
         ;
+
+#if defined(_ARXTARGET)
+    enum_<AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType>("XRefLayerPropertyOverrideType")
+        .value("On", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::On)
+        .value("Freeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Freeze)
+        .value("Lock", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lock)
+        .value("Plot", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Plot)
+        .value("Color", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Color)
+        .value("Linetype", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Linetype)
+        .value("Lineweight", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Lineweight)
+        .value("Transparency", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Transparency)
+        .value("PlotStyle", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::PlotStyle)
+        .value("NewVPFreeze", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::NewVPFreeze)
+        .value("Description", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::Description)
+        .export_values()
+        ;
+#endif
 };
 
 void initPyDbModule()

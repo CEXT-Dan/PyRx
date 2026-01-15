@@ -3270,6 +3270,111 @@ AcDbDynBlockTableRecord* PyAcDbDynBlockTableRecord::impObj(const std::source_loc
 #endif
 }
 
+#if defined(_ARXTARGET)
+//---------------------------------------------------------------------------------------- -
+// PyXRefLayerPropertyOverride
+void makeXRefLayerPropertyOverride()
+{
+    constexpr const std::string_view hasXRefLayerOverride = "Overloads:\n"
+        "- pRef: PyDb.BlockReference\n"
+        "- hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType\n";
+
+    constexpr const std::string_view hasAnyXRefLayerOverrides = "Overloads:\n"
+        "- hostLayerId: PyDb.ObjectId\n"
+        "- hostDb: PyDb.Database\n";
+
+    constexpr const std::string_view removeXRefLayerOverrideOverride = "Overloads:\n"
+        "- hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType\n"
+        "- hostDb: PyDb.Database, property: PyDb.XRefLayerPropertyOverrideType\n";
+
+    constexpr const std::string_view removeXRefLayerOverridesOverride = "Overloads:\n"
+        "- hostLayerId: PyDb.ObjectId\n"
+        "- hostDb: PyDb.Database\n";
+
+    PyDocString DS("XRefLayerPropertyOverride");
+    class_<PyXRefLayerPropertyOverride>("XRefLayerPropertyOverride", no_init)
+        .def("hasXRefLayerOverride", &PyXRefLayerPropertyOverride::hasXRefLayerOverride1)
+        .def("hasXRefLayerOverride", &PyXRefLayerPropertyOverride::hasXRefLayerOverride2, DS.SOVRL(hasXRefLayerOverride)).staticmethod("hasXRefLayerOverride")
+        .def("hasAnyXRefLayerOverrides", &PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides1)
+        .def("hasAnyXRefLayerOverrides", &PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides2, DS.SOVRL(hasAnyXRefLayerOverrides)).staticmethod("hasAnyXRefLayerOverrides")
+        .def("addXRefLayerOverride", &PyXRefLayerPropertyOverride::addXRefLayerOverride, DS.SARGS({"hostLayerId: PyDb.ObjectId" , "property: PyDb.XRefLayerPropertyOverrideType" })).staticmethod("addXRefLayerOverride")
+        .def("removeXRefLayerOverride", &PyXRefLayerPropertyOverride::removeXRefLayerOverride1)
+        .def("removeXRefLayerOverride", &PyXRefLayerPropertyOverride::removeXRefLayerOverride2, DS.SOVRL(removeXRefLayerOverrideOverride)).staticmethod("removeXRefLayerOverride")
+        .def("removeXRefLayerOverrides", &PyXRefLayerPropertyOverride::removeXRefLayerOverrides1)
+        .def("removeXRefLayerOverrides", &PyXRefLayerPropertyOverride::removeXRefLayerOverrides2, DS.SOVRL(removeXRefLayerOverridesOverride)).staticmethod("removeXRefLayerOverrides")
+        .def("enableXRefLayerPropertyOverrideRecording", &PyXRefLayerPropertyOverride::enableXRefLayerPropertyOverrideRecording, DS.SARGS()).staticmethod("enableXRefLayerPropertyOverrideRecording")
+        .def("disableXRefLayerPropertyOverrideRecording", &PyXRefLayerPropertyOverride::disableXRefLayerPropertyOverrideRecording, DS.SARGS()).staticmethod("disableXRefLayerPropertyOverrideRecording")
+        .def("isXRefLayerPropertyOverrideRecordingEnabled", &PyXRefLayerPropertyOverride::isXRefLayerPropertyOverrideRecordingEnabled, DS.SARGS()).staticmethod("isXRefLayerPropertyOverrideRecordingEnabled")
+        .def("className", &PyXRefLayerPropertyOverride::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+bool PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides1(const PyDbObjectId& hostLayerId)
+{
+    return AcXRefLayerPropertyOverride::hasAnyXRefLayerOverrides(hostLayerId.m_id);
+}
+
+bool PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides2(const PyDbDatabase& pHostDb)
+{
+    return AcXRefLayerPropertyOverride::hasAnyXRefLayerOverrides(pHostDb.impObj());
+}
+
+bool PyXRefLayerPropertyOverride::hasXRefLayerOverride1(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
+{
+    return AcXRefLayerPropertyOverride::hasXRefLayerOverride(hostLayerId.m_id, property);
+}
+
+bool PyXRefLayerPropertyOverride::hasXRefLayerOverride2(const PyDbBlockReference& pRef)
+{
+    return AcXRefLayerPropertyOverride::hasXRefLayerOverride(pRef.impObj());
+}
+
+void PyXRefLayerPropertyOverride::addXRefLayerOverride(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
+{
+   PyThrowBadEs(AcXRefLayerPropertyOverride::addXRefLayerOverride(hostLayerId.m_id, property));
+}
+
+void PyXRefLayerPropertyOverride::removeXRefLayerOverride1(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
+{
+    PyThrowBadEs(AcXRefLayerPropertyOverride::removeXRefLayerOverride(hostLayerId.m_id, property));
+}
+
+void PyXRefLayerPropertyOverride::removeXRefLayerOverride2(const PyDbDatabase& pHostDb, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
+{
+    PyThrowBadEs(AcXRefLayerPropertyOverride::removeXRefLayerOverride(pHostDb.impObj(), property));
+}
+
+void PyXRefLayerPropertyOverride::removeXRefLayerOverrides1(const PyDbObjectId& hostLayerId)
+{
+    PyThrowBadEs(AcXRefLayerPropertyOverride::removeXRefLayerOverrides(hostLayerId.m_id));
+}
+
+void PyXRefLayerPropertyOverride::removeXRefLayerOverrides2(const PyDbDatabase& pHostDb)
+{
+    PyThrowBadEs(AcXRefLayerPropertyOverride::removeXRefLayerOverrides(pHostDb.impObj()));
+}
+
+void PyXRefLayerPropertyOverride::enableXRefLayerPropertyOverrideRecording()
+{
+    AcXRefLayerPropertyOverride::enableXRefLayerPropertyOverrideRecording();
+}
+
+void PyXRefLayerPropertyOverride::disableXRefLayerPropertyOverrideRecording()
+{
+    AcXRefLayerPropertyOverride::disableXRefLayerPropertyOverrideRecording();
+}
+
+bool PyXRefLayerPropertyOverride::isXRefLayerPropertyOverrideRecordingEnabled()
+{
+    return AcXRefLayerPropertyOverride::isXRefLayerPropertyOverrideRecordingEnabled();
+}
+
+std::string PyXRefLayerPropertyOverride::className()
+{
+    return "AcXRefLayerPropertyOverride";
+}
+#endif
+
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
 void makePyDbLayerTableRecordWrapper()
