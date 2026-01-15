@@ -35371,7 +35371,7 @@ class XRefLayerPropertyOverride:
     @overload
     @staticmethod
     def hasXRefLayerOverride(
-        hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType, /
+        hostLayerId: PyDb.ObjectId, prop: PyDb.XRefLayerPropertyOverrideType, /
     ) -> bool: ...
     @overload
     @staticmethod
@@ -35381,12 +35381,12 @@ class XRefLayerPropertyOverride:
     @overload
     @staticmethod
     def removeXRefLayerOverride(
-        hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType, /
+        hostLayerId: PyDb.ObjectId, prop: PyDb.XRefLayerPropertyOverrideType, /
     ) -> None: ...
     @overload
     @staticmethod
     def removeXRefLayerOverride(
-        hostDb: PyDb.Database, property: PyDb.XRefLayerPropertyOverrideType, /
+        hostDb: PyDb.Database, prop: PyDb.XRefLayerPropertyOverrideType, /
     ) -> None: ...
     @overload
     @staticmethod

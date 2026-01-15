@@ -3277,15 +3277,15 @@ void makeXRefLayerPropertyOverride()
 {
     constexpr const std::string_view hasXRefLayerOverride = "Overloads:\n"
         "- pRef: PyDb.BlockReference\n"
-        "- hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType\n";
+        "- hostLayerId: PyDb.ObjectId, prop: PyDb.XRefLayerPropertyOverrideType\n";
 
     constexpr const std::string_view hasAnyXRefLayerOverrides = "Overloads:\n"
         "- hostLayerId: PyDb.ObjectId\n"
         "- hostDb: PyDb.Database\n";
 
     constexpr const std::string_view removeXRefLayerOverrideOverride = "Overloads:\n"
-        "- hostLayerId: PyDb.ObjectId, property: PyDb.XRefLayerPropertyOverrideType\n"
-        "- hostDb: PyDb.Database, property: PyDb.XRefLayerPropertyOverrideType\n";
+        "- hostLayerId: PyDb.ObjectId, prop: PyDb.XRefLayerPropertyOverrideType\n"
+        "- hostDb: PyDb.Database, prop: PyDb.XRefLayerPropertyOverrideType\n";
 
     constexpr const std::string_view removeXRefLayerOverridesOverride = "Overloads:\n"
         "- hostLayerId: PyDb.ObjectId\n"
