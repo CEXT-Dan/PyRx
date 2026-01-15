@@ -8,8 +8,8 @@ from pyrx import Ap, Db, Ed, Ge
 def doit():
     try:
         db = Db.curDb()
-        selres: tuple[Ed.PromptStatus, Db.ObjectId, Ge.Point3d, Ge.Matrix3d] = Ed.Editor.nEntSelP(
-            "\nselect: "
+        selres: tuple[Ed.PromptStatus, Db.ObjectId, Ge.Point3d, Ge.Matrix3d] = (
+            Ed.Editor.nEntSelP("\nselect: ")
         )
 
         if selres[0] != Ed.PromptStatus.eNormal:
