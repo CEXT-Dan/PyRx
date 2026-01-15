@@ -1,3 +1,16 @@
+## v2.2.40
+
+* added AcXRefLayerPropertyOverrideType wrapper (Acad Only)
+* [#445] added enum AdskBoolean, this resolves an enum conflict  where kTrue, kFalse were opposite, please use fully qualified enums when possible
+* improve PyEd.SelectionSet, was iterating twice
+* improve PyRxApp::moduleName(), avoid strlen
+* refactor std::wstring PyRxApp::the_error()
+* improve BlockTableRecord::hasAttributeDefinitions ARX only check is DXF group code 70 has been set, the improvement is to actually check.
+* improve test_block_icon and BlockTableRecord::getPreviewIcon()
+* improved performance in function Db.Polyline.isPointInside when the polyline contains bulges.
+* [#443] (intellicad)implement missing AxTable methods in ICARX AxTable::GetText AxTable::SetText
+* updated samples and stubs
+
 ## v2.2.39
 
 * improved performance converting AutoCAD’s strings to Python (wchar_t to char)
