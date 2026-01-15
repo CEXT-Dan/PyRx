@@ -1109,7 +1109,7 @@ kExterior: MPolygonloopDir  # 0
 kExternal: HatchLoopType  # 1
 kFaceSubentType: SubentType  # 1
 kFailedToEvaluateAssocStatus: AssocStatus  # 4
-kFalse: AnnotativeStates  # 1
+kFalse: AdskBoolean  # 0
 kFarChordPoint: DimAssocPointType  # 1
 kFcf: AnnoType  # 1
 kFieldCode: FieldCodeFlag  # 1
@@ -1690,7 +1690,7 @@ kTranslatePathToSweepEntity: SweepAlignOption  # 3
 kTranslateSweepEntityToPath: SweepAlignOption  # 2
 kTransparency: LayerStateMask  # 1024
 kTransparent: ImageDisplayOpt  # 8
-kTrue: AnnotativeStates  # 0
+kTrue: AdskBoolean  # 1
 kTrueColor: PointCloudStylizationType  # 1
 kTrueColorTab: AcCmDialogTabs  # 2
 kTrueTypeFontFile: FindFileHint  # 3
@@ -2410,6 +2410,10 @@ class AdsName:
     def __reduce__(self, /) -> Any: ...
     def fromObjectId(self, id: PyDb.ObjectId, /) -> None: ...
     def toObjectId(self, /) -> ObjectId: ...
+
+class AdskBoolean(_BoostPythonEnum):
+    kFalse: ClassVar[Self]  # 0
+    kTrue: ClassVar[Self]  # 1
 
 class AlignedDimension(PyDb.Dimension):
     @overload
