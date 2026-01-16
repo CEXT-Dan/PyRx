@@ -414,7 +414,7 @@ static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
 
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
-static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArray& src)
+static std::vector<size_t> PyGePoint2dArrayConvexHullIndexesImpl(const PyGePoint2dArray& src)
 {
     size_t n = src.size();
     std::vector<size_t> idxs(n);
@@ -460,22 +460,22 @@ static std::vector<size_t> PyGePoint2dConvexHullIndexesImpl(const PyGePoint2dArr
     return hull;
 }
 
-static boost::python::list PyGePoint2dConvexHullIndexes(const PyGePoint2dArray& src)
+static boost::python::list PyGePoint2dArrayConvexHullIndexes(const PyGePoint2dArray& src)
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto item : PyGePoint2dConvexHullIndexesImpl(src))
+    for (auto item : PyGePoint2dArrayConvexHullIndexesImpl(src))
         pylist.append(item);
     return pylist;
 }
 
-static PyGePoint2dArray PyGePoint2dConvexHull(const PyGePoint2dArray& src)
+static PyGePoint2dArray PyGePoint2dArrayConvexHull(const PyGePoint2dArray& src)
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    auto hullidx = PyGePoint2dConvexHullIndexesImpl(src);
+    auto hullidx = PyGePoint2dArrayConvexHullIndexesImpl(src);
     PyGePoint2dArray hull;
     hull.reserve(hullidx.size());
     for (auto item : hullidx)
@@ -488,8 +488,8 @@ static void makePyGePoint2dWrapper()
     PyDocString DSPA("PyGe.Point2dArray");
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
-        .def("convexHull", &PyGePoint2dConvexHull, DSPA.ARGS())
-        .def("convexHullIndexes", &PyGePoint2dConvexHullIndexes, DSPA.ARGS())
+        .def("convexHull", &PyGePoint2dArrayConvexHull, DSPA.ARGS())
+        .def("convexHullIndexes", &PyGePoint2dArrayConvexHullIndexes, DSPA.ARGS())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
@@ -1222,7 +1222,7 @@ static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
 
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
-static std::vector<size_t> PyGePoint3dConvexHullIndexesImpl(const PyGePoint3dArray& src)
+static std::vector<size_t> PyGePoint3dArrayConvexHullIndexesImpl(const PyGePoint3dArray& src)
 {
     size_t n = src.size();
     std::vector<size_t> idxs(n);
@@ -1272,7 +1272,7 @@ static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& 
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    auto hull = PyGePoint3dConvexHullIndexesImpl(src);
+    auto hull = PyGePoint3dArrayConvexHullIndexesImpl(src);
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (auto item : hull)
@@ -1280,11 +1280,11 @@ static boost::python::list PyGePoint3dConvexHullIndexes(const PyGePoint3dArray& 
     return pylist;
 }
 
-static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
+static PyGePoint3dArray PyGePoint3dArrayConvexHull(const PyGePoint3dArray& src)
 {
     if (src.size() < 3)
         PyThrowBadEs(eInvalidInput);
-    const auto& hullidx = PyGePoint3dConvexHullIndexesImpl(src);
+    const auto& hullidx = PyGePoint3dArrayConvexHullIndexesImpl(src);
     PyGePoint3dArray hull;
     hull.reserve(hullidx.size());
     for (auto item : hullidx)
@@ -1292,7 +1292,7 @@ static PyGePoint3dArray PyGePoint3dConvexHull(const PyGePoint3dArray& src)
     return hull;
 }
 
-static bool PyGePoint3dIsPlanar(const PyGePoint3dArray& src)
+static bool PyGePoint3dArrayIsPlanar(const PyGePoint3dArray& src)
 {
     // Less than 3 points are always planar
     if (src.size() < 3)
@@ -1381,9 +1381,9 @@ static void makePyGePoint3dWrapper()
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
-        .def("convexHull", &PyGePoint3dConvexHull, DSPA.ARGS())
+        .def("convexHull", &PyGePoint3dArrayConvexHull, DSPA.ARGS())
         .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
-        .def("isPlanar", &PyGePoint3dIsPlanar, DSPA.ARGS())
+        .def("isPlanar", &PyGePoint3dArrayIsPlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
