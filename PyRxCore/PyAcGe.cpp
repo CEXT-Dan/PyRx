@@ -401,7 +401,7 @@ static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
         return "[]";
     std::string buffer;
     constexpr const std::string_view fmt = "{}.Point2d({:.14f},{:.14f})";
-    buffer.reserve(src.size() * (fmt.size()+1));
+    buffer.reserve(src.size() * (fmt.size() + 1));
     buffer.append("[");
     for (size_t idx = 0, n = src.size(); idx < n; ++idx) {
         buffer.append(std::format(fmt, PyGeNamespace, src[idx].x, src[idx].y));
@@ -1411,14 +1411,14 @@ static void makePyGePoint3dWrapper()
         .def("transformBy", &AcGePoint3d::transformBy, return_self<>(), DS.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("rotateBy", &AcGePoint3d::rotateBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(),
             DS.ARGS({ "angle: float","vec:  PyGe.Vector3d","wrtPoint:  PyGe.Point3d=PyGe.Point3d.kOrigin" }, 12589))
-        .def("mirror", AcGePoint3dMirror, DS.ARGS({ "pln: PyGe.Plane" }, 12586))
+        .def("mirror", &AcGePoint3dMirror, DS.ARGS({ "pln: PyGe.Plane" }, 12586))
         .def("scaleBy", &AcGePoint3d::scaleBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(), DS.ARGS({ "factor: float","pnt:  PyGe.Point3d='orgin'" }, 12590))
-        .def("convert2d", AcGePoint3dConvert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12582))
+        .def("convert2d", &AcGePoint3dConvert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12582))
         .def("setToSum", &AcGePoint3d::setToSum, return_self<>(), DS.ARGS({ "pnt:  PyGe.Point3d","vec:  PyGe.Vector3d" }, 12593))
         .def("asVector", &AcGePoint3d::asVector, DS.ARGS(12581))
         .def("distanceTo", &AcGePoint3d::distanceTo, DS.ARGS({ "pnt: PyGe.Point3d" }, 12583))
-        .def("project", AcGePoint3dProject, DS.ARGS({ "pln: PyGe.Plane","vec:  PyGe.Vector3d" }, 12588))
-        .def("orthoProject", AcGePoint3dOrthoProject, DS.ARGS({ "pln: PyGe.Plane" }, 12587))
+        .def("project", &AcGePoint3dProject, DS.ARGS({ "pln: PyGe.Plane","vec:  PyGe.Vector3d" }, 12588))
+        .def("orthoProject", &AcGePoint3dOrthoProject, DS.ARGS({ "pln: PyGe.Plane" }, 12587))
         .def("isEqualTo", &AcGePoint3d::isEqualTo, DS.ARGS({ "pnt: PyGe.Point3d", "tol: PyGe.Tol = ..." }, 12584), arg("AcGeTol") = getTol())
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("set", &AcGePoint3d::set, return_self<>())
         .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("set", &AcGePoint3d::set, return_self<>(), DS.OVRL(setOverloads))
