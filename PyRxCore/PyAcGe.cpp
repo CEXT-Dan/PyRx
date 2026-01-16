@@ -840,9 +840,9 @@ static AcGeMatrix2d AcGeMatrix2mirroring1(const AcGePoint2d& pnt)
     return AcGeMatrix2d::mirroring(pnt);
 }
 
-static AcGeMatrix2d AcGeMatrix2mirroring2(const AcGeLine2d& line)
+static AcGeMatrix2d AcGeMatrix2mirroring2(const PyGeLine2d& line)
 {
-    return AcGeMatrix2d::mirroring(line);
+    return AcGeMatrix2d::mirroring(*line.impObj());
 }
 
 static AcGeMatrix2d AcGeMatrix2alignCoordSys
@@ -1703,9 +1703,9 @@ static AcGeMatrix3d AcGeMatrix3dmirroring2(const AcGePoint3d& pnt)
     return AcGeMatrix3d::mirroring(pnt);
 }
 
-static AcGeMatrix3d AcGeMatrix3dmirroring3(const AcGeLine3d& line)
+static AcGeMatrix3d AcGeMatrix3dmirroring3(const PyGeLine3d& line)
 {
-    return AcGeMatrix3d::mirroring(line);
+    return AcGeMatrix3d::mirroring(*line.impObj());
 }
 
 static AcGeMatrix3d AcGeMatrix3dprojection(const PyGePlane& projectionPlane, const AcGeVector3d& projectDir)
