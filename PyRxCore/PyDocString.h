@@ -2,7 +2,7 @@
 class PyDocString
 {
 public:
-    explicit PyDocString(const std::string& val);
+    explicit PyDocString(const std::string& className);
     ~PyDocString() = default;
 
     const char* ARGS(int helpkey = -1);
