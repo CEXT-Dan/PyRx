@@ -182,40 +182,39 @@ class TestMatrix3d:
         origin = Ge.Point3d(0, 0, 0)
         normal = Ge.Vector3d.kZAxis
         plane = Ge.Plane(origin, normal)
-        
+
         # Define projection direction (project along Z-axis)
         project_dir = Ge.Vector3d.kZAxis
-        
+
         # Create identity matrix and set to projection onto the plane
         xf = Ge.Matrix3d.kIdentity
         xf.setToProjection(plane, project_dir)
-        
+
         # Verify that we can apply this transformation to a point
         test_point = Ge.Point3d(10, 20, 30)  # Point above the XY-plane
         transformed_point = test_point.transformBy(xf)
-        
+
         # The Z coordinate should be zero after projection onto XY plane (Z=0)
         assert abs(transformed_point.z) < 1e-6
 
-        
     def test_matrix3d_world_to_plane(self):
         """Test Matrix3d.worldToPlane method"""
         # Define a plane with origin at (5, 5, 5) and normal along Z-axis
         origin = Ge.Point3d(5, 5, 5)
         normal = Ge.Vector3d.kZAxis
         plane = Ge.Plane(origin, normal)
-        
+
         # Create world to plane transformation matrix
         xf_world_to_plane = Ge.Matrix3d.worldToPlane(plane)
-        
+
         # Apply transformation to a point in world space
         world_point = Ge.Point3d(10, 15, 20)  # Point at some position
         local_point = world_point.transformBy(xf_world_to_plane)
-        
+
         # Verify that we can transform back using planeToWorld
         xf_plane_to_world = Ge.Matrix3d.planeToWorld(plane)
         restored_point = local_point.transformBy(xf_plane_to_world)
-        
+
         # The restored point should be close to original (with tolerance)
         assert abs(world_point.x - restored_point.x) < 1e-6
         assert abs(world_point.y - restored_point.y) < 1e-6
@@ -227,19 +226,19 @@ class TestMatrix3d:
         origin = Ge.Point3d(2, 3, 4)
         normal = Ge.Vector3d.kYAxis  # Normal along Y-axis
         plane = Ge.Plane(origin, normal)
-        
+
         # Create plane to world transformation matrix
         xf_plane_to_world = Ge.Matrix3d.planeToWorld(plane)
-        
+
         # Apply transformation to a point in local (plane) space
         local_point = Ge.Point3d(10, 20, 30)  # Point relative to the plane
         world_point = local_point.transformBy(xf_plane_to_world)
-        
+
         # Verify that we can transform back using worldToPlane
         xf_world_to_plane = Ge.Matrix3d.worldToPlane(plane)
         restored_point = world_point.transformBy(xf_world_to_plane)
-        
-        # The restored point should be close to original (with tolerance) 
+
+        # The restored point should be close to original (with tolerance)
         assert abs(local_point.x - restored_point.x) < 1e-6
         assert abs(local_point.y - restored_point.y) < 1e-6
         assert abs(local_point.z - restored_point.z) < 1e-6
