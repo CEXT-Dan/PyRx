@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "PyDocString.h"
 
-PyDocString::PyDocString(const std::string& val)
-    : m_className(val)
+PyDocString::PyDocString(const std::string& className)
+    : m_className(className)
 {
 }
 
