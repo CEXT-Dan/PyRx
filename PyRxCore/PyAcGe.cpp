@@ -1351,6 +1351,26 @@ static std::string PyGePoint3dArrayRepr(const PyGePoint3dArray& src)
     return buffer;
 }
 
+static AcGePoint3d AcGePoint3dMirror(AcGePoint3d& pnt, const PyGePlane& plane)
+{
+    return pnt.mirror(*plane.impObj());
+}
+
+static AcGePoint2d AcGePoint3dConvert2d(const AcGePoint3d& pnt, const PyGePlanarEnt& plane)
+{
+    return pnt.convert2d(*plane.impObj());
+}
+
+static AcGePoint3d AcGePoint3dProject(const AcGePoint3d& pnt, const PyGePlane& plane, const AcGeVector3d& vec)
+{
+    return pnt.project(*plane.impObj(), vec);
+}
+
+static AcGePoint3d AcGePoint3dOrthoProject(const AcGePoint3d& pnt, const PyGePlane& plane)
+{
+    return pnt.orthoProject(*plane.impObj());
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -1391,14 +1411,14 @@ static void makePyGePoint3dWrapper()
         .def("transformBy", &AcGePoint3d::transformBy, return_self<>(), DS.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("rotateBy", &AcGePoint3d::rotateBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(),
             DS.ARGS({ "angle: float","vec:  PyGe.Vector3d","wrtPoint:  PyGe.Point3d=PyGe.Point3d.kOrigin" }, 12589))
-        .def("mirror", &AcGePoint3d::mirror, return_self<>(), DS.ARGS({ "pln: PyGe.Plane" }, 12586))
+        .def("mirror", AcGePoint3dMirror, DS.ARGS({ "pln: PyGe.Plane" }, 12586))
         .def("scaleBy", &AcGePoint3d::scaleBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>(), DS.ARGS({ "factor: float","pnt:  PyGe.Point3d='orgin'" }, 12590))
-        .def("convert2d", &AcGePoint3d::convert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12582))
+        .def("convert2d", AcGePoint3dConvert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12582))
         .def("setToSum", &AcGePoint3d::setToSum, return_self<>(), DS.ARGS({ "pnt:  PyGe.Point3d","vec:  PyGe.Vector3d" }, 12593))
         .def("asVector", &AcGePoint3d::asVector, DS.ARGS(12581))
         .def("distanceTo", &AcGePoint3d::distanceTo, DS.ARGS({ "pnt: PyGe.Point3d" }, 12583))
-        .def("project", &AcGePoint3d::project, DS.ARGS({ "pln: PyGe.Plane","vec:  PyGe.Vector3d" }, 12588))
-        .def("orthoProject", &AcGePoint3d::orthoProject, DS.ARGS({ "pln: PyGe.Plane" }, 12587))
+        .def("project", AcGePoint3dProject, DS.ARGS({ "pln: PyGe.Plane","vec:  PyGe.Vector3d" }, 12588))
+        .def("orthoProject", AcGePoint3dOrthoProject, DS.ARGS({ "pln: PyGe.Plane" }, 12587))
         .def("isEqualTo", &AcGePoint3d::isEqualTo, DS.ARGS({ "pnt: PyGe.Point3d", "tol: PyGe.Tol = ..." }, 12584), arg("AcGeTol") = getTol())
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("set", &AcGePoint3d::set, return_self<>())
         .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("set", &AcGePoint3d::set, return_self<>(), DS.OVRL(setOverloads))
@@ -1543,6 +1563,17 @@ static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python
     return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(PyListToAcGeVector3d(iterable)));
 }
 
+static AcGeVector2d AcGeVector3dConvert2d(const AcGeVector3d& pnt, const PyGePlanarEnt& plane)
+{
+    return pnt.convert2d(*plane.impObj());
+}
+
+static double AcGeVector3dangleOnPlane(const AcGeVector3d& pnt, const PyGePlanarEnt& plane)
+{
+    return pnt.angleOnPlane(*plane.impObj());
+}
+
+
 static void makePyGeVector3dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -1576,14 +1607,14 @@ static void makePyGeVector3dWrapper()
         .def("transformBy", &AcGeVector3d::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }, 12914), return_self<>())
         .def("rotateBy", &AcGeVector3d::rotateBy, DS.ARGS({ "angle: float","axis: PyGe.Vector3d" }, 12909), return_self<>())
         .def("mirror", &AcGeVector3d::mirror, DS.ARGS({ "normalToPlane: PyGe.Vector3d" }, 12902), return_self<>())
-        .def("convert2d", &AcGeVector3d::convert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12886))
+        .def("convert2d", AcGeVector3dConvert2d, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12886))
         .def("setToSum", &AcGeVector3d::setToSum, DS.ARGS({ "v1: PyGe.Vector3d","v2: PyGe.Vector3d" }, 12913), return_self<>())
         .def("negate", &AcGeVector3d::negate, DS.ARGS(12903), return_self<>())
         .def("perpVector", &AcGeVector3d::perpVector, DS.ARGS(12907))
         .def<double(AcGeVector3d::*)(const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo)
         .def<double(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo, DS.ARGS({ "vec: PyGe.Vector3d","ref: PyGe.Vector3d = ..." }, 12885))
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol)>("normalize", &AcGeVector3d::normalize, arg("AcGeTol") = getTol(), DS.ARGS(12905), return_self<>())
-        .def("angleOnPlane", &AcGeVector3d::angleOnPlane, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12884))
+        .def("angleOnPlane", AcGeVector3dangleOnPlane, DS.ARGS({ "pln: PyGe.PlanarEnt" }, 12884))
         .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol(), DS.ARGS({ "tol: PyGe.Tol = ..." }, 12904))
         .def("length", &AcGeVector3d::length, DS.ARGS(12900))
         .def("lengthSqrd", &AcGeVector3d::lengthSqrd, DS.ARGS(12901))
