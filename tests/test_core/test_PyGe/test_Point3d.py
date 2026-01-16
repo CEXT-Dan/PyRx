@@ -104,4 +104,52 @@ class TestPoint3d:
         idxs , _ = tree.knnSearch(Ge.Point3d(10.4, 10.4, 10.4),1) 
         assert pnts[999] == pnts[idxs[0]]
                    
-    
+    def test_mirror(self):
+        """Test mirror operation"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        result = point1.mirror(planeA1)
+        expected = Ge.Point3d(25, 35, -100)
+        assert result.isEqualTo(expected)
+
+    def test_convert2d(self):
+        """Test 2D conversion"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        result = point1.convert2d(planeA1)
+        expected = Ge.Point2d(25, 35)
+        assert result.isEqualTo(expected)
+
+    def test_ortho_project(self):
+        """Test orthogonal projection"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        result = point1.orthoProject(planeA1)
+        expected = Ge.Point3d(25, 35, 0)
+        assert result.isEqualTo(expected)
+
+    def test_project(self):
+        """Test general projection"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        direction_vector = Ge.Point3d(10, 5, 1) - point1
+        result = point1.project(planeA1, direction_vector)
+        assert abs(result.z) < 1e-10
+
+    def test_project_with_different_direction(self):
+        """Test general projection with a different direction"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        direction_vector = Ge.Vector3d.kZAxis
+        result = point1.project(planeA1, direction_vector)
+        expected = point1.orthoProject(planeA1)
+        assert result.isEqualTo(expected)
+
+    def test_project_with_zero_direction(self):
+        """Test general projection with negative Z-axis direction"""
+        planeA1 = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        point1 = Ge.Point3d(25, 35, 100)
+        direction_vector = Ge.Vector3d.kZAxis * -1
+        result = point1.project(planeA1, direction_vector)
+        expected = point1.orthoProject(planeA1)
+        assert result.isEqualTo(expected)
