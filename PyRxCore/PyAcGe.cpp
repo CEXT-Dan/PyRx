@@ -1371,6 +1371,11 @@ static AcGePoint3d AcGePoint3dOrthoProject(const AcGePoint3d& pnt, const PyGePla
     return pnt.orthoProject(*plane.impObj());
 }
 
+static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitAcGePlanarEnt(const PyGePlanarEnt& plane, const AcGePoint2d& pnt)
+{
+    return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(*plane.impObj(), pnt));
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -1447,6 +1452,7 @@ static void makePyGePoint3dWrapper()
         .def("__getitem__", &AcGePoint3dGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcGePoint3dSetItem, DS.ARGS({ "idx: int","val: float" }))
         .def("__init__", make_constructor(&PyGePoint3dInitTuple))
+        .def("__init__", make_constructor(&PyGePoint3dInitAcGePlanarEnt))
         ;
 }
 
@@ -1573,6 +1579,10 @@ static double AcGeVector3dangleOnPlane(const AcGeVector3d& pnt, const PyGePlanar
     return pnt.angleOnPlane(*plane.impObj());
 }
 
+static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitAcGePlanarEnt(const PyGePlanarEnt& plane, const AcGeVector2d& pnt)
+{
+    return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(*plane.impObj(), pnt));
+}
 
 static void makePyGeVector3dWrapper()
 {
@@ -1657,6 +1667,7 @@ static void makePyGeVector3dWrapper()
         .def("__setitem__", &AcGeVector3dSetItem, DS.ARGS({ "idx: int","val: float" }))
         .def("__len__", &AcGeVector3dLen, DS.ARGS())
         .def("__init__", make_constructor(&PyGeVector3dInitTuple))
+        .def("__init__", make_constructor(&PyGeVector3dInitAcGePlanarEnt))
         ;
 }
 
