@@ -1755,9 +1755,19 @@ static void AcGeMatrix3dplaneToWorld(AcGeMatrix3d& mat, const PyGePlane& plane)
     mat.setToPlaneToWorld(*plane.impObj());
 }
 
-static void AcGeMatrix3dsetToMirroring(AcGeMatrix3d& mat, const PyGePlane& plane)
+static void AcGeMatrix3dsetToMirroring1(AcGeMatrix3d& mat, const PyGePlane& plane)
 {
     mat.setToMirroring(*plane.impObj());
+}
+
+static void AcGeMatrix3dsetToMirroring2(AcGeMatrix3d& mat, const PyGeLine3d& pline)
+{
+    mat.setToMirroring(*pline.impObj());
+}
+
+static void AcGeMatrix3dsetToProjection(AcGeMatrix3d& mat, const PyGePlane& plane, const AcGeVector3d& vec)
+{
+    mat.setToProjection(*plane.impObj(), vec);
 }
 
 static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
@@ -1978,13 +1988,14 @@ static void makePyGeMatrix3dWrapper()
             DS.ARGS({ "angle: float", "axis: PyGe.Vector3d","center :PyGe.Point3d=PyGe.Point3d.kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
         .def("setToScaling", &AcGeMatrix3d::setToScaling,
             DS.ARGS({ "val: float","center: PyGe.Point3d=PyGe.Point3d.kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
-        .def("setToMirroring", &AcGeMatrix3dsetToMirroring)
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeLine3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+        .def("setToMirroring", &AcGeMatrix3dsetToMirroring1)
+        .def("setToMirroring", &AcGeMatrix3dsetToMirroring2)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePoint3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, DS.OVRL(setToMirroringloads), return_self<>())
-        .def("setToProjection", &AcGeMatrix3d::setToProjection, DS.ARGS({ "projectionPlane: PyGe.Plane","projectDir: PyGe.Vector3d" }), return_self<>())
+        .def("setToProjection", &AcGeMatrix3dsetToProjection, DS.ARGS({ "projectionPlane: PyGe.Plane","projectDir: PyGe.Vector3d" }), return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>(), DS.ARGS(
             { "fromOrigin: PyGe.Point3d","fromXAxis: PyGe.Vector3d","fromYAxis: PyGe.Vector3d","fromZAxis: PyGe.Vector3d",
                    "toOrigin: PyGe.Point3d","toXAxis: PyGe.Vector3d","toYAxis: PyGe.Vector3d","toZAxis: PyGe.Vector3d" }))
+
         .def("setToWorldToPlane", &AcGeMatrix3dworldToPlane)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)
