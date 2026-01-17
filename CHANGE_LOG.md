@@ -1,3 +1,7 @@
+## v2.2.41
+
+* [#446] this release fixes a bug where some geometry classes had invalid signatures with regards to AcGePlane, Ge.Plane
+
 ## v2.2.40
 
 * added AcXRefLayerPropertyOverrideType wrapper (Acad Only)

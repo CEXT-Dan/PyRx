@@ -149,7 +149,7 @@ class RxClass(PyRx.RxObject):
         by this AcRxClass object. WarningAs the const qualifier indicates, no attempt should be
         made to deallocate the string.
         """
-    def queryX(self, rhs: PyRx.RxClass, /) -> RxObject:
+    def queryX(self, protocolClass: PyRx.RxClass, /) -> RxObject:
         """
         This function returns the protocol extension object stored with the key pProtocolClass. If
         there is no such object specific to the class represented by this AcRxClass object, then
@@ -231,7 +231,7 @@ class RxObject:
         """
     def isNullObj(self, /) -> bool: ...
     def keepAlive(self, flag: bool, /) -> None: ...
-    def queryX(self, rhs: PyRx.RxClass, /) -> RxObject:
+    def queryX(self, protocolClass: PyRx.RxClass, /) -> RxObject:
         """
         This method searches for a protocol extension object associated with this object. The
         method begins the search by examining the AcRxClass object associated with this object, and
