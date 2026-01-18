@@ -82,6 +82,7 @@ class TestDbEntity:
         self.assertGreater(len(grpdata), 0)
 
     def test_dbline(self):
+        """also tests tome entity items, so leave here"""
         db = Db.curDb()
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         self.assertEqual(line.objectId().isNull(), True)
@@ -98,36 +99,16 @@ class TestDbEntity:
         self.assertEqual(line.endPoint(), Ge.Point3d(100, 100, 0))
         line.setStartPoint(Ge.Point3d(1, 11, 0))
         self.assertEqual(line.startPoint(), Ge.Point3d(1, 11, 0))
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        lid = model.appendAcDbEntity(line)
+        lid = db.addToModelspace(line)
         line.close()
         line2 = Db.Line(lid)
         self.assertEqual(line2.startPoint(), Ge.Point3d(1, 11, 0))
         line2.close()
         line3 = Db.Line(lid, Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
-
-    def test_dbarc(self):
-        db = Db.curDb()
-        arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
-        self.assertEqual(arc.startAngle(), 0)
-        self.assertEqual(arc.endAngle(), math.pi)
-        self.assertEqual(arc.totalAngle(), math.pi)
-        # curve
-        self.assertEqual(arc.getStartPoint(), Ge.Point3d(20, 0, 0))
-        self.assertEqual(arc.getEndPoint(), Ge.Point3d(-20, 0, 0))
-        # add
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        eid = model.appendAcDbEntity(arc)
-        arc.close()
-        # ctor
-        arc2 = Db.Arc(eid)
-        self.assertEqual(arc2.endAngle(), math.pi)
-        arc2.close()
-        # ctor
-        arc3 = Db.Arc(eid, Db.OpenMode.kForRead)
-        self.assertEqual(arc3.endAngle(), math.pi)
-        arc3.close()
+        line3.close()
+        line4 = Db.Line(lid, Db.OpenMode.ForWrite)
+        self.assertEqual(line4.startPoint(), Ge.Point3d(1, 11, 0))
 
     def test_dbcircle(self):
         circle = Db.Circle()
@@ -221,134 +202,6 @@ class TestDbEntity:
         # attach
         leader.attachAnnotation(mtid)
         self.assertEqual(leader.annotationObjId(), mtid)
-
-    def test_polyline_listctor1(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append(Ge.Point2d(0, 0))
-        pnts.append(Ge.Point2d(1, 0))
-        pnts.append(Ge.Point2d(1, 1))
-        pnts.append(Ge.Point2d(0, 1))
-        pnts.append(Ge.Point2d(0, 0))
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(1)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        self.assertEqual(pline.toPoint2dList(), pnts)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_listctor2(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append(Ge.Point3d(0, 0, 0))
-        pnts.append(Ge.Point3d(2, 0, 0))
-        pnts.append(Ge.Point3d(2, 2, 0))
-        pnts.append(Ge.Point3d(0, 2, 0))
-        pnts.append(Ge.Point3d(0, 0, 0))
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(2)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        self.assertEqual(pline.toPoint3dList(), pnts)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_listctor3(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append((0, 0))
-        pnts.append((3, 0))
-        pnts.append((3, 3))
-        pnts.append((0, 3))
-        pnts.append((0, 0))
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(3)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_listctor4(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append((0, 0, 0))
-        pnts.append((4, 0, 0))
-        pnts.append((4, 4, 0))
-        pnts.append((0, 4, 0))
-        pnts.append((0, 0, 0))
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(4)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_listctor5(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append([0, 0])
-        pnts.append([5, 0])
-        pnts.append([5, 5])
-        pnts.append([0, 5])
-        pnts.append([0, 0])
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(5)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_listctor6(self):
-        db = Db.curDb()
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        pnts = []
-        pnts.append([0, 0, 0])
-        pnts.append([6, 0, 0])
-        pnts.append([6, 6, 0])
-        pnts.append([0, 6, 0])
-        pnts.append([0, 0, 0])
-        pline = Db.Polyline(pnts)
-        pline.setColorIndex(6)
-        self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()), 5)
-        self.assertEqual(len(pline.toPoint3dList()), 5)
-        self.assertEqual(len(pline.toList()), 5)
-        model.appendAcDbEntity(pline)
-
-    def test_polyline_isPointInside(self, db_06457: Db.Database):
-        desc = Db.Polyline.desc()
-        model = Db.BlockTableRecord(db_06457.modelSpaceId())
-        plines = [Db.Polyline(id) for id in model.objectIds(desc)]
-
-        c = 0
-        p = Ge.Point3d(-32381.8897, 1917.3546, 0.0000)
-
-        for pline in plines:
-            if pline.isPointInside(p):
-                c += 1
-        assert c == 5
-
-    def test_polyline_isCCW(self, db_06457: Db.Database):
-        objHnd1 = Db.Handle("2c92e2")
-        objId1 = db_06457.getObjectId(False, objHnd1)
-        pline1 = Db.Polyline(objId1)
-        assert pline1.isCCW() == False
-
-        objHnd2 = Db.Handle("2c9703")
-        objId2 = db_06457.getObjectId(False, objHnd2)
-        pline2 = Db.Polyline(objId2)
-        assert pline2.isCCW() == True
 
     @pytest.mark.known_failure_IRX
     def test_table_cells1(self, db_06457: Db.Database):
