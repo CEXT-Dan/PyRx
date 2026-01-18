@@ -285,3 +285,27 @@ class TestDbPolyline:
         for i in range(pline.numVerts() - 1):
             seg_3d = pline.getLineSeg3dAt(i)
             seg_3d.type() == Ge.EntityId.kLineSeg3d
+
+    def test_polyline_isPointInside(self, db_06457: Db.Database):
+        desc = Db.Polyline.desc()
+        model = Db.BlockTableRecord(db_06457.modelSpaceId())
+        plines = [Db.Polyline(id) for id in model.objectIds(desc)]
+
+        c = 0
+        p = Ge.Point3d(-32381.8897, 1917.3546, 0.0000)
+
+        for pline in plines:
+            if pline.isPointInside(p):
+                c += 1
+        assert c == 5
+
+    def test_polyline_isCCW(self, db_06457: Db.Database):
+        objHnd1 = Db.Handle("2c92e2")
+        objId1 = db_06457.getObjectId(False, objHnd1)
+        pline1 = Db.Polyline(objId1)
+        assert pline1.isCCW() == False
+
+        objHnd2 = Db.Handle("2c9703")
+        objId2 = db_06457.getObjectId(False, objHnd2)
+        pline2 = Db.Polyline(objId2)
+        assert pline2.isCCW() == True
