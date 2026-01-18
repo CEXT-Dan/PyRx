@@ -2659,6 +2659,11 @@ class Arc(PyDb.Curve):
         The AcDbArc class represents the arc entity within AutoCAD.
         """
     @overload
+    def __init__(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, /) -> None:
+        """
+        The AcDbArc class represents the arc entity within AutoCAD.
+        """
+    @overload
     def __init__(
         self, center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float, /
     ) -> None:

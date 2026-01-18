@@ -425,6 +425,7 @@ public:
     PyDbArc(const PyDbObjectId& id);
     PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3);
     PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
     PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle);
     virtual ~PyDbArc() override = default;
