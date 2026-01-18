@@ -282,9 +282,6 @@ class TestDbPolyline:
 
     def test_get_segments(self):
         pline = create_polyline()  # Regular lines, no arcs
-
-        for i in range(pline.numVerts()):
-            try:
-                arc_2d = pline.getLineSeg3dAt(1)
-            except Exception:
-                assert False
+        for i in range(pline.numVerts() - 1):
+            seg_3d = pline.getLineSeg3dAt(i)
+            seg_3d.type() == Ge.EntityId.kLineSeg3d
