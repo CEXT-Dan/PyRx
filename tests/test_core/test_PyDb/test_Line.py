@@ -123,3 +123,16 @@ class TestDbLine:
         
         # The method returns a list of curves (may be empty or contain new curve objects)
         assert isinstance(result, list)
+        
+    def test_line_get_offset_curves(self):
+        """Test that getOffsetCurvesGivenPlaneNormal can be called without exceptions"""
+        start_point = Ge.Point3d(0, 0, 0)
+        end_point = Ge.Point3d(100, 0, 0)
+        line = Db.Line(start_point, end_point)
+        offset_distance = 10.0
+        result = line.getOffsetCurves(offset_distance)
+        assert isinstance(result, list)
+        assert len(result) > 0
+        crv =  result[0]
+        assert crv.getDistAtParam(crv.getEndParam()) == 100
+        
