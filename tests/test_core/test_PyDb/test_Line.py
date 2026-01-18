@@ -11,6 +11,16 @@ class TestDbLine:
         line = Db.Line(Ge.Point3d(0,0,0), Ge.Point3d(100,0,0))
         assert line.length() == 100
         
+    def test_line_creation(self):
+        line = Db.Line()
+        start_point = Ge.Point3d(0, 0, 0)
+        end_point = Ge.Point3d(100, 0, 0)
+        line.setStartPoint(start_point)
+        line.setEndPoint(end_point)
+        assert line.startPoint() == start_point
+        assert line.endPoint() == end_point
+        assert line.length() == 100
+        
     def test_line_creation_with_start_and_end_points(self):
         start_point = Ge.Point3d(0, 0, 0)
         end_point = Ge.Point3d(100, 0, 0)

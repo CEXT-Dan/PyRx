@@ -4,7 +4,7 @@ from pyrx import Db, Ge
 
 
 class TestDbCurve:
-
+    
     def test_extend_param(self):
         """Test extend method with parameter"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
