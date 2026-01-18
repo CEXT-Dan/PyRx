@@ -1917,6 +1917,7 @@ void makePyDbArcWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d\n"
         "- center: PyGe.Point3d, radius: float, startAngle: float, endAngle: float\n"
         "- center: PyGe.Point3d, normal: PyGe.Vector3d, radius: float, startAngle: float, endAngle: float\n"
         "- id: PyDb.ObjectId\n"
@@ -1929,6 +1930,7 @@ void makePyDbArcWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, double, double, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double, double, double>(DS.CTOR(ctords, 1491)))
         .def("center", &PyDbArc::center, DS.ARGS(1519))
@@ -1967,6 +1969,16 @@ PyDbArc::PyDbArc(AcDbArc* ptr, bool autoDelete)
 PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbCurve(openAcDbObject<AcDbArc>(id, mode), false)
 {
+}
+
+PyDbArc::PyDbArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3)
+    : PyDbCurve(new AcDbArc(), true)
+{
+    AcGeCircArc3d tmp(p1, p2, p3);
+    impObj()->setCenter(tmp.center());
+    impObj()->setRadius(tmp.radius());
+    impObj()->setStartAngle(tmp.startAng());
+    impObj()->setEndAngle(tmp.endAng());
 }
 
 PyDbArc::PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
