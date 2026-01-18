@@ -125,7 +125,7 @@ class TestDbLine:
         assert isinstance(result, list)
         
     def test_line_get_offset_curves(self):
-        """Test that getOffsetCurvesGivenPlaneNormal can be called without exceptions"""
+        """Test that getOffsetCurves can be called without exceptions"""
         start_point = Ge.Point3d(0, 0, 0)
         end_point = Ge.Point3d(100, 0, 0)
         line = Db.Line(start_point, end_point)
