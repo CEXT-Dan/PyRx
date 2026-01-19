@@ -21,17 +21,13 @@ class TestDbCurve:
             arc.extend(True, Ge.Point3d(50, -50, 0))
             assert True  # If we reach here, no exception was raised
         except Exception:
-
             assert False
 
     def test_get_offset_curves(self):
         """Test getOffsetCurves method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getOffsetCurves(10.0)
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getOffsetCurves(10.0)
+        assert isinstance(result, list)
 
     def test_get_offset_curves_given_plane_normal(self):
         """Test getOffsetCurvesGivenPlaneNormal method"""
@@ -45,83 +41,56 @@ class TestDbCurve:
     def test_get_ortho_projected_curve(self):
         """Test getOrthoProjectedCurve method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getOrthoProjectedCurve(Ge.Plane())
-            assert result is not None or isinstance(result, Db.Curve)
-        except Exception:
-            assert False
+        result = arc.getOrthoProjectedCurve(Ge.Plane())
+        result.isDerivedFrom(Db.Curve.desc())
 
     def test_get_projected_curve(self):
         """Test getProjectedCurve method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getProjectedCurve(Ge.Plane(), Ge.Vector3d(0, 0, 1))
-            assert result is not None or isinstance(result, Db.Curve)
-        except Exception:
-            assert False
+        result = arc.getProjectedCurve(Ge.Plane(), Ge.Vector3d(0, 0, 1))
+        assert result is not None or isinstance(result, Db.Curve)
 
     def test_get_second_deriv(self):
         """Test getSecondDeriv method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSecondDeriv(5.0)
-            assert isinstance(result, Ge.Vector3d)
-        except Exception:
-            assert False
+        result = arc.getSecondDeriv(5.0)
+        assert isinstance(result, Ge.Vector3d)
 
     def test_get_spline(self):
         """Test getSpline method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSpline()
-            assert result is not None or isinstance(result, Db.Spline)
-        except Exception:
-            assert False
+        result = arc.getSpline()
+        assert isinstance(result, Db.Spline)
 
     def test_get_split_curves(self):
         """Test getSplitCurves method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSplitCurves([Ge.Point3d(0, 0, 0)])
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getSplitCurves([Ge.Point3d(0, 0, 0)])
+        assert isinstance(result, list)
 
     def test_get_split_curves_at_param(self):
         """Test getSplitCurvesAtParam method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSplitCurvesAtParam(0.5)
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getSplitCurvesAtParam(0.5)
+        assert isinstance(result, list)
 
     def test_get_split_curves_at_params(self):
         """Test getSplitCurvesAtParams method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSplitCurvesAtParams([0.2, 0.8])
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getSplitCurvesAtParams([0.2, 0.8])
+        assert isinstance(result, list)
 
     def test_get_split_curves_at_point(self):
         """Test getSplitCurvesAtPoint method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSplitCurvesAtPoint(Ge.Point3d(50, 50, 0))
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getSplitCurvesAtPoint(Ge.Point3d(50, 50, 0))
+        assert isinstance(result, list)
 
     def test_get_split_curves_at_points(self):
         """Test getSplitCurvesAtPoints method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getSplitCurvesAtPoints([Ge.Point3d(50, 50, 0)])
-            assert isinstance(result, list)
-        except Exception:
-            assert False
+        result = arc.getSplitCurvesAtPoints([Ge.Point3d(50, 50, 0)])
+        assert isinstance(result, list)
 
     def test_is_on(self):
         """Test isOn method"""
@@ -145,11 +114,8 @@ class TestDbCurve:
     def test_get_param_at_dist(self):
         """Test getParamAtDist method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getParamAtDist(10.0)
-            assert isinstance(result, float)
-        except Exception:
-            assert False
+        result = arc.getParamAtDist(10.0)
+        assert isinstance(result, float)
 
     def test_get_point_at_dist(self):
         """Test getPointAtDist method"""
