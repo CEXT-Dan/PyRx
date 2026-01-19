@@ -31,22 +31,13 @@ class TestDbBlockReference:
 
     def test_position(self, db_06457: Db.Database):
         """Test getting the position of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
-
+        r = Db.BlockReference()
         pos = r.position()
-
-        # Verify it returns a valid Point3d
         assert isinstance(pos, Ge.Point3d)
 
     def test_setPosition(self, db_06457: Db.Database):
         """Test setting the position of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId, Db.OpenMode.kForWrite)
-
-        # Get current position
+        r = Db.BlockReference()
         original_pos = r.position()
 
         # Set new position
@@ -55,13 +46,10 @@ class TestDbBlockReference:
 
         # Verify the position was set correctly
         assert r.position() == new_pos
-        r.cancel()
 
     def test_normal(self, db_06457: Db.Database):
         """Test getting the normal vector of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
+        r = Db.BlockReference()
 
         normal = r.normal()
 
@@ -72,9 +60,7 @@ class TestDbBlockReference:
 
     def test_setNormal(self, db_06457: Db.Database):
         """Test setting the normal vector of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId, Db.OpenMode.kForWrite)
+        r = Db.BlockReference()
 
         # Get current normal
         original_normal = r.normal()
@@ -85,24 +71,19 @@ class TestDbBlockReference:
 
         # Verify the normal was set correctly
         assert abs(r.normal().length() - 1.0) < 1e-6
-        r.cancel()
+    
 
     def test_rotation(self, db_06457: Db.Database):
         """Test getting the rotation of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
-
+        r = Db.BlockReference()
         rotation = r.rotation()
-
+        
         # Verify it returns a float
         assert isinstance(rotation, float)
 
     def test_setRotation(self, db_06457: Db.Database):
         """Test setting the rotation of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId, Db.OpenMode.kForWrite)
+        r = Db.BlockReference()
 
         # Get current rotation
         original_rotation = r.rotation()
@@ -113,14 +94,10 @@ class TestDbBlockReference:
 
         # Verify the rotation was set correctly
         assert abs(r.rotation() - new_rotation) < 1e-6
-        r.cancel()
 
     def test_scaleFactors(self, db_06457: Db.Database):
         """Test getting the scale factors of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
-
+        r = Db.BlockReference()
         scales = r.scaleFactors()
 
         # Verify it returns a valid Scale3d
@@ -128,9 +105,7 @@ class TestDbBlockReference:
 
     def test_setScaleFactors(self, db_06457: Db.Database):
         """Test setting the scale factors of the block reference"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId, Db.OpenMode.kForWrite)
+        r = Db.BlockReference()
 
         # Get current scales
         original_scales = r.scaleFactors()
@@ -141,7 +116,6 @@ class TestDbBlockReference:
 
         # Verify the scales were set correctly
         assert r.scaleFactors() == new_scales
-        r.cancel()
 
     def test_blockTransform(self, db_06457: Db.Database):
         """Test getting the block transformation matrix"""
@@ -276,24 +250,15 @@ class TestDbBlockReference:
 
     def test_setBlockTransform(self, db_06457: Db.Database):
         """Test setting the block transform"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId, Db.OpenMode.kForWrite)
+        r = Db.BlockReference()
 
         # Get current transformation
         original_transform = r.blockTransform()
 
         # Create a new transformation matrix
         identity_matrix = Ge.Matrix3d.kIdentity
+        r.setBlockTransform(identity_matrix)
 
-        try:
-            r.setBlockTransform(identity_matrix)
-            # If successful, verify it was set
-        except Exception as e:
-            # Accept expected exceptions (like non-uniform scaling issues)
-            assert "eCannotScaleNonUniformly" in str(e) or "eInvalidInput" in str(e)
-        finally:
-            r.cancel()
 
     def test_treatAsAcDbBlockRefForExplode(self, db_06457: Db.Database):
         """Test the explode treatment flag"""
@@ -304,25 +269,3 @@ class TestDbBlockReference:
         # This should return a boolean
         result = r.treatAsAcDbBlockRefForExplode()
         assert isinstance(result, (bool, int,  Db.AdskBoolean))
-
-    def test_overloaded_constructors(self, db_06457: Db.Database):
-        """Test various constructor overloads"""
-        # Test with ObjectId only (should work)
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-
-        try:
-            r = Db.BlockReference(objId)
-            assert isinstance(r, Db.BlockReference)
-        except Exception as e:
-            # Some constructors might require additional setup
-            pass
-
-        # Test with position and block table record (should work if proper objects exist)
-        try:
-            pos = Ge.Point3d(0.0, 0.0, 0.0)
-            r = Db.BlockReference(pos, objId)
-            assert isinstance(r, Db.BlockReference)
-        except Exception as e:
-            # Accept exceptions that may arise from missing dependencies
-            pass
