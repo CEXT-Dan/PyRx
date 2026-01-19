@@ -4,7 +4,7 @@ from pyrx import Db, Ge
 
 
 class TestDbCurve:
-    
+
     def test_extend_param(self):
         """Test extend method with parameter"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
@@ -126,38 +126,36 @@ class TestDbCurve:
     def test_is_on(self):
         """Test isOn method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.isOn(0.5)
-            assert isinstance(result, bool)
-        except Exception:
-            assert False
+        # test param
+        result = arc.isOn(0.5)
+        assert result == True
+        assert isinstance(result, bool)
+        # test point
+        result = arc.isOn(Ge.Point3d(50, 50, 0))
+        assert result == True
+        assert isinstance(result, bool)
 
     def test_reverse_curve(self):
         """Test reverseCurve method"""
-        arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            arc.reverseCurve()
-            assert True  # If we reach here, no exception was raised
-        except Exception:
-            assert False
+        line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
+        dir = line.direction()
+        line.reverseCurve()
+        assert line.direction().negate() == dir
 
     def test_get_param_at_dist(self):
         """Test getParamAtDist method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         try:
             result = arc.getParamAtDist(10.0)
-            assert isinstance(result, (int, float))
+            assert isinstance(result, float)
         except Exception:
             assert False
 
     def test_get_point_at_dist(self):
         """Test getPointAtDist method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            result = arc.getPointAtDist(10.0)
-            assert isinstance(result, Ge.Point3d)
-        except Exception:
-            assert False
+        result = arc.getPointAtDist(10.0)
+        assert isinstance(result, Ge.Point3d)
 
     def test_get_dist_at_param(self):
         """Test getDistAtParam method with proper tolerance"""
