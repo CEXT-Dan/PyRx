@@ -8,20 +8,13 @@ class TestDbCurve:
     def test_extend_param(self):
         """Test extend method with parameter"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            arc.extend(-0.1)  # Extend beyond end
-            assert True  # If we reach here, no exception was raised
-        except Exception:
-            assert False
+        arc.extend(-0.1)  # Extend beyond end
+
 
     def test_extend_point(self):
         """Test extend method with point"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            arc.extend(True, Ge.Point3d(50, -50, 0))
-            assert True  # If we reach here, no exception was raised
-        except Exception:
-            assert False
+        arc.extend(True, Ge.Point3d(50, -50, 0))
 
     def test_get_offset_curves(self):
         """Test getOffsetCurves method"""
@@ -31,24 +24,19 @@ class TestDbCurve:
 
     def test_get_offset_curves_given_plane_normal(self):
         """Test getOffsetCurvesGivenPlaneNormal method"""
-        arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        try:
-            # eNotImplementedYet
-            pass
-        except Exception:
-            assert False
+        pass  # eNotImplementedYet
 
     def test_get_ortho_projected_curve(self):
         """Test getOrthoProjectedCurve method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         result = arc.getOrthoProjectedCurve(Ge.Plane())
-        result.isDerivedFrom(Db.Curve.desc())
+        assert result.isDerivedFrom(Db.Curve.desc()) == True
 
     def test_get_projected_curve(self):
         """Test getProjectedCurve method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         result = arc.getProjectedCurve(Ge.Plane(), Ge.Vector3d(0, 0, 1))
-        assert result is not None or isinstance(result, Db.Curve)
+        assert isinstance(result, Db.Curve) == True
 
     def test_get_second_deriv(self):
         """Test getSecondDeriv method"""
@@ -98,11 +86,9 @@ class TestDbCurve:
         # test param
         result = arc.isOn(0.5)
         assert result == True
-        assert isinstance(result, bool)
         # test point
         result = arc.isOn(Ge.Point3d(50, 50, 0))
         assert result == True
-        assert isinstance(result, bool)
 
     def test_reverse_curve(self):
         """Test reverseCurve method"""

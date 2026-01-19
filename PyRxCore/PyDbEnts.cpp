@@ -210,9 +210,9 @@ boost::python::list PyDbBlockReference::attlist() const
     return pylist;
 }
 
-bool PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
+Adesk::Boolean PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
 {
-    return impObj()->treatAsAcDbBlockRefForExplode() == Adesk::kTrue;
+    return impObj()->treatAsAcDbBlockRefForExplode();
 }
 
 AcDbExtents PyDbBlockReference::geomExtentsBestFit1() const
@@ -715,9 +715,9 @@ void PyDb2dVertex::setBulge(double newVal) const
     return PyThrowBadEs(impObj()->setBulge(newVal));
 }
 
-bool PyDb2dVertex::isTangentUsed() const
+Adesk::Boolean PyDb2dVertex::isTangentUsed() const
 {
-    return impObj()->isTangentUsed() == Adesk::kTrue;
+    return impObj()->isTangentUsed();
 }
 
 void PyDb2dVertex::useTangent() const
@@ -1164,11 +1164,11 @@ void PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx) con
     return PyThrowBadEs(impObj()->setVertexAt(faceIdx, vtxIdx));
 }
 
-bool PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
+Adesk::Boolean PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
 {
     Adesk::Boolean flag = false;
     PyThrowBadEs(impObj()->isEdgeVisibleAt(faceIndex, flag));
-    return flag == Adesk::kTrue;
+    return flag;
 }
 
 void PyDbFaceRecord::makeEdgeVisibleAt(Adesk::UInt16 faceIndex) const
@@ -1570,9 +1570,9 @@ void PyDb2dPolyline::setElevation(double val) const
     return PyThrowBadEs(impObj()->setElevation(val));
 }
 
-bool PyDb2dPolyline::isLinetypeGenerationOn() const
+Adesk::Boolean PyDb2dPolyline::isLinetypeGenerationOn() const
 {
-    return impObj()->isLinetypeGenerationOn() == Adesk::kTrue;
+    return impObj()->isLinetypeGenerationOn();
 }
 
 void PyDb2dPolyline::setLinetypeGenerationOn() const
@@ -2225,9 +2225,7 @@ void PyDbCircle::setNormal(const AcGeVector3d& val) const
 double PyDbCircle::circumference() const
 {
 #if defined(_BRXTARGET260)
-    constexpr const double PI = 3.14159265358979323846;
-    double circumference = 2 * PI * impObj()->radius();
-    return circumference;
+    throw PyNotimplementedByHost();
 #else
     return impObj()->circumference();
 #endif
@@ -2236,9 +2234,7 @@ double PyDbCircle::circumference() const
 void PyDbCircle::setCircumference(double val) const
 {
 #if defined(_BRXTARGET260)
-    constexpr const double PI = 3.14159265358979323846;
-    double radius = val / (2 * PI);
-    return PyThrowBadEs(impObj()->setRadius(radius));
+    throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setCircumference(val));
 #endif
@@ -2247,7 +2243,7 @@ void PyDbCircle::setCircumference(double val) const
 double PyDbCircle::diameter() const
 {
 #if defined(_BRXTARGET260)
-    return impObj()->radius() * 2;
+    throw PyNotimplementedByHost();
 #else
     return impObj()->diameter();
 #endif
@@ -2256,7 +2252,7 @@ double PyDbCircle::diameter() const
 void PyDbCircle::setDiameter(double val) const
 {
 #if defined(_BRXTARGET260)
-    return PyThrowBadEs(impObj()->setRadius(val / 2.0));
+    throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setDiameter(val));
 #endif
@@ -2802,7 +2798,7 @@ AcDbPolyline::SegType PyDbPolyline::segType(unsigned int index) const
 Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const
 {
     double _param = param;
-    return impObj()->onSegAt(index, pt2d, _param) == Adesk::kTrue;;
+    return impObj()->onSegAt(index, pt2d, _param);
 }
 
 PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index) const
@@ -2867,14 +2863,14 @@ void PyDbPolyline::setNormal(const AcGeVector3d& val) const
     return PyThrowBadEs(impObj()->setNormal(val));
 }
 
-bool PyDbPolyline::isOnlyLines() const
+Adesk::Boolean PyDbPolyline::isOnlyLines() const
 {
-    return impObj()->isOnlyLines() == Adesk::kTrue;
+    return impObj()->isOnlyLines();
 }
 
-bool PyDbPolyline::hasPlinegen() const
+Adesk::Boolean PyDbPolyline::hasPlinegen() const
 {
-    return impObj()->hasPlinegen() == Adesk::kTrue;;
+    return impObj()->hasPlinegen();
 }
 
 double PyDbPolyline::elevation() const
@@ -2973,19 +2969,19 @@ void PyDbPolyline::reset(Adesk::Boolean reuse, unsigned int numVerts) const
     impObj()->reset(reuse, numVerts);
 }
 
-bool PyDbPolyline::hasBulges() const
+Adesk::Boolean PyDbPolyline::hasBulges() const
 {
-    return impObj()->hasBulges() == Adesk::kTrue;
+    return impObj()->hasBulges();
 }
 
-bool PyDbPolyline::hasVertexIdentifiers() const
+Adesk::Boolean PyDbPolyline::hasVertexIdentifiers() const
 {
-    return impObj()->hasVertexIdentifiers() == Adesk::kTrue;
+    return impObj()->hasVertexIdentifiers();
 }
 
-bool PyDbPolyline::hasWidth() const
+Adesk::Boolean PyDbPolyline::hasWidth() const
 {
-    return impObj()->hasWidth() == Adesk::kTrue;;
+    return impObj()->hasWidth();
 }
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
