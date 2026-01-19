@@ -50,7 +50,7 @@ public:
     boost::python::list attributeIds() const;
     boost::python::dict attdict() const;
     boost::python::list attlist() const;
-    Adesk::Boolean      treatAsAcDbBlockRefForExplode() const;
+    bool                treatAsAcDbBlockRefForExplode() const;
     AcDbExtents         geomExtentsBestFit1() const;
     AcDbExtents         geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;
     void                explodeToOwnerSpace() const;
@@ -166,7 +166,7 @@ public:
     void                setEndWidth(double newVal) const;
     double              bulge() const;
     void                setBulge(double newVal) const;
-    Adesk::Boolean      isTangentUsed() const;
+    bool                isTangentUsed() const;
     void                useTangent() const;
     void                ignoreTangent() const;
     void                setTangentUsed(Adesk::Boolean val) const;
@@ -272,7 +272,7 @@ public:
     virtual ~PyDbFaceRecord() = default;
     Adesk::Int16        getVertexAt(Adesk::UInt16 faceIdx) const;
     void                setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx) const;
-    Adesk::Boolean      isEdgeVisibleAt(Adesk::UInt16 faceIndex) const;
+    bool                isEdgeVisibleAt(Adesk::UInt16 faceIndex) const;
     void                makeEdgeVisibleAt(Adesk::UInt16 faceIndex) const;
     void                makeEdgeInvisibleAt(Adesk::UInt16 faceIndex) const;
 public:
@@ -347,7 +347,7 @@ public:
     void                setNormal(const AcGeVector3d& val) const;
     double              elevation() const;
     void                setElevation(double) const;
-    Adesk::Boolean      isLinetypeGenerationOn() const;
+    bool                isLinetypeGenerationOn() const;
     void                setLinetypeGenerationOn() const;
     void                setLinetypeGenerationOff() const;
     void                straighten() const;
@@ -555,8 +555,8 @@ public:
     void                setThickness(double val) const;
     void                setConstantWidth(double val) const;
     void                setNormal(const AcGeVector3d& val) const;
-    Adesk::Boolean      isOnlyLines() const;
-    Adesk::Boolean      hasPlinegen() const;
+    bool                isOnlyLines() const;
+    bool                hasPlinegen() const;
     double              elevation() const;
     double              thickness() const;
     double              getConstantWidth() const;
@@ -574,9 +574,9 @@ public:
     void                minimizeMemory() const;
     void                maximizeMemory() const;
     void                reset(Adesk::Boolean reuse, unsigned int numVerts) const;
-    Adesk::Boolean      hasBulges()        const;
-    Adesk::Boolean      hasVertexIdentifiers()    const;
-    Adesk::Boolean      hasWidth()        const;
+    bool                hasBulges()        const;
+    bool                hasVertexIdentifiers()    const;
+    bool                hasWidth()        const;
     void                makeClosedIfStartAndEndVertexCoincide(double distTol) const;
     PyGeCompositeCurve3d  getAcGeCurve1() const;
     PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;

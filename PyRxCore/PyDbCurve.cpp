@@ -94,14 +94,14 @@ PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-Adesk::Boolean PyDbCurve::isClosed() const
+bool PyDbCurve::isClosed() const
 {
-    return impObj()->isClosed();
+    return impObj()->isClosed() == Adesk::kTrue;
 }
 
-Adesk::Boolean PyDbCurve::isPeriodic() const
+bool PyDbCurve::isPeriodic() const
 {
-    return impObj()->isPeriodic();
+    return impObj()->isPeriodic() == Adesk::kTrue;
 }
 
 static std::unique_ptr<AcGeCurve3d> getSafeCurve(AcDbCurve* pCurve)
@@ -111,24 +111,24 @@ static std::unique_ptr<AcGeCurve3d> getSafeCurve(AcDbCurve* pCurve)
     return std::unique_ptr<AcGeCurve3d>(pGeCurve);
 }
 
-Adesk::Boolean PyDbCurve::isOn1(const AcGePoint3d& pnt) const
+bool PyDbCurve::isOn1(const AcGePoint3d& pnt) const
 {
-    return getSafeCurve(impObj())->isOn(pnt);
+    return getSafeCurve(impObj())->isOn(pnt) == Adesk::kTrue;
 }
 
-Adesk::Boolean PyDbCurve::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+bool PyDbCurve::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    return getSafeCurve(impObj())->isOn(pnt, tol);
+    return getSafeCurve(impObj())->isOn(pnt, tol) == Adesk::kTrue;
 }
 
-Adesk::Boolean PyDbCurve::isOn3(double param) const
+bool PyDbCurve::isOn3(double param) const
 {
-    return getSafeCurve(impObj())->isOn(param);
+    return getSafeCurve(impObj())->isOn(param) == Adesk::kTrue;
 }
 
-Adesk::Boolean PyDbCurve::isOn4(double param, const AcGeTol& tol) const
+bool PyDbCurve::isOn4(double param, const AcGeTol& tol) const
 {
-    return getSafeCurve(impObj())->isOn(param, tol);
+    return getSafeCurve(impObj())->isOn(param, tol) == Adesk::kTrue;
 }
 
 double PyDbCurve::getStartParam() const
