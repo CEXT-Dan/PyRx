@@ -307,6 +307,26 @@ constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordI
 
 
 //-----------------------------------------------------------------------------
+//Fix Adesk::boolean in BricsCAD #448
+constexpr bool adsktobool(Adesk::Boolean val) 
+{
+#if defined(_BRXTARGET260)
+    return val ? Adesk::kTrue : Adesk::kFalse;
+#else
+    return val;
+#endif
+}
+
+constexpr Adesk::Boolean booltoadsk(bool val) 
+{
+#if defined(_BRXTARGET260)
+    return val ? Adesk::kTrue : Adesk::kFalse;
+#else
+    return val;
+#endif
+}
+
+//-----------------------------------------------------------------------------
 // LifeTime for testing;
 struct LifeTime
 {
