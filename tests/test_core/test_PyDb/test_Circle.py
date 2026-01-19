@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pyrx import Db, Ge
+from pyrx import Ap, Db, Ge
 
 class TestDbCircle:
     def test_create(self):
@@ -11,10 +11,18 @@ class TestDbCircle:
         assert circle.normal() == Ge.Vector3d.kZAxis
 
     def test_create_with_object_id(self):
-        """Test constructor with object ID (placeholder - actual implementation depends on context)"""
-        # This would require a valid ObjectId which is typically created within an AutoCAD session
-        # For testing purposes, we'll just verify the method signature can be called
-        pass  # Actual implementation requires access to active document
+        """Test constructor with object ID"""
+        _id = None
+        @Ap.using_scope()
+        def _sc():
+            nonlocal _id
+            db = Db.curDb()
+            circle = Db.Circle(Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, 10)
+            _id = db.addToCurrentspace(circle)
+        circle = Db.Circle(_id)
+        assert circle.center() == Ge.Point3d(0, 0, 0)
+        assert circle.radius() == 10
+        assert circle.normal() == Ge.Vector3d.kZAxis
 
     def test_center(self):
         """Test center property getter and setter"""
