@@ -20,12 +20,12 @@ public:
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbCurve() override = default;
-    Adesk::Boolean      isClosed() const;
-    Adesk::Boolean      isPeriodic() const;
-    Adesk::Boolean      isOn1(const AcGePoint3d& pnt) const;
-    Adesk::Boolean      isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
-    Adesk::Boolean      isOn3(double param) const;
-    Adesk::Boolean      isOn4(double param, const AcGeTol& tol) const;
+    bool                isClosed() const;
+    bool                isPeriodic() const;
+    bool                isOn1(const AcGePoint3d& pnt) const;
+    bool                isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+    bool                isOn3(double param) const;
+    bool                isOn4(double param, const AcGeTol& tol) const;
     double              getStartParam() const;
     double              getEndParam() const;
     AcGePoint3d         getStartPoint() const;
