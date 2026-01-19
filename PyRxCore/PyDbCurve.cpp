@@ -236,17 +236,17 @@ AcGePoint3d PyDbCurve::getClosestPointTo1(const AcGePoint3d& givenPnt) const
     return p;
 }
 
-AcGePoint3d PyDbCurve::getClosestPointTo2(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const
+AcGePoint3d PyDbCurve::getClosestPointTo2(const AcGePoint3d& givenPnt, bool extend) const
 {
     AcGePoint3d p;
-    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, p, extend));
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, p, booltoadsk(extend)));
     return p;
 }
 
-AcGePoint3d PyDbCurve::getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const
+AcGePoint3d PyDbCurve::getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, bool extend) const
 {
     AcGePoint3d p;
-    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, direction, p, extend));
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, direction, p, booltoadsk(extend)));
     return p;
 }
 
@@ -360,9 +360,9 @@ void PyDbCurve::extend1(double newParam) const
     return PyThrowBadEs(impObj()->extend(newParam));
 }
 
-void PyDbCurve::extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint) const
+void PyDbCurve::extend2(bool extendStart, const AcGePoint3d& toPoint) const
 {
-    return PyThrowBadEs(impObj()->extend(extendStart, toPoint));
+    return PyThrowBadEs(impObj()->extend(booltoadsk(extendStart), toPoint));
 }
 
 double PyDbCurve::getArea() const

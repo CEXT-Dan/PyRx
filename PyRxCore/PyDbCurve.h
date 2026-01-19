@@ -20,12 +20,12 @@ public:
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbCurve() override = default;
-    bool                isClosed() const;
-    bool                isPeriodic() const;
-    bool                isOn1(const AcGePoint3d& pnt) const;
-    bool                isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
-    bool                isOn3(double param) const;
-    bool                isOn4(double param, const AcGeTol& tol) const;
+    bool            isClosed() const;
+    bool            isPeriodic() const;
+    bool            isOn1(const AcGePoint3d& pnt) const;
+    bool            isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+    bool            isOn3(double param) const;
+    bool            isOn4(double param, const AcGeTol& tol) const;
     double              getStartParam() const;
     double              getEndParam() const;
     AcGePoint3d         getStartPoint() const;
@@ -44,8 +44,8 @@ public:
     AcGeVector3d        getSecondDeriv2(const AcGePoint3d& pnt) const;
 
     AcGePoint3d         getClosestPointTo1(const AcGePoint3d& givenPnt) const;
-    AcGePoint3d         getClosestPointTo2(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
-    AcGePoint3d         getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
+    AcGePoint3d         getClosestPointTo2(const AcGePoint3d& givenPnt, bool extend) const;
+    AcGePoint3d         getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, bool extend) const;
 
     boost::python::list getOffsetCurves(double offsetDist) const;
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
@@ -60,7 +60,7 @@ public:
 
     PyDbSpline          getSpline() const;
     void                extend1(double newParam) const;
-    void                extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint) const;
+    void                extend2(bool extendStart, const AcGePoint3d& toPoint) const;
     double              getArea() const;
     void                reverseCurve() const;
     PyGeCurve3d         getAcGeCurve1() const;
