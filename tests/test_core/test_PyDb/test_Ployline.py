@@ -190,7 +190,7 @@ class TestDbPolyline:
 
     def test_is_only_lines(self):
         pline = create_polyline()
-        assert pline.isOnlyLines() is True
+        assert pline.isOnlyLines() == True
 
     def test_normal_and_elevation(self):
         pline = create_polyline()

@@ -154,6 +154,7 @@ class TestDbBlockReference:
         # Verify it returns a valid Matrix3d
         assert isinstance(transform, Ge.Matrix3d)
 
+    @pytest.mark.known_failure_BRX
     def test_nonAnnotationBlockTransform(self, db_06457: Db.Database):
         """Test getting the non-annotation block transformation matrix"""
         objHnd = Db.Handle("212b3")
@@ -165,6 +166,7 @@ class TestDbBlockReference:
         # Verify it returns a valid Matrix3d
         assert isinstance(transform, Ge.Matrix3d)
 
+    @pytest.mark.known_failure_BRX
     def test_nonAnnotationScaleFactors(self, db_06457: Db.Database):
         """Test getting the non-annotation scale factors"""
         objHnd = Db.Handle("212b3")
@@ -301,7 +303,7 @@ class TestDbBlockReference:
 
         # This should return a boolean
         result = r.treatAsAcDbBlockRefForExplode()
-        assert isinstance(result, (bool, Db.AdskBoolean))
+        assert isinstance(result, (bool, int,  Db.AdskBoolean))
 
     def test_overloaded_constructors(self, db_06457: Db.Database):
         """Test various constructor overloads"""

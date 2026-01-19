@@ -2225,7 +2225,9 @@ void PyDbCircle::setNormal(const AcGeVector3d& val) const
 double PyDbCircle::circumference() const
 {
 #if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
+    constexpr const double PI = 3.14159265358979323846;
+    double circumference = 2 * PI * impObj()->radius();
+    return circumference;
 #else
     return impObj()->circumference();
 #endif
@@ -2234,7 +2236,9 @@ double PyDbCircle::circumference() const
 void PyDbCircle::setCircumference(double val) const
 {
 #if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
+    constexpr const double PI = 3.14159265358979323846;
+    double radius = val / (2 * PI);
+    return PyThrowBadEs(impObj()->setRadius(radius));
 #else
     return PyThrowBadEs(impObj()->setCircumference(val));
 #endif
@@ -2243,7 +2247,7 @@ void PyDbCircle::setCircumference(double val) const
 double PyDbCircle::diameter() const
 {
 #if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
+    return impObj()->radius() * 2;
 #else
     return impObj()->diameter();
 #endif
@@ -2252,7 +2256,7 @@ double PyDbCircle::diameter() const
 void PyDbCircle::setDiameter(double val) const
 {
 #if defined(_BRXTARGET260)
-    throw PyNotimplementedByHost();
+    return PyThrowBadEs(impObj()->setRadius(val / 2.0));
 #else
     return PyThrowBadEs(impObj()->setDiameter(val));
 #endif
