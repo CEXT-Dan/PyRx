@@ -2754,13 +2754,13 @@ class Arc(PyDb.Curve):
         This function returns the radius of the arc. The radius value is used for DXF group code
         40.
         """
-    def setCenter(self, val: PyGe.Point3d, /) -> None:
+    def setCenter(self, newCenter: PyGe.Point3d, /) -> None:
         """
         This function sets center to be the center point for the arc. center must be in WCS
         coordinates. The center point value is the WCS equivalent of DXF group code 10. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setEndAngle(self, val: float, /) -> None:
+    def setEndAngle(self, newEndAngle: float, /) -> None:
         """
         This function sets endAngle as the end angle of the arc. endAngle must be in radians. The
         angle is relative to the OCS X axis for the arc with positive angles going counterclockwise
@@ -2771,20 +2771,20 @@ class Arc(PyDb.Curve):
         -1.5708 (-90 degrees). The end angle value is used for DXF group code 51. Returns Acad::eOk
         if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector of the plane containing the arc. normal
         must be in WCS coordinates and must be non-zero length. The normal value is used for DXF
         group code 210. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed
         in is not acceptable.
         """
-    def setRadius(self, val: float, /) -> None:
+    def setRadius(self, newRadius: float, /) -> None:
         """
         This function sets radius to be the radius of the arc. radius must be greater than 0. The
         radius value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartAngle(self, val: float, /) -> None:
+    def setStartAngle(self, newStartAngle: float, /) -> None:
         """
         This function sets startAngle to be the start angle of the arc. startAngle must be in
         radians. The angle is relative to the OCS X axis for the arc with positive angles going
@@ -2796,7 +2796,7 @@ class Arc(PyDb.Curve):
         code 50. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is
         not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, newThickness: float, /) -> None:
         """
         This function sets the arc's thickness to be thickness. The thickness is the arc's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -4198,7 +4198,7 @@ class BlockReference(PyDb.Entity):
         for the other modes, then return Acad::eOk.
         """
     def __reduce__(self, /) -> Any: ...
-    def appendAttribute(self, val: PyDb.AttributeReference, /) -> ObjectId:
+    def appendAttribute(self, attribute: PyDb.AttributeReference, /) -> ObjectId:
         """
         This function appends the AcDbAttribute object pointed to by pNewAttrib to the attribute
         list of the block reference, establishes the block reference as the attribute's owner, and
@@ -4255,7 +4255,7 @@ class BlockReference(PyDb.Entity):
         Acad::eNotInDatabase if the AcDbBlockReference on which it is called has not been added to
         a database. Returns Acad::eNotApplicable if the AcDbBlockReference is not uniformly scaled.
         """
-    def geomExtentsBestFit(self, val: PyGe.Matrix3d = PyGe.Matrix3d.kIdentity, /) -> Extents:
+    def geomExtentsBestFit(self, transform: PyGe.Matrix3d = PyGe.Matrix3d.kIdentity, /) -> Extents:
         """
         When working in non-WCS coordinate systems, the extents returned from
         AcDbBlockReference::geomExtents() can be somewhat larger that the actual geometry because
@@ -4317,7 +4317,7 @@ class BlockReference(PyDb.Entity):
         is used for DXF group code 41. The Y scale factor value is used for DXF group code 42. The
         Z scale factor value is used for DXF group code 43.
         """
-    def setBlockTableRecord(self, val: ObjectId, /) -> None:
+    def setBlockTableRecord(self, blockId: PyDb.ObjectId, /) -> None:
         """
         This function sets objId as the object ID of the AcDbBlockTableRecord referenced by the
         block reference. The referenced block table record contains the entities that the block
@@ -4325,7 +4325,7 @@ class BlockReference(PyDb.Entity):
         that is used with the group code -2 in AutoLISP and ADS entity information listings of the
         block reference.
         """
-    def setBlockTransform(self, val: PyGe.Matrix3d, /) -> None:
+    def setBlockTransform(self, transform: PyGe.Matrix3d, /) -> None:
         """
         This function resets the block reference's position (insertion point), normal vector, scale
         factors, and rotation so that the resulting MCS-to-drawing-WCS transform is the same as the
@@ -4333,7 +4333,7 @@ class BlockReference(PyDb.Entity):
         eCannotScaleNonUniformly when called on a block reference that refers to a block that
         cannot be scaled nonuniformly.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normalVector: PyGe.Vector3d, /) -> None:
         """
         This function sets newVal to be the normal vector of the plane containing the block
         reference. newVal must be in WCS coordinates and must be nonzero length. Warning This
@@ -4348,14 +4348,14 @@ class BlockReference(PyDb.Entity):
         210. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, position: PyGe.Point3d, /) -> None:
         """
         Sets the block reference to use pt as the position value (often referred to as the
         insertion point). pt must be in WCS coordinates. The position value is the WCS equivalent
         of the DXF group code 10. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, angle: float, /) -> None:
         """
         This function sets newVal to be the rotation value (in radians) of the block reference. The
         rotation value is relative to the X axis of a coordinate system that is parallel to the OCS
@@ -4365,7 +4365,7 @@ class BlockReference(PyDb.Entity):
         used for DXF group code 50. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setScaleFactors(self, val: PyGe.Scale3d, /) -> None:
+    def setScaleFactors(self, scale: PyGe.Scale3d, /) -> None:
         """
         This function sets the block reference to use the X, Y, and Z scale factors contained in
         scale. The X, Y, and Z scaling of the block reference is applied to the entities in the
@@ -5049,7 +5049,7 @@ class Circle(PyDb.Curve):
         """
         Returns the diameter of the circle.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CircArc3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = ..., /) -> PyGe.CircArc3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -5061,34 +5061,34 @@ class Circle(PyDb.Curve):
         """
         Returns the radius of the circle. The radius value is used for DXF group code 40.
         """
-    def setCenter(self, val: PyGe.Point3d, /) -> None:
+    def setCenter(self, newCenter: PyGe.Point3d, /) -> None:
         """
         Sets the center of the circle to the point center, which must be in WCS coordinates. The
         center point value is the WCS equivalent of DXF group code 10. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setCircumference(self, val: float, /) -> None:
+    def setCircumference(self, newCircumference: float, /) -> None:
         """
         Sets the circumference of the circle to the value of circ.
         """
-    def setDiameter(self, val: float, /) -> None:
+    def setDiameter(self, newDiameter: float, /) -> None:
         """
         Sets the diameter of the circle to the value of dia.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the normal of the plane containing the circle. normal must be in WCS
         coordinates and must be nonzero length. The normal value is used for DXF group code 210.
         Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setRadius(self, val: float, /) -> None:
+    def setRadius(self, newRadius: float, /) -> None:
         """
         Sets radius to be the radius of the circle. radius must be greater than zero. The radius
         value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, newThickness: float, /) -> None:
         """
         Sets the thickness of the circle to thickness. The thickness is the circle's dimension
         along its normal vector direction (sometimes called the extrusion direction). The thickness
@@ -12560,7 +12560,7 @@ class DxfCode(_BoostPythonEnum):
     kDxfXdMax: ClassVar[Self]  # 1071
 
 class DynBlockReference:
-    def __init__(self, val: PyDb.ObjectId, /) -> None:
+    def __init__(self, blockId: PyDb.ObjectId, /) -> None:
         """
         A utility class for accessing information about block references to dynamic blocks.
         """
@@ -12581,7 +12581,7 @@ class DynBlockReference:
         """
     @staticmethod
     def className() -> str: ...
-    def convertToStaticBlock(self, val: str = ..., /) -> None:
+    def convertToStaticBlock(self, blockName: str = ..., /) -> None:
         """
         Converts the dynamic block instance to a legacy (nondynamic) block. When successful, the
         dynamic block properties are frozen at their current values and the reference ceases to be
@@ -15038,7 +15038,7 @@ class FaceRecord(PyDb.Vertex):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getVertexAt(self, val: int, /) -> int:
+    def getVertexAt(self, index: int, /) -> int:
         """
         This function uses the vtxIdx argument to return the index number of the PolyFaceMesh
         vertex used as the faceIdx corner of the face. Face corner indices start with 0, so faceIdx
@@ -15048,7 +15048,7 @@ class FaceRecord(PyDb.Vertex):
         indices are used for DXF group codes 71-74 (71 for faceIdx == 1, 72 for faceIdx == 2,
         etc.).
         """
-    def isEdgeVisibleAt(self, val: int, /) -> bool:
+    def isEdgeVisibleAt(self, edgeIndex: int, /) -> bool:
         """
         This function uses the visible argument to return the visibility value for the edge that
         starts with the face corner specified by faceIndex. A visibility value of Adesk::kTrue
@@ -15060,7 +15060,7 @@ class FaceRecord(PyDb.Vertex):
         data value is positive, then the edge starting at that vertex will be visible. If the data
         value is negative, then the edge will be invisible.
         """
-    def makeEdgeInvisibleAt(self, val: int, /) -> None:
+    def makeEdgeInvisibleAt(self, edgeIndex: int, /) -> None:
         """
         This function sets the edge that starts at the corner specified by faceIndex to be
         invisible. Face corner indices start with 0, so faceIndex must be 0, 1, 2, or 3. If
@@ -15069,7 +15069,7 @@ class FaceRecord(PyDb.Vertex):
         corresponding DXF group codes 71 - 74 to be negative (faceIndex == 1 sets group code 71 to
         be negative, faceIndex == 2 sets group code 72, etc.).
         """
-    def makeEdgeVisibleAt(self, val: int, /) -> None:
+    def makeEdgeVisibleAt(self, edgeIndex: int, /) -> None:
         """
         This function sets the edge that starts at the corner specified by faceIndex to be visible.
         Face corner indices start with 0, so faceIndex must be 0, 1, 2, or 3. If successful, then
@@ -15078,7 +15078,7 @@ class FaceRecord(PyDb.Vertex):
         be positive (faceIndex == 1 sets group code 71 to be positive, faceIndex == 2 sets group
         code 72, etc.).
         """
-    def setVertexAt(self, val: int, idx: int, /) -> None:
+    def setVertexAt(self, vertexId: int, index: int, /) -> None:
         """
         This function sets the FaceRecord so that the PolyFaceMesh vertex list index number vtxIdx
         is used as the vertex index for the faceIdx corner of the face. Face corner indices start
@@ -15274,30 +15274,30 @@ class Fcf(PyDb.Entity):
         future releases. Use a call to setDimensionStyle() followed by a call to setDimstyleData()
         instead.
         """
-    def setDimclrd(self, val: Color, /) -> None:
+    def setDimclrd(self, newColor: Color, /) -> None:
         """
         Sets the AutoCAD color index within val to be the DIMCLRD value for the feature control
         frame as an override. This function returns Acad::eOk if successful. See the System
         Variables section of the AutoCAD Command Reference manual for information on DIMCLRD.
         """
-    def setDimclrt(self, val: Color, /) -> None:
+    def setDimclrt(self, newColor: Color, /) -> None:
         """
         Sets the AutoCAD color index within val to be the DIMCLRT value for the feature control
         frame as an override. This function returns Acad::eOk if successful. See the System
         Variables section of the AutoCAD Command Reference manual for information on DIMCLRT.
         """
-    def setDimensionStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setDimensionStyle(self, newStyle: PyDb.ObjectId, /) -> None:
         """
         Sets the Fcf object to reference the dimension style specified by the
         dimensionStyleobjectId.
         """
-    def setDimgap(self, val: float, /) -> None:
+    def setDimgap(self, newGap: float, /) -> None:
         """
         Overrides this feature control frame's DIMGAP value with val. Returns Acad::eOk if
         successful. See the System Variables section of the AutoCAD Command Reference for
         information on DIMGAP.
         """
-    def setDimscale(self, val: float, /) -> None:
+    def setDimscale(self, newScale: float, /) -> None:
         """
         Sets scale to be the DIMSCALE value for the feature control frame as an override. This
         function returns Acad::eOk if successful. See the System Variables section of the AutoCAD
@@ -15354,13 +15354,13 @@ class Fcf(PyDb.Entity):
         function returns Acad::eOk if successful. See the System Variables section of the AutoCAD
         Command Reference manual for information on DIMTXSTY.
         """
-    def setDimtxt(self, val: float, /) -> None:
+    def setDimtxt(self, newTextHeight: float, /) -> None:
         """
         Sets val to be the DIMTXT value for the feature control frame as an override. This function
         returns Acad::eOk if successful. See the System Variables section of the AutoCAD Command
         Reference manual for information on DIMTXT.
         """
-    def setLocation(self, val: PyGe.Point3d, /) -> None:
+    def setLocation(self, newLocation: PyGe.Point3d, /) -> None:
         """
         Sets the object to use loc as its new location ('insertion' point). The insertion point is
         the middle of the left edge of its first line. loc must be in WCS coordinates.
@@ -15370,7 +15370,7 @@ class Fcf(PyDb.Entity):
         Sets norm to be the Fcf plane normal and dir to be the X-direction for the Fcf. Both values
         are specified in WCS coordinates. dir must be perpendicular to norm.
         """
-    def setText(self, val: str, /) -> None:
+    def setText(self, newText: str, /) -> None:
         """
         Sets a copy of text to be the text string used by the Fcf. This string contains the codes
         to specify which feature control symbols to use as well as the actual tolerance value. Here
@@ -19371,12 +19371,12 @@ class Line(PyDb.Curve):
         This function returns the line's endpoint in WCS coordinates. The end point value is used
         for DXF group code 11.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.LineSeg3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = ..., /) -> PyGe.LineSeg3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
     def getOffsetCurvesGivenPlaneNormal(
-        self, val: PyGe.Vector3d, offset: float, /
+        self, planeNormal: PyGe.Vector3d, offset: float, /
     ) -> list[PyDb.Curve]:
         """
         This function creates one or more entities that, together, make up the result of offsetting
@@ -19411,25 +19411,25 @@ class Line(PyDb.Curve):
         This function returns the line's unit normal vector in WCS coordinates. The normal value is
         used for DXF group code 210.
         """
-    def setEndPoint(self, val: PyGe.Point3d, /) -> None:
+    def setEndPoint(self, newEnd: PyGe.Point3d, /) -> None:
         """
         Sets endPt to be the line's new endpoint. endPt must be in WCS coordinates. The end point
         value is used for DXF group code 11. Returns Acad::eOk if successful or Acad::eInvalidInput
         if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the line's normal vector. normal must be in WCS coordinates. The normal
         value is used for DXF group code 210. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartPoint(self, val: PyGe.Point3d, /) -> None:
+    def setStartPoint(self, newStart: PyGe.Point3d, /) -> None:
         """
         Sets startPt to be the line's new start point. startPt must be in WCS coordinates. The
         start point value is used for DXF group code 10. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, newThickness: float, /) -> None:
         """
         Sets thickness to be the thickness value for the line. The thickness is the line's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -19936,28 +19936,28 @@ class MInsertBlock(PyDb.BlockReference):
         This function returns the number of rows of the BlockTableRecord image that will be
         displayed by the MInsert object. The row value is used for DXF group code 71.
         """
-    def setColumnSpacing(self, val: float, /) -> None:
+    def setColumnSpacing(self, spacing: float, /) -> None:
         """
         This function sets cSpacing to be the spacing between the columns of the BlockTableRecord
         image that will be displayed by the MInsert object. The column spacing value is used for
         DXF group code 44. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def setColumns(self, val: int, /) -> None:
+    def setColumns(self, columnCount: int, /) -> None:
         """
         This function sets cCount to be the number of columns of the BlockTableRecord image that
         will be displayed by the MInsert object. The column value is used for DXF group code 70.
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setRowSpacing(self, val: float, /) -> None:
+    def setRowSpacing(self, spacing: float, /) -> None:
         """
         This function sets rSpacing to be the spacing between the rows of the BlockTableRecord
         image that will be displayed by the MInsert object. The row spacing value is used for DXF
         group code 45. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in
         is not acceptable.
         """
-    def setRows(self, val: int, /) -> None:
+    def setRows(self, rowCount: int, /) -> None:
         """
         This function sets rCount to be the number of rows of the BlockTableRecord image that will
         be displayed by the MInsert object. The row value is used for DXF group code 71. Returns
@@ -21981,20 +21981,20 @@ class OverrulableEntity(PyDb.Entity):
     def registerOnDoubleClick(func: Any, /) -> None: ...
     @staticmethod
     def removeOnDoubleClick(func: Any, /) -> None: ...
-    def setDirection(self, vec: PyGe.Vector3d, /) -> None: ...
-    def setDoubles(self, vals: list[float], /) -> None: ...
-    def setFlags(self, vals: list[int], /) -> None: ...
-    def setGuid(self, val: str, /) -> None: ...
-    def setIndex(self, val: int, /) -> None: ...
-    def setInts(self, vals: list[int], /) -> None: ...
-    def setMask(self, val: int, /) -> None: ...
-    def setName(self, val: str, /) -> None: ...
-    def setNormal(self, vec: PyGe.Vector3d, /) -> None: ...
-    def setPoints(self, vals: list[PyGe.Point3d], /) -> None: ...
-    def setPosition(self, pt: PyGe.Point3d, /) -> None: ...
-    def setStrings(self, vals: list[str], /) -> None: ...
-    def setTyping(self, val: int, /) -> None: ...
-    def setdescription(self, val: str, /) -> None: ...
+    def setDirection(self, newDirection: PyGe.Vector3d, /) -> None: ...
+    def setDoubles(self, newDoubles: list[float], /) -> None: ...
+    def setFlags(self, newFlags: list[int], /) -> None: ...
+    def setGuid(self, newGuid: str, /) -> None: ...
+    def setIndex(self, newIndex: int, /) -> None: ...
+    def setInts(self, newInts: list[int], /) -> None: ...
+    def setMask(self, newMask: int, /) -> None: ...
+    def setName(self, newName: str, /) -> None: ...
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None: ...
+    def setPoints(self, newPoints: list[PyGe.Point3d], /) -> None: ...
+    def setPosition(self, newPosition: PyGe.Point3d, /) -> None: ...
+    def setStrings(self, newStrings: list[str], /) -> None: ...
+    def setTyping(self, newTyping: int, /) -> None: ...
+    def setdescription(self, newDescription: str, /) -> None: ...
     def strings(self, /) -> list: ...
     def typing(self, /) -> int: ...
     def version(self, /) -> int: ...
@@ -22392,7 +22392,7 @@ class Point(PyDb.Entity):
         Returns the points position value in WCS coordinates. The position value is used for DXF
         group code 10.
         """
-    def setEcsRotation(self, val: float, /) -> None:
+    def setEcsRotation(self, angle: float, /) -> None:
         """
         Sets newVal to be the angle (in radians) between the OCS (formerly ECS) X axis for the
         point (based on the point's normal vector) and the X axis that will be used when displaying
@@ -22400,7 +22400,7 @@ class Point(PyDb.Entity):
         '.'. The OCS Rotation is used for DXF group code 50. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, vector: PyGe.Vector3d, /) -> None:
         """
         Sets newVal to be the normal vector for the point. newVal must be in WCS coordinates. The
         normal is used as the extrusion direction when the point has non-zero thickness. The normal
@@ -22408,13 +22408,13 @@ class Point(PyDb.Entity):
         as something other than a '.'. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets pt to be the points position value. pt must be in WCS coordinates. The position value
         is used for DXF group code 10. Returns Acad::eOk if successful or Acad::eInvalidInput if
         the data passed in is not acceptable.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         Sets thickness to be the thickness value for the point. The thickness is the point's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
@@ -23075,7 +23075,7 @@ class PolyFaceMeshVertex(PyDb.Vertex):
         Returns the WCS point value of this vertex. The position value is used for the DXF group
         code 10
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates. The
         position value is used for the DXF group code 10. Returns Acad::eOk if successful or
@@ -23138,7 +23138,7 @@ class PolygonMeshVertex(PyDb.Vertex):
         """
         Returns the WCS point value of this vertex.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
@@ -23357,8 +23357,8 @@ class Polyline(PyDb.Curve):
     def __reduce__(self, /) -> Any: ...
     def addVertexAt(
         self,
-        idx: int,
-        pt2d: PyGe.Point2d,
+        index: int,
+        point2d: PyGe.Point2d,
         bulge: float = 0.0,
         startWidth: float = -1.0,
         endWidth: float = -1.0,
@@ -23394,24 +23394,24 @@ class Polyline(PyDb.Curve):
         """
         This returns the distance from the WCS origin to the plane of the polyline.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CompositeCurve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = ..., /) -> PyGe.CompositeCurve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
     def getAcGeCurve2d(self, /) -> PyGe.CompositeCurve2d: ...
-    def getArcSeg2dAt(self, idx: int, /) -> PyGe.CircArc2d:
+    def getArcSeg2dAt(self, index: int, /) -> PyGe.CircArc2d:
         """
         If the segment at vertex index is an arc, then this function will fill in arc with the 3D
         arc information (radius, center, and so on) from the polyline in WCS. Returns Acad::eOk if
         successful or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getArcSeg3dAt(self, idx: int, /) -> PyGe.CircArc3d:
+    def getArcSeg3dAt(self, index: int, /) -> PyGe.CircArc3d:
         """
         If the segment at vertex index is an arc, then this function will fill in arc with the 3D
         arc information (radius, center, and so on) from the polyline in WCS. Returns Acad::eOk if
         successful or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getBulgeAt(self, idx: int, /) -> float:
+    def getBulgeAt(self, index: int, /) -> float:
         """
         This function gets the bulge factor value at the index vertex. The bulge factor is used to
         indicate how much of an arc segment is present at this vertex. The bulge factor is the
@@ -23438,35 +23438,35 @@ class Polyline(PyDb.Curve):
         matrix will be the identity matrix. Then this function will not need to be overridden since
         the identity matrix is this function's default return.
         """
-    def getEndWidthAt(self, idx: int, /) -> float:
+    def getEndWidthAt(self, index: int, /) -> float:
         """
         This returns with startWidth set to the start width and endWidth set to the end width at
         the vertex index. Returns Acad::eOk if successful or Acad::eInvalidIndex if index is not
         valid for the polyline.
         """
-    def getLineSeg2dAt(self, idx: int, /) -> PyGe.LineSeg2d:
+    def getLineSeg2dAt(self, index: int, /) -> PyGe.LineSeg2d:
         """
         If the segment at vertex index is a line, then ln will be set to be a representative 3D
         copy of that segment in World Coordinates. Returns Acad::eOk if successful, or
         Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getLineSeg3dAt(self, idx: int, /) -> PyGe.LineSeg3d:
+    def getLineSeg3dAt(self, index: int, /) -> PyGe.LineSeg3d:
         """
         If the segment at vertex index is a line, then ln will be set to be a representative 3D
         copy of that segment in World Coordinates. Returns Acad::eOk if successful, or
         Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getPoint2dAt(self, idx: int, /) -> PyGe.Point2d:
+    def getPoint2dAt(self, index: int, /) -> PyGe.Point2d:
         """
         This function sets pt to the 3D location of the vertex index in World Coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getPoint3dAt(self, idx: int, /) -> PyGe.Point3d:
+    def getPoint3dAt(self, index: int, /) -> PyGe.Point3d:
         """
         This function sets pt to the 3D location of the vertex index in World Coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def getStartWidthAt(self, idx: int, /) -> float:
+    def getStartWidthAt(self, index: int, /) -> float:
         """
         This returns with startWidth set to the start width and endWidth set to the end width at
         the vertex index. Returns Acad::eOk if successful or Acad::eInvalidIndex if index is not
@@ -23503,7 +23503,7 @@ class Polyline(PyDb.Curve):
         """
     def isPointInside(self, pointWcs: PyGe.Point3d, /) -> bool: ...
     def length(self, /) -> float: ...
-    def makeClosedIfStartAndEndVertexCoincide(self, distTol: float, /) -> None:
+    def makeClosedIfStartAndEndVertexCoincide(self, distanceTolerance: float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDbPolyline.
         """
@@ -23527,7 +23527,7 @@ class Polyline(PyDb.Curve):
         """
         This function returns the number of vertices in the polyline.
         """
-    def onSegAt(self, idx: int, pt2d: PyGe.Point2d, param: float, /) -> bool:
+    def onSegAt(self, index: int, point2d: PyGe.Point2d, parameter: float, /) -> bool:
         """
         This function determines whether or not pt2d (specified in the polyline's Entity Coordinate
         System) is on the segment of the polyline starting at vertex index . If pt2d is on the
@@ -23535,32 +23535,32 @@ class Polyline(PyDb.Curve):
         will be in the parametric form of the segment type (in other words, linear or arc). Returns
         Adesk::kTrue if the point is on the polyline, or Adesk::kFalse if not.
         """
-    def removeVertexAt(self, idx: int, /) -> None:
+    def removeVertexAt(self, index: int, /) -> None:
         """
         This function removes the vertex at index. Returns Acad::eOk if successful. Returns
         Acad::eInvalidIndex if index is not valid for the polyline or eDegenerateGeometry if there
         is only one vertex.
         """
-    def reset(self, reuse: bool, numVerts: int, /) -> None:
+    def reset(self, reuse: bool, numVertices: int, /) -> None:
         """
         This function resets the polyline's vertex data. If reuse is Adesk::kTrue, then the
         numVerts number of vertices are left intact and all vertices beyond that number are
         deleted. If reuse is Adesk::kFalse, then numVerts is ignored and all existing vertex
         information will be deleted.
         """
-    def segType(self, idx: int, /) -> SegType:
+    def segType(self, index: int, /) -> SegType:
         """
         This function returns the type of segment (AcDbPolyline::SegType) that is headed by the
         vertex index. If index is invalid, then this function will assume start and end vertex
         values of 0.0 and will return a SegType of kCoincident.
         """
-    def setBulgeAt(self, idx: int, bulge: float, /) -> None:
+    def setBulgeAt(self, index: int, bulge: float, /) -> None:
         """
         This function sets bulge to be the bulge value for the index vertex. This will determine
         the bulge for the polyline segment which follows the index vertex. Returns Acad::eOk if
         successful, or Acad::eInvalidIndex if index is not valid for the polyline.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, isClosed: bool, /) -> None:
         """
         If closed is Adesk::kTrue, this function sets the polyline to be closed (that is, there is
         a segment drawn from the last vertex to the first). If closed is Adesk::kFalse, then the
@@ -23572,39 +23572,39 @@ class Polyline(PyDb.Curve):
         equal to zero. Returns Acad::eOk if successful or Acad::eInvalidIndex if width is less than
         0.0.
         """
-    def setElevation(self, elev: float, /) -> None:
+    def setElevation(self, elevation: float, /) -> None:
         """
         This function sets elev , the distance of the polyline's plane from the WCS origin.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector (in WCS) for the plane containing the
         polyline.
         """
-    def setPlinegen(self, val: bool, /) -> None:
+    def setPlinegen(self, usePlinegen: bool, /) -> None:
         """
         This function sets the polyline so it displays its linetype across vertices, if plineGen ==
         Adesk::kTrue. If plineGen == Adesk::kFalse, the linetype generation starts over at each
         vertex.
         """
-    def setPointAt(self, idx: int, pt2d: PyGe.Point2d, /) -> None:
+    def setPointAt(self, index: int, point2d: PyGe.Point2d, /) -> None:
         """
         This sets pt (in polyline OCS coordinates) to be the location of the index vertex.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, newThickness: float, /) -> None:
         """
         This sets thickness to be the thickness (extrusion depth or height) of the polyline. If
         thickness is greater than zero, then the extrusion is done with along the polyline's
         normal. If thickness is less than zero, the extrusion is done along the direction opposite
         the polyline's normal. Returns Acad::eOk if successful.
         """
-    def setWidthsAt(self, idx: int, startWidth: float, endWidth: float, /) -> None:
+    def setWidthsAt(self, index: int, startWidth: float, endWidth: float, /) -> None:
         """
         This function sets startWidth to be the start width and endWidth to be the end width for
         vertex index. Returns Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid
         for the polyline.
         """
-    def simplify(self, dist: float, /) -> None: ...
+    def simplify(self, distance: float, /) -> None: ...
     def thickness(self, /) -> float:
         """
         This function returns the thickness of the polyline; this value can be negative. Thickness
@@ -23694,7 +23694,7 @@ class Polyline2d(PyDb.Curve):
         """
         This is constantWidth, a member of class AcDb2dPolyline.
         """
-    def convertToPolyType(self, val: PyDb.Poly2dType, /) -> None:
+    def convertToPolyType(self, polyType: PyDb.Poly2dType, /) -> None:
         """
         Uses the splineFit() and/or curveFit() methods to convert the polyline to the type
         specified by the newType argument value. Possible values for type are: k2dSimplePoly A
@@ -23800,7 +23800,7 @@ class Polyline2d(PyDb.Curve):
         code 70. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is
         not acceptable.
         """
-    def makeClosedIfStartAndEndVertexCoincide(self, val: float, /) -> None:
+    def makeClosedIfStartAndEndVertexCoincide(self, tolerance: float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDb2dPolyline.
         """
@@ -23861,15 +23861,15 @@ class Polyline2d(PyDb.Curve):
         that has a Cubic B-spline path. This reflects that the third bit of DXF group code 70 is
         set and that DXF group code 75 is set to 6.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, closed: bool, /) -> None:
         """
         This is setClosed, a member of class AcDb2dPolyline.
         """
-    def setConstantWidth(self, val: float, /) -> None:
+    def setConstantWidth(self, width: float, /) -> None:
         """
         This is setConstantWidth, a member of class AcDb2dPolyline.
         """
-    def setDefaultEndWidth(self, val: float, /) -> None:
+    def setDefaultEndWidth(self, width: float, /) -> None:
         """
         Sets newVal to be the default polyline segment ending width value for the polyline. This
         value is used as the default end width for all vertices within the polyline. So, for
@@ -23878,7 +23878,7 @@ class Polyline2d(PyDb.Curve):
         non-zero, the default end width value is used for the polyline's DXF group code 41. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setDefaultStartWidth(self, val: float, /) -> None:
+    def setDefaultStartWidth(self, width: float, /) -> None:
         """
         Sets newVal to be the default polyline segment starting width value for the polyline. This
         value is used as the default start width for all vertices within the polyline. So, for
@@ -23888,7 +23888,7 @@ class Polyline2d(PyDb.Curve):
         40. Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, elev: float, /) -> None:
         """
         Sets newVal to be the elevation of the polyline. The elevation is the OCS Z axis value of
         the polyline (that is, the shortest distance from the WCS origin to the plane containing
@@ -23910,13 +23910,13 @@ class Polyline2d(PyDb.Curve):
         set bit 8 of DXF group code 70. Returns Acad::eOk if successful, or Acad::eInvalidInput if
         the data passed in is not acceptable.
         """
-    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
+    def setNormal(self, vector: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the polyline.
         normal must be non-zero in length. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPolyType(self, val: PyDb.Poly2dType, /) -> None:
+    def setPolyType(self, polyType: PyDb.Poly2dType, /) -> None:
         """
         Sets type to be the AcDb::Poly2dType for the polyline. The AcDb::Poly2dType indicates the
         curve/spline-fit type for this polyline. Possible values for type are: k2dSimplePoly A
@@ -23927,7 +23927,7 @@ class Polyline2d(PyDb.Curve):
         spline-fit polyline that has a Cubic B-spline path. This reflects that the third bit of DXF
         group code 70 is set and that DXF group code 75 is set to 6.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         This function sets thickness to be the thickness for the polyline. The thickness is the
         polyline's dimension along its normal vector direction. The normal vector direction is
@@ -24061,7 +24061,7 @@ class Polyline3d(PyDb.Curve):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3d: ...
-    def convertToPolyType(self, val: PyDb.Poly3dType, /) -> None:
+    def convertToPolyType(self, polyType: PyDb.Poly3dType, /) -> None:
         """
         Uses the splineFit() method to convert the polyline to the type specified by the type
         argument value. Possible values for type are: k3dSimplePoly A standard polyline with no
@@ -24086,7 +24086,7 @@ class Polyline3d(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.CompositeCurve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = ..., /) -> PyGe.CompositeCurve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -24197,11 +24197,11 @@ class Polyline3d(PyDb.Curve):
         reflects that the third bit of DXF group code 70 is set and that DXF group code 75 is set
         to 6.
         """
-    def setClosed(self, val: bool, /) -> None:
+    def setClosed(self, isClosed: bool, /) -> None:
         """
         This is setClosed, a member of class AcDb3dPolyline.
         """
-    def setPolyType(self, val: PyDb.Poly3dType, /) -> None:
+    def setPolyType(self, polyType: PyDb.Poly3dType, /) -> None:
         """
         Sets type to be the AcDb::Poly3dType for the polyline. The AcDb::Poly3dType indicates the
         spline-fit type for this polyline. Possible values for type are: k3dSimplePoly A standard
@@ -24305,7 +24305,7 @@ class Polyline3dVertex(PyDb.Vertex):
         """
         Returns the WCS point value of this vertex.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets the vertex to use pt as the position value. pt must be in WCS coordinates. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
@@ -26088,7 +26088,7 @@ class Shape(PyDb.Entity):
         the WCS Z axis, and the arbitrary axis algorithm. The rotation value is used for DXF group
         code 50.
         """
-    def setName(self, val: str, /) -> None:
+    def setName(self, newName: str, /) -> None:
         """
         This function sets name as the shape name to be used by the AcDbShape object. This function
         should be called only on database-resident AcDbShape objects in order to access the text
@@ -26104,26 +26104,26 @@ class Shape(PyDb.Entity):
         will be more efficient to set the shape number and shape font directly using
         setShapeNumber() and setStyleId() wherever possible.
         """
-    def setNormal(self, vec: PyGe.Vector3d, /) -> None:
+    def setNormal(self, newNormal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the shape.
         normal must be non-zero in length. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, newOblique: float, /) -> None:
         """
         This function sets angle to be the obliquing angle for the shape. The obliquing angle is
         the angle of slant from the shape's vertical. The oblique value is used for DXF group code
         51. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setPosition(self, pt: PyGe.Point3d, /) -> None:
+    def setPosition(self, newPosition: PyGe.Point3d, /) -> None:
         """
         This function sets pos to be the insertion point for the shape. pos must be in WCS
         coordinates. The position value is the WCS equivalent of DXF group code 10. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, newRotation: float, /) -> None:
         """
         This function sets rotation to be the rotation angle of the shape. The rotation angle is
         relative to the X axis of the shape's OCS with positive angles going counter-clockwise when
@@ -26132,32 +26132,32 @@ class Shape(PyDb.Entity):
         is used for DXF group code 50. Returns Acad::eOk if successful or Acad::eInvalidInput if
         the data passed in is not acceptable.
         """
-    def setShapeNumber(self, idx: int, /) -> None:
+    def setShapeNumber(self, newShapeIndex: int, /) -> None:
         """
         Sets the number of the shape. A shape is stored as a reference to a font, and a character
         within that font. Essentially a shape is a single character of a special SHX font. This
         function sets the number of that character. Returns Acad::eOk if successful.
         """
-    def setSize(self, val: float, /) -> None:
+    def setSize(self, newSize: float, /) -> None:
         """
         This function sets size to be the height of the shape. The size value is used for DXF group
         code 40. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is
         not acceptable.
         """
-    def setStyleId(self, id: PyDb.ObjectId, /) -> None:
+    def setStyleId(self, newStyleId: PyDb.ObjectId, /) -> None:
         """
         Sets this AcDbShape object to use the shape specified by id. A shape is stored as a
         reference to a font, and a character within that font. Essentially a shape is a single
         character of a special SHX font. Returns Acad::eOk if successful.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, newThickness: float, /) -> None:
         """
         This function sets thickness to be the thickness for the shape. The thickness is the
         shape's dimension along its normal vector direction (sometimes called the extrusion
         direction). The thickness value is used for DXF group code 39. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setWidthFactor(self, val: float, /) -> None:
+    def setWidthFactor(self, newWidthFactor: float, /) -> None:
         """
         This function sets width to be the width factor (sometimes referred to as the relative
         X-scale factor) for the shape. The widthFactor is applied to the shape's width to allow the
@@ -26309,7 +26309,7 @@ class Solid(PyDb.Entity):
         This function returns the unit normal vector of the plane containing the solid. The normal
         value is used for DXF group code 210.
         """
-    def setNormal(self, vec: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the solid.
         normal must be non-zero in length. The normal value is used for DXF group code 210. Returns
@@ -26324,7 +26324,7 @@ class Solid(PyDb.Entity):
         the WCS equivalent of DXF group code 12 Point four is the WCS equivalent of DXF group code
         13
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         This function sets thickness to be the thickness for the solid. The thickness is the
         solid's dimension along its normal vector direction (sometimes called the extrusion
@@ -32429,7 +32429,7 @@ class Trace(PyDb.Entity):
         This function returns the unit normal vector of the plane containing the trace. The normal
         value is used for DXF group code 210.
         """
-    def setNormal(self, vec: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the trace.
         normal must be non-zero in length. The normal value is used for DXF group code 210.
@@ -32442,7 +32442,7 @@ class Trace(PyDb.Entity):
         DXF group code 10 Point two is the WCS equivalent of DXF group code 11 Point three is the
         WCS equivalent of DXF group code 12 Point four is the WCS equivalent of DXF group code 13
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         This function sets thickness to be the thickness for the trace. The thickness is the
         trace's dimension along its normal vector direction (sometimes called the extrusion
@@ -33347,7 +33347,7 @@ class Vertex2d(PyDb.Vertex):
         argument. To get the OCS Z coordinate, use the owning polyline's
         AcDb2dPolyline::elevation() method. The position value is used for DXF group code 10.
         """
-    def setBulge(self, val: float, /) -> None:
+    def setBulge(self, bulge: float, /) -> None:
         """
         Sets newVal to be the vertex's bulge value. The bulge is the tangent of 1/4 of the included
         angle for the arc between the vertex and the next vertex in the polyline's vertex list. A
@@ -33355,14 +33355,14 @@ class Vertex2d(PyDb.Vertex):
         The bulge value is used for DXF group code 42. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setEndWidth(self, val: float, /) -> None:
+    def setEndWidth(self, width: float, /) -> None:
         """
         Sets newVal to be the end width for the vertex. The end width is used as the width at the
         end of the polyline segment from this vertex to the next vertex. The end width value is
         used for DXF group code 41. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets pt to be the position value of the vertex. The Z value in pt is not used. pt must be
         in OCS coordinates (the OCS of the polyline containing the vertex), not WCS. The Z
@@ -33370,25 +33370,25 @@ class Vertex2d(PyDb.Vertex):
         value is used for DXF group code 10. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setStartWidth(self, val: float, /) -> None:
+    def setStartWidth(self, width: float, /) -> None:
         """
         Sets newVal to be the start width for the vertex. The start width is used as the width at
         this vertex for the polyline segment between this vertex and the next vertex. The end width
         value is used for DXF group code 40. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTangent(self, val: float, /) -> None:
+    def setTangent(self, angle: float, /) -> None:
         """
         Sets newVal to be the curve-fit tangent direction for the vertex. This is the angle (in
         radians) between the OCS axis for the polyline containing the vertex and the tangent
         direction vector. The tangent direction value is used for DXF group code 50. Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTangentUsed(self, val: bool, /) -> None:
+    def setTangentUsed(self, use: bool, /) -> None:
         """
         This is setTangentUsed, a member of class AcDb2dVertex.
         """
-    def setVertexIdentifier(self, val: int, /) -> None: ...
+    def setVertexIdentifier(self, identifier: int, /) -> None: ...
     def startWidth(self, /) -> float:
         """
         Returns the start width for the vertex. The start width is used as the width at this vertex
