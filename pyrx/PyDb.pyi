@@ -2499,11 +2499,11 @@ class AlignedDimension(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AlignedDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> AlignedDimension: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AlignedDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> AlignedDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2548,22 +2548,22 @@ class AlignedDimension(PyDb.Dimension):
         default,' which is the same as an obliquing angle of pi / 2 (90 degrees). The obliquing
         angle is used for DXF group code 52.
         """
-    def setDimLinePoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDimLinePoint(self, dimension_line_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that specifies where the dimension line will be (that is, this point will be somewhere on
         the dimension line).
         """
-    def setJogSymbolOn(self, val: bool, /) -> None:
+    def setJogSymbolOn(self, enable_jog_symbol: bool, /) -> None:
         """
         This function sets the jog symbol status. Returns Acad::eOk if successful. Otherwise, it
         returns Acad::eInvalidInput.
         """
-    def setJogSymbolPosition(self, pt: PyGe.Point3d, /) -> None:
+    def setJogSymbolPosition(self, jog_symbol_point: PyGe.Point3d, /) -> None:
         """
         Sets the jog symbol position. Returns Acad::eOk if successful.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, oblique_angle: float, /) -> None:
         """
         This function sets the dimension to use oblique (in radians) as the extension line
         obliquing angle for the dimension. This angle is relative to the line that contains the
@@ -2580,7 +2580,7 @@ class AlignedDimension(PyDb.Dimension):
         (90 degrees). The obliquing angle is used for DXF group code 52. This function always
         returns Acad::eOk.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, xline1_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used as the start point for the first extension line of the dimension. The AutoCAD
@@ -2588,7 +2588,7 @@ class AlignedDimension(PyDb.Dimension):
         point. The first extension line start point is used for DXF group code 13. This function
         always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, xline2_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used as the start point for the second extension line of the dimension. The AutoCAD
@@ -2909,7 +2909,7 @@ class ArcDimension(PyDb.Dimension):
         and 2 indicates that no arc symbol is used.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ArcDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> ArcDimension: ...
     def centerPoint(self, /) -> PyGe.Point3d:
         """
         Returns the center point of the arc dimensioned by the arc length dimension.
@@ -2917,7 +2917,7 @@ class ArcDimension(PyDb.Dimension):
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ArcDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> ArcDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2949,52 +2949,52 @@ class ArcDimension(PyDb.Dimension):
         """
         Returns the end point for the arc length dimension's extra leader, if drawn.
         """
-    def setArcEndParam(self, val: float, /) -> None:
+    def setArcEndParam(self, end_parameter: float, /) -> None:
         """
         Sets the parameter of the arc being dimensioned corresponding to the arc length dimension's
         second definition point.
         """
-    def setArcPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setArcPoint(self, arc_point: PyGe.Point3d, /) -> None:
         """
         Sets the point through which the arc length dimension's dimension arc passes.
         """
-    def setArcStartParam(self, val: float, /) -> None:
+    def setArcStartParam(self, start_parameter: float, /) -> None:
         """
         Sets the parameter of the arc being dimensioned corresponding to the arc length dimension's
         first definition point.
         """
-    def setArcSymbolType(self, val: int, /) -> None:
+    def setArcSymbolType(self, symbol_type: int, /) -> None:
         """
         Sets the type of symbol to use in the arc length dimension's text string. A value of 0
         indicates that the arc symbol precedes text, 1 indicates that the arc symbol is above text,
         and 2 indicates that no arc symbol is used. This overrides the setting of this value in the
         dimension's style.
         """
-    def setCenterPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, center_point: PyGe.Point3d, /) -> None:
         """
         Sets the center point of the arc dimensioned by the arc length dimension.
         """
-    def setHasLeader(self, val: bool, /) -> None:
+    def setHasLeader(self, has_leader: bool, /) -> None:
         """
         Sets whether the arc length dimension has an extra leader drawn to resolve ambiguity.
         """
-    def setIsPartial(self, val: bool, /) -> None:
+    def setIsPartial(self, is_partial: bool, /) -> None:
         """
         Reserved for future use.
         """
-    def setLeader1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setLeader1Point(self, leader1_point: PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's extra leader, if drawn.
         """
-    def setLeader2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setLeader2Point(self, leader2_point: PyGe.Point3d, /) -> None:
         """
         Sets the end point for the arc length dimension's extra leader, if drawn.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, xline1_point: PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's first extension line.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, xline2_point: PyGe.Point3d, /) -> None:
         """
         Sets the start point for the arc length dimension's second extension line.
         """
@@ -10736,7 +10736,7 @@ class DiametricDimension(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DiametricDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> DiametricDimension: ...
     def chordPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the point (in WCS coordinates) where the dimension line intersects
@@ -10746,7 +10746,7 @@ class DiametricDimension(PyDb.Dimension):
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DiametricDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> DiametricDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -10780,30 +10780,30 @@ class DiametricDimension(PyDb.Dimension):
         This function is obsolete and always returns 0 unless the length has been set at time of
         the dimension's creation.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, chord_start_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point where the
         dimension line intersects the curve being dimensioned and extends outside the curve, if the
         text is outside the curve. The chord point is used for DXF group code 15. This function
         always returns Acad::eOk.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, end_angle: float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, start_angle: float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setFarChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setFarChordPoint(self, chord_end_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point on the curve
         that is diametrically opposite the point where the dimension line extends outside the
         curve, if the text is outside the curve.
         """
-    def setLeaderLength(self, val: float, /) -> None:
+    def setLeaderLength(self, leader_length: float, /) -> None:
         """
         This function sets the dimension to use length as the distance from the chordPoint
         dimension definition point, out to where the dimension will do a horizontal dogleg to the
@@ -21663,11 +21663,11 @@ class OrdinateDimension(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> OrdinateDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> OrdinateDimension: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> OrdinateDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> OrdinateDimension: ...
     def definingPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the ordinate point (in WCS coordinates) to be measured. The dimension
@@ -21712,29 +21712,29 @@ class OrdinateDimension(PyDb.Dimension):
         This function returns the point (in WCS coordinates) that the dimension treats as (0,0,0)
         for distance calculations.
         """
-    def setDefiningPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDefiningPoint(self, defining_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the ordinate point to be
         measured. The dimension measures the X or Y distance between this point and the dimension's
         origin point. The defining point is used for DXF group code 13. This function always
         returns Acad::eOk.
         """
-    def setLeaderEndPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setLeaderEndPoint(self, leader_end_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the dimension leader's
         endpoint. This point is also used in the text position calculations. The leaderEndPoint is
         used for DXF group code 14. This function always returns Acad::eOk.
         """
-    def setOrigin(self, pt: PyGe.Point3d, /) -> None:
+    def setOrigin(self, origin_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point that the
         dimension treats as (0,0,0) for distance calculations.
         """
-    def setUsingXAxis(self, val: bool, /) -> None:
+    def setUsingXAxis(self, use_x_axis: bool, /) -> None:
         """
         This is setUsingXAxis, a member of class AcDbOrdinateDimension.
         """
-    def setUsingYAxis(self, val: bool, /) -> None:
+    def setUsingYAxis(self, use_y_axis: bool, /) -> None:
         """
         This is setUsingYAxis, a member of class AcDbOrdinateDimension.
         """
@@ -22520,7 +22520,7 @@ class Point3AngularDimension(PyDb.Dimension):
         DXF group code 10.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Point3AngularDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> Point3AngularDimension: ...
     def centerPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the dimension definition point (in WCS coordinates) that is located
@@ -22530,7 +22530,7 @@ class Point3AngularDimension(PyDb.Dimension):
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Point3AngularDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> Point3AngularDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -22549,23 +22549,23 @@ class Point3AngularDimension(PyDb.Dimension):
         """
         Returns true if extension arc is on. Otherwise, it returns false.
         """
-    def setArcPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setArcPoint(self, arc_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used to determine the location of the arc for the dimension.
         """
-    def setCenterPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, center_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the vertex of the angle being dimensioned. The vertex definition point is
         used for DXF group code 15. This function always returns Acad::eOk.
         """
-    def setExtArcOn(self, val: bool, /) -> None:
+    def setExtArcOn(self, enable_extension: bool, /) -> None:
         """
         This function turns the extension arc flag on or off. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, xline1_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the start point of the first extension line of the dimension. This point
@@ -22574,7 +22574,7 @@ class Point3AngularDimension(PyDb.Dimension):
         extension line is displayed relative to this point. The first extension line start point is
         used for DXF group code 13. This function always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, xline2_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that is used for the start point of the second extension line of the dimension. This point
@@ -24475,7 +24475,7 @@ class RadialDimension(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RadialDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> RadialDimension: ...
     def center(self, /) -> PyGe.Point3d:
         """
         This function returns the center point (in WCS coordinates) of the curve being dimensioned.
@@ -24488,7 +24488,7 @@ class RadialDimension(PyDb.Dimension):
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> RadialDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -24512,28 +24512,28 @@ class RadialDimension(PyDb.Dimension):
         This function returns the extension arc start angle.
         """
     def leaderLength(self, /) -> float: ...
-    def setCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setCenter(self, center_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the center point of the
         curve being dimensioned.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, chord_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the point where the
         dimension line intersects the curve being dimensioned. The chord point is used for DXF
         group code 15. This function always returns Acad::eOk.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, end_angle: float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, start_angle: float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setLeaderLength(self, val: float, /) -> None:
+    def setLeaderLength(self, leader_length: float, /) -> None:
         """
         This function sets the dimension to use length as the distance from the chordPoint
         dimension definition point out to where the dimension does a horizontal dogleg to the
@@ -24615,7 +24615,7 @@ class RadialDimensionLarge(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge: ...
+    def cast(other_object: PyRx.RxObject, /) -> RadialDimensionLarge: ...
     def center(self, /) -> PyGe.Point3d:
         """
         Returns the center point of the arc dimensioned by the jogged radius dimension.
@@ -24627,7 +24627,7 @@ class RadialDimensionLarge(PyDb.Dimension):
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> RadialDimensionLarge: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -24662,45 +24662,45 @@ class RadialDimensionLarge(PyDb.Dimension):
         """
         Returns the overidden center point used by the jogged radius dimension.
         """
-    def setCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setCenter(self, center_point: PyGe.Point3d, /) -> None:
         """
         Sets the center point of the arc dimensioned by the jogged radius dimension.
         """
-    def setChordPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setChordPoint(self, chord_point: PyGe.Point3d, /) -> None:
         """
         Sets the chord point on the arc dimensioned by the jogged radius dimension.
         """
-    def setExtArcEndAngle(self, val: float, /) -> None:
+    def setExtArcEndAngle(self, end_angle: float, /) -> None:
         """
         This function sets the extension arc end angle. Returns Acad::eOk if successful. Otherwise,
         it returns Acad::eInvalidInput.
         """
-    def setExtArcStartAngle(self, val: float, /) -> None:
+    def setExtArcStartAngle(self, start_angle: float, /) -> None:
         """
         This function sets the extension arc start angle. Returns Acad::eOk if successful.
         Otherwise, it returns Acad::eInvalidInput.
         """
-    def setJogAngle(self, val: float, /) -> None:
+    def setJogAngle(self, jog_angle: float, /) -> None:
         """
         Sets the jog angle used by the jogged radius dimension.
         """
-    def setJogPoint(self, pt: PyGe.Point3d, /) -> None:
+    def setJogPoint(self, jog_point: PyGe.Point3d, /) -> None:
         """
         Sets the jog point used by the jogged radius dimension.
         """
-    def setJogPointPP(self, pt: PyGe.Point3d, /) -> None:
+    def setJogPointPP(self, jog_point: PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
-    def setOverrideCenter(self, pt: PyGe.Point3d, /) -> None:
+    def setOverrideCenter(self, override_center_point: PyGe.Point3d, /) -> None:
         """
         Sets the overidden center point to use for the jogged radius dimension.
         """
-    def setOverrideCenterPP(self, pt: PyGe.Point3d, /) -> None:
+    def setOverrideCenterPP(self, override_center_point: PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
-    def setTextPositionPP(self, pt: PyGe.Point3d, /) -> None:
+    def setTextPositionPP(self, text_position: PyGe.Point3d, /) -> None:
         """
         For internal use only.
         """
@@ -25439,11 +25439,11 @@ class RotatedDimension(PyDb.Dimension):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RotatedDimension: ...
+    def cast(other_object: PyRx.RxObject, /) -> RotatedDimension: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RotatedDimension: ...
+    def cloneFrom(other_object: PyRx.RxObject, /) -> RotatedDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25495,7 +25495,7 @@ class RotatedDimension(PyDb.Dimension):
         Positive angles are counterclockwise when looking down the OCS positive Z axis towards the
         origin. The rotation angle is used for DXF group code 50.
         """
-    def setDimLinePoint(self, pt: PyGe.Point3d, /) -> None:
+    def setDimLinePoint(self, dimension_line_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that specifies where the dimension line will be (that is, this point will be somewhere on
@@ -25503,16 +25503,16 @@ class RotatedDimension(PyDb.Dimension):
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setJogSymbolOn(self, val: bool, /) -> None:
+    def setJogSymbolOn(self, enable_jog_symbol: bool, /) -> None:
         """
         This function sets the jog symbol status. Returns Acad::eOk if successful. Otherwise, it
         returns Acad::eInvalidInput.
         """
-    def setJogSymbolPosition(self, pt: PyGe.Point3d, /) -> None:
+    def setJogSymbolPosition(self, jog_symbol_point: PyGe.Point3d, /) -> None:
         """
         Sets the jog symbol position. Returns Acad::eOk if successful.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, oblique_angle: float, /) -> None:
         """
         This function sets the dimension to use oblique (in radians) as the extension line
         obliquing angle for the dimension. This angle is relative to the
@@ -25528,7 +25528,7 @@ class RotatedDimension(PyDb.Dimension):
         default' which is the same as an obliquing angle of pi / 2 (90 degrees). The obliquing
         angle is used for DXF group code 52. This function always returns Acad::eOk.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, rotation_angle: float, /) -> None:
         """
         This function sets the dimension to use rot (in radians) as the rotation angle. The
         rotation angle is the angle between the dimension's OCS X axis and the axis of the distance
@@ -25536,7 +25536,7 @@ class RotatedDimension(PyDb.Dimension):
         Z axis towards the origin. The rotation angle is used for DXF group code 50. This function
         always returns Acad::eOk.
         """
-    def setXLine1Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine1Point(self, xline1_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that's used as the start point for the first extension line of the dimension. The AutoCAD
@@ -25544,7 +25544,7 @@ class RotatedDimension(PyDb.Dimension):
         point. The first extension line start point is used for DXF group code 13. This function
         always returns Acad::eOk.
         """
-    def setXLine2Point(self, pt: PyGe.Point3d, /) -> None:
+    def setXLine2Point(self, xline2_point: PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the definition point
         that's used as the start point for the second extension line of the dimension. The AutoCAD
