@@ -225,6 +225,7 @@ boost::python::object PyApDocument::getUserData()
 
 PyObject* PyApDocument::getWxWindow()
 {
+    //TODO: that may cause shutdown issues
     PyAutoLockGIL lock;
     static wxDocWin* win = nullptr;//oof
     if (win == nullptr)

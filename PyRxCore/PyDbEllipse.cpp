@@ -194,9 +194,9 @@ boost::python::tuple PyDbEllipse::get() const
     AcGePoint3d center;
     AcGeVector3d unitNormal;
     AcGeVector3d majorAxis;
-    double radiusRatio;
-    double startAngle;
-    double endAngle;
+    double radiusRatio = 0.0;
+    double startAngle = 0.0;
+    double endAngle = 0.0;
     PyThrowBadEs(impObj()->get(center, unitNormal, majorAxis, radiusRatio, startAngle, endAngle));
     return boost::python::make_tuple(center, unitNormal, majorAxis, radiusRatio, startAngle, endAngle);
 }
