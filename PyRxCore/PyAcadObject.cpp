@@ -149,12 +149,12 @@ void makePyAcadHyperlinkWrapper()
     PyDocString DS("AcadHyperlink");
     class_<PyAcadHyperlink>("AcadHyperlink", boost::python::no_init)
         .def("url", &PyAcadHyperlink::url, DS.ARGS())
-        .def("setURL", &PyAcadHyperlink::setURL, DS.ARGS({ "val:str" }))
+        .def("setURL", &PyAcadHyperlink::setURL, DS.ARGS({ "url_val:str" }))
         .def("urlDescription", &PyAcadHyperlink::urlDescription, DS.ARGS())
-        .def("setURLDescription", &PyAcadHyperlink::setURLDescription, DS.ARGS({ "val:str" }))
+        .def("setURLDescription", &PyAcadHyperlink::setURLDescription, DS.ARGS({ "description:str" }))
         .def("clear", &PyAcadHyperlink::clear, DS.ARGS())
         .def("urlNamedLocation", &PyAcadHyperlink::urlNamedLocation, DS.ARGS())
-        .def("setURLNamedLocation", &PyAcadHyperlink::setURLNamedLocation, DS.ARGS({ "val:str" }))
+        .def("setURLNamedLocation", &PyAcadHyperlink::setURLNamedLocation, DS.ARGS({ "named_location:str" }))
         .def("className", &PyAcadHyperlink::className, DS.SARGS()).staticmethod("className")
         ;
 }
