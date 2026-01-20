@@ -5,12 +5,20 @@ from pyrx import Db, Ge
 
 
 class TestDbText:
-    def test_creation(self):
+    def test_creation_1(self):
         """Test basic Text object creation and content setting"""
         t = Db.Text()
         val = "123456"
         t.setTextString(val)
         assert t.textString() == val
+        
+    def test_creation_2(self):
+        """Test basic Text object creation and content setting"""
+        val = "123456"
+        pos = Ge.Point3d(1, 1, 0)
+        t = Db.Text(pos,val)
+        assert t.textString() == val
+        assert t.position() == pos
 
     def test_position(self):
         """Test setting and getting text position"""
