@@ -6210,10 +6210,7 @@ class Curve(PyDb.Entity):
     def cloneFrom(otherObject: PyRx.RxObject, /) -> Curve: ...
     @staticmethod
     def createFromAcGeCurve(
-        curve: PyGe.Curve3d,
-        normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,
-        tol: PyGe.Tol = "default",
-        /,
+        curve: PyGe.Curve3d, normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis, tol: PyGe.Tol = ..., /
     ) -> Curve:
         """
         This is createFromAcGeCurve, a member of class AcDbCurve.
@@ -6283,7 +6280,7 @@ class Curve(PyDb.Entity):
         example, if its first period lies within the existing curve so that it would be a trim
         rather than an extension). The default implementation returns Acad::eNotImplemented.
         """
-    def getAcGeCurve(self, tol: PyGe.Tol = "default", /) -> PyGe.Curve3d:
+    def getAcGeCurve(self, tol: PyGe.Tol = ..., /) -> PyGe.Curve3d:
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
@@ -6683,7 +6680,7 @@ class Curve(PyDb.Entity):
         self,
         curve: PyGe.Curve3d,
         normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,
-        tol: PyGe.Tol = "default",
+        tol: PyGe.Tol = ...,
         /,
     ) -> None:
         """
@@ -6703,7 +6700,7 @@ class Database(PyRx.RxObject):
         created database will not be associated with the current document; otherwise it will.
         """
     def __reduce__(self, /) -> Any: ...
-    def abortDeepClone(self, idmap: PyDb.IdMapping, /) -> None:
+    def abortDeepClone(self, id_map: PyDb.IdMapping, /) -> None:
         """
         Triggers an AcEditor notification that the deepClone operation identified by idMap has been
         aborted. The AcDbIdMapping object will uniquely identify a deepClone operation.
@@ -6721,7 +6718,7 @@ class Database(PyRx.RxObject):
         Adds the reactor object pointed to by pReactor to the reactor list for the database.
         """
     def addToBlock(
-        self, btrid: PyDb.ObjectId, entity: PyDb.Entity | list[PyDb.Entity], /
+        self, btrId: PyDb.ObjectId, entity: PyDb.Entity | list[PyDb.Entity], /
     ) -> ObjectId: ...
     def addToCurrentspace(self, entity: PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
         """
@@ -6949,7 +6946,7 @@ class Database(PyRx.RxObject):
         self,
         ids: list[PyDb.ObjectId],
         owner: PyDb.ObjectId,
-        idmap: PyDb.IdMapping,
+        id_map: PyDb.IdMapping,
         deferXlation: bool = False,
         /,
     ) -> None:
@@ -7357,7 +7354,7 @@ class Database(PyRx.RxObject):
         producttrue is returned if the drawing was saved by an EMR product at least once
         """
     @staticmethod
-    def isObjectNonPersistent(id: ObjectId, /) -> bool:
+    def isObjectNonPersistent(id: PyDb.ObjectId, /) -> bool:
         """
         Returns true if the object denoted by id is non-persistent. Otherwise, returns false.
         """
@@ -7567,7 +7564,7 @@ class Database(PyRx.RxObject):
         following: R14 0 R14.1 1 R14.2 2 etc.
         """
     @staticmethod
-    def markObjectNonPersistent(id: ObjectId, value: bool, /) -> None:
+    def markObjectNonPersistent(id: PyDb.ObjectId, value: bool, /) -> None:
         """
         Marks an object non-persistent or persistent. Objects in the drawing database are
         persistent by default (if they have an owner). This function allows objects to be marked
@@ -8141,65 +8138,67 @@ class Database(PyRx.RxObject):
         Set the desired ANNOALLVISIBLE value for the model space tab. Returns Acad::eOk if
         successful.
         """
-    def setAttdia(self, val: bool, /) -> None:
+    def setAttdia(self, prompt: bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the ATTDIA system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on ATTDIA.
         """
-    def setAttmode(self, val: int, /) -> None:
+    def setAttmode(self, attribute_mode: int, /) -> None:
         """
         Sets mode to be the ATTMODE value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on ATTMODE. Returns Acad::eOk if successful.
         """
-    def setAttreq(self, val: bool, /) -> None:
+    def setAttreq(self, required: bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the ATTREQ system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on ATTREQ.
         """
-    def setAunits(self, val: int, /) -> None:
+    def setAunits(self, angular_units: int, /) -> None:
         """
         Sets aunits to be the AUNITS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on AUNITS. Returns Acad::eOk if successful.
         """
-    def setAuprec(self, val: int, /) -> None:
+    def setAuprec(self, angular_precision: int, /) -> None:
         """
         Sets auprec to be the AUPREC value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on AUPREC. Returns Acad::eOk if successful.
         """
-    def setBlipmode(self, val: bool, /) -> None:
+    def setBlipmode(self, blip_mode: bool, /) -> None:
         """
         Beginning with AutoCAD 2000, the BLIPMODE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on BLIPMODE.
         """
-    def setCDynDisplayMode(self, val: int, /) -> None:
+    def setCDynDisplayMode(self, dynamic_display_mode: int, /) -> None:
         """
         Sets a new value for the CDYNDISPLAYMODE value for the database. It is a drawing variable
         unique across different drawing files. Returns Acad::eOk if successful.
         """
-    def setCameraDisplay(self, val: bool, /) -> None:
+    def setCameraDisplay(self, camera_display: bool, /) -> None:
         """
         Sets the new value of the CAMERADISPLAY sysvar to display or hide cameras. Returns
         Acad::eOk on success.
         """
-    def setCameraHeight(self, val: float, /) -> None:
+    def setCameraHeight(self, camera_height: float, /) -> None:
         """
         Sets the CAMERAHEIGHT system variable. This value is used as the default value for creating
         new cameras. Returns Acad::eOk on success.
         """
-    def setCannoscale(self, val: AnnotationScale, /) -> None:
+    def setCannoscale(self, annotation_scale: AnnotationScale, /) -> None:
         """
         Sets an AcDbAnnotationScale object which will be the CANNOSCALE value for the database when
         model space is current. See the System Variables section of the AutoCAD Command Reference
         for information on CANNOSCALE. This is an AcDbDatabase Header Variable Edit Function.
         Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setCePlotStyleName(self, val: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, /) -> None:
+    def setCePlotStyleName(
+        self, plot_style_type: PyDb.PlotStyleNameType, new_id: PyDb.ObjectId, /
+    ) -> None:
         """
         The possible values for type are shown in the following table: AcDb::kPlotStyleNameByLayer
         Use the plot style name of the layer table record referenced by the entity
@@ -8212,136 +8211,136 @@ class Database(PyRx.RxObject):
         Acad::eInvalidInput if type is not a valid value, or if id is not valid when type is
         AcDb::kPlotStyleNameById.
         """
-    def setCecolor(self, val: PyDb.Color, /) -> None:
+    def setCecolor(self, current_entity_color: PyDb.Color, /) -> None:
         """
         Sets the AutoCAD color index in color to be the CECOLOR value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on CECOLOR.
         Returns Acad::eOk if successful.
         """
-    def setCeltscale(self, val: float, /) -> None:
+    def setCeltscale(self, cell_scale: float, /) -> None:
         """
         Sets scale to be the CELTSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on CELTSCALE. Returns Acad::eOk if
         successful.
         """
-    def setCeltype(self, val: ObjectId, /) -> None:
+    def setCeltype(self, cell_type: PyDb.ObjectId, /) -> None:
         """
         Sets the LinetypeTableRecord with object ID objId to be the CELTYPE value of the database.
         See the System Variables section of the AutoCAD Command Reference for information on
         CELTYPE. Returns Acad::eOk if successful.
         """
-    def setCelweight(self, val: LineWeight, /) -> None:
+    def setCelweight(self, cell_weight: LineWeight, /) -> None:
         """
         Sets weight to be the current lineweight (CELWEIGHT) for the database. See the System
         Variables section of the AutoCAD Command Reference for information on CELWEIGHT. Returns
         Acad::eOk if successful.
         """
-    def setCetransparency(self, val: PyDb.Transparency, /) -> None:
+    def setCetransparency(self, current_entity_transparency: PyDb.Transparency, /) -> None:
         """
         Sets the transparency value for the entity.
         """
-    def setChamfera(self, val: float, /) -> None:
+    def setChamfera(self, chamfer_distance_a: float, /) -> None:
         """
         Sets val to be the CHAMFERA value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERA. Returns Acad::eOk if successful.
         """
-    def setChamferb(self, val: float, /) -> None:
+    def setChamferb(self, chamfer_distance_b: float, /) -> None:
         """
         Sets val to be the CHAMFERB value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERB. Returns Acad::eOk if successful.
         """
-    def setChamferc(self, val: float, /) -> None:
+    def setChamferc(self, chamfer_distance_c: float, /) -> None:
         """
         Sets val to be the CHAMFERC value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERC. Returns Acad::eOk if successful.
         """
-    def setChamferd(self, val: float, /) -> None:
+    def setChamferd(self, chamfer_distance_d: float, /) -> None:
         """
         Sets val to be the CHAMFERD value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CHAMFERD. Returns Acad::eOk if successful.
         """
-    def setClayer(self, val: ObjectId, /) -> None:
+    def setClayer(self, current_layer: PyDb.ObjectId, /) -> None:
         """
         Sets the LayerTableRecord with object ID objId to be the CLAYER value of the database. See
         the System Variables section of the AutoCAD Command Reference for information on CLAYER.
         Returns Acad::eOk if successful.
         """
-    def setCmaterial(self, val: ObjectId, /) -> None:
+    def setCmaterial(self, current_material: PyDb.ObjectId, /) -> None:
         """
         This function sets the current material and provides a default material for new entities.
         The specified Id must correspond to a valid AcDbMaterial object. Returns Acad::eOk if
         successful.
         """
-    def setCmljust(self, val: int, /) -> None:
+    def setCmljust(self, multiline_justify: int, /) -> None:
         """
         Sets just to be the CMLJUST value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on CMLJUST. Returns Acad::eOk if successful.
         """
-    def setCmlscale(self, val: float, /) -> None:
+    def setCmlscale(self, multiline_scale: float, /) -> None:
         """
         Sets scale to be the CMLSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on CMLSCALE. Returns Acad::eOk if successful.
         """
-    def setCmlstyleID(self, val: ObjectId, /) -> None:
+    def setCmlstyleID(self, multiline_style_id: PyDb.ObjectId, /) -> None:
         """
         Sets the MlineStyle with object ID objId to be the CMLSTYLEID value of the database. See
         the System Variables section of the AutoCAD Command Reference for information on
         CMLSTYLEID. Returns Acad::eOk if successful.
         """
-    def setCoords(self, val: int, /) -> None:
+    def setCoords(self, coordinates_display: int, /) -> None:
         """
         Beginning with AutoCAD 2000, the COORDS system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on COORDS.
         """
-    def setCshadow(self, val: int, /) -> None:
+    def setCshadow(self, current_shadow: int, /) -> None:
         """
         Sets the value of the CSHADOW system variable. Returns Acad::eOk if successful. If val is
         outside of the valid range, returns Acad::eInvalidInput.
         """
-    def setDelUsedObj(self, val: int, /) -> None:
+    def setDelUsedObj(self, delete_unused_objects: int, /) -> None:
         """
         Beginning with AutoCAD 2000, the DELOBJ system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on DELOBJ.
         """
-    def setDgnframe(self, val: int, /) -> None:
+    def setDgnframe(self, design_frame: int, /) -> None:
         """
         Reserved for future use.
         """
-    def setDimAssoc(self, val: int, /) -> None:
+    def setDimAssoc(self, dimension_associativity: int, /) -> None:
         """
         Sets the database's DIMASSOC system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on DIMASSOC. Returns Acad::eOk if successful.
         """
-    def setDimaso(self, val: bool, /) -> None:
+    def setDimaso(self, dim_associative: bool, /) -> None:
         """
         Sets v to be the DIMASO value for the database. The value of false is 0. The value of true
         is 1. See the System Variables section of the AutoCAD Command Reference for information on
         DIMASO. Returns Acad::eOk if successful.
         """
-    def setDimfit(self, val: int, /) -> None:
+    def setDimfit(self, dimension_fit: int, /) -> None:
         """
         Sets the database values of DIMATFIT and DIMTMOVE according the Release 14 variable DIMFIT
         value of fit. See the System Variables section of the AutoCAD Command Reference for
         information on DIMATFIT and DIMTMOVE. Returns Acad::eOk if successful. This method is
         deprecated and may be removed in a future release.
         """
-    def setDimsho(self, val: bool, /) -> None:
+    def setDimsho(self, dim_show_origin: bool, /) -> None:
         """
         Sets sho to be the DIMSHO value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on DIMSHO. Returns Acad::eOk if successful.
         """
-    def setDimstyle(self, val: ObjectId, /) -> None:
+    def setDimstyle(self, dimension_style: PyDb.ObjectId, /) -> None:
         """
         Sets the AcDbDimStyleTableRecord with object ID styleId to be the DIMSTYLE value for the
         database. See the System Variables section of the AutoCAD Command Reference for information
         on DIMSTYLE. Returns Acad::eOk if successful.
         """
-    def setDimstyleData(self, val: PyDb.DimStyleTableRecord | PyDb.ObjectId, /) -> None:
+    def setDimstyleData(self, dim_style_data: PyDb.DimStyleTableRecord | PyDb.ObjectId, /) -> None:
         """
         This function copies the dimension variable information in the DimStyleTableRecord
         identified by id into the database on which this method is called, making those dimension
@@ -8349,33 +8348,33 @@ class Database(PyRx.RxObject):
         not have to reside in the database on which this method is called. Returns Acad::eOk if
         operation is successful.
         """
-    def setDimunit(self, val: int, /) -> None:
+    def setDimunit(self, dimension_units: int, /) -> None:
         """
         Sets the database values of DIMLUNIT and DIMFRAC according the Release 14 variable DIMUNIT
         value of unit. See the System Variables section of the AutoCAD Command Reference for
         information on DIMLUNIT and DIMFRAC. Returns Acad::eOk if successful. This method is
         deprecated and may be removed in a future release.
         """
-    def setDispSilh(self, val: bool, /) -> None:
+    def setDispSilh(self, display_silhouette: bool, /) -> None:
         """
         Sets silh to be the DISPSILH value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on DISPSILH. Returns Acad::eOk if successful.
         """
-    def setDragVisStyle(self, val: ObjectId, /) -> None:
+    def setDragVisStyle(self, drag_visual_style: PyDb.ObjectId, /) -> None:
         """
         Sets the visual style for to be used while creating 3D solid primitives and extruded solids
         and surfaces defined by the DRAGVS system variable. See the System Variables section of the
         AutoCAD Command Reference for information on DRAGVS.
         """
-    def setDragmode(self, val: int, /) -> None:
+    def setDragmode(self, drag_mode: int, /) -> None:
         """
         Beginning with AutoCAD 2000, the DRAGMODE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on DRAGMODE.
         """
-    def setDrawOrderCtl(self, val: int, /) -> None:
+    def setDrawOrderCtl(self, draw_order_control: int, /) -> None:
         """
         Sets the value of the DRAWORDERCTL system variable, which enables users to revert to legacy
         draw order mode if required. This system variable is per drawing in order to be consistent
@@ -8390,46 +8389,46 @@ class Database(PyRx.RxObject):
         outside of the 0-3 range is passed into setDrawOrderCtl(), it will return eInvalidInput.
         Otherwise, it will return eOk.
         """
-    def setDwfframe(self, val: int, /) -> None:
+    def setDwfframe(self, dwf_frame: int, /) -> None:
         """
         Sets the DWFFRAME value for the database. See the System Variables section of the AutoCAD
         Command Reference for information on DWFFRAME. Returns Acad::eOk if successful.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, elevation_value: float, /) -> None:
         """
         Sets elev to be the Model Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION. Returns Acad::eOk if
         successful.
         """
-    def setEndCaps(self, val: EndCaps, /) -> None:
+    def setEndCaps(self, end_caps_type: EndCaps, /) -> None:
         """
         Sets the database's endCaps header variable to type. Possible values for type are
         AcDb::kEndCapNone, AcDb::kEndCapRound, AcDb::kEndCapAngle, or AcDb::kEndCapSquare. Returns
         Acad::eOk if successful.
         """
-    def setExtmax(self, val: PyGe.Point3d, /) -> None:
+    def setExtmax(self, extents_maximum: PyGe.Point3d, /) -> None:
         """
         Sets max to the EXTMAX value of the current model space for this database. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMAX.
         """
-    def setExtmin(self, val: PyGe.Point3d, /) -> None:
+    def setExtmin(self, extents_minimum: PyGe.Point3d, /) -> None:
         """
         Sets min to be the EXTMIN value for the current model space of this database. See the
         system variables documentation in the AutoCAD Command Reference for information on EXTMIN.
         """
-    def setFacetres(self, val: float, /) -> None:
+    def setFacetres(self, facet_resolution: float, /) -> None:
         """
         Sets facetres to be the FACETRES value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on FACETRES. Returns Acad::eOk if
         successful.
         """
-    def setFilletrad(self, val: float, /) -> None:
+    def setFilletrad(self, fillet_radius: float, /) -> None:
         """
         Sets radius to be the FILLETRAD value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on FILLETRAD. Returns Acad::eOk if
         successful.
         """
-    def setFillmode(self, val: bool, /) -> None:
+    def setFillmode(self, fill_mode: bool, /) -> None:
         """
         Sets mode to be the FILLMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
@@ -8445,389 +8444,397 @@ class Database(PyRx.RxObject):
         This function sets a non-persistent flag in the AcDbDatabase so that the next save will be
         a full save. The flag is cleared when that save takes place.
         """
-    def setGeoMarkerVisibility(self, val: bool, /) -> None:
+    def setGeoMarkerVisibility(self, geometric_marker_visibility: bool, /) -> None:
         """
         This function set the visible state for a GeoMarker object
         """
-    def setHaloGap(self, val: int, /) -> None:
+    def setHaloGap(self, halo_gap: int, /) -> None:
         """
         Sets the database's HALOGAP system variable to val. See the System Variables section of the
         AutoCAD Command Reference for information on HALOGAP. Returns Acad::eOk if successful.
         """
-    def setHandseed(self, val: Handle, /) -> None:
+    def setHandseed(self, handshake_seed: Handle, /) -> None:
         """
         Sets the database to use handle as the next available handle for new objects added to the
         database. WarningThis function must be used only with extreme caution. If the handle value
         passed in is lower than handles already in use by the database, serious problems could
         occur. Returns Acad::eOk if successful.
         """
-    def setHideText(self, val: int, /) -> None:
+    def setHideText(self, hide_text: int, /) -> None:
         """
         Sets the database's HIDETEXT system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on HIDETEXT. Returns Acad::eOk if successful.
         """
-    def setHpInherit(self, val: bool, /) -> None:
+    def setHpInherit(self, hatch_pattern_inherit: bool, /) -> None:
         """
         Sets inherit to be the HPINHERIT value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on HPINHERIT. Returns Acad::eOk if
         successful.
         """
-    def setHpOrigin(self, val: PyGe.Point2d, /) -> None:
+    def setHpOrigin(self, hatch_pattern_origin: PyGe.Point2d, /) -> None:
         """
         Sets origin to be the HPORIGIN value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on HPORIGIN. Returns Acad::eOk if successful.
         """
-    def setHyperlinkBase(self, val: str, /) -> None:
+    def setHyperlinkBase(self, hyperlink_base_path: str, /) -> None:
         """
         Sets the database to use a copy of path as the new value for the HYPERLINKBASE header
         variable. See the system variables documentation in the AutoCAD Command Reference for
         information on HYPERLINKBASE. Returns Acad::eOk if successful.
         """
-    def setIndexctl(self, val: int, /) -> None:
+    def setIndexctl(self, index_control: int, /) -> None:
         """
         Sets the value of the INDEXCTL header variable. Returns Acad::eOk if successful.
         """
-    def setInsbase(self, val: PyGe.Point3d, /) -> None:
+    def setInsbase(self, insertion_base_point: PyGe.Point3d, /) -> None:
         """
         Sets base (in WCS coordinates) to be the Model Space INSBASE value for the database. See
         the System Variables section of the AutoCAD Command Reference for information on INSBASE.
         Returns Acad::eOk if successful.
         """
-    def setInsunits(self, val: UnitsValue, /) -> None:
+    def setInsunits(self, insertion_units: UnitsValue, /) -> None:
         """
         Sets the INSUNITS variable for the database.
         """
-    def setInterfereColor(self, val: PyDb.Color, /) -> None:
+    def setInterfereColor(self, interference_color: PyDb.Color, /) -> None:
         """
         Sets the database's INTERFERECOLOR system variable to val. See the System Variables section
         of the AutoCAD Command Reference for information on INTERFERECOLOR.
         """
-    def setInterfereObjVisStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setInterfereObjVisStyle(
+        self, interference_object_visibility_style: PyDb.ObjectId, /
+    ) -> None:
         """
         Sets the database's INTERFEREOBJVS system variable to the visual style pointed to byid. See
         the System Variables section of the AutoCAD Command Reference for information on
         INTERFEREOBJVS.
         """
-    def setInterfereVpVisStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setInterfereVpVisStyle(
+        self, interference_viewport_visibility_style: PyDb.ObjectId, /
+    ) -> None:
         """
         Sets the database's INTERFEREVPVS system variable to the visual style pointed to by id. See
         the System Variables section of the AutoCAD Command Reference for information on
         INTERFEREVPVS.
         """
-    def setIntersectColor(self, val: int, /) -> None:
+    def setIntersectColor(self, intersection_color: int, /) -> None:
         """
         Sets the database's INTERSECTIONCOLOR system variable to val. See the System Variables
         section of the AutoCAD Command Reference for information on INTERSECTIONCOLOR.
         """
-    def setIntersectDisplay(self, val: int, /) -> None:
+    def setIntersectDisplay(self, intersection_display: int, /) -> None:
         """
         Sets the database's INTERSECTIONDISPLAY system variable to val. See the System Variables
         section of the AutoCAD Command Reference for information on INTERSECTIONDISPLAY.
         """
-    def setIsolines(self, val: int, /) -> None:
+    def setIsolines(self, isolines_count: int, /) -> None:
         """
         Sets isolines to be the ISOLINES value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on ISOLINES. Returns Acad::eOk if
         successful.
         """
-    def setJoinStyle(self, val: JoinStyle, /) -> None:
+    def setJoinStyle(self, join_style: JoinStyle, /) -> None:
         """
         Sets style to be the new value for the database's joinstyle header variable. style may be
         one of the following values: AcDb::kJnStylNone, AcDb::kJnStylRound, AcDb::kJnStylAngle,
         AcDb::kJnStylFlat. Returns Acad::eOk if successful.
         """
-    def setLatitude(self, val: float, /) -> None:
+    def setLatitude(self, latitude_value: float, /) -> None:
         """
         Sets the latitude of the site where the drawing model is located. Returns Acad::eOk if a
         valid value is passed in; Acad::eOutOfRange otherwise. The drawing latitude, longitude, and
         north direction are used by the Sun, along with the Sun's date and time, to calculate the
         correct angle for sunlight.
         """
-    def setLayerEval(self, val: int, /) -> None:
+    def setLayerEval(self, layer_evaluation: int, /) -> None:
         """
         Sets the value of the LAYEREVAL header variable. Returns Acad::eOk if successful.
         """
-    def setLayerNotify(self, val: int, /) -> None:
+    def setLayerNotify(self, layer_notification: int, /) -> None:
         """
         Sets the value of the LAYERNOTIFY header variable. Returns Acad::eOk if successful.
         """
-    def setLensLength(self, val: float, /) -> None:
+    def setLensLength(self, lens_length: float, /) -> None:
         """
         Sets the LENSLENGTH system variable. Returns Acad::eOk on success.
         """
-    def setLightGlyphDisplay(self, val: int, /) -> None:
+    def setLightGlyphDisplay(self, light_glyph_display: int, /) -> None:
         """
         Set whether light objects are displayed in the viewport. Returns Acad::eOk if 0 or 1 is
         passed in, Acad::eOutOfRange otherwise.
         """
-    def setLightingUnits(self, val: int, /) -> None:
+    def setLightingUnits(self, lighting_units: int, /) -> None:
         """
         Sets the lighting units for the drawing, where 0 = Generic, 1 = International, and 2 =
         American. The default setting is 0. Returns Acad::eOk if a valid lighting units value is
         passed in.
         """
-    def setLightsInBlocks(self, val: bool, /) -> None:
+    def setLightsInBlocks(self, lights_in_blocks: bool, /) -> None:
         """
         Specify whether all lights in blocks are ignored and do not contribute lighting to the
         scene. The default setting is true. Returns Acad::eOk on success.
         """
-    def setLimcheck(self, val: bool, /) -> None:
+    def setLimcheck(self, limit_check: bool, /) -> None:
         """
         Specify whether all lights in blocks are ignored and do not contribute lighting to the
         scene. The default setting is true. Returns Acad::eOk on success.
         """
-    def setLimmax(self, val: PyGe.Point2d, /) -> None:
+    def setLimmax(self, limit_maximum: PyGe.Point2d, /) -> None:
         """
         Sets max (in WCS coordinates) to be the Model Space LIMMAX value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMAX.
         Returns Acad::eOk if successful.
         """
-    def setLimmin(self, val: PyGe.Point2d, /) -> None:
+    def setLimmin(self, limit_minimum: PyGe.Point2d, /) -> None:
         """
         Sets min (in WCS coordinates) to be the Model Space LIMMIN value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMIN.
         Returns Acad::eOk if successful.
         """
-    def setLineWeightDisplay(self, val: bool, /) -> None:
+    def setLineWeightDisplay(self, line_weight_display: bool, /) -> None:
         """
         Sets display to be the current lineweight display (LWDISPLAY) for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LWDISPLAY.
         Returns Acad::eOk if successful.
         """
-    def setLoftAng1(self, val: float, /) -> None:
+    def setLoftAng1(self, loft_angle_1: float, /) -> None:
         """
         Sets ang1 to be the LOFTANG1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTANG1. Returns Acad::eOk if successful.
         """
-    def setLoftAng2(self, val: float, /) -> None:
+    def setLoftAng2(self, loft_angle_2: float, /) -> None:
         """
         Sets ang2 to be the LOFTANG2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTANG2. Returns Acad::eOk if successful.
         """
-    def setLoftMag1(self, val: float, /) -> None:
+    def setLoftMag1(self, loft_magnitude_1: float, /) -> None:
         """
         Sets mag1 to be the LOFTMAG1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTMAG1. Returns Acad::eOk if successful.
         """
-    def setLoftMag2(self, val: float, /) -> None:
+    def setLoftMag2(self, loft_magnitude_2: float, /) -> None:
         """
         Sets mag2 to be the LOFTMAG2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTMAG2. Returns Acad::eOk if successful.
         """
-    def setLoftNormals(self, val: int, /) -> None:
+    def setLoftNormals(self, loft_normals: int, /) -> None:
         """
         Sets value to be the LOFTNORMALS value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on LOFTNORMALS. Returns Acad::eOk if
         successful.
         """
-    def setLoftParam(self, flags: int, /) -> None:
+    def setLoftParam(self, loft_parameters: int, /) -> None:
         """
         Sets flags to be the LOFTPARAM value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LOFTPARAM. Returns Acad::eOk if
         successful.
         """
-    def setLongitude(self, val: float, /) -> None:
+    def setLongitude(self, longitude_value: float, /) -> None:
         """
         Sets the longitude of the site where the drawing model is located. Returns Acad::eOk if a
         valid value is passed in; Acad::eOutOfRange otherwise. The drawing latitude, longitude, and
         north direction are used by the Sun, along with the Sun's date and time, to calculate the
         correct angle for sunlight.
         """
-    def setLtscale(self, val: float, /) -> None:
+    def setLtscale(self, line_type_scale: float, /) -> None:
         """
         Sets scale to be the LTSCALE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LTSCALE. Returns Acad::eOk if successful.
         """
-    def setLunits(self, val: int, /) -> None:
+    def setLunits(self, linear_units: int, /) -> None:
         """
         Sets lunits to be the LUNITS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on LUNITS. Returns Acad::eOk if successful.
         """
-    def setLuprec(self, val: int, /) -> None:
+    def setLuprec(self, linear_precision: int, /) -> None:
         """
         Sets prec to be the LUPREC value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on LUPREC. Returns Acad::eOk if successful.
         """
-    def setMLeaderscale(self, val: float, /) -> None:
+    def setMLeaderscale(self, mleader_scale: float, /) -> None:
         """
         Sets the MLeader scale value. Returns Acad::eOk if successful.
         """
-    def setMLeaderstyle(self, val: ObjectId, /) -> None:
+    def setMLeaderstyle(self, mleader_style: PyDb.ObjectId, /) -> None:
         """
         Sets the style of this MLeader object. Returns Acad::eOk if successful; otherwise, returns
         an AutoCAD error status.
         """
-    def setMaxactvp(self, val: int, /) -> None:
+    def setMaxactvp(self, max_active_viewports: int, /) -> None:
         """
         Sets max to be the MAXACTVP value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on MAXACTVP. Returns Acad::eOk if successful.
         """
-    def setMeasurement(self, val: MeasurementValue, /) -> None:
+    def setMeasurement(self, measurement_system: MeasurementValue, /) -> None:
         """
         Sets the current MEASUREMENT value for the database. type must be one of the
         AcDb::MeasurementValue enumeration values (kEnglish or kMetric). See the System Variables
         section of the AutoCAD Command Reference for information on MEASUREMENT.
         """
-    def setMirrtext(self, val: bool, /) -> None:
+    def setMirrtext(self, mirror_text: bool, /) -> None:
         """
         Sets mirror to be the MIRRTEXT value for the database. The value of false is 0. The value
         of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on MIRRTEXT. Returns Acad::eOk if successful.
         """
-    def setMsOleScale(self, val: float, /) -> None:
+    def setMsOleScale(self, model_space_ole_scale: float, /) -> None:
         """
         Sets the value of the MSOLESCALE header variable. Returns Acad::eOk if successful.
         """
-    def setMsltscale(self, val: bool, /) -> None:
+    def setMsltscale(self, model_space_line_type_scale: bool, /) -> None:
         """
         Sets the MSLTSCALE variable. Returns Acad::eOk if successful.
         """
-    def setNorthDirection(self, val: float, /) -> None:
+    def setNorthDirection(self, north_direction: float, /) -> None:
         """
         Sets the angle representing a direction towards North, based on the orientation of the
         drawing model in the WCS. Returns Acad::eOk if successful. The drawing latitude, longitude,
         and north direction are used by the Sun, along with the Sun's date and time, to calculate
         the correct angle for sunlight.
         """
-    def setObscuredColor(self, val: int, /) -> None:
+    def setObscuredColor(self, obscured_color: int, /) -> None:
         """
         Sets database's OBSCUREDCOLOR system variable to val. See the System Variables section of
         the AutoCAD Command Reference for information on OBSCUREDCOLOR. Returns Acad::eOk if
         successful.
         """
-    def setObscuredLineType(self, val: int, /) -> None:
+    def setObscuredLineType(self, obscured_line_type: int, /) -> None:
         """
         Sets database's OBSCUREDLINETYPE system variable to val. See the System Variables section
         of the AutoCAD Command Reference for information on OBSCUREDLINETYPE. Returns Acad::eOk if
         successful.
         """
-    def setOleStartUp(self, val: bool, /) -> None:
+    def setOleStartUp(self, ole_startup: bool, /) -> None:
         """
         Sets the database to use val as the new OLESTARTUP value. See the system variables
         documentation in the AutoCAD Command Reference for information on OLESTARTUP.Returns
         Acad::eOk if successful.
         """
-    def setOrthomode(self, val: bool, /) -> None:
+    def setOrthomode(self, orthographic_mode: bool, /) -> None:
         """
         Sets mode to be the ORTHOMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on ORTHMODE. Returns Acad::eOk if successful.
         """
-    def setPdfframe(self, val: int, /) -> None:
+    def setPdfframe(self, pdf_frame: int, /) -> None:
         """
         Sets the PDFFRAME header variable which controls visibility of frames from PDF Underlays.
         """
-    def setPdmode(self, val: int, /) -> None:
+    def setPdmode(self, point_display_mode: int, /) -> None:
         """
         Sets mode to be the current PDMODE value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on PDMODE. Returns Acad::eOk if
         successful.
         """
-    def setPdsize(self, val: float, /) -> None:
+    def setPdsize(self, point_size: float, /) -> None:
         """
         Sets size to be the PDSIZE value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on PDSIZE. Returns Acad::eOk if successful.
         """
-    def setPelevation(self, val: float, /) -> None:
+    def setPelevation(self, perspective_elevation: float, /) -> None:
         """
         Sets elev to be the Paper Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION. Returns Acad::eOk if
         successful.
         """
-    def setPextmax(self, val: PyGe.Point3d, /) -> None:
+    def setPextmax(self, paper_extents_max: PyGe.Point3d, /) -> None:
         """
         Sets the EXTMAX value of this database's current paper space to max. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMAX.
         """
-    def setPextmin(self, val: PyGe.Point3d, /) -> None:
+    def setPextmin(self, paper_extents_min: PyGe.Point3d, /) -> None:
         """
         Sets the EXTMIN value of this database's current paper space to min. See the system
         variables documentation in the AutoCAD Command Reference for information on EXTMIN.
         """
-    def setPickstyle(self, val: int, /) -> None:
+    def setPickstyle(self, pick_style: int, /) -> None:
         """
         Beginning with AutoCAD 2000, the PICKSTYLE system variable value is no longer saved in the
         database. This function always returns Acad::eNotApplicable. To set this system variable
         for an AutoCAD session, please use the acedSetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on PICKSTYLE.
         """
-    def setPinsbase(self, val: PyGe.Point3d, /) -> None:
+    def setPinsbase(self, paper_insertion_base: PyGe.Point3d, /) -> None:
         """
         Sets base to be the Paper Space INSBASE value for the database. The point is in WCS
         coordinates. See the System Variables section of the AutoCAD Command Reference for
         information on INSBASE. Returns Acad::eOk if successful.
         """
-    def setPlimcheck(self, val: bool, /) -> None:
+    def setPlimcheck(self, paper_limits_check: bool, /) -> None:
         """
         Sets check to be the Paper Space LIMCHECK value for the database. The value of false is 0.
         The value of true is 1. See the System Variables section of the AutoCAD Command Reference
         for information on LIMCHECK. Returns Acad::eOk if successful.
         """
-    def setPlimmax(self, val: PyGe.Point2d, /) -> None:
+    def setPlimmax(self, paper_limits_max: PyGe.Point2d, /) -> None:
         """
         Sets max (in WCS coordinates) to be the Paper Space LIMMAX value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMAX.
         Returns Acad::eOk if successful.
         """
-    def setPlimmin(self, val: PyGe.Point2d, /) -> None:
+    def setPlimmin(self, paper_limits_min: PyGe.Point2d, /) -> None:
         """
         Sets min (in WCS coordinates) to be the Paper Space LIMMIN value for the database. See the
         System Variables section of the AutoCAD Command Reference for information on LIMMIN.
         Returns Acad::eOk if successful.
         """
-    def setPlineEllipse(self, val: bool, /) -> None:
+    def setPlineEllipse(self, polyline_ellipse: bool, /) -> None:
         """
         Sets pline to be the PELLIPSE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PELLIPSE. Returns Acad::eOk if successful.
         """
-    def setPlinegen(self, val: bool, /) -> None:
+    def setPlinegen(self, polyline_generation: bool, /) -> None:
         """
         Sets pline to be the PELLIPSE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PELLIPSE. Returns Acad::eOk if successful.
         """
-    def setPlinewid(self, val: float, /) -> None:
+    def setPlinewid(self, polyline_width: float, /) -> None:
         """
         Sets width to be the PLINEWID value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on PLINEWID. Returns Acad::eOk if successful.
         """
-    def setPreviewType(self, val: int, /) -> None:
+    def setPreviewType(self, preview_type: int, /) -> None:
         """
         Sets the value of the preview type. Returns Acad::eOk if successful.
         """
-    def setProjectName(self, val: str, /) -> None:
+    def setProjectName(self, project_name: str, /) -> None:
         """
         Sets the database to use a copy of the string pointed to by pName as the new PROJECTNAME
         header variable value. See the system variables documentation in the AutoCAD Command
         Reference for information on PROJECTNAME. Returns Acad::eOk if successful.
         """
-    def setPsltscale(self, val: bool, /) -> None:
+    def setPsltscale(self, plot_style_scale: bool, /) -> None:
         """
         Sets scale to be the PSLTSCALE value for the database. The value of false is 0. The value
         of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on PSLTSCALE. Returns Acad::eOk if successful.
         """
-    def setPsolHeight(self, val: float, /) -> None:
+    def setPsolHeight(self, perspective_solid_height: float, /) -> None:
         """
         Sets height to be the PSOLHEIGHT value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on PSOLHEIGHT. Returns Acad::eOk if
         successful.
         """
-    def setPsolWidth(self, val: float, /) -> None:
+    def setPsolWidth(self, perspective_solid_width: float, /) -> None:
         """
         Sets width to be the PSOLWIDTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on PSOLWIDTH. Returns Acad::eOk if
         successful.
         """
     def setPucs(
-        self, ucsOrigin: PyGe.Point3d, ucsXDir: PyGe.Vector3d, ucsYDir: PyGe.Vector3d, /
+        self,
+        ucs_origin: PyGe.Point3d,
+        ucs_x_direction: PyGe.Vector3d,
+        ucs_y_direction: PyGe.Vector3d,
+        /,
     ) -> None:
         """
         This method sets the Paper Space UCS to the UCS defined by ucsOrigin, ucsXDir, and ucsYDir.
         The pucsorg(), pucsxdir(), and pucsydir() are the query functions for this UCS.
         """
-    def setPucsBase(self, ucsid: ObjectId, /) -> None:
+    def setPucsBase(self, ucs_id: PyDb.ObjectId, /) -> None:
         """
         Sets the database to use the AcDbUcsTableRecord associated with ucsid to define the origin
         and orientation of orthographic UCS settings for the database's current paper space. The
@@ -8835,184 +8842,184 @@ class Database(PyRx.RxObject):
         variables documentation in the AutoCAD Command Reference for information on PUCSNAME.
         Returns Acad::eOk if successful.
         """
-    def setPucsname(self, ucsrec: ObjectId, /) -> None:
+    def setPucsname(self, ucs_record: PyDb.ObjectId, /) -> None:
         """
         This method sets the Paper Space UCS to the AcDbUCSTableRecord whose ObjectId is ucsRecId.
         This is the Paper Space value of UCSNAME. See the System Variables section of the AutoCAD
         Command Reference for information on UCSNAME.
         """
-    def setQtextmode(self, mode: bool, /) -> None:
+    def setQtextmode(self, quick_text_mode: bool, /) -> None:
         """
         Sets mode to be the QTEXTMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE. Returns Acad::eOk if successful.
         """
-    def setRealWorldScale(self, realWorldScale: float, /) -> None:
+    def setRealWorldScale(self, real_world_scale: float, /) -> None:
         """
         Reserved for future use.
         """
-    def setRegenmode(self, mode: bool, /) -> None:
+    def setRegenmode(self, regeneration_mode: bool, /) -> None:
         """
         Sets mode to be the current REGENMODE value for the database. The value of false is 0. The
         value of true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on REGENMODE. Returns Acad::eOk if successful.
         """
-    def setRetainOriginalThumbnailBitmap(self, retain: bool, /) -> None:
+    def setRetainOriginalThumbnailBitmap(self, retain_original_thumbnail: bool, /) -> None:
         """
         This function will set the database to use retain as the flag indicating whether or not to
         retain the existing thumbnail bitmap during saves.
         """
-    def setSaveproxygraphics(self, val: int, /) -> None:
+    def setSaveproxygraphics(self, save_proxy_graphics: int, /) -> None:
         """
         Sets saveimg to be the PROXYGRAPHICS value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on PROXYGRAPHICS. Returns
         Acad::eOk if successful.
         """
-    def setSectionViewStyle(self, val: ObjectId, /) -> None:
+    def setSectionViewStyle(self, section_view_style: PyDb.ObjectId, /) -> None:
         """
         This method sets the current section view style using the given Object ID for an
         AcDbSectionViewStyle object.
         """
-    def setShadedge(self, val: int, /) -> None:
+    def setShadedge(self, shadow_edge: int, /) -> None:
         """
         Sets mode to be the SHADEDGE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SHADEDGE. Returns Acad::eOk if successful.
         """
-    def setShadedif(self, val: int, /) -> None:
+    def setShadedif(self, shading_differential: int, /) -> None:
         """
         Sets dif to be the SHADEDIF value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SHADEDIF. Returns Acad::eOk if successful.
         """
-    def setShadowPlaneLocation(self, val: float, /) -> None:
+    def setShadowPlaneLocation(self, shadow_plane_location: float, /) -> None:
         """
         Sets the current ground plane z position in world coordinates. The ground plane is always
         parallel to the X-Y world plane and this is the distance either above or below the X-Y
         plane.
         """
-    def setShowHist(self, val: int, /) -> None:
+    def setShowHist(self, show_history: int, /) -> None:
         """
         Sets val to be the SHOWHIST value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SHOWHIST. Returns Acad::eOk if successful.
         """
-    def setSketchinc(self, val: float, /) -> None:
+    def setSketchinc(self, sketch_increment: float, /) -> None:
         """
         Sets inc to be the SKETCHINC value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SKETCHINC. Returns Acad::eOk if
         successful.
         """
-    def setSkpoly(self, val: bool, /) -> None:
+    def setSkpoly(self, sketch_polygon: bool, /) -> None:
         """
         Sets asPoly to be the SKPOLY value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on SKPOLY. Returns Acad::eOk if successful.
         """
-    def setSolidHist(self, val: int, /) -> None:
+    def setSolidHist(self, solid_history: int, /) -> None:
         """
         Sets val to be the SOLIDHIST value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SOLIDHIST. Returns Acad::eOk if
         successful.
         """
-    def setSortEnts(self, val: int, /) -> None:
+    def setSortEnts(self, sort_entities: int, /) -> None:
         """
         Sets the database's SORTENTS system variable to the value of sortEnts.
         """
-    def setSplframe(self, val: bool, /) -> None:
+    def setSplframe(self, spline_frame: bool, /) -> None:
         """
         Sets disp to be the SPLFRAME value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on SPLFRAME. Returns Acad::eOk if successful.
         """
-    def setSplinesegs(self, val: int, /) -> None:
+    def setSplinesegs(self, spline_segments: int, /) -> None:
         """
         Sets segs to be the SPLINESEGS value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SPLINESEGS. Returns Acad::eOk if
         successful.
         """
-    def setSplinetype(self, val: int, /) -> None:
+    def setSplinetype(self, spline_type: int, /) -> None:
         """
         Sets type to be the SPLINETYPE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SPLINETYPE. Returns Acad::eOk if
         successful.
         """
-    def setStepSize(self, val: float, /) -> None:
+    def setStepSize(self, step_size: float, /) -> None:
         """
         Sets stepSize to be the STEPSIZE value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on STEPSIZE. Returns Acad::eOk if
         successful.
         """
-    def setStepsPerSec(self, val: float, /) -> None:
+    def setStepsPerSec(self, steps_per_second: float, /) -> None:
         """
         Sets stepsPerSec to be the STEPSPERSEC value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on STEPSPERSEC. Returns Acad::eOk
         if successful.
         """
-    def setStyleSheet(self, val: str, /) -> None:
+    def setStyleSheet(self, style_sheet: str, /) -> None:
         """
         Sets the database to use a copy of the string pointed to by pName as the plot style sheet
         for the database. Returns Acad::eOk if successful.
         """
-    def setSurftab1(self, val: int, /) -> None:
+    def setSurftab1(self, surface_density_u: int, /) -> None:
         """
         Sets tab1 to be the SURFTAB1 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SURFTAB1. Returns Acad::eOk if successful.
         """
-    def setSurftab2(self, val: int, /) -> None:
+    def setSurftab2(self, surface_density_v: int, /) -> None:
         """
         Sets tab2 to be the SURFTAB2 value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on SURFTAB2. Returns Acad::eOk if successful.
         """
-    def setSurftype(self, val: int, /) -> None:
+    def setSurftype(self, surface_type: int, /) -> None:
         """
         Sets type to be the current SURFTYPE value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on SURFTYPE. Returns Acad::eOk if
         successful.
         """
-    def setSurfu(self, val: int, /) -> None:
+    def setSurfu(self, surface_u_resolution: int, /) -> None:
         """
         Sets u to be the SURFU value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SURFU. Returns Acad::eOk if successful.
         """
-    def setSurfv(self, val: int, /) -> None:
+    def setSurfv(self, surface_v_resolution: int, /) -> None:
         """
         Sets v to be the SURFV value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on SURFV. Returns Acad::eOk if successful.
         """
-    def setTStackAlign(self, val: int, /) -> None:
+    def setTStackAlign(self, text_stack_alignment: int, /) -> None:
         """
         Sets the database to use val as its TSTACKALIGN value. See the system variables
         documentation in the AutoCAD Command Reference for information on TSTACKALIGN. Returns
         Acad::eOk if successful.
         """
-    def setTStackSize(self, val: int, /) -> None:
+    def setTStackSize(self, text_stack_size: int, /) -> None:
         """
         Sets the database to use val as its TSTACKSIZE value. See the system variables
         documentation in the AutoCAD Command Reference for information on TSTACKSIZE . Returns
         Acad::eOk if successful.
         """
-    def setTablestyle(self, val: ObjectId, /) -> None:
+    def setTablestyle(self, table_style: PyDb.ObjectId, /) -> None:
         """
         Sets the object ID of the table style specified by the current CTABLESTYLE value of the
         database. See the System Variables section of the AutoCAD Command Reference for information
         on CTABLESTYLE. Returns Acad::eOk if successful. Otherwise, returns Acad::eInvalidInput.
         """
-    def setTextsize(self, val: float, /) -> None:
+    def setTextsize(self, text_size: float, /) -> None:
         """
         Sets size to be the TEXTSIZE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TEXTSIZE. Returns Acad::eOk if successful.
         """
-    def setTextstyle(self, val: ObjectId, /) -> None:
+    def setTextstyle(self, text_style: PyDb.ObjectId, /) -> None:
         """
         Sets the database to use the TextStyleTableRecord with object ID objId as the TEXTSTYLE
         value. See the System Variables section of the AutoCAD Command Reference for information on
         TEXTSTYLE. Returns Acad::eOk if successful.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         Sets thickness to be the THICKNESS value for the database. See the System Variables section
         of the AutoCAD Command Reference for information on THICKNESS. Returns Acad::eOk if
         successful.
         """
-    def setTilemode(self, val: bool, /) -> None:
+    def setTilemode(self, tile_mode: bool, /) -> None:
         """
         Sets mode to be the TILEMODE value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
@@ -9020,108 +9027,112 @@ class Database(PyRx.RxObject):
         when invoked while the current document is editing a block (BLOCKEDITOR=1) where the new
         tile mode is different than the current tile mode.
         """
-    def setTimeZone(self, val: TimeZone, /) -> None:
+    def setTimeZone(self, time_zone: TimeZone, /) -> None:
         """
         Sets the time zone for this drawing.Time zone is best set through the Geographic Location
         dialog. Returns Acad::eOk if a valid time zone is passed in.
         """
-    def setTimeZoneAsUtcOffset(self, val: float, /) -> None:
+    def setTimeZoneAsUtcOffset(self, time_zone_utc_offset: float, /) -> None:
         """
         Sets the time zone for this drawing using a time-based value, as opposed to the
         AcDb::TimeZone enum. Time zone is best set through the Geographic Location dialog. Returns
         Acad::eOk if a valid time zone offset is passed in.
         """
-    def setTracewid(self, val: float, /) -> None:
+    def setTracewid(self, trace_width: float, /) -> None:
         """
         Sets width to be the TRACEWID value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TRACEWID. Returns Acad::eOk if successful.
         """
-    def setTreedepth(self, val: int, /) -> None:
+    def setTreedepth(self, tree_depth: int, /) -> None:
         """
         Sets depth to be the TREEDEPTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TREEDEPTH. Returns Acad::eOk if
         successful.
         """
     def setUcs(
-        self, ucsOrigin: PyGe.Point3d, ucsXDir: PyGe.Vector3d, ucsYDir: PyGe.Vector3d, /
+        self,
+        ucs_origin: PyGe.Point3d,
+        ucs_x_direction: PyGe.Vector3d,
+        ucs_y_direction: PyGe.Vector3d,
+        /,
     ) -> None:
         """
         This method sets the Model Space UCS to the UCS defined by ucsOrigin, ucsXDir, and ucsYDir.
         The ucsorg(), ucsxdir(), and ucsydir() are the query functions for this UCS.
         """
-    def setUcsBase(self, ucsid: ObjectId, /) -> None:
+    def setUcsBase(self, ucs_base_id: PyDb.ObjectId, /) -> None:
         """
         Sets the database to use the AcDbUcsTableRecord associated with ucsid to define the origin
         and orientation of orthographic UCS settings for the database's model space. The name of
         this AcDbUcsTableRecord is used as the database's UCSNAME value. See the system variables
         documentation in the AutoCAD Command Reference for information on UCSNAME.
         """
-    def setUcsname(self, ucsrecId: ObjectId, /) -> None:
+    def setUcsname(self, ucs_record_id: PyDb.ObjectId, /) -> None:
         """
         This method sets the Model Space UCS to the AcDbUCSTableRecord whose ObjectId is ucsRecId.
         This is the Model Space value of UCSNAME. See the System Variables section of the AutoCAD
         Command Reference for information on UCSNAME.
         """
-    def setUnitmode(self, val: int, /) -> None:
+    def setUnitmode(self, unit_mode: int, /) -> None:
         """
         Sets mode to be the UNITMODE value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on UNITMODE. Returns Acad::eOk if successful.
         """
-    def setUpdateThumbnail(self, val: int, /) -> None:
+    def setUpdateThumbnail(self, update_thumbnail: int, /) -> None:
         """
         Sets the value of the UPDATETHUMBNAIL header variable. Returns Acad::eOk if successful.
         """
-    def setUseri1(self, val: int, /) -> None:
+    def setUseri1(self, user_integer_1: int, /) -> None:
         """
         Sets val to be the USERI1 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI1. Returns Acad::eOk if successful.
         """
-    def setUseri2(self, val: int, /) -> None:
+    def setUseri2(self, user_integer_2: int, /) -> None:
         """
         Sets val to be the USERI2 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI2. Returns Acad::eOk if successful.
         """
-    def setUseri3(self, val: int, /) -> None:
+    def setUseri3(self, user_integer_3: int, /) -> None:
         """
         Sets val to be the USERI3 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI3. Returns Acad::eOk if successful.
         """
-    def setUseri4(self, val: int, /) -> None:
+    def setUseri4(self, user_integer_4: int, /) -> None:
         """
         Sets val to be the USERI4 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI4. Returns Acad::eOk if successful.
         """
-    def setUseri5(self, val: int, /) -> None:
+    def setUseri5(self, user_integer_5: int, /) -> None:
         """
         Sets val to be the USERI5 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERI5. Returns Acad::eOk if successful.
         """
-    def setUserr1(self, val: float, /) -> None:
+    def setUserr1(self, user_real_1: float, /) -> None:
         """
         Sets val to be the USERR1 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR1. Returns Acad::eOk if successful.
         """
-    def setUserr2(self, val: float, /) -> None:
+    def setUserr2(self, user_real_2: float, /) -> None:
         """
         Sets val to be the USERR2 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR2. Returns Acad::eOk if successful.
         """
-    def setUserr3(self, val: float, /) -> None:
+    def setUserr3(self, user_real_3: float, /) -> None:
         """
         Sets val to be the USERR3 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR3. Returns Acad::eOk if successful.
         """
-    def setUserr4(self, val: float, /) -> None:
+    def setUserr4(self, user_real_4: float, /) -> None:
         """
         Sets val to be the USERR4 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR4. Returns Acad::eOk if successful.
         """
-    def setUserr5(self, val: float, /) -> None:
+    def setUserr5(self, user_real_5: float, /) -> None:
         """
         Sets val to be the USERR5 value for the database. See the System Variables section of the
         AutoCAD Command Reference for information on USERR5. Returns Acad::eOk if successful.
         """
-    def setUsrtimer(self, val: bool, /) -> None:
+    def setUsrtimer(self, user_timer: bool, /) -> None:
         """
         If timer==true, then the user timer is turned on in the database. If timer==false, then the
         user timer is turned off in the database. The user timer for the database currently loaded
@@ -9129,26 +9140,26 @@ class Database(PyRx.RxObject):
         The TDUSRTIMER system variable and the AcDbDatabase::tdusrtimer() method both report the
         time kept by this timer. Returns Acad::eOk if successful.
         """
-    def setVersionGuid(self, val: str, /) -> None:
+    def setVersionGuid(self, version_guid: str, /) -> None:
         """
         This function sets the database to use a copy of the pNewGuid string as the Version GUID
         for the database. Returns Acad::eOk if successful.
         """
-    def setViewportScaleDefault(self, newDefaultVPScale: float, /) -> None:
+    def setViewportScaleDefault(self, viewport_scale_default: float, /) -> None:
         """
         This function sets the database to use newDefaultVPScale as the scale value for all
         viewports created subsequent to calling this function. newDefaultVPScale must be greater
         than or equal to 0.0. A value of 0.0 causes viewports to be scaled to fit. Returns
         Acad::eOk if successful. Returns Acad::eInvalidInput if newDefaultVPScale is less than 0.
         """
-    def setVisretain(self, val: bool, /) -> None:
+    def setVisretain(self, visibility_retention: bool, /) -> None:
         """
         Sets retain to be the current VISRETAIN value for the database. The value of false is 0.
         The value of true is 1. See the System Variables section of the AutoCAD Command Reference
         for information on VISRETAIN. Returns Acad::eOk if successful.
         """
     def setWorldPucsBaseOrigin(
-        self, ucsOrigin: PyGe.Point3d, orthoView: OrthographicView, /
+        self, world_pucs_origin: PyGe.Point3d, orthographic_view: OrthographicView, /
     ) -> None:
         """
         This function sets origin to be the new paperspace 'default' UCS origin point for the view
@@ -9156,24 +9167,24 @@ class Database(PyRx.RxObject):
         Returns Acad::eOk if successful.
         """
     def setWorldUcsBaseOrigin(
-        self, ucsOrigin: PyGe.Point3d, orthoView: OrthographicView, /
+        self, world_ucs_origin: PyGe.Point3d, orthographic_view: OrthographicView, /
     ) -> None:
         """
         This function sets origin to be the new model space 'default' UCS origin point for the view
         specified by orthoView. orthoView may be any one of the AcDb::OrthographicView enumerators.
         Returns Acad::eOk if successful.
         """
-    def setWorldview(self, view: bool, /) -> None:
+    def setWorldview(self, world_view: bool, /) -> None:
         """
         Sets view to be the WORLDVIEW value for the database. The value of false is 0. The value of
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on WORLDVIEW. Returns Acad::eOk if successful.
         """
-    def setXclipFrame(self, disp: int, /) -> None:
+    def setXclipFrame(self, x_clip_frame_display: int, /) -> None:
         """
         Sets the value of the XCLIPFRAME header variable.
         """
-    def setXrefEditEnabled(self, enable: bool, /) -> None:
+    def setXrefEditEnabled(self, xref_edit_enabled: bool, /) -> None:
         """
         If enable is true, the XEDIT value of this database is set to 1. Otherwise, it is set to 0.
         See the system variables documentation in the AutoCAD Command Reference for information on
@@ -9580,7 +9591,7 @@ class Database(PyRx.RxObject):
         self,
         ids: list[PyDb.ObjectId],
         owner: PyDb.ObjectId,
-        idmap: PyDb.IdMapping,
+        id_map: PyDb.IdMapping,
         drc: PyDb.DuplicateRecordCloning,
         deferXlation: bool = False,
         /,
