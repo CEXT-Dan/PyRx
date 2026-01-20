@@ -281,7 +281,7 @@ PyIAcadEntityImpl* PyAcadEntity::impObj(const std::source_location& src /*= std:
 void makePyAcadPViewportWrapper()
 {
     PyDocString DS("AcadPViewport");
-    class_<PyAcadPViewport, bases<PyAcadEntity>>("AcadPviewport", boost::python::no_init)
+    class_<PyAcadPViewport, bases<PyAcadEntity>>("AcadPViewport", boost::python::no_init)
         .def("center", &PyAcadPViewport::center, DS.ARGS())
         .def("setCenter", &PyAcadPViewport::setCenter, DS.ARGS({ "point:PyGe.Point3d" }))
         .def("direction", &PyAcadPViewport::direction, DS.ARGS())
