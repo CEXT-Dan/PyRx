@@ -56,16 +56,16 @@ void makePyDbCurveWrapper()
         .def("getArea", &PyDbCurve::getArea, DS.ARGS(2776))
         .def("reverseCurve", &PyDbCurve::reverseCurve, DS.ARGS(2798))
         .def("getAcGeCurve", &PyDbCurve::getAcGeCurve1)
-        .def("getAcGeCurve", &PyDbCurve::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
+        .def("getAcGeCurve", &PyDbCurve::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = ..." }, 2775))
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve1)
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve2)
         .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3,
-            DS.ARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" }, 2799))
+            DS.ARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = ..." }, 2799))
 
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve1)
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve2)
         .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3,
-            DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = 'default'" }, 2773)).staticmethod("createFromAcGeCurve")
+            DS.SARGS({ "curve: PyGe.Curve3d","normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis","tol: PyGe.Tol = ..." }, 2773)).staticmethod("createFromAcGeCurve")
 
         .def("className", &PyDbCurve::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbCurve::desc, DS.SARGS(15560)).staticmethod("desc")
