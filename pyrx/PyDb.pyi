@@ -3588,7 +3588,7 @@ class AttributeDefinition(PyDb.Text):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def adjustAlignment(self, val: Database, /) -> None:
+    def adjustAlignment(self, database: PyDb.Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
         adjusted according to the text's justification settings and the text style. But, if the
@@ -3611,7 +3611,7 @@ class AttributeDefinition(PyDb.Text):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeDefinition: ...
-    def convertIntoMTextAttributeDefinition(self, val: bool, /) -> None:
+    def convertIntoMTextAttributeDefinition(self, flag: bool, /) -> None:
         """
         Converts this attribute definition into a multi-line attribute definition. Returns
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
@@ -3692,7 +3692,7 @@ class AttributeDefinition(PyDb.Text):
         template, the prompt string is displayed to ask the user to input a text string for the
         AcDbAttribute. The prompt string is used for DXF group code 3.
         """
-    def setConstant(self, val: bool, /) -> None:
+    def setConstant(self, flag: bool, /) -> None:
         """
         This function sets the constant flag of the AcDbAttributeDefinition. If constant is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be constant. If constant is
@@ -3704,13 +3704,13 @@ class AttributeDefinition(PyDb.Text):
         AcDbAttributeDefinition. Returns Acad::eOk if successful, or Acad::eInvalidInput if the
         data passed in is not acceptable.
         """
-    def setFieldLength(self, val: int, /) -> None:
+    def setFieldLength(self, length: int, /) -> None:
         """
         Sets length to be the attribute's field length value. This value is not currently used
         within AutoCAD. The field length value is used for DXF group code 73. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setInvisible(self, val: bool, /) -> None:
+    def setInvisible(self, flag: bool, /) -> None:
         """
         This function sets the visibility flag of the AcDbAttributeDefinition. If invisible is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be invisible. If invisible
@@ -3720,19 +3720,19 @@ class AttributeDefinition(PyDb.Text):
         Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setLockPositionInBlock(self, val: bool, /) -> None:
+    def setLockPositionInBlock(self, flag: bool, /) -> None:
         """
         This function sets the lock position property of the AcDbAttributeDefinition. If bValue is
         true, then the AcDbAttributeDefinition object is set to be immovable relative to the
         geometry in the block.
         """
-    def setMTextAttributeDefinition(self, val: MText, /) -> None:
+    def setMTextAttributeDefinition(self, mtext: PyDb.MText, /) -> None:
         """
         This function can be called on multi-line attribute definitions, to replace the internal
         AcDbMText entity with a new or modified one. Returns Acad::eOk on success. Returns other
         error codes on failure.
         """
-    def setPreset(self, val: bool, /) -> None:
+    def setPreset(self, flag: bool, /) -> None:
         """
         This function sets the preset flag of the AcDbAttributeDefinition. If preset is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be preset. If preset is
@@ -3742,7 +3742,7 @@ class AttributeDefinition(PyDb.Text):
         value and not prompt for user input). Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPrompt(self, val: str, /) -> None:
+    def setPrompt(self, text: str, /) -> None:
         """
         This function sets the AcDbAttributeDefinition to use a copy of newPrompt for its prompt
         string. When the blockTableRecord containing the AcDbAttributeDefinition is inserted and an
@@ -3751,14 +3751,14 @@ class AttributeDefinition(PyDb.Text):
         The prompt string is used for DXF group code 3. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTag(self, val: str, /) -> None:
+    def setTag(self, value: str, /) -> None:
         """
         This function sets the AcDbAttributeDefinition's tag to be a copy of the newTag string. The
         tag string is the identifier you see on screen to represent the AcDbAttributeDefinition.
         The tag string is used for DXF group code 2. Returns Acad::eOk if successful, or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setVerifiable(self, val: bool, /) -> None:
+    def setVerifiable(self, flag: bool, /) -> None:
         """
         This function sets the verifiable flag of the AcDbAttributeDefinition. If verifiable is
         Adesk::kTrue, then the AcDbAttributeDefinition object is set to be verifiable. If
@@ -3801,7 +3801,7 @@ class AttributeReference(PyDb.Text):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeReference: ...
-    def convertIntoMTextAttribute(self, val: bool, /) -> None:
+    def convertIntoMTextAttribute(self, flag: bool, /) -> None:
         """
         Converts an attribute into a multi-line attribute. Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
@@ -3897,13 +3897,13 @@ class AttributeReference(PyDb.Text):
         obliquing as would be done by the INSERT command. The attribute's textual and entity
         properties data is left alone. Returns Acad::eOk if successful.
         """
-    def setFieldLength(self, val: int, /) -> None:
+    def setFieldLength(self, length: int, /) -> None:
         """
         Sets length to be the attribute's field length value. This value is not currently used
         within AutoCAD. The field length value is used for DXF group code 73. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setInvisible(self, val: bool, /) -> None:
+    def setInvisible(self, flag: bool, /) -> None:
         """
         This function sets the visibility flag of the attribute. If invisible is Adesk::kTrue, then
         the attribute object is set to be invisible. If invisible is Adesk::kFalse, then the
@@ -3911,18 +3911,18 @@ class AttributeReference(PyDb.Text):
         group code 70 (that is, if bit 1 is set, then the attribute will be invisible). Returns
         Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setLockPositionInBlock(self, val: bool, /) -> None:
+    def setLockPositionInBlock(self, flag: bool, /) -> None:
         """
         This function sets the lock property of this object. If bValue is true, then this object is
         set to be immovable relative to geometry in the block. Returns Acad::eOk if successful.
         """
-    def setMTextAttribute(self, val: MText, /) -> None:
+    def setMTextAttribute(self, mtext: PyDb.MText, /) -> None:
         """
         This function can be called on multi-line attributes, to replace the internal AcDbMText
         entity with a new or modified one. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def setTag(self, val: str, /) -> None:
+    def setTag(self, value: str, /) -> None:
         """
         This function sets the attribute's tag to be a copy of the newTag string. The tag string is
         the identifier you see if you explode the AcDbBlockReference that owns the attribute, so
@@ -31688,7 +31688,7 @@ class Text(PyDb.Entity):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def adjustAlignment(self, val: Database, /) -> None:
+    def adjustAlignment(self, database: PyDb.Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
         adjusted according to the text's justification settings and the text style. But, if the
@@ -31766,7 +31766,7 @@ class Text(PyDb.Entity):
         for both height and width of the text. In addition, the width factor is applied to the text
         width. The height value is used for DXF group code 40.
         """
-    def hitTest(self, val: PyGe.Point3d, /) -> bool:
+    def hitTest(self, hitTest: PyGe.Point3d, /) -> bool:
         """
         This function tests for the existence of an AcDbText object in a specified location when
         the TEXTGAPSELECTION system variable is enabled.
@@ -31800,7 +31800,7 @@ class Text(PyDb.Entity):
         Returns a constant value of the AcTextAlignment enum type that represents the justification
         of the text object.
         """
-    def mirrorInX(self, val: bool, /) -> None:
+    def mirrorInX(self, mirrorInX: bool, /) -> None:
         """
         If mirror is Adesk::kTrue, the text is displayed so that it appears to be mirrored in the X
         direction (that is, it appears to be backward in the horizontal direction). If mirror is
@@ -31808,7 +31808,7 @@ class Text(PyDb.Entity):
         in DXF group code 71. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def mirrorInY(self, val: bool, /) -> None:
+    def mirrorInY(self, mirrorInY: bool, /) -> None:
         """
         If invert is Adesk::kTrue, then the text is displayed so that it appears to be mirrored in
         the Y direction (that is, it appears to be upside down). If invert is Adesk::kFalse, then
@@ -31846,7 +31846,7 @@ class Text(PyDb.Entity):
         Z axis towards the origin. The OCS X axis is determined by using the text's normal, the WCS
         Z axis, and the arbitrary axis algorithm. The rotation value is used for DXF group code 50.
         """
-    def setAlignmentPoint(self, val: PyGe.Point3d, /) -> None:
+    def setAlignmentPoint(self, alignmentPoint: PyGe.Point3d, /) -> None:
         """
         This function sets pt to be the alignment point for the text object. If vertical mode is
         AcDb::kTextBase and horizontal mode is either AcDb::kTextLeft, AcDb::kTextAlign, or
@@ -31860,14 +31860,14 @@ class Text(PyDb.Entity):
         Acad::eNotApplicable if the text object's horizontal mode is AcDb::kTextLeft and vertical
         mode is AcDb::kTextBase.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, height: float, /) -> None:
         """
         This function sets ht to be the height of the text. The height value is used as a scale
         factor for both height and width of the text. In addition, the width factor is applied to
         the text width. The height value is used for DXF group code 40. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the input value is less than or equal to 0.0.
         """
-    def setHorizontalMode(self, val: PyDb.TextHorzMode, /) -> None:
+    def setHorizontalMode(self, mode: PyDb.TextHorzMode, /) -> None:
         """
         This function sets hMode to be the horizontal mode of the text. The allowable values for
         hMode are: AcDb::kTextLeft AcDb::kTextCenter AcDb::kTextRight AcDb::kTextAlign
@@ -31879,17 +31879,17 @@ class Text(PyDb.Entity):
         AcDb::kTextLeft, then the position point is used to determine the text's position and the
         alignment point is recalculated based on the text string and the position point's value.
         """
-    def setJustification(self, val: PyDb.TextAlignment, /) -> None:
+    def setJustification(self, align: PyDb.TextAlignment, /) -> None:
         """
         Sets the justification for the text object.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
         """
         This function sets normal to be the normal vector for the plane containing the text. normal
         must be non-zero in length. The normal value is used for DXF group code 210. Returns
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setOblique(self, val: float, /) -> None:
+    def setOblique(self, angle: float, /) -> None:
         """
         This function sets angle (in radians) to be the obliquing angle for the text. The obliquing
         angle is the angle from the text's vertical; that is, the top of the text 'slants' relative
@@ -31898,7 +31898,7 @@ class Text(PyDb.Entity):
         positive equivalent. The oblique value is used for DXF group code 51. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setPosition(self, pos: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         This function sets pos to be the position point for the text. pos must be in WCS
         coordinates. If vertical mode is AcDb::kTextBase and horizontal mode is either
@@ -31911,7 +31911,7 @@ class Text(PyDb.Entity):
         replaced by the newly calculated value. The position value is the WCS equivalent of DXF
         group code 10. Returns Acad::eOk if successful.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, rotation: float, /) -> None:
         """
         This function sets rotation to be the rotation angle of the text. The rotation angle is
         relative to the X axis of the text's OCS, with positive angles going counterclockwise when
@@ -31920,7 +31920,7 @@ class Text(PyDb.Entity):
         for DXF group code 50. Returns Acad::eOk if successful or Acad::eInvalidInput if the data
         passed in is not acceptable.
         """
-    def setTextString(self, val: str, /) -> None:
+    def setTextString(self, text: str, /) -> None:
         """
         This function makes a copy of newText and uses the copy as the text string to display. The
         string must be a standard null-terminated string and cannot be more than 256 bytes long
@@ -31930,7 +31930,7 @@ class Text(PyDb.Entity):
         group code 1. Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in
         is not acceptable.
         """
-    def setTextStyle(self, val: ObjectId, /) -> None:
+    def setTextStyle(self, styleId: PyDb.ObjectId, /) -> None:
         """
         This function sets styleId as the object ID of the AcDbTextStyleTableRecord to be
         referenced by the AcDbText object. styleId must be the object ID of an
@@ -31938,14 +31938,14 @@ class Text(PyDb.Entity):
         name within the AcDbTextStyleTableRecord specified by the text style object ID is used for
         DXF group code 7.
         """
-    def setThickness(self, val: float, /) -> None:
+    def setThickness(self, thickness: float, /) -> None:
         """
         This function sets thickness to be the thickness for the text. The thickness is the text's
         dimension along its normal vector direction (sometimes called the extrusion direction). The
         thickness value is used for DXF group code 39. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setVerticalMode(self, val: PyDb.TextVertMode, /) -> None:
+    def setVerticalMode(self, mode: PyDb.TextVertMode, /) -> None:
         """
         This function sets vMode to be the vertical mode of the text. The allowable values for
         vMode are: AcDb::kTextBase AcDb::kTextBottom AcDb::kTextVertMid AcDb::kTextTop The vertical
@@ -31957,7 +31957,7 @@ class Text(PyDb.Entity):
         used to determine the text's position. The alignment point is recalculated based on the
         text string and the position point's value.
         """
-    def setWidthFactor(self, val: float, /) -> None:
+    def setWidthFactor(self, factor: float, /) -> None:
         """
         This function sets width to be the width factor (also referred to as the relative X-scale
         factor) for the text. The widthFactor is applied to the text's width to allow the width to
