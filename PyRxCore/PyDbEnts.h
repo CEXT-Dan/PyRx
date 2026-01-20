@@ -587,6 +587,7 @@ public:
     bool                isPointInside(const AcGePoint3d& pnt) const;
     bool                isCCW() const;
     void                simplify(double dist) const;
+    double              length() const;
 public:
     static std::string  className();
     static PyRxClass    desc();

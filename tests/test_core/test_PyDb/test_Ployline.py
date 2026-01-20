@@ -309,3 +309,8 @@ class TestDbPolyline:
         objId2 = db_06457.getObjectId(False, objHnd2)
         pline2 = Db.Polyline(objId2)
         assert pline2.isCCW() == True
+        
+    def test_length(self):
+        # Create a basic polyline first
+        pline = create_polyline()
+        assert pline.length() == 8.0

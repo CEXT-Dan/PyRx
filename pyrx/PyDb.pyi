@@ -23502,6 +23502,7 @@ class Polyline(PyDb.Curve):
         if not.
         """
     def isPointInside(self, pointWcs: PyGe.Point3d, /) -> bool: ...
+    def length(self, /) -> float: ...
     def makeClosedIfStartAndEndVertexCoincide(self, distTol: float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDbPolyline.
