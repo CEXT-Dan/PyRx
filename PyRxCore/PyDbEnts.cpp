@@ -2667,6 +2667,7 @@ void makePyDbPolylineWrapper()
         .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "pointWcs: PyGe.Point3d" }))
         .def("isCCW", &PyDbPolyline::isCCW, DS.ARGS())
         .def("simplify", &PyDbPolyline::simplify, DS.ARGS({ "dist: float" }))
+        .def("length", &PyDbPolyline::length, DS.ARGS())
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3158,6 +3159,15 @@ void PyDbPolyline::simplify(double dist) const
         PyThrowBadEs(impObj()->cancel());
         PyThrowBadEs(eInvalidInput);
     }
+}
+
+double PyDbPolyline::length() const
+{
+    double pram = 0;
+    double dist = 0;
+    PyThrowBadEs(impObj()->getEndParam(pram));
+    PyThrowBadEs(impObj()->getDistAtParam(pram, dist));
+    return dist;
 }
 
 std::string PyDbPolyline::className()
