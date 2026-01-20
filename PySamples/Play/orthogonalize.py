@@ -1,6 +1,7 @@
 # Import necessary modules from pyrx
-from pyrx import Ap, Db, Ed, Ge
 import traceback  # For detailed error tracing
+
+from pyrx import Ap, Db, Ed, Ge
 
 
 def orthogonalize_points(in_points):
