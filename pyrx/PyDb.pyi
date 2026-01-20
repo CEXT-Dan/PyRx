@@ -20722,7 +20722,7 @@ class MText(PyDb.Entity):
         Gets the column gutter width. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status.
         """
-    def getColumnHeight(self, idx: int, /) -> float:
+    def getColumnHeight(self, index: int, /) -> float:
         """
         Gets the height of the specified column. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status. Only valid for dynamic, manual height columns.
@@ -20761,7 +20761,7 @@ class MText(PyDb.Entity):
         """
         Returns the height of this object.
         """
-    def hitTest(self, val: PyGe.Point3d, /) -> bool:
+    def hitTest(self, hit_point: PyGe.Point3d, /) -> bool:
         """
         This function tests for the existence of an AcDbMText object in a specified location when
         the TEXTGAPSELECTION system variable is enabled.
@@ -20793,7 +20793,7 @@ class MText(PyDb.Entity):
         plane of the AutoCAD editor's current UCS. The rotation value is in radians, with positive
         angles as counterclockwise when looking down the UCS normal towards the UCS origin.
         """
-    def setAttachment(self, val: PyDb.MTextAttachmentPoint, /) -> None:
+    def setAttachment(self, attachment_point: PyDb.MTextAttachmentPoint, /) -> None:
         """
         This function sets type to be the AttachmentPoint type for the MText object. The
         AttachmentPoint value determines how the text will be oriented around the initial insertion
@@ -20807,7 +20807,7 @@ class MText(PyDb.Entity):
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setAttachmentMovingLocation(self, val: PyDb.MTextAttachmentPoint, /) -> None:
+    def setAttachmentMovingLocation(self, attachment_point: PyDb.MTextAttachmentPoint, /) -> None:
         """
         This member function changes the attachment of the MTEXT object, just as setAttachment
         does, however it also moves the location (as per setLocation) in order to keep the current
@@ -20821,78 +20821,78 @@ class MText(PyDb.Entity):
         setAttachment: + - - - -| : ABC| : XYZ| --+--+--+--*--+--+--+-- | | | using
         setAttachmentMovingLocation: | | | --+--+--+--+--+--+--+-- | ABC: | XYZ: |- - - - *
         """
-    def setBackgroundFill(self, val: bool, /) -> None:
+    def setBackgroundFill(self, enabled: bool, /) -> None:
         """
         Toggles the background fill on or off, as indicated by the value of enable. If enable is
         true, background color is turned off, and no background fill color has been specified, this
         function sets the background fill color to an RGB value of 200,200,200. This function
         always returns Acad::eOk.
         """
-    def setBackgroundFillColor(self, val: PyDb.AcCmColor, /) -> None:
+    def setBackgroundFillColor(self, color: PyDb.Color, /) -> None:
         """
         Sets this object's background fill color to color. Returns Acad::eOk if successful.
         """
-    def setBackgroundScaleFactor(self, val: float, /) -> None:
+    def setBackgroundScaleFactor(self, scale: float, /) -> None:
         """
         Sets the background scale factor for this object to scale. Returns Acad::eOk if successful.
         """
-    def setBackgroundTransparency(self, val: PyDb.AcCmTransparency, /) -> None:
+    def setBackgroundTransparency(self, transp: PyDb.Transparency, /) -> None:
         """
         Sets the background transparency for this object to transp. Returns Acad::eOk if
         successful.
         """
-    def setColumnAutoHeight(self, val: bool, /) -> None:
+    def setColumnAutoHeight(self, auto: bool, /) -> None:
         """
         Sets whether heights for each dynamic column is equal to the MText height (auto-height), or
         user-controlled for each dynamic column (manual-height). Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status. Only valid for dynamic columns.
         """
-    def setColumnCount(self, val: int, /) -> None:
+    def setColumnCount(self, count: int, /) -> None:
         """
         Sets the number of columns. Returns Acad::eOk if successful; otherwise, returns an AutoCAD
         error status.
         """
-    def setColumnFlowReversed(self, val: bool, /) -> None:
+    def setColumnFlowReversed(self, reversed: bool, /) -> None:
         """
         Sets whether columns are added 'reversed' from the flow of the MText. If true, columns are
         added to the left for right-to-left flowing MText, or above for top-to-bottom flowing
         MText. If false, columns are added to the right and below (respectively) Returns if
         successful; otherwise, returns an AutoCAD error status.
         """
-    def setColumnGutterWidth(self, val: float, /) -> None:
+    def setColumnGutterWidth(self, width: float, /) -> None:
         """
         Sets the column gutter width. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status. Must be positive or zero.
         """
-    def setColumnHeight(self, idx: int, val: float, /) -> None:
+    def setColumnHeight(self, index: int, height: float, /) -> None:
         """
         Sets the height of the specified column. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status. Only valid for dynamic, manual height columns.
         """
-    def setColumnType(self, val: PyDb.MTextColumnType, /) -> None:
+    def setColumnType(self, columnType: PyDb.MTextColumnType, /) -> None:
         """
         Sets the column type to be one of the following: AcDbMText::kNoColumns
         AcDbMText::kStaticColumns AcDbMText::kDynamicColumns Returns Acad::eOk if successful;
         otherwise, returns an AutoCAD error status.
         """
-    def setColumnWidth(self, val: float, /) -> None:
+    def setColumnWidth(self, width: float, /) -> None:
         """
         Sets the width of each column. Returns Acad::eOk if successful; otherwise, returns an
         AutoCAD error status. Must be a positive value. Applies to every column.
         """
-    def setContents(self, val: str, /) -> int:
+    def setContents(self, text: str, /) -> int:
         """
         A copy of text is stored in the MText object to be used as the text contents for the MText
         object.
         """
-    def setContentsRTF(self, val: str, /) -> int:
+    def setContentsRTF(self, rtfText: str, /) -> int:
         """
         This method sets the contents of the AcDbMText object from the RTF-encoded text string
         pointed to by unnamed. RTF codes are translated to MText codes. Fonts, colors, tabs, and
         indents are preserved. Bullets and numbered lists are mapped to hanging paragraphs using
         the implied setting for tabs and indents. Returns 0 if successful.
         """
-    def setDirection(self, val: PyGe.Vector3d, /) -> None:
+    def setDirection(self, vector: PyGe.Vector3d, /) -> None:
         """
         Sets dir as the direction that the MText object will consider to be its 'horizontal' axis.
         The direction vector dir should be in the WCS coordinates. Returns Acad::eOk if successful
@@ -20903,44 +20903,44 @@ class MText(PyDb.Entity):
         Sets column type to AcDbMText::kDynamicColumns with specified width, gutter, and auto
         height setting Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setFlowDirection(self, val: PyDb.MTextFlowDirection, /) -> None:
+    def setFlowDirection(self, flowDirection: PyDb.MTextFlowDirection, /) -> None:
         """
         Sets flow to be the FlowDirection for the MText object (see AcDbMText::flowDirection() for
         details of the FlowDirection enumerated type). Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, height: float, /) -> None:
         """
         Sets the height of this object.
         """
-    def setLineSpacingFactor(self, val: float, /) -> None:
+    def setLineSpacingFactor(self, factor: float, /) -> None:
         """
         Sets dFactor to be the line spacing factor where a value of 1.0 is single-spaced, 2.0 is
         double-spaced, and so on. The spacing factor must be between 0.25 and 4.00, inclusive. The
         method returns Acad::eOk if successful, or Acad::eInvalidInput if dFactor is not within the
         valid range. See AcDb::LineSpacingStyle for more information and examples.
         """
-    def setLineSpacingStyle(self, val: PyDb.LineSpacingStyle, /) -> None:
+    def setLineSpacingStyle(self, style: PyDb.LineSpacingStyle, /) -> None:
         """
         Sets the line spacing style to be either kAtLeast (the line spacing is a minimum value) or
         kExactly (the line spacing is absolute). See AcDb::LineSpacingStyle for more information
         and examples. The method returns Acad::eOk if successful, or Acad::eInvalidInput if eStyle
         is not a valid value.
         """
-    def setLocation(self, val: PyGe.Point3d, /) -> None:
+    def setLocation(self, point: PyGe.Point3d, /) -> None:
         """
         Sets loc to be the insertion point for the MText object. loc should be in WCS coordinates.
         Returns Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not
         acceptable.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, vector: PyGe.Vector3d, /) -> None:
         """
         Sets normal to be the normal vector for the MText object. normal should be in WCS
         coordinates. When this function is used to change the normal, the direction value of the
         MText object is set to (1.0, 0.0, 0.0) in the Entity Coordinate System associated with the
         normal of the UCS current in the AutoCAD editor.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, angle: float, /) -> None:
         """
         Sets the direction value for the MText object. To obtain the new direction vector from
         angle, ObjectARX first obtains the normal vector of the current User Coordinate System
@@ -20954,23 +20954,23 @@ class MText(PyDb.Entity):
         Sets column type to AcDbMText::kStaticColumns with specified width, gutter, and number of
         columns. Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
-    def setTextHeight(self, val: float, /) -> None:
+    def setTextHeight(self, height: float, /) -> None:
         """
         Sets the MText object's text height to height. Returns Acad::eOk if successful or
         Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setTextStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setTextStyle(self, styleId: PyDb.ObjectId, /) -> None:
         """
         Sets the MText object to use the AcDbTextStyle specified by Id. Returns Acad::eOk if
         successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def setUseBackgroundColor(self, val: bool, /) -> None:
+    def setUseBackgroundColor(self, enabled: bool, /) -> None:
         """
         If enable is true, this function sets a flag that indicates that background color should be
         used for this object. Otherwise, it turns off the background color flag. This function
         always returns Acad::eOk.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, width: float, /) -> None:
         """
         Sets width to be the maximum width allowed for any line of text. This value is used during
         word wrap calculations as a maximum. It is possible that none of the lines resulting from
