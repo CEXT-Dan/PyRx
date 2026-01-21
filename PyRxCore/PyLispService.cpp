@@ -159,8 +159,6 @@ static int retTuple(const boost::python::tuple& tpl)
     return RSRSLT;
 }
 
-
-//TODO set current directory...
 int PyLispService::execLispFunc()
 {
     try
@@ -291,7 +289,6 @@ int PyLispService::execLispFunc()
     }
     return RSERR;
 }
-
 
 bool PyLispService::tryAddFunc(const std::filesystem::path& fpath, const AcString& pythonFuncName, PyObject* method)
 {
