@@ -202,7 +202,7 @@ int PyLispService::execLispFunc()
                         return RSERR;
                     }
                     boost::python::list reslist(resultHandle);
-                    pResult.release();
+                    pResult.release();// reslist is the new owner
                     if (reslist.is_none())
                     {
                         acedRetNil();
