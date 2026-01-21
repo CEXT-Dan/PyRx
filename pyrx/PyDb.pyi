@@ -32938,11 +32938,11 @@ class UnderlayReference(PyDb.Entity):
         """
         Returns the upper limit of the legal fade values.
         """
-    def generateClipBoundaryFromPline(self, val: PyDb.ObjectId, /) -> None:
+    def generateClipBoundaryFromPline(self, pline_id: PyDb.ObjectId, /) -> None:
         """
         Generates the clip boundary from a polyline.
         """
-    def getUnderlayLayer(self, val: int, /) -> UnderlayLayer:
+    def getUnderlayLayer(self, index: int, /) -> UnderlayLayer:
         """
         Get underlay layer information (layer name and layer on/off state) for the layer name
         passed in. Returns Acad::eOk if successful
@@ -32999,82 +32999,82 @@ class UnderlayReference(PyDb.Entity):
         """
         Returns the scale factors used to scale the underlay.
         """
-    def setClipBoundary(self, pnts: list[PyGe.Point2d], /) -> None:
+    def setClipBoundary(self, points: list[PyGe.Point2d], /) -> None:
         """
         Sets the clip boundary of the underlay. The boundary is defined in model coordinates. (i.e.
         Given WCS points one must use the inverse of the transformation matrix return by tranform()
         to obtain points that can be passed to this function.) Returns Acad::eOk if succesful.
         """
-    def setClipInverted(self, val: bool, /) -> None:
+    def setClipInverted(self, inverted: bool, /) -> None:
         """
         Sets whether the clip is inverted.
         """
-    def setContrast(self, val: int, /) -> None:
+    def setContrast(self, contrast: int, /) -> None:
         """
         Sets the contrast value for the underlay ([0-100]). Returns Acad::eOk if succesful.
         """
-    def setDefinitionId(self, val: PyDb.ObjectId, /) -> None:
+    def setDefinitionId(self, id: PyDb.ObjectId, /) -> None:
         """
         Sets the object ID of the AcDbUnderlayDefinition that this underlay references.
         """
-    def setFade(self, val: int, /) -> None:
+    def setFade(self, fade: int, /) -> None:
         """
         Sets the fade value for the underlay ([0-100]). Returns Acad::eOk if succesful.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, height: float, /) -> None:
         """
         This is setHeight, a member of class AcDbUnderlayReference.
         """
-    def setIsAdjustedForBackground(self, val: bool, /) -> None:
+    def setIsAdjustedForBackground(self, adjusted: bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is adjusted for the current background
         color. Not all underlay types observe this setting. Returns Acad::eOk if successful.
         """
-    def setIsClipped(self, val: bool, /) -> None:
+    def setIsClipped(self, clipped: bool, /) -> None:
         """
         Sets a Boolean indicating whether the clip boundary should be used. Returns Acad::eOk if
         succesful.
         """
-    def setIsMonochrome(self, val: bool, /) -> None:
+    def setIsMonochrome(self, monochrome: bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is shown in monochrome. Returns
         Acad::eOk if succesful.
         """
-    def setIsOn(self, val: bool, /) -> None:
+    def setIsOn(self, is_on: bool, /) -> None:
         """
         Sets a value indicating whether the underlay content is shown. This variable governs the
         visibilty of the underlay content, not its frame or clipping boundary. Returns Acad::eOk if
         succesful.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, vector: PyGe.Vector3d, /) -> None:
         """
         Sets the normal of the underlay. Returns Acad::eOk if successful.
         """
-    def setPosition(self, val: PyGe.Point3d, /) -> None:
+    def setPosition(self, point: PyGe.Point3d, /) -> None:
         """
         Sets the position of the underlay in WCS (or block space coordinates if the reference is
         part of a block). Returns Acad::eOk if successful.
         """
-    def setRotation(self, val: float, /) -> None:
+    def setRotation(self, angle: float, /) -> None:
         """
         Sets the rotation value around the axis defined by the point returned by position() and the
         vector returned by normal(). Returns Acad::eOk if successful.
         """
-    def setScaleFactors(self, val: PyGe.Scale3d, /) -> None:
+    def setScaleFactors(self, scale: PyGe.Scale3d, /) -> None:
         """
         Sets the scale factors used to scale the underlay. Most underlays only allow uniform
         scaling. Returns Acad::eOk if successful.
         """
-    def setTransform(self, val: PyGe.Matrix3d, /) -> None:
+    def setTransform(self, matrix: PyGe.Matrix3d, /) -> None:
         """
         Sets the transformation matrix of the underlay. Returns Acad::eOk if succesful.
         """
-    def setUnderlayLayer(self, val: int, layer: PyDb.UnderlayLayer, /) -> None:
+    def setUnderlayLayer(self, index: int, layer: PyDb.UnderlayLayer, /) -> None:
         """
         Sets the underlay layer information (layer name and layer on/off state). Returns Acad::eOk
         if successful
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, width: float, /) -> None:
         """
         This is setWidth, a member of class AcDbUnderlayReference.
         """
@@ -33939,7 +33939,7 @@ class Viewport(PyDb.Entity):
         Returns true if subdivisions are allowed below the minor grid spacing in the viewport. This
         setting is ignored if isGridAdaptive() returns false.
         """
-    def isLayerFrozenInViewport(self, val: PyDb.ObjectId, /) -> bool:
+    def isLayerFrozenInViewport(self, layer_id: PyDb.ObjectId, /) -> bool:
         """
         This function returns true if the AcDbLayerTableRecord with objectId layerId is frozen in
         the viewport. Otherwise false is returned.
@@ -34084,7 +34084,7 @@ class Viewport(PyDb.Entity):
         """
         Returns true if the previous background has been forced to switch.
         """
-    def removeHiddenLines(self, val: bool = True, /) -> None:
+    def removeHiddenLines(self, remove: bool = True, /) -> None:
         """
         This function sets the viewport to remove hidden lines during plotting. For more
         information on viewport specific hidden line removal during plotting, see MVIEW and the
@@ -34111,12 +34111,12 @@ class Viewport(PyDb.Entity):
         Sets the ambient light color for this viewport. A color of black (RGB 0,0,0) is equivalent
         to no ambient light. Returns Acad::eOk on success.
         """
-    def setAnnotationScale(self, val: PyDb.AnnotationScale, /) -> None:
+    def setAnnotationScale(self, scale: PyDb.AnnotationScale, /) -> None:
         """
         Sets the AcDbAnnotationScale object to be the annotation scale of the viewport. Returns
         Acad::eOk if successful.
         """
-    def setBackClipDistance(self, val: float, /) -> None:
+    def setBackClipDistance(self, distance: float, /) -> None:
         """
         This function sets the viewport to use newVal as the distance (along the camera-target
         line) from the target to the back clipping plane. Positive values indicate that the
@@ -34133,29 +34133,29 @@ class Viewport(PyDb.Entity):
         planes. Turning the back clipping plane off clears the third bit in the second DXF group
         code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setBackClipOn(self, val: bool = True, /) -> None:
+    def setBackClipOn(self, on: bool = True, /) -> None:
         """
         This function turns the back clipping plane on in the viewport. See DVIEW in the AutoCAD
         Command Reference for more information on clipping planes. Turning the back clipping plane
         on sets the third bit in the second DXF group code 1070 in the 'ACAD' appId xdata attached
         to the viewport.
         """
-    def setBackground(self, val: PyDb.ObjectId, /) -> None:
+    def setBackground(self, bg_id: PyDb.ObjectId, /) -> None:
         """
         Sets a new viewport background. To unset, pass in a NULL object ID. Returns Acad::eOk on
         success.
         """
-    def setBrightness(self, val: float, /) -> None:
+    def setBrightness(self, value: float, /) -> None:
         """
         Sets the brightness factor for this viewport. Returns Acad::eOk on success.
         """
-    def setCenterPoint(self, val: PyGe.Point3d, /) -> None:
+    def setCenterPoint(self, point: PyGe.Point3d, /) -> None:
         """
         This function sets pt (in Paper Space WCS coordinates) to be the center point of the
         viewport. Returns Acad::eOk if successful. The center point value is used for DXF group
         code 10.
         """
-    def setCircleSides(self, val: int, /) -> None:
+    def setCircleSides(self, sides: int, /) -> None:
         """
         This function sets newVal to be the circle zoom percent for the viewport. newVal must be
         between 1 and 20000 The circle zoom percent controls the number of sides to the
@@ -34165,25 +34165,25 @@ class Viewport(PyDb.Entity):
         Acad::eOk if successful. The circle zoom percent value is used for the third DXF group code
         1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setContrast(self, val: float, /) -> None:
+    def setContrast(self, value: float, /) -> None:
         """
         Sets the contrast factor for the viewport. Returns Acad::eOk on success.
         """
-    def setCustomScale(self, val: float, /) -> None:
+    def setCustomScale(self, scale: float, /) -> None:
         """
         This function sets the custom scale for the viewport. The custom scale defines the
         relationship of units in paperspace to units in the viewport. For example, a custom scale
         of 0.5 would indicate that 1 unit in the viewport maps to 0.5 units in paperspace.
         """
-    def setDefaultLightingOn(self, val: bool, /) -> None:
+    def setDefaultLightingOn(self, on: bool, /) -> None:
         """
         Sets the state of default lighting for the viewport. Returns Acad::eOk on success.
         """
-    def setDefaultLightingType(self, val: PyGi.DefaultLightingType, /) -> None:
+    def setDefaultLightingType(self, type: PyGi.DefaultLightingType, /) -> None:
         """
         Sets the type of default lighting to be used in the viewport. Returns Acad::eOk on success.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, elev: float, /) -> None:
         """
         This method sets the elevation of the UCS used in the viewport. Returns Acad::eOk if
         successful.
@@ -34193,7 +34193,7 @@ class Viewport(PyDb.Entity):
         This function always returns Acad::eOk. It is obsolete and will be removed in a future
         release.
         """
-    def setFastZoomOn(self, val: bool = True, /) -> None:
+    def setFastZoomOn(self, on: bool = True, /) -> None:
         """
         This function always returns Acad::eOk. It is obsolete and will be removed in a future
         release.
@@ -34207,7 +34207,7 @@ class Viewport(PyDb.Entity):
         clipping planes. Turning the front clipping plane off clears the fifth bit in the second
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setFrontClipAtEyeOn(self, val: bool = True, /) -> None:
+    def setFrontClipAtEyeOn(self, on: bool = True, /) -> None:
         """
         This function sets the front clipping plane to ignore the front clip distance and instead
         pass through the camera in the viewport. This does not turn the front clipping plane on if
@@ -34215,7 +34215,7 @@ class Viewport(PyDb.Entity):
         clipping planes. Turning the front clipping plane off clears the fifth bit in the second
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setFrontClipDistance(self, val: float, /) -> None:
+    def setFrontClipDistance(self, distance: float, /) -> None:
         """
         This function sets the viewport to use newVal as the distance (along the camera-target
         line) from the target to the front clipping plane. Positive values indicate that the
@@ -34232,14 +34232,14 @@ class Viewport(PyDb.Entity):
         planes. Turning the front clipping plane off clears the second bit in the second DXF group
         code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setFrontClipOn(self, val: bool = True, /) -> None:
+    def setFrontClipOn(self, on: bool = True, /) -> None:
         """
         This function turns the front clipping plane on in the viewport. See DVIEW in the AutoCAD
         Command Reference for more information on clipping planes. Turning the front clipping plane
         on sets the second bit in the second DXF group code 1070 in the 'ACAD' appId xdata attached
         to the viewport.
         """
-    def setGridAdaptive(self, val: bool, /) -> None:
+    def setGridAdaptive(self, adaptive: bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display fewer lines in the
         viewport than specified by the GRIDUNIT setting. When zooming out, the grid gets too dense
@@ -34247,18 +34247,18 @@ class Viewport(PyDb.Entity):
         lines are displayed. The gridlines always adhere to a multiple of the XY grid spacing
         values. Returns Acad::eOk if successful.
         """
-    def setGridBoundToLimits(self, val: bool, /) -> None:
+    def setGridBoundToLimits(self, bound: bool, /) -> None:
         """
         This function determines whether or not the grid is drawn beyond the limits for the WCS and
         user-defined UCS in the viewport. Returns Acad::eOK if successful.
         """
-    def setGridFollow(self, val: bool, /) -> None:
+    def setGridFollow(self, follow: bool, /) -> None:
         """
         This function determines whether or not the grid is drawn when dynamic UCS switching occurs
         after a point is specified for a command that support dynamic UCS switching. This setting
         is ignored if the UCSDETECT system variable is off. Returns Acad::eOk if succcessful.
         """
-    def setGridIncrement(self, val: PyGe.Vector2d, /) -> None:
+    def setGridIncrement(self, increment: PyGe.Vector2d, /) -> None:
         """
         This function sets the viewport to use vec.x as the X spacing (in drawing units) of the
         grid and vec.y as the Y spacing of the grid. Returns Acad::eOk if successful. For
@@ -34267,7 +34267,7 @@ class Viewport(PyDb.Entity):
         appId xdata attached to the viewport. The Y spacing value is used for the fourteenth DXF
         group code 1040 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setGridMajor(self, val: int, /) -> None:
+    def setGridMajor(self, major: int, /) -> None:
         """
         This function sets the number of major grid lines that are displayed for every nGridLines
         number of minor grid lines. For example, if nGridLines is set to 5, a major grid line will
@@ -34280,32 +34280,32 @@ class Viewport(PyDb.Entity):
         sets the seventh DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport to
         0.
         """
-    def setGridOn(self, val: bool = True, /) -> None:
+    def setGridOn(self, on: bool = True, /) -> None:
         """
         This function turns the grid on in the viewport. For more information about the grid, see
         GRID in the AutoCAD Command Reference. Turning the grid on sets the seventh DXF group code
         1070 in the 'ACAD' appId xdata attached to the viewport to 1.
         """
-    def setGridSubdivisionRestricted(self, val: bool, /) -> None:
+    def setGridSubdivisionRestricted(self, restricted: bool, /) -> None:
         """
         This function determines whether or not the grid adapts to display more lines in the
         viewport than specified by the GRIDUNIT setting. This suddivisdes the grid when zooming in.
         The gridlines always adhere to a multiple of the XY grid spacing values. This setting is
         ignored if isGridAdaptive() returns false. Returns Acad::eOk if successful.
         """
-    def setHeight(self, val: float, /) -> None:
+    def setHeight(self, height: float, /) -> None:
         """
         This function sets the viewport's window to be height drawing units high. Returns Acad::eOk
         if successful. The viewport height is used for DXF group code 41.
         """
-    def setIsOn(self, val: bool, /) -> None:
+    def setIsOn(self, is_on: bool, /) -> None:
         """
         Sets the visibility state of the viewport. If viewport is not in a database, then the call
         fails and returns Acad::eNotInDatabase. If the viewport is not owned by the Paper Space
         BlockTableRecord, then the call fails and returns Acad::eNotInPaperspace. The current
         visibility state of the viewport is stored in the DXF group 68.
         """
-    def setLabelBlock(self, val: PyDb.ObjectId, /) -> None:
+    def setLabelBlock(self, block_id: PyDb.ObjectId, /) -> None:
         """
         This function associates a label block with this viewport. The label block is an
         AcDbBlockReference. Possible return values are Acad::eOk if successful,
@@ -34313,7 +34313,7 @@ class Viewport(PyDb.Entity):
         or Acad::eUnableToSetViewAssociation if the application is unable to associate the label
         block with this viewport.
         """
-    def setLensLength(self, val: float, /) -> None:
+    def setLensLength(self, length: float, /) -> None:
         """
         This function sets the viewport to use length as the lens length when perspective mode is
         on in the viewport. Returns Acad::eOk if successful. See DVIEW in the AutoCAD Command
@@ -34321,12 +34321,12 @@ class Viewport(PyDb.Entity):
         is used for the fifth DXF group code 1040 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setLocked(self, val: bool = True, /) -> None:
+    def setLocked(self, locked: bool = True, /) -> None:
         """
         This function locks a viewport's scale. When a viewport is locked, its zoom factor relative
         to Paper Space cannot be changed via AutoCAD commands such as ZOOM and VIEW.
         """
-    def setModelView(self, val: PyDb.XrefObjectId, /) -> None:
+    def setModelView(self, xref_id: PyDb.XrefObjectId, /) -> None:
         """
         This function associates a model view with this viewport. The model view is identified by
         an xref object ID. The viewport will retain reference to the AcDbViewTableRecord of the
@@ -34348,7 +34348,7 @@ class Viewport(PyDb.Entity):
         """
         This function disables non-rectangular clipping for this viewport.
         """
-    def setNonRectClipOn(self, val: bool = True, /) -> None:
+    def setNonRectClipOn(self, on: bool = True, /) -> None:
         """
         This function enables non-rectangular clipping for this viewport. In order for
         non-rectangular clipping to be enabled, a clipping entity must have been assigned to this
@@ -34392,14 +34392,14 @@ class Viewport(PyDb.Entity):
         mode off clears the first bit in the second DXF group code 1070 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def setPerspectiveOn(self, val: bool = True, /) -> None:
+    def setPerspectiveOn(self, on: bool = True, /) -> None:
         """
         This function turns perspective mode on in the viewport. If perspective mode is already on,
         then calling this function does no harm. See DVIEW in the AutoCAD Command Reference for
         more information on perspective mode. Turning perspective mode on sets the first bit in the
         second DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setPlotStyleSheet(self, val: str, /) -> None:
+    def setPlotStyleSheet(self, style_sheet: str, /) -> None:
         """
         This function has not been implemented. Returns eNotImplimentedYet.
         """
@@ -34424,7 +34424,7 @@ class Viewport(PyDb.Entity):
         point to a valid AcDbVisualStyle or AcDbRenderSettings object. Returns Acad::eOk on
         success.
         """
-    def setSheetView(self, val: PyDb.ObjectId, /) -> None:
+    def setSheetView(self, sheet_id: PyDb.ObjectId, /) -> None:
         """
         This function associates a sheet view with this viewport. The input parameter objId is an
         identifier for an AcDbViewTableRecord. Possible return values are Acad::eOk if successful,
@@ -34432,7 +34432,7 @@ class Viewport(PyDb.Entity):
         or Acad::eUnableToSetViewAssociation if the application is unable to associate the view
         with this viewport.
         """
-    def setSnapAngle(self, val: float, /) -> None:
+    def setSnapAngle(self, angle: float, /) -> None:
         """
         This function sets the viewport to use angle (in radians) as the snap angle setting. The
         snap angle is measured within the UCS XY plane, with zero being the UCS X axis, and
@@ -34442,7 +34442,7 @@ class Viewport(PyDb.Entity):
         Command Reference. The snap angle value is used for the eighth DXF group code 1040 in the
         'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapBasePoint(self, val: PyGe.Point2d, /) -> None:
+    def setSnapBasePoint(self, point: PyGe.Point2d, /) -> None:
         """
         This function sets pt (in UCS coordinates) as the viewport's snap basepoint. Returns
         Acad::eOk if successful. For more information about snap basepoint, see SNAPBASE in
@@ -34450,7 +34450,7 @@ class Viewport(PyDb.Entity):
         Command Reference. The snap basepoint X and Y coordinates are used for the ninth and tenth
         (respectively) DXF group code 1040s in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapIncrement(self, val: PyGe.Vector2d, /) -> None:
+    def setSnapIncrement(self, increment: PyGe.Vector2d, /) -> None:
         """
         This function sets the viewport to use vec.x as the X spacing of the snap grid and vec.y as
         the Y spacing of the snap grid. Both values are in drawing units. Returns Acad::eOk if
@@ -34459,7 +34459,7 @@ class Viewport(PyDb.Entity):
         attached to the viewport. The Y spacing value is used for the twelfth DXF group code 1040
         in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setSnapIsoPair(self, val: int, /) -> None:
+    def setSnapIsoPair(self, pair: int, /) -> None:
         """
         This function sets the viewport to use newVal as the snap IsoPair setting. The snap IsoPair
         indicates the current isometric plane for the viewport. Valid values for newVal are: 0 Left
@@ -34467,7 +34467,7 @@ class Viewport(PyDb.Entity):
         value is used for the ninth DXF group code 1070 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setSnapIsometric(self, val: bool = True, /) -> None:
+    def setSnapIsometric(self, isometric: bool = True, /) -> None:
         """
         This function sets the viewport's snap mode to isometric. See SNAP in the AutoCAD Command
         Reference for more information on the isometric snap mode. Setting snap to Isometric sets
@@ -34479,7 +34479,7 @@ class Viewport(PyDb.Entity):
         SNAP in the AutoCAD Command Reference for more information on snap. Turning snap off sets
         the sixth DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport to 0.
         """
-    def setSnapOn(self, val: bool = True, /) -> None:
+    def setSnapOn(self, on: bool = True, /) -> None:
         """
         This function turns snap mode on in the viewport. See SNAP in the AutoCAD Command Reference
         for more information on snap. Turning snap on sets the sixth DXF group code 1070 in the
@@ -34492,7 +34492,7 @@ class Viewport(PyDb.Entity):
         the standard or isometric snap modes. Setting snap to standard sets the eighth DXF group
         code 1070 in the 'ACAD' appId xdata attached to the viewport to 0.
         """
-    def setStandardScale(self, val: PyDb.StandardScaleType, /) -> None:
+    def setStandardScale(self, type: PyDb.StandardScaleType, /) -> None:
         """
         This function sets the scale of a viewport by using a standard scale defined by the
         StandardScaleType enumeration. Possible values are: Name Usage Name Usage kCustomScale
@@ -34507,16 +34507,16 @@ class Viewport(PyDb.Entity):
         any of the standard scales, the kCustomScale is returned. Calling setCustomScale() with a
         scale of kCustomScale is an invalid operation.
         """
-    def setSun(self, retid: PyDb.ObjectId, sun: PyDb.Object, erase: bool = True, /) -> None:
+    def setSun(self, ret_id: PyDb.ObjectId, sun: PyDb.Object, erase: bool = True, /) -> None:
         """
         Sets the object Id of the AcDbSun object associated with this viewport. Returns Acad::eOk
         if the object isn't already associated with another viewport.
         """
-    def setTransparent(self, val: bool = True, /) -> None:
+    def setTransparent(self, transparent: bool = True, /) -> None:
         """
         Returns the current transparency state of the viewport.
         """
-    def setTwistAngle(self, val: float, /) -> None:
+    def setTwistAngle(self, angle: float, /) -> None:
         """
         This function sets the viewport to use angle (in radians) as the twist angle of the view in
         the viewport. The twist angle is a rotation around the view's line of sight (that is, the
@@ -34560,7 +34560,7 @@ class Viewport(PyDb.Entity):
         fourth bit of the second DXF group code 1070 in the 'ACAD' appId xdata attached to the
         viewport.
         """
-    def setUcsFollowModeOn(self, val: bool = True, /) -> None:
+    def setUcsFollowModeOn(self, on: bool = True, /) -> None:
         """
         This function turns on UCS follow mode in the viewport. This means that the viewport will
         generate and display a plan view whenever the UCS changes in the viewport See UCSFOLLOW in
@@ -34576,7 +34576,7 @@ class Viewport(PyDb.Entity):
         Setting the UCS icon to stay in the lower left corner clears the second bit in the fifth
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setUcsIconAtOrigin(self, val: bool = True, /) -> None:
+    def setUcsIconAtOrigin(self, at_origin: bool = True, /) -> None:
         """
         This function sets the viewport to have the UCS icon follow the current UCS origin, as long
         as the origin is far enough within the viewport to allow the icon to display properly. See
@@ -34591,14 +34591,14 @@ class Viewport(PyDb.Entity):
         Returns Acad::eOk if successful. Turning off the UCS icon clears the first bit in the fifth
         DXF group code 1070 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setUcsIconVisible(self, val: bool = True, /) -> None:
+    def setUcsIconVisible(self, visible: bool = True, /) -> None:
         """
         This function turns on the UCS icon in the viewport so that it displays in the view. See
         UCSICON in the AutoCAD Command Reference for more information on the UCS icon. Turning on
         the UCS icon sets the first bit in the fifth DXF group code 1070 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def setUcsPerViewport(self, val: bool, /) -> None:
+    def setUcsPerViewport(self, save: bool, /) -> None:
         """
         This function sets the value of UCSVP for the viewport. If ucsvp is true, then the UCS that
         is saved with this viewport will become active whenever the viewport is made active.
@@ -34612,7 +34612,7 @@ class Viewport(PyDb.Entity):
         This method unlocks a viewport's scale. When a viewport is locked, its zoom factor relative
         to paperspace cannot be changed via AutoCAD commands such as ZOOM and VIEW.
         """
-    def setViewCenter(self, val: PyGe.Point2d, /) -> None:
+    def setViewCenter(self, center: PyGe.Point2d, /) -> None:
         """
         This function sets pt to be the new center point of the viewport's view. Returns Acad::eOk
         if successful.
@@ -34631,7 +34631,7 @@ class Viewport(PyDb.Entity):
         attached to the viewport.
         """
     @overload
-    def setViewDirection(self, dir: PyGe.Vector3d, /) -> None:
+    def setViewDirection(self, v_dir: PyGe.Vector3d, /) -> None:
         """
         This function sets the viewport to use vec (in Model Space WCS coordinates) as the vector
         from the view's target to the view's camera (the camera is moved to reflect the new
@@ -34656,11 +34656,11 @@ class Viewport(PyDb.Entity):
         view direction Z value is used for the second DXF group code 1030 in the 'ACAD' appId xdata
         attached to the viewport.
         """
-    def setViewHeight(self, val: float, /) -> None:
+    def setViewHeight(self, height: float, /) -> None:
         """
         This function sets ht to be the new viewport view height. Returns Acad::eOk if successful.
         """
-    def setViewTarget(self, val: PyGe.Point3d, /) -> None:
+    def setViewTarget(self, target: PyGe.Point3d, /) -> None:
         """
         This function sets the viewport to use pt (in Model Space WCS coordinates) as the location
         of the view's target. Returns Acad::eOk if successful. The view target X coordinate is used
@@ -34669,11 +34669,11 @@ class Viewport(PyDb.Entity):
         xdata attached to the viewport. The view target Z coordinate is used for the first DXF
         group code 1030 in the 'ACAD' appId xdata attached to the viewport.
         """
-    def setVisualStyle(self, val: PyDb.ObjectId, /) -> None:
+    def setVisualStyle(self, style_id: PyDb.ObjectId, /) -> None:
         """
         Sets the visual style for the viewport. Returns Acad::eOk if successful.
         """
-    def setWidth(self, val: float, /) -> None:
+    def setWidth(self, width: float, /) -> None:
         """
         This function sets width to be the width of the viewport entity's window in drawing units.
         This is the width in paperspace of the viewport itself, not the width of the model space
