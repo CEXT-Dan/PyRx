@@ -139,6 +139,7 @@ class TestDbSpline:
     def test_set_nurbs_data(self):
         """Test replacing spline data with new NURBS parameters."""
         pass # eGeneralModelingFailure
+    
         # points = fit_points()
         # spline = Db.Spline(points)
         
