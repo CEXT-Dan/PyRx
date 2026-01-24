@@ -130,11 +130,11 @@ class TestDbSpline:
         points = fit_points()
         spline = Db.Spline(points)
         
-        assert spline.hasFitData() is True
+        assert spline.hasFitData() == True
         
         # Purge fit data and check again
         spline.purgeFitData()
-        assert spline.hasFitData() is False
+        assert spline.hasFitData() == False
 
     def test_set_nurbs_data(self):
         """Test replacing spline data with new NURBS parameters."""

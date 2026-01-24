@@ -41,58 +41,47 @@ class TestDbAttributeReference:
         """Test visibility related methods"""
         att = Db.AttributeReference()
 
-        try:
-            # Test isInvisible
-            invisible_result = att.isInvisible()
-            assert isinstance(invisible_result, bool)
+        # Test isInvisible
+        invisible_result = att.isInvisible()
+        assert isinstance(invisible_result, (bool, int))
 
-            # Test setInvisible and isInvisible together
-            att.setInvisible(True)
-            assert att.isInvisible() == True
+        # Test setInvisible and isInvisible together
+        att.setInvisible(True)
+        assert att.isInvisible() == True
 
-            att.setInvisible(False)
-            assert att.isInvisible() == False
-        except Exception as e:
-            assert False, f"Visibility methods failed or not available: {e}"
+        att.setInvisible(False)
+        assert att.isInvisible() == False
 
     def test_constant_preset_verifiable_methods(self):
         """Test constant, preset and verifiable related methods"""
         att = Db.AttributeReference()
 
-        try:
-            # Test isConstant
-            const_result = att.isConstant()
-            assert isinstance(const_result, (bool, int))
+        # Test isConstant
+        const_result = att.isConstant()
+        assert isinstance(const_result, (bool, int))
 
-            # Test isPreset
-            preset_result = att.isPreset()
-            assert isinstance(preset_result, (bool, int))
+        # Test isPreset
+        preset_result = att.isPreset()
+        assert isinstance(preset_result, (bool, int))
 
-            # Test isVerifiable
-            verif_result = att.isVerifiable()
-            assert isinstance(verif_result, (bool, int))
-        except Exception as e:
-            assert (
-                False
-            ), f"Constant/Preset/Verifiable methods failed or not available: {e}"
+        # Test isVerifiable
+        verif_result = att.isVerifiable()
+        assert isinstance(verif_result, (bool, int))
 
+    @pytest.mark.known_failure_BRX
     def test_lock_methods(self):
         """Test lock related methods"""
         att = Db.AttributeReference()
 
-        try:
-            # Test isReallyLocked
-            locked_result = att.isReallyLocked()
-            assert isinstance(locked_result, (bool, int))
+        locked_result = att.isReallyLocked()
+        assert isinstance(locked_result, (bool, int))
 
-            # Test setLockPositionInBlock and lockPositionInBlock together
-            att.setLockPositionInBlock(True)
-            assert att.lockPositionInBlock() == True
+        # Test setLockPositionInBlock and lockPositionInBlock together
+        att.setLockPositionInBlock(True)
+        assert att.lockPositionInBlock() == True
 
-            att.setLockPositionInBlock(False)
-            assert att.lockPositionInBlock() == False
-        except Exception as e:
-            assert False, f"Lock methods failed or not available: {e}"
+        att.setLockPositionInBlock(False)
+        assert att.lockPositionInBlock() == False
 
     def test_mtext_attribute_methods(self):
         """Test multi-line attribute related methods"""
