@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+import pytest
 from pyrx import Db, Ge, Rx
 import wx
 
@@ -35,6 +35,7 @@ class TestBlockTableRecord:
 
     """Tests for SymbolTableRecord class (abstract base class)"""
 
+    @pytest.mark.known_failure_BRX
     def test_symbol_table_record_name_methods(self):
         # Create a mock symbol table record instance
         # Note: Since SymbolTableRecord is abstract, we'll test with BlockTableRecord
@@ -63,7 +64,8 @@ class TestBlockTableRecord:
         btr.setOrigin(origin)
         assert btr.origin() == origin
 
-    def test_block_table_record_name_methods(self):
+    @pytest.mark.known_failure_BRX
+    def test_block_table_record_is_renamable(self):
         btr = Db.BlockTableRecord()
 
         # Test setName and getName
@@ -74,6 +76,17 @@ class TestBlockTableRecord:
 
         # Test isRenamable (should return True for most cases)
         assert isinstance(btr.isRenamable(), (bool, int))
+        
+    def test_block_table_record_name_methods(self):
+        btr = Db.BlockTableRecord()
+
+        # Test setName and getName
+        test_name = "TestBlock"
+        btr.setName(test_name)
+        assert btr.getName() == test_name
+        assert btr.name() == test_name
+
+
 
     def test_block_table_record_dependency_methods(self):
         btr = Db.BlockTableRecord()

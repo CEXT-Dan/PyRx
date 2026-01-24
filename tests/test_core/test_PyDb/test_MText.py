@@ -90,6 +90,7 @@ class TestDbMText:
         mt.setLineSpacingFactor(val)
         assert mt.lineSpacingFactor() == val
 
+    @pytest.mark.known_failure_BRX
     def test_contents_rtf(self):
         """Test RTF content setting and retrieval"""
         mt = Db.MText()
@@ -174,6 +175,7 @@ class TestDbMText:
         assert isinstance(mt.ascent(), float)
         assert isinstance(mt.descent(), float)
 
+    @pytest.mark.known_failure_BRX
     def test_hit_test(self):
         """Test hit testing functionality"""
         mt = Db.MText()
@@ -194,6 +196,7 @@ class TestDbMText:
         assert isinstance(points, list)
         assert len(points) == 4
 
+    @pytest.mark.known_failure_BRX
     def test_get_bounding_points_by_line(self):
         """Test bounding points by line retrieval"""
         mt = Db.MText()

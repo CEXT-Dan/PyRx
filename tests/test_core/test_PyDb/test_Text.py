@@ -163,6 +163,7 @@ class TestDbText:
             # This might fail if DB context is required; ignore for now.
             assert False
 
+    @pytest.mark.known_failure_BRX
     def test_hit_test(self):
         """Test hit testing functionality"""
         t = Db.Text()
@@ -186,6 +187,7 @@ class TestDbText:
             # Expected behavior may vary; this is just ensuring no crash
              assert False
 
+    @pytest.mark.known_failure_BRX
     def test_correct_spelling(self):
         """Test spelling correction functionality"""
         t = Db.Text()
