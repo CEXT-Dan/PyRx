@@ -1,6 +1,8 @@
-from typing import Any
-from pyrx import Ap, Db, Rx
 from collections import defaultdict
+from typing import Any
+
+from pyrx import Ap, Db, Rx
+
 
 def pylisp_get_arg(args: list[tuple[Rx.LispType, Any]]):
     """
