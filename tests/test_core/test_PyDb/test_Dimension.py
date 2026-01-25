@@ -88,9 +88,9 @@ class TestDbDimension:
         
         # In a real scenario, you would pass a valid ObjectId here
         # For this test, we verify the setter/getter logic exists
-        # style_id = Db.ObjectId.kNull 
-        # dim.setDimensionStyle(style_id)
-        # assert dim.dimensionStyle() == style_id
+        style_id = Db.curDb().dimstyle()
+        dim.setDimensionStyle(style_id)
+        assert dim.dimensionStyle() == style_id
         
         # We can test the string properties of the style
         dim.setPrefix("DIA:")
@@ -196,19 +196,13 @@ class TestDbDimension:
         pt1 = Ge.Point3d(0, 0, 0)
         pt2 = Ge.Point3d(10, 0, 0)
         pt3 = Ge.Point3d(5, 5, 0)
-        
         dim = Db.AlignedDimension(pt1, pt2, pt3)
-        
-        # Create a dummy record to hold the data
-        style_record = Db.DimStyleTableRecord()
-        
-        # Copy the current dimension style data into the record
-        # Note: This requires the dimension to have a valid style ID in the database
-        # For a standalone test, we might skip this or mock the database interaction.
-        # Here we just verify the method exists and returns Acad::eOk.
-        
-        # result = dim.getDimstyleData(style_record)
-        # assert result == Db.ErrorStatus.eOk
+        dim.setDatabaseDefaults()
+        dms = Db.DimStyleTableRecord()
+        dim.setDimstyleData(dms)
+        # eInvalidInput? maybe needs a database
+        # style_record = dim.getDimstyleData()
+        # assert isinstance(style_record, Db.DimStyleTableRecord)
 
     def test_horizontal_rotation(self):
         """Tests getting the horizontal rotation angle."""
