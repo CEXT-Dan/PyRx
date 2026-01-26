@@ -6,6 +6,28 @@ from pyrx import Ge
 
 class TestMatrix3d:
 
+    def test_matrix3d_scale3d_magnitude3d(self):
+        pO = Ge.Point3d(1, 10, 100)
+        vX = Ge.Vector3d.kXAxis * 2
+        vY = Ge.Vector3d.kYAxis * 3
+        vZ = Ge.Vector3d.kZAxis * 4
+        xf = Ge.Matrix3d.kIdentity
+        xf.setCoordSystem(pO, vX, vY, vZ)
+        sc = xf.scale3dMagnitude()
+        assert sc.sx == 2
+        assert sc.sy == 3
+        assert sc.sz == 4
+        
+        vX = Ge.Vector3d.kXAxis * -2
+        vY = Ge.Vector3d.kYAxis * -3
+        vZ = Ge.Vector3d.kZAxis * -4
+        xf = Ge.Matrix3d.kIdentity
+        xf.setCoordSystem(pO, vX, vY, vZ)
+        sc = xf.scale3dMagnitude()
+        assert sc.sx == 2
+        assert sc.sy == 3
+        assert sc.sz == 4
+        
     def test_matrix3d_scale3d_1(self):
         pO = Ge.Point3d(1, 10, 100)
         vX = Ge.Vector3d.kXAxis * 2
@@ -17,6 +39,16 @@ class TestMatrix3d:
         assert sc.sx == 2
         assert sc.sy == 3
         assert sc.sz == 4
+        
+        vX = Ge.Vector3d.kXAxis * -2
+        vY = Ge.Vector3d.kYAxis * -3
+        vZ = Ge.Vector3d.kZAxis * -4
+        xf = Ge.Matrix3d.kIdentity
+        xf.setCoordSystem(pO, vX, vY, vZ)
+        sc = xf.scale3d()
+        assert sc.sx == -2
+        assert sc.sy == -3
+        assert sc.sz == -4
 
     def test_matrix3d_scale3d_2(self):
         xf = Ge.Matrix3d.kIdentity
