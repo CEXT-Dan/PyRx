@@ -1899,7 +1899,7 @@ static AcGeScale3d AcGeMatrix3dGetScaling3d(const AcGeMatrix3d& xf)
     AcGeVector3d y;
     AcGeVector3d z;
     xf.getCoordSystem(pnt, x, y, z);
-    return AcGeScale3d(x.length(), y.length(), z.length());
+    return AcGeScale3d(x.x, y.y, z.z);
 }
 
 static AcGePoint3d AcGeMatrix3dGetOrigin(const AcGeMatrix3d& xf)
