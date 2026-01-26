@@ -6,7 +6,7 @@ from pyrx import Ge
 
 class TestMatrix3d:
 
-    def test_matrix3d_scale3d(self):
+    def test_matrix3d_scale3d_1(self):
         pO = Ge.Point3d(1, 10, 100)
         vX = Ge.Vector3d.kXAxis * 2
         vY = Ge.Vector3d.kYAxis * 3
@@ -17,6 +17,42 @@ class TestMatrix3d:
         assert sc.sx == 2
         assert sc.sy == 3
         assert sc.sz == 4
+
+    def test_matrix3d_scale3d_2(self):
+        xf = Ge.Matrix3d.kIdentity
+        pl = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kXAxis)
+        xf.setToMirroring(pl)
+        assert xf.scale3d() == Ge.Scale3d(-1.0, 1.0, 1.0)
+
+        xf = Ge.Matrix3d.kIdentity
+        pl = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kYAxis)
+        xf.setToMirroring(pl)
+        assert xf.scale3d() == Ge.Scale3d(1.0, -1.0, 1.0)
+
+        xf = Ge.Matrix3d.kIdentity
+        pl = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        xf.setToMirroring(pl)
+        assert xf.scale3d() == Ge.Scale3d(1.0, 1.0, -1.0)
+
+        xf = Ge.Matrix3d.kIdentity
+        xf.setToRotation(math.radians(45), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
+        assert xf.scale3d() == Ge.Scale3d(1.0, 1.0, 1.0)
+
+        xf = Ge.Matrix3d.kIdentity
+        xf.setCoordSystem(
+            Ge.Point3d(-100, -100, -100),
+            Ge.Vector3d.kXAxis,
+            Ge.Vector3d.kYAxis,
+            Ge.Vector3d.kZAxis,
+        )
+        xf.setToRotation(math.radians(45), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
+        assert xf.scale3d() == Ge.Scale3d(1.0, 1.0, 1.0)
+
+        xf = Ge.Matrix3d.kIdentity
+        pl = Ge.Plane(Ge.Point3d.kOrigin, Ge.Vector3d.kZAxis)
+        xf.setToMirroring(pl)
+        xf = xf * Ge.Matrix3d.kIdentity.setToScaling(8)
+        assert xf.scale3d() == Ge.Scale3d(8.0, 8.0, -8.0)
 
     def test_matrix3d_set1(self):
         pO = Ge.Point3d(1, 10, 100)
