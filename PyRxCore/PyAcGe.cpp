@@ -1918,6 +1918,14 @@ static AcGeScale3d AcGeMatrix3dGetScaling3d(const AcGeMatrix3d& xf)
     return AcGeScale3d(sx, sy, sz);
 }
 
+static AcGeScale3d AcGeMatrix3dGetScalingMagnitude3d(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d origin;
+    AcGeVector3d xAxis, yAxis, zAxis;
+    xf.getCoordSystem(origin, xAxis, yAxis, zAxis);
+    return AcGeScale3d(xAxis.length(), yAxis.length(), zAxis.length());
+}
+
 static AcGePoint3d AcGeMatrix3dGetOrigin(const AcGeMatrix3d& xf)
 {
     AcGePoint3d pnt;
@@ -2018,6 +2026,7 @@ static void makePyGeMatrix3dWrapper()
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("scale", &AcGeMatrix3d::scale, DS.ARGS())
         .def("scale3d", &AcGeMatrix3dGetScaling3d, DS.ARGS())
+        .def("scale3dMagnitude", &AcGeMatrix3dGetScalingMagnitude3d, DS.ARGS())
         .def("origin", &AcGeMatrix3dGetOrigin, DS.ARGS())
         .def("xAxis", &AcGeMatrix3dGetXaxis, DS.ARGS())
         .def("yAxis", &AcGeMatrix3dGetYaxis, DS.ARGS())
