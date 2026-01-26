@@ -37,6 +37,10 @@ class TestMatrix3d:
         xf = Ge.Matrix3d.kIdentity
         xf.setToRotation(math.radians(45), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
         assert xf.scale3d() == Ge.Scale3d(1.0, 1.0, 1.0)
+        
+        xf = Ge.Matrix3d.kIdentity
+        xf.setToRotation(math.radians(181), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
+        assert xf.scale3d() == Ge.Scale3d(-1.0, -1.0, 1.0)
 
         xf = Ge.Matrix3d.kIdentity
         xf.setCoordSystem(
