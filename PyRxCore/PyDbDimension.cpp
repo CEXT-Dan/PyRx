@@ -1285,7 +1285,7 @@ void PyDb3PointAngularDimension::setXLine1Point(const AcGePoint3d& val) const
 
 AcGePoint3d PyDb3PointAngularDimension::xLine2Point() const
 {
-    return impObj()->xLine1Point();
+    return impObj()->xLine2Point();
 }
 
 void PyDb3PointAngularDimension::setXLine2Point(const AcGePoint3d& val) const
