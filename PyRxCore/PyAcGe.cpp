@@ -412,6 +412,13 @@ static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
     return buffer;
 }
 
+static boost::shared_ptr<PyGePoint2dArray> PyPoint2dArrayInit(const boost::python::object& iterable)
+{
+    auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
+    return boost::shared_ptr<PyGePoint2dArray>(new PyGePoint2dArray(vec.begin(), vec.end()));
+}
+
+
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
 static std::vector<size_t> PyGePoint2dArrayConvexHullIndexesImpl(const PyGePoint2dArray& src)
@@ -496,6 +503,7 @@ static void makePyGePoint2dWrapper()
         .def("sortByY", &PyGePoint2dArraySortByY, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
+        .def("__init__", make_constructor(&PyPoint2dArrayInit))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -1351,6 +1359,12 @@ static std::string PyGePoint3dArrayRepr(const PyGePoint3dArray& src)
     return buffer;
 }
 
+static boost::shared_ptr<PyGePoint3dArray> PyPoint3dArrayInit(const boost::python::object& iterable)
+{
+    auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
+    return boost::shared_ptr<PyGePoint3dArray>(new PyGePoint3dArray(vec.begin(), vec.end()));
+}
+
 static AcGePoint3d AcGePoint3dMirror(AcGePoint3d& pnt, const PyGePlane& plane)
 {
     return pnt.mirror(*plane.impObj());
@@ -1391,6 +1405,7 @@ static void makePyGePoint3dWrapper()
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
+        .def("__init__", make_constructor(&PyPoint3dArrayInit))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
