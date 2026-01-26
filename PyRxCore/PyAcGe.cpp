@@ -1909,12 +1909,13 @@ static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
 
 static AcGeScale3d AcGeMatrix3dGetScaling3d(const AcGeMatrix3d& xf)
 {
-    AcGePoint3d pnt;
-    AcGeVector3d x;
-    AcGeVector3d y;
-    AcGeVector3d z;
-    xf.getCoordSystem(pnt, x, y, z);
-    return AcGeScale3d(x.x, y.y, z.z);
+    AcGePoint3d origin;
+    AcGeVector3d xAxis, yAxis, zAxis;
+    xf.getCoordSystem(origin, xAxis, yAxis, zAxis);
+    double sx = (xAxis.dotProduct(AcGeVector3d::kXAxis) < 0 ? -xAxis.length() : xAxis.length());
+    double sy = (yAxis.dotProduct(AcGeVector3d::kYAxis) < 0 ? -yAxis.length() : yAxis.length());
+    double sz = (zAxis.dotProduct(AcGeVector3d::kZAxis) < 0 ? -zAxis.length() : zAxis.length());
+    return AcGeScale3d(sx, sy, sz);
 }
 
 static AcGePoint3d AcGeMatrix3dGetOrigin(const AcGeMatrix3d& xf)
