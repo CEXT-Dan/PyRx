@@ -1220,7 +1220,6 @@ void makePyDb3PointAngularDimensionWrapper()
         .def("cloneFrom", &PyDb3PointAngularDimension::cloneFrom, DS.SARGS({ "other_object: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDb3PointAngularDimension::cast, DS.SARGS({ "other_object: PyRx.RxObject" })).staticmethod("cast")
         ;
-
 }
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension()

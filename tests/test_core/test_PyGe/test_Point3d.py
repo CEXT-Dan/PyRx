@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pyrx import Ge
 
+
 class TestPoint3d:
     def test_repr(self):
         val = Ge.Point3d(1.2, 2.3, 4.5)
@@ -84,6 +85,11 @@ class TestPoint3d:
         assert pO.y == 13.0
         assert pO.z == 14.0
 
+    def test_Point3dArray_init(self):
+        vals = [Ge.Point3d(0, 0, 0), Ge.Point3d(10, 0, 0), Ge.Point3d(10, 10, 0)]
+        pnts = Ge.Point3dArray(vals)
+        assert pnts[2] == vals[2]
+
     def test_Point3dArray_sort(self):
         pnts = Ge.Point3dArray()
         for i in range(5, 0, -1):
@@ -155,26 +161,26 @@ class TestPoint3d:
         result = point1.project(planeA1, direction_vector)
         expected = point1.orthoProject(planeA1)
         assert result.isEqualTo(expected)
-        
+
     def test_rotate_by(self):
         """Test rotation around an axis"""
         point = Ge.Point3d(1, 0, 0)
         axis = Ge.Vector3d.kZAxis
         center = Ge.Point3d.kOrigin
-        
+
         # Rotate 90 degrees counterclockwise around Z-axis
         result = point.rotateBy(1.5708, axis, center)
         expected = Ge.Point3d(0, 1, 0)
         tol = Ge.Tol()
         tol.setEqualPoint(1e4)
-        assert result.isEqualTo(expected,tol)
+        assert result.isEqualTo(expected, tol)
 
     def test_scale_by(self):
         """Test scaling from origin"""
         point = Ge.Point3d(2, 4, 6)
         factor = 2.0
         center = Ge.Point3d.kOrigin
-        
+
         result = point.scaleBy(factor, center)
         expected = Ge.Point3d(4, 8, 12)
         assert result.isEqualTo(expected)
@@ -184,22 +190,22 @@ class TestPoint3d:
         point = Ge.Point3d(2, 4, 6)
         factor = 0.5
         center = Ge.Point3d(1, 2, 3)
-        
+
         result = point.scaleBy(factor, center)
         # Calculation: (point - center) * factor + center
-        expected = Ge.Point3d((2-1)*0.5+1, (4-2)*0.5+2, (6-3)*0.5+3)
+        expected = Ge.Point3d((2 - 1) * 0.5 + 1, (4 - 2) * 0.5 + 2, (6 - 3) * 0.5 + 3)
         assert result.isEqualTo(expected)
 
     def test_set_method(self):
         """Test the set method with different parameters"""
         point = Ge.Point3d(0, 0, 0)
-        
+
         # Set with x,y,z
         point.set(1, 2, 3)
         assert point == Ge.Point3d(1, 2, 3)
-        
+
         # Test setting to origin
-        point.set(0.0,0.0,0.0)
+        point.set(0.0, 0.0, 0.0)
         assert point == Ge.Point3d.kOrigin
 
     def test_point3d_addition(self):
@@ -284,7 +290,7 @@ class TestPoint3d:
         # Create a plane in XY plane at z=5
         plane = Ge.Plane(Ge.Point3d(0, 0, 5), Ge.Vector3d.kZAxis)
         point2d = Ge.Point2d(10, 20)
-        
+
         result = Ge.Point3d(plane, point2d)
         expected = Ge.Point3d(10, 20, 5)
         assert result.isEqualTo(expected)
