@@ -1,3 +1,13 @@
+## v2.2.42
+
+* add 3 point arc Db.Arc(Ge.Point3d(0,0,0),Ge.Point3d(50,50,0),Ge.Point3d(100,0,0))
+* add Db.Polyline length
+* [#451] fix Ge.Matrix3d.scale3d sign was always positive
+* add Matrix3d::scale3dMagnitude same as scale3d, but always positive
+* fixed PyDb3PointAngularDimension::xLine2Point() returned xLine1Point
+* Improve stubs
+* [#447] Refactor tests progress, theses are also worth a look as samples
+
 ## v2.2.41
 
 * [#446] this release fixes a bug where some geometry classes had invalid signatures with regards to AcGePlane, Ge.Plane
