@@ -13,7 +13,7 @@ PyRx provides Python bindings for CAD software:
 
 **C++ bindings & ActiveX bindings**:
 
-- **AutoCAD®**: ObjectARX® 2021-2026
+- **AutoCAD®**: ObjectARX® 2021-2027
 - **ZwCAD®**: ZRX® 2024-2026
 - **GstarCAD®**: GRX® 2024-2026
 - **BricsCAD®**: BRX® v24-v26
@@ -48,12 +48,11 @@ Note: if you are using a VENV, this path may differ, it will be loacated where y
 _APPLOAD
 %localappdata%\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderZ25.0.zrx
 or
-RxLoader24.0.arx = 2021
-RxLoader24.1.arx = 2022
 RxLoader24.2.arx = 2023
 RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025
 RxLoader25.1.arx = 2026
+RxLoader26.0.arx = 2027
 RxLoaderV25.0.brx = BricsCAD v25
 ```
 You should now be able to load modules with the new PYLOAD command
