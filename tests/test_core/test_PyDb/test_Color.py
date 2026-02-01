@@ -35,6 +35,7 @@ class TestColor:
         assert color.green() == 255
         assert color.blue() == 170
         assert color.isByACI() == False
+        assert color.toHTMLColor() == "#00FFAA"
 
 
 class TestEntityColor:
@@ -68,3 +69,4 @@ class TestEntityColor:
         assert color.green() == 255
         assert color.blue() == 170
         assert color.isByACI() == False
+        assert color.toHTMLColor() == "#00FFAA"
