@@ -29,13 +29,13 @@ class TestDbBlockReference:
         assert isinstance(block_table_record_id, Db.ObjectId)
         assert not block_table_record_id.isNull()
 
-    def test_position(self, db_06457: Db.Database):
+    def test_position(self):
         """Test getting the position of the block reference"""
         r = Db.BlockReference()
         pos = r.position()
         assert isinstance(pos, Ge.Point3d)
 
-    def test_setPosition(self, db_06457: Db.Database):
+    def test_setPosition(self):
         """Test setting the position of the block reference"""
         r = Db.BlockReference()
         original_pos = r.position()
@@ -47,7 +47,7 @@ class TestDbBlockReference:
         # Verify the position was set correctly
         assert r.position() == new_pos
 
-    def test_normal(self, db_06457: Db.Database):
+    def test_normal(self):
         """Test getting the normal vector of the block reference"""
         r = Db.BlockReference()
 
@@ -58,12 +58,13 @@ class TestDbBlockReference:
         # Normal should be normalized (length of 1.0)
         assert abs(normal.length() - 1.0) < 1e-6
 
-    def test_setNormal(self, db_06457: Db.Database):
+    def test_setNormal(self):
         """Test setting the normal vector of the block reference"""
         r = Db.BlockReference()
 
         # Get current normal
         original_normal = r.normal()
+        assert original_normal == Ge.Vector3d.kZAxis
 
         # Set new normal (should be normalized)
         new_normal = Ge.Vector3d(0.0, 0.0, 1.0)  # Z-axis
@@ -73,7 +74,7 @@ class TestDbBlockReference:
         assert abs(r.normal().length() - 1.0) < 1e-6
     
 
-    def test_rotation(self, db_06457: Db.Database):
+    def test_rotation(self):
         """Test getting the rotation of the block reference"""
         r = Db.BlockReference()
         rotation = r.rotation()
@@ -81,7 +82,7 @@ class TestDbBlockReference:
         # Verify it returns a float
         assert isinstance(rotation, float)
 
-    def test_setRotation(self, db_06457: Db.Database):
+    def test_setRotation(self):
         """Test setting the rotation of the block reference"""
         r = Db.BlockReference()
 
@@ -95,7 +96,7 @@ class TestDbBlockReference:
         # Verify the rotation was set correctly
         assert abs(r.rotation() - new_rotation) < 1e-6
 
-    def test_scaleFactors(self, db_06457: Db.Database):
+    def test_scaleFactors(self):
         """Test getting the scale factors of the block reference"""
         r = Db.BlockReference()
         scales = r.scaleFactors()
@@ -103,7 +104,7 @@ class TestDbBlockReference:
         # Verify it returns a valid Scale3d
         assert isinstance(scales, Ge.Scale3d)
 
-    def test_setScaleFactors(self, db_06457: Db.Database):
+    def test_setScaleFactors(self):
         """Test setting the scale factors of the block reference"""
         r = Db.BlockReference()
 
@@ -248,12 +249,13 @@ class TestDbBlockReference:
         # Verify it returns valid extents
         assert isinstance(extents, Db.Extents)
 
-    def test_setBlockTransform(self, db_06457: Db.Database):
+    def test_setBlockTransform(self):
         """Test setting the block transform"""
         r = Db.BlockReference()
 
         # Get current transformation
         original_transform = r.blockTransform()
+        assert original_transform ==  Ge.Matrix3d.kIdentity
 
         # Create a new transformation matrix
         identity_matrix = Ge.Matrix3d.kIdentity
