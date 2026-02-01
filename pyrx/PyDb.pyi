@@ -5112,7 +5112,40 @@ class CollisionType(_BoostPythonEnum):
     kCollisionTypeSolid: ClassVar[Self]  # 1
 
 class Color:
+    @overload
     def __init__(self, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
+    @overload
+    def __init__(self, htmlColor: str, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
+    @overload
+    def __init__(self, colorIndex: int, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
+    @overload
+    def __init__(self, red: int, green: int, blue: int, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
+    @overload
+    def __init__(self, *args) -> None:
         """
         This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
         as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
@@ -13916,7 +13949,16 @@ class EntityColor:
     def Foreground() -> EntityColor: ...
     @staticmethod
     def NoneClr() -> EntityColor: ...
-    def __init__(self, r: int, g: int, b: int, /) -> None: ...
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, htmlColor: str, /) -> None: ...
+    @overload
+    def __init__(self, colorIndex: int, /) -> None: ...
+    @overload
+    def __init__(self, red: int, green: int, blue: int, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def black() -> EntityColor: ...
