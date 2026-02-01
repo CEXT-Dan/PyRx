@@ -37,6 +37,14 @@ class TestColor:
         assert color.isByACI() == False
         assert color.toHTMLColor() == "#00FFAA"
 
+    def test_Color_5(self):
+        color = Db.Color("#00FFAA")
+        assert color.red() == 0
+        assert color.green() == 255
+        assert color.blue() == 170
+        assert color.isByACI() == False
+        assert color.toHTMLColor() == "#00FFAA"
+
 
 class TestEntityColor:
 
@@ -65,6 +73,14 @@ class TestEntityColor:
     def test_Color_4(self):
         # Standard format: #FFF
         color = Db.EntityColor("#0FA")
+        assert color.red() == 0
+        assert color.green() == 255
+        assert color.blue() == 170
+        assert color.isByACI() == False
+        assert color.toHTMLColor() == "#00FFAA"
+
+    def test_Color_5(self):
+        color = Db.EntityColor("#00FFAA")
         assert color.red() == 0
         assert color.green() == 255
         assert color.blue() == 170
