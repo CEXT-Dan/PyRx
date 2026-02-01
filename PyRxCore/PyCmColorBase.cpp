@@ -10,22 +10,22 @@ using namespace boost::python;
 #include <tuple>
 #include <cctype>
 #include <stdexcept>
-
-#include <string>
 #include <sstream>
 #include <iomanip>
 
 // Helper to ensure the number is always 2 digits (e.g., 5 -> "05")
-static std::string intToHexStr(int value) {
+static std::string intToHexStr(int value)
+{
     std::stringstream ss;
     ss << std::hex << std::uppercase << std::setfill('0') << std::setw(2) << value;
     return ss.str();
 }
 
 // Function to convert RGB to HTML color string
-static std::string rgbToHex(int r, int g, int b) {
+static std::string rgbToHex(int r, int g, int b)
+{
     // Validate input range
-    if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) 
+    if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
     {
         PyThrowBadEs(eInvalidInput);
     }
@@ -35,7 +35,8 @@ static std::string rgbToHex(int r, int g, int b) {
 
 // Helper function to convert a single hex character to its integer value
 // e.g., 'F' -> 15, 'a' -> 10
-static int hexCharToInt(char c) {
+static int hexCharToInt(char c)
+{
     if (c >= '0' && c <= '9') return c - '0';
     if (c >= 'A' && c <= 'F') return c - 'A' + 10;
     if (c >= 'a' && c <= 'f') return c - 'a' + 10;
@@ -43,17 +44,17 @@ static int hexCharToInt(char c) {
 }
 
 // Function to convert HTML color string to RGB
-static std::tuple<int, int, int> hexToRGB(const std::string& hexString) 
+static std::tuple<int, int, int> hexToRGB(const std::string& hexString)
 {
     // 1. Check if the string starts with '#'
-    if (hexString.empty() || hexString[0] != '#') 
+    if (hexString.empty() || hexString[0] != '#')
     {
         PyThrowBadEs(eInvalidInput);
     }
 
     // 2. Check length (6 digits for standard RGB, 3 digits for shorthand like #FFF)
     size_t length = hexString.length();
-    if (length != 7 && length != 4) 
+    if (length != 7 && length != 4)
     {
         PyThrowBadEs(eInvalidInput);
     }
@@ -64,7 +65,8 @@ static std::tuple<int, int, int> hexToRGB(const std::string& hexString)
     // 4. Convert to integers
     int r, g, b;
 
-    if (length == 7) {
+    if (length == 7)
+    {
         // Standard format: #RRGGBB
         int r1 = hexCharToInt(digits[0]);
         int r2 = hexCharToInt(digits[1]);
@@ -73,7 +75,7 @@ static std::tuple<int, int, int> hexToRGB(const std::string& hexString)
         int b1 = hexCharToInt(digits[4]);
         int b2 = hexCharToInt(digits[5]);
 
-        if (r1 == -1 || r2 == -1 || g1 == -1 || g2 == -1 || b1 == -1 || b2 == -1) 
+        if (r1 == -1 || r2 == -1 || g1 == -1 || g2 == -1 || b1 == -1 || b2 == -1)
         {
             PyThrowBadEs(eInvalidInput);
         }
@@ -82,13 +84,14 @@ static std::tuple<int, int, int> hexToRGB(const std::string& hexString)
         g = g1 * 16 + g2;
         b = b1 * 16 + b2;
     }
-    else {
+    else
+    {
         // Shorthand format: #RGB
         int r1 = hexCharToInt(digits[0]);
         int g1 = hexCharToInt(digits[1]);
         int b1 = hexCharToInt(digits[2]);
 
-        if (r1 == -1 || g1 == -1 || b1 == -1) 
+        if (r1 == -1 || g1 == -1 || b1 == -1)
         {
             PyThrowBadEs(eInvalidInput);
         }
@@ -160,7 +163,7 @@ void makePyCmColorWrapper()
 
     PyDocString DS("Color");
     class_<AcCmColor>("Color")
-        .def(init<>(DS.CTOR(ctords,826)))
+        .def(init<>(DS.CTOR(ctords, 826)))
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
         .def("setNone", &AcCmColor::setNone, DS.ARGS())
         .def("setByBlock", &AcCmColor::setByBlock, DS.ARGS())
@@ -228,7 +231,7 @@ void makePyCmTransparencyWrapper()
 #endif
         .def("isClear", &AcCmTransparency::isClear, DS.ARGS())
         .def("isSolid", &AcCmTransparency::isSolid, DS.ARGS())
-        .def("setMethod", &AcCmTransparency::setMethod, DS.ARGS({"method: PyDb.TransparencyMethod"}))
+        .def("setMethod", &AcCmTransparency::setMethod, DS.ARGS({ "method: PyDb.TransparencyMethod" }))
         //operators
         .def("__eq__", &AcCmTransparency::operator==)
         .def("__ne__", &AcCmTransparency::operator!=)
@@ -248,7 +251,7 @@ void makePyCmTransparencyWrapper()
 static boost::shared_ptr<AcCmEntityColor> AcCmEntityColorFromStringCtor(const std::string& htmlColor)
 {
     auto [r, g, b] = hexToRGB(htmlColor);
-    return boost::shared_ptr<AcCmEntityColor>(new AcCmEntityColor(r,g,b));
+    return boost::shared_ptr<AcCmEntityColor>(new AcCmEntityColor(r, g, b));
 }
 
 static boost::shared_ptr<AcCmEntityColor> AcCmEntityColorFromIndexCtor(Adesk::UInt16 val)
@@ -323,7 +326,7 @@ void makePyCmEntityColorWrapper()
         .def<bool(AcCmEntityColor::*)()const>("isNone", &AcCmEntityColor::isNone)
         .def<bool(AcCmEntityColor::*)()const>("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("trueColor", &AcCmEntityColor::trueColor)
-       
+
 #if defined(_GRXTARGET) && (_ZRXTARGET > 240)
         .def<Adesk::UInt8(AcCmEntityColor::*)()const>("trueColorMethod", &AcCmEntityColor::trueColorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColor", &AcCmEntityColor::setTrueColor)
