@@ -11,6 +11,28 @@ using namespace boost::python;
 #include <cctype>
 #include <stdexcept>
 
+#include <string>
+#include <sstream>
+#include <iomanip>
+
+// Helper to ensure the number is always 2 digits (e.g., 5 -> "05")
+static std::string intToHexStr(int value) {
+    std::stringstream ss;
+    ss << std::hex << std::uppercase << std::setfill('0') << std::setw(2) << value;
+    return ss.str();
+}
+
+// Function to convert RGB to HTML color string
+static std::string rgbToHex(int r, int g, int b) {
+    // Validate input range
+    if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) 
+    {
+        PyThrowBadEs(eInvalidInput);
+    }
+    return "#" + intToHexStr(r) + intToHexStr(g) + intToHexStr(b);
+}
+
+
 // Helper function to convert a single hex character to its integer value
 // e.g., 'F' -> 15, 'a' -> 10
 static int hexCharToInt(char c) {
@@ -123,6 +145,11 @@ static bool AcCmColorNotEqualsOperator(const AcCmColor& left, const AcCmColor& r
     return left != right;
 }
 
+static std::string AcCmColorRGBToHex(const AcCmColor& left)
+{
+    return rgbToHex(left.red(), left.green(), left.blue());
+}
+
 void makePyCmColorWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -167,6 +194,8 @@ void makePyCmColorWrapper()
         .def("penIndex", &AcCmColor::penIndex, DS.ARGS())
         .def("setPenIndex", &AcCmColor::setPenIndex, DS.ARGS({ "val : int" }))
         .def("entityColor", &AcCmColor::entityColor, DS.ARGS())
+        .def("toHTMLColor", &AcCmColorRGBToHex, DS.ARGS())
+
         //ctor
         .def("__init__", make_constructor(&AcCmColorFromStringCtor))
         .def("__init__", make_constructor(&AcCmColorFromRgbCtor))
@@ -241,6 +270,11 @@ static std::string AcCmEntityColorRepr(const AcCmEntityColor& s)
     if (s.isByACI())
         return std::format("{}.EntityColor({})", PyDbNamespace, s.colorIndex());
     return std::format("{}.EntityColor({},{},{})", PyDbNamespace, s.red(), s.green(), s.blue());
+}
+
+static std::string AcCmEntityColorRGBToHex(const AcCmEntityColor& left)
+{
+    return rgbToHex(left.red(), left.green(), left.blue());
 }
 
 void makePyCmEntityColorWrapper()
@@ -345,6 +379,7 @@ void makePyCmEntityColorWrapper()
         .def("Foreground", &AcCmEntityColor::Foreground, DS.SARGS()).staticmethod("Foreground")
         .def("white", &AcCmEntityColor::white, DS.SARGS()).staticmethod("white")
         .def("black", &AcCmEntityColor::black, DS.SARGS()).staticmethod("black")
+        .def("toHTMLColor", &AcCmEntityColorRGBToHex, DS.ARGS())
 #endif
         .def("__init__", make_constructor(&AcCmEntityColorFromStringCtor))
         .def("__init__", make_constructor(&AcCmEntityColorFromIndexCtor))

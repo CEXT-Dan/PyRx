@@ -13,6 +13,7 @@ class TestColor:
         assert color.red() == 255
         assert color.green() == 165
         assert color.blue() == 0
+        assert color.toHTMLColor() == "#FFA500"
 
     def test_Color_2(self):
         color = Db.Color(1)
@@ -25,6 +26,7 @@ class TestColor:
         assert color.red() == 255
         assert color.green() == 165
         assert color.blue() == 0
+        assert color.toHTMLColor() == "#FFA500"
 
     def test_Color_4(self):
         # Standard format: #FFF
@@ -44,6 +46,7 @@ class TestEntityColor:
         assert color.red() == 255
         assert color.green() == 165
         assert color.blue() == 0
+        assert color.toHTMLColor() == "#FFA500"
 
     def test_Color_2(self):
         color = Db.EntityColor(1)
@@ -56,6 +59,7 @@ class TestEntityColor:
         assert color.red() == 255
         assert color.green() == 165
         assert color.blue() == 0
+        assert color.toHTMLColor() == "#FFA500"
 
     def test_Color_4(self):
         # Standard format: #FFF
