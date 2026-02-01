@@ -13754,7 +13754,7 @@ class Entity(PyDb.DbObject):
         Sets the property to indicate whether the entity can cast shadows.
         """
     def setColor(
-        self, clr: PyDb.AcCmColor, dosubents: bool = True, db: PyDb.Database = "current", /
+        self, clr: PyDb.Color, dosubents: bool = True, db: PyDb.Database = ..., /
     ) -> None:
         """
         Function usage This method sets the entity's color to the color specified by color. If the
