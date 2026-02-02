@@ -126,13 +126,9 @@ class TestDbPolyline2d:
         # Make closed
         pline_open.makeClosed()
 
-        # Verify
-        assert (
-            pline_open.isClosed()
-        )  # Note: isClosed is usually a property, check docs for exact name
-        # If isClosed is not a property, check the DXF bit logic or use setClosed/getClosed if available
-        # Based on standard AutoCAD API, isClosed is usually a property.
-
+          # Verify
+        assert pline_open.isClosed() == True
+    
     def test_spline_fit(self):
         """
         Tests converting a polyline to a spline fit type.

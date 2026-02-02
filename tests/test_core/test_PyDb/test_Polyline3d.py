@@ -1,4 +1,6 @@
 from __future__ import annotations
+
+from numpy import True_
 from pyrx import Db, Ge
 import pytest
 
@@ -126,11 +128,8 @@ class TestDbPolyline3d:
         pline_open.makeClosed()
 
         # Verify
-        assert (
-            pline_open.isClosed()
-        )  # Note: isClosed is usually a property, check docs for exact name
-        # If isClosed is not a property, check the DXF bit logic or use setClosed/getClosed if available
-        # Based on standard AutoCAD API, isClosed is usually a property.
+        assert pline_open.isClosed() == True_
+    
 
     def test_spline_fit(self):
         """
