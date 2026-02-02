@@ -128,7 +128,7 @@ class TestDbPolyline3d:
         pline_open.makeClosed()
 
         # Verify
-        assert pline_open.isClosed() == True_
+        assert pline_open.isClosed() == True
     
 
     def test_spline_fit(self):
