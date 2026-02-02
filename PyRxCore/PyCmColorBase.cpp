@@ -153,6 +153,12 @@ static std::string AcCmColorRGBToHex(const AcCmColor& left)
     return rgbToHex(left.red(), left.green(), left.blue());
 }
 
+static void FromAcCmColorFromString(AcCmColor& left, const std::string& htmlColor)
+{
+    auto [r, g, b] = hexToRGB(htmlColor);
+    left.setRGB(r, g, b);
+}
+
 void makePyCmColorWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -198,6 +204,7 @@ void makePyCmColorWrapper()
         .def("setPenIndex", &AcCmColor::setPenIndex, DS.ARGS({ "val : int" }))
         .def("entityColor", &AcCmColor::entityColor, DS.ARGS())
         .def("toHTMLColor", &AcCmColorRGBToHex, DS.ARGS())
+        .def("fromHTMLColor", &FromAcCmColorFromString, DS.ARGS({ "colorString: str" }))
 
         //ctor
         .def("__init__", make_constructor(&AcCmColorFromStringCtor))
@@ -278,6 +285,12 @@ static std::string AcCmEntityColorRepr(const AcCmEntityColor& s)
 static std::string AcCmEntityColorRGBToHex(const AcCmEntityColor& left)
 {
     return rgbToHex(left.red(), left.green(), left.blue());
+}
+
+static void AcCmEntityColorFromString(AcCmEntityColor& left, const std::string& htmlColor)
+{
+    auto [r, g, b] = hexToRGB(htmlColor);
+    left.setRGB(r, g, b);
 }
 
 void makePyCmEntityColorWrapper()
@@ -383,6 +396,7 @@ void makePyCmEntityColorWrapper()
         .def("white", &AcCmEntityColor::white, DS.SARGS()).staticmethod("white")
         .def("black", &AcCmEntityColor::black, DS.SARGS()).staticmethod("black")
         .def("toHTMLColor", &AcCmEntityColorRGBToHex, DS.ARGS())
+        .def("fromHTMLColor", &AcCmEntityColorFromString, DS.ARGS({ "colorString: str" }))
 #endif
         .def("__init__", make_constructor(&AcCmEntityColorFromStringCtor))
         .def("__init__", make_constructor(&AcCmEntityColorFromIndexCtor))

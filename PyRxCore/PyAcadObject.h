@@ -64,6 +64,7 @@ public:
     std::string     colorName() const;
     std::string     bookName() const;
     std::string     toHTMLColor() const;
+    void            fromHTMLColor(const std::string& code) const;
     void            setNames(const std::string& colorName, const std::string& bookName) const;
     void            clear() const;
     long            red() const;

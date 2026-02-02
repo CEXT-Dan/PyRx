@@ -36,6 +36,7 @@ void makePyAcadAcCmColorWrapper()
         .def("setRGB", &PyAcadAcCmColor::setRGB, DS.ARGS({ "red:int", "green:int", "blue:int" }))
         .def("colorMethod", &PyAcadAcCmColor::colorMethod, DS.ARGS())
         .def("toHTMLColor", &PyAcadAcCmColor::toHTMLColor, DS.ARGS())
+        .def("fromHTMLColor", &PyAcadAcCmColor::fromHTMLColor, DS.ARGS({"colorString: str"}))
         .def("setColorMethod", &PyAcadAcCmColor::setColorMethod, DS.ARGS({ "flags:PyAx.AcColorMethod" }))
         .def("colorIndex", &PyAcadAcCmColor::colorIndex, DS.ARGS())
         .def("setColorIndex", &PyAcadAcCmColor::setColorIndex, DS.ARGS({ "flags:PyAx.AcColor" }))
@@ -96,6 +97,12 @@ std::string PyAcadAcCmColor::bookName() const
 std::string PyAcadAcCmColor::toHTMLColor() const
 {
     return rgbToHex(impObj()->GetRed(), impObj()->GetGreen(), impObj()->GetBlue());
+}
+
+void PyAcadAcCmColor::fromHTMLColor(const std::string& code) const
+{
+    auto [r, g, b] = hexToRGB(code);
+    impObj()->SetRGB(r, g, b);
 }
 
 void PyAcadAcCmColor::setNames(const std::string& colorName, const std::string& bookName) const
