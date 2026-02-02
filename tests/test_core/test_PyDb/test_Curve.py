@@ -180,7 +180,7 @@ class TestDbCurve:
         param_at_start = arc.getParamAtPoint(Ge.Point3d(100, 0, 0))
         assert param_at_start == start_param
 
-    def test_get_point_at_dist(self):
+    def test_get_point_at_dist_2(self):
         """Test getPointAtDist method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         end_param = arc.getEndParam()
@@ -208,7 +208,7 @@ class TestDbCurve:
         deriv = arc.getFirstDeriv(start_param)
         assert isinstance(deriv, Ge.Vector3d)
 
-    def test_get_second_deriv(self):
+    def test_get_second_deriv_2(self):
         """Test getSecondDeriv method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         start_param = arc.getStartParam()

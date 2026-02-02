@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import pytest
-
 from pyrx import Ap, Ge
+
 
 class TestAxArc:
 

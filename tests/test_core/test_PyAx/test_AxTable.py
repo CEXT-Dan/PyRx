@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import pytest
 
-from pyrx import Ap, Ax, Ge, Db
+from pyrx import Ap, Db, Ge
+
 
 class TestAxTable:
 

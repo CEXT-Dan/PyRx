@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import unittest
+
 import pytest
 
 from pyrx import Br, Db, Ge
+
 
 @pytest.mark.known_failure_IRX
 class TestBrep:

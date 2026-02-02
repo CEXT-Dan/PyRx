@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Ap, Ge
 
+
 @pytest.mark.known_failure_GRX
 class TestAxMText:
 

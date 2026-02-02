@@ -124,7 +124,7 @@ class TestBlockTableRecord:
     def test_block_table_record_scaling_methods(self):
         btr = Db.BlockTableRecord()
         # Test block scaling - should return either kAny or kUniform
-        scale_type = btr.blockScaling()
+        scale_type = btr.blockScaling() # noqa: F841
         # Verify it's one of the expected values (kAny, kUniform)
         # These are likely constants that would be defined in PyDb namespace
 
@@ -132,7 +132,7 @@ class TestBlockTableRecord:
         btr = Db.BlockTableRecord()
 
         # Test block insert units method
-        units = btr.blockInsertUnits()
+        units = btr.blockInsertUnits() # noqa: F841
         # Should return a UnitsValue or kUnitsUndefined
 
     def test_block_table_record_comments_methods(self):
@@ -147,7 +147,7 @@ class TestBlockTableRecord:
         btr = Db.BlockTableRecord()
 
         # Test path name (xref related) methods
-        path = btr.pathName()
+        path = btr.pathName() # noqa: F841
         # Should return string or empty string for non-xrefs
 
     def test_block_table_record_preview_icon_methods(self):
@@ -162,6 +162,7 @@ class TestBlockTableRecord:
 
         # Test layout id method
         layout_id = btr.getLayoutId()
+        assert layout_id.isNull() == False
         # Should return ObjectId or None
 
     def test_block_table_record_class_info(self):

@@ -69,9 +69,9 @@ class Test_Reload:
                 with create_temp_module("package1.module2") as (m12_name, m12_path):
                     with create_temp_module("package2.module2") as (m22_name, m22_path):
                         m112 = importlib.import_module(m112_name)
-                        m12 = importlib.import_module(m12_name)
-                        m21 = importlib.import_module(m21_name)
-                        m22 = importlib.import_module(m22_name)
+                        m12 = importlib.import_module(m12_name) #noqa: F841
+                        m21 = importlib.import_module(m21_name) #noqa: F841
+                        m22 = importlib.import_module(m22_name) #noqa: F841
                         to_reload = set(reloader.modules_to_reload)
                         assert len(to_reload) == 7
                         assert m112_name in to_reload

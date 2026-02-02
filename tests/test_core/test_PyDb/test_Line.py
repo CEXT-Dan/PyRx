@@ -112,7 +112,6 @@ class TestDbLine:
         assert acge_curve.endPoint() == end_point
         
     def test_line_class_name(self):
-        line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
         class_name = Db.Line.className()
         assert class_name == "AcDbLine"
         

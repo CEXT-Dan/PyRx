@@ -6,6 +6,7 @@ import pytest
 
 from pyrx import Ap, Ax
 
+
 @pytest.mark.known_failure_IRX
 class TestAxPreferences:
 

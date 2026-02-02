@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Ap, Ge
 
+
 class TestAx3DPolyline:
 
     def setup_class(self):

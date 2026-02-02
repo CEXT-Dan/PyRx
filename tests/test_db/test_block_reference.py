@@ -1,7 +1,8 @@
+import pytest
+
 from pyrx import Db
 from pyrx.db.block_reference import BlockReference
 
-import pytest
 
 class TestBlockReference:
     def test_attributes(self, db_06457: Db.Database):

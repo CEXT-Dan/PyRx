@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Ap, Ax, Ge
 
+
 class TestAxObject:
 
     def setup_class(self):

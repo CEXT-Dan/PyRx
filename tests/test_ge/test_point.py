@@ -1,6 +1,7 @@
 import pytest
-from pyrx.ge.point import point_2d, point_3d
+
 from pyrx import Ge
+from pyrx.ge.point import point_2d, point_3d
 
 
 class Test_point_2d:

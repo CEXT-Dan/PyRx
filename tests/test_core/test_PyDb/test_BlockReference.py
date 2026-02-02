@@ -39,7 +39,6 @@ class TestDbBlockReference:
     def test_setPosition(self):
         """Test setting the position of the block reference"""
         r = Db.BlockReference()
-        original_pos = r.position()
 
         # Set new position
         new_pos = Ge.Point3d(10.0, 20.0, 30.0)
@@ -87,9 +86,6 @@ class TestDbBlockReference:
         """Test setting the rotation of the block reference"""
         r = Db.BlockReference()
 
-        # Get current rotation
-        original_rotation = r.rotation()
-
         # Set new rotation (in radians)
         new_rotation = 1.5708  # 90 degrees in radians
         r.setRotation(new_rotation)
@@ -108,9 +104,6 @@ class TestDbBlockReference:
     def test_setScaleFactors(self):
         """Test setting the scale factors of the block reference"""
         r = Db.BlockReference()
-
-        # Get current scales
-        original_scales = r.scaleFactors()
 
         # Set new scale factors
         new_scales = Ge.Scale3d(2.0, 2.0, 2.0)

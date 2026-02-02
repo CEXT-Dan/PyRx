@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pytest
 import wx
-
 from wx import xrc
+
 from pyrx import Ap
 
 wx_CallAfter = 1

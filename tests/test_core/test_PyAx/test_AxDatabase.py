@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Ap, Db, Ge
 
+
 class TestAxDatabase:
 
     def test_getinstance(self):
