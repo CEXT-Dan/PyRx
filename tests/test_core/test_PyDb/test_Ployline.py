@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-import math
-import pytest
-
-from pyrx import Ap, Db, Ge
+from pyrx import Db, Ge
 
 
 def create_polyline():

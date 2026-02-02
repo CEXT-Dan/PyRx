@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from numpy import True_
 from pyrx import Db, Ge
-import pytest
 
 
 class TestDbPolyline3d:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pytest
+
 from pyrx import Db, Ge
 
 
@@ -148,7 +149,7 @@ class TestDbText:
         try:
             t.mirrorInX(True)
             t.mirrorInX(False)
-        except Exception as e:
+        except Exception:
             # This might fail if DB context is required; ignore for now.
             assert False
 
@@ -159,7 +160,7 @@ class TestDbText:
         try:
             t.mirrorInY(True)
             t.mirrorInY(False)
-        except Exception as e:
+        except Exception:
             # This might fail if DB context is required; ignore for now.
             assert False
 
@@ -172,7 +173,7 @@ class TestDbText:
         try:
             result = t.hitTest(point)
             assert isinstance(result, (bool, int))
-        except Exception as e:
+        except Exception:
             # Might not be available or functional in all contexts
             assert False
 
@@ -183,7 +184,7 @@ class TestDbText:
         # Just make sure method exists and doesn't crash on call with null DB.
         try:
             t.adjustAlignment(Db.curDb())
-        except Exception as e:
+        except Exception:
             # Expected behavior may vary; this is just ensuring no crash
              assert False
 

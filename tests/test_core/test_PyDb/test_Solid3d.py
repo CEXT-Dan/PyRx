@@ -1,6 +1,7 @@
 from __future__ import annotations
-from pyrx import Db, Ge, Rx
-import pytest
+
+from pyrx import Db, Ge
+
 
 class TestDbSolid3d:
     

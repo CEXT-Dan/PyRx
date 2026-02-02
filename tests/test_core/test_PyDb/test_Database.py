@@ -5,9 +5,9 @@ import time
 import unittest
 
 import pytest
-from tests import MEDIA_DIR
 
 from pyrx import Ap, Db, Ed, Ge, Rx
+from tests import MEDIA_DIR
 
 
 def do_capture_audit() -> str:

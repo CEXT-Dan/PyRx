@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from pyrx import Db, Ge
+
 
 class TestDbAlignedDimension:
     
@@ -127,7 +129,7 @@ class TestDbAlignedDimension:
         assert dim.xLine1Point() == pt1
         assert dim.xLine2Point() == pt2
 
-    def test_set_dim_line_point(self):
+    def test_set_dim_line_point_2(self):
         """Tests setting the dimension line definition point."""
         dim = Db.AlignedDimension()
         
@@ -141,7 +143,7 @@ class TestDbAlignedDimension:
         
         assert dim.dimLinePoint() == new_dim_pt
 
-    def test_oblique_angle(self):
+    def test_oblique_angle_2(self):
         """
         Tests the oblique angle functionality.
         The angle is relative to the line containing xLine1Point and xLine2Point.

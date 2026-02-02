@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pickle
 import unittest
+
 import pytest
 
 from pyrx import Db, Ge

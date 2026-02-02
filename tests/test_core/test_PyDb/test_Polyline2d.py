@@ -1,6 +1,6 @@
 from __future__ import annotations
+
 from pyrx import Db, Ge
-import pytest
 
 
 class TestDbPolyline2d:

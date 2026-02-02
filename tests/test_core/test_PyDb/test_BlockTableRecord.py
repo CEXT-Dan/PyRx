@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 import pytest
-from pyrx import Db, Ge, Rx
 import wx
+
+from pyrx import Db, Ge
 
 
 class TestBlockTableRecord:
