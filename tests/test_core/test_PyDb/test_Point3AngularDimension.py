@@ -1,6 +1,9 @@
 from __future__ import annotations
-from pyrx import Db, Ge
+
 import math
+
+from pyrx import Db, Ge
+
 
 class TestDbPoint3AngularDimension:
     

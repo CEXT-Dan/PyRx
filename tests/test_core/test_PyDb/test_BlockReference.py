@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import pytest
-from pyrx import Ap, Db, Ge, Rx
+
+from pyrx import Db, Ge, Rx
 
 
 class TestDbBlockReference:
@@ -214,26 +215,17 @@ class TestDbBlockReference:
         # Verify it returns a dict
         assert isinstance(attr_dict, dict)
 
-    def test_className(self, db_06457: Db.Database):
+    def test_className(self):
         """Test getting the class name"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
-
         class_name = Db.BlockReference.className()
 
         # Verify it returns a string
         assert isinstance(class_name, str)
         assert len(class_name) > 0
 
-    def test_desc(self, db_06457: Db.Database):
+    def test_desc(self):
         """Test getting the RxClass description"""
-        objHnd = Db.Handle("212b3")
-        objId = db_06457.getObjectId(False, objHnd)
-        r = Db.BlockReference(objId)
-
         desc = Db.BlockReference.desc()
-
         # Verify it returns an RxClass
         assert isinstance(desc, Rx.RxClass)
 

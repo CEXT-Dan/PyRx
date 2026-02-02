@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pyrx import Ap, Db, Ge
 
+
 class TestDbCircle:
     def test_create(self):
         """Test constructor with center, normal, and radius"""

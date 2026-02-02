@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Db, Ed
 
+
 class TestXrefGraph:
     @pytest.mark.known_failure_IRX
     def test_XrefGraph(self, db_xrefGraph: Db.Database):
