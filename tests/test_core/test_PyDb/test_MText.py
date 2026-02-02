@@ -210,7 +210,6 @@ class TestDbMText:
 
     def test_class_name(self):
         """Test class name retrieval"""
-        mt = Db.MText()
         cls_name = Db.MText.className()
         assert isinstance(cls_name, str)
         assert len(cls_name) > 0

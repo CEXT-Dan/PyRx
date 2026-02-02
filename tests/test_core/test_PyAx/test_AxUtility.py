@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from pytest import approx
 import pytest
-
+from pytest import approx
 
 from pyrx import Ap, Ax
+
 
 @pytest.mark.known_failure_IRX
 class TestAxUtility:

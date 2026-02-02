@@ -4,6 +4,7 @@ import pytest
 
 from pyrx import Ap, Ge
 
+
 class TestAx3DSolid:
 
     def setup_class(self):

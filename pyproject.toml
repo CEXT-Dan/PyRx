@@ -74,11 +74,11 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 99
 target-version = "py312"
-extend-exclude = ["tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 ignore = ["E501"]
+per-file-ignores = { "tests/**/*.py" = ["E711", "E712"] }
 
 [tool.ruff.lint.isort]
 known-first-party = ["pyrx"]

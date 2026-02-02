@@ -9,7 +9,12 @@ import pytest
 
 from pyrx import Db, Ed, Ge
 from pyrx.ed.prompt import (
+    InitGetCtx,
+    InitGetFlags,
+    Kwords,
     PromptException,
+    PromptExceptionError,
+    PromptExceptionKword,
     PromptExceptionNone,
     _ent_type_to_desc,
     _prompt,
@@ -19,16 +24,11 @@ from pyrx.ed.prompt import (
     get_dist,
     get_double,
     get_integer,
+    get_kword,
     get_point,
     get_string,
-    raise_for_status,
-    Kwords,
-    InitGetCtx,
-    InitGetFlags,
-    PromptExceptionKword,
     init_get,
-    get_kword,
-    PromptExceptionError,
+    raise_for_status,
 )
 
 

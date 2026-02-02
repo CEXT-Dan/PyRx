@@ -42,6 +42,6 @@ class TestDocStringJson:
             data = json.load(file)
             for item in data["rows"]:
                 rownum += 1
-                assert not item[0] in json_data
+                assert item[0] not in json_data
                 assert rownum == item[0]
         assert rownum != 0

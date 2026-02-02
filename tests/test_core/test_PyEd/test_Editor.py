@@ -8,15 +8,15 @@ from pyrx import Ed, Ge, Rx
 
 
 def autoSysVarOSMODE():
-    var = Ed.Core.autoSetVar("OSMODE", 0)
+    var = Ed.Core.autoSetVar("OSMODE", 0) # noqa: F841
 
 
 def autoSysVarANGBASE():
-    var = Ed.Core.autoSetVar("ANGBASE", 90)
+    var = Ed.Core.autoSetVar("ANGBASE", 90) # noqa: F841
 
 
 def autoSysVarHPORIGIN():
-    var = Ed.Core.autoSetVar("HPORIGIN", Ge.Point2d(100, 100))
+    var = Ed.Core.autoSetVar("HPORIGIN", Ge.Point2d(100, 100)) # noqa: F841
 
 
 class TestEditor:

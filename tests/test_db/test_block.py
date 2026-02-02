@@ -1,20 +1,22 @@
 from __future__ import annotations
 
+import collections.abc as c
+import re
+import typing as t
 from datetime import datetime
 from pathlib import Path
+from unittest.mock import MagicMock, patch
+
+import pytest
+
 from pyrx import Db, Ge
 from pyrx.db.block import (
-    add_block_definition,
     BlockAlreadyExistsError,
-    get_block_by_name,
     BlockNotFoundError,
+    add_block_definition,
+    get_block_by_name,
     get_block_reference,
 )
-import re
-import pytest
-from unittest.mock import MagicMock, patch
-import typing as t
-import collections.abc as c
 
 if t.TYPE_CHECKING:
     from unittest.mock import MagicMock

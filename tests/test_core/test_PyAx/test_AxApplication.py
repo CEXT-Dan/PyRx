@@ -9,7 +9,7 @@ def active_document(self):
     axApp = Ap.Application.acadApplication()
     odoc = axApp.activeDocument()
     docs = axApp.documents()
-    axDoc1 = docs.add()
+    axDoc1 = docs.add() # noqa: F841
     axDoc2 = docs.add()
     axApp.setActiveDocument(axDoc2)
     axDoc3 = axApp.activeDocument()

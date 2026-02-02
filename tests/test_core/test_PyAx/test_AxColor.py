@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import pytest
-
-from pyrx import Db, Ax
+from pyrx import Ax
 
 
 class TestAxColor:

@@ -188,7 +188,8 @@ class TestDbDimension:
         dim = Db.AlignedDimension(pt1, pt2, pt3)
         
         # Get the default block position
-        pos = dim.dimBlockPosition()
+        pos = dim.dimBlockPosition() 
+        assert isinstance(pos, Ge.Point3d)
         
     # --- Style Data Tests ---
 

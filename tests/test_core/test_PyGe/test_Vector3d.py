@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import math
-import pytest
+
 from pyrx import Ge
 
 
@@ -243,12 +243,7 @@ class TestVector3d:
 
     def test_vector3d_unit_normalization(self):
         zero_v = Ge.Vector3d(0.0, 0.0, 0.0)
-        # Should not normalize zero vector
-        try:
-            normalized_zero = zero_v.normal()
-            # If it doesn't raise exception or behaves oddly, that's okay for this test.
-        except Exception as e:
-            pass  # We expect potential exceptions with zero vectors
+        normalized_zero = zero_v.normal() # noqa: F841
 
     def test_vector3d_inplace_operations_chain(self):
         v = Ge.Vector3d(1.0, 2.0, 3.0)
