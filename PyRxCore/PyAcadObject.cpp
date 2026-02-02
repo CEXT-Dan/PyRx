@@ -4,6 +4,7 @@
 #include "PyDbEval.h"
 #include "PyAcadApplication.h"
 #include "PyAcadApplicationImpl.h"
+#include "PyCmColorBase.h"
 
 using namespace boost::python;
 
@@ -13,11 +14,15 @@ void makePyAcadAcCmColorWrapper()
 {
     constexpr const std::string_view initOverloads = "Overloads:\n"
         "- None: Any\n"
-        "- r: int, g: int, b: int\n";
+        "- htmlColor: str\n"
+        "- colorIndex: PyAx.AcColor\n"
+        "- red: int, green: int, blue: int\n";
 
     PyDocString DS("AcadAcCmColor");
     class_<PyAcadAcCmColor>("AcadAcCmColor")
         .def(init<>())
+        .def(init<PyAcColor>())
+        .def(init<const std::string&>())
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.CTOR(initOverloads)))
         .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({ "val:int" }))
         .def("entityColor", &PyAcadAcCmColor::entityColor, DS.ARGS())
@@ -30,6 +35,7 @@ void makePyAcadAcCmColorWrapper()
         .def("blue", &PyAcadAcCmColor::blue, DS.ARGS())
         .def("setRGB", &PyAcadAcCmColor::setRGB, DS.ARGS({ "red:int", "green:int", "blue:int" }))
         .def("colorMethod", &PyAcadAcCmColor::colorMethod, DS.ARGS())
+        .def("toHTMLColor", &PyAcadAcCmColor::toHTMLColor, DS.ARGS())
         .def("setColorMethod", &PyAcadAcCmColor::setColorMethod, DS.ARGS({ "flags:PyAx.AcColorMethod" }))
         .def("colorIndex", &PyAcadAcCmColor::colorIndex, DS.ARGS())
         .def("setColorIndex", &PyAcadAcCmColor::setColorIndex, DS.ARGS({ "flags:PyAx.AcColor" }))
@@ -43,9 +49,22 @@ PyAcadAcCmColor::PyAcadAcCmColor()
 {
 }
 
+PyAcadAcCmColor::PyAcadAcCmColor(PyAcColor colorindex)
+    : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
+{
+    this->setColorIndex(colorindex);
+}
+
 PyAcadAcCmColor::PyAcadAcCmColor(Adesk::UInt8 r, Adesk::UInt8 g, Adesk::UInt8 b)
     : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
 {
+    this->setRGB(r, g, b);
+}
+
+PyAcadAcCmColor::PyAcadAcCmColor(const std::string& val)
+    : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
+{
+    auto [r, g, b] = hexToRGB(val);
     this->setRGB(r, g, b);
 }
 
@@ -72,6 +91,11 @@ std::string PyAcadAcCmColor::colorName() const
 std::string PyAcadAcCmColor::bookName() const
 {
     return wstr_to_utf8(impObj()->GetBookName());
+}
+
+std::string PyAcadAcCmColor::toHTMLColor() const
+{
+    return rgbToHex(impObj()->GetRed(), impObj()->GetGreen(), impObj()->GetBlue());
 }
 
 void PyAcadAcCmColor::setNames(const std::string& colorName, const std::string& bookName) const

@@ -54,6 +54,8 @@ class PyAcadAcCmColor
 {
 public:
     PyAcadAcCmColor();
+    PyAcadAcCmColor(PyAcColor colorindex);
+    PyAcadAcCmColor(const std::string& val);
     PyAcadAcCmColor(Adesk::UInt8 r, Adesk::UInt8 g, Adesk::UInt8 b);
     PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr);
     virtual ~PyAcadAcCmColor() = default;
@@ -61,6 +63,7 @@ public:
     long            entityColor() const;
     std::string     colorName() const;
     std::string     bookName() const;
+    std::string     toHTMLColor() const;
     void            setNames(const std::string& colorName, const std::string& bookName) const;
     void            clear() const;
     long            red() const;

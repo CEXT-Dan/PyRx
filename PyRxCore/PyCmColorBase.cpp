@@ -1,7 +1,7 @@
 #include "stdafx.h"
+#include "PyCmColorBase.h"
 
 using namespace boost::python;
-
 
 //----------------------------------------------------------------------------------------------------
 //wrapper
@@ -22,7 +22,7 @@ static std::string intToHexStr(int value)
 }
 
 // Function to convert RGB to HTML color string
-static std::string rgbToHex(int r, int g, int b)
+std::string rgbToHex(int r, int g, int b)
 {
     // Validate input range
     if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
@@ -44,7 +44,7 @@ static int hexCharToInt(char c)
 }
 
 // Function to convert HTML color string to RGB
-static std::tuple<int, int, int> hexToRGB(const std::string& hexString)
+std::tuple<int, int, int> hexToRGB(const std::string& hexString)
 {
     // 1. Check if the string starts with '#'
     if (hexString.empty() || hexString[0] != '#')
