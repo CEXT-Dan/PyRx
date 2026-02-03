@@ -374,6 +374,8 @@ double PyDbCurve::getArea() const
 
 void PyDbCurve::reverseCurve() const
 {
+    if(impObj()->isWriteEnabled() == Adesk::kFalse)
+        PyThrowBadEs(eNotOpenForWrite);
     return PyThrowBadEs(impObj()->reverseCurve());
 }
 
