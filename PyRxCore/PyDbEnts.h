@@ -668,8 +668,8 @@ public:
     AcGeVector3d		direction() const;
     boost::python::list getBoundingPoints() const;
     boost::python::list getBoundingPline()  const;
-    void                setDimensionStyle(const PyDbHardPointerId& id) const;
-    PyDbHardPointerId	dimensionStyle() const;
+    void                setDimensionStyle(const PyDbObjectId& id) const;
+    PyDbObjectId	    dimensionStyle() const;
     PyDbDimStyleTableRecord getDimstyleData() const;
     void                setDimstyleData2(const PyDbDimStyleTableRecord& pNewData) const;
     void                setDimstyleData1(const PyDbObjectId& newDataId) const;

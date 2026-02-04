@@ -3359,7 +3359,7 @@ void makePyDbFcfWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const std::string&, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctords, 4585)))
         .def("setText", &PyDbFcf::setText, DS.ARGS({ "newText:str" }, 4611))
-        .def("text", &PyDbFcf::text, DS.ARGS(4613))
+        .def("text", &PyDbFcf::text, DS.ARGS({"lineNo: int"},4613))
         .def("textAll", &PyDbFcf::textAll, DS.ARGS(4613))
         .def("setLocation", &PyDbFcf::setLocation, DS.ARGS({ "newLocation:PyGe.Point3d" }, 4609))
         .def("location", &PyDbFcf::location, DS.ARGS(4598))
@@ -3485,14 +3485,15 @@ boost::python::list PyDbFcf::getBoundingPline() const
     return l;
 }
 
-void PyDbFcf::setDimensionStyle(const PyDbHardPointerId& id) const
+void PyDbFcf::setDimensionStyle(const PyDbObjectId& id) const
 {
-    impObj()->setDimensionStyle(id.m_id);
+    AcDbHardPointerId _id(id.m_id);
+    impObj()->setDimensionStyle(_id);
 }
 
-PyDbHardPointerId PyDbFcf::dimensionStyle() const
+PyDbObjectId PyDbFcf::dimensionStyle() const
 {
-    return PyDbHardPointerId(impObj()->dimensionStyle());
+    return PyDbObjectId(impObj()->dimensionStyle());
 }
 
 PyDbDimStyleTableRecord PyDbFcf::getDimstyleData() const
