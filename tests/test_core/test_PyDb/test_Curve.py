@@ -41,7 +41,7 @@ class TestDbCurve:
     def test_get_second_deriv(self):
         """Test getSecondDeriv method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
-        result = arc.getSecondDeriv(5.0)
+        result = arc.getSecondDeriv(0.5)
         assert isinstance(result, Ge.Vector3d)
 
     def test_get_spline(self):
