@@ -15249,7 +15249,7 @@ class Fcf(PyDb.Entity):
         return the value from this dimension's dimension style. See the System Variables section of
         the AutoCAD Command Reference manual for information on DIMCLRT.
         """
-    def dimensionStyle(self, /) -> HardPointerId:
+    def dimensionStyle(self, /) -> ObjectId:
         """
         Returns the objectId of the object's DimensionStyle.
         """
@@ -15449,7 +15449,7 @@ class Fcf(PyDb.Entity):
         regardless of feature size (circle with 'S' in it) {\\Fgdt;p} positional symbol (circle
         with 'P' in it) %%v vertical side of a frame box
         """
-    def text(self, /) -> str:
+    def text(self, lineNo: int, /) -> str:
         """
         Each tolerance frame is one line of text, so, for example, a stack of two tolerance frames:
         ---------------- | // | 0.001 | <-- frame 1 |---------------- | O | 0.005 | M | <-- frame 2
