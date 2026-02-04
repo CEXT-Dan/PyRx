@@ -10,7 +10,6 @@ class TestDbCurve:
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
         arc.extend(-0.1)  # Extend beyond end
 
-
     def test_extend_point(self):
         """Test extend method with point"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, 50, 0), Ge.Point3d(100, 0, 0))
