@@ -35,7 +35,7 @@ class Node(t.Generic[ASTType_T]):
 
     @property
     def range(self) -> range:
-        return range(self.start_line, self.end_line + 1)
+        return range(self.start_line, self.end_line)
 
     def __str__(self) -> str:
         return (
