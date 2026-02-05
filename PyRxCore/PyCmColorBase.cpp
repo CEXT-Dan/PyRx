@@ -395,9 +395,9 @@ void makePyCmEntityColorWrapper()
         .def("Foreground", &AcCmEntityColor::Foreground, DS.SARGS()).staticmethod("Foreground")
         .def("white", &AcCmEntityColor::white, DS.SARGS()).staticmethod("white")
         .def("black", &AcCmEntityColor::black, DS.SARGS()).staticmethod("black")
+#endif
         .def("toHTMLColor", &AcCmEntityColorRGBToHex, DS.ARGS())
         .def("fromHTMLColor", &AcCmEntityColorFromString, DS.ARGS({ "colorString: str" }))
-#endif
         .def("__init__", make_constructor(&AcCmEntityColorFromStringCtor))
         .def("__init__", make_constructor(&AcCmEntityColorFromIndexCtor))
         .def("__eq__", &AcCmEntityColor::operator==)
