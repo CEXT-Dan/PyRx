@@ -12707,6 +12707,11 @@ class DynBlockReferenceProperty:
     def setValue(self, val: PyDb.EvalVariant, /) -> None:
         """
         Sets the current value of the property on the block.
+
+        **Note**:
+        No error is raised if the specified property value could not be set. For example, if the
+        property has a list of allowable values or a minimum-maximum range and the value provided
+        is not in the list or is out of range, the method succeeds and no error is raised.
         """
     def show(self, /) -> bool:
         """
