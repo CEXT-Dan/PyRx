@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import collections.abc as c
+import copy
 import inspect
 import logging
 import textwrap
@@ -273,6 +274,12 @@ class _BoostPythonInstanceClassPyiGenerator:
             chunks.clear()
         cls_dict = cls.__dict__
         stub_nodes = {node.name: node for node in node.children} if node else {}
+        if stub_nodes:
+            assert node is not None
+            first_node_child = next(iter(stub_nodes.values()))
+            cls_header_node = copy.copy(node)
+            cls_header_node.end_line = first_node_child.start_line - 1
+            yield cls_header_node
         for cls_member_name, cls_member in inspect.getmembers(cls):
             try:
                 stub_node = stub_nodes.pop(cls_member_name)
@@ -317,13 +324,13 @@ class _BoostPythonInstanceClassPyiGenerator:
     ) -> c.Generator[range | str, None, None]:
         chunks = tuple(self.get_chunks(cls, module_name, node))
         if node is not None:
-            prev_range_stop = node.range.start - 1
+            prev_range_stop = 0
 
         for chunk in chunks:
             if isinstance(chunk, Node):
                 child_node = chunk
                 child_range = child_node.range
-                if not child_range.start > prev_range_stop:
+                if prev_range_stop is not None and not child_range.start >= prev_range_stop:
                     # We assume that the order of the stubs file should
                     # be the same as when generated - alphabetically in
                     # groups
