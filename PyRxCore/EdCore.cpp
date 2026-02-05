@@ -1223,10 +1223,11 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
     {
         AcResBufPtr buf;
         const AcString asSym = utf8_to_wstr(sym).c_str();
+        //TODO: extract tuple (RT, VALUE), see Document::setVariable
         if (PyLong_Check(src.ptr()))
         {
             const int val = extract<int32_t>(src);
-            if (val <= SHRT_MAX)
+            if (isInt16_t(val))
                 buf.reset(acutBuildList(RTSHORT, val, 0));
             else
                 buf.reset(acutBuildList(RTLONG, val, 0));

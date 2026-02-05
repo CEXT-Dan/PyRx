@@ -84,6 +84,12 @@ PyDbEvalVariant::PyDbEvalVariant(const std::string& szVal)
 PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal)
     : PyRxObject(new AcDbEvalVariant(lVal), true, false)
 {
+    if (isInt16_t(lVal))
+    {
+        impObj()->clear();
+        impObj()->restype = AcDb::kDxfInt16;
+        impObj()->resval.rint = Adesk::Int16(lVal);
+    }
 }
 
 PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal, bool isShort)
