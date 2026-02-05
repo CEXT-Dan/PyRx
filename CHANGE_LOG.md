@@ -1,3 +1,10 @@
+## v2.2.43
+
+* Update AutoCAD ObjectARX version to 2027 release candidate
+* [#457] improve Db.EvalVariant ctor to detect int16_t vs int32_t
+* add Color.toHTMLColor EntityColor.toHTMLColor
+* [#447] Refactor tests, lots of work on this task, I fixed items as I went along, mostly bad, or missing stubs
+
 ## v2.2.42
 
 * add 3 point arc Db.Arc(Ge.Point3d(0,0,0),Ge.Point3d(50,50,0),Ge.Point3d(100,0,0))
