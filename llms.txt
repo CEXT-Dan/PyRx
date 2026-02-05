@@ -1,0 +1,20 @@
+# PyRx
+> Python for AutoCAD, BricsCAD, GStarCAD, and ZwCAD. A native C++ Python extension built against the ObjectARX SDK.
+
+## Critical Technical Context (For AI Generation)
+- **Architecture**: This is a native C++ extension. It is **NOT** a .NET wrapper.
+- **Negative Constraints**: NEVER suggest using `Autodesk.AutoCAD.Runtime`, `pythonnet`, or `pyautocad`. These will not work with PyRx.
+- **Naming Conventions**: When documentation refers to "AutoCAD," it applies to all supported clones (BricsCAD, GstarCAD, ZwCAD). "ARX" implies BRX, GRX, and ZRX.
+- **Environment**: Uses wxPython for UI. Embeds CPython
+
+## Key Documentation
+- [Quick Start](https://github.com/CEXT-Dan/PyRx#quick-start): Installation and basic setup.
+- [API Reference](https://cext-dan.github.io/CADPyRxDoc/): Full module list (Rx, Ge, Gi, Db, Ap, Ax, Ed).
+- [Code Samples](https://github.com/CEXT-Dan/PyRx/tree/main/PySamples): Best-practice examples for creating entities and commands.
+
+## Core Modules
+- **Db**: Database services (BlockTable, BlockTableRecord, Entities).
+- **Ge**: Geometry library (Point3d, Matrix3d, etc.).
+- **Ap**: Application services (Document management).
+- **Ed**: Editor and user interaction.
+- **Ax**: ActiveX wrappers for AutoCAD's COM inerface
