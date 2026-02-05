@@ -1912,10 +1912,11 @@ void PyAcadDocument::setVariable(const std::string& name, const boost::python::o
     PyAutoLockGIL lock;
     TypedVariant buf;
     const CString asSym = utf8_to_wstr(name).c_str();
+    //TODO: extract tuple (RT, VALUE), see setVar
     if (PyLong_Check(src.ptr()))
     {
         const int val = extract<int32_t>(src);
-        if (val <= SHRT_MAX)
+        if (isInt16_t(val))
         {
             buf.code = TypedVariant::kInt16;
             buf.variant = int16_t(val);

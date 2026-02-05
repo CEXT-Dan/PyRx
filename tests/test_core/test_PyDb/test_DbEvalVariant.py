@@ -15,6 +15,21 @@ class TestPyDbEvalVariant:
         self.assertEqual(on.getInt16(),1)
         self.assertEqual(on.toString(),'1')
         
+        on = Db.EvalVariant(1,False)#int32
+        self.assertEqual(on.getType(),Db.DwgDataType.kDwgInt32)
+        self.assertEqual(on.getInt32(),1)
+        self.assertEqual(on.toString(),'1')
+        
+        on = Db.EvalVariant(1)#int16
+        self.assertEqual(on.getType(),Db.DwgDataType.kDwgInt16)
+        self.assertEqual(on.getInt16(),1)
+        self.assertEqual(on.toString(),'1')
+        
+        on = Db.EvalVariant(33000)#int32
+        self.assertEqual(on.getType(),Db.DwgDataType.kDwgInt32)
+        self.assertEqual(on.getInt32(),33000)
+        self.assertEqual(on.toString(),'33000')
+        
         off = Db.EvalVariant(0,True)
         self.assertEqual(off.getType(),Db.DwgDataType.kDwgInt16)
         self.assertEqual(off.getInt16(),0)
@@ -29,11 +44,6 @@ class TestPyDbEvalVariant:
         self.assertEqual(b.getType(),Db.DwgDataType.kDwgText)
         self.assertEqual(b.getString(),"hello world")
         self.assertEqual(b.toString(),"hello world")
-        
-        c = Db.EvalVariant(1001)
-        self.assertEqual(c.getType(),Db.DwgDataType.kDwgInt32)
-        self.assertEqual(c.getInt32(),1001)
-        self.assertEqual(c.toString(),'1001')
         
         id = Db.curDb().blockTableId()
         d = Db.EvalVariant(id)
