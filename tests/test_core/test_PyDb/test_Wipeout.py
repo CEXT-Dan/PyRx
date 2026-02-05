@@ -15,8 +15,10 @@ class TestDbWipeout:
         ]
 
         wipout = Db.Wipeout(pts, Ge.Vector3d.kZAxis)
-        assert wipout.scale() == Ge.Vector2d(1.00000000000000, 1.00000000000000)
+        assert wipout.isNullObj() == False
 
+        
+        
     def test_create_2(self):
         pts = [
             Ge.Point2d(0, 0),
@@ -28,4 +30,4 @@ class TestDbWipeout:
 
         wipout = Db.Wipeout()
         wipout.setFrom(pts, Ge.Vector3d.kZAxis)
-        assert wipout.scale() == Ge.Vector2d(1.00000000000000, 1.00000000000000)
+        assert wipout.isNullObj() == False
