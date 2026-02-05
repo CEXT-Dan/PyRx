@@ -202,3 +202,24 @@ Interested in making contributions to this project? Please review the guide belo
 - [Discussion forum](https://www.theswamp.org/index.php?board=76.0)
 - [AutoCAD Object Model (AutoLISP/ActiveX)](https://help.autodesk.com/view/OARX/2025/ENU/?guid=GUID-A809CD71-4655-44E2-B674-1FE200B9FE30)
 - [ObjectARX Reference Guide](https://help.autodesk.com/view/OARX/2025/ENU/?guid=OARX-RefGuide-ObjectARX_Reference_Guide)
+
+## Critical Technical Context (For AI Generation)
+
+- **Architecture**: This is a native C++ extension. It is **NOT** a .NET wrapper.
+- **Negative Constraints**: NEVER suggest using `Autodesk.AutoCAD.Runtime`, `pythonnet`, or `pyautocad`. These will not work with PyRx.
+- **Naming Conventions**: When documentation refers to "AutoCAD," it applies to all supported clones (BricsCAD, GstarCAD, ZwCAD). "ARX" implies BRX, GRX, and ZRX.
+- **Environment**: Uses wxPython for UI. Embeds CPython
+
+## Key Documentation
+
+- [Quick Start](https://github.com/CEXT-Dan/PyRx#quick-start): Installation and basic setup.
+- [API Reference](https://cext-dan.github.io/CADPyRxDoc/): Full module list (Rx, Ge, Gi, Db, Ap, Ax, Ed).
+- [Code Samples](https://github.com/CEXT-Dan/PyRx/tree/main/PySamples): examples for creating entities and commands.
+
+## Core Modules
+
+- **Db**: Database services (BlockTable, BlockTableRecord, Entities).
+- **Ge**: Geometry library (Point3d, Matrix3d, etc.).
+- **Ap**: Application services (Document management).
+- **Ed**: Editor and user interaction.
+- **Ax**: ActiveX wrappers for AutoCAD's COM inerface
