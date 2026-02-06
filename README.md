@@ -31,7 +31,7 @@ Installing from the from Microsoft Store is currently not supported
 
 Watch the Youtube [video](https://www.youtube.com/watch?v=MrQ7N2WulI4)
 
-Install [python 3.12.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/downloads/release/python-31210/) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
+Install [python 3.12.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
 
 ![Python install](./GitResources/images/pyinstall.png),
 
