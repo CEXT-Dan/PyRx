@@ -78,7 +78,7 @@ class TestBlockTableRecord:
 
         # Test isRenamable (should return True for most cases)
         assert isinstance(btr.isRenamable(), (bool, int))
-        
+
     def test_block_table_record_name_methods(self):
         btr = Db.BlockTableRecord()
 
@@ -87,8 +87,6 @@ class TestBlockTableRecord:
         btr.setName(test_name)
         assert btr.getName() == test_name
         assert btr.name() == test_name
-
-
 
     def test_block_table_record_dependency_methods(self):
         btr = Db.BlockTableRecord()
@@ -124,7 +122,7 @@ class TestBlockTableRecord:
     def test_block_table_record_scaling_methods(self):
         btr = Db.BlockTableRecord()
         # Test block scaling - should return either kAny or kUniform
-        scale_type = btr.blockScaling() # noqa: F841
+        scale_type = btr.blockScaling()  # noqa: F841
         # Verify it's one of the expected values (kAny, kUniform)
         # These are likely constants that would be defined in PyDb namespace
 
@@ -132,7 +130,7 @@ class TestBlockTableRecord:
         btr = Db.BlockTableRecord()
 
         # Test block insert units method
-        units = btr.blockInsertUnits() # noqa: F841
+        units = btr.blockInsertUnits()  # noqa: F841
         # Should return a UnitsValue or kUnitsUndefined
 
     def test_block_table_record_comments_methods(self):
@@ -147,7 +145,7 @@ class TestBlockTableRecord:
         btr = Db.BlockTableRecord()
 
         # Test path name (xref related) methods
-        path = btr.pathName() # noqa: F841
+        path = btr.pathName()  # noqa: F841
         # Should return string or empty string for non-xrefs
 
     def test_block_table_record_preview_icon_methods(self):
@@ -188,7 +186,7 @@ class TestBlockTableRecord:
         # Test with specific class filter
         entity_obj_ids = btr.objectIds(Db.Entity.desc())
         assert isinstance(entity_obj_ids, list)
-        
+
         entity_obj_ids = btr.objectIds([Db.Entity.desc()])
         assert isinstance(entity_obj_ids, list)
 
