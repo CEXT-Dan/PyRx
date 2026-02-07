@@ -146,7 +146,7 @@ void PyGeBoundBlock2d::setToBox(Adesk::Boolean val) const
     impObj()->setToBox(val);
 }
 
-boost::python::tuple PyGeBoundBlock2d::clipLineSeg2d(const PyGeLineSeg2d& seg)
+boost::python::tuple PyGeBoundBlock2d::clipLineSeg2d(const PyGeLineSeg2d& seg) const
 {
     AcGeLineSeg2d outseg;
     bool flag = ::clipLineSeg2d(outseg, *seg.impObj(), *impObj());
