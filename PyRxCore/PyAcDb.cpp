@@ -150,12 +150,11 @@ static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLin
     return false;
 }
 
-static PyGeLineSeg2d AcDbExtents2dClipLineSeg2d(const AcDbExtents2d& extents, const PyGeLineSeg2d& other)
+static boost::python::tuple AcDbExtents2dClipLineSeg2d(const AcDbExtents2d& extents, const PyGeLineSeg2d& other)
 {
     AcGeLineSeg2d outseg;
-    if (bool flag = clipLineSeg2d(outseg, *other.impObj(), extents); flag == false)
-        PyThrowBadEs(eInvalidInput);
-    return PyGeLineSeg2d(outseg);
+    bool flag = clipLineSeg2d(outseg, *other.impObj(), extents);
+    return boost::python::make_tuple(flag, PyGeLineSeg2d(outseg));
 }
 
 static void makePyDbExtents2dWrapper()
@@ -182,7 +181,7 @@ static void makePyDbExtents2dWrapper()
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
         .def("contains", &AcDbExtents2dContains1)
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
-        .def("clipLineSeg2d", &AcDbExtents2dClipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d" }))
+        .def("clipLineSeg2d", &AcDbExtents2dClipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d" }, 19140))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;

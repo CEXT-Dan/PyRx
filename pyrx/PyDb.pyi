@@ -14844,7 +14844,12 @@ class Extents2d:
         """
         Updates the extents to include point.
         """
-    def clipLineSeg2d(self, seg2d: PyGe.LineSeg2d, /) -> PyGe.LineSeg2d: ...
+    def clipLineSeg2d(self, seg2d: PyGe.LineSeg2d, /) -> tuple[bool, PyGe.LineSeg2d]:
+        """
+        Using Liang-Barsky algorithm, clips or trims the PyGe.LineSeg2d to the bounding box, uses
+        min,max. returns a tuple (bool, PyGe.LineSeg2d), returns true if the segment is inside, or
+        has been clipped
+        """
     def contains(self, val: PyDb.Extents2d | PyGe.Point2d, /) -> bool: ...
     def coords(self, /) -> tuple[float, ...]: ...
     def expandBy(self, vector: PyGe.Vector2d, /) -> None:

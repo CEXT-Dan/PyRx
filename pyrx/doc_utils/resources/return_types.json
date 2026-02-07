@@ -2753,6 +2753,14 @@
         [
             "PyBrx::Variable::getFromBlock",
             "list[PyBrx.Variable]"
+        ],
+        [
+            "PyDb::Extents2d::clipLineSeg2d",
+            "tuple[bool,PyGe.LineSeg2d]"
+        ],
+        [
+            "PyGe::BoundBlock2d::clipLineSeg2d",
+            "tuple[bool,PyGe.LineSeg2d]"
         ]
     ]
 }
