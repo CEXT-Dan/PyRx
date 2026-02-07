@@ -2,6 +2,9 @@
 #include "PyGeEntity2d.h"
 
 #pragma pack (push, 8)
+
+class PyGeLineSeg2d;
+
 //-----------------------------------------------------------------------------------------
 //PyGeBoundBlock2d wrapper
 void makePyGeBoundBlock2dWrapper();
@@ -28,6 +31,7 @@ public:
     Adesk::Boolean      isDisjoint(const PyGeBoundBlock2d& block) const;
     Adesk::Boolean      isBox() const;
     void                setToBox(Adesk::Boolean) const;
+    PyGeLineSeg2d       clipLineSeg2d(const PyGeLineSeg2d& seg);
     static PyGeBoundBlock2d cast(const PyGeEntity2d& src);
     static PyGeBoundBlock2d copycast(const PyGeEntity2d& src);
     static std::string  className();

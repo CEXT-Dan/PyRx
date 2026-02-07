@@ -24,4 +24,7 @@ public:
 #endif
 };
 
+
+bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcDbExtents2d& extents, const AcGeTol& tol = AcGeContext::gTol);
+bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcGeBoundBlock2d& extents, const AcGeTol& tol = AcGeContext::gTol);
 #pragma pack (pop)
