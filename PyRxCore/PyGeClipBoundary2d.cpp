@@ -136,7 +136,7 @@ static bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const
             p0.x + u2 * dx,
             p0.y + u2 * dy));
 
-    return true;
+    return outSeg.length() > 0;
 }
 
 bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcDbExtents2d& extents, const AcGeTol& tol)
