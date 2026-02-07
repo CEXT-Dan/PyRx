@@ -130,6 +130,7 @@
 #include <ranges>
 #include <queue>
 #include<execution>
+#include <numbers>
 
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components

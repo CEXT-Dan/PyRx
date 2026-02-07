@@ -53,6 +53,7 @@
 #include "PyGeLinearEnt2d.h"
 #include "PyGeLinearEnt3d.h"
 #include "PyDbAssocAction.h"
+#include "PyGeClipBoundary2d.h"
 
 using namespace boost::python;
 
@@ -149,6 +150,14 @@ static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLin
     return false;
 }
 
+static PyGeLineSeg2d AcDbExtents2dClipLineSeg2d(const AcDbExtents2d& extents, const PyGeLineSeg2d& other)
+{
+    AcGeLineSeg2d outseg;
+    if (bool flag = clipLineSeg2d(outseg, *other.impObj(), extents); flag == false)
+        PyThrowBadEs(eInvalidInput);
+    return PyGeLineSeg2d(outseg);
+}
+
 static void makePyDbExtents2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -173,6 +182,7 @@ static void makePyDbExtents2dWrapper()
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
         .def("contains", &AcDbExtents2dContains1)
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
+        .def("clipLineSeg2d", &AcDbExtents2dClipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d" }))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;
