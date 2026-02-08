@@ -2313,6 +2313,16 @@ static BOOST_PYTHON_MODULE(PyGe)
         .value("kExternalEntityUndefined", AcGe::ExternalEntityKind::kExternalEntityUndefined)
         .export_values()
         ;
+
+    enum_<AcGe::ClipCondition>("ClipCondition")
+        .value("kInvalid", AcGe::ClipCondition::kInvalid)
+        .value("kAllSegmentsInside", AcGe::ClipCondition::kAllSegmentsInside)
+        .value("kSegmentsIntersect", AcGe::ClipCondition::kSegmentsIntersect)
+        .value("kAllSegmentsOutsideZeroWinds", AcGe::ClipCondition::kAllSegmentsOutsideZeroWinds)
+        .value("kAllSegmentsOutsideOddWinds", AcGe::ClipCondition::kAllSegmentsOutsideOddWinds)
+        .value("kAllSegmentsOutsideEvenWinds", AcGe::ClipCondition::kAllSegmentsOutsideEvenWinds)
+        .export_values()
+        ;
 };
 
 void initPyGeModule()
