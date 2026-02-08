@@ -2769,6 +2769,14 @@
         [
             "PyGe::BoundBlock2d::clipCircArc2d",
             "tuple[bool,list[PyGe.CircArc2d]]"
+        ],
+        [
+            "PyGe::ClipBoundary2d::clipPolygon",
+            "tuple[list[PyGe.Point2d],PyGe.ClipCondition,list[int]]"
+        ],
+        [
+            "PyGe::ClipBoundary2d::clipPolyline",
+            "tuple[list[PyGe.Point2d],PyGe.ClipCondition,list[int]]"
         ]
     ]
 }
