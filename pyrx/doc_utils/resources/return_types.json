@@ -2761,6 +2761,14 @@
         [
             "PyGe::BoundBlock2d::clipLineSeg2d",
             "tuple[bool,PyGe.LineSeg2d]"
+        ],
+        [
+            "PyDb::Extents2d::clipCircArc2d",
+            "tuple[bool,list[PyGe.CircArc2d]]"
+        ],
+        [
+            "PyGe::BoundBlock2d::clipCircArc2d",
+            "tuple[bool,list[PyGe.CircArc2d]]"
         ]
     ]
 }
