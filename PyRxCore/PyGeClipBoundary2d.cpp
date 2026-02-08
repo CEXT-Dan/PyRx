@@ -195,7 +195,7 @@ static bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& 
     params.push_back(startT);
     params.push_back(endT);
 
-    AcGeLineSeg2d edges[4] = {
+    const AcGeLineSeg2d edges[4] = {
         AcGeLineSeg2d(AcGePoint2d(pMin.x, pMin.y), AcGePoint2d(pMax.x, pMin.y)), // Bottom
         AcGeLineSeg2d(AcGePoint2d(pMax.x, pMin.y), AcGePoint2d(pMax.x, pMax.y)), // Right
         AcGeLineSeg2d(AcGePoint2d(pMax.x, pMax.y), AcGePoint2d(pMin.x, pMax.y)), // Top
@@ -225,8 +225,8 @@ static bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& 
 
     for (size_t i = 0; i < params.size() - 1; ++i)
     {
-        double midT = (params[i] + params[i + 1]) * 0.5;
-        AcGePoint2d midPt = arc.evalPoint(midT);
+        const double midT = (params[i] + params[i + 1]) * 0.5;
+        const AcGePoint2d midPt = arc.evalPoint(midT);
 
         // Check if the segment midpoint is within the view boundary
         if (midPt.x >= pMin.x - eps && midPt.x <= pMax.x + eps &&
