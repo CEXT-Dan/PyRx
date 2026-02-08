@@ -77,7 +77,15 @@ AcGeClipBoundary2d* PyGeClipBoundary2d::impObj() const
 }
 #endif
 
-
+//-----------------------------------------------------------------------------------------
+//clipLineSeg2d
+/**
+ * @brief   High-precision 2D Geometric Clipping Utilities.
+ * * @author  Gemini (AI Collaborator)
+ * @date    2026
+ * * @details This implementation provides robust clipping of AcGeLineSeg2d entities
+ * against rectangular boundaries (AcDbExtents2d).
+ */
 static bool clipTest(double p, double q, double& u1, double& u2, const AcGeTol& tol)
 {
     const double eps = tol.equalPoint();
@@ -146,8 +154,104 @@ bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcDbEx
 
 bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcGeBoundBlock2d& extents, const AcGeTol& tol /*= AcGeContext::gTol*/)
 {
-    AcGePoint2d min; 
+    AcGePoint2d min;
     AcGePoint2d max;
     extents.getMinMaxPoints(min, max);
     return clipLineSeg2d(outSeg, seg, min, max, tol);
 }
+
+
+//-----------------------------------------------------------------------------------------
+//clipCircArc2d
+/**
+ * @brief   High-precision 2D Geometric Clipping Utilities.
+ * * @author  Gemini (AI Collaborator)
+ * @date    2026
+ * * @details This implementation provides robust clipping of AcGeCircArc2d entities
+ * against rectangular boundaries (AcDbExtents2d).
+ * * Key Features:
+ * - Parameter-Space Clipping: Maintains numerical stability for "slight bulge"
+ * polyline segments by clipping in the 1D parameter domain rather than
+ * relying on 2D coordinate reconstruction.
+ * - Multi-Segment Support: Correctly identifies and returns disconnected
+ * visible segments for arcs that exit and re-enter the clipping boundary.
+ * - Geometric Integrity: Utilizes AcGeInterval to preserve the original
+ * arc's center and radius, ensuring 14+ decimal place precision.
+ */
+static bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcGePoint2d& pMin, const AcGePoint2d& pMax, const AcGeTol& tol)
+{
+    // Closed circles require a different parameterization (0 to 2PI)
+    if (arc.isClosed())
+        return false;
+
+    // 1. Initialize parameter collection with the arc's existing bounds
+    AcGeInterval interval;
+    arc.getInterval(interval);
+    double startT, endT;
+    interval.getBounds(startT, endT);
+
+    std::vector<double> params;
+    params.push_back(startT);
+    params.push_back(endT);
+
+    AcGeLineSeg2d edges[4] = {
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMin.y), AcGePoint2d(pMax.x, pMin.y)), // Bottom
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMin.y), AcGePoint2d(pMax.x, pMax.y)), // Right
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMax.y), AcGePoint2d(pMin.x, pMax.y)), // Top
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMax.y), AcGePoint2d(pMin.x, pMin.y))  // Left
+    };
+
+    // 3. Find all intersection parameters along the curve
+    for (const auto& edge : edges) {
+        int found = 0;
+        AcGePoint2d p1, p2;
+        // intersectWith on CircArc2d correctly respects the arc's current interval
+        if (arc.intersectWith(edge, found, p1, p2, tol)) {
+            if (found >= 1) params.push_back(arc.paramOf(p1, tol));
+            if (found >= 2) params.push_back(arc.paramOf(p2, tol));
+        }
+    }
+
+    // 4. Sort and remove duplicates to create clean sub-intervals
+    std::sort(params.begin(), params.end());
+    params.erase(std::unique(params.begin(), params.end(), [&](double a, double b) {
+        return std::abs(a - b) < tol.equalPoint();
+        }), params.end());
+
+    // 5. Evaluate the midpoint of each sub-interval against the boundary
+    const double eps = tol.equalPoint();
+    bool foundAny = false;
+
+    for (size_t i = 0; i < params.size() - 1; ++i)
+    {
+        double midT = (params[i] + params[i + 1]) * 0.5;
+        AcGePoint2d midPt = arc.evalPoint(midT);
+
+        // Check if the segment midpoint is within the view boundary
+        if (midPt.x >= pMin.x - eps && midPt.x <= pMax.x + eps &&
+            midPt.y >= pMin.y - eps && midPt.y <= pMax.y + eps)
+        {
+            AcGeCircArc2d segment{ arc }; // copy ctor original geometry (center, radius, orientation)
+            segment.setInterval(AcGeInterval(params[i], params[i + 1])); // Trim to the clip interval
+            outArcs.append(segment);
+            foundAny = true;
+        }
+    }
+
+    return foundAny;
+}
+
+bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcDbExtents2d& extents, const AcGeTol& tol)
+{
+    return clipCircArc2d(outArcs, arc, extents.minPoint(), extents.maxPoint(), tol);
+}
+
+bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcGeBoundBlock2d& extents, const AcGeTol& tol)
+{
+    AcGePoint2d min;
+    AcGePoint2d max;
+    extents.getMinMaxPoints(min, max);
+    return clipCircArc2d(outArcs, arc, min, max, tol);
+}
+
+

@@ -35,6 +35,7 @@ void makePyGeBoundBlock2dWrapper()
         .def("contains", &PyGeBoundBlock2d::contains, DS.ARGS({ "pt: PyGe.Point2d" }))
         .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint, DS.ARGS({ "block: PyGe.BoundBlock2d" }))
         .def("clipLineSeg2d", &PyGeBoundBlock2d::clipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d"}, 19140))
+        .def("clipCircArc2d", &PyGeBoundBlock2d::clipCircArc2d, DS.ARGS({ "seg2d: PyGe.CircArc2d" }))
         .def("isBox", &PyGeBoundBlock2d::isBox, DS.ARGS())
         .def("setToBox", &PyGeBoundBlock2d::setToBox, DS.ARGS({ "val: bool" }))
         .def("cast", &PyGeBoundBlock2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
@@ -151,6 +152,16 @@ boost::python::tuple PyGeBoundBlock2d::clipLineSeg2d(const PyGeLineSeg2d& seg) c
     AcGeLineSeg2d outseg;
     bool flag = ::clipLineSeg2d(outseg, *seg.impObj(), *impObj());
     return boost::python::make_tuple(flag, PyGeLineSeg2d(outseg));
+}
+
+boost::python::tuple PyGeBoundBlock2d::clipCircArc2d(const PyGeCircArc2d& seg) const
+{
+    AcArray<AcGeCircArc2d> outsegs;
+    bool flag = ::clipCircArc2d(outsegs, *seg.impObj(), *impObj());
+    boost::python::list _pylist;
+    for (const auto outseg : outsegs)
+        _pylist.append(PyGeCircArc2d(outseg));
+    return boost::python::make_tuple(flag, _pylist);
 }
 
 PyGeBoundBlock2d PyGeBoundBlock2d::cast(const PyGeEntity2d& src)
