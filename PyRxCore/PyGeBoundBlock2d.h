@@ -32,6 +32,7 @@ public:
     Adesk::Boolean      isBox() const;
     void                setToBox(Adesk::Boolean) const;
     boost::python::tuple clipLineSeg2d(const PyGeLineSeg2d& seg) const;
+    boost::python::tuple clipCircArc2d(const PyGeCircArc2d& seg) const;
     static PyGeBoundBlock2d cast(const PyGeEntity2d& src);
     static PyGeBoundBlock2d copycast(const PyGeEntity2d& src);
     static std::string  className();
