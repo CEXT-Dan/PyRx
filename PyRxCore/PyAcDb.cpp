@@ -192,7 +192,7 @@ static void makePyDbExtents2dWrapper()
         .def("contains", &AcDbExtents2dContains1)
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
         .def("clipLineSeg2d", &AcDbExtents2dClipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d" }, 19140))
-        .def("clipCircArc2d", &AcDbExtents2dclipCircArc2d, DS.ARGS({ "seg2d: PyGe.CircArc2d" }))
+        .def("clipCircArc2d", &AcDbExtents2dclipCircArc2d, DS.ARGS({ "seg2d: PyGe.CircArc2d" }, 19141))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;

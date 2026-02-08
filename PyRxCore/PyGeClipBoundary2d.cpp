@@ -85,6 +85,7 @@ AcGeClipBoundary2d* PyGeClipBoundary2d::impObj() const
  * @date    2026
  * * @details This implementation provides robust clipping of AcGeLineSeg2d entities
  * against rectangular boundaries (AcDbExtents2d).
+ * Liang–Barsky algorithm
  */
 static bool clipTest(double p, double q, double& u1, double& u2, const AcGeTol& tol)
 {

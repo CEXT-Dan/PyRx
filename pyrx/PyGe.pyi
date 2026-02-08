@@ -230,7 +230,14 @@ class BoundBlock2d(PyGe.Entity2d):
     def cast(otherObject: PyGe.Entity2d, /) -> BoundBlock2d: ...
     @staticmethod
     def className() -> str: ...
-    def clipCircArc2d(self, seg2d: PyGe.CircArc2d, /) -> tuple[bool, list[PyGe.CircArc2d]]: ...
+    def clipCircArc2d(self, seg2d: PyGe.CircArc2d, /) -> tuple[bool, list[PyGe.CircArc2d]]:
+        """
+        This function clips or trims a PyGe.CircArc2d to the bounding box defined by min/max
+        coordinates. It returns a tuple (bool, list[PyGe.CircArc2d]). It returns True if the
+        segment is inside the box and has been clipped to a valid line segment. It returns False
+        only if the segment is completely outside the box, returns multiple CircArc2ds in the case
+        of reentry
+        """
     def clipLineSeg2d(self, seg2d: PyGe.LineSeg2d, /) -> tuple[bool, PyGe.LineSeg2d]:
         """
         Using the Liang-Barsky algorithm, this function clips or trims a PyGe.LineSeg2d to the
