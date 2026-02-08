@@ -14846,9 +14846,11 @@ class Extents2d:
         """
     def clipLineSeg2d(self, seg2d: PyGe.LineSeg2d, /) -> tuple[bool, PyGe.LineSeg2d]:
         """
-        Using Liang-Barsky algorithm, clips or trims the PyGe.LineSeg2d to the bounding box, uses
-        min,max. returns a tuple (bool, PyGe.LineSeg2d), returns true if the segment is inside, or
-        has been clipped
+        Using the Liang-Barsky algorithm, this function clips or trims a PyGe.LineSeg2d to the
+        bounding box defined by min/max coordinates. It returns a tuple (bool, PyGe.LineSeg2d). It
+        returns True if the segment is inside the box and has been clipped to a valid line segment.
+        It returns False only if the segment is completely outside the box, or has been clipped to
+        a zero-length point (intersection at a corner).
         """
     def contains(self, val: PyDb.Extents2d | PyGe.Point2d, /) -> bool: ...
     def coords(self, /) -> tuple[float, ...]: ...
