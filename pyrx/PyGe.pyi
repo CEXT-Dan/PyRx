@@ -10,6 +10,10 @@ k0Arg1: AcGeError  # 2
 k0Arg2: AcGeError  # 3
 k0This: AcGeError  # 1
 kAcisEntity: ExternalEntityKind  # 0
+kAllSegmentsInside: ClipCondition  # 1
+kAllSegmentsOutsideEvenWinds: ClipCondition  # 5
+kAllSegmentsOutsideOddWinds: ClipCondition  # 4
+kAllSegmentsOutsideZeroWinds: ClipCondition  # 3
 kArg1InsideThis: AcGeError  # 11
 kArg1OnThis: AcGeError  # 10
 kArg1TooBig: AcGeError  # 9
@@ -64,6 +68,7 @@ kFitData3d: EntityId  # 68
 kHatch: EntityId  # 69
 kInside: PointContainment  # 0
 kIntervalBoundBlock: EntityId  # 75
+kInvalid: ClipCondition  # 0
 kLeftLeft: AcGeXConfig  # 16
 kLeftOverlap: AcGeXConfig  # 256
 kLeftRight: AcGeXConfig  # 4
@@ -118,6 +123,7 @@ kSSIOut: AcGeSSIConfig  # 1
 kSSITangent: AcGeSSIType  # 1
 kSSITransverse: AcGeSSIType  # 0
 kSSIUnknown: AcGeSSIConfig  # 0
+kSegmentsIntersect: ClipCondition  # 2
 kSphere: EntityId  # 29
 kSplineEnt2d: EntityId  # 33
 kSplineEnt3d: EntityId  # 39
@@ -604,8 +610,72 @@ class ClipBoundary2d(PyGe.Entity2d):
     def cast(otherObject: PyGe.Entity2d, /) -> ClipBoundary2d: ...
     @staticmethod
     def className() -> str: ...
+    def clipPolygon(
+        self, rawVertices: list[PyGe.Point2d], /
+    ) -> tuple[list[PyGe.Point2d], PyGe.ClipCondition, list[int]]:
+        """
+        Clips the specified closed polygon against the clip boundary. The possible values of
+        AcGe::ClipCondition are: kInvalid An error was detected in the clipping process, probably
+        due to improper initialization of the object. kAllSegmentsInside All input segments lie
+        inside the clip region. kSegmentsIntersect One or more of the input segments crosses the
+        clip boundary. kAllSegmentsOutsideZeroWinds All input segments lie outside the clip region,
+        and the clip region is not encircled by the input polygon. kAllSegmentsOutsideOddWinds All
+        input segments lie outside the clip region, but the clip region is encircled by the input
+        polygon an odd number of times. This normally indicates that the clip region is inside the
+        region enclosed by the input polygon. If the input polyline is NOT a closed polygon, then
+        the encircling count is only approximate. kAllSegmentsOutsideEvenWinds All input segments
+        lie outside the clip region, but the clip region is encircled by the input polygon an even
+        number of times. Depending on the user's polygon fill algorithm, the clip region may be
+        considered inside or outside the region enclosed by the input polygon. If the input
+        polyline is NOT a closed polygon, then the encircling count is only approximate. Optional
+        clipped segment source information is interpreted as follows: Let srcInx(n) :=
+        pClippedSegmentSourceLabel->at(n). Case 1 If srcInx(n) > 0, then segment number n
+        (connecting output vertices n-1 and n) is coincident with source segment number srcInx(n),
+        which connects input vertices srcInx(n)-1 and srcInx(n). Case 2 If srcInx(n) < 0, then
+        segment number n is coincident with clip boundary segment srcInx(n), which connects clip
+        boundary vertices srcInx(n)-1 and srcInx(n).
+        """
+    def clipPolyline(
+        self, rawVertices: list[PyGe.Point2d], /
+    ) -> tuple[list[PyGe.Point2d], PyGe.ClipCondition, list[int]]:
+        """
+        Clips the specified closed polyline against the clip boundary. The possible values of
+        AcGe::ClipCondition are: kInvalid An error was detected in the clipping process, probably
+        due to improper initialization of the object. kAllSegmentsInside All input segments lie
+        inside the clip region. kSegmentsIntersect One or more of the input segments crosses the
+        clip boundary. kAllSegmentsOutsideZeroWinds All input segments lie outside the clip region,
+        and the clip region is not encircled by the input polygon. kAllSegmentsOutsideOddWinds All
+        input segments lie outside the clip region, but the clip region is encircled by the input
+        polygon an odd number of times. This normally indicates that the clip region is inside the
+        region enclosed by the input polygon. If the input polyline is NOT a closed polygon, then
+        the encircling count is only approximate. kAllSegmentsOutsideEvenWinds All input segments
+        lie outside the clip region, but the clip region is encircled by the input polygon an even
+        number of times. Depending on the user's polygon fill algorithm, the clip region may be
+        considered inside or outside the region enclosed by the input polygon. If the input
+        polyline is NOT a closed polygon, then the encircling count is only approximate. Optional
+        clipped segment source information is interpreted as follows: Let srcInx(n) :=
+        pClippedSegmentSourceLabel->at(n). Case 1 If srcInx(n) > 0, then segment number n
+        (connecting output vertices n-1 and n) is coincident with source segment number srcInx(n),
+        which connects input vertices srcInx(n)-1 and srcInx(n). Case 2 If srcInx(n) < 0, then
+        segment number n is coincident with clip boundary segment srcInx(n), which connects clip
+        boundary vertices srcInx(n)-1 and srcInx(n).
+        """
     @staticmethod
     def copycast(otherObject: PyGe.Entity2d, /) -> ClipBoundary2d: ...
+    @overload
+    def set(self, cornerA: PyGe.Point2d, cornerB: PyGe.Point2d, /) -> None: ...
+    @overload
+    def set(self, clipBoundary: list[PyGe.Point2d], /) -> None: ...
+    @overload
+    def set(self, *args) -> None: ...
+
+class ClipCondition(_BoostPythonEnum):
+    kInvalid: ClassVar[Self]  # 0
+    kAllSegmentsInside: ClassVar[Self]  # 1
+    kSegmentsIntersect: ClassVar[Self]  # 2
+    kAllSegmentsOutsideZeroWinds: ClassVar[Self]  # 3
+    kAllSegmentsOutsideOddWinds: ClassVar[Self]  # 4
+    kAllSegmentsOutsideEvenWinds: ClassVar[Self]  # 5
 
 class CompositeCurve2d(PyGe.Curve2d):
     @overload
