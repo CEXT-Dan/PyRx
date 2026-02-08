@@ -14844,6 +14844,7 @@ class Extents2d:
         """
         Updates the extents to include point.
         """
+    def clipCircArc2d(self, seg2d: PyGe.CircArc2d, /) -> tuple[bool, list[PyGe.CircArc2d]]: ...
     def clipLineSeg2d(self, seg2d: PyGe.LineSeg2d, /) -> tuple[bool, PyGe.LineSeg2d]:
         """
         Using the Liang-Barsky algorithm, this function clips or trims a PyGe.LineSeg2d to the
