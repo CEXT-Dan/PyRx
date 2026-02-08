@@ -22,7 +22,7 @@ class OutputDisplayServiceImpl : public AcDbHostApplicationServices
 public:
     OutputDisplayServiceImpl();
     virtual ~OutputDisplayServiceImpl() override;
-    virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault) override;
+    virtual Acad::ErrorStatus findFile(ACHAR* pthOut, int nBufLength, const ACHAR* pcFname, AcDbDatabase* pDb = NULL, AcDbHostApplicationServices::FindFileHint hint = kDefault) override;
     virtual AcadInternalServices* acadInternalServices() PYRXOVERRIDE;
 #if (defined(_ARXTARGET) && (_ARXTARGET >= 260))
     virtual bool notifyCorruptDrawingFoundOnOpen(AcDbObjectId id, Acad::ErrorStatus es) override;
@@ -206,6 +206,7 @@ public:
     void                setCustomSummaryInfo2(int index, const std::string& key, const std::string& value) const;
     void                setCustomSummaryFromDict(boost::python::dict& pydict) const;
     boost::python::dict asDict() const;
+    void                removeAllCustomSummaryInfo() const;
     static std::string  className();
 public:
     AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
