@@ -818,6 +818,7 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("getHyperlinkBase", &PyDbDatabaseSummaryInfo::getHyperlinkBase, DS.ARGS())
         .def("setHyperlinkBase", &PyDbDatabaseSummaryInfo::setHyperlinkBase, DS.ARGS({ "val: str" }))
         .def("numCustomInfo", &PyDbDatabaseSummaryInfo::numCustomInfo, DS.ARGS())
+        .def("removeAllCustomSummaryInfo", &PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo, DS.ARGS())
         .def("addCustomSummaryInfo", &PyDbDatabaseSummaryInfo::addCustomSummaryInfo, DS.ARGS({ "key: str","val: str" }))
         .def("deleteCustomSummaryInfo", &PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1)
         .def("deleteCustomSummaryInfo", &PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2, DS.OVRL(deleteCustomSummaryInfoOverloads))
@@ -1106,6 +1107,14 @@ boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
     return sinfoDict;
 }
 
+void PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo() const
+{
+    for (int idx = this->numCustomInfo() - 1; idx >= 0; idx--)
+    {
+        PyThrowBadEs(impObj()->deleteCustomSummaryInfo(idx));
+    }
+}
+
 std::string PyDbDatabaseSummaryInfo::className()
 {
     return "AcDbDatabaseSummaryInfo";
@@ -1328,7 +1337,7 @@ AcDbPlotSettingsValidator* PyDbPlotSettingsValidator::impObj(const std::source_l
 {
     if (m_impl == nullptr) [[unlikely]]
         throw PyNullObject(src);
-        return m_impl;
+    return m_impl;
 }
 
 void makePyDbDictUtilWrapper()
