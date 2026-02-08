@@ -16,6 +16,10 @@ public:
     PyGeClipBoundary2d(const boost::python::list& clipBoundary); //TODO: make test
     PyGeClipBoundary2d(const AcGeClipBoundary2d& src); //TODO test!
     virtual ~PyGeClipBoundary2d() override = default;
+    void set1(const AcGePoint2d& cornerA, const AcGePoint2d& cornerB) const;
+    void set2(const boost::python::list& clipBoundary) const;
+    boost::python::tuple clipPolygon(const boost::python::list& rawVertices) const;
+    boost::python::tuple clipPolyline(const boost::python::list& rawVertices) const;
     static PyGeClipBoundary2d cast(const PyGeEntity2d& src);
     static PyGeClipBoundary2d copycast(const PyGeEntity2d& src);
     static std::string className();
