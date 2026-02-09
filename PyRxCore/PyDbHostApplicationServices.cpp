@@ -817,6 +817,7 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("setRevisionNumber", &PyDbDatabaseSummaryInfo::setRevisionNumber, DS.ARGS({ "val: str" }))
         .def("getHyperlinkBase", &PyDbDatabaseSummaryInfo::getHyperlinkBase, DS.ARGS())
         .def("setHyperlinkBase", &PyDbDatabaseSummaryInfo::setHyperlinkBase, DS.ARGS({ "val: str" }))
+        .def("hasCustomKey", &PyDbDatabaseSummaryInfo::hasCustomKey, DS.ARGS({ "key: str" }))
         .def("numCustomInfo", &PyDbDatabaseSummaryInfo::numCustomInfo, DS.ARGS())
         .def("removeAllCustomSummaryInfo", &PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo, DS.ARGS())
         .def("addCustomSummaryInfo", &PyDbDatabaseSummaryInfo::addCustomSummaryInfo, DS.ARGS({ "key: str","val: str" }))
@@ -1046,7 +1047,7 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string
     PyThrowBadEs(impObj()->setCustomSummaryInfo(index, utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
 }
 
-static bool hasKey(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
+static bool hasKeyimpl(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 {
 #if defined(_BRXTARGET260)
     RxAutoOutStr dummy;
@@ -1069,7 +1070,7 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydi
             const std::string& key = keyExtractor();
             boost::python::extract<std::string> valExtractor(pydict[key]);
             const std::string& val = valExtractor();
-            if (hasKey(impObj(), utf8_to_wstr(key).c_str()))
+            if (hasKeyimpl(impObj(), utf8_to_wstr(key).c_str()))
                 setCustomSummaryInfo1(key, val);
             else
                 addCustomSummaryInfo(key, val);
@@ -1113,6 +1114,11 @@ void PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo() const
     {
         PyThrowBadEs(impObj()->deleteCustomSummaryInfo(idx));
     }
+}
+
+bool PyDbDatabaseSummaryInfo::hasCustomKey(const std::string& key) const
+{
+    return hasKeyimpl(impObj(), utf8_to_wstr(key).c_str());
 }
 
 std::string PyDbDatabaseSummaryInfo::className()
