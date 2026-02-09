@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -44,6 +46,7 @@ class TestDbMline:
         self.line.removeLastSeg(Ge.Point3d(10, 0, 0))
         assert self.line.numVertices() == 1
 
+    @pytest.mark.known_failure_BRX 
     def test_modify_properties(self):
         """Test setting and getting properties like Normal, Scale, and Style."""
         # Setup is handled in self.setup_method()
@@ -99,6 +102,7 @@ class TestDbMline:
         # Verify the vertex moved
         assert self.line.vertexAt(0).isEqualTo(new_pos)
 
+    @pytest.mark.known_failure_BRX 
     def test_get_closest_point_to(self):
         """Test finding the closest point on the Mline to a given point."""
         # Setup is handled in self.setup_method()

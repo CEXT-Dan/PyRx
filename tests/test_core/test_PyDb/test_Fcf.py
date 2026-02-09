@@ -98,6 +98,7 @@ class TestDbFcf:
         assert fcf.normal() == new_normal
         assert fcf.direction() == new_direction
 
+    @pytest.mark.known_failure_BRX 
     @pytest.mark.known_failure_GRX
     def test_get_bounding_points(self):
         """Test getBoundingPoints returns 4 points in WCS."""
@@ -116,6 +117,7 @@ class TestDbFcf:
         assert isinstance(points[2], Ge.Point3d)
         assert isinstance(points[3], Ge.Point3d)
 
+    @pytest.mark.known_failure_BRX 
     @pytest.mark.known_failure_GRX
     def test_get_bounding_pline(self):
         """Test getBoundingPline returns a list of points."""

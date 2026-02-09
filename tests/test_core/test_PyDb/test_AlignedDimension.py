@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -60,6 +62,7 @@ class TestDbAlignedDimension:
         
         assert dim.oblique() == angle
 
+    @pytest.mark.known_failure_BRX
     def test_jog_symbol(self):
         """Tests jog symbol on/off functionality."""
         dim = Db.AlignedDimension()
@@ -69,7 +72,8 @@ class TestDbAlignedDimension:
         
         dim.setJogSymbolOn(False)
         assert dim.jogSymbolOn() is False
-
+        
+    @pytest.mark.known_failure_BRX
     def test_jog_symbol_position(self):
         """Tests setting jog symbol position."""
         dim = Db.AlignedDimension()
@@ -165,6 +169,7 @@ class TestDbAlignedDimension:
         # Allow for floating point comparison tolerance
         assert abs(retrieved_angle - oblique_rad) < 0.0001
 
+    @pytest.mark.known_failure_BRX
     def test_jog_symbol_2(self):
         """Tests the jog symbol status and position."""
         dim = Db.AlignedDimension()

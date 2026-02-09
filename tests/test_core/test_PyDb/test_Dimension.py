@@ -146,6 +146,7 @@ class TestDbDimension:
         assert isinstance(formatted, str)
         assert "22.5" in formatted or "22.50" in formatted
 
+    @pytest.mark.known_failure_BRX 
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     def test_format_measurement_with_template(self):

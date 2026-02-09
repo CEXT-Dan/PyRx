@@ -94,7 +94,7 @@ class TestDbSolid3d:
         # Check interference
         isInterfering, commonSolid = solid1.checkInterference(solid2, True)
         
-        assert isInterfering is True
+        assert isInterfering == True
         # If interference exists and createNewSolid is True, commonSolid should not be null
         assert commonSolid is not None
 

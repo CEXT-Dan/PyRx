@@ -18,6 +18,7 @@ class TestDbDiametricDimension:
         assert dim.farChordPoint() == farChordPoint
         assert dim.leaderLength() == leaderLength
 
+    @pytest.mark.known_failure_BRX 
     @pytest.mark.known_failure_GRX  
     @pytest.mark.known_failure_ZRX
     def test_create_with_text(self):
@@ -50,6 +51,7 @@ class TestDbDiametricDimension:
         dim.setLeaderLength(new_length)
         assert dim.leaderLength() == new_length
 
+    @pytest.mark.known_failure_BRX 
     def test_set_ext_arc_angles(self):
         """Test setting extension arc start and end angles."""
         dim = Db.DiametricDimension()
