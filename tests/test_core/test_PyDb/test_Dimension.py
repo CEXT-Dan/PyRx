@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -126,7 +128,7 @@ class TestDbDimension:
         assert dim.normal() == normal
 
     # --- Formatting Tests ---
-
+    @pytest.mark.known_failure_ZRX
     def test_format_measurement_basic(self):
         """Tests the formatMeasurement method to generate text strings."""
         pt1 = Ge.Point3d(0, 0, 0)
@@ -143,6 +145,7 @@ class TestDbDimension:
         assert isinstance(formatted, str)
         assert "22.5" in formatted or "22.50" in formatted
 
+    @pytest.mark.known_failure_ZRX
     def test_format_measurement_with_template(self):
         """Tests formatMeasurement with a dimension text template."""
         pt1 = Ge.Point3d(0, 0, 0)

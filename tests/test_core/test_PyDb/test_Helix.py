@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -53,6 +55,7 @@ class TestDbHelix:
         obj.setConstrain(constrain_type)
         assert obj.constrain() == constrain_type
 
+    @pytest.mark.known_failure_ZRX
     def test_reverse_curve(self):
         obj = Db.Helix()
         obj.reverseCurve()

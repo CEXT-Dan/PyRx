@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -37,6 +39,7 @@ class TestDbSpline:
         assert start == start_tangent
         assert end == end_tangent
 
+    @pytest.mark.known_failure_ZRX
     def test_create_with_nurbs_data(self):
         """Test creating a spline using NURBS data (Control Points, Knots, Weights)."""
         degree = 3
