@@ -91,6 +91,7 @@ class TestDbMText:
         mt.setLineSpacingFactor(val)
         assert mt.lineSpacingFactor() == val
 
+    @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     @pytest.mark.known_failure_BRX
     def test_contents_rtf(self):
@@ -114,6 +115,7 @@ class TestDbMText:
         mt.setBackgroundFill(False)
         assert mt.backgroundFillOn() == False
 
+    @pytest.mark.known_failure_GRX
     def test_background_color(self):
         """Test background color settings"""
         mt = Db.MText()

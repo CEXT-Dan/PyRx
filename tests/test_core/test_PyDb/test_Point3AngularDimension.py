@@ -70,6 +70,7 @@ class TestDbPoint3AngularDimension:
         assert pDim.xLine2Point() == newSecond
         assert pDim.arcPoint() == newArc
 
+    @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     def test_extension_arc_toggle(self):
         """

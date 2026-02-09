@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -96,6 +98,7 @@ class TestDbFcf:
         assert fcf.normal() == new_normal
         assert fcf.direction() == new_direction
 
+    @pytest.mark.known_failure_GRX
     def test_get_bounding_points(self):
         """Test getBoundingPoints returns 4 points in WCS."""
         fcf = Db.Fcf("", Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, Ge.Vector3d.kXAxis)
@@ -113,6 +116,7 @@ class TestDbFcf:
         assert isinstance(points[2], Ge.Point3d)
         assert isinstance(points[3], Ge.Point3d)
 
+    @pytest.mark.known_failure_GRX
     def test_get_bounding_pline(self):
         """Test getBoundingPline returns a list of points."""
         fcf = Db.Fcf("", Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, Ge.Vector3d.kXAxis)

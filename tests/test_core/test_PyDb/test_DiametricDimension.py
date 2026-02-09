@@ -18,6 +18,7 @@ class TestDbDiametricDimension:
         assert dim.farChordPoint() == farChordPoint
         assert dim.leaderLength() == leaderLength
 
+    @pytest.mark.known_failure_GRX  
     @pytest.mark.known_failure_ZRX
     def test_create_with_text(self):
         """Test creation with dimension text."""

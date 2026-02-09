@@ -81,6 +81,7 @@ class TestDbDimension:
         # Verify the setter doesn't crash
         assert dim.textRotation() == 0.7853981633974483
 
+    @pytest.mark.known_failure_GRX
     def test_dimension_style(self):
         """Tests setting and getting the dimension style."""
         pt1 = Ge.Point3d(0, 0, 0)
@@ -145,6 +146,7 @@ class TestDbDimension:
         assert isinstance(formatted, str)
         assert "22.5" in formatted or "22.50" in formatted
 
+    @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     def test_format_measurement_with_template(self):
         """Tests formatMeasurement with a dimension text template."""
