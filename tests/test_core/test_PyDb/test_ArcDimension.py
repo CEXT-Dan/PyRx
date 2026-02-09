@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
 class TestDbArcDimension:
 
+    @pytest.mark.known_failure_ZRX
     def test_create_1(self):
         """Tests the basic constructor with center, xLines, and arc point."""
         center = Ge.Point3d(0.0, 0.0, 0.0)  # center
@@ -22,6 +25,7 @@ class TestDbArcDimension:
         assert dim.xLine2Point() == xLine2
         assert dim.arcPoint() == arcPoint
 
+    @pytest.mark.known_failure_ZRX
     def test_create_with_text(self):
         """Tests constructor with dimension text."""
         center = Ge.Point3d(0.0, 0.0, 0.0)

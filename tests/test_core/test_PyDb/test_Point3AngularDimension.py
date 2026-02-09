@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import math
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -68,6 +70,7 @@ class TestDbPoint3AngularDimension:
         assert pDim.xLine2Point() == newSecond
         assert pDim.arcPoint() == newArc
 
+    @pytest.mark.known_failure_ZRX
     def test_extension_arc_toggle(self):
         """
         Test the toggle for the extension arc.
@@ -91,6 +94,7 @@ class TestDbPoint3AngularDimension:
         pDim.setExtArcOn(True)
         assert pDim.extArcOn() is True
 
+    @pytest.mark.known_failure_ZRX
     def test_format_measurement(self):
         """
         Test formatting the measurement value.

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import math
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -9,6 +11,7 @@ class TestDbShape:
     
     # --- Constructor Tests ---
 
+    @pytest.mark.known_failure_ZRX
     def test_create_1(self):
         """Tests the constructor with position, size, rotation, and widthFactor."""
         shape = Db.Shape(Ge.Point3d(10, 10, 0), 15, 0, 0)

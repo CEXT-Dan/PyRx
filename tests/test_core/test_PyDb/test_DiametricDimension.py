@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db, Ge
 
 
@@ -16,6 +18,7 @@ class TestDbDiametricDimension:
         assert dim.farChordPoint() == farChordPoint
         assert dim.leaderLength() == leaderLength
 
+    @pytest.mark.known_failure_ZRX
     def test_create_with_text(self):
         """Test creation with dimension text."""
         chordPoint = Ge.Point3d(10, 10, 0)

@@ -91,6 +91,7 @@ class TestDbMText:
         mt.setLineSpacingFactor(val)
         assert mt.lineSpacingFactor() == val
 
+    @pytest.mark.known_failure_ZRX
     @pytest.mark.known_failure_BRX
     def test_contents_rtf(self):
         """Test RTF content setting and retrieval"""
