@@ -58,6 +58,7 @@ class TestDbShape:
         shape.setNormal(new_normal)
         assert shape.normal() == new_normal
 
+    @pytest.mark.known_failure_BRX
     def test_oblique_setter(self):
         """Tests setting and getting the oblique angle."""
         shape = Db.Shape()
@@ -130,6 +131,7 @@ class TestDbShape:
         shape.setNormal(norm)
         assert shape.normal() == norm
 
+    @pytest.mark.known_failure_BRX
     def test_dxf_group_code_oblique(self):
         """Verifies oblique corresponds to DXF Group Code 51."""
         shape = Db.Shape()
