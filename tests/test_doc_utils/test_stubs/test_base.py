@@ -112,7 +112,7 @@ class TestStubParser:
         assert Class_class_meth.name == "class_meth"
         assert Class_class_meth.start_line == 25
         assert Class_class_meth.end_line == 29
-        assert Class_class_meth.range == range(25, 39)
+        assert Class_class_meth.range == range(25, 29)
 
         Class_instance_meth = class_Class.children[5]
         assert Class_instance_meth.name == "instance_meth"
