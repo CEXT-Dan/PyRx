@@ -207,6 +207,7 @@ public:
     void                setCustomSummaryFromDict(boost::python::dict& pydict) const;
     boost::python::dict asDict() const;
     void                removeAllCustomSummaryInfo() const;
+    bool                hasCustomKey(const std::string& key) const;
     static std::string  className();
 public:
     AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
