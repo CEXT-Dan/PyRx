@@ -35685,7 +35685,7 @@ class Xrecord(PyDb.DbObject):
         This function sets the merge style for insert operations. See AcDb::DuplicateRecordCloning
         for possible styles.
         """
-    def setXlateReferences(self, val: bool, /) -> None:
+    def setXlateReferences(self, translate: bool, /) -> None:
         """
         If translate is true, then the xrecord translates any object IDs in its data chain during
         any subsequent deepClone or wblockClone operations. Otherwise, the translation is not done.
