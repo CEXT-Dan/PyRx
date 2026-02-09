@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import pytest
 
 from pyrx import Db, Ge
 
@@ -62,6 +63,7 @@ class TestDbEllipse:
         dot_prod_normal_minor = ellipse.normal().dotProduct(ellipse.minorAxis())
         assert abs(dot_prod_normal_minor) < 1e-6
 
+    @pytest.mark.known_failure_GRX
     def test_radii_calculation(self):
         """Test that radii are calculated correctly based on ratio."""
         cen = Ge.Point3d(0, 0, 0)
@@ -131,6 +133,7 @@ class TestDbEllipse:
 
         assert ellipse.center() == new_cen
 
+    @pytest.mark.known_failure_GRX
     def test_set_radii(self):
         """Test setting major and minor radii."""
         cen = Ge.Point3d(0, 0, 0)

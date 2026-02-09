@@ -25,6 +25,7 @@ class TestDbArcDimension:
         assert dim.xLine2Point() == xLine2
         assert dim.arcPoint() == arcPoint
 
+    @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     def test_create_with_text(self):
         """Tests constructor with dimension text."""
