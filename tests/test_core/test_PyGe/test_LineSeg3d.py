@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import math
-from pyrx import Ge
 
+from pyrx import Ge
 
 
 class TestLineSeg3d:
