@@ -12,7 +12,6 @@ struct SS_Iterator
     {
     }
 
-    // This is the core logic that replaces range()
     PyDbObjectId next()
     {
         if (current >= ss.size())
@@ -67,11 +66,10 @@ void makePyEdSelectionSetWrapper()
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
-        .def("__iter__", +[](const PyEdSelectionSet& self) {return SS_Iterator(self);})
+        .def("__iter__", +[](const PyEdSelectionSet& self) {return SS_Iterator(self); })
         ;
 }
 
-//used a shared pointer for reference counting. 
 struct PyEdSSDeleter
 {
     explicit PyEdSSDeleter(bool autoDelete)
