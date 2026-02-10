@@ -79,11 +79,11 @@ class TestCircArc3d:
         
         # Point inside the circle
         point_inside = Ge.Point3d(0.0, 0.0, 0.0)
-        assert arc.isInside(point_inside) is True
+        assert arc.isInside(point_inside) == True
         
         # Point outside the circle
         point_outside = Ge.Point3d(0.0, 0.0, 10.0)
-        assert arc.isInside(point_outside) is False
+        assert arc.isInside(point_outside) == False
 
     def test_get_plane(self):
         """Test retrieving the plane of the arc."""
