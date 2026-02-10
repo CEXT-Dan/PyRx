@@ -2236,7 +2236,7 @@
         ],
         [
             "PyEd::SelectionSet::__iter__",
-            "Iterator[PyDb.ObjectId]"
+            "SelectionSetIterator"
         ],
         [
             "PyAx::Acad3DFace::coordinates",

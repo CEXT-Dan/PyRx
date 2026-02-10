@@ -6,9 +6,6 @@
 
 using namespace boost::python;
 
-#ifdef NEVER
-// this is an example of creating an iterator 
-// TODO: measure performance 
 struct SS_Iterator
 {
     SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(selectionSet)
@@ -33,20 +30,12 @@ struct SS_Iterator
     size_t current = 0;
 };
 
-// 1. Wrap the iterator helper
-class_<SS_Iterator>("SS_Iterator", no_init)
-.def("__iter__", &SS_Iterator::iter, return_internal_reference<>())
-.def("__next__", &SS_Iterator::next);
-
-// 2. Wrap your main class
-class_<PyEdSelectionSet>("PyEdSelectionSet")
-.def("__iter__", +[](const PyEdSelectionSet& self) {
-    return SS_Iterator(self);
-    });
-#endif
-
 void makePyEdSelectionSetWrapper()
 {
+    class_<SS_Iterator>("SelectionSetIterator", no_init)
+        .def("__iter__", &SS_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &SS_Iterator::next);
+
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
         "desc: PyRx.RxClass=PyDb.Entity\n"
         "descList: list[PyRx.RxClass]\n";
@@ -78,7 +67,7 @@ void makePyEdSelectionSetWrapper()
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
-        .def("__iter__", range(&PyEdSelectionSet::begin, &PyEdSelectionSet::end))
+        .def("__iter__", +[](const PyEdSelectionSet& self) {return SS_Iterator(self);})
         ;
 }
 
@@ -369,32 +358,3 @@ PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::sour
     return m_pSet.get();
 }
 
-void PyEdSelectionSet::filliterator()
-{
-    if (!isInitialized())
-        throw PyErrorStatusException(Acad::eNotInitializedYet);
-    PyDbObjectId objId;
-    ads_name ename = { 0 };
-    const auto nsize = size();
-    m_iterable.clear();
-    m_iterable.reserve(nsize);
-    for (size_t i = 0; i < nsize; i++)
-    {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
-            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
-                m_iterable.push_back(objId);
-            }
-        }
-    }
-}
-
-std::vector<PyDbObjectId>::iterator PyEdSelectionSet::begin()
-{
-    return m_iterable.begin();
-}
-
-std::vector<PyDbObjectId>::iterator PyEdSelectionSet::end()
-{
-    filliterator();
-    return m_iterable.end();
-}
