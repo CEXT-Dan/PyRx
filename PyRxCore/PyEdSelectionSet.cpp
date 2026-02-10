@@ -6,6 +6,45 @@
 
 using namespace boost::python;
 
+#ifdef NEVER
+// this is an example of creating an iterator 
+// TODO: measure performance 
+struct SS_Iterator
+{
+    SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(selectionSet)
+    {
+    }
+
+    // This is the core logic that replaces range()
+    PyDbObjectId next()
+    {
+        if (current >= ss.size())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Selection Set");
+            boost::python::throw_error_already_set();
+        }
+        return ss.getAt(current++); // Fetch items one-by-one lazily
+    }
+
+    SS_Iterator& iter() { return *this; } // __iter__ must return self
+
+    //members
+    const PyEdSelectionSet& ss;
+    size_t current = 0;
+};
+
+// 1. Wrap the iterator helper
+class_<SS_Iterator>("SS_Iterator", no_init)
+.def("__iter__", &SS_Iterator::iter, return_internal_reference<>())
+.def("__next__", &SS_Iterator::next);
+
+// 2. Wrap your main class
+class_<PyEdSelectionSet>("PyEdSelectionSet")
+.def("__iter__", +[](const PyEdSelectionSet& self) {
+    return SS_Iterator(self);
+    });
+#endif
+
 void makePyEdSelectionSetWrapper()
 {
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
