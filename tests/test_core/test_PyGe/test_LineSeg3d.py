@@ -50,7 +50,7 @@ class TestLineSeg3d:
         # Point far away
         pt = Ge.Point3d(0.0, 10.0, 0.0)
         flag , pt = line.isOn(pt)
-        assert flag is False
+        assert flag == False
 
     def test_transform_by_matrix(self):
         """Test transformBy method using a Matrix3d."""
