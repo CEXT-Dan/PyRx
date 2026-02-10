@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 from pyrx import Ge
 
 # Assuming Ge == imported as per the provided citations
