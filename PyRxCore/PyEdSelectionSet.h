@@ -43,11 +43,6 @@ public:
     void                forceKeepAlive(bool keepIt) const;
     AcDbObjectIdArray   objectIdsImpl() const;
 public:
-    void filliterator();
-    std::vector<PyDbObjectId>::iterator begin();
-    std::vector<PyDbObjectId>::iterator end();
-    std::vector<PyDbObjectId> m_iterable{ 0 };
-public:
     PySSName* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<PySSName> m_pSet;
