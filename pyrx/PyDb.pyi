@@ -6835,6 +6835,11 @@ class Database(PyRx.RxObject):
         for an AutoCAD session, please use the acedGetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on BLIPMODE.
         """
+    def blockTable(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> BlockTable:
+        """
+        Opens the database's block table in the mode specified by mode. The pTable pointer is
+        filled in with the address of the block table. Returns Acad::eOk if open is successful.
+        """
     def blockTableId(self, /) -> ObjectId:
         """
         Returns the object ID of the database's AcDbBlockTable.
@@ -7217,11 +7222,6 @@ class Database(PyRx.RxObject):
     def get3dDwfPrec(self, /) -> float:
         """
         Returns the 3D DWF precision setting in this database.
-        """
-    def getBlockTable(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> BlockTable:
-        """
-        Opens the database's block table in the mode specified by mode. The pTable pointer is
-        filled in with the address of the block table. Returns Acad::eOk if open is successful.
         """
     def getBlocks(self, /) -> dict[str, PyDb.ObjectId]:
         """
@@ -29137,6 +29137,16 @@ class SymbolTable(PyDb.DbObject):
         """
     def recordIds(self, /) -> list[PyDb.ObjectId]: ...
     def toDict(self, /) -> dict[str, PyDb.ObjectId]: ...
+
+class SymbolTableIterator:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __iter__(self, /) -> SymbolTableIterator: ...
+    def __next__(self, /) -> tuple: ...
+    def __reduce__(self, /) -> Any: ...
 
 class SymbolTableRecord(PyDb.DbObject):
     def __init__(

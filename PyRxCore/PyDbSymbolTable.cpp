@@ -5,10 +5,50 @@
 
 using namespace boost::python;
 
+struct SymbolTable_Iterator
+{
+    PyDbSymbolTable m_btr;
+    std::shared_ptr<AcDbSymbolTableIterator> pbtriter;
+    Acad::ErrorStatus es = eOk;
+
+    explicit SymbolTable_Iterator(const PyDbSymbolTable& btr) : m_btr(btr)
+    {
+        AcDbSymbolTableIterator* _piter = nullptr;
+        es = m_btr.impObj()->newIterator(_piter);
+        if (es == eOk)
+            pbtriter.reset(_piter);
+        else
+            PyThrowBadEs(es);
+    }
+
+    boost::python::tuple next() const
+    {
+        if (!pbtriter || pbtriter->done())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Table");
+            boost::python::throw_error_already_set();
+        }
+        AcString name;
+        PyDbObjectId id;
+        PyThrowBadEs(pbtriter->getRecordId(id.m_id));
+        AcDbSymbolTableRecordPointer<AcDbSymbolTableRecord> ptr(id.m_id);
+        PyThrowBadEs(ptr.openStatus());
+        PyThrowBadEs(ptr->getName(name));
+        pbtriter->step();
+        return boost::python::make_tuple(wstr_to_utf8(name), id);
+    }
+
+    SymbolTable_Iterator& iter() { return *this; }
+};
+
 //---------------------------------------------------------------------------------------- -
 //PyDbSymbolTable wrapper
 void makePyDbSymbolTableWrapper()
 {
+    class_<SymbolTable_Iterator>("SymbolTableIterator", no_init)
+        .def("__iter__", &SymbolTable_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &SymbolTable_Iterator::next);
+
     PyDocString DS("SymbolTable");
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -25,8 +65,7 @@ void makePyDbSymbolTableWrapper()
         .def("cast", &PyDbSymbolTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         .def("className", &PyDbSymbolTable::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-
-        .def("__iter__", range(&PyDbSymbolTable::begin, &PyDbBlockTable::end))
+        .def("__iter__", +[](const PyDbSymbolTable& self) {return SymbolTable_Iterator(self); })
         .def("__getitem__", &PyDbSymbolTable::getAtEx, DS.ARGS({ "val: str" }))
         .def("__contains__", &PyDbSymbolTable::has1)
         .def("__contains__", &PyDbSymbolTable::has2, DS.ARGS({ "val: str|PyDb.ObjectId" }))
@@ -155,33 +194,6 @@ AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std
         throw PyNullObject(src);
     }
     return static_cast<AcDbSymbolTable*>(m_pyImp.get());
-}
-
-void PyDbSymbolTable::filliterator()
-{
-    auto [es, iter] = makeAcDbSymbolTableIterator(*impObj());
-    if (es == eOk)
-    {
-        PyDbObjectId id;
-        m_iterable.clear();
-        for (iter->start(); !iter->done(); iter->step())
-        {
-            if (iter->getRecordId(id.m_id) == eOk)
-                m_iterable.push_back(id);
-        }
-    }
-    PyThrowBadEs(es);
-}
-
-std::vector<PyDbObjectId>::iterator PyDbSymbolTable::begin()
-{
-    return m_iterable.begin();
-}
-
-std::vector<PyDbObjectId>::iterator PyDbSymbolTable::end()
-{
-    filliterator();
-    return m_iterable.end();
 }
 
 //---------------------------------------------------------------------------------------- -
