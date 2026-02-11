@@ -52,6 +52,8 @@ static const TCHAR* getComAPIVer()
     return L"!ERROR!";
 }
 
+//-----------------------------------------------------------------------------------------
+//Document_Iterator
 struct Document_Iterator
 {
     std::shared_ptr<AcApDocumentIterator> pbtriter;
@@ -65,7 +67,7 @@ struct Document_Iterator
     {
         if (!pbtriter || pbtriter->done())
         {
-            PyErr_SetString(PyExc_StopIteration, "End of Table");
+            PyErr_SetString(PyExc_StopIteration, "End of Iterator");
             boost::python::throw_error_already_set();
         }
         PyApDocument doc(pbtriter->document());
@@ -75,7 +77,6 @@ struct Document_Iterator
 
     Document_Iterator& iter() { return *this; }
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper

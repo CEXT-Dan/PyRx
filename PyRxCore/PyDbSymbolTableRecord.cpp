@@ -2501,6 +2501,8 @@ AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*=
     return static_cast<AcDbSortentsTable*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------------
+//btr_Iterator
 struct btr_Iterator
 {
     std::shared_ptr<AcDbBlockTableRecordIterator> pbtriter;
