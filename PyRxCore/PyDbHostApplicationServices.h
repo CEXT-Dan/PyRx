@@ -178,6 +178,8 @@ void makePyDbDatabaseSummaryInfoWrapper();
 class PyDbDatabaseSummaryInfo : public PyRxObject
 {
 public:
+    PyDbDatabaseSummaryInfo();
+    PyDbDatabaseSummaryInfo(const PyDbDatabase& db);
     PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr);
     virtual ~PyDbDatabaseSummaryInfo() override = default;
     std::string         getTitle() const;
@@ -208,6 +210,8 @@ public:
     boost::python::dict asDict() const;
     void                removeAllCustomSummaryInfo() const;
     bool                hasCustomKey(const std::string& key) const;
+    void                setIntoDatabase1() const;
+    void                setIntoDatabase2(const PyDbDatabase& db) const;
     static std::string  className();
 public:
     AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
