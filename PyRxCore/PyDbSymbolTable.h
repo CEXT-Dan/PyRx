@@ -43,13 +43,6 @@ public:
 
 public:
     AcDbSymbolTable* impObj(const std::source_location& src = std::source_location::current()) const;
-
-    // TODO: iterator buffer, I don't know how to expose AcDbBlockTableRecordIterator
-    // memory hog? at least we're in cache... BTY. end is called first
-    void filliterator();
-    std::vector<PyDbObjectId>::iterator begin();
-    std::vector<PyDbObjectId>::iterator end();
-    std::vector<PyDbObjectId> m_iterable{ 0 };
 };
 
 //---------------------------------------------------------------------------------------- -
