@@ -4818,6 +4818,16 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         of the block table record on which this method is called.
         """
 
+class BlockTableRecordIterator:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __iter__(self, /) -> BlockTableRecordIterator: ...
+    def __next__(self, /) -> ObjectId: ...
+    def __reduce__(self, /) -> Any: ...
+
 class Body(PyDb.Entity):
     @overload
     def __init__(self, /) -> None:
