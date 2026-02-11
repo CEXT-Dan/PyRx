@@ -2532,7 +2532,6 @@ struct btr_Iterator
     btr_Iterator& iter() { return *this; }
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord wrapper
 void makePyDbBlockTableRecordWrapper()
