@@ -808,7 +808,6 @@ struct SummaryInfo_Iterator
     size_t current = 0;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyDbDatabaseSummaryInfo
 void makePyDbDatabaseSummaryInfoWrapper()
