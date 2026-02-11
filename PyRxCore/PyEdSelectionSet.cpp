@@ -6,6 +6,8 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//SS_Iterator
 struct SS_Iterator
 {
     SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(selectionSet)

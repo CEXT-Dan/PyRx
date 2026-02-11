@@ -2,9 +2,10 @@
 #include "PyDbSymbolTable.h"
 #include "PyDbSymbolTableRecord.h"
 
-
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//SymbolTable_Iterator
 struct SymbolTable_Iterator
 {
     std::shared_ptr<AcDbSymbolTableIterator> pbtriter;
