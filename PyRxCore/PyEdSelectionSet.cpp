@@ -27,7 +27,7 @@ struct SS_Iterator
     SS_Iterator& iter() { return *this; } // __iter__ must return self
 
     //members
-    const PyEdSelectionSet& ss;
+    PyEdSelectionSet ss;
     size_t current = 0;
 };
 
