@@ -7,14 +7,13 @@ using namespace boost::python;
 
 struct SymbolTable_Iterator
 {
-    PyDbSymbolTable m_btr;
     std::shared_ptr<AcDbSymbolTableIterator> pbtriter;
     Acad::ErrorStatus es = eOk;
 
-    explicit SymbolTable_Iterator(const PyDbSymbolTable& btr) : m_btr(btr)
+    explicit SymbolTable_Iterator(const PyDbSymbolTable& btr)
     {
         AcDbSymbolTableIterator* _piter = nullptr;
-        es = m_btr.impObj()->newIterator(_piter);
+        es = btr.impObj()->newIterator(_piter);
         if (es == eOk)
             pbtriter.reset(_piter);
         else
