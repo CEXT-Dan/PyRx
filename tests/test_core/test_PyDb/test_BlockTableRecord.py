@@ -277,3 +277,14 @@ class TestBlockTableRecord:
         # # Test getting block reference IDs
         # ids = btr.getBlockReferenceIds(True, False)
         # assert isinstance(ids, list)
+        
+    def test_all_iterators(self, db_06457: Db.Database):
+        model = db_06457.modelSpace()
+        testids = []
+        for id in model:
+            testids.append(id)
+        if set(testids) == set(model.objectIds()) == set(model.objectIdArray()):
+            pass
+        else:
+            assert False
+        
