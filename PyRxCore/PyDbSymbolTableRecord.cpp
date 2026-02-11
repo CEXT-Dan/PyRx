@@ -2501,10 +2501,47 @@ AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*=
     return static_cast<AcDbSortentsTable*>(m_pyImp.get());
 }
 
+struct btr_Iterator
+{
+    PyDbBlockTableRecord m_btr;
+    std::shared_ptr<AcDbBlockTableRecordIterator> pbtriter;
+    Acad::ErrorStatus es = eOk;
+
+    explicit btr_Iterator(const PyDbBlockTableRecord& btr) : m_btr(btr)
+    {
+        AcDbBlockTableRecordIterator* _piter = nullptr;
+        es = m_btr.impObj()->newIterator(_piter);
+        if (es == eOk)
+            pbtriter.reset(_piter);
+        else
+            PyThrowBadEs(es);
+    }
+
+    PyDbObjectId next() const
+    {
+        if (!pbtriter || pbtriter->done())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Record");
+            boost::python::throw_error_already_set();
+        }
+        PyDbObjectId id;
+        PyThrowBadEs(pbtriter->getEntityId(id.m_id));
+        pbtriter->step();
+        return id;
+    }
+
+    btr_Iterator& iter() { return *this; }
+};
+
+
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord wrapper
 void makePyDbBlockTableRecordWrapper()
 {
+    class_<btr_Iterator>("BlockTableRecordIterator", no_init)
+        .def("__iter__", &btr_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &btr_Iterator::next);
+
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- id: PyDb.ObjectId\n"
@@ -2572,11 +2609,11 @@ void makePyDbBlockTableRecordWrapper()
         .def("getBlockReferences", &PyDbBlockTableRecord::getBlockReferences1)
         .def("getBlockReferences", &PyDbBlockTableRecord::getBlockReferences2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))
         .def("effectiveName", &PyDbBlockTableRecord::effectiveName, DS.ARGS())
-        .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbBlockTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("__iter__", +[](const PyDbBlockTableRecord& self) {return btr_Iterator(self); })
         ;
 }
 
@@ -3154,33 +3191,6 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
     return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }
 
-void PyDbBlockTableRecord::filliterator()
-{
-    const auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es == eOk)
-    {
-        PyDbObjectId id;
-        m_iterable.clear();
-        for (iter->start(); !iter->done(); iter->step())
-        {
-            if (iter->getEntityId(id.m_id) == eOk)
-                m_iterable.push_back(id);
-        }
-    }
-    PyThrowBadEs(es);
-}
-
-std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::begin()
-{
-    return m_iterable.begin();
-}
-
-std::vector<PyDbObjectId>::iterator PyDbBlockTableRecord::end()
-{
-    filliterator();
-    return m_iterable.end();
-}
-
 //---------------------------------------------------------------------------------------- -
 // PyDbDynBlockTableRecord
 void makePyDbDynBlockTableRecordWrapper()
@@ -3297,7 +3307,7 @@ void makeXRefLayerPropertyOverride()
         .def("hasXRefLayerOverride", &PyXRefLayerPropertyOverride::hasXRefLayerOverride2, DS.SOVRL(hasXRefLayerOverride)).staticmethod("hasXRefLayerOverride")
         .def("hasAnyXRefLayerOverrides", &PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides1)
         .def("hasAnyXRefLayerOverrides", &PyXRefLayerPropertyOverride::hasAnyXRefLayerOverrides2, DS.SOVRL(hasAnyXRefLayerOverrides)).staticmethod("hasAnyXRefLayerOverrides")
-        .def("addXRefLayerOverride", &PyXRefLayerPropertyOverride::addXRefLayerOverride, DS.SARGS({"hostLayerId: PyDb.ObjectId" , "property: PyDb.XRefLayerPropertyOverrideType" })).staticmethod("addXRefLayerOverride")
+        .def("addXRefLayerOverride", &PyXRefLayerPropertyOverride::addXRefLayerOverride, DS.SARGS({ "hostLayerId: PyDb.ObjectId" , "property: PyDb.XRefLayerPropertyOverrideType" })).staticmethod("addXRefLayerOverride")
         .def("removeXRefLayerOverride", &PyXRefLayerPropertyOverride::removeXRefLayerOverride1)
         .def("removeXRefLayerOverride", &PyXRefLayerPropertyOverride::removeXRefLayerOverride2, DS.SOVRL(removeXRefLayerOverrideOverride)).staticmethod("removeXRefLayerOverride")
         .def("removeXRefLayerOverrides", &PyXRefLayerPropertyOverride::removeXRefLayerOverrides1)
@@ -3331,7 +3341,7 @@ bool PyXRefLayerPropertyOverride::hasXRefLayerOverride2(const PyDbBlockReference
 
 void PyXRefLayerPropertyOverride::addXRefLayerOverride(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
 {
-   PyThrowBadEs(AcXRefLayerPropertyOverride::addXRefLayerOverride(hostLayerId.m_id, property));
+    PyThrowBadEs(AcXRefLayerPropertyOverride::addXRefLayerOverride(hostLayerId.m_id, property));
 }
 
 void PyXRefLayerPropertyOverride::removeXRefLayerOverride1(const PyDbObjectId& hostLayerId, AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType property)
