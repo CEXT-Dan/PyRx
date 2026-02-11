@@ -72,6 +72,7 @@ kXWrite: DocLockMode  # 64
 
 class Application:
     def __init__(self, /) -> None: ...
+    def __iter__(self, /) -> DocumentIterator: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def acadApplication() -> PyAx.AcadApplication:
@@ -689,6 +690,16 @@ class Document(PyRx.RxObject):
         """
         Converts the document status from read only to write, if possible.
         """
+
+class DocumentIterator:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __iter__(self, /) -> DocumentIterator: ...
+    def __next__(self, /) -> Document: ...
+    def __reduce__(self, /) -> Any: ...
 
 class LayerFilter(PyRx.RxObject):
     def __init__(self, /) -> None:

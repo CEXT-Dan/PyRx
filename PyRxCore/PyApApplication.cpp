@@ -4,6 +4,7 @@
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyAcadApplication.h"
+#include "PyApDocument.h"
 
 #include "PyRxApp.h"
 #include "dwmapi.h"
@@ -51,10 +52,39 @@ static const TCHAR* getComAPIVer()
     return L"!ERROR!";
 }
 
+struct Document_Iterator
+{
+    std::shared_ptr<AcApDocumentIterator> pbtriter;
+
+    Document_Iterator(const PyApApplication& app [[maybe_unused]] )
+    {
+        pbtriter.reset(acDocManagerPtr()->newAcApDocumentIterator());
+    }
+
+    PyApDocument next() const
+    {
+        if (!pbtriter || pbtriter->done())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Table");
+            boost::python::throw_error_already_set();
+        }
+        PyApDocument doc(pbtriter->document());
+        pbtriter->step();
+        return doc;
+    }
+
+    Document_Iterator& iter() { return *this; }
+};
+
+
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper
 void makePyApApplictionWrapper()
 {
+    class_<Document_Iterator>("DocumentIterator", no_init)
+        .def("__iter__", &Document_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &Document_Iterator::next);
+
     PyDocString DS("Application");
     class_<PyApApplication>("Application")
         .def("docManager", &PyApApplication::docManager, DS.SARGS(77)).staticmethod("docManager")
@@ -89,6 +119,7 @@ void makePyApApplictionWrapper()
         .def("listFilesInPathRecursive", &PyApApplication::listFilesInPathRecursive, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPathRecursive")
         .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
+        .def("__iter__", +[](const PyApApplication& self) {return Document_Iterator(self); })
         ;
 }
 

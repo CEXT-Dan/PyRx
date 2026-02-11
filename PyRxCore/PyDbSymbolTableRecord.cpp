@@ -2503,14 +2503,13 @@ AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*=
 
 struct btr_Iterator
 {
-    PyDbBlockTableRecord m_btr;
     std::shared_ptr<AcDbBlockTableRecordIterator> pbtriter;
     Acad::ErrorStatus es = eOk;
 
-    explicit btr_Iterator(const PyDbBlockTableRecord& btr) : m_btr(btr)
+    explicit btr_Iterator(const PyDbBlockTableRecord& btr)
     {
         AcDbBlockTableRecordIterator* _piter = nullptr;
-        es = m_btr.impObj()->newIterator(_piter);
+        es = btr.impObj()->newIterator(_piter);
         if (es == eOk)
             pbtriter.reset(_piter);
         else
