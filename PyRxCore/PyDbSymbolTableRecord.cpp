@@ -2506,13 +2506,11 @@ AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*=
 struct btr_Iterator
 {
     std::shared_ptr<AcDbBlockTableRecordIterator> pbtriter;
-    Acad::ErrorStatus es = eOk;
 
     explicit btr_Iterator(const PyDbBlockTableRecord& btr)
     {
         AcDbBlockTableRecordIterator* _piter = nullptr;
-        es = btr.impObj()->newIterator(_piter);
-        if (es == eOk)
+        if (auto es = btr.impObj()->newIterator(_piter); es == eOk)
             pbtriter.reset(_piter);
         else
             PyThrowBadEs(es);
@@ -2884,17 +2882,16 @@ void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMod
 
 bool PyDbBlockTableRecord::hasAttributeDefinitions() const
 {
-    const auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es == eOk)
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es != eOk)
+        return false;
+    AcDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
     {
-        AcDbObjectId id;
-        for (iter->start(); !iter->done(); iter->step())
+        if (iter->getEntityId(id) == eOk)
         {
-            if (iter->getEntityId(id) == eOk)
-            {
-                if (id.objectClass()->isDerivedFrom(AcDbAttributeDefinition::desc()))
-                    return true;
-            }
+            if (id.objectClass()->isDerivedFrom(AcDbAttributeDefinition::desc()))
+                return true;
         }
     }
     return false;

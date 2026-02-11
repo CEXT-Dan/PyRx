@@ -9,13 +9,11 @@ using namespace boost::python;
 struct SymbolTable_Iterator
 {
     std::shared_ptr<AcDbSymbolTableIterator> pbtriter;
-    Acad::ErrorStatus es = eOk;
 
     explicit SymbolTable_Iterator(const PyDbSymbolTable& btr)
     {
         AcDbSymbolTableIterator* _piter = nullptr;
-        es = btr.impObj()->newIterator(_piter);
-        if (es == eOk)
+        if (auto es = btr.impObj()->newIterator(_piter); es == eOk)
             pbtriter.reset(_piter);
         else
             PyThrowBadEs(es);
