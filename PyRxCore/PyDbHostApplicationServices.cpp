@@ -804,7 +804,7 @@ struct SummaryInfo_Iterator
     SummaryInfo_Iterator& iter() { return *this; } // __iter__ must return self
 
     //members
-    const PyDbDatabaseSummaryInfo& _info;
+    PyDbDatabaseSummaryInfo _info;
     size_t current = 0;
 };
 
