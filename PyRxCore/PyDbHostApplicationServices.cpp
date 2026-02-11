@@ -783,10 +783,44 @@ Acad::ErrorStatus PyDbSymUtilServices::validateCompatibleSymbolName(const std::s
     return imp->validateCompatibleSymbolName(utf8_to_wstr(name).c_str(), isNewName, allowVerticalBar, compatibilityMode);
 }
 
+//-----------------------------------------------------------------------------------------
+//SummaryInfo_Iterator
+struct SummaryInfo_Iterator
+{
+    SummaryInfo_Iterator(const PyDbDatabaseSummaryInfo& info) : _info(info)
+    {
+    }
+
+    boost::python::tuple next()
+    {
+        if (current >= _info.numCustomInfo())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Selection Set");
+            boost::python::throw_error_already_set();
+        }
+        return _info.getCustomSummaryInfo2(current++); // Fetch items one-by-one lazily
+    }
+
+    SummaryInfo_Iterator& iter() { return *this; } // __iter__ must return self
+
+    //members
+    const PyDbDatabaseSummaryInfo& _info;
+    size_t current = 0;
+};
+
+
 //---------------------------------------------------------------------------------------- -
 //PyDbDatabaseSummaryInfo
 void makePyDbDatabaseSummaryInfoWrapper()
 {
+    class_<SummaryInfo_Iterator>("DatabaseSummaryInfoIterator", no_init)
+        .def("__iter__", &SummaryInfo_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &SummaryInfo_Iterator::next);
+
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- db: PyDb.Database\n";
+
     constexpr const std::string_view deleteCustomSummaryInfoOverloads = "Overloads:\n"
         "- index: int\n"
         "- key: str\n";
@@ -799,8 +833,14 @@ void makePyDbDatabaseSummaryInfoWrapper()
         "- customInfoKey: str, value: str\n"
         "- index: int, key: str, value: str\n";
 
+    constexpr const std::string_view setIntoDatabaseOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- db: PyDb.Database\n";
+
     PyDocString DS("DatabaseSummaryInfo");
-    class_<PyDbDatabaseSummaryInfo, bases<PyRxObject>>("DatabaseSummaryInfo", boost::python::no_init)
+    class_<PyDbDatabaseSummaryInfo, bases<PyRxObject>>("DatabaseSummaryInfo")
+        .def(init<>())
+        .def(init<const PyDbDatabase&>(DS.CTOR(ctor)))
         .def("getTitle", &PyDbDatabaseSummaryInfo::getTitle, DS.ARGS())
         .def("setTitle", &PyDbDatabaseSummaryInfo::setTitle, DS.ARGS({ "title: str" }))
         .def("getSubject", &PyDbDatabaseSummaryInfo::getSubject, DS.ARGS())
@@ -827,11 +867,46 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("getCustomSummaryInfo", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2, DS.OVRL(getCustomSummaryInfoOverloads))
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo1)
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo2, DS.OVRL(setCustomSummaryInfoOverloads))
+        .def("setIntoDatabase", &PyDbDatabaseSummaryInfo::setIntoDatabase1)
+        .def("setIntoDatabase", &PyDbDatabaseSummaryInfo::setIntoDatabase2, DS.OVRL(setIntoDatabaseOverloads))
         .def("setCustomSummaryFromDict", &PyDbDatabaseSummaryInfo::setCustomSummaryFromDict, DS.ARGS({ "keyValues: dict" }))
         .def("asDict", &PyDbDatabaseSummaryInfo::asDict, DS.ARGS())
-        .def("__getitem__", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2, DS.ARGS({ "index: int" }))
         .def("className", &PyDbDatabaseSummaryInfo::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2, DS.ARGS({ "index: int" }))
+        .def("__iter__", +[](const PyDbDatabaseSummaryInfo& self) {return SummaryInfo_Iterator(self); })
         ;
+}
+
+static AcDbDatabaseSummaryInfo* SummaryInfoFactory()
+{
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost();
+#else
+    AcDbDatabaseSummaryInfo* info = nullptr;
+    PyThrowBadEs(acdbGetSummaryInfo(acdbHostApplicationServices()->workingDatabase(), info));
+    return info;
+#endif
+}
+
+static AcDbDatabaseSummaryInfo* SummaryInfoFactory(const PyDbDatabase& db)
+{
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost();
+#else
+    AcDbDatabaseSummaryInfo* info = nullptr;
+    PyThrowBadEs(acdbGetSummaryInfo(db.impObj(), info));
+    return info;
+#endif
+}
+
+PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo()
+    :PyDbDatabaseSummaryInfo(SummaryInfoFactory())
+{
+}
+
+PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(const PyDbDatabase& db)
+    :PyDbDatabaseSummaryInfo(SummaryInfoFactory(db))
+{
 }
 
 PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
@@ -1119,6 +1194,24 @@ void PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo() const
 bool PyDbDatabaseSummaryInfo::hasCustomKey(const std::string& key) const
 {
     return hasKeyimpl(impObj(), utf8_to_wstr(key).c_str());
+}
+
+void PyDbDatabaseSummaryInfo::setIntoDatabase1() const
+{
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acdbPutSummaryInfo(impObj(), acdbHostApplicationServices()->workingDatabase()));
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setIntoDatabase2(const PyDbDatabase& db) const
+{
+#if defined(_IRXTARGET140)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acdbPutSummaryInfo(impObj(), db.impObj()));
+#endif
 }
 
 std::string PyDbDatabaseSummaryInfo::className()
