@@ -871,6 +871,7 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("setCustomSummaryFromDict", &PyDbDatabaseSummaryInfo::setCustomSummaryFromDict, DS.ARGS({ "keyValues: dict" }))
         .def("asDict", &PyDbDatabaseSummaryInfo::asDict, DS.ARGS())
         .def("className", &PyDbDatabaseSummaryInfo::className, DS.SARGS()).staticmethod("className")
+        .def("__contains__", &PyDbDatabaseSummaryInfo::hasCustomKey, DS.ARGS({ "val: str" }))
         .def("__getitem__", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2, DS.ARGS({ "index: int" }))
         .def("__iter__", +[](const PyDbDatabaseSummaryInfo& self) {return SummaryInfo_Iterator(self); })
         ;
