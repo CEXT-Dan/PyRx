@@ -25,10 +25,10 @@ def do_capture_audit() -> str:
 class TestDatabase:
     def setup_class(self):
         self.assertions = unittest.TestCase("__init__")
-        
+
     def test_getBlocks(self, db_06457: Db.Database):
         blks = db_06457.getBlocks()
-        assert blks['*Model_Space'] == db_06457.modelSpaceId()
+        assert blks["*Model_Space"] == db_06457.modelSpaceId()
 
     def test_dbopbjectforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
@@ -36,7 +36,7 @@ class TestDatabase:
         assert objId.isNull() is False
         dbo = Db.DbObject(objId)
         assert bool(dbo.isReadEnabled()) is True
-        
+
     @pytest.mark.known_failure_IRX
     def test_dbopbject_dxfname(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
@@ -106,13 +106,21 @@ class TestDatabase:
         self.assertions.assertEqual(
             db.byBlockLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
         )
-        self.assertions.assertEqual(db.byBlockMaterial().objectClass().name(), "AcDbMaterial")
+        self.assertions.assertEqual(
+            db.byBlockMaterial().objectClass().name(), "AcDbMaterial"
+        )
         self.assertions.assertEqual(
             db.byLayerLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
         )
-        self.assertions.assertEqual(db.byLayerMaterial().objectClass().name(), "AcDbMaterial")
-        self.assertions.assertEqual(db.clayer().objectClass().name(), "AcDbLayerTableRecord")
-        self.assertions.assertEqual(db.cmlstyleID().objectClass().name(), "AcDbMlineStyle")
+        self.assertions.assertEqual(
+            db.byLayerMaterial().objectClass().name(), "AcDbMaterial"
+        )
+        self.assertions.assertEqual(
+            db.clayer().objectClass().name(), "AcDbLayerTableRecord"
+        )
+        self.assertions.assertEqual(
+            db.cmlstyleID().objectClass().name(), "AcDbMlineStyle"
+        )
         self.assertions.assertEqual(
             db.colorDictionaryId().objectClass().name(), "AcDbDictionary"
         )
@@ -377,7 +385,7 @@ class TestDatabase:
         self.assertions.assertTrue(db.layerZero() in lt)
         bt = Db.BlockTable(db.blockTableId())
         self.assertions.assertTrue(Db.SymUtilServices().blockModelSpaceName() in bt)
-        
+
     def test_using_decorator(self):
         sdb = Db.Database(False, True)
         sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
@@ -388,9 +396,9 @@ class TestDatabase:
         def _() -> None:
             ms = sdb.modelSpace()
             crvs.extend([Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())])
-            
+
         assert len(crvs) != 0
-        
+
     def test_overrulableEntity(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c97d0")
         objId = db_06457.getObjectId(False, objHnd)
@@ -410,4 +418,8 @@ class TestDatabase:
         assert ore.strings() == ["1", "2", "3"]
         assert ore.points() == [Ge.Point3d(1, 1, 1), Ge.Point3d(2, 2, 2)]
 
-
+    def test_blocktable_iter(self, db_06457: Db.Database):
+        niter = 0
+        for k, v in db_06457.blockTable():
+            niter += 1
+        assert niter != 0
