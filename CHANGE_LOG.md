@@ -1,3 +1,29 @@
+## v2.2.44
+
+Added clipping utilities
+
+* Add Db.Extents2d.clipLineSeg2d
+* Add Ge.BoundBlock2d.clipLineSeg2d
+* Add Db.Extents2d. clipCircArc2d
+* Add Ge.BoundBlock2d. clipCircArc2d
+* Add Ge.ClipBoundary2d.clipPolygon
+* Add Ge.ClipBoundary2d.clipPolyline
+
+Refactor DatabaseSummaryInfo
+
+* Added default constructor that loads the working database
+* Added constructor that accepts a database argument, these remove the need to call Db.Core.getSummaryInfo
+* Added DatabaseSummaryInfo.setIntoDatabase() and DatabaseSummaryInfo.setIntoDatabase (db)
+* Added custom summary iterator, see TestDatabaseSummaryInfo
+
+Refactor iterators for SelectionSet, SymbolTable, SymbolTableRecord to make these more memory efficient,
+
+* Added iterator for Application, for iterating over documents
+
+***BREAK***
+I renamed Db.Database.getBlockTable() to Db.Database.blockTable() to be more aligned  with 
+Db.Database.modelSpace(), Db.Database.currentSpace()
+
 ## v2.2.43
 
 * Update AutoCAD ObjectARX version to 2027 release candidate
