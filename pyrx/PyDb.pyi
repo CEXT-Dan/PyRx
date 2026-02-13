@@ -17491,7 +17491,7 @@ class Hatch(PyDb.Entity):
         evaluation is indicated by the argument value. Returns Acad::eOk if the operation is
         successful. Returns Acad::eNotApplicable if the object is currently a classic hatch.
         """
-    def evaluateHatch(self, val: bool = False, /) -> None:
+    def evaluateHatch(self, bUnderestimateNumLines: bool = False, /) -> None:
         """
         This function evaluates the hatch lines or solid fill for the hatch entity using the
         specified hatch pattern. For regular hatch patterns, except for solid, this function
@@ -17517,7 +17517,7 @@ class Hatch(PyDb.Entity):
         dbObjIds may be an empty set if the hatch entity is not associative. This function always
         returns Acad::eOk.
         """
-    def getAssocObjIdsAt(self, val: int, /) -> list[PyDb.ObjectId]:
+    def getAssocObjIdsAt(self, idx: int, /) -> list[PyDb.ObjectId]:
         """
         This function gets the object IDs of the source boundary geometries associative to the
         selected loop. This function returns Acad::eOk when successful and Acad::eInvalidIndex if
@@ -17543,7 +17543,7 @@ class Hatch(PyDb.Entity):
         luminance version is the 'shade.' Returns true if the object is using one color. Returns
         false otherwise.
         """
-    def getHatchLineDataAt(self, val: int, /) -> tuple[PyGe.Point2d, PyGe.Point2d]:
+    def getHatchLineDataAt(self, idx: int, /) -> tuple[PyGe.Point2d, PyGe.Point2d]:
         """
         This function gets the hatch line data from the hatch entity. This function returns
         Acad::eOk when successful. It returns Acad::eInvalidIndex when the index is out of range,
@@ -17558,7 +17558,7 @@ class Hatch(PyDb.Entity):
         endpoint of the first hatch line. This function returns Acad::eNotApplicable if the current
         object type is gradient. Normally, it returns Acad::eOk.
         """
-    def getLoopBulgesAt(self, val: int, /) -> tuple:
+    def getLoopBulgesAt(self, idx: int, /) -> tuple:
         """
         This function gets the loop definition data (path) of a selected hatch boundary loop from
         the hatch entity. loopIndex specifies the index of the selected loop. loopType is an enum
@@ -17570,7 +17570,7 @@ class Hatch(PyDb.Entity):
         Acad::eOk when successful or Acad::eInvalidIndex when the loopIndex is out of the range. It
         may also return Acad::eNotApplicable when the loopType is a kPolyline.
         """
-    def getLoopEdgesAt(self, val: int, /) -> tuple:
+    def getLoopEdgesAt(self, idx: int, /) -> tuple:
         """
         This function gets the loop definition data (path) of a selected hatch boundary loop from
         the hatch entity. loopIndex specifies the index of the selected loop. loopType is an enum
@@ -17582,7 +17582,7 @@ class Hatch(PyDb.Entity):
         Acad::eOk when successful or Acad::eInvalidIndex when the loopIndex is out of the range. It
         may also return Acad::eNotApplicable when the loopType is a kPolyline.
         """
-    def getPatternDefinitionAt(self, val: int, /) -> tuple:
+    def getPatternDefinitionAt(self, idx: int, /) -> tuple:
         """
         This function gets the pattern definition line data from the hatch entity at the selected
         pattern line. index specifies the number at which the pattern line data will be returned.
@@ -17734,7 +17734,7 @@ class Hatch(PyDb.Entity):
         This function removes a loop and its data from the hatch entity. It returns Acad::eOk when
         successful and Acad::eInvalidIndex if loopIndex is out of range.
         """
-    def setAssociative(self, val: bool, /) -> None:
+    def setAssociative(self, associative: bool, /) -> None:
         """
         This function sets the associativity flag to true or false for the hatch entity. To create
         an associative hatch entity, you must use this function and set the associativity flag to
@@ -17742,16 +17742,16 @@ class Hatch(PyDb.Entity):
         or insertLoopAt(loopIndex, loopType, dbObjIds) functions. This function always returns
         Acad::eOk.
         """
-    def setBackgroundColor(self, val: PyDb.AcCmColor, /) -> None:
+    def setBackgroundColor(self, color: PyDb.AcCmColor, /) -> None:
         """
         This function sets the hatch's background color to the color specified by color.
         """
-    def setElevation(self, val: float, /) -> None:
+    def setElevation(self, elevation: float, /) -> None:
         """
         This function sets the elevation for the hatch entity. The function always returns
         Acad::eOk.
         """
-    def setGradient(self, val: PyDb.HatchGradientPatternType, name: str, /) -> None:
+    def setGradient(self, gradientType: PyDb.HatchGradientPatternType, name: str, /) -> None:
         """
         This method provides the mechanism for specifying the shape definition of the gradient
         fill. gradType may be either kPreDefinedGradient or kUserDefinedGradient, but currently
@@ -17763,7 +17763,7 @@ class Hatch(PyDb.Entity):
         Acad::eInvalidInput if the gradient name could not be found. Returns
         Acad::eNotImplementedYet if gradType is kUserDefinedGradient.
         """
-    def setGradientAngle(self, val: float, /) -> None:
+    def setGradientAngle(self, angle: float, /) -> None:
         """
         Sets the angle, in radians, at which the gradient definition will be applied. Returns
         Acad::eOK if the operation is successful. Returns Acad::eNotApplicable if the object is
@@ -17785,14 +17785,14 @@ class Hatch(PyDb.Entity):
         Acad::eNotImplementedYet if count is greater than 2. Returns Acad::eOutOfMemory if an
         allocation error occurs.
         """
-    def setGradientOneColorMode(self, val: bool, /) -> None:
+    def setGradientOneColorMode(self, mode: bool, /) -> None:
         """
         This function sets the gradient hatch to transition either from a start to a stop color
         (two-color) or from a color to an adjusted luminance version of the same color (one-color).
         In the latter case, the full luminance version is the 'tint' and the zero luminance version
         is the 'shade.' Returns Acad::eOk if successful.
         """
-    def setGradientShift(self, val: float, /) -> None:
+    def setGradientShift(self, shift: float, /) -> None:
         """
         This method sets the interpolation value between the gradient definition's default and
         shifted values. A value of 0.0 evaluates as a fully unshifted gradient. A value of 1.0
@@ -17800,11 +17800,11 @@ class Hatch(PyDb.Entity):
         Returns Acad::eInvalidInput if shiftValue is not in the range [0.0...1.0]. Returns
         Acad::eNotApplicable if the object is currently a classic hatch.
         """
-    def setHatchObjectType(self, val: PyDb.HatchObjectType, /) -> None:
+    def setHatchObjectType(self, hatchObjectType: PyDb.HatchObjectType, /) -> None:
         """
         Returns Acad::eOK if the operation is successful.
         """
-    def setHatchStyle(self, val: PyDb.HatchStyle, /) -> None:
+    def setHatchStyle(self, hatchStyle: PyDb.HatchStyle, /) -> None:
         """
         This function sets the hatch style for the hatch entity. hstyle specifies the new hatch
         style, which must be an enumerated number of either kNormal, kOuter, or kIgnore. This
@@ -17815,17 +17815,17 @@ class Hatch(PyDb.Entity):
         """
         Enable or disable line generation.
         """
-    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+    def setNormal(self, normal: PyGe.Vector3d, /) -> None:
         """
         This function sets the normal vector for the hatch entity. The normal vector must be
         expressed in WCS and normalized to unit length.
         """
-    def setOriginPoint(self, val: PyGe.Point2d, /) -> None:
+    def setOriginPoint(self, point: PyGe.Point2d, /) -> None:
         """
         This function sets pt to be the origin point for the hatch pattern of the hatch entity.
         Returns Acad::eOk if successful.
         """
-    def setPattern(self, val: PyDb.HatchPatternType, name: str, /) -> None:
+    def setPattern(self, pattern: PyDb.HatchPatternType, name: str, /) -> None:
         """
         This function sets both pattern type and pattern name for hatch entity. patType specifies
         an enumerated number of either kUserDefined, kPreDefined, or kCustomDefined. patName is the
@@ -17841,13 +17841,13 @@ class Hatch(PyDb.Entity):
         scale and angle in order to modify the hatch's appearance. This function returns Acad::eOk
         when successful. Otherwise, it returns the Acad::eInvalidInput.
         """
-    def setPatternAngle(self, val: float, /) -> None:
+    def setPatternAngle(self, angle: float, /) -> None:
         """
         This function sets the pattern angle for the hatch entity. angle specifies the angle in
         radians. This function returns Acad::eNotApplicable if the current object type is gradient.
         Otherwise, it returns Acad::eOk.
         """
-    def setPatternDouble(self, val: bool, /) -> None:
+    def setPatternDouble(self, pattern: bool, /) -> None:
         """
         This function sets the double pattern flag for the hatch entity. Double patterns apply a
         second set of hatch lines at 90 degrees to the original hatch lines. This function is used
@@ -17855,7 +17855,7 @@ class Hatch(PyDb.Entity):
         kPreDefined and kCustomDefined pattern types. This function returns Acad::eNotApplicable if
         the current object type is gradient. Otherwise, it returns Acad::eOk.
         """
-    def setPatternScale(self, val: float, /) -> None:
+    def setPatternScale(self, scale: float, /) -> None:
         """
         This function sets the pattern scale for the hatch entity. scale must be a non-zero and
         positive number. It is used to set a scale applying to the original pattern definition for
@@ -17863,20 +17863,20 @@ class Hatch(PyDb.Entity):
         Acad::eNotApplicable if the current object type is gradient. Otherwise, it returns
         Acad::eOk.
         """
-    def setPatternSpace(self, val: float, /) -> None:
+    def setPatternSpace(self, space: float, /) -> None:
         """
         This function sets the pattern space for the hatch entity. space is the distance between
         two parallel hatch lines. It is used to define pattern data for the kUserDefined pattern
         type only. This function returns Acad::eNotApplicable if the current object type is
         gradient. Otherwise, it returns Acad::eOk.
         """
-    def setShadeTintValue(self, val: float, /) -> None:
+    def setShadeTintValue(self, shadeTintValue: float, /) -> None:
         """
         Sets the one-color tint shade (luminance) value. If the gradient is using one-color mode,
         this function sets the luminance value applied to the first color. Returns Acad::eOk if
         successful. Returns Acad::eInvalidInput if the input is out of range.
         """
-    def setShadeTintValueAndColor2(self, val: float, /) -> None:
+    def setShadeTintValueAndColor2(self, shadeTintValue: float, /) -> None:
         """
         If the gradient is using one-color mode, this function sets the luminance value applied to
         the first color and then uses the argument to calculate and set the second hatch gradient
