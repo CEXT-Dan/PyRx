@@ -2,4 +2,4 @@
 
 void makePyGePoint2dTreeWrapper();
 void makePyGePoint3dTreeWrapper();
-
+void makePyGeDelaunatorWrapper();
