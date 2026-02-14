@@ -3587,6 +3587,20 @@ class Point3dArray:
     def __reduce__(self, /) -> Any: ...
     def __setitem__(self, /) -> None: ...
     def append(self, /) -> None: ...
+    def concaveHull(self, concavity: float, lengthThreshold: float, /) -> Point3dArray:
+        """
+        Parameters: The algorithm accepts parameters to control the output shape: concavity: A
+        relative measure of concavity. A value of 1 provides a detailed shape, while Infinity
+        results in a convex hull. lengthThreshold: Determines when a segment is too short to be
+        considered for further detailization, helping to simplify the shape. Returns a Point3dArray
+        """
+    def concaveHullIndexes(self, concavity: float, lengthThreshold: float, /) -> list:
+        """
+        Parameters: The algorithm accepts parameters to control the output shape: concavity: A
+        relative measure of concavity. A value of 1 provides a detailed shape, while Infinity
+        results in a convex hull. lengthThreshold: Determines when a segment is too short to be
+        considered for further detailization, helping to simplify the shape. Returns list of indexs
+        """
     def convexHull(self, /) -> Point3dArray: ...
     def convexHullIndexes(self, /) -> list: ...
     def extend(self, /) -> None: ...
