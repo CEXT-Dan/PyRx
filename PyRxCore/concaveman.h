@@ -6,21 +6,6 @@
 //
 
 #pragma once
-
-#include <memory>
-#include <stdexcept>
-#include <list>
-#include <array>
-#include <vector>
-#include <string>
-#include <iostream>
-#include <iomanip>
-#include <stdlib.h>
-#include <limits>
-#include <set>
-#include <queue>
-#include <assert.h>
-
 //https://github.com/mapbox/concaveman
 //https://github.com/sadaszewski/concaveman-cpp
 
@@ -159,7 +144,6 @@ namespace Concave
         return dx * dx + dy * dy;
     }
 
-
     // segment to segment distance, ported from http://geomalgorithms.com/a07-_distance.html by Dan Sunday
     double sqSegSegDist
     (
@@ -238,7 +222,6 @@ namespace Concave
 
         return dx * dx + dy * dy;
     }
-
 
     template<int DIM, int MAX_CHILDREN, class DATA> class rtree
     {
@@ -454,7 +437,6 @@ namespace Concave
         friend class CircularList<T>;
     };
 
-
     template<class T> class CircularList {
     public:
         typedef CircularElement<T> element_type;
@@ -498,7 +480,6 @@ namespace Concave
     private:
         element_type* m_last;
     };
-
 
     // update the bounding box of a node's edge
     template<class T>
@@ -591,7 +572,7 @@ namespace Concave
             const auto maxSqLen = sqLen / sqConcavity;
 
             // find the best connection point for the current edge to flex inward to
-            bool ok;
+            bool ok = false;
             const auto& p = findCandidate(points, tree, a, b, c, d, maxSqLen, segTree, ok);
             const auto& pp = points[p];
 
@@ -648,7 +629,6 @@ namespace Concave
         typedef std::tuple<double, tree_ref_type> tuple_type;
 
         ok = false;
-
         std::priority_queue<tuple_type, std::vector<tuple_type>, compare_first<tuple_type>> queue;
         std::reference_wrapper<const_tree_type> node = tree;
 
@@ -701,7 +681,6 @@ namespace Concave
         return size_t(0);
     }
 
-
     // square distance from a segment bounding box to the given one
     template<int MAX_CHILDREN, class USER_DATA>
     double sqSegBoxDist(const AcGePoint3d& a, const AcGePoint3d& b, const rtree<2, MAX_CHILDREN, USER_DATA>& bbox)
@@ -730,7 +709,6 @@ namespace Concave
         return std::min(std::min(d1, d2), std::min(d3, d4));
     }
 
-
     template<int MAX_CHILDREN, class USER_DATA>
     inline bool inside(const AcGePoint3d& a, const rtree<2, MAX_CHILDREN, USER_DATA>& bbox)
     {
@@ -742,7 +720,6 @@ namespace Concave
             (a[1] <= bounds[3]);
         return res;
     }
-
 
     // check if the edge (a,b) doesn't intersect any other edges
     template<int MAX_CHILDREN>
@@ -765,6 +742,5 @@ namespace Concave
 
         return true;
     }
-
 }// end namespace
 
