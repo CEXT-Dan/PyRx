@@ -323,17 +323,16 @@ public:
     {
         PyAutoLockGIL lock;
         boost::python::list pylist;
-        for (size_t i = 0; i < m_delaunator.triangles.size(); i += 3)
-            pylist.append(boost::python::make_tuple(i + 0, i + 1, i + 2));
+        for (auto i : m_delaunator.triangles)
+            pylist.append(i);
         return pylist;
     }
 
     boost::python::list halfedges() const
     {
-        PyAutoLockGIL lock;
         boost::python::list pylist;
-        for (size_t i = 0; i < m_delaunator.halfedges.size(); i += 2)
-            pylist.append(boost::python::make_tuple(i + 0, i + 1));
+        for (auto i : m_delaunator.halfedges)
+            pylist.append((i == delaunator::INVALID_INDEX) ? -1 : static_cast<int64_t>(i));
         return pylist;
     }
 
@@ -351,7 +350,7 @@ void makePyGeDelaunatorWrapper()
 {
     PyDocString DS("Delaunator");
     class_<PyGeDelaunator>("Delaunator", boost::python::no_init)
-        .def(init<PyGeDelaunator&>())
+        .def(init<PyGePoint3dArray&>())
         .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
         .def("halfedges", &PyGeDelaunator::halfedges, DS.ARGS())
         .def("triangles", &PyGeDelaunator::triangles, DS.ARGS())
