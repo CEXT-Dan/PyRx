@@ -2167,6 +2167,7 @@ static BOOST_PYTHON_MODULE(PyGe)
     makePyGePolyline3dWrapper();
     makePyGePoint2dTreeWrapper();
     makePyGePoint3dTreeWrapper();
+    makePyGeDelaunatorWrapper();
 
     enum_<AcGe::KnotParameterization>("KnotParameterization")
         .value("kChord", AcGe::KnotParameterization::kChord)

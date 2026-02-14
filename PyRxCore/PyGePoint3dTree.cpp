@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyGePoint3dTree.h"
 #include "nanoflann.hpp"
+#include "delaunator.h"
 
 using namespace boost::python;
 
@@ -289,4 +290,71 @@ PyGePoint3dArray PyGePoint3dTree::inputPoints() const
 std::string PyGePoint3dTree::className()
 {
     return "Point3dTree";
+}
+
+//-----------------------------------------------------------------------------------------
+//PyGeDelaunator
+class PyGeDelaunator
+{
+public:
+    PyGeDelaunator(const PyGePoint3dArray& points)
+        : m_delaunator(create(points))
+    {
+    }
+    PyGeDelaunator(const boost::python::list& points)
+        : m_delaunator(create(py_list_to_std_vector<AcGePoint3d>(points)))
+    {
+    }
+    ~PyGeDelaunator() = default;
+
+    static std::vector<double> create(const PyGePoint3dArray& points)
+    {
+        std::vector<double> coords;
+        coords.reserve(points.size() * 2);
+        for (const auto& item : points)
+        {
+            coords.emplace_back(item.x);
+            coords.emplace_back(item.y);
+        }
+        return coords;
+    }
+
+    boost::python::list triangles() const
+    {
+        PyAutoLockGIL lock;
+        boost::python::list pylist;
+        for (size_t i = 0; i < m_delaunator.triangles.size(); i += 3)
+            pylist.append(boost::python::make_tuple(i + 0, i + 1, i + 2));
+        return pylist;
+    }
+
+    boost::python::list halfedges() const
+    {
+        PyAutoLockGIL lock;
+        boost::python::list pylist;
+        for (size_t i = 0; i < m_delaunator.halfedges.size(); i += 2)
+            pylist.append(boost::python::make_tuple(i + 0, i + 1));
+        return pylist;
+    }
+
+    static std::string className()
+    {
+        return "Delaunator";
+    }
+    //
+    delaunator::Delaunator m_delaunator;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyGeDelaunator wrapper
+void makePyGeDelaunatorWrapper()
+{
+    PyDocString DS("Delaunator");
+    class_<PyGeDelaunator>("Delaunator", boost::python::no_init)
+        .def(init<PyGeDelaunator&>())
+        .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
+        .def("halfedges", &PyGeDelaunator::halfedges, DS.ARGS())
+        .def("triangles", &PyGeDelaunator::triangles, DS.ARGS())
+        .def("className", &PyGeDelaunator::className, DS.SARGS()).staticmethod("className")
+        ;
 }
