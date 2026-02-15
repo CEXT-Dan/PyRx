@@ -12,6 +12,8 @@ struct SS_Iterator
 {
     SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(selectionSet)
     {
+        if (!selectionSet.isInitialized())
+            PyThrowBadEs(eNotInitializedYet);
     }
 
     PyDbObjectId next()
