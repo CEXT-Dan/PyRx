@@ -1,5 +1,6 @@
 import traceback
 from time import perf_counter
+
 from pyrx import Ap, Db, Ed, Ge
 
 # Ge.Delaunator uses a modified version of https://github.com/abellgithub/delaunator-cpp.

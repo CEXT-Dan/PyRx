@@ -1,5 +1,7 @@
 import traceback
-from pyrx import Ap, Db, Ge
+
+from pyrx import Ap, Db
+
 
 def open_db(path: str):
     """
@@ -51,6 +53,6 @@ def doit0():
         for k, v in Db.DatabaseSummaryInfo(db):
             print(k, v)
             
-    except Exception as err:
+    except Exception:
         # Print stack trace if an error occurs
         traceback.print_exc()
