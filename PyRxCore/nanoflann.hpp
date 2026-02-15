@@ -470,7 +470,7 @@ namespace nanoflann
     template <typename T>
     void load_value(std::istream& stream, std::vector<T>& value)
     {
-        size_t size;
+        size_t size = 0;
         stream.read(reinterpret_cast<char*>(&size), sizeof(size_t));
         value.resize(size);
         stream.read(reinterpret_cast<char*>(value.data()), sizeof(T) * size);
@@ -1770,7 +1770,7 @@ namespace nanoflann
             float epsError = 1 + searchParams.eps;
 
             // fixed or variable-sized container (depending on DIM)
-            distance_vector_t dists;
+            distance_vector_t dists{};
             // Fill it with zeros.
             auto zero = static_cast<typename RESULTSET::DistanceType>(0);
             assign(dists, (DIM > 0 ? DIM : Base::dim_), zero);
@@ -2283,7 +2283,7 @@ namespace nanoflann
             float epsError = 1 + searchParams.eps;
 
             // fixed or variable-sized container (depending on DIM)
-            distance_vector_t dists;
+            distance_vector_t dists{};
             // Fill it with zeros.
             assign(
                 dists, (DIM > 0 ? DIM : Base::dim_),
