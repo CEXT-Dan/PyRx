@@ -879,6 +879,15 @@
     <ClInclude Include="PyRxOverrulableEntity.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
+    <ClInclude Include="delaunator.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="nanoflann.hpp">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="concaveman.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

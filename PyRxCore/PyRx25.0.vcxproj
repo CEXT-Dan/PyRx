@@ -290,6 +290,9 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="concaveman.h" />
+    <ClInclude Include="delaunator.h" />
+    <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="PyRxOverrulableEntity.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
