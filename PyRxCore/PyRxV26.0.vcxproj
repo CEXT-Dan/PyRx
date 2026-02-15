@@ -305,6 +305,9 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="concaveman.h" />
+    <ClInclude Include="delaunator.h" />
+    <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="PyBrxComponentCustomProperties.h" />
     <ClInclude Include="PyBrxComponents.h" />
     <ClInclude Include="PyBrxConstraints3d.h" />

@@ -1,4 +1,4 @@
-//
+// 
 // Author: Stanislaw Adaszewski, 2019
 // C++ port from https://github.com/mapbox/concaveman (js)
 //
