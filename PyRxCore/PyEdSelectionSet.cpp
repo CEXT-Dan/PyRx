@@ -10,10 +10,8 @@ using namespace boost::python;
 //SS_Iterator
 struct SS_Iterator
 {
-    SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(selectionSet)
+    SS_Iterator(const PyEdSelectionSet& selectionSet) : ss(checkss(selectionSet))
     {
-        if (!selectionSet.isInitialized())
-            PyThrowBadEs(eNotInitializedYet);
     }
 
     PyDbObjectId next()
@@ -27,6 +25,13 @@ struct SS_Iterator
     }
 
     SS_Iterator& iter() { return *this; } // __iter__ must return self
+
+    static const PyEdSelectionSet& checkss(const PyEdSelectionSet& selectionSet)
+    {
+        if (!selectionSet.isInitialized())
+            PyThrowBadEs(eNotInitializedYet);
+        return selectionSet;
+    }
 
     //members
     PyEdSelectionSet ss;
