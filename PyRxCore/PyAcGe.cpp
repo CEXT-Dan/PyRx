@@ -1392,7 +1392,7 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitAcGePlanarEnt(const PyGePla
     return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(*plane.impObj(), pnt));
 }
 
-static PyGePoint3dArray PyGePoint3dConcaveHull(const PyGePoint3dArray&pnts, double concavity, double lengthThreshold)
+static PyGePoint3dArray PyGePoint3dConcaveHull(const PyGePoint3dArray& pnts, double concavity, double lengthThreshold)
 {
     auto indexes = Concave::concaveman<16>(pnts, concavity, lengthThreshold);
     PyGePoint3dArray pylist;
@@ -1416,7 +1416,7 @@ static void makePyGePoint3dWrapper()
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
-        .def("concaveHull", &PyGePoint3dConcaveHull, DSPA.ARGS({"concavity:float, lengthThreshold:float"}, 19142))
+        .def("concaveHull", &PyGePoint3dConcaveHull, DSPA.ARGS({ "concavity:float, lengthThreshold:float" }, 19142))
         .def("concaveHullIndexes", &PyGePoint3dConcaveHullIndexes, DSPA.ARGS({ "concavity:float, lengthThreshold:float" }, 19143))
         .def("convexHull", &PyGePoint3dArrayConvexHull, DSPA.ARGS())
         .def("convexHullIndexes", &PyGePoint3dConvexHullIndexes, DSPA.ARGS())
