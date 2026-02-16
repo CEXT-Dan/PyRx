@@ -222,8 +222,8 @@ namespace delaunator {
         m_edge_stack() {
         std::size_t n = coords.size() >> 1;
 
-        double max_x = std::numeric_limits<double>::min();
-        double max_y = std::numeric_limits<double>::min();
+        double max_x = std::numeric_limits<double>::lowest();
+        double max_y = std::numeric_limits<double>::lowest();
         double min_x = std::numeric_limits<double>::max();
         double min_y = std::numeric_limits<double>::max();
         std::vector<std::size_t> ids;
@@ -233,10 +233,10 @@ namespace delaunator {
             const double x = coords[2 * i];
             const double y = coords[2 * i + 1];
 
-            if (x < min_x) min_x = x;
-            if (y < min_y) min_y = y;
-            if (x > max_x) max_x = x;
-            if (y > max_y) max_y = y;
+            min_x = std::min(x, min_x);
+            min_y = std::min(y, min_y);
+            max_x = std::max(x, max_x);
+            max_y = std::max(y, max_y);
 
             ids.push_back(i);
         }
