@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import pytest
-
 from pyrx import Ge
 
 
 class TestPlane:
+
     def test_plane_init_default(self):
         """Test default initialization of Plane."""
         plane = Ge.Plane()
@@ -36,8 +35,8 @@ class TestPlane:
     def test_plane_init_origin_normal(self):
         """Test initialization using an origin point and a normal vector."""
         origin = Ge.Point3d(10.0, 20.0, 30.0)
-        normal = Ge.Vector3d.kXAxis # Plane is parallel to YZ plane
-        
+        normal = Ge.Vector3d.kXAxis  # Plane is parallel to YZ plane
+
         plane = Ge.Plane(origin, normal)
 
         # Define a line segment crossing the plane along the X-axis
@@ -45,10 +44,9 @@ class TestPlane:
         flag, pnt = plane.intersectWith(
             Ge.LineSeg3d(origin - Ge.Vector3d.kXAxis, origin + Ge.Vector3d.kXAxis)
         )
-        
+
         assert flag == True
         assert pnt.isEqualTo(origin)
-        
 
     def test_plane_init_three_points(self):
         """Test initialization using three points (pntU, origin, pntV)."""
@@ -86,10 +84,10 @@ class TestPlane:
 
     def test_plane_set_origin_normal(self):
         """Test setting Plane using set(origin, normal)."""
-        
+
         origin = Ge.Point3d(10.0, 20.0, 30.0)
-        normal = Ge.Vector3d.kXAxis # Plane is parallel to YZ plane
-        
+        normal = Ge.Vector3d.kXAxis  # Plane is parallel to YZ plane
+
         plane = Ge.Plane()
         plane.set(origin, normal)
 
@@ -98,7 +96,7 @@ class TestPlane:
         flag, pnt = plane.intersectWith(
             Ge.LineSeg3d(origin - Ge.Vector3d.kXAxis, origin + Ge.Vector3d.kXAxis)
         )
-        
+
         assert flag == True
         assert pnt.isEqualTo(origin)
 
@@ -119,4 +117,3 @@ class TestPlane:
 
         assert flag == True
         assert pnt == origin
-       

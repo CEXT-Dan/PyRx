@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pytest
+
 from pyrx import Db, Ge
 
 
@@ -77,6 +78,7 @@ class TestDelaunator:
         # Depending on the implementation, this might raise an error or return empty arrays
         with pytest.raises(Db.ErrorStatusException): 
             d = Ge.Delaunator(pnts)
+            d.triangles()
 
 
     def test_duplicate_points(self):
