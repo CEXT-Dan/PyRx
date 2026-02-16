@@ -309,6 +309,8 @@ public:
 
     static std::vector<double> create(const PyGePoint3dArray& points)
     {
+        if (points.size() < 3)
+            PyThrowBadEs(eInvalidInput);
         std::vector<double> coords;
         coords.reserve(points.size() * 2);
         for (const auto& item : points)
