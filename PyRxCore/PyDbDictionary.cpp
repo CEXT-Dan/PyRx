@@ -2,12 +2,42 @@
 #include "PyDbDictionary.h"
 #include "PyDbObjectId.h"
 
-
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------------
+//SymbolTable_Iterator
+struct Dictionary_Iterator
+{
+    std::shared_ptr<AcDbDictionaryIterator> pbtriter;
+
+    explicit Dictionary_Iterator(const PyDbDictionary& btr)
+    {
+        pbtriter.reset(btr.impObj()->newIterator());
+    }
+
+    boost::python::tuple next() const
+    {
+        if (!pbtriter || pbtriter->done())
+        {
+            PyErr_SetString(PyExc_StopIteration, "End of Table");
+            boost::python::throw_error_already_set();
+        }
+        const std::string key{ wstr_to_utf8(pbtriter->name()) };
+        const PyDbObjectId id{ pbtriter->objectId() };
+        pbtriter->next();
+        return boost::python::make_tuple(key, id);
+    }
+    Dictionary_Iterator& iter() { return *this; }
+};
+
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary wrapper
 void makePyDbDictionaryWrapper()
 {
+    class_<Dictionary_Iterator>("DictionaryIterator", no_init)
+        .def("__iter__", &Dictionary_Iterator::iter, return_internal_reference<>())
+        .def("__next__", &Dictionary_Iterator::next);
+
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- id: PyDb.ObjectId\n"
@@ -25,12 +55,12 @@ void makePyDbDictionaryWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 3737)))
-        .def("getAt", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }, 3762))
+        .def("getAt", &PyDbDictionary::getAt, DS.ARGS({ "key :str" }, 3762))
         .def("has", &PyDbDictionary::has1)
         .def("has", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }, 3764))
         .def("nameAt", &PyDbDictionary::nameAt, DS.ARGS({ "val : PyDb.ObjectId" }, 3767))
         .def("numEntries", &PyDbDictionary::numEntries, DS.ARGS(3769))
-        .def("setAt", &PyDbDictionary::setAt, DS.ARGS(3771))
+        .def("setAt", &PyDbDictionary::setAt, DS.ARGS({ "key: str", "newValue: PyDb.DbObject" }, 3771))
         .def("remove", &PyDbDictionary::remove1)
         .def("remove", &PyDbDictionary::remove2)
         .def("remove", &PyDbDictionary::remove3, DS.OVRL(removeOverload, 3770))
@@ -41,6 +71,7 @@ void makePyDbDictionaryWrapper()
         .def("desc", &PyDbDictionary::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDictionary::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("__iter__", +[](const PyDbDictionary& self) {return Dictionary_Iterator(self); })
         .def("__getitem__", &PyDbDictionary::getAtEx, DS.ARGS({ "val : str" }, 3762))
         .def("__contains__", &PyDbDictionary::has1)
         .def("__contains__", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }, 3764))
