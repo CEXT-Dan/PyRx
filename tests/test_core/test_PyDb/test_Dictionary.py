@@ -12,6 +12,7 @@ class TestDbDictionary:
         xr.setFromRbChain([(Db.DxfCode.kDxfText,"hello")])
         id = d.setAt("my_key",xr)
         assert d.getAt("my_key") == id
+        assert d["my_key"] == id
         
     def test_iter(self):
         db = Db.curDb()
