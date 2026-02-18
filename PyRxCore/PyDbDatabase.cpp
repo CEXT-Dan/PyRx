@@ -1634,7 +1634,16 @@ void PyDbDatabase::registerApp(const std::string& pszAppName) const
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
     return PyThrowBadEs(impObj()->registerApp(utf8_to_wstr(pszAppName).c_str()));
 #else
-    PyThrowBadRt(acdbRegApp(utf8_to_wstr(pszAppName).c_str()));
+    AcDbObjectPointer<AcDbRegAppTable> pRat(impObj()->regAppTableId(), AcDb::kForWrite);
+    PyThrowBadEs(pRat.openStatus());
+    const auto _name = utf8_to_wstr(pszAppName).c_str();
+    if (!pRat->has(_name))
+    {
+        AcDbRegAppTableRecordPointer pRecord;
+        PyThrowBadEs(pRecord.create());
+        PyThrowBadEs(pRecord->setName(_name));
+        PyThrowBadEs(pRat->add(pRecord));
+    }
 #endif
 }
 

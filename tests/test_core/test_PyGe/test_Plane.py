@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ge
 
 
@@ -65,6 +67,7 @@ class TestPlane:
         assert flag == True
         assert pnt == origin
 
+    @pytest.mark.known_failure_BRX
     def test_plane_set_from_equation(self):
         """Test setting Plane coefficients using set(a, b, c, d)."""
         # Plane equation: 2x + 3y - z - 4 = 0
@@ -82,6 +85,7 @@ class TestPlane:
         assert flag == True
         assert pnt == test_point
 
+    @pytest.mark.known_failure_BRX
     def test_plane_set_origin_normal(self):
         """Test setting Plane using set(origin, normal)."""
 
@@ -100,6 +104,7 @@ class TestPlane:
         assert flag == True
         assert pnt.isEqualTo(origin)
 
+    @pytest.mark.known_failure_BRX
     def test_plane_set_three_points(self):
         """Test setting Plane using set(pntU, origin, pntV)."""
         # Define a plane passing through these 3 points

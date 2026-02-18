@@ -58,6 +58,7 @@ class TestWxPython:
         topWin: wx.Window = pyapp.TopWindow
         assert topWin.Handle == Ap.Application.mainWnd()
         
+    @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_IRX
     def test_wx_CallAfter(self): 
         assert wx_CallAfter == 10

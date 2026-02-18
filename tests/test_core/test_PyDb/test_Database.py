@@ -423,3 +423,11 @@ class TestDatabase:
         for k, v in db_06457.blockTable():
             niter += 1
         assert niter != 0
+        
+    def test_regapp_db(delf):
+        name = "TEST_APP_SDB"
+        sdb = Db.Database()
+        sdb.registerApp(name)
+        assert sdb.isAppRegistered(name) == True
+        cur_db = Db.curDb()
+        assert cur_db.isAppRegistered(name) == False
