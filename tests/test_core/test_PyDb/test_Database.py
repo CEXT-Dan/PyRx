@@ -425,7 +425,7 @@ class TestDatabase:
         assert niter != 0
         
     def test_regapp_db(delf):
-        name = "TEST_APP_SDB"
+        name = "TESTAPPSDB"
         sdb = Db.Database()
         sdb.registerApp(name)
         assert sdb.isAppRegistered(name) == True
