@@ -1,3 +1,12 @@
+## v2.2.45
+
+* [#468] fix Db.registerApp() always registers in the current database
+* [#467] fix invalid stub
+* added DictionaryIterator
+* added PyGe.Delaunator generates a TIN, uses Delaunator-cpp
+* added concave hull – uses Concaveman-cpp
+* added PyDb.DatabaseSummaryInfo.__contains__
+
 ## v2.2.44
 
 Added clipping utilities
