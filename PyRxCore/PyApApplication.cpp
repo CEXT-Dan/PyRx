@@ -89,7 +89,7 @@ void makePyApApplictionWrapper()
     PyDocString DS("Application");
     class_<PyApApplication>("Application")
         .def("docManager", &PyApApplication::docManager, DS.SARGS(77)).staticmethod("docManager")
-        .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS(19139)).staticmethod("acadApplication")
+        .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS(19144)).staticmethod("acadApplication")
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")

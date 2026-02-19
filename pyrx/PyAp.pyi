@@ -77,7 +77,10 @@ class Application:
     @staticmethod
     def acadApplication() -> PyAx.AcadApplication:
         """
-        TEST19139
+        Represents the top-level AutoCAD Application object (Automation interface). This object
+        serves as the container for the AutoCAD environment and allows control over the
+        application, documents, and system preferences via COM (Component Object Model)(Dispatched
+        via COM).
         """
     @staticmethod
     def acadGetIDispatch() -> int: ...
