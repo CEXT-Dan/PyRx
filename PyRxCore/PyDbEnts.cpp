@@ -275,6 +275,8 @@ bool PyDbBlockReference::hasAttributes() const
 
 bool PyDbBlockReference::isDynamicBlock() const
 {
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
     AcDbDynBlockReference dyn(impObj()->objectId());
     return dyn.isDynamicBlock();
 }
@@ -311,6 +313,8 @@ void PyDbBlockReference::convertToStaticBlock2(const std::string& newBlockName) 
 
 PyDbObjectId PyDbBlockReference::dynamicBlockTableRecord() const
 {
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
     AcDbDynBlockReference dyn(impObj()->objectId());
     if (!dyn.isDynamicBlock())
         PyThrowBadEs(eNotThatKindOfClass);
@@ -319,6 +323,8 @@ PyDbObjectId PyDbBlockReference::dynamicBlockTableRecord() const
 
 PyDbObjectId PyDbBlockReference::anonymousBlockTableRecord() const
 {
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
     AcDbDynBlockReference dyn(impObj()->objectId());
     if (!dyn.isDynamicBlock())
         PyThrowBadEs(eNotThatKindOfClass);
