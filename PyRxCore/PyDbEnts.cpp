@@ -61,6 +61,15 @@ void makePyDbBlockReferenceWrapper()
         .def("attdict", &PyDbBlockReference::attdict, DS.ARGS())
         .def("attlist", &PyDbBlockReference::attlist, DS.ARGS())
         .def("hasAttributes", &PyDbBlockReference::hasAttributes, DS.ARGS())
+        //Dynamic
+        .def("isDynamicBlock", &PyDbBlockReference::isDynamicBlock, DS.ARGS(4216))
+        .def("resetBlock", &PyDbBlockReference::resetBlock, DS.ARGS(4217))
+        .def("convertToStaticBlock", &PyDbBlockReference::convertToStaticBlock1)
+        .def("convertToStaticBlock", &PyDbBlockReference::convertToStaticBlock2, DS.ARGS({ "blockName : str = ..." }, 4213))
+        .def("dynamicBlockTableRecord", &PyDbBlockReference::dynamicBlockTableRecord, DS.ARGS(4214))
+        .def("anonymousBlockTableRecord", &PyDbBlockReference::anonymousBlockTableRecord, DS.ARGS(4211))
+        .def("getBlockProperties", &PyDbBlockReference::getBlockProperties, DS.ARGS(4215))
+
         .def("className", &PyDbBlockReference::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -262,6 +271,74 @@ bool PyDbBlockReference::hasAttributes() const
 {
     AcDbObjectIteratorUPtr iter(impObj()->attributeIterator());
     return !iter->done();
+}
+
+bool PyDbBlockReference::isDynamicBlock() const
+{
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    return dyn.isDynamicBlock();
+}
+
+void PyDbBlockReference::resetBlock() const
+{
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    PyThrowBadEs(dyn.resetBlock());
+}
+
+void PyDbBlockReference::convertToStaticBlock1() const
+{
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    PyThrowBadEs(dyn.convertToStaticBlock());
+}
+
+void PyDbBlockReference::convertToStaticBlock2(const std::string& newBlockName) const
+{
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    PyThrowBadEs(dyn.convertToStaticBlock(utf8_to_wstr(newBlockName).c_str()));
+}
+
+PyDbObjectId PyDbBlockReference::dynamicBlockTableRecord() const
+{
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    return PyDbObjectId{ dyn.dynamicBlockTableRecord() };
+}
+
+PyDbObjectId PyDbBlockReference::anonymousBlockTableRecord() const
+{
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    return PyDbObjectId{ dyn.anonymousBlockTableRecord() };
+}
+
+boost::python::list PyDbBlockReference::getBlockProperties() const
+{
+    if (impObj()->isWriteEnabled())
+        PyThrowBadEs(eWasOpenForWrite);
+    AcDbDynBlockReference dyn(impObj()->objectId());
+    if (!dyn.isDynamicBlock())
+        PyThrowBadEs(eNotThatKindOfClass);
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbDynBlockReferencePropertyArray properties;
+    dyn.getBlockProperties(properties);
+    for (const auto& item : properties)
+        pyList.append(PyDbDynBlockReferenceProperty(item));
+    return pyList;
 }
 
 std::string PyDbBlockReference::className()
@@ -3359,7 +3436,7 @@ void makePyDbFcfWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<const std::string&, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctords, 4585)))
         .def("setText", &PyDbFcf::setText, DS.ARGS({ "newText:str" }, 4611))
-        .def("text", &PyDbFcf::text, DS.ARGS({"lineNo: int"},4613))
+        .def("text", &PyDbFcf::text, DS.ARGS({ "lineNo: int" }, 4613))
         .def("textAll", &PyDbFcf::textAll, DS.ARGS(4613))
         .def("setLocation", &PyDbFcf::setLocation, DS.ARGS({ "newLocation:PyGe.Point3d" }, 4609))
         .def("location", &PyDbFcf::location, DS.ARGS(4598))

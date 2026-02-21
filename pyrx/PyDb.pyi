@@ -4198,6 +4198,16 @@ class BlockReference(PyDb.Entity):
         for the other modes, then return Acad::eOk.
         """
     def __reduce__(self, /) -> Any: ...
+    def anonymousBlockTableRecord(self, /) -> ObjectId:
+        """
+        Gets the anonymous block definition used to draw the dynamic block. Dynamic blocks whose
+        properties differ from that of the dynamic block definition may use an anonymous block to
+        draw themselves. This anonymous block may be shared between multiple block references and
+        should not be modified by client applications directly. Returns the AcDbObjectId of the
+        anonymous block definition (an AcDbBlockTableRecord) used to draw the block reference.
+        Returns AcDbObjectId::kNull if the block reference is not a dynamic block or is not
+        currently using an anonymous block to draw itself.
+        """
     def appendAttribute(self, attribute: PyDb.AttributeReference, /) -> ObjectId:
         """
         This function appends the AcDbAttribute object pointed to by pNewAttrib to the attribute
@@ -4231,6 +4241,14 @@ class BlockReference(PyDb.Entity):
     def className() -> str: ...
     @staticmethod
     def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockReference: ...
+    def convertToStaticBlock(self, blockName: str = ..., /) -> None:
+        """
+        Converts the dynamic block instance to a legacy (nondynamic) block. When successful, the
+        dynamic block properties are frozen at their current values and the reference ceases to be
+        a dynamic block. A new block is defined with the name newBlockName, which must not already
+        exist in the drawing and must satisfy all of the naming restrictions of normal block
+        references. Returns Acad::eOk if successful.
+        """
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4244,6 +4262,11 @@ class BlockReference(PyDb.Entity):
         therefore not pointer type dependent. Caching the value of the pointer returned by this
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def dynamicBlockTableRecord(self, /) -> ObjectId:
+        """
+        Returns the AcDbObjectId of the dynamic block definition (an AcDbBlockTableRecord) if the
+        block reference is a dynamic block. Otherwise, it returns AcDbObjectId::kNull.
         """
     def effectiveName(self, /) -> str: ...
     def explodeToOwnerSpace(self, /) -> None:
@@ -4280,7 +4303,19 @@ class BlockReference(PyDb.Entity):
         Acad::eInvalidInput. Returns Acad::eOk if successful.
         """
     def getBlockName(self, /) -> str: ...
+    def getBlockProperties(self, /) -> list:
+        """
+        Returns a collection of AcDbDynBlockReferenceProperty instances referencing dynamic block
+        properties on the AcDbBlockReference. If the AcDbBlockReference contains no dynamic
+        property information, the returned array is empty.
+        """
     def hasAttributes(self, /) -> bool: ...
+    def isDynamicBlock(self, /) -> bool:
+        """
+        Determines whether the AcDbBlockReference passed to the class constructor contains dynamic
+        block information. Returns true if the AcDbBlockReference passed to the class constructor
+        contains dynamic block information.
+        """
     def nonAnnotationBlockTransform(self, /) -> PyGe.Matrix3d:
         """
         Returns the block transformation matrix independent of annotation scaling.
@@ -4298,6 +4333,12 @@ class BlockReference(PyDb.Entity):
         """
         This function returns the WCS position point (often referred to as the insertion point) of
         the block reference. The position value is the WCS equivalent of the DXF group code 10.
+        """
+    def resetBlock(self, /) -> None:
+        """
+        Resets the AcDbBlockReference to the default state of the dynamic block. All properties on
+        the AcDbBlockReference are set to match the values in the block definition. Returns
+        Acad::eOk if successful.
         """
     def rotation(self, /) -> float:
         """

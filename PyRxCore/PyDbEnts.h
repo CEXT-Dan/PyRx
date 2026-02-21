@@ -56,6 +56,16 @@ public:
     void                explodeToOwnerSpace() const;
     std::string         getBlockName() const;
     bool                hasAttributes() const;
+
+    //Dynamic
+    bool                isDynamicBlock() const;
+    void                resetBlock() const;
+    void                convertToStaticBlock1() const;
+    void                convertToStaticBlock2(const std::string& newBlockName) const;
+    PyDbObjectId        dynamicBlockTableRecord() const;
+    PyDbObjectId        anonymousBlockTableRecord() const;
+    boost::python::list getBlockProperties() const;
+
 public:
     static std::string  className();
     static PyRxClass    desc();
