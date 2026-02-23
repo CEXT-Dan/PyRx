@@ -173,3 +173,23 @@ class TestAxAttribute:
         ent.setInsertionPoint(new_point)
         retrieved_point = ent.insertionPoint()
         assert new_point == retrieved_point
+        
+    def test_backward_attribute(self):
+        """Tests setting and retrieving the backward (mirrored horizontally) property."""
+        axSpace = self.axDoc.modelSpace()
+        
+        # Create an attribute definition
+        ent = axSpace.addAttribute(
+            8,
+            Ax.AcAttributeMode.acAttributeModeNormal,
+            "mirror_prompt",
+            Ge.Point3d(0, 0, 0),
+            "mirror_tag",
+            "mirror_val"
+        )
+        
+        assert ent.backward() == False
+        ent.setBackward(True)
+        assert ent.backward() == True
+        ent.setBackward(False)
+        assert ent.backward() == False
