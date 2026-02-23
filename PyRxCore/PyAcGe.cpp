@@ -35,6 +35,11 @@ using namespace boost::python;
 // AcGePoint3d == AcGePoint3d uses tol, not perfect but good enough
 // tiny overhead as it's another C++ <-> Python call. 
 
+inline static bool areDoublesEqual(double a, double b, double epsilon = 1e-10)
+{
+    return std::abs(a - b) < epsilon;
+}
+
 inline static double roundPointComponentToPrec(double value, double precision)
 {
     return std::round(value / precision) * precision;
@@ -385,7 +390,7 @@ static void PyGePoint2dArraySortByX(PyGePoint2dArray& src)
 {
     std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
         {
-            if (l.x == r.x)
+            if (areDoublesEqual(l.x, r.x))
                 return l.y < r.y;
             return l.x < r.x;
         });
@@ -395,7 +400,7 @@ static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
 {
     std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
         {
-            if (l.y == r.y)
+            if (areDoublesEqual(l.y, r.y))
                 return l.x < r.x;
             return l.y < r.y;
         });
@@ -1208,7 +1213,7 @@ static void PyGePoint3dArraySortByX(PyGePoint3dArray& src)
 {
     std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
-            if (l.x == r.x)
+            if (areDoublesEqual(l.x, r.x))
                 return l.y < r.y;
             return l.x < r.x;
         });
@@ -1218,7 +1223,7 @@ static void PyGePoint3dArraySortByY(PyGePoint3dArray& src)
 {
     std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
-            if (l.y == r.y)
+            if (areDoublesEqual(l.y, r.y))
                 return l.x < r.x;
             return l.y < r.y;
         });
@@ -1228,7 +1233,7 @@ static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
 {
     std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
-            if (l.z == r.z)
+            if (areDoublesEqual(l.z, r.z))
                 return l.x < r.x;
             return l.z < r.z;
         });
