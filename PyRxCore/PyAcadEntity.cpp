@@ -265,7 +265,7 @@ PyAcadEntity PyAcadEntity::cast(const PyAcadObject& src)
 
 std::string PyAcadEntity::className()
 {
-    return "AcDbEntity";
+    return "AcadEntity";
 }
 
 PyIAcadEntityImpl* PyAcadEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1087,7 +1087,7 @@ double PyAcadArc::startAngle() const
 
 void PyAcadArc::setStartAngle(double val) const
 {
-    impObj()->SetRadius(val);
+    impObj()->SetStartAngle(val);
 }
 
 double PyAcadArc::endAngle() const
