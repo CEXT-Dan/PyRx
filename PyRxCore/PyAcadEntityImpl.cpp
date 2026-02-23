@@ -1282,7 +1282,7 @@ CString PyIAcadAttributeImpl::GetTagString() const
 
 void PyIAcadAttributeImpl::SetTagString(const CString& val) const
 {
-#ifdef NEVER //TODO this throws in AutoCAD
+#ifdef NEVER //TODO: this throws in AutoCAD
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_TagString(bstrval));
 #else
