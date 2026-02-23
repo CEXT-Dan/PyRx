@@ -5814,7 +5814,7 @@ boost::python::tuple PyAcadSection::generateSectionGeometry(const PyAcadEntity& 
     PyIAcadEntityPtrArray vecCurveTangencyObj;
     impObj()->GenerateSectionGeometry(*val.impObj(), vecIntersectionBoundaryObjs, vecIntersectionFillObjs, vecBackgroudnObjs, vecForegroudObjs, vecCurveTangencyObj);
 
-    PyAutoLockGIL lock; 
+    PyAutoLockGIL lock;
     boost::python::list pyIntersectionBoundaryObjs;
     for (const auto& item : vecIntersectionBoundaryObjs)
         pyIntersectionBoundaryObjs.append(PyAcadEntity{ item });
