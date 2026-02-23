@@ -3961,7 +3961,7 @@ PyAcAlignment PyAcadText::alignment() const
 
 void PyAcadText::setAlignment(PyAcAlignment val) const
 {
-    impObj()->GetAlignment();
+    impObj()->SetAlignment(val);
 }
 
 PyAcHorizontalAlignment PyAcadText::horizontalAlignment() const
