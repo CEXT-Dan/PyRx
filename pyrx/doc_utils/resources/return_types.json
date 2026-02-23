@@ -2240,7 +2240,7 @@
         ],
         [
             "PyAx::Acad3DFace::coordinates",
-            "list[PyGe.point3d]"
+            "list[PyGe.Point3d]"
         ],
         [
             "PyAx::Acad3DPolyline::coordinates",
