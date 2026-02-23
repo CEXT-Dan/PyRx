@@ -1282,8 +1282,15 @@ CString PyIAcadAttributeImpl::GetTagString() const
 
 void PyIAcadAttributeImpl::SetTagString(const CString& val) const
 {
+#ifdef NEVER //TODO this throws in AutoCAD
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_TagString(bstrval));
+#else
+    AcAxDocLock lock;
+    AcDbObjectPointer<AcDbAttributeDefinition>pAtt(this->id(), AcDb::kForWrite);
+    PyThrowBadHr(pAtt.openStatus());
+    PyThrowBadHr(pAtt->setTag(val));
+#endif
 }
 
 CString PyIAcadAttributeImpl::GetPromptString() const
