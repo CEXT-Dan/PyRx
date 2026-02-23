@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import math
+
 import pytest
-from pyrx import Ap, Ge, Ax
+
+from pyrx import Ap, Ax, Ge
 
 
 class TestAxArc:
@@ -106,7 +108,4 @@ class TestAxArc:
         assert arc_ent.radius() == 5
 
     def test_className(self):
-        axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addArc(Ge.Point3d(0, 0, 0), 5, 0, math.pi / 2)
-        
         assert Ax.AcadArc.className() == "AcadArc"
