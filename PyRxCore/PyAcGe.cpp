@@ -35,66 +35,70 @@ using namespace boost::python;
 // AcGePoint3d == AcGePoint3d uses tol, not perfect but good enough
 // tiny overhead as it's another C++ <-> Python call. 
 
-inline static double roundPointComponentToGTol(double value)
+inline static double roundPointComponentToPrec(double value, double precision)
 {
-    const double precision = AcGeContext::gTol.equalPoint();
     return std::round(value / precision) * precision;
 }
 
-inline static double roundVectorComponentToGTOL(double value)
+inline static double roundVectorComponentToPrec(double value, double precision)
 {
-    const double precision = AcGeContext::gTol.equalVector();
     return std::round(value / precision) * precision;
 }
 
 inline static std::size_t AcGeScale2dHash(const AcGeScale2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentToGTol(p.sx));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.sy));
+    const double precision = AcGeContext::gTol.equalPoint();
+    boost::hash_combine(seed, roundPointComponentToPrec(p.sx, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.sy, precision));
     return seed;
 }
 
 inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentToGTol(p.x));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.y));
+    const double precision = AcGeContext::gTol.equalPoint();
+    boost::hash_combine(seed, roundPointComponentToPrec(p.x, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.y, precision));
     return seed;
 }
 
 inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundVectorComponentToGTOL(p.x));
-    boost::hash_combine(seed, roundVectorComponentToGTOL(p.y));
+    double precision = AcGeContext::gTol.equalVector();
+    boost::hash_combine(seed, roundVectorComponentToPrec(p.x, precision));
+    boost::hash_combine(seed, roundVectorComponentToPrec(p.y, precision));
     return seed;
 }
 
 inline static std::size_t AcGeScale3dHash(const AcGeScale3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentToGTol(p.sx));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.sy));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.sz));
+    const double precision = AcGeContext::gTol.equalPoint();
+    boost::hash_combine(seed, roundPointComponentToPrec(p.sx, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.sy, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.sz, precision));
     return seed;
 }
 
 inline static std::size_t AcGePoint3dHash(const AcGePoint3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundPointComponentToGTol(p.x));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.y));
-    boost::hash_combine(seed, roundPointComponentToGTol(p.z));
+    const double precision = AcGeContext::gTol.equalPoint();
+    boost::hash_combine(seed, roundPointComponentToPrec(p.x, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.y, precision));
+    boost::hash_combine(seed, roundPointComponentToPrec(p.z, precision));
     return seed;
 }
 
 inline static std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 {
     std::size_t seed = 0;
-    boost::hash_combine(seed, roundVectorComponentToGTOL(p.x));
-    boost::hash_combine(seed, roundVectorComponentToGTOL(p.y));
-    boost::hash_combine(seed, roundVectorComponentToGTOL(p.z));
+    const double precision = AcGeContext::gTol.equalVector();
+    boost::hash_combine(seed, roundVectorComponentToPrec(p.x, precision));
+    boost::hash_combine(seed, roundVectorComponentToPrec(p.y, precision));
+    boost::hash_combine(seed, roundVectorComponentToPrec(p.z, precision));
     return seed;
 }
 
