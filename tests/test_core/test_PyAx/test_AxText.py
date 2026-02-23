@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-import pytest
 import math
 
-from pyrx import Ap, Ge, Ax
+import pytest
+
+from pyrx import Ap, Ax, Ge
 
 
 class TestAcadText:
@@ -48,7 +49,7 @@ class TestAcadText:
         ent = axSpace.addText("TEST", Ge.Point3d(0, 0, 0), 1.0)
 
         ent.setRotation(math.radians(45.0))
-        assert ent.rotation() ==math.radians(45.0)
+        assert ent.rotation() == math.radians(45.0)
 
     def test_modify_oblique_angle(self):
         """Test modifying the oblique angle."""
@@ -115,7 +116,7 @@ class TestAcadText:
         """Test setting the text alignment point (where the text is anchored)."""
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addText("TEST", Ge.Point3d(0, 0, 0), 1.0)
-        
+
         # must not be acAlignmentLeft
         ent.setAlignment(Ax.AcAlignment.acAlignmentRight)
 
@@ -155,6 +156,6 @@ class TestAcadText:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addText("TEST", Ge.Point3d(0, 0, 0), 1.0)
 
-        flag = 2 #mirrored in X
+        flag = 2  # mirrored in X
         ent.setTextGenerationFlag(flag)
         assert ent.textGenerationFlag() == flag
