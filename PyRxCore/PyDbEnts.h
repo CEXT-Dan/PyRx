@@ -705,7 +705,6 @@ public:
     AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //AcDbSolid
 void makePyDbSolidWrapper();
@@ -860,7 +859,6 @@ public:
     static void         registerOnDoubleClick(const boost::python::object& obj);
     static void         removeOnDoubleClick(const boost::python::object& obj);
     static void         OnDblClkFn(AcDbEntity* pEnt, AcGePoint3d pt);
-
 public:
     PyRxOverrulableEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 
