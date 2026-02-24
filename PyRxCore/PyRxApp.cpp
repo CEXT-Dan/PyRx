@@ -508,10 +508,10 @@ std::wstring PyRxApp::the_error()
         if (the_error != nullptr)
         {
             PyObjectPtr pRep{ PyObject_Str(the_error) };
-            if (pRep) 
+            if (pRep)
             {
                 const char* utf8 = PyUnicode_AsUTF8(pRep.get());
-                if (utf8 != nullptr) 
+                if (utf8 != nullptr)
                     the_error_string = utf8;
             }
         }

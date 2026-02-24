@@ -168,7 +168,7 @@ Acad::ErrorStatus PyRxOverrulableEntity::dwgInFields(AcDbDwgFiler* pFiler)
     Acad::ErrorStatus es = AcDbEntity::dwgInFields(pFiler);
     if (es != Acad::eOk)
         return (es);
-    
+
     if ((es = pFiler->readUInt32(&m_version)) != Acad::eOk)
         return (es);
     if (m_version != PyRxOverrulableEntity::kCurrentVersionNumber)
