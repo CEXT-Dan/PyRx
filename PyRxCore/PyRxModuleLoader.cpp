@@ -50,7 +50,7 @@ bool showNavFileDialog(PyModulePath& path)
             nullptr,
             _T("Select Python File"), lastPath, wxEmptyString,
             _T("Python Files (*.py;*.pyc)|*.py;*.pyc"),
-            wxFD_OPEN|wxFD_FILE_MUST_EXIST, wxDefaultPosition);
+            wxFD_OPEN | wxFD_FILE_MUST_EXIST, wxDefaultPosition);
 
         switch (OpenDialog.ShowModal())
         {
