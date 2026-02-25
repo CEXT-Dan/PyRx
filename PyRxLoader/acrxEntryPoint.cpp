@@ -471,29 +471,53 @@ public:
 #ifdef PYRXDEBUG 
         if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
-            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+            {
+                appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, (const TCHAR*)foundPath));
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
+            }
+            else
+            {
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, arxpath.c_str()));
+            }
         }
         else
         {
             arxpath = modulePath / getNameOfModuleToLoad();
-            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+            {
+                appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, (const TCHAR*)foundPath));
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
+            }
+            else
+            {
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, arxpath.c_str()));
+            }
         }
 #else
         if (const auto arxpath = modulePath / getNameOfModuleToLoad(); modulePathPound && std::filesystem::exists(arxpath, ec))
         {
-            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+            {
+                appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, (const TCHAR*)foundPath));
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
+            }
+            else
+            {
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, arxpath.c_str()));
+            }
         }
         else if (const auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
-            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+            {
+                appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, (const TCHAR*)foundPath));
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
+            }
+            else
+            {
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, arxpath.c_str()));
+            }
         }
         else
         {
