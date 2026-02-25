@@ -537,6 +537,13 @@ public:
     {
         acutPrintf(_T("\nLog:\n%ls"), log_buffer.c_str());
     }
+
+    static void PyRxLoader_pyrxloadenv(void)
+    {
+        std::wstring _buffer(32767, 0);
+        GetEnvironmentVariable(PATHENV, _buffer.data(), _buffer.size());
+        acutPrintf(_T("\n%ls"), _buffer.c_str());
+    }
 };
 
 //-----------------------------------------------------------------------------
@@ -546,4 +553,5 @@ IMPLEMENT_ARX_ENTRYPOINT(PyRxLoader)
 ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
 #endif
 ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _pyrxloadlog, pyrxloadlog, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _pyrxloadenv, pyrxloadenv, ACRX_CMD_TRANSPARENT, NULL)
 #pragma warning( pop )
