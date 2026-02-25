@@ -124,7 +124,7 @@ AcGePoint3d PyDbBlockReference::position() const
 
 void PyDbBlockReference::setPosition(const AcGePoint3d& val) const
 {
-    return PyThrowBadEs(impObj()->setPosition(val));
+    PyThrowBadEs(impObj()->setPosition(val));
 }
 
 AcGeScale3d PyDbBlockReference::scaleFactors() const
@@ -1326,17 +1326,17 @@ void makePyDbPointWrapper()
 }
 
 PyDbPoint::PyDbPoint()
-    : PyDbPoint::PyDbPoint(new AcDbPoint(), true)
+    : PyDbPoint(new AcDbPoint(), true)
 {
 }
 
 PyDbPoint::PyDbPoint(const AcGePoint3d& point)
-    : PyDbPoint::PyDbPoint(new AcDbPoint(point), true)
+    : PyDbPoint(new AcDbPoint(point), true)
 {
 }
 
 PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbPoint::PyDbPoint(openAcDbObject<AcDbPoint>(id, mode), false)
+    : PyDbPoint(openAcDbObject<AcDbPoint>(id, mode), false)
 {
 }
 

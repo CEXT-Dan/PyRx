@@ -130,8 +130,7 @@ boost::python::list PyAcadObject::xdata(const std::string& appName) const
 void PyAcadObject::setXdata(const boost::python::object& pylist) const
 {
     TypedVariants tvs;
-    size_t listSize = boost::python::len(pylist);
-    for (size_t idx = 0; idx < listSize; idx++)
+    for (size_t idx = 0, listSize = boost::python::len(pylist); idx < listSize; idx++)
     {
         tuple tpl = extract<tuple>(pylist[idx]);
         if (boost::python::len(tpl) != 2)
