@@ -21,7 +21,7 @@ void makePyAcadEntityWrapper()
         .def("isVisible", &PyAcadEntity::isVisible, DS.ARGS())
         .def("setVisible", &PyAcadEntity::setVisible, DS.ARGS({ "bVisible:bool" }))
         .def("arrayPolar", &PyAcadEntity::arrayPolar, DS.ARGS({ "numberOfObjects:int","angleToFill:float","centerPoint:PyGe.Point3d" }))
-        .def("arrayRectangular", &PyAcadEntity::arrayPolar, DS.ARGS({ "nRows:int","nColumns:int","nLevels:int","rowDist:float","colDist:float","levelDist:float" }))
+        .def("arrayRectangular", &PyAcadEntity::arrayRectangular, DS.ARGS({ "nRows:int","nColumns:int","nLevels:int","rowDist:float","colDist:float","levelDist:float" }))
         .def("highlight", &PyAcadEntity::highlight, DS.ARGS({ "bHighlight:bool" }))
         .def("copy", &PyAcadEntity::copy, DS.ARGS())
         .def("move", &PyAcadEntity::move, DS.ARGS({ "fromPoint:PyGe.Point3d","toPoint:PyGe.Point3d" }))
@@ -321,7 +321,7 @@ void makePyAcadPViewportWrapper()
         .def("setSnapSpacing", &PyAcadPViewport::setSnapSpacing, DS.ARGS({ "XSpacing:float", "YSpacing:float" }))
         .def("display", &PyAcadPViewport::display, DS.ARGS())
         .def("twistAngle", &PyAcadPViewport::twistAngle, DS.ARGS())
-        .def("setTwistAngle", &PyAcadPViewport::setTwistAngle, DS.ARGS({ "angle_value:bool" }))
+        .def("setTwistAngle", &PyAcadPViewport::setTwistAngle, DS.ARGS({ "angle_value:float" }))
         .def("lensLength", &PyAcadPViewport::lensLength, DS.ARGS())
         .def("setLensLength", &PyAcadPViewport::setLensLength, DS.ARGS({ "length_value:float" }))
         .def("removeHiddenLines", &PyAcadPViewport::removeHiddenLines, DS.ARGS())
@@ -1191,7 +1191,7 @@ void makePyAcadAttributeWrapper()
         .def("scaleFactor", &PyAcadAttribute::scaleFactor, DS.ARGS())
         .def("setScaleFactor", &PyAcadAttribute::setScaleFactor, DS.ARGS({ "factor: float" }))
         .def("obliqueAngle", &PyAcadAttribute::obliqueAngle, DS.ARGS())
-        .def("textAlignmentPoint", &PyAcadAttribute::textAlignmentPoint, DS.ARGS({ "x: float, y: float, z: float" }))
+        .def("setObliqueAngle", &PyAcadAttribute::setObliqueAngle, DS.ARGS({ "factor: float" }))
         .def("textAlignmentPoint", &PyAcadAttribute::textAlignmentPoint, DS.ARGS())
         .def("setTextAlignmentPoint", &PyAcadAttribute::setTextAlignmentPoint, DS.ARGS({ "point: PyGe.Point3d" }))
         .def("insertionPoint", &PyAcadAttribute::insertionPoint, DS.ARGS())
@@ -1995,8 +1995,8 @@ void makePyAcad3DSolidWrapper()
         .def("volume", &PyAcad3DSolid::volume, DS.ARGS())
         .def("boolean", &PyAcad3DSolid::boolean, DS.ARGS({ "val:PyAx.AcBooleanType","solid:PyAx.Acad3DSolid" }))
         .def("checkInterference", &PyAcad3DSolid::checkInterference, DS.ARGS({ "solid:PyAx.Acad3DSolid", "createInterferenceSolid:bool" }))
-        .def("sliceSolid", &PyAcad3DSolid::sliceSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d","negative:bool" }))
-        .def("sectionSolid", &PyAcad3DSolid::sectionSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d" }))
+        .def("sliceSolid", &PyAcad3DSolid::sliceSolid, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","negative:bool" }))
+        .def("sectionSolid", &PyAcad3DSolid::sectionSolid, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d" }))
         .def("solidType", &PyAcad3DSolid::solidType, DS.ARGS())
         .def("position", &PyAcad3DSolid::position, DS.ARGS())
         .def("setPosition", &PyAcad3DSolid::setPosition, DS.ARGS({ "val:PyGe.GePoint3d" }))
@@ -2393,7 +2393,7 @@ AcGeVector3d PyAcadEllipse::majorAxis() const
     return impObj()->GetMajorAxis();
 }
 
-void PyAcadEllipse::setMajorAxis(AcGeVector3d val) const
+void PyAcadEllipse::setMajorAxis(const AcGeVector3d val) const
 {
     impObj()->SetMajorAxis(val);
 }
@@ -2408,7 +2408,7 @@ AcGeVector3d PyAcadEllipse::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadEllipse::setNormal(AcGeVector3d val) const
+void PyAcadEllipse::setNormal(const AcGeVector3d val) const
 {
     impObj()->SetNormal(val);
 }
@@ -3766,12 +3766,12 @@ void PyAcadSpline::addFitPoint(int index, const AcGePoint3d& val) const
 
 void PyAcadSpline::deleteFitPoint(int index) const
 {
-    return impObj()->DeleteFitPoint(index);
+    impObj()->DeleteFitPoint(index);
 }
 
 void PyAcadSpline::elevateOrder(int index) const
 {
-    return impObj()->ElevateOrder(index);
+    impObj()->ElevateOrder(index);
 }
 
 boost::python::list PyAcadSpline::offset(double val) const
@@ -3785,12 +3785,12 @@ boost::python::list PyAcadSpline::offset(double val) const
 
 void PyAcadSpline::purgeFitData() const
 {
-    return impObj()->PurgeFitData();
+    impObj()->PurgeFitData();
 }
 
 void PyAcadSpline::reverse() const
 {
-    return impObj()->Reverse();
+    impObj()->Reverse();
 }
 
 boost::python::list PyAcadSpline::knots() const
