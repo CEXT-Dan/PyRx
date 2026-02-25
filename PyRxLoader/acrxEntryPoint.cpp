@@ -348,10 +348,10 @@ public:
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
 #endif
             {
-                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAddLower.c_str()));
                 return false;
             }
-            appendLog(std::format(_T("added path @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
+            appendLog(std::format(_T("added path @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAddLower.c_str()));
         }
         return true;
     }
