@@ -1,14 +1,5 @@
 #pragma once
 
-#include <algorithm>
-#include <cmath>
-#include <exception>
-#include <iostream>
-#include <limits>
-#include <memory>
-#include <utility>
-#include <vector>
-
 namespace delaunator {
 
     //@see https://stackoverflow.com/questions/33333363/built-in-mod-vs-custom-mod-function-improve-the-performance-of-modulus-op/33333636#33333636
