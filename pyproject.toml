@@ -13,10 +13,14 @@ version = { attr = "pyrx.__version__" }
 name = "cad-pyrx"
 dynamic = ["version"]
 authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
-description = "Python for Autocad® and Clones."
+description = "High-performance Python for AutoCAD automation and ObjectARX. A modern, fast replacement for pyautocad and ActiveX/COM."
 readme = "PYPI_README.md"
 requires-python = ">=3.12.0,<3.13.0"
 keywords = [
+    "automation", 
+    "ObjectARX", 
+    "automation-script", 
+    "high-performance",
     "AutoCAD",
     "BricsCAD",
     "GStarCAD",
