@@ -30,6 +30,22 @@ class TestAxObject:
         ent.setXdata(xdin)
         assert xdin == ent.xdata("PYRX_TESTXD")
 
+    def test_object_name(self):
+        axSpace = self.axDoc.modelSpace()
+        line = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
+        assert line.objectName() == "AcDbLine"
+
+        pnt = axSpace.addPoint(Ge.Point3d(0, 0, 0))
+        assert pnt.objectName() == "AcDbPoint"
+
+    def test_object_id(self):
+        axSpace = self.axDoc.modelSpace()
+        line = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
+        assert line.objectId().isNull() == False
+
+        pnt = axSpace.addPoint(Ge.Point3d(0, 0, 0))
+        assert pnt.objectId().isNull() == False
+
     @pytest.mark.known_failure_IRX
     def test_extensionDictionary(self):
         axSpace = self.axDoc.modelSpace()
@@ -39,7 +55,7 @@ class TestAxObject:
             (10, Ge.Point3d(4.00000000000000, 5.00000000000000, 6.00000000000000)),
         ]
         xdict = ent.extensionDictionary()
-        xrec = xdict.addXRecord("PYRX_XREC_KEY") #fail
+        xrec = xdict.addXRecord("PYRX_XREC_KEY")  # fail
         xrec.setXRecordData(data)
         xrecout = Ax.AcadXRecord.cast(xdict.object("PYRX_XREC_KEY"))
         assert xrecout.xrecordData() == data
