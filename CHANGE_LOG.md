@@ -1,3 +1,14 @@
+## v2.2.46
+
+* [#474] I added a new command PYRXLOADENV. A helper function for troubleshooting.
+* Fix AcadEntity.arrayRectangular called AcadEntity.arrayPolar
+* fix bad stub for AcadPViewport. setTwistAngle
+* fix bad def for AcadAttribute. textAlignmentPoint
+* improve hashing for AcGePoint3d
+* [#472] combine Db.BlockReference and Db.DynBlockReference, functions that are in DynBlockReference throw if the ref is opened for write
+* [#469] fix bad docstring
+* Added lots of unit tests
+
 ## v2.2.45
 
 * [#468] fix Db.registerApp() always registers in the current database

@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge
+
+from pyrx import Ap, Db, Ge
 
 """
 The AcDbMInsertBlock class represents a special form of the INSERT entity in which an array
