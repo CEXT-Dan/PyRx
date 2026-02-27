@@ -4303,7 +4303,7 @@ class BlockReference(PyDb.Entity):
         Acad::eInvalidInput. Returns Acad::eOk if successful.
         """
     def getBlockName(self, /) -> str: ...
-    def getBlockProperties(self, /) -> list:
+    def getBlockProperties(self, /) -> list[PyDb.DynBlockReferenceProperty]:
         """
         Returns a collection of AcDbDynBlockReferenceProperty instances referencing dynamic block
         properties on the AcDbBlockReference. If the AcDbBlockReference contains no dynamic
@@ -4844,7 +4844,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         acceptable.
         """
     def visibleObjectIdArray(self, /) -> ObjectIdArray: ...
-    def visibleObjectIds(self, /) -> list: ...
+    def visibleObjectIds(self, /) -> list[PyDb.ObjectId]: ...
     def xrefDatabase(self, val: bool, /) -> Database:
         """
         This function returns a pointer to the AcDbDatabase that defines this block table record's

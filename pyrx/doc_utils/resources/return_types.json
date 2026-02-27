@@ -2793,7 +2793,14 @@
         [
             "PyGe::Point3dTree::radiusSearch",
             "tuple[list[int],list[int]]"
+        ],
+        [
+            "PyDb::BlockReference::getBlockProperties",
+            "list[PyDb.DynBlockReferenceProperty]"
+        ],
+        [
+            "PyDb::BlockTableRecord::visibleObjectIds",
+            "list[PyDb.ObjectId]"
         ]
     ]
 }
-
