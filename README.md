@@ -96,48 +96,24 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 ## ARX sample
 
 ```py
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Sm
 import traceback
+from pyrx import Ap, Db
 
- # these four (Optional) functions are called as they would be in ARX
-def OnPyInitApp():
-    print("\nOnPyInitApp")
-    print("\ncommand = pydoit")
 
-def OnPyUnloadApp():
-    print("\nOnPyUnloadApp")
-
-def OnPyLoadDwg():
-    print("\nOnPyLoadDwg")
-
-def OnPyUnloadDwg():
-    print("\nOnPyUnloadDwg")
-
- # function decorator adds AutoCAD commands
 @Ap.Command()
 def doit():
     try:
-        db = Db.HostApplicationServices().workingDatabase()
-
-        # create a line
-        line = Db.Line()
-        line.setDatabaseDefaults()
-
-        # use Ge point
-        line.setStartPoint(Ge.Point3d(0, 0, 0))
-        line.setEndPoint(Ge.Point3d(100, 100, 0))
-
-        # set a color
-        color = Db.Color()
-        color.setRGB(255, 255, 0)
-        line.setColor(color)
-
-        # open modelspace for write and add the entity
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        model.appendAcDbEntity(line)
-
+        db = Db.curDb()
+        model = db.modelSpace()
+        for id in model.objectIds(Db.BlockReference.desc()):
+            ref = Db.BlockReference(id)
+            if not ref.isDynamicBlock():
+                continue
+            for prop in ref.getBlockProperties():
+                print(prop.propertyName(), prop.propertyType(), prop.value())
     except Exception:
         traceback.print_exc()
+
 ```
 
 ## ActiveX sample
