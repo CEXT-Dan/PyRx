@@ -183,7 +183,7 @@ def mycommand():
 
 
 @Ap.Command("mycommand2", Ap.CmdFlags.TRANSPARENT)
-def foo(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+def foo():
     """
     Transparent command that prints "Hello world too!".
     
