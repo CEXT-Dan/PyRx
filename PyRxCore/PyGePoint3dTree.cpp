@@ -305,21 +305,8 @@ public:
         : m_delaunator(create(py_list_to_std_vector<AcGePoint3d>(points)))
     {
     }
-    ~PyGeDelaunator() = default;
 
-    static std::vector<double> create(const PyGePoint3dArray& points)
-    {
-        if (points.size() < 3)
-            PyThrowBadEs(eInvalidInput);
-        std::vector<double> coords;
-        coords.reserve(points.size() * 2);
-        for (const auto& item : points)
-        {
-            coords.emplace_back(item.x);
-            coords.emplace_back(item.y);
-        }
-        return coords;
-    }
+    ~PyGeDelaunator() = default;
 
     boost::python::list triangles() const
     {
@@ -341,6 +328,20 @@ public:
     static std::string className()
     {
         return "Delaunator";
+    }
+
+    static std::vector<double> create(const PyGePoint3dArray& points)
+    {
+        if (points.size() < 3)
+            PyThrowBadEs(eInvalidInput);
+        std::vector<double> coords;
+        coords.reserve(points.size() * 2);
+        for (const auto& item : points)
+        {
+            coords.emplace_back(item.x);
+            coords.emplace_back(item.y);
+        }
+        return coords;
     }
     //
     delaunator::Delaunator m_delaunator;
