@@ -11,6 +11,8 @@
 
 using namespace boost::python;
 
+constexpr const char* enstselstr = "\nSelect entity:\t";
+
 #ifdef BRXAPP
 void ads_regen(void);
 
@@ -120,9 +122,12 @@ void makePyEditorWrapper()
         "- prompt: str, selpt: PyGe.Point3d, flags: int\n";
 
     constexpr const std::string_view entselOverloads = "Overloads:\n"
+        "- None: Any\n"
         "- prompt: str\n"
         "- prompt: str, eType: PyRx.RxClass\n"
-        "- prompt: str, eTypes: list[PyRx.RxClass]\n";
+        "- prompt: str, eTypes: list[PyRx.RxClass]\n"
+        "- eType : PyRx.RxClass\n"
+        "- eTypes: list[PyRx.RxClass]\n";
 
     PyDocString DS("Editor");
     class_<PyAcEditor>("Editor")
@@ -144,9 +149,12 @@ void makePyEditorWrapper()
         .def("getPoint", &PyAcEditor::getPoint2, DS.SOVRL(getPointOverloads, 10870)).staticmethod("getPoint")
         .def("getDist", &PyAcEditor::getDist1)
         .def("getDist", &PyAcEditor::getDist2, DS.SOVRL(getPointOverloads, 10852)).staticmethod("getDist")
+        .def("entSel", &PyAcEditor::entSel0)
         .def("entSel", &PyAcEditor::entSel1)
         .def("entSel", &PyAcEditor::entSel2)
-        .def("entSel", &PyAcEditor::entSel3, DS.SOVRL(entselOverloads, 10813)).staticmethod("entSel")
+        .def("entSel", &PyAcEditor::entSel3)
+        .def("entSel", &PyAcEditor::entSel4)
+        .def("entSel", &PyAcEditor::entSel5, DS.SOVRL(entselOverloads, 10813)).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
         .def("nEntSelP", &PyAcEditor::nEntSelP2, DS.SARGS({ "prompt: str","selpt: PyGe.Point3d = ..." })).staticmethod("nEntSelP")
         .def("nEntSelPEx", &PyAcEditor::nEntSelPEx1)
@@ -188,7 +196,6 @@ void makePyEditorWrapper()
         .def("className", &PyAcEditor::className, DS.SARGS()).staticmethod("className")
         ;
 }
-
 
 //-----------------------------------------------------------------------------------------
 // PyAcEditor
@@ -388,6 +395,11 @@ static boost::python::tuple entSelFilterList(const std::string& prompt, const Ac
     return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
 }
 
+boost::python::tuple PyAcEditor::entSel0()
+{
+    return entSelFilter(enstselstr, AcDbEntity::desc());
+}
+
 boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
 {
     return entSelFilter(prompt, AcDbEntity::desc());
@@ -402,6 +414,17 @@ boost::python::tuple PyAcEditor::entSel3(const std::string& prompt, const boost:
 {
     const auto& classes = PyListToAcRxClassArray(filter);
     return entSelFilterList(prompt, classes);
+}
+
+boost::python::tuple PyAcEditor::entSel4(const boost::python::list& filter)
+{
+    const auto& classes = PyListToAcRxClassArray(filter);
+    return entSelFilterList(enstselstr, classes);
+}
+
+boost::python::tuple PyAcEditor::entSel5(const PyRxClass& desc)
+{
+    return entSelFilter(enstselstr, desc.impObj());
 }
 
 static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, int opt)
