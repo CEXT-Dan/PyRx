@@ -1646,9 +1646,20 @@ PyDbViewTableRecord EdCore::getCurrentView()
     rt = ads_trans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint);
     view->setViewDirection(asVec3d(var.resval.rpoint));
 
+
     rt = ads_getvar(L"VIEWSIZE", &var);
     view->setHeight(var.resval.rreal);
-    view->setWidth(var.resval.rreal);
+
+    resbuf rbScreen;
+    if (acedGetVar(_T("SCREENSIZE"), &rbScreen) == RTNORM) 
+    {
+        double pixelX = rbScreen.resval.rpoint[X];
+        double pixelY = rbScreen.resval.rpoint[Y];
+        if (pixelY != 0) 
+        {
+            view->setWidth(var.resval.rreal * (pixelX / pixelY));
+        }
+    }
 
     rt = ads_getvar(L"VIEWTWIST", &var);
     view->setViewTwist(var.resval.rreal);
