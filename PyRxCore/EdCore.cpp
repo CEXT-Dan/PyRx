@@ -1617,51 +1617,44 @@ PyDbViewTableRecord EdCore::getCurrentView()
     DCS.restype = RTSHORT;
     DCS.resval.rint = 2;
 
-    int rt = RTNORM;
-    rt = ads_getvar(L"VIEWMODE", &var);
-
+    PyThrowBadRt(acedGetVar(L"VIEWMODE", &var));
     view->setPerspectiveEnabled(var.resval.rint & 1);
     view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
     view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
     view->setFrontClipAtEye(!(var.resval.rint & 16));
 
-    rt = ads_getvar(L"BACKZ", &var);
+    PyThrowBadRt(acedGetVar(L"BACKZ", &var));
     view->setBackClipDistance(var.resval.rreal);
 
-    rt = ads_getvar(L"FRONTZ", &var);
+    PyThrowBadRt(acedGetVar(L"FRONTZ", &var));
     view->setFrontClipDistance(var.resval.rreal);
 
-    rt = ads_getvar(L"VIEWCTR", &var);
-    rt = ads_trans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint);
+    PyThrowBadRt(acedGetVar(L"VIEWCTR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint));
     view->setCenterPoint(asPnt2d(var.resval.rpoint));
 
-    rt = ads_getvar(L"LENSLENGTH", &var);
+    PyThrowBadRt(acedGetVar(L"LENSLENGTH", &var));
     view->setLensLength(var.resval.rreal);
 
-    rt = ads_getvar(L"TARGET", &var);
-    rt = ads_trans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint);
+    PyThrowBadRt(acedGetVar(L"TARGET", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint));
     view->setTarget(asPnt3d(var.resval.rpoint));
 
-    rt = ads_getvar(L"VIEWDIR", &var);
-    rt = ads_trans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint);
+    PyThrowBadRt(acedGetVar(L"VIEWDIR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint));
     view->setViewDirection(asVec3d(var.resval.rpoint));
 
-
-    rt = ads_getvar(L"VIEWSIZE", &var);
+    PyThrowBadRt(acedGetVar(L"VIEWSIZE", &var));
     view->setHeight(var.resval.rreal);
 
     resbuf rbScreen;
-    if (acedGetVar(_T("SCREENSIZE"), &rbScreen) == RTNORM) 
-    {
-        double pixelX = rbScreen.resval.rpoint[X];
-        double pixelY = rbScreen.resval.rpoint[Y];
-        if (pixelY != 0) 
-        {
-            view->setWidth(var.resval.rreal * (pixelX / pixelY));
-        }
-    }
+    PyThrowBadRt(acedGetVar(_T("SCREENSIZE"), &rbScreen));
+    double pixelX = rbScreen.resval.rpoint[X];
+    double pixelY = rbScreen.resval.rpoint[Y];
+    if (pixelY != 0)
+        view->setWidth(var.resval.rreal * (pixelX / pixelY));
 
-    rt = ads_getvar(L"VIEWTWIST", &var);
+    PyThrowBadRt(acedGetVar(L"VIEWTWIST", &var));
     view->setViewTwist(var.resval.rreal);
 
     return PyDbViewTableRecord(view, true);
