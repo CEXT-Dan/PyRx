@@ -485,12 +485,8 @@ boost::python::dict EdCore::getCommands()
     PyAutoLockGIL lock;
     boost::python::dict Pydict;
     std::map<std::string, boost::python::list> pyMap;
-    std::unique_ptr<AcEdCommandIterator>iter(acedRegCmds->iterator());
-    if (iter == nullptr)
-        return Pydict;
-    //AutoCAD has duplicates in the iterator?
     std::unordered_set<const AcEdCommand*> cmdSet;
-    for (; !iter->done(); iter->next())
+    for (AcEdCommandIteratorPtr iter(acedRegCmds->iterator()); !iter->done(); iter->next())
     {
         const auto cmd = iter->command();
         if (cmdSet.contains(cmd))

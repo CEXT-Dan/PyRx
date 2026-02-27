@@ -306,6 +306,8 @@ constexpr auto makeAcDbSymbolTableIterator = makeIterator<AcDbSymbolTableIterato
 constexpr auto makeBlockTableIterator = makeIterator<AcDbBlockTableIterator>;
 constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordIterator>;
 
+using AcEdCommandIteratorPtr = std::unique_ptr<AcEdCommandIterator>;
+
 constexpr bool isInt16_t(int32_t val) noexcept
 {
     return val >= std::numeric_limits<int16_t>::min() &&
