@@ -27,7 +27,7 @@ Requirements:
 
 import traceback
 
-from pyrx_imp import Ap, Ax
+from pyrx import Ap, Ax
 
 # --- Registering Commands ---
 print("added command PYAX_GETENT")
