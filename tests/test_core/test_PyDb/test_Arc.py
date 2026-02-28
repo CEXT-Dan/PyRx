@@ -114,7 +114,7 @@ class TestDbArc:
     def test_set_normal(self):
         """Test setNormal method"""
         arc = Db.Arc(Ge.Point3d(0, 0, 0), 10.0, 0.0, 1.5708)
-        normal = Ge.Vector3d(0, 0, 1)
+        normal = Ge.Vector3d.kYAxis
         arc.setNormal(normal)
         assert arc.normal() == normal
 
