@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+import math
 from pyrx import Db, Ge
 
 
@@ -7,9 +7,11 @@ class TestDbArc:
 
     def test_create_three_points(self):
         """Test constructor with three points"""
-        arc = Db.Arc(Ge.Point3d(0, 0, 0), Ge.Point3d(50, -50, 0), Ge.Point3d(100, 0, 0))
-        assert arc.center() is not None
-        assert isinstance(arc.radius(), float)
+        arc = Db.Arc(Ge.Point3d(10, 0, 0), Ge.Point3d(0, 10, 0), Ge.Point3d(-10, 0, 0))
+        assert arc.center() == Ge.Point3d.kOrigin
+        assert arc.radius() == 10
+        assert arc.startAngle() == 0
+        assert arc.endAngle() == math.radians(180)
 
     def test_create_center_radius_angles(self):
         """Test constructor with center, radius, startAngle, endAngle"""
