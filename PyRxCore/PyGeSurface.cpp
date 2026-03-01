@@ -617,17 +617,21 @@ void PyGeCylinder::set2(double radius, const AcGePoint3d& origin, const AcGeVect
 
 boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEnt) const
 {
-    PyAutoLockGIL lock;
-    int intn = 0;
-    AcGePoint3d p1;
-    AcGePoint3d p2;
-    auto res = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
-    return boost::python::make_tuple(res, intn, p1, p2);
+    return intersectWith2(linEnt, AcGeContext::gTol);
 }
 
 boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
+#if defined(_ARXTARGET)
+    AcGeInterval vInterval;
+    impObj()->getHeight(vInterval);
+    auto b = vInterval.isUnBounded();
+    auto v = linEnt.impObj()->direction();
+    auto u = impObj()->axisOfSymmetry();
+    if(b && u.isParallelTo(v, tol))
+        return boost::python::make_tuple(Adesk::kFalse, 0, AcGePoint3d::kOrigin, AcGePoint3d::kOrigin);
+#endif
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
