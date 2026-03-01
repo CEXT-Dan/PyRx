@@ -32,8 +32,7 @@ class TestCylinder:
         assert p1 == Ge.Point3d(0, 10, 0)
         assert p2 == Ge.Point3d(0, 0, 0)
 
-    @pytest.mark.known_failure_ARX
-    def test_intersect_with_refaxis(self):
+    def test_intersect_with_axisOfSymmetry(self):
         v = Ge.Point3d(0, 0, -50) - Ge.Point3d(0, 0, 50)
         c = Ge.Cylinder(10, Ge.Point3d(0, 0, 0), v)
 
