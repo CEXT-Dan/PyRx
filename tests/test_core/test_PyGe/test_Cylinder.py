@@ -7,7 +7,7 @@ from pyrx import Ge
 
 class TestCylinder:
 
-    def test_intersect_with(self):
+    def test_intersect_with_unbounded(self):
         v = Ge.Point3d(0, 0, -50) - Ge.Point3d(0, 0, 50)
         c = Ge.Cylinder(10, Ge.Point3d(0, 0, 0), v)
 
@@ -31,11 +31,7 @@ class TestCylinder:
         assert i == 1
         assert p1 == Ge.Point3d(0, 10, 0)
         assert p2 == Ge.Point3d(0, 0, 0)
-
-    def test_intersect_with_axisOfSymmetry(self):
-        v = Ge.Point3d(0, 0, -50) - Ge.Point3d(0, 0, 50)
-        c = Ge.Cylinder(10, Ge.Point3d(0, 0, 0), v)
-
+        
         s = Ge.LineSeg3d(Ge.Point3d(0, 0, 100), Ge.Point3d(0, 0, -100))
         b, i, p1, p2 = c.intersectWith(s)
         assert b == False
