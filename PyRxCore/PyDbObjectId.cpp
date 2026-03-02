@@ -169,13 +169,7 @@ bool PyDbObjectId::isResident() const
 
 bool PyDbObjectId::isValid() const
 {
-    static bool flag = false;
-    if (!flag)
-    {
-        flag = true;
-        acutPrintf(_T("\nObjectId::isValid is depreciated and will be removed soon: "));
-    }
-    return m_id.isValid();
+    return m_id.originalDatabase() != nullptr;
 }
 
 bool PyDbObjectId::isWellBehaved() const
