@@ -42,57 +42,7 @@ class TestGeInterval:
         interval = Ge.Interval(0.0, 10.0)
         assert interval.length() == 10.0
 
-    # --- Comparison Operators ---
-
-
-    # def test_is_greater_or_equal(self):
-    #     """Test the isGreaterOrEqual method."""
-    #     # Citation 1: def isGreaterOrEqual(self, val: Ge.Interval | float, /) -> bool: ...
-    #     # Citation 2: def isGreaterOrEqual(self, val: Ge.Interval | float, /) -> bool: ...
-    #     interval_a = Ge.Interval(10.0, 20.0)
-    #     interval_b = Ge.Interval(10.0, 20.0)
-        
-    #     assert interval_a.isGreaterOrEqual(interval_b) == False
-    #     assert interval_a.isGreaterOrEqual(5.0) == True
-
-    # def test_is_less(self):
-    #     """Test the isLess method."""
-    #     # Citation 1: def isLess(self, val: Ge.Interval | float, /) -> bool: ...
-    #     # Citation 2: def isLess(self, val: Ge.Interval | float, /) -> bool: ...
-    #     interval_a = Ge.Interval(1.0, 2.0)
-    #     interval_b = Ge.Interval(3.0, 4.0)
-        
-    #     assert interval_a.isLess(interval_b) == True
-    #     assert interval_a.isLess(5.0) == True
-
-    # def test_is_less_or_equal(self):
-    #     """Test the isLessOrEqual method."""
-    #     # Citation 2: def isLessOrEqual(self, val: Ge.Interval | float, /) -> bool: ...
-    #     interval_a = Ge.Interval(1.0, 2.0)
-    #     interval_b = Ge.Interval(1.0, 2.0)
-        
-    #     assert interval_a.isLessOrEqual(interval_b) == True
-
-    # def test_is_equal_at_lower(self):
-    #     """Test the isEqualAtLower method."""
-    #     # Citation 1: def isEqualAtLower(self, val: Ge.Interval | float, /) -> bool: ...
-    #     interval_a = Ge.Interval(5.0, 10.0)
-    #     interval_b = Ge.Interval(5.0, 15.0)
-        
-    #     assert interval_a.isEqualAtLower(interval_b) == True
-    #     assert interval_a.isEqualAtLower(5.0) == True
-
-    # def test_is_equal_at_upper(self):
-    #     """Test the isEqualAtUpper method."""
-    #     # Citation 1: def isEqualAtUpper(self, val: Ge.Interval | float, /) -> bool: ...
-    #     interval_a = Ge.Interval(5.0, 10.0)
-    #     interval_b = Ge.Interval(5.0, 10.0)
-        
-    #     assert interval_a.isEqualAtUpper(interval_b) == True
-    #     assert interval_a.isEqualAtUpper(10.0) == True
-
-    # --- Containment and Intersection ---
-
+    # --- Comparison Operators --
     def test_contains(self):
         """Test the contains method."""
         # Citation 1: def contains(self, val: Ge.Interval | float, /) -> bool: ...
