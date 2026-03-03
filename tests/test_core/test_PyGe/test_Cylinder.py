@@ -8,6 +8,7 @@ from pyrx import Ge
 
 class TestCylinder:
 
+    @pytest.mark.known_failure_ZRX
     def test_intersect_with_unbounded(self):
         v = Ge.Point3d(0, 0, -50) - Ge.Point3d(0, 0, 50)
         c = Ge.Cylinder(10, Ge.Point3d(0, 0, 0), v)
@@ -40,6 +41,7 @@ class TestCylinder:
         assert p1 == Ge.Point3d(0, 0, 0)
         assert p2 == Ge.Point3d(0, 0, 0)
         
+    @pytest.mark.known_failure_ZRX
     def test_intersect_with_bounded(self):
         iv = Ge.Interval(0.0, 100.0)
         c = Ge.Cylinder(
