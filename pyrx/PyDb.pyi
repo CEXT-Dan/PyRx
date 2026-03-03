@@ -21609,9 +21609,7 @@ class ObjectId:
         """
     def isValid(self, /) -> bool:
         """
-        This function returns true if the object ID is associated with a database that is currently
-        in memory. If the object ID is associated with a database that is no longer available (in
-        other words, has been deleted), then false is returned.
+        depreciated in 2027 SDK, Now checks the id with originalDatabase() != nullptr
         """
     def isWellBehaved(self, /) -> bool:
         """
