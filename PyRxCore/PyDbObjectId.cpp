@@ -169,7 +169,9 @@ bool PyDbObjectId::isResident() const
 
 bool PyDbObjectId::isValid() const
 {
-    return m_id.originalDatabase() != nullptr;
+    if (!m_id.isNull())
+        return m_id.originalDatabase() != nullptr;
+    return false;
 }
 
 bool PyDbObjectId::isWellBehaved() const
