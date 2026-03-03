@@ -21609,7 +21609,8 @@ class ObjectId:
         """
     def isValid(self, /) -> bool:
         """
-        depreciated in 2027 SDK, Now checks the id with originalDatabase() != nullptr
+        depreciated in 2027 SDK, SDK >= 2027 checks the id with originalDatabase() != nullptr,
+        otherwise calls isvalid
         """
     def isWellBehaved(self, /) -> bool:
         """

@@ -169,9 +169,13 @@ bool PyDbObjectId::isResident() const
 
 bool PyDbObjectId::isValid() const
 {
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
     if (!m_id.isNull())
         return m_id.originalDatabase() != nullptr;
     return false;
+#else
+    return m_id.isValid();
+#endif
 }
 
 bool PyDbObjectId::isWellBehaved() const

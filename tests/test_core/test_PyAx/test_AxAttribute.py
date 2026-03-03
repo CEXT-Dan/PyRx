@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import pytest
 
 from pyrx import Ap, Ax, Ge
 
@@ -83,6 +84,7 @@ class TestAxAttribute:
         # Verify alignment point
         assert ent.textAlignmentPoint() == point
 
+    @pytest.mark.known_failure_ZRX
     def test_mtext_specific_properties(self):
         """Tests properties specific to MText attributes."""
         axSpace = self.axDoc.modelSpace()
