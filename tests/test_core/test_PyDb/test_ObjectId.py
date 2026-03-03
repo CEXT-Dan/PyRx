@@ -52,6 +52,16 @@ class TestDbObjectId:
         ids.append(db.modelSpaceId())
         filteredIds = ids.getIdsOfType([Db.BlockTableRecord.desc()])
         assert len(filteredIds) == 1
+        
+    def test_isvalid(self):
+        def assign():
+            db = Db.Database()
+            return db.modelSpaceId()
+        id = assign()
+        assert id.isValid() == False
+
+        
+    
 
         
 
