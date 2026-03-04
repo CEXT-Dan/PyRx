@@ -149,4 +149,43 @@ public:
     mutable bool reg_getOsnapPointsXform = true;
 };
 
+//-----------------------------------------------------------------------------------------
+//PyDbGripOverrule
+void makePyDbGripOverruleWrapper();
+
+class PyDbGripOverrule : public PyRxOverrule, public AcDbGripOverrule, public boost::python::wrapper<PyDbGripOverrule>
+{
+public:
+    PyDbGripOverrule();
+    virtual ~PyDbGripOverrule() override = default;
+
+    virtual bool		        isApplicable(const AcRxObject* pOverruledSubject) const override;
+
+    virtual Acad::ErrorStatus   getGripPoints(const AcDbEntity* pSubject, AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds) override;
+    virtual Acad::ErrorStatus   moveGripPointsAt(AcDbEntity* pSubject, const AcDbIntArray& indices, const AcGeVector3d& offset) override;
+    virtual Acad::ErrorStatus   getStretchPoints(const AcDbEntity* pSubject, AcGePoint3dArray& stretchPoints) override;
+    virtual Acad::ErrorStatus   moveStretchPointsAt(AcDbEntity* pSubject, const AcDbIntArray& indices, const AcGeVector3d& offset) override;
+    virtual void                gripStatus(AcDbEntity* pSubject, const AcDb::GripStat status) override;
+
+    bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
+    Acad::ErrorStatus   getGripPointsWr(const PyDbEntity& pSubject, boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds);
+    Acad::ErrorStatus   moveGripPointsAtsWr(const PyDbEntity& pSubject, boost::python::list& indices, const AcGeVector3d& offset);
+    Acad::ErrorStatus   getStretchPointsWr(const PyDbEntity& pSubject, boost::python::list& stretchPoints);
+    Acad::ErrorStatus   moveStretchPointsAt(const PyDbEntity& pSubject, const boost::python::list& indices, const AcGeVector3d& offset);
+    void                gripStatusWr(const PyDbEntity& pSubject, const AcDb::GripStat status);
+
+
+    static std::string  className();
+    static PyRxClass    desc();
+public:
+    AcDbOsnapOverrule* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    mutable bool reg_isApplicable = true;
+    mutable bool reg_getGripPoints = true;
+    mutable bool reg_moveGripPointsAt = true;
+    mutable bool reg_getStretchPoints = true;
+    mutable bool reg_moveStretchPointsAt = true;
+};
+
 #pragma pack (pop)
