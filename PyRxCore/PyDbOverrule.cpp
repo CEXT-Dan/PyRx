@@ -584,6 +584,8 @@ void makePyDbGripOverruleWrapper()
         ;
 }
 
+static std::mutex PyDbGripOverruleMutex;
+
 PyDbGripOverrule::PyDbGripOverrule()
     : PyRxOverrule(this)
 {
@@ -592,7 +594,7 @@ PyDbGripOverrule::PyDbGripOverrule()
 bool PyDbGripOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
 #ifdef BRXAPP
-    std::lock_guard<std::mutex> lk(PyDbOsnapOverruleMutex);
+    std::lock_guard<std::mutex> lk(PyDbGripOverruleMutex);
 #endif // BRXAPP
     if (!reg_isApplicable)
         return false;
@@ -602,10 +604,21 @@ bool PyDbGripOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 
 Acad::ErrorStatus PyDbGripOverrule::getGripPoints(const AcDbEntity* pSubject, AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds)
 {
+    if (!reg_getGripPoints)
+        return eNotImplemented;;
     PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
     obj.forceKeepAlive(true);
-
-    return eInvalidInput;
+    boost::python::list pygripPoints;
+    boost::python::list pyosnapModes;
+    boost::python::list pygeomIds;
+    auto es = this->getGripPointsWr(obj, pygripPoints, pyosnapModes, pygeomIds);
+    for (const auto& item : PyListToPoint3dArray(pygripPoints))
+        gripPoints.append(item);
+    for (const auto& item : PyListToInt32Array(pyosnapModes))
+        osnapModes.append(item);
+    for (const auto& item : PyListToInt32Array(pygeomIds))
+        geomIds.append(item);
+    return es;
 }
 
 Acad::ErrorStatus PyDbGripOverrule::moveGripPointsAt(AcDbEntity* pSubject, const AcDbIntArray& indices, const AcGeVector3d& offset)
@@ -613,7 +626,7 @@ Acad::ErrorStatus PyDbGripOverrule::moveGripPointsAt(AcDbEntity* pSubject, const
     PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
     obj.forceKeepAlive(true);
 
-    return eInvalidInput;
+    return eNotImplemented;
 }
 
 Acad::ErrorStatus PyDbGripOverrule::getStretchPoints(const AcDbEntity* pSubject, AcGePoint3dArray& stretchPoints)
@@ -621,7 +634,7 @@ Acad::ErrorStatus PyDbGripOverrule::getStretchPoints(const AcDbEntity* pSubject,
     PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
     obj.forceKeepAlive(true);
 
-    return eInvalidInput;
+    return eNotImplemented;
 }
 
 Acad::ErrorStatus PyDbGripOverrule::moveStretchPointsAt(AcDbEntity* pSubject, const AcDbIntArray& indices, const AcGeVector3d& offset)
@@ -629,7 +642,7 @@ Acad::ErrorStatus PyDbGripOverrule::moveStretchPointsAt(AcDbEntity* pSubject, co
     PyDbEntity obj(const_cast<AcDbEntity*>(pSubject), false);
     obj.forceKeepAlive(true);
 
-    return eInvalidInput;
+    return eNotImplemented;
 }
 
 void PyDbGripOverrule::gripStatus(AcDbEntity* pSubject, const AcDb::GripStat status)
@@ -655,6 +668,24 @@ bool PyDbGripOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) const
         reg_isApplicable = false;
     }
     return false;
+}
+
+Acad::ErrorStatus PyDbGripOverrule::getGripPointsWr(const PyDbEntity& pSubject, boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("getGripPoints"))
+            return f(pSubject, gripPoints, osnapModes, geomIds);
+        reg_getGripPoints = false;
+        return eNotImplemented;
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_getGripPoints = false;
+    }
+    return eNotImplemented;
 }
 
 std::string PyDbGripOverrule::className()
