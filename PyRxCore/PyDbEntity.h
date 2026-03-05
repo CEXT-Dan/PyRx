@@ -104,7 +104,11 @@ public:
     void                pushHighlight(const PyDbFullSubentPath& subId, AcGiHighlightStyle highlightStyle)const;
 #endif
     PyDbEntity          subentPtr(const PyDbFullSubentPath& subId) const;
-    static std::string  className();
+
+    void                moveGripPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const;
+    void                moveStretchPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const;
+
+        static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
     static PyDbEntity   cast(const PyRxObject& src);

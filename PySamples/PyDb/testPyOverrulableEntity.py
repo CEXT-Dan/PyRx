@@ -5,7 +5,7 @@ from pyrx import Ap, Db, Ge, Gi
 
 def OnPyInitApp() -> None:
     print("\ncommand = pycreateoverrule")
-    print("\ncommand = pydrawoverrule")
+    print("\ncommand = pystartoverrule")
     print("\ncommand = pystopoverrule")
 
 
@@ -28,7 +28,7 @@ class OrDrawOverrule(Gi.DrawableOverrule):
             # draw the subject first
             flag = self.baseWorldDraw(subject, wd)
 
-            # cast subject to a line
+            # cast subject
             ore = Db.OverrulableEntity.cast(subject)
 
             # Transparency
@@ -50,10 +50,43 @@ class OrDrawOverrule(Gi.DrawableOverrule):
             return flag
 
 
-overrulableEntityDraw = None
+class GrpOverrule(Db.GripOverrule):
+    def __init__(self) -> None:
+        Db.GripOverrule.__init__(self)
 
-def OnDblClk(ent : Db.OverrulableEntity, pnt : Ge.Point3d):
-    print(ent.isA().name(),pnt )
+    # override
+    def isApplicable(self, subject) -> bool:
+        return True
+
+    # override
+    def getGripPoints(self, subject, gripPoints : list[Ge.Point3dArray], osnapModes, geomIds) -> bool:
+        try:
+            ore = Db.OverrulableEntity.cast(subject)
+            gripPoints.extend(ore.points())
+            stat = Db.ErrorStatus.eOk
+        except Exception as err:
+            traceback.print_exception(err)
+            stat = Db.ErrorStatus.eInvalidInput
+        finally:
+            return stat
+
+    def moveGripPointsAt(self, subject, indices, offset) -> bool:
+        try:
+            print(indices, offset)
+            stat = Db.ErrorStatus.eOk
+        except Exception as err:
+            traceback.print_exception(err)
+            stat = Db.ErrorStatus.eInvalidInput
+        finally:
+            return stat
+
+
+overrulableEntityDraw = None
+overrulableEntityGrip = None
+
+
+def OnDblClk(ent: Db.OverrulableEntity, pnt: Ge.Point3d):
+    print(ent.isA().name(), pnt)
 
 @Ap.Command()
 def pycreateoverrule():
@@ -79,19 +112,33 @@ def pycreateoverrule():
 
 
 @Ap.Command()
-def pydrawoverrule():
+def pystartoverrule():
     try:
         global overrulableEntityDraw
         if overrulableEntityDraw is not None:
             return
         overrulableEntityDraw = OrDrawOverrule()
-        overrulableEntityDraw.addOverrule(Db.OverrulableEntity.desc(), overrulableEntityDraw)
+        overrulableEntityDraw.addOverrule(
+            Db.OverrulableEntity.desc(), overrulableEntityDraw
+        )
         overrulableEntityDraw.setIsOverruling(True)
+
+        global overrulableEntityGrip
+        if overrulableEntityGrip is not None:
+            return
+
+        overrulableEntityGrip = GrpOverrule()
+        overrulableEntityGrip.addOverrule(
+            Db.OverrulableEntity.desc(), overrulableEntityGrip
+        )
+        overrulableEntityGrip.setIsOverruling(True)
+
         print("overruling is on, please regen: ")
-        
+
         Db.OverrulableEntity.registerOnDoubleClick(OnDblClk)
     except Exception as err:
         traceback.print_exception(err)
+
 
 @Ap.Command()
 def pystopoverrule():
@@ -107,8 +154,21 @@ def pystopoverrule():
         ):
             overrulableEntityDraw.setIsOverruling(False)
         overrulableEntityDraw = None
+
+        global overrulableEntityGrip
+        if overrulableEntityGrip is None:
+            return
+        if (
+            overrulableEntityGrip.removeOverrule(
+                Db.OverrulableEntity.desc(), overrulableEntityGrip
+            )
+            == Db.ErrorStatus.eOk
+        ):
+            overrulableEntityGrip.setIsOverruling(False)
+        overrulableEntityGrip = None
+
         print("overruling is off, please regen: ")
-        
+
         Db.OverrulableEntity.removeOnDoubleClick(OnDblClk)
     except Exception as err:
         traceback.print_exception(err)

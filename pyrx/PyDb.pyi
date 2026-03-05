@@ -861,6 +861,7 @@ kDestinationReplaceBlock: SectionGeneration  # 32
 kDetachChildren: FieldCodeFlag  # 1024
 kDhaka: TimeZone  # 6001
 kDiameterAssocConstraintType: AssocConstraintType  # 9
+kDimDataToBeDeleted: GripStat  # 2
 kDirection: MTextFragmentType  # 2
 kDisable: FieldEvalOption  # 0
 kDisplay: PlotType  # 0
@@ -1158,6 +1159,8 @@ kGridPropLineStyle: GridProperty  # 1
 kGridPropLineWeight: GridProperty  # 2
 kGridPropLinetype: GridProperty  # 4
 kGridPropVisibility: GridProperty  # 16
+kGripsDone: GripStat  # 0
+kGripsToBeDeleted: GripStat  # 1
 kGuam: TimeZone  # 10001
 kHarare: TimeZone  # 2003
 kHasCache: FieldState  # 16
@@ -13813,6 +13816,8 @@ class Entity(PyDb.DbObject):
         """
         Returns the ID of the associated AcDbMaterial object.
         """
+    def moveGripPointsAts(self, indices: list[int], offset: PyGe.Vector3d, /) -> None: ...
+    def moveStretchPointsAt(self, indices: list[int], offset: PyGe.Vector3d, /) -> None: ...
     def plotStyleName(self, /) -> str:
         """
         This function returns a copy of the plotStyleName string of the entity. The caller is
@@ -16823,6 +16828,50 @@ class GripData:
         """
         This method sets the grip point for this grip.
         """
+
+class GripOverrule(PyRx.Overrule):
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def getGripPoints(
+        self,
+        entity: PyDb.Entity,
+        gripPoints: list[PyGe.Point3d],
+        osnapModes: list[int],
+        geomIds: list[int],
+        /,
+    ) -> tuple[list[PyGe.Point3d], list[int], list[int]]: ...
+    def getStretchPoints(
+        self, entity: PyDb.Entity, gripPoints: list[PyGe.Point3d], /
+    ) -> list[PyGe.Point3d]: ...
+    def gripStatus(self, entity: PyDb.Entity, status: PyDb.GripStat, /) -> None: ...
+    def isApplicable(self, object: PyRx.RxObject, /) -> bool: ...
+    def moveGripPointsAts(
+        self, entity: PyDb.Entity, indices: list[int], offset: PyGe.Vector3d, /
+    ) -> ErrorStatus: ...
+    def moveStretchPointsAt(
+        self, entity: PyDb.Entity, indices: list[int], offset: PyGe.Vector3d, /
+    ) -> ErrorStatus: ...
+
+class GripStat(_BoostPythonEnum):
+    kGripsDone: ClassVar[Self]  # 0
+    kGripsToBeDeleted: ClassVar[Self]  # 1
+    kDimDataToBeDeleted: ClassVar[Self]  # 2
 
 class Group(PyDb.DbObject):
     @overload

@@ -115,6 +115,8 @@ void makePyDbEntityWrapper()
 #if !defined (_BRXTARGET260)
         .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
 #endif
+        .def("moveGripPointsAts", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:list[int]","offset:PyGe.Vector3d" }))
+        .def("moveStretchPointsAt", &PyDbEntity::moveStretchPointsAt, DS.ARGS({ "indices:list[int]","offset:PyGe.Vector3d" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -632,6 +634,26 @@ void PyDbEntity::pushHighlight(const PyDbFullSubentPath& subId, AcGiHighlightSty
 PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId) const
 {
     return PyDbEntity(impObj()->subentPtr(subId.pyImp), true);
+}
+
+void PyDbEntity::moveGripPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const
+{
+#if defined (_BRXTARGET260)
+    AcArray<int> arr = PyListToIntArray(indices);
+#else
+    AcDbIntArray arr = PyListToInt32Array(indices);
+#endif
+    PyThrowBadEs(impObj()->moveGripPointsAt(arr, offset));
+}
+
+void PyDbEntity::moveStretchPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const
+{
+#if defined (_BRXTARGET260)
+    AcArray<int> arr = PyListToIntArray(indices);
+#else
+    AcDbIntArray arr = PyListToInt32Array(indices);
+#endif
+    PyThrowBadEs(impObj()->moveStretchPointsAt(arr, offset));
 }
 
 std::string PyDbEntity::className()

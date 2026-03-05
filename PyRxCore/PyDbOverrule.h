@@ -169,9 +169,9 @@ public:
 
     bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
     Acad::ErrorStatus   getGripPointsWr(const PyDbEntity& pSubject, boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds);
-    Acad::ErrorStatus   moveGripPointsAtsWr(const PyDbEntity& pSubject, boost::python::list& indices, const AcGeVector3d& offset);
+    Acad::ErrorStatus   moveGripPointsAtWr(const PyDbEntity& pSubject,const boost::python::list& indices, const AcGeVector3d& offset);
     Acad::ErrorStatus   getStretchPointsWr(const PyDbEntity& pSubject, boost::python::list& stretchPoints);
-    Acad::ErrorStatus   moveStretchPointsAt(const PyDbEntity& pSubject, const boost::python::list& indices, const AcGeVector3d& offset);
+    Acad::ErrorStatus   moveStretchPointsAtWr(const PyDbEntity& pSubject, const boost::python::list& indices, const AcGeVector3d& offset);
     void                gripStatusWr(const PyDbEntity& pSubject, const AcDb::GripStat status);
 
 
@@ -186,6 +186,7 @@ public:
     mutable bool reg_moveGripPointsAt = true;
     mutable bool reg_getStretchPoints = true;
     mutable bool reg_moveStretchPointsAt = true;
+    mutable bool reg_gripStatus = true;
 };
 
 #pragma pack (pop)
