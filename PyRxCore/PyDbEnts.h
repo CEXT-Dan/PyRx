@@ -372,6 +372,8 @@ public:
     boost::python::list vertexIds() const;
     AcGePoint3d         vertexPosition(const AcDb2dVertex& vert) const;
     void                makeClosedIfStartAndEndVertexCoincide(double distTol) const;
+    boost::python::list toPoint3dList() const;
+    PyGePoint3dArray    toPoint3dArray() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -415,6 +417,8 @@ public:
     PyGeCompositeCurve3d    getAcGeCurve1() const;
     PyGeCompositeCurve3d    getAcGeCurve2(const AcGeTol& tol) const;
     boost::python::list vertexIds() const;
+    boost::python::list toPoint3dList() const;
+    PyGePoint3dArray    toPoint3dArray() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -594,6 +598,7 @@ public:
     boost::python::list   toPoint2dList() const;
     boost::python::list   toPoint3dList() const;
     boost::python::list   toList() const;
+    PyGePoint3dArray    toPoint3dArray() const;
     bool                isPointInside(const AcGePoint3d& pnt) const;
     bool                isCCW() const;
     void                simplify(double dist) const;

@@ -1512,6 +1512,8 @@ void makePyDb2dPolylineWrapper()
         .def("vertexIds", &PyDb2dPolyline::vertexIds, DS.ARGS())
         .def("vertexPosition", &PyDb2dPolyline::vertexPosition, DS.ARGS({ "vt : PyDb.Vertex2d" }, 1194))
         .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide, DS.ARGS({ "tolerance : float" }, 1173))
+        .def("toPoint3dList", &PyDb2dPolyline::toPoint3dList, DS.ARGS())
+        .def("toPoint3dArray", &PyDb2dPolyline::toPoint3dArray, DS.ARGS())
         .def("className", &PyDb2dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb2dPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDb2dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1738,6 +1740,29 @@ void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 #endif
 }
 
+boost::python::list PyDb2dPolyline::toPoint3dList() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        ids.append(pVtx->position());
+    }
+    return ids;
+}
+
+PyGePoint3dArray PyDb2dPolyline::toPoint3dArray() const
+{
+    PyGePoint3dArray ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        ids.emplace_back(pVtx->position());
+    }
+    return ids;
+}
+
 std::string PyDb2dPolyline::className()
 {
     return "AcDb2dPolyline";
@@ -1817,6 +1842,8 @@ void makePyDb3dPolylineWrapper()
         .def("vertexIds", &PyDb3dPolyline::vertexIds, DS.ARGS())
         .def("getAcGeCurve", &PyDb3dPolyline::getAcGeCurve1)
         .def("getAcGeCurve", &PyDb3dPolyline::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = ..." }, 2775))
+        .def("toPoint3dList", &PyDb3dPolyline::toPoint3dList, DS.ARGS())
+        .def("toPoint3dArray", &PyDb3dPolyline::toPoint3dArray, DS.ARGS())
         .def("className", &PyDb3dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1963,6 +1990,29 @@ boost::python::list PyDb3dPolyline::vertexIds() const
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
         ids.append(PyDbObjectId(iter->objectId()));
+    return ids;
+}
+
+boost::python::list PyDb3dPolyline::toPoint3dList() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        ids.append(pVtx->position());
+    }
+    return ids;
+}
+
+PyGePoint3dArray PyDb3dPolyline::toPoint3dArray() const
+{
+    PyGePoint3dArray ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        ids.emplace_back(pVtx->position());
+    }
     return ids;
 }
 
@@ -2746,6 +2796,7 @@ void makePyDbPolylineWrapper()
         .def("getAcGeCurve2d", &PyDbPolyline::getAcGeCurve2d, DS.ARGS())
         .def("toPoint2dList", &PyDbPolyline::toPoint2dList, DS.ARGS())
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
+        .def("toPoint3dArray", &PyDbPolyline::toPoint3dArray, DS.ARGS())
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
         .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "pointWcs: PyGe.Point3d" }))
         .def("isCCW", &PyDbPolyline::isCCW, DS.ARGS())
@@ -3157,6 +3208,19 @@ boost::python::list PyDbPolyline::toList() const
         AcGePoint2d pnt;
         PyThrowBadEs(impObj()->getPointAt(idx, pnt));
         pyList.append(boost::python::make_tuple(pnt.x, pnt.y));
+    }
+    return pyList;
+}
+
+PyGePoint3dArray PyDbPolyline::toPoint3dArray() const
+{
+    PyGePoint3dArray pyList;
+    const size_t count = impObj()->numVerts();
+    for (int idx = 0; idx < count; idx++)
+    {
+        AcGePoint3d pnt;
+        PyThrowBadEs(impObj()->getPointAt(idx, pnt));
+        pyList.push_back(pnt);
     }
     return pyList;
 }
