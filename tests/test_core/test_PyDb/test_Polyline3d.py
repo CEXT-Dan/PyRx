@@ -21,10 +21,14 @@ class TestDbPolyline3d:
         # Create polyline and add to database
         pline = Db.Polyline3d(Db.Poly3dType.k3dSimplePoly, pnts, False)
         db.addToModelspace(pline)
+        
+        assert len(pline.toPoint3dList()) == 5
+        assert len(pline.toPoint3dArray()) == 5
 
         # Verify vertices exist and have correct positions
         vtids = pline.vertexIds()
         assert len(vtids) == 5
+        
 
         for i, expected_pos in enumerate(pnts):
             vt = Db.Polyline3dVertex(vtids[i])

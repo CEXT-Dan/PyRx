@@ -21,6 +21,9 @@ class TestDbPolyline2d:
         # Create polyline and add to database
         pline = Db.Polyline2d(Db.Poly2dType.k2dSimplePoly, pnts, False)
         db.addToModelspace(pline)
+        
+        assert len(pline.toPoint3dList()) == 5
+        assert len(pline.toPoint3dArray()) == 5
 
         # Verify vertices exist and have correct positions
         vtids = pline.vertexIds()
