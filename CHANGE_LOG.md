@@ -1,3 +1,11 @@
+## v2.2.47
+
+* [#482] AcDbGripOverrule and DbEntity::moveGripPointsm moveStretchPoints
+* [#478] restore ObjejectId.isValid (AC2027+) uses (originalDatabase() != nullptr)
+* improve EdCore::getCurrentView. Properly computes width
+* improve PyGeCylinder::intersectWith
+* improve entsel with a default prompt (English)
+
 ## v2.2.46
 
 * [#474] I added a new command PYRXLOADENV. A helper function for troubleshooting.
