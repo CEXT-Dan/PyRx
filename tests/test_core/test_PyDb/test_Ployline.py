@@ -26,6 +26,7 @@ class TestDbPolyline:
         assert pline.numVerts() == 5
         assert len(pline.toPoint2dList()) == 5
         assert len(pline.toPoint3dList()) == 5
+        assert len(pline.toPoint3dArray()) == 5
         assert len(pline.toList()) == 5
         assert pline.toPoint2dList() == pnts
 

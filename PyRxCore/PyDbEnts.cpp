@@ -1746,7 +1746,8 @@ boost::python::list PyDb2dPolyline::toPoint3dList() const
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        AcDbObjectPointer<AcDb2dVertex>pVtx(iter->objectId());
+        PyThrowBadEs(pVtx.openStatus());
         ids.append(pVtx->position());
     }
     return ids;
@@ -1757,7 +1758,8 @@ PyGePoint3dArray PyDb2dPolyline::toPoint3dArray() const
     PyGePoint3dArray ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        AcDbObjectPointer<AcDb2dVertex>pVtx(iter->objectId());
+        PyThrowBadEs(pVtx.openStatus());
         ids.emplace_back(pVtx->position());
     }
     return ids;
@@ -1999,7 +2001,8 @@ boost::python::list PyDb3dPolyline::toPoint3dList() const
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        AcDbObjectPointer<AcDb3dPolylineVertex> pVtx(iter->objectId());
+        PyThrowBadEs(pVtx.openStatus());
         ids.append(pVtx->position());
     }
     return ids;
@@ -2010,7 +2013,8 @@ PyGePoint3dArray PyDb3dPolyline::toPoint3dArray() const
     PyGePoint3dArray ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
     {
-        AcDbObjectPointer<AcDb2dVertex> pVtx(iter->objectId());
+        AcDbObjectPointer<AcDb3dPolylineVertex> pVtx(iter->objectId());
+        PyThrowBadEs(pVtx.openStatus());
         ids.emplace_back(pVtx->position());
     }
     return ids;
