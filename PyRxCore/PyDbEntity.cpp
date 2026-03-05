@@ -87,7 +87,7 @@ void makePyDbEntityWrapper()
         .def("isPlanar", &PyDbEntity::isPlanar, DS.ARGS(4326))
         .def("getPlane", &PyDbEntity::getPlane, DS.ARGS(4313))
         .def("getEcs", &PyDbEntity::getEcs, DS.ARGS(4305))
-        .def("list", &PyDbEntity::list, DS.ARGS(4335))
+        .def("list", &PyDbEntity::getlist, DS.ARGS(4335))
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
         .def("intersectWith", &PyDbEntity::intersectWith3)
@@ -115,8 +115,8 @@ void makePyDbEntityWrapper()
 #if !defined (_BRXTARGET260)
         .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
 #endif
-        .def("moveGripPointsAts", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:list[int]","offset:PyGe.Vector3d" }))
-        .def("moveStretchPointsAt", &PyDbEntity::moveStretchPointsAt, DS.ARGS({ "indices:list[int]","offset:PyGe.Vector3d" }))
+        .def("moveGripPointAt", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
+        .def("moveStretchPointsAt", &PyDbEntity::moveStretchPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -441,7 +441,7 @@ AcGeMatrix3d PyDbEntity::getEcs() const
     return retVal;
 }
 
-void PyDbEntity::list() const
+void PyDbEntity::getlist() const
 {
     impObj()->list();
 }
@@ -636,7 +636,7 @@ PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId) const
     return PyDbEntity(impObj()->subentPtr(subId.pyImp), true);
 }
 
-void PyDbEntity::moveGripPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const
+void PyDbEntity::moveGripPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const
 {
 #if defined (_BRXTARGET260)
     AcArray<int> arr = PyListToIntArray(indices);
@@ -646,7 +646,7 @@ void PyDbEntity::moveGripPointsAt(const boost::python::list& indices, const AcGe
     PyThrowBadEs(impObj()->moveGripPointsAt(arr, offset));
 }
 
-void PyDbEntity::moveStretchPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const
+void PyDbEntity::moveStretchPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const
 {
 #if defined (_BRXTARGET260)
     AcArray<int> arr = PyListToIntArray(indices);

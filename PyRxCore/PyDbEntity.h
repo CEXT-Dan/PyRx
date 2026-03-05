@@ -75,7 +75,7 @@ public:
     Adesk::Boolean      isPlanar() const;
     PyGePlane           getPlane() const;
     AcGeMatrix3d        getEcs() const;
-    void                list() const;
+    void                getlist() const;
     void                transformBy(const AcGeMatrix3d& xform) const;
     void                recordGraphicsModified() const;
     void                draw() const;
@@ -105,8 +105,8 @@ public:
 #endif
     PyDbEntity          subentPtr(const PyDbFullSubentPath& subId) const;
 
-    void                moveGripPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const;
-    void                moveStretchPointsAt(const boost::python::list& indices, const AcGeVector3d& offset) const;
+    void                moveGripPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const;
+    void                moveStretchPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const;
 
         static std::string  className();
     static PyRxClass    desc();
