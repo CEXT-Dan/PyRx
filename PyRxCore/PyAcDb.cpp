@@ -515,6 +515,7 @@ static BOOST_PYTHON_MODULE(PyDb)
 #endif
     makePyDbObjectOverruleWrapper();
     makePyDbOsnapOverruleWrapper();
+    makePyDbGripOverruleWrapper();
 #if !defined(_BRXTARGET260)
     makePyDbPointCloudCropWrapper();
     makePyDbPointCloudClassificationColorRampWrapper();
@@ -2148,6 +2149,12 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
+    enum_<AcDb::GripStat>("GripStat")
+        .value("kGripsDone", AcDb::kGripsDone)
+        .value("kGripsToBeDeleted", AcDb::kGripsToBeDeleted)
+        .value("kDimDataToBeDeleted", AcDb::kDimDataToBeDeleted)
+        .export_values()
+        ;
 };
 
 void initPyDbModule()
