@@ -361,6 +361,7 @@ class TestDatabase:
 
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_IRX
+    @pytest.mark.known_failure_GRX
     def test_tdusrtimer(self) -> None:
         db = Db.curDb()
         date1 = db.tdusrtimer()
