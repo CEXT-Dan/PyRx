@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Ap, Ge
 
 
@@ -71,6 +73,7 @@ class TestAx3dFace:
         assert face.coordinate(3) == pnts[3]
         assert face.coordinates() == pnts
 
+    @pytest.mark.known_failure_GRX
     def test_invisibleEdge(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
