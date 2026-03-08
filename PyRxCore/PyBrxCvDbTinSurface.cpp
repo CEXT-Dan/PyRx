@@ -930,7 +930,6 @@ BrxCvDbTinSurface* PyBrxCvDbTinSurface::impObj(const std::source_location& src /
 //PyBrxCvDbVolumeSurface
 void makePyBrxCvDbVolumeSurfaceWrapper()
 {
-
     constexpr const std::string_view initializeOverloads = "Overloads:\n"
         "- baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d]\n"
         "- baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float\n"

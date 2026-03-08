@@ -1928,7 +1928,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::findTinTrianglesAt",
-            "list[PyBrx.CvTinTriangle]"
+            "list[PyBrxCv.CvTinTriangle]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::getBorders",
@@ -1980,7 +1980,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::tinTriangles",
-            "list[PyBrx.CvTinTriangle]"
+            "list[PyBrxCv.CvTinTriangle]"
         ],
         [
             "PyBrxCv::CvDbTinSurfaceConstraint::data",
