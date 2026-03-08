@@ -849,7 +849,6 @@ Adesk::UInt32 PyBrxCvDbTinSurface::addDefinition(const PyBrxCvDbTinSurfaceDefini
 
 Adesk::UInt32 PyBrxCvDbTinSurface::insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const
 {
-
     return impObj()->insertDefinitionAt(index, *surfaceDefinition.impObj());
 }
 
