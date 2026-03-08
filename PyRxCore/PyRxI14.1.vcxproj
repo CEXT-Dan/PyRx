@@ -69,7 +69,7 @@
       <Optimization>Disabled</Optimization>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -78,7 +78,7 @@
       <AdditionalIncludeDirectories>$(IRX14)\icarx;$(IRX14)\icarx\inc;$(IRX14)\icarx\inc-x64;$(IRX14)\icrx\OpenDesignSDK;$(IRX14)\icrx\OpenDesignSDK\Kernel\Include;$(IRX14)\icrx\OpenDesignSDK\KernelBase\Include;$(IRX14)\icarx\utils\brep\inc;$(IRX14)\icarx\utils\Atil\Inc;$(IRX14)\icarx\utils\Atil\Inc\codec_properties;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
@@ -114,7 +114,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <OmitFramePointers>true</OmitFramePointers>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;PYRX_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;IRXAPP;_IRXTARGET=140;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
