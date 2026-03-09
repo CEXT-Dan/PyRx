@@ -1,3 +1,16 @@
+## v2.2.48
+
+* Primarily a build to relax hardware requirements from AVX to SSE2 
+* GstarCad users, this build targets  Build 260123, GRX SDK 2026.01..23
+* added toPoint3dArray toPoint3dList to heavy polylines
+* Add TinTriangle.aspect
+* Add TinTriangle.isPointInside
+* Add TinTriangle.plane
+* Add TinTriangle.slope
+* Add TinTriangle.centroid
+* Add TinTriangle.circumcenter
+* Add TinTriangle.normal (always up)
+
 ## v2.2.47
 
 * [#482] AcDbGripOverrule and DbEntity::moveGripPointsm moveStretchPoints

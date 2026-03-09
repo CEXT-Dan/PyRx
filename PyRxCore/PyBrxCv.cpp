@@ -118,7 +118,6 @@ static double BrxCvTinTriangleSlope(const BrxCvTinTriangle& tri)
     return horizontalMag / verticalMag;
 }
 
-
 static double BrxCvTinTriangleAspect(const BrxCvTinTriangle& tri)
 {
     // Get the normalized up vector
