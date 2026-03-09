@@ -234,7 +234,6 @@ public:
     bool                removeDefinitionAt(const Adesk::UInt32 index) const;
     Adesk::UInt32       removeAllDefinitions() const;
 
-
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
     static std::string          className();
     static PyRxClass            desc();

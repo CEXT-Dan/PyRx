@@ -26,6 +26,72 @@ static void makePyBrxCvTinPointWrapper()
         ;
 }
 
+//---------------------------------------------------------------------------
+//CvTinTriangle
+static AcGePoint3d BrxCvTinTriangleCircumcenter(const BrxCvTinTriangle& tri)
+{
+    AcGePoint3d p1 = tri.locationAt(0);
+    AcGePoint3d p2 = tri.locationAt(1);
+    AcGePoint3d p3 = tri.locationAt(2);
+
+    // Vectors representing two sides
+    AcGeVector3d v1 = p2 - p1;
+    AcGeVector3d v2 = p3 - p1;
+
+    // Cross product to get the normal and area-related terms
+    AcGeVector3d v1xv2 = v1.perpVector().crossProduct(v2); // Temporary for calculation
+    // Standard formula for 3D circumcenter:
+    // R = p1 + [ (||v2||^2 * (v1 x (v1 x v2)) + ||v1||^2 * (v2 x (v2 x v1))) / (2 * ||v1 x v2||^2) ]
+
+    AcGeVector3d normal = v1.crossProduct(v2);
+    double denominator = 2.0 * normal.lengthSqrd();
+
+    // If denominator is near zero, points are collinear
+    if (denominator < 1e-10)
+        return AcGePoint3d((p1.x + p2.x + p3.x) / 3.0, (p1.y + p2.y + p3.y) / 3.0, (p1.z + p2.z + p3.z) / 3.0);
+
+    AcGeVector3d circumVector = (v1.crossProduct(v2).crossProduct(v1) * v2.lengthSqrd() +
+        v2.crossProduct(v1).crossProduct(v2) * v1.lengthSqrd())
+        / denominator;
+
+    return p1 + circumVector;
+}
+
+static AcGePoint3d BrxCvTinTriangleCentroid(const BrxCvTinTriangle& tri)
+{
+    AcGePoint3d a = tri.locationAt(0);
+    AcGePoint3d b = tri.locationAt(1);
+    AcGePoint3d c = tri.locationAt(2);
+    double  centroid_x = (a.x + b.x + c.x) / 3.0;
+    double  centroid_y = (a.y + b.y + c.y) / 3.0;
+    double  centroid_z = (a.z + b.z + c.z) / 3.0;
+    return AcGePoint3d(centroid_x, centroid_y, centroid_z);
+}
+
+static AcGeVector3d BrxCvTinTriangleNormalUp(const BrxCvTinTriangle& tri)
+{
+    AcGePoint3d p1 = tri.locationAt(0);
+    AcGePoint3d p2 = tri.locationAt(1);
+    AcGePoint3d p3 = tri.locationAt(2);
+
+    // Calculate the raw normal
+    AcGeVector3d v1 = p2 - p1;
+    AcGeVector3d v2 = p3 - p1;
+    AcGeVector3d normal = v1.crossProduct(v2);
+
+    // Safety: Check for degenerate triangles (zero area)
+    if (normal.isZeroLength()) {
+        return AcGeVector3d::kZAxis; // Default to straight up
+    }
+    normal.normalize();
+    // CIVIL LOGIC: In terrain modeling, "up" is always +Z.
+    // If the Z component is negative, it's pointing into the earth. Flip it.
+    if (normal.z < 0.0) {
+        normal.negate();
+    }
+    return normal;
+}
+
 static void makePyBrxCvTinTriangleWrapper()
 {
     PyDocString DS("CvTinTriangle");
@@ -35,6 +101,9 @@ static void makePyBrxCvTinTriangleWrapper()
         .def("locationAt", &BrxCvTinTriangle::locationAt, DS.ARGS({ "index: int" }))
         .def("isVisible", &BrxCvTinTriangle::isVisible, DS.ARGS())
         .def("isValid", &BrxCvTinTriangle::isValid, DS.ARGS())
+        .def("normal", &BrxCvTinTriangleNormalUp, DS.ARGS())
+        .def("centroid", &BrxCvTinTriangleCentroid, DS.ARGS())
+        .def("circumcenter", &BrxCvTinTriangleCircumcenter, DS.ARGS())
         .def("neighborAt", &BrxCvTinTriangle::neighborAt, DS.ARGS({ "index: int" }))
         ;
 }
