@@ -2,6 +2,7 @@
 
 #ifdef BRXAPP
 #include "PyGePlane.h"
+#include "PyGeLinearEnt3d.h"
 #include "PyBrxCv.h"
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
@@ -145,7 +146,6 @@ static bool BrxCvTinTriangleIsPointInside(const BrxCvTinTriangle& tri, const AcG
 {
     AcGePlane triPlane(tri.locationAt(0), BrxCvTinTriangleNormalUp(tri));
 
-
     // Get the coordinate system of the plane
     AcGePoint3d org;
     AcGeVector3d uAxis, vAxis;
@@ -178,6 +178,23 @@ static bool BrxCvTinTriangleIsPointInside(const BrxCvTinTriangle& tri, const AcG
     return !(has_neg && has_pos);
 }
 
+static boost::python::tuple BrxCvTinTriangleIntersectWith(const BrxCvTinTriangle& tri, const PyGeLinearEnt3d& line)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d intersectionPt;
+    // 1. Define the infinite plane of the triangle
+    AcGePlane triPlane(tri.locationAt(0), BrxCvTinTriangleNormalUp(tri));
+
+    // 2. Find the intersection of the line and the infinite plane
+    if (!line.impObj()->intersectWith(triPlane, intersectionPt)) {
+        return boost::python::make_tuple(false, intersectionPt); // Line is parallel to the plane
+    }
+
+    // 3. Your logic: Check if that specific point is within the triangle boundaries
+    auto flag = BrxCvTinTriangleIsPointInside(tri, intersectionPt);
+    return boost::python::make_tuple(flag, intersectionPt); // Line is parallel to the plane
+}
+
 static void makePyBrxCvTinTriangleWrapper()
 {
     PyDocString DS("CvTinTriangle");
@@ -194,6 +211,7 @@ static void makePyBrxCvTinTriangleWrapper()
         .def("centroid", &BrxCvTinTriangleCentroid, DS.ARGS())
         .def("circumcenter", &BrxCvTinTriangleCircumcenter, DS.ARGS())
         .def("isPointInside", &BrxCvTinTriangleIsPointInside, DS.ARGS({"pt:PyGe.Point3d"}))
+        .def("intersectWith ", &BrxCvTinTriangleIntersectWith, DS.ARGS({ "linearEnt3d:PyGe.LinearEnt3d" }))
         .def("neighborAt", &BrxCvTinTriangle::neighborAt, DS.ARGS({ "index: int" }))
         ;
 }
