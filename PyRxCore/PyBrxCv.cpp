@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #ifdef BRXAPP
+#include "PyGePlane.h"
 #include "PyBrxCv.h"
 #include "PyBrxCvDbAlignments.h"
 #include "PyBrxCvDbObjectManager.h"
@@ -92,6 +93,92 @@ static AcGeVector3d BrxCvTinTriangleNormalUp(const BrxCvTinTriangle& tri)
     return normal;
 }
 
+static PyGePlane BrxCvTinTrianglePlane(const BrxCvTinTriangle& tri)
+{
+    return PyGePlane(AcGePlane(tri.locationAt(0), BrxCvTinTriangleNormalUp(tri)));
+}
+
+static double BrxCvTinTriangleSlope(const BrxCvTinTriangle& tri)
+{
+    // Get the normalized "up" vector
+    AcGeVector3d n = BrxCvTinTriangleNormalUp(tri);
+
+    // If the triangle is perfectly horizontal, n.z will be 1.0
+    // and n.x, n.y will be 0.0. 
+
+    double horizontalMag = sqrt(n.x * n.x + n.y * n.y);
+    double verticalMag = n.z;
+
+    // Avoid division by zero for vertical/near-vertical faces 
+    // (rare in civil TINs, but possible in walls/curbs)
+    if (fabs(verticalMag) < 1e-10)
+        return 999999.0; // Representing an "infinite" grade
+
+    // Returns grade as a decimal (e.g., 0.05 for 5%)
+    return horizontalMag / verticalMag;
+}
+
+
+static double BrxCvTinTriangleAspect(const BrxCvTinTriangle& tri)
+{
+    // Get the normalized up vector
+    AcGeVector3d n = BrxCvTinTriangleNormalUp(tri);
+
+    // If the triangle is perfectly flat, Aspect is undefined (usually -1 or 0)
+    if (sqrt(n.x * n.x + n.y * n.y) < 1e-10)
+        return -1.0;
+
+    // atan2(x, y) returns the angle from the Y-axis (North).
+    // In AutoCAD/Civil, 0 radians is East (+X). 
+    // To get Azimuth (0 = North, clockwise):
+    double azimuth = atan2(n.x, n.y);
+
+    // Convert radians to degrees
+    double degrees = azimuth * (180.0 / M_PI);
+
+    // Normalize to 0-360 range
+    if (degrees < 0) degrees += 360.0;
+
+    return degrees;
+}
+
+static bool BrxCvTinTriangleIsPointInside(const BrxCvTinTriangle& tri, const AcGePoint3d& pt)
+{
+    AcGePlane triPlane(tri.locationAt(0), BrxCvTinTriangleNormalUp(tri));
+
+
+    // Get the coordinate system of the plane
+    AcGePoint3d org;
+    AcGeVector3d uAxis, vAxis;
+    triPlane.getCoordSystem(org, uAxis, vAxis);
+
+    // Helper lambda to project a 3D point to 2D local plane coordinates
+    auto projectTo2D = [&](const AcGePoint3d& p) {
+        AcGeVector3d vec = p - org;
+        return AcGePoint2d(vec.dotProduct(uAxis), vec.dotProduct(vAxis));
+        };
+
+    // Project everything into 2D
+    AcGePoint2d pt2d = projectTo2D(pt);
+    AcGePoint2d p1 = projectTo2D(tri.locationAt(0));
+    AcGePoint2d p2 = projectTo2D(tri.locationAt(1));
+    AcGePoint2d p3 = projectTo2D(tri.locationAt(2));
+
+    // Perform the 2D cross-product edge test
+    auto edgeSide = [](const AcGePoint2d& a, const AcGePoint2d& b, const AcGePoint2d& p) {
+        return (p.x - b.x) * (a.y - b.y) - (a.x - b.x) * (p.y - b.y);
+        };
+
+    double d1 = edgeSide(p1, p2, pt2d);
+    double d2 = edgeSide(p2, p3, pt2d);
+    double d3 = edgeSide(p3, p1, pt2d);
+
+    bool has_neg = (d1 < -1e-9) || (d2 < -1e-9) || (d3 < -1e-9);
+    bool has_pos = (d1 > 1e-9) || (d2 > 1e-9) || (d3 > 1e-9);
+
+    return !(has_neg && has_pos);
+}
+
 static void makePyBrxCvTinTriangleWrapper()
 {
     PyDocString DS("CvTinTriangle");
@@ -102,8 +189,12 @@ static void makePyBrxCvTinTriangleWrapper()
         .def("isVisible", &BrxCvTinTriangle::isVisible, DS.ARGS())
         .def("isValid", &BrxCvTinTriangle::isValid, DS.ARGS())
         .def("normal", &BrxCvTinTriangleNormalUp, DS.ARGS())
+        .def("plane", &BrxCvTinTrianglePlane, DS.ARGS())
+        .def("slope", &BrxCvTinTriangleSlope, DS.ARGS())
+        .def("aspect", &BrxCvTinTriangleAspect, DS.ARGS())
         .def("centroid", &BrxCvTinTriangleCentroid, DS.ARGS())
         .def("circumcenter", &BrxCvTinTriangleCircumcenter, DS.ARGS())
+        .def("isPointInside", &BrxCvTinTriangleIsPointInside, DS.ARGS({"pt:PyGe.Point3d"}))
         .def("neighborAt", &BrxCvTinTriangle::neighborAt, DS.ARGS({ "index: int" }))
         ;
 }
