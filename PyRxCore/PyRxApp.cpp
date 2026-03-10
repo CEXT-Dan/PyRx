@@ -403,6 +403,7 @@ bool PyRxApp::setPyConfig()
     // append our module path to python
     PyAutoLockGIL lock;
     const auto& _modulePath = modulePath();
+#ifdef NEVER // not needed if installed 
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
@@ -414,6 +415,7 @@ bool PyRxApp::setPyConfig()
         return false;
     if (PyList_Append(path.get(), pyString.get()) < 0)
         return false;
+#endif
     PyRxApp::instance().loadedModulePaths.insert(_modulePath);
     return true;
 }
