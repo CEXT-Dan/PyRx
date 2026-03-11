@@ -39,7 +39,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 bool WxRxApp::OnInit()
 {
     // TODO: support wxWidgets with dark mode
-#if defined(wxVERSION_NUMBER) && (wxVERSION_NUMBER >= 3300)
+#if wxCHECK_VERSION(3, 3, 0)
     resbuf rb;
     const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
     if (rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
@@ -190,7 +190,7 @@ static bool uninitWxApp()
 {
     wxTheApp->OnExit();
     wxEntryCleanup();
-#if defined(wxVERSION_NUMBER) && (wxVERSION_NUMBER < 3300)
+#if !wxCHECK_VERSION(3, 3, 0)
 #if defined(_GRXTARGET) && (_GRXTARGET >= 260)
     if (hasWxXmlResourceModule())
         wxExit();
@@ -198,7 +198,7 @@ static bool uninitWxApp()
     if (hasWxXmlResourceModule())
         std::quick_exit(EXIT_SUCCESS);
 #endif //_GRXTARGET
-#endif //wxVERSION_NUMBER
+#endif //wxCHECK_VERSION
     return true;
 }
 
