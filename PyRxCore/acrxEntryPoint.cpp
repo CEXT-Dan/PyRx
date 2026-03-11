@@ -182,7 +182,7 @@ public:
     {
         if (msg->hwnd == adsw_acadDocWnd() || msg->hwnd == adsw_acadMainWnd())
             return;
-#if defined(wxVERSION_NUMBER) && (wxVERSION_NUMBER < 3300)
+#if !wxCHECK_VERSION(3, 3, 0)
         if (msg->message == WM_MOUSEMOVE)
             wxToolTip::RelayEvent((WXMSG*)msg);
 #endif
