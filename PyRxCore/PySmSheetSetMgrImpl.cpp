@@ -551,14 +551,14 @@ std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> PySmCustomPropertyB
 {
     IAcSmEnumPropertyPtr iter;
     PyThrowBadHr(impObj()->GetPropertyEnumerator(&iter));
-
     _bstr_t bstrName;
     IAcSmCustomPropertyValue* pAxProp = nullptr;
     std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> v;
-
     while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
     {
-        v.emplace_back(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp));
+        v.push_back(std::make_pair(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp)));
+        pAxProp = nullptr;
+        bstrName = _bstr_t{};
     }
     return v;
 }
@@ -567,14 +567,15 @@ std::vector<std::pair<CString, AcValue>> PySmCustomPropertyBagImpl::GetPropertyV
 {
     IAcSmEnumPropertyPtr iter;
     PyThrowBadHr(impObj()->GetPropertyEnumerator(&iter));
-
     _bstr_t bstrName;
     IAcSmCustomPropertyValue* pAxProp = nullptr;
     std::vector<std::pair<CString, AcValue>> v;
-
     while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
     {
-        v.emplace_back(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp).GetValue());
+        PySmCustomPropertyValueImpl prop(pAxProp);
+        v.push_back(std::make_pair(CString((LPCTSTR)bstrName), prop.GetValue()));
+        pAxProp = nullptr;
+        bstrName = _bstr_t{};
     }
     return v;
 }
