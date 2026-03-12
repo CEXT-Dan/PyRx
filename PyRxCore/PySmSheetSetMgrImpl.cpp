@@ -549,16 +549,16 @@ void PySmCustomPropertyBagImpl::SetProperty(const CString& propName, const PySmC
 
 std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> PySmCustomPropertyBagImpl::GetProperties() const
 {
-    std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> v;
     IAcSmEnumPropertyPtr iter;
     PyThrowBadHr(impObj()->GetPropertyEnumerator(&iter));
+
     _bstr_t bstrName;
     IAcSmCustomPropertyValue* pAxProp = nullptr;
+    std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> v;
+
     while (SUCCEEDED(iter->Next(&bstrName.GetBSTR(), &pAxProp)) && pAxProp != nullptr)
     {
-        v.push_back(std::make_pair(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp)));
-        pAxProp = nullptr;
-        bstrName = _bstr_t{};
+        v.emplace_back(CString((LPCTSTR)bstrName), PySmCustomPropertyValueImpl(pAxProp));
     }
     return v;
 }
