@@ -305,19 +305,22 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
     return false;
 }
 
-//TODO this is always spinning:
 void PyApApplication::PyOnIdleMsgFn()
 {
     if (onidleFuncs.size() != 0)
     {
         PyAutoLockGIL lock;
-        for (const auto& func : onidleFuncs)
+
+        //[#490] iterate over a copy, user can invalidate iter
+        std::vector<boost::python::object> copy;
+        for (const auto& item : onidleFuncs) {
+            copy.emplace_back(item.second);
+        }
+
+        for (const auto& func : copy)
         {
-            if (!executePyOnIdleFunc(func.second))
-            {
-                onidleFuncs.erase(func.first);
-                return;
-            }
+            if (!executePyOnIdleFunc(func))
+                onidleFuncs.erase(func.ptr());
         }
     }
 }
