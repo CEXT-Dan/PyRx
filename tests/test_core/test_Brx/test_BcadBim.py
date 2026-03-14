@@ -14,5 +14,7 @@ class TestBCadBim:
     def test_allObjectBuildings(self, db_bim_main: Db.Database):
         buldings = Bim.BimBuilding.allObjectBuildings(db_bim_main)
         assert len(buldings) != 0
+        assert isinstance(buldings[0], Bim.BimBuilding)
+
 
        
