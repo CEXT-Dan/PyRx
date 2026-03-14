@@ -35,6 +35,6 @@ class TestApplication:
 
     def test_listFilesInPathRecursive(self):
         path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dwg")
-        assert len(path) == 16
+        assert len(path) == 25
         path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dWg")
-        assert len(path) == 16
+        assert len(path) == 25

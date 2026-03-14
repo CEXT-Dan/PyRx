@@ -84,3 +84,8 @@ def db_xrefGraph():
 def db_dyn_block_ref():
     db = _load_db("dyn_block_ref.dwg")
     return db
+
+@pytest.fixture(scope="session")
+def db_bim_main():
+    db = _load_db("BrxBim/Main.dwg")
+    yield db
