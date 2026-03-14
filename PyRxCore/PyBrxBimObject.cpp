@@ -605,7 +605,7 @@ boost::python::list PyBrxBimBuilding::allObjectBuildings(const PyDbDatabase& dat
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& building : buildings)
-        pylist.append(BrxBimBuilding{ building });
+        pylist.append(PyBrxBimBuilding{ building });
     return pylist;
 }
 
