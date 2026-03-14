@@ -1,0 +1,34 @@
+[PATHS]
+..\SecondBuilding.dwg|false|
+
+[Settings]
+ExtractFromBlocks=0
+ExtractFromXrefs=1
+CountXrefs=0
+CombineEqualRows=1
+IncludeNameColumn=1
+FooterStyle|0
+FlowDirectionRtoL|0
+
+[Entity Types]
+*
+
+[Properties]
+OverallHeight|Height|
+OverallWidth|Width|
+Story|Story|
+ConstructionType|Construction type|
+OperationType|Operation type|
+AcousticRating|Acoustic rating|
+BlockView|BlockViewProperty1|Elevation|Front;C:\Users\fdooms\AppData\Roaming\Bricsys\BricsCAD\V20x64\en_US\Support\Bim\Sections\_SectionSettings.dwg;_Elevation
+
+[Filter]
+
+(Type == Window)
+
+[TableFormatOptions]
+TableStyle=Standard
+TitleCellStyle=Title
+HeaderCellStyle=Header
+DataCellStyle=Data
+

@@ -1,0 +1,143 @@
+{
+  "name": "Exercise 2",
+  "sheetset": "project.dst",
+  "library": "Bim workshop.bsyslib",
+  "models": [
+    "Main.dwg",
+    "MainBuilding.dwg",
+    "SecondBuilding.dwg",
+    "Site.dwg",
+    "Steel Structure.dwg"
+  ],
+  "sections": [
+    {
+      "name": "AA'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 38
+    },
+    {
+      "name": "BB'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 41
+    },
+    {
+      "name": "CC'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 39
+    },
+    {
+      "name": "Detail_Roof_11'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 3
+    },
+    {
+      "name": "Detail_Roof_22'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 3
+    },
+    {
+      "name": "Detail_Roof_33'",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 3
+    },
+    {
+      "name": "Main_Back",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 43
+    },
+    {
+      "name": "Main_Floor 0",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 12
+    },
+    {
+      "name": "Main_Floor 1",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 8
+    },
+    {
+      "name": "Main_Floor 2",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 11
+    },
+    {
+      "name": "Main_Floor 3",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 12
+    },
+    {
+      "name": "Main_Front",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 46
+    },
+    {
+      "name": "Main_Left",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 45
+    },
+    {
+      "name": "Main_Right",
+      "model": "MainBuilding.dwg",
+      "lastElapsed": 43
+    }
+  ],
+  "schedules": [
+    {
+      "name": "Doors",
+      "model": "Main.dwg",
+      "lastElapsed": -1
+    }
+  ],
+  "folders": {
+    "models": "Models",
+    "sheets": "Sheets"
+  },
+  "categories": {
+    "plan": {
+      "prefix": "A-",
+      "start": 102
+    },
+    "section": {
+      "prefix": "A-",
+      "start": 400
+    },
+    "elevation": {
+      "prefix": "A-",
+      "start": 301
+    },
+    "detail": {
+      "prefix": "A-",
+      "start": 600
+    },
+    "reflectedCeiling": {
+      "prefix": "A-",
+      "start": 200
+    },
+    "interiorElevation": {
+      "prefix": "A-",
+      "start": 700
+    },
+    "interiorFloorPlan": {
+      "prefix": "A-",
+      "start": 700
+    }
+  },
+  "margins": {
+    "mm": {
+      "pageLeft": 25.0,
+      "pageRight": 25.0,
+      "pageTop": 25.0,
+      "pageBottom": 25.0,
+      "between": 25.0,
+      "labelSpace": 20.0
+    },
+    "in": {
+      "pageLeft": 1.0,
+      "pageRight": 1.0,
+      "pageTop": 1.0,
+      "pageBottom": 1.0,
+      "between": 1.0,
+      "labelSpace": 0.75
+    }
+  }
+}
