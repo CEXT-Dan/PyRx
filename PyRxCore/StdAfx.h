@@ -129,7 +129,7 @@
 #include <cwctype>
 #include <ranges>
 #include <queue>
-#include<execution>
+#include <execution>
 #include <numbers>
 
 //-----------------------------------------------------------------------------
