@@ -408,12 +408,15 @@ public:
         AcDbObjectId id;
         AcGePoint3d pnt;
         ads_name name = { 0L };
-        int res = acedEntSel(msg, name, asDblArray(pnt));
-        if (auto es = acdbGetObjectId(id, name); es != eOk)
-            return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
-        if (!id.objectClass()->isDerivedFrom(desc))
-            return std::make_tuple(Acad::PromptStatus::eRejected, id, pnt);
-        return std::make_tuple(Acad::PromptStatus(res), id, pnt);
+        auto res = static_cast<Acad::PromptStatus>(acedEntSel(msg, name, asDblArray(pnt)));
+        if (res == Acad::eNormal)
+        {
+            if (auto es = acdbGetObjectId(id, name); es != eOk)
+                return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
+            if (!id.objectClass()->isDerivedFrom(desc))
+                return std::make_tuple(Acad::PromptStatus::eRejected, id, pnt);
+        }
+        return std::make_tuple(res, id, pnt);
     }
 
     static Acad::ErrorStatus acedGetCurrentSelectionSet(ads_name ssname, AcDbObjectIdArray& ids)
