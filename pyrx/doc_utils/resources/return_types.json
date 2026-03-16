@@ -2801,6 +2801,47 @@
         [
             "PyDb::BlockTableRecord::visibleObjectIds",
             "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyAp::Application::listFilesInPath",
+            "list[str]"
+        ],  
+        [
+            "PyAp::Application::listFilesInPathRecursive",
+            "list[str]"
+        ],
+        [
+            "PyAp::LayerFilter::filterExpressionTree",
+            "list[tuple[str,str]]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allObjectBuildings",
+            "list[PyBrxBim.BimBuilding]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allObjectStories",
+            "list[PyBrxBim.BimStory]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allObjectStoriesFromDb",
+            "list[PyBrxBim.BimStory]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allStringBuildings",
+            "list[str]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allStringStories",
+            "list[str]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::allStringStoriesFromDb",
+            "list[str]"
+        ],
+        [
+            "PyBrxBim::BimBuilding::assignedObjects",
+            "list[PyDb.ObjectId]"
         ]
+
     ]
 }
