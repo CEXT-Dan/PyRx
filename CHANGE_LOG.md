@@ -1,3 +1,10 @@
+## v2.2.49
+
+* add CvTinTriangle::intersectWith
+* [#488] fix don't add path to PyRx
+* [#490] fix exception iterate over a copy, user can invalidate iter
+* fix PyBrxBimBuilding::allObjectBuildings
+
 ## v2.2.48
 
 * Primarily a build to relax hardware requirements from AVX to SSE2 
