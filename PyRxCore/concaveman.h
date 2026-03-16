@@ -391,10 +391,10 @@ namespace Concave
         {
         }
         size_t p = 0;
-        double minX;
-        double minY;
-        double maxX;
-        double maxY;
+        double minX = 0;
+        double minY = 0;
+        double maxX = 0;
+        double maxY = 0;
     };
 
     template <class T> class CircularList;
@@ -404,8 +404,10 @@ namespace Concave
         typedef type* ptr_type;
 
         template<class... Args> CircularElement<T>(Args&&... args) :
-            m_data(std::forward<Args>(args)...) {
-
+            m_data(std::forward<Args>(args)...),
+            m_prev(nullptr),
+            m_next(nullptr)
+        {
         }
 
         T& data() {
