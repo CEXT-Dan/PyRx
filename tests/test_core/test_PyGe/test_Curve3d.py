@@ -108,3 +108,13 @@ class TestCurve3d:
         assert inter.numIntPoints() == 1
         tp = Ge.Point3d(-38169.03679118369473, -8356.39529306029726, 0.00000000000000)
         assert inter.intPoint(0) == tp
+        
+    def test_CompositeCurve3d_createFromPolyCurves(self):
+        edges = []
+        edges.append(Ge.LineSeg3d(Ge.Point3d(20, 0, 0), Ge.Point3d(30, 0, 0)))
+        edges.append(Ge.LineSeg3d(Ge.Point3d(20, 1, 0), Ge.Point3d(30, 1, 0)))
+        edges.append(Ge.LineSeg3d(Ge.Point3d(0, 0, 0), Ge.Point3d(10, 0, 0)))
+        edges.append(Ge.LineSeg3d(Ge.Point3d(0, 1, 0), Ge.Point3d(10, 1, 0)))
+        edges.append(Ge.LineSeg3d(Ge.Point3d(10, 0, 0), Ge.Point3d(20, 0, 0)))
+        edges.append(Ge.LineSeg3d(Ge.Point3d(10, 1, 0), Ge.Point3d(20, 1, 0)))
+        assert len(Ge.CompositeCurve3d.createFromPolyCurves(edges)) == 2
