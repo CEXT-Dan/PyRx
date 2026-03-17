@@ -1216,29 +1216,22 @@ boost::python::list PyGeCompositeCurve3d::createFromPolyCurves(const boost::pyth
     PyAutoLockGIL lock;
     boost::python::list resultList;
 
-    // Convert input list to vector
-    const auto& pycurves = py_list_to_std_vector<PyGeCurve3d>(curveList);
-
     // Filter valid curves (non-closed LineSeg3d or CircArc3d)
     std::vector<PyGeCurve3d> validCurves;
-    for (const PyGeCurve3d& pycurve : pycurves)
+    for (const PyGeCurve3d& pycurve : py_list_to_std_vector<PyGeCurve3d>(curveList))
     {
         // Check if it's a valid curve type
         const AcGe::EntityId curveType = pycurve.impObj()->type();
         const bool isLineSeg = (curveType == AcGe::kLineSeg3d);
         const bool isCircArc = (curveType == AcGe::kCircArc3d);
-
         if (!isLineSeg && !isCircArc)
             continue;
 
-        // For CircArc3d, verify it's not closed
-        if (isCircArc)
-        {
-            AcGeInterval interval;
-            pycurve.impObj()->getInterval(interval);
-            if (interval.isBounded() == false)  // Unbounded means closed
-                continue;
-        }
+        AcGeInterval interval;
+        pycurve.impObj()->getInterval(interval);
+        if (interval.isBounded() == false)  // Unbounded means closed or infinite 
+            continue;
+
         validCurves.push_back(pycurve);
     }
 
