@@ -1122,6 +1122,7 @@ void makePyGeCompositeCurve3dWrapper()
         .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam, DS.ARGS({ "param: float" }))
         .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
         .def("createFromLineSeg3dArray", &PyGeCompositeCurve3d::createFromLineSeg3dArray, DS.SARGS({ "seg: list[PyGe.LineSeg3d]" })).staticmethod("createFromLineSeg3dArray")
+        .def("createFromPolyCurves", &PyGeCompositeCurve3d::createFromPolyCurves, DS.SARGS({ "curveList: list[PyGe.Curve3d]" })).staticmethod("createFromPolyCurves")
         .def("cast", &PyGeCompositeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve3d::className, DS.SARGS()).staticmethod("className")
@@ -1207,6 +1208,124 @@ boost::python::list PyGeCompositeCurve3d::createFromLineSeg3dArray(const boost::
         pylist.append(PyGeCompositeCurve3d(new AcGeCompositeCurve3d(arr, isOwnerOfCurves)));
     }
     return pylist;
+}
+
+// connected curve segments
+boost::python::list PyGeCompositeCurve3d::createFromPolyCurves(const boost::python::list& curveList)
+{
+    PyAutoLockGIL lock;
+    boost::python::list resultList;
+
+    // Convert input list to vector
+    const auto& pycurves = py_list_to_std_vector<PyGeCurve3d>(curveList);
+
+    // Filter valid curves (non-closed LineSeg3d or CircArc3d)
+    std::vector<PyGeCurve3d> validCurves;
+    for (const PyGeCurve3d& pycurve : pycurves)
+    {
+        // Check if it's a valid curve type
+        const AcGe::EntityId curveType = pycurve.impObj()->type();
+        const bool isLineSeg = (curveType == AcGe::kLineSeg3d);
+        const bool isCircArc = (curveType == AcGe::kCircArc3d);
+
+        if (!isLineSeg && !isCircArc)
+            continue;
+
+        // For CircArc3d, verify it's not closed
+        if (isCircArc)
+        {
+            AcGeInterval interval;
+            pycurve.impObj()->getInterval(interval);
+            if (interval.isBounded() == false)  // Unbounded means closed
+                continue;
+        }
+        validCurves.push_back(pycurve);
+    }
+
+    if (validCurves.empty())
+        return resultList;
+
+    // Track which curves have been used
+    std::vector<bool> used(validCurves.size(), false);
+
+    // Build composite curves by connecting segments
+    for (size_t startIdx = 0; startIdx < validCurves.size(); ++startIdx)
+    {
+        if (used[startIdx])
+            continue;
+
+        // Start a new composite curve - use deque to allow prepending
+        std::deque<AcGeCurve3d*> compositeCurves;
+
+        size_t currentIdx = startIdx;
+        used[currentIdx] = true;
+
+        // Add first curve
+        compositeCurves.push_back(static_cast<AcGeCurve3d*>(validCurves[currentIdx].impObj()->copy()));
+
+        // Get interval to find start and end parameters
+        AcGeInterval currentInterval;
+        validCurves[currentIdx].impObj()->getInterval(currentInterval);
+        AcGePoint3d chainStartPoint = validCurves[currentIdx].impObj()->evalPoint(currentInterval.lowerBound());
+        AcGePoint3d chainEndPoint = validCurves[currentIdx].impObj()->evalPoint(currentInterval.upperBound());
+
+        // Try to extend the chain in both directions
+        bool extended = true;
+        while (extended)
+        {
+            extended = false;
+
+            for (size_t nextIdx = 0; nextIdx < validCurves.size(); ++nextIdx)
+            {
+                if (used[nextIdx])
+                    continue;
+
+                // Get interval of candidate curve
+                AcGeInterval candidateInterval;
+                validCurves[nextIdx].impObj()->getInterval(candidateInterval);
+
+                // Get start and end points of candidate curve
+                AcGePoint3d candidateStartPoint = validCurves[nextIdx].impObj()->evalPoint(candidateInterval.lowerBound());
+                AcGePoint3d candidateEndPoint = validCurves[nextIdx].impObj()->evalPoint(candidateInterval.upperBound());
+
+                // Try extending forward (chain end to candidate start)
+                if (chainEndPoint.isEqualTo(candidateStartPoint))
+                {
+                    compositeCurves.push_back(static_cast<AcGeCurve3d*>(validCurves[nextIdx].impObj()->copy()));
+                    chainEndPoint = candidateEndPoint;
+                    used[nextIdx] = true;
+                    extended = true;
+                    break;
+                }
+                // Try extending backward (candidate end to chain start)
+                else if (chainStartPoint.isEqualTo(candidateEndPoint))
+                {
+                    compositeCurves.push_front(static_cast<AcGeCurve3d*>(validCurves[nextIdx].impObj()->copy()));
+                    chainStartPoint = candidateStartPoint;
+                    used[nextIdx] = true;
+                    extended = true;
+                    break;
+                }
+            }
+        }
+
+        // Create composite curve if we have curves to combine
+        if (compositeCurves.size() > 0)
+        {
+            AcGeVoidPointerArray finalCurves;
+            AcGeIntArray isOwnerOfCurves;
+
+            for (auto* curve : compositeCurves)
+            {
+                finalCurves.append(curve);
+                isOwnerOfCurves.append(1);
+            }
+
+            resultList.append(PyGeCompositeCurve3d(new AcGeCompositeCurve3d(finalCurves, isOwnerOfCurves)));
+        }
+    }
+
+    return resultList;
 }
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::cast(const PyGeEntity3d& src)
