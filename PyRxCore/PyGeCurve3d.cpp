@@ -1190,7 +1190,7 @@ boost::python::list PyGeCompositeCurve3d::createFromLineSeg3dArray(const boost::
     PyAutoLockGIL lock;
     const auto& vec = py_list_to_std_vector<PyGeLineSeg3d>(curveList);
     Segments segs;
-    for(const auto& item : vec)
+    for (const auto& item : vec)
         segs.emplace_back(Segment{ item.startPoint(), item.endPoint() });
     const auto& plines = connectSegmentsIntoPolylines(segs);
     boost::python::list pylist;
