@@ -165,6 +165,7 @@ public:
     double				 localToGlobalParam(double param, int segNum) const;
 
     static boost::python::list  createFromLineSeg3dArray(const boost::python::list& curveList);
+    static boost::python::list  createFromPolyCurves(const boost::python::list& curveList);
     static PyGeCompositeCurve3d cast(const PyGeEntity3d& src);
     static PyGeCompositeCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
