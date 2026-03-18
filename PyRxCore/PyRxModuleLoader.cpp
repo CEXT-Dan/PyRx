@@ -331,16 +331,11 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
             if (PyFunction_Check(pValue))
             {
                 if (rxApp.commands.contains(commandName))
-                {
-                    rxApp.commands[commandName] = pValue;
-                }
-                else
-                {
-                    const int commandFlags = PyCmd::getCommandFlags(pValue);
-                    rxApp.commands.emplace(commandName, pValue);
-                    rxApp.pathForCommand.emplace(commandName, path.modulePath);
-                    PyRxModule::regCommand(formatFileNameforCommandGroup(path.moduleName), commandName, commandFlags);
-                }
+                    rxApp.commands.erase(commandName);
+                const int commandFlags = PyCmd::getCommandFlags(pValue);
+                rxApp.commands.emplace(commandName, pValue);
+                rxApp.pathForCommand.emplace(commandName, path.modulePath);
+                PyRxModule::regCommand(formatFileNameforCommandGroup(path.moduleName), commandName, commandFlags);
             }
         }
         if (key.find(PyLispFuncPrefix) != -1)
