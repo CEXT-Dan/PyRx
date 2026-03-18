@@ -88,11 +88,28 @@ void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, in
 #ifdef PYRXDEBUG_FULL
     acutPrintf(_T("\nregCommand = %ls"), (LPCTSTR)name);
 #endif
+    //#493 remove old command in case reload gets here;
+    bool hasCommand = false;
+    for (AcEdCommandIteratorPtr iter(acedRegCmds->iterator()); !iter->done(); iter->next())
+    {
+        const auto cmd = iter->command();
+        if (name.compareNoCase(cmd->globalName()) == 0)
+            hasCommand = true;
+    }
+    if (hasCommand)
+    {
+        if (auto es = acedRegCmds->removeCmd(moduleName, name); es != eOk)
+        {
+#ifdef PYRXDEBUG
+            acutPrintf(_T("\removeCmd failed %ls , %ls: "), acadErrorStatusText(es), static_cast<const wchar_t*>(name));
+#endif
+        }
+    }
     if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
     {
-        if (es == Acad::eDuplicateKey)
-            return;
+#ifdef PYRXDEBUG
         acutPrintf(_T("\naddCommand failed %ls , %ls: "), acadErrorStatusText(es), static_cast<const wchar_t*>(name));
+#endif
     }
 }
 
