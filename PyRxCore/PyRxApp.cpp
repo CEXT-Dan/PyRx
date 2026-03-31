@@ -34,16 +34,26 @@ public:
 #ifndef _ARXTARGET
         return RGB(49, 56, 66);
 #else
-        COLORREF clr = 0;
         auto mgr = CAdUiThemeManager{};
         auto theme = mgr.GetTheme(PALETTE_SET_THEME);
-        if (theme == nullptr) [[unlikely]] {
+        if (theme == nullptr)
             return RGB(49, 56, 66);
-        }
-        clr = theme->GetColor(kPaletteBackground);
+        COLORREF clr = theme->GetColor(kPaletteBackground);
         mgr.ReleaseTheme(theme);
         return clr;
 #endif
+    }
+
+    wxColour GetMenuColour(wxMenuColour which) override
+    {
+        static COLORREF clr = getPaletteBackground();
+        switch (which)
+        {
+            case wxMenuColour::StandardBg:
+                return wxColour(clr);
+            default:
+                return wxDarkModeSettings::GetMenuColour(which);
+        }
     }
 
     wxColour GetColour(wxSystemColour index) override
@@ -51,14 +61,11 @@ public:
         static COLORREF clr = getPaletteBackground();
         switch (index)
         {
-            case wxSYS_COLOUR_ACTIVECAPTION:
             case wxSYS_COLOUR_APPWORKSPACE:
             case wxSYS_COLOUR_INFOBK:
             case wxSYS_COLOUR_LISTBOX:
             case wxSYS_COLOUR_WINDOW:
-            case wxSYS_COLOUR_BTNFACE:
                 return wxColour(clr);
-
             default:
                 return wxDarkModeSettings::GetColour(index);
         }
