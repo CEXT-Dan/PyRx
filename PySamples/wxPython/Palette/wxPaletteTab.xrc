@@ -53,7 +53,7 @@
                         <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                         <border>5</border>
                         <object class="wxRadioButton" name="wxID_RADIOBUTTON_LEFT">
-                            <label>Democrat</label>
+                            <label>LeftRB</label>
                             <value>1</value>
                         </object>
                     </object>
@@ -61,7 +61,7 @@
                         <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
                         <border>5</border>
                         <object class="wxRadioButton" name="wxID_RADIOBUTTON_RIGHT">
-                            <label>Republican</label>
+                            <label>RightRB</label>
                             <value>0</value>
                         </object>
                     </object>
