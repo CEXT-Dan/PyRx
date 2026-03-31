@@ -152,6 +152,7 @@ bool WxRxApp::Init_wxPython()
 
 //------------------------------------------------------------------------------------------------
 // hasWxXmlResourceModule helper [#422]
+#if !wxCHECK_VERSION(3, 3, 0)
 static bool hasWxXmlResourceModule()
 {
     int found = 0;
@@ -168,6 +169,7 @@ static bool hasWxXmlResourceModule()
     }
     return false;
 }
+#endif
 
 //------------------------------------------------------------------------------------------------
 // initWxApp
