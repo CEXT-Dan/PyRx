@@ -23,6 +23,48 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/dynlib.h>
 
+#if wxCHECK_VERSION(3, 3, 0)
+#include <wx/msw/darkmode.h>
+class PyRxDarkModeSettings : public wxDarkModeSettings
+{
+public:
+
+    static COLORREF getPaletteBackground()
+    {
+#ifndef _ARXTARGET
+        return RGB(49, 56, 66);
+#else
+        COLORREF clr = 0;
+        auto mgr = CAdUiThemeManager{};
+        auto theme = mgr.GetTheme(PALETTE_SET_THEME);
+        if (theme == nullptr) [[unlikely]] {
+            return RGB(49, 56, 66);
+        }
+        clr = theme->GetColor(kPaletteBackground);
+        mgr.ReleaseTheme(theme);
+        return clr;
+#endif
+    }
+
+    wxColour GetColour(wxSystemColour index) override
+    {
+        static COLORREF clr = getPaletteBackground();
+        switch (index)
+        {
+            case wxSYS_COLOUR_ACTIVECAPTION:
+            case wxSYS_COLOUR_APPWORKSPACE:
+            case wxSYS_COLOUR_INFOBK:
+            case wxSYS_COLOUR_LISTBOX:
+            case wxSYS_COLOUR_WINDOW:
+            case wxSYS_COLOUR_BTNFACE:
+                return wxColour(clr);
+
+            default:
+                return wxDarkModeSettings::GetColour(index);
+        }
+    }
+};
+#endif //wxVERSION_NUMBER
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -44,7 +86,7 @@ bool WxRxApp::OnInit()
     const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
     if (rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
     {
-        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always))
+        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, new PyRxDarkModeSettings()))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
 #endif //wxVERSION_NUMBER
