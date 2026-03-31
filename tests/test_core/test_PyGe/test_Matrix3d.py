@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import math
+import pytest
 
-from pyrx import Ge
+from pyrx import Db, Ge
 
 
 class TestMatrix3d:
@@ -18,7 +19,7 @@ class TestMatrix3d:
         assert sc.sx == 2
         assert sc.sy == 3
         assert sc.sz == 4
-        
+
         vX = Ge.Vector3d.kXAxis * -2
         vY = Ge.Vector3d.kYAxis * -3
         vZ = Ge.Vector3d.kZAxis * -4
@@ -28,7 +29,7 @@ class TestMatrix3d:
         assert sc.sx == 2
         assert sc.sy == 3
         assert sc.sz == 4
-        
+
     def test_matrix3d_scale3d_1(self):
         pO = Ge.Point3d(1, 10, 100)
         vX = Ge.Vector3d.kXAxis * 2
@@ -40,7 +41,7 @@ class TestMatrix3d:
         assert sc.sx == 2
         assert sc.sy == 3
         assert sc.sz == 4
-        
+
         vX = Ge.Vector3d.kXAxis * -2
         vY = Ge.Vector3d.kYAxis * -3
         vZ = Ge.Vector3d.kZAxis * -4
@@ -70,7 +71,7 @@ class TestMatrix3d:
         xf = Ge.Matrix3d.kIdentity
         xf.setToRotation(math.radians(45), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
         assert xf.scale3d() == Ge.Scale3d(1.0, 1.0, 1.0)
-        
+
         xf = Ge.Matrix3d.kIdentity
         xf.setToRotation(math.radians(181), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
         assert xf.scale3d() == Ge.Scale3d(-1.0, -1.0, 1.0)
@@ -315,3 +316,20 @@ class TestMatrix3d:
         assert abs(local_point.x - restored_point.x) < 1e-6
         assert abs(local_point.y - restored_point.y) < 1e-6
         assert abs(local_point.z - restored_point.z) < 1e-6
+
+    def test_matrix3d_safeinverse1(self):
+        tol = Ge.Tol.current()
+        mat = Ge.Matrix3d()
+        inv = mat.safeInverse()
+        assert mat.inverse(inv, tol.equalVector()) == True
+
+    def test_matrix3d_safeinverse2(self):
+        tol = Ge.Tol.current()
+        # bad xfrm
+        m = [[1, 2, 3, 4], [2, 4, 6, 8], [1, 0, 1, 0], [0, 1, 0, 1]]
+        mat = Ge.Matrix3d.fromCollection(m)
+        inv = mat.inverse()
+        assert mat.inverse(inv, tol.equalVector()) == False
+        with pytest.raises(Db.ErrorStatusException):
+            mat.safeInverse()
+            

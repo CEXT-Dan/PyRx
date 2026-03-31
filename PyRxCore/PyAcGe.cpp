@@ -1998,6 +1998,13 @@ static AcGeVector3d AcGeMatrix3dGetZaxis(const AcGeMatrix3d& xf)
     return z;
 }
 
+static AcGeMatrix3d AcGeMatrix3dSafeInverse(const AcGeMatrix3d& xf)
+{
+    AcGeMatrix3d inv = xf.inverse();
+    PyThrowFalse(xf.inverse(inv, AcGeContext::gTol.equalVector()));
+    return inv;
+}
+
 static void makePyGeMatrix3dWrapper()
 {
     constexpr const std::string_view setToMirroringloads = "Overloads:\n"
@@ -2087,6 +2094,7 @@ static void makePyGeMatrix3dWrapper()
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, DS.ARGS({ "xform: PyGe.Matrix3d" }), return_self<>())
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator(), DS.ARGS({ "row: int","col: int" }))
+        .def("safeInverse", &AcGeMatrix3dSafeInverse, DS.ARGS())
         .def("toString", &AcGeMatrix3dToString, DS.ARGS())
         .def("toList", &AcGeMatrix3dToList, DS.ARGS())
         .def("toTuple", &AcGeMatrix3dToTuple, DS.ARGS())
