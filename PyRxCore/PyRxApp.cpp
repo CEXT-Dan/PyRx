@@ -65,6 +65,7 @@ public:
             case wxSYS_COLOUR_INFOBK:
             case wxSYS_COLOUR_LISTBOX:
             case wxSYS_COLOUR_WINDOW:
+            case wxSYS_COLOUR_BTNFACE:
                 return wxColour(clr);
             default:
                 return wxDarkModeSettings::GetColour(index);
