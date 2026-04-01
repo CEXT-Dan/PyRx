@@ -1292,7 +1292,18 @@ void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, cons
 
 void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName) const
 {
-    PyThrowBadEs(impObj()->setCanonicalMediaName(settings.impObj(), utf8_to_wstr(mediaName).c_str()));
+    const std::wstring wMediaName = utf8_to_wstr(mediaName);
+#if defined(_ZRXTARGET260)
+    impObj()->refreshLists(settings.impObj());
+    AcArray<const ACHAR*> mediaList;
+    PyThrowBadEs(impObj()->canonicalMediaNameList(settings.impObj(), mediaList));
+    std::set<std::wstring> validNames;
+    for (const auto item : mediaList)
+        validNames.insert(item);
+    if (!validNames.contains(wMediaName))
+        PyThrowBadEs(Acad::eInvalidInput);
+#endif
+    PyThrowBadEs(impObj()->setCanonicalMediaName(settings.impObj(), wMediaName.c_str()));
 }
 
 void PyDbPlotSettingsValidator::setPlotOrigin(PyDbPlotSettings& settings, const double xCoordinate, const double yCoordinate) const
