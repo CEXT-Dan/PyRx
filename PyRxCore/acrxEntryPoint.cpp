@@ -468,8 +468,6 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        wxColour native = wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE);
-        acutPrintf(_T("\n%d, (%d,%d,%d)"), wxSYS_COLOUR_BTNFACE, native.Red(), native.Green(), native.Blue());
         acutPrintf(L"HI");
     }
 #endif

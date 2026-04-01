@@ -64,7 +64,6 @@ public:
     }
 };
 
-
 static bool isAcadDark()
 {
     resbuf rb;
@@ -82,7 +81,6 @@ static bool useColorThemeOverride()
     }
     return true;
 }
-
 #endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
