@@ -25,7 +25,7 @@
 
 #if wxCHECK_VERSION(3, 3, 0)
 #include <wx/msw/darkmode.h>
-
+#include "PyApApplication.h"
 //------------------------------------------------------------------------------------------------
 //  PyRxDarkModeSettings
 class PyRxDarkModeSettings : public wxDarkModeSettings
