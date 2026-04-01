@@ -63,6 +63,26 @@ public:
         }
     }
 };
+
+
+static bool isAcadDark()
+{
+    resbuf rb;
+    const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
+    return rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0;
+}
+
+static bool useColorThemeOverride()
+{
+    std::array<wchar_t, 8> buffer = { 0 };
+    if (acedGetEnv(_T("PYRX_COLORTHEME_OVERRIDE"), buffer.data(), buffer.size()) == RTNORM)
+    {
+        if (_wtoi(buffer.data()) == 0)
+            return false;
+    }
+    return true;
+}
+
 #endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
@@ -81,11 +101,9 @@ bool WxRxApp::OnInit()
 {
     // TODO: support wxWidgets with dark mode
 #if wxCHECK_VERSION(3, 3, 0)
-    resbuf rb;
-    const auto rt = acedGetVar(_T("COLORTHEME"), &rb);
-    if (rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0)
+    if (isAcadDark())
     {
-        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, new PyRxDarkModeSettings()))
+        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
 #endif //wxVERSION_33
