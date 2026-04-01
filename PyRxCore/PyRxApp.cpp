@@ -25,6 +25,9 @@
 
 #if wxCHECK_VERSION(3, 3, 0)
 #include <wx/msw/darkmode.h>
+
+//------------------------------------------------------------------------------------------------
+//  PyRxDarkModeSettings
 class PyRxDarkModeSettings : public wxDarkModeSettings
 {
 public:
@@ -44,18 +47,6 @@ public:
 #endif
     }
 
-    wxColour GetMenuColour(wxMenuColour which) override
-    {
-        static COLORREF clr = getPaletteBackground();
-        switch (which)
-        {
-            case wxMenuColour::StandardBg:
-                return wxColour(clr);
-            default:
-                return wxDarkModeSettings::GetMenuColour(which);
-        }
-    }
-
     wxColour GetColour(wxSystemColour index) override
     {
         static COLORREF clr = getPaletteBackground();
@@ -65,14 +56,14 @@ public:
             case wxSYS_COLOUR_INFOBK:
             case wxSYS_COLOUR_LISTBOX:
             case wxSYS_COLOUR_WINDOW:
-            case wxSYS_COLOUR_BTNFACE:
+            case wxSYS_COLOUR_BTNFACE: //TODO: does not stick
                 return wxColour(clr);
             default:
                 return wxDarkModeSettings::GetColour(index);
         }
     }
 };
-#endif //wxVERSION_NUMBER
+#endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -97,7 +88,7 @@ bool WxRxApp::OnInit()
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, new PyRxDarkModeSettings()))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
-#endif //wxVERSION_NUMBER
+#endif //wxVERSION_33
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
@@ -219,7 +210,7 @@ static bool hasWxXmlResourceModule()
     }
     return false;
 }
-#endif
+#endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
 // initWxApp
@@ -250,7 +241,7 @@ static bool uninitWxApp()
     if (hasWxXmlResourceModule())
         std::quick_exit(EXIT_SUCCESS);
 #endif //_GRXTARGET
-#endif //wxCHECK_VERSION
+#endif //wxVERSION_33
     return true;
 }
 
