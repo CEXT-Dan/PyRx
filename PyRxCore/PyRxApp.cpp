@@ -81,6 +81,17 @@ static bool useColorThemeOverride()
     }
     return true;
 }
+
+static bool useColorTheme()
+{
+    std::array<wchar_t, 8> buffer = { 0 };
+    if (acedGetEnv(_T("PYRX_COLORTHEME"), buffer.data(), buffer.size()) == RTNORM)
+    {
+        if (_wtoi(buffer.data()) == 0)
+            return false;
+    }
+    return true;
+}
 #endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
@@ -99,7 +110,7 @@ bool WxRxApp::OnInit()
 {
     // TODO: support wxWidgets with dark mode
 #if wxCHECK_VERSION(3, 3, 0)
-    if (isAcadDark())
+    if (isAcadDark() && useColorTheme())
     {
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr))
             acutPrintf(_T("MSWEnableDarkMode failed"));
