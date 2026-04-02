@@ -1450,6 +1450,10 @@ static void makePyGePoint3dWrapper()
         "- x: float, y: float, z: float\n"
         "- pl: PyGe.PlanarEnt, pt2d: PyGe.Point2d\n";
 
+    constexpr const std::string_view subOverloads = "Overloads:\n"
+        "- val: PyGe.Vector3d\n"
+        "- val: PyGe.Point3d\n";
+
     PyDocString DS("PyGe.Point3d");
     class_<AcGePoint3d>("Point3d")
         .def(init<>())
@@ -1485,7 +1489,7 @@ static void makePyGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__add__", &AcGePoint3d::operator+, DS.ARGS({ "vec: PyGe.Vector3d" }))
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__iadd__", &AcGePoint3d::operator+=, DS.ARGS({ "vec: PyGe.Vector3d" }), return_self<>())
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
-        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Point3d" }))
+        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-, DS.OVRL(subOverloads))
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, DS.ARGS({ "vec: PyGe.Vector3d" }), return_self<>())
         .def_pickle(AcGePoint3dpickle())
         .def("to2d", &AcGePoint3dMake2d, DS.ARGS())
