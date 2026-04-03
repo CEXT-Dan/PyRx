@@ -521,6 +521,10 @@ static void makePyGePoint2dWrapper()
         "- None: Any\n"
         "- x: float, y: float\n";
 
+    constexpr const std::string_view subOverloads = "Overloads:\n"
+        "- val: PyGe.Vector2d\n"
+        "- val: PyGe.Point2d\n";
+
     PyDocString DS("Point2d");
     class_<AcGePoint2d>("Point2d")
         .def(init<>())
@@ -547,7 +551,7 @@ static void makePyGePoint2dWrapper()
         .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__add__", &AcGePoint2d::operator+, DS.ARGS({ "vec: PyGe.Vector2d" }))
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__iadd__", &AcGePoint2d::operator+=, DS.ARGS({ "vec: PyGe.Vector2d" }), return_self<>())
         .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__sub__", &AcGePoint2d::operator-)
-        .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-, DS.ARGS({ "other: PyGe.Point2d|PyGe.Vector2d" }))
+        .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-, DS.OVRL(subOverloads))
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, DS.ARGS({ "vec: PyGe.Vector2d" }), return_self<>())
         .def_pickle(AcGePoint2dpickle())
         .def("toString", &AcGePoint2dToString, DS.ARGS())
