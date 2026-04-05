@@ -429,7 +429,6 @@ static boost::shared_ptr<PyGePoint2dArray> PyPoint2dArrayInit(const boost::pytho
     return boost::shared_ptr<PyGePoint2dArray>(new PyGePoint2dArray(vec.begin(), vec.end()));
 }
 
-
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
 static std::vector<size_t> PyGePoint2dArrayConvexHullIndexesImpl(const PyGePoint2dArray& src)
@@ -503,6 +502,10 @@ static PyGePoint2dArray PyGePoint2dArrayConvexHull(const PyGePoint2dArray& src)
 
 static void makePyGePoint2dWrapper()
 {
+    constexpr const std::string_view Point2dArrayInit = "Overloads:\n"
+        "- None: Any\n"
+        "- pnts: Collection[PyGe.Point2d]\n";
+
     PyDocString DSPA("PyGe.Point2dArray");
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
@@ -514,7 +517,7 @@ static void makePyGePoint2dWrapper()
         .def("sortByY", &PyGePoint2dArraySortByY, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
-        .def("__init__", make_constructor(&PyPoint2dArrayInit))
+        .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -1426,6 +1429,10 @@ static boost::python::list PyGePoint3dConcaveHullIndexes(const PyGePoint3dArray&
 
 static void makePyGePoint3dWrapper()
 {
+    constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
+        "- None: Any\n"
+        "- pnts: Collection[PyGe.Point3d]\n";
+
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
@@ -1441,7 +1448,7 @@ static void makePyGePoint3dWrapper()
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
-        .def("__init__", make_constructor(&PyPoint3dArrayInit))
+        .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
