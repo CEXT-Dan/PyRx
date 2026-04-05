@@ -55,9 +55,20 @@ static void objectIdArrayReverse(PyDbObjectIdArray& inIds)
     std::reverse(inIds.begin(), inIds.end());
 }
 
+static void objectIdArrayAppend(PyDbObjectIdArray& inIds, const PyDbObjectId&id)
+{
+    inIds.push_back(id);
+}
+
+static void objectIdArrayExtend(PyDbObjectIdArray& inIds, const boost::python::object& iterable)
+{
+    for (auto& id : py_list_to_std_vector<PyDbObjectId>(iterable))
+        inIds.push_back(id);
+}
+
 static boost::shared_ptr<PyDbObjectIdArray> PyObjectIdArrayInit(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcDbObjectId>(iterable);
+    auto vec = py_list_to_std_vector<PyDbObjectId>(iterable);
     return boost::shared_ptr<PyDbObjectIdArray>(new PyDbObjectIdArray(vec.begin(), vec.end()));
 }
 //---------------------------------------------------------------------------------
@@ -78,9 +89,11 @@ void makePyDbObjectIdWrapper()
         .def("getIdsOfType", &objectIdArrayFilter1)
         .def("getIdsOfType", &objectIdArrayFilter2, DSIDA.OVRL(ObjectIdArrayOverloads))
         .def("removeErased", &objectIdArrayRemoveErased, DSIDA.ARGS())
+        .def("append", &objectIdArrayAppend, DSIDA.ARGS({ "id: PyDb.ObjectId"}))
+        .def("extend", &objectIdArrayExtend, DSIDA.ARGS({ "id: Collection[PyDb.ObjectId]" }))
         .def("clear", &objectIdArrayClear, DSIDA.ARGS())
         .def("sort", &objectIdArraySort, DSIDA.ARGS())
-        .def("reverse", &objectIdArrayReverse, DSIDA.ARGS()) //TODO: this will be implemented in boost!
+        .def("reverse", &objectIdArrayReverse, DSIDA.ARGS())
         .def("__init__", make_constructor(&PyObjectIdArrayInit), DSIDA.OVRL(ObjectIdArrayInit))
         ;
 

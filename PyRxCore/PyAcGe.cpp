@@ -500,6 +500,17 @@ static PyGePoint2dArray PyGePoint2dArrayConvexHull(const PyGePoint2dArray& src)
     return hull;
 }
 
+static void PyGePoint2dArrayAppend(PyGePoint2dArray& pnts, const AcGePoint2d& p)
+{
+    pnts.push_back(p);
+}
+
+static void PyGePoint2dArrayExtend(PyGePoint2dArray& pnts, const boost::python::object& iterable)
+{
+    for (auto& id : py_list_to_std_vector<AcGePoint2d>(iterable))
+        pnts.push_back(id);
+}
+
 static void makePyGePoint2dWrapper()
 {
     constexpr const std::string_view Point2dArrayInit = "Overloads:\n"
@@ -516,6 +527,8 @@ static void makePyGePoint2dWrapper()
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
         .def("sortByY", &PyGePoint2dArraySortByY, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
+        .def("append", &PyGePoint2dArrayAppend, DSPA.ARGS({ "pnt: PyGe.Point2d" }))
+        .def("extend", &PyGePoint2dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point2d]" }))
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
@@ -1427,6 +1440,17 @@ static boost::python::list PyGePoint3dConcaveHullIndexes(const PyGePoint3dArray&
     return pylist;
 }
 
+static void PyGePoint3dArrayAppend(PyGePoint3dArray& pnts, const AcGePoint3d& p)
+{
+    pnts.push_back(p);
+}
+
+static void PyGePoint3dArrayExtend(PyGePoint3dArray& pnts, const boost::python::object& iterable)
+{
+    for (auto& id : py_list_to_std_vector<AcGePoint3d>(iterable))
+        pnts.push_back(id);
+}
+
 static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
@@ -1447,6 +1471,8 @@ static void makePyGePoint3dWrapper()
         .def("sortByY", &PyGePoint3dArraySortByY, DSPA.ARGS())
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
+        .def("append", &PyGePoint3dArrayAppend, DSPA.ARGS({ "pnt: PyGe.Point2d" }))
+        .def("extend", &PyGePoint3dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point2d]" }))
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
