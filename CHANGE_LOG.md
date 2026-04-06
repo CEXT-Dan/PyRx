@@ -1,3 +1,10 @@
+## v2.2.50
+
+* build with AutoCAD 2027 release SDK
+* [#493] reset command flags with pyreload
+* [#495] Add Ge.Matrix3d.safeInverse, throws if the call fails
+* [#497] Add workaround for PlotSettingsValidator.setCanonicalMediaName in ZwCAD
+
 ## v2.2.49
 
 * add CvTinTriangle::intersectWith
