@@ -71,6 +71,12 @@ static boost::shared_ptr<PyDbObjectIdArray> PyObjectIdArrayInit(const boost::pyt
     auto vec = py_list_to_std_vector<PyDbObjectId>(iterable);
     return boost::shared_ptr<PyDbObjectIdArray>(new PyDbObjectIdArray(vec.begin(), vec.end()));
 }
+
+static void objectIdArrayPop(PyDbObjectIdArray& inIds)
+{
+    inIds.pop_back();
+}
+
 //---------------------------------------------------------------------------------
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
@@ -94,6 +100,7 @@ void makePyDbObjectIdWrapper()
         .def("clear", &objectIdArrayClear, DSIDA.ARGS())
         .def("sort", &objectIdArraySort, DSIDA.ARGS())
         .def("reverse", &objectIdArrayReverse, DSIDA.ARGS())
+        .def("pop_back", &objectIdArrayPop, DSIDA.ARGS())
         .def("__init__", make_constructor(&PyObjectIdArrayInit), DSIDA.OVRL(ObjectIdArrayInit))
         ;
 

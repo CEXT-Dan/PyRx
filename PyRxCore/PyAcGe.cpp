@@ -511,6 +511,16 @@ static void PyGePoint2dArrayExtend(PyGePoint2dArray& pnts, const boost::python::
         pnts.push_back(id);
 }
 
+static void PyGePoint2dArrayClear(PyGePoint2dArray& pnts)
+{
+    pnts.clear();
+}
+
+static void PyGePoint2dArrayPop(PyGePoint2dArray& pnts)
+{
+    pnts.pop_back();
+}
+
 static void makePyGePoint2dWrapper()
 {
     constexpr const std::string_view Point2dArrayInit = "Overloads:\n"
@@ -529,6 +539,8 @@ static void makePyGePoint2dWrapper()
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         .def("append", &PyGePoint2dArrayAppend, DSPA.ARGS({ "pnt: PyGe.Point2d" }))
         .def("extend", &PyGePoint2dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point2d]" }))
+        .def("clear", &PyGePoint2dArrayClear, DSPA.ARGS())
+        .def("pop_back", &PyGePoint2dArrayPop, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
@@ -1451,6 +1463,16 @@ static void PyGePoint3dArrayExtend(PyGePoint3dArray& pnts, const boost::python::
         pnts.push_back(id);
 }
 
+static void PyGePoint3dArrayClear(PyGePoint3dArray& pnts)
+{
+    pnts.clear();
+}
+
+static void PyGePoint3dArrayPop(PyGePoint3dArray& pnts)
+{
+    pnts.pop_back();
+}
+
 static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
@@ -1473,6 +1495,8 @@ static void makePyGePoint3dWrapper()
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
         .def("append", &PyGePoint3dArrayAppend, DSPA.ARGS({ "pnt: PyGe.Point3d" }))
         .def("extend", &PyGePoint3dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point3d]" }))
+        .def("clear", &PyGePoint3dArrayClear, DSPA.ARGS())
+        .def("pop_back", &PyGePoint3dArrayPop, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
