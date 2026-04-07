@@ -245,7 +245,6 @@ class _BoostPythonInstanceClassPyiGenerator:
         "__str__",
         "__eq__",
         "__ne__",
-        "__sub__",
         "__isub__",
         "__bool__",
         "__doc__",
