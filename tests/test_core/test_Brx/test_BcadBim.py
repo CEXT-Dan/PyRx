@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from pyrx import Cv, Db, Bim
+from pyrx import Bim, Db
 
 
 @pytest.mark.known_failure_IRX

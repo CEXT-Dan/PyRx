@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-import pytest
 import math
+
+import pytest
 
 from pyrx import Ge
 

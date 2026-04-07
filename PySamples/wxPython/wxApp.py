@@ -2,6 +2,7 @@ import wx
 
 from pyrx import Ap
 
+
 def app_details(app : wx.App):
     print(app.AppName)
     

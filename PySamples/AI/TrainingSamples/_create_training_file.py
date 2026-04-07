@@ -1,7 +1,8 @@
-import time
+import hashlib
 import random
 import sys
-import hashlib
+import time
+
 
 def create_training_file():
     # Create a unique 7-character hex hash (like a Git commit)
