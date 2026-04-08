@@ -2841,7 +2841,18 @@
         [
             "PyBrxBim::BimBuilding::assignedObjects",
             "list[PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::Core::entGet",
+            "list[tuple[int, Any]]"
+        ],
+        [
+            "PyDb::Core::entGetX",
+            "list[tuple[int, Any]]"
+        ],
+        [
+            "PyDb::Core::resbufTest",
+            "list[tuple[int, Any]]"
         ]
-
     ]
 }
