@@ -41,7 +41,11 @@ public:
     boost::python::tuple    evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db) const;
 
     std::string             getFieldCode1(AcDbField::FieldCodeFlag nFlag) const;
-    std::string             getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list&, AcDb::OpenMode mode) const;
+    std::string             getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::object&, AcDb::OpenMode mode) const;
+
+    void                    setFieldCode1(const std::string& pszFieldCode) const;
+    void                    setFieldCode2(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag) const;
+    void                    setFieldCode3(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag, const boost::python::object& childFields) const;
 
     void                    setData1(const std::string& key, const PyDbAcValue& value) const;
     void                    setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const;

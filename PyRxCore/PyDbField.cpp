@@ -21,7 +21,12 @@ void makePyDbFieldWrapper()
 
     constexpr const std::string_view getFieldCodeOverloads = "Overloads:\n"
         "- nContext: PyDb.FieldCodeFlag\n"
-        "- nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode\n";
+        "- nContext: PyDb.FieldCodeFlag, children: Collection[PyDb.Field], mode: PyDb.OpenMode\n";
+
+    constexpr const std::string_view setFieldCodeOverloads = "Overloads:\n"
+        "- pszFieldCode: str\n"
+        "- pszFieldCode: str, nFlag : PyDb.FieldCodeFlag\n"
+        "- pszFieldCode: str, nFlag : PyDb.FieldCodeFlag, children: Collection[PyDb.Field], mode: PyDb.OpenMode\n";
 
     PyDocString DS("Field");
     class_<PyDbField, bases<PyDbObject>>("Field")
@@ -51,6 +56,9 @@ void makePyDbFieldWrapper()
         .def("evaluate", &PyDbField::evaluate3, DS.OVRL(evaluateOverloads, 4628))
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads, 4637))
+        .def("setFieldCode", &PyDbField::setFieldCode1)
+        .def("setFieldCode", &PyDbField::setFieldCode2)
+        .def("setFieldCode", &PyDbField::setFieldCode3, DS.OVRL(setFieldCodeOverloads, 4648))
         .def("getData", &PyDbField::getData, DS.ARGS({ "key: str" }))
         .def("hasData", &PyDbField::hasData, DS.ARGS({ "key: str" }))
         .def("setData", &PyDbField::setData1)
@@ -281,7 +289,7 @@ std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag) const
     return wstr_to_utf8(impObj()->getFieldCode(nFlag));
 }
 
-std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list& pyfields, AcDb::OpenMode mode) const
+std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::object& pyfields, AcDb::OpenMode mode) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbField*> pChildFields;
@@ -289,6 +297,26 @@ std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost
     for (const auto& item : PyList)
         pChildFields.append(item.impObj());
     return wstr_to_utf8(impObj()->getFieldCode(nFlag, &pChildFields, mode));
+}
+
+void PyDbField::setFieldCode1(const std::string& pszFieldCode) const
+{
+    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str()));
+}
+
+void PyDbField::setFieldCode2(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag) const
+{
+    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str(), nFlag));
+}
+
+void PyDbField::setFieldCode3(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag, const boost::python::object& childFields) const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbField*> pChildFields;
+    auto PyList = py_list_to_std_vector<PyDbField>(childFields);
+    for (const auto& item : PyList)
+        pChildFields.append(item.impObj());
+    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str(), nFlag, &pChildFields));
 }
 
 void PyDbField::setData1(const std::string& key, const PyDbAcValue& value) const
