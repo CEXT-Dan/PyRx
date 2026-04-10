@@ -313,8 +313,7 @@ void PyDbField::setFieldCode3(const std::string& pszFieldCode, AcDbField::FieldC
 {
     PyAutoLockGIL lock;
     AcArray<AcDbField*> pChildFields;
-    auto PyList = py_list_to_std_vector<PyDbField>(childFields);
-    for (const auto& item : PyList)
+    for (const auto& item : py_list_to_std_vector<PyDbField>(childFields))
         pChildFields.append(item.impObj());
     PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str(), nFlag, &pChildFields));
 }
