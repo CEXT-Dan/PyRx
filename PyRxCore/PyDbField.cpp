@@ -137,7 +137,7 @@ PyDbField::PyDbField()
 }
 
 PyDbField::PyDbField(const std::string& pszFieldCode)
-    : PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str(), true), true)
+    : PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str()), true)
 {
 }
 
