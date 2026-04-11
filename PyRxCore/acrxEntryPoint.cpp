@@ -438,7 +438,7 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 
-    static auto postToModelSpace(AcDbEntity* pEnt)
+    static auto postToModelSpace(AcDbEntity* pEnt) -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
     {
         if (pEnt == nullptr)
             return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
