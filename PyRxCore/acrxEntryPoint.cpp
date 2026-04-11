@@ -456,13 +456,12 @@ public:
         AcGePoint3d pnt;
         ads_name name = { 0L };
         auto res = static_cast<Acad::PromptStatus>(acedEntSel(msg, name, asDblArray(pnt)));
-        if (res == Acad::eNormal)
-        {
-            if (auto es = acdbGetObjectId(id, name); es != eOk)
-                return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
-            if (!id.objectClass()->isDerivedFrom(desc))
-                return std::make_tuple(Acad::PromptStatus::eRejected, id, pnt);
-        }
+        if (res != Acad::eNormal)
+            return std::make_tuple(res, id, pnt);
+        if (auto es = acdbGetObjectId(id, name); es != eOk)
+            return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
+        if (!id.objectClass()->isDerivedFrom(desc))
+            return std::make_tuple(Acad::PromptStatus::eRejected, id, pnt);
         return std::make_tuple(res, id, pnt);
     }
 
@@ -488,7 +487,7 @@ public:
         childField1->postInDatabase(pDb);
         childField1->setEvaluationOption(AcDbField::EvalOption::kAutomatic);
         childField1->setFieldCode(childCode1.c_str(), childFlag1);
-        childField1->evaluate(AcDbField::EvalContext::kDemand,pDb);
+        childField1->evaluate(AcDbField::EvalContext::kDemand, pDb);
         acutPrintf(L"\nchildField1 = %ls", childField1->getFieldCode(AcDbField::kEvaluatedText));
 
         //child2
@@ -512,7 +511,7 @@ public:
 
         const auto parentCode = L"hi %<\\_FldIdx 0>%, %<\\_FldIdx 1>%";
         auto parentFlag = AcDbField::FieldCodeFlag(
-            AcDbField::FieldCodeFlag::kTextField 
+            AcDbField::FieldCodeFlag::kTextField
         );
         AcDbFieldPtr parentField;
         parentField.create();

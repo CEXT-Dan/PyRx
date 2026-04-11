@@ -90,17 +90,17 @@ class TestDialog(wx.Dialog):
     def onGetPoint(self, event):
         try:
             self.keepFocus = 0
-            val = Ap.Application().docManager().curDocument().editor().getPoint("\nGetPoint\n")
-            if val[0] == Ed.PromptStatus.eNormal:
-                self.textPointResult.SetValue(val[1].__str__())
+            ps, val = Ed.Editor.getPoint("\nGetPoint\n")
+            if ps == Ed.PromptStatus.eNormal:
+                self.textPointResult.SetValue(str(val))
         finally:
             self.keepFocus = 1
 
     def onGetDist(self, event):
         try:
             self.keepFocus = 0
-            val = Ap.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
-            if val[0] == Ed.PromptStatus.eNormal:
-                self.textDistResult.SetValue(val[1].__str__())
+            ps, val = Ed.Editor.getDist("\nGetDist\n")
+            if ps == Ed.PromptStatus.eNormal:
+                self.textDistResult.SetValue(str(val))
         finally:
             self.keepFocus = 1
