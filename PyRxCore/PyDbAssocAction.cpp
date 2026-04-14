@@ -459,7 +459,7 @@ void PyDbAssocDependency::copied(const PyDbObject& dbObj, const PyDbObject& pNew
 
 void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET260) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setPrevDependencyOnObject(depId.m_id);
@@ -468,7 +468,7 @@ void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) c
 
 void PyDbAssocDependency::setNextDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET260) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_IRXTARGET140) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setNextDependencyOnObject(depId.m_id);
@@ -1169,7 +1169,7 @@ boost::python::list PyDbAssocAction::getActionsDependentOnObject(const PyDbObjec
 
 void PyDbAssocAction::removeActionsControllingObject1(const PyDbObjectId& objectToRemoveActionsFrom)
 {
-#if defined(_ZRXTARGET260)
+#if defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(AcDbAssocAction::removeActionsControllingObject(objectToRemoveActionsFrom.m_id));
@@ -1178,7 +1178,7 @@ void PyDbAssocAction::removeActionsControllingObject1(const PyDbObjectId& object
 
 void PyDbAssocAction::removeActionsControllingObject2(const PyDbObjectId& objectToRemoveActionsFrom, int readOnlyDependencyHandling, const PyDbObjectId& objectToRedirectReadOnlyDependenciesTo)
 {
-#if defined(_ZRXTARGET260)
+#if defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(AcDbAssocAction::removeActionsControllingObject(objectToRemoveActionsFrom.m_id, readOnlyDependencyHandling, objectToRedirectReadOnlyDependenciesTo.m_id));
@@ -1187,7 +1187,7 @@ void PyDbAssocAction::removeActionsControllingObject2(const PyDbObjectId& object
 
 void PyDbAssocAction::markDependentActionsToEvaluate(const PyDbObjectId& actionId)
 {
-#if defined(_ZRXTARGET260)
+#if defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(AcDbAssocAction::markDependentActionsToEvaluate(actionId.m_id));
@@ -1196,7 +1196,7 @@ void PyDbAssocAction::markDependentActionsToEvaluate(const PyDbObjectId& actionI
 
 bool PyDbAssocAction::doesObjectHaveActiveActions(const PyDbObject& pObject)
 {
-#if defined(_ZRXTARGET260)
+#if defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return AcDbAssocAction::doesObjectHaveActiveActions(pObject.impObj());

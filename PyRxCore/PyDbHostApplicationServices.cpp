@@ -1293,7 +1293,7 @@ void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, cons
 void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName) const
 {
     const std::wstring wMediaName = utf8_to_wstr(mediaName);
-#if defined(_ZRXTARGET260)
+#if defined(_ZRXTARGET270)
     impObj()->refreshLists(settings.impObj());
     AcArray<const ACHAR*> mediaList;
     PyThrowBadEs(impObj()->canonicalMediaNameList(settings.impObj(), mediaList));

@@ -4,7 +4,7 @@
 
 AcString PyRxModule::commandForCurDocument()
 {
-#ifdef _ZRXTARGET260
+#ifdef _ZRXTARGET270
     //[#204] ID SUP - 79158
     // hack acedCmdS does not set CommandForDocument
     // we attemt to set this in bool EdCore::cmdS

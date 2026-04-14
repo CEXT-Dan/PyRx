@@ -724,7 +724,7 @@ bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
 
 AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 {
-#if defined(_ZRXTARGET260) || defined(_BRXTARGET260)
+#if defined(_ZRXTARGET270) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return acdbGetFieldEngine()->evaluationOption();
@@ -733,7 +733,7 @@ AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 
 void PyDbFieldEngine::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-#if defined(_ZRXTARGET260) || defined(_BRXTARGET260)
+#if defined(_ZRXTARGET270) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(acdbGetFieldEngine()->setEvaluationOption(nEvalOption));

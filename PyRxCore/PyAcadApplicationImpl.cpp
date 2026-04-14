@@ -2368,7 +2368,7 @@ void PyIAcadUtilityImpl::Prompt(const CString& prompt) const
     PyThrowBadHr(impObj()->Prompt(bstrVal));
 }
 
-#if defined _ZRXTARGET260// SUP-78584.
+#if defined _ZRXTARGET270// SUP-78584.
 static std::vector<std::vector<double>> SafeArray2DToDoubleMatrix(SAFEARRAY* psa) {
     LONG rowLower, rowUpper;
     LONG colLower, colUpper;
@@ -2411,7 +2411,7 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
 
     hp = (AcGePoint3d)AcAxPoint3d(vthp);
 
-#if defined _ZRXTARGET260// SUP-78584.
+#if defined _ZRXTARGET270// SUP-78584.
     auto vec = SafeArray2DToDoubleMatrix(vtxf.parray);
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {

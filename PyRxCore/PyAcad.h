@@ -30,7 +30,7 @@
 #import "zwcad21.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ZRXTARGET) && (_ZRXTARGET >= 250) && (_ZRXTARGET <= 260)
+#if defined(_ZRXTARGET) && (_ZRXTARGET >= 250) && (_ZRXTARGET <= 270)
 #import "zwcad25.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 

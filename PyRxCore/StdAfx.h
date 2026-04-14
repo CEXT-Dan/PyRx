@@ -70,6 +70,9 @@
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 260)
 #define _ZRXTARGET260 260
 #endif
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 270)
+#define _ZRXTARGET270 270
+#endif
 
 #if defined(_GRXTARGET) && (_GRXTARGET <= 240)
 #define _GRXTARGET240 250
@@ -247,9 +250,20 @@
 #endif
 
 #if defined(_ZRXTARGET)
-#pragma comment( lib , "ZwGs.lib" )
-#pragma comment( lib , "ZwImaging.lib" )
 #pragma comment( lib , "ZwAuto.lib" )
+#pragma comment( lib , "ZwBase.lib" )
+#pragma comment( lib , "ZWCAD.lib" )
+#pragma comment( lib , "ZwDatabase.lib" )
+#pragma comment( lib , "ZwdUI.lib" )
+#pragma comment( lib , "ZwGeometry.lib" )
+#pragma comment( lib , "ZwGs.lib" )
+#pragma comment( lib , "ZwPAL.lib" )
+#pragma comment( lib , "ZwPointCloudCore.lib" )
+#pragma comment( lib , "ZwRx.lib" )
+#pragma comment( lib , "ZwTc.lib" )
+#pragma comment( lib , "ZwUI.lib" )
+#pragma comment( lib , "ZwZrx.lib" )
+#pragma comment( lib , "ZwImaging.lib")
 #endif
 
 #if defined(_IRXTARGET)

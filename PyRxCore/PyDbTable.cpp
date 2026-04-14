@@ -68,7 +68,7 @@ static void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
-#if defined (_ZRXTARGET260)
+#if defined (_ZRXTARGET270)
     return boost::shared_ptr<AcCellRange>(new AcCellRange());
 #else
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
@@ -77,7 +77,7 @@ static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
 {
-#if defined (_ZRXTARGET260)
+#if defined (_ZRXTARGET270)
     AcCellRange range;
     range.mnTopRow = tr;
     range.mnLeftColumn = lc;
@@ -2281,7 +2281,7 @@ void PyDbTable::setBreakSpacing(double fSpacing) const
 
 AcCellRange PyDbTable::cellRange() const
 {
-#if defined(_GRXTARGET250) || defined(_ZRXTARGET260) || defined(_BRXTARGET260)
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET270) || defined(_BRXTARGET260)
     auto range = AcCellRange{};
     range.mnTopRow = 0;
     range.mnLeftColumn = 0;
