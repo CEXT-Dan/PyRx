@@ -3,6 +3,8 @@
 #include "PyDbIdMapping.h"
 #include "PyDbEval.h"
 
+#if defined(ASSOCNETWORK_FEATURE)
+
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -1669,3 +1671,5 @@ AcDbAssocVariable* PyDbAssocVariable::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbAssocVariable*>(m_pyImp.get());
 }
+
+#endif

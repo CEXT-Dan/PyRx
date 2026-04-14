@@ -544,11 +544,13 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbHyperlinkCollectionWrapper();
     makePyDbEntityHyperlinkPEWrapper();
     makePyDbOverrulableEntity();
+#if defined(ASSOCNETWORK_FEATURE)
     makePyDbAssocDependencyWrapper();
     makePyDbAssocActionWrapper();
     makePyDbAssocNetworkWrapper();
     makePyDbAssocVariableWrapper();
     makePyDbAssocValueDependencyWrapper();
+#endif
 #if defined(_ARXTARGET)
     makeXRefLayerPropertyOverride();
 #endif
@@ -2065,6 +2067,7 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
+#if defined(ASSOCNETWORK_FEATURE)
     enum_<AcDbAssocStatus>("AssocStatus")
         .value("kIsUpToDateAssocStatus", AcDbAssocStatus::kIsUpToDateAssocStatus)
         .value("kChangedDirectlyAssocStatus", AcDbAssocStatus::kChangedDirectlyAssocStatus)
@@ -2119,6 +2122,8 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kMove", AcDbAssocTransformationType::kMove)
         .export_values()
         ;
+
+#endif //ASSOCNETWORK_FEATURE
     enum_<AcDb::DragStat>("DragStat")
         .value("kDragStart", AcDb::DragStat::kDragStart)
         .value("kDragEnd", AcDb::DragStat::kDragEnd)

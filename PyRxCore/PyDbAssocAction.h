@@ -2,6 +2,8 @@
 
 #pragma pack (push, 8)
 
+#if defined(ASSOCNETWORK_FEATURE)
+
 #include "PyDbObject.h"
 #include "AcDbAssocAction.h"
 #include "AcDbAssocDependency.h"
@@ -353,5 +355,7 @@ public:
 public:
     AcDbAssocVariable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#endif
 
 #pragma pack (pop)
