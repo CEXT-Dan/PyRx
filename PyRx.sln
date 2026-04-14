@@ -139,6 +139,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxI14.1", "PyRxCore\PyRxI
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxLoaderI14.1", "PyRxLoader\RxLoaderI14.1.vcxproj", "{37B166F4-537E-4EE9-B5A0-B8768AF06414}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxZ27.0", "PyRxCore\PyRxZ27.0.vcxproj", "{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxLoaderZ27.0", "PyRxLoader\RxLoaderZ27.0.vcxproj", "{13F081C4-98BE-430B-9C8E-63C75AB25889}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -401,6 +405,22 @@ Global
 		{37B166F4-537E-4EE9-B5A0-B8768AF06414}.Release|x64.Build.0 = Release|x64
 		{37B166F4-537E-4EE9-B5A0-B8768AF06414}.Release|x86.ActiveCfg = Release|x64
 		{37B166F4-537E-4EE9-B5A0-B8768AF06414}.Release|x86.Build.0 = Release|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Debug|x64.ActiveCfg = Debug|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Debug|x64.Build.0 = Debug|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Debug|x86.ActiveCfg = Debug|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Debug|x86.Build.0 = Debug|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Release|x64.ActiveCfg = Release|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Release|x64.Build.0 = Release|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Release|x86.ActiveCfg = Release|x64
+		{B9E23B4E-63E0-49D6-85B7-684F6D24BB26}.Release|x86.Build.0 = Release|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Debug|x64.ActiveCfg = Debug|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Debug|x64.Build.0 = Debug|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Debug|x86.ActiveCfg = Debug|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Debug|x86.Build.0 = Debug|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Release|x64.ActiveCfg = Release|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Release|x64.Build.0 = Release|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Release|x86.ActiveCfg = Release|x64
+		{13F081C4-98BE-430B-9C8E-63C75AB25889}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
