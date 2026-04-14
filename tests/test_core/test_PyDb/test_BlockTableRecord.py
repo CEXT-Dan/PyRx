@@ -16,6 +16,7 @@ class TestBlockTableRecord:
                 continue
             assert "*" not in btr.effectiveName()
 
+    @pytest.mark.known_failure_ZRX #fails on side database?
     def test_visibleObjectIds(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
