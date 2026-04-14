@@ -24,7 +24,7 @@
     <UseOfMfc>Dynamic</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CLRSupport>false</CLRSupport>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -81,7 +81,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ZRX2027)\arxport\lib-$(PlatformName);$(ZRX2027)\arxport\utils\brep\lib-$(PlatformName);$(ZRX2027)\arxport\utils\Atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZRX2027)\arxport\lib-$(PlatformName);$(ZRX2027)\arxport\utils\brep\lib-$(PlatformName);$(ZRX2027)\arxport\utils\Atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -119,7 +119,7 @@
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ZRX2027)\arxport\lib-$(PlatformName);$(ZRX2027)\arxport\utils\brep\lib-$(PlatformName);$(ZRX2027)\arxport\utils\Atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZRX2027)\arxport\lib-$(PlatformName);$(ZRX2027)\arxport\utils\brep\lib-$(PlatformName);$(ZRX2027)\arxport\utils\Atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>

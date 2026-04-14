@@ -258,7 +258,11 @@
 #pragma comment( lib , "ZwGeometry.lib" )
 #pragma comment( lib , "ZwGs.lib" )
 #pragma comment( lib , "ZwPAL.lib" )
+
+#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
 #pragma comment( lib , "ZwPointCloudCore.lib" )
+#endif
+
 #pragma comment( lib , "ZwRx.lib" )
 #pragma comment( lib , "ZwTc.lib" )
 #pragma comment( lib , "ZwUI.lib" )
