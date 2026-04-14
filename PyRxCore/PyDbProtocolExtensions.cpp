@@ -202,7 +202,11 @@ PyGeSurface PyDbAssocPersSubentIdPE::getFaceSubentityGeometry(const PyDbEntity& 
 
 PyRxClass PyDbAssocPersSubentIdPE::desc()
 {
+#if defined(_ZRXTARGET) && (_ZRXTARGET && 270)
+    throw PyNotimplementedByHost();
+#else
     return PyRxClass(AcDbAssocPersSubentIdPE::desc(), false);
+#endif
 }
 
 std::string PyDbAssocPersSubentIdPE::className()

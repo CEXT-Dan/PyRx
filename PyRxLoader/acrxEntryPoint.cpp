@@ -158,7 +158,7 @@ public:
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 260
         return L"PyRxZ26.0.Zrx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 270
-        return L"PyRxZ26.0.Zrx";
+        return L"PyRxZ27.0.Zrx";
 #elif defined(_IRXTARGET) && _IRXTARGET == 140
         return L"PyRxI14.1.Irx";
 #endif

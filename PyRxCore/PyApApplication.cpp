@@ -48,8 +48,10 @@ static const TCHAR* getComAPIVer()
     return L"ZRX25";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 260
     return L"ZRX26";
+#elif defined(_ZRXTARGET) && _ZRXTARGET == 270
+    return L"ZRX27";
 #endif
-    return L"!ERROR!";
+    return L"getComAPIVer !ERROR!";
 }
 
 //-----------------------------------------------------------------------------------------
