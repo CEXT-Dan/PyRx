@@ -2853,6 +2853,10 @@
         [
             "PyDb::Core::resbufTest",
             "list[tuple[int, Any]]"
+        ],
+        [
+            "PyDb::SymbolTableIterator::__next__",
+            "tuple[str, PyDb.ObjectId]"
         ]
     ]
 }
