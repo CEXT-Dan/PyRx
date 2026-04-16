@@ -257,6 +257,8 @@ public:
                 {
                     if (loadPythonModule(pypath, false))
                         return;
+                    else
+                        acutPrintf(_T("\npyload failed: "));
                 }
             }
         }
@@ -264,7 +266,6 @@ public:
         {
             acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
-        acutPrintf(_T("\npyload failed: "));
     }
 
     static void AcRxPyApp_pyreload(void)
@@ -279,6 +280,8 @@ public:
                 {
                     if (reloadPythonModule(pypath, false))
                         return;
+                    else
+                        acutPrintf(_T("\npyreload failed: "));
                 }
             }
         }
@@ -286,7 +289,6 @@ public:
         {
             acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
-        acutPrintf(_T("\npyreload failed: "));
     }
 
     static void AcRxPyApp_pyrxver(void)
