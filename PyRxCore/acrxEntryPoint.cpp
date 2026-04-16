@@ -37,7 +37,6 @@
 
 //for testing
 #ifdef PYRXDEBUG
-#include "PyRxOverrulableEntity.h"
 #endif
 
 //-----------------------------------------------------------------------------
@@ -465,74 +464,9 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
-    static void createField()
-    {
-        using AcDbFieldPtr = AcDbObjectPointer<AcDbField>;
-        using AcDbMTextPtr = AcDbObjectPointer<AcDbMText>;
-
-        auto [ps, id, pnt] = entsel(L"\nPick a line", AcDbLine::desc());
-        if (ps != Acad::PromptStatus::eNormal)
-            return; //oof
-
-        AcDbDatabase* pDb = acdbCurDwg();
-
-        //child1
-        auto childCode1 = std::format(L"%<\\AcObjProp Object(%<\\_ObjId {}>%).Layer>%", id.asOldId());
-        auto childFlag1 = AcDbField::FieldCodeFlag(
-            AcDbField::FieldCodeFlag::kObjectReference |
-            AcDbField::FieldCodeFlag::kPreserveFields
-        );
-        AcDbFieldPtr childField1;
-        childField1.create();
-        childField1->postInDatabase(pDb);
-        childField1->setEvaluationOption(AcDbField::EvalOption::kAutomatic);
-        childField1->setFieldCode(childCode1.c_str(), childFlag1);
-        childField1->evaluate(AcDbField::EvalContext::kDemand, pDb);
-        acutPrintf(L"\nchildField1 = %ls", childField1->getFieldCode(AcDbField::kEvaluatedText));
-
-        //child2
-        auto childCode2 = std::format(L"%<\\AcObjProp Object(%<\\_ObjId {}>%).Length>%", id.asOldId());
-        auto childFlag2 = AcDbField::FieldCodeFlag(
-            AcDbField::FieldCodeFlag::kObjectReference |
-            AcDbField::FieldCodeFlag::kPreserveFields
-        );
-        AcDbFieldPtr childField2;
-        childField2.create();
-        childField2->postInDatabase(pDb);
-        childField2->setEvaluationOption(AcDbField::EvalOption::kAutomatic);
-        childField2->setFieldCode(childCode2.c_str(), childFlag2);
-        childField2->evaluate(AcDbField::EvalContext::kDemand, pDb);
-        acutPrintf(L"\nchildField2 = %ls", childField2->getFieldCode(AcDbField::kEvaluatedText));
-
-        //parent
-        AcDbFieldArray children;
-        children.append(childField1);
-        children.append(childField2);
-
-        const auto parentCode = L"hi %<\\_FldIdx 0>%, %<\\_FldIdx 1>%";
-        auto parentFlag = AcDbField::FieldCodeFlag(
-            AcDbField::FieldCodeFlag::kTextField
-        );
-        AcDbFieldPtr parentField;
-        parentField.create();
-        parentField->postInDatabase(pDb);
-        parentField->setEvaluationOption(AcDbField::EvalOption::kAutomatic);
-        parentField->setFieldCode(parentCode, parentFlag, &children);
-        parentField->evaluate(AcDbField::EvalContext::kDemand, pDb);
-        acutPrintf(L"\nparentField = %ls", parentField->getFieldCode(AcDbField::kEvaluatedText));
-
-        //set
-        AcDbMTextPtr pMtext;
-        pMtext.create();
-        pMtext->setLocation(pnt);
-        postToModelSpace(pMtext);
-        AcDbObjectId fid;
-        pMtext->setField(L"TEXT", parentField, fid);
-    }
-
     static void AcRxPyApp_idoit1(void)
     {
-        createField();
+        acutPrintf(L"\nHi");
     }
 #endif
 };
