@@ -2228,7 +2228,7 @@
         ],
         [
             "PyDb::SymbolTable::__iter__",
-            "Iterator[PyDb.ObjectId]"
+            "SymbolTableIterator"
         ],
         [
             "PyDb::BlockTableRecord::__iter__",
