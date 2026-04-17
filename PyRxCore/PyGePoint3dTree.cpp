@@ -32,7 +32,7 @@ class PyGePoint2dTree
         nanoflann::L2_Simple_Adaptor<double, PyGePoint2dTreeAdapter>, PyGePoint2dTreeAdapter, 2>;
 public:
     PyGePoint2dTree(const PyGePoint2dArray& points);
-    PyGePoint2dTree(const  boost::python::list& points);
+    PyGePoint2dTree(const boost::python::list& points);
     ~PyGePoint2dTree() = default;
     void                 create();
     boost::python::tuple radiusSearch(const AcGePoint2d& point, double radius) const;
@@ -78,8 +78,8 @@ void makePyGePoint2dTreeWrapper()
 {
     PyDocString DS("Point2dTree");
     class_<PyGePoint2dTree>("Point2dTree", boost::python::no_init)
-        .def(init<PyGePoint2dArray&>())
-        .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point2d]" })))
+        .def(init<const PyGePoint2dArray&>())
+        .def(init<const boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point2d]" })))
         .def("radiusSearch", &PyGePoint2dTree::radiusSearch, DS.ARGS({ "point: PyGe.Point2d", "radius: float" }))
         .def("knnSearch", &PyGePoint2dTree::knnSearch, DS.ARGS({ "point: PyGe.Point2d", "num_closest: int" }))
         .def("inputPoints", &PyGePoint2dTree::inputPoints, DS.ARGS())
@@ -222,8 +222,8 @@ void makePyGePoint3dTreeWrapper()
 {
     PyDocString DS("Point3dTree");
     class_<PyGePoint3dTree>("Point3dTree", boost::python::no_init)
-        .def(init<PyGePoint3dArray&>())
-        .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
+        .def(init<const PyGePoint3dArray&>())
+        .def(init<const boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
         .def("radiusSearch", &PyGePoint3dTree::radiusSearch, DS.ARGS({ "point: PyGe.Point3d", "radius: float" }))
         .def("knnSearch", &PyGePoint3dTree::knnSearch, DS.ARGS({ "point: PyGe.Point3d", "num_closest: int" }))
         .def("inputPoints", &PyGePoint3dTree::inputPoints, DS.ARGS())
@@ -353,8 +353,8 @@ void makePyGeDelaunatorWrapper()
 {
     PyDocString DS("Delaunator");
     class_<PyGeDelaunator>("Delaunator", boost::python::no_init)
-        .def(init<PyGePoint3dArray&>())
-        .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
+        .def(init<const PyGePoint3dArray&>())
+        .def(init<const boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
         .def("halfedges", &PyGeDelaunator::halfedges, DS.ARGS())
         .def("triangles", &PyGeDelaunator::triangles, DS.ARGS())
         .def("className", &PyGeDelaunator::className, DS.SARGS()).staticmethod("className")
