@@ -807,7 +807,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kOsModeCentroid", AcDb::OsnapMode::kOsModeCentroid)
         .export_values()
         ;
-
     enum_<AcDb::OsnapMask>("OsnapMask")
         .value("kOsMaskEnd", AcDb::OsnapMask::kOsMaskEnd)
         .value("kOsMaskMid", AcDb::OsnapMask::kOsMaskMid)
@@ -830,7 +829,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kOsMaskNoneOverride", AcDb::OsnapMask::kOsMaskNoneOverride)
         .export_values()
         ;
-
     enum_<AcDb::BoolOperType>("BoolOperType")
         .value("kBoolUnite", AcDb::BoolOperType::kBoolUnite)
         .value("kBoolIntersect", AcDb::BoolOperType::kBoolIntersect)
@@ -2066,7 +2064,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kUnitMillisec", AcDbGeoCoordinateSystem::Unit::kUnitMillisec)
         .export_values()
         ;
-
 #if defined(ASSOCNETWORK_FEATURE)
     enum_<AcDbAssocStatus>("AssocStatus")
         .value("kIsUpToDateAssocStatus", AcDbAssocStatus::kIsUpToDateAssocStatus)
@@ -2079,14 +2076,12 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kUnresolvedAssocStatus", AcDbAssocStatus::kUnresolvedAssocStatus)
         .export_values()
         ;
-
     enum_<AcDbAssocEvaluationPriority>("AssocEvaluationPriority")
         .value("kIsUpToDateAssocStatus", AcDbAssocEvaluationPriority::kCannotBeEvaluatedAssocEvaluationPriority)
         .value("kCannotDermineAssocEvaluationPriority", AcDbAssocEvaluationPriority::kCannotDermineAssocEvaluationPriority)
         .value("kCanBeEvaluatedAssocEvaluationPriority", AcDbAssocEvaluationPriority::kCanBeEvaluatedAssocEvaluationPriority)
         .export_values()
         ;
-
     enum_<AcDbAssocConstraintType>("AssocConstraintType")
         .value("kNoneAssocConstraintType", AcDbAssocConstraintType::kNoneAssocConstraintType)
         .value("kDistanceAssocConstraintType", AcDbAssocConstraintType::kDistanceAssocConstraintType)
@@ -2100,13 +2095,11 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDiameterAssocConstraintType", AcDbAssocConstraintType::kDiameterAssocConstraintType)
         .export_values()
         ;
-
     enum_<AcDbAssocEvaluationMode>("AssocEvaluationMode")
         .value("kModifyObjectsAssocEvaluationMode", AcDbAssocEvaluationMode::kModifyObjectsAssocEvaluationMode)
         .value("kModifyActionAssocEvaluationMode", AcDbAssocEvaluationMode::kModifyActionAssocEvaluationMode)
         .export_values()
         ;
-
     enum_<AcDbAssocDraggingState>("AssocDraggingState")
         .value("kNotDraggingAssocDraggingState", AcDbAssocDraggingState::kNotDraggingAssocDraggingState)
         .value("kFirstSampleAssocDraggingState", AcDbAssocDraggingState::kFirstSampleAssocDraggingState)
@@ -2114,7 +2107,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kLastSampleAssocDraggingState", AcDbAssocDraggingState::kLastSampleAssocDraggingState)
         .export_values()
         ;
-
     enum_<AcDbAssocTransformationType>("AssocTransformationType")
         .value("kNotSpecified", AcDbAssocTransformationType::kNotSpecified)
         .value("kStretch", AcDbAssocTransformationType::kStretch)
@@ -2122,7 +2114,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kMove", AcDbAssocTransformationType::kMove)
         .export_values()
         ;
-
 #endif //ASSOCNETWORK_FEATURE
     enum_<AcDb::DragStat>("DragStat")
         .value("kDragStart", AcDb::DragStat::kDragStart)
@@ -2130,7 +2121,6 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDragAbort", AcDb::DragStat::kDragAbort)
         .export_values()
         ;
-
 #if defined(_ARXTARGET)
     enum_<AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType>("XRefLayerPropertyOverrideType")
         .value("kXrOn", AcXRefLayerPropertyOverride::XRefLayerPropertyOverrideType::On)
@@ -2147,13 +2137,11 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 #endif
-
     enum_<Adesk::Boolean>("AdskBoolean")
         .value("kFalse", Adesk::kFalse)
         .value("kTrue", Adesk::kTrue)
         .export_values()
         ;
-
     enum_<AcDb::GripStat>("GripStat")
         .value("kGripsDone", AcDb::kGripsDone)
         .value("kGripsToBeDeleted", AcDb::kGripsToBeDeleted)

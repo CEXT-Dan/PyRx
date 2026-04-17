@@ -130,8 +130,6 @@ public:
     void                setPrevDependencyOnObject(const PyDbObjectId& depId) const;
     void                setNextDependencyOnObject(const PyDbObjectId& depId) const;
 
-
-
     static PyDbObjectId getFirstDependencyOnObject(const PyDbObject& pObject);
     static boost::python::list getDependenciesOnObject(const PyDbObject& pObject, bool readDependenciesWanted, bool writeDependenciesWanted);
     static void         notifyDependenciesOnObject(const PyDbObject& pObject, AcDbAssocStatus newStatus);
