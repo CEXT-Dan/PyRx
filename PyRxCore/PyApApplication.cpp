@@ -93,13 +93,14 @@ void makePyApApplictionWrapper()
         .def("docManager", &PyApApplication::docManager, DS.SARGS(77)).staticmethod("docManager")
         .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS(19144)).staticmethod("acadApplication")
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
-        .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
-        .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
+        .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "hwnd : int" })).staticmethod("setTitleThemeDark")
+        .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "hwnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("loadPythonModule", &PyApApplication::loadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("loadPythonModule")
         .def("reloadPythonModule", &PyApApplication::reloadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("reloadPythonModule")
         .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
         .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
+        .def("getInvisibleBorderWidth", &PyApApplication::getInvisibleBorderWidth, DS.SARGS({ "hwnd : int" })).staticmethod("getInvisibleBorderWidth")
         .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS()).staticmethod("getPyRxModulePath")
         .def("getPyRxModuleName", &PyApApplication::getPyRxModuleName, DS.SARGS()).staticmethod("getPyRxModuleName")
         .def("getLocalAppDataPath", &PyApApplication::getLocalAppDataPath1)
@@ -168,6 +169,16 @@ void PyApApplication::setTitleThemeDark(UINT_PTR _hwnd)
     const auto style = GetWindowLong(hwnd, GWL_STYLE);
     SetWindowLong(hwnd, GWL_STYLE, 0);
     SetWindowLong(hwnd, GWL_STYLE, style);
+}
+
+int PyApApplication::getInvisibleBorderWidth(UINT_PTR _hwnd)
+{
+    HWND hwnd = (HWND)_hwnd;
+    RECT windowRect{};
+    RECT visibleRect{};
+    GetWindowRect(hwnd, &windowRect);
+    DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &visibleRect, sizeof(RECT));
+    return visibleRect.left - windowRect.left;
 }
 
 UINT_PTR PyApApplication::mainWnd()

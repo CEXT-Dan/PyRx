@@ -17,7 +17,7 @@ print("Added command = showplotlib")
 def PyRxCmd_showplotlib():
     try:
         _res = Ap.ResourceOverride()
-        dlg = TestDialog(None, -1, "Plot", wx.Size(500, 400), wx.Point(0,0))
+        dlg = TestDialog(None, -1, "Plot", wx.Size(500, 400))
         if dlg.ShowModal() == wx.ID_OK:
             print("Yay!")
     except Exception as err:
@@ -94,6 +94,13 @@ class TestDialog(wx.Dialog):
 
     # show the world
     def OnInitDialog(self, event):
+        
+        # position on editor window
+        docWin: wx.Window = Ap.curDoc().getWxWindow()
+        offset = Ap.Application.getInvisibleBorderWidth(self.GetHandle())
+        pos = docWin.GetScreenPosition()
+        self.SetPosition((pos.x - offset, pos.y))
+
         Ap.Application.setTitleThemeDark(self.GetHandle())
         Ap.Application.applyHostIcon(self.GetHandle())
         self.pltpanel.draw()
