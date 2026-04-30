@@ -178,6 +178,11 @@ int PyApApplication::getInvisibleBorderWidth(UINT_PTR _hwnd)
     RECT visibleRect{};
     GetWindowRect(hwnd, &windowRect);
     DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &visibleRect, sizeof(RECT));
+#ifdef PYRXDEBUG
+    acutPrintf(L"rect=(%d,%d,%d,%d) visibleRect=(%d,%d,%d,%d)",
+        windowRect.left, windowRect.top, windowRect.right, windowRect.bottom,
+        visibleRect.left, visibleRect.top, visibleRect.right, visibleRect.bottom);
+#endif
     return visibleRect.left - windowRect.left;
 }
 

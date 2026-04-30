@@ -521,6 +521,97 @@ static void PyGePoint2dArrayPop(PyGePoint2dArray& pnts)
     pnts.pop_back();
 }
 
+static boost::python::list PyGePoint2dArrayShortestTour(const PyGePoint2dArray& pnts)
+{
+    const size_t n = pnts.size();
+
+    // 1. Initial validation
+    if (n < 2)
+    {
+        acutPrintf(_T("\nToo few points for a tour. Minimum is 2."));
+        PyThrowBadEs(eInvalidInput);
+    }
+    if (n > 20)
+    {
+        acutPrintf(_T("\nToo many points for exact calculation. Limit is 20."));
+        PyThrowBadEs(eInvalidInput);
+    }
+
+    // 2. Pre-calculate distances
+    std::vector<double> dists(n * n);
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < n; ++j) {
+            dists[i * n + j] = pnts[i].distanceTo(pnts[j]);
+        }
+    }
+
+    // Prepare variables for the heavy lifting
+    const size_t numStates = (size_t)1 << n;
+    constexpr double INF = std::numeric_limits<double>::max();
+
+    // Flattened DP and Parent tables for better cache performance and lower overhead
+    std::vector<double> dp(numStates * n, INF);
+    std::vector<int> parent(numStates * n, -1);
+
+    // Base case: start at node 0
+    dp[1 * n + 0] = 0;
+
+    for (size_t mask = 1; mask < numStates; ++mask) {
+        for (size_t i = 0; i < n; ++i) {
+            const size_t currentIdx = mask * n + i;
+            if (dp[currentIdx] == INF) continue;
+
+            for (size_t j = 0; j < n; ++j) {
+                if (!(mask & ((size_t)1 << j))) {
+                    size_t nextMask = mask | ((size_t)1 << j);
+                    size_t nextIdx = nextMask * n + j;
+                    double d = dp[currentIdx] + dists[i * n + j];
+
+                    if (d < dp[nextIdx]) {
+                        dp[nextIdx] = d;
+                        parent[nextIdx] = (int)i;
+                    }
+                }
+            }
+        }
+    }
+
+    // Find the shortest path back to start (node 0) to complete the tour
+    double minDist = INF;
+    int lastNode = -1;
+    size_t fullMask = numStates - 1;
+
+    for (size_t i = 1; i < n; ++i) {
+        double d = dp[fullMask * n + i] + dists[i * n + 0];
+        if (d < minDist) {
+            minDist = d;
+            lastNode = (int)i;
+        }
+    }
+
+    // Reconstruct the path
+    std::vector<size_t> bestPath;
+    if (lastNode != -1) {
+        size_t currMask = fullMask;
+        int currNode = lastNode;
+        while (currNode != -1) {
+            bestPath.push_back((size_t)currNode);
+            int prevNode = parent[currMask * n + currNode];
+            currMask ^= ((size_t)1 << currNode);
+            currNode = prevNode;
+        }
+        std::reverse(bestPath.begin(), bestPath.end());
+    }
+
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& idx : bestPath) {
+        pylist.append(idx);
+    }
+
+    return pylist;
+}
+
 static void makePyGePoint2dWrapper()
 {
     constexpr const std::string_view Point2dArrayInit = "Overloads:\n"
@@ -541,6 +632,7 @@ static void makePyGePoint2dWrapper()
         .def("extend", &PyGePoint2dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point2d]" }))
         .def("clear", &PyGePoint2dArrayClear, DSPA.ARGS())
         .def("pop_back", &PyGePoint2dArrayPop, DSPA.ARGS())
+        .def("shortestTour", &PyGePoint2dArrayShortestTour, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
@@ -1473,6 +1565,97 @@ static void PyGePoint3dArrayPop(PyGePoint3dArray& pnts)
     pnts.pop_back();
 }
 
+static boost::python::list PyGePoint3dArrayShortestTour(const PyGePoint3dArray& pnts)
+{
+    const size_t n = pnts.size();
+
+    // 1. Initial validation
+    if (n < 2)
+    {
+        acutPrintf(_T("\nToo few points for a tour. Minimum is 2."));
+        PyThrowBadEs(eInvalidInput);
+    }
+    if (n > 20)
+    {
+        acutPrintf(_T("\nToo many points for exact calculation. Limit is 20."));
+        PyThrowBadEs(eInvalidInput);
+    }
+
+    // 2. Pre-calculate distances
+    std::vector<double> dists(n * n);
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < n; ++j) {
+            dists[i * n + j] = pnts[i].distanceTo(pnts[j]);
+        }
+    }
+
+    // Prepare variables for the heavy lifting
+    const size_t numStates = (size_t)1 << n;
+    constexpr double INF = std::numeric_limits<double>::max();
+
+    // Flattened DP and Parent tables for better cache performance and lower overhead
+    std::vector<double> dp(numStates * n, INF);
+    std::vector<int> parent(numStates * n, -1);
+
+    // Base case: start at node 0
+    dp[1 * n + 0] = 0;
+
+    for (size_t mask = 1; mask < numStates; ++mask) {
+        for (size_t i = 0; i < n; ++i) {
+            const size_t currentIdx = mask * n + i;
+            if (dp[currentIdx] == INF) continue;
+
+            for (size_t j = 0; j < n; ++j) {
+                if (!(mask & ((size_t)1 << j))) {
+                    size_t nextMask = mask | ((size_t)1 << j);
+                    size_t nextIdx = nextMask * n + j;
+                    double d = dp[currentIdx] + dists[i * n + j];
+
+                    if (d < dp[nextIdx]) {
+                        dp[nextIdx] = d;
+                        parent[nextIdx] = (int)i;
+                    }
+                }
+            }
+        }
+    }
+
+    // Find the shortest path back to start (node 0) to complete the tour
+    double minDist = INF;
+    int lastNode = -1;
+    size_t fullMask = numStates - 1;
+
+    for (size_t i = 1; i < n; ++i) {
+        double d = dp[fullMask * n + i] + dists[i * n + 0];
+        if (d < minDist) {
+            minDist = d;
+            lastNode = (int)i;
+        }
+    }
+
+    // Reconstruct the path
+    std::vector<size_t> bestPath;
+    if (lastNode != -1) {
+        size_t currMask = fullMask;
+        int currNode = lastNode;
+        while (currNode != -1) {
+            bestPath.push_back((size_t)currNode);
+            int prevNode = parent[currMask * n + currNode];
+            currMask ^= ((size_t)1 << currNode);
+            currNode = prevNode;
+        }
+        std::reverse(bestPath.begin(), bestPath.end());
+    }
+    
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& idx : bestPath) {
+        pylist.append(idx);
+    }
+
+    return pylist;
+}
+
 static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
@@ -1497,6 +1680,7 @@ static void makePyGePoint3dWrapper()
         .def("extend", &PyGePoint3dArrayExtend, DSPA.ARGS({ "pnt: Collection[PyGe.Point3d]" }))
         .def("clear", &PyGePoint3dArrayClear, DSPA.ARGS())
         .def("pop_back", &PyGePoint3dArrayPop, DSPA.ARGS())
+        .def("shortestTour", &PyGePoint3dArrayShortestTour, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
