@@ -61,3 +61,51 @@ def doit2():
     except Exception:
         print(traceback.format_exc())
         
+
+
+@Ap.Command()
+def doit3():
+    try:
+        # Generate 10 random 3D points
+        raw_pnts = [Ge.Point3d(random.uniform(0,100), random.uniform(0,100), 0) for _ in range(100)]
+        pnts = Ge.Point3dArray(raw_pnts)
+        
+        print(f"\nComputing shortest tour for {len(pnts)} points...")
+        
+        # Call your new C++ function
+        indices = pnts.approxShortestTourIndexes()
+        
+        print(f"Optimal Index Order: {indices}")
+        
+        newPts = []
+        for i in indices:
+            newPts.append(pnts[i])
+        
+        # create a poly
+        db = Db.curDb()
+        pl = Db.Polyline3d(Db.Poly3dType.k3dSimplePoly,newPts,True)
+        db.addToCurrentspace(pl)
+        
+    except Exception:
+        print(traceback.format_exc())
+        
+@Ap.Command()
+def doit4():
+    try:
+        # Generate 10 random 3D points
+        raw_pnts = [Ge.Point3d(random.uniform(0,100), random.uniform(0,100), 0) for _ in range(100)]
+        inpnts = Ge.Point3dArray(raw_pnts)
+        
+        print(f"\nComputing shortest tour for {len(inpnts)} points...")
+        
+        # Call your new C++ function
+        pnts = inpnts.approxShortestTour()
+        
+        # create a poly
+        db = Db.curDb()
+        pl = Db.Polyline3d(Db.Poly3dType.k3dSimplePoly,pnts,True)
+        db.addToCurrentspace(pl)
+        
+    except Exception:
+        print(traceback.format_exc())
+        

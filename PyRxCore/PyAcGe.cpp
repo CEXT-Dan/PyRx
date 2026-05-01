@@ -622,6 +622,149 @@ static boost::python::list PyGePoint2dArrayShortestTourIndexes(const PyGePoint2d
     return pylist;
 }
 
+//------------------------------------------------------------
+// TSP Approximation for AcGePoint2d
+static double Dist(const AcGePoint2d& a, const AcGePoint2d& b)
+{
+    return a.distanceTo(b);
+}
+
+static double TourLength(const std::vector<int>& tour, const std::vector<AcGePoint2d>& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 2)
+        return 0.0;
+    double sum = 0.0;
+    for (int i = 0; i < n - 1; ++i)
+        sum += Dist(pts[tour[i]], pts[tour[i + 1]]);
+    sum += Dist(pts[tour[n - 1]], pts[tour[0]]);
+    return sum;
+}
+
+static std::vector<int> GreedyTourFromStart(const std::vector<AcGePoint2d>& pts, int start)
+{
+    const int n = (int)pts.size();
+    std::vector<int> tour;
+    tour.reserve(n);
+    std::vector<bool> visited(n, false);
+    int current = start;
+    visited[current] = true;
+    tour.push_back(current);
+
+    for (int step = 1; step < n; ++step)
+    {
+        int best = -1;
+        double bestDist = std::numeric_limits<double>::max();
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (!visited[j])
+            {
+                double d = Dist(pts[current], pts[j]);
+
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    best = j;
+                }
+            }
+        }
+        visited[best] = true;
+        tour.push_back(best);
+        current = best;
+    }
+    return tour;
+}
+
+static void TwoOpt(std::vector<int>& tour, const std::vector<AcGePoint2d>& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 4)
+        return;
+    bool improved = true;
+    while (improved)
+    {
+        improved = false;
+
+        for (int i = 0; i < n - 1; ++i)
+        {
+            int a = tour[i];
+            int b = tour[(i + 1) % n];
+
+            for (int k = i + 2; k < n; ++k)
+            {
+                // avoid breaking adjacent wrap edge
+                if (i == 0 && k == n - 1)
+                    continue;
+
+                int c = tour[k];
+                int d = tour[(k + 1) % n];
+
+                double oldLen =
+                    Dist(pts[a], pts[b]) +
+                    Dist(pts[c], pts[d]);
+
+                double newLen =
+                    Dist(pts[a], pts[c]) +
+                    Dist(pts[b], pts[d]);
+
+                if (newLen + 1e-12 < oldLen)
+                {
+                    std::reverse(
+                        tour.begin() + i + 1,
+                        tour.begin() + k + 1);
+
+                    improved = true;
+                }
+            }
+        }
+    }
+}
+
+static std::vector<int> PyGePoint2dArrayApproxShortestTourImpl(const std::vector<AcGePoint2d>& pts)
+{
+    const int n = (int)pts.size();
+    if (n == 0)
+        return {};
+    if (n == 1)
+        return { 0 };
+
+    // Multi-start greedy
+    std::vector<int> bestTour;
+    double bestLen = std::numeric_limits<double>::max();
+    for (int start = 0; start < n; ++start)
+    {
+        auto candidate = GreedyTourFromStart(pts, start);
+        double len = TourLength(candidate, pts);
+
+        if (len < bestLen)
+        {
+            bestLen = len;
+            bestTour = std::move(candidate);
+        }
+    }
+    // Improve with 2-opt
+    TwoOpt(bestTour, pts);
+    return bestTour;
+}
+
+static PyGePoint2dArray PyGePoint2dArrayApproxShortestTour(const PyGePoint2dArray& pnts)
+{
+    PyGePoint2dArray pylist;
+    for (const auto& idx : PyGePoint2dArrayApproxShortestTourImpl(pnts))
+        pylist.push_back(pnts[idx]);
+    return pylist;
+}
+
+static boost::python::list PyGePoint2dArrayApproxShortestTourIndexes(const PyGePoint2dArray& pnts)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& idx : PyGePoint2dArrayApproxShortestTourImpl(pnts))
+        pylist.append(idx);
+    return pylist;
+}
+
 static void makePyGePoint2dWrapper()
 {
     constexpr const std::string_view Point2dArrayInit = "Overloads:\n"
@@ -644,6 +787,8 @@ static void makePyGePoint2dWrapper()
         .def("pop_back", &PyGePoint2dArrayPop, DSPA.ARGS())
         .def("shortestTour", &PyGePoint2dArrayShortestTour, DSPA.ARGS())
         .def("shortestTourIndexes", &PyGePoint2dArrayShortestTourIndexes, DSPA.ARGS())
+        .def("approxShortestTour", &PyGePoint2dArrayApproxShortestTour, DSPA.ARGS())
+        .def("approxShortestTourIndexes", &PyGePoint2dArrayApproxShortestTourIndexes, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
@@ -1677,6 +1822,151 @@ static boost::python::list PyGePoint3dArrayShortestTourIndexes(const PyGePoint3d
     return pylist;
 }
 
+//------------------------------------------------------------
+// TSP Approximation for AcGePoint3d
+static double Dist(const AcGePoint3d& a, const AcGePoint3d& b)
+{
+    return a.distanceTo(b);
+}
+
+static double TourLength(const std::vector<int>& tour, const std::vector<AcGePoint3d>& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 2)
+        return 0.0;
+    double sum = 0.0;
+    for (int i = 0; i < n - 1; ++i)
+        sum += Dist(pts[tour[i]], pts[tour[i + 1]]);
+    sum += Dist(pts[tour[n - 1]], pts[tour[0]]);
+    return sum;
+}
+
+static std::vector<int> GreedyTourFromStart(const std::vector<AcGePoint3d>& pts,int start)
+{
+    const int n = (int)pts.size();
+    std::vector<int> tour;
+    tour.reserve(n);
+    std::vector<bool> visited(n, false);
+    int current = start;
+    visited[current] = true;
+    tour.push_back(current);
+
+    for (int step = 1; step < n; ++step)
+    {
+        int best = -1;
+        double bestDist = std::numeric_limits<double>::max();
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (!visited[j])
+            {
+                double d = Dist(pts[current], pts[j]);
+
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    best = j;
+                }
+            }
+        }
+        visited[best] = true;
+        tour.push_back(best);
+        current = best;
+    }
+    return tour;
+}
+
+static void TwoOpt(std::vector<int>& tour, const std::vector<AcGePoint3d>& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 4)
+        return;
+    bool improved = true;
+    while (improved)
+    {
+        improved = false;
+
+        for (int i = 0; i < n - 1; ++i)
+        {
+            int a = tour[i];
+            int b = tour[(i + 1) % n];
+
+            for (int k = i + 2; k < n; ++k)
+            {
+                // avoid breaking adjacent wrap edge
+                if (i == 0 && k == n - 1)
+                    continue;
+
+                int c = tour[k];
+                int d = tour[(k + 1) % n];
+
+                double oldLen =
+                    Dist(pts[a], pts[b]) +
+                    Dist(pts[c], pts[d]);
+
+                double newLen =
+                    Dist(pts[a], pts[c]) +
+                    Dist(pts[b], pts[d]);
+
+                if (newLen + 1e-12 < oldLen)
+                {
+                    std::reverse(
+                        tour.begin() + i + 1,
+                        tour.begin() + k + 1);
+
+                    improved = true;
+                }
+            }
+        }
+    }
+}
+
+static std::vector<int> PyGePoint3dArrayApproxShortestTourImpl(const std::vector<AcGePoint3d>& pts)
+{
+    const int n = (int)pts.size();
+    if (n == 0)
+        return {};
+    if (n == 1)
+        return { 0 };
+
+    // Multi-start greedy
+    std::vector<int> bestTour;
+    double bestLen = std::numeric_limits<double>::max();
+
+    for (int start = 0; start < n; ++start)
+    {
+        auto candidate = GreedyTourFromStart(pts, start);
+        double len = TourLength(candidate, pts);
+
+        if (len < bestLen)
+        {
+            bestLen = len;
+            bestTour = std::move(candidate);
+        }
+    }
+    // Improve with 2-opt
+    TwoOpt(bestTour, pts);
+
+    return bestTour;
+}
+
+static PyGePoint3dArray PyGePoint3dArrayApproxShortestTour(const PyGePoint3dArray& pnts)
+{
+    PyGePoint3dArray pylist;
+    for (const auto& idx : PyGePoint3dArrayApproxShortestTourImpl(pnts))
+        pylist.push_back(pnts[idx]);
+    return pylist;
+}
+
+static boost::python::list PyGePoint3dArrayApproxShortestTourIndexes(const PyGePoint3dArray& pnts)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& idx : PyGePoint3dArrayApproxShortestTourImpl(pnts))
+        pylist.append(idx);
+    return pylist;
+}
+
 static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
@@ -1703,6 +1993,8 @@ static void makePyGePoint3dWrapper()
         .def("pop_back", &PyGePoint3dArrayPop, DSPA.ARGS())
         .def("shortestTour", &PyGePoint3dArrayShortestTour, DSPA.ARGS())
         .def("shortestTourIndexes", &PyGePoint3dArrayShortestTourIndexes, DSPA.ARGS())
+        .def("approxShortestTour", &PyGePoint3dArrayApproxShortestTour, DSPA.ARGS())
+        .def("approxShortestTourIndexes", &PyGePoint3dArrayApproxShortestTourIndexes, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
