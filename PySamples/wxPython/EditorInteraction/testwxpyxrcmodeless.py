@@ -4,7 +4,7 @@ import win32gui
 import wx
 from wx import xrc
 
-from pyrx import Ap, Ed
+from pyrx import Ed
 
 WM_ACAD_KEEPFOCUS = 28929
 

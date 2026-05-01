@@ -1,6 +1,7 @@
-from pyrx import Ap, Ax, Db, Ed, Ge, Rx
-import traceback
 import random
+import traceback
+
+from pyrx import Ap, Db, Ge
 
 # Indices: Since Held-Karp returns a tour, indices[0] should be 0,
 # and the last index in the list will be the node that connects back to 0.
