@@ -2860,11 +2860,11 @@
         ],
         [
             "PyGe::Point2dArray::__iter__",
-            "Collection[PyGe.Point2d]"
+            "Iterator[PyGe.Point2d]"
         ],
         [
             "PyGe::Point3dArray::__iter__",
-            "Collection[PyGe.Point3d]"
+            "Iterator[PyGe.Point3d]"
         ]
     ]
 }

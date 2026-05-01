@@ -41,12 +41,12 @@ def doit2():
     try:
         # Generate 10 random 3D points
         raw_pnts = [Ge.Point3d(random.uniform(0,100), random.uniform(0,100), 0) for _ in range(10)]
-        pnts = Ge.Point3dArray(raw_pnts)
+        inpnts = Ge.Point3dArray(raw_pnts)
         
-        print(f"\nComputing shortest tour for {len(pnts)} points...")
+        print(f"\nComputing shortest tour for {len(inpnts)} points...")
         
         # Call your new C++ function
-        pnts = pnts.shortestTour()
+        pnts = inpnts.shortestTour()
         
         print(f"Optimal Index Order: {pnts}")
         
