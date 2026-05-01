@@ -521,7 +521,7 @@ static void PyGePoint2dArrayPop(PyGePoint2dArray& pnts)
     pnts.pop_back();
 }
 
-static boost::python::list PyGePoint2dArrayShortestTour(const PyGePoint2dArray& pnts)
+static std::vector<size_t> PyGePoint2dArrayShortestTourImpl(const PyGePoint2dArray& pnts)
 {
     const size_t n = pnts.size();
 
@@ -602,13 +602,23 @@ static boost::python::list PyGePoint2dArrayShortestTour(const PyGePoint2dArray& 
         }
         std::reverse(bestPath.begin(), bestPath.end());
     }
+    return bestPath;
+}
 
+static PyGePoint2dArray PyGePoint2dArrayShortestTour(const PyGePoint2dArray& pnts)
+{
+    PyGePoint2dArray pylist;
+    for (const auto& idx : PyGePoint2dArrayShortestTourImpl(pnts))
+        pylist.push_back(pnts[idx]);
+    return pylist;
+}
+
+static boost::python::list PyGePoint2dArrayShortestTourIndexes(const PyGePoint2dArray& pnts)
+{
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& idx : bestPath) {
+    for (const auto& idx : PyGePoint2dArrayShortestTourImpl(pnts))
         pylist.append(idx);
-    }
-
     return pylist;
 }
 
@@ -633,6 +643,7 @@ static void makePyGePoint2dWrapper()
         .def("clear", &PyGePoint2dArrayClear, DSPA.ARGS())
         .def("pop_back", &PyGePoint2dArrayPop, DSPA.ARGS())
         .def("shortestTour", &PyGePoint2dArrayShortestTour, DSPA.ARGS())
+        .def("shortestTourIndexes", &PyGePoint2dArrayShortestTourIndexes, DSPA.ARGS())
         .def("__repr__", &PyGePoint2dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint2dArrayInit), DSPA.OVRL(Point2dArrayInit))
         ;
@@ -1565,7 +1576,7 @@ static void PyGePoint3dArrayPop(PyGePoint3dArray& pnts)
     pnts.pop_back();
 }
 
-static boost::python::list PyGePoint3dArrayShortestTour(const PyGePoint3dArray& pnts)
+static std::vector<size_t> PyGePoint3dArrayShortestTourImpl(const PyGePoint3dArray& pnts)
 {
     const size_t n = pnts.size();
 
@@ -1646,13 +1657,23 @@ static boost::python::list PyGePoint3dArrayShortestTour(const PyGePoint3dArray& 
         }
         std::reverse(bestPath.begin(), bestPath.end());
     }
-    
+    return bestPath;
+}
+
+static PyGePoint3dArray PyGePoint3dArrayShortestTour(const PyGePoint3dArray& pnts)
+{
+    PyGePoint3dArray pylist;
+    for (const auto& idx : PyGePoint3dArrayShortestTourImpl(pnts))
+        pylist.push_back(pnts[idx]);
+    return pylist;
+}
+
+static boost::python::list PyGePoint3dArrayShortestTourIndexes(const PyGePoint3dArray& pnts)
+{
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& idx : bestPath) {
+    for (const auto& idx : PyGePoint3dArrayShortestTourImpl(pnts))
         pylist.append(idx);
-    }
-
     return pylist;
 }
 
@@ -1681,6 +1702,7 @@ static void makePyGePoint3dWrapper()
         .def("clear", &PyGePoint3dArrayClear, DSPA.ARGS())
         .def("pop_back", &PyGePoint3dArrayPop, DSPA.ARGS())
         .def("shortestTour", &PyGePoint3dArrayShortestTour, DSPA.ARGS())
+        .def("shortestTourIndexes", &PyGePoint3dArrayShortestTourIndexes, DSPA.ARGS())
         .def("__repr__", &PyGePoint3dArrayRepr, DSPA.ARGS())
         .def("__init__", make_constructor(&PyPoint3dArrayInit), DSPA.OVRL(Point3dArrayInit))
         ;
