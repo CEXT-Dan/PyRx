@@ -48,8 +48,6 @@ def doit2():
         # Call your new C++ function
         pnts = inpnts.shortestTour()
         
-        print(f"Optimal Index Order: {pnts}")
-        
         # Verify the tour by printing the points in order
         print("\nReordered Path:")
         for p in pnts:
