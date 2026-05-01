@@ -2857,6 +2857,14 @@
         [
             "PyDb::SymbolTableIterator::__next__",
             "tuple[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyGe::Point2dArray::__iter__",
+            "Collection[PyGe.Point2d]"
+        ],
+        [
+            "PyGe::Point3dArray::__iter__",
+            "Collection[PyGe.Point3d]"
         ]
     ]
 }
