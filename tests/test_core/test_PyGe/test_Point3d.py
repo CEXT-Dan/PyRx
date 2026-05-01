@@ -6,10 +6,7 @@ from pyrx import Ge
 class TestPoint3d:
     def test_repr(self):
         val = Ge.Point3d(1.2, 2.3, 4.5)
-        assert (
-            val.__repr__()
-            == "PyGe.Point3d(1.20000000000000,2.30000000000000,4.50000000000000)"
-        )
+        assert val.__repr__() == "PyGe.Point3d(1.20000000000000,2.30000000000000,4.50000000000000)"
 
     def test_point3d_len(self):
         pO = Ge.Point3d(0, 0, 0)
@@ -111,6 +108,23 @@ class TestPoint3d:
 
         idxs, _ = tree.knnSearch(Ge.Point3d(10.4, 10.4, 10.4), 1)
         assert pnts[999] == pnts[idxs[0]]
+
+    def test_Point3dArray_shortestTourIndexes(self):
+        # A 10x10 square
+        input_pnts = [
+            Ge.Point3d(0, 0, 0),  # 0: Bottom-Left
+            Ge.Point3d(10, 10, 0),  # 1: Top-Right (Diagonal!)
+            Ge.Point3d(0, 10, 0),  # 2: Top-Left
+            Ge.Point3d(10, 0, 0),  # 3: Bottom-Right
+        ]
+
+        pnts = Ge.Point3dArray(input_pnts)
+        indices = pnts.shortestTourIndexes()
+
+        # The shortest path should follow the perimeter: 0 -> 3 -> 1 -> 2
+        # (Starting at 0, going to the closest neighbors)
+        expected_order = [0, 3, 1, 2]
+        assert list(indices) == expected_order
 
     def test_mirror(self):
         """Test mirror operation"""

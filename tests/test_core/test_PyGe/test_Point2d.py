@@ -17,6 +17,23 @@ class TestPoint2d:
         pnts = Ge.Point2dArray(vals)
         assert pnts[2] == vals[2]
 
+    def test_Point2dArray_shortestTourIndexes(self):
+        # A 10x10 square
+        input_pnts = [
+            Ge.Point2d(0, 0),  # 0: Bottom-Left
+            Ge.Point2d(10, 10),  # 1: Top-Right (Diagonal!)
+            Ge.Point2d(0, 10),  # 2: Top-Left
+            Ge.Point2d(10, 0),  # 3: Bottom-Right
+        ]
+
+        pnts = Ge.Point2dArray(input_pnts)
+        indices = pnts.shortestTourIndexes()
+
+        # The shortest path should follow the perimeter: 0 -> 3 -> 1 -> 2
+        # (Starting at 0, going to the closest neighbors)
+        expected_order = [0, 3, 1, 2]
+        assert list(indices) == expected_order
+
     def test_point2d_len(self):
         pO = Ge.Point2d(0, 0)
         assert len(pO) == 2
