@@ -25,7 +25,6 @@
 #include "concaveman.h"
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 
-
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------------------
 // hashing
@@ -105,6 +104,224 @@ inline static std::size_t AcGeVector3dHash(const AcGeVector3d& p)
     boost::hash_combine(seed, roundVectorComponentToPrec(p.y, precision));
     boost::hash_combine(seed, roundVectorComponentToPrec(p.z, precision));
     return seed;
+}
+
+//---------------------------------------------------------------------------------------------------------------
+// Bellman–Held–Karp algorithm exact TSP or AcGePointXd
+template <typename T>
+static std::vector<size_t> PyGePointArrayShortestTourImpl(const T& pnts)
+{
+    const size_t n = pnts.size();
+
+    // 1. Initial validation
+    if (n < 2)
+    {
+        acutPrintf(_T("\nToo few points for a tour. Minimum is 2."));
+        PyThrowBadEs(eInvalidInput);
+    }
+    if (n > 20)
+    {
+        acutPrintf(_T("\nToo many points for exact calculation. Limit is 20."));
+        PyThrowBadEs(eInvalidInput);
+    }
+
+    // 2. pre-calculate distances
+    std::vector<double> dists(n * n);
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < n; ++j) {
+            dists[i * n + j] = pnts[i].distanceTo(pnts[j]);
+        }
+    }
+
+    // Prepare variables for the heavy lifting
+    const size_t numStates = (size_t)1 << n;
+    constexpr double INF = std::numeric_limits<double>::max();
+
+    // Flattened DP and Parent tables for better cache performance and lower overhead
+    std::vector<double> dp(numStates * n, INF);
+    std::vector<int> parent(numStates * n, -1);
+
+    // Base case: start at node 0
+    dp[1 * n + 0] = 0;
+
+    for (size_t mask = 1; mask < numStates; ++mask) {
+        for (size_t i = 0; i < n; ++i) {
+            const size_t currentIdx = mask * n + i;
+            if (dp[currentIdx] == INF) continue;
+
+            for (size_t j = 0; j < n; ++j) {
+                if (!(mask & ((size_t)1 << j))) {
+                    size_t nextMask = mask | ((size_t)1 << j);
+                    size_t nextIdx = nextMask * n + j;
+                    double d = dp[currentIdx] + dists[i * n + j];
+
+                    if (d < dp[nextIdx]) {
+                        dp[nextIdx] = d;
+                        parent[nextIdx] = (int)i;
+                    }
+                }
+            }
+        }
+    }
+
+    // Find the shortest path back to start (node 0) to complete the tour
+    double minDist = INF;
+    int lastNode = -1;
+    size_t fullMask = numStates - 1;
+
+    for (size_t i = 1; i < n; ++i) {
+        double d = dp[fullMask * n + i] + dists[i * n + 0];
+        if (d < minDist) {
+            minDist = d;
+            lastNode = (int)i;
+        }
+    }
+
+    // Reconstruct the path
+    std::vector<size_t> bestPath;
+    if (lastNode != -1) {
+        size_t currMask = fullMask;
+        int currNode = lastNode;
+        while (currNode != -1) {
+            bestPath.push_back((size_t)currNode);
+            int prevNode = parent[currMask * n + currNode];
+            currMask ^= ((size_t)1 << currNode);
+            currNode = prevNode;
+        }
+        std::reverse(bestPath.begin(), bestPath.end());
+    }
+    return bestPath;
+}
+
+//---------------------------------------------------------------------------------------------------------------
+// TSP Approximation for AcGePointXd
+template <typename T>
+static double Dist(const T& a, const T& b)
+{
+    return a.distanceTo(b);
+}
+
+template <typename T>
+static double TourLength(const std::vector<int>& tour, const T& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 2)
+        return 0.0;
+    double sum = 0.0;
+    for (int i = 0; i < n - 1; ++i)
+        sum += Dist(pts[tour[i]], pts[tour[i + 1]]);
+    sum += Dist(pts[tour[n - 1]], pts[tour[0]]);
+    return sum;
+}
+
+template <typename T>
+static std::vector<int> GreedyTourFromStart(const T& pts, int start)
+{
+    const int n = (int)pts.size();
+    std::vector<int> tour;
+    tour.reserve(n);
+    std::vector<bool> visited(n, false);
+    int current = start;
+    visited[current] = true;
+    tour.push_back(current);
+
+    for (int step = 1; step < n; ++step)
+    {
+        int best = -1;
+        double bestDist = std::numeric_limits<double>::max();
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (!visited[j])
+            {
+                double d = Dist(pts[current], pts[j]);
+
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    best = j;
+                }
+            }
+        }
+        visited[best] = true;
+        tour.push_back(best);
+        current = best;
+    }
+    return tour;
+}
+
+template <typename T>
+static void TwoOpt(std::vector<int>& tour, const T& pts)
+{
+    const int n = (int)tour.size();
+    if (n < 4)
+        return;
+    bool improved = true;
+    while (improved)
+    {
+        improved = false;
+
+        for (int i = 0; i < n - 1; ++i)
+        {
+            int a = tour[i];
+            int b = tour[(i + 1) % n];
+
+            for (int k = i + 2; k < n; ++k)
+            {
+                // avoid breaking adjacent wrap edge
+                if (i == 0 && k == n - 1)
+                    continue;
+
+                int c = tour[k];
+                int d = tour[(k + 1) % n];
+
+                double oldLen =
+                    Dist(pts[a], pts[b]) +
+                    Dist(pts[c], pts[d]);
+
+                double newLen =
+                    Dist(pts[a], pts[c]) +
+                    Dist(pts[b], pts[d]);
+
+                if (newLen + 1e-12 < oldLen)
+                {
+                    std::reverse(
+                        tour.begin() + i + 1,
+                        tour.begin() + k + 1);
+
+                    improved = true;
+                }
+            }
+        }
+    }
+}
+
+template <typename T>
+static std::vector<int> PyGePointArrayApproxShortestTourImpl(const T& pts)
+{
+    const int n = (int)pts.size();
+    if (n == 0)
+        return {};
+    if (n == 1)
+        return { 0 };
+
+    // Multi-start greedy
+    std::vector<int> bestTour;
+    double bestLen = std::numeric_limits<double>::max();
+    for (int start = 0; start < n; ++start)
+    {
+        auto candidate = GreedyTourFromStart(pts, start);
+        double len = TourLength(candidate, pts);
+
+        if (len < bestLen)
+        {
+            bestLen = len;
+            bestTour = std::move(candidate);
+        }
+    }
+    // Improve with 2-opt
+    TwoOpt(bestTour, pts);
+    return bestTour;
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -521,91 +738,6 @@ static void PyGePoint2dArrayPop(PyGePoint2dArray& pnts)
     pnts.pop_back();
 }
 
-template <typename T>
-static std::vector<size_t> PyGePointArrayShortestTourImpl(const T& pnts)
-{
-    const size_t n = pnts.size();
-
-    // 1. Initial validation
-    if (n < 2)
-    {
-        acutPrintf(_T("\nToo few points for a tour. Minimum is 2."));
-        PyThrowBadEs(eInvalidInput);
-    }
-    if (n > 20)
-    {
-        acutPrintf(_T("\nToo many points for exact calculation. Limit is 20."));
-        PyThrowBadEs(eInvalidInput);
-    }
-
-    // 2. Pre-calculate distances
-    std::vector<double> dists(n * n);
-    for (size_t i = 0; i < n; ++i) {
-        for (size_t j = 0; j < n; ++j) {
-            dists[i * n + j] = pnts[i].distanceTo(pnts[j]);
-        }
-    }
-
-    // Prepare variables for the heavy lifting
-    const size_t numStates = (size_t)1 << n;
-    constexpr double INF = std::numeric_limits<double>::max();
-
-    // Flattened DP and Parent tables for better cache performance and lower overhead
-    std::vector<double> dp(numStates * n, INF);
-    std::vector<int> parent(numStates * n, -1);
-
-    // Base case: start at node 0
-    dp[1 * n + 0] = 0;
-
-    for (size_t mask = 1; mask < numStates; ++mask) {
-        for (size_t i = 0; i < n; ++i) {
-            const size_t currentIdx = mask * n + i;
-            if (dp[currentIdx] == INF) continue;
-
-            for (size_t j = 0; j < n; ++j) {
-                if (!(mask & ((size_t)1 << j))) {
-                    size_t nextMask = mask | ((size_t)1 << j);
-                    size_t nextIdx = nextMask * n + j;
-                    double d = dp[currentIdx] + dists[i * n + j];
-
-                    if (d < dp[nextIdx]) {
-                        dp[nextIdx] = d;
-                        parent[nextIdx] = (int)i;
-                    }
-                }
-            }
-        }
-    }
-
-    // Find the shortest path back to start (node 0) to complete the tour
-    double minDist = INF;
-    int lastNode = -1;
-    size_t fullMask = numStates - 1;
-
-    for (size_t i = 1; i < n; ++i) {
-        double d = dp[fullMask * n + i] + dists[i * n + 0];
-        if (d < minDist) {
-            minDist = d;
-            lastNode = (int)i;
-        }
-    }
-
-    // Reconstruct the path
-    std::vector<size_t> bestPath;
-    if (lastNode != -1) {
-        size_t currMask = fullMask;
-        int currNode = lastNode;
-        while (currNode != -1) {
-            bestPath.push_back((size_t)currNode);
-            int prevNode = parent[currMask * n + currNode];
-            currMask ^= ((size_t)1 << currNode);
-            currNode = prevNode;
-        }
-        std::reverse(bestPath.begin(), bestPath.end());
-    }
-    return bestPath;
-}
-
 static PyGePoint2dArray PyGePoint2dArrayShortestTour(const PyGePoint2dArray& pnts)
 {
     PyGePoint2dArray pylist;
@@ -621,137 +753,6 @@ static boost::python::list PyGePoint2dArrayShortestTourIndexes(const PyGePoint2d
     for (const auto& idx : PyGePointArrayShortestTourImpl(pnts))
         pylist.append(idx);
     return pylist;
-}
-
-//------------------------------------------------------------
-// TSP Approximation for AcGePoint2d
-template <typename T>
-static double Dist(const T& a, const T& b)
-{
-    return a.distanceTo(b);
-}
-
-template <typename T>
-static double TourLength(const std::vector<int>& tour, const T& pts)
-{
-    const int n = (int)tour.size();
-    if (n < 2)
-        return 0.0;
-    double sum = 0.0;
-    for (int i = 0; i < n - 1; ++i)
-        sum += Dist(pts[tour[i]], pts[tour[i + 1]]);
-    sum += Dist(pts[tour[n - 1]], pts[tour[0]]);
-    return sum;
-}
-
-template <typename T>
-static std::vector<int> GreedyTourFromStart(const T& pts, int start)
-{
-    const int n = (int)pts.size();
-    std::vector<int> tour;
-    tour.reserve(n);
-    std::vector<bool> visited(n, false);
-    int current = start;
-    visited[current] = true;
-    tour.push_back(current);
-
-    for (int step = 1; step < n; ++step)
-    {
-        int best = -1;
-        double bestDist = std::numeric_limits<double>::max();
-
-        for (int j = 0; j < n; ++j)
-        {
-            if (!visited[j])
-            {
-                double d = Dist(pts[current], pts[j]);
-
-                if (d < bestDist)
-                {
-                    bestDist = d;
-                    best = j;
-                }
-            }
-        }
-        visited[best] = true;
-        tour.push_back(best);
-        current = best;
-    }
-    return tour;
-}
-
-template <typename T>
-static void TwoOpt(std::vector<int>& tour, const T& pts)
-{
-    const int n = (int)tour.size();
-    if (n < 4)
-        return;
-    bool improved = true;
-    while (improved)
-    {
-        improved = false;
-
-        for (int i = 0; i < n - 1; ++i)
-        {
-            int a = tour[i];
-            int b = tour[(i + 1) % n];
-
-            for (int k = i + 2; k < n; ++k)
-            {
-                // avoid breaking adjacent wrap edge
-                if (i == 0 && k == n - 1)
-                    continue;
-
-                int c = tour[k];
-                int d = tour[(k + 1) % n];
-
-                double oldLen =
-                    Dist(pts[a], pts[b]) +
-                    Dist(pts[c], pts[d]);
-
-                double newLen =
-                    Dist(pts[a], pts[c]) +
-                    Dist(pts[b], pts[d]);
-
-                if (newLen + 1e-12 < oldLen)
-                {
-                    std::reverse(
-                        tour.begin() + i + 1,
-                        tour.begin() + k + 1);
-
-                    improved = true;
-                }
-            }
-        }
-    }
-}
-
-template <typename T>
-static std::vector<int> PyGePointArrayApproxShortestTourImpl(const T& pts)
-{
-    const int n = (int)pts.size();
-    if (n == 0)
-        return {};
-    if (n == 1)
-        return { 0 };
-
-    // Multi-start greedy
-    std::vector<int> bestTour;
-    double bestLen = std::numeric_limits<double>::max();
-    for (int start = 0; start < n; ++start)
-    {
-        auto candidate = GreedyTourFromStart(pts, start);
-        double len = TourLength(candidate, pts);
-
-        if (len < bestLen)
-        {
-            bestLen = len;
-            bestTour = std::move(candidate);
-        }
-    }
-    // Improve with 2-opt
-    TwoOpt(bestTour, pts);
-    return bestTour;
 }
 
 static PyGePoint2dArray PyGePoint2dArrayApproxShortestTour(const PyGePoint2dArray& pnts)
