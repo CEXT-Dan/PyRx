@@ -1,3 +1,11 @@
+## v2.2.52
+
+* [#508] add Db.Xline and Db.Ray
+
+## v2.2.51
+
+* [#504] ZWCAD 2027
+
 ## v2.2.50
 
 * build with AutoCAD 2027 release SDK
