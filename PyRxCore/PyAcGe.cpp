@@ -1125,7 +1125,6 @@ static boost::shared_ptr<AcGeMatrix2d> AcGeMatrix2dInitFromCollectionCtor(const 
     return boost::shared_ptr<AcGeMatrix2d>(new AcGeMatrix2d(AcGeMatrix2dInitFromCollection(iterable)));
 }
 
-
 static AcGeMatrix2d AcGeMatrix2dtranslation(const AcGeVector2d& vec)
 {
     return AcGeMatrix2d::translation(vec);

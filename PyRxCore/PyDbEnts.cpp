@@ -2610,6 +2610,160 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 }
 
 //-----------------------------------------------------------------------------------
+//PyDbXline
+void makePyDbXlineWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("Line");
+    class_<PyDbXline, bases<PyDbCurve>>("Xline")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+
+        .def("className", &PyDbXline::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbXline::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbXline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbXline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbXline::PyDbXline()
+    : PyDbXline(new AcDbXline(), true)
+{
+}
+
+PyDbXline::PyDbXline(const PyDbObjectId& id)
+    : PyDbXline(openAcDbObject<AcDbXline>(id), false)
+{
+}
+
+PyDbXline::PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbXline(openAcDbObject<AcDbXline>(id, mode), false)
+{
+}
+
+PyDbXline::PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbXline(openAcDbObject<AcDbXline>(id, mode, erased), false)
+{
+}
+
+PyDbXline::PyDbXline(AcDbXline* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+std::string PyDbXline::className()
+{
+    return "AcDbXline";
+}
+
+PyRxClass PyDbXline::desc()
+{
+    return PyRxClass(AcDbXline::desc(), false);
+}
+
+PyDbXline PyDbXline::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbXline, AcDbXline>(src);
+}
+
+PyDbXline PyDbXline::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbXline>(src);
+}
+
+AcDbXline* PyDbXline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbXline*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbRay
+void makePyDbRayWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("Line");
+    class_<PyDbRay, bases<PyDbCurve>>("Ray")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+
+        .def("className", &PyDbRay::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRay::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbRay::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRay::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbRay::PyDbRay()
+    : PyDbRay(new AcDbRay(), true)
+{
+}
+
+PyDbRay::PyDbRay(const PyDbObjectId& id)
+    : PyDbRay(openAcDbObject<AcDbRay>(id), false)
+{
+}
+
+PyDbRay::PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbRay(openAcDbObject<AcDbRay>(id, mode), false)
+{
+}
+
+PyDbRay::PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbRay(openAcDbObject<AcDbRay>(id, mode, erased), false)
+{
+}
+
+PyDbRay::PyDbRay(AcDbRay* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+std::string PyDbRay::className()
+{
+    return "AcDbRay";
+}
+
+PyRxClass PyDbRay::desc()
+{
+    return PyRxClass(AcDbRay::desc(), false);
+}
+
+PyDbRay PyDbRay::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbRay, AcDbRay>(src);
+}
+
+PyDbRay PyDbRay::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbRay>(src);
+}
+
+AcDbRay* PyDbRay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbRay*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
 //PyDbPolyline
 static auto shallowClone(const AcDbPolyline& pline) -> AcDbAcDbPolylineUPtr
 {

@@ -540,6 +540,48 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
+//PyDbXLine
+void makePyDbXlineWrapper();
+class PyDbXline : public PyDbCurve
+{
+public:
+    PyDbXline();
+    PyDbXline(const PyDbObjectId& id);
+    PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbXline(AcDbXline* ptr, bool autoDelete);
+    virtual ~PyDbXline() override = default;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbXline    cloneFrom(const PyRxObject& src);
+    static PyDbXline    cast(const PyRxObject& src);
+public:
+    AcDbXline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbRay
+void makePyDbRayWrapper();
+class PyDbRay : public PyDbCurve
+{
+public:
+    PyDbRay();
+    PyDbRay(const PyDbObjectId& id);
+    PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbRay(AcDbRay* ptr, bool autoDelete);
+    virtual ~PyDbRay() override = default;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbRay    cloneFrom(const PyRxObject& src);
+    static PyDbRay    cast(const PyRxObject& src);
+public:
+    AcDbRay* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
 //PyDbPolyline
 void makePyDbPolylineWrapper();
 class PyDbPolyline : public PyDbCurve

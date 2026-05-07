@@ -419,6 +419,8 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbArcWrapper();
     makePyDbCircleWrapper();
     makePyDbLineWrapper();
+    makePyDbXlineWrapper();
+    makePyDbRayWrapper();
     makePyDbPolylineWrapper();
     makePyDbFaceWrapper();
     makePyDbFcfWrapper();
