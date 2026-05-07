@@ -2447,7 +2447,7 @@ void makePyDbLineWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- start: PyGe.Point3d,end: PyGe.Point3d\n"
+        "- start: PyGe.Point3d, end: PyGe.Point3d\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -2615,6 +2615,7 @@ void makePyDbXlineWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- base: PyGe.Point3d, second: PyGe.Point3d\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -2625,7 +2626,13 @@ void makePyDbXlineWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
-
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("basePoint", &PyDbXline::basePoint, DS.ARGS(10332))
+        .def("setBasePoint", &PyDbXline::setBasePoint, DS.ARGS({ "newStart:PyGe.Point3d" }, 10335))
+        .def("unitDir", &PyDbXline::unitDir, DS.ARGS(10339))
+        .def("setUnitDir", &PyDbXline::setUnitDir, DS.ARGS({ "vec:PyGe.Vector3d" }, 10337))
+        .def("secondPoint", &PyDbXline::secondPoint, DS.ARGS(10334))
+        .def("setSecondPoint", &PyDbXline::setSecondPoint, DS.ARGS({ "vec:PyGe.Point3d" }, 10336))
         .def("className", &PyDbXline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbXline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbXline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2653,9 +2660,46 @@ PyDbXline::PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
+PyDbXline::PyDbXline(const AcGePoint3d& base, const AcGePoint3d& second)
+    : PyDbXline(new AcDbXline(), true)
+{
+    impObj()->setBasePoint(base);
+    PyThrowBadEs(impObj()->setSecondPoint(second));
+}
+
 PyDbXline::PyDbXline(AcDbXline* ptr, bool autoDelete)
     : PyDbCurve(ptr, autoDelete)
 {
+}
+
+AcGePoint3d PyDbXline::basePoint() const
+{
+    return impObj()->basePoint();
+}
+
+void PyDbXline::setBasePoint(const AcGePoint3d& pt) const
+{
+    impObj()->setBasePoint(pt);
+}
+
+AcGeVector3d PyDbXline::unitDir() const
+{
+    return impObj()->unitDir();
+}
+
+void PyDbXline::setUnitDir(const AcGeVector3d& vec) const
+{
+    impObj()->setUnitDir(vec);
+}
+
+AcGePoint3d PyDbXline::secondPoint() const
+{
+    return impObj()->secondPoint();
+}
+
+void PyDbXline::setSecondPoint(const AcGePoint3d& pt) const
+{
+    PyThrowBadEs(impObj()->setSecondPoint(pt));
 }
 
 std::string PyDbXline::className()
@@ -2692,6 +2736,7 @@ void makePyDbRayWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- base: PyGe.Point3d, second: PyGe.Point3d\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -2702,7 +2747,13 @@ void makePyDbRayWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
-
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("basePoint", &PyDbRay::basePoint, DS.ARGS(8123))
+        .def("setBasePoint", &PyDbRay::setBasePoint, DS.ARGS({ "newStart:PyGe.Point3d" }, 8126))
+        .def("unitDir", &PyDbRay::unitDir, DS.ARGS(8130))
+        .def("setUnitDir", &PyDbRay::setUnitDir, DS.ARGS({ "vec:PyGe.Vector3d" }, 8128))
+        .def("secondPoint", &PyDbRay::secondPoint, DS.ARGS(8126))
+        .def("setSecondPoint", &PyDbRay::setSecondPoint, DS.ARGS({ "vec:PyGe.Point3d" }, 8127))
         .def("className", &PyDbRay::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbRay::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbRay::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2730,9 +2781,46 @@ PyDbRay::PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
+PyDbRay::PyDbRay(const AcGePoint3d& base, const AcGePoint3d& second)
+    : PyDbRay(new AcDbRay(), true)
+{
+    impObj()->setBasePoint(base);
+    PyThrowBadEs(impObj()->setSecondPoint(second));
+}
+
 PyDbRay::PyDbRay(AcDbRay* ptr, bool autoDelete)
     : PyDbCurve(ptr, autoDelete)
 {
+}
+
+AcGePoint3d PyDbRay::basePoint() const
+{
+    return impObj()->basePoint();
+}
+
+void PyDbRay::setBasePoint(const AcGePoint3d& pt) const
+{
+    impObj()->setBasePoint(pt);
+}
+
+AcGeVector3d PyDbRay::unitDir() const
+{
+    return impObj()->unitDir();
+}
+
+void PyDbRay::setUnitDir(const AcGeVector3d& vec) const
+{
+    impObj()->setUnitDir(vec);
+}
+
+AcGePoint3d PyDbRay::secondPoint() const
+{
+    return impObj()->secondPoint();
+}
+
+void PyDbRay::setSecondPoint(const AcGePoint3d& pt) const
+{
+    PyThrowBadEs(impObj()->setSecondPoint(pt));
 }
 
 std::string PyDbRay::className()

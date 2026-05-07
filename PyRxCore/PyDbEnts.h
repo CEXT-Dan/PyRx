@@ -549,8 +549,15 @@ public:
     PyDbXline(const PyDbObjectId& id);
     PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbXline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbXline(const AcGePoint3d& base, const AcGePoint3d& second);
     PyDbXline(AcDbXline* ptr, bool autoDelete);
     virtual ~PyDbXline() override = default;
+    AcGePoint3d     basePoint() const;
+    void            setBasePoint(const AcGePoint3d& pt) const;
+    AcGeVector3d    unitDir() const;
+    void            setUnitDir(const AcGeVector3d& vec) const;
+    AcGePoint3d     secondPoint() const;
+    void		    setSecondPoint(const AcGePoint3d& pt) const;
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -570,8 +577,15 @@ public:
     PyDbRay(const PyDbObjectId& id);
     PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbRay(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbRay(const AcGePoint3d& base, const AcGePoint3d& second);
     PyDbRay(AcDbRay* ptr, bool autoDelete);
     virtual ~PyDbRay() override = default;
+    AcGePoint3d     basePoint() const;
+    void            setBasePoint(const AcGePoint3d& pt) const;
+    AcGeVector3d    unitDir() const;
+    void            setUnitDir(const AcGeVector3d& vec) const;
+    AcGePoint3d     secondPoint() const;
+    void		    setSecondPoint(const AcGePoint3d& pt) const;
 public:
     static std::string  className();
     static PyRxClass    desc();
