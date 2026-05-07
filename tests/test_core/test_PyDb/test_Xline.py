@@ -32,7 +32,7 @@ class TestRay:
         assert line.unitDir() == Ge.Vector3d.kYAxis
 
     def test_line_creation_3(self):
-        line = Db.Xline()
+        line = Db.Ray()
         line.setBasePoint(Ge.Point3d(0, 0, 0))
         line.setSecondPoint(Ge.Point3d(100, 0, 0))
         assert line.basePoint() == Ge.Point3d(0, 0, 0)

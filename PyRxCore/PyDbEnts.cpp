@@ -2481,32 +2481,32 @@ void makePyDbLineWrapper()
 }
 
 PyDbLine::PyDbLine()
-    : PyDbCurve(new AcDbLine(), true)
+    : PyDbLine(new AcDbLine(), true)
+{
+}
+
+PyDbLine::PyDbLine(const PyDbObjectId& id)
+    : PyDbLine(openAcDbObject<AcDbLine>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbLine(openAcDbObject<AcDbLine>(id, mode), false)
+{
+}
+
+PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
+    : PyDbLine(new AcDbLine(start, end), true)
+{
+}
+
+PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbLine(openAcDbObject<AcDbLine>(id, mode, erased), false)
 {
 }
 
 PyDbLine::PyDbLine(AcDbLine* ptr, bool autoDelete)
     : PyDbCurve(ptr, autoDelete)
-{
-}
-
-PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbObject<AcDbLine>(id, mode), false)
-{
-}
-
-PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
-    : PyDbCurve(new AcDbLine(start, end), true)
-{
-}
-
-PyDbLine::PyDbLine(const PyDbObjectId& id)
-    : PyDbLine(id, AcDb::OpenMode::kForRead)
-{
-}
-
-PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbCurve(openAcDbObject<AcDbLine>(id, mode, erased), false)
 {
 }
 
@@ -3064,37 +3064,32 @@ void makePyDbPolylineWrapper()
 }
 
 PyDbPolyline::PyDbPolyline()
-    : PyDbCurve(new AcDbPolyline(), true)
+    : PyDbPolyline(new AcDbPolyline(), true)
 {
 }
 
 PyDbPolyline::PyDbPolyline(unsigned int num_verts)
-    : PyDbCurve(new AcDbPolyline(num_verts), true)
-{
-}
-
-PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
-    : PyDbCurve(ptr, autoDelete)
-{
-}
-
-PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbObject<AcDbPolyline>(id, mode), false)
+    : PyDbPolyline(new AcDbPolyline(num_verts), true)
 {
 }
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id)
-    : PyDbPolyline(id, AcDb::OpenMode::kForRead)
+    : PyDbPolyline(openAcDbObject<AcDbPolyline>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbPolyline(openAcDbObject<AcDbPolyline>(id, mode), false)
 {
 }
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbCurve(openAcDbObject<AcDbPolyline>(id, mode, erased), false)
+    : PyDbPolyline(openAcDbObject<AcDbPolyline>(id, mode, erased), false)
 {
 }
 
 PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
-    : PyDbCurve(new AcDbPolyline(boost::python::len(pnts)), true)
+    : PyDbPolyline(new AcDbPolyline(boost::python::len(pnts)), true)
 {
     if (boost::python::len(pnts) == 0)
         return;
@@ -3146,17 +3141,22 @@ PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
 }
 
 PyDbPolyline::PyDbPolyline(const PyGePoint3dArray& pnts)
-    : PyDbCurve(new AcDbPolyline(pnts.size()), true)
+    : PyDbPolyline(new AcDbPolyline(pnts.size()), true)
 {
     for (int i = 0; i < pnts.size(); i++)
         impObj()->addVertexAt(i, AcGePoint2d(pnts[i].x, pnts[i].y));
 }
 
 PyDbPolyline::PyDbPolyline(const PyGePoint2dArray& pnts)
-    : PyDbCurve(new AcDbPolyline(pnts.size()), true)
+    : PyDbPolyline(new AcDbPolyline(pnts.size()), true)
 {
     for (int i = 0; i < pnts.size(); i++)
         impObj()->addVertexAt(i, pnts[i]);
+}
+
+PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
 }
 
 AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
