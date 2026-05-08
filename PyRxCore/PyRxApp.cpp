@@ -157,7 +157,7 @@ static bool initializeFromConfig()
 
     {// command line args
         const auto& args = PyRxAppSettings::getCommandLineArgs();
-        config.parse_argv = args.size() == 0 ? 0 : 1;
+        config.parse_argv = args.size() == 0 ? FALSE : TRUE;
         for (const auto& item : args)
             PyWideStringList_Append(&config.argv, item.c_str());
     }
