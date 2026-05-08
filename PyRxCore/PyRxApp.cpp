@@ -192,13 +192,11 @@ static bool initializeFromConfig()
 
 bool WxRxApp::Init_wxPython()
 {
+    PyStatus status;
     PyPreConfig preConfig;
     PyPreConfig_InitPythonConfig(&preConfig);
-
-    // Get your args so Pre-init can see flags like -X utf8
     const auto& args = PyRxAppSettings::getCommandLineArgs();
 
-    PyStatus status;
     if (args.empty()) 
     {
         status = Py_PreInitialize(&preConfig);
