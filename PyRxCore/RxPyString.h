@@ -397,22 +397,24 @@ inline std::string PyUnicode_AsString(PyObject* my_unicode_object)
     return std::string{};
 }
 
-inline std::wstring PyUnicode_AsWString(PyObject* my_unicode_object)
+inline AcString PyUnicode_AsAcString(PyObject* py_obj)
 {
     Py_ssize_t size = 0;
-    const wchar_t* data = PyUnicode_AsWideCharString(my_unicode_object, &size);
-    if (data != NULL)
-        return std::wstring(data, size);
-    return std::wstring{};
+    wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
+    if (!raw_ptr) 
+        return L"";
+    std::unique_ptr<wchar_t, void(*)(void*)> smart_ptr(raw_ptr, PyMem_Free);
+    return AcString{ smart_ptr.get() };
 }
 
-inline AcString PyUnicode_AsAcString(PyObject* my_unicode_object)
+std::wstring PyUnicode_AsWString(PyObject* py_obj) 
 {
     Py_ssize_t size = 0;
-    const wchar_t* data = PyUnicode_AsWideCharString(my_unicode_object, &size);
-    if (data != NULL && size)
-        return AcString(data);
-    return AcString{};
+    wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
+    if (!raw_ptr) 
+        return L"";
+    std::unique_ptr<wchar_t, void(*)(void*)> smart_ptr(raw_ptr, PyMem_Free);
+    return std::wstring(smart_ptr.get(), static_cast<size_t>(size));
 }
 
 //use for functions that have not been converted to AcString

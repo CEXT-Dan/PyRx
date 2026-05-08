@@ -36,7 +36,7 @@ int PyCmd::getCommandFlags(PyObject* pCommand)
     PyObjectPtr objStr(PyObject_Str(res.get()));
     if (res == nullptr)
         return 1;
-    AcString strFlags = PyUnicode_AsWideCharString(objStr.get(), nullptr);
+    AcString strFlags = PyUnicode_AsAcString(objStr.get());
     strFlags.makeLower();
     return getCommandFlags(strFlags);
 }

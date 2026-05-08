@@ -127,13 +127,13 @@ boost::python::object PyCommandDecorator2(const std::string& name, int flags)
                 PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
                 if (funcName == nullptr)
                     return _pyfunc;
-                m_cmdname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+                m_cmdname = PyUnicode_AsAcString(funcName.get());
             }
             towupper(m_cmdname);
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
-            AcString acmodulename = PyUnicode_AsWideCharString(moduleName.get(), nullptr);
+            AcString acmodulename = PyUnicode_AsAcString(moduleName.get());
             auto path = std::filesystem::current_path() / static_cast<const wchar_t*>(acmodulename);
             path.replace_extension(_T(".py"));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
@@ -179,13 +179,13 @@ boost::python::object PyLispFuncDecorator2(const std::string& name)
                 PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
                 if (funcName == nullptr)
                     return _pyfunc;
-                m_lspname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+                m_lspname = PyUnicode_AsAcString(funcName.get());
             }
             towupper(m_lspname);
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
-            AcString acmodulename = PyUnicode_AsWideCharString(moduleName.get(), nullptr);
+            AcString acmodulename = PyUnicode_AsAcString(moduleName.get());
             auto path = std::filesystem::current_path() / static_cast<const wchar_t*>(acmodulename);
             path.replace_extension(_T(".py"));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
