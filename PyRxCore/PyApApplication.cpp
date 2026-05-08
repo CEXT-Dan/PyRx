@@ -5,6 +5,7 @@
 #include "PyRxModuleLoader.h"
 #include "PyAcadApplication.h"
 #include "PyApDocument.h"
+#include "PyRxAppSettings.h"
 
 #include "PyRxApp.h"
 #include "dwmapi.h"
@@ -122,6 +123,7 @@ void makePyApApplictionWrapper()
         .def("listFilesInPath", &PyApApplication::listFilesInPath, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPath")
         .def("listFilesInPathRecursive", &PyApApplication::listFilesInPathRecursive, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPathRecursive")
         .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
+        .def("getCmdLineArgs", &PyApApplication::getCmdLineArgs, DS.SARGS()).staticmethod("getCmdLineArgs")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         .def("__iter__", +[](const PyApApplication& self) {return Document_Iterator(self); })
         ;
@@ -469,6 +471,16 @@ boost::python::list PyApApplication::getLoadedModuleNames()
         std::filesystem::path _path = item;
         pylist.append(wstr_to_utf8(_path.filename().replace_extension()));
     }
+    return pylist;
+}
+
+boost::python::list PyApApplication::getCmdLineArgs()
+{
+    PyAutoLockGIL lock;
+    const auto& args = PyRxAppSettings::getCommandLineArgs();
+    boost::python::list pylist;
+    for (const auto& item : args)
+        pylist.append(wstr_to_utf8(item));
     return pylist;
 }
 

@@ -39,6 +39,7 @@ public:
     static std::string          getAppDataPath2(bool createIfNotFound);
     static boost::python::list  getLoadedModules();
     static boost::python::list  getLoadedModuleNames();
+    static boost::python::list  getCmdLineArgs();
     static void                 acedWatchWinMsgFn(const MSG* message);
     static int                  showModalDialog1(const boost::python::object& window);
     static void                 appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
