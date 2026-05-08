@@ -61,6 +61,8 @@ public:
     static bool         setPyConfig();
     static bool         appendSearchPath(const std::filesystem::path& pModulePath, bool pyload = false);
     static bool         popFrontSearchPath(const std::filesystem::path& pModulePath);
+    static bool         isPythonModule(const std::filesystem::path& filename);
+    static bool         isPythonModule(const AcString& filename);
     static std::wstring the_error();
     static const std::filesystem::path& modulePath();
     static const std::filesystem::path& moduleName();

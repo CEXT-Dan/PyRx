@@ -345,8 +345,11 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
     }
 }
 
+
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
+    if (!PyRxApp::isPythonModule(path.fullPath.filename()))
+        return false;
     std::error_code ec;
     auto& rxApp = PyRxApp::instance();
     AutoCWD pAutoCWD(path.modulePath);

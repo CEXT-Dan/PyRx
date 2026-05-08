@@ -217,8 +217,11 @@ public:
                     {
                         if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, nx->c_str()) == eOk)
                         {
-                            if (ads_loadPythonModule((const wchar_t*)foundPath) == false)
-                                acutPrintf(_T("\nFailed to load module %ls: "), (const wchar_t*)foundPath);
+                            if (PyRxApp::isPythonModule(foundPath))
+                            {
+                                if (ads_loadPythonModule((const wchar_t*)foundPath) == false)
+                                    acutPrintf(_T("\nFailed to load module %ls: "), (const wchar_t*)foundPath);
+                            }
                         }
                         return;
                     }

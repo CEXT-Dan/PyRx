@@ -580,6 +580,20 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     return true;
 }
 
+bool PyRxApp::isPythonModule(const std::filesystem::path& filename)
+{
+    if (!filename.has_extension())
+        return false;
+    std::wstring ext = towlower(filename.extension().wstring());
+    return (ext == L".py" || ext == L".pyc");
+}
+
+bool PyRxApp::isPythonModule(const AcString& filename)
+{
+    const std::filesystem::path _path = (const wchar_t*)filename;
+    return PyRxApp::isPythonModule(_path.filename());
+}
+
 std::wstring PyRxApp::the_error()
 {
     PyAutoLockGIL lock;
