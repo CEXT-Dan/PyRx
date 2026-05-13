@@ -278,11 +278,11 @@ resbuf* listToResbuf(const boost::python::object& bpl)
     return nullptr;
 }
 
-boost::python::list resbufToList(resbuf* pRb)
+boost::python::list resbufToList(const resbuf* pRb)
 {
     PyAutoLockGIL lock;
     boost::python::list list;
-    for (resbuf* pTail = pRb; pTail != nullptr; pTail = pTail->rbnext)
+    for (resbuf* pTail = const_cast<resbuf*>(pRb); pTail != nullptr; pTail = pTail->rbnext)
     {
         if (pTail->restype < 5000)
         {

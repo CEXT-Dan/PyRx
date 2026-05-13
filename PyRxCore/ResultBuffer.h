@@ -3,7 +3,7 @@
 
 //always starts with RTLB, strip it if you don't need it
 resbuf* listToResbuf(const boost::python::object& bpl);
-boost::python::list resbufToList(resbuf* pRb);
+boost::python::list resbufToList(const resbuf* pRb);
 
 resbuf* AcGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS);
 #pragma pack (pop)
