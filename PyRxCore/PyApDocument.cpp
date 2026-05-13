@@ -63,6 +63,8 @@ void makePyApDocumentWrapper()
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : object" }))
         .def("autoLock", &PyApDocument::autoLock, DS.ARGS(120))
         .def("acadDocument", &PyApDocument::acadDocument, DS.ARGS())
+        .def("isSavedToDisk", &PyApDocument::isSavedToDisk, DS.ARGS())
+
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
@@ -245,7 +247,16 @@ PyAutoDocLock PyApDocument::autoLock() const
 
 PyAcadDocument PyApDocument::acadDocument() const
 {
-   return  findDoc(*this);
+   return findDoc(*this);
+}
+
+bool PyApDocument::isSavedToDisk() const
+{
+    if (!impObj()->isNamedDrawing()) {
+        return false;
+    }
+    auto doc = findDoc(*this);
+    return doc.isSaved();
 }
 
 UINT_PTR PyApDocument::docWnd()

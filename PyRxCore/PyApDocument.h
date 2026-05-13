@@ -44,6 +44,7 @@ public:
     void                    setUserData(const boost::python::object& data);
     PyAutoDocLock           autoLock() const;
     PyAcadDocument          acadDocument() const;
+    bool                    isSavedToDisk() const;
 
     static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();
