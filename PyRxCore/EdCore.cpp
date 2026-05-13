@@ -907,9 +907,15 @@ void EdCore::setEnv(const std::string& sym, const std::string& val)
 
 std::string EdCore::getCfg(const std::string& str)
 {
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+    AcString val;
+    PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), val));
+    return wstr_to_utf8(val);
+#else
     std::wstring buff(2048, 0);
     PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), buff.data(), buff.size()));
     return wstr_to_utf8(buff.c_str());
+#endif
 }
 
 void EdCore::setCfg(const std::string& sym, const std::string& val)
