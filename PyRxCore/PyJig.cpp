@@ -498,7 +498,7 @@ void PyDrawJig::viewportDrawWr(PyGiViewportDraw& vd)
     try
     {
         PyAutoLockGIL lock;
-        if (override f = this->get_override("ViewportDraw"))
+        if (override f = this->get_override("viewportDraw"))
             f(vd);
     }
     catch (...)
