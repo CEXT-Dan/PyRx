@@ -19,21 +19,6 @@ public:
     }
 };
 
-static PyAcadDocument findDoc(const PyApDocument& ndoc)
-{
-    //TODO: maybe a better way than search?
-    const auto app = PyAcadApplication{};
-    const auto& docs = app.documents();
-    size_t ndocs = docs.count();
-    for (size_t idx = 0; idx < ndocs; idx++)
-    {
-        auto acdoc = docs.item(idx);
-        if (acdoc.modelSpace().objectId() == ndoc.database().modelSpaceId())
-            return acdoc;
-    }
-    throw PyErrorStatusException(eNoDocument);
-}
-
 //-----------------------------------------------------------------------------------------
 //PyApDocument Wrapper
 void makePyApDocumentWrapper()
@@ -247,16 +232,14 @@ PyAutoDocLock PyApDocument::autoLock() const
 
 PyAcadDocument PyApDocument::acadDocument() const
 {
-   return findDoc(*this);
+   return PyAcadDocument::getFromAcApDocument(impObj());
 }
 
 bool PyApDocument::isSavedToDisk() const
 {
-    if (!impObj()->isNamedDrawing()) {
+    if (!impObj()->isNamedDrawing()) 
         return false;
-    }
-    auto doc = findDoc(*this);
-    return doc.isSaved();
+    return this->acadDocument().isSaved();
 }
 
 UINT_PTR PyApDocument::docWnd()

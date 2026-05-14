@@ -494,7 +494,8 @@ public:
     PyAcadMaterial          activeMaterial() const;
     void                    setActiveMaterial(const PyAcadMaterial& val) const;
 
-    static std::string  className();
+    static PyAcadDocument   getFromAcApDocument(AcApDocument* pDoc);
+    static std::string      className();
 public:
     PyIAcadDocumentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:

@@ -1997,6 +1997,23 @@ void PyAcadDocument::setActiveMaterial(const PyAcadMaterial& val) const
     impObj()->SetActiveMaterial(*val.impObj());
 }
 
+PyAcadDocument PyAcadDocument::getFromAcApDocument(AcApDocument* pDoc)
+{
+    if (pDoc != nullptr)
+    {
+        IDispatch* pDispatch = pDoc->GetIDispatch(false);
+        if (pDispatch != nullptr) 
+        {
+            IAcadDocument* pAcadDoc = nullptr;
+            HRESULT hr = pDispatch->QueryInterface(__uuidof(IAcadDocument), (void**)&pAcadDoc);
+            if (SUCCEEDED(hr) && pAcadDoc != nullptr) {
+                return PyAcadDocument(std::make_unique<PyIAcadDocumentImpl>(pAcadDoc));
+            }
+        }
+    }
+    throw PyErrorStatusException(eNoDocument);
+}
+
 void PyAcadDocument::close1() const
 {
     impObj()->Close();
