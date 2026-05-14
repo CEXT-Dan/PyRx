@@ -49,6 +49,8 @@ void makePyApDocumentWrapper()
         .def("autoLock", &PyApDocument::autoLock, DS.ARGS(120))
         .def("acadDocument", &PyApDocument::acadDocument, DS.ARGS())
         .def("isSavedToDisk", &PyApDocument::isSavedToDisk, DS.ARGS())
+        .def("closeAndDiscard", &PyApDocument::closeAndDiscard, DS.ARGS())
+        .def("closeAndSave", &PyApDocument::closeAndSave, DS.ARGS({ "path : str" }))
 
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
@@ -240,6 +242,16 @@ bool PyApDocument::isSavedToDisk() const
     if (!impObj()->isNamedDrawing()) 
         return false;
     return this->acadDocument().isSaved();
+}
+
+void PyApDocument::closeAndDiscard() const
+{
+    acadDocument().close3(false, "");
+}
+
+void PyApDocument::closeAndSave(const std::string& fileName) const
+{
+    acadDocument().close3(true, fileName);
 }
 
 UINT_PTR PyApDocument::docWnd()

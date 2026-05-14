@@ -45,6 +45,10 @@ public:
     PyAutoDocLock           autoLock() const;
     PyAcadDocument          acadDocument() const;
     bool                    isSavedToDisk() const;
+    void                    closeAndDiscard() const;
+    void                    closeAndSave(const std::string& fileName) const;
+
+
 
     static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();

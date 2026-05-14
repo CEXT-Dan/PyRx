@@ -2002,13 +2002,12 @@ PyAcadDocument PyAcadDocument::getFromAcApDocument(AcApDocument* pDoc)
     if (pDoc != nullptr)
     {
         IDispatch* pDispatch = pDoc->GetIDispatch(false);
-        if (pDispatch != nullptr) 
+        if (pDispatch != nullptr)
         {
             IAcadDocument* pAcadDoc = nullptr;
             HRESULT hr = pDispatch->QueryInterface(__uuidof(IAcadDocument), (void**)&pAcadDoc);
-            if (SUCCEEDED(hr) && pAcadDoc != nullptr) {
+            if (SUCCEEDED(hr) && pAcadDoc != nullptr)
                 return PyAcadDocument(std::make_unique<PyIAcadDocumentImpl>(pAcadDoc));
-            }
         }
     }
     throw PyErrorStatusException(eNoDocument);
@@ -2662,7 +2661,6 @@ PyIAcadSelectionSetImpl* PyAcadSelectionSet::impObj(const std::source_location& 
     return static_cast<PyIAcadSelectionSetImpl*>(m_pyImp.get());
 }
 
-
 void PyAcadSelectionSet::filliterator()
 {
     const auto& items = impObj()->GetIter();
@@ -2689,7 +2687,6 @@ void makePyAcadSelectionSetsWrapper()
 {
     PyDocString DS("AcadSelectionSets");
     class_<PyAcadSelectionSets>("AcadSelectionSets", boost::python::no_init)
-
         .def("count", &PyAcadSelectionSets::count, DS.ARGS())
         .def("add", &PyAcadSelectionSets::add, DS.ARGS({ "name: str" }))
         .def("item", &PyAcadSelectionSets::item, DS.ARGS({ "index: int" }))

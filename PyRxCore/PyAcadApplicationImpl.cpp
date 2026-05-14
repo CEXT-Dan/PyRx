@@ -1579,14 +1579,14 @@ void PyIAcadDocumentImpl::Close() const
 
 void PyIAcadDocumentImpl::Close(bool SaveChanges) const
 {
-    _variant_t vtSaveChanges{ SaveChanges };
+    _variant_t vtSaveChanges(SaveChanges ? VARIANT_TRUE : VARIANT_FALSE, VT_BOOL);
     PyThrowBadHr(impObj()->Close(vtSaveChanges));
 }
 
 void PyIAcadDocumentImpl::Close(bool SaveChanges, const CString& fileName) const
 {
-    _variant_t vtSaveChanges{ SaveChanges };
-    _variant_t vtFilename{ fileName };
+    _variant_t vtSaveChanges(SaveChanges ? VARIANT_TRUE : VARIANT_FALSE, VT_BOOL);
+    _variant_t vtFilename(fileName.GetString());
     PyThrowBadHr(impObj()->Close(vtSaveChanges, vtFilename));
 }
 
