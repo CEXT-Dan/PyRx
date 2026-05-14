@@ -48,8 +48,6 @@ public:
     void                    closeAndDiscard() const;
     void                    closeAndSave(const std::string& fileName) const;
 
-
-
     static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();
     static std::string      className();
