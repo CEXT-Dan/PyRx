@@ -1,3 +1,12 @@
+## v2.2.53
+
+* Refactor Ap.Document.acadDocument
+* Added Ap.Document.closeAndDiscard
+* Added Ap.Document.closeAndSave
+* Added Ap.Document.isSavedToDisk
+* Fixed passing /ld listener to not attempt to load non python modules. Now loads properly in Civil3d
+* Fixed memory leak. Module loader failed to free python string
+
 ## v2.2.52
 
 * [#508] add Db.Xline and Db.Ray

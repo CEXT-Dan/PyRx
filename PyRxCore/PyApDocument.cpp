@@ -99,7 +99,7 @@ void makePyApDocumentWrapper()
 //-----------------------------------------------------------------------------------------
 //PyApDocument
 PyApDocument::PyApDocument(const AcApDocument* ptr)
-: PyApDocument(const_cast<AcApDocument*>(ptr),false)
+    : PyApDocument(const_cast<AcApDocument*>(ptr), false)
 {
 }
 
@@ -234,12 +234,12 @@ PyAutoDocLock PyApDocument::autoLock() const
 
 PyAcadDocument PyApDocument::acadDocument() const
 {
-   return PyAcadDocument::getFromAcApDocument(impObj());
+    return PyAcadDocument::getFromAcApDocument(impObj());
 }
 
 bool PyApDocument::isSavedToDisk() const
 {
-    if (!impObj()->isNamedDrawing()) 
+    if (!impObj()->isNamedDrawing())
         return false;
     return this->acadDocument().isSaved();
 }
