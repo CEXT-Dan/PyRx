@@ -2865,6 +2865,30 @@
         [
             "PyGe::Point3dArray::__iter__",
             "Iterator[PyGe.Point3d]"
+        ],
+        [
+            "PyDb::BlockReference::attdict",
+            "dict[str, str]"
+        ],
+        [
+            "PyDb::BlockReference::attlist",
+            "list[tuple[str, str]]"
+        ],
+        [
+            "PyDb::DatabaseSummaryInfo::__getitem__",
+            "tuple[str, str]"
+        ],
+        [
+            "PyDb::DatabaseSummaryInfo::asDict",
+            "dict[str, str]"
+        ],
+        [
+            "PyDb::DatabaseSummaryInfoIterator::__next__",
+            "tuple[str, str]"
+        ],
+        [
+            "PyDb::DictionaryIterator::__next__",
+            "tuple[str, PyDb.ObjectId]"
         ]
     ]
 }
