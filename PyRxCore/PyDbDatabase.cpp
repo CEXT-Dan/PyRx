@@ -1080,7 +1080,7 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
-static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
+static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb, AcRxClass* pClass)
 {
     std::vector<PyDbObjectId> ids;
     if (pDb == nullptr)
@@ -1092,8 +1092,11 @@ static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
     {
         if (PyDbObjectId id; pDb->getAcDbObjectId(id.m_id, false, hnd) == eOk)
         {
-            if (!id.m_id.isNull() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
-                ids.emplace_back(id.m_id);
+            if (id.m_id.objectClass()->isDerivedFrom(pClass))
+            {
+                if (!id.m_id.isNull() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
+                    ids.emplace_back(id.m_id);
+            }
         }
         hnd.decrement();
     }
@@ -1107,11 +1110,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
     boost::python::list pyList;
     if (pClass == nullptr)
         return pyList;
-    for (const auto& id : getAllIdsFromDatabase(pDb))
-    {
-        if (id.m_id.objectClass()->isDerivedFrom(pClass))
+    for (const auto& id : getAllIdsFromDatabase(pDb, pClass))
             pyList.append(id);
-    }
     return pyList;
 }
 
@@ -1125,11 +1125,8 @@ boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class) const
     PyAutoLockGIL lock;
     boost::python::list pyList;
     auto _desc = _class.impObj();
-    for (const auto& id : getAllIdsFromDatabase(impObj()))
-    {
-        if (id.m_id.objectClass()->isDerivedFrom(_desc))
-            pyList.append(id);
-    }
+    for (const auto& id : getAllIdsFromDatabase(impObj(), _desc))
+        pyList.append(id);
     return pyList;
 }
 
@@ -1142,7 +1139,7 @@ boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list&
     {
         _set.insert(item.impObj());
     }
-    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    for (const auto& id : getAllIdsFromDatabase(impObj(), AcDbObject::desc()))
     {
         if (_set.contains(id.m_id.objectClass()))
             pyList.append(id);
@@ -1155,11 +1152,8 @@ static PyDbObjectIdArray PyDbDatabaseObjectArray(AcDbDatabase* pDb, AcRxClass* p
     PyDbObjectIdArray pyList;
     if (pClass == nullptr)
         return pyList;
-    for (const auto& id : getAllIdsFromDatabase(pDb))
-    {
-        if (id.m_id.objectClass()->isDerivedFrom(pClass))
-            pyList.push_back(id);
-    }
+    for (const auto& id : getAllIdsFromDatabase(pDb, pClass))
+        pyList.push_back(id);
     return pyList;
 }
 
@@ -1172,11 +1166,8 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray2(const PyRxClass& _class) const
 {
     PyDbObjectIdArray pyList;
     auto _desc = _class.impObj();
-    for (const auto& id : getAllIdsFromDatabase(impObj()))
-    {
-        if (id.m_id.objectClass()->isDerivedFrom(_desc))
+    for (const auto& id : getAllIdsFromDatabase(impObj(), _desc))
             pyList.push_back(id);
-    }
     return pyList;
 }
 
@@ -1188,7 +1179,7 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _class
     {
         _set.insert(item.impObj());
     }
-    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    for (const auto& id : getAllIdsFromDatabase(impObj(),AcDbObject::desc()))
     {
         if (_set.contains(id.m_id.objectClass()))
             pyList.push_back(id);
