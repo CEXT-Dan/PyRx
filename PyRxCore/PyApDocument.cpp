@@ -166,7 +166,7 @@ int PyApDocument::getCountOfLispList() const
 boost::python::tuple PyApDocument::getItemOfLispList(int nIndex) const
 {
     PyAutoLockGIL lock;
-    AcLispAppInfo* info = impObj()->GetItemOfLispList(nIndex);
+    const AcLispAppInfo* info = impObj()->GetItemOfLispList(nIndex);
     if (info == nullptr)
         throw PyErrorStatusException(eNullPtr);
     return boost::python::make_tuple(wstr_to_utf8(info->appFileName), info->bUnloadable);

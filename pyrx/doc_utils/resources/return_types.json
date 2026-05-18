@@ -2889,6 +2889,10 @@
         [
             "PyDb::DictionaryIterator::__next__",
             "tuple[str, PyDb.ObjectId]"
+        ],
+        [
+            "PyDb::ObjectIdArray::__iter__",
+            "Iterator[PyDb.ObjectId]"
         ]
     ]
 }
