@@ -1122,12 +1122,8 @@ boost::python::list PyDbDatabase::objectIds() const
 
 boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class) const
 {
-    PyAutoLockGIL lock;
-    boost::python::list pyList;
     auto _desc = _class.impObj();
-    for (const auto& id : getAllIdsFromDatabase(impObj(), _desc))
-        pyList.append(id);
-    return pyList;
+    return PyDbDatabaseObjectIds(impObj(), _desc);
 }
 
 boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list& _classes) const
@@ -1166,9 +1162,7 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray2(const PyRxClass& _class) const
 {
     PyDbObjectIdArray pyList;
     auto _desc = _class.impObj();
-    for (const auto& id : getAllIdsFromDatabase(impObj(), _desc))
-            pyList.push_back(id);
-    return pyList;
+    return PyDbDatabaseObjectArray(impObj(), _desc);
 }
 
 PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _classes) const
