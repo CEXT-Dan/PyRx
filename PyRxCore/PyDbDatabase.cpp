@@ -1097,6 +1097,7 @@ static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
         }
         hnd.decrement();
     }
+    ids.shrink_to_fit();
     return ids;
 }
 
