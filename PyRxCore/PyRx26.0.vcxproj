@@ -75,7 +75,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;PYRX_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=260;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -108,7 +108,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>

@@ -2,6 +2,9 @@
 #include "PyGePoint3dTree.h"
 #include "nanoflann.hpp"
 #include "delaunator.h"
+#include "CDT.h" 
+
+
 
 using namespace boost::python;
 
@@ -358,5 +361,73 @@ void makePyGeDelaunatorWrapper()
         .def("halfedges", &PyGeDelaunator::halfedges, DS.ARGS())
         .def("triangles", &PyGeDelaunator::triangles, DS.ARGS())
         .def("className", &PyGeDelaunator::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+//-----------------------------------------------------------------------------------------
+//CDT wrapper
+struct CTDtor
+{
+    static boost::python::list triangulate(
+        const PyGePoint3dArray& points,
+        const boost::python::list& edges,
+        bool remove_holes)
+    {
+        namespace bp = boost::python;
+
+        PyAutoLockGIL lock;
+
+        std::vector<CDT::V2d<double>> cdtVertices;
+        cdtVertices.reserve(points.size());
+        for (const auto& pt : points)
+            cdtVertices.push_back({ pt.x, pt.y });
+
+        std::vector<CDT::Edge> cdtEdges;
+        size_t edgeCount = bp::len(edges);
+        cdtEdges.reserve(edgeCount);
+        for (size_t i = 0; i < edgeCount; ++i)
+        {
+            bp::tuple edgeTuple = bp::extract<bp::tuple>(edges[i]);
+            size_t v1 = bp::extract<size_t>(edgeTuple[0]);
+            size_t v2 = bp::extract<size_t>(edgeTuple[1]);
+            cdtEdges.push_back(CDT::Edge(v1, v2));
+        }
+
+        CDT::DuplicatesInfo di = CDT::RemoveDuplicatesAndRemapEdges(cdtVertices, cdtEdges);
+        CDT::Triangulation<double> cdt;
+        cdt.insertVertices(cdtVertices);
+
+        std::vector<CDT::Edge> validEdges;
+        for (const auto& e : cdtEdges)
+        {
+            if (e.v1() != e.v2())
+                validEdges.push_back(e);
+        }
+        cdt.insertEdges(validEdges);
+
+        if (remove_holes)
+            cdt.eraseOuterTrianglesAndHoles();
+        else
+            cdt.eraseSuperTriangle();
+
+        bp::list mesh_indices;
+        for (const auto& triangle : cdt.triangles)
+        {
+            size_t originalIdxA = di.mapping[triangle.vertices[0]];
+            size_t originalIdxB = di.mapping[triangle.vertices[1]];
+            size_t originalIdxC = di.mapping[triangle.vertices[2]];
+            mesh_indices.append(bp::make_tuple(originalIdxA, originalIdxB, originalIdxC));
+        }
+        return mesh_indices;
+    }
+};
+
+void makeCDTWrapper()
+{
+    PyDocString DS("CTDtor");
+    class_<CTDtor>("CTDtor", no_init)
+        .def("triangulate", &CTDtor::triangulate,
+            (arg("points"), arg("edges"), arg("remove_holes") = true),
+            DS.ARGS({ "points:Collection[PyGe.Point3d]","edge:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
         ;
 }
