@@ -366,7 +366,7 @@ void makePyGeDelaunatorWrapper()
 
 //-----------------------------------------------------------------------------------------
 //CDT wrapper
-struct CTDtor
+struct CDTinator
 {
     static boost::python::list triangulate1(
         const PyGePoint3dArray& points,
@@ -437,10 +437,10 @@ struct CTDtor
 
 void makeCDTWrapper()
 {
-    PyDocString DS("CTDtor");
-    class_<CTDtor>("CTDtor", no_init)
-        .def("triangulate", &CTDtor::triangulate1,  arg("remove_holes") = true)
-        .def("triangulate", &CTDtor::triangulate2,  arg("remove_holes") = true,
+    PyDocString DS("CDT");
+    class_<CDTinator>("CDT", no_init)
+        .def("triangulate", &CDTinator::triangulate1,  arg("remove_holes") = true)
+        .def("triangulate", &CDTinator::triangulate2,  arg("remove_holes") = true,
             DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
         ;
 }
