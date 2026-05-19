@@ -368,7 +368,7 @@ void makePyGeDelaunatorWrapper()
 //CDT wrapper
 struct CTDtor
 {
-    static boost::python::list triangulate(
+    static boost::python::list triangulate1(
         const PyGePoint3dArray& points,
         const boost::python::list& edges,
         bool remove_holes)
@@ -420,14 +420,22 @@ struct CTDtor
         }
         return mesh_indices;
     }
+
+    static boost::python::list triangulate2(
+        const  boost::python::list& points,
+        const boost::python::list& edges,
+        bool remove_holes)
+    {
+        return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, remove_holes);
+    }
 };
 
 void makeCDTWrapper()
 {
     PyDocString DS("CTDtor");
     class_<CTDtor>("CTDtor", no_init)
-        .def("triangulate", &CTDtor::triangulate,
-            (arg("points"), arg("edges"), arg("remove_holes") = true),
-            DS.ARGS({ "points:Collection[PyGe.Point3d]","edge:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
+        .def("triangulate", &CTDtor::triangulate1,  arg("remove_holes") = true)
+        .def("triangulate", &CTDtor::triangulate2,  arg("remove_holes") = true,
+            DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
         ;
 }
