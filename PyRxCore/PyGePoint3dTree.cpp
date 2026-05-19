@@ -394,7 +394,12 @@ struct CTDtor
         }
 
         CDT::DuplicatesInfo di = CDT::RemoveDuplicatesAndRemapEdges(cdtVertices, cdtEdges);
-        CDT::Triangulation<double> cdt;
+
+        CDT::Triangulation<double> cdt(
+            CDT::VertexInsertionOrder::Auto, 
+            CDT::IntersectingConstraintEdges::DontCheck, 
+            AcGeContext::gTol.equalPoint());
+
         cdt.insertVertices(cdtVertices);
 
         std::vector<CDT::Edge> validEdges;
