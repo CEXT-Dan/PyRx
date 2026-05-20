@@ -2,9 +2,12 @@
 #include "PyGePoint3dTree.h"
 #include "nanoflann.hpp"
 #include "delaunator.h"
+
+#define USE_CDT_FEATRE
+
+#ifdef USE_CDT_FEATRE
 #include "CDT.h" 
-
-
+#endif
 
 using namespace boost::python;
 
@@ -364,6 +367,7 @@ void makePyGeDelaunatorWrapper()
         ;
 }
 
+#ifdef USE_CDT_FEATRE
 //-----------------------------------------------------------------------------------------
 //CDT wrapper
 struct CDTinator
@@ -434,13 +438,16 @@ struct CDTinator
         return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, remove_holes);
     }
 };
+#endif
 
 void makeCDTWrapper()
 {
+#ifdef USE_CDT_FEATRE
     PyDocString DS("CDT");
     class_<CDTinator>("CDT", no_init)
         .def("triangulate", &CDTinator::triangulate1,  arg("remove_holes") = true)
         .def("triangulate", &CDTinator::triangulate2,  arg("remove_holes") = true,
             DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
         ;
+#endif
 }
