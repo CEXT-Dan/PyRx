@@ -2893,6 +2893,10 @@
         [
             "PyDb::ObjectIdArray::__iter__",
             "Iterator[PyDb.ObjectId]"
+        ],
+        [
+            "PyGe::CDT::triangulate",
+            "list[tuple[int,int,int]]"
         ]
     ]
 }
