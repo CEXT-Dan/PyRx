@@ -23,6 +23,7 @@ def selectPoly3(pntmap: dict[Ge.Point3d, int]):
     pl = Db.Polyline3d(id1)
     return getEdgeData(pl, pntmap)
 
+#2d
 @Ap.Command()
 def doit1():
     try:
@@ -33,8 +34,7 @@ def doit1():
 
         edgedata = []
         pnts = Ge.Point3dArray([Db.Point(id).position() for id in ss.objectIds()])
-
-        # use a dict for fast index lookup
+        
         pntmap = {}
         for i, p in enumerate(pnts):
             pntmap[p] = i
@@ -55,11 +55,10 @@ def doit1():
     except Exception:
         print(traceback.format_exc())
 
-
+#3d
 @Ap.Command()
 def doit2():
     try:
-
         ps, ss = Ed.Editor.select([(0, "POINT")])
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("oof:")
