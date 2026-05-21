@@ -371,7 +371,9 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     if (method.mod != nullptr)
     {
         // this is to ensure that the module was not loaded elsewhere, i.e. a stdLib file
-        std::filesystem::path actual = PyModule_GetFilename(method.mod.get());
+        PyObjectPtr modFilenameObj(PyModule_GetFilenameObject(method.mod.get()));
+        std::filesystem::path actual{ PyUnicode_AsWString(modFilenameObj.get()) };
+
         if (!std::filesystem::equivalent(actual, path.fullPath, ec))
         {
             if (!silent)

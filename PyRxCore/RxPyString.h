@@ -407,7 +407,7 @@ inline AcString PyUnicode_AsAcString(PyObject* py_obj)
     return AcString{ smart_ptr.get() };
 }
 
-std::wstring PyUnicode_AsWString(PyObject* py_obj) 
+inline std::wstring PyUnicode_AsWString(PyObject* py_obj) 
 {
     Py_ssize_t size = 0;
     wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
