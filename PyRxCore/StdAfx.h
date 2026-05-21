@@ -401,10 +401,7 @@ inline void PerfTimer::end(const wchar_t* msg)
 
 //-------------------------------------------------------------------------------------
 //AcResBufPtr
-using AcResBufPtr = std::unique_ptr < resbuf, decltype([](resbuf* ptr) noexcept
-    {
-        acutRelRb(ptr);
-    }) > ;
+using AcResBufPtr = std::unique_ptr<resbuf, decltype([](resbuf* p) noexcept { acutRelRb(p); })>;
 
 //-------------------------------------------------------------------------------------
 //AcDbObjectUPtr

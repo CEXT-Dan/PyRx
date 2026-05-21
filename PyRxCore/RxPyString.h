@@ -403,17 +403,17 @@ inline AcString PyUnicode_AsAcString(PyObject* py_obj)
     wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
     if (!raw_ptr) 
         return L"";
-    std::unique_ptr<wchar_t, void(*)(void*)> smart_ptr(raw_ptr, PyMem_Free);
+    std::unique_ptr<wchar_t, decltype(&PyMem_Free)> smart_ptr(raw_ptr, PyMem_Free);
     return AcString{ smart_ptr.get() };
 }
 
-inline std::wstring PyUnicode_AsWString(PyObject* py_obj) 
+inline std::wstring PyUnicode_AsWString(PyObject* py_obj)
 {
     Py_ssize_t size = 0;
     wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
-    if (!raw_ptr) 
+    if (!raw_ptr)
         return L"";
-    std::unique_ptr<wchar_t, void(*)(void*)> smart_ptr(raw_ptr, PyMem_Free);
+    std::unique_ptr<wchar_t, decltype(&PyMem_Free)> smart_ptr(raw_ptr, PyMem_Free);
     return std::wstring(smart_ptr.get(), static_cast<size_t>(size));
 }
 
