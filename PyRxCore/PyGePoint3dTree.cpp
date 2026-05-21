@@ -370,17 +370,23 @@ void makePyGeDelaunatorWrapper()
 #ifdef USE_CDT_FEATRE
 //-----------------------------------------------------------------------------------------
 //CDT wrapper
+enum class CDTinatorOpt : int32_t {
+    None = 0,
+    KEraseSuperTriangle = 1 << 0, // 1
+    kEraseOuterTriangles = 1 << 1, // 2
+    kEaseOuterTrianglesAndHoles = 1 << 2, // 4
+};
+
 struct CDTinator
 {
     static boost::python::list triangulate1(
         const PyGePoint3dArray& points,
         const boost::python::list& edges,
-        bool remove_holes)
+        CDTinatorOpt opts)
     {
         namespace bp = boost::python;
 
         PyAutoLockGIL lock;
-
         std::vector<CDT::V2d<double>> cdtVertices;
         cdtVertices.reserve(points.size());
         for (const auto& pt : points)
@@ -400,24 +406,25 @@ struct CDTinator
         CDT::DuplicatesInfo di = CDT::RemoveDuplicatesAndRemapEdges(cdtVertices, cdtEdges);
 
         CDT::Triangulation<double> cdt(
-            CDT::VertexInsertionOrder::Auto, 
-            CDT::IntersectingConstraintEdges::DontCheck, 
+            CDT::VertexInsertionOrder::AsProvided,
+            CDT::IntersectingConstraintEdges::NotAllowed,
             AcGeContext::gTol.equalPoint());
 
         cdt.insertVertices(cdtVertices);
-
         std::vector<CDT::Edge> validEdges;
         for (const auto& e : cdtEdges)
         {
             if (e.v1() != e.v2())
                 validEdges.push_back(e);
         }
-        cdt.insertEdges(validEdges);
 
-        if (remove_holes)
-            cdt.eraseOuterTrianglesAndHoles();
-        else
+        cdt.insertEdges(validEdges);
+        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::KEraseSuperTriangle)))
             cdt.eraseSuperTriangle();
+        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEraseOuterTriangles)))
+            cdt.eraseOuterTriangles();
+        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEaseOuterTrianglesAndHoles)))
+            cdt.eraseOuterTrianglesAndHoles();
 
         bp::list mesh_indices;
         for (const auto& triangle : cdt.triangles)
@@ -431,11 +438,11 @@ struct CDTinator
     }
 
     static boost::python::list triangulate2(
-        const  boost::python::list& points,
+        const boost::python::list& points,
         const boost::python::list& edges,
-        bool remove_holes)
+        CDTinatorOpt opts)
     {
-        return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, remove_holes);
+        return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, opts);
     }
 };
 #endif
@@ -445,9 +452,15 @@ void makeCDTWrapper()
 #ifdef USE_CDT_FEATRE
     PyDocString DS("CDT");
     class_<CDTinator>("CDT", no_init)
-        .def("triangulate", &CDTinator::triangulate1,  arg("remove_holes") = true)
-        .def("triangulate", &CDTinator::triangulate2,  arg("remove_holes") = true,
-            DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "remove_holes:bool=True" })).staticmethod("triangulate")
+        .def("triangulate", &CDTinator::triangulate1)
+        .def("triangulate", &CDTinator::triangulate2, DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "opts:PyGe.CDTOpts" })).staticmethod("triangulate")
+        ;
+    enum_<CDTinatorOpt>("CDTOpts")
+        .value("None", CDTinatorOpt::None)
+        .value("KEraseSuperTriangle", CDTinatorOpt::KEraseSuperTriangle)
+        .value("kEraseOuterTriangles", CDTinatorOpt::kEraseOuterTriangles)
+        .value("kEaseOuterTrianglesAndHoles", CDTinatorOpt::kEaseOuterTrianglesAndHoles)
+        .export_values()
         ;
 #endif
 }
