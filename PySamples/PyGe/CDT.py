@@ -1,85 +1,86 @@
 import traceback
 from pyrx import Ap, Ax, Db, Ed, Ge, Rx, Gi
+from itertools import pairwise
+
+print("Added command CDTInsertedges")
+print("Added command CDTConformedges")
 
 
-def getEdgeData(pl, pntmap: dict[Ge.Point3d, int]):
+def getEdgeData(id, pntmap: dict[Ge.Point3d, int]):
+    pl = Db.Polyline3d(id)
     plpnts = pl.toPoint3dArray()
     edgedata = []
     for p in plpnts:
         edgedata.append(pntmap[p])
     return edgedata
 
-def selectPoly(pntmap: dict[Ge.Point3d, int]):
-    ps, id1, _ = Ed.Editor.entSel("\nSelect Polyline", Db.Polyline.desc())
-    if ps != Ed.PromptStatus.eOk:
-        raise RuntimeError("oof:")
-    pl = Db.Polyline(id1)
-    return getEdgeData(pl, pntmap)
-
-def selectPoly3(pntmap: dict[Ge.Point3d, int]):
-    ps, id1, _ = Ed.Editor.entSel("\nSelect Polyline", Db.Polyline3d.desc())
-    if ps != Ed.PromptStatus.eOk:
-        raise RuntimeError("oof:")
-    pl = Db.Polyline3d(id1)
-    return getEdgeData(pl, pntmap)
-
-#2d
 @Ap.Command()
-def doit1():
+def CDTInsertedges():
     try:
+        ps, pss = Ed.Editor.select([(0, "POINT")])
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("oof:")
 
-        ps, ss = Ed.Editor.select([(0, "POINT")])
+        ps, plss = Ed.Editor.select([(0, "POLYLINE")])
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("oof:")
 
         edgedata = []
-        pnts = Ge.Point3dArray([Db.Point(id).position() for id in ss.objectIds()])
-        
+        pnts = [Db.Point(id).position() for id in pss.objectIds()]
+
         pntmap = {}
         for i, p in enumerate(pnts):
             pntmap[p] = i
 
-        result = selectPoly(pntmap)
-        edgedata.extend(list(zip(result, result[1:] + [result[0]])))
-
-        result = selectPoly(pntmap)
-        edgedata.extend(list(zip(result, result[1:] + [result[0]])))
+        for id in plss.objectIds():
+            result = getEdgeData(id, pntmap)
+            #this closes, I.e adds end to start 
+            #edgedata.extend(list(zip(result, result[1:] + [result[0]])))
+            edgedata.extend(pairwise(result))
+            
+        opts = Ge.CDTOpts(Ge.CDTOpts.KEraseSuperTriangle | Ge.CDTOpts.KInsertEdges)
 
         faces = []
-        for _a, _b, _c in Ge.CDT.triangulate(pnts, edgedata, True):
-            faces.append(Db.Face(pnts[_a], pnts[_b], pnts[_c]))
 
+        np, tris = Ge.CDT.triangulate(pnts, edgedata, opts)
+        for _a, _b, _c in tris:
+            faces.append(Db.Face(np[_a], np[_b], np[_c]))
         db = Db.curDb()
         db.addToModelspace(faces)
 
     except Exception:
         print(traceback.format_exc())
 
-#3d
 @Ap.Command()
-def doit2():
+def CDTConformedges():
     try:
-        ps, ss = Ed.Editor.select([(0, "POINT")])
+        ps, pss = Ed.Editor.select([(0, "POINT")])
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("oof:")
+
+        ps, plss = Ed.Editor.select([(0, "POLYLINE")])
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("oof:")
 
         edgedata = []
-        pnts = [Db.Point(id).position() for id in ss.objectIds()]
+        pnts = [Db.Point(id).position() for id in pss.objectIds()]
 
         pntmap = {}
         for i, p in enumerate(pnts):
             pntmap[p] = i
 
-        result = selectPoly3(pntmap)
-        edgedata.extend(list(zip(result, result[1:] + [result[0]])))
+        for id in plss.objectIds():
+            result = getEdgeData(id, pntmap)
+            #edgedata.extend(list(zip(result, result[1:] + [result[0]])))
+            edgedata.extend(pairwise(result))
 
-        result = selectPoly3(pntmap)
-        edgedata.extend(list(zip(result, result[1:] + [result[0]])))
+        opts = Ge.CDTOpts(Ge.CDTOpts.KEraseSuperTriangle | Ge.CDTOpts.KConformToEdges)
 
         faces = []
-        for _a, _b, _c in Ge.CDT.triangulate(pnts, edgedata, True):
-            faces.append(Db.Face(pnts[_a], pnts[_b], pnts[_c]))
 
+        np, tris = Ge.CDT.triangulate(pnts, edgedata, opts)
+        for _a, _b, _c in tris:
+            faces.append(Db.Face(np[_a], np[_b], np[_c]))
         db = Db.curDb()
         db.addToModelspace(faces)
 

@@ -435,10 +435,10 @@ struct CDTinator
             }
         }
 
-        // 4. Construct Triangulation Space
+        // 4. Construct Triangulation Space with Intersecting Edge Resolution
         CDT::Triangulation<double> cdt(
             CDT::VertexInsertionOrder::Auto,
-            CDT::IntersectingConstraintEdges::TryResolve,
+            CDT::IntersectingConstraintEdges::TryResolve, // Correctly tracking crossing constraints
             AcGeContext::gTol.equalPoint());
 
         cdt.insertVertices(cdtVertices);
@@ -494,51 +494,62 @@ struct CDTinator
             }
             else
             {
-                // Steiner Point found. Linearly interpolate Z from its parent constraint line segment.
-                bool zInterpolated = false;
+                // Steiner Point / Intersection found. Linearly interpolate and average Z values.
+                double zSum = 0.0;
+                size_t zCount = 0;
                 const auto& neighbors = vertexAdjacency[i];
+
+                // Track unique parent constraint edges processed for this specific vertex to avoid duplicate weightings
+                std::vector<CDT::Edge> processedParentEdges;
 
                 for (size_t neighbor : neighbors)
                 {
-                    // Query the pieceToOriginals map using a structural sub-edge
                     CDT::Edge subEdgeKey(i, neighbor);
                     auto it = cdt.pieceToOriginals.find(subEdgeKey);
 
-                    if (it != cdt.pieceToOriginals.end() && !it->second.empty())
+                    if (it != cdt.pieceToOriginals.end())
                     {
-                        // Get the first original constraint edge mapped to this piece
-                        CDT::Edge postDupOrigEdge = it->second[0];
-
-                        // Convert post-duplication vertex indices back to original 3D indices
-                        size_t origV1 = inverseMapping[postDupOrigEdge.v1()];
-                        size_t origV2 = inverseMapping[postDupOrigEdge.v2()];
-
-                        if (origV1 != kInvalidIndex && origV2 != kInvalidIndex)
+                        // Iterate through all parent constraints that this piece belongs to
+                        for (const auto& postDupOrigEdge : it->second)
                         {
-                            // Extract true original endpoints from the user's initial 3D array
-                            AcGePoint3d pA = points[origV1];
-                            AcGePoint3d pB = points[origV2];
+                            // Avoid counting the same parent constraint line twice
+                            if (std::find(processedParentEdges.begin(), processedParentEdges.end(), postDupOrigEdge) != processedParentEdges.end()) {
+                                continue;
+                            }
+                            processedParentEdges.push_back(postDupOrigEdge);
 
-                            double dx = pB.x - pA.x;
-                            double dy = pB.y - pA.y;
-                            double dLengthSq = dx * dx + dy * dy;
+                            // Convert post-duplication vertex indices back to original 3D indices
+                            size_t origV1 = inverseMapping[postDupOrigEdge.v1()];
+                            size_t origV2 = inverseMapping[postDupOrigEdge.v2()];
 
-                            if (dLengthSq > 1e-11)
+                            if (origV1 != kInvalidIndex && origV2 != kInvalidIndex)
                             {
-                                // Calculate 2D linear projection parameter (t)
-                                double t = ((pt.x - pA.x) * dx + (pt.y - pA.y) * dy) / dLengthSq;
-                                t = std::max(0.0, std::min(1.0, t)); // Keep bounds safe
+                                AcGePoint3d pA = points[origV1];
+                                AcGePoint3d pB = points[origV2];
 
-                                pt.z = pA.z + t * (pB.z - pA.z);
-                                zInterpolated = true;
-                                break;
+                                double dx = pB.x - pA.x;
+                                double dy = pB.y - pA.y;
+                                double dLengthSq = dx * dx + dy * dy;
+
+                                if (dLengthSq > 1e-11)
+                                {
+                                    // Calculate 2D linear projection parameter (t)
+                                    double t = ((pt.x - pA.x) * dx + (pt.y - pA.y) * dy) / dLengthSq;
+                                    t = std::max(0.0, std::min(1.0, t)); // Keep bounds safe
+
+                                    zSum += (pA.z + t * (pB.z - pA.z));
+                                    zCount++;
+                                }
                             }
                         }
                     }
                 }
 
-                // Fallback option if vertex does not lie along an original constraint line
-                if (!zInterpolated) {
+                // Apply the averaged calculation or use fallback if it's an isolated Steiner point
+                if (zCount > 0) {
+                    pt.z = zSum / static_cast<double>(zCount);
+                }
+                else {
                     pt.z = 0.0;
                 }
             }
@@ -571,8 +582,6 @@ struct CDTinator
         return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, opts);
     }
 };
-
-
 #endif
 
 void makeCDTWrapper()
