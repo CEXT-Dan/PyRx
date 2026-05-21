@@ -55,7 +55,7 @@ class TestDesc:
         assert Db.LayerTable.desc().name() == "AcDbLayerTable"
         assert Db.LayerTableRecord.desc().name() == "AcDbLayerTableRecord"
         assert Db.Layout.desc().name() == "AcDbLayout"
-        #assert Db.LayoutManager.desc().name() == "AcDbLayoutManager"
+        assert Db.LayoutManager().isA() == Db.LayoutManager.desc()
         assert Db.Leader.desc().name() == "AcDbLeader"
         assert Db.Line.desc().name() == "AcDbLine"
         assert Db.LineAngularDimension2.desc().name() == "AcDb2LineAngularDimension"
