@@ -392,6 +392,9 @@ struct CDTinator
         bool useInsert = GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kInsertEdges));
         bool useConform = GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kConformToEdges));
 
+        if (useInsert && useConform)
+            PyThrowBadEs(eInvalidInput);
+
         // 1. Project 3D points down to 2D for the triangulation engine
         std::vector<CDT::V2d<double>> cdtVertices;
         cdtVertices.reserve(points.size());

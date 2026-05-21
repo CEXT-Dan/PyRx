@@ -2896,7 +2896,7 @@
         ],
         [
             "PyGe::CDT::triangulate",
-            "tuple[PyGe.Point3dArray,[tuple[int,int,int]]]"
+            "tuple[PyGe.Point3dArray,list[tuple[int,int,int]]]"
         ]
     ]
 }
