@@ -372,72 +372,198 @@ void makePyGeDelaunatorWrapper()
 //CDT wrapper
 enum class CDTinatorOpt : int32_t {
     None = 0,
-    KEraseSuperTriangle = 1 << 0, // 1
-    kEraseOuterTriangles = 1 << 1, // 2
-    kEaseOuterTrianglesAndHoles = 1 << 2, // 4
+    kEraseSuperTriangle = 1 << 0,          // 1
+    kEraseOuterTriangles = 1 << 1,         // 2
+    kEraseOuterTrianglesAndHoles = 1 << 2, // 4 
+    kInsertEdges = 1 << 3,                 // 8
+    kConformToEdges = 1 << 4,              // 16
 };
 
 struct CDTinator
 {
-    static boost::python::list triangulate1(
+    static boost::python::tuple triangulate1(
         const PyGePoint3dArray& points,
         const boost::python::list& edges,
         CDTinatorOpt opts)
     {
         namespace bp = boost::python;
-
         PyAutoLockGIL lock;
+
+        bool useInsert = GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kInsertEdges));
+        bool useConform = GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kConformToEdges));
+
+        // 1. Project 3D points down to 2D for the triangulation engine
         std::vector<CDT::V2d<double>> cdtVertices;
         cdtVertices.reserve(points.size());
-        for (const auto& pt : points)
+        for (const auto& pt : points) {
             cdtVertices.push_back({ pt.x, pt.y });
+        }
 
+        // 2. Parse constraint edge indices from Python safely
         std::vector<CDT::Edge> cdtEdges;
         size_t edgeCount = bp::len(edges);
         cdtEdges.reserve(edgeCount);
         for (size_t i = 0; i < edgeCount; ++i)
         {
-            bp::tuple edgeTuple = bp::extract<bp::tuple>(edges[i]);
+            bp::extract<bp::tuple> tupleCheck(edges[i]);
+            if (!tupleCheck.check()) {
+                PyThrowBadEs(eInvalidInput);
+            }
+            bp::tuple edgeTuple = tupleCheck();
+            if (bp::len(edgeTuple) < 2) {
+                PyThrowBadEs(eInvalidInput);
+            }
             size_t v1 = bp::extract<size_t>(edgeTuple[0]);
             size_t v2 = bp::extract<size_t>(edgeTuple[1]);
             cdtEdges.push_back(CDT::Edge(v1, v2));
         }
 
+        // 3. Filter out point duplicates
         CDT::DuplicatesInfo di = CDT::RemoveDuplicatesAndRemapEdges(cdtVertices, cdtEdges);
 
+        // Build inverse vertex map: [Post-Duplication ID] -> [Original 3D Point Array ID]
+        const size_t kInvalidIndex = static_cast<size_t>(-1);
+        std::vector<size_t> inverseMapping(cdtVertices.size(), kInvalidIndex);
+        for (size_t originalIdx = 0; originalIdx < di.mapping.size(); ++originalIdx)
+        {
+            size_t newIdx = di.mapping[originalIdx];
+            if (newIdx != kInvalidIndex && newIdx < inverseMapping.size())
+            {
+                if (inverseMapping[newIdx] == kInvalidIndex) {
+                    inverseMapping[newIdx] = originalIdx;
+                }
+            }
+        }
+
+        // 4. Construct Triangulation Space
         CDT::Triangulation<double> cdt(
-            CDT::VertexInsertionOrder::AsProvided,
-            CDT::IntersectingConstraintEdges::NotAllowed,
+            CDT::VertexInsertionOrder::Auto,
+            CDT::IntersectingConstraintEdges::TryResolve,
             AcGeContext::gTol.equalPoint());
 
         cdt.insertVertices(cdtVertices);
+
+        // Clean out degenerate zero-length structural constraint edges
         std::vector<CDT::Edge> validEdges;
+        validEdges.reserve(cdtEdges.size());
         for (const auto& e : cdtEdges)
         {
             if (e.v1() != e.v2())
                 validEdges.push_back(e);
         }
 
-        cdt.insertEdges(validEdges);
-        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::KEraseSuperTriangle)))
+        // Run triangulation execution
+        if (useConform)
+            cdt.conformToEdges(validEdges);
+        else
+            cdt.insertEdges(validEdges);
+
+        // 5. Clean boundary artifacts
+        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEraseSuperTriangle)))
             cdt.eraseSuperTriangle();
         if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEraseOuterTriangles)))
             cdt.eraseOuterTriangles();
-        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEaseOuterTrianglesAndHoles)))
+        if (GETBIT(int32_t(opts), int32_t(CDTinatorOpt::kEraseOuterTrianglesAndHoles)))
             cdt.eraseOuterTrianglesAndHoles();
 
+        // 6. Reconstruct complete, updated 3D Point cloud array
+        PyGePoint3dArray outPoints;
+        outPoints.reserve(cdt.vertices.size());
+
+        // Build a temporary adjacency map to quickly find edges sharing any Steiner vertex
+        std::map<size_t, std::vector<size_t>> vertexAdjacency;
+        for (const auto& tri : cdt.triangles) {
+            size_t a = tri.vertices[0];
+            size_t b = tri.vertices[1];
+            size_t c = tri.vertices[2];
+            vertexAdjacency[a].push_back(b); vertexAdjacency[a].push_back(c);
+            vertexAdjacency[b].push_back(a); vertexAdjacency[b].push_back(c);
+            vertexAdjacency[c].push_back(a); vertexAdjacency[c].push_back(b);
+        }
+
+        for (size_t i = 0; i < cdt.vertices.size(); ++i)
+        {
+            AcGePoint3d pt;
+            pt.x = cdt.vertices[i].x;
+            pt.y = cdt.vertices[i].y;
+
+            if (i < inverseMapping.size() && inverseMapping[i] != kInvalidIndex)
+            {
+                // Unchanged base vertex position
+                pt.z = points[inverseMapping[i]].z;
+            }
+            else
+            {
+                // Steiner Point found. Linearly interpolate Z from its parent constraint line segment.
+                bool zInterpolated = false;
+                const auto& neighbors = vertexAdjacency[i];
+
+                for (size_t neighbor : neighbors)
+                {
+                    // Query the pieceToOriginals map using a structural sub-edge
+                    CDT::Edge subEdgeKey(i, neighbor);
+                    auto it = cdt.pieceToOriginals.find(subEdgeKey);
+
+                    if (it != cdt.pieceToOriginals.end() && !it->second.empty())
+                    {
+                        // Get the first original constraint edge mapped to this piece
+                        CDT::Edge postDupOrigEdge = it->second[0];
+
+                        // Convert post-duplication vertex indices back to original 3D indices
+                        size_t origV1 = inverseMapping[postDupOrigEdge.v1()];
+                        size_t origV2 = inverseMapping[postDupOrigEdge.v2()];
+
+                        if (origV1 != kInvalidIndex && origV2 != kInvalidIndex)
+                        {
+                            // Extract true original endpoints from the user's initial 3D array
+                            AcGePoint3d pA = points[origV1];
+                            AcGePoint3d pB = points[origV2];
+
+                            double dx = pB.x - pA.x;
+                            double dy = pB.y - pA.y;
+                            double dLengthSq = dx * dx + dy * dy;
+
+                            if (dLengthSq > 1e-11)
+                            {
+                                // Calculate 2D linear projection parameter (t)
+                                double t = ((pt.x - pA.x) * dx + (pt.y - pA.y) * dy) / dLengthSq;
+                                t = std::max(0.0, std::min(1.0, t)); // Keep bounds safe
+
+                                pt.z = pA.z + t * (pB.z - pA.z);
+                                zInterpolated = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Fallback option if vertex does not lie along an original constraint line
+                if (!zInterpolated) {
+                    pt.z = 0.0;
+                }
+            }
+            outPoints.push_back(pt);
+        }
+
+        // 7. Map final Mesh output indices referencing our new outPoints indices
         bp::list mesh_indices;
         for (const auto& triangle : cdt.triangles)
         {
-            size_t originalIdxA = di.mapping[triangle.vertices[0]];
-            size_t originalIdxB = di.mapping[triangle.vertices[1]];
-            size_t originalIdxC = di.mapping[triangle.vertices[2]];
-            mesh_indices.append(bp::make_tuple(originalIdxA, originalIdxB, originalIdxC));
+            size_t idxA = triangle.vertices[0];
+            size_t idxB = triangle.vertices[1];
+            size_t idxC = triangle.vertices[2];
+
+            if (idxA >= outPoints.size() || idxB >= outPoints.size() || idxC >= outPoints.size()) {
+                PyThrowBadEs(eInvalidInput);
+            }
+
+            mesh_indices.append(bp::make_tuple(idxA, idxB, idxC));
         }
-        return mesh_indices;
+
+        return bp::make_tuple(outPoints, mesh_indices);
     }
 
-    static boost::python::list triangulate2(
+    static boost::python::tuple triangulate2(
         const boost::python::list& points,
         const boost::python::list& edges,
         CDTinatorOpt opts)
@@ -445,6 +571,8 @@ struct CDTinator
         return triangulate1(py_list_to_std_vector<AcGePoint3d>(points), edges, opts);
     }
 };
+
+
 #endif
 
 void makeCDTWrapper()
@@ -456,10 +584,12 @@ void makeCDTWrapper()
         .def("triangulate", &CDTinator::triangulate2, DS.ARGS({ "points:Collection[PyGe.Point3d]","edges:Collection[tuple[int,int]]", "opts:PyGe.CDTOpts" })).staticmethod("triangulate")
         ;
     enum_<CDTinatorOpt>("CDTOpts")
-        .value("None", CDTinatorOpt::None)
-        .value("KEraseSuperTriangle", CDTinatorOpt::KEraseSuperTriangle)
+        .value("kNone", CDTinatorOpt::None)
+        .value("KEraseSuperTriangle", CDTinatorOpt::kEraseSuperTriangle)
         .value("kEraseOuterTriangles", CDTinatorOpt::kEraseOuterTriangles)
-        .value("kEaseOuterTrianglesAndHoles", CDTinatorOpt::kEaseOuterTrianglesAndHoles)
+        .value("kEraseOuterTrianglesAndHoles", CDTinatorOpt::kEraseOuterTrianglesAndHoles)
+        .value("KInsertEdges", CDTinatorOpt::kInsertEdges)
+        .value("KConformToEdges", CDTinatorOpt::kConformToEdges)
         .export_values()
         ;
 #endif
