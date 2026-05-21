@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pyrx import Db
 
+import pytest
 
 class TestDesc:
     def test_name(self):
@@ -42,7 +43,6 @@ class TestDesc:
         assert Db.Fcf.desc().name() == "AcDbFcf"
         assert Db.Field.desc().name() == "AcDbField"
         assert Db.GeoData.desc().name() == "AcDbGeoData"
-        #assert Db.GeoMap.desc().name() == "AcDbGeoMap"
         assert Db.GeoPositionMarker.desc().name() == "AcDbGeoPositionMarker"
         assert Db.GripOverrule.desc().name() == "AcDbGripOverrule"
         assert Db.Group.desc().name() == "AcDbGroup"
@@ -83,9 +83,6 @@ class TestDesc:
         assert Db.PlotSettings.desc().name() == "AcDbPlotSettings"
         assert Db.Point.desc().name() == "AcDbPoint"
         assert Db.Point3AngularDimension.desc().name() == "AcDb3PointAngularDimension"
-        # assert Db.PointCloudColorMap.desc().name() == "AcDbPointCloudColorMap"
-        # assert Db.PointCloudDefEx.desc().name() == "AcDbPointCloudDefEx"
-        # assert Db.PointCloudEx.desc().name() == "AcDbPointCloudEx"
         assert Db.PointRef.desc().name() == "AcDbPointRef"
         assert Db.PolyFaceMeshVertex.desc().name() == "AcDbPolyFaceMeshVertex"
         assert Db.PolygonMeshVertex.desc().name() == "AcDbPolygonMeshVertex"
@@ -141,3 +138,12 @@ class TestDesc:
         assert Db.Wipeout.desc().name() == "AcDbWipeout"
         assert Db.Xline.desc().name() == "AcDbXline"
         assert Db.Xrecord.desc().name() == "AcDbXrecord"
+        
+    # Note these work for type checking 
+    # I.e Ed.Editor.entSel("\nSelect a pcloud: ",Db.PointCloudEx.desc())
+    @pytest.mark.known_failure_ARX
+    def test_acad_failure(self):
+        assert Db.PointCloudColorMap.desc().name() == "AcDbPointCloudColorMap"
+        assert Db.PointCloudDefEx.desc().name() == "AcDbPointCloudDefEx"
+        assert Db.PointCloudEx.desc().name() == "AcDbPointCloudEx"
+        assert Db.GeoMap.desc().name() == "AcDbGeoMap"
