@@ -1,6 +1,7 @@
 import traceback
-from pyrx import Ap, Ax, Db, Ed, Ge, Rx, Gi
 from itertools import pairwise
+
+from pyrx import Ap, Db, Ed, Ge
 
 print("Added command CDTInsertedges")
 print("Added command CDTConformedges")

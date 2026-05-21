@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import pytest
+
 from pyrx import Db
 
-import pytest
 
 class TestDesc:
     def test_name(self):
