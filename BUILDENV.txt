@@ -9,6 +9,6 @@ env $(BOOST) = path to boost_1_89_0
 env $(Py312) = path to python 3.12.X headers and libraries 
 env $(WXPYWIN) = wxPython 4.2.3 install dir (...\AppData\Local\Programs\Python\Python312\Lib\site-packages\wx
 
-You will need to checkout https://github.com/artem-ogre/CDT and place the folder in \External
+\External folder may have additional dependencies
 
 note discussion #120 has some extra tips
