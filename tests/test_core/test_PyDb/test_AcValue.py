@@ -5,32 +5,32 @@ from pyrx import Db, Ge
 
 class TestDbAcValue:
     
-    def create_with_string(self):
+    def test_create_with_string(self):
         test_val = "hello"
         acv = Db.AcValue(test_val)
         assert acv.getString() == test_val
 
-    def create_with_int(self):
+    def test_create_with_int(self):
         test_val = 42
         acv = Db.AcValue(test_val)
         assert acv.getInt32() == test_val
 
-    def create_with_float(self):
+    def test_create_with_float(self):
         test_val = 3.14
         acv = Db.AcValue(test_val)
         assert acv.getDouble() == test_val
 
-    def create_with_object_id(self):
+    def test_create_with_object_id(self):
         test_id = Db.ObjectId()
         acv = Db.AcValue(test_id)
         assert acv.getObjectId() == test_id
 
-    def create_with_point2d(self):
+    def test_create_with_point2d(self):
         test_pt = Ge.Point2d(1.0, 2.0)
         acv = Db.AcValue(test_pt)
         assert acv.getPoint2d() == test_pt
 
-    def create_with_point3d(self):
+    def test_create_with_point3d(self):
         test_pt = Ge.Point3d(1.0, 2.0, 3.0)
         acv = Db.AcValue(test_pt)
         assert acv.getPoint3d() == test_pt
