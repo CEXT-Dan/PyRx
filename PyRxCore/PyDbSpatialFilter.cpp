@@ -349,7 +349,7 @@ int PyDbLayerFilter::layerCount() const
 
 PyRxClass PyDbLayerFilter::desc()
 {
-    return PyRxClass(AcDbSpatialFilter::desc(), false);
+    return PyRxClass(AcDbLayerFilter::desc(), false);
 }
 
 std::string PyDbLayerFilter::className()

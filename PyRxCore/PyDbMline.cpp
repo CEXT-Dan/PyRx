@@ -275,7 +275,7 @@ std::string PyDbMline::className()
 
 PyRxClass PyDbMline::desc()
 {
-    return PyRxClass(AcDbFcf::desc(), false);
+    return PyRxClass(AcDbMline::desc(), false);
 }
 
 PyDbMline PyDbMline::cloneFrom(const PyRxObject& src)

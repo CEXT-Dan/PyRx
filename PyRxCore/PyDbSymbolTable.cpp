@@ -872,11 +872,11 @@ void makePyDbViewTableWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }, 10255))
-        .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS(15560)).staticmethod("desc")
-        .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-        .def("cloneFrom", &PyDbAbstractViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-        .def("className", &PyDbAbstractViewTable::className, DS.SARGS()).staticmethod("className")
+        .def("add", &PyDbViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }, 10255))
+        .def("desc", &PyDbViewTable::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbViewTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("className", &PyDbViewTable::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

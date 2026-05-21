@@ -97,7 +97,7 @@ boost::python::list PyDbSectionManager::objectIds() const
 
 PyRxClass PyDbSectionManager::desc()
 {
-    return PyRxClass(AcDbEntity::desc(), false);
+    return PyRxClass(AcDbSectionManager::desc(), false);
 }
 
 std::string PyDbSectionManager::className()
@@ -872,7 +872,7 @@ std::string PyDbSection::className()
 
 PyRxClass PyDbSection::desc()
 {
-    return PyRxClass(AcDbText::desc(), false);
+    return PyRxClass(AcDbSection::desc(), false);
 }
 
 PyDbSection PyDbSection::cloneFrom(const PyRxObject& src)
