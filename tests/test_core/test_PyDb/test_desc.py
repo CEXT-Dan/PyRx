@@ -1,6 +1,8 @@
 from __future__ import annotations
+
 import pytest
-from pyrx import Db, Ap
+
+from pyrx import Ap, Db
 
 
 def getHostName():

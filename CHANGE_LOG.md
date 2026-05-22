@@ -1,3 +1,12 @@
+## v2.2.54
+
+pip install cad-pyrx
+
+* [#516] Fix bad PyRxClass desc() on derived classes, added tests
+* [#513] Wrap CDT ‘Constrained Delauney Triangulation’ (Beta)
+* [#514] fix loadPythonModule, PyModule_GetFilename encoding issue
+* Improved internal function getAllIdsFromDatabase, should faster, especially when using a filter
+
 ## v2.2.53
 
 * Refactor Ap.Document.acadDocument

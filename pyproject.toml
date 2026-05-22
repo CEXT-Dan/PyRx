@@ -46,8 +46,9 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
 ]
+
 dependencies = [
-    "wxpython>=4.2.3; os_name == 'nt'", # Hard to install on Ubuntu for the CI
+    "wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
     "pydantic_settings",
