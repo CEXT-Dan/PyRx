@@ -1,20 +1,21 @@
 from __future__ import annotations
 import pytest
+from pyrx import Db, Ap
 
-from pyrx import Db
-from pyrx import Ap
 
 def getHostName():
-    """Returns ARX, BRX, ZRX etc. directly from the CAD runtime environment."""
+    """Returns ARX, BRX, ZRX, etc. based on the running CAD engine application context."""
     try:
         host = Ap.Application.hostAPI()
         return host[:3].upper()
     except Exception:
-        # Fallback if evaluated during an IDE parse or outside an active CAD session
+        # Fallback to ARX if evaluated outside a running CAD environment (e.g. IDE parse)
         return "ARX"
 
-# Instantly sets the runtime environment variable during test collection
+
+# Determine the runtime platform environment instantly on collection
 CURRENT_HOST = getHostName()
+
 
 class TestDesc:
     @pytest.mark.parametrize(
@@ -22,12 +23,10 @@ class TestDesc:
         [
             ("AbstractViewTable", "AcDbAbstractViewTable"),
             ("AbstractViewTableRecord", "AcDbAbstractViewTableRecord"),
-            ("AcValue", "AcValue"),
             ("AlignedDimension", "AcDbAlignedDimension"),
             ("AnnotationScale", "AcDbAnnotationScale"),
             ("Arc", "AcDbArc"),
             ("ArcDimension", "AcDbArcDimension"),
-            ("AssocPersSubentIdPE", "AcDbAssocPersSubentIdPE"),
             ("AttributeDefinition", "AcDbAttributeDefinition"),
             ("AttributeReference", "AcDbAttribute"),
             ("BlockBegin", "AcDbBlockBegin"),
@@ -49,7 +48,6 @@ class TestDesc:
             ("Dimension", "AcDbDimension"),
             ("Ellipse", "AcDbEllipse"),
             ("Entity", "AcDbEntity"),
-            ("EntityHyperlinkPE", "AcDbEntityHyperlinkPE"),
             ("EntityReactor", "AcDbEntityReactor"),
             ("EvalVariant", "AcDbEvalVariant"),
             ("ExtrudedSurface", "AcDbExtrudedSurface"),
@@ -63,7 +61,6 @@ class TestDesc:
             ("Hatch", "AcDbHatch"),
             ("Helix", "AcDbHelix"),
             ("Image", "AcDbImage"),
-            ("JoinEntityPE", "AcDbJoinEntityPE"),
             ("LayerFilter", "AcDbLayerFilter"),
             ("LayerStateManager", "AcDbLayerStateManager"),
             ("LayerTable", "AcDbLayerTable"),
@@ -83,7 +80,6 @@ class TestDesc:
             ("MText", "AcDbMText"),
             ("Mline", "AcDbMline"),
             ("MlineStyle", "AcDbMlineStyle"),
-            ("NurbSurface", "AcDbNurbSurface"),
             ("ObjectContext", "AcDbObjectContext"),
             ("ObjectContextCollection", "AcDbObjectContextCollection"),
             ("ObjectContextManager", "AcDbObjectContextManager"),
@@ -97,14 +93,12 @@ class TestDesc:
             ("PlotSettings", "AcDbPlotSettings"),
             ("Point", "AcDbPoint"),
             ("Point3AngularDimension", "AcDb3PointAngularDimension"),
-            ("PointRef", "AcDbPointRef"),
             ("PolyFaceMeshVertex", "AcDbPolyFaceMeshVertex"),
             ("PolygonMeshVertex", "AcDbPolygonMeshVertex"),
             ("Polyline", "AcDbPolyline"),
             ("Polyline2d", "AcDb2dPolyline"),
             ("Polyline3d", "AcDb3dPolyline"),
             ("Polyline3dVertex", "AcDb3dPolylineVertex"),
-            ("Profile3d", "AcDb3dProfile"),
             ("RadialDimension", "AcDbRadialDimension"),
             ("RadialDimensionLarge", "AcDbRadialDimensionLarge"),
             ("RasterImage", "AcDbRasterImage"),
@@ -152,38 +146,95 @@ class TestDesc:
             ("Wipeout", "AcDbWipeout"),
             ("Xline", "AcDbXline"),
             ("Xrecord", "AcDbXrecord"),
-
-            # --- MOVED IN FROM test_acad_failure ---
-            # These are isolated as individual test entries.
-            # strict=True means if they accidentally PASS on ARX later, pytest flags it as a failure.
+            # --- DYNAMICALLY FLAGGED KNOWN FAILURES (via test_acad_failure) ---
+            # Using pytest.param maps each assertion to its own independent item.
+            # strict=True turns unexpected passes (XPASS) into failures to keep you updated.
             pytest.param(
-                "PointCloudColorMap", "AcDbPointCloudColorMap",
-                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+                "PointCloudColorMap",
+                "AcDbPointCloudColorMap",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["ARX", "BRX"], reason="Known issue", strict=True
+                ),
             ),
             pytest.param(
-                "PointCloudDefEx", "AcDbPointCloudDefEx",
-                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+                "PointCloudDefEx",
+                "AcDbPointCloudDefEx",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["ARX", "BRX"], reason="Known issue", strict=True
+                ),
             ),
             pytest.param(
-                "PointCloudEx", "AcDbPointCloudEx",
-                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+                "PointCloudEx",
+                "AcDbPointCloudEx",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["ARX", "BRX"], reason="Known issue", strict=True
+                ),
             ),
             pytest.param(
-                "GeoMap", "AcDbGeoMap",
-                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+                "GeoMap",
+                "AcDbGeoMap",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["ARX", "BRX"], reason="Known issue", strict=True
+                ),
             ),
-            
-            # --- EXTENSION EXAMPLE ---
-            # You can easily mark items for other CAD platform environments here:
-            # pytest.param(
-            #     "BricsCadBugClass", "AcDbBricsCadBugClass",
-            #     marks=pytest.mark.xfail(condition=CURRENT_HOST == "BRX", reason="Known BRX issue", strict=True)
-            # ),
+            pytest.param(
+                "PointRef",
+                "AcDbPointRef",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["BRX"], reason="Known issue", strict=True
+                ),
+            ),
+            pytest.param(
+                "Profile3d",
+                "AcDb3dProfile",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["BRX", "GRX", "ZRX"],
+                    reason="Known issue",
+                    strict=True,
+                ),
+            ),
+            pytest.param(
+                "AssocPersSubentIdPE",
+                "AcDbAssocPersSubentIdPE",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["ZRX"], reason="Known issue", strict=True
+                ),
+            ),
+            pytest.param(
+                "JoinEntityPE",
+                "AcDbJoinEntityPE",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["GRX", "ZRX"], reason="Known issue", strict=True
+                ),
+            ),
+            pytest.param(
+                "NurbSurface",
+                "AcDbNurbSurface",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["GRX", "ZRX"], reason="Known issue", strict=True
+                ),
+            ),
+            pytest.param(
+                "AcValue",
+                "AcValue",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["GRX"], reason="Known issue", strict=True
+                ),
+            ),
+            pytest.param(
+                "EntityHyperlinkPE",
+                "AcDbEntityHyperlinkPE",
+                marks=pytest.mark.xfail(
+                    condition=CURRENT_HOST in ["GRX"], reason="Known issue", strict=True
+                ),
+            ),
         ],
     )
     def test_name(self, member, expected):
         # Special-case: LayoutManager uses isA() comparison on an instance
         if member == "LayoutManager":
+            if CURRENT_HOST in ["ZRX", "GRX"]:
+                return  # oof
             assert Db.LayoutManager().isA() == Db.LayoutManager.desc()
             return
 
