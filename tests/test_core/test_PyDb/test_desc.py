@@ -1,150 +1,195 @@
 from __future__ import annotations
-
 import pytest
 
 from pyrx import Db
+from pyrx import Ap
 
+def getHostName():
+    """Returns ARX, BRX, ZRX etc. directly from the CAD runtime environment."""
+    try:
+        host = Ap.Application.hostAPI()
+        return host[:3].upper()
+    except Exception:
+        # Fallback if evaluated during an IDE parse or outside an active CAD session
+        return "ARX"
+
+# Instantly sets the runtime environment variable during test collection
+CURRENT_HOST = getHostName()
 
 class TestDesc:
-    def test_name(self):
-        assert Db.AbstractViewTable.desc().name() == "AcDbAbstractViewTable"
-        assert Db.AbstractViewTableRecord.desc().name() == "AcDbAbstractViewTableRecord"
-        assert Db.AcValue.desc().name() == "AcValue"
-        assert Db.AlignedDimension.desc().name() == "AcDbAlignedDimension"
-        assert Db.AnnotationScale.desc().name() == "AcDbAnnotationScale"
-        assert Db.Arc.desc().name() == "AcDbArc"
-        assert Db.ArcDimension.desc().name() == "AcDbArcDimension"
-        assert Db.AssocPersSubentIdPE.desc().name() == "AcDbAssocPersSubentIdPE"
-        assert Db.AttributeDefinition.desc().name() == "AcDbAttributeDefinition"
-        assert Db.AttributeReference.desc().name() == "AcDbAttribute"
-        assert Db.BlockBegin.desc().name() == "AcDbBlockBegin"
-        assert Db.BlockEnd.desc().name() == "AcDbBlockEnd"
-        assert Db.BlockTable.desc().name() == "AcDbBlockTable"
-        assert Db.BlockTableRecord.desc().name() == "AcDbBlockTableRecord"
-        assert Db.Body.desc().name() == "AcDbBody"
-        assert Db.Circle.desc().name() == "AcDbCircle"
-        assert Db.Curve.desc().name() == "AcDbCurve"
-        assert Db.DatabaseReactor.desc().name() == "AcDbDatabaseReactor"
-        assert Db.DbObject.desc().name() == "AcDbObject"
-        assert Db.DbObjectOverrule.desc().name() == "AcDbObjectOverrule"
-        assert Db.DbObjectReactor.desc().name() == "AcDbObjectReactor"
-        assert Db.DiametricDimension.desc().name() == "AcDbDiametricDimension"
-        assert Db.Dictionary.desc().name() == "AcDbDictionary"
-        assert Db.DimAssoc.desc().name() == "AcDbDimAssoc"
-        assert Db.DimStyleTable.desc().name() == "AcDbDimStyleTable"
-        assert Db.DimStyleTableRecord.desc().name() == "AcDbDimStyleTableRecord"
-        assert Db.Dimension.desc().name() == "AcDbDimension"
-        assert Db.Ellipse.desc().name() == "AcDbEllipse"
-        assert Db.Entity.desc().name() == "AcDbEntity"
-        assert Db.EntityHyperlinkPE.desc().name() == "AcDbEntityHyperlinkPE"
-        assert Db.EntityReactor.desc().name() == "AcDbEntityReactor"
-        assert Db.EvalVariant.desc().name() == "AcDbEvalVariant"
-        assert Db.ExtrudedSurface.desc().name() == "AcDbExtrudedSurface"
-        assert Db.Face.desc().name() == "AcDbFace"
-        assert Db.Fcf.desc().name() == "AcDbFcf"
-        assert Db.Field.desc().name() == "AcDbField"
-        assert Db.GeoData.desc().name() == "AcDbGeoData"
-        assert Db.GeoPositionMarker.desc().name() == "AcDbGeoPositionMarker"
-        assert Db.GripOverrule.desc().name() == "AcDbGripOverrule"
-        assert Db.Group.desc().name() == "AcDbGroup"
-        assert Db.Hatch.desc().name() == "AcDbHatch"
-        assert Db.Helix.desc().name() == "AcDbHelix"
-        assert Db.Image.desc().name() == "AcDbImage"
-        assert Db.JoinEntityPE.desc().name() == "AcDbJoinEntityPE"
-        assert Db.LayerFilter.desc().name() == "AcDbLayerFilter"
-        assert Db.LayerStateManager.desc().name() == "AcDbLayerStateManager"
-        assert Db.LayerTable.desc().name() == "AcDbLayerTable"
-        assert Db.LayerTableRecord.desc().name() == "AcDbLayerTableRecord"
-        assert Db.Layout.desc().name() == "AcDbLayout"
-        assert Db.LayoutManager().isA() == Db.LayoutManager.desc()
-        assert Db.Leader.desc().name() == "AcDbLeader"
-        assert Db.Line.desc().name() == "AcDbLine"
-        assert Db.LineAngularDimension2.desc().name() == "AcDb2LineAngularDimension"
-        assert Db.LinetypeTable.desc().name() == "AcDbLinetypeTable"
-        assert Db.LinetypeTableRecord.desc().name() == "AcDbLinetypeTableRecord"
-        assert Db.LoftedSurface.desc().name() == "AcDbLoftedSurface"
-        assert Db.MInsertBlock.desc().name() == "AcDbMInsertBlock"
-        assert Db.MLeader.desc().name() == "AcDbMLeader"
-        assert Db.MLeaderStyle.desc().name() == "AcDbMLeaderStyle"
-        assert Db.MPolygon.desc().name() == "AcDbMPolygon"
-        assert Db.MText.desc().name() == "AcDbMText"
-        assert Db.Mline.desc().name() == "AcDbMline"
-        assert Db.MlineStyle.desc().name() == "AcDbMlineStyle"
-        assert Db.NurbSurface.desc().name() == "AcDbNurbSurface"
-        assert Db.ObjectContext.desc().name() == "AcDbObjectContext"
-        assert Db.ObjectContextCollection.desc().name() == "AcDbObjectContextCollection"
-        assert Db.ObjectContextManager.desc().name() == "AcDbObjectContextManager"
-        assert Db.OrdinateDimension.desc().name() == "AcDbOrdinateDimension"
-        assert Db.OsnapOverrule.desc().name() == "AcDbOsnapOverrule"
-        assert Db.OsnapPointRef.desc().name() == "AcDbOsnapPointRef"
-        assert Db.OverrulableEntity.desc().name() == "PyRxOverrulableEntity"
-        assert Db.PdfDefinition.desc().name() == "AcDbPdfDefinition"
-        assert Db.PdfReference.desc().name() == "AcDbPdfReference"
-        assert Db.PlaneSurface.desc().name() == "AcDbPlaneSurface"
-        assert Db.PlotSettings.desc().name() == "AcDbPlotSettings"
-        assert Db.Point.desc().name() == "AcDbPoint"
-        assert Db.Point3AngularDimension.desc().name() == "AcDb3PointAngularDimension"
-        assert Db.PointRef.desc().name() == "AcDbPointRef"
-        assert Db.PolyFaceMeshVertex.desc().name() == "AcDbPolyFaceMeshVertex"
-        assert Db.PolygonMeshVertex.desc().name() == "AcDbPolygonMeshVertex"
-        assert Db.Polyline.desc().name() == "AcDbPolyline"
-        assert Db.Polyline2d.desc().name() == "AcDb2dPolyline"
-        assert Db.Polyline3d.desc().name() == "AcDb3dPolyline"
-        assert Db.Polyline3dVertex.desc().name() == "AcDb3dPolylineVertex"
-        assert Db.Profile3d.desc().name() == "AcDb3dProfile"
-        assert Db.RadialDimension.desc().name() == "AcDbRadialDimension"
-        assert Db.RadialDimensionLarge.desc().name() == "AcDbRadialDimensionLarge"
-        assert Db.RasterImage.desc().name() == "AcDbRasterImage"
-        assert Db.RasterImageDef.desc().name() == "AcDbRasterImageDef"
-        assert Db.RasterImageDefReactor.desc().name() == "AcDbRasterImageDefReactor"
-        assert Db.Ray.desc().name() == "AcDbRay"
-        assert Db.RegAppTable.desc().name() == "AcDbRegAppTable"
-        assert Db.RegAppTableRecord.desc().name() == "AcDbRegAppTableRecord"
-        assert Db.Region.desc().name() == "AcDbRegion"
-        assert Db.RevolvedSurface.desc().name() == "AcDbRevolvedSurface"
-        assert Db.RotatedDimension.desc().name() == "AcDbRotatedDimension"
-        assert Db.Section.desc().name() == "AcDbSection"
-        assert Db.SectionManager.desc().name() == "AcDbSectionManager"
-        assert Db.SectionSettings.desc().name() == "AcDbSectionSettings"
-        assert Db.Shape.desc().name() == "AcDbShape"
-        assert Db.Solid.desc().name() == "AcDbSolid"
-        assert Db.Solid3d.desc().name() == "AcDb3dSolid"
-        assert Db.SortentsTable.desc().name() == "AcDbSortentsTable"
-        assert Db.SpatialFilter.desc().name() == "AcDbSpatialFilter"
-        assert Db.Spline.desc().name() == "AcDbSpline"
-        assert Db.SubDMesh.desc().name() == "AcDbSubDMesh"
-        assert Db.Surface.desc().name() == "AcDbSurface"
-        assert Db.SweptSurface.desc().name() == "AcDbSweptSurface"
-        assert Db.SymbolTable.desc().name() == "AcDbSymbolTable"
-        assert Db.SymbolTableRecord.desc().name() == "AcDbSymbolTableRecord"
-        assert Db.Table.desc().name() == "AcDbTable"
-        assert Db.TableStyle.desc().name() == "AcDbTableStyle"
-        assert Db.Text.desc().name() == "AcDbText"
-        assert Db.TextStyleTable.desc().name() == "AcDbTextStyleTable"
-        assert Db.TextStyleTableRecord.desc().name() == "AcDbTextStyleTableRecord"
-        assert Db.Trace.desc().name() == "AcDbTrace"
-        assert Db.Transaction.desc().name() == "AcTransaction"
-        assert Db.TransactionManager.desc().name() == "AcDbTransactionManager"
-        assert Db.UCSTable.desc().name() == "AcDbUCSTable"
-        assert Db.UCSTableRecord.desc().name() == "AcDbUCSTableRecord"
-        assert Db.UnderlayDefinition.desc().name() == "AcDbUnderlayDefinition"
-        assert Db.UnderlayReference.desc().name() == "AcDbUnderlayReference"
-        assert Db.Vertex.desc().name() == "AcDbVertex"
-        assert Db.Vertex2d.desc().name() == "AcDb2dVertex"
-        assert Db.ViewTable.desc().name() == "AcDbViewTable"
-        assert Db.ViewTableRecord.desc().name() == "AcDbViewTableRecord"
-        assert Db.Viewport.desc().name() == "AcDbViewport"
-        assert Db.ViewportTable.desc().name() == "AcDbViewportTable"
-        assert Db.ViewportTableRecord.desc().name() == "AcDbViewportTableRecord"
-        assert Db.Wipeout.desc().name() == "AcDbWipeout"
-        assert Db.Xline.desc().name() == "AcDbXline"
-        assert Db.Xrecord.desc().name() == "AcDbXrecord"
-        
-    # Note these work for type checking 
-    # I.e Ed.Editor.entSel("\nSelect a pcloud: ",Db.PointCloudEx.desc())
-    @pytest.mark.known_failure_ARX
-    def test_acad_failure(self):
-        assert Db.PointCloudColorMap.desc().name() == "AcDbPointCloudColorMap"
-        assert Db.PointCloudDefEx.desc().name() == "AcDbPointCloudDefEx"
-        assert Db.PointCloudEx.desc().name() == "AcDbPointCloudEx"
-        assert Db.GeoMap.desc().name() == "AcDbGeoMap"
+    @pytest.mark.parametrize(
+        "member, expected",
+        [
+            ("AbstractViewTable", "AcDbAbstractViewTable"),
+            ("AbstractViewTableRecord", "AcDbAbstractViewTableRecord"),
+            ("AcValue", "AcValue"),
+            ("AlignedDimension", "AcDbAlignedDimension"),
+            ("AnnotationScale", "AcDbAnnotationScale"),
+            ("Arc", "AcDbArc"),
+            ("ArcDimension", "AcDbArcDimension"),
+            ("AssocPersSubentIdPE", "AcDbAssocPersSubentIdPE"),
+            ("AttributeDefinition", "AcDbAttributeDefinition"),
+            ("AttributeReference", "AcDbAttribute"),
+            ("BlockBegin", "AcDbBlockBegin"),
+            ("BlockEnd", "AcDbBlockEnd"),
+            ("BlockTable", "AcDbBlockTable"),
+            ("BlockTableRecord", "AcDbBlockTableRecord"),
+            ("Body", "AcDbBody"),
+            ("Circle", "AcDbCircle"),
+            ("Curve", "AcDbCurve"),
+            ("DatabaseReactor", "AcDbDatabaseReactor"),
+            ("DbObject", "AcDbObject"),
+            ("DbObjectOverrule", "AcDbObjectOverrule"),
+            ("DbObjectReactor", "AcDbObjectReactor"),
+            ("DiametricDimension", "AcDbDiametricDimension"),
+            ("Dictionary", "AcDbDictionary"),
+            ("DimAssoc", "AcDbDimAssoc"),
+            ("DimStyleTable", "AcDbDimStyleTable"),
+            ("DimStyleTableRecord", "AcDbDimStyleTableRecord"),
+            ("Dimension", "AcDbDimension"),
+            ("Ellipse", "AcDbEllipse"),
+            ("Entity", "AcDbEntity"),
+            ("EntityHyperlinkPE", "AcDbEntityHyperlinkPE"),
+            ("EntityReactor", "AcDbEntityReactor"),
+            ("EvalVariant", "AcDbEvalVariant"),
+            ("ExtrudedSurface", "AcDbExtrudedSurface"),
+            ("Face", "AcDbFace"),
+            ("Fcf", "AcDbFcf"),
+            ("Field", "AcDbField"),
+            ("GeoData", "AcDbGeoData"),
+            ("GeoPositionMarker", "AcDbGeoPositionMarker"),
+            ("GripOverrule", "AcDbGripOverrule"),
+            ("Group", "AcDbGroup"),
+            ("Hatch", "AcDbHatch"),
+            ("Helix", "AcDbHelix"),
+            ("Image", "AcDbImage"),
+            ("JoinEntityPE", "AcDbJoinEntityPE"),
+            ("LayerFilter", "AcDbLayerFilter"),
+            ("LayerStateManager", "AcDbLayerStateManager"),
+            ("LayerTable", "AcDbLayerTable"),
+            ("LayerTableRecord", "AcDbLayerTableRecord"),
+            ("Layout", "AcDbLayout"),
+            ("LayoutManager", "__LayoutManager__"),
+            ("Leader", "AcDbLeader"),
+            ("Line", "AcDbLine"),
+            ("LineAngularDimension2", "AcDb2LineAngularDimension"),
+            ("LinetypeTable", "AcDbLinetypeTable"),
+            ("LinetypeTableRecord", "AcDbLinetypeTableRecord"),
+            ("LoftedSurface", "AcDbLoftedSurface"),
+            ("MInsertBlock", "AcDbMInsertBlock"),
+            ("MLeader", "AcDbMLeader"),
+            ("MLeaderStyle", "AcDbMLeaderStyle"),
+            ("MPolygon", "AcDbMPolygon"),
+            ("MText", "AcDbMText"),
+            ("Mline", "AcDbMline"),
+            ("MlineStyle", "AcDbMlineStyle"),
+            ("NurbSurface", "AcDbNurbSurface"),
+            ("ObjectContext", "AcDbObjectContext"),
+            ("ObjectContextCollection", "AcDbObjectContextCollection"),
+            ("ObjectContextManager", "AcDbObjectContextManager"),
+            ("OrdinateDimension", "AcDbOrdinateDimension"),
+            ("OsnapOverrule", "AcDbOsnapOverrule"),
+            ("OsnapPointRef", "AcDbOsnapPointRef"),
+            ("OverrulableEntity", "PyRxOverrulableEntity"),
+            ("PdfDefinition", "AcDbPdfDefinition"),
+            ("PdfReference", "AcDbPdfReference"),
+            ("PlaneSurface", "AcDbPlaneSurface"),
+            ("PlotSettings", "AcDbPlotSettings"),
+            ("Point", "AcDbPoint"),
+            ("Point3AngularDimension", "AcDb3PointAngularDimension"),
+            ("PointRef", "AcDbPointRef"),
+            ("PolyFaceMeshVertex", "AcDbPolyFaceMeshVertex"),
+            ("PolygonMeshVertex", "AcDbPolygonMeshVertex"),
+            ("Polyline", "AcDbPolyline"),
+            ("Polyline2d", "AcDb2dPolyline"),
+            ("Polyline3d", "AcDb3dPolyline"),
+            ("Polyline3dVertex", "AcDb3dPolylineVertex"),
+            ("Profile3d", "AcDb3dProfile"),
+            ("RadialDimension", "AcDbRadialDimension"),
+            ("RadialDimensionLarge", "AcDbRadialDimensionLarge"),
+            ("RasterImage", "AcDbRasterImage"),
+            ("RasterImageDef", "AcDbRasterImageDef"),
+            ("RasterImageDefReactor", "AcDbRasterImageDefReactor"),
+            ("Ray", "AcDbRay"),
+            ("RegAppTable", "AcDbRegAppTable"),
+            ("RegAppTableRecord", "AcDbRegAppTableRecord"),
+            ("Region", "AcDbRegion"),
+            ("RevolvedSurface", "AcDbRevolvedSurface"),
+            ("RotatedDimension", "AcDbRotatedDimension"),
+            ("Section", "AcDbSection"),
+            ("SectionManager", "AcDbSectionManager"),
+            ("SectionSettings", "AcDbSectionSettings"),
+            ("Shape", "AcDbShape"),
+            ("Solid", "AcDbSolid"),
+            ("Solid3d", "AcDb3dSolid"),
+            ("SortentsTable", "AcDbSortentsTable"),
+            ("SpatialFilter", "AcDbSpatialFilter"),
+            ("Spline", "AcDbSpline"),
+            ("SubDMesh", "AcDbSubDMesh"),
+            ("Surface", "AcDbSurface"),
+            ("SweptSurface", "AcDbSweptSurface"),
+            ("SymbolTable", "AcDbSymbolTable"),
+            ("SymbolTableRecord", "AcDbSymbolTableRecord"),
+            ("Table", "AcDbTable"),
+            ("TableStyle", "AcDbTableStyle"),
+            ("Text", "AcDbText"),
+            ("TextStyleTable", "AcDbTextStyleTable"),
+            ("TextStyleTableRecord", "AcDbTextStyleTableRecord"),
+            ("Trace", "AcDbTrace"),
+            ("Transaction", "AcTransaction"),
+            ("TransactionManager", "AcDbTransactionManager"),
+            ("UCSTable", "AcDbUCSTable"),
+            ("UCSTableRecord", "AcDbUCSTableRecord"),
+            ("UnderlayDefinition", "AcDbUnderlayDefinition"),
+            ("UnderlayReference", "AcDbUnderlayReference"),
+            ("Vertex", "AcDbVertex"),
+            ("Vertex2d", "AcDb2dVertex"),
+            ("ViewTable", "AcDbViewTable"),
+            ("ViewTableRecord", "AcDbViewTableRecord"),
+            ("Viewport", "AcDbViewport"),
+            ("ViewportTable", "AcDbViewportTable"),
+            ("ViewportTableRecord", "AcDbViewportTableRecord"),
+            ("Wipeout", "AcDbWipeout"),
+            ("Xline", "AcDbXline"),
+            ("Xrecord", "AcDbXrecord"),
+
+            # --- MOVED IN FROM test_acad_failure ---
+            # These are isolated as individual test entries.
+            # strict=True means if they accidentally PASS on ARX later, pytest flags it as a failure.
+            pytest.param(
+                "PointCloudColorMap", "AcDbPointCloudColorMap",
+                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+            ),
+            pytest.param(
+                "PointCloudDefEx", "AcDbPointCloudDefEx",
+                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+            ),
+            pytest.param(
+                "PointCloudEx", "AcDbPointCloudEx",
+                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+            ),
+            pytest.param(
+                "GeoMap", "AcDbGeoMap",
+                marks=pytest.mark.xfail(condition=CURRENT_HOST == "ARX", reason="Known ARX issue", strict=True)
+            ),
+            
+            # --- EXTENSION EXAMPLE ---
+            # You can easily mark items for other CAD platform environments here:
+            # pytest.param(
+            #     "BricsCadBugClass", "AcDbBricsCadBugClass",
+            #     marks=pytest.mark.xfail(condition=CURRENT_HOST == "BRX", reason="Known BRX issue", strict=True)
+            # ),
+        ],
+    )
+    def test_name(self, member, expected):
+        # Special-case: LayoutManager uses isA() comparison on an instance
+        if member == "LayoutManager":
+            assert Db.LayoutManager().isA() == Db.LayoutManager.desc()
+            return
+
+        desc = getattr(Db, member)
+        try:
+            name = desc.desc().name()
+        except TypeError:
+            name = desc().desc().name()
+        assert name == expected
