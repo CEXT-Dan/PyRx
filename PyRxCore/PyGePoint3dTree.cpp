@@ -486,7 +486,7 @@ struct CDTinator
         outPoints.reserve(cdt.vertices.size());
 
         // Build a temporary adjacency map to quickly find edges sharing any Steiner vertex
-        std::map<size_t, std::vector<size_t>> vertexAdjacency;
+        std::unordered_map<size_t, std::vector<size_t>> vertexAdjacency;
         for (const auto& tri : cdt.triangles) {
             size_t a = tri.vertices[0];
             size_t b = tri.vertices[1];
@@ -515,7 +515,7 @@ struct CDTinator
                 const auto& neighbors = vertexAdjacency[i];
 
                 // Track unique parent constraint edges processed for this specific vertex to avoid duplicate weightings
-                std::unordered_set< CDT::Edge, CDTEdgeHash>processedParentEdges;
+                std::unordered_set<CDT::Edge, CDTEdgeHash> processedParentEdges;
 
                 for (size_t neighbor : neighbors)
                 {
