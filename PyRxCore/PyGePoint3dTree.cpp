@@ -566,20 +566,17 @@ struct CDTinator
             {
                 double zSum = 0.0;
                 size_t zCount = 0;
-
                 auto adjIt = vertexAdjacency.find(i);
 
                 if (adjIt != vertexAdjacency.end())
                 {
                     const auto& neighbors = adjIt->second;
-
                     std::unordered_set<CDT::Edge, CDTEdgeHash> processedParentEdges;
 
                     for (size_t neighbor : neighbors)
                     {
                         CDT::Edge subEdgeKey(i, neighbor);
                         auto pieceIt = cdt.pieceToOriginals.find(subEdgeKey);
-
                         if (pieceIt == cdt.pieceToOriginals.end())
                             continue;
 
@@ -587,8 +584,8 @@ struct CDTinator
                         {
                             if (processedParentEdges.find(postDupOrigEdge) != processedParentEdges.end())
                                 continue;
-
-                            processedParentEdges.insert(postDupOrigEdge);
+                            else
+                                processedParentEdges.insert(postDupOrigEdge);
 
                             if (postDupOrigEdge.v1() >= inverseMapping.size())
                                 continue;
