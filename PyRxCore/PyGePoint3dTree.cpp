@@ -379,6 +379,18 @@ enum class CDTinatorOpt : int32_t {
     kConformToEdges = 1 << 4,              // 16
 };
 
+
+struct CDTEdgeHash 
+{
+    std::size_t operator()(const CDT::Edge& e) const 
+    {
+        std::size_t seed = 0;
+        boost::hash_combine(seed, e.v1());
+        boost::hash_combine(seed, e.v2());
+        return seed;
+    }
+};
+
 struct CDTinator
 {
     static boost::python::tuple triangulate1(
@@ -503,7 +515,7 @@ struct CDTinator
                 const auto& neighbors = vertexAdjacency[i];
 
                 // Track unique parent constraint edges processed for this specific vertex to avoid duplicate weightings
-                std::vector<CDT::Edge> processedParentEdges;
+                std::unordered_set< CDT::Edge, CDTEdgeHash>processedParentEdges;
 
                 for (size_t neighbor : neighbors)
                 {
@@ -516,10 +528,9 @@ struct CDTinator
                         for (const auto& postDupOrigEdge : it->second)
                         {
                             // Avoid counting the same parent constraint line twice
-                            if (std::find(processedParentEdges.begin(), processedParentEdges.end(), postDupOrigEdge) != processedParentEdges.end()) {
+                            if(processedParentEdges.contains(postDupOrigEdge))
                                 continue;
-                            }
-                            processedParentEdges.push_back(postDupOrigEdge);
+                            processedParentEdges.insert(postDupOrigEdge);
 
                             // Convert post-duplication vertex indices back to original 3D indices
                             size_t origV1 = inverseMapping[postDupOrigEdge.v1()];
