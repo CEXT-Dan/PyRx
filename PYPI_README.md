@@ -3,7 +3,7 @@
 ## Python for AutoCAD & Clones
 
 CAD-PyRx is an ObjectARX module that exposes ObjectARX methods to Python, CAD-PyRx also exposes CAD's ActiveX API.
-Currently supported platforms are AutoCAD® 2023-2027, BricsCAD® V24-V26, GStarCAD® 2024-2026, and ZwCAD® 2025-2027
+Currently supported platforms are AutoCAD® 2022-2027, BricsCAD® V24-V26, GStarCAD® 2024-2026, and ZwCAD® 2024-2027
 
 ## Features
 
@@ -29,6 +29,7 @@ Use ``APPLOAD`` command or the startup suite to load PyRx in CAD application, ex
 _APPLOAD
 %localappdata%\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderZ26.0.zrx
 or
+RxLoader24.1.arx = 2022
 RxLoader24.2.arx = 2023
 RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025

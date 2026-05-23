@@ -1,6 +1,9 @@
-## v2.2.54
+## v2.2.55
 
-pip install cad-pyrx
+* [#513] improve CDT ‘Constrained Delauney Triangulation’ (Beta)
+* [#517] add back build for AutoCAD 2022 (2021 is officially EOL)
+
+## v2.2.54
 
 * [#516] Fix bad PyRxClass desc() on derived classes, added tests
 * [#513] Wrap CDT ‘Constrained Delauney Triangulation’ (Beta)
