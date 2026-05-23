@@ -402,10 +402,12 @@ def pydelaunator():
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
 
         # Draw triangles
+        triangles = []
         for i in range(0, len(t), 3):
             f = Db.Face(pnt3ds[t[i]], pnt3ds[t[i + 1]], pnt3ds[t[i + 2]])
             f.setColorIndex(8)  # Color 8 is usually White/Light Gray
-            model.appendAcDbEntity(f)
+            triangles.append(f)
+        model.appendAcDbEntity(triangles)
 
         # Draw contours
         segs = []
