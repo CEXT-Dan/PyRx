@@ -728,8 +728,8 @@ struct AcSelectionCallbackGuard
         if (!refcwfunc) return 
             nullptr;
 
-        bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
         std::string input_str = wstr_to_utf8(pcKey);
+        bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
         bp::object raw_result = py_func(input_str);
 
         if (bp::extract<bp::list>(raw_result).check())
