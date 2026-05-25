@@ -425,9 +425,8 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Parse edges
         //--------------------------------------------------------------------------
-
         std::vector<CDT::Edge> cdtEdges;
-        const size_t edgeCount =static_cast<size_t>(bp::len(edges));
+        const size_t edgeCount = static_cast<size_t>(bp::len(edges));
         cdtEdges.reserve(edgeCount);
 
         for (size_t i = 0; i < edgeCount; ++i)
@@ -458,7 +457,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Remove duplicates
         //--------------------------------------------------------------------------
-
         CDT::DuplicatesInfo di = CDT::RemoveDuplicatesAndRemapEdges(cdtVertices, cdtEdges);
         std::vector<size_t> inverseMapping(cdtVertices.size(), kInvalidIndex);
 
@@ -479,7 +477,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Create CDT
         //--------------------------------------------------------------------------
-
         CDT::Triangulation<double> cdt(
             CDT::VertexInsertionOrder::Auto,
             CDT::IntersectingConstraintEdges::TryResolve,
@@ -490,7 +487,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Remove degenerate edges
         //--------------------------------------------------------------------------
-
         std::vector<CDT::Edge> validEdges;
         validEdges.reserve(cdtEdges.size());
 
@@ -503,7 +499,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Execute triangulation
         //--------------------------------------------------------------------------
-
         if (useConform)
             cdt.conformToEdges(validEdges);
         else
@@ -512,7 +507,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Cleanup
         //--------------------------------------------------------------------------
-
         if (eraseSuperTriangle)
             cdt.eraseSuperTriangle();
 
@@ -525,7 +519,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Build adjacency
         //--------------------------------------------------------------------------
-
         std::unordered_map<size_t, std::unordered_set<size_t>> vertexAdjacency;
         vertexAdjacency.reserve(cdt.vertices.size());
 
@@ -548,15 +541,12 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Restore 3D vertices
         //--------------------------------------------------------------------------
-
         PyGePoint3dArray outPoints;
         outPoints.reserve(cdt.vertices.size());
 
         for (size_t i = 0; i < cdt.vertices.size(); ++i)
         {
-            AcGePoint3d pt;
-            pt.x = cdt.vertices[i].x;
-            pt.y = cdt.vertices[i].y;
+            AcGePoint3d pt{ cdt.vertices[i].x ,cdt.vertices[i].y , 0.0 };
 
             if (i < inverseMapping.size() && inverseMapping[i] != kInvalidIndex)
             {
@@ -634,7 +624,6 @@ struct CDTinator
         //--------------------------------------------------------------------------
         // Mesh indices
         //--------------------------------------------------------------------------
-
         bp::list meshIndices;
         for (const auto& tri : cdt.triangles)
         {
