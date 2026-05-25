@@ -270,7 +270,7 @@ def pyssget5():
 
 
 # === Command: pyssgetkw ===
-# return objectids, and error message or none
+# return objectids, an error message or none
 # if callback is not called, it's Likely you hit a built in kw
 def callback(key: str):
     print("callback", key)
@@ -280,15 +280,16 @@ def callback(key: str):
         return model.objectIds(Db.Line.desc())
     elif key == "2":
         model = db.modelSpace()
-        return model.objectIdArray(Db.Line.desc())
+        return model.objectIdArray(Db.Circle.desc())
     elif key == "3":
         ps, ss = Ed.Editor.selectAll()
         if ps != Ed.PromptStatus.eNormal:
             return "ERROR of Oof:"
         return ss.objectIds()
 
+
 @Ap.Command()
-def doit():
+def pyssgetkw():
     try:
         keyWords = "LIne CIrcle GEt _ 1 2 3"
         promptsKW = (
