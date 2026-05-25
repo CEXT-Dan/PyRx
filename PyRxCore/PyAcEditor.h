@@ -71,6 +71,7 @@ public:
     static boost::python::tuple selectLast2(const boost::python::object& filter);
     static boost::python::tuple ssget1(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2);
     static boost::python::tuple ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter);
+    static boost::python::tuple ssgetkw(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter, const boost::python::object& cw);
     static AcGeMatrix3d         curUCS();
     static void                 setCurUCS(const AcGeMatrix3d& mat);
     static PyDbObjectId         activeViewportId();

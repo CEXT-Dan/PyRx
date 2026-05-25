@@ -469,9 +469,32 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
+
+    static struct resbuf* myKeywordCallback(const ACHAR* pcKey) 
+    {
+        acutPrintf(L"\nKey='%s'", pcKey);
+        // manually create a selection set
+        return nullptr;
+    }
+
     static void AcRxPyApp_idoit1(void)
     {
-        acutPrintf(L"\nHi");
+        ads_name sset = { 0,0 };
+        struct resbuf* (*pOldCallback)(const ACHAR*) = NULL;
+
+        LPCWSTR promptsKW[] = {
+            L"My select objects [Item/Element]: ",
+            L"My remove objects [Item/Element]: "
+        };
+        WCHAR KeyWords[256] = L"Item Element _ 1 2";
+
+        int stat = acedSSGetKwordCallbackPtr(&pOldCallback);
+        stat = acedSSSetKwordCallbackPtr(myKeywordCallback);
+
+        stat = acedSSGet(L":$:K", promptsKW, KeyWords, NULL, sset);
+        if (stat == RTNORM)
+            acedSSFree(sset);
+        stat = acedSSSetKwordCallbackPtr(pOldCallback);
     }
 #endif
 };

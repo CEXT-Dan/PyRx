@@ -70,6 +70,11 @@ public:
             ptr.reset(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
             return ptr.get();
         }
+        else if (PyUnicode_Check(m_obj.ptr()))
+        {
+            kwords = PyUnicode_AsWString(m_obj.ptr()).c_str();
+            return (const wchar_t*)kwords;
+        }
         else if (PyTuple_Check(m_obj.ptr()))
         {
             PyAutoLockGIL lock;
@@ -90,6 +95,7 @@ public:
     //holders so extractArg() can return something alive
     CString add;
     CString rem;
+    CString kwords;
     AcResBufPtr ptr;
     std::array<const wchar_t*, 2> prompts = { 0 };
 private:
@@ -182,6 +188,7 @@ void makePyEditorWrapper()
         .def("selectLast", &PyAcEditor::selectLast2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectLast")
         .def("ssget", &PyAcEditor::ssget1)
         .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("ssget")
+        .def("ssgetkw", &PyAcEditor::ssgetkw, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any"}, 11344)).staticmethod("ssgetkw")
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
         .def("getInput", &PyAcEditor::getInput, DS.SARGS(10864)).staticmethod("getInput")
@@ -691,6 +698,55 @@ boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::py
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
+
+static PyObject* refcwfunc = nullptr;
+
+struct AcSelectionCallbackGuard {
+    struct resbuf* (*m_pOldCallback)(const ACHAR*) = nullptr;
+
+    AcSelectionCallbackGuard(PyObject* pFunc, struct resbuf* (*pNewCallback)(const ACHAR*)) {
+        refcwfunc = pFunc;
+        acedSSGetKwordCallbackPtr(&m_pOldCallback);
+        acedSSSetKwordCallbackPtr(pNewCallback);
+    }
+    ~AcSelectionCallbackGuard() {
+        acedSSSetKwordCallbackPtr(m_pOldCallback);
+        refcwfunc = nullptr;
+    }
+};
+
+static struct resbuf* call_python_function(const ACHAR* pcKey)
+{
+    PyAutoLockGIL lock;
+    boost::python::object py_func((boost::python::handle<>(boost::python::borrowed(refcwfunc))));
+    std::string input_str = wstr_to_utf8(pcKey);
+    boost::python::object raw_result = py_func(input_str);
+    boost::python::extract<boost::python::list> get_list(raw_result);
+    if (!get_list.check())
+        return nullptr;
+    return listToResbuf(get_list());
+}
+
+static struct resbuf* keywordCallback(const ACHAR* pcKey)
+{
+    return call_python_function(pcKey);
+}
+
+boost::python::tuple PyAcEditor::ssgetkw(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter, const boost::python::object& cw)
+{
+    AcSelectionCallbackGuard callbackGuard(cw.ptr(), keywordCallback);
+
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+
+    ssArgExtracter ssarg1(arg1);
+    ssArgExtracter ssarg2(arg2);
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcString strArg = utf8_to_wstr(args).c_str();
+    int stat = acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name);
+    return makeSelectionResult(name, static_cast<Acad::PromptStatus>(stat));
+}
+
 
 AcGeMatrix3d PyAcEditor::curUCS()
 {
