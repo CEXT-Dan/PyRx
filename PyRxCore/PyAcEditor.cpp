@@ -699,26 +699,27 @@ boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::py
     return makeSelectionResult(name, stat);
 }
 
-static PyObject* refcwfunc = nullptr;
-
-struct AcSelectionCallbackGuard {
+struct AcSelectionCallbackGuard 
+{
     struct resbuf* (*m_pOldCallback)(const ACHAR*) = nullptr;
+    inline static PyObject* refcwfunc = nullptr;
 
-    AcSelectionCallbackGuard(PyObject* pFunc, struct resbuf* (*pNewCallback)(const ACHAR*)) {
+    AcSelectionCallbackGuard(PyObject* pFunc, struct resbuf* (*pNewCallback)(const ACHAR*)) 
+    {
         refcwfunc = pFunc;
         acedSSGetKwordCallbackPtr(&m_pOldCallback);
         acedSSSetKwordCallbackPtr(pNewCallback);
     }
-    ~AcSelectionCallbackGuard() {
+    ~AcSelectionCallbackGuard() 
+    {
         acedSSSetKwordCallbackPtr(m_pOldCallback);
         refcwfunc = nullptr;
     }
 };
 
-static struct resbuf* call_python_function(const ACHAR* pcKey)
+static struct resbuf* pykeywordCallback(const ACHAR* pcKey)
 {
-    PyAutoLockGIL lock;
-    boost::python::object py_func((boost::python::handle<>(boost::python::borrowed(refcwfunc))));
+    boost::python::object py_func((boost::python::handle<>(boost::python::borrowed(AcSelectionCallbackGuard::refcwfunc))));
     std::string input_str = wstr_to_utf8(pcKey);
     boost::python::object raw_result = py_func(input_str);
     boost::python::extract<boost::python::list> get_list(raw_result);
@@ -729,16 +730,15 @@ static struct resbuf* call_python_function(const ACHAR* pcKey)
 
 static struct resbuf* keywordCallback(const ACHAR* pcKey)
 {
-    return call_python_function(pcKey);
+    return pykeywordCallback(pcKey);
 }
 
 boost::python::tuple PyAcEditor::ssgetkw(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter, const boost::python::object& cw)
 {
+    PyAutoLockGIL lock;
     AcSelectionCallbackGuard callbackGuard(cw.ptr(), keywordCallback);
-
     PyEdUserInteraction ui;
     ads_name name = { 0L };
-
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
     AcResBufPtr pFilter(listToResbuf(filter));
@@ -746,7 +746,6 @@ boost::python::tuple PyAcEditor::ssgetkw(const std::string& args, const boost::p
     int stat = acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name);
     return makeSelectionResult(name, static_cast<Acad::PromptStatus>(stat));
 }
-
 
 AcGeMatrix3d PyAcEditor::curUCS()
 {
