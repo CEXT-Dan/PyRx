@@ -757,7 +757,7 @@ struct AcSelectionOtherCallbackGuard
     SelectionCallback m_poldcallback = nullptr;
     inline static PyObject* refcwfunc = nullptr;
 
-    AcSelectionOtherCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = keywordCallback)
+    AcSelectionOtherCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = otherKeywordCallback)
     {
         Py_XINCREF(pfunc);
         Py_XDECREF(refcwfunc);
@@ -773,7 +773,7 @@ struct AcSelectionOtherCallbackGuard
         refcwfunc = nullptr;
     }
 
-    static struct resbuf* keywordCallback(const ACHAR* pcKey)
+    static struct resbuf* otherKeywordCallback(const ACHAR* pcKey)
     {
         if (!refcwfunc) return
             nullptr;
@@ -798,7 +798,6 @@ struct AcSelectionOtherCallbackGuard
         return nullptr;
     }
 };
-
 
 bp::tuple PyAcEditor::ssgetkw1(const std::string& args, const bp::object& arg1, const bp::object& arg2, const bp::object& filter, const bp::object& cw)
 {
