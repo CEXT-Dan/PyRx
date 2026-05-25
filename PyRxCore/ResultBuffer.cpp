@@ -32,8 +32,8 @@ resbuf* listToResbuf(const boost::python::object& bpl)
         if (listSize == 0)
             return nullptr;
 
-        resbuf* pRbRead = acutNewRb(RTLB);
-        resbuf* pTail = pRbRead;
+        resbuf* pRbHead = acutNewRb(RTLB);
+        resbuf* pTail = pRbHead;
 
         for (size_t idx = 0; idx < listSize; idx++)
         {
@@ -266,9 +266,9 @@ resbuf* listToResbuf(const boost::python::object& bpl)
             }
         }
         //we created a RTLB, detach it and return next 
-        resbuf* rbToReturn = pRbRead->rbnext;
-        pRbRead->rbnext = nullptr;
-        acutRelRb(pRbRead);
+        resbuf* rbToReturn = pRbHead->rbnext;
+        pRbHead->rbnext = nullptr;
+        acutRelRb(pRbHead);
         return rbToReturn;
     }
     catch (...)

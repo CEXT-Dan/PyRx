@@ -270,37 +270,25 @@ def pyssget5():
 
 
 # === Command: pyssgetkw ===
-# return a resbuf or None
-# a resbuf of objectids
-# a resbuf with error message
+# return objectids, and error message or none
 # if callback is not called, it's Likely you hit a built in kw
 def callback(key: str):
     print("callback", key)
     db = Db.curDb()
-
-    rb = []
     if key == "1":
         model = db.modelSpace()
-        for id in model.objectIds(Db.Line.desc()):
-            rb.append((Rx.LispType.kObjectId, id))
-        return rb
+        return model.objectIds(Db.Line.desc())
     elif key == "2":
         model = db.modelSpace()
-        for id in model.objectIds(Db.Circle.desc()):
-            rb.append((Rx.LispType.kObjectId, id))
-        return rb
+        return model.objectIdArray(Db.Line.desc())
     elif key == "3":
         ps, ss = Ed.Editor.selectAll()
         if ps != Ed.PromptStatus.eNormal:
-            rb.append((Rx.LispType.kText, "ERROR of Oof:"))
-            return rb
-        for id in ss.objectIds():
-            rb.append((Rx.LispType.kObjectId, id))
-        return rb
-
+            return "ERROR of Oof:"
+        return ss.objectIds()
 
 @Ap.Command()
-def pyssgetkw():
+def doit():
     try:
         keyWords = "LIne CIrcle GEt _ 1 2 3"
         promptsKW = (
@@ -309,7 +297,5 @@ def pyssgetkw():
         )
         ps, ss = Ed.Editor.ssgetkw(":$:K", promptsKW, keyWords, [], callback)
         print(ps, ss.size())
-
-        Db.Polyline.isPointInside()
     except Exception:
         print(traceback.format_exc())

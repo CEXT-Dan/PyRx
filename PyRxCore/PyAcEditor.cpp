@@ -717,15 +717,44 @@ struct AcSelectionCallbackGuard
     }
 };
 
+static resbuf* idsToResbuf(const PyDbObjectIdArray& vec)
+{
+    resbuf* pRbHead = acutNewRb(RTLB);
+    resbuf* pTail = pRbHead;
+    for (size_t idx = 0; idx < vec.size(); idx++)
+    {
+        pTail->rbnext = acutNewRb(RTENAME);
+        PyThrowBadEs(acdbGetAdsName(pTail->rbnext->resval.rlname, vec[idx].m_id));
+        if (pTail->rbnext != nullptr)
+            pTail = pTail->rbnext;
+    }
+    resbuf* rbToReturn = pRbHead->rbnext;
+    pRbHead->rbnext = nullptr;
+    acutRelRb(pRbHead);
+    return rbToReturn;
+}
+
 static struct resbuf* pykeywordCallback(const ACHAR* pcKey)
 {
     boost::python::object py_func((boost::python::handle<>(boost::python::borrowed(AcSelectionCallbackGuard::refcwfunc))));
     std::string input_str = wstr_to_utf8(pcKey);
     boost::python::object raw_result = py_func(input_str);
     boost::python::extract<boost::python::list> get_list(raw_result);
-    if (!get_list.check())
-        return nullptr;
-    return listToResbuf(get_list());
+
+    if (extract<boost::python::list>(raw_result).check())
+    {
+        return idsToResbuf(py_list_to_std_vector<PyDbObjectId>(extract<boost::python::list>(raw_result)));
+    }
+    else if (extract<PyDbObjectIdArray>(raw_result).check())
+    {
+        return idsToResbuf(extract<PyDbObjectIdArray>(raw_result));
+    }
+    else if (extract<std::string>(raw_result).check())
+    {
+        std::string vec = extract<std::string>(raw_result);
+        return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
+    }
+    return nullptr;
 }
 
 static struct resbuf* keywordCallback(const ACHAR* pcKey)
