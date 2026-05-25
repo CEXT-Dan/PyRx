@@ -717,24 +717,7 @@ struct AcSelectionCallbackGuard
     }
 };
 
-static resbuf* idsToResbuf(const PyDbObjectIdArray& vec)
-{
-    resbuf* pRbHead = acutNewRb(RTLB);
-    resbuf* pTail = pRbHead;
-    for (size_t idx = 0; idx < vec.size(); idx++)
-    {
-        pTail->rbnext = acutNewRb(RTENAME);
-        PyThrowBadEs(acdbGetAdsName(pTail->rbnext->resval.rlname, vec[idx].m_id));
-        if (pTail->rbnext != nullptr)
-            pTail = pTail->rbnext;
-    }
-    resbuf* rbToReturn = pRbHead->rbnext;
-    pRbHead->rbnext = nullptr;
-    acutRelRb(pRbHead);
-    return rbToReturn;
-}
-
-static struct resbuf* pykeywordCallback(const ACHAR* pcKey)
+static struct resbuf* keywordCallback(const ACHAR* pcKey)
 {
     boost::python::object py_func((boost::python::handle<>(boost::python::borrowed(AcSelectionCallbackGuard::refcwfunc))));
     std::string input_str = wstr_to_utf8(pcKey);
@@ -743,11 +726,11 @@ static struct resbuf* pykeywordCallback(const ACHAR* pcKey)
 
     if (extract<boost::python::list>(raw_result).check())
     {
-        return idsToResbuf(py_list_to_std_vector<PyDbObjectId>(extract<boost::python::list>(raw_result)));
+        return PyDbObjectIdArrayToResbuf(py_list_to_std_vector<PyDbObjectId>(extract<boost::python::list>(raw_result)));
     }
     else if (extract<PyDbObjectIdArray>(raw_result).check())
     {
-        return idsToResbuf(extract<PyDbObjectIdArray>(raw_result));
+        return PyDbObjectIdArrayToResbuf(extract<PyDbObjectIdArray>(raw_result));
     }
     else if (extract<std::string>(raw_result).check())
     {
@@ -755,11 +738,6 @@ static struct resbuf* pykeywordCallback(const ACHAR* pcKey)
         return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
     }
     return nullptr;
-}
-
-static struct resbuf* keywordCallback(const ACHAR* pcKey)
-{
-    return pykeywordCallback(pcKey);
 }
 
 boost::python::tuple PyAcEditor::ssgetkw(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::object& filter, const boost::python::object& cw)
