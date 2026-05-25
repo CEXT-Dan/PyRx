@@ -95,10 +95,6 @@
             "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
         ],
         [
-            "PyEd::Editor::ssgetkw",
-            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
-        ],
-        [
             "PyEd::Editor::selectAll",
             "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
         ],
@@ -2901,6 +2897,10 @@
         [
             "PyGe::CDT::triangulate",
             "tuple[PyGe.Point3dArray,list[tuple[int,int,int]]]"
+        ],
+        [
+            "PyEd::Editor::ssgetkw",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
         ]
     ]
 }
