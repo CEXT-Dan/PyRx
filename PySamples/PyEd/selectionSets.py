@@ -21,6 +21,7 @@ print("Added command = pyssget3")
 print("Added command = pyssget4")
 print("Added command = pyssget5")
 print("Added command = pyssgetkw")
+print("Added command = pyssgetkwo")
 
 
 # === Command: pyselectall ===
@@ -297,6 +298,49 @@ def pyssgetkw():
             "Remove objects [LIne/CIrcle/GEt]: ",
         )
         ps, ss = Ed.Editor.ssgetkw(":$:K", promptsKW, keyWords, [], callback)
+        print(ps, ss.size())
+    except Exception:
+        print(traceback.format_exc())
+
+
+# === Command: pyssgetkwo ===
+# adds both callback and othercallback, note the ss mode ":$:K:?"
+# return objectids, an error message or none
+# if callback is not called, it's Likely you hit a built in kw
+def callback(key: str):
+    print("callback", key)
+    db = Db.curDb()
+    if key == "1":
+        model = db.modelSpace()
+        return model.objectIds(Db.Line.desc())
+    elif key == "2":
+        model = db.modelSpace()
+        return model.objectIdArray(Db.Circle.desc())
+    elif key == "3":
+        ps, ss = Ed.Editor.selectAll()
+        if ps != Ed.PromptStatus.eNormal:
+            return "ERROR of Oof:"
+        return ss.objectIds()
+
+
+def othercallback(key: str):
+    print("othercallback", key)
+    if key.casefold() == "FU".casefold():
+        ps, ss = Ed.Editor.selectAll()
+        if ps != Ed.PromptStatus.eNormal:
+            return "ERROR of Oof:"
+        return ss.objectIds()
+
+
+@Ap.Command()
+def pyssgetkwo():
+    try:
+        keyWords = "LIne CIrcle GEt _ 1 2 3"
+        promptsKW = (
+            "Add objects [LIne/CIrcle/GEt]: ",
+            "Remove objects [LIne/CIrcle/GEt]: ",
+        )
+        ps, ss = Ed.Editor.ssgetkw(":$:K:?", promptsKW, keyWords, [], callback, othercallback)
         print(ps, ss.size())
     except Exception:
         print(traceback.format_exc())
