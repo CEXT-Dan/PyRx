@@ -2885,7 +2885,6 @@ static void tessellateArc(const AcGeCircArc3d& arc, AcGePoint3dArray& outPts, do
 
     // Maximum angular step from sagitta: tol = R(1 - cos(theta/2))
     double thetaMax = 2.0 * acos(std::max(-1.0, std::min(1.0, 1.0 - tol / R)));
-
     if (thetaMax <= 1e-9)
         thetaMax = sweep;
 

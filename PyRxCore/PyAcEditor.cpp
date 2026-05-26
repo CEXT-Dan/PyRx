@@ -726,25 +726,32 @@ struct AcSelectionCallbackGuard
 
     static struct resbuf* keywordCallback(const ACHAR* pcKey)
     {
-        if (!refcwfunc) return 
-            nullptr;
+        try
+        {
+            if (!refcwfunc) return
+                nullptr;
 
-        std::string input_str = wstr_to_utf8(pcKey);
-        bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
-        bp::object raw_result = py_func(input_str);
+            std::string input_str = wstr_to_utf8(pcKey);
+            bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
+            bp::object raw_result = py_func(input_str);
 
-        if (bp::extract<bp::list>(raw_result).check())
-        {
-            return PyDbObjectIdArrayToResbuf(py_list_to_std_vector<PyDbObjectId>(bp::extract<bp::list>(raw_result)));
+            if (bp::extract<bp::list>(raw_result).check())
+            {
+                return PyDbObjectIdArrayToResbuf(py_list_to_std_vector<PyDbObjectId>(bp::extract<bp::list>(raw_result)));
+            }
+            else if (bp::extract<PyDbObjectIdArray>(raw_result).check())
+            {
+                return PyDbObjectIdArrayToResbuf(bp::extract<PyDbObjectIdArray>(raw_result));
+            }
+            else if (bp::extract<std::string>(raw_result).check())
+            {
+                std::string vec = bp::extract<std::string>(raw_result);
+                return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
+            }
         }
-        else if (bp::extract<PyDbObjectIdArray>(raw_result).check())
+        catch (...)
         {
-            return PyDbObjectIdArrayToResbuf(bp::extract<PyDbObjectIdArray>(raw_result));
-        }
-        else if (bp::extract<std::string>(raw_result).check())
-        {
-            std::string vec = bp::extract<std::string>(raw_result);
-            return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
+            printExceptionMsg();
         }
         return nullptr;
     }
@@ -775,25 +782,32 @@ struct AcSelectionOtherCallbackGuard
 
     static struct resbuf* otherKeywordCallback(const ACHAR* pcKey)
     {
-        if (!refcwfunc) return
-            nullptr;
+        try
+        {
+            if (!refcwfunc) return
+                nullptr;
 
-        std::string input_str = wstr_to_utf8(pcKey);
-        bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
-        bp::object raw_result = py_func(input_str);
+            std::string input_str = wstr_to_utf8(pcKey);
+            bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
+            bp::object raw_result = py_func(input_str);
 
-        if (bp::extract<bp::list>(raw_result).check())
-        {
-            return PyDbObjectIdArrayToResbuf(py_list_to_std_vector<PyDbObjectId>(bp::extract<bp::list>(raw_result)));
+            if (bp::extract<bp::list>(raw_result).check())
+            {
+                return PyDbObjectIdArrayToResbuf(py_list_to_std_vector<PyDbObjectId>(bp::extract<bp::list>(raw_result)));
+            }
+            else if (bp::extract<PyDbObjectIdArray>(raw_result).check())
+            {
+                return PyDbObjectIdArrayToResbuf(bp::extract<PyDbObjectIdArray>(raw_result));
+            }
+            else if (bp::extract<std::string>(raw_result).check())
+            {
+                std::string vec = bp::extract<std::string>(raw_result);
+                return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
+            }
         }
-        else if (bp::extract<PyDbObjectIdArray>(raw_result).check())
+        catch (...)
         {
-            return PyDbObjectIdArrayToResbuf(bp::extract<PyDbObjectIdArray>(raw_result));
-        }
-        else if (bp::extract<std::string>(raw_result).check())
-        {
-            std::string vec = bp::extract<std::string>(raw_result);
-            return acutBuildList(RTSTR, utf8_to_wstr(vec).c_str(), 0);
+            printExceptionMsg();
         }
         return nullptr;
     }
