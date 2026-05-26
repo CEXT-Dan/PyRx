@@ -429,12 +429,12 @@ void makePyGeRay2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
-        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
-        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+        "- start: PyGe.Point2d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point2d, end: PyGe.Point2d\n";
 
     constexpr const std::string_view setOverloads = "Overloads:\n"
-        "- start: PyGe.Point3d, direction: PyGe.Vector2d\n"
-        "- start: PyGe.Point3d, end: PyGe.Point3d\n";
+        "- start: PyGe.Point2d, direction: PyGe.Vector2d\n"
+        "- start: PyGe.Point2d, end: PyGe.Point2d\n";
 
     PyDocString DS("Ray2d");
     class_<PyGeRay2d, bases<PyGeLinearEnt2d>>("Ray2d")
