@@ -1,3 +1,8 @@
+## v2.2.56
+
+* [#513] improve CDT ‘Constrained Delauney Triangulation’ (Beta)
+* [#519] add keyword callbacks for selection sets
+
 ## v2.2.55
 
 * [#513] improve CDT ‘Constrained Delauney Triangulation’ (Beta)

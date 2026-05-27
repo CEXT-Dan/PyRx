@@ -471,7 +471,7 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        acutPrintf(L"\nHi");
+       acutPrintf(L"\nHi");
     }
 #endif
 };
