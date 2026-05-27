@@ -74,7 +74,7 @@ void makePyEdSelectionSetWrapper()
         .def("subentNameX", &PyEdSelectionSet::subentNameX, DS.ARGS({ "index: int", "subentIndex: int","flags: int" }))
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
-        .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
+        .def("keepAlive", &PyEdSelectionSet::forceKeepAlive, DS.ARGS({ "flag: bool" }))
         .def("__iter__", +[](const PyEdSelectionSet& self) {return SS_Iterator(self); })
         ;
 }
