@@ -403,13 +403,12 @@ resbuf* AcGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
         {
             phead = acutNewRb(RT3DPOINT);
             ptail = phead;
-            memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
         }
         else
         {
             ptail = ptail->rbnext = acutNewRb(RT3DPOINT);
-            memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
         }
+        memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
     }
     return phead;
 }
@@ -427,8 +426,7 @@ resbuf* PyDbObjectIdArrayToResbuf(const PyDbObjectIdArray& vec)
         }
         else
         {
-            ptail->rbnext = acutNewRb(RTENAME);
-            ptail = ptail->rbnext;
+            ptail = ptail->rbnext = acutNewRb(RTENAME);
         }
         acdbGetAdsName(ptail->resval.rlname, vec[idx].m_id);
     }
