@@ -2901,6 +2901,10 @@
         [
             "PyEd::Editor::ssgetkw",
             "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectKeyword",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
         ]
     ]
 }

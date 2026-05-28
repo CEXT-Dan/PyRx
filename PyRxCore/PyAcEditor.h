@@ -62,6 +62,10 @@ public:
     static bptuple select2(const bpobject& filter);
     static bptuple select3(const std::string& add, const std::string& remove);
     static bptuple select4(const std::string& add, const std::string& remove, const bpobject& filter);
+
+    static bptuple select5(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw);
+    static bptuple select6(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
+
     static bptuple selectAll1();
     static bptuple selectAll2(const bpobject& filter);
     static bptuple selectImplied();
