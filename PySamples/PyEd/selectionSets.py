@@ -297,14 +297,14 @@ def pyssgetkw():
             "Add objects [LIne/CIrcle/GEt]: ",
             "Remove objects [LIne/CIrcle/GEt]: ",
         )
-        ps, ss = Ed.Editor.ssgetkw(":$:K", promptsKW, keyWords, [], callback)
+        ps, ss = Ed.Editor.selectKeyword(promptsKW, keyWords, [], callback)
         print(ps, ss.size())
     except Exception:
         print(traceback.format_exc())
 
 
 # === Command: pyssgetkwo ===
-# adds both callback and othercallback, note the ss mode ":$:K:?"
+# adds both callback and othercallback"
 # return objectids, an error message or none
 # if callback is not called, it's Likely you hit a built in kw
 def callback(key: str):
@@ -340,7 +340,7 @@ def pyssgetkwo():
             "Add objects [LIne/CIrcle/GEt]: ",
             "Remove objects [LIne/CIrcle/GEt]: ",
         )
-        ps, ss = Ed.Editor.ssgetkw(":$:K:?", promptsKW, keyWords, [], callback, othercallback)
+        ps, ss = Ed.Editor.selectKeyword(promptsKW, keyWords, [], callback, othercallback)
         print(ps, ss.size())
     except Exception:
         print(traceback.format_exc())
