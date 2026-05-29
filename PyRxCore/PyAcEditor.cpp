@@ -317,47 +317,58 @@ void makePyEditorWrapper()
 
         .def("selectAll", &PyAcEditor::selectAll1)
         .def("selectAll", &PyAcEditor::selectAll2)
-        .def("selectAll", &PyAcEditor::selectAll3, DS.SARGS({ "filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectAll")
+        .def("selectAll", &PyAcEditor::selectAll3,
+            DS.SARGS({ "filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectAll")
 
         .def("select", &PyAcEditor::select1)
         .def("select", &PyAcEditor::select2)
-        .def("select", &PyAcEditor::select3, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("select")
+        .def("select", &PyAcEditor::select3,
+            DS.SARGS({ "filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("select")
 
         .def("selectPrompt", &PyAcEditor::selectPrompt1)
         .def("selectPrompt", &PyAcEditor::selectPrompt2)
-        .def("selectPrompt", &PyAcEditor::selectPrompt3, DS.SARGS({ "addPromt: str","remPromt: str","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectPrompt")
+        .def("selectPrompt", &PyAcEditor::selectPrompt3,
+            DS.SARGS({ "addPromt: str","remPromt: str","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectPrompt")
 
         .def("selectKeyword", &PyAcEditor::selectKeyword1)
         .def("selectKeyword", &PyAcEditor::selectKeyword2)
-        .def("selectKeyword", &PyAcEditor::selectKeyword3, DS.SARGS({ "promptsKW: tuple[str,str]","keyWords: str","filter:Collection[tuple[int, Any]]","cb:Any","otherCallback:Any = ..." ,"filterCallback:Any = ..." }, 11344)).staticmethod("selectKeyword")
+        .def("selectKeyword", &PyAcEditor::selectKeyword3,
+            DS.SARGS({ "promptsKW: tuple[str,str]","keyWords: str","filter:Collection[tuple[int, Any]]","cb:Any","otherCallback:Any = ..." ,"filterCallback:Any = ..." }, 11344)).staticmethod("selectKeyword")
 
         .def("selectWindow", &PyAcEditor::selectWindow1)
         .def("selectWindow", &PyAcEditor::selectWindow2)
-        .def("selectWindow", &PyAcEditor::selectWindow3, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindow")
+        .def("selectWindow", &PyAcEditor::selectWindow3,
+            DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindow")
 
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2)
-        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon3, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindowPolygon")
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon3,
+            DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindowPolygon")
 
         .def("selectFence", &PyAcEditor::selectFence1)
         .def("selectFence", &PyAcEditor::selectFence2)
-        .def("selectFence", &PyAcEditor::selectFence3, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectFence")
+        .def("selectFence", &PyAcEditor::selectFence3,
+            DS.SARGS({ "points:Collection[PyGe.Point3d]","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectFence")
 
         .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
 
         .def("selectPrevious", &PyAcEditor::selectPrevious1)
-        .def("selectPrevious", &PyAcEditor::selectPrevious2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectPrevious")
+        .def("selectPrevious", &PyAcEditor::selectPrevious2,
+            DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectPrevious")
 
         .def("selectLast", &PyAcEditor::selectLast1)
-        .def("selectLast", &PyAcEditor::selectLast2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectLast")
+        .def("selectLast", &PyAcEditor::selectLast2,
+            DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectLast")
 
         .def("ssget", &PyAcEditor::ssget1)
         .def("ssget", &PyAcEditor::ssget2)
-        .def("ssget", &PyAcEditor::ssget3, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssget")
+        .def("ssget", &PyAcEditor::ssget3,
+            DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssget")
 
         .def("ssgetkw", &PyAcEditor::ssgetkw1)
         .def("ssgetkw", &PyAcEditor::ssgetkw2)
-        .def("ssgetkw", &PyAcEditor::ssgetkw3, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
+        .def("ssgetkw", &PyAcEditor::ssgetkw3,
+            DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
 
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
