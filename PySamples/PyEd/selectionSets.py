@@ -22,6 +22,7 @@ print("Added command = pyssget4")
 print("Added command = pyssget5")
 print("Added command = pyssgetkw")
 print("Added command = pyssgetkwo")
+print("Added command = pyselectfcb")
 
 
 # === Command: pyselectall ===
@@ -341,6 +342,31 @@ def pyssgetkwo():
             "Remove objects [LIne/CIrcle/GEt]: ",
         )
         ps, ss = Ed.Editor.selectKeyword(promptsKW, keyWords, [], callback, othercallback)
+        print(ps, ss.size())
+    except Exception:
+        print(traceback.format_exc())
+
+
+# === Command: pyselectfcb ===
+# adds filter calback"
+# in the callback return indexs to filter
+
+
+# add non dynamic blocks to itemsToRemove
+def dyn_filter(ids: Db.ObjectIdArray):
+    print("dyn_filter")
+    itemsToRemove = []
+    for idx, id in enumerate(ids):
+        ref = Db.BlockReference(id)
+        if not ref.isDynamicBlock():
+            itemsToRemove.append(idx)
+    return itemsToRemove
+
+
+@Ap.Command()
+def pyselectfcb():
+    try:
+        ps, ss = Ed.Editor.select([(0, "INSERT")], dyn_filter)
         print(ps, ss.size())
     except Exception:
         print(traceback.format_exc())
