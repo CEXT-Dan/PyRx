@@ -205,6 +205,54 @@ struct AcSelectionOtherCallbackGuard
     }
 };
 
+struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
+{
+    inline static PyObject* refcwfunc = nullptr;
+
+    explicit AcSelectionRemoveCallbackGuard(PyObject* pfunc)
+        : AcEdSSGetFilter()
+    {
+        Py_XINCREF(pfunc);
+        Py_XDECREF(refcwfunc);
+        refcwfunc = pfunc;
+        addSSgetFilterInputContextReactor(curDoc(), this);
+    }
+
+    ~AcSelectionRemoveCallbackGuard()
+    {
+        removeSSgetFilterInputContextReactor(curDoc(), this);
+        Py_XDECREF(refcwfunc);
+        refcwfunc = nullptr;
+    }
+
+    virtual void ssgetAddFilter(int ssgetFlags, AcEdSelectionSetService& service, const AcDbObjectIdArray& selectionSet, const AcDbObjectIdArray& subSelectionSet) override
+    {
+        if (ssgetFlags == 0)
+        {
+            PyDbObjectIdArray pyselectionSet;
+            pyselectionSet.reserve(subSelectionSet.length());
+            for (auto id : subSelectionSet)
+                pyselectionSet.push_back(PyDbObjectId{ id });
+            removeCallback(pyselectionSet, service);
+        }
+    }
+
+    void removeCallback(const PyDbObjectIdArray& ids, AcEdSelectionSetService& service)
+    {
+        if (!refcwfunc)
+            return;
+        bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
+        bp::object raw_result = py_func(ids);
+        if (bp::extract<bp::list>(raw_result).check())
+        {
+            AcArray<int> arr;
+            for (int idx : py_list_to_std_vector<int>(bp::extract<bp::list>(raw_result)))
+                arr.append(idx);
+            PyThrowBadEs(service.remove(arr));
+        }
+    }
+};
+
 //-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
 
@@ -266,29 +314,51 @@ void makePyEditorWrapper()
         .def("setCurrentUCS", &PyAcEditor::setCurUCS, DS.SARGS({ "ucs: PyGe.Matrix3d" }, 11316)).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId, DS.SARGS(10711)).staticmethod("activeViewportId")
         .def("curViewportObjectId", &PyAcEditor::curViewportObjectId, DS.SARGS(10848)).staticmethod("curViewportObjectId")
+
         .def("selectAll", &PyAcEditor::selectAll1)
-        .def("selectAll", &PyAcEditor::selectAll2, DS.SARGS({ "filter: Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectAll")
+        .def("selectAll", &PyAcEditor::selectAll2)
+        .def("selectAll", &PyAcEditor::selectAll3, DS.SARGS({ "filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectAll")
+
         .def("select", &PyAcEditor::select1)
-        .def("select", &PyAcEditor::select2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("select")
-        .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
-        .def("selectPrompt", &PyAcEditor::select3)
-        .def("selectPrompt", &PyAcEditor::select4, DS.SARGS({ "addPromt: str","remPromt: str","filter: Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectPrompt")
-        .def("selectKeyword", &PyAcEditor::select5)
-        .def("selectKeyword", &PyAcEditor::select6, DS.SARGS({ "promptsKW: tuple[str,str]","keyWords: str","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ..." }, 11344)).staticmethod("selectKeyword")
+        .def("select", &PyAcEditor::select2)
+        .def("select", &PyAcEditor::select3, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("select")
+
+        .def("selectPrompt", &PyAcEditor::selectPrompt1)
+        .def("selectPrompt", &PyAcEditor::selectPrompt2)
+        .def("selectPrompt", &PyAcEditor::selectPrompt3, DS.SARGS({ "addPromt: str","remPromt: str","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectPrompt")
+
+        .def("selectKeyword", &PyAcEditor::selectKeyword1)
+        .def("selectKeyword", &PyAcEditor::selectKeyword2)
+        .def("selectKeyword", &PyAcEditor::selectKeyword3, DS.SARGS({ "promptsKW: tuple[str,str]","keyWords: str","filter:Collection[tuple[int, Any]]","cb:Any","otherCallback:Any = ..." ,"filterCallback:Any = ..." }, 11344)).staticmethod("selectKeyword")
+
         .def("selectWindow", &PyAcEditor::selectWindow1)
-        .def("selectWindow", &PyAcEditor::selectWindow2, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectWindow")
+        .def("selectWindow", &PyAcEditor::selectWindow2)
+        .def("selectWindow", &PyAcEditor::selectWindow3, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindow")
+
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
-        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectWindowPolygon")
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2)
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon3, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindowPolygon")
+
         .def("selectFence", &PyAcEditor::selectFence1)
-        .def("selectFence", &PyAcEditor::selectFence2, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectFence")
+        .def("selectFence", &PyAcEditor::selectFence2)
+        .def("selectFence", &PyAcEditor::selectFence3, DS.SARGS({ "points:Collection[PyGe.Point3d]","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectFence")
+
+        .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
+
         .def("selectPrevious", &PyAcEditor::selectPrevious1)
         .def("selectPrevious", &PyAcEditor::selectPrevious2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectPrevious")
+
         .def("selectLast", &PyAcEditor::selectLast1)
         .def("selectLast", &PyAcEditor::selectLast2, DS.SARGS({ "filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("selectLast")
+
         .def("ssget", &PyAcEditor::ssget1)
-        .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]] = ..." }, 11344)).staticmethod("ssget")
+        .def("ssget", &PyAcEditor::ssget2)
+        .def("ssget", &PyAcEditor::ssget3, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssget")
+
         .def("ssgetkw", &PyAcEditor::ssgetkw1)
-        .def("ssgetkw", &PyAcEditor::ssgetkw2, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
+        .def("ssgetkw", &PyAcEditor::ssgetkw2)
+        .def("ssgetkw", &PyAcEditor::ssgetkw3, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
+
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
         .def("getInput", &PyAcEditor::getInput, DS.SARGS(10864)).staticmethod("getInput")
@@ -638,7 +708,18 @@ bp::tuple PyAcEditor::select2(const bp::object& filter)
     return makeSelectionResult(name, stat);
 }
 
-bp::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
+PyAcEditor::bptuple PyAcEditor::select3(const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+bp::tuple PyAcEditor::selectPrompt1(const std::string& add, const std::string& remove)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -649,7 +730,7 @@ bp::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
     return makeSelectionResult(name, stat);
 }
 
-bp::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const bp::object& filter)
+bp::tuple PyAcEditor::selectPrompt2(const std::string& add, const std::string& remove, const bp::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -661,7 +742,21 @@ bp::tuple PyAcEditor::select4(const std::string& add, const std::string& remove,
     return makeSelectionResult(name, stat);
 }
 
-PyAcEditor::bptuple PyAcEditor::select5(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw)
+bp::tuple PyAcEditor::selectPrompt3(const std::string& add, const std::string& remove, const bp::object& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    const CString csAdd = utf8_to_wstr(add).c_str();
+    const CString csRem = utf8_to_wstr(remove).c_str();
+    const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectKeyword1(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw)
 {
     PyAutoLockGIL lock;
     AcSelectionCallbackGuard callbackGuard(cw.ptr());
@@ -675,11 +770,27 @@ PyAcEditor::bptuple PyAcEditor::select5(const bpobject& prompt, const bpobject& 
     return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
 }
 
-PyAcEditor::bptuple PyAcEditor::select6(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw)
+PyAcEditor::bptuple PyAcEditor::selectKeyword2(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw)
 {
     PyAutoLockGIL lock;
     AcSelectionCallbackGuard callbackGuard(cw.ptr());
     AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    PyEdSelectionSet ss(name);
+    ssArgExtracter ssarg1(prompt);
+    ssArgExtracter ssarg2(kw);
+    AcResBufPtr pFilter(listToResbuf(filter));
+    int stat = acedSSGet(L":$:K:?", ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), ss.m_pSet->data());
+    return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectKeyword3(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    AcSelectionCallbackGuard callbackGuard(cw.ptr());
+    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -701,6 +812,17 @@ bp::tuple PyAcEditor::selectAll1()
 bp::tuple PyAcEditor::selectAll2(const bp::object& filter)
 {
     PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectAll3(const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
@@ -733,6 +855,17 @@ bp::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& p
     return makeSelectionResult(name, stat);
 }
 
+PyAcEditor::bptuple PyAcEditor::selectWindow3(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
 bp::tuple PyAcEditor::selectFence1(const bp::object& points)
 {
     PyEdUserInteraction ui;
@@ -752,6 +885,18 @@ bp::tuple PyAcEditor::selectFence2(const bp::object& points, const bp::object& f
     return makeSelectionResult(name, stat);
 }
 
+PyAcEditor::bptuple PyAcEditor::selectFence3(const bpobject& points, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
 bp::tuple PyAcEditor::selectWindowPolygon1(const bp::object& points)
 {
     PyEdUserInteraction ui;
@@ -764,6 +909,18 @@ bp::tuple PyAcEditor::selectWindowPolygon1(const bp::object& points)
 bp::tuple PyAcEditor::selectWindowPolygon2(const bp::object& points, const bp::object& filter)
 {
     PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectWindowPolygon3(const bpobject& points, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -828,6 +985,20 @@ bp::tuple PyAcEditor::ssget2(const std::string& args, const bp::object& arg1, co
     return makeSelectionResult(name, stat);
 }
 
+PyAcEditor::bptuple PyAcEditor::ssget3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    ssArgExtracter ssarg1(arg1);
+    ssArgExtracter ssarg2(arg2);
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcString strArg = utf8_to_wstr(args).c_str();
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
 bp::tuple PyAcEditor::ssgetkw1(const std::string& args, const bp::object& arg1, const bp::object& arg2, const bp::object& filter, const bp::object& cw)
 {
     PyAutoLockGIL lock;
@@ -848,6 +1019,23 @@ PyAcEditor::bptuple PyAcEditor::ssgetkw2(const std::string& args, const bpobject
     PyAutoLockGIL lock;
     AcSelectionCallbackGuard callbackGuard(cw.ptr());
     AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    PyEdSelectionSet ss(name);
+    ssArgExtracter ssarg1(arg1);
+    ssArgExtracter ssarg2(arg2);
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcString strArg = utf8_to_wstr(args).c_str();
+    int stat = acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), ss.m_pSet->data());
+    return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
+}
+
+PyAcEditor::bptuple PyAcEditor::ssgetkw3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    AcSelectionCallbackGuard callbackGuard(cw.ptr());
+    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);

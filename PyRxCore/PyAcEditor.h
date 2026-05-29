@@ -58,31 +58,51 @@ public:
     static bptuple nEntSelP2(const std::string& prompt, const AcGePoint3d& ptres);
     static bptuple nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag);
     static bptuple nEntSelPEx2(const std::string& prompt, const AcGePoint3d& ptres, int uTransSpaceFlag);
+
     static bptuple select1();
     static bptuple select2(const bpobject& filter);
-    static bptuple select3(const std::string& add, const std::string& remove);
-    static bptuple select4(const std::string& add, const std::string& remove, const bpobject& filter);
+    static bptuple select3(const bpobject& filter, const bpobject& rm);
 
-    static bptuple select5(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw);
-    static bptuple select6(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
+    static bptuple selectPrompt1(const std::string& add, const std::string& remove);
+    static bptuple selectPrompt2(const std::string& add, const std::string& remove, const bpobject& filter);
+    static bptuple selectPrompt3(const std::string& add, const std::string& remove, const bpobject& filter, const bpobject& rm);
+
+    static bptuple selectKeyword1(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw);
+    static bptuple selectKeyword2(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
+    static bptuple selectKeyword3(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm);
 
     static bptuple selectAll1();
     static bptuple selectAll2(const bpobject& filter);
+    static bptuple selectAll3(const bpobject& filter, const bpobject& rm);
+
     static bptuple selectImplied();
+
     static bptuple selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     static bptuple selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter);
+    static bptuple selectWindow3(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter, const bpobject& rm);
+
     static bptuple selectFence1(const bpobject& points);
     static bptuple selectFence2(const bpobject& points, const bpobject& filter);
+    static bptuple selectFence3(const bpobject& points, const bpobject& filter, const bpobject& rm);
+
     static bptuple selectWindowPolygon1(const bpobject& points);
     static bptuple selectWindowPolygon2(const bpobject& points, const bpobject& filter);
+    static bptuple selectWindowPolygon3(const bpobject& points, const bpobject& filter, const bpobject& rm);
+
     static bptuple selectPrevious1();
     static bptuple selectPrevious2(const bpobject& filter);
+
     static bptuple selectLast1();
     static bptuple selectLast2(const bpobject& filter);
+
     static bptuple ssget1(const std::string& args, const bpobject& arg1, const bpobject& arg2);
     static bptuple ssget2(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter);
+    static bptuple ssget3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& rm);
+
     static bptuple ssgetkw1(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw);
     static bptuple ssgetkw2(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
+    static bptuple ssgetkw3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm);
+
     static AcGeMatrix3d         curUCS();
     static void                 setCurUCS(const AcGeMatrix3d& mat);
     static PyDbObjectId         activeViewportId();
