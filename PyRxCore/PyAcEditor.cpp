@@ -13,6 +13,8 @@ namespace bp = boost::python;
 
 constexpr const char* enstselstr = "\nSelect entity:\t";
 
+//-----------------------------------------------------------------------------------------
+// func protos 
 #ifdef BRXAPP
 void ads_regen(void);
 
@@ -49,9 +51,9 @@ extern int acedNEntSelPEx(
     unsigned int uTransSpaceFlag,
     Adesk::GsMarker* gsmarker);
 #endif
-//-----------------------------------------------------------------------------------------
-//helpers
 
+//-----------------------------------------------------------------------------------------
+// ssArgExtracter requires lock
 class ssArgExtracter
 {
 public:
@@ -77,7 +79,6 @@ public:
         }
         else if (PyTuple_Check(m_obj.ptr()))
         {
-            PyAutoLockGIL lock;
             bp::tuple tpl = bp::extract<bp::tuple>(m_obj);
             if (bp::len(tpl) != 2)
                 throw PyErrorStatusException(Acad::eInvalidInput);
@@ -91,24 +92,25 @@ public:
         return nullptr;
     }
 
-public:
-    //holders so extractArg() can return something alive
+private:
     CString add;
     CString rem;
     CString kwords;
     AcResBufPtr ptr;
     std::array<const wchar_t*, 2> prompts = { 0 };
-private:
     const bp::object& m_obj;
 };
 
+//-----------------------------------------------------------------------------------------
+// makeSelectionResult 
 static bp::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
     return bp::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, PyEdSelectionSet{ name });
 }
 
-// ssgetkw helpers
+//-----------------------------------------------------------------------------------------
+// AcSelectionCallbackGuard requires lock
 struct AcSelectionCallbackGuard
 {
     using SelectionCallback = struct resbuf* (*)(const ACHAR*);
@@ -157,6 +159,8 @@ struct AcSelectionCallbackGuard
     }
 };
 
+//-----------------------------------------------------------------------------------------
+// AcSelectionOtherCallbackGuard requires lock
 struct AcSelectionOtherCallbackGuard
 {
     using SelectionCallback = struct resbuf* (*)(const ACHAR*);
@@ -205,6 +209,8 @@ struct AcSelectionOtherCallbackGuard
     }
 };
 
+//-----------------------------------------------------------------------------------------
+// AcSelectionRemoveCallbackGuard requires lock
 struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
 {
     inline static PyObject* refcwfunc = nullptr;
@@ -233,11 +239,11 @@ struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
             pyselectionSet.reserve(subSelectionSet.length());
             for (auto id : subSelectionSet)
                 pyselectionSet.push_back(PyDbObjectId{ id });
-            removeCallback(pyselectionSet, service);
+            removeItemCallback(pyselectionSet, service);
         }
     }
 
-    void removeCallback(const PyDbObjectIdArray& ids, AcEdSelectionSetService& service)
+    void removeItemCallback(const PyDbObjectIdArray& ids, AcEdSelectionSetService& service)
     {
         if (!refcwfunc)
             return;
@@ -255,7 +261,6 @@ struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
 
 //-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
-
 void makePyEditorWrapper()
 {
     constexpr const std::string_view getStringOverloads = "Overloads:\n"
@@ -449,57 +454,49 @@ bp::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& pro
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    std::pair<Acad::PromptStatus, double> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
-    return bp::make_tuple(res.first, res.second);
+    double res = 0.0;
+    auto stat = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res));
+    return bp::make_tuple(stat, res);
 }
 
 bp::tuple PyAcEditor::getPoint1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    ads_point pnt;
-    std::pair<Acad::PromptStatus, AcGePoint3d> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
-    res.second = asPnt3d(pnt);
-    return bp::make_tuple(res.first, res.second);
+    AcGePoint3d pnt;
+    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), asDblArray(pnt)));
+    return bp::make_tuple(stat, pnt);
 }
 
 bp::tuple PyAcEditor::getPoint2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    ads_point pnt;
-    std::pair<Acad::PromptStatus, AcGePoint3d> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
-    res.second = asPnt3d(pnt);
-    return bp::make_tuple(res.first, res.second);
+    AcGePoint3d pnt;
+    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), asDblArray(pnt)));
+    return bp::make_tuple(stat, pnt);
 }
 
 bp::tuple PyAcEditor::getDist1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    std::pair<Acad::PromptStatus, double> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
-    if (res.first != Acad::eNormal)
-        return bp::make_tuple(res.first, res.second);
-    if (res.second < 0)
-        return bp::make_tuple(Acad::PromptStatus::eRejected, res.second);
-    return bp::make_tuple(res.first, res.second);
+    double res = 0.0;
+    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res));
+    if (res < 0)
+        return bp::make_tuple(Acad::PromptStatus::eRejected, res);
+    return bp::make_tuple(stat, res);
 }
 
 bp::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    std::pair<Acad::PromptStatus, double> res;
-    res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
-    if (res.first != Acad::eNormal)
-        return bp::make_tuple(res.first, res.second);
-    if (res.second < 0)
-        return bp::make_tuple(Acad::PromptStatus::eRejected, res.second);
-    return bp::make_tuple(res.first, res.second);
+    double res = 0.0;
+    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res));
+    if (res < 0)
+        return bp::make_tuple(Acad::PromptStatus::eRejected, res);
+    return bp::make_tuple(stat, res);
 }
 
 bp::tuple PyAcEditor::getString1(const std::string& prompt)
