@@ -40,7 +40,7 @@ def OnPyUnloadApp():
 class XlFieldEvaluator(Db.FieldEvaluator):
     def __init__(self, name, evalname):
         Db.FieldEvaluator.__init__(self, name, evalname)
-        # TODO: make cache for pened excel files
+        # TODO: make cache for opened excel files
         self.cache = {}
 
     def getValueFromXL(self, field: Db.Field):
@@ -80,7 +80,7 @@ class XlFieldEvaluator(Db.FieldEvaluator):
             traceback.print_exception(err)
             return Db.FieldEvalStatus.kOtherError
 
-    # not in ZRX or BRX
+    # not in ZRX
     def beginEvaluateFields(self, ctx: int, db: Db.Database):
         try:
             print("\nbeginEvaluateFields")
@@ -88,7 +88,7 @@ class XlFieldEvaluator(Db.FieldEvaluator):
         except Exception as err:
             traceback.print_exception(err)
 
-    # not in ZRX or BRX
+    # not in ZRX
     def endEvaluateFields(self, ctx: int, db: Db.Database):
         try:
             print("\nendEvaluateFields")
