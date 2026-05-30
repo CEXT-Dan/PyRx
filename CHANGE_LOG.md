@@ -1,3 +1,9 @@
+## v2.2.58
+
+* [#522] fix EntityColor for zwcad 2025
+* [#521] add selection set filter callback
+* lots in internal cleanup in Ed.Editor
+
 ## v2.2.57
 
 * [#519] improve callbacks for selection sets
