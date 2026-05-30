@@ -397,6 +397,15 @@ inline std::string PyUnicode_AsString(PyObject* my_unicode_object)
     return std::string{};
 }
 
+inline std::string_view PyUnicode_AsStringView(PyObject* my_unicode_object)
+{
+    Py_ssize_t size = 0;
+    const char* data = PyUnicode_AsUTF8AndSize(my_unicode_object, &size);
+    if (data != NULL)
+        return std::string_view(data, size);
+    return std::string_view{};
+}
+
 inline AcString PyUnicode_AsAcString(PyObject* py_obj)
 {
     Py_ssize_t size = 0;
