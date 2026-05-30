@@ -609,9 +609,7 @@ std::wstring PyRxApp::the_error()
             PyObjectPtr pRep{ PyObject_Str(the_error) };
             if (pRep)
             {
-                const char* utf8 = PyUnicode_AsUTF8(pRep.get());
-                if (utf8 != nullptr)
-                    the_error_string = utf8;
+                the_error_string = PyUnicode_AsString(pRep.get());;
             }
         }
         if (the_traceback != nullptr && PyTraceBack_Check(the_traceback))
@@ -622,9 +620,9 @@ std::wstring PyRxApp::the_error()
                 PyFrameObject* frame = pTrace->tb_frame;
                 PyCodeObject* code = PyFrame_GetCode(frame);
                 int lineNr = PyFrame_GetLineNumber(frame);
-                const char* sCodeName = PyUnicode_AsUTF8(code->co_name);
-                const char* sFileName = PyUnicode_AsUTF8(code->co_filename);
-                the_traceback_string += std::format("\n  File \"{}\", line {}, in {}", sFileName ? sFileName : "?", lineNr, sCodeName ? sCodeName : "?");
+                const auto sCodeName = PyUnicode_AsString(code->co_name);
+                const auto sFileName = PyUnicode_AsString(code->co_filename);
+                the_traceback_string += std::format("\n  File \"{}\", line {}, in {}", sFileName, lineNr, sCodeName);
                 Py_DECREF(code);
                 pTrace = pTrace->tb_next;
             }
