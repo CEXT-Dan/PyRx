@@ -391,14 +391,26 @@ class TestDatabase:
         sdb = Db.Database(False, True)
         sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
         sdb.closeInput(True)
-        crvs = []
+        ids = []
 
         @Ap.using_scope()
         def _() -> None:
             ms = sdb.modelSpace()
-            crvs.extend([Db.Curve(id) for id in ms.objectIds(Db.Curve.desc())])
+            ids.extend([Db.Curve(id).objectId() for id in ms.objectIds(Db.Curve.desc())])
 
-        assert len(crvs) != 0
+        assert len(ids) != 0
+        
+    def helper(self,sdb,ids):
+            ms = sdb.modelSpace()
+            ids.extend([Db.Curve(id).objectId() for id in ms.objectIds(Db.Curve.desc())])
+        
+    def test_using_helper(self):
+        sdb = Db.Database(False, True)
+        sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
+        sdb.closeInput(True)
+        ids = []
+        self.helper(sdb,ids)
+        assert len(ids) != 0
 
     def test_overrulableEntity(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c97d0")
