@@ -232,27 +232,6 @@ bool WxRxApp::Init_wxPython()
 }
 
 //------------------------------------------------------------------------------------------------
-// hasWxXmlResourceModule helper [#422]
-#if !wxCHECK_VERSION(3, 3, 0)
-static bool hasWxXmlResourceModule()
-{
-    int found = 0;
-    wxDynamicLibraryDetailsArray modules = wxDynamicLibrary::ListLoaded();
-    for (size_t i = 0, len = modules.GetCount(); i < len; ++i)
-    {
-        const auto& name = modules[i].GetName();
-        if (name.Contains(_T("_xrc.cp")))
-            found++;
-        if (name.Contains(_T("_xml.cp")))
-            found++;
-        if (found == 2)
-            return true;
-    }
-    return false;
-}
-#endif //wxVERSION_33
-
-//------------------------------------------------------------------------------------------------
 // initWxApp
 static bool initWxApp()
 {
@@ -273,15 +252,6 @@ static bool uninitWxApp()
 {
     wxTheApp->OnExit();
     wxEntryCleanup();
-#if !wxCHECK_VERSION(3, 3, 0)
-#if defined(_GRXTARGET) && (_GRXTARGET >= 260)
-    if (hasWxXmlResourceModule())
-        wxExit();
-#elif defined(_GRXTARGET) && (_GRXTARGET < 260)
-    if (hasWxXmlResourceModule())
-        std::quick_exit(EXIT_SUCCESS);
-#endif //_GRXTARGET
-#endif //wxVERSION_33
     return true;
 }
 
