@@ -75,7 +75,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;PYRX_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=260;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);SOLUTION_DIR=std::filesystem::path(R"literal($(SolutionDir))literal");%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(PYTHON_LIB)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -87,7 +87,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ARX2027)\lib;$(ARX2027)\lib-$(PlatformName);$(ARX2027)\utils\brep\lib-$(PlatformName);$(ARX2027)\utils\atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ARX2027)\lib;$(ARX2027)\lib-$(PlatformName);$(ARX2027)\utils\brep\lib-$(PlatformName);$(ARX2027)\utils\atil\lib-$(PlatformName);$(PYTHON_LIB)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -108,7 +108,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2027)\inc;$(ARX2027)\inc-$(PlatformName);$(ARX2027)\utils\brep\inc;$(ARX2027)\utils\Atil\Inc;$(PYTHON_LIB)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include;$(SolutionDIR)\external\CDT\CDT\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -125,7 +125,7 @@
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ARX2027)\lib;$(ARX2027)\lib-$(PlatformName);$(ARX2027)\utils\brep\lib-$(PlatformName);$(ARX2027)\utils\atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ARX2027)\lib;$(ARX2027)\lib-$(PlatformName);$(ARX2027)\utils\brep\lib-$(PlatformName);$(ARX2027)\utils\atil\lib-$(PlatformName);$(PYTHON_LIB)\libs;$(BOOST)\lib64-msvc-14.3;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
