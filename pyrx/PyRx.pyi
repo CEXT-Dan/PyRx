@@ -224,6 +224,8 @@ class RxObject:
         """
         Static method for checking if first (left) class arg is derived from second (right) one.
         """
+    def isInternalClosed(self, /) -> bool: ...
+    def isKeptAlive(self, /) -> bool: ...
     def isKindOf(self, rhs: PyRx.RxClass, /) -> bool:
         """
         Returns true if 'this' object is of a member of either the class represented by aClass, or
@@ -241,6 +243,7 @@ class RxObject:
         the class's isA() method. If the search for a protocol extension object is unsuccessful,
         then NULL is returned.
         """
+    def setInternalClosed(self, flag: bool, /) -> None: ...
 
 class stderr:
     def __init__(self, /) -> None: ...
