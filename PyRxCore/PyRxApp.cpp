@@ -22,9 +22,8 @@
 #include "wx/wx.h"
 #include <wx/xrc/xmlres.h>
 #include <wx/dynlib.h>
-
-#if wxCHECK_VERSION(3, 3, 0)
 #include <wx/msw/darkmode.h>
+
 
 //------------------------------------------------------------------------------------------------
 //  PyRxDarkModeSettings
@@ -49,6 +48,9 @@ public:
 
     wxColour GetColour(wxSystemColour index) override
     {
+        if (!PyRxApp::instance().useCustomDarkmode)
+            return wxDarkModeSettings::GetColour(index);
+
         static COLORREF clr = getPaletteBackground();
         switch (index)
         {
@@ -71,28 +73,16 @@ static bool isAcadDark()
     return rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0;
 }
 
-static bool useColorThemeOverride()
+static bool useDarkMode()
 {
     std::array<wchar_t, 8> buffer = { 0 };
-    if (acedGetEnv(_T("PYRX_COLORTHEME_OVERRIDE"), buffer.data(), buffer.size()) == RTNORM)
+    if (acedGetEnv(_T("PYRX_NODARKMODE"), buffer.data(), buffer.size()) == RTNORM)
     {
-        if (_wtoi(buffer.data()) == 0)
+        if (_wtoi(buffer.data()) == 1)
             return false;
     }
     return true;
 }
-
-static bool useColorTheme()
-{
-    std::array<wchar_t, 8> buffer = { 0 };
-    if (acedGetEnv(_T("PYRX_COLORTHEME"), buffer.data(), buffer.size()) == RTNORM)
-    {
-        if (_wtoi(buffer.data()) == 0)
-            return false;
-    }
-    return true;
-}
-#endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -108,14 +98,11 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
-    // TODO: support wxWidgets with dark mode
-#if wxCHECK_VERSION(3, 3, 0)
-    if (isAcadDark() && useColorTheme())
+    if (isAcadDark() && useDarkMode())
     {
-        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr))
+        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, new PyRxDarkModeSettings()))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
-#endif //wxVERSION_33
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
@@ -197,14 +184,14 @@ bool WxRxApp::Init_wxPython()
     PyPreConfig_InitPythonConfig(&preConfig);
     const auto& args = PyRxAppSettings::getCommandLineArgs();
 
-    if (args.empty()) 
+    if (args.empty())
     {
         status = Py_PreInitialize(&preConfig);
     }
-    else 
+    else
     {
         std::vector<const wchar_t*> argvPtrs;
-        for (const auto& arg : args) 
+        for (const auto& arg : args)
             argvPtrs.push_back(arg.c_str());
         status = Py_PreInitializeFromArgs(&preConfig, (Py_ssize_t)argvPtrs.size(), (wchar_t**)argvPtrs.data());
     }

@@ -44,7 +44,7 @@ public:
     static void                 appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static int                  getInvisibleBorderWidth(UINT_PTR hwnd);
-
+    static void                 useCustomDarkmode(bool flag);
     static boost::python::list  listFilesInPath(const std::string& spath, const std::string& ext);
     static boost::python::list  listFilesInPathRecursive(const std::string& spath, const std::string& ext);
     static std::string          testFlags(PyRxTestFlags flags);

@@ -110,6 +110,7 @@ void makePyApApplictionWrapper()
         .def("getAppDataPath", &PyApApplication::getAppDataPath2, DS.SARGS({ "createIfNotFound:bool=True" })).staticmethod("getAppDataPath")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
+        .def("useCustomDarkmode", &PyApApplication::useCustomDarkmode, DS.SARGS({ "flag:bool" })).staticmethod("useCustomDarkmode")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("hostFileInfo", &PyApApplication::hostFileInfo, DS.SARGS()).staticmethod("hostFileInfo")
         .def("pyrxVersion", &PyApApplication::pyrxVersion, DS.SARGS()).staticmethod("pyrxVersion")
@@ -185,6 +186,11 @@ int PyApApplication::getInvisibleBorderWidth(UINT_PTR _hwnd)
         visibleRect.left, visibleRect.top, visibleRect.right, visibleRect.bottom);
 #endif
     return visibleRect.left - windowRect.left;
+}
+
+void PyApApplication::useCustomDarkmode(bool flag)
+{
+    PyRxApp::instance().useCustomDarkmode = flag;
 }
 
 UINT_PTR PyApApplication::mainWnd()

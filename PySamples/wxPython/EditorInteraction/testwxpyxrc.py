@@ -5,7 +5,7 @@ from pyrx import Ap, Ed
 
 print("Added command 'wxpyxrc'")
 
-
+# (setenv "PYRX_NODARKMODE" "1")
 # command to launch the dialog
 def PyRxCmd_wxpyxrc():
     try:
@@ -13,6 +13,7 @@ def PyRxCmd_wxpyxrc():
         dlg = TestDialog(None, -1, "")
         # or dlg.ShowModal()
         # showModalDialog will set the icon
+        # Ap.Application.useCustomDarkmode(False)
         res = Ap.Application.showModalDialog(dlg)
         if res == wx.ID_OK:
             print("woohoo")

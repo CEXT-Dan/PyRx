@@ -97,5 +97,5 @@ public:
     void* appPkt = nullptr;
     size_t testflags = 0;
     bool isLoaded = false;
-
+    bool useCustomDarkmode = true;
 };
