@@ -3,6 +3,7 @@ class PyRxAppSettings
 {
 public:
     static int optimizationLevel();
+    static bool useDarkMode();
     static const std::tuple<bool, std::wstring> tryFindConfigPath();
     static const std::tuple<bool, std::wstring> pyexecutable_path();
     static std::vector<std::wstring>& getCommandLineArgs();

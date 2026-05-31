@@ -1,5 +1,6 @@
 [system]
 optimization_level = 2
+nodarkmode = 0
 
 [user]
 disable_onload = false

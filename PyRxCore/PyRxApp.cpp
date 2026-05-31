@@ -24,7 +24,6 @@
 #include <wx/dynlib.h>
 #include <wx/msw/darkmode.h>
 
-
 //------------------------------------------------------------------------------------------------
 //  PyRxDarkModeSettings
 class PyRxDarkModeSettings : public wxDarkModeSettings
@@ -73,16 +72,6 @@ static bool isAcadDark()
     return rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0;
 }
 
-static bool useDarkMode()
-{
-    std::array<wchar_t, 8> buffer = { 0 };
-    if (acedGetEnv(_T("PYRX_NODARKMODE"), buffer.data(), buffer.size()) == RTNORM)
-    {
-        if (_wtoi(buffer.data()) == 1)
-            return false;
-    }
-    return true;
-}
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -98,7 +87,7 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
-    if (isAcadDark() && useDarkMode())
+    if (isAcadDark() && PyRxAppSettings::useDarkMode())
     {
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, new PyRxDarkModeSettings()))
             acutPrintf(_T("MSWEnableDarkMode failed"));

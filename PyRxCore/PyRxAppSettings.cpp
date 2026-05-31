@@ -62,6 +62,23 @@ int PyRxAppSettings::optimizationLevel()
     return 2;
 }
 
+bool PyRxAppSettings::useDarkMode()
+{
+    std::array<wchar_t, 8> buffer = { 0 };
+    if (acedGetEnv(_T("PYRX_NODARKMODE"), buffer.data(), buffer.size()) == RTNORM)
+    {
+        if (_wtoi(buffer.data()) == 1)
+            return false;
+    }
+    return true;
+    if (auto [flag, table] = pyrxConfig(); flag)
+    {
+        auto mode = table["system"]["nodarkmode"];
+        if (mode.is_integer())
+            return int32_t(mode.value_or(0)) ? true : false;
+    }
+}
+
 const std::tuple<bool, std::wstring> PyRxAppSettings::pyexecutable_path()
 {
     std::error_code ec;
