@@ -48,14 +48,6 @@ classifiers = [
 ]
 
 dependencies = [
-    # wxpython-4.3.0a16068+96cb1d0c-cp314-cp314-win_amd64.whl
-    #"wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
-    "pywin32; os_name == 'nt'",
-    "debugpy>=1.8.0",
-    "pydantic_settings",
-]
-
-dependencies = [
     "wxpython @ https://wxpython.org/Phoenix/snapshot-builds/wxpython-4.3.0a16068+96cb1d0c-cp314-cp314-win_amd64.whl; 
     #"wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
     os_name == 'nt'",

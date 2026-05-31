@@ -3,9 +3,9 @@ from pathlib import Path
 
 from setuptools_scm import ScmVersion, get_version
 
-MAJOR = 2
-MINOR = 2
-REVISION= 58
+MAJOR = 3
+MINOR = 1
+REVISION= 1
 
 BASE_DIR = Path(__file__).parent
 REPO_DIR = BASE_DIR / ".."
