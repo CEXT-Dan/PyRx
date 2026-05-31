@@ -15,7 +15,7 @@ dynamic = ["version"]
 authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
 description = "High-performance Python for AutoCAD automation and ObjectARX. A modern, fast replacement for pyautocad and ActiveX/COM."
 readme = "PYPI_README.md"
-requires-python = ">=3.12.0,<3.13.0"
+requires-python = ">=3.14.5,<3.15.0"
 keywords = [
     "automation", 
     "ObjectARX", 
@@ -42,13 +42,23 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
-    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
 ]
 
 dependencies = [
-    "wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
+    # wxpython-4.3.0a16068+96cb1d0c-cp314-cp314-win_amd64.whl
+    #"wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
+    "pywin32; os_name == 'nt'",
+    "debugpy>=1.8.0",
+    "pydantic_settings",
+]
+
+dependencies = [
+    "wxpython @ https://wxpython.org/Phoenix/snapshot-builds/wxpython-4.3.0a16068+96cb1d0c-cp314-cp314-win_amd64.whl; 
+    #"wxpython>=4.2.3,<4.3.0; os_name == 'nt'", # Hard to install on Ubuntu for the CI
+    os_name == 'nt'",
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
     "pydantic_settings",
@@ -78,7 +88,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 99
-target-version = "py312"
+target-version = "py314"
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]

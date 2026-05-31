@@ -18,6 +18,7 @@ public:
     bool                isDerivedFrom(const PyRxClass& other) const;
     bool                isKindOf(const PyRxClass& aClass) const;
     void                forceKeepAlive(bool flag) const;
+    void                setInternalClosed(bool flag) const;
     void                dispose();
     bool                isNullObj() const;
     int                 implRefCount() const;

@@ -15,6 +15,7 @@ void makePyRxObjectWrapper()
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
+        .def("setInternalClosed", &PyRxObject::setInternalClosed, DS.ARGS({ "flag: bool" }))
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("intPtr", &PyRxObject::intPtr, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "protocolClass: PyRx.RxClass" }, 15564))
@@ -56,6 +57,8 @@ struct PyRxObjectDeleter
             return;
         if (m_forceKeepAlive)
             return;
+        else if (m_internalClosed)
+            return;
         else if (isDbroThenClose(p))
             return;
         else if (!m_autoDelete)
@@ -67,6 +70,7 @@ struct PyRxObjectDeleter
     bool m_autoDelete = true;
     bool m_isDbObject = false;
     bool m_forceKeepAlive = false;
+    bool m_internalClosed = false;
 };
 
 PyRxObject::PyRxObject(const AcRxObject* ptr)
@@ -118,6 +122,14 @@ void PyRxObject::forceKeepAlive(bool flag) const
     if (del_p == nullptr)
         PyThrowBadEs(Acad::eNotApplicable);
     del_p->m_forceKeepAlive = flag;
+}
+
+void PyRxObject::setInternalClosed(bool flag) const
+{
+    auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->m_internalClosed = flag;
 }
 
 void PyRxObject::dispose()
