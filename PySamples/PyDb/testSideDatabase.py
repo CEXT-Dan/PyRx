@@ -1,5 +1,5 @@
 from pyrx import Ap, Db
-
+import traceback
 # when working with side dababases, it's important to make sure
 # the database is diposed last
 
@@ -36,10 +36,13 @@ def doSomething(sideDb: Db.Database):
 
 @Ap.Command()
 def doitfuncscope():
-    sideDb = Db.Database(False, True)
-    sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/unit tests/testmedia/06457.dwg")
-    sideDb.closeInput(True)
-    doSomething(sideDb)
+    try:
+        sideDb = Db.Database(False, True)
+        sideDb.readDwgFile("M:/Dev/Projects/PyRxGit/tests/media/06457.dwg")
+        sideDb.closeInput(True)
+        doSomething(sideDb)
+    except Exception:
+        print(traceback.format_exc())
 
 
 # option B, create a nested scope
