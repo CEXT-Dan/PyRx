@@ -50,7 +50,6 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
@@ -471,8 +470,8 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-       acutPrintf(L"\nHi");
-       wxTheApp->MSWEnableDarkMode(0);
+        acutPrintf(L"\nHi");
+        wxTheApp->MSWEnableDarkMode(0);
     }
 #endif
 };

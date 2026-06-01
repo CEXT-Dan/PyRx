@@ -72,7 +72,6 @@ static bool isAcadDark()
     return rt == RTNORM && rb.restype == RTSHORT && rb.resval.rint == 0;
 }
 
-
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
 ArxTopLevelWindow::ArxTopLevelWindow()
@@ -172,6 +171,8 @@ bool WxRxApp::Init_wxPython()
     PyPreConfig preConfig;
     PyPreConfig_InitPythonConfig(&preConfig);
     const auto& args = PyRxAppSettings::getCommandLineArgs();
+
+    preConfig.utf8_mode = 1;
 
     if (args.empty())
     {
