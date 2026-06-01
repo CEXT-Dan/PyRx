@@ -205,14 +205,6 @@
 //#define WXMSWWINDOWPROC 1
 #endif
 
-#define PY314 0x030E0000
-
-#if PY_VERSION_HEX >= PY314
-#pragma message ("Compiling for Python 3.14 or greater")
-#else
-#pragma message ("Compiling for Python 3.13 or less")
-#endif
-
 #if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
 #pragma comment( lib , "acgeoment.lib" )
