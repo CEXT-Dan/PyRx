@@ -40,6 +40,7 @@ public:
     virtual void    WakeUpIdle() override;
     bool            Init_wxPython();
 private:
+    PyObject* m_wxpyApp = nullptr;
     PyThreadState* m_mainTState = nullptr;
 };
 wxDECLARE_APP(WxRxApp);

@@ -98,9 +98,8 @@ bool WxRxApp::OnInit()
     if (Init_wxPython() == false)
         return false;
     {
-        // Hold a ref so wxPython wx.App.Get() returns our app 
         PyAutoLockGIL lock;
-        wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
+        m_wxpyApp = wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
     }
     return true;
 }
