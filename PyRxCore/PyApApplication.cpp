@@ -193,6 +193,11 @@ void PyApApplication::useCustomDarkmode(bool flag)
     PyRxApp::instance().useCustomDarkmode = flag;
 }
 
+void PyApApplication::useDarkmode(bool flag)
+{
+    PyThrowBadEs(eNotImplementedYet);
+}
+
 UINT_PTR PyApApplication::mainWnd()
 {
     return reinterpret_cast<UINT_PTR>(adsw_acadMainWnd());

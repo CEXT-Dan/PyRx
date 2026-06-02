@@ -12,7 +12,7 @@ void makePyApApplictionWrapper();
 class PyApApplication
 {
 public:
-    static PyObject* getwxApp();
+    static PyObject*/*       */ getwxApp();
     static PyApDocManager       docManager();
     static PyAcadApplication    acadApplication();
     static void                 applyHostIcon(UINT_PTR hwnd);
@@ -45,6 +45,7 @@ public:
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static int                  getInvisibleBorderWidth(UINT_PTR hwnd);
     static void                 useCustomDarkmode(bool flag);
+    static void                 useDarkmode(bool flag);
     static boost::python::list  listFilesInPath(const std::string& spath, const std::string& ext);
     static boost::python::list  listFilesInPathRecursive(const std::string& spath, const std::string& ext);
     static std::string          testFlags(PyRxTestFlags flags);
