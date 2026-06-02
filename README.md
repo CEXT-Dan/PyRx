@@ -1,4 +1,4 @@
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
+[![Python 3.14](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/downloads/release/python-312/)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 [![](https://img.shields.io/pypi/v/cad-pyrx.svg)](https://pypi.org/pypi/cad-pyrx/)
 [![Mypy Type Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml)
@@ -22,7 +22,7 @@ _This project will not work for AutoCAD LT or BricsCAD Lite, check that your CAD
 _Wherever in this project we talk about AutoCAD, we mean all supported applications (BricsCAD, GstarCAD, ZwCAD), and when we talk about ARX (Object ARX), we also mean BRX, GRX and ZRX._
 
 Uses wxPython for the GUI, dialogs, and CAdUiPalette wrapper.
-Embeds Python (3.12) and wxPython (4.2.3) into a loadable ARX module.
+Embeds Python (3.14) and wxPython (4.2.3) into a loadable ARX module.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Installing from the from Microsoft Store is currently not supported
 
 Watch the Youtube [video](https://www.youtube.com/watch?v=MrQ7N2WulI4)
 
-Install [python 3.12.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
+Install [python 3.14.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/ftp/python/3.14.10/python-3.14.10-amd64.exe) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
 
 ![Python install](./GitResources/images/pyinstall.png),
 
@@ -55,11 +55,12 @@ RxLoader25.1.arx = 2026
 RxLoader26.0.arx = 2027
 RxLoaderV25.0.brx = BricsCAD v25
 ```
+
 You should now be able to load modules with the new PYLOAD command
 
 AutoCAD users may optionally install a .bundle using the MSI installer attached to the [release](https://github.com/CEXT-Dan/PyRx/releases)
 
-## Other ways to get the package:
+## Other ways to get the package
 
 Install PyRx from the latest commit:
 
@@ -67,11 +68,12 @@ Install PyRx from the latest commit:
 python -m pip install git+https://github.com/CEXT-Dan/PyRx.git
 ```
 
-## Uninstall:
+## Uninstall
 
 ```bash
 python -m pip uninstall cad-pyrx
 ```
+
 ## Share
 
 Need to share your project? Have a look at this project [here](https://github.com/gswifort/PyRx-sample-project)
@@ -82,11 +84,11 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 
 - **PYLOAD**: Use this command to load your Python modules
 - **PYRELOAD**: Use this command to reload your Python modules
-- **PYDEBUG**: Starts debugpy adapter, for debugging your code 
+- **PYDEBUG**: Starts debugpy adapter, for debugging your code
 - **PYCMDPROMPT**: Provides simple access to the python interpreter
 - **PYRXVER**: Prints the ARX module version
 - **PYRXLOADLOG**: Prints the ARX module load logs
-- **PYPIP**: List, install, or uninstall Python packages 
+- **PYPIP**: List, install, or uninstall Python packages
 
 **Autolisp commands:**  
 ``(adspyload PATH)`` returns T or nil  
