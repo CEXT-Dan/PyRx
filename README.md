@@ -30,9 +30,9 @@ Installing from the from Microsoft Store is currently not supported
 
 Watch the Youtube [video](https://www.youtube.com/watch?v=MrQ7N2WulI4)
 
-Install [python 3.14.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/ftp/python/3.14.10/python-3.14.10-amd64.exe) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
+Install [python 3.14.X](https://www.python.org/downloads/windows/) or [direct link](https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
 
-![Python install](./GitResources/images/pyinstall.png),
+![Python install](./GitResources/images/python314install.png),
 
 Install PyRx from [PyPI](https://pypi.org/project/cad-pyrx):
 
