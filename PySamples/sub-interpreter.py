@@ -11,6 +11,7 @@ from concurrent.futures import InterpreterPoolExecutor
 def tsp_3opt_worker(path_data: array):
 
     def total_distance_sqrd(flat_floats: array) -> float:
+        import math
         dist = 0.0
         n = len(flat_floats) // 3
         for i in range(n):
@@ -28,7 +29,7 @@ def tsp_3opt_worker(path_data: array):
             dx = a0 - b0
             dy = a1 - b1
             dz = a2 - b2
-            dist += dx * dx + dy * dy + dz * dz
+            dist += math.sqrt(dx * dx + dy * dy + dz * dz)
         return dist
 
     def swap_3opt(arr: array, i: int, j: int, k: int, case: int) -> array:
