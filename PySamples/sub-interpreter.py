@@ -9,9 +9,9 @@ from concurrent.futures import InterpreterPoolExecutor
 # Worker
 # -----------------------------------------------------------
 def tsp_3opt_worker(path_data: array):
+    import math
 
-    def total_distance_sqrd(flat_floats: array) -> float:
-        import math
+    def total_distance(flat_floats: array) -> float:
         dist = 0.0
         n = len(flat_floats) // 3
         for i in range(n):
@@ -64,7 +64,7 @@ def tsp_3opt_worker(path_data: array):
 
     n_points = len(path_data) // 3
     best_path = path_data
-    best_dist = total_distance_sqrd(best_path)
+    best_dist = total_distance(best_path)
     improved = True
 
     while improved:
@@ -81,7 +81,7 @@ def tsp_3opt_worker(path_data: array):
                             k,
                             case,
                         )
-                        candidate_dist = total_distance_sqrd(candidate)
+                        candidate_dist = total_distance(candidate)
 
                         if candidate_dist < best_dist:
                             best_dist = candidate_dist
@@ -136,6 +136,12 @@ def tsp_3opt_driver(pnts: list[Ge.Point3d]):
                 best_flat_coords[i + 2],
             )
         )
+        
+    db = Db.curDb()
+    pl = Db.Polyline(final_points)
+    pl.setColorIndex(3)
+    pl.setClosed(True)
+    db.addToCurrentspace(pl)
 
     print(f"Execution Time: {elapsed:.4f} sec")
     print(f"Shortest Distance: {shortest_distance:.4f}")
