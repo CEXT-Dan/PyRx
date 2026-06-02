@@ -1,14 +1,15 @@
-env $(ARX2021) = path to ARXSDK 
+env $(ARX2027) = path to ARXSDK 
 
-env $(WXWIN) = path to wxWidgets' 3.2.0 release tag. 
-(pre built) https://drive.google.com/file/d/1ukMDR7qCfgEnD62-frIuph73dr-POv_9/view?usp=sharing
+env $(WXWIN) = path to wxWidgets' 3.4.0 release tag. 
+(pre built) //TODO
 
-env $(BOOST) = path to boost_1_89_0
-(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.89.0/
+env $(BOOST) = path to boost_1_91_0
+(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.91.0/
 
-env $(Py312) = path to python 3.12.X headers and libraries 
-env $(WXPYWIN) = wxPython 4.2.3 install dir (...\AppData\Local\Programs\Python\Python312\Lib\site-packages\wx
+env $(PYTHON_LIB) = path to python 3.12.X headers and libraries 
+env $(WXPYWIN) = wxPython 4.3.0 install dir (...\AppData\Local\Programs\Python\Python313\Lib\site-packages\wx
 
 \External folder may have additional dependencies
 
 note discussion #120 has some extra tips
+
