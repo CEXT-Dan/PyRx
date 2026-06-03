@@ -38,7 +38,7 @@ constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
-constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
+constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python314");
 
 
 //-----------------------------------------------------------------------------
