@@ -158,12 +158,10 @@ static bool initializeFromInitConfig()
         utf8Args.reserve(args.size());
         for (const auto& item : args)
             utf8Args.push_back(wstr_to_utf8(item.c_str()));
-        
         std::vector<char*> argvPointers;
         argvPointers.reserve(utf8Args.size());
         for (auto& str : utf8Args)
             argvPointers.push_back(str.data());
-  
         if (PyInitConfig_SetStrList(config, "argv", argvPointers.size(), argvPointers.data()) < 0)
         {
             const char* err_msg = nullptr;
@@ -214,14 +212,12 @@ bool WxRxApp::Init_wxPython()
         Py_InitializeEx(0);
     }
 
-    // Standard wxPython C-extension handle bindings
     if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {
         acutPrintf(_T("\n*****Error importing the wxPython API!*****: \n"));
         return false;
     }
 
-    // Release the GIL to allow AutoCAD's thread pool and UI to stay responsive
     m_mainTState = wxPyBeginAllowThreads();
     PyAutoLockGIL::canLock = true;
     return true;
