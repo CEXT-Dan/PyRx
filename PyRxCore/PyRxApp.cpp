@@ -425,8 +425,6 @@ bool PyRxApp::uninit()
     return uninitWxApp();
 }
 
-#ifdef PYRXDEBUG
-#ifdef NEVER // sanity 
 static void printPythonList(PyObject* pylist)
 {
     for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
@@ -440,8 +438,6 @@ static void printPythonList(PyObject* pylist)
         }
     }
 }
-#endif
-#endif
 
 bool PyRxApp::setPyConfig()
 {
@@ -526,6 +522,9 @@ PyObject* PyRxApp::appendAndLoadModule(const std::filesystem::path& modulePath, 
         if (PyList_Append(path.get(), pyModPath.get()) < 0)
             return nullptr;
     }
+#if defined(PYRXDEBUG) && defined(NEVER) //sanity
+    printPythonList(path.get());
+#endif
     return loadedModule.release();
 }
 
