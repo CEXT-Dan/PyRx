@@ -454,7 +454,6 @@ public:
     static void AcRxPyApp_idoit1(void)
     {
         acutPrintf(L"\nHi");
-        wxTheApp->MSWEnableDarkMode(0);
     }
 #endif
 };

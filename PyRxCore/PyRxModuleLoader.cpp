@@ -362,7 +362,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
     const std::string sModName = wstr_to_utf8(path.fullPath.filename().replace_extension().wstring());
     method.mod.reset(PyRxApp::appendAndLoadModule(path.modulePath, sModName, true));
-   
+
     if (method.mod != nullptr)
     {
         // this is to ensure that the module was not loaded elsewhere, i.e. a stdLib file

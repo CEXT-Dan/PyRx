@@ -427,6 +427,7 @@ bool PyRxApp::uninit()
 
 static void printPythonList(PyObject* pylist)
 {
+    acutPrintf(_T("\nPrintPythonList\n"));
     for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
     {
         PyObject* item = PyList_GET_ITEM(pylist, idx);
@@ -469,10 +470,9 @@ public:
     {
         if (m_pathList && pyPath)
         {
+            m_originalFront = PyUnicode_AsWString(PyList_GET_ITEM(m_pathList, 0));
             if (PyList_Insert(m_pathList, 0, pyPath) == 0)
-            {
                 m_inserted = true;
-            }
         }
     }
 
@@ -481,6 +481,9 @@ public:
         if (m_inserted && m_pathList)
         {
             PyObjectPtr res(PyObject_CallMethod(m_pathList, "pop", "i", 0));
+            auto newFront = PyUnicode_AsWString(PyList_GET_ITEM(m_pathList, 0));
+            if (!icompare(m_originalFront, newFront))
+                acutPrintf(_T("\nWarning, PySysPathFrontGuard mismatch! "));
         }
     }
 
@@ -488,6 +491,7 @@ public:
 
 private:
     PyObject* m_pathList = nullptr;
+    std::wstring m_originalFront;
     bool m_inserted = false;
 };
 
