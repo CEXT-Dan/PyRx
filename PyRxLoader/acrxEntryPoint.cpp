@@ -242,18 +242,22 @@ public:
                 std::wstring buffer = towlower(getPathEnvironmentVariable());
                 std::vector<std::wstring> words;
                 splitW(buffer, ';', words);
+
                 for (auto& word : words)
                 {
                     rtrim(word, '\\');
                     rtrim(word, '/');
-                    if (word.ends_with(PYTHONNAME))
+                    std::filesystem::path p(word);
+                    if (_wcsicmp(p.filename().c_str(), PYTHONNAME) == 0)
                     {
                         path = std::filesystem::path{ word };
                         appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                        break;
                     }
                 }
             }
         }
+
         if (!path.empty())
         {
             std::error_code ec;
