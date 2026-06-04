@@ -68,6 +68,16 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acrxLockApplication(pkt);
+        std::array<wchar_t, 8> buffer = { 0 };
+        if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
+        {
+            if (_wtoi(buffer.data()) == 1)
+                PYRX_LOG = 1;
+            else
+                PYRX_LOG = 0;
+        }
+        PyRxLoader_loader();
+        envToRestoreFrom = getPathEnvironmentVariable();
         return (retCode);
     }
 
@@ -239,7 +249,7 @@ public:
             }
             else
             {
-                std::wstring buffer = towlower(getPathEnvironmentVariable());
+                std::wstring buffer = getPathEnvironmentVariable();
                 std::vector<std::wstring> words;
                 splitW(buffer, ';', words);
 
@@ -404,9 +414,9 @@ public:
 
     static void PyRxLoader_loader(void)
     {
-        if (!checkCanLoadVersion());
+        if (!checkCanLoadVersion())
             return;
-   
+
         std::error_code ec;
         bool envSet = false;
 
