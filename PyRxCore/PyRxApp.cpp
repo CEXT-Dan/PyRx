@@ -509,8 +509,11 @@ PyObject* PyRxApp::appendAndLoadModule(const std::filesystem::path& modulePath, 
         if (!pathGuard.isSuccess())
             return nullptr;
         loadedModule.reset(PyImport_ImportModule(moduleName.c_str()));
-        if (loadedModule == nullptr)
+        if (!loadedModule || PyErr_Occurred() != NULL)
+        {
+            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
             return nullptr;
+        }
     }
     else
     {
