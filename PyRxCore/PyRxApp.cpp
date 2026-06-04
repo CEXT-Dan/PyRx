@@ -465,81 +465,74 @@ bool PyRxApp::setPyConfig()
     return true;
 }
 
-// during pyload, we insert the modules to the front of sys.path, load, then move it 
-// to the end. this is to ensure correct module is loaded
-bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath, bool pyload /*= false*/)
+class PySysPathFrontGuard
+{
+public:
+    PySysPathFrontGuard(PyObject* pathList, PyObject* pyPath)
+        : m_pathList(pathList)
+    {
+        if (m_pathList && pyPath)
+        {
+            if (PyList_Insert(m_pathList, 0, pyPath) == 0)
+            {
+                m_inserted = true;
+            }
+        }
+    }
+
+    ~PySysPathFrontGuard()
+    {
+        if (m_inserted && m_pathList)
+        {
+            PyObjectPtr res(PyObject_CallMethod(m_pathList, "pop", "i", 0));
+        }
+    }
+
+    bool isSuccess() const { return m_inserted; }
+
+private:
+    PyObject* m_pathList = nullptr;
+    bool m_inserted = false;
+};
+
+PyObject* PyRxApp::appendAndLoadModule(const std::filesystem::path& modulePath, const std::string& moduleName, bool pyload /*= false*/)
 {
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
-        return false;
+        return nullptr;
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
-        return false;
+        return nullptr;
+    PyObjectPtr pyModPath(wstr_to_py(modulePath));
+    if (pyModPath == nullptr)
+        return nullptr;
+    PyObjectPtr loadedModule(nullptr);
     if (pyload)
     {
-        if (PyList_Insert(path.get(), 0, wstr_to_py(modulePath)) < 0)
-            return false;
+        PySysPathFrontGuard pathGuard(path.get(), pyModPath.get());
+        if (!pathGuard.isSuccess())
+            return nullptr;
+        loadedModule.reset(PyImport_ImportModule(moduleName.c_str()));
+        if (loadedModule == nullptr)
+        {
+#ifdef PYRXDEBUG
+            acutPrintf(_T("\nFailed to load module: %hs\n"), moduleName.c_str());
+            PyErr_Print();
+#endif
+            return nullptr;
+        }
+    }
+    else
+    {
+        loadedModule.reset(PyImport_ImportModule(moduleName.c_str()));
     }
     if (!PyRxApp::instance().loadedModulePaths.contains(modulePath))
     {
         PyRxApp::instance().loadedModulePaths.insert(modulePath);
-        if (PyList_Append(path.get(), wstr_to_py(modulePath)) < 0)
-            return false;
+        if (PyList_Append(path.get(), pyModPath.get()) < 0)
+            return nullptr;
     }
-    return true;
-}
-
-bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
-{
-    std::error_code ec;
-    PyObjectPtr sys(PyImport_ImportModule("sys"));
-    if (sys == nullptr)
-        return false;
-
-    PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
-    if (path == nullptr)
-        return false;
-
-    if (PyList_Size(path.get()) < 1)
-    {
-        acutPrintf(_T("\nPyList_Size == 0!: \n"));
-        return false;
-    }
-
-    PyObjectPtr item(PyList_GET_ITEM(path.get(), 0));
-    if (item == nullptr)
-        return false;
-
-    std::wstring buffer(MAX_PATH, 0);
-    PyUnicode_AsWideChar(item.get(), buffer.data(), buffer.size());
-
-    const std::filesystem::path _path = buffer.c_str();
-    if (!std::filesystem::equivalent(_path, pModulePath, ec))
-    {
-#ifdef PYRXDEBUG
-        acutPrintf(_T("\npopFrontSearchPath mismatch!: \n"));
-#endif
-        return false;
-    }
-
-#ifdef PYRXDEBUG
-#ifdef NEVER // sanity 
-    acutPrintf(_T("\nBefore: \n"));
-    printPythonList(path.get());
-#endif
-#endif
-
-    PyObjectPtr res(PyObject_CallMethod(path.get(), "pop", "i", 0));
-    if (res == nullptr)
-        return false;
-
-#ifdef PYRXDEBUG
-#ifdef NEVER // sanity 
-    acutPrintf(_T("\nAfter: \n"));
-    printPythonList(path.get());
-#endif
-#endif
-    return true;
+    return loadedModule.release();
 }
 
 bool PyRxApp::isPythonModule(const std::filesystem::path& filename)
