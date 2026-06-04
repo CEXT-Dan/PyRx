@@ -514,13 +514,7 @@ PyObject* PyRxApp::appendAndLoadModule(const std::filesystem::path& modulePath, 
             return nullptr;
         loadedModule.reset(PyImport_ImportModule(moduleName.c_str()));
         if (loadedModule == nullptr)
-        {
-#ifdef PYRXDEBUG
-            acutPrintf(_T("\nFailed to load module: %hs\n"), moduleName.c_str());
-            PyErr_Print();
-#endif
             return nullptr;
-        }
     }
     else
     {
