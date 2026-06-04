@@ -293,8 +293,8 @@ inline bool icompare(const std::wstring& l, const std::wstring& r)
     if (l.size() != r.size())
         return false;
     return CompareStringEx(
-        LOCALE_NAME_INVARIANT,
-        NORM_IGNORECASE,
+        LOCALE_NAME_USER_DEFAULT,
+        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
         l.c_str(), static_cast<int>(l.size()),
         r.c_str(), static_cast<int>(r.size()),
         nullptr, nullptr, 0
@@ -329,8 +329,8 @@ inline bool icompare(const std::string& l, const std::string& r)
         return false;
 
     return CompareStringEx(
-        LOCALE_NAME_INVARIANT,
-        NORM_IGNORECASE,
+        LOCALE_NAME_USER_DEFAULT,
+        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
         l_buf.data(), l_count,
         r_buf.data(), r_count,
         nullptr, nullptr, 0
