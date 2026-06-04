@@ -267,18 +267,7 @@ public:
                 }
             }
         }
-
-        if (!path.empty())
-        {
-            std::error_code ec;
-            const std::wstring exepath = (path / PYTHONEXEC);
-            if (std::filesystem::exists(exepath, ec))
-                acedSetEnv(_T("PYRX_PYEXE_PATH"), exepath.c_str());
-            else
-                appendLog(std::format(_T("PyExePath Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
-            return std::tuple(true, path);
-        }
-        return std::tuple(false, path);
+        return std::tuple(!path.empty(), path);
     }
 
     [[nodiscard]] static const auto getInstallPath()
