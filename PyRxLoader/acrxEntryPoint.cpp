@@ -387,25 +387,8 @@ public:
         return valStr == ver;
     }
 
-    static bool checkCanLoadVersion()
-    {
-#ifdef NEVER
-        CString ver = _T("26.1.3.0");
-        if (!checkFileVersionInfo(ver))
-        {
-            acutPrintf(_T("\nWrong version!"));
-            return false;
-        }
-#endif
-        return true;
-    }
-
-
     static void PyRxLoader_loader(void)
     {
-        if (!checkCanLoadVersion())
-            return;
-
         std::error_code ec;
         bool envSet = false;
 
