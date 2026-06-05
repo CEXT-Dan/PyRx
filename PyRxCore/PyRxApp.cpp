@@ -494,7 +494,7 @@ public:
 
 private:
     PyObject* m_pathList = nullptr;
-    std::string m_insertedValue; // Must match narrow std::string_view
+    std::string m_insertedValue;
     bool m_inserted = false;
 };
 
