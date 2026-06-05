@@ -319,8 +319,8 @@ inline bool icompare(const std::string& l, const std::string& r)
         return icompare(utf8_to_wstr(l), utf8_to_wstr(r));
     }
 
-    std::array<wchar_t, MAX_PATH_BUFFER> l_buf;
-    std::array<wchar_t, MAX_PATH_BUFFER> r_buf;
+    std::array<wchar_t, MAX_PATH_BUFFER> l_buf{};
+    std::array<wchar_t, MAX_PATH_BUFFER> r_buf{};
 
     const int l_count = MultiByteToWideChar(CP_UTF8, 0, l.data(), l_len, l_buf.data(), MAX_PATH_BUFFER);
     const int r_count = MultiByteToWideChar(CP_UTF8, 0, r.data(), r_len, r_buf.data(), MAX_PATH_BUFFER);

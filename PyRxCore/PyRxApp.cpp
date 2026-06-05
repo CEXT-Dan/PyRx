@@ -468,22 +468,25 @@ public:
     PySysPathFrontGuard(PyObject* pathList, PyObject* pyPath)
         : m_pathList(pathList)
     {
-        if (m_pathList && pyPath)
+        if (m_pathList && pyPath && PyList_Size(m_pathList) > 0)
         {
-            m_originalFront = PyUnicode_AsWString(PyList_GET_ITEM(m_pathList, 0));
             if (PyList_Insert(m_pathList, 0, pyPath) == 0)
+            {
+                m_insertedValue = PyUnicode_AsStringView(pyPath);
                 m_inserted = true;
+            }
         }
     }
 
     ~PySysPathFrontGuard()
     {
-        if (m_inserted && m_pathList)
+        if (m_inserted && m_pathList && PyList_Size(m_pathList) > 0)
         {
-            PyObjectPtr res(PyObject_CallMethod(m_pathList, "pop", "i", 0));
-            auto newFront = PyUnicode_AsWString(PyList_GET_ITEM(m_pathList, 0));
-            if (!icompare(m_originalFront, newFront))
-                acutPrintf(_T("\nWarning, PySysPathFrontGuard mismatch! "));
+            std::string_view currentFront = PyUnicode_AsStringView(PyList_GetItem(m_pathList, 0));
+            if (m_insertedValue == currentFront)
+                PySequence_DelItem(m_pathList, 0);
+            else
+                acutPrintf(_T("\nWarning: PySysPathFrontGuard mismatch!."));
         }
     }
 
@@ -491,7 +494,7 @@ public:
 
 private:
     PyObject* m_pathList = nullptr;
-    std::wstring m_originalFront;
+    std::string m_insertedValue; // Must match narrow std::string_view
     bool m_inserted = false;
 };
 
