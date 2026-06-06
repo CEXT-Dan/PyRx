@@ -1559,14 +1559,9 @@ public:
     {
         boost::python::extract<PyDbObject&> check_obj(obj);
         if (check_obj.check())
-        {
             m_tracked_items.append(obj);
-        }
         else
-        {
-            PyErr_SetString(PyExc_TypeError, "Argument must be an instance of PyDbObject");
-            boost::python::throw_error_already_set();
-        }
+            PyThrowBadEs(eInvalidInput);
     }
 
     DbObjectCloseScope& enter()
