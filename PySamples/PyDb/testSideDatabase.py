@@ -1,5 +1,6 @@
 from pyrx import Ap, Db
 import traceback
+
 # when working with side dababases, it's important to make sure
 # the database is diposed last
 
@@ -87,3 +88,42 @@ def pydoit4():
     dbo = Db.DbObject(objId)
     print(dbo.isA().dxfName())
     dbo.dispose()
+
+
+# use DbObjectCloseScope
+def scope1():
+    items_to_close: list[Db.DbObject] = []  # Pre-initialized list container
+    db = Db.Database(False, True)
+    db.readDwgFile("M:\\Dev\\Projects\\PyRxGit\\tests\\media\\06457.dwg")
+    db.closeInput(True)
+    with Db.DbObjectCloseScope(items_to_close):
+        for id in db.modelSpace():
+            ent = Db.Entity(id, Db.OpenMode.ForWrite)
+            items_to_close.append(ent)
+
+
+@Ap.Command()
+def pydoit5():
+    try:
+        scope1()
+    except Exception as err:
+        traceback.print_exc()
+
+
+# use DbObjectCloseScope.add
+def scope2():
+    db = Db.Database(False, True)
+    db.readDwgFile("M:\\Dev\\Projects\\PyRxGit\\tests\\media\\06457.dwg")
+    db.closeInput(True)
+    with Db.DbObjectCloseScope() as tx_scope:
+        for id in db.modelSpace():
+            ent = Db.Entity(id, Db.OpenMode.ForWrite)
+            tx_scope.add(ent)
+
+
+@Ap.Command()
+def pydoit6():
+    try:
+        scope2()
+    except Exception as err:
+        traceback.print_exc()
