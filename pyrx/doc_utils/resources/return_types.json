@@ -2905,6 +2905,10 @@
         [
             "PyEd::Editor::selectKeyword",
             "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyDb::DbObjectCloseScope::__enter__",
+            "PyDb.DbObjectCloseScope"
         ]
     ]
 }

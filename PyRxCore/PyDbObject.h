@@ -300,4 +300,7 @@ public://prevent reentry on error
     bool reg_dragCloneToBeDeleted = true;
 };
 
+
+void makeDbObjectCloseScope();
+
 #pragma pack (pop)
