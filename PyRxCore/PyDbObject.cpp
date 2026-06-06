@@ -1522,3 +1522,76 @@ AcDbEntityReactor* PyDbEntityReactor::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbEntityReactor*>(m_pyImp.get());
 }
+
+
+//---------------------------------------------------------------------------------------- -
+//DbObjectCloseScope
+static void closeObjectsBulk(const boost::python::list& objectList)
+{
+    for (int i = 0; i < len(objectList); ++i)
+    {
+        boost::python::extract<PyDbObject&> get_ent(objectList[i]);
+        if (get_ent.check()) 
+        {
+            PyDbObject& ent = get_ent();
+            ent.close();
+        }
+    }
+}
+
+class DbObjectCloseScope
+{
+private:
+    boost::python::list m_tracked_items;
+public:
+
+    DbObjectCloseScope() 
+        : m_tracked_items()
+    {
+    }
+
+    DbObjectCloseScope(const boost::python::list& items) 
+        : m_tracked_items(items)
+    {
+    }
+
+    void add(const boost::python::object& obj)
+    {
+        boost::python::extract<PyDbObject&> check_obj(obj);
+        if (check_obj.check())
+        {
+            m_tracked_items.append(obj);
+        }
+        else
+        {
+            PyErr_SetString(PyExc_TypeError, "Argument must be an instance of PyDbObject");
+            boost::python::throw_error_already_set();
+        }
+    }
+
+    DbObjectCloseScope& enter()
+    {
+        return *this;
+    }
+
+    bool exit(boost::python::object exc_type, boost::python::object exc_val, boost::python::object exc_tb) const
+    {
+        closeObjectsBulk(m_tracked_items);
+        return false;
+    }
+};
+
+void makeDbObjectCloseScope()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- objects: list[PyDb.DbObject]\n";
+
+    PyDocString DS("DbObjectCloseScope");
+    boost::python::class_<DbObjectCloseScope>("DbObjectCloseScope")
+        .def(boost::python::init<>())
+        .def(boost::python::init<const boost::python::list>(DS.CTOR(ctords)))
+        .def("__enter__", &DbObjectCloseScope::enter, boost::python::return_internal_reference<>())
+        .def("__exit__", &DbObjectCloseScope::exit)
+        .def("add", &DbObjectCloseScope::add,  DS.ARGS({ "obj: PyDb.DbObject" }));
+}
