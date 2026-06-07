@@ -471,78 +471,29 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        auto pDb = acdbCurDwg();
-
-        AcDbObjectPointer<AcDbLine> line;
-        line.create();
-        line->setStartPoint(AcGePoint3d(0, 0, 0));
-        line->setEndPoint(AcGePoint3d(0, 0, 0));
-
-<<<<<<< HEAD
-        AcGePoint2dArray vtx;
-        vtx.append(AcGePoint2d(0, 0));
-        vtx.append(AcGePoint2d(0, 100));
-        vtx.append(AcGePoint2d(100, 100));
-        vtx.append(AcGePoint2d(100, 0));
-        vtx.append(AcGePoint2d(0, 0));
-
-        AcGeDoubleArray blgs;
-        blgs.append(0.0);
-        blgs.append(0.0);
-        blgs.append(0.0);
-        blgs.append(0.0);
-        blgs.append(0.0);
-
-        AcDbObjectPointer<AcDbHatch> pHatch;
-        pHatch.create();
-        pHatch->setAssociative(false);
-        pHatch->setPattern(AcDbHatch::HatchPatternType::kPreDefined, L"ANSI31");
-        pHatch->setHatchStyle(AcDbHatch::kNormal);
-        pHatch->appendLoop(1/*kExternal*/, vtx, blgs);
-        pHatch->evaluateHatch();
-
-        AcDbBlockTableRecordPointer pBtr;
-        pBtr.create();
-        pBtr->setName(L"MyLittleTestBlock");
-        pBtr->appendAcDbEntity(line);
-        pBtr->appendAcDbEntity(pHatch);
-        
-        AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
-=======
-        AcDbBlockTableRecordPointer pBtr;
-        pBtr.create();
-        pBtr->setName(L"100");
-        pBtr->appendAcDbEntity(line);
-
-        AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
-
->>>>>>> 08657b4f (fix bug in PyDbDatabase::getBlockTable)
-        auto es = pBt->add(pBtr);
-        acutPrintf(L"\nStatus = %ls", acadErrorStatusText(es));
+        acutPrintf(L"\nHi");
     }
 
-    static int ADSPREFIX(adsfoo(void))
+    static int ADSPREFIX(foo(void))
     {
-        std::vector<AcValue> acvalues;
+        int langid = 0;
         AcResBufPtr pArgs(acedGetArgs());
-        for (auto pTail = pArgs.get(); pTail != nullptr; pTail = pTail->rbnext)
+        if (pArgs)
         {
-            switch (pTail->restype)
+            switch (pArgs->restype)
             {
-                case RTREAL:
-                case RTPOINT:
-                case RTSHORT:
-                case RTANG:
-                case RTSTR:
-                case RTENAME:
-                case RTORINT:
-                case RT3DPOINT:
-                case RTLONG:
-                    acvalues.push_back(AcValue{ *pTail });
-                    break;
-                default:
-                    break;
+                case RTSHORT: langid = pArgs->resval.rint; break;
+                case RTLONG: langid = pArgs->resval.rlong; break;
+                default: break;
             }
+            acedRetInt(MessageBoxExW(
+                adsw_acadMainWnd(),
+                L"Do you want to proceed with the action?",
+                L"Confirmation",
+                MB_YESNOCANCEL | MB_ICONQUESTION | MB_DEFBUTTON1, static_cast<WORD>(langid)
+            ));
+
+            return RSRSLT;
         }
         return RSERR;
     }
@@ -567,6 +518,6 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adsfoo, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, foo, false)
 #endif //PYRXDEBUG
 #pragma warning( pop )
