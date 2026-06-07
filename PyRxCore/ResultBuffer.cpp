@@ -199,7 +199,7 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         {
                             const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
                             pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(double)*2);
+                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(double) * 2);
                             pTail->rbnext->resval.rpoint[2] = 0.0;
                             if (pTail->rbnext != nullptr)
                                 pTail = pTail->rbnext;
