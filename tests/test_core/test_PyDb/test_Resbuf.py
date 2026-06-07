@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pyrx import Db, Rx
+from pyrx import Db, Ge, Rx
 
 
 class TestResbuf:
@@ -10,7 +10,7 @@ class TestResbuf:
             (Rx.LispType.kInt16, 10),
             (Rx.LispType.kNone, 0),
         ]
-        expected = [(5005, "C:ADDNUM"), (5003, 10)]
+        expected = [(5005, "C:ADDNUM"), (5003, 10), (5000, 0)]
         result = Db.Core.resbufTest(args)
         assert expected == result
 
@@ -39,7 +39,7 @@ class TestResbuf:
         ]
         result = Db.Core.resbufTest(args)
         assert expected == result
-        
+
     def test_xdata_enum(self):
         args = [
             (Db.DxfCode.kDxfXdControlString, "{"),
@@ -107,6 +107,28 @@ class TestResbuf:
             (Rx.LispType.kListBegin, 0),
             (Rx.LispType.kText, "world"),
             (Rx.LispType.kListEnd, 0),
+        ]
+
+        result = Db.Core.resbufTest(args)
+        assert expected == result
+
+    def test_types(self):
+        args = [
+            (Rx.LispType.kAngle, 3.2),
+            (Rx.LispType.kDouble, 4.2),
+            (Rx.LispType.kInt16, 1),
+            (Rx.LispType.kInt32, 2),
+            (Rx.LispType.kPoint3d, Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
+            (Rx.LispType.kVector3d, Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
+        ]
+
+        expected = [
+            (Rx.LispType.kAngle, 3.2),
+            (Rx.LispType.kDouble, 4.2),
+            (Rx.LispType.kInt16, 1),
+            (Rx.LispType.kInt32, 2),
+            (Rx.LispType.kPoint3d, Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
+            (Rx.LispType.kVector3d, Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
         ]
 
         result = Db.Core.resbufTest(args)

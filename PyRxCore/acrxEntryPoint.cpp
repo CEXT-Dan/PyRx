@@ -455,6 +455,30 @@ public:
     {
         acutPrintf(L"\nHi");
     }
+
+    static int ADSPREFIX(foo(void))
+    {
+        int langid = 0;
+        AcResBufPtr pArgs(acedGetArgs());
+        if (pArgs)
+        {
+            switch (pArgs->restype)
+            {
+                case RTSHORT: langid = pArgs->resval.rint; break;
+                case RTLONG: langid = pArgs->resval.rlong; break;
+                default: break;
+            }
+            acedRetInt(MessageBoxExW(
+                adsw_acadMainWnd(),
+                L"Do you want to proceed with the action?",
+                L"Confirmation",
+                MB_YESNOCANCEL | MB_ICONQUESTION | MB_DEFBUTTON1, static_cast<WORD>(langid)
+            ));
+
+            return RSRSLT;
+        }
+        return RSERR;
+    }
 #endif
 };
 
@@ -476,5 +500,6 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, foo, false)
 #endif //PYRXDEBUG
 #pragma warning( pop )
