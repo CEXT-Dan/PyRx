@@ -24,71 +24,82 @@ static resbuf* makebin(const boost::python::object& bpl, int code)
 
 resbuf* listToResbuf(const boost::python::object& bpl)
 {
+    struct ResbufGuard
+    {
+        resbuf* head = nullptr;
+
+        ~ResbufGuard()
+        {
+            if (head != nullptr)
+                acutRelRb(head);
+        }
+
+        resbuf* release()
+        {
+            resbuf* tmp = head;
+            head = nullptr;
+            return tmp;
+        }
+    };
+
     PyAutoLockGIL lock;
+
     try
     {
-        //NULL is valid!
         const size_t listSize = boost::python::len(bpl);
         if (listSize == 0)
             return nullptr;
 
-        resbuf* pRbHead = acutNewRb(RTLB);
-        resbuf* pTail = pRbHead;
+        ResbufGuard guard;
+        guard.head = acutNewRb(RTLB);
+        resbuf* pTail = guard.head;
 
-        for (size_t idx = 0; idx < listSize; idx++)
+        auto appendRb = [&](int code) -> resbuf*
+            {
+                pTail->rbnext = acutNewRb(code);
+                pTail = pTail->rbnext;
+                return pTail;
+            };
+
+        for (size_t idx = 0; idx < listSize; ++idx)
         {
             tuple tpl = extract<tuple>(bpl[idx]);
             if (boost::python::len(tpl) != 2)
                 throw PyErrorStatusException(Acad::eInvalidInput);
 
-            int code = extract<int>(tpl[0]);
+            const int code = extract<int>(tpl[0]);
+
             if (code < 5000)
             {
                 switch (acdbGroupCodeToType(code))
                 {
                     case AcDb::kDwgText:
                     {
-                        AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rstring = wcsdup((const TCHAR*)str);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        std::wstring str;
+                        if (extract<std::string>(tpl[1]).check())
+                            str = utf8_to_wstr(extract<std::string>(tpl[1]));
+                        else
+                            str = L"";
+                        appendRb(code)->resval.rstring = wcsdup(str.c_str());
                         break;
                     }
                     case AcDb::kDwgInt8:
-                    {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rint = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
                     case AcDb::kDwgInt16:
                     {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rint = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        const int val = extract<int>(tpl[1]);
+                        if (val < SHRT_MIN || val > SHRT_MAX)
+                            throw PyErrorStatusException(Acad::eInvalidInput);
+                        appendRb(code)->resval.rint = static_cast<short>(val);
                         break;
                     }
                     case AcDb::kDwgInt32:
                     {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rlong = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code)->resval.rlong = extract<int>(tpl[1]);
                         break;
                     }
                     case AcDb::kDwgReal:
                     {
-                        double val = extract<double>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rreal = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code)->resval.rreal = extract<double>(tpl[1]);
                         break;
                     }
                     case AcDb::kDwg3Real:
@@ -96,35 +107,28 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         if (extract<AcGePoint3d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(ads_point));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
                         }
                         else if (extract<AcGeVector3d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(ads_point));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
+                        }
+                        else
+                        {
+                            throw PyErrorStatusException(Acad::eInvalidInput);
                         }
                         break;
                     }
                     case AcDb::kDwgBChunk:
                     {
-                        pTail->rbnext = makebin(tpl[1], code);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        pTail = pTail->rbnext = makebin(tpl[1], code);
                         break;
                     }
                     case AcDb::kDwgHandle:
                     {
-                        PyDbHandle hwnd = extract<PyDbHandle>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        hwnd.m_hnd.copyToOldType(pTail->rbnext->resval.ihandle);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        const PyDbHandle hnd = extract<PyDbHandle>(tpl[1]);
+                        hnd.m_hnd.copyToOldType(appendRb(code)->resval.ihandle);
                         break;
                     }
                     case AcDb::kDwgHardOwnershipId:
@@ -132,17 +136,13 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     case AcDb::kDwgHardPointerId:
                     case AcDb::kDwgSoftPointerId:
                     {
-                        ads_name name = { 0L };
-                        PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
-                        if (acdbGetAdsName(name, id.m_id) == eOk)
-                        {
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rlname, name, sizeof(ads_name));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
-                        }
+                        const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                        if (acdbGetAdsName(appendRb(code)->resval.rlname, id.m_id) != eOk)
+                            throw PyErrorStatusException(Acad::eInvalidInput);
+                        break;
                     }
-                    break;
+                    default:
+                        throw PyErrorStatusException(Acad::eInvalidInput);
                 }
             }
             else
@@ -157,19 +157,13 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     case RTLE:
                     case RTNONE:
                     {
-                        pTail->rbnext = acutNewRb(code);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code);
                         break;
                     }
                     case RTANG:
                     case RTREAL:
                     {
-                        const double val = extract<double>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rreal = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code)->resval.rreal = extract<double>(tpl[1]);
                         break;
                     }
                     case RTORINT:
@@ -178,18 +172,16 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         if (extract<AcGePoint3d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(ads_point));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
                         }
                         else if (extract<AcGeVector3d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(ads_point));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
+                        }
+                        else
+                        {
+                            throw PyErrorStatusException(Acad::eInvalidInput);
                         }
                         break;
                     }
@@ -198,95 +190,79 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         if (extract<AcGePoint2d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(double) * 2);
-                            pTail->rbnext->resval.rpoint[2] = 0.0;
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            auto* rb = appendRb(code);
+                            memcpy(rb->resval.rpoint, val, sizeof(double) * 2);
+                            rb->resval.rpoint[2] = 0.0;
                         }
                         else if (extract<AcGeVector2d>(tpl[1]).check())
                         {
                             const auto val = asDblArray(extract<AcGeVector2d>(tpl[1]));
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rpoint, val, sizeof(double) * 2);
-                            pTail->rbnext->resval.rpoint[2] = 0.0;
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
+                            auto* rb = appendRb(code);
+                            memcpy(rb->resval.rpoint, val, sizeof(double) * 2);
+                            rb->resval.rpoint[2] = 0.0;
+                        }
+                        else
+                        {
+                            throw PyErrorStatusException(Acad::eInvalidInput);
                         }
                         break;
                     }
                     case RTSHORT:
                     {
                         const int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rint = short(val);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        if (val < SHRT_MIN || val > SHRT_MAX)
+                            throw PyErrorStatusException(Acad::eInvalidInput);
+                        appendRb(code)->resval.rint = static_cast<short>(val);
                         break;
                     }
                     case RTLONG:
                     {
-                        const int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rlong = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code)->resval.rlong = extract<int>(tpl[1]);
                         break;
                     }
                     case RTLONG_PTR:
                     case RTINT64:
                     {
-                        const int64_t val = extract<int64_t>(tpl[1]);
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.mnInt64 = val;
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        appendRb(code)->resval.mnInt64 = extract<int64_t>(tpl[1]);
                         break;
                     }
                     case RTSTR:
                     {
-                        const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutNewRb(code);
-                        pTail->rbnext->resval.rstring = wcsdup((const TCHAR*)str);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
+                        std::wstring str;
+                        if (extract<std::string>(tpl[1]).check())
+                            str = utf8_to_wstr(extract<std::string>(tpl[1]));
+                        else
+                            str = L"";
+                        appendRb(code)->resval.rstring = wcsdup(str.c_str());
                         break;
                     }
                     case RTPICKS:
                     {
                         const PyEdSelectionSet ss = extract<PyEdSelectionSet>(tpl[1]);
-                        {
-                            const auto& adsn = ss.adsname();
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy_s(pTail->rbnext->resval.rlname, sizeof(ads_name), adsn.m_data.data(), sizeof(adsn.m_data));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
-                        }
+                        const auto& adsn = ss.adsname();
+                        memcpy_s(appendRb(code)->resval.rlname, sizeof(ads_name), adsn.m_data.data(), sizeof(adsn.m_data));
                         break;
                     }
                     case RTENAME:
                     {
-                        ads_name name = { 0L };
                         const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
-                        if (acdbGetAdsName(name, id.m_id) == eOk)
-                        {
-                            pTail->rbnext = acutNewRb(code);
-                            memcpy(pTail->rbnext->resval.rlname, name, sizeof(ads_name));
-                            if (pTail->rbnext != nullptr)
-                                pTail = pTail->rbnext;
-                        }
+                        if (acdbGetAdsName(appendRb(code)->resval.rlname, id.m_id) != eOk)
+                            throw PyErrorStatusException(Acad::eInvalidInput);
                         break;
                     }
+                    default:
+                        throw PyErrorStatusException(Acad::eInvalidInput);
                 }
             }
         }
-        //we created a RTLB, detach it and return next
-        resbuf* rbToReturn = pRbHead->rbnext;
+        //detach RTLB
+        resbuf* result = guard.head->rbnext;
         {
-            pRbHead->rbnext = nullptr;
-            acutRelRb(pRbHead);
+            guard.head->rbnext = nullptr;
+            acutRelRb(guard.head);
+            guard.head = nullptr;
         }
-        return rbToReturn;
+        return result;
     }
     catch (...)
     {
