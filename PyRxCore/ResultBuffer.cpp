@@ -255,9 +255,8 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                 }
             }
         }
-        //detach RTLB
         resbuf* result = guard.head->rbnext;
-        {
+        { //detach RTLB
             guard.head->rbnext = nullptr;
             acutRelRb(guard.head);
             guard.head = nullptr;
