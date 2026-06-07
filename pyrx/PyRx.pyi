@@ -25,8 +25,7 @@ kPoint3d: LispType  # 5009
 kSelectionSet: LispType  # 5007
 kT_atom: LispType  # 5021
 kText: LispType  # 5005
-kVector2d: LispType  # 5002
-kVector3d: LispType  # 5009
+kVector3d: LispType  # 5008
 kVoid: LispType  # 5014
 
 class LispType(_BoostPythonEnum):
@@ -42,9 +41,8 @@ class LispType(_BoostPythonEnum):
     kObjectId: ClassVar[Self]  # 5006
     kOrientation: ClassVar[Self]  # 5008
     kPoint2d: ClassVar[Self]  # 5002
-    kVector2d: ClassVar[Self]  # 5002
     kPoint3d: ClassVar[Self]  # 5009
-    kVector3d: ClassVar[Self]  # 5009
+    kVector3d: ClassVar[Self]  # 5008
     kT_atom: ClassVar[Self]  # 5021
     kText: ClassVar[Self]  # 5005
     kVoid: ClassVar[Self]  # 5014

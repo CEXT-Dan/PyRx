@@ -143,7 +143,6 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         }
                     }
                     break;
-
                 }
             }
             else
@@ -281,10 +280,12 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                 }
             }
         }
-        //we created a RTLB, detach it and return next 
+        //we created a RTLB, detach it and return next
         resbuf* rbToReturn = pRbHead->rbnext;
-        pRbHead->rbnext = nullptr;
-        acutRelRb(pRbHead);
+        {
+            pRbHead->rbnext = nullptr;
+            acutRelRb(pRbHead);
+        }
         return rbToReturn;
     }
     catch (...)
