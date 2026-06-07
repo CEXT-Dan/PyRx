@@ -23,7 +23,6 @@ enum class LispType
     kObjectId = 5006,
     kOrientation = 5008,
     kPoint2d = 5002,
-    kVector2d = kOrientation,
     kPoint3d = 5009,
     kVector3d = kOrientation,
     kSelectionSet = 5007,
@@ -188,7 +187,6 @@ static BOOST_PYTHON_MODULE(PyRx)
         .value("kObjectId", LispType::kObjectId)
         .value("kOrientation", LispType::kOrientation)
         .value("kPoint2d", LispType::kPoint2d)
-        .value("kVector2d", LispType::kVector2d)
         .value("kPoint3d", LispType::kPoint3d)
         .value("kVector3d", LispType::kVector3d)
         .value("kT_atom", LispType::kT_atom)
