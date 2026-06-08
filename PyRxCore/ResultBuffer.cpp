@@ -167,44 +167,24 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                         break;
                     }
                     case RTORINT:
+                    {
+                        const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
+                        memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
+                        break;
+                    }
                     case RT3DPOINT:
                     {
-                        if (extract<AcGePoint3d>(tpl[1]).check())
-                        {
-                            const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
-                        }
-                        else if (extract<AcGeVector3d>(tpl[1]).check())
-                        {
-                            const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
-                            memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
-                        }
-                        else
-                        {
-                            throw PyErrorStatusException(Acad::eInvalidInput);
-                        }
+                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                        memcpy(appendRb(code)->resval.rpoint, val, sizeof(ads_point));
+
                         break;
                     }
                     case RTPOINT:
                     {
-                        if (extract<AcGePoint2d>(tpl[1]).check())
-                        {
-                            const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                            auto* rb = appendRb(code);
-                            memcpy(rb->resval.rpoint, val, sizeof(double) * 2);
-                            rb->resval.rpoint[2] = 0.0;
-                        }
-                        else if (extract<AcGeVector2d>(tpl[1]).check())
-                        {
-                            const auto val = asDblArray(extract<AcGeVector2d>(tpl[1]));
-                            auto* rb = appendRb(code);
-                            memcpy(rb->resval.rpoint, val, sizeof(double) * 2);
-                            rb->resval.rpoint[2] = 0.0;
-                        }
-                        else
-                        {
-                            throw PyErrorStatusException(Acad::eInvalidInput);
-                        }
+                        const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                        auto* rb = appendRb(code);
+                        memcpy(rb->resval.rpoint, val, sizeof(double) * 2);
+                        rb->resval.rpoint[2] = 0.0;
                         break;
                     }
                     case RTSHORT:
