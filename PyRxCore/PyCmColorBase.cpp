@@ -159,6 +159,24 @@ static void FromAcCmColorFromString(AcCmColor& left, const std::string& htmlColo
     left.setRGB(r, g, b);
 }
 
+static AcCmColor AcCmColorMakeTrueColor(const AcCmColor& clr)
+{
+#if defined(_GRXTARGET260) || defined(_ZRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    AcCmColor newColor;
+    if (clr.isByACI())
+    {
+        AcCmEntityColor ec = clr.entityColor();
+        AcCmEntityColor trueEntityColor = ec.makeTrueColor();
+        newColor.setRGB(trueEntityColor.getRGB());
+        return newColor;
+    }
+    newColor = clr;
+    return newColor;
+#endif
+}
+
 void makePyCmColorWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -205,6 +223,7 @@ void makePyCmColorWrapper()
         .def("entityColor", &AcCmColor::entityColor, DS.ARGS())
         .def("toHTMLColor", &AcCmColorRGBToHex, DS.ARGS())
         .def("fromHTMLColor", &FromAcCmColorFromString, DS.ARGS({ "colorString: str" }))
+        .def("makeTrueColor", &AcCmColorMakeTrueColor, DS.ARGS())
 
         //ctor
         .def("__init__", make_constructor(&AcCmColorFromStringCtor))
@@ -339,7 +358,7 @@ void makePyCmEntityColorWrapper()
         .def<bool(AcCmEntityColor::*)()const>("isNone", &AcCmEntityColor::isNone)
         .def<bool(AcCmEntityColor::*)()const>("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("trueColor", &AcCmEntityColor::trueColor)
-#if defined(_GRXTARGET) && (_ZRXTARGET > 240)
+#if defined(_ZRXTARGET) || (_ZRXTARGET > 240)
         .def<Adesk::UInt8(AcCmEntityColor::*)()const>("trueColorMethod", &AcCmEntityColor::trueColorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColor", &AcCmEntityColor::setTrueColor)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColorMethod", &AcCmEntityColor::setTrueColorMethod)
