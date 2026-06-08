@@ -41,7 +41,7 @@ class TestPyDbCore:
         ĄĆĘŁŃÓŚŹŻ"""
         assert Db.Core.icompare(upper, lower) == True
         
-    def test_entmod(self, db_06457: Db.Database):
+    def test_entmod(self, db_06457: Db.Database) -> None:
         objHnd = Db.Handle("2c7b58")
         objId = db_06457.getObjectId(False, objHnd)
         assert objId.isNull() is False
