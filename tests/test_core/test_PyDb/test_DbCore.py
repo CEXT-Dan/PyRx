@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Db, Ge
 
 
 class TestPyDbCore:
@@ -40,3 +40,17 @@ class TestPyDbCore:
         ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸ
         ĄĆĘŁŃÓŚŹŻ"""
         assert Db.Core.icompare(upper, lower) == True
+        
+    def test_entmod(self, db_06457: Db.Database):
+        objHnd = Db.Handle("2c7b58")
+        objId = db_06457.getObjectId(False, objHnd)
+        assert objId.isNull() is False
+        buf = Db.Core.entGet(objId) # list of tuples
+        for index, (code, value) in enumerate(buf):
+            if code == 10:
+                buf[index] = (code, Ge.Point3d(1,1,1))
+        assert Db.Core.entMod(buf) == True
+        line = Db.Line(objId)
+        assert line.startPoint() == Ge.Point3d(1,1,1)
+            
+
