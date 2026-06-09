@@ -474,26 +474,28 @@ public:
         acutPrintf(L"\nHi");
     }
 
-    static int ADSPREFIX(foo(void))
+    static int ADSPREFIX(adsfoo(void))
     {
-        int langid = 0;
+        std::vector<AcValue> acvalues;
         AcResBufPtr pArgs(acedGetArgs());
-        if (pArgs)
+        for (auto pTail = pArgs.get(); pTail != nullptr; pTail = pTail->rbnext)
         {
-            switch (pArgs->restype)
+            switch (pTail->restype)
             {
-                case RTSHORT: langid = pArgs->resval.rint; break;
-                case RTLONG: langid = pArgs->resval.rlong; break;
-                default: break;
+                case RTREAL:
+                case RTPOINT:
+                case RTSHORT:
+                case RTANG:
+                case RTSTR:
+                case RTENAME:
+                case RTORINT:
+                case RT3DPOINT:
+                case RTLONG:
+                    acvalues.push_back(AcValue{ *pTail });
+                    break;
+                default:
+                    break;
             }
-            acedRetInt(MessageBoxExW(
-                adsw_acadMainWnd(),
-                L"Do you want to proceed with the action?",
-                L"Confirmation",
-                MB_YESNOCANCEL | MB_ICONQUESTION | MB_DEFBUTTON1, static_cast<WORD>(langid)
-            ));
-
-            return RSRSLT;
         }
         return RSERR;
     }
@@ -518,6 +520,6 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, foo, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adsfoo, false)
 #endif //PYRXDEBUG
 #pragma warning( pop )

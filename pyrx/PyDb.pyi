@@ -7463,6 +7463,7 @@ class Database(PyRx.RxObject):
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE.
         """
+    def readDwgAndClose(self, fullPath: str, /) -> None: ...
     @overload
     def readDwgFile(self, fileName: str, /) -> None:
         """
