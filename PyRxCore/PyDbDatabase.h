@@ -552,6 +552,8 @@ public:
     PyDbObjectId		xrefBlockId() const;
     bool				xrefEditEnabled() const;
     //
+    static PyDbDatabase createFromDWG1(const std::string& path);
+    static PyDbDatabase createFromDWG2(const std::string& path, bool closeInput);
     static std::string	className();
 public:
     AcDbDatabase* impObj(const std::source_location& src = std::source_location::current()) const;

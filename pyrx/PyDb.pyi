@@ -6517,6 +6517,8 @@ class Database(PyRx.RxObject):
         also the caller's responsibility to be sure that the ids and pCount arrays are the same
         size. Returns Acad::eOk if successful.
         """
+    @staticmethod
+    def createFromDWG(fullPath: str, closeInput: bool = True, /) -> Database: ...
     def currentLayoutId(self, /) -> ObjectId: ...
     def currentSpace(
         self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
