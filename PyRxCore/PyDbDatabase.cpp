@@ -544,6 +544,7 @@ void makePyDbDatabaseWrapper()
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS(2968))
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)
         .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.OVRL(readDwgFilesOverloads, 3116))
+        .def("readDwgAndClose", &PyDbDatabase::readDwgAndClose, DS.ARGS({ "fullPath: str" }))
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("modelSpace", &PyDbDatabase::modelSpace1)
@@ -2338,6 +2339,13 @@ void PyDbDatabase::setFullSaveRequired() const
 #else
     impObj()->setFullSaveRequired();
 #endif
+}
+
+void PyDbDatabase::readDwgAndClose(const char* fileName) const
+{
+    std::wstring wsfileName{ utf8_to_wstr(fileName) };
+    PyThrowBadEs(impObj()->readDwgFile(wsfileName.c_str()));
+    PyThrowBadEs(impObj()->closeInput(true));
 }
 
 void PyDbDatabase::readDwgFile1(const char* fileName) const

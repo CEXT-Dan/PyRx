@@ -313,6 +313,7 @@ public:
     void	            saveAs2(const std::string& fileName, const bool bBakAndRename, const AcDb::AcDbDwgVersion dwgVer) const;
     void	            setFingerprintGuid(const std::string& newGuid) const;
     void				setFullSaveRequired() const;
+    void	            readDwgAndClose(const char* fileName) const;
     void	            readDwgFile1(const char* fileName) const;
     void	            readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion, const std::string& password) const;
     std::string			getFilename() const;
