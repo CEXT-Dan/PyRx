@@ -3698,12 +3698,20 @@ PyDbDatabase PyDbDatabase::createFromDWG1(const std::string& path)
 
 PyDbDatabase PyDbDatabase::createFromDWG2(const std::string& path, bool closeInput)
 {
+<<<<<<< HEAD
     std::unique_ptr<AcDbDatabase> pDb{ new AcDbDatabase(false, true) };
+=======
+    AcDbDatabase* pDb = new AcDbDatabase(false, true);
+>>>>>>> 54331e01 (add Db.Database.createFromDWG(path))
     std::wstring wsPath = utf8_to_wstr(path);
     PyThrowBadEs(pDb->readDwgFile(wsPath.c_str()));
     if (closeInput)
         PyThrowBadEs(pDb->closeInput(true));
+<<<<<<< HEAD
     return PyDbDatabase(pDb.release(), true);
+=======
+    return PyDbDatabase(pDb, true);
+>>>>>>> 54331e01 (add Db.Database.createFromDWG(path))
 }
 
 std::string PyDbDatabase::className()
