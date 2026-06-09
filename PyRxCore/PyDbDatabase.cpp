@@ -559,6 +559,8 @@ void makePyDbDatabaseWrapper()
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "current_entity_color : PyDb.Color" }, 3146))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "current_entity_transparency : PyDb.Transparency" }, 3151))
         .def("setInterfereColor", &PyDbDatabase::setInterfereColor, DS.ARGS({ "interference_color : PyDb.Color" }, 3197))
+        .def("createFromDWG", &PyDbDatabase::createFromDWG1)
+        .def("createFromDWG", &PyDbDatabase::createFromDWG2, DS.SARGS({ "fullPath : str", "closeInput : bool = True" })).staticmethod("createFromDWG")
         .def("className", &PyDbDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1112,7 +1114,7 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
     if (pClass == nullptr)
         return pyList;
     for (const auto& id : getAllIdsFromDatabase(pDb, pClass))
-            pyList.append(id);
+        pyList.append(id);
     return pyList;
 }
 
@@ -1174,7 +1176,7 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _class
     {
         _set.insert(item.impObj());
     }
-    for (const auto& id : getAllIdsFromDatabase(impObj(),AcDbObject::desc()))
+    for (const auto& id : getAllIdsFromDatabase(impObj(), AcDbObject::desc()))
     {
         if (_set.contains(id.m_id.objectClass()))
             pyList.push_back(id);
@@ -3687,6 +3689,21 @@ PyDbObjectId PyDbDatabase::xrefBlockId() const
 bool PyDbDatabase::xrefEditEnabled() const
 {
     return impObj()->xrefEditEnabled();
+}
+
+PyDbDatabase PyDbDatabase::createFromDWG1(const std::string& path)
+{
+    return createFromDWG2(path, true);
+}
+
+PyDbDatabase PyDbDatabase::createFromDWG2(const std::string& path, bool closeInput)
+{
+    AcDbDatabase* pDb = new AcDbDatabase(false, true);
+    std::wstring wsPath = utf8_to_wstr(path);
+    PyThrowBadEs(pDb->readDwgFile(wsPath.c_str()));
+    if (closeInput)
+        PyThrowBadEs(pDb->closeInput(true));
+    return PyDbDatabase(pDb, true);
 }
 
 std::string PyDbDatabase::className()
