@@ -544,6 +544,7 @@ void makePyDbDatabaseWrapper()
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS(2968))
         .def("readDwgFile", &PyDbDatabase::readDwgFile1)
         .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.OVRL(readDwgFilesOverloads, 3116))
+        .def("readDwgAndClose", &PyDbDatabase::readDwgAndClose, DS.ARGS({ "fullPath: str" }))
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("modelSpace", &PyDbDatabase::modelSpace1)
@@ -558,6 +559,8 @@ void makePyDbDatabaseWrapper()
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "current_entity_color : PyDb.Color" }, 3146))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "current_entity_transparency : PyDb.Transparency" }, 3151))
         .def("setInterfereColor", &PyDbDatabase::setInterfereColor, DS.ARGS({ "interference_color : PyDb.Color" }, 3197))
+        .def("createFromDWG", &PyDbDatabase::createFromDWG1)
+        .def("createFromDWG", &PyDbDatabase::createFromDWG2, DS.SARGS({ "fullPath : str", "closeInput : bool = True" })).staticmethod("createFromDWG")
         .def("className", &PyDbDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -715,14 +718,14 @@ PyDbBlockTable PyDbDatabase::getBlockTable1() const
 {
     AcDbBlockTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getBlockTable(ptr));
-    return PyDbBlockTable(ptr, true);
+    return PyDbBlockTable(ptr, false);
 }
 
 PyDbBlockTable PyDbDatabase::getBlockTable2(AcDb::OpenMode mode) const
 {
     AcDbBlockTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getBlockTable(ptr, mode));
-    return PyDbBlockTable(ptr, true);
+    return PyDbBlockTable(ptr, false);
 }
 
 boost::python::dict PyDbDatabase::getBlocks() const
@@ -1111,7 +1114,7 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
     if (pClass == nullptr)
         return pyList;
     for (const auto& id : getAllIdsFromDatabase(pDb, pClass))
-            pyList.append(id);
+        pyList.append(id);
     return pyList;
 }
 
@@ -1173,7 +1176,7 @@ PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _class
     {
         _set.insert(item.impObj());
     }
-    for (const auto& id : getAllIdsFromDatabase(impObj(),AcDbObject::desc()))
+    for (const auto& id : getAllIdsFromDatabase(impObj(), AcDbObject::desc()))
     {
         if (_set.contains(id.m_id.objectClass()))
             pyList.push_back(id);
@@ -2338,6 +2341,13 @@ void PyDbDatabase::setFullSaveRequired() const
 #else
     impObj()->setFullSaveRequired();
 #endif
+}
+
+void PyDbDatabase::readDwgAndClose(const char* fileName) const
+{
+    std::wstring wsfileName{ utf8_to_wstr(fileName) };
+    PyThrowBadEs(impObj()->readDwgFile(wsfileName.c_str()));
+    PyThrowBadEs(impObj()->closeInput(true));
 }
 
 void PyDbDatabase::readDwgFile1(const char* fileName) const
@@ -3681,6 +3691,21 @@ bool PyDbDatabase::xrefEditEnabled() const
     return impObj()->xrefEditEnabled();
 }
 
+PyDbDatabase PyDbDatabase::createFromDWG1(const std::string& path)
+{
+    return createFromDWG2(path, true);
+}
+
+PyDbDatabase PyDbDatabase::createFromDWG2(const std::string& path, bool closeInput)
+{
+    std::unique_ptr<AcDbDatabase> pDb{ new AcDbDatabase(false, true) };
+    std::wstring wsPath = utf8_to_wstr(path);
+    PyThrowBadEs(pDb->readDwgFile(wsPath.c_str()));
+    if (closeInput)
+        PyThrowBadEs(pDb->closeInput(true));
+    return PyDbDatabase(pDb.release(), true);
+}
+
 std::string PyDbDatabase::className()
 {
     return "AcDbDatabase";
@@ -3693,5 +3718,3 @@ AcDbDatabase* PyDbDatabase::impObj(const std::source_location& src /*= std::sour
     }
     return static_cast<AcDbDatabase*>(m_pyImp.get());
 }
-
-
