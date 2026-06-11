@@ -453,7 +453,22 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        acutPrintf(L"\nHi");
+        auto pDb = acdbCurDwg();
+
+        AcDbObjectPointer<AcDbLine> line;
+        line.create();
+        line->setStartPoint(AcGePoint3d(0, 0, 0));
+        line->setEndPoint(AcGePoint3d(0, 0, 0));
+
+        AcDbBlockTableRecordPointer pBtr;
+        pBtr.create();
+        pBtr->setName(L"100");
+        pBtr->appendAcDbEntity(line);
+
+        AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
+
+        auto es = pBt->add(pBtr);
+        acutPrintf(L"\nStatus = %ls", acadErrorStatusText(es));
     }
 
     static int ADSPREFIX(adsfoo(void))
