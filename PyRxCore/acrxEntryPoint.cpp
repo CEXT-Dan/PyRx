@@ -478,6 +478,7 @@ public:
         line->setStartPoint(AcGePoint3d(0, 0, 0));
         line->setEndPoint(AcGePoint3d(0, 0, 0));
 
+<<<<<<< HEAD
         AcGePoint2dArray vtx;
         vtx.append(AcGePoint2d(0, 0));
         vtx.append(AcGePoint2d(0, 100));
@@ -507,6 +508,15 @@ public:
         pBtr->appendAcDbEntity(pHatch);
         
         AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
+=======
+        AcDbBlockTableRecordPointer pBtr;
+        pBtr.create();
+        pBtr->setName(L"100");
+        pBtr->appendAcDbEntity(line);
+
+        AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
+
+>>>>>>> 08657b4f (fix bug in PyDbDatabase::getBlockTable)
         auto es = pBt->add(pBtr);
         acutPrintf(L"\nStatus = %ls", acadErrorStatusText(es));
     }

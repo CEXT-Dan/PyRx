@@ -715,14 +715,14 @@ PyDbBlockTable PyDbDatabase::getBlockTable1() const
 {
     AcDbBlockTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getBlockTable(ptr));
-    return PyDbBlockTable(ptr, false);
+    return PyDbBlockTable(ptr, true);
 }
 
 PyDbBlockTable PyDbDatabase::getBlockTable2(AcDb::OpenMode mode) const
 {
     AcDbBlockTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getBlockTable(ptr, mode));
-    return PyDbBlockTable(ptr, false);
+    return PyDbBlockTable(ptr, true);
 }
 
 boost::python::dict PyDbDatabase::getBlocks() const
