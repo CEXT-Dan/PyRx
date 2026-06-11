@@ -206,12 +206,7 @@ void PyDbObject::releaseExtensionDictionary() const
 void PyDbObject::close() const
 {
     PyThrowBadEs(impObj()->close());
-#if defined(_IRXTARGET140)
-    // Other CADs allow access the pointer after close is called;
-    // this is to prevent PyRxObjectDeleter from crashing when checking 
-    // if the object is DBRO
-    this->forceKeepAlive(true);
-#endif
+    this->setInternalClosed(true);
 }
 
 void PyDbObject::upgradeOpen() const
