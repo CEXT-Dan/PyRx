@@ -2180,6 +2180,7 @@ class AcadCircle(PyAx.AcadEntity):
     def thickness(self, /) -> float: ...
 
 class AcadDatabase:
+    def __hash__(self, /) -> int: ...
     def __init__(self) -> None:
         """
         Raises an exception.

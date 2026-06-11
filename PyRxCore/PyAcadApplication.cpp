@@ -1403,6 +1403,9 @@ void makePyAcadDatabaseWrapper()
         .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
         .def("sectionManager", &PyAcadDatabase::sectionManager, DS.ARGS())
         .def("materials", &PyAcadDatabase::materials, DS.ARGS())
+        .def("__eq__", &PyAcadDatabase::isEqualTo, DS.ARGS({ "rhs: PyAx.AcadDatabase" }))
+        .def("__ne__", &PyAcadDatabase::isNotEqualTo, DS.ARGS({ "rhs: PyAx.AcadDatabase" }))
+        .def("__hash__", &PyAcadDatabase::hash, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1440,6 +1443,21 @@ PyAcadSectionManager PyAcadDatabase::sectionManager() const
 PyAcadMaterials PyAcadDatabase::materials() const
 {
     return PyAcadMaterials{ impObj()->GetMaterials() };
+}
+
+bool PyAcadDatabase::isEqualTo(const PyAcadDatabase& other) const
+{
+    return impObj()->IsEqualTo(*other.impObj());
+}
+
+bool PyAcadDatabase::isNotEqualTo(const PyAcadDatabase& other) const
+{
+    return !impObj()->IsEqualTo(*other.impObj());
+}
+
+std::size_t PyAcadDatabase::hash() const
+{
+    return impObj()->Hash();
 }
 
 PyAcadBlocks PyAcadDatabase::blocks() const
