@@ -1,10 +1,22 @@
 from __future__ import annotations
 
+import enum
 import queue
 import threading
+import typing as t
 from functools import wraps
 
 from pyrx import Ap
+
+
+class _ResultEnum(enum.Enum):
+    RESULT = enum.auto()
+    EXCEPTION = enum.auto()
+
+
+class _Result(t.NamedTuple):
+    type: _ResultEnum
+    value: t.Any
 
 
 def call_after(func, args=(), kwargs={}, *, wait=False):
@@ -28,24 +40,24 @@ def call_after(func, args=(), kwargs={}, *, wait=False):
 
     if wait:
         # TODO: Check if host is in command ctx - deadlock
-        q: queue.Queue[int | BaseException] = queue.Queue(1)
+        q: queue.Queue[_Result] = queue.Queue(1)
 
         def wrapper():
             Ap.Application.removeOnIdleWinMsg(wrapper)
             try:
                 res = func(*args, **kwargs)
             except BaseException as e:
-                q.put_nowait(e)
+                q.put_nowait(_Result(_ResultEnum.EXCEPTION, e))
             else:
-                q.put_nowait(res)
+                q.put_nowait(_Result(_ResultEnum.RESULT, res))
 
         Ap.Application.registerOnIdleWinMsg(wrapper)
 
         res = q.get()
-        if isinstance(res, BaseException):
-            raise res
+        if res.type == _ResultEnum.EXCEPTION:
+            raise res.value
         else:
-            return res
+            return res.value
 
     else:
 
