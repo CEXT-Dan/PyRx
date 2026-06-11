@@ -471,7 +471,70 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-       acutPrintf(L"\nHi");
+        auto pDb = acdbCurDwg();
+
+        AcDbObjectPointer<AcDbLine> line;
+        line.create();
+        line->setStartPoint(AcGePoint3d(0, 0, 0));
+        line->setEndPoint(AcGePoint3d(0, 0, 0));
+
+        AcGePoint2dArray vtx;
+        vtx.append(AcGePoint2d(0, 0));
+        vtx.append(AcGePoint2d(0, 100));
+        vtx.append(AcGePoint2d(100, 100));
+        vtx.append(AcGePoint2d(100, 0));
+        vtx.append(AcGePoint2d(0, 0));
+
+        AcGeDoubleArray blgs;
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+
+        AcDbObjectPointer<AcDbHatch> pHatch;
+        pHatch.create();
+        pHatch->setAssociative(false);
+        pHatch->setPattern(AcDbHatch::HatchPatternType::kPreDefined, L"ANSI31");
+        pHatch->setHatchStyle(AcDbHatch::kNormal);
+        pHatch->appendLoop(1/*kExternal*/, vtx, blgs);
+        pHatch->evaluateHatch();
+
+        AcDbBlockTableRecordPointer pBtr;
+        pBtr.create();
+        pBtr->setName(L"MyLittleTestBlock");
+        pBtr->appendAcDbEntity(line);
+        pBtr->appendAcDbEntity(pHatch);
+        
+        AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
+        auto es = pBt->add(pBtr);
+        acutPrintf(L"\nStatus = %ls", acadErrorStatusText(es));
+    }
+
+    static int ADSPREFIX(adsfoo(void))
+    {
+        std::vector<AcValue> acvalues;
+        AcResBufPtr pArgs(acedGetArgs());
+        for (auto pTail = pArgs.get(); pTail != nullptr; pTail = pTail->rbnext)
+        {
+            switch (pTail->restype)
+            {
+                case RTREAL:
+                case RTPOINT:
+                case RTSHORT:
+                case RTANG:
+                case RTSTR:
+                case RTENAME:
+                case RTORINT:
+                case RT3DPOINT:
+                case RTLONG:
+                    acvalues.push_back(AcValue{ *pTail });
+                    break;
+                default:
+                    break;
+            }
+        }
+        return RSERR;
     }
 #endif
 };
@@ -494,5 +557,6 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adsfoo, false)
 #endif //PYRXDEBUG
 #pragma warning( pop )
