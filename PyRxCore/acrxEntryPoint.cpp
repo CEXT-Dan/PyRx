@@ -453,6 +453,17 @@ public:
         return std::make_tuple(es, id);
     }
 
+    static std::tuple<Acad::ErrorStatus, AcDbObjectId> postToModelSpace2(AcDbEntity* pEnt)
+    {
+        if (pEnt == nullptr)
+            return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
+        AcDbObjectId id;
+        AcDbDatabase* pDb = acdbCurDwg();
+        AcDbBlockTableRecordPointer model(getblockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
+        Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
+        return std::make_tuple(es, id);
+    }
+
     static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", const AcRxClass* desc = AcDbEntity::desc())
         -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
@@ -472,32 +483,6 @@ public:
     static void AcRxPyApp_idoit1(void)
     {
         acutPrintf(L"\nHi");
-    }
-
-    static int ADSPREFIX(adsfoo(void))
-    {
-        std::vector<AcValue> acvalues;
-        AcResBufPtr pArgs(acedGetArgs());
-        for (auto pTail = pArgs.get(); pTail != nullptr; pTail = pTail->rbnext)
-        {
-            switch (pTail->restype)
-            {
-                case RTREAL:
-                case RTPOINT:
-                case RTSHORT:
-                case RTANG:
-                case RTSTR:
-                case RTENAME:
-                case RTORINT:
-                case RT3DPOINT:
-                case RTLONG:
-                    acvalues.push_back(AcValue{ *pTail });
-                    break;
-                default:
-                    break;
-            }
-        }
-        return RSERR;
     }
 #endif
 };
@@ -520,6 +505,5 @@ ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit1, idoit1, ACRX_CMD_MODAL, NULL)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adsfoo, false)
 #endif //PYRXDEBUG
 #pragma warning( pop )
