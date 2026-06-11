@@ -59,7 +59,7 @@ def get_cad_scr(cfg_path: Path, debug=False):
         "PYCMDPROMPT\n"
         + "import sys\n"
         + f"sys.path.insert(0, {str(MAIN_DIR)!r})\n"
-        + "quit\n"  # end PYCMDPROMPT
+        + "exit\n"  # end PYCMDPROMPT
         # load python module
         + f'(adspyload "{Path(host_runner_file).as_posix()}")\n'
         + ("DEBUG\n" if debug else "")
