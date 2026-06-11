@@ -460,13 +460,35 @@ public:
         line->setStartPoint(AcGePoint3d(0, 0, 0));
         line->setEndPoint(AcGePoint3d(0, 0, 0));
 
+        AcGePoint2dArray vtx;
+        vtx.append(AcGePoint2d(0, 0));
+        vtx.append(AcGePoint2d(0, 100));
+        vtx.append(AcGePoint2d(100, 100));
+        vtx.append(AcGePoint2d(100, 0));
+        vtx.append(AcGePoint2d(0, 0));
+
+        AcGeDoubleArray blgs;
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+        blgs.append(0.0);
+
+        AcDbObjectPointer<AcDbHatch> pHatch;
+        pHatch.create();
+        pHatch->setAssociative(false);
+        pHatch->setPattern(AcDbHatch::HatchPatternType::kPreDefined, L"ANSI31");
+        pHatch->setHatchStyle(AcDbHatch::kNormal);
+        pHatch->appendLoop(1/*kExternal*/, vtx, blgs);
+        pHatch->evaluateHatch();
+
         AcDbBlockTableRecordPointer pBtr;
         pBtr.create();
-        pBtr->setName(L"100");
+        pBtr->setName(L"MyLittleTestBlock");
         pBtr->appendAcDbEntity(line);
-
+        pBtr->appendAcDbEntity(pHatch);
+        
         AcDbBlockTablePointer pBt(pDb->blockTableId(), AcDb::kForWrite);
-
         auto es = pBt->add(pBtr);
         acutPrintf(L"\nStatus = %ls", acadErrorStatusText(es));
     }
