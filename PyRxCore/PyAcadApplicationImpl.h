@@ -202,6 +202,8 @@ public:
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
     PyIAcadSectionManagerPtr GetSectionManager() const;
     PyIAcadMaterialsPtr     GetMaterials() const;
+    bool                    IsEqualTo(const PyIAcadDatabaseImpl& other) const;
+    std::size_t             Hash() const;
 public:
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

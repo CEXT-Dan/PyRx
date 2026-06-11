@@ -408,7 +408,9 @@ public:
     PyAcadSummaryInfo           summaryInfo() const;
     PyAcadSectionManager        sectionManager() const;
     PyAcadMaterials             materials() const;
-
+    bool                        isEqualTo(const PyAcadDatabase& other) const;
+    bool                        isNotEqualTo(const PyAcadDatabase& other) const;
+    std::size_t                 hash() const;
     static std::string          className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;

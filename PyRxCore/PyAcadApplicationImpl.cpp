@@ -1153,6 +1153,16 @@ PyIAcadMaterialsPtr PyIAcadDatabaseImpl::GetMaterials() const
     return std::make_unique<PyIAcadMaterialsImpl>(ptr);
 }
 
+bool PyIAcadDatabaseImpl::IsEqualTo(const PyIAcadDatabaseImpl& other) const
+{
+    return impObj() == other.impObj();
+}
+
+std::size_t PyIAcadDatabaseImpl::Hash() const
+{
+    return std::hash<IAcadDatabase*>{}(m_pimpl.GetInterfacePtr());
+}
+
 IAcadDatabase* PyIAcadDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
