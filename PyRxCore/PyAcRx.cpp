@@ -115,7 +115,7 @@ void flushPromptBuffer()
     getLockqueue().write();
 }
 
-template<eDirection_type>
+template<eDirection_type Direction>
 class py_redirector
 {
 public:
@@ -134,6 +134,19 @@ public:
     void flush()
     {
         doWrite("\n");
+    }
+
+    int fileno()
+    {
+        if constexpr (Direction == eStderr)
+            return 2;
+        else
+            return 1;
+    }
+
+    bool isatty()
+    {
+        return false;
     }
 };
 
@@ -160,11 +173,15 @@ static BOOST_PYTHON_MODULE(PyRx)
         .def("__init__", make_constructor(make_stdout_redirector))
         .def("write", &stdout_redirector::write)
         .def("flush", &stdout_redirector::flush)
+        .def("fileno", &stderr_redirector::fileno)
+        .def("isatty", &stdout_redirector::isatty)
         ;
     class_<stderr_redirector>("stderr", init<>())
         .def("__init__", make_constructor(make_stderr_redirector))
         .def("write", &stderr_redirector::write)
         .def("flush", &stderr_redirector::flush)
+        .def("fileno", &stderr_redirector::fileno)
+        .def("isatty", &stdout_redirector::isatty)
         ;
 
     boost::python::import("sys").attr("stdout") = make_stdout_redirector().get();
