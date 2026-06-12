@@ -411,7 +411,8 @@ void makePyApDocManagerWrapper()
         .def("sendStringToExecute", &PyApDocManager::sendStringToExecute1)
         .def("sendStringToExecute", &PyApDocManager::sendStringToExecute2, DS.ARGS({ "doc: PyAp.Document","script: str","bActivate: bool = True","bWrapUpInactiveDoc: bool = False","bEchoString: bool = True" }, 129))
         .def("appContextNewDocument", &PyApDocManager::appContextNewDocument, DS.ARGS({ "templateName : str" }, 99))
-        .def("appContextOpenDocument", &PyApDocManager::appContextOpenDocument, DS.ARGS({ "dwgName : str" }, 100))
+        .def("appContextOpenDocument", &PyApDocManager::appContextOpenDocument1)
+        .def("appContextOpenDocument", &PyApDocManager::appContextOpenDocument2, DS.ARGS({ "dwgName : str", "readOnly : bool = False"}, 100))
         .def("appContextRecoverDocument", &PyApDocManager::appContextRecoverDocument, DS.ARGS({ "dwgName : str" }, 103))
         .def("appContextPromptOpenDocument", &PyApDocManager::appContextPromptOpenDocument, DS.ARGS(102))
         .def("appContextCloseDocument", &PyApDocManager::appContextCloseDocument, DS.ARGS({ "doc: PyAp.Document" }, 98))
@@ -541,9 +542,31 @@ void PyApDocManager::appContextNewDocument(const std::string& pszTemplateName) c
     return PyThrowBadEs(impObj()->appContextNewDocument(utf8_to_wstr(pszTemplateName).c_str()));
 }
 
-void PyApDocManager::appContextOpenDocument(const std::string& pszDrawingName) const
+void PyApDocManager::appContextOpenDocument1(const std::string& pszDrawingName) const
 {
     return PyThrowBadEs(impObj()->appContextOpenDocument(utf8_to_wstr(pszDrawingName).c_str()));
+}
+
+void PyApDocManager::appContextOpenDocument2(const std::string& pszDrawingName, bool readOnly) const
+{
+    AcApDocManager::DocOpenParams params{};
+    std::wstring wPath = utf8_to_wstr(pszDrawingName);
+    params.mpwszFileName = wPath.c_str();
+    params.mnInitialViewType = AcApDocManager::DocOpenParams::kDefaultView;
+    params.mpwszViewName = nullptr; 
+    int flags = AcApDocManager::DocOpenParams::kFileNameArgIsUnicode |
+        AcApDocManager::DocOpenParams::kViewNameArgIsUnicode;
+
+    if (readOnly) 
+        flags |= AcApDocManager::DocOpenParams::kRequireReadOnly;
+    else 
+        flags |= AcApDocManager::DocOpenParams::kDisallowReadOnly;
+
+    params.mnFlags = flags;
+    params.mpwszPassword = nullptr;
+    params.mpOwnerData = nullptr;
+    params.mpwszTitle = nullptr;
+    return PyThrowBadEs(impObj()->appContextOpenDocument(&params));
 }
 
 void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName) const
