@@ -268,15 +268,26 @@ void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
     PyAutoLockGIL lock;
     if (PyCallable_Check(obj.ptr()))
     {
-        onidleFuncs[obj.ptr()] = obj;
+        auto it = std::find_if(onidleFuncs.begin(), onidleFuncs.end(),
+            [&obj](const auto& pair) { return pair.first == obj.ptr(); });
+
+        if (it == onidleFuncs.end()) 
+        {
+            onidleFuncs.push_back({ obj.ptr(), obj });
+        }
         return;
     }
-    acutPrintf(_T("parameter must be callable:"));
+    acutPrintf(_T("parameter must be callable:\n"));
 }
 
 void PyApApplication::removeOnIdleWinMsg(const boost::python::object& obj)
 {
-    onidleFuncs.erase(obj.ptr());
+    PyAutoLockGIL lock;
+    onidleFuncs.erase(
+        std::remove_if(onidleFuncs.begin(), onidleFuncs.end(),
+            [&obj](const auto& pair) { return pair.first == obj.ptr(); }),
+        onidleFuncs.end()
+    );
 }
 
 bool PyApApplication::registerWatchWinMsg(const boost::python::object& winmsg_pfn)
@@ -326,23 +337,33 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
 
 void PyApApplication::PyOnIdleMsgFn()
 {
-    if (onidleFuncs.size() != 0)
+    if (onidleFuncs.empty())
+        return;
+
+    PyAutoLockGIL lock;
+
+    // [#490] iterate over a copy as to not nuke onidleFuncs iterator
+    static std::vector<boost::python::object> copyBuffer;
+    copyBuffer.clear();
+    copyBuffer.reserve(onidleFuncs.size());
+
+    for (const auto& item : onidleFuncs) 
     {
-        PyAutoLockGIL lock;
+        copyBuffer.emplace_back(item.second);
+    }
+    for (const auto& func : copyBuffer)
+    {
+        auto it = std::find_if(onidleFuncs.begin(), onidleFuncs.end(),
+            [&func](const auto& pair) { return pair.first == func.ptr(); });
 
-        //[#490] iterate over a copy, user can invalidate iter
-        std::vector<boost::python::object> copy;
-        for (const auto& item : onidleFuncs) {
-            copy.emplace_back(item.second);
-        }
-
-        for (const auto& func : copy)
+        if (it != onidleFuncs.end())
         {
-            if (!executePyOnIdleFunc(func))
-                onidleFuncs.erase(func.ptr());
+            executePyOnIdleFunc(func);
         }
     }
+    copyBuffer.clear();
 }
+
 
 static bool executePyWinMsgFunc(PyObject* func, const MSG* message)
 {
