@@ -50,7 +50,7 @@ public:
     static std::string          testFlags(PyRxTestFlags flags);
 
 public:
-    inline static std::map<PyObject*, boost::python::object> onidleFuncs;
+    inline static std::vector<std::pair<PyObject*, boost::python::object>> onidleFuncs;
     inline static std::set<PyObject*> winmsgFuncs;
 };
 
