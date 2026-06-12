@@ -123,7 +123,8 @@ public:
     void            sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString) const;
 
     void            appContextNewDocument(const std::string& pszTemplateName) const;
-    void            appContextOpenDocument(const std::string& pszDrawingName) const;
+    void            appContextOpenDocument1(const std::string& pszDrawingName) const;
+    void            appContextOpenDocument2(const std::string& pszDrawingName, bool readOnly) const;
     void            appContextRecoverDocument(const std::string& pszDrawingName) const;
 
     void            appContextPromptNewDocument() const;

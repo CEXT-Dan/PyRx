@@ -227,7 +227,7 @@ class DocManager(PyRx.RxObject):
         This function allows synchronous access to the NEW drawing operation. It can only be called
         from the application context.
         """
-    def appContextOpenDocument(self, dwgName: str, /) -> None:
+    def appContextOpenDocument(self, dwgName: str, readOnly: bool = False, /) -> None:
         """
         This function allows synchronous access to the OPEN drawing operation. It can only be
         called from the application context. Based pParams, you can switch to a layout or view
