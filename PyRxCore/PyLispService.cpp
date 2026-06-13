@@ -89,28 +89,20 @@ static int retTuple(const boost::python::tuple& tpl)
                 return RSRSLT;
             }
             case RTORINT:
+            {
+                acedRetPoint(asDblArray(extract<AcGeVector3d>(tpl[1])));
+                return RSRSLT;
+            }
             case RT3DPOINT:
             {
-                if (extract<AcGePoint3d>(tpl[1]).check())
-                    acedRetPoint(asDblArray(extract<AcGePoint3d>(tpl[1])));
-                else if (extract<AcGeVector3d>(tpl[1]).check())
-                    acedRetPoint(asDblArray(extract<AcGeVector3d>(tpl[1])));
+                acedRetPoint(asDblArray(extract<AcGeVector3d>(tpl[1])));
                 return RSRSLT;
             }
             case RTPOINT:
             {
-                if (extract<AcGePoint2d>(tpl[1]).check())
-                {
-                    const AcGePoint2d& p = extract<AcGePoint2d>(tpl[1]);
-                    const AcGePoint3d val(p.x, p.y, 0);
-                    acedRetPoint(asDblArray(val));
-                }
-                else if (extract<AcGeVector2d>(tpl[1]).check())
-                {
-                    const AcGeVector2d& p = extract<AcGeVector2d>(tpl[1]);
-                    const AcGePoint3d val(p.x, p.y, 0);
-                    acedRetPoint(asDblArray(val));
-                }
+                const AcGePoint2d& p = extract<AcGePoint2d>(tpl[1]);
+                const AcGePoint3d val(p.x, p.y, 0);
+                acedRetPoint(asDblArray(val));
                 return RSRSLT;
             }
             case RTSHORT:
@@ -238,9 +230,21 @@ int PyLispService::execLispFunc()
                     acedRetPoint(asDblArray(val));
                     return RSRSLT;
                 }
+                else if (extract<AcGeVector2d>(pResult.get()).check())
+                {
+                    const AcGeVector2d& p = extract<AcGeVector2d>(pResult.get());
+                    const AcGeVector3d val(p.x, p.y, 0);
+                    acedRetPoint(asDblArray(val));
+                    return RSRSLT;
+                }
                 else if (extract<AcGePoint3d>(pResult.get()).check())
                 {
                     acedRetPoint(asDblArray(extract<AcGePoint3d>(pResult.get())));
+                    return RSRSLT;
+                }
+                else if (extract<AcGeVector3d>(pResult.get()).check())
+                {
+                    acedRetPoint(asDblArray(extract<AcGeVector3d>(pResult.get())));
                     return RSRSLT;
                 }
                 else if (extract<PyDbObjectId>(pResult.get()).check())
@@ -251,10 +255,10 @@ int PyLispService::execLispFunc()
                     acedRetName(name, RTENAME);
                     return RSRSLT;
                 }
-                else if (extract<char*>(pResult.get()).check())
+                else if (extract<std::string>(pResult.get()).check())
                 {
-                    const AcString str = utf8_to_wstr(extract<char*>(pResult.get())).c_str();
-                    acedRetStr(str);
+                    const std::wstring wstr = utf8_to_wstr(extract<std::string>(pResult.get())).c_str();
+                    acedRetStr(wstr.c_str());
                     return RSRSLT;
                 }
                 else if (extract<PyEdSelectionSet>(pResult.get()).check())

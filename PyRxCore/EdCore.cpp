@@ -56,10 +56,6 @@ extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcD
 
 #endif
 
-#ifdef IRXAPP
-int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
-#endif
-
 #ifdef ARXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
@@ -1205,6 +1201,11 @@ boost::python::object EdCore::getVar(const std::string& sym)
                 AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
                 return boost::python::object(pnt);
             }
+            case RTORINT:
+            {
+                AcGeVector3d vec = asVec3d(buf.resval.rpoint);
+                return boost::python::object(vec);
+            }
             default:
             {
                 return boost::python::object();
@@ -1248,6 +1249,11 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
         {
             const auto val = asDblArray(extract<AcGePoint3d>(src));
             buf.reset(acutBuildList(RT3DPOINT, val, 0));
+        }
+        else if (extract<AcGeVector3d>(src).check())
+        {
+            const auto val = asDblArray(extract<AcGeVector3d>(src));
+            buf.reset(acutBuildList(RTORINT, val, 0));
         }
         else if (extract<char*>(src).check())
         {
