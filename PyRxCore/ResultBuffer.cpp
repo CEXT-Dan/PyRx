@@ -386,6 +386,27 @@ resbuf* AcGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
     return phead;
 }
 
+resbuf* PyGePoint3dArrayToResbuf(const PyGePoint3dArray& ptArrayWCS)
+{
+    resbuf* phead = nullptr;
+    resbuf* ptail = nullptr;
+    constexpr size_t memsize = sizeof(AcGePoint3d);
+    for (size_t idx = 0; idx < ptArrayWCS.size(); idx++)
+    {
+        if (idx == 0)
+        {
+            phead = acutNewRb(RT3DPOINT);
+            ptail = phead;
+        }
+        else
+        {
+            ptail = ptail->rbnext = acutNewRb(RT3DPOINT);
+        }
+        memcpy_s(ptail->resval.rpoint, memsize, asDblArray(ptArrayWCS[idx]), memsize);
+    }
+    return phead;
+}
+
 resbuf* PyDbObjectIdArrayToResbuf(const PyDbObjectIdArray& vec)
 {
     resbuf* phead = nullptr;

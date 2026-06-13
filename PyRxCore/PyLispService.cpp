@@ -185,26 +185,6 @@ int PyLispService::execLispFunc()
                     acedRetVoid();
                     return RSRSLT;
                 }
-                else if (PyList_Check(pResult.get()))
-                {
-                    boost::python::handle<> resultHandle(pResult.get());
-                    if (resultHandle == nullptr)
-                    {
-                        acedRetNil();
-                        return RSERR;
-                    }
-                    boost::python::list reslist(resultHandle);
-                    pResult.release();// reslist is the new owner
-                    if (reslist.is_none())
-                    {
-                        acedRetNil();
-                        return RSRSLT;
-                    }
-                    AcResBufPtr ptr(listToResbuf(reslist));
-                    if (ptr != nullptr)
-                        acedRetList(ptr.get());
-                    return RSRSLT;
-                }
                 else if (PyBool_Check(pResult.get()))
                 {
                     const bool val = extract<bool>(pResult.get());
@@ -273,6 +253,31 @@ int PyLispService::execLispFunc()
                     tuple tpl = extract<tuple>(pResult.get());
                     if (boost::python::len(tpl) == 2)
                         return retTuple(tpl);
+                    return RSRSLT;
+                }
+                else if (extract<PyGePoint3dArray>(pResult.get()).check())
+                {
+                    const PyGePoint3dArray& buf = extract<PyGePoint3dArray>(pResult.get());
+                    AcResBufPtr ptr(PyGePoint3dArrayToResbuf(buf));
+                    if (ptr != nullptr)
+                        acedRetList(ptr.get());
+                    return RSRSLT;
+                }
+                else if (extract<PyDbObjectIdArray>(pResult.get()).check())
+                {
+                    const PyDbObjectIdArray& buf = extract<PyDbObjectIdArray>(pResult.get());
+                    AcResBufPtr ptr(PyDbObjectIdArrayToResbuf(buf));
+                    if (ptr != nullptr)
+                        acedRetList(ptr.get());
+                    return RSRSLT;
+                }
+                else if (extract<boost::python::list>(pResult.get()).check())
+                {
+                    const  boost::python::list& buf = extract<boost::python::list>(pResult.get());
+                    AcResBufPtr ptr(listToResbuf(buf));
+                    if (ptr != nullptr)
+                        acedRetList(ptr.get());
+                    return RSRSLT;
                 }
                 else
                 {
