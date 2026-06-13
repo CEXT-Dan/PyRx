@@ -1,11 +1,12 @@
 import traceback
 from itertools import pairwise
+from timeit import default_timer as timer
 
 from pyrx import Ap, Db, Ed, Ge
 
 print("Added command CDTInsertedges")
 print("Added command CDTConformedges")
-
+print("Added command CDTconcave")
 
 def getEdgeData(id, pntmap: dict[Ge.Point3d, int]):
     pl = Db.Polyline3d(id)
@@ -84,6 +85,56 @@ def CDTConformedges():
             faces.append(Db.Face(np[_a], np[_b], np[_c]))
         db = Db.curDb()
         db.addToModelspace(faces)
+
+    except Exception:
+        print(traceback.format_exc())
+
+
+@Ap.Command()
+def CDTconcave():
+    try:
+        pc = Ed.PromptCondition(
+            Ed.PromptCondition.eNoNegative | 
+            Ed.PromptCondition.eNoZero)
+        
+        ps, ss = Ed.Editor.select([(0, "POINT")])
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("\noof {}:".format(ps))
+        
+        ps, concavity = Ed.Editor.getInteger("\nEnter concavity: ", pc)
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("\noof {}:".format(ps))
+        
+        ps, lengthThreshold = Ed.Editor.getInteger("\nEnter lengthThreshold: ", pc)
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("\noof {}:".format(ps))
+        
+        start = timer()
+
+        pnts = Ge.Point3dArray([Db.Point(id).position() for id in ss])
+        hullpnts = pnts.concaveHull(concavity, lengthThreshold)
+        
+        pntmap = {}
+        for i, p in enumerate(pnts):
+            pntmap[p] = i
+        
+        edgedata = []
+        for p in hullpnts:
+            edgedata.append(pntmap[p])
+        edgedata = list(zip(edgedata, edgedata[1:] + [edgedata[0]]))
+            
+        opts = Ge.CDTOpts(Ge.CDTOpts.kEraseOuterTriangles | Ge.CDTOpts.KConformToEdges)
+        
+        faces = []
+        np, tris = Ge.CDT.triangulate(pnts, edgedata, opts)
+        for _a, _b, _c in tris:
+            faces.append(Db.Face(np[_a], np[_b], np[_c]))
+            
+        db = Db.curDb()
+        db.addToModelspace(faces)
+        
+        end = timer()
+        print("\nHull created in {} seconds".format(end - start))
 
     except Exception:
         print(traceback.format_exc())
