@@ -17,8 +17,8 @@ static int retTuple(const boost::python::tuple& tpl)
         {
             case AcDb::kDwgText:
             {
-                AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                acedRetStr(str);
+                std::wstring str = utf8_to_wstr(extract<std::string>(tpl[1])).c_str();
+                acedRetStr(str.c_str());
                 return RSRSLT;
             }
             case AcDb::kDwgInt8:
@@ -126,8 +126,8 @@ static int retTuple(const boost::python::tuple& tpl)
             }
             case RTSTR:
             {
-                const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                acedRetStr(str);
+                std::wstring str = utf8_to_wstr(extract<std::string>(tpl[1])).c_str();
+                acedRetStr(str.c_str());
                 return RSRSLT;
             }
             case RTPICKS:
@@ -273,7 +273,7 @@ int PyLispService::execLispFunc()
                 }
                 else if (extract<boost::python::list>(pResult.get()).check())
                 {
-                    const  boost::python::list& buf = extract<boost::python::list>(pResult.get());
+                    const boost::python::list& buf = extract<boost::python::list>(pResult.get());
                     AcResBufPtr ptr(listToResbuf(buf));
                     if (ptr != nullptr)
                         acedRetList(ptr.get());
