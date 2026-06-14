@@ -35,8 +35,9 @@ extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcD
 extern Adesk::Boolean           zcedPostCommand(const ACHAR*);
 #endif
 
+#endif// ZRXAPP
 
-#endif
+
 
 #ifdef GRXAPP
 int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
@@ -46,7 +47,7 @@ extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
 extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     gcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
-#endif
+#endif// GRXAPP
 
 #ifdef BRXAPP
 #if defined(_BRXTARGET) && (_BRXTARGET >= 260)
@@ -59,7 +60,7 @@ extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
-#endif
+#endif// BRXAPP
 
 #ifdef ARXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
@@ -78,7 +79,7 @@ extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObject
 extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 //extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
 
-#endif
+#endif// ARXAPP
 
 //-----------------------------------------------------------------------------------------
 //Util
