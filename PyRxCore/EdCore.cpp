@@ -31,6 +31,11 @@ extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wc
 extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 
+#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
+extern Adesk::Boolean           zcedPostCommand(const ACHAR*);
+#endif
+
+
 #endif
 
 #ifdef GRXAPP
@@ -1287,10 +1292,10 @@ void EdCore::pSpace()
 
 void EdCore::postCommand(const std::string& str)
 {
-#if _ZRXTARGET == 240
-    throw PyNotimplementedByHost();
+#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
+    zcedPostCommand(utf8_to_wstr(str).c_str());
 #endif
-#if _GRXTARGET == 240 
+#if defined(_GRXTARGET)
     gcedPostCommand(utf8_to_wstr(str).c_str());
 #endif
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
