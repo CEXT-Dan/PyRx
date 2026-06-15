@@ -361,12 +361,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         return false;
     }
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
-    PyRxApp::appendSearchPath(path.modulePath, true);
-    method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
-    method.mod.reset(PyImport_Import(method.modname.get()));
-    if (PyErr_Occurred() != NULL)
-        acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-    PyRxApp::popFrontSearchPath(path.modulePath);//(#294) 
+    const std::string sModName = wstr_to_utf8(path.fullPath.filename().replace_extension().wstring());
+    method.mod.reset(PyRxApp::appendAndLoadModule(path.modulePath, sModName, true));
 
     if (method.mod != nullptr)
     {
