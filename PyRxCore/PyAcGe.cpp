@@ -1999,7 +1999,7 @@ static void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
     }
 }
 
-static int AcGeVector3dLen(const AcGeVector3d& p)
+static int AcGeVector3dLen(const AcGeVector3d& p) noexcept
 {
     return 3;
 }
