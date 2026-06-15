@@ -1597,7 +1597,7 @@ static PyGePoint3dArray PyGePoint3dArrayConvexHull(const PyGePoint3dArray& src)
     return hull;
 }
 
-static bool PyGePoint3dArrayIsPlanar(const PyGePoint3dArray& src)
+static bool PyGePoint3dArrayIsPlanar(const PyGePoint3dArray& src) noexcept
 {
     // Less than 3 points are always planar
     if (src.size() < 3)
@@ -1761,6 +1761,43 @@ static boost::python::list PyGePoint3dArrayApproxShortestTourIndexes(const PyGeP
     return pylist;
 }
 
+static void sortPointsByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
+{
+    auto getDistanceToSq = [](const AcGePoint3d& p1, const AcGePoint3d& p2) noexcept {
+        double dx = p1.x - p2.x;
+        double dy = p1.y - p2.y;
+        double dz = p1.z - p2.z;
+        return (dx * dx) + (dy * dy) + (dz * dz);
+        };
+
+    if (inputPoints.empty())
+        return;
+
+    AcGePoint3d currentPoint = minIt;
+
+    for (size_t i = 0; i < inputPoints.size(); ++i)
+    {
+        size_t nearestIndex = i;
+        double minDistanceSq = std::numeric_limits<double>::max();
+
+        for (size_t j = i; j < inputPoints.size(); ++j)
+        {
+            double distSq = getDistanceToSq(currentPoint, inputPoints[j]);
+            if (distSq < minDistanceSq) 
+            {
+                minDistanceSq = distSq;
+                nearestIndex = j;
+            }
+        }
+
+        if (nearestIndex != i) 
+        {
+            std::swap(inputPoints[i], inputPoints[nearestIndex]);
+        }
+        currentPoint = inputPoints[i];
+    }
+}
+
 static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view Point3dArrayInit = "Overloads:\n"
@@ -1777,6 +1814,7 @@ static void makePyGePoint3dWrapper()
         .def("isPlanar", &PyGePoint3dArrayIsPlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
+        .def("sortPointsByDynamicDistance", &sortPointsByDynamicDistance, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
         .def("sortByY", &PyGePoint3dArraySortByY, DSPA.ARGS())
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())

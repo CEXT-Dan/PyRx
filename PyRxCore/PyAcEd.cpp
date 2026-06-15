@@ -38,7 +38,7 @@ static BOOST_PYTHON_MODULE(PyEd)
     makePyEdInputPointMonitorResultWrapper();
     makePySysVarWrapper();
 
-    def("print", print);
+    def("print", &print);
 
     enum_<Acad::PromptStatus>("PromptStatus")
         .value("eNone", Acad::PromptStatus::eNone)
