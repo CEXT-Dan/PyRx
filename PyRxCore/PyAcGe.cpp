@@ -1761,7 +1761,7 @@ static boost::python::list PyGePoint3dArrayApproxShortestTourIndexes(const PyGeP
     return pylist;
 }
 
-static void sortPointsByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
+static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
 {
     auto getDistanceToSq = [](const AcGePoint3d& p1, const AcGePoint3d& p2) noexcept {
         double dx = p1.x - p2.x;
@@ -1814,7 +1814,7 @@ static void makePyGePoint3dWrapper()
         .def("isPlanar", &PyGePoint3dArrayIsPlanar, DSPA.ARGS())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
-        .def("sortPointsByDynamicDistance", &sortPointsByDynamicDistance, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
+        .def("sortByDynamicDistance", &sortByDynamicDistance, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
         .def("sortByY", &PyGePoint3dArraySortByY, DSPA.ARGS())
         .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
