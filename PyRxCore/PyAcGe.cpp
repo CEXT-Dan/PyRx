@@ -1480,6 +1480,43 @@ struct Point3dComparator
     inline static AcGePoint3d basePoint = AcGePoint3d::kOrigin;
 };
 
+static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
+{
+    auto getDistanceToSq = [](const AcGePoint3d& p1, const AcGePoint3d& p2) noexcept {
+        double dx = p1.x - p2.x;
+        double dy = p1.y - p2.y;
+        double dz = p1.z - p2.z;
+        return (dx * dx) + (dy * dy) + (dz * dz);
+        };
+
+    if (inputPoints.empty())
+        return;
+
+    AcGePoint3d currentPoint = minIt;
+
+    for (size_t i = 0; i < inputPoints.size(); ++i)
+    {
+        size_t nearestIndex = i;
+        double minDistanceSq = std::numeric_limits<double>::max();
+
+        for (size_t j = i; j < inputPoints.size(); ++j)
+        {
+            double distSq = getDistanceToSq(currentPoint, inputPoints[j]);
+            if (distSq < minDistanceSq)
+            {
+                minDistanceSq = distSq;
+                nearestIndex = j;
+            }
+        }
+
+        if (nearestIndex != i)
+        {
+            std::swap(inputPoints[i], inputPoints[nearestIndex]);
+        }
+        currentPoint = inputPoints[i];
+    }
+}
+
 static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt)
 {
     Point3dComparator::basePoint = pnt;
@@ -1759,43 +1796,6 @@ static boost::python::list PyGePoint3dArrayApproxShortestTourIndexes(const PyGeP
     for (const auto& idx : PyGePointArrayApproxShortestTourImpl(pnts))
         pylist.append(idx);
     return pylist;
-}
-
-static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
-{
-    auto getDistanceToSq = [](const AcGePoint3d& p1, const AcGePoint3d& p2) noexcept {
-        double dx = p1.x - p2.x;
-        double dy = p1.y - p2.y;
-        double dz = p1.z - p2.z;
-        return (dx * dx) + (dy * dy) + (dz * dz);
-        };
-
-    if (inputPoints.empty())
-        return;
-
-    AcGePoint3d currentPoint = minIt;
-
-    for (size_t i = 0; i < inputPoints.size(); ++i)
-    {
-        size_t nearestIndex = i;
-        double minDistanceSq = std::numeric_limits<double>::max();
-
-        for (size_t j = i; j < inputPoints.size(); ++j)
-        {
-            double distSq = getDistanceToSq(currentPoint, inputPoints[j]);
-            if (distSq < minDistanceSq) 
-            {
-                minDistanceSq = distSq;
-                nearestIndex = j;
-            }
-        }
-
-        if (nearestIndex != i) 
-        {
-            std::swap(inputPoints[i], inputPoints[nearestIndex]);
-        }
-        currentPoint = inputPoints[i];
-    }
 }
 
 static void makePyGePoint3dWrapper()
