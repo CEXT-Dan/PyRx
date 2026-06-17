@@ -50,7 +50,8 @@ void makePyApDocumentWrapper()
         .def("acadDocument", &PyApDocument::acadDocument, DS.ARGS())
         .def("isSavedToDisk", &PyApDocument::isSavedToDisk, DS.ARGS())
         .def("closeAndDiscard", &PyApDocument::closeAndDiscard, DS.ARGS())
-        .def("closeAndSave", &PyApDocument::closeAndSave, DS.ARGS({ "path : str" }))
+        .def("closeAndSave", &PyApDocument::closeAndSave1)
+        .def("closeAndSave", &PyApDocument::closeAndSave2, DS.ARGS({ "path : str = ..." }))
 
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
@@ -246,10 +247,15 @@ bool PyApDocument::isSavedToDisk() const
 
 void PyApDocument::closeAndDiscard() const
 {
-    acadDocument().close3(false, "");
+    acadDocument().close2(false);
 }
 
-void PyApDocument::closeAndSave(const std::string& fileName) const
+void PyApDocument::closeAndSave1() const
+{
+    acadDocument().close2(true);
+}
+
+void PyApDocument::closeAndSave2(const std::string& fileName) const
 {
     acadDocument().close3(true, fileName);
 }

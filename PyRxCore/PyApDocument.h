@@ -46,7 +46,8 @@ public:
     PyAcadDocument          acadDocument() const;
     bool                    isSavedToDisk() const;
     void                    closeAndDiscard() const;
-    void                    closeAndSave(const std::string& fileName) const;
+    void                    closeAndSave1() const;
+    void                    closeAndSave2(const std::string& fileName) const;
 
     static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();
