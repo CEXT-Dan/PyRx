@@ -48,6 +48,8 @@ public:
     void                    closeAndDiscard() const;
     void                    closeAndSave1() const;
     void                    closeAndSave2(const std::string& fileName) const;
+    static PyApDocument     fromAcadDocument(const PyAcadDocument& doc);
+
 
     static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();

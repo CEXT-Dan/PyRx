@@ -495,6 +495,7 @@ public:
     PyAcadDatabase          database() const;
     PyAcadMaterial          activeMaterial() const;
     void                    setActiveMaterial(const PyAcadMaterial& val) const;
+    LONG_PTR                getRawPtr() const;
 
     static PyAcadDocument   getFromAcApDocument(AcApDocument* pDoc);
     static std::string      className();

@@ -52,6 +52,7 @@ void makePyApDocumentWrapper()
         .def("closeAndDiscard", &PyApDocument::closeAndDiscard, DS.ARGS())
         .def("closeAndSave", &PyApDocument::closeAndSave1)
         .def("closeAndSave", &PyApDocument::closeAndSave2, DS.ARGS({ "path : str = ..." }))
+        .def("fromAcadDocument", &PyApDocument::fromAcadDocument, DS.SARGS({ "acDoc : PyAx.AcadDocument" })).staticmethod("fromAcadDocument")
 
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
@@ -258,6 +259,23 @@ void PyApDocument::closeAndSave1() const
 void PyApDocument::closeAndSave2(const std::string& fileName) const
 {
     acadDocument().close3(true, fileName);
+}
+
+PyApDocument PyApDocument::fromAcadDocument(const PyAcadDocument& doc)
+{
+    using Iter = std::unique_ptr<AcApDocumentIterator>;
+    for (Iter pIt(acDocManager->newAcApDocumentIterator()); !pIt->done(); pIt->step())
+    {
+        AcApDocument* pDoc = pIt->document();
+        if (pDoc)
+        {
+            if (doc.getRawPtr() == (LONG_PTR)pDoc->GetIDispatch(false))
+            {
+                return PyApDocument(pDoc);
+            }
+        }
+    }
+    throw PyErrorStatusException{ eNoDocument };
 }
 
 UINT_PTR PyApDocument::docWnd()
