@@ -9,3 +9,9 @@ class TestDocument:
         doc = Ap.curDoc()
         axDoc: Ax.AcadDocument = doc.acadDocument()
         assert doc.database().modelSpaceId() == axDoc.modelSpace().objectId()
+        
+    def test_fromAcadDocument(self):
+        doc = Ap.curDoc()
+        axDoc: Ax.AcadDocument = doc.acadDocument()
+        tempDoc = Ap.Document.fromAcadDocument(axDoc)
+        assert doc == tempDoc

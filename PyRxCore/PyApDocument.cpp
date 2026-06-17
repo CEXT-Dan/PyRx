@@ -264,15 +264,15 @@ void PyApDocument::closeAndSave2(const std::string& fileName) const
 PyApDocument PyApDocument::fromAcadDocument(const PyAcadDocument& doc)
 {
     using Iter = std::unique_ptr<AcApDocumentIterator>;
+
+    const auto rawptr = doc.getRawPtr();
     for (Iter pIt(acDocManager->newAcApDocumentIterator()); !pIt->done(); pIt->step())
     {
         AcApDocument* pDoc = pIt->document();
         if (pDoc)
         {
-            if (doc.getRawPtr() == (LONG_PTR)pDoc->GetIDispatch(false))
-            {
+            if (rawptr == (LONG_PTR)pDoc->GetIDispatch(false))
                 return PyApDocument(pDoc);
-            }
         }
     }
     throw PyErrorStatusException{ eNoDocument };
