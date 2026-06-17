@@ -577,7 +577,7 @@ class Document(PyRx.RxObject):
     @staticmethod
     def className() -> str: ...
     def closeAndDiscard(self, /) -> None: ...
-    def closeAndSave(self, path: str, /) -> None: ...
+    def closeAndSave(self, path: str = ..., /) -> None: ...
     def database(self, /) -> PyDb.Database:
         """
         Returns the database object (AcDbDatabase) being used by this AcApDocument.
@@ -616,6 +616,8 @@ class Document(PyRx.RxObject):
         returns the format in which the user wishes an individual document to be saved, which will
         be either the session-wide default or the temporary override, as appropriate.
         """
+    @staticmethod
+    def fromAcadDocument(acDoc: PyAx.AcadDocument, /) -> Document: ...
     def getCountOfLispList(self, /) -> int:
         """
         Returns number of loaded LISP applications.

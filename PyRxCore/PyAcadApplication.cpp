@@ -2015,6 +2015,11 @@ void PyAcadDocument::setActiveMaterial(const PyAcadMaterial& val) const
     impObj()->SetActiveMaterial(*val.impObj());
 }
 
+LONG_PTR PyAcadDocument::getRawPtr() const
+{
+    return impObj()->GetRawPtr();
+}
+
 PyAcadDocument PyAcadDocument::getFromAcApDocument(AcApDocument* pDoc)
 {
     if (pDoc != nullptr)

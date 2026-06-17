@@ -287,6 +287,8 @@ public:
     PyIAcadDatabasePtr          GetDatabase() const;
     PyIAcadMaterialPtr          GetActiveMaterial() const;
     void                        SetActiveMaterial(const PyIAcadMaterialImpl& val) const;
+    LONG_PTR                    GetRawPtr() const;
+
 public:
     IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };

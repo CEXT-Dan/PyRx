@@ -1713,6 +1713,11 @@ void PyIAcadDocumentImpl::SetActiveMaterial(const PyIAcadMaterialImpl& val) cons
     PyThrowBadHr(impObj()->put_ActiveMaterial(val.impObj()));
 }
 
+LONG_PTR PyIAcadDocumentImpl::GetRawPtr() const
+{
+    return (LONG_PTR)this->impObj();
+}
+
 IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
