@@ -14,7 +14,7 @@
 #include "PyRxApp.h"
 #include "PyDbGraph.h"
 #include "xgraph.h"
-
+#include "PyAcEditor.h"
 
 #ifdef ARXAPP
 #include "AcHTMLApi.h"
@@ -1618,60 +1618,9 @@ static int cvport()
     return rb.resval.rint;
 }
 
-//https://forums.autodesk.com/t5/objectarx-forum/view-not-restoring-to-previous-view/m-p/7203525/highlight/true#M8017
 PyDbViewTableRecord EdCore::getCurrentView()
 {
-    AcDbViewTableRecord* view = new AcDbViewTableRecord();
-    struct resbuf var;
-    struct resbuf WCS, UCS, DCS;
-    WCS.restype = RTSHORT;
-    WCS.resval.rint = 0;
-    UCS.restype = RTSHORT;
-    UCS.resval.rint = 1;
-    DCS.restype = RTSHORT;
-    DCS.resval.rint = 2;
-
-    PyThrowBadRt(acedGetVar(L"VIEWMODE", &var));
-    view->setPerspectiveEnabled(var.resval.rint & 1);
-    view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
-    view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
-    view->setFrontClipAtEye(!(var.resval.rint & 16));
-
-    PyThrowBadRt(acedGetVar(L"BACKZ", &var));
-    view->setBackClipDistance(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"FRONTZ", &var));
-    view->setFrontClipDistance(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"VIEWCTR", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint));
-    view->setCenterPoint(asPnt2d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"LENSLENGTH", &var));
-    view->setLensLength(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"TARGET", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint));
-    view->setTarget(asPnt3d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"VIEWDIR", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint));
-    view->setViewDirection(asVec3d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"VIEWSIZE", &var));
-    view->setHeight(var.resval.rreal);
-
-    resbuf rbScreen;
-    PyThrowBadRt(acedGetVar(_T("SCREENSIZE"), &rbScreen));
-    double pixelX = rbScreen.resval.rpoint[X];
-    double pixelY = rbScreen.resval.rpoint[Y];
-    if (pixelY != 0)
-        view->setWidth(var.resval.rreal * (pixelX / pixelY));
-
-    PyThrowBadRt(acedGetVar(L"VIEWTWIST", &var));
-    view->setViewTwist(var.resval.rreal);
-
-    return PyDbViewTableRecord(view, true);
+    return PyDbViewTableRecord(acedGetCurrentView(), true);
 }
 
 void EdCore::setCurrentView1(const PyDbViewTableRecord& vrec)
