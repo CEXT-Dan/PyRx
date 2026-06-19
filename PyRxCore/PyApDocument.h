@@ -40,11 +40,12 @@ public:
     void                    downgradeDocOpen(bool bPromptForSave) const;
     PyTransactionManager    transactionManager() const;
     PyEdInputPointManager   inputPointManager() const;
-    boost::python::object   getUserData();
+    boost::python::object   getUserData() const;
     void                    setUserData(const boost::python::object& data);
     PyAutoDocLock           autoLock() const;
     PyAcadDocument          acadDocument() const;
     bool                    isSavedToDisk() const;
+    bool                    isActive() const; 
     void                    closeAndDiscard() const;
     void                    closeAndSave1() const;
     void                    closeAndSave2(const std::string& fileName) const;

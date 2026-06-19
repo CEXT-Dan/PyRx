@@ -634,6 +634,7 @@ class Document(PyRx.RxObject):
         """
         This function will return this AcApDocument object's input point manager object.
         """
+    def isActive(self, /) -> bool: ...
     def isCommandInputInactive(self, /) -> bool:
         """
         This is isCommandInputInactive, a member of class AcApDocument.

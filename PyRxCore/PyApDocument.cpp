@@ -49,6 +49,7 @@ void makePyApDocumentWrapper()
         .def("autoLock", &PyApDocument::autoLock, DS.ARGS(120))
         .def("acadDocument", &PyApDocument::acadDocument, DS.ARGS())
         .def("isSavedToDisk", &PyApDocument::isSavedToDisk, DS.ARGS())
+        .def("isActive", &PyApDocument::isActive, DS.ARGS())
         .def("closeAndDiscard", &PyApDocument::closeAndDiscard, DS.ARGS())
         .def("closeAndSave", &PyApDocument::closeAndSave1)
         .def("closeAndSave", &PyApDocument::closeAndSave2, DS.ARGS({ "path : str = ..." }))
@@ -209,9 +210,9 @@ PyEdInputPointManager PyApDocument::inputPointManager() const
     return PyEdInputPointManager(impObj()->inputPointManager());
 }
 
-boost::python::object PyApDocument::getUserData()
+boost::python::object PyApDocument::getUserData() const
 {
-    return DocVars.docData().m_userdata;
+    return DocVars.docData(impObj()).m_userdata;
 }
 
 PyObject* PyApDocument::getWxWindow()
@@ -226,7 +227,7 @@ PyObject* PyApDocument::getWxWindow()
 
 void PyApDocument::setUserData(const boost::python::object& data)
 {
-    DocVars.docData().m_userdata = data;
+    DocVars.docData(impObj()).m_userdata = data;
 }
 
 PyAutoDocLock PyApDocument::autoLock() const
@@ -244,6 +245,11 @@ bool PyApDocument::isSavedToDisk() const
     if (!impObj()->isNamedDrawing())
         return false;
     return this->acadDocument().isSaved();
+}
+
+bool PyApDocument::isActive() const
+{
+    return acDocManager->mdiActiveDocument() == impObj();
 }
 
 void PyApDocument::closeAndDiscard() const
