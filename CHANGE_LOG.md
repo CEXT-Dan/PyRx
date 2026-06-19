@@ -1,3 +1,14 @@
+## v2.2.60
+
+* add Document.isActive
+* fixed Document.getUserData Document.setUserData, was using curdoc()
+* add Document Ap.Document.fromAcadDocument(axdoc)
+* add overload to PyApDocument.closeAndSave, with no args uses existing path
+* merge refactored module loader from [#523]
+* added Ge.Point3dArray.sortByDynamicDistance
+* improve std::string PyDbEvalVariant::toString() const
+* improve PyLispService.cpp string conversion
+
 ## v2.2.58
 
 * [#522] fix EntityColor for zwcad 2025
