@@ -15,6 +15,9 @@ class PyDbDatabase;
 class PyApDocument;
 class PyRxClass;
 
+//https://forums.autodesk.com/t5/objectarx-forum/view-not-restoring-to-previous-view/m-p/7203525/highlight/true#M8017
+AcDbViewTableRecord* acedGetCurrentView();
+
 void makePyEditorWrapper();
 
 class PyAcEditor
@@ -102,6 +105,11 @@ public:
     static bptuple ssgetkw1(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw);
     static bptuple ssgetkw2(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
     static bptuple ssgetkw3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm);
+
+    static void    zoom(const AcDbExtents& ext);
+    static void    zoomExtents();
+    static void    zoomWindow(const AcGePoint3d& p1, const AcGePoint3d& p2);
+
 
     static AcGeMatrix3d         curUCS();
     static void                 setCurUCS(const AcGeMatrix3d& mat);

@@ -375,6 +375,10 @@ void makePyEditorWrapper()
         .def("ssgetkw", &PyAcEditor::ssgetkw3,
             DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
 
+        .def("zoom", &PyAcEditor::zoom, DS.SARGS({ "ext: PyDb.Extents" })).staticmethod("zoom")
+        .def("zoomExtents", &PyAcEditor::zoomExtents, DS.SARGS()).staticmethod("zoomExtents")
+        .def("zoomWindow", &PyAcEditor::zoomWindow, DS.SARGS({ "p1: PyGe.Point3d","p2: PyGe.Point3d" })).staticmethod("zoomWindow")
+
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
         .def("getInput", &PyAcEditor::getInput, DS.SARGS(10864)).staticmethod("getInput")
@@ -1053,6 +1057,127 @@ PyAcEditor::bptuple PyAcEditor::ssgetkw3(const std::string& args, const bpobject
     AcString strArg = utf8_to_wstr(args).c_str();
     int stat = acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), ss.m_pSet->data());
     return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
+}
+
+AcDbViewTableRecord* acedGetCurrentView()
+{
+    AcDbViewTableRecord* view = new AcDbViewTableRecord();
+    struct resbuf var;
+    struct resbuf WCS, UCS, DCS;
+    WCS.restype = RTSHORT;
+    WCS.resval.rint = 0;
+    UCS.restype = RTSHORT;
+    UCS.resval.rint = 1;
+    DCS.restype = RTSHORT;
+    DCS.resval.rint = 2;
+
+    PyThrowBadRt(acedGetVar(L"VIEWMODE", &var));
+    view->setPerspectiveEnabled(var.resval.rint & 1);
+    view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
+    view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
+    view->setFrontClipAtEye(!(var.resval.rint & 16));
+
+    PyThrowBadRt(acedGetVar(L"BACKZ", &var));
+    view->setBackClipDistance(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"FRONTZ", &var));
+    view->setFrontClipDistance(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"VIEWCTR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint));
+    view->setCenterPoint(asPnt2d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"LENSLENGTH", &var));
+    view->setLensLength(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"TARGET", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint));
+    view->setTarget(asPnt3d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"VIEWDIR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint));
+    view->setViewDirection(asVec3d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"VIEWSIZE", &var));
+    view->setHeight(var.resval.rreal);
+
+    resbuf rbScreen;
+    PyThrowBadRt(acedGetVar(_T("SCREENSIZE"), &rbScreen));
+    double pixelX = rbScreen.resval.rpoint[X];
+    double pixelY = rbScreen.resval.rpoint[Y];
+    if (pixelY != 0)
+        view->setWidth(var.resval.rreal * (pixelX / pixelY));
+
+    PyThrowBadRt(acedGetVar(L"VIEWTWIST", &var));
+    view->setViewTwist(var.resval.rreal);
+
+    return view;
+}
+
+void PyAcEditor::zoom(const AcDbExtents& ext)
+{
+    if (ext.minPoint() == ext.maxPoint()) 
+        PyThrowBadEs(eInvalidInput);
+
+    std::unique_ptr<AcDbViewTableRecord> pView(acedGetCurrentView());
+    if (!pView) 
+        PyThrowBadEs(eNullPtr);
+
+    AcGeMatrix3d matWCS2Eye =
+        AcGeMatrix3d::rotation(-pView->viewTwist(), pView->viewDirection(), pView->target()) *
+        AcGeMatrix3d::planeToWorld(pView->viewDirection()).inverse() *
+        AcGeMatrix3d::translation(-pView->target().asVector());
+
+    AcDbExtents eyeExt(ext.minPoint(), ext.maxPoint());
+    eyeExt.transformBy(matWCS2Eye);
+
+    double extWidth = eyeExt.maxPoint().x - eyeExt.minPoint().x;
+    double extHeight = eyeExt.maxPoint().y - eyeExt.minPoint().y;
+
+    if (pView->height() != 0.0) 
+    {
+        double screenAspectRatio = pView->width() / pView->height();
+        double extAspectRatio = extWidth / extHeight;
+
+        if (extAspectRatio > screenAspectRatio) 
+        {
+            extHeight = extWidth / screenAspectRatio;
+        }
+    }
+
+    double paddingFactor = 1.05;
+    pView->setWidth(extWidth * paddingFactor);
+    pView->setHeight(extHeight * paddingFactor);
+    pView->setCenterPoint(AcGePoint2d(
+        (eyeExt.maxPoint().x + eyeExt.minPoint().x) * 0.5,
+        (eyeExt.maxPoint().y + eyeExt.minPoint().y) * 0.5
+    ));
+
+    acedSetCurrentView(pView.get(), nullptr);
+}
+
+
+void PyAcEditor::zoomExtents()
+{
+    AcDbDatabase* pDb = acdbCurDwg();
+    pDb->updateExt();
+    int cvport = 0;
+    struct resbuf var;
+    acedGetVar(L"CVPORT", &var);
+    if (var.restype == RTSHORT || var.restype == RTLONG)
+        cvport = var.resval.rint;
+    auto ex = cvport == 1 ?
+        AcDbExtents(pDb->pextmin(), pDb->pextmax()) : 
+        AcDbExtents(pDb->extmin(), pDb->extmax());
+    zoom(ex);
+}
+
+void PyAcEditor::zoomWindow(const AcGePoint3d& p1, const AcGePoint3d& p2)
+{
+    AcDbExtents ex;
+    ex.addPoint(p1);
+    ex.addPoint(p2);
+    zoom(ex);
 }
 
 AcGeMatrix3d PyAcEditor::curUCS()
