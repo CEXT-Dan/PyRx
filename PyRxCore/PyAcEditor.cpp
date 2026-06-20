@@ -53,6 +53,63 @@ extern int acedNEntSelPEx(
 #endif
 
 //-----------------------------------------------------------------------------------------
+// acedGetCurrentView
+AcDbViewTableRecord* acedGetCurrentView()
+{
+    AcDbViewTableRecord* view = new AcDbViewTableRecord();
+    struct resbuf var;
+    struct resbuf WCS, UCS, DCS;
+    WCS.restype = RTSHORT;
+    WCS.resval.rint = 0;
+    UCS.restype = RTSHORT;
+    UCS.resval.rint = 1;
+    DCS.restype = RTSHORT;
+    DCS.resval.rint = 2;
+
+    PyThrowBadRt(acedGetVar(L"VIEWMODE", &var));
+    view->setPerspectiveEnabled(var.resval.rint & 1);
+    view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
+    view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
+    view->setFrontClipAtEye(!(var.resval.rint & 16));
+
+    PyThrowBadRt(acedGetVar(L"BACKZ", &var));
+    view->setBackClipDistance(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"FRONTZ", &var));
+    view->setFrontClipDistance(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"VIEWCTR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint));
+    view->setCenterPoint(asPnt2d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"LENSLENGTH", &var));
+    view->setLensLength(var.resval.rreal);
+
+    PyThrowBadRt(acedGetVar(L"TARGET", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint));
+    view->setTarget(asPnt3d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"VIEWDIR", &var));
+    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint));
+    view->setViewDirection(asVec3d(var.resval.rpoint));
+
+    PyThrowBadRt(acedGetVar(L"VIEWSIZE", &var));
+    view->setHeight(var.resval.rreal);
+
+    resbuf rbScreen;
+    PyThrowBadRt(acedGetVar(_T("SCREENSIZE"), &rbScreen));
+    double pixelX = rbScreen.resval.rpoint[X];
+    double pixelY = rbScreen.resval.rpoint[Y];
+    if (pixelY != 0)
+        view->setWidth(var.resval.rreal * (pixelX / pixelY));
+
+    PyThrowBadRt(acedGetVar(L"VIEWTWIST", &var));
+    view->setViewTwist(var.resval.rreal);
+
+    return view;
+}
+
+//-----------------------------------------------------------------------------------------
 // ssArgExtracter requires lock
 class ssArgExtracter
 {
@@ -1059,68 +1116,13 @@ PyAcEditor::bptuple PyAcEditor::ssgetkw3(const std::string& args, const bpobject
     return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
 }
 
-AcDbViewTableRecord* acedGetCurrentView()
-{
-    AcDbViewTableRecord* view = new AcDbViewTableRecord();
-    struct resbuf var;
-    struct resbuf WCS, UCS, DCS;
-    WCS.restype = RTSHORT;
-    WCS.resval.rint = 0;
-    UCS.restype = RTSHORT;
-    UCS.resval.rint = 1;
-    DCS.restype = RTSHORT;
-    DCS.resval.rint = 2;
-
-    PyThrowBadRt(acedGetVar(L"VIEWMODE", &var));
-    view->setPerspectiveEnabled(var.resval.rint & 1);
-    view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
-    view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
-    view->setFrontClipAtEye(!(var.resval.rint & 16));
-
-    PyThrowBadRt(acedGetVar(L"BACKZ", &var));
-    view->setBackClipDistance(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"FRONTZ", &var));
-    view->setFrontClipDistance(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"VIEWCTR", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint));
-    view->setCenterPoint(asPnt2d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"LENSLENGTH", &var));
-    view->setLensLength(var.resval.rreal);
-
-    PyThrowBadRt(acedGetVar(L"TARGET", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint));
-    view->setTarget(asPnt3d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"VIEWDIR", &var));
-    PyThrowBadRt(acedTrans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint));
-    view->setViewDirection(asVec3d(var.resval.rpoint));
-
-    PyThrowBadRt(acedGetVar(L"VIEWSIZE", &var));
-    view->setHeight(var.resval.rreal);
-
-    resbuf rbScreen;
-    PyThrowBadRt(acedGetVar(_T("SCREENSIZE"), &rbScreen));
-    double pixelX = rbScreen.resval.rpoint[X];
-    double pixelY = rbScreen.resval.rpoint[Y];
-    if (pixelY != 0)
-        view->setWidth(var.resval.rreal * (pixelX / pixelY));
-
-    PyThrowBadRt(acedGetVar(L"VIEWTWIST", &var));
-    view->setViewTwist(var.resval.rreal);
-
-    return view;
-}
-
 void PyAcEditor::zoom(const AcDbExtents& ext)
 {
-    if (ext.minPoint() == ext.maxPoint()) 
+    if (ext.minPoint() == ext.maxPoint())
         PyThrowBadEs(eInvalidInput);
 
     std::unique_ptr<AcDbViewTableRecord> pView(acedGetCurrentView());
-    if (!pView) 
+    if (!pView)
         PyThrowBadEs(eNullPtr);
 
     AcGeMatrix3d matWCS2Eye =
@@ -1134,12 +1136,12 @@ void PyAcEditor::zoom(const AcDbExtents& ext)
     double extWidth = eyeExt.maxPoint().x - eyeExt.minPoint().x;
     double extHeight = eyeExt.maxPoint().y - eyeExt.minPoint().y;
 
-    if (pView->height() != 0.0) 
+    if (pView->height() != 0.0)
     {
         double screenAspectRatio = pView->width() / pView->height();
         double extAspectRatio = extWidth / extHeight;
 
-        if (extAspectRatio > screenAspectRatio) 
+        if (extAspectRatio > screenAspectRatio)
             extHeight = extWidth / screenAspectRatio;
     }
 
@@ -1164,7 +1166,7 @@ void PyAcEditor::zoomExtents()
     if (var.restype == RTSHORT || var.restype == RTLONG)
         cvport = var.resval.rint;
     auto ex = cvport == 1 ?
-        AcDbExtents(pDb->pextmin(), pDb->pextmax()) : 
+        AcDbExtents(pDb->pextmin(), pDb->pextmax()) :
         AcDbExtents(pDb->extmin(), pDb->extmax());
     zoom(ex);
 }
