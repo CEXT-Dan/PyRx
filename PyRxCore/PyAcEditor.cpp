@@ -1140,9 +1140,7 @@ void PyAcEditor::zoom(const AcDbExtents& ext)
         double extAspectRatio = extWidth / extHeight;
 
         if (extAspectRatio > screenAspectRatio) 
-        {
             extHeight = extWidth / screenAspectRatio;
-        }
     }
 
     double paddingFactor = 1.05;
@@ -1155,7 +1153,6 @@ void PyAcEditor::zoom(const AcDbExtents& ext)
 
     acedSetCurrentView(pView.get(), nullptr);
 }
-
 
 void PyAcEditor::zoomExtents()
 {
