@@ -8,6 +8,7 @@
 #include "PyEdUserInteraction.h"
 #include "PyApDocument.h"
 #include "PyDbEnts.h"
+#include "PyAcadApplication.h"
 
 namespace bp = boost::python;
 
@@ -435,6 +436,7 @@ void makePyEditorWrapper()
         .def("zoom", &PyAcEditor::zoom, DS.SARGS({ "ext: PyDb.Extents" })).staticmethod("zoom")
         .def("zoomExtents", &PyAcEditor::zoomExtents, DS.SARGS()).staticmethod("zoomExtents")
         .def("zoomWindow", &PyAcEditor::zoomWindow, DS.SARGS({ "p1: PyGe.Point3d","p2: PyGe.Point3d" })).staticmethod("zoomWindow")
+        .def("zoomCenter", &PyAcEditor::zoomCenter, DS.SARGS({ "pnt: PyGe.Point3d","magnify: float" })).staticmethod("zoomCenter")
 
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
@@ -1177,6 +1179,12 @@ void PyAcEditor::zoomWindow(const AcGePoint3d& p1, const AcGePoint3d& p2)
     ex.addPoint(p1);
     ex.addPoint(p2);
     zoom(ex);
+}
+
+void PyAcEditor::zoomCenter(const AcGePoint3d& pnt, double magnify)
+{
+    auto axApp = PyAcadApplication();
+    axApp.zoomCenter(pnt, magnify);
 }
 
 AcGeMatrix3d PyAcEditor::curUCS()

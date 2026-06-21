@@ -109,6 +109,7 @@ public:
     static void    zoom(const AcDbExtents& ext);
     static void    zoomExtents();
     static void    zoomWindow(const AcGePoint3d& p1, const AcGePoint3d& p2);
+    static void    zoomCenter(const AcGePoint3d& pnt, double magnify);
 
 
     static AcGeMatrix3d         curUCS();
