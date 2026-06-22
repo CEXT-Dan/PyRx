@@ -65,21 +65,19 @@ void PyRxModule::callPyFunction()
 
         PyErr_Clear();
         PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
-        if (rslt != nullptr)
-            return;
-        else
-            acutPrintf(_T("\nPyCallable_Check failed: "));
-
+        if (rslt == nullptr)
+        {
+            acutPrintf(_T("\nAn exception was caught from Python!: "));
+            if (PyErr_Occurred())
+            {
+                PyErr_Print();
+                PyErr_Clear();
+            }
+        }
     }
     catch (...)
     {
         acutPrintf(_T("\npyfunc failed with exception: "));
-    }
-
-    acutPrintf(_T("\npyfunc failed: "));
-    {
-        PyAutoLockGIL lock;
-        PyErr_Clear();
     }
 }
 
