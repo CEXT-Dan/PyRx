@@ -227,34 +227,6 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-inline bool icompare(const std::wstring& l, const std::wstring& r, const _locale_t& lc = pyrx_locale())
-{
-    if (l.size() != r.size())
-    {
-        return false;
-    }
-    for (size_t idx = 0; idx < l.size(); idx++)
-    {
-        if (_towlower_l(l[idx], lc) != _towlower_l(r[idx], lc))
-            return false;
-    }
-    return true;
-}
-
-inline bool icompare(const std::string& l, const std::string& r, const _locale_t& lc = pyrx_locale())
-{
-    if (l.size() != r.size())
-    {
-        return false;
-    }
-    for (size_t idx = 0; idx < l.size(); idx++)
-    {
-        if (_tolower_l(l[idx], lc) != _tolower_l(r[idx], lc))
-            return false;
-    }
-    return true;
-}
-
 [[nodiscard]] inline std::wstring utf8_to_wstr(const std::string& str)
 {
     if (str.empty())
@@ -291,6 +263,55 @@ inline bool icompare(const std::string& l, const std::string& r, const _locale_t
     if (utf16wc == nullptr)
         return {};
     return wstr_to_utf8(std::wstring{ utf16wc });
+}
+
+inline bool icompare(const std::wstring& l, const std::wstring& r)
+{
+    if (l.size() != r.size())
+        return false;
+    return CompareStringEx(
+        LOCALE_NAME_USER_DEFAULT,
+        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
+        l.c_str(), static_cast<int>(l.size()),
+        r.c_str(), static_cast<int>(r.size()),
+        nullptr, nullptr, 0
+    ) == CSTR_EQUAL;
+}
+
+inline bool icompare(const std::string& l, const std::string& r)
+{
+    if (l.size() != r.size())
+        return false;
+
+    if (l.empty())
+        return true;
+
+    constexpr int MAX_PATH_BUFFER = 260 + 32;
+
+    const int l_len = static_cast<int>(l.size());
+    const int r_len = static_cast<int>(r.size());
+
+    if (l_len >= MAX_PATH_BUFFER)
+    {
+        return icompare(utf8_to_wstr(l), utf8_to_wstr(r));
+    }
+
+    std::array<wchar_t, MAX_PATH_BUFFER> l_buf{};
+    std::array<wchar_t, MAX_PATH_BUFFER> r_buf{};
+
+    const int l_count = MultiByteToWideChar(CP_UTF8, 0, l.data(), l_len, l_buf.data(), MAX_PATH_BUFFER);
+    const int r_count = MultiByteToWideChar(CP_UTF8, 0, r.data(), r_len, r_buf.data(), MAX_PATH_BUFFER);
+
+    if (l_count <= 0 || r_count <= 0)
+        return false;
+
+    return CompareStringEx(
+        LOCALE_NAME_USER_DEFAULT,
+        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
+        l_buf.data(), l_count,
+        r_buf.data(), r_count,
+        nullptr, nullptr, 0
+    ) == CSTR_EQUAL;
 }
 
 template <typename Out>
