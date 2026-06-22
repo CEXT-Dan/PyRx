@@ -67,12 +67,9 @@ void PyRxModule::callPyFunction()
         PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
         if (rslt == nullptr)
         {
-            acutPrintf(_T("\nAn exception was caught from Python!: "));
+            acutPrintf(_T("\nAn exception was caught from Python!: \n"));
             if (PyErr_Occurred())
-            {
                 PyErr_Print();
-                PyErr_Clear();
-            }
         }
     }
     catch (...)
