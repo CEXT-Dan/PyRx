@@ -267,11 +267,9 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
 
 inline bool icompare(const std::wstring& l, const std::wstring& r)
 {
-    if (l.size() != r.size())
-        return false;
     return CompareStringEx(
         LOCALE_NAME_USER_DEFAULT,
-        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
+        LINGUISTIC_IGNORECASE,
         l.c_str(), static_cast<int>(l.size()),
         r.c_str(), static_cast<int>(r.size()),
         nullptr, nullptr, 0
@@ -280,12 +278,6 @@ inline bool icompare(const std::wstring& l, const std::wstring& r)
 
 inline bool icompare(const std::string& l, const std::string& r)
 {
-    if (l.size() != r.size())
-        return false;
-
-    if (l.empty())
-        return true;
-
     constexpr int MAX_PATH_BUFFER = 260 + 32;
 
     const int l_len = static_cast<int>(l.size());
@@ -307,7 +299,7 @@ inline bool icompare(const std::string& l, const std::string& r)
 
     return CompareStringEx(
         LOCALE_NAME_USER_DEFAULT,
-        NORM_IGNORECASE | NORM_LINGUISTIC_CASING,
+        LINGUISTIC_IGNORECASE,
         l_buf.data(), l_count,
         r_buf.data(), r_count,
         nullptr, nullptr, 0
