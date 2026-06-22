@@ -1,35 +1,7 @@
 #pragma once
 
-//- Declare it as an extern here so that it becomes available in all modules
 // PyRxAppSettings.cpp;
 _locale_t& pyrx_locale();
-
-#if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
-template <class... _Args>
-using ac_Fmt_string = std::_Basic_format_string<wchar_t, std::type_identity_t<_Args>...>;
-
-template <class... _Types>
-constexpr void acprint(const ac_Fmt_string<_Types...> _Fmt, _Types&&... _Args)
-{
-    acutPrintf(std::vformat(_Fmt._Str, std::make_wformat_args(_Args...)).c_str());
-}
-template <class... _Types>
-constexpr void acprintnl(const ac_Fmt_string<_Types...> _Fmt, _Types&&... _Args)
-{
-    acutPrintf((_T("\n") + std::vformat(_Fmt._Str, std::make_wformat_args(_Args...))).c_str());
-}
-#else
-template <class... _Types>
-constexpr void acprint(const std::wformat_string<_Types...> _Fmt, _Types&&... _Args)
-{
-    acutPrintf(std::vformat(_Fmt.get(), std::make_wformat_args(_Args...)).c_str());
-}
-template <class... _Types>
-constexpr void acprintnl(const std::wformat_string<_Types...> _Fmt, _Types&&... _Args)
-{
-    acutPrintf((_T("\n") + std::vformat(_Fmt.get(), std::make_wformat_args(_Args...))).c_str());
-}
-#endif
 
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
@@ -488,7 +460,7 @@ struct std::hash<std::filesystem::path>
 };
 #endif
 
-#if defined _ARXTARGET240 || ( _BRXTARGET )  || ( _GRXTARGET250 ) || ( _ZRXTARGET ) || (_IRXTARGET140)
+#if defined _ARXTARGET240 || _BRXTARGET260  || _GRXTARGET250 || _ZRXTARGET270
 template <>
 struct std::hash<AcString>
 {
