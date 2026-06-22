@@ -4,7 +4,6 @@
 // PyRxAppSettings.cpp;
 _locale_t& pyrx_locale();
 
-
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <class... _Args>
 using ac_Fmt_string = std::_Basic_format_string<wchar_t, std::type_identity_t<_Args>...>;
@@ -31,135 +30,6 @@ constexpr void acprintnl(const std::wformat_string<_Types...> _Fmt, _Types&&... 
     acutPrintf((_T("\n") + std::vformat(_Fmt.get(), std::make_wformat_args(_Args...))).c_str());
 }
 #endif
-
-//-----------------------------------------------------------------------------------------
-//CString toupper
-inline CString& towupper(CString& s) noexcept {
-    for (size_t idx = 0; idx < s.GetLength(); idx++)
-        s.SetAt(idx, _towupper_l(s.GetAt(idx), pyrx_locale()));
-    return s;
-}
-
-inline CString towupper(const CString& s) noexcept {
-    CString buffer{ s };
-    for (size_t idx = 0; idx < buffer.GetLength(); idx++)
-        buffer.SetAt(idx, _towupper_l(buffer.GetAt(idx), pyrx_locale()));
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//CString tolower
-inline CString& towlower(CString& s) noexcept {
-    for (size_t idx = 0; idx < s.GetLength(); idx++)
-        s.SetAt(idx, _towlower_l(s.GetAt(idx), pyrx_locale()));
-    return s;
-}
-
-inline CString towlower(const CString& s) noexcept {
-    CString buffer{ s };
-    for (size_t idx = 0; idx < buffer.GetLength(); idx++)
-        buffer.SetAt(idx, _towlower_l(buffer.GetAt(idx), pyrx_locale()));
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//AcString toupper
-inline AcString& towupper(AcString& s) noexcept {
-    for (size_t idx = 0; idx < s.length(); idx++)
-        s.setAt(idx, _towupper_l(s.getAt(idx), pyrx_locale()));
-    return s;
-}
-
-inline AcString towupper(const AcString& s) noexcept {
-
-    AcString buffer{ s };
-    for (size_t idx = 0; idx < buffer.length(); idx++)
-        buffer.setAt(idx, _towupper_l(buffer.getAt(idx), pyrx_locale()));
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//AcString tolower
-inline AcString& towlower(AcString& s) noexcept {
-    for (size_t idx = 0; idx < s.length(); idx++)
-        s.setAt(idx, _towlower_l(s.getAt(idx), pyrx_locale()));
-    return s;
-}
-
-inline AcString towlower(const AcString& s) noexcept {
-
-    AcString buffer{ s };
-    for (size_t idx = 0; idx < buffer.length(); idx++)
-        buffer.setAt(idx, _towlower_l(buffer.getAt(idx), pyrx_locale()));
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//wstring toupper
-inline std::wstring& towupper(std::wstring& s) noexcept {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _towupper_l(c, pyrx_locale()); });
-    return s;
-}
-
-inline std::wstring towupper(const std::wstring& s) noexcept {
-
-    std::wstring buffer{ s };
-    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _towupper_l(c, pyrx_locale()); });
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//wstring tolower
-inline std::wstring& towlower(std::wstring& s) noexcept {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
-    return s;
-}
-
-inline std::wstring towlower(const std::wstring& s) noexcept {
-    std::wstring buffer{ s };
-    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
-    return buffer;
-}
-
-inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept {
-    std::wstring buffer{ s };
-    return std::filesystem::path{ towlower(buffer) };
-}
-
-//-----------------------------------------------------------------------------------------
-//string toupper
-inline std::string& toupper(std::string& s) noexcept {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _toupper_l(c, pyrx_locale()); });
-    return s;
-}
-
-inline std::string toupper(const std::string& s) noexcept {
-
-    std::string buffer{ s };
-    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _toupper_l(c, pyrx_locale()); });
-    return buffer;
-}
-
-//-----------------------------------------------------------------------------------------
-//string tolower
-inline std::string& tolower(std::string& s) noexcept {
-    std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _tolower_l(c, pyrx_locale()); });
-    return s;
-}
-
-inline std::string tolower(const std::string& s) noexcept {
-    std::string buffer{ s };
-    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _tolower_l(c, pyrx_locale()); });
-    return buffer;
-}
 
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
@@ -457,6 +327,155 @@ public:
 public:
     wchar_t* buf = nullptr;
 };
+
+//-----------------------------------------------------------------------------------------
+// CString toupper
+inline CString& towupper(CString& s) noexcept 
+{
+    if (!s.IsEmpty()) {
+        const size_t sizeInChars = static_cast<size_t>(s.GetLength()) + 1;
+        _wcsupr_s_l(s.GetBuffer(), sizeInChars, pyrx_locale());
+        s.ReleaseBuffer();
+    }
+    return s;
+}
+
+inline CString towupper(const CString& s) noexcept 
+{
+    CString buffer{ s };
+    return towupper(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// CString tolower
+inline CString& towlower(CString& s) noexcept 
+{
+    if (!s.IsEmpty()) 
+    {
+        const size_t sizeInChars = static_cast<size_t>(s.GetLength()) + 1;
+        _wcslwr_s_l(s.GetBuffer(), sizeInChars, pyrx_locale());
+        s.ReleaseBuffer();
+    }
+    return s;
+}
+
+inline CString towlower(const CString& s) noexcept 
+{
+    CString buffer{ s };
+    return towlower(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// AcString toupper
+inline AcString& towupper(AcString& s) noexcept 
+{
+    if (!s.isEmpty()) {
+        const size_t sizeInChars = static_cast<size_t>(s.length()) + 1;
+        _wcsupr_s_l(s.getBuffer(), sizeInChars, pyrx_locale());
+        s.releaseBuffer();
+    }
+    return s;
+}
+
+inline AcString towupper(const AcString& s) noexcept 
+{
+    AcString buffer{ s };
+    return towupper(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// AcString tolower
+inline AcString& towlower(AcString& s) noexcept 
+{
+    if (!s.isEmpty()) {
+        const size_t sizeInChars = static_cast<size_t>(s.length()) + 1;
+        _wcslwr_s_l(s.getBuffer(), sizeInChars, pyrx_locale());
+        s.releaseBuffer();
+    }
+    return s;
+}
+
+inline AcString towlower(const AcString& s) noexcept 
+{
+    AcString buffer{ s };
+    return towlower(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// wstring toupper
+inline std::wstring& towupper(std::wstring& s) noexcept 
+{
+    if (!s.empty()) {
+        _wcsupr_s_l(s.data(), s.size() + 1, pyrx_locale());
+    }
+    return s;
+}
+
+inline std::wstring towupper(const std::wstring& s) noexcept 
+{
+    std::wstring buffer{ s };
+    return towupper(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// wstring tolower
+inline std::wstring& towlower(std::wstring& s) noexcept 
+{
+    if (!s.empty()) {
+        _wcslwr_s_l(s.data(), s.size() + 1, pyrx_locale());
+    }
+    return s;
+}
+
+inline std::wstring towlower(const std::wstring& s) noexcept 
+{
+    std::wstring buffer{ s };
+    return towlower(buffer);
+}
+
+inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept 
+{
+    std::wstring buffer{ s.wstring() };
+    return std::filesystem::path{ towlower(buffer) };
+}
+
+//-----------------------------------------------------------------------------------------
+// UTF-8 string toupper
+inline std::string& toupper(std::string& s) noexcept 
+{
+    if (!s.empty()) 
+    {
+        std::wstring wstr = utf8_to_wstr(s);
+        towupper(wstr);
+        s = wstr_to_utf8(wstr);
+    }
+    return s;
+}
+
+inline std::string toupper(const std::string& s) noexcept 
+{
+    std::string buffer{ s };
+    return toupper(buffer);
+}
+
+//-----------------------------------------------------------------------------------------
+// UTF-8 string tolower
+inline std::string& tolower(std::string& s) noexcept 
+{
+    if (!s.empty()) 
+    {
+        std::wstring wstr = utf8_to_wstr(s);
+        towlower(wstr);
+        s = wstr_to_utf8(wstr);
+    }
+    return s;
+}
+
+inline std::string tolower(const std::string& s) noexcept 
+{
+    std::string buffer{ s };
+    return tolower(buffer);
+}
 
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <>

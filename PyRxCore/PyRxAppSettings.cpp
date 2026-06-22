@@ -9,12 +9,20 @@
 
 _locale_t& pyrx_locale()
 {
-    // TODO: set form OS? or pyrx_config 
-    // this is only used in toupper & tolower
-    static _locale_t pyrx_locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    static _locale_t pyrx_locale = _create_locale(LC_ALL, ".utf8");
+    if (pyrx_locale == nullptr) 
+    {
+        static _locale_t fallback_locale = _create_locale(LC_ALL, "en-US.utf8");
+
+        if (fallback_locale == nullptr) 
+        {
+            static _locale_t absolute_failsafe = _create_locale(LC_ALL, "C");
+            return absolute_failsafe;
+        }
+        return fallback_locale;
+    }
     return pyrx_locale;
 }
-
 
 constexpr const wchar_t* pyrx_config_name = L"pyrx.toml";
 
