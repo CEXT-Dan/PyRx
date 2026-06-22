@@ -13,7 +13,6 @@ _locale_t& pyrx_locale()
     if (pyrx_locale == nullptr) 
     {
         static _locale_t fallback_locale = _create_locale(LC_ALL, "en-US.utf8");
-
         if (fallback_locale == nullptr) 
         {
             static _locale_t absolute_failsafe = _create_locale(LC_ALL, "C");
