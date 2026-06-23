@@ -345,7 +345,24 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
     }
 }
 
+// this is to warn if the module was loaded elsewhere, i.e. a stdLib file
+static void validateModuleLoded(const PyRxMethod& method, const PyModulePath& path, bool silent)
+{
+    std::error_code ec;
+    PyObjectPtr modFilenameObj(PyModule_GetFilenameObject(method.mod.get()));
+    std::filesystem::path actual{ PyUnicode_AsWString(modFilenameObj.get()) };
 
+    if (!std::filesystem::equivalent(actual, path.fullPath, ec))
+    {
+        if (!silent) // else log?
+        {
+            acutPrintf(_T("\nWarning!, paths do not match! \nLoad = %ls \nActual = %ls: "),
+                path.fullPath.c_str(), actual.c_str());
+        }
+    }
+}
+
+// TODO: test silent for lisp
 bool loadPythonModule(const PyModulePath& path, bool silent)
 {
     if (!PyRxApp::isPythonModule(path.fullPath.filename()))
@@ -366,17 +383,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 
     if (method.mod != nullptr)
     {
-        // this is to ensure that the module was not loaded elsewhere, i.e. a stdLib file
-        PyObjectPtr modFilenameObj(PyModule_GetFilenameObject(method.mod.get()));
-        std::filesystem::path actual{ PyUnicode_AsWString(modFilenameObj.get()) };
+        validateModuleLoded(method, path, silent);
 
-        if (!std::filesystem::equivalent(actual, path.fullPath, ec))
-        {
-            if (!silent)
-            {
-                acutPrintf(_T("\nWarning!, paths do not match! \nLoad = %ls \nActual = %ls: "), path.fullPath.c_str(), actual.c_str());
-            }
-        }
         method.mdict = PyModule_GetDict(method.mod.get());
         loadPyAppReactors(method);
         loadCommands(method, path);
@@ -405,8 +413,6 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
         callOnPyUnloadAppBeforeReloading(path.moduleName);
         PyRxMethod& method = rxApp.funcNameMap.at(path.moduleName);
         method.mod.reset(PyImport_ReloadModule(method.mod.get()));
-        if (PyErr_Occurred() != NULL)
-            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
         if (method.mod != nullptr)
         {
             method.mdict = PyModule_GetDict(method.mod.get());
@@ -422,6 +428,8 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
         }
         else
         {
+            if (PyErr_Occurred())
+                PyErr_Print();
             rxApp.funcNameMap.erase(path.moduleName);
             if (!silent)
                 acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);

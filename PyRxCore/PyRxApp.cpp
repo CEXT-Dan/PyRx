@@ -553,9 +553,10 @@ PyObject* PyRxApp::appendAndLoadModule(const std::filesystem::path& modulePath, 
         if (!pathGuard.isSuccess())
             return nullptr;
         loadedModule.reset(PyImport_ImportModule(moduleName.c_str()));
-        if (!loadedModule || PyErr_Occurred() != NULL)
+        if (!loadedModule || PyErr_Occurred())
         {
-            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
+            acutPrintf(_T("\nPyImport_ImportModule Error: \n"));
+            PyErr_Print();
             return nullptr;
         }
     }
@@ -587,63 +588,6 @@ bool PyRxApp::isPythonModule(const AcString& filename)
 {
     const std::filesystem::path _path = (const wchar_t*)filename;
     return PyRxApp::isPythonModule(_path.filename());
-}
-
-std::wstring PyRxApp::the_error()
-{
-    PyAutoLockGIL lock;
-
-    if (PyErr_Occurred())
-    {
-        PyObject* error_type = nullptr;
-        PyObject* the_error = nullptr;
-        PyObject* the_traceback = nullptr;
-
-        PyErr_Fetch(&error_type, &the_error, &the_traceback);
-        PyErr_NormalizeException(&error_type, &the_error, &the_traceback);
-
-        std::string the_error_string = "Unknown Error";
-        std::string the_traceback_string;
-
-        if (the_error != nullptr)
-        {
-            PyObjectPtr pRep{ PyObject_Str(the_error) };
-            if (pRep)
-            {
-                the_error_string = PyUnicode_AsString(pRep.get());
-            }
-        }
-
-        if (the_traceback != nullptr && PyTraceBack_Check(the_traceback))
-        {
-            the_traceback_string = "\nTraceback (most recent call last):";
-            PyTracebackObject* pTrace = reinterpret_cast<PyTracebackObject*>(the_traceback);
-
-            while (pTrace != nullptr)
-            {
-                PyFrameObject* frame = pTrace->tb_frame;
-                if (frame != nullptr)
-                {
-                    PyCodeObject* code = PyFrame_GetCode(frame);
-                    if (code != nullptr)
-                    {
-                        int lineNr = PyFrame_GetLineNumber(frame);
-                        const auto sCodeName = PyUnicode_AsStringView(code->co_name);
-                        const auto sFileName = PyUnicode_AsStringView(code->co_filename);
-                        the_traceback_string += std::format("\n  File \"{}\", line {}, in {}", sFileName, lineNr, sCodeName);
-                        Py_DECREF(code);
-                    }
-                }
-                pTrace = pTrace->tb_next;
-            }
-        }
-        std::string message = the_traceback_string + "\n" + the_error_string;
-        Py_XDECREF(error_type);
-        Py_XDECREF(the_error);
-        Py_XDECREF(the_traceback);
-        return utf8_to_wstr(message);
-    }
-    return L"No Python Error Occurred";
 }
 
 wxIMPLEMENT_APP_NO_MAIN(WxRxApp);
