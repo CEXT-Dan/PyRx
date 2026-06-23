@@ -45,9 +45,9 @@ void PyRxModule::callPyFunction()
     }
     try
     {
-        std::unique_ptr<AutoCWD> pAutoCWD;
+        AutoCWD pAutoCWD;
         if (rxApp.pathForCommand.contains(cmdName))
-            pAutoCWD.reset(new AutoCWD(rxApp.pathForCommand.at(cmdName)));
+            pAutoCWD.reset(rxApp.pathForCommand.at(cmdName));
 
         PyObject* pMethod = rxApp.commands.at(cmdName);
         if (pMethod == nullptr)

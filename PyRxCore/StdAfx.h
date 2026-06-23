@@ -516,13 +516,20 @@ struct AutoWorkingDatabase
 //Auto Working directory
 struct AutoCWD
 {
-    AutoCWD(const  std::filesystem::path& pathToSet)
+    AutoCWD()
+    {
+    }
+    AutoCWD(const std::filesystem::path& pathToSet)
     {
         std::filesystem::current_path(pathToSet, _Ec);
     }
     ~AutoCWD()
     {
         std::filesystem::current_path(pathToRestore, _Ec);
+    }
+    void reset(const std::filesystem::path& pathToSet)
+    {
+        std::filesystem::current_path(pathToSet, _Ec);
     }
     std::error_code _Ec;
     std::filesystem::path pathToRestore = std::filesystem::current_path(_Ec);
