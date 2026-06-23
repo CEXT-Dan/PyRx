@@ -420,9 +420,9 @@ bool PyRxApp::init()
         }
         else
         {
-            if (PyErr_Occurred())
-                PyErr_Clear();
             acutPrintf(_T("\nFailed to load Python Interpreter!: \n"));
+            if (PyErr_Occurred())
+                PyErr_Print();
             isLoaded = false;
         }
     }
