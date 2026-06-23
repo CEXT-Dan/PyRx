@@ -62,7 +62,6 @@ public:
     static PyObject*    appendAndLoadModule(const std::filesystem::path& modulePath, const std::string& moduleName, bool pyload = false);
     static bool         isPythonModule(const std::filesystem::path& filename);
     static bool         isPythonModule(const AcString& filename);
-    static std::wstring the_error();
     static const std::filesystem::path& modulePath();
     static const std::filesystem::path& moduleName();
     static const std::filesystem::path& getLocalAppDataPath(bool createIfNotFound = true);
