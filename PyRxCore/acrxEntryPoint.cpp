@@ -398,7 +398,7 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static AcDbObjectId getblockModelSpaceId(AcDbDatabase* pDb)
+    static auto getblockModelSpaceId(AcDbDatabase* pDb) ->AcDbObjectId
     {
         AcDbObjectId recid;
         AcDbBlockTablePointer bt(pDb->blockTableId());
@@ -406,7 +406,7 @@ public:
         return recid;
     }
 
-    static Acad::ErrorStatus acedGetCurrentSelectionSet(ads_name ssname, AcDbObjectIdArray& ids)
+    static auto acedGetCurrentSelectionSet(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::ErrorStatus
     {
         AcDbObjectId id;
         Adesk::Int32 nsize = 0;
@@ -453,7 +453,7 @@ public:
         return std::make_tuple(es, id);
     }
 
-    static std::tuple<Acad::ErrorStatus, AcDbObjectId> postToModelSpace2(AcDbEntity* pEnt)
+    static auto postToModelSpace2(AcDbEntity* pEnt) -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
     {
         if (pEnt == nullptr)
             return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
