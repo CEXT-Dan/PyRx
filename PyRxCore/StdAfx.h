@@ -104,14 +104,6 @@
 #define _ARXTARGET260 260
 #endif
 
-#if defined(_IRXTARGET) && (_IRXTARGET <= 140)
-#define _IRXTARGET140 140
-#endif
-
-#if defined(_IRXTARGET140)
-#define eNotImplemented eNotImplementedYet
-#endif
-
 //- ObjectARX and OMF headers needs this
 #include <map>
 #include <vector>
@@ -276,10 +268,6 @@
 #pragma comment( lib , "ZwUI.lib" )
 #pragma comment( lib , "ZwZrx.lib" )
 #pragma comment( lib , "ZwImaging.lib")
-#endif
-
-#if defined(_IRXTARGET)
-#pragma comment( lib , "IcArxImg.lib" )
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");

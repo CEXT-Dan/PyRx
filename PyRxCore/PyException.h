@@ -45,9 +45,6 @@ inline const char* appHostName()
 #ifdef _ZRXTARGET 
     return "ZRX";
 #endif
-#ifdef _IRXTARGET 
-    return "IRX";
-#endif
 #ifdef _GRXTARGET 
     return "GRX";
 #endif

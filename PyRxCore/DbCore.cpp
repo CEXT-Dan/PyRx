@@ -585,7 +585,7 @@ bool DbCore::hasGeoData(PyDbDatabase& db)
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 {
     PyAutoLockGIL lock;
-#if defined(_ARXTARGET240) || defined(_ZRXTARGET270) || defined(_GRXTARGET250) || defined(_BRXTARGET260) || defined(_IRXTARGET140)
+#if defined(_ARXTARGET240) || defined(_ZRXTARGET270) || defined(_GRXTARGET250) || defined(_BRXTARGET260)
     RxAutoOutStr dxfName;
     RxAutoOutStr className;
     RxAutoOutStr appName;
@@ -918,22 +918,14 @@ void DbCore::unloadXrefs2(PyDbDatabase& db, const boost::python::list& xrefBlkId
 
 PyDbDatabaseSummaryInfo DbCore::getSummaryInfo(PyDbDatabase& db)
 {
-#if defined(_IRXTARGET140)
-    throw PyNotimplementedByHost();
-#else
     AcDbDatabaseSummaryInfo* info = nullptr;
     PyThrowBadEs(acdbGetSummaryInfo(db.impObj(), info));
     return PyDbDatabaseSummaryInfo(info);
-#endif
 }
 
 void DbCore::putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db)
 {
-#if defined(_IRXTARGET140)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(acdbPutSummaryInfo(info.impObj(), db.impObj()));
-#endif
 }
 
 bool DbCore::validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info)
