@@ -406,22 +406,26 @@ public:
         return recid;
     }
 
-    static auto acedGetCurrentSelectionSet(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::ErrorStatus
+   static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::PromptStatus
     {
-        AcDbObjectId id;
-        Adesk::Int32 nsize = 0;
-        acedSSLength(ssname, &nsize);
-        ids.setPhysicalLength(nsize);
-        for (size_t i = 0; i < nsize; i++)
+        Adesk::Int32 nSize = 0;
+        if (acedSSLength(ssname, &nSize) != RTNORM) 
+            return Acad::PromptStatus::eError;
+        ids.setPhysicalLength(nSize);
+
+        for (int i = 0; i < nSize; i++)
         {
             ads_name ename = { 0 };
-            if (acedSSName(ssname, i, ename) == RTNORM) [[likely]]
+            if (acedSSName(ssname, i, ename) == RTNORM)
             {
-                if (acdbGetObjectId(id, ename) == eOk) [[likely]]
-                    ids.append(id);
+                AcDbObjectId objId;
+                if (acdbGetObjectId(objId, ename) == eOk)
+                {
+                    ids.append(objId);
+                }
             }
         }
-        return eOk;
+        return Acad::PromptStatus::eNormal;
     }
 
     static auto ssget(resbuf* pFilter = nullptr) -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
@@ -429,10 +433,10 @@ public:
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
         int res = acedSSGet(NULL, NULL, NULL, pFilter, ssname);
-        if (res != RTNORM || acedGetCurrentSelectionSet(ssname, ids) != eOk)
+        if (res != RTNORM || ConvertSSToIdArray(ssname, ids) != Acad::eNormal)
             return std::make_tuple(Acad::PromptStatus::eError, ids);
         acedSSFree(ssname);
-        return std::make_tuple(Acad::PromptStatus(res), std::move(ids));
+        return std::make_tuple(static_cast<Acad::PromptStatus>(res), std::move(ids));
     }
 
     static auto getPoint() -> std::tuple<Acad::PromptStatus, AcGePoint3d>
