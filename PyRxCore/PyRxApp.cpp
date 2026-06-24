@@ -197,6 +197,8 @@ bool WxRxApp::Init_wxPython()
     PyPreConfig_InitPythonConfig(&preConfig);
     const auto& args = PyRxAppSettings::getCommandLineArgs();
 
+    preConfig.utf8_mode = 1;
+
     if (args.empty()) 
     {
         status = Py_PreInitialize(&preConfig);
