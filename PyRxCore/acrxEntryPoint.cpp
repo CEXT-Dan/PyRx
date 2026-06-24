@@ -50,7 +50,6 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp

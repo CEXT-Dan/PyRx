@@ -38,11 +38,6 @@
 #import "acax.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_IRXTARGET) && (_IRXTARGET <= 140)
-#import "acax24ENU.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#endif
-
-
 
 #if defined(_ZRXTARGET)
 //enums

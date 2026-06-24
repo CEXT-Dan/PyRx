@@ -70,7 +70,6 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acrxLockApplication(pkt);
-#if !defined(_IRXTARGET)
         std::array<wchar_t, 8> buffer = { 0 };
         if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
         {
@@ -81,7 +80,6 @@ public:
         }
         PyRxLoader_loader();
         envToRestoreFrom = getPathEnvironmentVariable();
-#endif
         return (retCode);
     }
 
@@ -95,27 +93,6 @@ public:
     virtual AcRx::AppRetCode On_kLoadDwgMsg(void* pkt) override
     {
         AcRx::AppRetCode retCode = AcRxDbxApp::On_kLoadDwgMsg(pkt);
-#if defined(_IRXTARGET)
-        static bool once = false;
-        if (!once)
-        {
-            const AcString fname = curDoc()->fileName();
-            if (!fname.isEmpty())
-            {
-                once = true;
-                std::array<wchar_t, 8> buffer = { 0 };
-                if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
-                {
-                    if (_wtoi(buffer.data()) == 1)
-                        PYRX_LOG = 1;
-                    else
-                        PYRX_LOG = 0;
-                }
-                PyRxLoader_loader();
-                envToRestoreFrom = getPathEnvironmentVariable();
-            }
-        }
-#endif  
         return retCode;
     }
 
@@ -159,8 +136,6 @@ public:
         return L"PyRxZ26.0.Zrx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 270
         return L"PyRxZ27.0.Zrx";
-#elif defined(_IRXTARGET) && _IRXTARGET == 140
-        return L"PyRxI14.1.Irx";
 #endif
         acutPrintf(_T("Error in getNameOfModuleToLoad: "));
         return L"!ERROR!";
@@ -344,11 +319,7 @@ public:
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer = pathToAddLower + buffer;
-#if defined(_IRXTARGET) && _IRXTARGET == 140
-            if (acedSetEnv(_T("PATH"), buffer.c_str()) == RTNORM)
-#else
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
-#endif
             {
                 appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAddLower.c_str()));
                 return false;

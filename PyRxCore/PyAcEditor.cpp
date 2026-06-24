@@ -718,7 +718,7 @@ bp::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGePoint3d& pt
 
 static bp::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 270 || defined(_GRXTARGET) && _GRXTARGET <= 260 ||  defined(_IRXTARGET) && _IRXTARGET <= 140
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 270 || defined(_GRXTARGET) && _GRXTARGET <= 260
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

@@ -33,9 +33,6 @@ const TCHAR* getappname()
 #ifdef _ZRXTARGET 
     return L"ZRX";
 #endif
-#ifdef _IRXTARGET 
-    return L"IRX";
-#endif
 #ifdef _GRXTARGET 
     return L"GRX";
 #endif
