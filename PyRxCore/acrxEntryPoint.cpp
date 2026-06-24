@@ -400,10 +400,7 @@ public:
     //-- utilities 
     static auto getblockModelSpaceId(AcDbDatabase* pDb) ->AcDbObjectId
     {
-        AcDbObjectId recid;
-        AcDbBlockTablePointer bt(pDb->blockTableId());
-        bt->getIdAt(L"*MODEL_SPACE", recid);
-        return recid;
+        return acdbSymUtil()->blockModelSpaceId(pDb);
     }
 
    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::PromptStatus
@@ -447,17 +444,6 @@ public:
     }
 
     static auto postToModelSpace(AcDbEntity* pEnt) -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
-    {
-        if (pEnt == nullptr)
-            return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
-        AcDbObjectId id;
-        AcDbDatabase* pDb = acdbCurDwg();
-        AcDbBlockTableRecordPointer model(getblockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
-        Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
-        return std::make_tuple(es, id);
-    }
-
-    static auto postToModelSpace2(AcDbEntity* pEnt) -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
     {
         if (pEnt == nullptr)
             return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
