@@ -199,14 +199,14 @@ bool WxRxApp::Init_wxPython()
 
     preConfig.utf8_mode = 1;
 
-    if (args.empty()) 
+    if (args.empty())
     {
         status = Py_PreInitialize(&preConfig);
     }
-    else 
+    else
     {
         std::vector<const wchar_t*> argvPtrs;
-        for (const auto& arg : args) 
+        for (const auto& arg : args)
             argvPtrs.push_back(arg.c_str());
         status = Py_PreInitializeFromArgs(&preConfig, (Py_ssize_t)argvPtrs.size(), (wchar_t**)argvPtrs.data());
     }
