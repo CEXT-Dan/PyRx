@@ -2780,19 +2780,19 @@
         ],
         [
             "PyGe::Point2dTree::knnSearch",
-            "tuple[list[int],list[int]]"
+            "tuple[list[int],list[float]]"
         ],
         [
             "PyGe::Point2dTree::radiusSearch",
-            "tuple[list[int],list[int]]"
+            "tuple[list[int],list[float]]"
         ],
         [
             "PyGe::Point3dTree::knnSearch",
-            "tuple[list[int],list[int]]"
+            "tuple[list[int],list[float]]"
         ],
         [
             "PyGe::Point3dTree::radiusSearch",
-            "tuple[list[int],list[int]]"
+            "tuple[list[int],list[float]]"
         ],
         [
             "PyDb::BlockReference::getBlockProperties",
