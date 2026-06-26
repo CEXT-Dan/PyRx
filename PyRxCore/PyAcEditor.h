@@ -84,6 +84,10 @@ public:
     static bptuple selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter);
     static bptuple selectWindow3(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter, const bpobject& rm);
 
+    static bptuple selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    static bptuple selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter);
+    static bptuple selectCrossingWindow3(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter, const bpobject& rm);
+
     static bptuple selectFence1(const bpobject& points);
     static bptuple selectFence2(const bpobject& points, const bpobject& filter);
     static bptuple selectFence3(const bpobject& points, const bpobject& filter, const bpobject& rm);
@@ -91,6 +95,10 @@ public:
     static bptuple selectWindowPolygon1(const bpobject& points);
     static bptuple selectWindowPolygon2(const bpobject& points, const bpobject& filter);
     static bptuple selectWindowPolygon3(const bpobject& points, const bpobject& filter, const bpobject& rm);
+
+    static bptuple selectCrossingPolygon1(const bpobject& points);
+    static bptuple selectCrossingPolygon2(const bpobject& points, const bpobject& filter);
+    static bptuple selectCrossingPolygon3(const bpobject& points, const bpobject& filter, const bpobject& rm);
 
     static bptuple selectPrevious1();
     static bptuple selectPrevious2(const bpobject& filter);

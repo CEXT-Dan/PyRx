@@ -2029,6 +2029,40 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
+    def selectCrossingPolygon(
+        points: Collection[PyGe.Point3d],
+        filter: Collection[tuple[int, Any]] = ...,
+        filterCallback: Any = ...,
+        /,
+    ) -> tuple:
+        """
+        Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
+        selection mode is specified either by prompting the AutoCAD user or by filtering the
+        drawing database. You must release the allocated selection set after you are finished with
+        processing the selection. If you fail to do this the selection set will be kept on the
+        stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection
+        sets per session, the unreleased selection sets can result in failed object selections
+        through ObjectARX.
+        """
+    @staticmethod
+    def selectCrossingWindow() -> tuple: ...
+    def selectCrossingWindow1(
+        pt1: PyGe.Point3d,
+        pt2: PyGe.Point3d,
+        filter: Collection[tuple[int, Any]] = ...,
+        filterCallback: Any = ...,
+        /,
+    ) -> tuple:
+        """
+        Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
+        selection mode is specified either by prompting the AutoCAD user or by filtering the
+        drawing database. You must release the allocated selection set after you are finished with
+        processing the selection. If you fail to do this the selection set will be kept on the
+        stack until AutoCAD terminates. Since AutoCAD can only hold 128 application-based selection
+        sets per session, the unreleased selection sets can result in failed object selections
+        through ObjectARX.
+        """
+    @staticmethod
     def selectFence(
         points: Collection[PyGe.Point3d],
         filter: Collection[tuple[int, Any]] = ...,
