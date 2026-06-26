@@ -403,10 +403,20 @@ void makePyEditorWrapper()
         .def("selectWindow", &PyAcEditor::selectWindow3,
             DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindow")
 
+        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
+        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
+        .def("selectCrossingWindow1", &PyAcEditor::selectCrossingWindow3,
+            DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectCrossingWindow")
+
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2)
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon3,
             DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectWindowPolygon")
+
+        .def("selectCrossingPolygon", &PyAcEditor::selectCrossingPolygon1)
+        .def("selectCrossingPolygon", &PyAcEditor::selectCrossingPolygon2)
+        .def("selectCrossingPolygon", &PyAcEditor::selectCrossingPolygon3,
+            DS.SARGS({ "points:Collection[PyGe.Point3d]","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectCrossingPolygon")
 
         .def("selectFence", &PyAcEditor::selectFence1)
         .def("selectFence", &PyAcEditor::selectFence2)
@@ -937,6 +947,34 @@ PyAcEditor::bptuple PyAcEditor::selectWindow3(const AcGePoint3d& pt1, const AcGe
     return makeSelectionResult(name, stat);
 }
 
+PyAcEditor::bptuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+{
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_C"), asDblArray(pt1), asDblArray(pt2), nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter)
+{
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_C"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectCrossingWindow3(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_C"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
 bp::tuple PyAcEditor::selectFence1(const bp::object& points)
 {
     PyEdUserInteraction ui;
@@ -996,6 +1034,37 @@ PyAcEditor::bptuple PyAcEditor::selectWindowPolygon3(const bpobject& points, con
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectCrossingPolygon1(const bpobject& points)
+{
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_CP"), rbPoints.get(), nullptr, nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectCrossingPolygon2(const bpobject& points, const bpobject& filter)
+{
+    PyEdUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_CP"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+PyAcEditor::bptuple PyAcEditor::selectCrossingPolygon3(const bpobject& points, const bpobject& filter, const bpobject& rm)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_CP"), rbPoints.get(), nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
 
