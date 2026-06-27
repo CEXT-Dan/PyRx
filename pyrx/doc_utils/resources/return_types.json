@@ -2909,6 +2909,14 @@
         [
             "PyDb::DbObjectCloseScope::__enter__",
             "PyDb.DbObjectCloseScope"
+        ],
+        [
+            "PyEd::Editor::selectCrossingPolygon",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
+        ],
+        [
+            "PyEd::Editor::selectCrossingWindow",
+            "tuple[PyEd.PromptStatus, PyEd.SelectionSet]"
         ]
     ]
 }

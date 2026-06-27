@@ -405,7 +405,7 @@ void makePyEditorWrapper()
 
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
-        .def("selectCrossingWindow1", &PyAcEditor::selectCrossingWindow3,
+        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow3,
             DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectCrossingWindow")
 
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
