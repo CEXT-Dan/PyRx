@@ -2034,7 +2034,7 @@ class Editor:
         filter: Collection[tuple[int, Any]] = ...,
         filterCallback: Any = ...,
         /,
-    ) -> tuple:
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -2045,14 +2045,13 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectCrossingWindow() -> tuple: ...
-    def selectCrossingWindow1(
+    def selectCrossingWindow(
         pt1: PyGe.Point3d,
         pt2: PyGe.Point3d,
         filter: Collection[tuple[int, Any]] = ...,
         filterCallback: Any = ...,
         /,
-    ) -> tuple:
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
