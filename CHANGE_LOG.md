@@ -1,3 +1,17 @@
+## v2.2.61
+
+* PyRx is now defaulted to utf8 (utf8_mode = 1;)
+* removed the_error, use Python's SDK PyErr_Print() instead
+* improve callPyFunction to handle exceptions @Ap.Command() no longer requires a try catch
+* add Ed.Editor.selectCrossingPolygon
+* add Ed.Editor.selectCrossingWindow
+* add db.layerTable shortcut
+* add Ed.Editor.zoom(ex)
+* add Ed.Editor.zoomExtents()
+* add Ed.Editor.zoomWindow(p1, p2)
+* add Ed.Editor.zoomCenter(basePoint,5)
+* Internal improvements  
+
 ## v2.2.60
 
 * add Document.isActive
