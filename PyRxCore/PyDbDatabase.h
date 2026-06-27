@@ -18,6 +18,7 @@ class PyAcadDatabase;
 class PyObjectIdGraph;
 class PyDbBlockTableRecord;
 class PyDbBlockTable;
+class PyDbLayerTable;
 
 typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
 
@@ -164,6 +165,8 @@ public:
     double              latitude() const;
     Adesk::UInt8        layerEval() const;
     Adesk::Int16        layerNotify() const;
+    PyDbLayerTable      layerTable1() const;
+    PyDbLayerTable      layerTable2(AcDb::OpenMode mode) const;
     PyDbObjectId        layerTableId() const;
     PyDbObjectId        layerZero() const;
     PyDbObjectId        layoutDictionaryId()const;

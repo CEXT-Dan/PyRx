@@ -444,3 +444,19 @@ class TestDatabase:
         assert sdb.isAppRegistered(name) == True
         cur_db = Db.curDb()
         assert cur_db.isAppRegistered(name) == False
+        
+    def test_layerTable1(self, db_06457: Db.Database):
+        data = []
+        for name, id in db_06457.layerTable():
+            data.append((name, id))
+        assert len(data) != 0
+        
+    def test_layerTable2(self, db_06457: Db.Database):
+        data = []
+        for name, id in db_06457.layerTable(Db.OpenMode.kForRead):
+            data.append((name, id))
+        assert len(data) != 0
+        
+        
+            
+        

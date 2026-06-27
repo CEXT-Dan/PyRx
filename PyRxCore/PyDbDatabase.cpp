@@ -184,6 +184,8 @@ void makePyDbDatabaseWrapper()
         .def("layerEval", &PyDbDatabase::layerEval, DS.ARGS(3034))
         .def("layerNotify", &PyDbDatabase::layerNotify, DS.ARGS(3035))
         .def("layerTableId", &PyDbDatabase::layerTableId, DS.ARGS(3036))
+        .def("layerTable", &PyDbDatabase::layerTable1)
+        .def("layerTable", &PyDbDatabase::layerTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 3036))
         .def("layerZero", &PyDbDatabase::layerZero, DS.ARGS(3037))
         .def("layoutDictionaryId", &PyDbDatabase::layoutDictionaryId, DS.ARGS(3038))
         .def("lensLength", &PyDbDatabase::lensLength, DS.ARGS(3039))
@@ -1477,6 +1479,16 @@ Adesk::Int16 PyDbDatabase::layerNotify() const
 #else
     return impObj()->layerNotify();
 #endif
+}
+
+PyDbLayerTable PyDbDatabase::layerTable1() const
+{
+    return PyDbLayerTable(layerTableId());
+}
+
+PyDbLayerTable PyDbDatabase::layerTable2(AcDb::OpenMode mode) const
+{
+    return PyDbLayerTable(layerTableId(), mode);
 }
 
 PyDbObjectId PyDbDatabase::layerTableId() const
