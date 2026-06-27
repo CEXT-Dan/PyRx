@@ -7009,6 +7009,10 @@ class Database(PyRx.RxObject):
         notification is turned off, while preserving the state of individual layer notification
         flags.
         """
+    def layerTable(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> LayerTable:
+        """
+        Returns the object ID of the database's AcDbLayerTable.
+        """
     def layerTableId(self, /) -> ObjectId:
         """
         Returns the object ID of the database's AcDbLayerTable.
