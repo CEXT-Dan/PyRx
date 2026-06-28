@@ -157,7 +157,7 @@ public:
         return std::wstring{ _buffer.c_str() };
     }
 
-    [[nodiscard]] static const auto thisModulePath()
+    [[nodiscard]] static auto thisModulePath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -172,7 +172,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    [[nodiscard]] static const auto getPythonVenvPath()
+    [[nodiscard]] static auto getPythonVenvPath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -186,7 +186,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    [[nodiscard]] static const auto tryFindPythonPathFromParent()
+    [[nodiscard]] static auto tryFindPythonPathFromParent() -> std::tuple<bool, std::filesystem::path>
     {
         std::error_code ec;
         static std::filesystem::path path;
@@ -221,7 +221,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    [[nodiscard]] static const auto tryFindPythonPathFromAppData()
+    [[nodiscard]] static auto tryFindPythonPathFromAppData() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -236,7 +236,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    [[nodiscard]] static auto tryFindPythonPath()
+    [[nodiscard]] static auto tryFindPythonPath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -279,7 +279,7 @@ public:
         return std::tuple(false, path);
     }
 
-    [[nodiscard]] static const auto getInstallPath()
+    [[nodiscard]] static auto getInstallPath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         std::error_code ec;
@@ -329,7 +329,7 @@ public:
         return true;
     }
 
-    [[nodiscard]] static const auto tryFindWxPythonPath()
+    [[nodiscard]] static auto tryFindWxPythonPath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         std::error_code ec;
