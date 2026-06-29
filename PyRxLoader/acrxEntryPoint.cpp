@@ -150,7 +150,7 @@ public:
         }
     }
 
-    [[nodiscard]] static std::wstring getPathEnvironmentVariable()
+    [[nodiscard]] static auto getPathEnvironmentVariable() -> std::wstring
     {
         std::wstring _buffer(32767, 0);
         GetEnvironmentVariable(PATHENV, _buffer.data(), _buffer.size());

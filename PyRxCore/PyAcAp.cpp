@@ -134,7 +134,7 @@ static BOOST_PYTHON_MODULE(PyAp)
 
     constexpr const std::string_view CommandOverloads = "Overloads:\n"
         "- None: Any\n"
-        "- commandName: str\n"
+        "- CmdFlags: int\n"
         "- commandName: str, CmdFlags: int\n";
 
     constexpr const std::string_view LispOverloads = "Overloads:\n"
