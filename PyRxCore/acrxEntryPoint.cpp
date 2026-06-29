@@ -397,15 +397,15 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto getblockModelSpaceId(AcDbDatabase* pDb) ->AcDbObjectId
+    static auto getblockModelSpaceId(AcDbDatabase* pDb) -> AcDbObjectId
     {
         return acdbSymUtil()->blockModelSpaceId(pDb);
     }
 
-   static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::PromptStatus
+    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::PromptStatus
     {
         Adesk::Int32 nSize = 0;
-        if (acedSSLength(ssname, &nSize) != RTNORM) 
+        if (acedSSLength(ssname, &nSize) != RTNORM)
             return Acad::PromptStatus::eError;
         ids.setPhysicalLength(nSize);
 
@@ -469,9 +469,39 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
+    static auto createFromDWG(const AcString& path) -> std::unique_ptr<AcDbDatabase>
+    {
+        std::unique_ptr<AcDbDatabase> pDb{ new AcDbDatabase(false, true) };
+        pDb->readDwgFile(path);
+        pDb->closeInput(true);
+        return std::move(pDb);
+    }
+
     static void AcRxPyApp_idoit1(void)
     {
-        acutPrintf(L"\nHi");
+        AcString layoutName = L"S7";
+        AcString path = L"E:\\Batch\\06457 RE Submittal.dwg";
+
+        auto destDb = acdbCurDwg();
+        auto sourceDb = createFromDWG(path);
+
+        AcDbDictionaryPointer source_layout_dict(sourceDb->layoutDictionaryId());
+        if (!source_layout_dict->has(layoutName))
+            return;
+
+        AcDbObjectId source_layout_id;
+        source_layout_dict->getAt(layoutName, source_layout_id);
+
+        AcDbObjectIdArray ids;
+        ids.append(source_layout_id);
+
+        AcDbIdMapping mapping;
+        mapping.setDestDb(destDb);
+
+        auto es = sourceDb->wblockCloneObjects(ids, destDb->layoutDictionaryId(),
+            mapping, AcDb::DuplicateRecordCloning::kDrcIgnore);
+
+        acutPrintf(L"\n%ls", acadErrorStatusText(es));
     }
 #endif
 };
