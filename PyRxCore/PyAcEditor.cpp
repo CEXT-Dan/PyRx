@@ -443,6 +443,8 @@ void makePyEditorWrapper()
         .def("ssgetkw", &PyAcEditor::ssgetkw3,
             DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Collection[tuple[int, Any]]","callback:Any","otherCallback:Any = ...","filterCallback:Any = ..." }, 11344)).staticmethod("ssgetkw")
 
+        .def("writeMessage", &PyAcEditor::writeMessage, DS.SARGS({ "message: str" })).staticmethod("writeMessage")
+
         .def("zoom", &PyAcEditor::zoom, DS.SARGS({ "ext: PyDb.Extents" })).staticmethod("zoom")
         .def("zoomExtents", &PyAcEditor::zoomExtents, DS.SARGS()).staticmethod("zoomExtents")
         .def("zoomWindow", &PyAcEditor::zoomWindow, DS.SARGS({ "p1: PyGe.Point3d","p2: PyGe.Point3d" })).staticmethod("zoomWindow")
@@ -1185,6 +1187,12 @@ PyAcEditor::bptuple PyAcEditor::ssgetkw3(const std::string& args, const bpobject
     AcString strArg = utf8_to_wstr(args).c_str();
     int stat = acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), ss.m_pSet->data());
     return bp::make_tuple(static_cast<Acad::PromptStatus>(stat), ss);
+}
+
+void PyAcEditor::writeMessage(const std::string& msg)
+{
+    auto _msg = expandPercents(msg);
+    acutPrintf(utf8_to_wstr(_msg).c_str());
 }
 
 void PyAcEditor::zoom(const AcDbExtents& ext)

@@ -265,7 +265,7 @@ inline AcString PyUnicode_AsAcString(PyObject* py_obj)
 {
     Py_ssize_t size = 0;
     wchar_t* raw_ptr = PyUnicode_AsWideCharString(py_obj, &size);
-    if (!raw_ptr) 
+    if (!raw_ptr)
         return L"";
     std::unique_ptr<wchar_t, decltype(&PyMem_Free)> smart_ptr(raw_ptr, PyMem_Free);
     return AcString{ smart_ptr.get() };
@@ -302,7 +302,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 // CString toupper
-inline CString& towupper(CString& s) noexcept 
+inline CString& towupper(CString& s) noexcept
 {
     if (!s.IsEmpty()) {
         const size_t sizeInChars = static_cast<size_t>(s.GetLength()) + 1;
@@ -312,7 +312,7 @@ inline CString& towupper(CString& s) noexcept
     return s;
 }
 
-inline CString towupper(const CString& s) noexcept 
+inline CString towupper(const CString& s) noexcept
 {
     CString buffer{ s };
     return towupper(buffer);
@@ -320,9 +320,9 @@ inline CString towupper(const CString& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // CString tolower
-inline CString& towlower(CString& s) noexcept 
+inline CString& towlower(CString& s) noexcept
 {
-    if (!s.IsEmpty()) 
+    if (!s.IsEmpty())
     {
         const size_t sizeInChars = static_cast<size_t>(s.GetLength()) + 1;
         _wcslwr_s_l(s.GetBuffer(), sizeInChars, pyrx_locale());
@@ -331,7 +331,7 @@ inline CString& towlower(CString& s) noexcept
     return s;
 }
 
-inline CString towlower(const CString& s) noexcept 
+inline CString towlower(const CString& s) noexcept
 {
     CString buffer{ s };
     return towlower(buffer);
@@ -339,7 +339,7 @@ inline CString towlower(const CString& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // AcString toupper
-inline AcString& towupper(AcString& s) noexcept 
+inline AcString& towupper(AcString& s) noexcept
 {
     if (!s.isEmpty()) {
         const size_t sizeInChars = static_cast<size_t>(s.length()) + 1;
@@ -349,7 +349,7 @@ inline AcString& towupper(AcString& s) noexcept
     return s;
 }
 
-inline AcString towupper(const AcString& s) noexcept 
+inline AcString towupper(const AcString& s) noexcept
 {
     AcString buffer{ s };
     return towupper(buffer);
@@ -357,7 +357,7 @@ inline AcString towupper(const AcString& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // AcString tolower
-inline AcString& towlower(AcString& s) noexcept 
+inline AcString& towlower(AcString& s) noexcept
 {
     if (!s.isEmpty()) {
         const size_t sizeInChars = static_cast<size_t>(s.length()) + 1;
@@ -367,7 +367,7 @@ inline AcString& towlower(AcString& s) noexcept
     return s;
 }
 
-inline AcString towlower(const AcString& s) noexcept 
+inline AcString towlower(const AcString& s) noexcept
 {
     AcString buffer{ s };
     return towlower(buffer);
@@ -375,7 +375,7 @@ inline AcString towlower(const AcString& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // wstring toupper
-inline std::wstring& towupper(std::wstring& s) noexcept 
+inline std::wstring& towupper(std::wstring& s) noexcept
 {
     if (!s.empty()) {
         _wcsupr_s_l(s.data(), s.size() + 1, pyrx_locale());
@@ -383,7 +383,7 @@ inline std::wstring& towupper(std::wstring& s) noexcept
     return s;
 }
 
-inline std::wstring towupper(const std::wstring& s) noexcept 
+inline std::wstring towupper(const std::wstring& s) noexcept
 {
     std::wstring buffer{ s };
     return towupper(buffer);
@@ -391,7 +391,7 @@ inline std::wstring towupper(const std::wstring& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // wstring tolower
-inline std::wstring& towlower(std::wstring& s) noexcept 
+inline std::wstring& towlower(std::wstring& s) noexcept
 {
     if (!s.empty()) {
         _wcslwr_s_l(s.data(), s.size() + 1, pyrx_locale());
@@ -399,13 +399,13 @@ inline std::wstring& towlower(std::wstring& s) noexcept
     return s;
 }
 
-inline std::wstring towlower(const std::wstring& s) noexcept 
+inline std::wstring towlower(const std::wstring& s) noexcept
 {
     std::wstring buffer{ s };
     return towlower(buffer);
 }
 
-inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept 
+inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept
 {
     std::wstring buffer{ s.wstring() };
     return std::filesystem::path{ towlower(buffer) };
@@ -413,9 +413,9 @@ inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // UTF-8 string toupper
-inline std::string& toupper(std::string& s) noexcept 
+inline std::string& toupper(std::string& s) noexcept
 {
-    if (!s.empty()) 
+    if (!s.empty())
     {
         std::wstring wstr = utf8_to_wstr(s);
         towupper(wstr);
@@ -424,7 +424,7 @@ inline std::string& toupper(std::string& s) noexcept
     return s;
 }
 
-inline std::string toupper(const std::string& s) noexcept 
+inline std::string toupper(const std::string& s) noexcept
 {
     std::string buffer{ s };
     return toupper(buffer);
@@ -432,9 +432,9 @@ inline std::string toupper(const std::string& s) noexcept
 
 //-----------------------------------------------------------------------------------------
 // UTF-8 string tolower
-inline std::string& tolower(std::string& s) noexcept 
+inline std::string& tolower(std::string& s) noexcept
 {
-    if (!s.empty()) 
+    if (!s.empty())
     {
         std::wstring wstr = utf8_to_wstr(s);
         towlower(wstr);
@@ -443,10 +443,26 @@ inline std::string& tolower(std::string& s) noexcept
     return s;
 }
 
-inline std::string tolower(const std::string& s) noexcept 
+inline std::string tolower(const std::string& s) noexcept
 {
     std::string buffer{ s };
     return tolower(buffer);
+}
+
+inline std::string expandPercents(const std::string& input) noexcept
+{
+    std::string result;
+
+    if (!input.empty())
+        result.reserve(static_cast<size_t>(input.size() * 1.25));
+
+    for (char c : input) {
+        result.push_back(c);
+        if (c == '%') {
+            result.push_back('%');
+        }
+    }
+    return result;
 }
 
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142

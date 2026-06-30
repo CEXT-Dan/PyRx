@@ -2257,6 +2257,8 @@ class Editor:
         Returns the Y-axis direction of the current UCS.
         """
     @staticmethod
+    def writeMessage(message: str, /) -> None: ...
+    @staticmethod
     def zoom(ext: PyDb.Extents, /) -> None: ...
     @staticmethod
     def zoomCenter(pnt: PyGe.Point3d, magnify: float, /) -> None: ...
@@ -2646,8 +2648,8 @@ class Util:
 
 def print(*args) -> None:
     """
-    print( (object)arg1) -> None :
+    print( (str)arg1) -> None :
 
     C++ signature :
-        void print(class boost::python::api::object)
+        void print(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
     """
