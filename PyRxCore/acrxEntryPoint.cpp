@@ -397,6 +397,22 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
+    static auto createDatabaseFromDWG(const AcString& path, bool closeInput = true) 
+        -> std::tuple<Acad::ErrorStatus, std::unique_ptr<AcDbDatabase>>
+    {
+        auto pDb = std::make_unique<AcDbDatabase>(false, true);
+        if (Acad::ErrorStatus es = pDb->readDwgFile(path); es != eOk)
+        {
+            return { es, nullptr };
+        }
+        if (closeInput)
+        {
+            if (Acad::ErrorStatus es = pDb->closeInput(true); es != eOk)
+                return { es, nullptr };
+        }
+        return { eOk, std::move(pDb) };
+    }
+
     static auto getblockModelSpaceId(AcDbDatabase* pDb) -> AcDbObjectId
     {
         return acdbSymUtil()->blockModelSpaceId(pDb);
@@ -469,39 +485,9 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
-    static auto createFromDWG(const AcString& path) -> std::unique_ptr<AcDbDatabase>
-    {
-        std::unique_ptr<AcDbDatabase> pDb{ new AcDbDatabase(false, true) };
-        pDb->readDwgFile(path);
-        pDb->closeInput(true);
-        return std::move(pDb);
-    }
-
     static void AcRxPyApp_idoit1(void)
     {
-        AcString layoutName = L"S7";
-        AcString path = L"E:\\Batch\\06457 RE Submittal.dwg";
-
-        auto destDb = acdbCurDwg();
-        auto sourceDb = createFromDWG(path);
-
-        AcDbDictionaryPointer source_layout_dict(sourceDb->layoutDictionaryId());
-        if (!source_layout_dict->has(layoutName))
-            return;
-
-        AcDbObjectId source_layout_id;
-        source_layout_dict->getAt(layoutName, source_layout_id);
-
-        AcDbObjectIdArray ids;
-        ids.append(source_layout_id);
-
-        AcDbIdMapping mapping;
-        mapping.setDestDb(destDb);
-
-        auto es = sourceDb->wblockCloneObjects(ids, destDb->layoutDictionaryId(),
-            mapping, AcDb::DuplicateRecordCloning::kDrcIgnore);
-
-        acutPrintf(L"\n%ls", acadErrorStatusText(es));
+        acutPrintf(L"\n%ls", acadErrorStatusText(eOk));
     }
 #endif
 };

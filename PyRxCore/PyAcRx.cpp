@@ -40,19 +40,6 @@ enum eDirection_type
     eStderr
 };
 
-static std::string expandPercents(const std::string& input)
-{
-    std::string result;
-    result.reserve(size_t(input.size() * 1.25));
-    for (char c : input)
-    {
-        result += c;
-        if (c == '%')
-            result += '%';
-    }
-    return result;
-}
-
 static void doWrite(const std::string& input)
 {
     if (input.size() != 0)

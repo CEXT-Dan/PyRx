@@ -114,6 +114,8 @@ public:
     static bptuple ssgetkw2(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw);
     static bptuple ssgetkw3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm);
 
+    static void    writeMessage(const std::string& msg);
+
     static void    zoom(const AcDbExtents& ext);
     static void    zoomExtents();
     static void    zoomWindow(const AcGePoint3d& p1, const AcGePoint3d& p2);

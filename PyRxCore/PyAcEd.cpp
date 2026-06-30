@@ -10,11 +10,10 @@
 
 using namespace boost::python;
 
-static void print(const boost::python::object& obj)
+static void print(const std::string& msg)
 {
-    PyAutoLockGIL lock;
-    std::string str = boost::python::extract<std::string>(boost::python::str(obj));
-    acutPrintf(utf8_to_wstr(str).c_str());
+    auto _msg = expandPercents(msg);
+    acutPrintf(utf8_to_wstr(_msg).c_str());
 }
 
 static BOOST_PYTHON_MODULE(PyEd)
