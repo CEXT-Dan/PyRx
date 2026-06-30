@@ -203,8 +203,6 @@ void PyApApplication::refreshMainWindow()
     }
 }
 
-
-
 UINT_PTR PyApApplication::mainWnd()
 {
     return reinterpret_cast<UINT_PTR>(adsw_acadMainWnd());
