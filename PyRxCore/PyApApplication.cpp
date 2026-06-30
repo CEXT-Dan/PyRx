@@ -111,6 +111,7 @@ void makePyApApplictionWrapper()
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("hostFileInfo", &PyApApplication::hostFileInfo, DS.SARGS()).staticmethod("hostFileInfo")
         .def("pyrxVersion", &PyApApplication::pyrxVersion, DS.SARGS()).staticmethod("pyrxVersion")
+        .def("refreshMainWindow", &PyApApplication::refreshMainWindow, DS.SARGS()).staticmethod("refreshMainWindow")
         .def("regCommand", &PyApApplication::appregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: PyAp.CmdFlags" })).staticmethod("regCommand")
         .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str" })).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
@@ -182,6 +183,27 @@ int PyApApplication::getInvisibleBorderWidth(UINT_PTR _hwnd)
 #endif
     return visibleRect.left - windowRect.left;
 }
+
+void PyApApplication::refreshMainWindow()
+{
+    HWND hAcadWnd = adsw_acadMainWnd();
+    if (::IsWindow(hAcadWnd))
+    {
+        if (auto pLayoutMan = static_cast<AcApLayoutManager*>(acdbHostApplicationServices()->layoutManager()); pLayoutMan != nullptr)
+        {
+            pLayoutMan->updateLayoutTabs();
+        }
+        ::acedUpdateDisplay();
+
+        ::RedrawWindow(hAcadWnd, NULL, NULL,
+            RDW_FRAME | RDW_INVALIDATE | RDW_UPDATENOW | RDW_ALLCHILDREN | RDW_ERASE);
+
+        ::SetWindowPos(hAcadWnd, NULL, 0, 0, 0, 0,
+            SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED);
+    }
+}
+
+
 
 UINT_PTR PyApApplication::mainWnd()
 {
@@ -267,7 +289,7 @@ void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
         auto it = std::find_if(onidleFuncs.begin(), onidleFuncs.end(),
             [&obj](const auto& pair) { return pair.first == obj.ptr(); });
 
-        if (it == onidleFuncs.end()) 
+        if (it == onidleFuncs.end())
         {
             onidleFuncs.push_back({ obj.ptr(), obj });
         }
@@ -343,7 +365,7 @@ void PyApApplication::PyOnIdleMsgFn()
     copyBuffer.clear();
     copyBuffer.reserve(onidleFuncs.size());
 
-    for (const auto& item : onidleFuncs) 
+    for (const auto& item : onidleFuncs)
     {
         copyBuffer.emplace_back(item.second);
     }
