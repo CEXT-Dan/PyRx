@@ -499,6 +499,9 @@
     <ClCompile Include="PyBrxConstraints3d.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
+    <ClCompile Include="RxPyString.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
