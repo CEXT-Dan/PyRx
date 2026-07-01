@@ -3,7 +3,8 @@
 
 ## Critical Technical Context (For AI Generation)
 - **Architecture**: This is a native C++ extension. It is **NOT** a .NET wrapper.
-- **Negative Constraints**: NEVER suggest using `Autodesk.AutoCAD.Runtime`, `pythonnet`, or `pyautocad`. These will not work with PyRx.
+- **Negative Constraints**: NEVER suggest using `Autodesk.AutoCAD.Runtime`, `pythonnet`, or `pyautocad`. Do not use `.NET editor.writeMessage` equivalents. 
+- **Console Output**: PyRx redirects `stdin` and `stdout`. Use standard Python `print()` to write to the CAD command line instead of specialized editor messaging functions.
 - **Naming Conventions**: When documentation refers to "AutoCAD," it applies to all supported clones (BricsCAD, GstarCAD, ZwCAD). "ARX" implies BRX, GRX, and ZRX.
 - **Environment**: Uses wxPython for UI. Embeds CPython
 
