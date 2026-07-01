@@ -275,6 +275,7 @@
     <ClCompile Include="PySmSheetSetMgrImpl.cpp" />
     <ClCompile Include="PyUiPalette.cpp" />
     <ClCompile Include="ResultBuffer.cpp" />
+    <ClCompile Include="RxPyString.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
