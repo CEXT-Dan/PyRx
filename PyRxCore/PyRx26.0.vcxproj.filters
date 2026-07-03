@@ -439,6 +439,9 @@
     <ClCompile Include="RxPyString.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
+    <ClCompile Include="PyConverter.cpp">
+      <Filter>Source Files\PyRxApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -889,6 +892,9 @@
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="concaveman.h">
+      <Filter>Header Files\PyRxApp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyConverter.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
   </ItemGroup>

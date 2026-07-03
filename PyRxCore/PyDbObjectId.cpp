@@ -290,6 +290,28 @@ PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
     return id;
 }
 
+boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (const auto& id : arr)
+        pyList.append(PyDbObjectId(id));
+    return pyList;
+}
+
+AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<PyDbObjectId> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(it->m_id);
+    }
+    return arr;
+}
+
 //---------------------------------------------------------------------------------
 // AdsName
 void makePyAdsNameWrapper()
