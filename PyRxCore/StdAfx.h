@@ -738,91 +738,118 @@ inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
 
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<double>(iterable);
+    PyAutoLockGIL lock;
     AcGeDoubleArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<double> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
+    PyAutoLockGIL lock;
     AcGePoint2dArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<AcGePoint2d> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
+    PyAutoLockGIL lock;
     AcGePoint3dArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<AcGePoint3d> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcGeVector3dArray PyListToVector3dArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGeVector3d>(iterable);
+    PyAutoLockGIL lock;
     AcGeVector3dArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<AcGeVector3d> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcGeVector2dArray PyListToVector2dArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGeVector2d>(iterable);
+    PyAutoLockGIL lock;
     AcGeVector2dArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<AcGeVector2d> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<int>(iterable);
+    PyAutoLockGIL lock;
     AcArray<int> arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<int> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcArray<Adesk::Int32> PyListToInt32Array(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<Adesk::Int32>(iterable);
+    PyAutoLockGIL lock;
     AcArray<Adesk::Int32> arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<Adesk::Int32> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
+    PyAutoLockGIL lock;
     AcArray<Adesk::UInt64> arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto item : vec)
-        arr.append(item);
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<Adesk::UInt64> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(*it);
+    }
     return arr;
 }
 
 inline AcStringArray PyListToAcStringArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<std::string>(iterable);
+    PyAutoLockGIL lock;
     AcStringArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(utf8_to_wstr(item).c_str());
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<std::string> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(utf8_to_wstr(*it).c_str());
+    }
     return arr;
 }
 

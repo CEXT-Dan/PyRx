@@ -70,13 +70,18 @@ public:
     AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-inline AcRxClassArray PyListToAcRxClassArray(const boost::python::object& iterable)
+inline AcRxClassArray PyListToAcRxClassArray(const boost::python::object& iterable) 
 {
-    auto vec = py_list_to_std_vector<PyRxClass>(iterable);
+    PyAutoLockGIL lock;
     AcRxClassArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto& item : vec)
-        arr.append(item.impObj());
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    boost::python::stl_input_iterator<PyRxClass> begin(iterable), end;
+    for (auto it = begin; it != end; ++it) {
+        arr.append(it->impObj());
+    }
     return arr;
 }
+
+
 #pragma pack (pop)
