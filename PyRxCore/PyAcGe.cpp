@@ -34,22 +34,22 @@ using namespace boost::python;
 // AcGePoint3d == AcGePoint3d uses tol, not perfect but good enough
 // tiny overhead as it's another C++ <-> Python call. 
 
-inline static bool areDoublesEqual(double a, double b, double epsilon = 1e-10)
+inline static bool areDoublesEqual(double a, double b, double epsilon = 1e-10) noexcept
 {
     return std::abs(a - b) < epsilon;
 }
 
-inline static double roundPointComponentToPrec(double value, double precision)
+inline static double roundPointComponentToPrec(double value, double precision) noexcept
 {
     return std::round(value / precision) * precision;
 }
 
-inline static double roundVectorComponentToPrec(double value, double precision)
+inline static double roundVectorComponentToPrec(double value, double precision) noexcept
 {
     return std::round(value / precision) * precision;
 }
 
-inline static std::size_t AcGeScale2dHash(const AcGeScale2d& p)
+inline static std::size_t AcGeScale2dHash(const AcGeScale2d& p) noexcept
 {
     std::size_t seed = 0;
     const double precision = AcGeContext::gTol.equalPoint();
@@ -58,7 +58,7 @@ inline static std::size_t AcGeScale2dHash(const AcGeScale2d& p)
     return seed;
 }
 
-inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p)
+inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p) noexcept
 {
     std::size_t seed = 0;
     const double precision = AcGeContext::gTol.equalPoint();
@@ -67,7 +67,7 @@ inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p)
     return seed;
 }
 
-inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p)
+inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p) noexcept
 {
     std::size_t seed = 0;
     double precision = AcGeContext::gTol.equalVector();
@@ -76,7 +76,7 @@ inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p)
     return seed;
 }
 
-inline static std::size_t AcGeScale3dHash(const AcGeScale3d& p)
+inline static std::size_t AcGeScale3dHash(const AcGeScale3d& p) noexcept
 {
     std::size_t seed = 0;
     const double precision = AcGeContext::gTol.equalPoint();
@@ -86,7 +86,7 @@ inline static std::size_t AcGeScale3dHash(const AcGeScale3d& p)
     return seed;
 }
 
-inline static std::size_t AcGePoint3dHash(const AcGePoint3d& p)
+inline static std::size_t AcGePoint3dHash(const AcGePoint3d& p) noexcept
 {
     std::size_t seed = 0;
     const double precision = AcGeContext::gTol.equalPoint();
@@ -96,7 +96,7 @@ inline static std::size_t AcGePoint3dHash(const AcGePoint3d& p)
     return seed;
 }
 
-inline static std::size_t AcGeVector3dHash(const AcGeVector3d& p)
+inline static std::size_t AcGeVector3dHash(const AcGeVector3d& p) noexcept
 {
     std::size_t seed = 0;
     const double precision = AcGeContext::gTol.equalVector();
@@ -196,13 +196,13 @@ static std::vector<size_t> PyGePointArrayShortestTourImpl(const T& pnts)
 //---------------------------------------------------------------------------------------------------------------
 // TSP Approximation for AcGePointXd
 template <typename T>
-static double Dist(const T& a, const T& b)
+static double Dist(const T& a, const T& b) noexcept
 {
     return a.distanceTo(b);
 }
 
 template <typename T>
-static double TourLength(const std::vector<int>& tour, const T& pts)
+static double TourLength(const std::vector<int>& tour, const T& pts) noexcept
 {
     const int n = (int)tour.size();
     if (n < 2)
@@ -215,7 +215,7 @@ static double TourLength(const std::vector<int>& tour, const T& pts)
 }
 
 template <typename T>
-static std::vector<int> GreedyTourFromStart(const T& pts, int start)
+static std::vector<int> GreedyTourFromStart(const T& pts, int start) noexcept
 {
     const int n = (int)pts.size();
     std::vector<int> tour;
@@ -251,7 +251,7 @@ static std::vector<int> GreedyTourFromStart(const T& pts, int start)
 }
 
 template <typename T>
-static void TwoOpt(std::vector<int>& tour, const T& pts)
+static void TwoOpt(std::vector<int>& tour, const T& pts) noexcept
 {
     const int n = (int)tour.size();
     if (n < 4)
@@ -297,7 +297,7 @@ static void TwoOpt(std::vector<int>& tour, const T& pts)
 }
 
 template <typename T>
-static std::vector<int> PyGePointArrayApproxShortestTourImpl(const T& pts)
+static std::vector<int> PyGePointArrayApproxShortestTourImpl(const T& pts) noexcept
 {
     const int n = (int)pts.size();
     if (n == 0)
@@ -597,15 +597,15 @@ struct Point2dComparator
     inline static AcGePoint2d basePoint = AcGePoint2d::kOrigin;
 };
 
-static void PyGePoint2dArraySortByDistanceFrom(PyGePoint2dArray& vec, const AcGePoint2d& pnt)
+static void PyGePoint2dArraySortByDistanceFrom(PyGePoint2dArray& vec, const AcGePoint2d& pnt) noexcept
 {
     Point2dComparator::basePoint = pnt;
     std::sort(std::execution::par, vec.begin(), vec.end(), Point2dComparator());
 }
 
-static void PyGePoint2dArraySortByX(PyGePoint2dArray& src)
+static void PyGePoint2dArraySortByX(PyGePoint2dArray& src) noexcept
 {
-    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
+    std::sort(src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
         {
             if (areDoublesEqual(l.x, r.x))
                 return l.y < r.y;
@@ -613,9 +613,9 @@ static void PyGePoint2dArraySortByX(PyGePoint2dArray& src)
         });
 }
 
-static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
+static void PyGePoint2dArraySortByY(PyGePoint2dArray& src) noexcept
 {
-    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
+    std::sort(src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
         {
             if (areDoublesEqual(l.y, r.y))
                 return l.x < r.x;
@@ -648,7 +648,7 @@ static boost::shared_ptr<PyGePoint2dArray> PyPoint2dArrayInit(const boost::pytho
 
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
-static std::vector<size_t> PyGePoint2dArrayConvexHullIndexesImpl(const PyGePoint2dArray& src)
+static std::vector<size_t> PyGePoint2dArrayConvexHullIndexesImpl(const PyGePoint2dArray& src) noexcept
 {
     size_t n = src.size();
     std::vector<size_t> idxs(n);
@@ -1034,54 +1034,46 @@ static AcGeMatrix2d AcGeMatrix2dkIdentity()
 static boost::python::tuple AcGeMatrix2dToTuple(const AcGeMatrix2d& x)
 {
     PyAutoLockGIL lock;
-    auto r0 = boost::python::make_tuple(
-        x.entry[0][0],
-        x.entry[0][1],
-        x.entry[0][2]);
-    auto r1 = boost::python::make_tuple(
-        x.entry[1][0],
-        x.entry[1][1],
-        x.entry[1][2]);
-    auto r2 = boost::python::make_tuple(
-        x.entry[2][0],
-        x.entry[2][1],
-        x.entry[2][2]);
-    return boost::python::make_tuple(r0, r1, r2);
+    PyObject* main_tuple = PyTuple_New(3);
+    if (!main_tuple) 
+        return boost::python::tuple();
+    for (int i = 0; i < 3; ++i) 
+    {
+        PyObject* row = PyTuple_New(3);
+        if (!row) {
+            Py_DECREF(main_tuple);
+            return boost::python::tuple();
+        }
+        PyTuple_SET_ITEM(row, 0, PyFloat_FromDouble(x.entry[i][0]));
+        PyTuple_SET_ITEM(row, 1, PyFloat_FromDouble(x.entry[i][1]));
+        PyTuple_SET_ITEM(row, 2, PyFloat_FromDouble(x.entry[i][2]));
+        PyTuple_SET_ITEM(main_tuple, i, row);
+    }
+    return boost::python::tuple(boost::python::handle<>(main_tuple));
 }
 
 static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
 {
     PyAutoLockGIL lock;
-    boost::python::list r0;
-    {
-        r0.append(x.entry[0][0]);
-        r0.append(x.entry[0][1]);
-        r0.append(x.entry[0][2]);
+    PyObject* main_list = PyList_New(3);
+    if (!main_list) return boost::python::list();
+    for (int i = 0; i < 3; ++i) {
+        PyObject* row = PyList_New(3);
+        if (!row) {
+            Py_DECREF(main_list);
+            return boost::python::list();
+        }
+        PyList_SET_ITEM(row, 0, PyFloat_FromDouble(x.entry[i][0]));
+        PyList_SET_ITEM(row, 1, PyFloat_FromDouble(x.entry[i][1]));
+        PyList_SET_ITEM(row, 2, PyFloat_FromDouble(x.entry[i][2]));
+        PyList_SET_ITEM(main_list, i, row);
     }
-    boost::python::list r1;
-    {
-        r1.append(x.entry[1][0]);
-        r1.append(x.entry[1][1]);
-        r1.append(x.entry[1][2]);
-    }
-    boost::python::list r2;
-    {
-        r2.append(x.entry[2][0]);
-        r2.append(x.entry[2][1]);
-        r2.append(x.entry[2][2]);
-    }
-    boost::python::list m;
-    {
-        m.append(r0);
-        m.append(r1);
-        m.append(r2);
-    }
-    return m;
+    return boost::python::list(boost::python::handle<>(main_list));
 }
 
 static std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
 {
-    return  std::format("(({0},{1},{2}),({3},{4},{5}),({6},{7},{8}))",
+    return std::format("(({0},{1},{2}),({3},{4},{5}),({6},{7},{8}))",
         x.entry[0][0], x.entry[0][1], x.entry[0][2],
         x.entry[1][0], x.entry[1][1], x.entry[1][2],
         x.entry[2][0], x.entry[2][1], x.entry[2][2]);
@@ -1098,23 +1090,18 @@ static std::string AcGeMatrix2dToStringRepr(const AcGeMatrix2d& x)
 
 static AcGeMatrix2d AcGeMatrix2dInitFromCollection(const boost::python::object& obj)
 {
+    if (boost::python::len(obj) != 3)
+        PyThrowBadEs(eInvalidInput);
     AcGeMatrix2d x;
-    const size_t listSize = boost::python::len(obj);
-    if (listSize != 3)
-        PyThrowBadEs(eInvalidInput);
-    auto objvec = std::vector<boost::python::object>(boost::python::stl_input_iterator<boost::python::object>(obj),
-        boost::python::stl_input_iterator<boost::python::object>());
-    auto e0 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(0)),
-        boost::python::stl_input_iterator<double>());
-    auto e1 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(1)),
-        boost::python::stl_input_iterator<double>());
-    auto e2 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(2)),
-        boost::python::stl_input_iterator<double>());
-    if (auto t = (e0.size() + e1.size() + e2.size()); t != 9)
-        PyThrowBadEs(eInvalidInput);
-    x.entry[0][0] = e0[0]; x.entry[0][1] = e0[1]; x.entry[0][2] = e0[2];
-    x.entry[1][0] = e1[0]; x.entry[1][1] = e1[1]; x.entry[1][2] = e1[2];
-    x.entry[2][0] = e2[0]; x.entry[2][1] = e2[1]; x.entry[2][2] = e2[2];
+    for (int i = 0; i < 3; ++i) 
+    {
+        boost::python::object row = obj[i];
+        if (boost::python::len(row) != 3)
+            PyThrowBadEs(eInvalidInput);
+        x.entry[i][0] = boost::python::extract<double>(row[0]);
+        x.entry[i][1] = boost::python::extract<double>(row[1]);
+        x.entry[i][2] = boost::python::extract<double>(row[2]);
+    }
     return x;
 }
 
@@ -1480,7 +1467,7 @@ struct Point3dComparator
     inline static AcGePoint3d basePoint = AcGePoint3d::kOrigin;
 };
 
-static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt)
+static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint3d& minIt) noexcept
 {
     auto getDistanceToSq = [](const AcGePoint3d& p1, const AcGePoint3d& p2) noexcept {
         double dx = p1.x - p2.x;
@@ -1508,7 +1495,6 @@ static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint
                 nearestIndex = j;
             }
         }
-
         if (nearestIndex != i)
         {
             std::swap(inputPoints[i], inputPoints[nearestIndex]);
@@ -1517,13 +1503,13 @@ static void sortByDynamicDistance(PyGePoint3dArray& inputPoints, const AcGePoint
     }
 }
 
-static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt)
+static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt) noexcept
 {
     Point3dComparator::basePoint = pnt;
     std::sort(std::execution::par, vec.begin(), vec.end(), Point3dComparator());
 }
 
-static PyGePoint2dArray PyGePoint3dArrayToPyGePoint2dArray(const PyGePoint3dArray& src)
+static PyGePoint2dArray PyGePoint3dArrayToPyGePoint2dArray(const PyGePoint3dArray& src) noexcept
 {
     PyGePoint2dArray dest;
     dest.reserve(src.size());
@@ -1532,9 +1518,9 @@ static PyGePoint2dArray PyGePoint3dArrayToPyGePoint2dArray(const PyGePoint3dArra
     return dest;
 }
 
-static void PyGePoint3dArraySortByX(PyGePoint3dArray& src)
+static void PyGePoint3dArraySortByX(PyGePoint3dArray& src) noexcept
 {
-    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+    std::sort(src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
             if (areDoublesEqual(l.x, r.x))
                 return l.y < r.y;
@@ -1542,9 +1528,9 @@ static void PyGePoint3dArraySortByX(PyGePoint3dArray& src)
         });
 }
 
-static void PyGePoint3dArraySortByY(PyGePoint3dArray& src)
+static void PyGePoint3dArraySortByY(PyGePoint3dArray& src) noexcept
 {
-    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+    std::sort(src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
             if (areDoublesEqual(l.y, r.y))
                 return l.x < r.x;
@@ -1552,9 +1538,9 @@ static void PyGePoint3dArraySortByY(PyGePoint3dArray& src)
         });
 }
 
-static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
+static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src) noexcept
 {
-    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+    std::sort(src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
         {
             if (areDoublesEqual(l.z, r.z))
                 return l.x < r.x;
@@ -1564,7 +1550,7 @@ static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
 
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
 // Uses Andrew's monotone chain algorithm (O(n log n))
-static std::vector<size_t> PyGePoint3dArrayConvexHullIndexesImpl(const PyGePoint3dArray& src)
+static std::vector<size_t> PyGePoint3dArrayConvexHullIndexesImpl(const PyGePoint3dArray& src) noexcept
 {
     size_t n = src.size();
     std::vector<size_t> idxs(n);
@@ -2215,96 +2201,60 @@ static void AcGeMatrix3dsetToProjection(AcGeMatrix3d& mat, const PyGePlane& plan
 static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
-    auto r0 = boost::python::make_tuple(
-        x.entry[0][0],
-        x.entry[0][1],
-        x.entry[0][2],
-        x.entry[0][3]);
-
-    auto r1 = boost::python::make_tuple(
-        x.entry[1][0],
-        x.entry[1][1],
-        x.entry[1][2],
-        x.entry[1][3]);
-
-    auto r2 = boost::python::make_tuple(
-        x.entry[2][0],
-        x.entry[2][1],
-        x.entry[2][2],
-        x.entry[2][3]);
-
-    auto r3 = boost::python::make_tuple(
-        x.entry[3][0],
-        x.entry[3][1],
-        x.entry[3][2],
-        x.entry[3][3]);
-
-    return boost::python::make_tuple(r0, r1, r2, r3);
+    PyObject* main_tuple = PyTuple_New(4);
+    if (!main_tuple) 
+        return boost::python::tuple();
+    for (int i = 0; i < 4; ++i) 
+    {
+        PyObject* row = PyTuple_New(4);
+        if (!row) {
+            Py_DECREF(main_tuple);
+            return boost::python::tuple();
+        }
+        PyTuple_SET_ITEM(row, 0, PyFloat_FromDouble(x.entry[i][0]));
+        PyTuple_SET_ITEM(row, 1, PyFloat_FromDouble(x.entry[i][1]));
+        PyTuple_SET_ITEM(row, 2, PyFloat_FromDouble(x.entry[i][2]));
+        PyTuple_SET_ITEM(row, 3, PyFloat_FromDouble(x.entry[i][3]));
+        PyTuple_SET_ITEM(main_tuple, i, row);
+    }
+    return boost::python::tuple(boost::python::handle<>(main_tuple));
 }
 
 static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
-    boost::python::list r0;
-    {
-        r0.append(x.entry[0][0]);
-        r0.append(x.entry[0][1]);
-        r0.append(x.entry[0][2]);
-        r0.append(x.entry[0][3]);
+    PyObject* main_list = PyList_New(4);
+    if (!main_list) return boost::python::list();
+    for (int i = 0; i < 4; ++i) {
+        PyObject* row = PyList_New(4);
+        if (!row) {
+            Py_DECREF(main_list);
+            return boost::python::list();
+        }
+        PyList_SET_ITEM(row, 0, PyFloat_FromDouble(x.entry[i][0]));
+        PyList_SET_ITEM(row, 1, PyFloat_FromDouble(x.entry[i][1]));
+        PyList_SET_ITEM(row, 2, PyFloat_FromDouble(x.entry[i][2]));
+        PyList_SET_ITEM(row, 3, PyFloat_FromDouble(x.entry[i][3]));
+        PyList_SET_ITEM(main_list, i, row);
     }
-    boost::python::list r1;
-    {
-        r1.append(x.entry[1][0]);
-        r1.append(x.entry[1][1]);
-        r1.append(x.entry[1][2]);
-        r1.append(x.entry[1][3]);
-    }
-    boost::python::list r2;
-    {
-        r2.append(x.entry[2][0]);
-        r2.append(x.entry[2][1]);
-        r2.append(x.entry[2][2]);
-        r2.append(x.entry[2][3]);
-    }
-    boost::python::list r3;
-    {
-        r3.append(x.entry[3][0]);
-        r3.append(x.entry[3][1]);
-        r3.append(x.entry[3][2]);
-        r3.append(x.entry[3][3]);
-    }
-    boost::python::list m;
-    {
-        m.append(r0);
-        m.append(r1);
-        m.append(r2);
-        m.append(r3);
-    }
-    return m;
+    return boost::python::list(boost::python::handle<>(main_list));
 }
 
 static AcGeMatrix3d AcGeMatrix3dInitFromCollection(const boost::python::object& obj)
 {
+    if (boost::python::len(obj) != 4)
+        PyThrowBadEs(eInvalidInput);
     AcGeMatrix3d x;
-    const size_t listSize = boost::python::len(obj);
-    if (listSize != 4)
-        PyThrowBadEs(eInvalidInput);
-    auto objvec = std::vector<boost::python::object>(boost::python::stl_input_iterator<boost::python::object>(obj),
-        boost::python::stl_input_iterator<boost::python::object>());
-    auto e0 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(0)),
-        boost::python::stl_input_iterator<double>());
-    auto e1 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(1)),
-        boost::python::stl_input_iterator<double>());
-    auto e2 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(2)),
-        boost::python::stl_input_iterator<double>());
-    auto e3 = std::vector<double>(boost::python::stl_input_iterator<double>(objvec.at(3)),
-        boost::python::stl_input_iterator<double>());
-    if (auto t = (e0.size() + e1.size() + e2.size() + e3.size()); t != 16)
-        PyThrowBadEs(eInvalidInput);
-    x.entry[0][0] = e0[0]; x.entry[0][1] = e0[1]; x.entry[0][2] = e0[2]; x.entry[0][3] = e0[3];
-    x.entry[1][0] = e1[0]; x.entry[1][1] = e1[1]; x.entry[1][2] = e1[2]; x.entry[1][3] = e1[3];
-    x.entry[2][0] = e2[0]; x.entry[2][1] = e2[1]; x.entry[2][2] = e2[2]; x.entry[2][3] = e2[3];
-    x.entry[3][0] = e3[0]; x.entry[3][1] = e3[1]; x.entry[3][2] = e3[2]; x.entry[3][3] = e3[3];
+    for (int i = 0; i < 4; ++i) 
+    {
+        boost::python::object row = obj[i];
+        if (boost::python::len(row) != 4)
+            PyThrowBadEs(eInvalidInput);
+        x.entry[i][0] = boost::python::extract<double>(row[0]);
+        x.entry[i][1] = boost::python::extract<double>(row[1]);
+        x.entry[i][2] = boost::python::extract<double>(row[2]);
+        x.entry[i][3] = boost::python::extract<double>(row[3]);
+    }
     return x;
 }
 

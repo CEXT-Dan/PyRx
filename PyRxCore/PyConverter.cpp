@@ -4,47 +4,70 @@
 AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
-        boost::python::stl_input_iterator<double>());
-    if (vec.size() >= 3)
-        return AcGePoint3d(vec[0], vec[1], vec[2]);
-    else if (vec.size() == 2)
-        return AcGePoint3d(vec[0], vec[1], 0.0);
-    else
-        throw PyErrorStatusException(eInvalidInput);
+    const size_t size = boost::python::len(iterable);
+    if (size >= 3)
+    {
+        return AcGePoint3d(
+            boost::python::extract<double>(iterable[0]),
+            boost::python::extract<double>(iterable[1]),
+            boost::python::extract<double>(iterable[2])
+        );
+    }
+    else if (size == 2)
+    {
+        return AcGePoint3d(
+            boost::python::extract<double>(iterable[0]),
+            boost::python::extract<double>(iterable[1]),
+            0.0
+        );
+    }
+    throw PyErrorStatusException(eInvalidInput);
 }
+
 
 AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
-        boost::python::stl_input_iterator<double>());
-    if (vec.size() < 2)
+    if (boost::python::len(iterable) < 2)
         throw PyErrorStatusException(eInvalidInput);
-    return AcGePoint2d(vec[0], vec[1]);
+    return AcGePoint2d(
+        boost::python::extract<double>(iterable[0]),
+        boost::python::extract<double>(iterable[1])
+    );
 }
 
 AcGeVector3d PyListToAcGeVector3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
-        boost::python::stl_input_iterator<double>());
-    if (vec.size() >= 3)
-        return AcGeVector3d(vec[0], vec[1], vec[2]);
-    else if (vec.size() == 2)
-        return AcGeVector3d(vec[0], vec[1], 0.0);
-    else
-        throw PyErrorStatusException(eInvalidInput);
+    const size_t size = boost::python::len(iterable);
+    if (size >= 3)
+    {
+        return AcGeVector3d(
+            boost::python::extract<double>(iterable[0]),
+            boost::python::extract<double>(iterable[1]),
+            boost::python::extract<double>(iterable[2])
+        );
+    }
+    else if (size == 2)
+    {
+        return AcGeVector3d(
+            boost::python::extract<double>(iterable[0]),
+            boost::python::extract<double>(iterable[1]),
+            0.0
+        );
+    }
+    throw PyErrorStatusException(eInvalidInput);
 }
 
 AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
-        boost::python::stl_input_iterator<double>());
-    if (vec.size() < 2)
+    if (boost::python::len(iterable) < 2)
         throw PyErrorStatusException(eInvalidInput);
-    return AcGeVector2d(vec[0], vec[1]);
+    return AcGeVector2d(
+        boost::python::extract<double>(iterable),
+        boost::python::extract<double>(iterable)
+    );
 }
 
 boost::python::list IntArrayToPyList(const AcDbIntArray& arr)
