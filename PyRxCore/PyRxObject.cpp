@@ -18,6 +18,8 @@ void makePyRxObjectWrapper()
         .def("isKeptAlive", &PyRxObject::isKeptAlive, DS.ARGS())
         .def("setInternalClosed", &PyRxObject::setInternalClosed, DS.ARGS({ "flag: bool" }))
         .def("isInternalClosed", &PyRxObject::isInternalClosed, DS.ARGS())
+        .def("setAutoDelete", &PyRxObject::setAutoDelete, DS.ARGS({ "flag: bool" }))
+        .def("isAutoDelete", &PyRxObject::isAutoDelete, DS.ARGS())
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("intPtr", &PyRxObject::intPtr, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "protocolClass: PyRx.RxClass" }, 15564))
@@ -67,6 +69,16 @@ struct PyRxObjectDeleter
             return;
         else
             delete p;
+    }
+
+    inline bool isAutoDelete() const
+    {
+        return m_autoDelete;
+    }
+
+    inline void setAutoDelete(bool flag)
+    {
+        m_autoDelete = flag;
     }
 
     inline bool isKeptAlive() const
@@ -168,6 +180,22 @@ bool PyRxObject::isInternalClosed() const
     if (del_p == nullptr)
         PyThrowBadEs(Acad::eNotApplicable);
     return del_p->isInternalClosed();
+}
+
+bool PyRxObject::isAutoDelete() const
+{
+    auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    return del_p->isAutoDelete();
+}
+
+void PyRxObject::setAutoDelete(bool flag) const
+{
+    auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->setAutoDelete(flag);
 }
 
 void PyRxObject::dispose()

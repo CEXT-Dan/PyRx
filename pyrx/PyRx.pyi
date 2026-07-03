@@ -218,6 +218,7 @@ class RxObject:
         return ::desc(). For example. the implementation for AcDbLine would be: return
         AcDbLine::desc(); Default implementation for AcRxObject: { return AcRxObject::desc(); }
         """
+    def isAutoDelete(self, /) -> bool: ...
     def isDerivedFrom(self, other: PyRx.RxClass, /) -> bool:
         """
         Static method for checking if first (left) class arg is derived from second (right) one.
@@ -241,6 +242,7 @@ class RxObject:
         the class's isA() method. If the search for a protocol extension object is unsuccessful,
         then NULL is returned.
         """
+    def setAutoDelete(self, flag: bool, /) -> None: ...
     def setInternalClosed(self, flag: bool, /) -> None: ...
 
 class stderr:

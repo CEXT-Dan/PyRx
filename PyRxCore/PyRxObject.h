@@ -21,6 +21,8 @@ public:
     bool                isKeptAlive() const;
     void                setInternalClosed(bool flag) const;
     bool                isInternalClosed() const;
+    bool                isAutoDelete() const;
+    void                setAutoDelete(bool flag) const;
     void                dispose();
     bool                isNullObj() const;
     int                 implRefCount() const;
@@ -42,8 +44,7 @@ template<typename T>
 inline T PyRxObjectCast(const PyRxObject& src)
 {
     T dest(nullptr, false, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    dest.m_pyImp = src.m_pyImp;
     return dest;
 }
 
