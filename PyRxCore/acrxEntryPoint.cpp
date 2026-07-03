@@ -397,7 +397,7 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto createDatabaseFromDWG(const AcString& path, bool closeInput = true) 
+    static auto createDatabaseFromDWG(const AcString& path, bool closeInput = true) noexcept
         -> std::tuple<Acad::ErrorStatus, std::unique_ptr<AcDbDatabase>>
     {
         auto pDb = std::make_unique<AcDbDatabase>(false, true);
@@ -413,12 +413,14 @@ public:
         return { eOk, std::move(pDb) };
     }
 
-    static auto getblockModelSpaceId(AcDbDatabase* pDb) -> AcDbObjectId
+    static auto getModelSpaceId(AcDbDatabase* pDb) noexcept
+        -> AcDbObjectId
     {
         return acdbSymUtil()->blockModelSpaceId(pDb);
     }
 
-    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) -> Acad::PromptStatus
+    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) noexcept 
+        -> Acad::PromptStatus
     {
         Adesk::Int32 nSize = 0;
         if (acedSSLength(ssname, &nSize) != RTNORM)
@@ -440,7 +442,8 @@ public:
         return Acad::PromptStatus::eNormal;
     }
 
-    static auto ssget(resbuf* pFilter = nullptr) -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
+    static auto ssget(resbuf* pFilter = nullptr) noexcept 
+        -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
     {
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
@@ -451,25 +454,27 @@ public:
         return std::make_tuple(static_cast<Acad::PromptStatus>(res), std::move(ids));
     }
 
-    static auto getPoint() -> std::tuple<Acad::PromptStatus, AcGePoint3d>
+    static auto getPoint() noexcept
+        -> std::tuple<Acad::PromptStatus, AcGePoint3d>
     {
         AcGePoint3d pnt;
         int res = acedGetPoint(NULL, _T("\nGet Point: "), asDblArray(pnt));;
         return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 
-    static auto postToModelSpace(AcDbEntity* pEnt) -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
+    static auto postToModelSpace(AcDbEntity* pEnt) noexcept 
+        -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
     {
         if (pEnt == nullptr)
             return std::make_tuple(Acad::eNullEntityPointer, AcDbObjectId::kNull);
         AcDbObjectId id;
         AcDbDatabase* pDb = acdbCurDwg();
-        AcDbBlockTableRecordPointer model(getblockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
+        AcDbBlockTableRecordPointer model(getModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
         Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
         return std::make_tuple(es, id);
     }
 
-    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", const AcRxClass* desc = AcDbEntity::desc())
+    static auto entsel(const TCHAR* msg = L"\nSelect Entity: ", const AcRxClass* desc = AcDbEntity::desc()) noexcept
         -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
