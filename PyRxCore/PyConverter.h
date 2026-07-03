@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma pack (push, 8)
+
 AcGePoint3d     PyListToAcGePoint3d(const boost::python::object& iterable);
 AcGePoint2d     PyListToAcGePoint2d(const boost::python::object& iterable);
 AcGeVector3d    PyListToAcGeVector3d(const boost::python::object& iterable);
@@ -28,3 +30,5 @@ AcArray<Adesk::UInt64>  PyListToUInt64Array(const boost::python::object& iterabl
 AcStringArray           PyListToAcStringArray(const boost::python::object& iterable);
 COLORREF                PyTupleToColorRef(const boost::python::tuple& val);
 boost::python::tuple    ColorRefToPyTuple(COLORREF val);
+
+#pragma pack (pop)

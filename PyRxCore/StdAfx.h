@@ -180,6 +180,9 @@
 // us
 #include "RxPyString.h"
 #include "PyException.h"
+#include "PyConverter.h"
+#include "Utilities.h"
+
 
 #ifdef PYRXDEBUG
 #define PYRX_IN_PROGRESS_GS_GI 
@@ -316,82 +319,16 @@ constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordI
 
 using AcEdCommandIteratorPtr = std::unique_ptr<AcEdCommandIterator>;
 
+//Python does not have int16_t, used often in sysvars
 constexpr bool isInt16_t(int32_t val) noexcept
 {
     return val >= std::numeric_limits<int16_t>::min() &&
         val <= std::numeric_limits<int16_t>::max();
 }
 
-//-----------------------------------------------------------------------------
-// LifeTime for testing;
-struct LifeTime
-{
-    LifeTime()
-    {
-        acutPrintf(L"\nDefault constructor called");
-    }
-    explicit LifeTime(int value) : data(value)
-    {
-        acutPrintf(L"\nParameterized constructor called");
-    }
-    LifeTime(const LifeTime& other) : data(other.data)
-    {
-        acutPrintf(L"\nCopy constructor called");
-    }
-    LifeTime(LifeTime&& other) noexcept : data(other.data)
-    {
-        acutPrintf(L"\nMove constructor called");
-    }
-    ~LifeTime()
-    {
-        acutPrintf(L"\nDestructor called");
-    }
-    LifeTime& operator=(const LifeTime& other)
-    {
-        acutPrintf(L"\nCopy assignment operator called");
-        if (&other == this)
-            return *this;
-        data = other.data;
-        return *this;
-    }
-    LifeTime& operator=(LifeTime&& other) noexcept
-    {
-        acutPrintf(L"\nMove assignment operator called");
-        if (&other == this)
-            return *this;
-        data = other.data;
-        return *this;
-    }
-    int data = 0;
-};
-
-class PerfTimer
-{
-    std::wstring m_funcName;
-    std::chrono::high_resolution_clock::time_point t1;
-    std::chrono::high_resolution_clock::time_point t2;
-public:
-    PerfTimer(const wchar_t* funcName);
-    ~PerfTimer() = default;
-    void end(const wchar_t* msg);
-};
-
-inline PerfTimer::PerfTimer(const wchar_t* funcName)
-    : m_funcName(funcName)
-{
-    t1 = std::chrono::high_resolution_clock::now();
-}
-
-inline void PerfTimer::end(const wchar_t* msg)
-{
-    t2 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsedTime = duration_cast<std::chrono::duration<double>>(t2 - t1);
-    acutPrintf(_T("\n%ls %ls, %lf seconds"), m_funcName.c_str(), msg, elapsedTime.count());
-}
-
 //-------------------------------------------------------------------------------------
 //AcResBufPtr
-using AcResBufPtr = std::unique_ptr<resbuf, decltype([](resbuf* p) noexcept { acutRelRb(p); })>;
+using AcResBufPtr = std::unique_ptr < resbuf, decltype([](resbuf* p) noexcept { acutRelRb(p); }) > ;
 
 //-------------------------------------------------------------------------------------
 //AcDbObjectUPtr
@@ -461,118 +398,8 @@ using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexc
         PyDecRef(ptr);
     }) > ;
 
-//---------------------------------------------------------------------------------------- -
-//PySharedObjectDeleter
-template<typename T>
-struct PySharedObjectDeleter
-{
-    inline PySharedObjectDeleter(bool autoDelete)
-        : m_autoDelete(autoDelete)
-    {
-    }
-
-    inline void operator()(T* p) const
-    {
-        if (m_autoDelete)
-            delete p;
-    }
-    bool m_autoDelete = true;
-};
-
-//---------------------------------------------------------------------------------------- -
-//AutoWorkingDatabase
-struct AutoWorkingDatabase
-{
-    inline explicit AutoWorkingDatabase(AcDbDatabase* pDb)
-    {
-        acdbHostApplicationServices()->setWorkingDatabase(pDb);
-    }
-    inline ~AutoWorkingDatabase()
-    {
-        acdbHostApplicationServices()->setWorkingDatabase(m_pDb);
-    }
-    AcDbDatabase* m_pDb = acdbHostApplicationServices()->workingDatabase();
-};
-
-//---------------------------------------------------------------------------------------- -
-//Auto Working directory
-struct AutoCWD
-{
-    AutoCWD()
-    {
-    }
-    AutoCWD(const std::filesystem::path& pathToSet)
-    {
-        std::filesystem::current_path(pathToSet, _Ec);
-    }
-    ~AutoCWD()
-    {
-        std::filesystem::current_path(pathToRestore, _Ec);
-    }
-    void reset(const std::filesystem::path& pathToSet)
-    {
-        std::filesystem::current_path(pathToSet, _Ec);
-    }
-    std::error_code _Ec;
-    std::filesystem::path pathToRestore = std::filesystem::current_path(_Ec);
-};
-
-//-----------------------------------------------------------------------------------
-// AutoCmdEcho
-class AutoCmdEcho
-{
-public:
-    AutoCmdEcho(int mode = 0) noexcept
-    {
-        get(m_old);
-        set(mode);
-    }
-    ~AutoCmdEcho() noexcept
-    {
-        set(m_old);
-    }
-    Adesk::Int16 old() const noexcept
-    {
-        return m_old;
-    }
-    bool set(Adesk::Int16 mode) const noexcept
-    {
-        resbuf buf{};
-        buf.restype = RTSHORT;
-        buf.resval.rint = mode;
-        return acedSetVar(_cmdecho, &buf) == RTNORM;
-    }
-    bool get(Adesk::Int16& mode) const noexcept
-    {
-        resbuf buf;
-        if (acedGetVar(_cmdecho, &buf) == RTNORM) [[likely]]
-        {
-            mode = buf.resval.rint;
-            return true;
-        }
-        return false;
-    }
-private:
-    static constexpr auto _cmdecho{ L"CMDECHO" };
-    Adesk::Int16 m_old = 0;
-};
-
-//-----------------------------------------------------------------------------------
-//vector_indexing_suite
-inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs) noexcept
-{
-    return std::addressof(lhs) == std::addressof(rhs);
-}
-
-typedef std::vector<AcGiPixelBGRA32> PyGiPixelBGRA32Array;
-typedef std::vector<AcGePoint2d> PyGePoint2dArray;
-typedef std::vector<AcGePoint3d> PyGePoint3dArray;
-typedef AcArray<AcRxClass*> AcRxClassArray;
-
-//-----------------------------------------------------------------------------------
-//converters
-#include "PyConverter.h"
-
+//-------------------------------------------------------------------------------------
+// py_list_to_std_vector / std_vector_to_py_list
 template<typename T>
 inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
 {
@@ -591,6 +418,36 @@ inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
         list.append(*iter);
     return list;
 }
+
+//---------------------------------------------------------------------------------------- -
+//PySharedObjectDeleter
+template<typename T>
+struct PySharedObjectDeleter
+{
+    inline PySharedObjectDeleter(bool autoDelete)
+        : m_autoDelete(autoDelete)
+    {
+    }
+
+    inline void operator()(T* p) const
+    {
+        if (m_autoDelete)
+            delete p;
+    }
+    bool m_autoDelete = true;
+};
+
+//-----------------------------------------------------------------------------------
+//vector_indexing_suite
+inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs) noexcept
+{
+    return std::addressof(lhs) == std::addressof(rhs);
+}
+
+typedef std::vector<AcGiPixelBGRA32> PyGiPixelBGRA32Array;
+typedef std::vector<AcGePoint2d> PyGePoint2dArray;
+typedef std::vector<AcGePoint3d> PyGePoint3dArray;
+typedef AcArray<AcRxClass*> AcRxClassArray;
 
 //PCH
 #include "PyRxObject.h"

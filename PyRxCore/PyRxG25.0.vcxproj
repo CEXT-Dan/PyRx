@@ -282,6 +282,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PyEdUserInteraction.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="concaveman.h" />
@@ -435,6 +436,7 @@
     <ClInclude Include="RxPyString.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="PyEdUserInteraction.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PyRx.rc" />
