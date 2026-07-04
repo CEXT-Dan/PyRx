@@ -1035,12 +1035,13 @@ static boost::python::tuple AcGeMatrix2dToTuple(const AcGeMatrix2d& x)
 {
     PyAutoLockGIL lock;
     PyObject* main_tuple = PyTuple_New(3);
-    if (!main_tuple) 
+    if (!main_tuple) [[unlikely]]
         return boost::python::tuple();
     for (int i = 0; i < 3; ++i) 
     {
         PyObject* row = PyTuple_New(3);
-        if (!row) {
+        if (!row) [[unlikely]]
+        {
             Py_DECREF(main_tuple);
             return boost::python::tuple();
         }
@@ -1056,10 +1057,13 @@ static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
 {
     PyAutoLockGIL lock;
     PyObject* main_list = PyList_New(3);
-    if (!main_list) return boost::python::list();
-    for (int i = 0; i < 3; ++i) {
+    if (!main_list) [[unlikely]]
+        return boost::python::list();
+    for (int i = 0; i < 3; ++i) 
+    {
         PyObject* row = PyList_New(3);
-        if (!row) {
+        if (!row) [[unlikely]]
+        {
             Py_DECREF(main_list);
             return boost::python::list();
         }
@@ -2202,12 +2206,13 @@ static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
     PyObject* main_tuple = PyTuple_New(4);
-    if (!main_tuple) 
+    if (!main_tuple) [[unlikely]]
         return boost::python::tuple();
     for (int i = 0; i < 4; ++i) 
     {
         PyObject* row = PyTuple_New(4);
-        if (!row) {
+        if (!row) [[unlikely]]
+        {
             Py_DECREF(main_tuple);
             return boost::python::tuple();
         }
@@ -2224,10 +2229,13 @@ static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
     PyObject* main_list = PyList_New(4);
-    if (!main_list) return boost::python::list();
-    for (int i = 0; i < 4; ++i) {
+    if (!main_list) [[unlikely]]
+        return boost::python::list();
+    for (int i = 0; i < 4; ++i) 
+    {
         PyObject* row = PyList_New(4);
-        if (!row) {
+        if (!row) [[unlikely]]
+        {
             Py_DECREF(main_list);
             return boost::python::list();
         }
@@ -2248,7 +2256,7 @@ static AcGeMatrix3d AcGeMatrix3dInitFromCollection(const boost::python::object& 
     for (int i = 0; i < 4; ++i) 
     {
         boost::python::object row = obj[i];
-        if (boost::python::len(row) != 4)
+        if (boost::python::len(row) != 4) [[unlikely]]
             PyThrowBadEs(eInvalidInput);
         x.entry[i][0] = boost::python::extract<double>(row[0]);
         x.entry[i][1] = boost::python::extract<double>(row[1]);

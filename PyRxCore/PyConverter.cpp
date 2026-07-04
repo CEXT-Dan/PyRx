@@ -24,11 +24,10 @@ AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
     throw PyErrorStatusException(eInvalidInput);
 }
 
-
 AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    if (boost::python::len(iterable) < 2)
+    if (boost::python::len(iterable) < 2)[[unlikely]]
         throw PyErrorStatusException(eInvalidInput);
     return AcGePoint2d(
         boost::python::extract<double>(iterable[0]),
@@ -62,7 +61,7 @@ AcGeVector3d PyListToAcGeVector3d(const boost::python::object& iterable)
 AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    if (boost::python::len(iterable) < 2)
+    if (boost::python::len(iterable) < 2) [[unlikely]]
         throw PyErrorStatusException(eInvalidInput);
     return AcGeVector2d(
         boost::python::extract<double>(iterable),
