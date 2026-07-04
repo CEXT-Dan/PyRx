@@ -1427,14 +1427,17 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 //PyDb2dPolyline
 static AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 {
-    PyAutoLockGIL lock;
     //TODO: maybe this can be done better
-    auto vec = py_list_to_std_vector<AcGePoint3d>(list);
+    PyAutoLockGIL lock;
+    auto tmp = PyListToPoint3dArray(list);
     static AcGePoint3dArray arr;
     arr.removeAll();
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
+#ifdef _BRXTARGET260
+    for (const auto& item : tmp)
         arr.append(item);
+#else
+    arr.appendMove(tmp);
+#endif
     return arr;
 }
 
@@ -3090,50 +3093,58 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool era
 PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
     : PyDbPolyline(new AcDbPolyline(boost::python::len(pnts)), true)
 {
-    if (boost::python::len(pnts) == 0)
+    const size_t len = boost::python::len(pnts);
+    if (len == 0)
         return;
 
-    const extract<AcGePoint2d> extractor2d(pnts[0]);
+    auto pPoly = impObj();
+    const auto first_item = pnts[0];
+
+    const extract<AcGePoint2d> extractor2d(first_item);
     if (extractor2d.check())
     {
-        auto vec = py_list_to_std_vector<AcGePoint2d>(pnts);
-        for (int i = 0; i < vec.size(); i++)
-            impObj()->addVertexAt(i, vec[i]);
-        return;
-    }
-    const extract<AcGePoint3d> extractor3d(pnts[0]);
-    if (extractor3d.check())
-    {
-        auto vec = py_list_to_std_vector<AcGePoint3d>(pnts);
-        for (int i = 0; i < vec.size(); i++)
-            impObj()->addVertexAt(i, AcGePoint2d(vec[i].x, vec[i].y));
-        return;
-    }
-    const extract<boost::python::tuple> extractorTpl(pnts[0]);
-    if (extractorTpl.check())
-    {
-        auto vec = std::vector<boost::python::tuple>(boost::python::stl_input_iterator<boost::python::tuple>(pnts),
-            boost::python::stl_input_iterator<boost::python::tuple>());
-
-        for (int i = 0; i < vec.size(); i++)
+        for (size_t i = 0; i < len; ++i)
         {
-            auto nlen = boost::python::len(vec[i]);
-            if (nlen > 1)
-                impObj()->addVertexAt(i, PyListToAcGePoint2d(vec[i]));
+            pPoly->addVertexAt(static_cast<int>(i), extract<AcGePoint2d>(pnts[i])());
         }
         return;
     }
-    const extract<boost::python::list> extractorList(pnts[0]);
+
+    const extract<AcGePoint3d> extractor3d(first_item);
+    if (extractor3d.check())
+    {
+        for (size_t i = 0; i < len; ++i)
+        {
+            const AcGePoint3d p3d = extract<AcGePoint3d>(pnts[i])();
+            pPoly->addVertexAt(static_cast<int>(i), AcGePoint2d(p3d.x, p3d.y));
+        }
+        return;
+    }
+
+    const extract<boost::python::tuple> extractorTpl(first_item);
+    if (extractorTpl.check())
+    {
+        for (size_t i = 0; i < len; ++i)
+        {
+            const boost::python::tuple tpl = extract<boost::python::tuple>(pnts[i])();
+            if (boost::python::len(tpl) > 1)
+            {
+                pPoly->addVertexAt(static_cast<int>(i), PyListToAcGePoint2d(tpl));
+            }
+        }
+        return;
+    }
+
+    const extract<boost::python::list> extractorList(first_item);
     if (extractorList.check())
     {
-        auto vec = std::vector<boost::python::list>(boost::python::stl_input_iterator<boost::python::list>(pnts),
-            boost::python::stl_input_iterator<boost::python::list>());
-
-        for (int i = 0; i < vec.size(); i++)
+        for (size_t i = 0; i < len; ++i)
         {
-            auto nlen = boost::python::len(vec[i]);
-            if (nlen > 1)
-                impObj()->addVertexAt(i, PyListToAcGePoint2d(vec[i]));
+            const boost::python::list lst = extract<boost::python::list>(pnts[i])();
+            if (boost::python::len(lst) > 1)
+            {
+                pPoly->addVertexAt(static_cast<int>(i), PyListToAcGePoint2d(lst));
+            }
         }
         return;
     }
