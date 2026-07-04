@@ -69,11 +69,90 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-[[nodiscard]] std::wstring utf8_to_wstr(const std::string& str);
 [[nodiscard]] std::wstring utf8_to_wstr(const char* str8);
+[[nodiscard]] std::wstring utf8_to_wstr(const std::string& str);
+[[nodiscard]] std::wstring utf8_to_wstr(std::string_view utf8_str);
+
 [[nodiscard]] std::string wstr_to_utf8(const std::wstring& wstr);
+[[nodiscard]] std::string wstr_to_utf8(const std::filesystem::path& path);
+[[nodiscard]] std::string wstr_to_utf8(std::wstring_view wstr);
 [[nodiscard]] std::string wstr_to_utf8(const wchar_t* utf16wc);
 
+template <size_t StackBufferSize = 256>
+class AcStrConvert {
+public:
+    // 1. Direct constructor for pre-validated stable string_views
+    explicit AcStrConvert(std::string_view utf8_str) noexcept {
+        init(utf8_str);
+    }
+
+    [[nodiscard]] operator const wchar_t* () const noexcept { return ptr_; }
+
+    // --- C++20 CONSTRAINED SAFETY CONTROLS ---
+    template<typename T>
+        requires std::convertible_to<T, std::string_view>
+    explicit AcStrConvert(T&&) = delete;
+
+    template<typename T>
+        requires std::convertible_to<T, std::string_view>
+    explicit AcStrConvert(T& v) noexcept {
+        init(std::string_view(v));
+    }
+
+    template<typename T>
+        requires std::convertible_to<T, std::string_view>
+    explicit AcStrConvert(const T& v) noexcept {
+        init(std::string_view(v));
+    }
+
+    AcStrConvert(const AcStrConvert&) = delete;
+    AcStrConvert& operator=(const AcStrConvert&) = delete;
+
+private:
+
+    void init(std::string_view utf8_str) noexcept {
+        if (utf8_str.empty()) [[unlikely]] {
+            ptr_ = L"";
+            return;
+        }
+
+        const int req_size = MultiByteToWideChar(
+            CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), nullptr, 0
+        );
+
+        if (req_size <= 0) [[unlikely]] {
+            ptr_ = L"";
+            return;
+        }
+
+        const int total_needed = req_size + 1;
+
+        if (total_needed <= static_cast<int>(StackBufferSize)) 
+        {
+            MultiByteToWideChar(
+                CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), stack_buf_.data(), req_size
+            );
+            stack_buf_[req_size] = L'\0';
+            ptr_ = stack_buf_.data();
+        }
+        else 
+        {
+            heap_buf_.resize(total_needed);
+            MultiByteToWideChar(
+                CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), heap_buf_.data(), req_size
+            );
+            heap_buf_[req_size] = L'\0';
+            ptr_ = heap_buf_.data();
+        }
+    }
+    const wchar_t* ptr_ = nullptr;
+    std::array<wchar_t, StackBufferSize> stack_buf_;
+    std::vector<wchar_t> heap_buf_;
+};
+
+using AcStrConv = AcStrConvert<256>;
+
+//
 bool icompare(const std::wstring& l, const std::wstring& r);
 bool icompare(const std::string& l, const std::string& r);
 
@@ -379,6 +458,7 @@ inline std::string tolower(const std::string& s) noexcept
 }
 
 std::string expandPercents(const std::string& input) noexcept;
+
 
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <>

@@ -109,14 +109,14 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 PyDbObjectId PyDbDictionary::getAt(const std::string& entryName) const
 {
     PyDbObjectId id;
-    PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id.m_id));
+    PyThrowBadEs(impObj()->getAt(AcStrConv(entryName), id.m_id));
     return id;
 }
 
 PyDbObjectId PyDbDictionary::getAtEx(const std::string& entryName) const
 {
     PyDbObjectId id;
-    const auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id.m_id);
+    const auto es = impObj()->getAt(AcStrConv(entryName), id.m_id);
     if (es == Acad::eKeyNotFound)
         throw PyRxEKeyError(entryName);
     PyThrowBadEs(es);
