@@ -297,11 +297,15 @@ AcStringArray PyListToAcStringArray(const boost::python::object& iterable)
 
 COLORREF PyTupleToColorRef(const boost::python::tuple& val)
 {
-    COLORREF ref = 0;
-    auto vec = py_list_to_std_vector<Adesk::Int32>(val);
-    if (vec.size() == 3)
-        ref = RGB(vec[0], vec[1], vec[2]);
-    return ref;
+    namespace py = boost::python;
+    if (py::len(val) == 3)
+    {
+        const Adesk::Int32 r = py::extract<Adesk::Int32>(val[0]);
+        const Adesk::Int32 g = py::extract<Adesk::Int32>(val[1]);
+        const Adesk::Int32 b = py::extract<Adesk::Int32>(val[2]);
+        return RGB(r, g, b);
+    }
+    return 0;
 }
 
 boost::python::tuple ColorRefToPyTuple(COLORREF val)
