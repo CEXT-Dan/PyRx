@@ -168,7 +168,7 @@ void PyDbEntity::setLayer2(const std::string& newVal, bool doSubents) const
 
 void PyDbEntity::setLayer3(const std::string& newVal, bool doSubents, bool allowHiddenLayer) const
 {
-    return PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str(), doSubents, allowHiddenLayer));
+    return PyThrowBadEs(impObj()->setLayer(AsWStr(newVal), doSubents, allowHiddenLayer));
 }
 
 void PyDbEntity::setLayer4(const PyDbObjectId& newVal) const
@@ -266,7 +266,7 @@ PyDbObjectId PyDbEntity::layerId() const
 
 void PyDbEntity::setPlotStyleName1(const std::string& str, Adesk::Boolean doSubents) const
 {
-    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(str).c_str(), doSubents));
+    return PyThrowBadEs(impObj()->setPlotStyleName(AsWStr(str), doSubents));
 }
 
 void PyDbEntity::setPlotStyleName2(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents) const
@@ -291,12 +291,12 @@ PyDbObjectId PyDbEntity::linetypeId() const
 
 void PyDbEntity::setLinetype1(const std::string& newVal) const
 {
-    return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
+    return PyThrowBadEs(impObj()->setLinetype(AsWStr(newVal)));
 }
 
 void PyDbEntity::setLinetype2(const std::string& newVal, Adesk::Boolean doSubents) const
 {
-    return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str(), doSubents));
+    return PyThrowBadEs(impObj()->setLinetype(AsWStr(newVal), doSubents));
 }
 
 void PyDbEntity::setLinetype3(const PyDbObjectId& newVal) const
@@ -321,12 +321,12 @@ PyDbObjectId PyDbEntity::materialId() const
 
 void PyDbEntity::setMaterial1(const std::string& newVal) const
 {
-    return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
+    return PyThrowBadEs(impObj()->setMaterial(AsWStr(newVal)));
 }
 
 void PyDbEntity::setMaterial2(const std::string& newVal, Adesk::Boolean doSubents) const
 {
-    return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str(), doSubents));
+    return PyThrowBadEs(impObj()->setMaterial(AsWStr(newVal), doSubents));
 }
 
 void PyDbEntity::setMaterial3(const PyDbObjectId& newVal) const
