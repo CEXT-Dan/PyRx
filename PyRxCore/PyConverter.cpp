@@ -175,8 +175,7 @@ AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
     AcGeDoubleArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -189,8 +188,7 @@ AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
     AcGePoint2dArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -203,8 +201,7 @@ AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
     AcGePoint3dArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -217,8 +214,7 @@ AcGeVector3dArray PyListToVector3dArray(const boost::python::object& iterable)
     AcGeVector3dArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -231,8 +227,7 @@ AcGeVector2dArray PyListToVector2dArray(const boost::python::object& iterable)
     AcGeVector2dArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -245,8 +240,7 @@ AcArray<int> PyListToIntArray(const boost::python::object& iterable)
     AcArray<int> arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -259,8 +253,7 @@ AcArray<Adesk::Int32> PyListToInt32Array(const boost::python::object& iterable)
     AcArray<Adesk::Int32> arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -273,8 +266,7 @@ AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& iterable
     AcArray<Adesk::UInt64> arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(*it);
     }
     return arr;
@@ -287,8 +279,7 @@ AcStringArray PyListToAcStringArray(const boost::python::object& iterable)
     AcStringArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    Iter begin(iterable), end;
-    for (Iter it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(utf8_to_wstr(*it).c_str());
     }
     return arr;

@@ -301,12 +301,12 @@ boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
 
 AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
+    using Iter = boost::python::stl_input_iterator<PyDbObjectId>;
     PyAutoLockGIL lock;
     AcDbObjectIdArray arr;
     int length = boost::python::len(iterable);
     arr.setPhysicalLength(length);
-    boost::python::stl_input_iterator<PyDbObjectId> begin(iterable), end;
-    for (auto it = begin; it != end; ++it) {
+    for (Iter it(iterable), end; it != end; ++it) {
         arr.append(it->m_id);
     }
     return arr;
