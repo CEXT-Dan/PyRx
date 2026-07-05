@@ -27,7 +27,6 @@ class TestAcedCmdS:
         assert Ed.Core.getVar("USERS1") == "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest1"),
-            (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
         assert Ed.Core.getVar("USERS1") == "SUCCESS"
@@ -37,7 +36,6 @@ class TestAcedCmdS:
         assert Ed.Core.getVar("USERS1") == "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest2"),
-            (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
         assert Ed.Core.getVar("USERS1") == "SUCCESS"
@@ -47,7 +45,6 @@ class TestAcedCmdS:
         assert Ed.Core.getVar("USERS1") == "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest3"),
-            (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
         assert Ed.Core.getVar("USERS1") == "SUCCESS"

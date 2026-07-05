@@ -256,7 +256,7 @@ void PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Ade
 
 bool PyDbObject::hasXData(const std::string& regappName) const
 {
-    AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
+    AcResBufPtr pData(impObj()->xData(AsWStr(regappName)));
     return pData.get() != nullptr;
 }
 
@@ -276,7 +276,7 @@ boost::python::list PyDbObject::xData1() const
 
 boost::python::list PyDbObject::xData2(const std::string& regappName) const
 {
-    AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
+    AcResBufPtr pData(impObj()->xData(AsWStr(regappName)));
     return resbufToList(pData.get());
 }
 
@@ -415,7 +415,7 @@ PyDbObjectId PyDbObject::getField1() const
 PyDbObjectId PyDbObject::getField2(const std::string& propName) const
 {
     AcDbObjectId id;
-    PyThrowBadEs(impObj()->getField(utf8_to_wstr(propName).c_str(), id));
+    PyThrowBadEs(impObj()->getField(AsWStr(propName), id));
     return PyDbObjectId(id);
 }
 
@@ -429,7 +429,7 @@ PyDbObjectId PyDbObject::setField1(PyDbField& pField) const
 PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pField) const
 {
     AcDbObjectId id;
-    PyThrowBadEs(impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id));
+    PyThrowBadEs(impObj()->setField(AsWStr(propName), pField.impObj(), id));
     return PyDbObjectId(id);
 }
 
@@ -447,7 +447,7 @@ void PyDbObject::removeField1(const PyDbObjectId& fieldId) const
 
 void PyDbObject::removeField2(const std::string& propName) const
 {
-    return PyThrowBadEs(impObj()->removeField(utf8_to_wstr(propName).c_str()));
+    return PyThrowBadEs(impObj()->removeField(AsWStr(propName)));
 }
 
 PyDbObjectId PyDbObject::getFieldDictionary(void) const

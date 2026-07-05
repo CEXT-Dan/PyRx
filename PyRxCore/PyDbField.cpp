@@ -137,12 +137,12 @@ PyDbField::PyDbField()
 }
 
 PyDbField::PyDbField(const std::string& pszFieldCode)
-    : PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str()), true)
+    : PyDbObject(new AcDbField(AsWStr(pszFieldCode)), true)
 {
 }
 
 PyDbField::PyDbField(const std::string& pszFieldCode, bool bTextField)
-    : PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str(), bTextField), true)
+    : PyDbObject(new AcDbField(AsWStr(pszFieldCode), bTextField), true)
 {
 }
 
@@ -171,7 +171,7 @@ void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName) co
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
+    return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), AsWStr(pszPropName)));
 #endif
 }
 
@@ -207,7 +207,7 @@ std::string PyDbField::evaluatorId(void) const
 
 void PyDbField::setEvaluatorId(const std::string& pszEvaluatorId) const
 {
-    return PyThrowBadEs(impObj()->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str()));
+    return PyThrowBadEs(impObj()->setEvaluatorId(AsWStr(pszEvaluatorId)));
 }
 
 bool PyDbField::isTextField(void) const
@@ -243,7 +243,7 @@ std::string PyDbField::getFormat(void) const
 
 void PyDbField::setFormat(const std::string& pszFormat) const
 {
-    return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
+    return PyThrowBadEs(impObj()->setFormat(AsWStr(pszFormat)));
 }
 
 std::string PyDbField::getValue(void) const
@@ -301,12 +301,12 @@ std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost
 
 void PyDbField::setFieldCode1(const std::string& pszFieldCode) const
 {
-    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str()));
+    PyThrowBadEs(impObj()->setFieldCode(AsWStr(pszFieldCode)));
 }
 
 void PyDbField::setFieldCode2(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag) const
 {
-    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str(), nFlag));
+    PyThrowBadEs(impObj()->setFieldCode(AsWStr(pszFieldCode), nFlag));
 }
 
 void PyDbField::setFieldCode3(const std::string& pszFieldCode, AcDbField::FieldCodeFlag nFlag, const boost::python::object& childFields) const
@@ -315,12 +315,12 @@ void PyDbField::setFieldCode3(const std::string& pszFieldCode, AcDbField::FieldC
     AcArray<AcDbField*> pChildFields;
     for (const auto& item : py_list_to_std_vector<PyDbField>(childFields))
         pChildFields.append(item.impObj());
-    PyThrowBadEs(impObj()->setFieldCode(utf8_to_wstr(pszFieldCode).c_str(), nFlag, &pChildFields));
+    PyThrowBadEs(impObj()->setFieldCode(AsWStr(pszFieldCode), nFlag, &pChildFields));
 }
 
 void PyDbField::setData1(const std::string& key, const PyDbAcValue& value) const
 {
-    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), value.impObj()));
+    PyThrowBadEs(impObj()->setData(AsWStr(key), value.impObj()));
 }
 
 void PyDbField::setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const
@@ -328,21 +328,21 @@ void PyDbField::setData2(const std::string& key, const PyDbAcValue& value, bool 
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), value.impObj(), bRecursive));
+    PyThrowBadEs(impObj()->setData(AsWStr(key), value.impObj(), bRecursive));
 #endif
 }
 
 PyDbAcValue PyDbField::getData(const std::string& key) const
 {
     PyDbAcValue val{};
-    PyThrowBadEs(impObj()->getData(utf8_to_wstr(key).c_str(), val.impObj()));
+    PyThrowBadEs(impObj()->getData(AsWStr(key), val.impObj()));
     return val;
 }
 
 bool PyDbField::hasData(const std::string& key) const
 {
     PyDbAcValue val{};
-    return impObj()->getData(utf8_to_wstr(key).c_str(), val.impObj()) == eOk;
+    return impObj()->getData(AsWStr(key), val.impObj()) == eOk;
 }
 
 std::string PyDbField::className()
@@ -719,7 +719,7 @@ int PyDbFieldEngine::evaluatorLoaderCount(void) const
 
 bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
 {
-    return acdbGetFieldEngine()->getEvaluator(utf8_to_wstr(pszEvalId).c_str()) != nullptr;
+    return acdbGetFieldEngine()->getEvaluator(AsWStr(pszEvalId)) != nullptr;
 }
 
 AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const

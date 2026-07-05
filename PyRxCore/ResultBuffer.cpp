@@ -157,7 +157,7 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     case RTLE:
                     case RTNONE:
                     {
-                        appendRb(code);
+                        appendRb(code)->resval.rint = 0;
                         break;
                     }
                     case RTANG:

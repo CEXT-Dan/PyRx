@@ -719,8 +719,9 @@ bool EdCore::cmdS1(const std::string& name)
 bool EdCore::cmdS2(const boost::python::list& lst)
 {
 #ifdef _ZRXTARGET270
+    PyAutoLockGIL lock;
     if (boost::python::len(lst) != 0 && boost::python::len(lst[0]) != 0)
-        PyRxApp::instance().commandForDocOverride = utf8_to_wstr(extract<char*>(lst[0][1])).c_str();
+        PyRxApp::instance().commandForDocOverride = utf8_to_wstr(extract<std::string>(lst[0][1])).c_str();
 #endif
     AcResBufPtr pcmd(listToResbuf(lst));
     return acedCmdS(pcmd.get()) == RTNORM;
@@ -1258,9 +1259,9 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
             const auto val = asDblArray(extract<AcGeVector3d>(src));
             buf.reset(acutBuildList(RTORINT, val, 0));
         }
-        else if (extract<char*>(src).check())
+        else if (extract<std::string>(src).check())
         {
-            const AcString str = utf8_to_wstr(extract<char*>(src)).c_str();
+            const AcString str = utf8_to_wstr(extract<std::string>(src)).c_str();
             buf.reset(acutBuildList(RTSTR, (const TCHAR*)str, 0));
         }
         PyThrowBadRt(acedSetVar(asSym, buf.get()));

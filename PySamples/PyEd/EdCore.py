@@ -29,7 +29,6 @@ def pycmd1():
         resbuf = [
             (Rx.LispType.kText, "_UCS"),
             (Rx.LispType.kText, "World"),
-            (Rx.LispType.kNone, 0),
         ]
         Ed.Core.cmdS(resbuf)
     except Exception as err:
