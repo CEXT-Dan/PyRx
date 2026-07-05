@@ -77,7 +77,7 @@ PyDbEvalVariant::PyDbEvalVariant(double dVal)
 }
 
 PyDbEvalVariant::PyDbEvalVariant(const std::string& szVal)
-    : PyRxObject(new AcDbEvalVariant(utf8_to_wstr(szVal).c_str()), true, false)
+    : PyRxObject(new AcDbEvalVariant(AsWStr(szVal)), true, false)
 {
 }
 
@@ -190,7 +190,7 @@ void PyDbEvalVariant::setString(AcDb::DxfCode groupcode, const std::string& valu
 {
     impObj()->clear();
     impObj()->restype = groupcode;
-    impObj()->resval.rstring = _wcsdup(utf8_to_wstr(value).c_str());
+    impObj()->resval.rstring = _wcsdup(AsWStr(value));
 }
 
 void PyDbEvalVariant::setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value) const
@@ -598,7 +598,7 @@ PyDbAcValue::PyDbAcValue(double fValue)
 }
 
 PyDbAcValue::PyDbAcValue(const std::string& pszValue)
-    : PyDbAcValue(new AcValue(utf8_to_wstr(pszValue).c_str()), true)
+    : PyDbAcValue(new AcValue(AsWStr(pszValue)), true)
 {
 }
 
@@ -664,7 +664,7 @@ std::string PyDbAcValue::getFormat(void) const
 
 bool PyDbAcValue::setFormat(const std::string& pszFormat) const
 {
-    return impObj()->setFormat(utf8_to_wstr(pszFormat).c_str());
+    return impObj()->setFormat(AsWStr(pszFormat));
 }
 
 bool PyDbAcValue::isValid(void) const
@@ -684,7 +684,7 @@ void PyDbAcValue::setInt32(Adesk::Int32 value) const
 
 void PyDbAcValue::setString(const std::string& value) const
 {
-    PyThrowFalse(impObj()->set(utf8_to_wstr(value).c_str()));
+    PyThrowFalse(impObj()->set(AsWStr(value)));
 }
 
 void PyDbAcValue::setObjectId(const PyDbObjectId& value) const

@@ -69,17 +69,17 @@ boost::python::list PyBrxMechanicalPropertySet::getAllCustomProperties() const
 
 PyBrxMechanicalPropertyDefinition PyBrxMechanicalPropertySet::getPropertyByName(const std::string& propertyName) const
 {
-    return PyBrxMechanicalPropertyDefinition(m_impl.getPropertyByName(utf8_to_wstr(propertyName).c_str()));
+    return PyBrxMechanicalPropertyDefinition(m_impl.getPropertyByName(AsWStr(propertyName)));
 }
 
 PyBrxMechanicalPropertyDefinition PyBrxMechanicalPropertySet::addProperty1(const std::string& propertyName, BrxMechanicalPropertyType type)
 {
-    return PyBrxMechanicalPropertyDefinition(m_impl.addProperty(utf8_to_wstr(propertyName).c_str(), type));
+    return PyBrxMechanicalPropertyDefinition(m_impl.addProperty(AsWStr(propertyName), type));
 }
 
 PyBrxMechanicalPropertyDefinition PyBrxMechanicalPropertySet::addProperty2(const std::string& propertyName, BrxMechanicalPropertyType type, const std::string& label)
 {
-    return PyBrxMechanicalPropertyDefinition(m_impl.addProperty(utf8_to_wstr(propertyName).c_str(), type, utf8_to_wstr(label).c_str()));
+    return PyBrxMechanicalPropertyDefinition(m_impl.addProperty(AsWStr(propertyName), type, AsWStr(label)));
 }
 
 boost::python::list PyBrxMechanicalPropertySet::getAllCategories(const PyDbDatabase& pDb)
@@ -93,22 +93,22 @@ boost::python::list PyBrxMechanicalPropertySet::getAllCategories(const PyDbDatab
 
 PyBrxMechanicalPropertySet PyBrxMechanicalPropertySet::getCategoryByName(const PyDbDatabase& pDb, const std::string& categoryName)
 {
-    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::getCategoryByName(pDb.impObj(), utf8_to_wstr(categoryName).c_str()));
+    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::getCategoryByName(pDb.impObj(), AsWStr(categoryName)));
 }
 
 PyBrxMechanicalPropertySet PyBrxMechanicalPropertySet::createCategory1(const PyDbDatabase& pDb, const std::string& categoryName)
 {
-    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), utf8_to_wstr(categoryName).c_str()));
+    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), AsWStr(categoryName)));
 }
 
 PyBrxMechanicalPropertySet PyBrxMechanicalPropertySet::createCategory2(const PyDbDatabase& pDb, const std::string& categoryName, bool isPerInstance)
 {
-    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), utf8_to_wstr(categoryName).c_str(), isPerInstance));
+    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), AsWStr(categoryName), isPerInstance));
 }
 
 PyBrxMechanicalPropertySet PyBrxMechanicalPropertySet::createCategory3(const PyDbDatabase& pDb, const std::string& categoryName, bool isPerInstance, const std::string& label)
 {
-    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), utf8_to_wstr(categoryName).c_str(), isPerInstance, utf8_to_wstr(label).c_str()));
+    return PyBrxMechanicalPropertySet(BrxMechanicalPropertySet::createCategory(pDb.impObj(), AsWStr(categoryName), isPerInstance, AsWStr(label)));
 }
 
 std::string PyBrxMechanicalPropertySet::className()
@@ -177,7 +177,7 @@ boost::python::list PyBrxMechanicalPropertyDefinition::enumValues() const
 
 void PyBrxMechanicalPropertyDefinition::setLabel(const std::string& newLabel)
 {
-    m_impl.setLabel(utf8_to_wstr(newLabel).c_str());
+    m_impl.setLabel(AsWStr(newLabel));
 }
 
 void PyBrxMechanicalPropertyDefinition::setType(BrxMechanicalPropertyType newTypeName)

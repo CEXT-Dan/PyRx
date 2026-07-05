@@ -124,7 +124,7 @@ std::string PyBrxVariable::name() const
 
 void PyBrxVariable::setName(const std::string& name) const
 {
-    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+    PyThrowBadEs(impObj()->setName(AsWStr(name)));
 }
 
 std::string PyBrxVariable::expression() const
@@ -134,7 +134,7 @@ std::string PyBrxVariable::expression() const
 
 void PyBrxVariable::setExpression(const std::string& expr) const
 {
-    PyThrowBadEs(impObj()->setExpression(utf8_to_wstr(expr).c_str()));
+    PyThrowBadEs(impObj()->setExpression(AsWStr(expr)));
 }
 
 double PyBrxVariable::value() const
@@ -219,7 +219,7 @@ void PyBrxVariable::setGeometryDrivenMode(AcVariable::EGdMode val) const
 
 bool PyBrxVariable::hasByName(const PyDbObjectId& blockId, const std::string& name)
 {
-    auto result = AcVariable::getByName(blockId.m_id, utf8_to_wstr(name).c_str(), false);
+    auto result = AcVariable::getByName(blockId.m_id, AsWStr(name), false);
     return !result.isNull();
 }
 
@@ -230,7 +230,7 @@ PyBrxVariable PyBrxVariable::getByName1(const PyDbObjectId& blockId, const std::
 
 PyBrxVariable PyBrxVariable::getByName2(const PyDbObjectId& blockId, const std::string& name, bool createIfNotExist)
 {
-    auto result = AcVariable::getByName(blockId.m_id, utf8_to_wstr(name).c_str(), createIfNotExist);
+    auto result = AcVariable::getByName(blockId.m_id, AsWStr(name), createIfNotExist);
     if (result.refCount() != 1)
         PyThrowBadEs(eInvalidOpenState);
     return PyBrxVariable(result.detach());
@@ -347,7 +347,7 @@ std::string PyBrxConstraint::name() const
 
 void PyBrxConstraint::setName(const std::string& name) const
 {
-    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+    PyThrowBadEs(impObj()->setName(AsWStr(name)));
 }
 
 AcConstraint::ConstraintType PyBrxConstraint::getType() const
@@ -572,7 +572,7 @@ std::string PyBrxBlockParameter::expression() const
 
 void PyBrxBlockParameter::setExpression(const std::string& expr) const
 {
-    PyThrowBadEs(acdbSetBlockParameterExpression(m_id, m_name, utf8_to_wstr(expr).c_str()));
+    PyThrowBadEs(acdbSetBlockParameterExpression(m_id, m_name, AsWStr(expr)));
 }
 
 std::string PyBrxBlockParameter::className()

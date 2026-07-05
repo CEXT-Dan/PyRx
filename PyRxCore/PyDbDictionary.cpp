@@ -109,14 +109,14 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 PyDbObjectId PyDbDictionary::getAt(const std::string& entryName) const
 {
     PyDbObjectId id;
-    PyThrowBadEs(impObj()->getAt(AcStrConv(entryName), id.m_id));
+    PyThrowBadEs(impObj()->getAt(AsWStr(entryName), id.m_id));
     return id;
 }
 
 PyDbObjectId PyDbDictionary::getAtEx(const std::string& entryName) const
 {
     PyDbObjectId id;
-    const auto es = impObj()->getAt(AcStrConv(entryName), id.m_id);
+    const auto es = impObj()->getAt(AsWStr(entryName), id.m_id);
     if (es == Acad::eKeyNotFound)
         throw PyRxEKeyError(entryName);
     PyThrowBadEs(es);
@@ -125,7 +125,7 @@ PyDbObjectId PyDbDictionary::getAtEx(const std::string& entryName) const
 
 bool PyDbDictionary::has1(const std::string& entryName) const
 {
-    return impObj()->has(utf8_to_wstr(entryName).c_str());
+    return impObj()->has(AsWStr(entryName));
 }
 
 bool PyDbDictionary::has2(const PyDbObjectId& id) const
@@ -148,18 +148,18 @@ Adesk::UInt32 PyDbDictionary::numEntries() const
 PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newValue) const
 {
     PyDbObjectId id;
-    PyThrowBadEs(impObj()->setAt(utf8_to_wstr(srchKey).c_str(), newValue.impObj(), id.m_id));
+    PyThrowBadEs(impObj()->setAt(AsWStr(srchKey), newValue.impObj(), id.m_id));
     return id;
 }
 
 void PyDbDictionary::remove1(const std::string& key) const
 {
-    return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str()));
+    return PyThrowBadEs(impObj()->remove(AsWStr(key)));
 }
 
 void PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId) const
 {
-    return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str(), returnId.m_id));
+    return PyThrowBadEs(impObj()->remove(AsWStr(key), returnId.m_id));
 }
 
 void PyDbDictionary::remove3(const PyDbObjectId& objId) const
@@ -169,7 +169,7 @@ void PyDbDictionary::remove3(const PyDbObjectId& objId) const
 
 bool PyDbDictionary::setName(const std::string& oldName, const std::string& newName) const
 {
-    return impObj()->setName(utf8_to_wstr(oldName).c_str(), utf8_to_wstr(newName).c_str());
+    return impObj()->setName(AsWStr(oldName), AsWStr(newName));
 }
 
 boost::python::dict PyDbDictionary::toDict() const
@@ -177,7 +177,7 @@ boost::python::dict PyDbDictionary::toDict() const
     PyAutoLockGIL lock;
     boost::python::dict _items;
     for (std::unique_ptr<AcDbDictionaryIterator> iter(impObj()->newIterator()); !iter->done(); iter->next())
-        _items[wstr_to_utf8(iter->name()).c_str()] = PyDbObjectId(iter->objectId());
+        _items[wstr_to_utf8(iter->name())] = PyDbObjectId(iter->objectId());
     return _items;
 }
 

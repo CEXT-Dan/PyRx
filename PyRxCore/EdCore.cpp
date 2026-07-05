@@ -104,7 +104,7 @@ double Util::angle(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 double Util::cvUnit(double val, const std::string& oldunit, const std::string& newunit)
 {
     double result = 0;
-    PyThrowBadRt(acutCvUnit(val, utf8_to_wstr(oldunit).c_str(), utf8_to_wstr(newunit).c_str(), &result));
+    PyThrowBadRt(acutCvUnit(val, AsWStr(oldunit), AsWStr(newunit), &result));
     return result;
 }
 
@@ -122,7 +122,7 @@ AcGePoint3d Util::polar(const AcGePoint3d& pt, double angle, double dist)
 
 bool Util::wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase)
 {
-    return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
+    return acutWcMatchEx(AsWStr(string), AsWStr(pattern), ignoreCase);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -415,12 +415,12 @@ ULONG_PTR EdCore::getAcadTextCmdLine()
 
 int EdCore::alert(const std::string& msg)
 {
-    return acedAlert(utf8_to_wstr(msg).c_str());
+    return acedAlert(AsWStr(msg));
 }
 
 int EdCore::arxLoad(const std::string& path)
 {
-    return acedArxLoad(utf8_to_wstr(path).c_str());
+    return acedArxLoad(AsWStr(path));
 }
 
 boost::python::list EdCore::arxLoaded()
@@ -432,7 +432,7 @@ boost::python::list EdCore::arxLoaded()
 
 int EdCore::arxUnload(const std::string& app)
 {
-    return acedArxUnload(utf8_to_wstr(app).c_str());
+    return acedArxUnload(AsWStr(app));
 }
 
 void EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
@@ -479,7 +479,7 @@ bool EdCore::cmdCWasCancelled()
 
 int EdCore::cmdUndefine(const std::string& name, int undefIt)
 {
-    return acedCmdUndefine(utf8_to_wstr(name).c_str(), undefIt);
+    return acedCmdUndefine(AsWStr(name), undefIt);
 }
 
 boost::python::dict EdCore::getCommands()
@@ -562,7 +562,7 @@ bool EdCore::createInternetShortcut(const std::string& szURL, const std::string&
 #if defined(_ZRXTARGET240) || defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return acedCreateInternetShortcut(utf8_to_wstr(szURL).c_str(), utf8_to_wstr(szShortcutPath).c_str());
+    return acedCreateInternetShortcut(AsWStr(szURL), AsWStr(szShortcutPath));
 #endif
 }
 
@@ -579,7 +579,7 @@ PyDbObjectId EdCore::createViewportByView(PyDbDatabase& db, PyDbObjectId& view, 
 
 int EdCore::defun(const std::string& pszName, int nFuncNum)
 {
-    return acedDefun(utf8_to_wstr(pszName).c_str(), nFuncNum);
+    return acedDefun(AsWStr(pszName), nFuncNum);
 }
 
 int EdCore::defunEx(const std::string& pszGlobalName, const std::string& pszLocalName, int nFuncNum)
@@ -587,7 +587,7 @@ int EdCore::defunEx(const std::string& pszGlobalName, const std::string& pszLoca
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return acedDefunEx(utf8_to_wstr(pszGlobalName).c_str(), utf8_to_wstr(pszLocalName).c_str(), nFuncNum);
+    return acedDefunEx(AsWStr(pszGlobalName), AsWStr(pszLocalName), nFuncNum);
 #endif
 }
 
@@ -630,7 +630,7 @@ void EdCore::dropOpenFile(const std::string& value)
 #if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
-    acedDropOpenFile(utf8_to_wstr(value).c_str());
+    acedDropOpenFile(AsWStr(value));
 #endif
 }
 
@@ -680,16 +680,16 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     }
     resbuf* pRb = nullptr;
 #ifdef _ZRXTARGET 
-    zcedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+    zcedEvaluateLisp(AsWStr(str), pRb);
 #endif
 #ifdef _GRXTARGET 
-    gcedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+    gcedEvaluateLisp(AsWStr(str), pRb);
 #endif
 #ifdef _BRXTARGET 
-    acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+    acedEvaluateLisp(AsWStr(str), pRb);
 #endif
 #ifdef _ARXTARGET 
-    acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+    acedEvaluateLisp(AsWStr(str), pRb);
 #endif
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
@@ -699,7 +699,7 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 {
 #ifdef _ARXTARGET 
     std::wstring data(256, 0);
-    acedEvaluateDiesel(utf8_to_wstr(str).c_str(), data.data(), data.size());
+    acedEvaluateDiesel(AsWStr(str), data.data(), data.size());
     return wstr_to_utf8(data.c_str());
 #else
     throw PyNotimplementedByHost();
@@ -729,7 +729,7 @@ bool EdCore::cmdS2(const boost::python::list& lst)
 std::string EdCore::findFile(const std::string& file)
 {
     std::wstring data(MAX_PATH, 0);
-    acedFindFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
+    acedFindFile(AsWStr(file), data.data(), data.size());
     return wstr_to_utf8(data.c_str());
 }
 
@@ -739,7 +739,7 @@ std::string EdCore::findTrustedFile(const std::string& file)
     throw PyNotimplementedByHost();
 #else
     std::wstring data(MAX_PATH, 0);
-    acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
+    acedFindTrustedFile(AsWStr(file), data.data(), data.size());
     return wstr_to_utf8(data.c_str());
 #endif
 }
@@ -765,7 +765,7 @@ std::string EdCore::getFileD(const std::string& title, const std::string& defawl
 {
     std::string path;
     AcResBufPtr result(acutNewRb(RTSTR));
-    if (acedGetFileD(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), flags, result.get()) == RTNORM)
+    if (acedGetFileD(AsWStr(title), AsWStr(defawlt), AsWStr(ext), flags, result.get()) == RTNORM)
         path = wstr_to_utf8(result->resval.rstring);
     return path;
 }
@@ -775,7 +775,7 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
     PyAutoLockGIL lock;
     resbuf* result = nullptr;
     boost::python::list pyList;
-    if (acedGetFileNavDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), utf8_to_wstr(dlgname).c_str(), flags, &result) == RTNORM)
+    if (acedGetFileNavDialog(AsWStr(title), AsWStr(defawlt), AsWStr(ext), AsWStr(dlgname), flags, &result) == RTNORM)
     {
         AcResBufPtr resultptr(result);
         for (resbuf* pbuf = result; pbuf != nullptr; pbuf = pbuf->rbnext)
@@ -890,43 +890,43 @@ std::string EdCore::getEnv(const std::string& env)
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
     AcString val;
-    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), val));
+    PyThrowBadRt(acedGetEnv(AsWStr(env), val));
     return wstr_to_utf8(val);
 #else
     std::wstring buff(8096, 0);
-    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), buff.data(), buff.size()));
+    PyThrowBadRt(acedGetEnv(AsWStr(env), buff.data(), buff.size()));
     return wstr_to_utf8(buff.c_str());
 #endif
 }
 
 void EdCore::setEnv(const std::string& sym, const std::string& val)
 {
-    PyThrowBadRt(acedSetEnv(utf8_to_wstr(sym).c_str(), utf8_to_wstr(val).c_str()));
+    PyThrowBadRt(acedSetEnv(AsWStr(sym), AsWStr(val)));
 }
 
 std::string EdCore::getCfg(const std::string& str)
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
     AcString val;
-    PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), val));
+    PyThrowBadRt(acedGetCfg(AsWStr(str), val));
     return wstr_to_utf8(val);
 #else
     std::wstring buff(2048, 0);
-    PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), buff.data(), buff.size()));
+    PyThrowBadRt(acedGetCfg(AsWStr(str), buff.data(), buff.size()));
     return wstr_to_utf8(buff.c_str());
 #endif
 }
 
 void EdCore::setCfg(const std::string& sym, const std::string& val)
 {
-    PyThrowBadRt(acedSetCfg(utf8_to_wstr(sym).c_str(), utf8_to_wstr(val).c_str()));
+    PyThrowBadRt(acedSetCfg(AsWStr(sym), AsWStr(val)));
 }
 
 boost::python::list EdCore::getSym(const std::string& symname)
 {
     PyAutoLockGIL lock;
     resbuf* rb = nullptr;
-    acedGetSym(utf8_to_wstr(symname).c_str(), &rb);
+    acedGetSym(AsWStr(symname), &rb);
     AcResBufPtr holder(rb);
     return resbufToList(rb);
 }
@@ -934,7 +934,7 @@ boost::python::list EdCore::getSym(const std::string& symname)
 bool EdCore::putSym(const std::string& symname, boost::python::list& buf)
 {
     AcResBufPtr ptr(listToResbuf(buf));
-    return acedPutSym(utf8_to_wstr(symname).c_str(), ptr.get()) == RTNORM;
+    return acedPutSym(AsWStr(symname), ptr.get()) == RTNORM;
 }
 
 int EdCore::getWinNum(int ptx, int pty)
@@ -986,7 +986,7 @@ bool EdCore::isInputPending()
 
 Adesk::Boolean EdCore::isMenuGroupLoaded(const std::string& mnu)
 {
-    return acedIsMenuGroupLoaded(utf8_to_wstr(mnu).c_str());
+    return acedIsMenuGroupLoaded(AsWStr(mnu));
 }
 
 bool EdCore::isOsnapOverride()
@@ -1017,13 +1017,13 @@ void EdCore::loadJSScript(const std::string& pUriOfJSFile)
 #if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
-    acedLoadJSScript(utf8_to_wstr(pUriOfJSFile).c_str());
+    acedLoadJSScript(AsWStr(pUriOfJSFile));
 #endif
 }
 
 bool EdCore::loadPartialMenu(const std::string& mnu)
 {
-    return acedLoadPartialMenu(utf8_to_wstr(mnu).c_str());
+    return acedLoadPartialMenu(AsWStr(mnu));
 }
 
 bool EdCore::loadMainMenu(const std::string& mnu)
@@ -1031,7 +1031,7 @@ bool EdCore::loadMainMenu(const std::string& mnu)
 #if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
-    return acedLoadMainMenu(utf8_to_wstr(mnu).c_str());
+    return acedLoadMainMenu(AsWStr(mnu));
 #endif
 }
 
@@ -1093,7 +1093,7 @@ void EdCore::markForDelayXRefRelativePathResolve(const PyDbObjectId& id)
 
 int EdCore::menuCmd(const std::string& mnu)
 {
-    return acedMenuCmd(utf8_to_wstr(mnu).c_str());
+    return acedMenuCmd(AsWStr(mnu));
 }
 
 boost::python::list EdCore::invoke(const boost::python::list& SARGS)
@@ -1170,7 +1170,7 @@ boost::python::object EdCore::getVar(const std::string& sym)
     try
     {
         resbuf buf;
-        if (acedGetVar(utf8_to_wstr(sym).c_str(), &buf) != RTNORM)
+        if (acedGetVar(AsWStr(sym), &buf) != RTNORM)
         {
             PyThrowBadRt(RTERROR);
         }
@@ -1291,13 +1291,13 @@ void EdCore::pSpace()
 void EdCore::postCommand(const std::string& str)
 {
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
-    zcedPostCommand(utf8_to_wstr(str).c_str());
+    zcedPostCommand(AsWStr(str));
 #endif
 #if defined(_GRXTARGET)
-    gcedPostCommand(utf8_to_wstr(str).c_str());
+    gcedPostCommand(AsWStr(str));
 #endif
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
-    acedPostCommand(utf8_to_wstr(str).c_str());
+    acedPostCommand(AsWStr(str));
 #endif
 }
 
@@ -1308,7 +1308,7 @@ void EdCore::postCommandPrompt()
 
 int EdCore::prompt(const std::string& str)
 {
-    return acedPrompt(utf8_to_wstr(str).c_str());
+    return acedPrompt(AsWStr(str));
 }
 
 int EdCore::redraw(const PyDbObjectId& ent, int mode)
@@ -1345,12 +1345,12 @@ void EdCore::regen()
 
 void EdCore::sendModelessOperationEnded(const std::string& strContext)
 {
-    acedSendModelessOperationEnded(utf8_to_wstr(strContext).c_str());
+    acedSendModelessOperationEnded(AsWStr(strContext));
 }
 
 void EdCore::sendModelessOperationStart(const std::string& strContext)
 {
-    acedSendModelessOperationStart(utf8_to_wstr(strContext).c_str());
+    acedSendModelessOperationStart(AsWStr(strContext));
 }
 
 boost::python::tuple EdCore::setColorDialog(int color, Adesk::Boolean bAllowMetaColor, int nCurLayerColor)
@@ -1511,7 +1511,7 @@ int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
 
 int EdCore::grText(int box, const std::string& text, int hl)
 {
-    return acedGrText(box, utf8_to_wstr(text).c_str(), hl);
+    return acedGrText(box, AsWStr(text), hl);
 }
 
 AcGePoint3d EdCore::getMousePositionUCS()
@@ -1563,16 +1563,16 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
     RxAutoOutStr outstr;
 #ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
-    //zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
+    //zcedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
 #endif
 #ifdef _GRXTARGET 
-    gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
+    gcedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
 #endif
 #ifdef _BRXTARGET 
-    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
+    acedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
 #endif
 #ifdef _ARXTARGET 
-    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
+    acedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
 #endif
     return outstr.str();
 }
@@ -1580,7 +1580,7 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
 {
     AcGePoint3d result;
-    PyThrowBadRt(acedOsnap(asDblArray(pt), utf8_to_wstr(mode).c_str(), asDblArray(result)));
+    PyThrowBadRt(acedOsnap(asDblArray(pt), AsWStr(mode), asDblArray(result)));
     return result;
 }
 
@@ -1591,10 +1591,10 @@ AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor
     throw PyNotimplementedByHost();
 #elif defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     RxAutoOutStr str;
-    PyThrowBadEs(acutNewString(utf8_to_wstr(prompt).c_str(), str.buf));
+    PyThrowBadEs(acutNewString(AsWStr(prompt), str.buf));
     acedSetColorPrompt(str.buf, color, bAllowMetaColor);
 #else
-    acedSetColorPrompt(utf8_to_wstr(prompt).c_str(), color, bAllowMetaColor);
+    acedSetColorPrompt(AsWStr(prompt), color, bAllowMetaColor);
 #endif
     return color;
 }
@@ -1637,7 +1637,7 @@ void EdCore::setCurrentVPort(const PyDbViewport& vp)
 
 int EdCore::setStatusBarProgressMeter(const std::string& pszLabel, int nMinPos, int nMaxPos)
 {
-    return acedSetStatusBarProgressMeter(utf8_to_wstr(pszLabel).c_str(), nMinPos, nMaxPos);
+    return acedSetStatusBarProgressMeter(AsWStr(pszLabel), nMinPos, nMaxPos);
 }
 
 int EdCore::setStatusBarProgressMeterPos(int pos)
@@ -1664,7 +1664,7 @@ bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPag
 #if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
-    return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
+    return acedShowHTMLModalWindow((HWND)hwnd, AsWStr(uriOfHtmlPage), persistSizeAndPosition);
 #endif
 }
 
@@ -1678,7 +1678,7 @@ UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriO
 #if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
     throw PyNotimplementedByHost();
 #else
-    return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
+    return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, AsWStr(uriOfHtmlPage), persistSizeAndPosition);
 #endif
 }
 
@@ -1687,7 +1687,7 @@ void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
+    PyThrowBadEs(acedSkipXrefNotification(db.impObj(), AsWStr(xrefName)));
 #endif
 }
 
@@ -1702,7 +1702,7 @@ void EdCore::setFieldUpdateEnabled(PyApDocument& doc, bool enabled)
 
 int EdCore::setFunHelp(const std::string& pszFunctionName, const std::string& pszHelpfile, const std::string& pszTopic, int iCmd)
 {
-    return acedSetFunHelp(utf8_to_wstr(pszFunctionName).c_str(), utf8_to_wstr(pszHelpfile).c_str(), utf8_to_wstr(pszTopic).c_str(), iCmd);
+    return acedSetFunHelp(AsWStr(pszFunctionName), AsWStr(pszHelpfile), AsWStr(pszTopic), iCmd);
 }
 
 boost::python::tuple EdCore::textBox(const boost::python::list& pyargs)
@@ -1770,7 +1770,7 @@ AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::object& fr
 
 bool EdCore::unloadPartialMenu(const std::string& pszMenuFile)
 {
-    return acedUnloadPartialMenu(utf8_to_wstr(pszMenuFile).c_str());
+    return acedUnloadPartialMenu(AsWStr(pszMenuFile));
 }
 
 void EdCore::unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId)
@@ -1833,21 +1833,21 @@ void EdCore::vportTableRecords2Vports()
 
 void EdCore::xrefAttach1(const std::string& path, const std::string& name)
 {
-    return PyThrowBadEs(acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(acedXrefAttach(AsWStr(path), AsWStr(name)));
 }
 
 void EdCore::xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return PyThrowBadEs(acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(),
-        &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), utf8_to_wstr(passwd).c_str()));
+    return PyThrowBadEs(acedXrefAttach(AsWStr(path), AsWStr(name),
+        &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), AsWStr(passwd)));
 }
 
 std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
 {
     std::string result;
     ACHAR* XrefBlockname = nullptr;
-    if (auto es = acedXrefCreateBlockname(utf8_to_wstr(XrefPathname).c_str(), XrefBlockname); es != eOk)
+    if (auto es = acedXrefCreateBlockname(AsWStr(XrefPathname), XrefBlockname); es != eOk)
         throw PyErrorStatusException(es);
     result = wstr_to_utf8(XrefBlockname);
     acutDelString(XrefBlockname);
@@ -1856,12 +1856,12 @@ std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
 
 void EdCore::xrefDetach1(const std::string& XrefBlockname)
 {
-    return PyThrowBadEs(acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str()));
+    return PyThrowBadEs(acedXrefDetach(AsWStr(XrefBlockname)));
 }
 
 void EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return PyThrowBadEs(acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj()));
+    return PyThrowBadEs(acedXrefDetach(AsWStr(XrefBlockname), bQuiet, pHostDb.impObj()));
 }
 
 bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
@@ -1878,14 +1878,14 @@ bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 
 void EdCore::xrefOverlay1(const std::string& path, const std::string& name)
 {
-    return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(acedXrefOverlay(AsWStr(path), AsWStr(name)));
 }
 
 void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(),
-        utf8_to_wstr(name).c_str(), &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), utf8_to_wstr(passwd).c_str()));
+    return PyThrowBadEs(acedXrefOverlay(AsWStr(path),
+        AsWStr(name), &btrid.m_id, &refid.m_id, &pt, &sc, &rot, bQuiet, pHostDb.impObj(), AsWStr(passwd)));
 }
 
 void EdCore::xrefReload1(const boost::python::list& symbolIds)
@@ -1902,12 +1902,12 @@ void EdCore::xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDb
 
 void EdCore::xrefReload3(const std::string& name)
 {
-    return PyThrowBadEs(acedXrefReload(utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(acedXrefReload(AsWStr(name)));
 }
 
 void EdCore::xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return PyThrowBadEs(acedXrefReload(utf8_to_wstr(name).c_str(), bQuiet, pHostDb.impObj()));
+    return PyThrowBadEs(acedXrefReload(AsWStr(name), bQuiet, pHostDb.impObj()));
 }
 
 void EdCore::xrefResolve1(PyDbDatabase& pHostDb)
@@ -1922,22 +1922,22 @@ void EdCore::xrefResolve2(PyDbDatabase& pHostDb, bool bQuiet)
 
 void EdCore::xrefUnload1(const std::string& XrefBlockname)
 {
-    return PyThrowBadEs(acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str()));
+    return PyThrowBadEs(acedXrefUnload(AsWStr(XrefBlockname)));
 }
 
 void EdCore::xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return PyThrowBadEs(acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj()));
+    return PyThrowBadEs(acedXrefUnload(AsWStr(XrefBlockname), bQuiet, pHostDb.impObj()));
 }
 
 void EdCore::xrefBind1(const std::string& XrefBlockname)
 {
-    return PyThrowBadEs(acedXrefBind(utf8_to_wstr(XrefBlockname).c_str()));
+    return PyThrowBadEs(acedXrefBind(AsWStr(XrefBlockname)));
 }
 
 void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return PyThrowBadEs(acedXrefBind(utf8_to_wstr(XrefBlockname).c_str(), bInsertBind, bQuiet, pHostDb.impObj()));
+    return PyThrowBadEs(acedXrefBind(AsWStr(XrefBlockname), bInsertBind, bQuiet, pHostDb.impObj()));
 }
 
 void EdCore::xrefXBind1(const boost::python::list& symbolIds)

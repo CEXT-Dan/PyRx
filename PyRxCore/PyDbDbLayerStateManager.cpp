@@ -69,78 +69,78 @@ PyDbObjectId PyDbDbLayerStateManager::layerStatesDictionaryId2(bool bCreateIfNot
 
 bool PyDbDbLayerStateManager::hasLayerState(const std::string& sName) const
 {
-    return impObj()->hasLayerState(utf8_to_wstr(sName).c_str());
+    return impObj()->hasLayerState(AsWStr(sName));
 }
 
 void PyDbDbLayerStateManager::saveLayerState1(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask) const
 {
-    PyThrowBadEs(impObj()->saveLayerState(utf8_to_wstr(sName).c_str(), mask));
+    PyThrowBadEs(impObj()->saveLayerState(AsWStr(sName), mask));
 }
 
 void PyDbDbLayerStateManager::saveLayerState2(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask, const PyDbObjectId& idVp) const
 {
-    PyThrowBadEs(impObj()->saveLayerState(utf8_to_wstr(sName).c_str(), mask, idVp.m_id));
+    PyThrowBadEs(impObj()->saveLayerState(AsWStr(sName), mask, idVp.m_id));
 }
 
 void PyDbDbLayerStateManager::restoreLayerState1(const std::string& sName) const
 {
-    PyThrowBadEs(impObj()->restoreLayerState(utf8_to_wstr(sName).c_str()));
+    PyThrowBadEs(impObj()->restoreLayerState(AsWStr(sName)));
 }
 
 void PyDbDbLayerStateManager::restoreLayerState2(const std::string& sName, const PyDbObjectId& idVp, int nRestoreFlags, AcDbLayerStateManager::LayerStateMask pClientMask) const
 {
     const auto mask = pClientMask;
-    PyThrowBadEs(impObj()->restoreLayerState(utf8_to_wstr(sName).c_str(), idVp.m_id, nRestoreFlags, &mask));
+    PyThrowBadEs(impObj()->restoreLayerState(AsWStr(sName), idVp.m_id, nRestoreFlags, &mask));
 }
 
 void PyDbDbLayerStateManager::setLayerStateMask(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask) const
 {
-    PyThrowBadEs(impObj()->saveLayerState(utf8_to_wstr(sName).c_str(), mask));
+    PyThrowBadEs(impObj()->saveLayerState(AsWStr(sName), mask));
 }
 
 AcDbLayerStateManager::LayerStateMask PyDbDbLayerStateManager::getLayerStateMask(const std::string& sName) const
 {
     AcDbLayerStateManager::LayerStateMask returnMask = AcDbLayerStateManager::LayerStateMask::kNone;
-    PyThrowBadEs(impObj()->getLayerStateMask(utf8_to_wstr(sName).c_str(), returnMask));
+    PyThrowBadEs(impObj()->getLayerStateMask(AsWStr(sName), returnMask));
     return returnMask;
 }
 
 void PyDbDbLayerStateManager::deleteLayerState(const std::string& sName) const
 {
-    PyThrowBadEs(impObj()->deleteLayerState(utf8_to_wstr(sName).c_str()));
+    PyThrowBadEs(impObj()->deleteLayerState(AsWStr(sName)));
 }
 
 void PyDbDbLayerStateManager::renameLayerState(const std::string& sName, const std::string& sNewName) const
 {
-    PyThrowBadEs(impObj()->renameLayerState(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sNewName).c_str()));
+    PyThrowBadEs(impObj()->renameLayerState(AsWStr(sName), AsWStr(sNewName)));
 }
 
 std::string PyDbDbLayerStateManager::importLayerState(const std::string& sFilename) const
 {
     AcString sName;
-    PyThrowBadEs(impObj()->importLayerState(utf8_to_wstr(sFilename).c_str(), sName));
+    PyThrowBadEs(impObj()->importLayerState(AsWStr(sFilename), sName));
     return wstr_to_utf8(sName);
 }
 
 void PyDbDbLayerStateManager::exportLayerState(const std::string& sNameToExport, const std::string& sFilename) const
 {
-    PyThrowBadEs(impObj()->exportLayerState(utf8_to_wstr(sNameToExport).c_str(), utf8_to_wstr(sFilename).c_str()));
+    PyThrowBadEs(impObj()->exportLayerState(AsWStr(sNameToExport), AsWStr(sFilename)));
 }
 
 void PyDbDbLayerStateManager::setLayerStateDescription(const std::string& sName, const std::string& sDesc) const
 {
-    PyThrowBadEs(impObj()->setLayerStateDescription(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDesc).c_str()));
+    PyThrowBadEs(impObj()->setLayerStateDescription(AsWStr(sName), AsWStr(sDesc)));
 }
 
 std::string PyDbDbLayerStateManager::getLayerStateDescription(const std::string& sName) const
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
     AcString sDesc;
-    PyThrowBadEs(impObj()->getLayerStateDescription(utf8_to_wstr(sName).c_str(), sDesc));
+    PyThrowBadEs(impObj()->getLayerStateDescription(AsWStr(sName), sDesc));
     return wstr_to_utf8(sDesc);
 #else
     RxAutoOutStr sDesc;
-    PyThrowBadEs(impObj()->getLayerStateDescription(utf8_to_wstr(sName).c_str(), sDesc.buf));
+    PyThrowBadEs(impObj()->getLayerStateDescription(AsWStr(sName), sDesc.buf));
     return sDesc.str();
 #endif
 }
@@ -150,13 +150,13 @@ bool PyDbDbLayerStateManager::layerStateHasViewportData(const std::string& sName
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->layerStateHasViewportData(utf8_to_wstr(sName).c_str());
+    return impObj()->layerStateHasViewportData(AsWStr(sName));
 #endif
 }
 
 void PyDbDbLayerStateManager::importLayerStateFromDb(const std::string& pStateName, PyDbDatabase& pDb) const
 {
-    PyThrowBadEs(impObj()->importLayerStateFromDb(utf8_to_wstr(pStateName).c_str(), pDb.impObj()));
+    PyThrowBadEs(impObj()->importLayerStateFromDb(AsWStr(pStateName), pDb.impObj()));
 }
 
 boost::python::list PyDbDbLayerStateManager::getLayerStateNames(bool bIncludeHidden, bool bIncludeXref) const
@@ -177,28 +177,28 @@ boost::python::tuple PyDbDbLayerStateManager::getLastRestoredLayerState() const
 boost::python::list PyDbDbLayerStateManager::getLayerStateLayers(const std::string& sName, bool bInvert) const
 {
     AcStringArray layerArray;
-    PyThrowBadEs(impObj()->getLayerStateLayers(layerArray, utf8_to_wstr(sName).c_str(), bInvert));
+    PyThrowBadEs(impObj()->getLayerStateLayers(layerArray, AsWStr(sName), bInvert));
     return AcStringArrayToPyList(layerArray);
 }
 
 bool PyDbDbLayerStateManager::compareLayerStateToDb(const std::string& sName, const PyDbObjectId& idVp) const
 {
-    return impObj()->compareLayerStateToDb(utf8_to_wstr(sName).c_str(), idVp.m_id);
+    return impObj()->compareLayerStateToDb(AsWStr(sName), idVp.m_id);
 }
 
 void PyDbDbLayerStateManager::addLayerStateLayers(const std::string& sName, const boost::python::list& layerIds) const
 {
-    PyThrowBadEs(impObj()->addLayerStateLayers(utf8_to_wstr(sName).c_str(), PyListToObjectIdArray(layerIds)));
+    PyThrowBadEs(impObj()->addLayerStateLayers(AsWStr(sName), PyListToObjectIdArray(layerIds)));
 }
 
 void PyDbDbLayerStateManager::removeLayerStateLayers(const std::string& sName, const boost::python::list& layerNames) const
 {
-    PyThrowBadEs(impObj()->removeLayerStateLayers(utf8_to_wstr(sName).c_str(), PyListToAcStringArray(layerNames)));
+    PyThrowBadEs(impObj()->removeLayerStateLayers(AsWStr(sName), PyListToAcStringArray(layerNames)));
 }
 
 bool PyDbDbLayerStateManager::isDependentLayerState(const std::string& sName) const
 {
-    return impObj()->isDependentLayerState(utf8_to_wstr(sName).c_str());
+    return impObj()->isDependentLayerState(AsWStr(sName));
 }
 
 PyDbDatabase PyDbDbLayerStateManager::getDatabase() const

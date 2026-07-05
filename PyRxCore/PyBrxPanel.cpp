@@ -204,7 +204,7 @@ COLORREF PyBrxPanel::tabTextColor() const
 
 void PyBrxPanel::setIcon(const std::string& path)
 {
-    m_fileSource = new BcImageFileSource(utf8_to_wstr(path).c_str());
+    m_fileSource = new BcImageFileSource(AsWStr(path));
     impObj()->SetIconSource(m_fileSource);
 }
 

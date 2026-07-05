@@ -480,7 +480,7 @@ void PyApDocManager::lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode) c
 
 void PyApDocManager::lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt) const
 {
-    return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode, utf8_to_wstr(pGlobalCmdName).c_str(), utf8_to_wstr(pLocalCmdName).c_str(), prompt));
+    return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode, AsWStr(pGlobalCmdName), AsWStr(pLocalCmdName), prompt));
 }
 
 void PyApDocManager::unlockDocument(PyApDocument& pDoc) const
@@ -529,22 +529,22 @@ void PyApDocManager::activateDocument2(PyApDocument& pAcTargetDocument, bool bPa
 
 void PyApDocManager::sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute) const
 {
-    return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), utf8_to_wstr(pszExecute).c_str()));
+    return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), AsWStr(pszExecute)));
 }
 
 void PyApDocManager::sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString) const
 {
-    return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), utf8_to_wstr(pszExecute).c_str(), bActivate, bWrapUpInactiveDoc, bEchoString));
+    return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), AsWStr(pszExecute), bActivate, bWrapUpInactiveDoc, bEchoString));
 }
 
 void PyApDocManager::appContextNewDocument(const std::string& pszTemplateName) const
 {
-    return PyThrowBadEs(impObj()->appContextNewDocument(utf8_to_wstr(pszTemplateName).c_str()));
+    return PyThrowBadEs(impObj()->appContextNewDocument(AsWStr(pszTemplateName)));
 }
 
 void PyApDocManager::appContextOpenDocument1(const std::string& pszDrawingName) const
 {
-    return PyThrowBadEs(impObj()->appContextOpenDocument(utf8_to_wstr(pszDrawingName).c_str()));
+    return PyThrowBadEs(impObj()->appContextOpenDocument(AsWStr(pszDrawingName)));
 }
 
 void PyApDocManager::appContextOpenDocument2(const std::string& pszDrawingName, bool readOnly) const
@@ -574,7 +574,7 @@ void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->appContextRecoverDocument(utf8_to_wstr(pszDrawingName).c_str()));
+    return PyThrowBadEs(impObj()->appContextRecoverDocument(AsWStr(pszDrawingName)));
 #endif
 }
 

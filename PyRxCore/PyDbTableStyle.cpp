@@ -238,7 +238,7 @@ std::string PyDbTableStyle::getName() const
 
 void PyDbTableStyle::setName(const std::string& pszName) const
 {
-    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszName).c_str()));
+    return PyThrowBadEs(impObj()->setName(AsWStr(pszName)));
 }
 
 std::string PyDbTableStyle::description(void) const
@@ -248,7 +248,7 @@ std::string PyDbTableStyle::description(void) const
 
 void PyDbTableStyle::setDescription(const std::string& pszDescription) const
 {
-    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszDescription).c_str()));
+    return PyThrowBadEs(impObj()->setName(AsWStr(pszDescription)));
 }
 
 Adesk::UInt32 PyDbTableStyle::bitFlags() const
@@ -318,7 +318,7 @@ PyDbObjectId PyDbTableStyle::textStyle(AcDb::RowType rowType) const
 
 PyDbObjectId PyDbTableStyle::textStyle2(const std::string& pszCellStyle) const
 {
-    return PyDbObjectId(impObj()->textStyle(utf8_to_wstr(pszCellStyle).c_str()));
+    return PyDbObjectId(impObj()->textStyle(AsWStr(pszCellStyle)));
 }
 
 void PyDbTableStyle::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType) const
@@ -328,7 +328,7 @@ void PyDbTableStyle::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType)
 
 void PyDbTableStyle::setTextStyle2(const PyDbObjectId& id, const std::string& pszCellStyle) const
 {
-    return PyThrowBadEs(impObj()->setTextStyle(id.m_id, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setTextStyle(id.m_id, AsWStr(pszCellStyle)));
 }
 
 double PyDbTableStyle::textHeight(AcDb::RowType rowType) const
@@ -338,7 +338,7 @@ double PyDbTableStyle::textHeight(AcDb::RowType rowType) const
 
 double PyDbTableStyle::textHeight2(const std::string& pszCellStyle) const
 {
-    return impObj()->textHeight(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->textHeight(AsWStr(pszCellStyle));
 }
 
 void PyDbTableStyle::setTextHeight(double dHeight, AcDb::RowType rowType) const
@@ -348,7 +348,7 @@ void PyDbTableStyle::setTextHeight(double dHeight, AcDb::RowType rowType) const
 
 void PyDbTableStyle::setTextHeight2(double dHeight, const std::string& pszCellStyle) const
 {
-    return PyThrowBadEs(impObj()->setTextHeight(dHeight, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setTextHeight(dHeight, AsWStr(pszCellStyle)));
 }
 
 AcDb::CellAlignment PyDbTableStyle::alignment(AcDb::RowType rowType) const
@@ -361,7 +361,7 @@ AcDb::CellAlignment PyDbTableStyle::alignment2(const std::string& pszCellStyle) 
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->alignment(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->alignment(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -375,7 +375,7 @@ void PyDbTableStyle::setAlignment2(AcDb::CellAlignment alignment, const std::str
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setAlignment(alignment, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setAlignment(alignment, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -389,7 +389,7 @@ AcCmColor PyDbTableStyle::color2(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->color(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->color(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -403,7 +403,7 @@ void PyDbTableStyle::setColor2(const AcCmColor& color, const std::string& pszCel
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setColor(color, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setColor(color, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -417,7 +417,7 @@ AcCmColor PyDbTableStyle::backgroundColor2(const std::string& pszCellStyle) cons
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->backgroundColor(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->backgroundColor(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -431,7 +431,7 @@ void PyDbTableStyle::setBackgroundColor2(const AcCmColor& color, const std::stri
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setBackgroundColor(color, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setBackgroundColor(color, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -462,7 +462,7 @@ boost::python::tuple PyDbTableStyle::getDataType2(const std::string& pszCellStyl
     PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
-    PyThrowBadEs(impObj()->getDataType(nDataType, nUnitType, utf8_to_wstr(pszCellStyle).c_str()));
+    PyThrowBadEs(impObj()->getDataType(nDataType, nUnitType, AsWStr(pszCellStyle)));
     return boost::python::make_tuple(nDataType, nUnitType);
 #endif
 }
@@ -482,7 +482,7 @@ void PyDbTableStyle::setDataType3(AcValue::DataType nDataType, AcValue::UnitType
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -501,18 +501,18 @@ std::string PyDbTableStyle::format3(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return wstr_to_utf8(impObj()->format(utf8_to_wstr(pszCellStyle).c_str()));
+    return wstr_to_utf8(impObj()->format(AsWStr(pszCellStyle)));
 #endif
 }
 
 void PyDbTableStyle::setFormat1(const std::string& pszFormat) const
 {
-    return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
+    return PyThrowBadEs(impObj()->setFormat(AsWStr(pszFormat)));
 }
 
 void PyDbTableStyle::setFormat2(const std::string& pszFormat, AcDb::RowType type) const
 {
-    return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str(), type));
+    return PyThrowBadEs(impObj()->setFormat(AsWStr(pszFormat), type));
 }
 
 void PyDbTableStyle::setFormat3(const std::string& pszFormat, const std::string& pszCellStyle) const
@@ -520,7 +520,7 @@ void PyDbTableStyle::setFormat3(const std::string& pszFormat, const std::string&
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str(), utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setFormat(AsWStr(pszFormat), AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -534,7 +534,7 @@ AcDb::LineWeight PyDbTableStyle::gridLineWeight2(AcDb::GridLineType gridLineType
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->gridLineWeight(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->gridLineWeight(gridLineType, AsWStr(pszCellStyle));
 #endif
 }
 
@@ -548,7 +548,7 @@ void PyDbTableStyle::setGridLineWeight2(AcDb::LineWeight lineWeight, AcDb::GridL
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridLineWeight(lineWeight, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridLineWeight(lineWeight, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -562,7 +562,7 @@ AcCmColor PyDbTableStyle::gridColor2(AcDb::GridLineType gridLineType, const std:
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->gridColor(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->gridColor(gridLineType, AsWStr(pszCellStyle));
 #endif
 }
 
@@ -576,7 +576,7 @@ void PyDbTableStyle::setGridColor2(const AcCmColor& color, AcDb::GridLineType gr
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridColor(color, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridColor(color, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -590,7 +590,7 @@ AcDb::Visibility PyDbTableStyle::gridVisibility2(AcDb::GridLineType gridLineType
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->gridVisibility(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->gridVisibility(gridLineType, AsWStr(pszCellStyle));
 #endif
 }
 
@@ -604,14 +604,14 @@ void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLine
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridVisibility(visible, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridVisibility(visible, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
 PyDbObjectId PyDbTableStyle::postTableStyleToDb(PyDbDatabase& pDb, const std::string& styleName) const
 {
     AcDbObjectId id;
-    PyThrowBadEs(impObj()->postTableStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id));
+    PyThrowBadEs(impObj()->postTableStyleToDb(pDb.impObj(), AsWStr(styleName), id));
     return PyDbObjectId(id);
 }
 
@@ -629,7 +629,7 @@ void PyDbTableStyle::createCellStyle2(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->createCellStyle(utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->createCellStyle(AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -638,7 +638,7 @@ void PyDbTableStyle::createCellStyle3(const std::string& pszCellStyle, const std
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->createCellStyle(utf8_to_wstr(pszCellStyle).c_str(), utf8_to_wstr(pszFromCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->createCellStyle(AsWStr(pszCellStyle), AsWStr(pszFromCellStyle)));
 #endif
 }
 
@@ -647,7 +647,7 @@ void PyDbTableStyle::renameCellStyle(const std::string& pszOldName, const std::s
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->renameCellStyle(utf8_to_wstr(pszOldName).c_str(), utf8_to_wstr(pszNewName).c_str()));
+    return PyThrowBadEs(impObj()->renameCellStyle(AsWStr(pszOldName), AsWStr(pszNewName)));
 #endif
 }
 
@@ -656,7 +656,7 @@ void PyDbTableStyle::deleteCellStyle(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->deleteCellStyle(utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->deleteCellStyle(AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -665,7 +665,7 @@ void PyDbTableStyle::copyCellStyle(const std::string& pszSrcCellStyle, const std
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->copyCellStyle(utf8_to_wstr(pszSrcCellStyle).c_str(), utf8_to_wstr(pszTargetCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->copyCellStyle(AsWStr(pszSrcCellStyle), AsWStr(pszTargetCellStyle)));
 #endif
 }
 
@@ -674,7 +674,7 @@ bool PyDbTableStyle::isCellStyleInUse(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->isCellStyleInUse(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->isCellStyleInUse(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -695,7 +695,7 @@ int PyDbTableStyle::cellClass(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->cellClass(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->cellClass(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -704,7 +704,7 @@ void PyDbTableStyle::setCellClass(int nClass, const std::string& pszCellStyle) c
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setCellClass(nClass, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setCellClass(nClass, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -713,7 +713,7 @@ double PyDbTableStyle::rotation(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->rotation(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->rotation(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -722,7 +722,7 @@ void PyDbTableStyle::setRotation(double fRotation, const std::string& pszCellSty
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setRotation(fRotation, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setRotation(fRotation, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -731,7 +731,7 @@ bool PyDbTableStyle::isMergeAllEnabled(const std::string& pszCellStyle) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->isMergeAllEnabled(utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->isMergeAllEnabled(AsWStr(pszCellStyle));
 #endif
 }
 
@@ -740,18 +740,18 @@ void PyDbTableStyle::enableMergeAll(bool bEnable, const std::string& pszCellStyl
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->enableMergeAll(bEnable, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->enableMergeAll(bEnable, AsWStr(pszCellStyle)));
 #endif
 }
 
 double PyDbTableStyle::margin(AcDb::CellMargin nMargin, const std::string& pszCellStyle) const
 {
-    return impObj()->margin(nMargin, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->margin(nMargin, AsWStr(pszCellStyle));
 }
 
 void PyDbTableStyle::setMargin(AcDb::CellMargin nMargins, double fMargin, const std::string& pszCellStyle) const
 {
-    return PyThrowBadEs(impObj()->setMargin(nMargins, fMargin, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setMargin(nMargins, fMargin, AsWStr(pszCellStyle)));
 }
 
 double PyDbTableStyle::gridDoubleLineSpacing(AcDb::GridLineType gridLineType, const std::string& pszCellStyle) const
@@ -759,7 +759,7 @@ double PyDbTableStyle::gridDoubleLineSpacing(AcDb::GridLineType gridLineType, co
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->gridDoubleLineSpacing(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->gridDoubleLineSpacing(gridLineType, AsWStr(pszCellStyle));
 #endif
 }
 
@@ -768,7 +768,7 @@ void PyDbTableStyle::setGridDoubleLineSpacing(double fSpacing, AcDb::GridLineTyp
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridDoubleLineSpacing(fSpacing, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridDoubleLineSpacing(fSpacing, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -777,7 +777,7 @@ AcDb::GridLineStyle PyDbTableStyle::gridLineStyle(AcDb::GridLineType gridLineTyp
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return impObj()->gridLineStyle(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+    return impObj()->gridLineStyle(gridLineType, AsWStr(pszCellStyle));
 #endif
 }
 
@@ -786,7 +786,7 @@ void PyDbTableStyle::setGridLineStyle(AcDb::GridLineStyle nLineStyle, AcDb::Grid
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridLineStyle(nLineStyle, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridLineStyle(nLineStyle, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -795,7 +795,7 @@ PyDbObjectId PyDbTableStyle::gridLinetype(AcDb::GridLineType gridLineType, const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyDbObjectId(impObj()->gridLinetype(gridLineType, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyDbObjectId(impObj()->gridLinetype(gridLineType, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -804,7 +804,7 @@ void PyDbTableStyle::setGridLinetype(const PyDbObjectId& id, AcDb::GridLineType 
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridLinetype(id.m_id, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridLinetype(id.m_id, gridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 
@@ -814,7 +814,7 @@ AcGridProperty PyDbTableStyle::getGridProperty(AcDb::GridLineType nGridLineTypes
     throw PyNotimplementedByHost();
 #else
     AcGridProperty prop;
-    PyThrowBadEs(impObj()->getGridProperty(prop, nGridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    PyThrowBadEs(impObj()->getGridProperty(prop, nGridLineTypes, AsWStr(pszCellStyle)));
     return prop;
 #endif
 }
@@ -824,7 +824,7 @@ void PyDbTableStyle::setGridProperty(const AcGridProperty& gridProp, AcDb::GridL
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGridProperty(gridProp, nGridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setGridProperty(gridProp, nGridLineTypes, AsWStr(pszCellStyle)));
 #endif
 }
 

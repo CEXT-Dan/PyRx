@@ -45,7 +45,7 @@ std::string PyBrxCvDbTinSurfaceDefinition::name() const
 
 bool PyBrxCvDbTinSurfaceDefinition::setName(const std::string& szName) const
 {
-    return impObj()->setName(utf8_to_wstr(szName).c_str());
+    return impObj()->setName(AsWStr(szName));
 }
 
 std::string PyBrxCvDbTinSurfaceDefinition::description() const
@@ -55,7 +55,7 @@ std::string PyBrxCvDbTinSurfaceDefinition::description() const
 
 bool PyBrxCvDbTinSurfaceDefinition::setDescription(const std::string& szDescription) const
 {
-    return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
+    return impObj()->setDescription(AsWStr(szDescription));
 }
 
 PyBrxCvDbTinSurfaceDefinition::EType PyBrxCvDbTinSurfaceDefinition::type() const
@@ -1564,7 +1564,7 @@ PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::PyBrxCvDbTinSurfaceDefinitionCre
 }
 
 PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(const std::string& path, const std::string& name, AcDb::UnitsValue dwgUnits, bool scaleToDwgUnits)
-    :PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(new BrxCvDbTinSurfaceDefinitionCreateFromLandXML(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(), dwgUnits, scaleToDwgUnits), true)
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML(new BrxCvDbTinSurfaceDefinitionCreateFromLandXML(AsWStr(path), AsWStr(name), dwgUnits, scaleToDwgUnits), true)
 {
 }
 
@@ -1580,7 +1580,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::filePath() const
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setFilePath(const std::string& filePath) const
 {
-    return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
+    return impObj()->setFilePath(AsWStr(filePath));
 }
 
 std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::surfaceName() const
@@ -1590,7 +1590,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::surfaceName() const
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setSurfaceName(const std::string& surfaceName) const
 {
-    return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
+    return impObj()->setSurfaceName(AsWStr(surfaceName));
 }
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::scaleToDwgUnits() const
@@ -1865,7 +1865,7 @@ PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::PyBrxCvDbTinSurfaceDefinitionCreateF
 }
 
 PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(const std::string& path, const std::string& name)
-    :PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(new BrxCvDbTinSurfaceDefinitionCreateFromC3D(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()), true)
+    :PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(new BrxCvDbTinSurfaceDefinitionCreateFromC3D(AsWStr(path), AsWStr(name)), true)
 {
 }
 
@@ -1881,7 +1881,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::filePath() const
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setFilePath(const std::string& filePath) const
 {
-    return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
+    return impObj()->setFilePath(AsWStr(filePath));
 }
 
 std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName() const
@@ -1891,7 +1891,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName() const
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName(const std::string& surfaceName) const
 {
-    return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
+    return impObj()->setSurfaceName(AsWStr(surfaceName));
 }
 
 std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::className()

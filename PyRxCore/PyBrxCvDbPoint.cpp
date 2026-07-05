@@ -127,7 +127,7 @@ const std::string PyBrxCvDbPoint::rawDescription() const
 
 bool PyBrxCvDbPoint::setRawDescription(const std::string& szDescription) const
 {
-    return impObj()->setRawDescription(utf8_to_wstr(szDescription).c_str());
+    return impObj()->setRawDescription(AsWStr(szDescription));
 }
 
 const std::string PyBrxCvDbPoint::fullDescription() const
@@ -138,7 +138,7 @@ const std::string PyBrxCvDbPoint::fullDescription() const
 #if !defined(_BRXTARGET240)
 bool PyBrxCvDbPoint::setFullDescription(const std::string& szDescription) const
 {
-    return impObj()->setFullDescription(utf8_to_wstr(szDescription).c_str());
+    return impObj()->setFullDescription(AsWStr(szDescription));
 }
 #endif
 
@@ -662,72 +662,72 @@ std::string PyBrxCvDbPointGroup::excludeUserAttributesValues() const
 
 bool PyBrxCvDbPointGroup::setIncludeNumbers(const std::string& szFilter) const
 {
-    return impObj()->setIncludeNumbers(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeNumbers(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeNumbers(const std::string& szFilter) const
 {
-    return impObj()->setExcludeNumbers(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeNumbers(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeElevations(const std::string& szFilter) const
 {
-    return impObj()->setIncludeElevations(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeElevations(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeElevations(const std::string& szFilter) const
 {
-    return impObj()->setExcludeElevations(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeElevations(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeRawDescriptions(const std::string& szFilter) const
 {
-    return impObj()->setIncludeRawDescriptions(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeRawDescriptions(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeRawDescriptions(const std::string& szFilter) const
 {
-    return impObj()->setExcludeRawDescriptions(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeRawDescriptions(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeFullDescriptions(const std::string& szFilter) const
 {
-    return impObj()->setIncludeFullDescriptions(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeFullDescriptions(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeFullDescriptions(const std::string& szFilter) const
 {
-    return impObj()->setExcludeFullDescriptions(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeFullDescriptions(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeNames(const std::string& szFilter) const
 {
-    return impObj()->setIncludeNames(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeNames(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeNames(const std::string& szFilter) const
 {
-    return impObj()->setExcludeNames(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeNames(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeUserAttributesKeys(const std::string& szFilter) const
 {
-    return impObj()->setIncludeUserAttributesKeys(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeUserAttributesKeys(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeUserAttributesKeys(const std::string& szFilter) const
 {
-    return impObj()->setExcludeUserAttributesKeys(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeUserAttributesKeys(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setIncludeUserAttributesValues(const std::string& szFilter) const
 {
-    return impObj()->setIncludeUserAttributesValues(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setIncludeUserAttributesValues(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::setExcludeUserAttributesValues(const std::string& szFilter) const
 {
-    return impObj()->setExcludeUserAttributesValues(utf8_to_wstr(szFilter).c_str());
+    return impObj()->setExcludeUserAttributesValues(AsWStr(szFilter));
 }
 
 bool PyBrxCvDbPointGroup::updateNeeded() const

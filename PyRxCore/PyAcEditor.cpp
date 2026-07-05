@@ -472,7 +472,7 @@ bp::tuple PyAcEditor::getCorner(const AcGePoint3d& basePt, const std::string& pr
     ads_point pnt;
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    auto res = static_cast<Acad::PromptStatus>(acedGetCorner(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
+    auto res = static_cast<Acad::PromptStatus>(acedGetCorner(asDblArray(basePt), AsWStr(prompt), pnt));
     AcGePoint3d pnt3d = asPnt3d(pnt);
     return bp::make_tuple(res, pnt3d);
 }
@@ -487,7 +487,7 @@ bp::tuple PyAcEditor::getInteger2(const std::string& prompt, PromptCondition con
     int val = 0;
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &val));
+    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetInt(AsWStr(prompt), &val));
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (val == 0)
@@ -511,7 +511,7 @@ bp::tuple PyAcEditor::getDouble2(const std::string& prompt, PromptCondition cond
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     double val = 0;
-    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &val));
+    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetReal(AsWStr(prompt), &val));
     if (GETBIT(condition, PromptCondition::eNoZero))
     {
         if (std::fabs(val) < AcGeContext::gTol.equalPoint())
@@ -530,7 +530,7 @@ bp::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& pro
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     double res = 0.0;
-    auto stat = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res));
+    auto stat = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), AsWStr(prompt), &res));
     return bp::make_tuple(stat, res);
 }
 
@@ -539,7 +539,7 @@ bp::tuple PyAcEditor::getPoint1(const std::string& prompt)
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     AcGePoint3d pnt;
-    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), asDblArray(pnt)));
+    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, AsWStr(prompt), asDblArray(pnt)));
     return bp::make_tuple(stat, pnt);
 }
 
@@ -548,7 +548,7 @@ bp::tuple PyAcEditor::getPoint2(const AcGePoint3d& basePt, const std::string& pr
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     AcGePoint3d pnt;
-    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), asDblArray(pnt)));
+    auto stat = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), AsWStr(prompt), asDblArray(pnt)));
     return bp::make_tuple(stat, pnt);
 }
 
@@ -557,7 +557,7 @@ bp::tuple PyAcEditor::getDist1(const std::string& prompt)
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     double res = 0.0;
-    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res));
+    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, AsWStr(prompt), &res));
     if (res < 0)
         return bp::make_tuple(Acad::PromptStatus::eRejected, res);
     return bp::make_tuple(stat, res);
@@ -568,7 +568,7 @@ bp::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::string& pro
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     double res = 0.0;
-    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res));
+    auto stat = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), AsWStr(prompt), &res));
     if (res < 0)
         return bp::make_tuple(Acad::PromptStatus::eRejected, res);
     return bp::make_tuple(stat, res);
@@ -594,7 +594,7 @@ bp::tuple PyAcEditor::getString4(int cronly, const std::string& prompt, PromptCo
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     RxAutoOutStr val;
-    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetFullString(cronly, utf8_to_wstr(prompt).c_str(), val.buf));
+    Acad::PromptStatus stat = static_cast<Acad::PromptStatus>(acedGetFullString(cronly, AsWStr(prompt), val.buf));
     const std::string sval = val.str();
     if (GETBIT(condition, PromptCondition::eNoEmpty))
     {
@@ -611,7 +611,7 @@ static bp::tuple entSelFilter(const std::string& prompt, const AcRxClass* desc)
     PyDbObjectId id;
     ads_name name = { 0L };
     PyAutoLockGIL lock;
-    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
+    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(AsWStr(prompt), name, pnt));
     if (stat == Acad::eNormal)
     {
         if (acdbGetObjectId(id.m_id, name) != eOk)
@@ -634,7 +634,7 @@ static bp::tuple entSelFilterList(const std::string& prompt, const AcRxClassArra
     PyDbObjectId id;
     ads_name name = { 0L };
     PyAutoLockGIL lock;
-    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
+    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(AsWStr(prompt), name, pnt));
     if (stat == Acad::eNormal)
     {
         if (acdbGetObjectId(id.m_id, name) != eOk)
@@ -697,7 +697,7 @@ static bp::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, i
     memcpy(xform, xformres.entry, sizeof(ads_matrix));
     struct resbuf* pRb = NULL;
     ads_name name = { 0L };
-    auto flag = static_cast<Acad::PromptStatus>(acedNEntSelP(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb));
+    auto flag = static_cast<Acad::PromptStatus>(acedNEntSelP(AsWStr(prompt), name, pnt, opt, xform, &pRb));
     AcResBufPtr buf(pRb);
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
@@ -742,7 +742,7 @@ static bp::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres,
     struct resbuf* pRb = NULL;
     ads_name name = { 0L };
     int64_t gsmarker = -1;
-    const auto status = static_cast<Acad::PromptStatus>(acedNEntSelPEx(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb, uTransSpaceFlag, &gsmarker));
+    const auto status = static_cast<Acad::PromptStatus>(acedNEntSelPEx(AsWStr(prompt), name, pnt, opt, xform, &pRb, uTransSpaceFlag, &gsmarker));
     AcResBufPtr buf(pRb);
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
@@ -1305,7 +1305,7 @@ AcGeVector3d PyAcEditor::ucsYDir()
 
 Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)
 {
-    return static_cast<Acad::PromptStatus>(acedInitGet(val, utf8_to_wstr(skwl).c_str()));
+    return static_cast<Acad::PromptStatus>(acedInitGet(val, AsWStr(skwl)));
 }
 
 std::string PyAcEditor::getInput()
@@ -1319,7 +1319,7 @@ bp::tuple PyAcEditor::getKword(const std::string& skwl)
 {
     PyAutoLockGIL lock;
     RxAutoOutStr pStr;
-    auto resval = static_cast<Acad::PromptStatus>(acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr.buf));
+    auto resval = static_cast<Acad::PromptStatus>(acedGetFullKword(AsWStr(skwl), pStr.buf));
     return bp::make_tuple(resval, pStr.str());
 }
 

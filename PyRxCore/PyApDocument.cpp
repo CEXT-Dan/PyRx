@@ -153,7 +153,7 @@ std::string PyApDocument::docTitle() const
 
 void PyApDocument::setDocTitle(const std::string& title) const
 {
-    impObj()->setDocTitle(utf8_to_wstr(title).c_str());
+    impObj()->setDocTitle(AsWStr(title));
 }
 
 bool PyApDocument::isReadOnly() const

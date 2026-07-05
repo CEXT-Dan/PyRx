@@ -330,7 +330,7 @@ std::string PyDbMText::contents() const
 
 int PyDbMText::setContents(const std::string& str) const
 {
-    return impObj()->setContents(utf8_to_wstr(str).c_str());
+    return impObj()->setContents(AsWStr(str));
 }
 
 std::string PyDbMText::contentsRTF() const
@@ -342,7 +342,7 @@ std::string PyDbMText::contentsRTF() const
 
 int PyDbMText::setContentsRTF(const std::string& str) const
 {
-    return impObj()->setContentsRTF(utf8_to_wstr(str).c_str());
+    return impObj()->setContentsRTF(AsWStr(str));
 }
 
 std::string PyDbMText::text() const
@@ -809,12 +809,12 @@ PyDbText::PyDbText()
 }
 
 PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text)
-    : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str()), true)
+    : PyDbText::PyDbText(new AcDbText(position, AsWStr(text)), true)
 {
 }
 
 PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation)
-    : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str(), style.m_id, height, rotation), true)
+    : PyDbText::PyDbText(new AcDbText(position, AsWStr(text), style.m_id, height, rotation), true)
 {
 }
 
@@ -936,7 +936,7 @@ std::string PyDbText::textString() const
 
 void PyDbText::setTextString(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setTextString(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setTextString(AsWStr(val)));
 }
 
 PyDbObjectId PyDbText::textStyle() const
@@ -1128,7 +1128,7 @@ PyDbAttributeDefinition::PyDbAttributeDefinition()
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style)
-    : PyDbText(new AcDbAttributeDefinition(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(), utf8_to_wstr(prompt).c_str(), style.m_id), true)
+    : PyDbText(new AcDbAttributeDefinition(position, AsWStr(text), AsWStr(tag), AsWStr(prompt), style.m_id), true)
 {
 }
 
@@ -1159,7 +1159,7 @@ std::string PyDbAttributeDefinition::prompt() const
 
 void PyDbAttributeDefinition::setPrompt(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setPrompt(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setPrompt(AsWStr(val)));
 }
 
 std::string PyDbAttributeDefinition::tag() const
@@ -1169,7 +1169,7 @@ std::string PyDbAttributeDefinition::tag() const
 
 void PyDbAttributeDefinition::setTag(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setTag(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setTag(AsWStr(val)));
 }
 
 Adesk::Boolean PyDbAttributeDefinition::isInvisible() const
@@ -1360,7 +1360,7 @@ PyDbAttribute::PyDbAttribute()
 }
 
 PyDbAttribute::PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style)
-    : PyDbText(new AcDbAttribute(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(), style.m_id), true)
+    : PyDbText(new AcDbAttribute(position, AsWStr(text), AsWStr(tag), style.m_id), true)
 {
 }
 
@@ -1391,7 +1391,7 @@ std::string PyDbAttribute::tag() const
 
 void PyDbAttribute::setTag(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setTag(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setTag(AsWStr(val)));
 }
 
 Adesk::Boolean PyDbAttribute::isInvisible() const

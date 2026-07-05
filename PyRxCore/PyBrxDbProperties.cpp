@@ -58,14 +58,14 @@ boost::python::tuple PyBrxDbProperties::isReadOnly(const PyDbObjectId& id, const
 PyDbAcValue PyBrxDbProperties::getValue(const PyDbObjectId& id, const std::string& propertyName)
 {
     AcValue value;
-    if (BrxDbProperties::getValue(id.m_id, utf8_to_wstr(propertyName).c_str(), value) != true)
+    if (BrxDbProperties::getValue(id.m_id, AsWStr(propertyName), value) != true)
         PyThrowBadEs(eInvalidInput);
     return PyDbAcValue{ value };
 }
 
 void PyBrxDbProperties::setValue(const PyDbObjectId& id, const std::string& propertyName, const PyDbAcValue& value)
 {
-    if (BrxDbProperties::setValue(id.m_id, utf8_to_wstr(propertyName).c_str(), *value.impObj()) != true)
+    if (BrxDbProperties::setValue(id.m_id, AsWStr(propertyName), *value.impObj()) != true)
         PyThrowBadEs(eInvalidInput);
 }
 

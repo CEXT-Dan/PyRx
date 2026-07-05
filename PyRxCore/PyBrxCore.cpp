@@ -92,18 +92,18 @@ boost::python::list PyBrxCore::getBlockParametersNames(const PyDbObjectId& block
 
 void PyBrxCore::setBlockParameterExpression(const PyDbObjectId& blockRefId, const std::string& name, const std::string& expr)
 {
-    PyThrowBadEs(acdbSetBlockParameterExpression(blockRefId.m_id, utf8_to_wstr(name).c_str(), utf8_to_wstr(expr).c_str()));
+    PyThrowBadEs(acdbSetBlockParameterExpression(blockRefId.m_id, AsWStr(name), AsWStr(expr)));
 }
 
 std::string PyBrxCore::getBlockParameterExpression(const PyDbObjectId& blockRefId, const std::string& name)
 {
-    return wstr_to_utf8(acdbGetBlockParameterExpression(blockRefId.m_id, utf8_to_wstr(name).c_str()));
+    return wstr_to_utf8(acdbGetBlockParameterExpression(blockRefId.m_id, AsWStr(name)));
 }
 
 double PyBrxCore::getBlockParameterValue(const PyDbObjectId& blockRefId, const std::string& name)
 {
     double resValue = 0.0;
-    PyThrowBadEs(acdbGetBlockParameterValue(blockRefId.m_id, utf8_to_wstr(name).c_str(), resValue));
+    PyThrowBadEs(acdbGetBlockParameterValue(blockRefId.m_id, AsWStr(name), resValue));
     return resValue;
 }
 
@@ -114,17 +114,17 @@ std::string PyBrxCore::getEntityGuiName(const PyDbObjectId& entId)
 
 void PyBrxCore::setEntityGuiName(const PyDbObjectId& entId, const std::string& name)
 {
-    PyThrowBadEs(acdbSetEntityGuiName(entId.m_id, utf8_to_wstr(name).c_str()));
+    PyThrowBadEs(acdbSetEntityGuiName(entId.m_id, AsWStr(name)));
 }
 
 bool PyBrxCore::blockParameterHasStringValue(const PyDbObjectId& blockRefId, const std::string& name)
 {
-    return acdbBlockParameterHasStringValue(blockRefId.m_id, utf8_to_wstr(name).c_str());
+    return acdbBlockParameterHasStringValue(blockRefId.m_id, AsWStr(name));
 }
 
 std::string PyBrxCore::getBlockParameterStringValue(const PyDbObjectId& blockRefId, const std::string& name)
 {
-    return wstr_to_utf8(acdbGetBlockParameterStringValue(blockRefId.m_id, utf8_to_wstr(name).c_str()));
+    return wstr_to_utf8(acdbGetBlockParameterStringValue(blockRefId.m_id, AsWStr(name)));
 }
 
 std::string PyBrxCore::effectiveBlockRefName(const PyDbObjectId& blockRefId)

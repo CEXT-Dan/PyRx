@@ -6386,7 +6386,7 @@ Ice::EIfcSchemaId PyIfcModel::schemaId() const
 
 bool PyIfcModel::write(const std::string& fileName, const PyIfcHeader& header) const
 {
-    return impObj()->write(utf8_to_wstr(fileName).c_str(), *header.impObj());
+    return impObj()->write(AsWStr(fileName), *header.impObj());
 }
 
 PyIfcModel PyIfcModel::create(Ice::EIfcSchemaId schemaId)
@@ -6396,7 +6396,7 @@ PyIfcModel PyIfcModel::create(Ice::EIfcSchemaId schemaId)
 
 PyIfcModel PyIfcModel::read(const std::string& fileName)
 {
-    return PyIfcModel(Ice::IfcApi::Model::read(utf8_to_wstr(fileName).c_str()), true);
+    return PyIfcModel(Ice::IfcApi::Model::read(AsWStr(fileName)), true);
 }
 
 std::string PyIfcModel::className()

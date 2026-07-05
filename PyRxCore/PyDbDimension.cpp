@@ -277,7 +277,7 @@ std::string PyDbDimension::dimensionText() const
 
 void PyDbDimension::setDimensionText(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setDimensionText(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setDimensionText(AsWStr(val)));
 }
 
 double PyDbDimension::textRotation() const
@@ -416,7 +416,7 @@ std::string PyDbDimension::formatMeasurement2(double measurement, const std::str
     throw PyNotimplementedByHost();
 #else
     AcString str;
-    PyThrowBadEs(impObj()->formatMeasurement(str, measurement, utf8_to_wstr(dimensionText).c_str()));
+    PyThrowBadEs(impObj()->formatMeasurement(str, measurement, AsWStr(dimensionText)));
     return wstr_to_utf8(str);
 #endif
 }
@@ -581,7 +581,7 @@ void PyDbDimension::setInspectionLabel(const std::string& label) const
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setInspectionLabel(utf8_to_wstr(label).c_str()));
+    return PyThrowBadEs(impObj()->setInspectionLabel(AsWStr(label)));
 #endif
 }
 

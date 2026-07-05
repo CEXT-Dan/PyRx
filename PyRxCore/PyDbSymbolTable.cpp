@@ -95,14 +95,14 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode, bo
 PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName) const
 {
     AcDbObjectId id;
-    PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
+    PyThrowBadEs(impObj()->getAt(AsWStr(entryName), id));
     return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbSymbolTable::getAtEx(const std::string& entryName) const
 {
     AcDbObjectId id;
-    const auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id);
+    const auto es = impObj()->getAt(AsWStr(entryName), id);
     if (es == Acad::eKeyNotFound)
         throw PyRxEKeyError(entryName);
     PyThrowBadEs(es);
@@ -111,7 +111,7 @@ PyDbObjectId PyDbSymbolTable::getAtEx(const std::string& entryName) const
 
 bool PyDbSymbolTable::has1(const std::string& entryName) const
 {
-    return impObj()->has(utf8_to_wstr(entryName).c_str());
+    return impObj()->has(AsWStr(entryName));
 }
 
 bool PyDbSymbolTable::has2(const PyDbObjectId& entryid) const

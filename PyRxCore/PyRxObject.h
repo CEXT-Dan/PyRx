@@ -6,6 +6,80 @@ class PyRxClass;
 //PyRxObject
 void makePyRxObjectWrapper();
 
+struct PyRxObjectDeleter
+{
+    inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
+        : m_autoDelete(autoDelete), m_isDbObject(isDbObject)
+    {
+    }
+
+    inline bool isDbroThenClose(AcRxObject* p) const
+    {
+        if (m_isDbObject)
+        {
+            AcDbObject* pDbo = static_cast<AcDbObject*>(p);
+            if (!pDbo->objectId().isNull())
+            {
+                if (const auto es = pDbo->close(); es != eOk) [[unlikely]]
+                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    inline void operator()(AcRxObject* p) const
+    {
+        if (p == nullptr)
+            return;
+        if (m_forceKeepAlive)
+            return;
+        else if (m_internalClosed)
+            return;
+        else if (isDbroThenClose(p))
+            return;
+        else if (!m_autoDelete)
+            return;
+        else
+            delete p;
+    }
+
+    inline bool isAutoDelete() const
+    {
+        return m_autoDelete;
+    }
+
+    inline void setAutoDelete(bool flag)
+    {
+        m_autoDelete = flag;
+    }
+
+    inline bool isKeptAlive() const
+    {
+        return m_forceKeepAlive;
+    }
+
+    inline void setKeepAlive(bool flag)
+    {
+        m_forceKeepAlive = flag;
+    }
+
+    inline bool isInternalClosed() const
+    {
+        return m_internalClosed;
+    }
+
+    inline void setInternalClosed(bool flag)
+    {
+        m_internalClosed = flag;
+    }
+
+    bool m_autoDelete = true;
+    bool m_isDbObject = false;
+    bool m_forceKeepAlive = false;
+    bool m_internalClosed = false;
+};
+
 class PyRxObject
 {
 public:

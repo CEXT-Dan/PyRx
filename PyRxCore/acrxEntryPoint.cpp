@@ -492,7 +492,16 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        acutPrintf(L"\n%ls", acadErrorStatusText(eOk));
+        AcArray<int> a;
+        for (int i = 0; i < 10; i++)
+            a.append(i);
+
+        static AcArray<int> b;
+        b.removeAll();
+        for (auto&& i : a)
+            b.append(i);
+        
+        acutPrintf(L"\na = %ld, b = %ld",a.length(), b.length());
     }
 #endif
 };

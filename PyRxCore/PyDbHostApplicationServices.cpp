@@ -199,21 +199,21 @@ void PyDbHostApplicationServices::setWorkingDatabase(PyDbDatabase& pDatabase)
 std::string PyDbHostApplicationServices::findFile1(const std::string& fileName)
 {
     AcString fileOut;
-    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str()));
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, AsWStr(fileName)));
     return wstr_to_utf8(fileOut);
 }
 
 std::string PyDbHostApplicationServices::findFile2(const std::string& fileName, const PyDbDatabase& db)
 {
     AcString fileOut;
-    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj()));
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, AsWStr(fileName), db.impObj()));
     return wstr_to_utf8(fileOut);
 }
 
 std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, const PyDbDatabase& db, AcDbHostApplicationServices::FindFileHint hint)
 {
     AcString fileOut;
-    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj(), hint));
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, AsWStr(fileName), db.impObj(), hint));
     return wstr_to_utf8(fileOut);
 }
 
@@ -383,57 +383,57 @@ void makePyDbSymUtilServicesWrapper()
 
 bool PyDbSymUtilServices::isBlockLayoutName(const std::string& name) const
 {
-    return imp->isBlockLayoutName(utf8_to_wstr(name).c_str());
+    return imp->isBlockLayoutName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isBlockModelSpaceName(const std::string& name) const
 {
-    return imp->isBlockModelSpaceName(utf8_to_wstr(name).c_str());
+    return imp->isBlockModelSpaceName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isBlockPaperSpaceName(const std::string& name) const
 {
-    return imp->isBlockPaperSpaceName(utf8_to_wstr(name).c_str());
+    return imp->isBlockPaperSpaceName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isLayerDefpointsName(const std::string& name) const
 {
-    return imp->isLayerDefpointsName(utf8_to_wstr(name).c_str());
+    return imp->isLayerDefpointsName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isLayerZeroName(const std::string& name) const
 {
-    return imp->isLayerZeroName(utf8_to_wstr(name).c_str());
+    return imp->isLayerZeroName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isLinetypeByBlockName(const std::string& name) const
 {
-    return imp->isLinetypeByBlockName(utf8_to_wstr(name).c_str());
+    return imp->isLinetypeByBlockName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isLinetypeByLayerName(const std::string& name) const
 {
-    return imp->isLinetypeByLayerName(utf8_to_wstr(name).c_str());
+    return imp->isLinetypeByLayerName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isLinetypeContinuousName(const std::string& name) const
 {
-    return imp->isLinetypeContinuousName(utf8_to_wstr(name).c_str());
+    return imp->isLinetypeContinuousName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isRegAppAcadName(const std::string& name) const
 {
-    return imp->isRegAppAcadName(utf8_to_wstr(name).c_str());
+    return imp->isRegAppAcadName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isTextStyleStandardName(const std::string& name) const
 {
-    return imp->isTextStyleStandardName(utf8_to_wstr(name).c_str());
+    return imp->isTextStyleStandardName(AsWStr(name));
 }
 
 bool PyDbSymUtilServices::isViewportActiveName(const std::string& name) const
 {
-    return imp->isViewportActiveName(utf8_to_wstr(name).c_str());
+    return imp->isViewportActiveName(AsWStr(name));
 }
 
 PyDbObjectId PyDbSymUtilServices::blockModelSpaceId(PyDbDatabase& pDb) const
@@ -541,7 +541,7 @@ int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const st
     else
         return -1;
 #endif
-    return imp->compareSymbolName(utf8_to_wstr(thisName).c_str(), utf8_to_wstr(otherName).c_str());
+    return imp->compareSymbolName(AsWStr(thisName), AsWStr(otherName));
 }
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
@@ -549,18 +549,18 @@ bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 #if defined(_GRXTARGET250) || defined(_BRXTARGET260)
     return name.find('|') != std::string::npos;
 #endif
-    return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
+    return imp->hasVerticalBar(AsWStr(name));
 }
 
 std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, const std::string& symbolName) const
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET >= 260)
     AcString pNewName;
-    PyThrowBadEs(imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()));
+    PyThrowBadEs(imp->makeDependentName(pNewName, AsWStr(dwgName), AsWStr(symbolName)));
     std::string val = wstr_to_utf8(pNewName);
 #else
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()));
+    PyThrowBadEs(imp->makeDependentName(pNewName, AsWStr(dwgName), AsWStr(symbolName)));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
 #endif
@@ -570,7 +570,7 @@ std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, c
 std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->repairPreExtendedSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
+    PyThrowBadEs(imp->repairPreExtendedSymbolName(pNewName, AsWStr(oldName), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -579,7 +579,7 @@ std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& 
 std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->repairSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
+    PyThrowBadEs(imp->repairSymbolName(pNewName, AsWStr(oldName), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -587,12 +587,12 @@ std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bo
 
 Acad::ErrorStatus PyDbSymUtilServices::validatePreExtendedSymbolName(const std::string& name, bool allowVerticalBar) const
 {
-    return imp->validatePreExtendedSymbolName(utf8_to_wstr(name).c_str(), allowVerticalBar);
+    return imp->validatePreExtendedSymbolName(AsWStr(name), allowVerticalBar);
 }
 
 Acad::ErrorStatus PyDbSymUtilServices::validateSymbolName(const std::string& name, bool allowVerticalBar) const
 {
-    return imp->validateSymbolName(utf8_to_wstr(name).c_str(), allowVerticalBar);
+    return imp->validateSymbolName(AsWStr(name), allowVerticalBar);
 }
 
 bool PyDbSymUtilServices::compatibilityMode(PyDbDatabase& pDb) const
@@ -603,7 +603,7 @@ bool PyDbSymUtilServices::compatibilityMode(PyDbDatabase& pDb) const
 std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::string& pathName) const
 {
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getBlockNameFromInsertPathName(pNewName, utf8_to_wstr(pathName).c_str()));
+    PyThrowBadEs(imp->getBlockNameFromInsertPathName(pNewName, AsWStr(pathName)));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -613,11 +613,11 @@ std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::strin
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET >= 260) 
     AcString pNewName;
-    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()));
+    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, AsWStr(pathName)));
     std::string val = wstr_to_utf8(pNewName);
 #else
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()));
+    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, AsWStr(pathName)));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
 #endif
@@ -627,7 +627,7 @@ std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::strin
 std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& symbolName, const std::string& extensions) const
 {
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getPathNameFromSymbolName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
+    PyThrowBadEs(imp->getPathNameFromSymbolName(pNewName, AsWStr(symbolName), AsWStr(extensions)));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -636,7 +636,7 @@ std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& sy
 std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& symbolName, const std::string& extensions) const
 {
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getSymbolNameFromPathName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
+    PyThrowBadEs(imp->getSymbolNameFromPathName(pNewName, AsWStr(symbolName), AsWStr(extensions)));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -644,7 +644,7 @@ std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& sy
 
 Acad::ErrorStatus PyDbSymUtilServices::validateCompatibleSymbolName(const std::string& name, bool isNewName, bool allowVerticalBar, bool compatibilityMode) const
 {
-    return imp->validateCompatibleSymbolName(utf8_to_wstr(name).c_str(), isNewName, allowVerticalBar, compatibilityMode);
+    return imp->validateCompatibleSymbolName(AsWStr(name), isNewName, allowVerticalBar, compatibilityMode);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -785,7 +785,7 @@ std::string PyDbDatabaseSummaryInfo::getTitle() const
 
 void PyDbDatabaseSummaryInfo::setTitle(const std::string& title) const
 {
-    PyThrowBadEs(impObj()->setTitle(utf8_to_wstr(title).c_str()));
+    PyThrowBadEs(impObj()->setTitle(AsWStr(title)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getSubject() const
@@ -803,7 +803,7 @@ std::string PyDbDatabaseSummaryInfo::getSubject() const
 
 void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject) const
 {
-    PyThrowBadEs(impObj()->setSubject(utf8_to_wstr(subject).c_str()));
+    PyThrowBadEs(impObj()->setSubject(AsWStr(subject)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getAuthor() const
@@ -821,7 +821,7 @@ std::string PyDbDatabaseSummaryInfo::getAuthor() const
 
 void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author) const
 {
-    PyThrowBadEs(impObj()->setAuthor(utf8_to_wstr(author).c_str()));
+    PyThrowBadEs(impObj()->setAuthor(AsWStr(author)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getKeywords() const
@@ -839,7 +839,7 @@ std::string PyDbDatabaseSummaryInfo::getKeywords() const
 
 void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist) const
 {
-    PyThrowBadEs(impObj()->setKeywords(utf8_to_wstr(keywordlist).c_str()));
+    PyThrowBadEs(impObj()->setKeywords(AsWStr(keywordlist)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getComments() const
@@ -857,7 +857,7 @@ std::string PyDbDatabaseSummaryInfo::getComments() const
 
 void PyDbDatabaseSummaryInfo::setComments(const std::string& comments) const
 {
-    PyThrowBadEs(impObj()->setComments(utf8_to_wstr(comments).c_str()));
+    PyThrowBadEs(impObj()->setComments(AsWStr(comments)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
@@ -875,7 +875,7 @@ std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
 
 void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy) const
 {
-    PyThrowBadEs(impObj()->setLastSavedBy(utf8_to_wstr(lastSavedBy).c_str()));
+    PyThrowBadEs(impObj()->setLastSavedBy(AsWStr(lastSavedBy)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
@@ -893,7 +893,7 @@ std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
 
 void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumber) const
 {
-    PyThrowBadEs(impObj()->setRevisionNumber(utf8_to_wstr(revisionNumber).c_str()));
+    PyThrowBadEs(impObj()->setRevisionNumber(AsWStr(revisionNumber)));
 }
 
 std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
@@ -911,7 +911,7 @@ std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
 
 void PyDbDatabaseSummaryInfo::setHyperlinkBase(const std::string& HyperlinkBase) const
 {
-    PyThrowBadEs(impObj()->setHyperlinkBase(utf8_to_wstr(HyperlinkBase).c_str()));
+    PyThrowBadEs(impObj()->setHyperlinkBase(AsWStr(HyperlinkBase)));
 }
 
 int PyDbDatabaseSummaryInfo::numCustomInfo() const
@@ -921,7 +921,7 @@ int PyDbDatabaseSummaryInfo::numCustomInfo() const
 
 void PyDbDatabaseSummaryInfo::addCustomSummaryInfo(const std::string& key, const std::string& value) const
 {
-    PyThrowBadEs(impObj()->addCustomSummaryInfo(utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
+    PyThrowBadEs(impObj()->addCustomSummaryInfo(AsWStr(key), AsWStr(value)));
 }
 
 void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1(int index) const
@@ -931,19 +931,19 @@ void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1(int index) const
 
 void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key) const
 {
-    PyThrowBadEs(impObj()->deleteCustomSummaryInfo(utf8_to_wstr(key).c_str()));
+    PyThrowBadEs(impObj()->deleteCustomSummaryInfo(AsWStr(key)));
 }
 
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::string& customInfoKey) const
 {
 #if defined(_BRXTARGET260)
     RxAutoOutStr value;
-    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), value.buf));
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(AsWStr(customInfoKey), value.buf));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(customInfoKey, wstr_to_utf8(value.buf));
 #else
     AcString value;
-    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), value));
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(AsWStr(customInfoKey), value));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(customInfoKey, wstr_to_utf8(value));
 #endif
@@ -970,12 +970,12 @@ boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) c
 
 void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value) const
 {
-    PyThrowBadEs(impObj()->setCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), utf8_to_wstr(value).c_str()));
+    PyThrowBadEs(impObj()->setCustomSummaryInfo(AsWStr(customInfoKey), AsWStr(value)));
 }
 
 void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string& key, const std::string& value) const
 {
-    PyThrowBadEs(impObj()->setCustomSummaryInfo(index, utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
+    PyThrowBadEs(impObj()->setCustomSummaryInfo(index, AsWStr(key), AsWStr(value)));
 }
 
 static bool hasKeyimpl(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
@@ -1001,7 +1001,7 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydi
             const std::string& key = keyExtractor();
             boost::python::extract<std::string> valExtractor(pydict[key]);
             const std::string& val = valExtractor();
-            if (hasKeyimpl(impObj(), utf8_to_wstr(key).c_str()))
+            if (hasKeyimpl(impObj(), AsWStr(key)))
                 setCustomSummaryInfo1(key, val);
             else
                 addCustomSummaryInfo(key, val);
@@ -1049,7 +1049,7 @@ void PyDbDatabaseSummaryInfo::removeAllCustomSummaryInfo() const
 
 bool PyDbDatabaseSummaryInfo::hasCustomKey(const std::string& key) const
 {
-    return hasKeyimpl(impObj(), utf8_to_wstr(key).c_str());
+    return hasKeyimpl(impObj(), AsWStr(key));
 }
 
 void PyDbDatabaseSummaryInfo::setIntoDatabase1() const
@@ -1130,12 +1130,12 @@ PyDbPlotSettingsValidator::PyDbPlotSettingsValidator(AcDbPlotSettingsValidator* 
 
 void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName) const
 {
-    PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str()));
+    PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), AsWStr(plotDeviceName)));
 }
 
 void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName) const
 {
-    PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str(), utf8_to_wstr(mediaName).c_str()));
+    PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), AsWStr(plotDeviceName), AsWStr(mediaName)));
 }
 
 void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName) const
@@ -1191,7 +1191,7 @@ void PyDbPlotSettingsValidator::setPlotWindowArea2(PyDbPlotSettings& pPlotSet, A
 
 void PyDbPlotSettingsValidator::setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName) const
 {
-    PyThrowBadEs(impObj()->setPlotViewName(pPlotSet.impObj(), utf8_to_wstr(viewName).c_str()));
+    PyThrowBadEs(impObj()->setPlotViewName(pPlotSet.impObj(), AsWStr(viewName)));
 }
 
 void PyDbPlotSettingsValidator::setUseStandardScale(PyDbPlotSettings& pPlotSet, Adesk::Boolean useStandard) const
@@ -1206,7 +1206,7 @@ void PyDbPlotSettingsValidator::setCustomPrintScale(PyDbPlotSettings& pPlotSet, 
 
 void PyDbPlotSettingsValidator::setCurrentStyleSheet(PyDbPlotSettings& pPlotSet, const std::string& styleSheetName) const
 {
-    PyThrowBadEs(impObj()->setCurrentStyleSheet(pPlotSet.impObj(), utf8_to_wstr(styleSheetName).c_str()));
+    PyThrowBadEs(impObj()->setCurrentStyleSheet(pPlotSet.impObj(), AsWStr(styleSheetName)));
 }
 
 void PyDbPlotSettingsValidator::setStdScaleType(PyDbPlotSettings& pPlotSet, const StdScaleType scaleType) const
@@ -1244,7 +1244,7 @@ boost::python::list PyDbPlotSettingsValidator::canonicalMediaNameList(PyDbPlotSe
 std::string PyDbPlotSettingsValidator::getLocaleMediaName1(PyDbPlotSettings& pPlotSet, const std::string& canonicalName) const
 {
     const ACHAR* localeName = nullptr;
-    PyThrowBadEs(impObj()->getLocaleMediaName(pPlotSet.impObj(), utf8_to_wstr(canonicalName).c_str(), localeName));
+    PyThrowBadEs(impObj()->getLocaleMediaName(pPlotSet.impObj(), AsWStr(canonicalName), localeName));
     return wstr_to_utf8(localeName);
 }
 
@@ -1364,7 +1364,7 @@ std::string PyDbDictUtil::dictionaryNameAt2(const PyDbObjectId& itemId, const Py
 PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::dictionaryGetAt(id.m_id, utf8_to_wstr(name).c_str(), ownerDictId.m_id));
+    PyThrowBadEs(AcDbDictUtil::dictionaryGetAt(id.m_id, AsWStr(name), ownerDictId.m_id));
     return id;
 }
 
@@ -1384,7 +1384,7 @@ std::string PyDbDictUtil::getColorName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getGroupId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getGroupId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getGroupId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1404,7 +1404,7 @@ std::string PyDbDictUtil::getGroupName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getLayoutId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getLayoutId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getLayoutId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1424,7 +1424,7 @@ std::string PyDbDictUtil::getLayoutName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getMaterialId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getMaterialId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getMaterialId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1444,7 +1444,7 @@ std::string PyDbDictUtil::getMaterialName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getMLStyleId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getMLStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getMLStyleId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1464,7 +1464,7 @@ std::string PyDbDictUtil::getMLStyleName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getPlotSettingsId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getPlotSettingsId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getPlotSettingsId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1484,7 +1484,7 @@ std::string PyDbDictUtil::getPlotSettingsName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getPlotStyleNameId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getPlotStyleNameId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getPlotStyleNameId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1504,7 +1504,7 @@ std::string PyDbDictUtil::getPlotStyleNameName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getTableStyleId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getTableStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getTableStyleId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1524,7 +1524,7 @@ std::string PyDbDictUtil::getTableStyleName(const PyDbObjectId& itemId)
 PyDbObjectId PyDbDictUtil::getVisualStyleId(const std::string& name, const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::getVisualStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    PyThrowBadEs(AcDbDictUtil::getVisualStyleId(id.m_id, AsWStr(name), db.impObj()));
     return id;
 }
 
@@ -1543,46 +1543,46 @@ std::string PyDbDictUtil::getVisualStyleName(const PyDbObjectId& itemId)
 
 bool PyDbDictUtil::hasColor(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasColor(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasColor(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasGroup(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasGroup(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasGroup(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasLayout(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasLayout(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasLayout(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasMaterial(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasMaterial(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasMaterial(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasMLStyle(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasMLStyle(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasMLStyle(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasPlotSettings(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasPlotSettings(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasPlotSettings(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasPlotStyleName(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasPlotStyleName(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasPlotStyleName(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasTableStyle(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasTableStyle(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasTableStyle(AsWStr(name), db.impObj());
 }
 
 bool PyDbDictUtil::hasVisualStyle(const std::string& name, const PyDbDatabase& db)
 {
-    return AcDbDictUtil::hasVisualStyle(utf8_to_wstr(name).c_str(), db.impObj());
+    return AcDbDictUtil::hasVisualStyle(AsWStr(name), db.impObj());
 }
 

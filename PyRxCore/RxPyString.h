@@ -78,79 +78,79 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
 [[nodiscard]] std::string wstr_to_utf8(std::wstring_view wstr);
 [[nodiscard]] std::string wstr_to_utf8(const wchar_t* utf16wc);
 
+// This is for passing const std::string arguments to ARX
+// if in doubt, use utf8_to_wstr that creates a new buffer
 template <size_t StackBufferSize = 256>
-class AcStrConvert {
+class PyUtf8ToWchar {
 public:
-    // 1. Direct constructor for pre-validated stable string_views
-    explicit AcStrConvert(std::string_view utf8_str) noexcept {
-        init(utf8_str);
+    explicit PyUtf8ToWchar(const std::string& str) noexcept {
+        init(str.data(), static_cast<int>(str.size()));
     }
+
+    explicit PyUtf8ToWchar(std::string_view utf8_str) noexcept {
+        init(utf8_str.data(), static_cast<int>(utf8_str.size()));
+    }
+
+    template<size_t N>
+    explicit PyUtf8ToWchar(const char(&str)[N]) noexcept {
+        init(str, static_cast<int>(N - 1));
+    }
+
+    template<typename T> explicit PyUtf8ToWchar(T&&) = delete;
+
+    ~PyUtf8ToWchar() noexcept = default;
 
     [[nodiscard]] operator const wchar_t* () const noexcept { return ptr_; }
 
-    // --- C++20 CONSTRAINED SAFETY CONTROLS ---
-    template<typename T>
-        requires std::convertible_to<T, std::string_view>
-    explicit AcStrConvert(T&&) = delete;
-
-    template<typename T>
-        requires std::convertible_to<T, std::string_view>
-    explicit AcStrConvert(T& v) noexcept {
-        init(std::string_view(v));
-    }
-
-    template<typename T>
-        requires std::convertible_to<T, std::string_view>
-    explicit AcStrConvert(const T& v) noexcept {
-        init(std::string_view(v));
-    }
-
-    AcStrConvert(const AcStrConvert&) = delete;
-    AcStrConvert& operator=(const AcStrConvert&) = delete;
+    PyUtf8ToWchar(const PyUtf8ToWchar&) = delete;
+    PyUtf8ToWchar(PyUtf8ToWchar&&) = delete;
+    PyUtf8ToWchar& operator=(const PyUtf8ToWchar&) = delete;
+    PyUtf8ToWchar& operator=(PyUtf8ToWchar&&) = delete;
 
 private:
-
-    void init(std::string_view utf8_str) noexcept {
-        if (utf8_str.empty()) [[unlikely]] {
+    void init(const char* data, int utf8_len) noexcept 
+    {
+        if (utf8_len <= 0) [[unlikely]] 
+        {
             ptr_ = L"";
             return;
         }
 
-        const int req_size = MultiByteToWideChar(
-            CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), nullptr, 0
+        // --- OPTIMISTIC STACK PASS ---
+        int converted = MultiByteToWideChar(
+            CP_UTF8,
+            0,
+            data,
+            utf8_len,
+            stack_buf_.data(),
+            static_cast<int>(StackBufferSize - 1)
         );
-
-        if (req_size <= 0) [[unlikely]] {
-            ptr_ = L"";
+        if (converted > 0) [[likely]]
+        {
+            stack_buf_[converted] = L'\0';
+            ptr_ = stack_buf_.data();
             return;
         }
 
-        const int total_needed = req_size + 1;
-
-        if (total_needed <= static_cast<int>(StackBufferSize)) 
+        // --- HEAP FALLBACK PATHWAY ---
+        const int req_size = MultiByteToWideChar(CP_UTF8, 0, data, utf8_len, nullptr, 0);
+        if (req_size > 0) [[likely]]
         {
-            MultiByteToWideChar(
-                CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), stack_buf_.data(), req_size
-            );
-            stack_buf_[req_size] = L'\0';
-            ptr_ = stack_buf_.data();
-        }
-        else 
-        {
-            heap_buf_.resize(total_needed);
-            MultiByteToWideChar(
-                CP_UTF8, 0, utf8_str.data(), static_cast<int>(utf8_str.size()), heap_buf_.data(), req_size
-            );
+            heap_buf_.resize(req_size + 1);
+            MultiByteToWideChar(CP_UTF8, 0, data, utf8_len, heap_buf_.data(), req_size);
             heap_buf_[req_size] = L'\0';
             ptr_ = heap_buf_.data();
+            return;
         }
+        ptr_ = L"";
     }
+
     const wchar_t* ptr_ = nullptr;
     std::array<wchar_t, StackBufferSize> stack_buf_;
     std::vector<wchar_t> heap_buf_;
 };
 
-using AcStrConv = AcStrConvert<256>;
+using AsWStr = PyUtf8ToWchar<256>;
 
 //
 bool icompare(const std::wstring& l, const std::wstring& r);

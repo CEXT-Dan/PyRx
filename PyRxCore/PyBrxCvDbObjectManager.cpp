@@ -92,7 +92,7 @@ bool PyBrxCvDbObjectManager::has1(const PyDbObjectId& id) const
 
 bool PyBrxCvDbObjectManager::has2(const std::string& szName) const
 {
-    return impObj()->has(utf8_to_wstr(szName).c_str());
+    return impObj()->has(AsWStr(szName));
 }
 
 bool PyBrxCvDbObjectManager::remove1(const PyDbObjectId& id) const
@@ -102,7 +102,7 @@ bool PyBrxCvDbObjectManager::remove1(const PyDbObjectId& id) const
 
 bool PyBrxCvDbObjectManager::remove2(const std::string& szName) const
 {
-    return impObj()->remove(utf8_to_wstr(szName).c_str());
+    return impObj()->remove(AsWStr(szName));
 }
 
 boost::python::dict PyBrxCvDbObjectManager::toDict() const
@@ -193,7 +193,7 @@ PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(BrxCvDbFileFormatManager*
 
 boost::python::list PyBrxCvDbFileFormatManager::applicableFileFormats(const std::string& fileName) const
 {
-    return ObjectIdArrayToPyList(impObj()->applicableFileFormats(utf8_to_wstr(fileName).c_str()));
+    return ObjectIdArrayToPyList(impObj()->applicableFileFormats(AsWStr(fileName)));
 }
 
 boost::python::list PyBrxCvDbFileFormatManager::allFileFormats() const
@@ -457,7 +457,7 @@ PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager*
 
 PyDbObjectId PyBrxCvDbPointGroupManager::createPointGroup(const std::string& szName) const
 {
-    return PyDbObjectId(impObj()->createPointGroup(utf8_to_wstr(szName).c_str()));
+    return PyDbObjectId(impObj()->createPointGroup(AsWStr(szName)));
 }
 
 boost::python::list PyBrxCvDbPointGroupManager::groupsWithPoint(Adesk::UInt32 number) const
@@ -567,7 +567,7 @@ PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(BrxCvDbSymbolStyleManag
 
 PyDbObjectId PyBrxCvDbSymbolStyleManager::createSymbolStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createSymbolStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createSymbolStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbSymbolStyleManager::managerId()
@@ -661,7 +661,7 @@ PyBrxCvDbLineLabelStyleManager::PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelS
 
 PyDbObjectId PyBrxCvDbLineLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbLineLabelStyleManager::managerId()
@@ -755,7 +755,7 @@ PyBrxCvDbCurveLabelStyleManager::PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLab
 
 PyDbObjectId PyBrxCvDbCurveLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbCurveLabelStyleManager::managerId()
@@ -849,7 +849,7 @@ PyBrxCvDbPointLabelStyleManager::PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLab
 
 PyDbObjectId PyBrxCvDbPointLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbPointLabelStyleManager::managerId()
@@ -943,7 +943,7 @@ PyBrxCvDbSurfaceContourLabelStyleManager::PyBrxCvDbSurfaceContourLabelStyleManag
 
 PyDbObjectId PyBrxCvDbSurfaceContourLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbSurfaceContourLabelStyleManager::managerId()
@@ -1038,7 +1038,7 @@ PyBrxCvDbSurfaceSlopeLabelStyleManager::PyBrxCvDbSurfaceSlopeLabelStyleManager(B
 
 PyDbObjectId PyBrxCvDbSurfaceSlopeLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbSurfaceSlopeLabelStyleManager::managerId()
@@ -1132,7 +1132,7 @@ PyBrxCvDbSurfaceElevationLabelStyleManager::PyBrxCvDbSurfaceElevationLabelStyleM
 
 PyDbObjectId PyBrxCvDbSurfaceElevationLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
-    return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
+    return PyDbObjectId{ impObj()->createLabelStyle(AsWStr(szName)) };
 }
 
 std::string PyBrxCvDbSurfaceElevationLabelStyleManager::managerId()

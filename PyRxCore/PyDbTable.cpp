@@ -1129,7 +1129,7 @@ void PyDbTable::setFormat(int row, int col, const std::string& pszFormat) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
+    return PyThrowBadEs(impObj()->setFormat(row, col, AsWStr(pszFormat)));
 #endif
 }
 
@@ -1171,17 +1171,17 @@ std::string PyDbTable::textStringFmt3(const AcCell& cell, AcValue::FormatOption 
 
 void PyDbTable::setTextString(int row, int col, const std::string& text) const
 {
-    return PyThrowBadEs(impObj()->setTextString(row, col, utf8_to_wstr(text).c_str()));
+    return PyThrowBadEs(impObj()->setTextString(row, col, AsWStr(text)));
 }
 
 void PyDbTable::setTextString2(int row, int col, int nContent, const std::string& text) const
 {
-    return PyThrowBadEs(impObj()->setTextString(row, col, nContent, utf8_to_wstr(text).c_str()));
+    return PyThrowBadEs(impObj()->setTextString(row, col, nContent, AsWStr(text)));
 }
 
 void PyDbTable::setTextString3(const AcCell& cell, const std::string& text) const
 {
-    return PyThrowBadEs(impObj()->setTextString(cell.mnRow, cell.mnColumn, utf8_to_wstr(text).c_str()));
+    return PyThrowBadEs(impObj()->setTextString(cell.mnRow, cell.mnColumn, AsWStr(text)));
 }
 
 PyDbObjectId PyDbTable::textStyle(AcDb::RowType type) const
@@ -1915,7 +1915,7 @@ void PyDbTable::setValue3(int row, int col, int nContent, const PyDbAcValue& val
 
 void PyDbTable::setValue4(int row, int col, int nContent, const std::string& pszText, AcValue::ParseOption nOption) const
 {
-    PyThrowBadEs(impObj()->setValue(row, col, nContent, utf8_to_wstr(pszText).c_str(), nOption));
+    PyThrowBadEs(impObj()->setValue(row, col, nContent, AsWStr(pszText), nOption));
 }
 
 std::string PyDbTable::dataFormat1(int row, int col) const
@@ -1930,12 +1930,12 @@ std::string PyDbTable::dataFormat2(int row, int col, int nContent) const
 
 void PyDbTable::setDataFormat1(int row, int col, const std::string& pszFormat) const
 {
-    return PyThrowBadEs(impObj()->setDataFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
+    return PyThrowBadEs(impObj()->setDataFormat(row, col, AsWStr(pszFormat)));
 }
 
 void PyDbTable::setDataFormat2(int row, int col, int nContent, const std::string& pszFormat) const
 {
-    return PyThrowBadEs(impObj()->setDataFormat(row, col, nContent, utf8_to_wstr(pszFormat).c_str()));
+    return PyThrowBadEs(impObj()->setDataFormat(row, col, nContent, AsWStr(pszFormat)));
 }
 
 bool PyDbTable::hasFormula(int nRow, int nCol, int nContent) const
@@ -1950,7 +1950,7 @@ std::string PyDbTable::getFormula(int nRow, int nCol, int nContent) const
 
 void PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& pszFormula) const
 {
-    return PyThrowBadEs(impObj()->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str()));
+    return PyThrowBadEs(impObj()->setFormula(nRow, nCol, nContent, AsWStr(pszFormula)));
 }
 
 std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId) const
@@ -1977,7 +1977,7 @@ std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, c
 
 void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value) const
 {
-    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, attdefId.m_id, utf8_to_wstr(value).c_str()));
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, attdefId.m_id, AsWStr(value)));
 }
 
 void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value) const
@@ -1985,7 +1985,7 @@ void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const Py
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, AsWStr(value)));
 #endif
 }
 
@@ -1996,7 +1996,7 @@ const std::string PyDbTable::cellStyle(int nRow, int nCol) const
 
 void PyDbTable::setCellStyle(int nRow, int nCol, const std::string& pszCellStyle) const
 {
-    return PyThrowBadEs(impObj()->setCellStyle(nRow, nCol, utf8_to_wstr(pszCellStyle).c_str()));
+    return PyThrowBadEs(impObj()->setCellStyle(nRow, nCol, AsWStr(pszCellStyle)));
 }
 
 double PyDbTable::margin(int nRow, int nCol, AcDb::CellMargin nMargin) const
@@ -2247,19 +2247,19 @@ AcCellRange PyDbTable::cellRange() const
 
 void PyDbTable::clearCustomData(int nrow, int ncol, const std::string& key) const
 {
-    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), nullptr));
+    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, AsWStr(key), nullptr));
 }
 
 PyDbAcValue PyDbTable::getCustomData(int nrow, int ncol, const std::string& key) const
 {
     AcValue val;
-    PyThrowBadEs(impObj()->getCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), &val));
+    PyThrowBadEs(impObj()->getCustomData(nrow, ncol, AsWStr(key), &val));
     return PyDbAcValue{ val };
 }
 
 void PyDbTable::setCustomData(int nrow, int ncol, const std::string& key, const PyDbAcValue& val) const
 {
-    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), val.impObj()));
+    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, AsWStr(key), val.impObj()));
 }
 
 boost::python::tuple PyDbTable::calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle)

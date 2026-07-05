@@ -988,17 +988,17 @@ bool PyDbDatabase::dwgFileWasSavedByAutodeskSoftware() const
 
 void PyDbDatabase::dxfIn(const std::string& dxfFilename) const
 {
-    return PyThrowBadEs(impObj()->dxfIn(utf8_to_wstr(dxfFilename).c_str()));
+    return PyThrowBadEs(impObj()->dxfIn(AsWStr(dxfFilename)));
 }
 
 void PyDbDatabase::dxfOut1(const std::string& dxfFilename) const
 {
-    return PyThrowBadEs(impObj()->dxfOut(utf8_to_wstr(dxfFilename).c_str()));
+    return PyThrowBadEs(impObj()->dxfOut(AsWStr(dxfFilename)));
 }
 
 void PyDbDatabase::dxfOut2(const std::string& dxfFilename, int precision, AcDb::AcDbDwgVersion dwgVer, bool saveThumbnailImage) const
 {
-    return PyThrowBadEs(impObj()->dxfOut(utf8_to_wstr(dxfFilename).c_str(), precision, dwgVer, saveThumbnailImage));
+    return PyThrowBadEs(impObj()->dxfOut(AsWStr(dxfFilename), precision, dwgVer, saveThumbnailImage));
 }
 
 double PyDbDatabase::elevation() const
@@ -1214,11 +1214,11 @@ AcDb::PlotStyleNameType PyDbDatabase::getCePlotStyleNameId(PyDbObjectId& id) con
 bool PyDbDatabase::isAppRegistered(const std::string& pszAppName) const
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
-    return impObj()->isAppRegistered(utf8_to_wstr(pszAppName).c_str());
+    return impObj()->isAppRegistered(AsWStr(pszAppName));
 #else
     AcDbObjectPointer<AcDbRegAppTable> pTable(impObj()->regAppTableId());
     PyThrowBadEs(pTable.openStatus());
-    return pTable->has(utf8_to_wstr(pszAppName).c_str());
+    return pTable->has(AsWStr(pszAppName));
 #endif
 }
 
@@ -1297,12 +1297,12 @@ PyDbObjectId PyDbDatabase::groupDictionaryId() const
 
 void PyDbDatabase::insert1(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase) const
 {
-    return PyThrowBadEs(impObj()->insert(blockId.m_id, utf8_to_wstr(pBlockName).c_str(), db.impObj(), preserveSourceDatabase));
+    return PyThrowBadEs(impObj()->insert(blockId.m_id, AsWStr(pBlockName), db.impObj(), preserveSourceDatabase));
 }
 
 void PyDbDatabase::insert2(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase) const
 {
-    return PyThrowBadEs(impObj()->insert(blockId.m_id, utf8_to_wstr(pSourceBlockName).c_str(), utf8_to_wstr(pDestinationBlockName).c_str(), db.impObj(), preserveSourceDatabase));
+    return PyThrowBadEs(impObj()->insert(blockId.m_id, AsWStr(pSourceBlockName), AsWStr(pDestinationBlockName), db.impObj(), preserveSourceDatabase));
 }
 
 void PyDbDatabase::insert3(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase) const
@@ -1569,7 +1569,7 @@ bool PyDbDatabase::lineWeightDisplay() const
 
 void PyDbDatabase::loadLineTypeFile(const std::string& ltn, const std::string& filename) const
 {
-    return PyThrowBadEs(impObj()->loadLineTypeFile(utf8_to_wstr(ltn).c_str(), utf8_to_wstr(filename).c_str()));
+    return PyThrowBadEs(impObj()->loadLineTypeFile(AsWStr(ltn), AsWStr(filename)));
 }
 
 double PyDbDatabase::loftAng1() const
@@ -1625,15 +1625,15 @@ Adesk::Int16 PyDbDatabase::luprec() const
 void PyDbDatabase::registerApp(const std::string& pszAppName) const
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
-    return PyThrowBadEs(impObj()->registerApp(utf8_to_wstr(pszAppName).c_str()));
+    return PyThrowBadEs(impObj()->registerApp(AsWStr(pszAppName)));
 #else
     AcDbObjectPointer<AcDbRegAppTable> pRat(impObj()->regAppTableId(), AcDb::kForWrite);
     PyThrowBadEs(pRat.openStatus());
-    if (!pRat->has(utf8_to_wstr(pszAppName).c_str()))
+    if (!pRat->has(AsWStr(pszAppName)))
     {
         AcDbRegAppTableRecordPointer pRecord;
         PyThrowBadEs(pRecord.create());
-        PyThrowBadEs(pRecord->setName(utf8_to_wstr(pszAppName).c_str()));
+        PyThrowBadEs(pRecord->setName(AsWStr(pszAppName)));
         PyThrowBadEs(pRat->add(pRecord));
     }
 #endif
@@ -2325,17 +2325,17 @@ void PyDbDatabase::setFillmode(bool mode) const
 
 void PyDbDatabase::saveAs1(const std::string& fileName) const
 {
-    return PyThrowBadEs(impObj()->saveAs(utf8_to_wstr(fileName).c_str()));
+    return PyThrowBadEs(impObj()->saveAs(AsWStr(fileName)));
 }
 
 void PyDbDatabase::saveAs2(const std::string& fileName, const bool bBakAndRename, const AcDb::AcDbDwgVersion dwgVer) const
 {
-    return PyThrowBadEs(impObj()->saveAs(utf8_to_wstr(fileName).c_str(), bBakAndRename, dwgVer));
+    return PyThrowBadEs(impObj()->saveAs(AsWStr(fileName), bBakAndRename, dwgVer));
 }
 
 void PyDbDatabase::setFingerprintGuid(const std::string& newGuid) const
 {
-    return PyThrowBadEs(impObj()->setFingerprintGuid(utf8_to_wstr(newGuid).c_str()));
+    return PyThrowBadEs(impObj()->setFingerprintGuid(AsWStr(newGuid)));
 }
 
 void PyDbDatabase::setFullSaveRequired() const
@@ -2469,7 +2469,7 @@ void PyDbDatabase::setHpOrigin(const AcGePoint2d& origin) const
 
 void PyDbDatabase::setHyperlinkBase(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setHyperlinkBase(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setHyperlinkBase(AsWStr(val)));
 }
 
 void PyDbDatabase::setIndexctl(Adesk::UInt8 val) const
@@ -2832,7 +2832,7 @@ void PyDbDatabase::setPreviewType(Adesk::Int16 val) const
 
 void PyDbDatabase::setProjectName(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setProjectName(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setProjectName(AsWStr(val)));
 }
 
 void PyDbDatabase::setPsltscale(bool scale) const
@@ -3002,7 +3002,7 @@ void PyDbDatabase::setStepsPerSec(double stepsPerSec) const
 
 void PyDbDatabase::setStyleSheet(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setStyleSheet(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setStyleSheet(AsWStr(val)));
 }
 
 void PyDbDatabase::setSurftab1(Adesk::Int16 tab1) const
@@ -3182,7 +3182,7 @@ void PyDbDatabase::setVersionGuid(const std::string& pNewGuid) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setVersionGuid(utf8_to_wstr(pNewGuid).c_str()));
+    return PyThrowBadEs(impObj()->setVersionGuid(AsWStr(pNewGuid)));
 #endif
 }
 

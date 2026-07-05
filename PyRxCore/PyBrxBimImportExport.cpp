@@ -110,12 +110,12 @@ void PyBrxIfcImportOptions::setImportModelOrigin(BimApi::EIfcImportModelOrigin m
 
 void PyBrxIfcImportOptions::importIfcFile1(PyDbDatabase& pDb, const std::string szFilename)
 {
-    PyThrowBadBim(BimApi::importIfcFile(pDb.impObj(), utf8_to_wstr(szFilename).c_str()));
+    PyThrowBadBim(BimApi::importIfcFile(pDb.impObj(), AsWStr(szFilename)));
 }
 
 void PyBrxIfcImportOptions::importIfcFile2(PyDbDatabase& pDb, const std::string szFilename, const PyBrxIfcImportOptions& pOptions)
 {
-    PyThrowBadBim(BimApi::importIfcFile(pDb.impObj(), utf8_to_wstr(szFilename).c_str(), pOptions.impObj()));
+    PyThrowBadBim(BimApi::importIfcFile(pDb.impObj(), AsWStr(szFilename), pOptions.impObj()));
 }
 
 std::string PyBrxIfcImportOptions::className()
@@ -1010,7 +1010,7 @@ bool PyBrxBimIfcExportContext::setIfcRootData1(const PyIfcEntity& ifcObject) con
 
 bool PyBrxBimIfcExportContext::setIfcRootData2(const PyIfcEntity& ifcObject, const std::string& name, const std::string& description, const std::string& guid, const PyIfcEntity& pHist) const
 {
-    return impObj()->setIfcRootData(*ifcObject.impObj(), utf8_to_wstr(name).c_str(), utf8_to_wstr(description).c_str(), utf8_to_wstr(guid).c_str(), pHist.m_pyImp.get());
+    return impObj()->setIfcRootData(*ifcObject.impObj(), AsWStr(name), AsWStr(description), AsWStr(guid), pHist.m_pyImp.get());
 }
 
 bool PyBrxBimIfcExportContext::setLocationRelToWCS(const PyIfcEntity& ifcProduct, const AcGeMatrix3d& relativeCoordSys) const
@@ -1025,12 +1025,12 @@ bool PyBrxBimIfcExportContext::setLocationRelToAssignedSpatialLocation(const PyI
 
 bool PyBrxBimIfcExportContext::setLocationRelToBuilding(const PyIfcEntity& ifcElement, const std::string& buildingName, const AcGeMatrix3d& relativeCoordSys) const
 {
-    return impObj()->setLocationRelToBuilding(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), &relativeCoordSys);
+    return impObj()->setLocationRelToBuilding(*ifcElement.impObj(), AsWStr(buildingName), &relativeCoordSys);
 }
 
 bool PyBrxBimIfcExportContext::setLocationRelToStory(const PyIfcEntity& ifcElement, const std::string& buildingName, const std::string& storyName, const AcGeMatrix3d& relativeCoordSys) const
 {
-    return impObj()->setLocationRelToStory(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str(), &relativeCoordSys);
+    return impObj()->setLocationRelToStory(*ifcElement.impObj(), AsWStr(buildingName), AsWStr(storyName), &relativeCoordSys);
 }
 
 bool PyBrxBimIfcExportContext::setRepresentationAsExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& preferredSweepingDirections) const
@@ -1055,7 +1055,7 @@ bool PyBrxBimIfcExportContext::setMaterialToAssignedComposition(const PyIfcEntit
 
 bool PyBrxBimIfcExportContext::setMaterialToComposition(const PyIfcEntity& ifcObject, const std::string& compositionName, double thicknessVariableLayer) const
 {
-    return impObj()->setMaterialToComposition(*ifcObject.impObj(), utf8_to_wstr(compositionName).c_str(), thicknessVariableLayer);
+    return impObj()->setMaterialToComposition(*ifcObject.impObj(), AsWStr(compositionName), thicknessVariableLayer);
 }
 
 PyIfcEntity PyBrxBimIfcExportContext::getAxis2Placement2D(const AcGeMatrix2d& coordSystem) const
@@ -1210,12 +1210,12 @@ void PyBrxIfcExportOptions::setMvdType(BimApi::BrxIfcExportOptions::EModelViewDe
 
 void PyBrxIfcExportOptions::exportIfcFile1(const PyApDocument& pDoc, const std::string& filename)
 {
-    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), utf8_to_wstr(filename).c_str()));
+    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), AsWStr(filename)));
 }
 
 void PyBrxIfcExportOptions::exportIfcFile2(const PyApDocument& pDoc, const std::string& filename, const PyBrxIfcExportOptions& pOptions)
 {
-    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), utf8_to_wstr(filename).c_str(), pOptions.impObj()));
+    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), AsWStr(filename), pOptions.impObj()));
 }
 
 std::string PyBrxIfcExportOptions::className()

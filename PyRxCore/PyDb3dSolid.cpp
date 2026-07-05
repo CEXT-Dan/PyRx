@@ -275,12 +275,12 @@ PyDbRegion PyDb3dSolid::getSection(const PyGePlane& plane) const
 
 void PyDb3dSolid::stlOut1(const std::string& fileName, Adesk::Boolean asciiFormat) const
 {
-    return PyThrowBadEs(impObj()->stlOut(utf8_to_wstr(fileName).c_str(), asciiFormat));
+    return PyThrowBadEs(impObj()->stlOut(AsWStr(fileName), asciiFormat));
 }
 
 void PyDb3dSolid::stlOut2(const std::string& fileName, Adesk::Boolean asciiFormat, double maxSurfaceDeviation) const
 {
-    return PyThrowBadEs(impObj()->stlOut(utf8_to_wstr(fileName).c_str(), asciiFormat, maxSurfaceDeviation));
+    return PyThrowBadEs(impObj()->stlOut(AsWStr(fileName), asciiFormat, maxSurfaceDeviation));
 }
 
 void PyDb3dSolid::booleanOper(AcDb::BoolOperType operation, const PyDb3dSolid& solid) const

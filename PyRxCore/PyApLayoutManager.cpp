@@ -193,14 +193,14 @@ void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout) const
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName) const
 {
     PyDbObjectId id;
-    PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str()));
+    PyThrowBadEs(impObj()->createLayoutFromTemplate(AsWStr(newLayoutName), id.m_id, AsWStr(templatePath), AsWStr(layoutName)));
     return id;
 }
 
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb) const
 {
     PyDbObjectId id;
-    PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str(), pDb.impObj()));
+    PyThrowBadEs(impObj()->createLayoutFromTemplate(AsWStr(newLayoutName), id.m_id, AsWStr(templatePath), AsWStr(layoutName), pDb.impObj()));
     return id;
 }
 

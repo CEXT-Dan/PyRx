@@ -1425,32 +1425,6 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 
 //-----------------------------------------------------------------------------------
 //PyDb2dPolyline
-static AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
-{
-    //TODO: maybe this can be done better
-    PyAutoLockGIL lock;
-    auto tmp = PyListToPoint3dArray(list);
-    static AcGePoint3dArray arr;
-    arr.removeAll();
-#ifdef _BRXTARGET260
-    for (const auto& item : tmp)
-        arr.append(item);
-#else
-    arr.appendMove(tmp);
-#endif
-    return arr;
-}
-
-static AcGePoint3dArray& PyGePoint3dArrayToAcGePoint3dArrayRef(const PyGePoint3dArray& list)
-{
-    static AcGePoint3dArray arr;
-    arr.removeAll();
-    arr.setPhysicalLength(list.size());
-    for (const auto& item : list)
-        arr.append(item);
-    return arr;
-}
-
 void makePyDb2dPolylineWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -1545,13 +1519,28 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 }
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
-    : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
+    : PyDbCurve(nullptr, false)
 {
+    AcGePoint3dArray verticesArray;
+    Py_ssize_t length = boost::python::len(vertices);
+    verticesArray.setPhysicalLength(length);
+    for (Py_ssize_t i = 0; i < length; ++i) 
+    {
+        AcGePoint3d pt = boost::python::extract<AcGePoint3d>(vertices[i]);
+        verticesArray.append(pt);
+    }
+    AcDb2dPolyline* pPoly = new AcDb2dPolyline(type, verticesArray, 0.0, closed);
+    m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
 }
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const PyGePoint3dArray& vertices, Adesk::Boolean closed)
-    : PyDbCurve(new AcDb2dPolyline(type, PyGePoint3dArrayToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
+    : PyDbCurve(nullptr, false)
 {
+    AcGePoint3dArray verticesArray;
+    for (const auto& item : vertices)
+        verticesArray.append(item);
+    AcDb2dPolyline* pPoly = new AcDb2dPolyline(type, verticesArray, 0.0, closed);
+    m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
 }
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete)
@@ -1872,13 +1861,28 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 }
 
 PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
-    : PyDbCurve(new AcDb3dPolyline(pt, listToAcGePoint3dArrayRef(vertices), closed), true)
+    : PyDbCurve(nullptr, false)
 {
+    AcGePoint3dArray verticesArray;
+    Py_ssize_t length = boost::python::len(vertices);
+    verticesArray.setPhysicalLength(length);
+    for (Py_ssize_t i = 0; i < length; ++i)
+    {
+        AcGePoint3d pt = boost::python::extract<AcGePoint3d>(vertices[i]);
+        verticesArray.append(pt);
+    }
+    AcDb3dPolyline* pPoly = new AcDb3dPolyline(pt, verticesArray, closed);
+    m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
 }
 
 PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const PyGePoint3dArray& vertices, Adesk::Boolean closed)
-    : PyDbCurve(new AcDb3dPolyline(pt, PyGePoint3dArrayToAcGePoint3dArrayRef(vertices), closed), true)
+    : PyDbCurve(nullptr, false)
 {
+    AcGePoint3dArray verticesArray;
+    for (const auto& item : vertices)
+        verticesArray.append(item);
+    AcDb3dPolyline* pPoly = new AcDb3dPolyline(pt, verticesArray, closed);
+    m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
 }
 
 PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id)
@@ -3812,7 +3816,7 @@ PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
 }
 
 PyDbFcf::PyDbFcf(const std::string& str, const AcGePoint3d& pnt, const AcGeVector3d& normal, const AcGeVector3d& direction)
-    : PyDbEntity(new AcDbFcf(utf8_to_wstr(str).c_str(), pnt, normal, direction), true)
+    : PyDbEntity(new AcDbFcf(AsWStr(str), pnt, normal, direction), true)
 {
 }
 
@@ -3828,7 +3832,7 @@ PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 
 void PyDbFcf::setText(const std::string& val) const
 {
-    impObj()->setText(utf8_to_wstr(val).c_str());
+    impObj()->setText(AsWStr(val));
 }
 
 std::string PyDbFcf::text(int lineNo) const
@@ -4366,7 +4370,7 @@ std::string PyDbShape::name() const
 
 void PyDbShape::setName(const std::string& val) const
 {
-    PyThrowBadEs(impObj()->setName(utf8_to_wstr(val).c_str()));
+    PyThrowBadEs(impObj()->setName(AsWStr(val)));
 }
 
 double PyDbShape::rotation() const

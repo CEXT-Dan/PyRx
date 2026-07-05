@@ -70,7 +70,7 @@ void PyDbSymbolTableRecord::setName(const std::string& name) const
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
-    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(impObj()->setName(AsWStr(name)));
 }
 
 bool PyDbSymbolTableRecord::isDependent() const
@@ -766,7 +766,7 @@ void PyDbDimStyleTableRecord::setDimaltmzf(double v) const
 
 void PyDbDimStyleTableRecord::setDimaltmzs(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimaltmzs(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimaltmzs(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimaltrnd(double v) const
@@ -796,7 +796,7 @@ void PyDbDimStyleTableRecord::setDimaltz(int v) const
 
 void PyDbDimStyleTableRecord::setDimapost(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimapost(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimapost(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimarcsym(int v) const
@@ -831,7 +831,7 @@ void PyDbDimStyleTableRecord::setDimblkId(const PyDbObjectId& v) const
 
 void PyDbDimStyleTableRecord::setDimblk(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimblk(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimblk(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimblk1Id(const PyDbObjectId& v) const
@@ -841,7 +841,7 @@ void PyDbDimStyleTableRecord::setDimblk1Id(const PyDbObjectId& v) const
 
 void PyDbDimStyleTableRecord::setDimblk1(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimblk1(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimblk1(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimblk2Id(const PyDbObjectId& v) const
@@ -851,7 +851,7 @@ void PyDbDimStyleTableRecord::setDimblk2Id(const PyDbObjectId& v) const
 
 void PyDbDimStyleTableRecord::setDimblk2(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimblk2(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimldrblkId(const PyDbObjectId& v) const
@@ -861,7 +861,7 @@ void PyDbDimStyleTableRecord::setDimldrblkId(const PyDbObjectId& v) const
 
 void PyDbDimStyleTableRecord::setDimldrblk(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimblk2(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimfxlenOn(bool v) const
@@ -1000,12 +1000,12 @@ void PyDbDimStyleTableRecord::setDimmzf(double v) const
 
 void PyDbDimStyleTableRecord::setDimmzs(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimmzs(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimmzs(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimpost(const std::string& v) const
 {
-    PyThrowBadEs(impObj()->setDimpost(utf8_to_wstr(v).c_str()));
+    PyThrowBadEs(impObj()->setDimpost(AsWStr(v)));
 }
 
 void PyDbDimStyleTableRecord::setDimrnd(double v) const
@@ -2163,7 +2163,7 @@ std::string PyDbViewTableRecord::getCategoryName() const
 
 void PyDbViewTableRecord::setCategoryName(const std::string& categoryName) const
 {
-    return PyThrowBadEs(impObj()->setCategoryName(utf8_to_wstr(categoryName).c_str()));
+    return PyThrowBadEs(impObj()->setCategoryName(AsWStr(categoryName)));
 }
 
 std::string PyDbViewTableRecord::getLayerState() const
@@ -2181,7 +2181,7 @@ std::string PyDbViewTableRecord::getLayerState() const
 
 void PyDbViewTableRecord::setLayerState(const std::string& layerStateName) const
 {
-    return PyThrowBadEs(impObj()->setLayerState(utf8_to_wstr(layerStateName).c_str()));
+    return PyThrowBadEs(impObj()->setLayerState(AsWStr(layerStateName)));
 }
 
 PyDbObjectId PyDbViewTableRecord::getLayout() const
@@ -2833,7 +2833,7 @@ std::string PyDbBlockTableRecord::comments() const
 
 void PyDbBlockTableRecord::setComments(const std::string& pString) const
 {
-    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pString).c_str()));
+    return PyThrowBadEs(impObj()->setComments(AsWStr(pString)));
 }
 
 std::string PyDbBlockTableRecord::pathName() const
@@ -2851,7 +2851,7 @@ std::string PyDbBlockTableRecord::pathName() const
 
 void PyDbBlockTableRecord::setPathName(const std::string& pString) const
 {
-    return PyThrowBadEs(impObj()->setPathName(utf8_to_wstr(pString).c_str()));
+    return PyThrowBadEs(impObj()->setPathName(AsWStr(pString)));
 }
 
 AcGePoint3d PyDbBlockTableRecord::origin() const
@@ -3695,7 +3695,7 @@ PyDbObjectId PyDbLayerTableRecord::plotStyleNameId2(const PyDbObjectId& viewport
 
 void PyDbLayerTableRecord::setPlotStyleName1(const std::string& newName) const
 {
-    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str()));
+    return PyThrowBadEs(impObj()->setPlotStyleName(AsWStr(newName)));
 }
 
 void PyDbLayerTableRecord::setPlotStyleName2(const PyDbObjectId& newId) const
@@ -3705,7 +3705,7 @@ void PyDbLayerTableRecord::setPlotStyleName2(const PyDbObjectId& newId) const
 
 void PyDbLayerTableRecord::setPlotStyleName3(const std::string& newName, const PyDbObjectId& viewportId) const
 {
-    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id));
+    return PyThrowBadEs(impObj()->setPlotStyleName(AsWStr(newName), viewportId.m_id));
 }
 
 void PyDbLayerTableRecord::setPlotStyleName4(const PyDbObjectId& newId, const PyDbObjectId& viewportId) const
@@ -3725,7 +3725,7 @@ std::string PyDbLayerTableRecord::description() const
 
 void PyDbLayerTableRecord::setDescription(const std::string& description) const
 {
-    return PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(description).c_str()));
+    return PyThrowBadEs(impObj()->setDescription(AsWStr(description)));
 }
 
 bool PyDbLayerTableRecord::isHidden() const
@@ -3939,7 +3939,7 @@ std::string PyDbTextStyleTableRecord::fileName() const
 
 void PyDbTextStyleTableRecord::setFileName(const std::string& path) const
 {
-    return PyThrowBadEs(impObj()->setFileName(utf8_to_wstr(path).c_str()));
+    return PyThrowBadEs(impObj()->setFileName(AsWStr(path)));
 }
 
 std::string PyDbTextStyleTableRecord::bigFontFileName() const
@@ -3951,13 +3951,13 @@ std::string PyDbTextStyleTableRecord::bigFontFileName() const
 
 void PyDbTextStyleTableRecord::setBigFontFileName(const std::string& path) const
 {
-    return PyThrowBadEs(impObj()->setBigFontFileName(utf8_to_wstr(path).c_str()));
+    return PyThrowBadEs(impObj()->setBigFontFileName(AsWStr(path)));
 }
 
 void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont) const
 {
     return PyThrowBadEs(impObj()->setFont(
-        utf8_to_wstr(pTypeface).c_str(),
+        AsWStr(pTypeface),
         bold,
         italic,
         (Charset)charset,
@@ -4298,7 +4298,7 @@ std::string PyDbLinetypeTableRecord::comments() const
 
 void PyDbLinetypeTableRecord::setComments(const std::string& pstring) const
 {
-    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pstring).c_str()));
+    return PyThrowBadEs(impObj()->setComments(AsWStr(pstring)));
 }
 
 double PyDbLinetypeTableRecord::patternLength() const
@@ -4420,7 +4420,7 @@ std::string PyDbLinetypeTableRecord::textAt(int index) const
 
 void PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring) const
 {
-    return PyThrowBadEs(impObj()->setTextAt(index, utf8_to_wstr(pstring).c_str()));
+    return PyThrowBadEs(impObj()->setTextAt(index, AsWStr(pstring)));
 }
 
 std::string PyDbLinetypeTableRecord::className()
