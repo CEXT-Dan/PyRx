@@ -95,14 +95,14 @@ void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, in
     {
         if (auto es = acedRegCmds->removeCmd(moduleName, name); es != eOk)
         {
-#ifdef PYRXDEBUG
-            acutPrintf(_T("\removeCmd failed %ls , %ls: "), acadErrorStatusText(es), static_cast<const wchar_t*>(name));
+#ifdef PYRXDEBUG_FULL
+            acutPrintf(_T("\nremoveCmd failed %ls , %ls: "), acadErrorStatusText(es), static_cast<const wchar_t*>(name));
 #endif
         }
     }
     if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
     {
-#ifdef PYRXDEBUG
+#ifdef PYRXDEBUG_FULL
         acutPrintf(_T("\naddCommand failed %ls , %ls: "), acadErrorStatusText(es), static_cast<const wchar_t*>(name));
 #endif
     }
