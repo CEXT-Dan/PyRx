@@ -1521,13 +1521,13 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(nullptr, false)
 {
-    AcGePoint3dArray verticesArray;
-    Py_ssize_t length = boost::python::len(vertices);
+    PyAutoLockGIL lock;
+    using Iter = boost::python::stl_input_iterator<AcGePoint3d>;
+    AcGePoint3dArray verticesArray;                             
+    int length = boost::python::len(vertices);
     verticesArray.setPhysicalLength(length);
-    for (Py_ssize_t i = 0; i < length; ++i) 
-    {
-        AcGePoint3d pt = boost::python::extract<AcGePoint3d>(vertices[i]);
-        verticesArray.append(pt);
+    for (Iter it(vertices), end; it != end; ++it) {
+        verticesArray.append(*it);
     }
     AcDb2dPolyline* pPoly = new AcDb2dPolyline(type, verticesArray, 0.0, closed);
     m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
@@ -1863,13 +1863,13 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(nullptr, false)
 {
+    PyAutoLockGIL lock;
+    using Iter = boost::python::stl_input_iterator<AcGePoint3d>;
     AcGePoint3dArray verticesArray;
-    Py_ssize_t length = boost::python::len(vertices);
+    int length = boost::python::len(vertices);
     verticesArray.setPhysicalLength(length);
-    for (Py_ssize_t i = 0; i < length; ++i)
-    {
-        AcGePoint3d pt = boost::python::extract<AcGePoint3d>(vertices[i]);
-        verticesArray.append(pt);
+    for (Iter it(vertices), end; it != end; ++it) {
+        verticesArray.append(*it);
     }
     AcDb3dPolyline* pPoly = new AcDb3dPolyline(pt, verticesArray, closed);
     m_pyImp.reset(pPoly, PyRxObjectDeleter(true, true));
