@@ -168,15 +168,15 @@ static bp::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus re
 }
 
 //-----------------------------------------------------------------------------------------
-// AcSelectionCallbackGuard requires lock
-struct AcSelectionCallbackGuard
+// AcSSKwCallbackGuard requires lock
+struct AcSSKwCallbackGuard
 {
     using SelectionCallback = struct resbuf* (*)(const ACHAR*);
 
     SelectionCallback m_poldcallback = nullptr;
     inline static PyObject* refcwfunc = nullptr;
 
-    AcSelectionCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = keywordCallback)
+    AcSSKwCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = keywordCallback)
     {
         Py_XINCREF(pfunc);
         Py_XDECREF(refcwfunc);
@@ -185,7 +185,7 @@ struct AcSelectionCallbackGuard
         acedSSSetKwordCallbackPtr(pnewcallback);
     }
 
-    ~AcSelectionCallbackGuard()
+    ~AcSSKwCallbackGuard()
     {
         acedSSSetKwordCallbackPtr(m_poldcallback);
         Py_XDECREF(refcwfunc);
@@ -218,15 +218,15 @@ struct AcSelectionCallbackGuard
 };
 
 //-----------------------------------------------------------------------------------------
-// AcSelectionOtherCallbackGuard requires lock
-struct AcSelectionOtherCallbackGuard
+// AcSSOtherCallbackGuard requires lock
+struct AcSSOtherCallbackGuard
 {
     using SelectionCallback = struct resbuf* (*)(const ACHAR*);
 
     SelectionCallback m_poldcallback = nullptr;
     inline static PyObject* refcwfunc = nullptr;
 
-    AcSelectionOtherCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = otherKeywordCallback)
+    AcSSOtherCallbackGuard(PyObject* pfunc, SelectionCallback pnewcallback = otherKeywordCallback)
     {
         Py_XINCREF(pfunc);
         Py_XDECREF(refcwfunc);
@@ -235,7 +235,7 @@ struct AcSelectionOtherCallbackGuard
         acedSSSetOtherCallbackPtr(pnewcallback);
     }
 
-    ~AcSelectionOtherCallbackGuard()
+    ~AcSSOtherCallbackGuard()
     {
         acedSSSetOtherCallbackPtr(m_poldcallback);
         Py_XDECREF(refcwfunc);
@@ -269,11 +269,11 @@ struct AcSelectionOtherCallbackGuard
 
 //-----------------------------------------------------------------------------------------
 // AcSelectionRemoveCallbackGuard requires lock
-struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
+struct AcSSRemoveCallbackGuard : public AcEdSSGetFilter
 {
     inline static PyObject* refcwfunc = nullptr;
 
-    explicit AcSelectionRemoveCallbackGuard(PyObject* pfunc)
+    explicit AcSSRemoveCallbackGuard(PyObject* pfunc)
         : AcEdSSGetFilter()
     {
         Py_XINCREF(pfunc);
@@ -282,7 +282,7 @@ struct AcSelectionRemoveCallbackGuard : public AcEdSSGetFilter
         addSSgetFilterInputContextReactor(curDoc(), this);
     }
 
-    ~AcSelectionRemoveCallbackGuard()
+    ~AcSSRemoveCallbackGuard()
     {
         removeSSgetFilterInputContextReactor(curDoc(), this);
         Py_XDECREF(refcwfunc);
@@ -795,7 +795,7 @@ PyAcEditor::bptuple PyAcEditor::select3(const bpobject& filter, const bpobject& 
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, pFilter.get(), name));
@@ -829,7 +829,7 @@ bp::tuple PyAcEditor::selectPrompt3(const std::string& add, const std::string& r
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     const CString csAdd = utf8_to_wstr(add).c_str();
@@ -842,7 +842,7 @@ bp::tuple PyAcEditor::selectPrompt3(const std::string& add, const std::string& r
 PyAcEditor::bptuple PyAcEditor::selectKeyword1(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -856,8 +856,8 @@ PyAcEditor::bptuple PyAcEditor::selectKeyword1(const bpobject& prompt, const bpo
 PyAcEditor::bptuple PyAcEditor::selectKeyword2(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
-    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
+    AcSSOtherCallbackGuard othercallbackGuard(ocw.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -871,9 +871,9 @@ PyAcEditor::bptuple PyAcEditor::selectKeyword2(const bpobject& prompt, const bpo
 PyAcEditor::bptuple PyAcEditor::selectKeyword3(const bpobject& prompt, const bpobject& kw, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
-    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
+    AcSSOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -905,7 +905,7 @@ PyAcEditor::bptuple PyAcEditor::selectAll3(const bpobject& filter, const bpobjec
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
@@ -942,7 +942,7 @@ PyAcEditor::bptuple PyAcEditor::selectWindow3(const AcGePoint3d& pt1, const AcGe
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
@@ -970,7 +970,7 @@ PyAcEditor::bptuple PyAcEditor::selectCrossingWindow3(const AcGePoint3d& pt1, co
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_C"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
@@ -1000,7 +1000,7 @@ PyAcEditor::bptuple PyAcEditor::selectFence3(const bpobject& points, const bpobj
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -1031,7 +1031,7 @@ PyAcEditor::bptuple PyAcEditor::selectWindowPolygon3(const bpobject& points, con
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -1062,7 +1062,7 @@ PyAcEditor::bptuple PyAcEditor::selectCrossingPolygon3(const bpobject& points, c
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(AcGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -1131,7 +1131,7 @@ PyAcEditor::bptuple PyAcEditor::ssget3(const std::string& args, const bpobject& 
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     ads_name name = { 0L };
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
@@ -1144,7 +1144,7 @@ PyAcEditor::bptuple PyAcEditor::ssget3(const std::string& args, const bpobject& 
 bp::tuple PyAcEditor::ssgetkw1(const std::string& args, const bp::object& arg1, const bp::object& arg2, const bp::object& filter, const bp::object& cw)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -1159,8 +1159,8 @@ bp::tuple PyAcEditor::ssgetkw1(const std::string& args, const bp::object& arg1, 
 PyAcEditor::bptuple PyAcEditor::ssgetkw2(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
-    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
+    AcSSOtherCallbackGuard othercallbackGuard(ocw.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);
@@ -1175,9 +1175,9 @@ PyAcEditor::bptuple PyAcEditor::ssgetkw2(const std::string& args, const bpobject
 PyAcEditor::bptuple PyAcEditor::ssgetkw3(const std::string& args, const bpobject& arg1, const bpobject& arg2, const bpobject& filter, const bpobject& cw, const bpobject& ocw, const bpobject& rm)
 {
     PyAutoLockGIL lock;
-    AcSelectionCallbackGuard callbackGuard(cw.ptr());
-    AcSelectionOtherCallbackGuard othercallbackGuard(ocw.ptr());
-    AcSelectionRemoveCallbackGuard remcb(rm.ptr());
+    AcSSKwCallbackGuard callbackGuard(cw.ptr());
+    AcSSOtherCallbackGuard othercallbackGuard(ocw.ptr());
+    AcSSRemoveCallbackGuard remcb(rm.ptr());
     PyEdUserInteraction ui;
     ads_name name = { 0L };
     PyEdSelectionSet ss(name);

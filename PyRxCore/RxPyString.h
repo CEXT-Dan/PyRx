@@ -78,7 +78,7 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
 [[nodiscard]] std::string wstr_to_utf8(std::wstring_view wstr);
 [[nodiscard]] std::string wstr_to_utf8(const wchar_t* utf16wc);
 
-// This is for passing const std::string arguments to ARX
+// This is for passing (const std::string&) arguments to ARX
 // if in doubt, use utf8_to_wstr that creates a new buffer
 template <size_t StackBufferSize = 256>
 class PyUtf8ToWchar {
