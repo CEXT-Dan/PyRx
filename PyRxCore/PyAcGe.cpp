@@ -642,8 +642,8 @@ static std::string PyGePoint2dArrayRepr(const PyGePoint2dArray& src)
 
 static boost::shared_ptr<PyGePoint2dArray> PyPoint2dArrayInit(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
-    return boost::shared_ptr<PyGePoint2dArray>(new PyGePoint2dArray(vec.begin(), vec.end()));
+    boost::python::stl_input_iterator<AcGePoint2d>begin(iterable), end;
+    return boost::shared_ptr<PyGePoint2dArray>(new PyGePoint2dArray(begin, end));
 }
 
 // Returns the indices of the convex hull points in the input vector, in counterclockwise order.
@@ -724,8 +724,10 @@ static void PyGePoint2dArrayAppend(PyGePoint2dArray& pnts, const AcGePoint2d& p)
 
 static void PyGePoint2dArrayExtend(PyGePoint2dArray& pnts, const boost::python::object& iterable)
 {
-    for (auto& id : py_list_to_std_vector<AcGePoint2d>(iterable))
-        pnts.push_back(id);
+    using Iter = boost::python::stl_input_iterator<AcGePoint2d>;
+    for (Iter it(iterable), end; it != end; ++it) {
+        pnts.push_back(*it);
+    }
 }
 
 static void PyGePoint2dArrayClear(PyGePoint2dArray& pnts)
@@ -1685,8 +1687,8 @@ static std::string PyGePoint3dArrayRepr(const PyGePoint3dArray& src)
 
 static boost::shared_ptr<PyGePoint3dArray> PyPoint3dArrayInit(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
-    return boost::shared_ptr<PyGePoint3dArray>(new PyGePoint3dArray(vec.begin(), vec.end()));
+    boost::python::stl_input_iterator<AcGePoint3d>begin(iterable), end;
+    return boost::shared_ptr<PyGePoint3dArray>(new PyGePoint3dArray(begin, end));
 }
 
 static AcGePoint3d AcGePoint3dMirror(AcGePoint3d& pnt, const PyGePlane& plane)
@@ -1740,8 +1742,10 @@ static void PyGePoint3dArrayAppend(PyGePoint3dArray& pnts, const AcGePoint3d& p)
 
 static void PyGePoint3dArrayExtend(PyGePoint3dArray& pnts, const boost::python::object& iterable)
 {
-    for (auto& id : py_list_to_std_vector<AcGePoint3d>(iterable))
-        pnts.push_back(id);
+    using Iter = boost::python::stl_input_iterator<AcGePoint3d>;
+    for (Iter it(iterable), end; it != end; ++it) {
+        pnts.push_back(*it);
+    }
 }
 
 static void PyGePoint3dArrayClear(PyGePoint3dArray& pnts)

@@ -1188,10 +1188,10 @@ double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
 boost::python::list PyGeCompositeCurve3d::createFromLineSeg3dArray(const boost::python::list& curveList)
 {
     PyAutoLockGIL lock;
-    const auto& vec = py_list_to_std_vector<PyGeLineSeg3d>(curveList);
+    using Iter = boost::python::stl_input_iterator<PyGeLineSeg3d>;
     Segments segs;
-    for (const auto& item : vec)
-        segs.emplace_back(Segment{ item.startPoint(), item.endPoint() });
+    for (Iter it(curveList), end; it != end; ++it) 
+        segs.emplace_back(Segment{ it->startPoint(), it->endPoint() });
     const auto& plines = connectSegmentsIntoPolylines(segs);
     boost::python::list pylist;
     for (const auto& pline : plines)
@@ -1213,26 +1213,28 @@ boost::python::list PyGeCompositeCurve3d::createFromLineSeg3dArray(const boost::
 // connected curve segments
 boost::python::list PyGeCompositeCurve3d::createFromPolyCurves(const boost::python::list& curveList)
 {
+    using Iter = boost::python::stl_input_iterator<PyGeCurve3d>;
+
     PyAutoLockGIL lock;
     boost::python::list resultList;
 
     // Filter valid curves (non-closed LineSeg3d or CircArc3d)
     std::vector<PyGeCurve3d> validCurves;
-    for (const PyGeCurve3d& pycurve : py_list_to_std_vector<PyGeCurve3d>(curveList))
+    for (Iter it(curveList), end; it != end; ++it)
     {
         // Check if it's a valid curve type
-        const AcGe::EntityId curveType = pycurve.impObj()->type();
+        const AcGe::EntityId curveType = it->impObj()->type();
         const bool isLineSeg = (curveType == AcGe::kLineSeg3d);
         const bool isCircArc = (curveType == AcGe::kCircArc3d);
         if (!isLineSeg && !isCircArc)
             continue;
 
         AcGeInterval interval;
-        pycurve.impObj()->getInterval(interval);
+        it->impObj()->getInterval(interval);
         if (interval.isBounded() == false)  // Unbounded means closed or infinite 
             continue;
 
-        validCurves.push_back(pycurve);
+        validCurves.push_back(*it);
     }
 
     if (validCurves.empty())

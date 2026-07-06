@@ -62,14 +62,16 @@ static void objectIdArrayAppend(PyDbObjectIdArray& inIds, const PyDbObjectId&id)
 
 static void objectIdArrayExtend(PyDbObjectIdArray& inIds, const boost::python::object& iterable)
 {
-    for (auto& id : py_list_to_std_vector<PyDbObjectId>(iterable))
-        inIds.push_back(id);
+    using Iter = boost::python::stl_input_iterator<PyDbObjectId>;
+    for (Iter it(iterable), end; it != end; ++it) {
+        inIds.push_back(it->m_id);
+    }
 }
 
 static boost::shared_ptr<PyDbObjectIdArray> PyObjectIdArrayInit(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<PyDbObjectId>(iterable);
-    return boost::shared_ptr<PyDbObjectIdArray>(new PyDbObjectIdArray(vec.begin(), vec.end()));
+    boost::python::stl_input_iterator<PyDbObjectId>begin(iterable), end;
+    return boost::shared_ptr<PyDbObjectIdArray>(new PyDbObjectIdArray(begin, end));
 }
 
 static void objectIdArrayPop(PyDbObjectIdArray& inIds)
