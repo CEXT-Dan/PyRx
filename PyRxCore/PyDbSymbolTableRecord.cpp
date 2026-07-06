@@ -2663,10 +2663,13 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
 {
 }
 
-PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent) const
+PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent, bool checkOpenStatus /*= true*/) const
 {
-    if (!impObj()->isWriteEnabled())
-        PyThrowBadEs(eNotOpenForWrite);
+    if (checkOpenStatus)
+    {
+        if (!impObj()->isWriteEnabled())
+            PyThrowBadEs(eNotOpenForWrite);
+    }
     PyDbObjectId id;
     PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, ent.impObj()));
     return id;
@@ -2674,13 +2677,14 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent) const
 
 boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::object& entities) const
 {
+    using Iter = boost::python::stl_input_iterator<PyDbEntity>;
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    const auto& ents = py_list_to_std_vector<PyDbEntity>(entities);
-    for (const auto& ent : ents)
-        pylist.append(appendAcDbEntity(ent));
+    for (Iter it(entities), end; it != end; ++it) {
+        pylist.append(appendAcDbEntity(*it,false));
+    }
     return pylist;
 }
 

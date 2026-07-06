@@ -478,7 +478,7 @@ public:
     PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbBlockTableRecord() override = default;
-    PyDbObjectId        appendAcDbEntity(const PyDbEntity& ent) const;
+    PyDbObjectId        appendAcDbEntity(const PyDbEntity& ent, bool checkOpenStatus = true) const;
     boost::python::list appendAcDbEntities(const boost::python::object& entities) const;
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
