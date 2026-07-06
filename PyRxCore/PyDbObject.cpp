@@ -809,6 +809,28 @@ PyDbObjectReactor* PyDbObjectReactorImpl::impObj(const std::source_location& src
     return m_backPtr;
 }
 
+AcArray<AcDbObject*> PyListToPyDbObjectArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyDbObject>;
+    PyAutoLockGIL lock;
+    AcArray<AcDbObject*> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
+boost::python::list AcDbObjectArrayToPyList(const AcArray<AcDbObject*>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(PyDbObject(item, true));
+    return pyPyList;
+}
+
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactor
 void makePyDbObjectReactorWrapper()

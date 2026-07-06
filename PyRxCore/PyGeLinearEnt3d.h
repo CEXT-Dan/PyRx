@@ -47,6 +47,7 @@ public:
 public:
     AcGeLinearEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------
 //AcGeLine3d
 void makePyGeLine3dWrapper();
@@ -98,6 +99,10 @@ public:
 public:
     AcGeLineSeg3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+AcArray<AcGeLineSeg3d>  PyListAcGeLineSeg3dArray(const boost::python::object& iterable);
+boost::python::list     AcGeLineSeg3dArrayToPyList(const AcArray<AcGeLineSeg3d>& arr);
+
 //-----------------------------------------------------------------------------------
 //AcGeRay3d
 void makePyGeRay3ddWrapper();

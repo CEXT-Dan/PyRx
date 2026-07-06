@@ -403,6 +403,19 @@ AcDbEvalVariant* PyDbEvalVariant::impObj(const std::source_location& src /*= std
     return static_cast<AcDbEvalVariant*>(m_pyImp.get());
 }
 
+AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyDbEvalVariant>;
+    PyAutoLockGIL lock;
+    AcArray<AcDbEvalVariant> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
 //-----------------------------------------------------------------------------------------
 //PyDbDynBlockReferenceProperty
 void makePyDbDynBlockReferencePropertyWrapper()

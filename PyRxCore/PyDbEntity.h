@@ -116,23 +116,8 @@ public:
     AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-inline AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::object& iterable)
-{
-    AcArray<AcDbEntity*> arr;
-    auto vec = py_list_to_std_vector<PyDbEntity>(iterable);
-    for (const auto& item : vec)
-        arr.append(item.impObj());
-    return arr;
-}
-
-inline boost::python::list AcDbEntityArrayToPyList(const AcArray<AcDbEntity*>& arr)
-{
-    PyAutoLockGIL lock;
-    boost::python::list pyPyList;
-    for (auto item : arr)
-        pyPyList.append(PyDbEntity(item, true));
-    return pyPyList;
-}
+AcArray<AcDbEntity*>    PyListToPyDbEntityPtrArray(const boost::python::object& iterable);
+boost::python::list     AcDbEntityArrayToPyList(const AcArray<AcDbEntity*>& arr);
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
@@ -217,23 +202,9 @@ private:
     std::shared_ptr<AcDbSubentId> m_pyImp;
 };
 
-inline AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::object& iterable)
-{
-    AcArray<AcDbSubentId*> arr;
-    const auto& vec = py_list_to_std_vector<PyDbSubentId>(iterable);
-    for (const auto& item : vec)
-        arr.append(item.impObj());
-    return arr;
-}
+AcArray<AcDbSubentId*>  PyListToPyDbSubentIdPtrArray(const boost::python::object& iterable);
+boost::python::list     SubentIdArrayToPyList(const AcArray<AcDbSubentId>& subEntIds);
 
-inline boost::python::list SubentIdArrayToPyList(const AcArray<AcDbSubentId>& subEntIds)
-{
-    PyAutoLockGIL lock;
-    boost::python::list pylist;
-    for (const auto& item : subEntIds)
-        pylist.append(PyDbSubentId(item));
-    return pylist;
-}
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbFullSubentPath
@@ -263,22 +234,7 @@ public:
     AcDbFullSubentPath pyImp;
 };
 
-inline AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable)
-{
-    AcArray<AcDbFullSubentPath> arr;
-    const auto& vec = py_list_to_std_vector<PyDbFullSubentPath>(iterable);
-    for (const auto& item : vec)
-        arr.append(item.pyImp);
-    return arr;
-}
-
-inline boost::python::list FullSubentPathArrayToPyList(const AcDbFullSubentPathArray& arr)
-{
-    PyAutoLockGIL lock;
-    boost::python::list pyPyList;
-    for (const auto& item : arr)
-        pyPyList.append(PyDbFullSubentPath(item));
-    return pyPyList;
-}
+AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable);
+boost::python::list         FullSubentPathArrayToPyList(const AcDbFullSubentPathArray& arr);
 
 #pragma pack (pop)

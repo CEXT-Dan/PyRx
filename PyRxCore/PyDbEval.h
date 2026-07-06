@@ -68,16 +68,8 @@ public:
     AcDbEvalVariant* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-inline AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable)
-{
-    PyAutoLockGIL lock;
-    auto vec{ py_list_to_std_vector<PyDbEvalVariant>(iterable) };
-    AcArray<AcDbEvalVariant> arr;
-    arr.setPhysicalLength(vec.size());
-    for (auto& item : vec)
-        arr.append(*item.impObj());
-    return arr;
-}
+AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable);
+
 
 //-----------------------------------------------------------------------------------------
 //PyDbDynBlockReferenceProperty

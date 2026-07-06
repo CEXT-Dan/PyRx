@@ -33,6 +33,19 @@ void makePyGeEntity2dWrapper()
         ;
 }
 
+AcGeVoidPointerArray PyListToGe2dVoidPointerArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyGeEntity2d>;
+    PyAutoLockGIL lock;
+    AcGeVoidPointerArray arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
 struct PyGePyGeEntity2dDeleter
 {
     inline PyGePyGeEntity2dDeleter(bool autoDelete)

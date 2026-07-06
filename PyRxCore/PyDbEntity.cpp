@@ -684,6 +684,28 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
     return static_cast<AcDbEntity*>(m_pyImp.get());
 }
 
+AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyDbEntity>;
+    PyAutoLockGIL lock;
+    AcArray<AcDbEntity*> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
+boost::python::list AcDbEntityArrayToPyList(const AcArray<AcDbEntity*>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(PyDbEntity(item, true));
+    return pyPyList;
+}
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
 void makePyDbBlockBeginWrapper()
@@ -991,6 +1013,27 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
     return static_cast<AcDbSubentId*>(m_pyImp.get());
 }
 
+AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyDbSubentId>;
+    PyAutoLockGIL lock;
+    AcArray<AcDbSubentId*> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
+boost::python::list SubentIdArrayToPyList(const AcArray<AcDbSubentId>& subEntIds)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : subEntIds)
+        pylist.append(PyDbSubentId(item));
+    return pylist;
+}
 //-------------------------------------------------------------------------------------------------------------
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper()
@@ -1018,6 +1061,28 @@ void makePyDbFullSubentPathWrapper()
         .def("__eq__", &PyDbFullSubentPath::operator==)
         .def("__ne__", &PyDbFullSubentPath::operator!=)
         ;
+}
+
+AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyDbFullSubentPath>;
+    PyAutoLockGIL lock;
+    AcArray<AcDbFullSubentPath> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->pyImp);
+    }
+    return arr;
+}
+
+boost::python::list FullSubentPathArrayToPyList(const AcDbFullSubentPathArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(PyDbFullSubentPath(item));
+    return pyPyList;
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath()

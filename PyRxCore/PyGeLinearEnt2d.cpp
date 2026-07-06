@@ -423,6 +423,28 @@ AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::so
     return static_cast<AcGeLineSeg2d*>(m_imp.get());
 }
 
+AcArray<AcGeLineSeg2d> PyListAcGeLineSeg2dArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyGeLineSeg2d>;
+    PyAutoLockGIL lock;
+    AcArray<AcGeLineSeg2d> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(*it->impObj());
+    }
+    return arr;
+}
+
+boost::python::list AcGeLineSeg2dArrayToPyList(const AcArray<AcGeLineSeg2d>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto& item : arr)
+        pyPyList.append(PyGeLineSeg2d(item));
+    return pyPyList;
+}
+
 //-----------------------------------------------------------------------------------------
 //AcGeRay2d  wrapper
 void makePyGeRay2dWrapper()

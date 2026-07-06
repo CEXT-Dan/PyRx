@@ -33,6 +33,20 @@ void makePyGeEntity3dWrapper()
         ;
 }
 
+AcGeVoidPointerArray PyListToGe3dVoidPointerArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyGeEntity3d>;
+    PyAutoLockGIL lock;
+    AcGeVoidPointerArray arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(it->impObj());
+    }
+    return arr;
+}
+
+
 struct PyGePyGeEntity3dDeleter
 {
     inline PyGePyGeEntity3dDeleter(bool autoDelete)

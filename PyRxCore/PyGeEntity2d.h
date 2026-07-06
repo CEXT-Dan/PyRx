@@ -40,15 +40,8 @@ public:
     std::shared_ptr<AcGeEntity2d> m_imp;
 };
 
-inline AcGeVoidPointerArray PyListToGe2dVoidPointerArray(const boost::python::object& iterable)
-{
-    const auto& vec = py_list_to_std_vector<PyGeEntity2d>(iterable);
-    AcGeVoidPointerArray arr;
-    arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
-        arr.append(item.impObj());
-    return arr;
-}
+AcGeVoidPointerArray PyListToGe2dVoidPointerArray(const boost::python::object& iterable);
+
 
 template<typename T, typename CT>
 inline T PyGeEntity2dCast(const PyGeEntity2d& src)

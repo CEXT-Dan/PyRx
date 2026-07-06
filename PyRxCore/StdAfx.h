@@ -180,7 +180,6 @@
 // us
 #include "RxPyString.h"
 #include "PyException.h"
-#include "PyConverter.h"
 #include "Utilities.h"
 
 
@@ -398,27 +397,6 @@ using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexc
         PyDecRef(ptr);
     }) > ;
 
-//-------------------------------------------------------------------------------------
-// py_list_to_std_vector / std_vector_to_py_list
-template<typename T>
-inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
-{
-    PyAutoLockGIL lock;
-    return std::vector< T >(boost::python::stl_input_iterator< T >(iterable),
-        boost::python::stl_input_iterator< T >());
-}
-
-template <class T>
-inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
-{
-    PyAutoLockGIL lock;
-    boost::python::list list;
-    typename std::vector<T>::iterator iter;
-    for (iter = vector.begin(); iter != vector.end(); ++iter)
-        list.append(*iter);
-    return list;
-}
-
 //---------------------------------------------------------------------------------------- -
 //PySharedObjectDeleter
 template<typename T>
@@ -450,6 +428,7 @@ typedef std::vector<AcGePoint3d> PyGePoint3dArray;
 typedef AcArray<AcRxClass*> AcRxClassArray;
 
 //PCH
+#include "PyConverter.h"
 #include "PyRxObject.h"
 #include "PyDbObject.h"
 #include "PyDbEntity.h"

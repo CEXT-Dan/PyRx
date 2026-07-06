@@ -509,6 +509,28 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
     return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
+AcArray<AcGeLineSeg3d> PyListAcGeLineSeg3dArray(const boost::python::object& iterable)
+{
+    using Iter = boost::python::stl_input_iterator<PyGeLineSeg3d>;
+    PyAutoLockGIL lock;
+    AcArray<AcGeLineSeg3d> arr;
+    int length = boost::python::len(iterable);
+    arr.setPhysicalLength(length);
+    for (Iter it(iterable), end; it != end; ++it) {
+        arr.append(*it->impObj());
+    }
+    return arr;
+}
+
+boost::python::list AcGeLineSeg3dArrayToPyList(const AcArray<AcGeLineSeg3d>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto& item : arr)
+        pyPyList.append(PyGeLineSeg3d(item));
+    return pyPyList;
+}
+
 //-----------------------------------------------------------------------------------
 //AcGeRay3d
 void makePyGeRay3ddWrapper()
