@@ -2663,13 +2663,10 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
 {
 }
 
-PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent, bool checkOpenStatus /*= true*/) const
+PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent) const
 {
-    if (checkOpenStatus)
-    {
-        if (!impObj()->isWriteEnabled())
-            PyThrowBadEs(eNotOpenForWrite);
-    }
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyDbObjectId id;
     PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, ent.impObj()));
     return id;
@@ -2682,8 +2679,11 @@ boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python
         PyThrowBadEs(eNotOpenForWrite);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (Iter it(entities), end; it != end; ++it) {
-        pylist.append(appendAcDbEntity(*it,false));
+    for (Iter it(entities), end; it != end; ++it) 
+    {
+        PyDbObjectId id;
+        PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, it->impObj()));
+        pylist.append(id);
     }
     return pylist;
 }

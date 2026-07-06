@@ -8,6 +8,22 @@ from pyrx import Db, Ge
 
 class TestBlockTableRecord:
 
+    def test_append_entitie(self):
+        db = Db.curDb()
+        model = db.modelSpace(Db.OpenMode.kForWrite)
+        newobj = Db.Point(Ge.Point3d(0, 0, 0))
+        id = model.appendAcDbEntity(newobj)
+        assert id.isNull() == False
+
+    def test_append_entities(self):
+        db = Db.curDb()
+        model = db.modelSpace(Db.OpenMode.kForWrite)
+        newobjs = []
+        newobjs.append(Db.Point(Ge.Point3d(0, 0, 0)))
+        newobjs.append(Db.Point(Ge.Point3d(0, 0, 0)))
+        ids = model.appendAcDbEntities(newobjs)
+        assert len(ids) == 2
+
     def test_effective_name(self, db_dynblock: Db.Database):
         bt = Db.BlockTable(db_dynblock.blockTableId())
         for id in bt.toDict().values():
@@ -16,7 +32,7 @@ class TestBlockTableRecord:
                 continue
             assert "*" not in btr.effectiveName()
 
-    @pytest.mark.known_failure_ZRX #fails on side database?
+    @pytest.mark.known_failure_ZRX  # fails on side database?
     def test_visibleObjectIds(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)
@@ -278,7 +294,7 @@ class TestBlockTableRecord:
         # # Test getting block reference IDs
         # ids = btr.getBlockReferenceIds(True, False)
         # assert isinstance(ids, list)
-        
+
     def test_all_iterators(self, db_06457: Db.Database):
         model = db_06457.modelSpace()
         testids = []
@@ -288,4 +304,3 @@ class TestBlockTableRecord:
             pass
         else:
             assert False
-        
