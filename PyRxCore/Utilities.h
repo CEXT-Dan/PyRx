@@ -47,13 +47,13 @@ private:
 // LifeTime for testing;
 struct LifeTime
 {
-    LifeTime();
-    LifeTime(int value);
-    LifeTime(const LifeTime& other);
-    LifeTime(LifeTime&& other);
-    ~LifeTime();
-    LifeTime& operator=(const LifeTime& other);
-    LifeTime& operator=(LifeTime&& other);
+    LifeTime() noexcept;
+    LifeTime(int value) noexcept;
+    LifeTime(const LifeTime& other) noexcept;
+    LifeTime(LifeTime&& other) noexcept;
+    ~LifeTime() noexcept;
+    LifeTime& operator=(const LifeTime& other) noexcept;
+    LifeTime& operator=(LifeTime&& other) noexcept;
     int data = 0;
 };
 

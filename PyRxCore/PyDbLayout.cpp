@@ -200,7 +200,7 @@ std::string PyDbPlotSettings::getPlotSettingsName() const
 
 void PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName) const
 {
-    return PyThrowBadEs(impObj()->setPlotSettingsName(utf8_to_wstr(plotSettingsName).c_str()));
+    return PyThrowBadEs(impObj()->setPlotSettingsName(AsWStr(plotSettingsName)));
 }
 
 std::string PyDbPlotSettings::getPlotCfgName() const
@@ -580,7 +580,7 @@ std::string PyDbLayout::getLayoutName() const
 
 void PyDbLayout::setLayoutName(const std::string& layoutName) const
 {
-    return PyThrowBadEs(impObj()->setLayoutName(utf8_to_wstr(layoutName).c_str()));
+    return PyThrowBadEs(impObj()->setLayoutName(AsWStr(layoutName)));
 }
 
 int PyDbLayout::getTabOrder() const
@@ -738,7 +738,7 @@ PyDbLayoutManager::PyDbLayoutManager(AcDbLayoutManager* ptr, bool autoDelete)
 
 void PyDbLayoutManager::setCurrentLayout1(const std::string& newname) const
 {
-    return PyThrowBadEs(impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str()));
+    return PyThrowBadEs(impObj()->setCurrentLayout(AsWStr(newname)));
 }
 
 void PyDbLayoutManager::setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb) const
@@ -746,7 +746,7 @@ void PyDbLayoutManager::setCurrentLayout2(const std::string& newname, PyDbDataba
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyThrowBadEs(impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str(), pDb.impObj()));
+    return PyThrowBadEs(impObj()->setCurrentLayout(AsWStr(newname), pDb.impObj()));
 }
 
 void PyDbLayoutManager::setCurrentLayoutId(const PyDbObjectId& layoutId) const
@@ -786,7 +786,7 @@ PyDbObjectId PyDbLayoutManager::getActiveLayoutBTRId2(const PyDbDatabase& pDb) c
 
 PyDbObjectId PyDbLayoutManager::findLayoutNamed1(const std::string& name) const
 {
-    return PyDbObjectId(impObj()->findLayoutNamed(utf8_to_wstr(name).c_str()));
+    return PyDbObjectId(impObj()->findLayoutNamed(AsWStr(name)));
 }
 
 PyDbObjectId PyDbLayoutManager::findLayoutNamed2(const std::string& name, const PyDbDatabase& pDb) const
@@ -794,12 +794,12 @@ PyDbObjectId PyDbLayoutManager::findLayoutNamed2(const std::string& name, const 
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyDbObjectId(impObj()->findLayoutNamed(utf8_to_wstr(name).c_str(), pDb.impObj()));
+    return PyDbObjectId(impObj()->findLayoutNamed(AsWStr(name), pDb.impObj()));
 }
 
 bool PyDbLayoutManager::layoutExists1(const std::string& name) const
 {
-    return impObj()->layoutExists(utf8_to_wstr(name).c_str());
+    return impObj()->layoutExists(AsWStr(name));
 }
 
 bool PyDbLayoutManager::layoutExists2(const std::string& name, const PyDbDatabase& pDb) const
@@ -807,12 +807,12 @@ bool PyDbLayoutManager::layoutExists2(const std::string& name, const PyDbDatabas
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return impObj()->layoutExists(utf8_to_wstr(name).c_str(), pDb.impObj());
+    return impObj()->layoutExists(AsWStr(name), pDb.impObj());
 }
 
 void PyDbLayoutManager::copyLayout1(const std::string& copyname, const std::string& newname) const
 {
-    return PyThrowBadEs(impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str()));
+    return PyThrowBadEs(impObj()->copyLayout(AsWStr(copyname), AsWStr(newname)));
 }
 
 void PyDbLayoutManager::copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb) const
@@ -820,12 +820,12 @@ void PyDbLayoutManager::copyLayout2(const std::string& copyname, const std::stri
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyThrowBadEs(impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
+    return PyThrowBadEs(impObj()->copyLayout(AsWStr(copyname), AsWStr(newname), pDb.impObj()));
 }
 
 void PyDbLayoutManager::deleteLayout1(const std::string& delname) const
 {
-    return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str()));
+    return PyThrowBadEs(impObj()->deleteLayout(AsWStr(delname)));
 }
 
 void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& pDb) const
@@ -833,14 +833,14 @@ void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& 
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str(), pDb.impObj()));
+    return PyThrowBadEs(impObj()->deleteLayout(AsWStr(delname), pDb.impObj()));
 }
 
 boost::python::tuple PyDbLayoutManager::createLayout1(const std::string& newname) const
 {
     PyDbObjectId layoutId;
     PyDbObjectId blockTableRecId;
-    PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id));
+    PyThrowBadEs(impObj()->createLayout(AsWStr(newname), layoutId.m_id, blockTableRecId.m_id));
     return boost::python::make_tuple(layoutId, blockTableRecId);
 }
 
@@ -851,13 +851,13 @@ boost::python::tuple PyDbLayoutManager::createLayout2(const std::string& newname
 #endif // ZRXAPP
     PyDbObjectId layoutId;
     PyDbObjectId blockTableRecId;
-    PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
+    PyThrowBadEs(impObj()->createLayout(AsWStr(newname), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
     return boost::python::make_tuple(layoutId, blockTableRecId);
 }
 
 void PyDbLayoutManager::renameLayout1(const std::string& oldname, const std::string& newname) const
 {
-    return PyThrowBadEs(impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str()));
+    return PyThrowBadEs(impObj()->renameLayout(AsWStr(oldname), AsWStr(newname)));
 }
 
 void PyDbLayoutManager::renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb) const
@@ -865,12 +865,12 @@ void PyDbLayoutManager::renameLayout2(const std::string& oldname, const std::str
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyThrowBadEs(impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
+    return PyThrowBadEs(impObj()->renameLayout(AsWStr(oldname), AsWStr(newname), pDb.impObj()));
 }
 
 void PyDbLayoutManager::cloneLayout1(PyDbLayout& pLBTR, const std::string& newname) const
 {
-    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str()));
+    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), AsWStr(newname)));
 }
 
 void PyDbLayoutManager::cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb) const
@@ -878,7 +878,7 @@ void PyDbLayoutManager::cloneLayout2(PyDbLayout& pLBTR, const std::string& newna
 #ifdef ZRXAPP
     AutoWorkingDatabase autowb(pDb.impObj());
 #endif // ZRXAPP
-    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str(), newTabOrder, pDb.impObj()));
+    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), AsWStr(newname), newTabOrder, pDb.impObj()));
 }
 
 PyDbObjectId PyDbLayoutManager::getNonRectVPIdFromClipId(PyDbObjectId& clipId) const

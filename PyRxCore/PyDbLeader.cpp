@@ -358,7 +358,7 @@ void PyDbLeader::setDimldrblk1(const PyDbObjectId& val) const
 
 void PyDbLeader::setDimldrblk2(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setDimldrblk(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setDimldrblk(AsWStr(val)));
 }
 
 void PyDbLeader::setDimlwd(AcDb::LineWeight val) const
@@ -793,7 +793,7 @@ void PyDbMLeader::setBlockAttributeValue(const PyDbObjectId& attdefId, const std
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, utf8_to_wstr(pAtt).c_str()));
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, AsWStr(pAtt)));
 #endif
 }
 
@@ -1787,7 +1787,7 @@ std::string PyDbMLeaderStyle::getName() const
 
 void PyDbMLeaderStyle::setName(const std::string& pszName) const
 {
-    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszName).c_str()));
+    return PyThrowBadEs(impObj()->setName(AsWStr(pszName)));
 }
 
 bool PyDbMLeaderStyle::isRenamable() const
@@ -1802,7 +1802,7 @@ const std::string PyDbMLeaderStyle::description(void) const
 
 void PyDbMLeaderStyle::setDescription(const std::string& pszDescription) const
 {
-    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszDescription).c_str()));
+    return PyThrowBadEs(impObj()->setName(AsWStr(pszDescription)));
 }
 
 Adesk::UInt32 PyDbMLeaderStyle::bitFlags() const
@@ -2000,7 +2000,7 @@ void PyDbMLeaderStyle::setArrowSymbolId1(const std::string& name) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setArrowSymbolId(utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(impObj()->setArrowSymbolId(AsWStr(name)));
 #endif
 }
 
@@ -2163,7 +2163,7 @@ void PyDbMLeaderStyle::setBlockId1(const std::string& name) const
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setBlockId(utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(impObj()->setBlockId(AsWStr(name)));
 #endif
 }
 
@@ -2303,7 +2303,7 @@ bool PyDbMLeaderStyle::overwritePropChanged() const
 PyDbObjectId PyDbMLeaderStyle::postMLeaderStyleToDb(PyDbDatabase& pDb, const std::string& styleName) const
 {
     AcDbObjectId id;
-    PyThrowBadEs(impObj()->postMLeaderStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id));
+    PyThrowBadEs(impObj()->postMLeaderStyleToDb(pDb.impObj(), AsWStr(styleName), id));
     return PyDbObjectId(id);
 }
 

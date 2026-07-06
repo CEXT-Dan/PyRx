@@ -1301,7 +1301,7 @@ std::string PyDbViewport::effectivePlotStyleSheet() const
 
 void PyDbViewport::setPlotStyleSheet(const std::string& val) const
 {
-    return PyThrowBadEs(impObj()->setPlotStyleSheet(utf8_to_wstr(val).c_str()));
+    return PyThrowBadEs(impObj()->setPlotStyleSheet(AsWStr(val)));
 }
 
 bool PyDbViewport::isNonRectClipOn() const

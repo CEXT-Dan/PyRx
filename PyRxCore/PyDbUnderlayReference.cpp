@@ -89,7 +89,7 @@ PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id)
 
 void PyDbUnderlayDefinition::setSourceFileName(const std::string& file) const
 {
-    return PyThrowBadEs(impObj()->setSourceFileName(utf8_to_wstr(file).c_str()));
+    return PyThrowBadEs(impObj()->setSourceFileName(AsWStr(file)));
 }
 
 const std::string PyDbUnderlayDefinition::getSourceFileName() const
@@ -106,7 +106,7 @@ std::string PyDbUnderlayDefinition::getActiveFileName() const
 
 void PyDbUnderlayDefinition::setItemName(const std::string& item) const
 {
-    return PyThrowBadEs(impObj()->setItemName(utf8_to_wstr(item).c_str()));
+    return PyThrowBadEs(impObj()->setItemName(AsWStr(item)));
 }
 
 std::string PyDbUnderlayDefinition::getItemName() const
@@ -121,7 +121,7 @@ void PyDbUnderlayDefinition::load1() const
 
 void PyDbUnderlayDefinition::load2(const std::string& password) const
 {
-    return PyThrowBadEs(impObj()->load(utf8_to_wstr(password).c_str()));
+    return PyThrowBadEs(impObj()->load(AsWStr(password)));
 }
 
 void PyDbUnderlayDefinition::unload() const

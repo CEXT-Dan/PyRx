@@ -327,12 +327,12 @@ Adesk::Boolean PyDbLayerFilter::isValid() const
 
 void PyDbLayerFilter::add(const std::string& pLayer) const
 {
-    PyThrowBadEs(impObj()->add(utf8_to_wstr(pLayer).c_str()));
+    PyThrowBadEs(impObj()->add(AsWStr(pLayer)));
 }
 
 void PyDbLayerFilter::remove(const std::string& pLayer) const
 {
-    PyThrowBadEs(impObj()->remove(utf8_to_wstr(pLayer).c_str()));
+    PyThrowBadEs(impObj()->remove(AsWStr(pLayer)));
 }
 
 std::string PyDbLayerFilter::getAt(int index) const

@@ -78,32 +78,32 @@ void AutoCWD::reset(const std::filesystem::path& pathToSet)
 
 //-----------------------------------------------------------------------------
 // LifeTime for testing;
-LifeTime::LifeTime()
+LifeTime::LifeTime() noexcept
 {
     acutPrintf(L"\nDefault constructor called");
 }
 
-LifeTime::LifeTime(int value) : data(value)
+LifeTime::LifeTime(int value) noexcept : data(value)
 {
     acutPrintf(L"\nParameterized constructor called");
 }
 
-LifeTime::LifeTime(const LifeTime& other) : data(other.data)
+LifeTime::LifeTime(const LifeTime& other) noexcept : data(other.data)
 {
     acutPrintf(L"\nCopy constructor called");
 }
 
-LifeTime::LifeTime(LifeTime&& other) : data(other.data)
+LifeTime::LifeTime(LifeTime&& other) noexcept : data(other.data)
 {
     acutPrintf(L"\nMove constructor called");
 }
 
-LifeTime::~LifeTime()
+LifeTime::~LifeTime() noexcept
 {
     acutPrintf(L"\nDestructor called");
 }
 
-LifeTime& LifeTime::operator=(LifeTime&& other)
+LifeTime& LifeTime::operator=(LifeTime&& other) noexcept
 {
     acutPrintf(L"\nMove assignment operator called");
     if (&other == this)
@@ -112,7 +112,7 @@ LifeTime& LifeTime::operator=(LifeTime&& other)
     return *this;
 }
 
-LifeTime& LifeTime::operator=(const LifeTime& other)
+LifeTime& LifeTime::operator=(const LifeTime& other) noexcept
 {
     acutPrintf(L"\nCopy assignment operator called");
     if (&other == this)
