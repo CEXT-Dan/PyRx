@@ -37,8 +37,17 @@ template<typename T>
 inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    return std::vector< T >(boost::python::stl_input_iterator< T >(iterable),
+    std::vector< T > result;
+
+    if (PySequence_Check(iterable.ptr())) {
+        Py_ssize_t size = PySequence_Size(iterable.ptr());
+        if (size > 0) {
+            result.reserve(static_cast<size_t>(size));
+        }
+    }
+    result.assign(boost::python::stl_input_iterator< T >(iterable),
         boost::python::stl_input_iterator< T >());
+    return result;
 }
 
 template <class T>
