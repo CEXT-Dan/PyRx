@@ -273,7 +273,7 @@ boost::python::tuple PyLayerFilterManager::getFilters()
     AcLyLayerFilter* current = nullptr;
     PyThrowBadEs(imp->getFilters(root, current));
     if (current == nullptr)
-        return boost::python::make_tuple(PyLyLayerFilter(root, false));
+        return boost::python::make_tuple(PyLyLayerFilter(root, false), boost::python::object());
     return boost::python::make_tuple(PyLyLayerFilter(root, false), PyLyLayerFilter(current, false));//current is owned by root
 }
 
