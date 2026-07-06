@@ -307,13 +307,14 @@ struct AcSSFilterCallbackGuard : public AcEdSSGetFilter
             return;
         bp::object py_func((bp::handle<>(bp::borrowed(refcwfunc))));
         bp::object raw_result = py_func(ids);
-        if (bp::extract<bp::list>(raw_result).check())
-        {
-            AcArray<int> arr;
-            for (int idx : py_list_to_std_vector<int>(bp::extract<bp::list>(raw_result)))
-                arr.append(idx);
-            PyThrowBadEs(service.remove(arr));
+        using Iter = boost::python::stl_input_iterator<int>;
+        AcArray<int> arr;
+        int length = boost::python::len(raw_result);
+        arr.setPhysicalLength(length);
+        for (Iter it(raw_result), end; it != end; ++it) {
+            arr.append(*it);
         }
+        PyThrowBadEs(service.remove(arr));
     }
 };
 
