@@ -419,7 +419,7 @@ public:
         return acdbSymUtil()->blockModelSpaceId(pDb);
     }
 
-    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) noexcept 
+    static auto ConvertSSToIdArray(ads_name ssname, AcDbObjectIdArray& ids) noexcept
         -> Acad::PromptStatus
     {
         Adesk::Int32 nSize = 0;
@@ -442,7 +442,7 @@ public:
         return Acad::PromptStatus::eNormal;
     }
 
-    static auto ssget(resbuf* pFilter = nullptr) noexcept 
+    static auto ssget(resbuf* pFilter = nullptr) noexcept
         -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
     {
         AcDbObjectIdArray ids;
@@ -462,7 +462,7 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 
-    static auto postToModelSpace(AcDbEntity* pEnt) noexcept 
+    static auto postToModelSpace(AcDbEntity* pEnt) noexcept
         -> std::tuple<Acad::ErrorStatus, AcDbObjectId>
     {
         if (pEnt == nullptr)

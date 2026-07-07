@@ -594,7 +594,6 @@ std::string PyApResourceOverride::className()
     return std::string{ "CAcModuleResourceOverride" };
 }
 
-
 //-----------------------------------------------------------------------------------------
 //Internal
 void makeInternalWrapper()

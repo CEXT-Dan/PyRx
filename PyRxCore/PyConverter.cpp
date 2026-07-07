@@ -27,7 +27,7 @@ AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
-    if (boost::python::len(iterable) < 2)[[unlikely]]
+    if (boost::python::len(iterable) < 2) [[unlikely]]
         throw PyErrorStatusException(eInvalidInput);
     return AcGePoint2d(
         boost::python::extract<double>(iterable[0]),
