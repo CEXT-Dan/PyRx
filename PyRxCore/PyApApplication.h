@@ -77,6 +77,7 @@ class Internal
 {
 public:
     static boost::python::list  resbufTest(const boost::python::list& list);
+    static boost::python::list  roundTripStringTest(const boost::python::list& list);
     static std::string          stringTest(const std::string& val);
     static std::string          stringUtf8ToWcharTest(const std::string& val);
     static std::string          stringtolower(const std::string& val);

@@ -602,6 +602,7 @@ void makeInternalWrapper()
     class_<Internal>("Internal")
         .def(init<>(DS.ARGS()))
         .def("resbufTest", &Internal::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
+        .def("roundTripStringTest", &Internal::roundTripStringTest, DS.SARGS({ "strings: list[str]" })).staticmethod("roundTripStringTest")
         .def("stringTest", &Internal::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
         .def("stringUtf8ToWcharTest", &Internal::stringUtf8ToWcharTest, DS.SARGS({ "val: str" })).staticmethod("stringUtf8ToWcharTest")
         .def("stringtolower", &Internal::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
@@ -614,6 +615,12 @@ boost::python::list Internal::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
+}
+
+boost::python::list Internal::roundTripStringTest(const boost::python::list& list)
+{
+    auto vec = py_list_to_std_vector<std::string>(list);
+    return std_vector_to_py_list(vec);
 }
 
 std::string Internal::stringTest(const std::string& val)
