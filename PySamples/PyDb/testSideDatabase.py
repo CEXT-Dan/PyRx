@@ -1,5 +1,7 @@
-from pyrx import Ap, Db
 import traceback
+
+from pyrx import Ap, Db
+
 # when working with side dababases, it's important to make sure
 # the database is diposed last
 

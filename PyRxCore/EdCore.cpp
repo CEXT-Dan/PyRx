@@ -329,7 +329,6 @@ void makePyEdCoreWrapper()
         .def("xrefBind", &EdCore::xrefBind2, DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2, DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
-        .def("exceptionTest", &EdCore::exceptionTest, DS.SARGS()).staticmethod("exceptionTest")
         .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage1)
         .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage2, DS.SARGS({ "image: wx.Image", "order: int = 0", "alpha: int = 255" })).staticmethod("addSupplementalCursorImage")
         .def("removeSupplementalCursorImage", &EdCore::removeSupplementalCursorImage, DS.SARGS()).staticmethod("removeSupplementalCursorImage")
@@ -1966,10 +1965,4 @@ PyDbXrefGraph EdCore::curDwgXrefGraph()
     PyDbXrefGraph gr{};
     PyThrowBadEs(acedGetCurDwgXrefGraph(*gr.impObj(), Adesk::kFalse));
     return gr;
-}
-
-std::string EdCore::exceptionTest()
-{
-    PyThrowBadEs(Acad::ErrorStatus::eNotAssociative);
-    return std::string{};
 }

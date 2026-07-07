@@ -9,7 +9,7 @@ the AutoCAD command line once loaded into the system.
 
 import traceback
 
-from pyrx import Ap, Db, Ed, Ge, Gi, Rx
+from pyrx import Ap, Db, Ed, Ge, Gi
 
 # --- Registering Commands ---
 print("Added command = pyselectall")
@@ -307,9 +307,9 @@ def pyssgetkw():
 # === Command: pyssgetkwo ===
 # adds both callback and othercallback"
 # return objectids, an error message or none
-# if callback is not called, it's Likely you hit a built in kw
-def callback(key: str):
-    print("callback", key)
+# if kwcallback is not called, it's Likely you hit a built in kw
+def kwcallback(key: str):
+    print("kwcallback", key)
     db = Db.curDb()
     if key == "1":
         model = db.modelSpace()
@@ -341,7 +341,7 @@ def pyssgetkwo():
             "Add objects [LIne/CIrcle/GEt]: ",
             "Remove objects [LIne/CIrcle/GEt]: ",
         )
-        ps, ss = Ed.Editor.selectKeyword(promptsKW, keyWords, [], callback, othercallback)
+        ps, ss = Ed.Editor.selectKeyword(promptsKW, keyWords, [], kwcallback, othercallback)
         print(ps, ss.size())
     except Exception:
         print(traceback.format_exc())

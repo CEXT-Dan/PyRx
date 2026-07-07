@@ -158,12 +158,6 @@ void makeDbCoreWrapper()
         .def("evaluateFields", &DbCore::evaluateFields1)
         .def("evaluateFields", &DbCore::evaluateFields2, DS.SOVRL(evaluateFieldsOverloads, 4505)).staticmethod("evaluateFields")
         .def("resolveCurrentXRefs", &DbCore::resolveCurrentXRefs, DS.SARGS({ "db: PyDb.Database","useThreadEngine: bool","doNewOnly: bool" })).staticmethod("resolveCurrentXRefs")
-        .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
-        .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
-        .def("stringUtf8ToWcharTest", &DbCore::stringUtf8ToWcharTest, DS.SARGS({ "val: str" })).staticmethod("stringUtf8ToWcharTest")
-        .def("stringtolower", &DbCore::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
-        .def("stringtoupper", &DbCore::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
-        .def("icompare", &DbCore::icompare, DS.SARGS({ "left: str","right: str" })).staticmethod("icompare")
         .def("groupCodeToType", &DbCore::groupCodeToType, DS.SARGS({ "code: PyDb.DxfCode" })).staticmethod("groupCodeToType")
         .def("isVisible", &DbCore::isVisible, DS.SARGS({ "entityId: PyDb.ObjectId" })).staticmethod("isVisible")
         ;
@@ -794,43 +788,6 @@ void DbCore::reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids)
 void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet)
 {
     PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids), bQuiet));
-}
-
-boost::python::list DbCore::resbufTest(const boost::python::list& list)
-{
-    AcResBufPtr ptr(listToResbuf(list));
-    return resbufToList(ptr.get());
-}
-
-std::string DbCore::stringTest(const std::string& val)
-{
-    return wstr_to_utf8(utf8_to_wstr(val));
-}
-
-static std::string stringUtf8ToWcharTestImp(const wchar_t* val)
-{
-    AcString str = val;
-    return wstr_to_utf8(str);
-}
-
-std::string DbCore::stringUtf8ToWcharTest(const std::string& val)
-{
-    return stringUtf8ToWcharTestImp(AsWStr(val));
-}
-
-std::string DbCore::stringtolower(const std::string& val)
-{
-    return wstr_to_utf8(towlower(utf8_to_wstr(val)));
-}
-
-std::string DbCore::stringtoupper(const std::string& val)
-{
-    return wstr_to_utf8(towupper(utf8_to_wstr(val)));
-}
-
-bool DbCore::icompare(const std::string& left, const std::string& right)
-{
-    return ::icompare(utf8_to_wstr(left), utf8_to_wstr(right));
 }
 
 void DbCore::setEnableTightExtents(bool bEnable)

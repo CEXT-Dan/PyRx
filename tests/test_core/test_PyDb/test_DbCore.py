@@ -1,4 +1,4 @@
-from pyrx import Db
+from pyrx import Ap
 
 
 class TestPyDbCore:
@@ -7,7 +7,7 @@ class TestPyDbCore:
         actual = """àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ
         āăąćĉċčďđēĕėęěĝğġģĥħĩīĭįİĳĵķĺļľŀłńņňŋōŏőœŕŗřśŝşšţťŧũūŭůűųŵŷÿ
         ąćęłńóśźż"""
-        assert Db.Core.stringTest(actual) == actual
+        assert Ap.Internal.stringTest(actual) == actual
 
     def test_tolower(self):
         lower = """àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ
@@ -18,7 +18,7 @@ class TestPyDbCore:
         ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸ
         ĄĆĘŁŃÓŚŹŻ"""
 
-        assert Db.Core.stringtolower(upper) == lower
+        assert Ap.Internal.stringtolower(upper) == lower
 
     def test_toupper(self):
         lower = """àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ
@@ -29,7 +29,7 @@ class TestPyDbCore:
         ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸ
         ĄĆĘŁŃÓŚŹŻ"""
 
-        assert Db.Core.stringtoupper(lower) == upper
+        assert Ap.Internal.stringtoupper(lower) == upper
 
     def test_icompare(self):
         lower = """àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ
@@ -39,4 +39,4 @@ class TestPyDbCore:
         upper = """ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
         ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸ
         ĄĆĘŁŃÓŚŹŻ"""
-        assert Db.Core.icompare(upper, lower) == True
+        assert Ap.Internal.icompare(upper, lower) == True

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pyrx import Db
+from pyrx import Ap
 
 
 # test UTF-8  -> UTF-16 -> UTF-8
@@ -8,25 +8,25 @@ class TestUTFConversion:
 
     def test_polish(self):
         val = "ą, ć, ę, ł, ń, ó, ś, ź, ż"
-        assert Db.Core.stringTest(val) == val
+        assert Ap.Internal.stringTest(val) == val
 
     def test_chinese_traditional(self):
         val = "這是一個測試"
-        assert Db.Core.stringTest(val) == val
+        assert Ap.Internal.stringTest(val) == val
 
     def test_chinese_traditional_cmp(self):
         val = "這是一個測試"
-        assert Db.Core.icompare(val, val) == True
+        assert Ap.Internal.icompare(val, val) == True
 
     def test_polish_cmp(self):
-        l = "ą, ć, ę, ł, ń, ó, ś, ź, ż"
-        u = "Ą, Ć, Ę, Ł, Ń, Ó, Ś, Ź, Ż"
-        assert Db.Core.icompare(l, u) == True
+        left = "ą, ć, ę, ł, ń, ó, ś, ź, ż"
+        right = "Ą, Ć, Ę, Ł, Ń, Ó, Ś, Ź, Ż"
+        assert Ap.Internal.icompare(left, right) == True
 
     def test_german_cmp(self):
         """Tests German sharp S (Eszett) expansion."""
-        assert Db.Core.icompare("groß", "GROSS") == True
-        assert Db.Core.icompare("ä, ö, ü", "Ä, Ö, Ü") == True
+        assert Ap.Internal.icompare("groß", "GROSS") == True
+        assert Ap.Internal.icompare("ä, ö, ü", "Ä, Ö, Ü") == True
 
     # locale dependant
     # def test_turkish_cmp(self):

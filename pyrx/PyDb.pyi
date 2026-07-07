@@ -5306,8 +5306,6 @@ class Core:
     @staticmethod
     def hasGeoData(db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def icompare(left: str, right: str, /) -> bool: ...
-    @staticmethod
     def inters(
         from1: PyGe.Point3d,
         to1: PyGe.Point3d,
@@ -5521,8 +5519,6 @@ class Core:
         AcDbHostApplicationServices::DisplayString(). Returns Acad::eOk if successful.
         """
     @staticmethod
-    def resbufTest(resultBuffer: list, /) -> list[tuple[int, Any]]: ...
-    @staticmethod
     def resolveCurrentXRefs(
         db: PyDb.Database, useThreadEngine: bool, doNewOnly: bool, /
     ) -> None: ...
@@ -5552,14 +5548,6 @@ class Core:
         allowed in filenames except the comma, semicolon, accent grave, and equals sign, which are
         also not allowed.
         """
-    @staticmethod
-    def stringTest(val: str, /) -> str: ...
-    @staticmethod
-    def stringUtf8ToWcharTest(val: str, /) -> str: ...
-    @staticmethod
-    def stringtolower(val: str, /) -> str: ...
-    @staticmethod
-    def stringtoupper(val: str, /) -> str: ...
     @staticmethod
     def symUtil() -> SymUtilServices:
         """

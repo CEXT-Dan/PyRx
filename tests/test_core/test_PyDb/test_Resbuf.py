@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pyrx import Db, Ge, Rx
+from pyrx import Ap, Db, Ge, Rx
 
 
 class TestResbuf:
@@ -11,13 +11,13 @@ class TestResbuf:
             (Rx.LispType.kNone, 0),
         ]
         expected = [(5005, "C:ADDNUM"), (5003, 10), (5000, 0)]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_invoke_rtdxf0(self):
         args = [(0, "LEADER")]
         expected = [(0, "LEADER")]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_ssfilters(self):
@@ -37,7 +37,7 @@ class TestResbuf:
             (40, 16.0),
             (-4, "OR>"),
         ]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_xdata_enum(self):
@@ -61,7 +61,7 @@ class TestResbuf:
             (Db.DxfCode.kDxfXdInteger16, 4),
             (Db.DxfCode.kDxfXdControlString, "}"),
         ]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_xdata(self):
@@ -87,7 +87,7 @@ class TestResbuf:
             (1005, "1"),
             (1002, "}"),
         ]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_nested(self):
@@ -109,7 +109,7 @@ class TestResbuf:
             (Rx.LispType.kListEnd, 0),
         ]
 
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_types(self):
@@ -118,8 +118,14 @@ class TestResbuf:
             (Rx.LispType.kDouble, 4.2),
             (Rx.LispType.kInt16, 1),
             (Rx.LispType.kInt32, 2),
-            (Rx.LispType.kPoint3d, Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
-            (Rx.LispType.kVector3d, Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
+            (
+                Rx.LispType.kPoint3d,
+                Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000),
+            ),
+            (
+                Rx.LispType.kVector3d,
+                Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000),
+            ),
         ]
 
         expected = [
@@ -127,21 +133,27 @@ class TestResbuf:
             (Rx.LispType.kDouble, 4.2),
             (Rx.LispType.kInt16, 1),
             (Rx.LispType.kInt32, 2),
-            (Rx.LispType.kPoint3d, Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
-            (Rx.LispType.kVector3d, Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000)),
+            (
+                Rx.LispType.kPoint3d,
+                Ge.Point3d(2.00000000000000, 2.00000000000000, 2.00000000000000),
+            ),
+            (
+                Rx.LispType.kVector3d,
+                Ge.Vector3d(2.00000000000000, 2.00000000000000, 2.00000000000000),
+            ),
         ]
 
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_binary_chunk(self):
         args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b"mystring1"))]
         expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b"mystring1"))]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result
 
     def test_empty_string(self):
         args = [(Rx.LispType.kText, None)]
         expected = [(Rx.LispType.kText, "")]
-        result = Db.Core.resbufTest(args)
+        result = Ap.Internal.resbufTest(args)
         assert expected == result

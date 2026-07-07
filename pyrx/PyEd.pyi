@@ -400,8 +400,6 @@ class Core:
     @staticmethod
     def evaluateLisp(statement: str, /) -> list: ...
     @staticmethod
-    def exceptionTest() -> str: ...
-    @staticmethod
     def findFile(fname: str, /) -> str:
         """
         Deprecated. Searches for the specified file. The result argument must point to a buffer

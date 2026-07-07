@@ -6,6 +6,7 @@
 #include "PyAcadApplication.h"
 #include "PyApDocument.h"
 #include "PyRxAppSettings.h"
+#include "ResultBuffer.h"
 
 #include "PyRxApp.h"
 #include "dwmapi.h"
@@ -591,4 +592,64 @@ void makePyApResourceOverrideWrapper()
 std::string PyApResourceOverride::className()
 {
     return std::string{ "CAcModuleResourceOverride" };
+}
+
+
+//-----------------------------------------------------------------------------------------
+//Internal
+void makeInternalWrapper()
+{
+    PyDocString DS("Internal");
+    class_<Internal>("Internal")
+        .def(init<>(DS.ARGS()))
+        .def("resbufTest", &Internal::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
+        .def("stringTest", &Internal::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
+        .def("stringUtf8ToWcharTest", &Internal::stringUtf8ToWcharTest, DS.SARGS({ "val: str" })).staticmethod("stringUtf8ToWcharTest")
+        .def("stringtolower", &Internal::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
+        .def("stringtoupper", &Internal::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
+        .def("icompare", &Internal::icompare, DS.SARGS({ "left: str","right: str" })).staticmethod("icompare")
+        .def("exceptionTest", &Internal::exceptionTest, DS.SARGS()).staticmethod("exceptionTest")
+        ;
+}
+boost::python::list Internal::resbufTest(const boost::python::list& list)
+{
+    AcResBufPtr ptr(listToResbuf(list));
+    return resbufToList(ptr.get());
+}
+
+std::string Internal::stringTest(const std::string& val)
+{
+    return wstr_to_utf8(utf8_to_wstr(val));
+}
+
+static std::string stringUtf8ToWcharTestImp(const wchar_t* val)
+{
+    AcString str = val;
+    return wstr_to_utf8(str);
+}
+
+std::string Internal::stringUtf8ToWcharTest(const std::string& val)
+{
+    return stringUtf8ToWcharTestImp(AsWStr(val));
+}
+
+std::string Internal::stringtolower(const std::string& val)
+{
+    return wstr_to_utf8(towlower(utf8_to_wstr(val)));
+}
+
+std::string Internal::stringtoupper(const std::string& val)
+{
+    return wstr_to_utf8(towupper(utf8_to_wstr(val)));
+}
+
+bool Internal::icompare(const std::string& left, const std::string& right)
+{
+    return ::icompare(utf8_to_wstr(left), utf8_to_wstr(right));
+}
+
+std::string Internal::exceptionTest()
+{
+    PyThrowBadEs(Acad::ErrorStatus::eNotAssociative);
+    return std::string{};
 }

@@ -207,7 +207,6 @@ public:
     static void                 xrefXBind1(const boost::python::list& symbolIds);
     static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
     static PyDbXrefGraph        curDwgXrefGraph();
-    static std::string          exceptionTest();
 };
 #pragma pack (pop)
 

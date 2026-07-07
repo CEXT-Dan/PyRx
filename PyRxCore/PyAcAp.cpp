@@ -128,6 +128,7 @@ static BOOST_PYTHON_MODULE(PyAp)
     makePyLyLayerFilterWrapper();
     makePyLyLayerGroupWrapper();
     makePyLayerFilterManagerWrapper();
+    makeInternalWrapper();
 
     PyDocString DSCmd("CommandFunction");
     PyDocString DSLsp("LispFunction");
