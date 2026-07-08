@@ -1,3 +1,12 @@
+## v2.2.62
+
+* This release mainly tightens up performance, reduces memory copies.  
+* Use AsWStr over utf8_to_wstr where possible, AsWStr attempts to convert strings on the stack instead or making a copy on the heap.
+* added class PyConverter for converting Python objects to C++, the converter attempts to remove unnecessary memory copies.
+* improve LayerFilterManager::getFilters returns root, none or root, current
+* add Ed.Editor.writeMessage, same a print
+* add Application::refreshMainWindow
+
 ## v2.2.61
 
 * PyRx is now defaulted to utf8 (utf8_mode = 1;)
@@ -83,7 +92,7 @@
 
 ## v2.2.48
 
-* Primarily a build to relax hardware requirements from AVX to SSE2 
+* Primarily a build to relax hardware requirements from AVX to SSE2
 * GstarCad users, this build targets  Build 260123, GRX SDK 2026.01..23
 * added toPoint3dArray toPoint3dList to heavy polylines
 * Add TinTriangle.aspect
@@ -144,8 +153,8 @@ Refactor iterators for SelectionSet, SymbolTable, SymbolTableRecord to make thes
 
 * Added iterator for Application, for iterating over documents
 
-***BREAK***
-I renamed Db.Database.getBlockTable() to Db.Database.blockTable() to be more aligned  with 
+__BREAK__
+I renamed Db.Database.getBlockTable() to Db.Database.blockTable() to be more aligned with
 Db.Database.modelSpace(), Db.Database.currentSpace()
 
 ## v2.2.43
@@ -452,15 +461,13 @@ Added support for BricsCAD beta 2
 * Improved versioning
 * [#278] add BlockTableRecord effectiveName, also attempts to handle the effective name for BricsCAD’s parametric blocks (SR 196681)
 
-### What's Changed
+## What's Changed
 
 * Ruff by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/279>
 * Ruff by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/280>
 * Rework test_runner.py by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/281>
 * Integrate mypy in CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/284>
 * Add pytest to CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/299>
-
-**Full Changelog**: <https://github.com/CEXT-Dan/PyRx/compare/v2.2.6...v2.2.7>
 
 ## v2.2.6
 
@@ -474,14 +481,14 @@ python -m pip install git+<https://github.com/CEXT-Dan/PyRx.git@v2.2.5>
 * [#273] Add support for GStarCAD 2026
 * [#165] finish Ax space
 
-### What's Changed
+## Whats Changed
 
 * Fix invalid syntax and symbols in PyBrxBim.pyi by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/256>
 * Introduce Ruff in CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/261>
 * fix pyrx_imp.py by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/263>
 * Add subprocess calls to run 'ruff check --fix pyrx' in gen_pyi.py by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/264>
 * Decouple pyi generation from RX by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/267>
-* fix **init**.py, missing Ax, Cv, Bim, Brx by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/268>
+* fix __init.py__, missing Ax, Cv, Bim, Brx by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/268>
 * Fix tests not passing in test_pyi_gen.py by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/269>
 * Fix some type hint errors reported by mypy in .pyi files by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/270>
 * class extending BlockReference by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/272>
