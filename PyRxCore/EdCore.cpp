@@ -24,41 +24,6 @@ using namespace boost::python;
 
 void                            ads_regen(void);
 
-#ifdef ZRXAPP
-int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
-extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
-
-extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
-
-#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
-extern Adesk::Boolean           zcedPostCommand(const ACHAR*);
-#endif
-
-#endif// ZRXAPP
-
-
-
-#ifdef GRXAPP
-int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
-extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
-extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
-
-extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-extern bool                     gcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
-
-#endif// GRXAPP
-
-#ifdef BRXAPP
-extern Adesk::Boolean           acedGetPredefinedPattens(AcStringArray& patterns);
-int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
-extern bool                     acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
-extern int                      acedPostCommand(const ACHAR*);
-extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
-extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
-
-#endif// BRXAPP
-
 #ifdef ARXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
@@ -75,8 +40,34 @@ extern bool                     acedLinetypeDialog(AcDbObjectId, bool, ACHAR*&, 
 extern bool                     acedLinetypeDialog(AcDbDatabase* pDb, AcDbObjectId, bool, ACHAR*&, AcDbObjectId&);
 extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 //extern void                     acedLayerMergeDialog(HWND, const AcDbObjectIdArray&);
-
 #endif// ARXAPP
+
+#ifdef BRXAPP
+extern Adesk::Boolean           acedGetPredefinedPattens(AcStringArray& patterns);
+int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern bool                     acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
+extern int                      acedPostCommand(const ACHAR*);
+extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
+#endif// BRXAPP
+
+#ifdef GRXAPP
+int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
+extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
+extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     gcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
+#endif// GRXAPP
+
+#ifdef ZRXAPP
+int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
+extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
+extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
+#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
+extern Adesk::Boolean           zcedPostCommand(const ACHAR*);
+#endif
+#endif// ZRXAPP
 
 //-----------------------------------------------------------------------------------------
 //Util

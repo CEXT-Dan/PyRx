@@ -772,7 +772,7 @@ PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
 
 std::string PyDbDatabaseSummaryInfo::getTitle() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getTitle(str.buf));
     return wstr_to_utf8(str.buf);
@@ -790,7 +790,7 @@ void PyDbDatabaseSummaryInfo::setTitle(const std::string& title) const
 
 std::string PyDbDatabaseSummaryInfo::getSubject() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getSubject(str.buf));
     return wstr_to_utf8(str.buf);
@@ -808,7 +808,7 @@ void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject) const
 
 std::string PyDbDatabaseSummaryInfo::getAuthor() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getAuthor(str.buf));
     return wstr_to_utf8(str.buf);
@@ -826,7 +826,7 @@ void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author) const
 
 std::string PyDbDatabaseSummaryInfo::getKeywords() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getKeywords(str.buf));
     return wstr_to_utf8(str.buf);
@@ -844,7 +844,7 @@ void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist) const
 
 std::string PyDbDatabaseSummaryInfo::getComments() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getComments(str.buf));
     return wstr_to_utf8(str.buf);
@@ -862,7 +862,7 @@ void PyDbDatabaseSummaryInfo::setComments(const std::string& comments) const
 
 std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getLastSavedBy(str.buf));
     return wstr_to_utf8(str.buf);
@@ -880,7 +880,7 @@ void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy) con
 
 std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getRevisionNumber(str.buf));
     return wstr_to_utf8(str.buf);
@@ -898,7 +898,7 @@ void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumbe
 
 std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr str;
     PyThrowBadEs(impObj()->getHyperlinkBase(str.buf));
     return wstr_to_utf8(str.buf);
@@ -936,7 +936,7 @@ void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key) c
 
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::string& customInfoKey) const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr value;
     PyThrowBadEs(impObj()->getCustomSummaryInfo(AsWStr(customInfoKey), value.buf));
     PyAutoLockGIL lock;
@@ -953,7 +953,7 @@ boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) c
 {
     if (index >= numCustomInfo())
         throw std::out_of_range{ "IndexError " };
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr key;
     RxAutoOutStr value;
     PyThrowBadEs(impObj()->getCustomSummaryInfo(index, key.buf, value.buf));
@@ -980,7 +980,7 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string
 
 static bool hasKeyimpl(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     RxAutoOutStr dummy;
     return imp->getCustomSummaryInfo(key, dummy.buf) == eOk;
 #else
@@ -1016,7 +1016,7 @@ boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
 
     for (int idx = 0; idx < this->numCustomInfo(); idx++)
     {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
         RxAutoOutStr key;
         RxAutoOutStr value;
         if (impObj()->getCustomSummaryInfo(idx, key.buf, value.buf) == eOk)
