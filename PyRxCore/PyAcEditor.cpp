@@ -424,7 +424,7 @@ void makePyEditorWrapper()
         .def("selectFence", &PyAcEditor::selectFence3,
             DS.SARGS({ "points:Collection[PyGe.Point3d]","filter:Collection[tuple[int, Any]] = ...","filterCallback:Any = ..." }, 11344)).staticmethod("selectFence")
 
-        .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
+        .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS(19146)).staticmethod("selectImplied")
 
         .def("selectPrevious", &PyAcEditor::selectPrevious1)
         .def("selectPrevious", &PyAcEditor::selectPrevious2,

@@ -2076,7 +2076,10 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]: ...
+    def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+        """
+        command flags USEPICKSET and REDRAW must be used in order for selectImplied to work.
+        """
     @staticmethod
     def selectKeyword(
         promptsKW: tuple[str, str],
