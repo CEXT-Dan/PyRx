@@ -848,7 +848,7 @@ void PyEditorReactor::docCloseWillStart(AcDbDatabase* pDwg)
     docCloseWillStartWr(dwg);
 }
 
-#if !defined(_BRXTARGET270)
+#if !defined(_BRXTARGET260)
 void PyEditorReactor::beginCloseAll()
 {
     if (reg_beginCloseAll == false)

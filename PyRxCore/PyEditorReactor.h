@@ -104,7 +104,7 @@ public:
     virtual void beginDocClose(AcDbDatabase* pDwg) override;
     virtual void docCloseAborted(AcDbDatabase* pDwg) override;
     virtual void docCloseWillStart(AcDbDatabase* pDwg) override;
-#if !defined(_BRXTARGET270)
+#if !defined(_BRXTARGET260)
     virtual void beginCloseAll() override;
 #endif
     virtual void beginQuit() override;
