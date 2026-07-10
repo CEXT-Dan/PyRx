@@ -626,7 +626,7 @@ bool PyDbHandle::operator==(const PyDbHandle& rhs) const
 // PyDbXrefObjectId
 void makePyDbXrefObjectIdWrapper()
 {
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     PyDocString DS("XrefObjectId");
     class_<PyDbXrefObjectId>("XrefObjectId")
         .def(init<>(DS.ARGS()))
@@ -646,7 +646,7 @@ void makePyDbXrefObjectIdWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 PyDbXrefObjectId::PyDbXrefObjectId()
 {
 }

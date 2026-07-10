@@ -1001,7 +1001,7 @@ IAcSmPublishOptions2* PySmPublishOptionsImpl::impObj2(const std::source_location
     throw PyNullObject(src);
 }
 #endif
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 IAcSmPublishOptions3* PySmPublishOptionsImpl::impObj3(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1014,7 +1014,7 @@ IAcSmPublishOptions3* PySmPublishOptionsImpl::impObj3(const std::source_location
     throw PyNullObject(src);
 }
 #endif
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 IAcSmPublishOptions4* PySmPublishOptionsImpl::impObj4(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1780,7 +1780,7 @@ IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std:
     return static_cast<IAcSmSheetSet*>(m_pimpl.GetInterfacePtr());
 }
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 IAcSmSheetSet2* PySmSheetSetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)

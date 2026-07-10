@@ -74,7 +74,7 @@ void makePyDbFieldWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
 #endif
         .export_values()
@@ -121,7 +121,7 @@ void makePyDbFieldWrapper()
         .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
@@ -168,7 +168,7 @@ PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), AsWStr(pszPropName)));
@@ -217,7 +217,7 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToTextField());
@@ -325,7 +325,7 @@ void PyDbField::setData1(const std::string& key, const PyDbAcValue& value) const
 
 void PyDbField::setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->setData(AsWStr(key), value.impObj(), bRecursive));
@@ -724,7 +724,7 @@ bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
 
 AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 {
-#if defined(_ZRXTARGET270) || defined(_BRXTARGET260)
+#if defined(_ZRXTARGET270) || defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return acdbGetFieldEngine()->evaluationOption();
@@ -733,7 +733,7 @@ AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
 
 void PyDbFieldEngine::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-#if defined(_ZRXTARGET270) || defined(_BRXTARGET260)
+#if defined(_ZRXTARGET270) || defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(acdbGetFieldEngine()->setEvaluationOption(nEvalOption));

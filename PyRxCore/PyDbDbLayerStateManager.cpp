@@ -147,7 +147,7 @@ std::string PyDbDbLayerStateManager::getLayerStateDescription(const std::string&
 
 bool PyDbDbLayerStateManager::layerStateHasViewportData(const std::string& sName) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->layerStateHasViewportData(AsWStr(sName));

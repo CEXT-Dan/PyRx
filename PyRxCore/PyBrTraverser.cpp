@@ -74,7 +74,7 @@ AcBr::ValidationLevel PyBrTraverser::getValidationLevel() const
 
 Adesk::Boolean PyBrTraverser::brepChanged() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->brepChanged();
@@ -753,7 +753,7 @@ void PyBrEdgeLoopTraverser::setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge
 
 void PyBrEdgeLoopTraverser::setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadBr(impObj()->setEdge(*vertexEdge.impObj()));

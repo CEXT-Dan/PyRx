@@ -382,7 +382,7 @@ bool PyCAdUiPaletteSet::autoRollupStyle() const
 
 bool PyCAdUiPaletteSet::propertiesMenuStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->PropertiesMenuStyle() == TRUE;
@@ -391,7 +391,7 @@ bool PyCAdUiPaletteSet::propertiesMenuStyle() const
 
 bool PyCAdUiPaletteSet::closeButtonStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->CloseButtonStyle() == TRUE;
@@ -400,7 +400,7 @@ bool PyCAdUiPaletteSet::closeButtonStyle() const
 
 bool PyCAdUiPaletteSet::singlePaletteTabStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->SinglePaletteTabStyle() == TRUE;
@@ -409,7 +409,7 @@ bool PyCAdUiPaletteSet::singlePaletteTabStyle() const
 
 bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->UseSinglePaletteTabNameStyle() == TRUE;
@@ -423,7 +423,7 @@ bool PyCAdUiPaletteSet::editNameStyle() const
 
 bool PyCAdUiPaletteSet::snapStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->SnapStyle() == TRUE;
@@ -432,7 +432,7 @@ bool PyCAdUiPaletteSet::snapStyle() const
 
 bool PyCAdUiPaletteSet::showRollupButtonStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->ShowRollupButtonStyle() == TRUE;
@@ -441,7 +441,7 @@ bool PyCAdUiPaletteSet::showRollupButtonStyle() const
 
 bool PyCAdUiPaletteSet::showIconStyle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->ShowIconStyle() == TRUE;
@@ -483,7 +483,7 @@ bool PyCAdUiPaletteSet::setOpacity(int nOpacity) const
 
 int PyCAdUiPaletteSet::getRolloverOpacity() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->GetRolloverOpacity();
@@ -492,7 +492,7 @@ int PyCAdUiPaletteSet::getRolloverOpacity() const
 
 bool PyCAdUiPaletteSet::setRolloverOpacity(int nOpacity) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->SetRolloverOpacity(nOpacity) == TRUE;

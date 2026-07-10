@@ -8,7 +8,7 @@ using namespace boost::python;
 
 void makePyGeSurfSurfIntWrapper()
 {
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- srf1: PyGe.Surface, srf2: PyGe.Surface\n"
@@ -39,7 +39,7 @@ void makePyGeSurfSurfIntWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 PyGeSurfSurfInt::PyGeSurfSurfInt()
     : PyGeEntity3d(new AcGeSurfSurfInt())
 {

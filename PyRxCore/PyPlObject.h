@@ -290,7 +290,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyPlPrecisionEntry
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 void makePyPlPrecisionEntryWrapper();
 class PyPlPrecisionEntry : public PyPlObject
 {

@@ -5,7 +5,7 @@
 #include "PyGePlane.h"
 
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 
 using namespace boost::python;
 

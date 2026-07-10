@@ -21,7 +21,7 @@ static BOOST_PYTHON_MODULE(PyPl)
     makePyPlPlotInfoValidatorWrapper();
     makePyPlPlotProgressDialogWrapper();
     makePyPlPlotConfigInfoWrapper();
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     makePyPlPrecisionEntryWrapper();
 #endif
     makePyPlPlotConfigManagerWrapper();

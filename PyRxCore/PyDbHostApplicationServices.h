@@ -9,7 +9,7 @@ class PyDbPlotSettings;
 class PyDbPlotSettingsValidator;
 class AcadInternalServices;
 
-#if (defined(_ARXTARGET) && (_ARXTARGET >= 260)) || defined(_BRXTARGET260)
+#if (defined(_ARXTARGET) && (_ARXTARGET >= 260)) || defined(_BRXTARGET270)
 #define PYRXOVERRIDE
 #else
 #define PYRXOVERRIDE override

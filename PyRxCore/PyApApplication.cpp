@@ -36,6 +36,8 @@ static const TCHAR* getComAPIVer()
     return L"BRX25";
 #elif defined(_BRXTARGET) && _BRXTARGET == 260
     return L"BRX26";
+#elif defined(_BRXTARGET) && _BRXTARGET == 270
+    return L"BRX27";
 #elif defined(_GRXTARGET) && _GRXTARGET == 240
     return L"GRX24";
 #elif defined(_GRXTARGET) && _GRXTARGET == 250
@@ -136,7 +138,7 @@ PyApDocManager PyApApplication::docManager()
 void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
 {
     HICON hIcon = 0;
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
 #elif defined(_ZRXTARGET270)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));

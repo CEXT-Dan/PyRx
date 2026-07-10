@@ -19,7 +19,7 @@ void makePyDbActionsToEvaluateCallbackWrapper()
         ;
 }
 
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
 void PyDbActionsToEvaluateCallback::needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso /*= true*/)
 {
     if (reg_needsToEvaluate)
@@ -409,7 +409,7 @@ bool PyDbAssocDependency::isRelevantChange() const
 
 bool PyDbAssocDependency::isDependentOnTheSameThingAs(const PyDbAssocDependency& pOtherDependency) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->isDependentOnTheSameThingAs(pOtherDependency.impObj());
@@ -418,7 +418,7 @@ bool PyDbAssocDependency::isDependentOnTheSameThingAs(const PyDbAssocDependency&
 
 bool PyDbAssocDependency::isDependentOnObjectReadOnly() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->isDependentOnObjectReadOnly();
@@ -427,7 +427,7 @@ bool PyDbAssocDependency::isDependentOnObjectReadOnly() const
 
 bool PyDbAssocDependency::isEqualTo(const PyDbAssocDependency& pOtherDependency) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost{};
 #else
     return impObj()->isEqualTo(pOtherDependency.impObj());
@@ -461,7 +461,7 @@ void PyDbAssocDependency::copied(const PyDbObject& dbObj, const PyDbObject& pNew
 
 void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setPrevDependencyOnObject(depId.m_id);
@@ -470,7 +470,7 @@ void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) c
 
 void PyDbAssocDependency::setNextDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET260) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setNextDependencyOnObject(depId.m_id);
@@ -860,7 +860,7 @@ boost::python::list PyDbAssocAction::getDependentObjects(bool readDependenciesWa
 
 bool PyDbAssocAction::isOwnedDependency(const PyDbAssocDependency& pDependency) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isOwnedDependency(pDependency.impObj());
@@ -869,7 +869,7 @@ bool PyDbAssocAction::isOwnedDependency(const PyDbAssocDependency& pDependency) 
 
 bool PyDbAssocAction::isExternalDependency(const PyDbAssocDependency& pDependency) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isExternalDependency(pDependency.impObj());
@@ -883,7 +883,7 @@ bool PyDbAssocAction::isRelevantDependencyChange(const PyDbAssocDependency& pDep
 
 bool PyDbAssocAction::hasDependencyCachedValue(const PyDbAssocDependency& pDependency) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->hasDependencyCachedValue(pDependency.impObj());
@@ -892,7 +892,7 @@ bool PyDbAssocAction::hasDependencyCachedValue(const PyDbAssocDependency& pDepen
 
 bool PyDbAssocAction::areDependenciesOnTheSameThing(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->areDependenciesOnTheSameThing(pDependency1.impObj(), pDependency2.impObj());
@@ -901,7 +901,7 @@ bool PyDbAssocAction::areDependenciesOnTheSameThing(const PyDbAssocDependency& p
 
 bool PyDbAssocAction::areDependenciesEqual(const PyDbAssocDependency& pDependency1, const PyDbAssocDependency& pDependency2) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->areDependenciesEqual(pDependency1.impObj(), pDependency2.impObj());
@@ -983,7 +983,7 @@ PyDbObjectId PyDbAssocAction::objectThatOwnsNetworkInstance() const
 
 void PyDbAssocAction::dragStatus(const AcDb::DragStat status) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     impObj()->dragStatus(status);
@@ -997,7 +997,7 @@ void PyDbAssocAction::removeAllParams(bool alsoEraseThem)
 
 int PyDbAssocAction::paramCount() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->paramCount();
@@ -1057,7 +1057,7 @@ boost::python::list PyDbAssocAction::ownedValueParamNames() const
 
 boost::python::tuple PyDbAssocAction::getValueParamArray(const std::string& paramName) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     AcArray<AcDbEvalVariant> values;
@@ -1084,7 +1084,7 @@ boost::python::tuple PyDbAssocAction::getValueParam(const std::string& paramName
 
 boost::python::list PyDbAssocAction::setValueParamArray(const std::string& paramName, const boost::python::list& values, const boost::python::list& expressions, const boost::python::list& evaluatorIds, bool silentMode) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     AcArray<AcDbEvalVariant> acvalues;

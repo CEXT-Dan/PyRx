@@ -143,7 +143,7 @@ void makePyDbDimensionWrapper()
         .def("cast", &PyDbDimension::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
     enum_<AcDbDimension::DimInspect>("DimInspect")
         .value("kShapeRemove", AcDbDimension::DimInspect::kShapeRemove)
         .value("kShapeRound", AcDbDimension::DimInspect::kShapeRound)
@@ -155,7 +155,7 @@ void makePyDbDimensionWrapper()
         ;
 #endif
 
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
     enum_<AcDbDimension::CenterMarkType>("CenterMarkType")
         .value("kMark", AcDbDimension::CenterMarkType::kMark)
         .value("kLine", AcDbDimension::CenterMarkType::kLine)
@@ -187,7 +187,7 @@ PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool e
 
 boost::python::tuple PyDbDimension::textDefinedSize() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -200,7 +200,7 @@ boost::python::tuple PyDbDimension::textDefinedSize() const
 
 void PyDbDimension::setTextDefinedSize(double width, double height) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     impObj()->setTextDefinedSize(width, height);
@@ -209,7 +209,7 @@ void PyDbDimension::setTextDefinedSize(double width, double height) const
 
 void PyDbDimension::resetTextDefinedSize() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     impObj()->resetTextDefinedSize();
@@ -243,7 +243,7 @@ void PyDbDimension::useDefaultTextPosition() const
 
 void PyDbDimension::setUsingDefaultTextPosition(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUsingDefaultTextPosition(val));
@@ -463,7 +463,7 @@ void PyDbDimension::setDimExt2Linetype(const PyDbObjectId& linetype) const
 
 void PyDbDimension::removeTextField() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeTextField());
@@ -472,7 +472,7 @@ void PyDbDimension::removeTextField() const
 
 void PyDbDimension::fieldToMText(PyDbMText& pDimMText) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->fieldToMText(pDimMText.impObj()));
@@ -481,7 +481,7 @@ void PyDbDimension::fieldToMText(PyDbMText& pDimMText) const
 
 void PyDbDimension::fieldFromMText(PyDbMText& pDimMText) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->fieldFromMText(pDimMText.impObj()));
@@ -490,7 +490,7 @@ void PyDbDimension::fieldFromMText(PyDbMText& pDimMText) const
 
 bool PyDbDimension::isHorizontalRefTextRotation() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isHorizontalRefTextRotation();
@@ -499,7 +499,7 @@ bool PyDbDimension::isHorizontalRefTextRotation() const
 
 void PyDbDimension::setHorizontalRefTextRotation(bool newVal) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setHorizontalRefTextRotation(newVal));
@@ -587,7 +587,7 @@ void PyDbDimension::setInspectionLabel(const std::string& label) const
 
 boost::python::tuple PyDbDimension::isConstraintObject() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -600,7 +600,7 @@ boost::python::tuple PyDbDimension::isConstraintObject() const
 
 bool PyDbDimension::isConstraintDynamic(void) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isConstraintDynamic();
@@ -609,7 +609,7 @@ bool PyDbDimension::isConstraintDynamic(void) const
 
 void PyDbDimension::setConstraintDynamic(bool bDynamic) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setConstraintDynamic(bDynamic));
@@ -618,7 +618,7 @@ void PyDbDimension::setConstraintDynamic(bool bDynamic) const
 
 bool PyDbDimension::shouldParticipateInOPM(void) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->shouldParticipateInOPM();
@@ -627,7 +627,7 @@ bool PyDbDimension::shouldParticipateInOPM(void) const
 
 void PyDbDimension::setShouldParticipateInOPM(bool bShouldParticipate) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setShouldParticipateInOPM(bShouldParticipate);
@@ -636,7 +636,7 @@ void PyDbDimension::setShouldParticipateInOPM(bool bShouldParticipate) const
 
 double PyDbDimension::centerMarkSize() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->centerMarkSize();
@@ -967,7 +967,7 @@ void PyDbDimension::setToleranceSuppressZeroInches(bool val) const
 #endif
 }
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 AcDbDimension::CenterMarkType PyDbDimension::centerMarkType() const
 {
     return impObj()->centerMarkType();
@@ -1138,7 +1138,7 @@ void PyDb2LineAngularDimension::setXLine2End(const AcGePoint3d& val) const
 
 bool PyDb2LineAngularDimension::extArcOn() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcOn();
@@ -1147,7 +1147,7 @@ bool PyDb2LineAngularDimension::extArcOn() const
 
 void PyDb2LineAngularDimension::setExtArcOn(bool value) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcOn(value));
@@ -1304,7 +1304,7 @@ void PyDb3PointAngularDimension::setCenterPoint(const AcGePoint3d& val) const
 
 bool PyDb3PointAngularDimension::extArcOn() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcOn();
@@ -1313,7 +1313,7 @@ bool PyDb3PointAngularDimension::extArcOn() const
 
 void PyDb3PointAngularDimension::setExtArcOn(bool value) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcOn(value));
@@ -1471,7 +1471,7 @@ void PyDbAlignedDimension::setOblique(double val) const
 
 bool PyDbAlignedDimension::jogSymbolOn() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->jogSymbolOn();
@@ -1480,7 +1480,7 @@ bool PyDbAlignedDimension::jogSymbolOn() const
 
 void PyDbAlignedDimension::setJogSymbolOn(bool value) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setJogSymbolOn(value));
@@ -1489,7 +1489,7 @@ void PyDbAlignedDimension::setJogSymbolOn(bool value) const
 
 AcGePoint3d PyDbAlignedDimension::jogSymbolPosition() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->jogSymbolPosition();
@@ -1498,7 +1498,7 @@ AcGePoint3d PyDbAlignedDimension::jogSymbolPosition() const
 
 void PyDbAlignedDimension::setJogSymbolPosition(const AcGePoint3d& pt) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setJogSymbolPosition(pt));
@@ -1667,7 +1667,7 @@ void PyDbArcDimension::setCenterPoint(const AcGePoint3d& ctrPt) const
 
 bool PyDbArcDimension::isPartial() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isPartial();
@@ -1676,7 +1676,7 @@ bool PyDbArcDimension::isPartial() const
 
 void PyDbArcDimension::setIsPartial(bool partial) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setIsPartial(partial));
@@ -1883,7 +1883,7 @@ void PyDbDiametricDimension::setFarChordPoint(const AcGePoint3d& val) const
 
 double PyDbDiametricDimension::extArcStartAngle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcStartAngle();
@@ -1892,7 +1892,7 @@ double PyDbDiametricDimension::extArcStartAngle() const
 
 void PyDbDiametricDimension::setExtArcStartAngle(double newAngle) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
@@ -1901,7 +1901,7 @@ void PyDbDiametricDimension::setExtArcStartAngle(double newAngle) const
 
 double PyDbDiametricDimension::extArcEndAngle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcEndAngle();
@@ -1910,7 +1910,7 @@ double PyDbDiametricDimension::extArcEndAngle() const
 
 void PyDbDiametricDimension::setExtArcEndAngle(double newAngle) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
@@ -2048,7 +2048,7 @@ void PyDbOrdinateDimension::useYAxis() const
 void PyDbOrdinateDimension::setUsingXAxis(bool value) const
 {
 
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUsingXAxis(value));
@@ -2058,7 +2058,7 @@ void PyDbOrdinateDimension::setUsingXAxis(bool value) const
 void PyDbOrdinateDimension::setUsingYAxis(bool value) const
 {
 
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUsingYAxis(value));
@@ -2418,7 +2418,7 @@ void PyDbRadialDimensionLarge::setJogAngle(double jogAngle) const
 
 void PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setOverrideCenterPP(overrideCenterPointPP));
@@ -2427,7 +2427,7 @@ void PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCe
 
 void PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setJogPointPP(jogPointPP));
@@ -2436,7 +2436,7 @@ void PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP) cons
 
 void PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setTextPositionPP(textPointPP));
@@ -2445,7 +2445,7 @@ void PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP)
 
 double PyDbRadialDimensionLarge::extArcStartAngle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcStartAngle();
@@ -2454,7 +2454,7 @@ double PyDbRadialDimensionLarge::extArcStartAngle() const
 
 void PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
@@ -2463,7 +2463,7 @@ void PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle) const
 
 double PyDbRadialDimensionLarge::extArcEndAngle() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->extArcEndAngle();
@@ -2472,7 +2472,7 @@ double PyDbRadialDimensionLarge::extArcEndAngle() const
 
 void PyDbRadialDimensionLarge::setExtArcEndAngle(double newAngle) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
@@ -2641,7 +2641,7 @@ void PyDbRotatedDimension::setRotation(double val) const
 
 bool PyDbRotatedDimension::jogSymbolOn() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->jogSymbolOn();
@@ -2650,7 +2650,7 @@ bool PyDbRotatedDimension::jogSymbolOn() const
 
 void PyDbRotatedDimension::setJogSymbolOn(bool val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setJogSymbolOn(val));
@@ -2659,7 +2659,7 @@ void PyDbRotatedDimension::setJogSymbolOn(bool val) const
 
 AcGePoint3d PyDbRotatedDimension::jogSymbolPosition() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return impObj()->jogSymbolPosition();
@@ -2668,7 +2668,7 @@ AcGePoint3d PyDbRotatedDimension::jogSymbolPosition() const
 
 void PyDbRotatedDimension::setJogSymbolPosition(const AcGePoint3d& val) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setJogSymbolPosition(val));

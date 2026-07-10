@@ -112,7 +112,7 @@ void makePyDbEntityWrapper()
         .def("highlight", &PyDbEntity::highlight1)
         .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = ...","highlightAll : bool = False" }, 4322))
         .def("subent", &PyDbEntity::subentPtr, DS.ARGS({ "path: PyDb.FullSubentPath" }))
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
 #endif
         .def("moveGripPointsAt", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
@@ -188,7 +188,7 @@ void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allo
 
 std::string PyDbEntity::plotStyleName() const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     return wstr_to_utf8(impObj()->plotStyleName());
 #else
     AcString str;
@@ -624,7 +624,7 @@ void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolea
     PyThrowBadEs(impObj()->highlight(subId.pyImp, highlightAll));
 }
 
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
 void PyDbEntity::pushHighlight(const PyDbFullSubentPath& subId, AcGiHighlightStyle highlightStyle) const
 {
     PyThrowBadEs(impObj()->pushHighlight(subId.pyImp, highlightStyle));
@@ -638,7 +638,7 @@ PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId) const
 
 void PyDbEntity::moveGripPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const
 {
-#if defined (_BRXTARGET260)
+#if defined (_BRXTARGET270)
     AcArray<int> arr = PyListToIntArray(indices);
 #else
     AcDbIntArray arr = PyListToInt32Array(indices);
@@ -648,7 +648,7 @@ void PyDbEntity::moveGripPointsAt(const boost::python::object& indices, const Ac
 
 void PyDbEntity::moveStretchPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const
 {
-#if defined (_BRXTARGET260)
+#if defined (_BRXTARGET270)
     AcArray<int> arr = PyListToIntArray(indices);
 #else
     AcDbIntArray arr = PyListToInt32Array(indices);
@@ -1126,7 +1126,7 @@ bool PyDbFullSubentPath::operator!=(const PyDbFullSubentPath& id) const
 
 void PyDbFullSubentPath::setObjectIds(const boost::python::list& objectIds)
 {
-#if defined (_ZRXTARGET240) || defined (_BRXTARGET260)
+#if defined (_ZRXTARGET240) || defined (_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     pyImp.setObjectIds(PyListToObjectIdArray(objectIds));
@@ -1140,7 +1140,7 @@ boost::python::list PyDbFullSubentPath::objectIds() const
 
 void PyDbFullSubentPath::setSubentId(const PyDbSubentId& subentId)
 {
-#if defined (_ZRXTARGET240) || defined (_BRXTARGET260)
+#if defined (_ZRXTARGET240) || defined (_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     pyImp.setSubentId(*subentId.impObj());

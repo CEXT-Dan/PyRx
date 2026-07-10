@@ -25,7 +25,7 @@ class PyDbActionsToEvaluateCallback : public AcDbActionsToEvaluateCallback, publ
 public:
     PyDbActionsToEvaluateCallback() = default;
     virtual ~PyDbActionsToEvaluateCallback() override = default;
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     virtual void needsToEvaluate(const AcDbObjectId objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;
 #else
     virtual void needsToEvaluate(const AcDbObjectId& objectId, AcDbAssocStatus newStatus, bool ownedActionsAlso = true) override;

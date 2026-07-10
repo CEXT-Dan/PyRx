@@ -571,7 +571,7 @@ void PyApDocManager::appContextOpenDocument2(const std::string& pszDrawingName, 
 
 void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName) const
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->appContextRecoverDocument(AsWStr(pszDrawingName)));

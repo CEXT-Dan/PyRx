@@ -83,7 +83,7 @@ void makePyGiSubEntityTraitsWrapper()
         .export_values()
         ;
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     enum_<AcGiSubEntityTraits::SelectionFlags>("SelectionFlags")
         .value("kNoSelectionFlags", AcGiSubEntityTraits::SelectionFlags::kNoSelectionFlags)
         .value("kSelectionIgnore", AcGiSubEntityTraits::SelectionFlags::kSelectionIgnore)

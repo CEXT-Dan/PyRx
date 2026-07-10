@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "stdafx.h"
 #include "GsCore.h"
 #include "PyGsView.h"
 #include "PyDbObjectId.h"
@@ -49,7 +48,7 @@ struct AcGsViewDeleter
         if (ptr == nullptr)
             return;
         ptr->eraseAll();
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         acgsGetGsManager()->destroyView(ptr);
 #endif
     }
@@ -142,7 +141,7 @@ PyGsView GsCore::getCurrentAcGsView(int vpNum)
 
 PyGsView GsCore::getCurrent3DAcGsView(int vpNum)
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     return PyGsView(acgsGetCurrent3dAcGsView(vpNum), false);

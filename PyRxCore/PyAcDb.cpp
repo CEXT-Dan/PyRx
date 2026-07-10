@@ -98,7 +98,7 @@ static boost::python::tuple AcDbExtents2dCoords(const AcDbExtents2d& extents)
 
 static void AcDbExtents2dAddPoints(AcDbExtents2d& extents, const boost::python::object& iterable)
 {
-#if defined(_BRXTARGET260)
+#if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     for (const auto& point : PyListToPoint2dArray(iterable))
@@ -513,13 +513,13 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbPointRefWrapper();
     makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     makePyDb3dProfileWrapper();
 #endif
     makePyDbObjectOverruleWrapper();
     makePyDbOsnapOverruleWrapper();
     makePyDbGripOverruleWrapper();
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     makePyDbPointCloudCropWrapper();
     makePyDbPointCloudClassificationColorRampWrapper();
     makePyDbPointCloudColorRampWrapper();
@@ -577,15 +577,15 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kLineWeight", AcDbLayerStateManager::LayerStateMask::kLineWeight)
         .value("kPlotStyle", AcDbLayerStateManager::LayerStateMask::kPlotStyle)
         .value("kCurrentViewport", AcDbLayerStateManager::LayerStateMask::kCurrentViewport)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kTransparency", AcDbLayerStateManager::LayerStateMask::kTransparency)
 #endif
         .value("kAll", AcDbLayerStateManager::LayerStateMask::kAll)
         .value("kStateIsHidden", AcDbLayerStateManager::LayerStateMask::kStateIsHidden)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kLastRestored", AcDbLayerStateManager::LayerStateMask::kLastRestored)
 #endif
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kDecomposition", AcDbLayerStateManager::LayerStateMask::kDecomposition)
 #endif
         .export_values()
@@ -1081,7 +1081,7 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfLinetypeAlign", AcDb::kDxfLinetypeAlign)
         .value("kDxfLinetypePDC", AcDb::kDxfLinetypePDC)
         .value("kDxfInt32", AcDb::kDxfInt32)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kDxfVertexIdentifier", AcDb::kDxfVertexIdentifier)
 #endif
         .value("kDxfSubclass", AcDb::kDxfSubclass)
@@ -1140,7 +1140,7 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfGradientTintVal", AcDb::kDxfGradientTintVal)
         .value("kDxfGradientColVal", AcDb::kDxfGradientColVal)
         .value("kDxfGradientName", AcDb::kDxfGradientName)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kDxfFaceStyleId", AcDb::kDxfFaceStyleId)
         .value("kDxfEdgeStyleId", AcDb::kDxfEdgeStyleId)
 #endif
@@ -1168,7 +1168,7 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfXdScale", AcDb::kDxfXdScale)
         .value("kDxfXdInteger16", AcDb::kDxfXdInteger16)
         .value("kDxfXdInteger32", AcDb::kDxfXdInteger32)
-#if !defined (_BRXTARGET260)
+#if !defined (_BRXTARGET270)
         .value("kDxfXdMax", AcDb::kDxfXdMax)
 #endif
         .export_values()

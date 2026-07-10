@@ -6,7 +6,7 @@ using namespace boost::python;
 //PyGeClipBoundary2d wrapper
 void makePyGeClipBoundary2dWrapper()
 {
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- cornerA: PyGe.Point2d, cornerB: PyGe.Point2d\n"
@@ -32,7 +32,7 @@ void makePyGeClipBoundary2dWrapper()
 #endif
 }
 
-#if !defined(_BRXTARGET260)
+#if !defined(_BRXTARGET270)
 PyGeClipBoundary2d::PyGeClipBoundary2d()
     : PyGeEntity2d(new AcGeClipBoundary2d())
 {

@@ -87,6 +87,9 @@
 #if defined(_BRXTARGET) && (_BRXTARGET <= 260)
 #define _BRXTARGET260 260
 #endif
+#if defined(_BRXTARGET) && (_BRXTARGET <= 270)
+#define _BRXTARGET270 270
+#endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
 #define _ARXTARGET240 240
@@ -225,6 +228,8 @@
 #pragma comment( lib , "BrxATIL25.lib" )
 #elif defined(_BRXTARGET) && (_BRXTARGET == 260)
 #pragma comment( lib , "BrxATIL26.lib" )
+#elif defined(_BRXTARGET) && (_BRXTARGET == 270)
+#pragma comment( lib , "BrxATIL27.lib" )
 #endif
 
 #if defined(_GRXTARGET)
