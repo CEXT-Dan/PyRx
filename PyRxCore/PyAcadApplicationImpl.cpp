@@ -1656,7 +1656,7 @@ void PyIAcadDocumentImpl::SendCommand(const CString& cmd) const
 
 void PyIAcadDocumentImpl::PostCommand(const CString& cmd) const
 {
-#if defined(_BRXTARGET270) || defined(_GRXTARGET240)
+#if defined(_BRXTARGET260) || defined(_GRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     _bstr_t bstrcmd{ cmd };
