@@ -115,7 +115,7 @@ void makePyDbEntityWrapper()
 #if !defined (_BRXTARGET260)
         .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
 #endif
-        .def("moveGripPointAt", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
+        .def("moveGripPointsAt", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
         .def("moveStretchPointsAt", &PyDbEntity::moveStretchPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")

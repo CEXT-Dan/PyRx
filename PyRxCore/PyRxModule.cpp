@@ -69,7 +69,10 @@ void PyRxModule::callPyFunction()
         {
             acutPrintf(_T("\nAn exception was caught from Python!: \n"));
             if (PyErr_Occurred())
+            {
                 PyErr_Print();
+                PyErr_Clear();
+            }
         }
     }
     catch (...)
