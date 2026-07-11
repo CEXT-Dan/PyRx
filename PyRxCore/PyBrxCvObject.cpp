@@ -778,8 +778,116 @@ PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(const PyDbObjectId& id, A
 }
 
 PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(BrxCvDbStringLineManager* ptr, bool autoDelete)
-: PyDbObject(ptr, autoDelete)
+    : PyDbObject(ptr, autoDelete)
 {
+}
+
+void PyBrxCvDbStringLineManager::addGroup(const std::string& groupName) const
+{
+    PyThrowBadEs(impObj()->addGroup(AsWStr(groupName)));
+}
+
+void PyBrxCvDbStringLineManager::eraseGroup(const std::string& groupName) const
+{
+    PyThrowBadEs(impObj()->eraseGroup(AsWStr(groupName)));
+}
+
+void PyBrxCvDbStringLineManager::renameGroup(const std::string& groupName, const std::string& newName) const
+{
+    PyThrowBadEs(impObj()->renameGroup(AsWStr(groupName), AsWStr(newName)));
+}
+
+void PyBrxCvDbStringLineManager::setIntersectionInteraction(const std::string& groupName, bool isOn) const
+{
+    PyThrowBadEs(impObj()->setIntersectionInteraction(AsWStr(groupName), isOn));
+}
+
+void PyBrxCvDbStringLineManager::updateInteractionGeometry(const std::string& groupName) const
+{
+    PyThrowBadEs(impObj()->updateInteractionGeometry(AsWStr(groupName)));
+}
+
+bool PyBrxCvDbStringLineManager::intersectionInteractionEnabled(const std::string& groupName) const
+{
+    return impObj()->intersectionInteractionEnabled(AsWStr(groupName));
+}
+
+Adesk::UInt32 PyBrxCvDbStringLineManager::groupCount() const
+{
+    return impObj()->groupCount();
+}
+
+std::string PyBrxCvDbStringLineManager::groupAt(Adesk::UInt32 index) const
+{
+    return wstr_to_utf8(impObj()->groupAt(index));
+}
+
+void PyBrxCvDbStringLineManager::addStringlineToGroup(const std::string& groupName, const PyDbObjectId& stringlineId) const
+{
+    PyThrowBadEs(impObj()->addStringlineToGroup(AsWStr(groupName), stringlineId));
+}
+
+void PyBrxCvDbStringLineManager::removeStringlineFromGroup1(const std::string& groupName, const PyDbObjectId& stringlineId) const
+{
+    PyThrowBadEs(impObj()->removeStringlineFromGroup(AsWStr(groupName), stringlineId));
+}
+
+void PyBrxCvDbStringLineManager::removeStringlineFromGroup2(const std::string& groupName, const PyDbObjectId& stringlineId, bool addToDefault) const
+{
+    PyThrowBadEs(impObj()->removeStringlineFromGroup(AsWStr(groupName), stringlineId, addToDefault));
+}
+
+std::string PyBrxCvDbStringLineManager::getStringlineGroup(const PyDbObjectId& stringlineId) const
+{
+    AcString val;
+    PyThrowBadEs(impObj()->getStringlineGroup(stringlineId, val));
+    return wstr_to_utf8(val);
+}
+
+void PyBrxCvDbStringLineManager::setPriorityOrder(const std::string& groupName, const PyDbObjectId& stringlineId, Adesk::UInt32 order) const
+{
+    PyThrowBadEs(impObj()->setPriorityOrder(AsWStr(groupName), stringlineId, order));
+}
+
+Adesk::UInt32 PyBrxCvDbStringLineManager::getPriorityOrder(const std::string& groupName, const PyDbObjectId& stringlineId) const
+{
+    Adesk::UInt32 val;
+    PyThrowBadEs(impObj()->getPriorityOrder(AsWStr(groupName), stringlineId, val));
+    return val;
+}
+
+boost::python::list PyBrxCvDbStringLineManager::getStringlineIds(const std::string& groupName) const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getStringlineIds(AsWStr(groupName), ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+Adesk::UInt32 PyBrxCvDbStringLineManager::getStringlineCount(const std::string& groupName) const
+{
+    Adesk::UInt32 val;
+    PyThrowBadEs(impObj()->getStringlineCount(AsWStr(groupName), val));
+    return val;
+}
+
+PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase(const PyDbDatabase& pDb)
+{
+    return BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj());
+}
+
+PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase(const PyDbDatabase& pDb, bool createIfNotExists)
+{
+    return BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), createIfNotExists);
+}
+
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode)
+{
+    return PyBrxCvDbStringLineManager(BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), openMode), false);
+}
+
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists)
+{
+    return PyBrxCvDbStringLineManager(BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), openMode, createIfNotExists), false);
 }
 
 std::string PyBrxCvDbStringLineManager::className()

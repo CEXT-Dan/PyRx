@@ -220,6 +220,33 @@ public:
     PyBrxCvDbStringLineManager(BrxCvDbStringLineManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbStringLineManager() override = default;
 
+    void addGroup(const std::string& groupName) const;
+    void eraseGroup(const std::string& groupName) const;
+    void renameGroup(const std::string& groupName, const  std::string& newName) const;
+
+    void setIntersectionInteraction(const std::string& groupName, bool isOn) const;
+    void updateInteractionGeometry(const std::string& groupName) const;
+    bool intersectionInteractionEnabled(const std::string& groupName) const;
+
+    Adesk::UInt32 groupCount() const;
+    std::string groupAt(Adesk::UInt32 index) const;
+
+    void addStringlineToGroup(const std::string& groupName, const PyDbObjectId& stringlineId) const;
+    void removeStringlineFromGroup1(const std::string& groupName, const PyDbObjectId& stringlineId) const;
+    void removeStringlineFromGroup2(const std::string& groupName, const PyDbObjectId& stringlineId, bool addToDefault) const;
+    std::string getStringlineGroup(const PyDbObjectId& stringlineId) const;
+
+    void setPriorityOrder(const std::string& groupName, const PyDbObjectId& stringlineId, Adesk::UInt32 order) const;
+    Adesk::UInt32 getPriorityOrder(const std::string& groupName, const PyDbObjectId& stringlineId) const;
+
+    boost::python::list getStringlineIds(const std::string& groupName) const;
+    Adesk::UInt32 getStringlineCount(const std::string& groupName) const;
+
+
+    static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDb);
+    static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDb, bool createIfNotExists);
+    static PyBrxCvDbStringLineManager openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode);
+    static PyBrxCvDbStringLineManager openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists);
 
     static std::string          className();
     static PyRxClass            desc();
