@@ -446,6 +446,263 @@ double PyBrxCvDbStringLine::getRadius(Adesk::UInt32 index) const
     return val;
 }
 
+PyDbObjectId PyBrxCvDbStringLine::surfaceId() const
+{
+    return impObj()->surfaceId();
+}
+
+BrxCvDbStringLine::CreationSource PyBrxCvDbStringLine::creationSource() const
+{
+    return impObj()->creationSource();
+}
+
+double PyBrxCvDbStringLine::maxGrade() const
+{
+    return impObj()->maxGrade();
+}
+
+double PyBrxCvDbStringLine::minGrade() const
+{
+    return impObj()->minGrade();
+}
+
+double PyBrxCvDbStringLine::maxElevation() const
+{
+    return impObj()->maxElevation();
+}
+
+double PyBrxCvDbStringLine::minElevation() const
+{
+    return impObj()->minElevation();
+}
+
+double PyBrxCvDbStringLine::length2d() const
+{
+    return impObj()->length2d();
+}
+
+double PyBrxCvDbStringLine::length3d() const
+{
+    return impObj()->length3d();
+}
+
+bool PyBrxCvDbStringLine::isRelativeToSurface(Adesk::UInt32 index) const
+{
+    return impObj()->isRelativeToSurface(index);
+}
+
+double PyBrxCvDbStringLine::getRelativeElevation(Adesk::UInt32 index) const
+{
+    double elevationOffset = 0;
+    PyThrowBadEs(impObj()->getRelativeElevation(index, elevationOffset));
+    return elevationOffset;
+}
+
+boost::python::tuple PyBrxCvDbStringLine::getPoints1() const
+{
+    return getPoints2(BrxCvDbStringLine::PointType::eAll);
+}
+
+boost::python::tuple PyBrxCvDbStringLine::getPoints2(BrxCvDbStringLine::PointType type) const
+{
+    PyAutoLockGIL lock;
+    using PType = BrxCvDbStringLine::PointType;
+    AcGePoint3dArray points;
+    AcArray<double> bulges;
+    AcArray<BrxCvDbStringLine::PointType> types;
+    AcArray<Adesk::UInt32> indices;
+    PyThrowBadEs(impObj()->getPoints(points, type, &bulges, &types, &indices));
+    const auto pypoints = Point3dArrayToPyList(points);
+    const auto pybulges = DoubleArrayToPyList(bulges);
+    const auto pyindices = UInt32ArrayToPyList(indices);
+    boost::python::list pytypes;
+    for (auto item : types)
+        pytypes.append(item);
+    return boost::python::make_tuple(pypoints, pybulges, pytypes, pyindices);
+}
+
+double PyBrxCvDbStringLine::get3dDistanceAtPoint(const AcGePoint3d& point) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->get3dDistanceAtPoint(point, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::get2dDistanceAtPoint(const AcGePoint2d& point) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->get2dDistanceAtPoint(point, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::get2dDistanceAtParam(double param) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->get2dDistanceAtParam(param, val));
+    return val;
+}
+
+boost::python::list PyBrxCvDbStringLine::get2dDistancesAtPoints(const boost::python::list& points)
+{
+    AcGeDoubleArray vals;
+    PyThrowBadEs(impObj()->get2dDistancesAtPoints(PyListToPoint3dArray(points), vals));
+    return DoubleArrayToPyList(vals);
+}
+
+double PyBrxCvDbStringLine::getGradeInAtPoint(const AcGePoint2d& pointOnCurve) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getGradeInAtPoint(pointOnCurve, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::getGradeInAtParam(double param) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getGradeInAtParam(param, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::getGradeOutAtPoint(const AcGePoint2d& pointOnCurve) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getGradeOutAtPoint(pointOnCurve, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::getGradeOutAtParam(double param) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getGradeOutAtParam(param, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::getElevationAtPoint(const AcGePoint2d& pointOnCurve) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getElevationAtPoint(pointOnCurve, val));
+    return val;
+}
+
+boost::python::list PyBrxCvDbStringLine::getElevationsAt2dIntersections(const PyBrxCvDbStringLine& stringline) const
+{
+    AcGePoint3dArray val;
+    PyThrowBadEs(impObj()->getElevationsAt2dIntersections(*stringline.impObj(), val));
+    return Point3dArrayToPyList(val);
+}
+
+void PyBrxCvDbStringLine::addPI1(const AcGePoint3d& point) const
+{
+    PyThrowBadEs(impObj()->addPI(point));
+}
+
+void PyBrxCvDbStringLine::addPI2(const AcGePoint3d& point, double bulge) const
+{
+    PyThrowBadEs(impObj()->addPI(point, bulge));
+}
+
+Adesk::UInt32 PyBrxCvDbStringLine::insertElevationPoint(double param, double elevation) const
+{
+    Adesk::UInt32 insertedIndex = 0;
+    PyThrowBadEs(impObj()->insertElevationPoint(param, elevation, &insertedIndex));
+    return insertedIndex;
+}
+
+void PyBrxCvDbStringLine::insertPI1(Adesk::UInt32 index, const AcGePoint3d& point) const
+{
+    PyThrowBadEs(impObj()->insertPI(index, point));
+}
+
+void PyBrxCvDbStringLine::insertPI2(Adesk::UInt32 index, const AcGePoint3d& point, double bulge) const
+{
+    PyThrowBadEs(impObj()->insertPI(index, point, bulge));
+}
+
+void PyBrxCvDbStringLine::insertCurve(Adesk::UInt32 index, double radius) const
+{
+    PyThrowBadEs(impObj()->insertCurve(index, radius));
+}
+
+void PyBrxCvDbStringLine::deletePoint(Adesk::UInt32 index) const
+{
+    PyThrowBadEs(impObj()->deletePoint(index));
+}
+
+void PyBrxCvDbStringLine::deletePI1(const AcGePoint3d& point) const
+{
+    PyThrowBadEs(impObj()->deletePI(point));
+}
+
+void PyBrxCvDbStringLine::deletePI2(Adesk::UInt32 index) const
+{
+    PyThrowBadEs(impObj()->deletePI(index));
+}
+
+void PyBrxCvDbStringLine::deleteElevationPoint1(const AcGePoint3d& point) const
+{
+    PyThrowBadEs(impObj()->deleteElevationPoint(point));
+}
+
+void PyBrxCvDbStringLine::deleteElevationPoint(Adesk::UInt32 index) const
+{
+    PyThrowBadEs(impObj()->deleteElevationPoint(index));
+}
+
+void PyBrxCvDbStringLine::setLocation(Adesk::UInt32 index, const AcGePoint2d& location) const
+{
+    PyThrowBadEs(impObj()->setLocation(index, location));
+}
+
+void PyBrxCvDbStringLine::setElevation(Adesk::UInt32 index, double elevation) const
+{
+    PyThrowBadEs(impObj()->setElevation(index, elevation));
+}
+
+void PyBrxCvDbStringLine::setBulge(Adesk::UInt32 index, double bulge) const
+{
+    PyThrowBadEs(impObj()->setBulge(index, bulge));
+}
+
+void PyBrxCvDbStringLine::setRadius(Adesk::UInt32 piIndex, double radius, bool isClockwise) const
+{
+    PyThrowBadEs(impObj()->setRadius(piIndex, radius, isClockwise));
+}
+
+void PyBrxCvDbStringLine::setRelativeToSurface(Adesk::UInt32 index, bool isRelative) const
+{
+    PyThrowBadEs(impObj()->setRelativeToSurface(index, isRelative));
+}
+
+void PyBrxCvDbStringLine::setRelativeElevation(Adesk::UInt32 index, bool isInputRelative, double elevation) const
+{
+    PyThrowBadEs(impObj()->setRelativeElevation(index, isInputRelative, elevation));
+}
+
+void PyBrxCvDbStringLine::setSurfaceId(const PyDbObjectId& surfaceId) const
+{
+    PyThrowBadEs(impObj()->setSurfaceId(surfaceId));
+}
+
+void PyBrxCvDbStringLine::setGradeIn(Adesk::UInt32 index, double grade) const
+{
+    PyThrowBadEs(impObj()->setGradeIn(index, grade));
+}
+
+void PyBrxCvDbStringLine::setGradeOut(Adesk::UInt32 index, double grade) const
+{
+    PyThrowBadEs(impObj()->setGradeOut(index, grade));
+}
+
+void PyBrxCvDbStringLine::update1() const
+{
+    PyThrowBadEs(impObj()->update());
+}
+
+void PyBrxCvDbStringLine::update2(bool forceUpdate) const
+{
+    PyThrowBadEs(impObj()->update(forceUpdate));
+}
+
 std::string PyBrxCvDbStringLine::className()
 {
     return "PyBrxCvDbStringLine";

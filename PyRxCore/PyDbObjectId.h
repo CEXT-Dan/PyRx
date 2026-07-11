@@ -18,7 +18,8 @@ public:
     bool operator>(const PyDbObjectId& rhs) const;
     bool operator<=(const PyDbObjectId& rhs) const;
     bool operator>=(const PyDbObjectId& rhs) const;
-    INT_PTR asOldId() const;
+    inline operator AcDbObjectId() const { return m_id; }
+    INT_PTR       asOldId() const;
     void          setFromOldId(INT_PTR oldId);
     bool          isNull() const;
     bool          isResident() const;

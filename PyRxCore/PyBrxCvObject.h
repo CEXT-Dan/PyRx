@@ -145,7 +145,58 @@ public:
     double getBulge(Adesk::UInt32 index) const;
     double getRadius(Adesk::UInt32 index) const;
 
+    PyDbObjectId surfaceId() const;
+    BrxCvDbStringLine::CreationSource creationSource() const;
+    double maxGrade() const;
+    double minGrade() const;
+    double maxElevation() const;
+    double minElevation() const;
+    double length2d() const;
+    double length3d() const;
+    bool   isRelativeToSurface(Adesk::UInt32 index) const;
+    double getRelativeElevation(Adesk::UInt32 index) const;
 
+    boost::python::tuple getPoints1() const;
+    boost::python::tuple getPoints2(BrxCvDbStringLine::PointType type) const;
+
+
+    double get3dDistanceAtPoint(const AcGePoint3d& point) const;
+    double get2dDistanceAtPoint(const AcGePoint2d& point) const;
+    double get2dDistanceAtParam(double param) const;
+    boost::python::list get2dDistancesAtPoints(const boost::python::list& points);
+
+    double getGradeInAtPoint(const AcGePoint2d& pointOnCurve) const;
+    double getGradeInAtParam(double param) const;
+    double getGradeOutAtPoint(const AcGePoint2d& pointOnCurve) const;
+    double getGradeOutAtParam(double param) const;
+    double getElevationAtPoint(const AcGePoint2d& pointOnCurve) const;
+    boost::python::list getElevationsAt2dIntersections(const PyBrxCvDbStringLine& stringline) const;
+
+    // Point modification
+    void addPI1(const AcGePoint3d& point) const;
+    void addPI2(const AcGePoint3d& point, double bulge) const;
+
+    Adesk::UInt32 insertElevationPoint(double param, double elevation) const;
+
+    void insertPI1(Adesk::UInt32 index, const AcGePoint3d& point) const;
+    void insertPI2(Adesk::UInt32 index, const AcGePoint3d& point, double bulge) const;
+    void insertCurve(Adesk::UInt32 index, double radius) const;
+    void deletePoint(Adesk::UInt32 index) const;
+    void deletePI1(const AcGePoint3d& point) const;
+    void deletePI2(Adesk::UInt32 index) const;
+    void deleteElevationPoint1(const AcGePoint3d& point) const;
+    void deleteElevationPoint(Adesk::UInt32 index) const;
+    void setLocation(Adesk::UInt32 index, const AcGePoint2d& location) const;
+    void setElevation(Adesk::UInt32 index, double elevation) const;
+    void setBulge(Adesk::UInt32 index, double bulge) const;
+    void setRadius(Adesk::UInt32 piIndex, double radius, bool isClockwise) const;
+    void setRelativeToSurface(Adesk::UInt32 index, bool isRelative) const;
+    void setRelativeElevation(Adesk::UInt32 index, bool isInputRelative, double elevation) const;
+    void setSurfaceId(const PyDbObjectId& surfaceId) const;
+    void setGradeIn(Adesk::UInt32 index, double grade) const;
+    void setGradeOut(Adesk::UInt32 index, double grade) const;
+    void update1()  const;
+    void update2(bool forceUpdate)  const;
 
     static std::string              className();
     static PyRxClass                desc();

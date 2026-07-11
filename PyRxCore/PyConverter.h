@@ -9,6 +9,7 @@ AcGeVector2d    PyListToAcGeVector2d(const boost::python::object& iterable);
 
 boost::python::list IntArrayToPyList(const AcDbIntArray& arr);
 boost::python::list Int32ArrayToPyList(const AcArray<Adesk::Int32>& arr);
+boost::python::list UInt32ArrayToPyList(const AcArray<Adesk::UInt32>& arr);
 boost::python::list IntU64ArrayToPyList(const AcArray<Adesk::UInt64>& arr);
 boost::python::list DoubleArrayToPyList(const AcGeDoubleArray& arr);
 boost::python::list Point3dArrayToPyList(const std::vector<AcGePoint3d>& arr);

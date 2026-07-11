@@ -87,6 +87,15 @@ boost::python::list Int32ArrayToPyList(const AcArray<Adesk::Int32>& arr)
     return pyPyList;
 }
 
+boost::python::list UInt32ArrayToPyList(const AcArray<Adesk::UInt32>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 boost::python::list IntU64ArrayToPyList(const AcArray<Adesk::UInt64>& arr)
 {
     PyAutoLockGIL lock;
