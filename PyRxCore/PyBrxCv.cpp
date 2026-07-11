@@ -321,6 +321,7 @@ static BOOST_PYTHON_MODULE(PyBrxCv)
 
 #if defined(_BRXTARGET) && (_BRXTARGET >= 270)
     makePyBrxCvDbStringLineWrapper();
+    makePyBrxCvDbStringLineManagerWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")

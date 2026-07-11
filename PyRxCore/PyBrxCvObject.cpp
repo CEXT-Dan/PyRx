@@ -705,7 +705,7 @@ void PyBrxCvDbStringLine::update2(bool forceUpdate) const
 
 std::string PyBrxCvDbStringLine::className()
 {
-    return "PyBrxCvDbStringLine";
+    return "BrxCvDbStringLine";
 }
 
 PyRxClass PyBrxCvDbStringLine::desc()
@@ -731,6 +731,85 @@ BrxCvDbStringLine* PyBrxCvDbStringLine::impObj(const std::source_location& src /
         throw PyNullObject(src);
     }
     return static_cast<BrxCvDbStringLine*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStringLineManager
+void makePyBrxCvDbStringLineManagerWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("CvDbStringLineManager");
+    class_<PyBrxCvDbStringLineManager, bases<PyDbObject>>("CvDbStringLineManager")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.OVRL(ctords)))
+
+        .def("className", &PyBrxCvDbStringLineManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbStringLineManager::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbStringLineManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbStringLineManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager()
+    : PyBrxCvDbStringLineManager(new BrxCvDbStringLineManager(), true)
+{
+}
+
+PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(const PyDbObjectId& id)
+    : PyBrxCvDbStringLineManager(openAcDbObject<BrxCvDbStringLineManager>(id), false)
+{
+}
+
+PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbStringLineManager(openAcDbObject<BrxCvDbStringLineManager>(id, mode), false)
+{
+}
+
+PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbStringLineManager(openAcDbObject<BrxCvDbStringLineManager>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbStringLineManager::PyBrxCvDbStringLineManager(BrxCvDbStringLineManager* ptr, bool autoDelete)
+: PyDbObject(ptr, autoDelete)
+{
+}
+
+std::string PyBrxCvDbStringLineManager::className()
+{
+    return "BrxCvDbStringLineManager";
+}
+
+PyRxClass PyBrxCvDbStringLineManager::desc()
+{
+    return PyRxClass(BrxCvDbStringLine::desc(), false);
+}
+
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbStringLineManager::desc()))
+        throw PyErrorStatusException(eNotThatKindOfClass);
+    return PyBrxCvDbStringLineManager(static_cast<BrxCvDbStringLineManager*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbStringLineManager>(src);
+}
+
+BrxCvDbStringLineManager* PyBrxCvDbStringLineManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbStringLineManager*>(m_pyImp.get());
 }
 
 #endif

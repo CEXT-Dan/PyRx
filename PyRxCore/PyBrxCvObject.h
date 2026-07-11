@@ -205,6 +205,30 @@ public:
 
     inline BrxCvDbStringLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStringLineManager
+void makePyBrxCvDbStringLineManagerWrapper();
+class PyBrxCvDbStringLineManager : public PyDbObject
+{
+public:
+    PyBrxCvDbStringLineManager();
+    PyBrxCvDbStringLineManager(const PyDbObjectId& id);
+    PyBrxCvDbStringLineManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbStringLineManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbStringLineManager(BrxCvDbStringLineManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbStringLineManager() override = default;
+
+
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyBrxCvDbStringLineManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbStringLineManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbStringLineManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif
 
 #endif//BRXAPP
