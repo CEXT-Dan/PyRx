@@ -1,3 +1,7 @@
+## v2.2.63
+
+* Add support for BricsCAD V27(beta)
+
 ## v2.2.62
 
 * This release mainly tightens up performance, reduces memory copies.  

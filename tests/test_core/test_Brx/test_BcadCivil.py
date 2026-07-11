@@ -4,7 +4,7 @@ import unittest
 
 import pytest
 
-from pyrx import Cv, Db
+from pyrx import Cv, Db, Ge
 
 
 @pytest.mark.known_failure_IRX
@@ -132,4 +132,13 @@ class TestBCadCivil:
         style = Cv.CvDbLabelStyle(new_id, Db.OpenMode.kForWrite)
         component = Cv.CvDbLabelStyleText()
         style.addComponent(component)
-
+        
+    def test_CvDbStringLine(self):
+        db = Db.curDb()
+        pStringline = Cv.CvDbStringLine()
+        pStringline.addPI(Ge.Point3d(0.0, 0.0, 0.0), 0.0)
+        pStringline.addPI(Ge.Point3d(10.0, 0.0, 0.0), 0.5)
+        pStringline.addPI(Ge.Point3d(10.0, 10.0, 5.0), 0.0)
+        id = db.addToModelspace(pStringline)
+        assert pStringline.get2dDistanceAtPoint(Ge.Point2d(10.0, 0.0)) == 10
+        assert id.isNull() == False

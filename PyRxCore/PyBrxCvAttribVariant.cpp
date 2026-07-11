@@ -60,7 +60,6 @@ void makePyBrxCvDbAttribVariantWrapper()
         ;
 }
 
-
 PyBrxCvAttribVariant::PyBrxCvAttribVariant()
 {
 }
