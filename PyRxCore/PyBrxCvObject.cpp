@@ -3,6 +3,7 @@
 #ifdef BRXAPP
 #include "PyBrxCvObject.h"
 #include "PyDbObjectId.h"
+#include "PyGeInterval.h"
 
 using namespace boost::python;
 
@@ -339,4 +340,142 @@ BrxCvDbCurve* PyBrxCvDbCurve::impObj(const std::source_location& src /*= std::so
     }
     return static_cast<BrxCvDbCurve*>(m_pyImp.get());
 }
+
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStringLine
+
+void makePyBrxCvDbStringLineWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("CvDbStringLine");
+    class_<PyBrxCvDbStringLine, bases<PyBrxCvDbCurve>>("CvDbStringLine")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.OVRL(ctords)))
+
+
+        .def("className", &PyBrxCvDbStringLine::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbStringLine::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbStringLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbStringLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbStringLine::PyBrxCvDbStringLine()
+    : PyBrxCvDbStringLine(new BrxCvDbStringLine(), false)
+{
+}
+
+PyBrxCvDbStringLine::PyBrxCvDbStringLine(const PyDbObjectId& id)
+    : PyBrxCvDbStringLine(openAcDbObject<BrxCvDbStringLine>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyBrxCvDbStringLine::PyBrxCvDbStringLine(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbStringLine(openAcDbObject<BrxCvDbStringLine>(id, mode), false)
+{
+}
+
+PyBrxCvDbStringLine::PyBrxCvDbStringLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbStringLine(openAcDbObject<BrxCvDbStringLine>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbStringLine::PyBrxCvDbStringLine(BrxCvDbStringLine* ptr, bool autoDelete)
+    : PyBrxCvDbCurve(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbStringLine::numberOfPoints1() const
+{
+    return impObj()->numberOfPoints();
+}
+
+Adesk::UInt32 PyBrxCvDbStringLine::numberOfPoints2(BrxCvDbStringLine::PointType type) const
+{
+    return impObj()->numberOfPoints(type);
+}
+
+boost::python::tuple PyBrxCvDbStringLine::getPoint(Adesk::UInt32 index) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d point;
+    double bulge = 0;
+    BrxCvDbStringLine::PointType ptype = BrxCvDbStringLine::PointType::ePI;
+    PyThrowBadEs(impObj()->getPoint(index, point, &bulge, &ptype));
+    return boost::python::make_tuple(point, bulge, ptype);
+}
+
+boost::python::tuple PyBrxCvDbStringLine::findPoint1(const AcGePoint2d& pointLocation) const
+{
+    PyAutoLockGIL lock;
+    Adesk::UInt32 idx = 0;
+    if (impObj()->findPoint(pointLocation, nullptr, &idx) == Acad::eOk)
+        return boost::python::make_tuple(true, idx);
+    return boost::python::make_tuple(false, idx);
+}
+
+boost::python::tuple PyBrxCvDbStringLine::findPoint2(const AcGePoint2d& pointLocation, const PyGeInterval& pInterval) const
+{
+    PyAutoLockGIL lock;
+    Adesk::UInt32 idx = 0;
+    if (impObj()->findPoint(pointLocation, &pInterval.imp, &idx) == Acad::eOk)
+        return boost::python::make_tuple(true, idx);
+    return boost::python::make_tuple(false, idx);
+}
+
+double PyBrxCvDbStringLine::getBulge(Adesk::UInt32 index) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getBulge(index, val));
+    return val;
+}
+
+double PyBrxCvDbStringLine::getRadius(Adesk::UInt32 index) const
+{
+    double val = 0;
+    PyThrowBadEs(impObj()->getRadius(index, val));
+    return val;
+}
+
+std::string PyBrxCvDbStringLine::className()
+{
+    return "PyBrxCvDbStringLine";
+}
+
+PyRxClass PyBrxCvDbStringLine::desc()
+{
+    return PyRxClass(BrxCvDbStringLine::desc(), false);
+}
+
+PyBrxCvDbStringLine PyBrxCvDbStringLine::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbStringLine::desc()))
+        throw PyErrorStatusException(eNotThatKindOfClass);
+    return PyBrxCvDbStringLine(static_cast<BrxCvDbStringLine*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbStringLine PyBrxCvDbStringLine::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbStringLine>(src);
+}
+
+BrxCvDbStringLine* PyBrxCvDbStringLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbStringLine*>(m_pyImp.get());
+}
+
+#endif
+
 #endif//BRXAPP

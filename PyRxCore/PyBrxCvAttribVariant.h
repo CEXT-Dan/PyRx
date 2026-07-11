@@ -1,5 +1,6 @@
 #pragma once
-#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 260)
 #include "BrxCvDbAttribVariant.h"
 
 //-----------------------------------------------------------------------------------

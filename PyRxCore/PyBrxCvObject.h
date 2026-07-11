@@ -9,8 +9,13 @@
 #include "BrxCvDbCurve.h"
 #include "BrxCvDbSubObject.h"
 
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+#include "BrxCvDbStringLine.h"
+#endif
+
 class PyDbObjectId;
 class PyDbDatabase;
+class PyGeInterval;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbSubObject
@@ -114,4 +119,41 @@ public:
 public:
     inline BrxCvDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStringLine
+
+void makePyBrxCvDbStringLineWrapper();
+class PyBrxCvDbStringLine : public PyBrxCvDbCurve
+{
+public:
+    PyBrxCvDbStringLine();
+    PyBrxCvDbStringLine(const PyDbObjectId& id);
+    PyBrxCvDbStringLine(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbStringLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbStringLine(BrxCvDbStringLine* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbStringLine() override = default;
+
+    Adesk::UInt32 numberOfPoints1() const;
+    Adesk::UInt32 numberOfPoints2(BrxCvDbStringLine::PointType type) const;
+
+    boost::python::tuple getPoint(Adesk::UInt32 index) const;
+    boost::python::tuple findPoint1(const AcGePoint2d& pointLocation) const;
+    boost::python::tuple findPoint2(const AcGePoint2d& pointLocation, const PyGeInterval& pInterval) const;
+
+    double getBulge(Adesk::UInt32 index) const;
+    double getRadius(Adesk::UInt32 index) const;
+
+
+
+    static std::string              className();
+    static PyRxClass                desc();
+    static PyBrxCvDbStringLine      cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbStringLine      cast(const PyRxObject& src);
+
+    inline BrxCvDbStringLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
 #endif//BRXAPP

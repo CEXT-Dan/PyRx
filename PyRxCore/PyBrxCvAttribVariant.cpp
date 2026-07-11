@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyBrxCvAttribVariant.h"
-#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 260)
 
 using namespace boost::python;
 

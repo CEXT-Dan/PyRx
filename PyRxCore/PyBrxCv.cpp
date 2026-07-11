@@ -11,7 +11,7 @@
 #include "PyBrxCvDbTinSurface.h"
 #include "PyBrxCvDbLabel.h"
 
-#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+#if defined(_BRXTARGET) && (_BRXTARGET >= 260)
 #include "PyBrxCvAttribVariant.h"
 #endif
 
@@ -315,8 +315,12 @@ static BOOST_PYTHON_MODULE(PyBrxCv)
     makeBrxCvDbLabelStyleTextWrapper();
 #endif
 
-#if defined(_BRXTARGET) && (_BRXTARGET == 260)
+#if defined(_BRXTARGET) && (_BRXTARGET >= 260)
     makePyBrxCvDbAttribVariantWrapper();
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+    makePyBrxCvDbStringLineWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
@@ -881,6 +885,23 @@ static BOOST_PYTHON_MODULE(PyBrxCv)
         .export_values()
         ;
 #endif 
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+    enum_<BrxCvDbStringLine::PointType>("StringLinePointType")
+        .value("ePI", BrxCvDbStringLine::PointType::ePI)
+        .value("eElevation", BrxCvDbStringLine::PointType::eElevation)
+        .value("eIntersection", BrxCvDbStringLine::PointType::eIntersection)
+        .value("eAll", BrxCvDbStringLine::PointType::eAll)
+        .export_values()
+        ;
+
+    enum_<BrxCvDbStringLine::CreationSource>("StringLineCreationSource")
+        .value("eNone", BrxCvDbStringLine::CreationSource::eNone)
+        .value("eFromCorridor", BrxCvDbStringLine::CreationSource::eFromCorridor)
+        .value("eFromAlignment", BrxCvDbStringLine::CreationSource::eFromAlignment)
+        .export_values()
+        ;
+#endif//270
 
 };
 
