@@ -341,7 +341,7 @@ BrxCvDbCurve* PyBrxCvDbCurve::impObj(const std::source_location& src /*= std::so
     return static_cast<BrxCvDbCurve*>(m_pyImp.get());
 }
 
-
+//TODO: move to own .h .cpp
 #if defined(_BRXTARGET) && (_BRXTARGET >= 270)
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbStringLine
@@ -360,8 +360,57 @@ void makePyBrxCvDbStringLineWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.OVRL(ctords)))
-
-
+        .def("numberOfPoints", &PyBrxCvDbStringLine::numberOfPoints1)
+        .def("numberOfPoints", &PyBrxCvDbStringLine::numberOfPoints2, DS.ARGS({ "ptype: PyBrxCv.StringLinePointType = ..." }))
+        .def("getPoint", &PyBrxCvDbStringLine::getPoint, DS.ARGS({ "index: int" }))
+        .def("getBulge", &PyBrxCvDbStringLine::getBulge, DS.ARGS({ "index: int" }))
+        .def("getRadius", &PyBrxCvDbStringLine::getRadius, DS.ARGS({ "index: int" }))
+        .def("findPoint", &PyBrxCvDbStringLine::findPoint1)
+        .def("findPoint", &PyBrxCvDbStringLine::findPoint2, DS.ARGS({ "pointLocation: PyGe.Point2d","pInterval: PyGe.Interval = ..." }))
+        .def("surfaceId", &PyBrxCvDbStringLine::surfaceId, DS.ARGS())
+        .def("creationSource", &PyBrxCvDbStringLine::creationSource, DS.ARGS())
+        .def("maxGrade", &PyBrxCvDbStringLine::maxGrade, DS.ARGS())
+        .def("minGrade", &PyBrxCvDbStringLine::minGrade, DS.ARGS())
+        .def("maxElevation", &PyBrxCvDbStringLine::maxElevation, DS.ARGS())
+        .def("minElevation", &PyBrxCvDbStringLine::minElevation, DS.ARGS())
+        .def("length2d", &PyBrxCvDbStringLine::length2d, DS.ARGS())
+        .def("length3d", &PyBrxCvDbStringLine::length3d, DS.ARGS())
+        .def("isRelativeToSurface", &PyBrxCvDbStringLine::isRelativeToSurface, DS.ARGS({ "index: int" }))
+        .def("getRelativeElevation", &PyBrxCvDbStringLine::getRelativeElevation, DS.ARGS({ "index: int" }))
+        .def("getPoints", &PyBrxCvDbStringLine::getPoints1)
+        .def("getPoints", &PyBrxCvDbStringLine::getPoints2, DS.ARGS({ "ptype: PyBrxCv.StringLinePointType = ..." }))
+        .def("get3dDistanceAtPoint", &PyBrxCvDbStringLine::get3dDistanceAtPoint, DS.ARGS({ "point: PyGe.Point3d" }))
+        .def("get2dDistanceAtPoint", &PyBrxCvDbStringLine::get2dDistanceAtPoint, DS.ARGS({ "point: PyGe.Point2d" }))
+        .def("get2dDistanceAtParam", &PyBrxCvDbStringLine::get2dDistanceAtParam, DS.ARGS({ "param: float" }))
+        .def("get2dDistancesAtPoints", &PyBrxCvDbStringLine::get2dDistancesAtPoints, DS.ARGS({ "points: list[PyGe.Point2d]" }))
+        .def("getGradeInAtPoint", &PyBrxCvDbStringLine::getGradeInAtPoint, DS.ARGS({ "pointOnCurve: PyGe.Point2d" }))
+        .def("getGradeInAtParam", &PyBrxCvDbStringLine::getGradeInAtParam, DS.ARGS({ "param: float" }))
+        .def("getGradeOutAtPoint", &PyBrxCvDbStringLine::getGradeOutAtPoint, DS.ARGS({ "pointOnCurve: PyGe.Point2d" }))
+        .def("getGradeOutAtParam", &PyBrxCvDbStringLine::getGradeOutAtParam, DS.ARGS({ "param: float" }))
+        .def("getElevationAtPoint", &PyBrxCvDbStringLine::getElevationAtPoint, DS.ARGS({ "pointOnCurve: PyGe.Point2d" }))
+        .def("getElevationsAt2dIntersections", &PyBrxCvDbStringLine::getElevationsAt2dIntersections, DS.ARGS({ "stringline: PyBrxCv.CvDbStringLine" }))
+        .def("addPI", &PyBrxCvDbStringLine::addPI1)
+        .def("addPI", &PyBrxCvDbStringLine::addPI2, DS.ARGS({ "point: PyGe.Point3d", "bulge:float = ..." }))
+        .def("insertElevationPoint", &PyBrxCvDbStringLine::insertElevationPoint, DS.ARGS({ "param: float", "elevation:float" }))
+        .def("insertPI", &PyBrxCvDbStringLine::insertPI1)
+        .def("insertPI", &PyBrxCvDbStringLine::insertPI2, DS.ARGS({ "index:int", "point: PyGe.Point3d", "bulge:float = ..." }))
+        .def("insertCurve", &PyBrxCvDbStringLine::insertCurve, DS.ARGS({ "index:int","radius: float" }))
+        .def("deletePoint", &PyBrxCvDbStringLine::deletePoint, DS.ARGS({ "index:int" }))
+        .def("deletePI", &PyBrxCvDbStringLine::deletePI1)
+        .def("deletePI", &PyBrxCvDbStringLine::deletePI2, DS.ARGS({ "val:int|PyGe.Point3d" }))
+        .def("deleteElevationPoint", &PyBrxCvDbStringLine::deleteElevationPoint1)
+        .def("deleteElevationPoint", &PyBrxCvDbStringLine::deleteElevationPoint2, DS.ARGS({ "val:int|PyGe.Point3d" }))
+        .def("setLocation", &PyBrxCvDbStringLine::setLocation, DS.ARGS({ "index:int" , "location:PyGe.Point3d" }))
+        .def("setElevation", &PyBrxCvDbStringLine::setElevation, DS.ARGS({ "index:int" , "elevation:float" }))
+        .def("setBulge", &PyBrxCvDbStringLine::setBulge, DS.ARGS({ "index:int" , "bulge:float" }))
+        .def("setRadius", &PyBrxCvDbStringLine::setRadius, DS.ARGS({ "index:int", "radius:float", "isClockwise:bool" }))
+        .def("setRelativeToSurface", &PyBrxCvDbStringLine::setRelativeToSurface, DS.ARGS({ "index:int", "isRelative:bool" }))
+        .def("setRelativeElevation", &PyBrxCvDbStringLine::setRelativeElevation, DS.ARGS({ "index:int", "isInputRelative:bool", "elevation:float" }))
+        .def("setSurfaceId", &PyBrxCvDbStringLine::setSurfaceId, DS.ARGS({ "surfaceId:PyDb.ObjectId" }))
+        .def("setGradeIn", &PyBrxCvDbStringLine::setGradeIn, DS.ARGS({ "index:int", "grade:float" }))
+        .def("setGradeOut", &PyBrxCvDbStringLine::setGradeOut, DS.ARGS({ "index:int", "grade:float" }))
+        .def("update", &PyBrxCvDbStringLine::update1)
+        .def("update", &PyBrxCvDbStringLine::update2, DS.ARGS({ "forceUpdate:bool=True" }))
         .def("className", &PyBrxCvDbStringLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbStringLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbStringLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -643,7 +692,7 @@ void PyBrxCvDbStringLine::deleteElevationPoint1(const AcGePoint3d& point) const
     PyThrowBadEs(impObj()->deleteElevationPoint(point));
 }
 
-void PyBrxCvDbStringLine::deleteElevationPoint(Adesk::UInt32 index) const
+void PyBrxCvDbStringLine::deleteElevationPoint2(Adesk::UInt32 index) const
 {
     PyThrowBadEs(impObj()->deleteElevationPoint(index));
 }
@@ -749,7 +798,26 @@ void makePyBrxCvDbStringLineManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.OVRL(ctords)))
-
+        .def("addGroup", &PyBrxCvDbStringLineManager::addGroup, DS.ARGS({ "groupName: str" }))
+        .def("eraseGroup", &PyBrxCvDbStringLineManager::eraseGroup, DS.ARGS({ "groupName: str" }))
+        .def("renameGroup", &PyBrxCvDbStringLineManager::renameGroup, DS.ARGS({ "groupName: str", "newName: str" }))
+        .def("setIntersectionInteraction", &PyBrxCvDbStringLineManager::setIntersectionInteraction, DS.ARGS({ "groupName: str" , "isOn:bool" }))
+        .def("updateInteractionGeometry", &PyBrxCvDbStringLineManager::updateInteractionGeometry, DS.ARGS({ "groupName: str" }))
+        .def("intersectionInteractionEnabled", &PyBrxCvDbStringLineManager::intersectionInteractionEnabled, DS.ARGS({ "groupName: str" }))
+        .def("groupCount", &PyBrxCvDbStringLineManager::groupCount, DS.ARGS())
+        .def("groupAt", &PyBrxCvDbStringLineManager::groupAt, DS.ARGS({ "index: int" }))
+        .def("addStringlineToGroup", &PyBrxCvDbStringLineManager::addStringlineToGroup, DS.ARGS({ "groupName: str","stringlineId:PyDb.ObjectId" }))
+        .def("removeStringlineFromGroup", &PyBrxCvDbStringLineManager::removeStringlineFromGroup1)
+        .def("removeStringlineFromGroup", &PyBrxCvDbStringLineManager::removeStringlineFromGroup2, DS.ARGS({ "groupName: str","stringlineId:PyDb.ObjectId","addToDefault:bool = True" }))
+        .def("getStringlineGroup", &PyBrxCvDbStringLineManager::getStringlineGroup, DS.ARGS({ "stringlineId:PyDb.ObjectId" }))
+        .def("setPriorityOrder", &PyBrxCvDbStringLineManager::setPriorityOrder, DS.ARGS({ "groupName: str","stringlineId:PyDb.ObjectId", "order:int" }))
+        .def("getPriorityOrder", &PyBrxCvDbStringLineManager::getPriorityOrder, DS.ARGS({ "groupName: str","stringlineId:PyDb.ObjectId" }))
+        .def("getStringlineIds", &PyBrxCvDbStringLineManager::getStringlineIds, DS.ARGS({ "groupName: str" }))
+        .def("getStringlineCount", &PyBrxCvDbStringLineManager::getStringlineCount, DS.ARGS({ "groupName: str" }))
+        .def("getInstanceFromDatabase", &PyBrxCvDbStringLineManager::getInstanceFromDatabase1)
+        .def("getInstanceFromDatabase", &PyBrxCvDbStringLineManager::getInstanceFromDatabase2, DS.SARGS({ "db:PyDb.Database", "createIfNotExists:bool=True" })).staticmethod("getInstanceFromDatabase")
+        .def("openInstanceFromDatabase", &PyBrxCvDbStringLineManager::openInstanceFromDatabase1)
+        .def("openInstanceFromDatabase", &PyBrxCvDbStringLineManager::openInstanceFromDatabase2, DS.SARGS({ "db:PyDb.Database","openMode:PyDb.OpenMode", "createIfNotExists:bool=True" })).staticmethod("openInstanceFromDatabase")
         .def("className", &PyBrxCvDbStringLineManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbStringLineManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbStringLineManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -870,22 +938,22 @@ Adesk::UInt32 PyBrxCvDbStringLineManager::getStringlineCount(const std::string& 
     return val;
 }
 
-PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase(const PyDbDatabase& pDb)
+PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase1(const PyDbDatabase& pDb)
 {
     return BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj());
 }
 
-PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase(const PyDbDatabase& pDb, bool createIfNotExists)
+PyDbObjectId PyBrxCvDbStringLineManager::getInstanceFromDatabase2(const PyDbDatabase& pDb, bool createIfNotExists)
 {
     return BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), createIfNotExists);
 }
 
-PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode)
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase1(const PyDbDatabase& pDb, AcDb::OpenMode openMode)
 {
     return PyBrxCvDbStringLineManager(BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), openMode), false);
 }
 
-PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists)
+PyBrxCvDbStringLineManager PyBrxCvDbStringLineManager::openInstanceFromDatabase2(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists)
 {
     return PyBrxCvDbStringLineManager(BrxCvDbStringLineManager::getInstanceFromDatabase(pDb.impObj(), openMode, createIfNotExists), false);
 }
@@ -919,7 +987,6 @@ BrxCvDbStringLineManager* PyBrxCvDbStringLineManager::impObj(const std::source_l
     }
     return static_cast<BrxCvDbStringLineManager*>(m_pyImp.get());
 }
-
 #endif
 
 #endif//BRXAPP

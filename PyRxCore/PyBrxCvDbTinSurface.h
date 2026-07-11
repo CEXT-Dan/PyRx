@@ -162,6 +162,7 @@ public:
     bool                setMajorContoursInterval(double interval) const;
     bool                setMinorContoursColor(Adesk::UInt16 colorIndex) const;
     bool                setMajorContoursColor(Adesk::UInt16 colorIndex) const;
+    bool                setContoursBaseElevation(double baseElevation) const;
     bool                merge(const PyBrxCvDbTinSurface& theOther) const;
     boost::python::list getPoints(bool visibleOnly) const;
     boost::python::list getTinPoints() const;
@@ -233,6 +234,7 @@ public:
     Adesk::UInt32       moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex) const;
     bool                removeDefinitionAt(const Adesk::UInt32 index) const;
     Adesk::UInt32       removeAllDefinitions() const;
+
 
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
     static std::string          className();

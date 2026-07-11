@@ -172,7 +172,6 @@ public:
     double getElevationAtPoint(const AcGePoint2d& pointOnCurve) const;
     boost::python::list getElevationsAt2dIntersections(const PyBrxCvDbStringLine& stringline) const;
 
-    // Point modification
     void addPI1(const AcGePoint3d& point) const;
     void addPI2(const AcGePoint3d& point, double bulge) const;
 
@@ -180,12 +179,13 @@ public:
 
     void insertPI1(Adesk::UInt32 index, const AcGePoint3d& point) const;
     void insertPI2(Adesk::UInt32 index, const AcGePoint3d& point, double bulge) const;
+
     void insertCurve(Adesk::UInt32 index, double radius) const;
     void deletePoint(Adesk::UInt32 index) const;
     void deletePI1(const AcGePoint3d& point) const;
     void deletePI2(Adesk::UInt32 index) const;
     void deleteElevationPoint1(const AcGePoint3d& point) const;
-    void deleteElevationPoint(Adesk::UInt32 index) const;
+    void deleteElevationPoint2(Adesk::UInt32 index) const;
     void setLocation(Adesk::UInt32 index, const AcGePoint2d& location) const;
     void setElevation(Adesk::UInt32 index, double elevation) const;
     void setBulge(Adesk::UInt32 index, double bulge) const;
@@ -243,10 +243,10 @@ public:
     Adesk::UInt32 getStringlineCount(const std::string& groupName) const;
 
 
-    static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDb);
-    static PyDbObjectId getInstanceFromDatabase(const PyDbDatabase& pDb, bool createIfNotExists);
-    static PyBrxCvDbStringLineManager openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode);
-    static PyBrxCvDbStringLineManager openInstanceFromDatabase(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists);
+    static PyDbObjectId getInstanceFromDatabase1(const PyDbDatabase& pDb);
+    static PyDbObjectId getInstanceFromDatabase2(const PyDbDatabase& pDb, bool createIfNotExists);
+    static PyBrxCvDbStringLineManager openInstanceFromDatabase1(const PyDbDatabase& pDb, AcDb::OpenMode openMode);
+    static PyBrxCvDbStringLineManager openInstanceFromDatabase2(const PyDbDatabase& pDb, AcDb::OpenMode openMode, bool createIfNotExists);
 
     static std::string          className();
     static PyRxClass            desc();

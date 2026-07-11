@@ -6,6 +6,7 @@
 #include "BrxCvDbFileFormatManager.h"
 #include "BrxCvDbStyleManager.h"
 #include "BrxCvDbPointGroupManager.h"
+
 class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
@@ -106,7 +107,6 @@ public:
 public:
     inline BrxCvDbStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------
 // PyBrxCvDbPointGroupManager

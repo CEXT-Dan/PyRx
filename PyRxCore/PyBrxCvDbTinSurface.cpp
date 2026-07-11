@@ -282,6 +282,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("setMajorContoursInterval", &PyBrxCvDbTinSurface::setMajorContoursInterval, DS.ARGS({ "interval : float" }))
         .def("setMinorContoursColor", &PyBrxCvDbTinSurface::setMinorContoursColor, DS.ARGS({ "colorIndex : int" }))
         .def("setMajorContoursColor", &PyBrxCvDbTinSurface::setMajorContoursColor, DS.ARGS({ "colorIndex : int" }))
+        .def("setContoursBaseElevation", &PyBrxCvDbTinSurface::setContoursBaseElevation, DS.ARGS({ "baseElevation : float" }))
         .def("merge", &PyBrxCvDbTinSurface::merge, DS.ARGS({ "other : PyBrxCv.CvDbTinSurface" }))
         .def("getPoints", &PyBrxCvDbTinSurface::getPoints, DS.ARGS({ "visibleOnly : bool=False" }), arg("visibleOnly") = false)
         .def("getTinPoints", &PyBrxCvDbTinSurface::getTinPoints, DS.ARGS())
@@ -469,6 +470,15 @@ bool PyBrxCvDbTinSurface::setMinorContoursColor(Adesk::UInt16 colorIndex) const
 bool PyBrxCvDbTinSurface::setMajorContoursColor(Adesk::UInt16 colorIndex) const
 {
     return impObj()->setMajorContoursColor(colorIndex);
+}
+
+bool PyBrxCvDbTinSurface::setContoursBaseElevation(double baseElevation) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET >= 270)
+    return impObj()->setContoursBaseElevation(baseElevation);
+#else
+    throw PyNotimplementedByHost{};
+#endif
 }
 
 bool PyBrxCvDbTinSurface::merge(const PyBrxCvDbTinSurface& theOther) const
