@@ -349,6 +349,173 @@ static bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& 
     return foundAny;
 }
 
+//-----------------------------------------------------------------------------------------
+//clipCircArc3d
+static bool clipClosedCircle3d(AcArray<AcGeCircArc3d>& outArcs, const AcGeCircArc3d& arc, const AcGePoint2d& pMin, const AcGePoint2d& pMax, const AcGeTol& tol)
+{
+    if (!arc.isClosed())
+        return false;
+
+    // 1. Project the 3D closed circle to 2D
+    AcGePoint3d center3d = arc.center();
+    AcGePoint2d center2d(center3d.x, center3d.y);
+
+    AcGeInterval interval;
+    arc.getInterval(interval);
+    double startT, endT;
+    interval.getBounds(startT, endT);
+    const double period = endT - startT;
+    const double eps = tol.equalPoint();
+
+    // Recreate a full closed circle in 2D
+    AcGeCircArc2d arc2d(center2d, arc.radius());
+
+    const AcGeLineSeg2d edges[4] = {
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMin.y), AcGePoint2d(pMax.x, pMin.y)), // Bottom
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMin.y), AcGePoint2d(pMax.x, pMax.y)), // Right
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMax.y), AcGePoint2d(pMin.x, pMax.y)), // Top
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMax.y), AcGePoint2d(pMin.x, pMin.y))  // Left
+    };
+
+    // 2. Compute intersection points in 2D
+    std::vector<double> params;
+    for (const auto& edge : edges) {
+        int found = 0;
+        AcGePoint2d p1, p2;
+        if (arc2d.intersectWith(edge, found, p1, p2, tol)) {
+            if (found >= 1) params.push_back(arc2d.paramOf(p1, tol));
+            if (found >= 2) params.push_back(arc2d.paramOf(p2, tol));
+        }
+    }
+
+    // 3. Handle non-intersecting full circles
+    if (params.empty()) {
+        if (center2d.x >= pMin.x - eps && center2d.x <= pMax.x + eps &&
+            center2d.y >= pMin.y - eps && center2d.y <= pMax.y + eps)
+        {
+            outArcs.append(arc);
+            return true;
+        }
+        return false;
+    }
+
+    // 4. Sort and deduplicate parameters
+    std::sort(params.begin(), params.end());
+    params.erase(std::unique(params.begin(), params.end(), [&](double a, double b) {
+        return std::abs(a - b) < eps;
+        }), params.end());
+
+    bool foundAny = false;
+
+    // 5. Evaluate consecutive standard intervals
+    for (size_t i = 0; i < params.size() - 1; ++i)
+    {
+        double midT = (params[i] + params[i + 1]) * 0.5;
+        AcGePoint2d midPt = arc2d.evalPoint(midT);
+
+        if (midPt.x >= pMin.x - eps && midPt.x <= pMax.x + eps &&
+            midPt.y >= pMin.y - eps && midPt.y <= pMax.y + eps)
+        {
+            AcGeCircArc3d segment{ arc };
+            segment.setInterval(AcGeInterval(params[i], params[i + 1]));
+            outArcs.append(segment);
+            foundAny = true;
+        }
+    }
+
+    // 6. Evaluate the critical periodic wrap-around boundary segment
+    double wrapMidT = (params.back() + (params.front() + period)) * 0.5;
+    if (wrapMidT > endT) {
+        wrapMidT -= period;
+    }
+
+    AcGePoint2d wrapMidPt = arc2d.evalPoint(wrapMidT);
+    if (wrapMidPt.x >= pMin.x - eps && wrapMidPt.x <= pMax.x + eps &&
+        wrapMidPt.y >= pMin.y - eps && wrapMidPt.y <= pMax.y + eps)
+    {
+        AcGeCircArc3d segment{ arc };
+        segment.setInterval(AcGeInterval(params.back(), params.front() + period));
+        outArcs.append(segment);
+        foundAny = true;
+    }
+
+    return foundAny;
+}
+
+static bool clipCircArc3d(AcArray<AcGeCircArc3d>& outArcs, const AcGeCircArc3d& arc, const AcGePoint2d& pMin, const AcGePoint2d& pMax, const AcGeTol& tol)
+{
+    // Route closed circles out immediately
+    if (arc.isClosed())
+        return clipClosedCircle3d(outArcs, arc, pMin, pMax, tol);
+
+    // 1. Convert the 3D arc to its flat 2D projection on the XY plane
+    // (Drops the Z component of the center, preserves radius and planar orientation)
+    AcGePoint3d center3d = arc.center();
+    AcGePoint2d center2d(center3d.x, center3d.y);
+
+    // Retrieve the open bounds from the 3D curve
+    AcGeInterval interval;
+    arc.getInterval(interval);
+    double startT, endT;
+    interval.getBounds(startT, endT);
+
+    // Build the projected 2D arc representing our 3D curve geometry
+    // Project the 3D reference vector to 2D by extracting its X and Y components
+    AcGeVector3d refVec3d = arc.refVec();
+    AcGeVector2d refVec2d(refVec3d.x, refVec3d.y);
+
+    // Correctly instantiate the 2D arc
+    AcGeCircArc2d arc2d(center2d, arc.radius(), startT, endT, refVec2d, false);
+
+    std::vector<double> params;
+    params.push_back(startT);
+    params.push_back(endT);
+
+    const AcGeLineSeg2d edges[4] = {
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMin.y), AcGePoint2d(pMax.x, pMin.y)), // Bottom
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMin.y), AcGePoint2d(pMax.x, pMax.y)), // Right
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMax.y), AcGePoint2d(pMin.x, pMax.y)), // Top
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMax.y), AcGePoint2d(pMin.x, pMin.y))  // Left
+    };
+
+    // 2. Perform intersection checks in 2D
+    for (const auto& edge : edges) {
+        int found = 0;
+        AcGePoint2d p1, p2;
+        if (arc2d.intersectWith(edge, found, p1, p2, tol)) {
+            if (found >= 1) params.push_back(arc2d.paramOf(p1, tol));
+            if (found >= 2) params.push_back(arc2d.paramOf(p2, tol));
+        }
+    }
+
+    // 3. Sort and deduplicate parameters
+    std::sort(params.begin(), params.end());
+    const double eps = tol.equalPoint();
+    params.erase(std::unique(params.begin(), params.end(), [&](double a, double b) {
+        return std::abs(a - b) < eps;
+        }), params.end());
+
+    bool foundAny = false;
+
+    // 4. Test intervals and trim the 3D curves
+    for (size_t i = 0; i < params.size() - 1; ++i)
+    {
+        const double midT = (params[i] + params[i + 1]) * 0.5;
+        const AcGePoint2d midPt = arc2d.evalPoint(midT);
+
+        if (midPt.x >= pMin.x - eps && midPt.x <= pMax.x + eps &&
+            midPt.y >= pMin.y - eps && midPt.y <= pMax.y + eps)
+        {
+            AcGeCircArc3d segment{ arc }; // Copy full native 3D geometry (plane, normal, center)
+            segment.setInterval(AcGeInterval(params[i], params[i + 1])); // Apply the 2D computed bounds
+            outArcs.append(segment);
+            foundAny = true;
+        }
+    }
+
+    return foundAny;
+}
+
 bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcDbExtents2d& extents, const AcGeTol& tol)
 {
     return clipCircArc2d(outArcs, arc, extents.minPoint(), extents.maxPoint(), tol);
@@ -362,4 +529,16 @@ bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, co
     return clipCircArc2d(outArcs, arc, min, max, tol);
 }
 
+bool clipCircArc3d(AcArray<AcGeCircArc3d>& outArcs, const AcGeCircArc3d& arc, const AcDbExtents2d& extents, const AcGeTol& tol /*= AcGeContext::gTol*/)
+{
+    return clipCircArc3d(outArcs, arc, extents.minPoint(), extents.maxPoint(), tol);
+}
+
+bool clipCircArc3d(AcArray<AcGeCircArc3d>& outArcs, const AcGeCircArc3d& arc, const AcGeBoundBlock2d& extents, const AcGeTol& tol /*= AcGeContext::gTol*/)
+{
+    AcGePoint2d min;
+    AcGePoint2d max;
+    extents.getMinMaxPoints(min, max);
+    return clipCircArc3d(outArcs, arc, min, max, tol);
+}
 
