@@ -34,7 +34,7 @@
 #import "zwcad25.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_GRXTARGET) && (_GRXTARGET >= 240) && (_GRXTARGET <= 260)
+#if defined(_GRXTARGET) && (_GRXTARGET >= 240) && (_GRXTARGET <= 270)
 #import "acax.tlb"  no_implementation, raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 

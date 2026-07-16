@@ -195,7 +195,7 @@ void PyJig::setDispPromptWr(const std::string& val)
 boost::python::tuple PyJig::acquireStringWr()
 {
     PyAutoLockGIL lock;
-#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270)
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
@@ -396,7 +396,7 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
     PyAutoLockGIL lock;
-#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270)
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));

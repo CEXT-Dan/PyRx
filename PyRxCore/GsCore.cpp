@@ -165,7 +165,7 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
 
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
-#if defined(_GRXTARGET260)
+#if defined(_GRXTARGET270)
     throw PyNotimplementedByHost();
     return nullptr;
 #endif

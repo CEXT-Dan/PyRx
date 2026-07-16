@@ -461,7 +461,7 @@ void PyDbAssocDependency::copied(const PyDbObject& dbObj, const PyDbObject& pNew
 
 void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setPrevDependencyOnObject(depId.m_id);
@@ -470,7 +470,7 @@ void PyDbAssocDependency::setPrevDependencyOnObject(const PyDbObjectId& depId) c
 
 void PyDbAssocDependency::setNextDependencyOnObject(const PyDbObjectId& depId) const
 {
-#if defined(_BRXTARGET270) || defined(_GRXTARGET260) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
+#if defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) || defined(_ARXTARGET240)
     throw PyNotimplementedByHost{};
 #else
     impObj()->setNextDependencyOnObject(depId.m_id);

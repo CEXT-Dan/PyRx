@@ -161,7 +161,7 @@ static void FromAcCmColorFromString(AcCmColor& left, const std::string& htmlColo
 
 static AcCmColor AcCmColorMakeTrueColor(const AcCmColor& clr)
 {
-#if defined(_GRXTARGET260) || defined(_ZRXTARGET240)
+#if defined(_GRXTARGET270) || defined(_ZRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     AcCmColor newColor;
