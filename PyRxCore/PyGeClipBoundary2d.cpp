@@ -202,26 +202,95 @@ bool clipLineSeg2d(AcGeLineSeg2d& outSeg, const AcGeLineSeg2d& seg, const AcGeBo
 
 //-----------------------------------------------------------------------------------------
 //clipCircArc2d
-/**
- * @brief   High-precision 2D Geometric Clipping Utilities.
- * * @author  Gemini (AI Collaborator)
- * @date    2026
- * * @details This implementation provides robust clipping of AcGeCircArc2d entities
- * against rectangular boundaries (AcDbExtents2d).
- * * Key Features:
- * - Parameter-Space Clipping: Maintains numerical stability for "slight bulge"
- * polyline segments by clipping in the 1D parameter domain rather than
- * relying on 2D coordinate reconstruction.
- * - Multi-Segment Support: Correctly identifies and returns disconnected
- * visible segments for arcs that exit and re-enter the clipping boundary.
- * - Geometric Integrity: Utilizes AcGeInterval to preserve the original
- * arc's center and radius, ensuring 14+ decimal place precision.
- */
+static bool clipClosedCircle2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcGePoint2d& pMin, const AcGePoint2d& pMax, const AcGeTol& tol)
+{
+    // 1. Fetch domain boundaries (usually 0 to 2PI)
+    AcGeInterval interval;
+    arc.getInterval(interval);
+    double startT, endT;
+    interval.getBounds(startT, endT);
+    const double period = endT - startT;
+    const double eps = tol.equalPoint();
+
+    const AcGeLineSeg2d edges[4] = {
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMin.y), AcGePoint2d(pMax.x, pMin.y)), // Bottom
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMin.y), AcGePoint2d(pMax.x, pMax.y)), // Right
+        AcGeLineSeg2d(AcGePoint2d(pMax.x, pMax.y), AcGePoint2d(pMin.x, pMax.y)), // Top
+        AcGeLineSeg2d(AcGePoint2d(pMin.x, pMax.y), AcGePoint2d(pMin.x, pMin.y))  // Left
+    };
+
+    // 2. Find all intersection parameters along the curve
+    std::vector<double> params;
+    for (const auto& edge : edges) {
+        int found = 0;
+        AcGePoint2d p1, p2;
+        if (arc.intersectWith(edge, found, p1, p2, tol)) {
+            if (found >= 1) params.push_back(arc.paramOf(p1, tol));
+            if (found >= 2) params.push_back(arc.paramOf(p2, tol));
+        }
+    }
+
+    // 3. Handle non-intersecting circles (Fully Inside or Fully Outside)
+    if (params.empty()) {
+        AcGePoint2d center = arc.center();
+        if (center.x >= pMin.x - eps && center.x <= pMax.x + eps &&
+            center.y >= pMin.y - eps && center.y <= pMax.y + eps)
+        {
+            outArcs.append(arc);
+            return true;
+        }
+        return false;
+    }
+
+    // 4. Sort and remove duplicate intersection points
+    std::sort(params.begin(), params.end());
+    params.erase(std::unique(params.begin(), params.end(), [&](double a, double b) {
+        return std::abs(a - b) < eps;
+        }), params.end());
+
+    bool foundAny = false;
+
+    // 5. Evaluate regular intervals between consecutive intersections
+    for (size_t i = 0; i < params.size() - 1; ++i)
+    {
+        double midT = (params[i] + params[i + 1]) * 0.5;
+        AcGePoint2d midPt = arc.evalPoint(midT);
+
+        if (midPt.x >= pMin.x - eps && midPt.x <= pMax.x + eps &&
+            midPt.y >= pMin.y - eps && midPt.y <= pMax.y + eps)
+        {
+            AcGeCircArc2d segment{ arc };
+            segment.setInterval(AcGeInterval(params[i], params[i + 1]));
+            outArcs.append(segment);
+            foundAny = true;
+        }
+    }
+
+    // 6. Handle the critical wrap-around interval (from last param back to first param)
+    double wrapMidT = (params.back() + (params.front() + period)) * 0.5;
+    if (wrapMidT > endT) {
+        wrapMidT -= period;
+    }
+
+    AcGePoint2d wrapMidPt = arc.evalPoint(wrapMidT);
+    if (wrapMidPt.x >= pMin.x - eps && wrapMidPt.x <= pMax.x + eps &&
+        wrapMidPt.y >= pMin.y - eps && wrapMidPt.y <= pMax.y + eps)
+    {
+        AcGeCircArc2d segment{ arc };
+        // Front boundary parameter shifted by 2PI creates a valid continuous arc tracking forward
+        segment.setInterval(AcGeInterval(params.back(), params.front() + period));
+        outArcs.append(segment);
+        foundAny = true;
+    }
+
+    return foundAny;
+}
+
 static bool clipCircArc2d(AcArray<AcGeCircArc2d>& outArcs, const AcGeCircArc2d& arc, const AcGePoint2d& pMin, const AcGePoint2d& pMax, const AcGeTol& tol)
 {
     // Closed circles require a different parameterization (0 to 2PI)
     if (arc.isClosed())
-        return false;
+        return clipClosedCircle2d(outArcs, arc, pMin, pMax, tol);
 
     // 1. Initialize parameter collection with the arc's existing bounds
     AcGeInterval interval;
