@@ -53,7 +53,7 @@
 #include "PyGeLinearEnt2d.h"
 #include "PyGeLinearEnt3d.h"
 #include "PyDbAssocAction.h"
-#include "PyGeClipBoundary2d.h"
+#include "PyGeBoundBlock2d.h"
 
 using namespace boost::python;
 
@@ -167,6 +167,23 @@ static boost::python::tuple AcDbExtents2dclipCircArc2d(const AcDbExtents2d& exte
     return boost::python::make_tuple(flag, _pylist);
 }
 
+static boost::python::tuple AcDbExtents2dClipLineSeg3d(const AcDbExtents2d& extents, const PyGeLineSeg3d& other)
+{
+    AcGeLineSeg3d outseg;
+    bool flag = ::clipLineSeg3d(outseg, *other.impObj(), extents);
+    return boost::python::make_tuple(flag, PyGeLineSeg3d(outseg));
+}
+
+static boost::python::tuple AcDbExtents2dclipCircArc3d(const AcDbExtents2d& extents, const PyGeCircArc3d& other)
+{
+    AcArray<AcGeCircArc3d> outsegs;
+    bool flag = ::clipCircArc3d(outsegs, *other.impObj(), extents);
+    boost::python::list _pylist;
+    for (const auto outseg : outsegs)
+        _pylist.append(PyGeCircArc3d(outseg));
+    return boost::python::make_tuple(flag, _pylist);
+}
+
 static void makePyDbExtents2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -193,6 +210,8 @@ static void makePyDbExtents2dWrapper()
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
         .def("clipLineSeg2d", &AcDbExtents2dClipLineSeg2d, DS.ARGS({ "seg2d: PyGe.LineSeg2d" }, 19140))
         .def("clipCircArc2d", &AcDbExtents2dclipCircArc2d, DS.ARGS({ "seg2d: PyGe.CircArc2d" }, 19141))
+        .def("clipLineSeg3d", &AcDbExtents2dClipLineSeg3d, DS.ARGS({ "seg2d: PyGe.LineSeg3d" }, 19140))
+        .def("clipCircArc3d", &AcDbExtents2dclipCircArc3d, DS.ARGS({ "seg2d: PyGe.CircArc3d" }, 19141))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;
