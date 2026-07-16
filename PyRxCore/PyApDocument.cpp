@@ -270,15 +270,23 @@ void PyApDocument::closeAndSave2(const std::string& fileName) const
 PyApDocument PyApDocument::fromAcadDocument(const PyAcadDocument& doc)
 {
     using Iter = std::unique_ptr<AcApDocumentIterator>;
-
+#if defined (_GRXTARGET270)
+    const auto id = doc.database().modelSpace().objectId();
+#else
     const auto rawptr = doc.getRawPtr();
+#endif
     for (Iter pIt(acDocManager->newAcApDocumentIterator()); !pIt->done(); pIt->step())
     {
         AcApDocument* pDoc = pIt->document();
         if (pDoc)
         {
+#if defined (_GRXTARGET270)
+            if (acdbSymUtil()->blockModelSpaceId(pDoc->database()) == id.m_id)
+                return PyApDocument(pDoc);
+#else
             if (rawptr == (LONG_PTR)pDoc->GetIDispatch(false))
                 return PyApDocument(pDoc);
+#endif
         }
     }
     throw PyErrorStatusException{ eNoDocument };

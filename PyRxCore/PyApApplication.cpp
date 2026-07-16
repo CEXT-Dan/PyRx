@@ -44,6 +44,8 @@ static const TCHAR* getComAPIVer()
     return L"GRX25";
 #elif defined(_GRXTARGET) && _GRXTARGET == 260
     return L"GRX26";
+#elif defined(_GRXTARGET) && _GRXTARGET == 270
+    return L"GRX27";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 240
     return L"ZRX24";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 250
