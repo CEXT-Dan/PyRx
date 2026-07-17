@@ -32,11 +32,12 @@ class PyRxDarkModeSettings : public wxDarkModeSettings
 {
 public:
 
-    static COLORREF getPaletteBackground()
+    static COLORREF backgroundColor()
     {
-#ifndef _ARXTARGET
-        return RGB(49, 56, 66);
-#else
+#ifdef _BRXTARGET
+        return RGB(45, 49, 53);
+#elif _ARXTARGET
+
         auto mgr = CAdUiThemeManager{};
         auto theme = mgr.GetTheme(PALETTE_SET_THEME);
         if (theme == nullptr)
@@ -44,12 +45,14 @@ public:
         COLORREF clr = theme->GetColor(kPaletteBackground);
         mgr.ReleaseTheme(theme);
         return clr;
+#else
+        return RGB(49, 56, 66);
 #endif
     }
 
     wxColour GetColour(wxSystemColour index) override
     {
-        static COLORREF clr = getPaletteBackground();
+        static COLORREF clr = backgroundColor();
         switch (index)
         {
             case wxSYS_COLOUR_APPWORKSPACE:
@@ -59,7 +62,7 @@ public:
             case wxSYS_COLOUR_BTNFACE: //TODO: does not stick
                 return wxColour(clr);
             default:
-                return wxDarkModeSettings::GetColour(index);
+                return PyRxDarkModeSettings::GetColour(index);
         }
     }
 };

@@ -5,8 +5,8 @@
 
 class PyGeLineSeg2d;
 class PyGeLineSeg3d;
+class PyGeCircArc2d;
 class PyGeCircArc3d;
-
 
 //-----------------------------------------------------------------------------------------
 //PyGeBoundBlock2d wrapper

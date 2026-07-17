@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyGeBoundBlock2d.h"
+#include "PyGeCurve2d.h"
 #include "PyGeLinearEnt2d.h"
-#include "PyGeClipBoundary2d.h"
 #include "PyGeCurve3d.h"
 #include "PyGeLinearEnt3d.h"
 
