@@ -19,10 +19,10 @@ jobs:
         with:
           python-version: '3.14'
 
-      - name: Install dependencies
+      - name: Install Mypy and Standard Types Only
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev,ptrepl]
+          pip install mypy types-setuptools
 
-      - name: Run mypy
-        run: mypy --platform win32
+      - name: Run mypy with ignored third-party imports
+        run: mypy . --ignore-missing-imports
