@@ -62,7 +62,7 @@ public:
             case wxSYS_COLOUR_BTNFACE: //TODO: does not stick
                 return wxColour(clr);
             default:
-                return PyRxDarkModeSettings::GetColour(index);
+                return wxDarkModeSettings::GetColour(index);
         }
     }
 };

@@ -35,7 +35,7 @@
 #include "acedCmdNF.h"
 #include "AcDbAssocAction.h"
 
-//for testing
+//for testing 
 #ifdef PYRXDEBUG
 #endif
 
