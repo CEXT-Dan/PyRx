@@ -69,9 +69,6 @@ public:
         PyRxApp::instance().MAIN_THREAD_ID = std::this_thread::get_id();
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
-#if !wxCHECK_VERSION(3, 3, 0)
-        acedRegisterWatchWinMsg(PyWatchWinMsgFn);
-#endif
         return (retCode);
     }
 
@@ -80,9 +77,6 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
         acdbModelerEnd();
         acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
-#if !wxCHECK_VERSION(3, 3, 0)
-        acedRemoveWatchWinMsg(PyWatchWinMsgFn);
-#endif
         try
         {
             if (PyRxApp::instance().funcNameMap.size() != 0)
@@ -177,17 +171,6 @@ public:
                 acedAlert(_T("\nPyInit Failed"));
             doneOnce = true;
         }
-    }
-
-    //[#254] 
-    static void PyWatchWinMsgFn(const MSG* msg)
-    {
-#if !wxCHECK_VERSION(3, 3, 0)
-        if (msg->hwnd == adsw_acadDocWnd() || msg->hwnd == adsw_acadMainWnd())
-            return;
-        if (msg->message == WM_MOUSEMOVE)
-            wxToolTip::RelayEvent((WXMSG*)msg);
-#endif
     }
 
     static void PyRxOnIdleMsgFn()

@@ -30,15 +30,15 @@
 
 //FORCEBUILD = 20
 constexpr const wchar_t* PATHENV = _T("PATH");
-constexpr const wchar_t* PYTHONNAME = _T("python312");
-constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
+constexpr const wchar_t* PYTHONNAME = _T("python314");
+constexpr const wchar_t* PYTHONDLLNAME = _T("python314.dll");
 constexpr const wchar_t* PYTHONEXEC = _T("python.exe");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
-constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
+constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python314");
 
 
 //-----------------------------------------------------------------------------

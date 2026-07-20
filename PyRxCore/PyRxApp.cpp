@@ -23,7 +23,6 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/dynlib.h>
 
-#if wxCHECK_VERSION(3, 3, 0)
 #include <wx/msw/darkmode.h>
 
 //------------------------------------------------------------------------------------------------
@@ -95,7 +94,6 @@ static bool useColorTheme()
     }
     return true;
 }
-#endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
@@ -111,14 +109,11 @@ ArxTopLevelWindow::ArxTopLevelWindow()
 // the wxApp
 bool WxRxApp::OnInit()
 {
-    // TODO: support wxWidgets with dark mode
-#if wxCHECK_VERSION(3, 3, 0)
     if (isAcadDark() && useColorTheme())
     {
         if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
-#endif //wxVERSION_33
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
@@ -151,78 +146,93 @@ void WxRxApp::WakeUpIdle()
     }
 }
 
-static bool initializeFromConfig()
+static bool initializeFromInitConfig()
 {
-    PyConfig config;
-    PyConfig_InitPythonConfig(&config);
-
-    config.optimization_level = PyRxAppSettings::optimizationLevel();
-
-    {// command line args
-        const auto& args = PyRxAppSettings::getCommandLineArgs();
-        config.parse_argv = args.size() == 0 ? FALSE : TRUE;
-        for (const auto& item : args)
-            PyWideStringList_Append(&config.argv, item.c_str());
+    // 1. Create the opaque initialization configuration instance (PEP 741)
+    PyInitConfig* config = PyInitConfig_Create();
+    if (config == nullptr)
+    {
+        acutPrintf(_T("\nPyInitConfig_Create failed in %ls"), __FUNCTIONW__);
+        return false;
     }
+
+    PyInitConfig_SetInt(config, "utf8_mode", 1);
+    int optLevel = PyRxAppSettings::optimizationLevel();
 
     const auto& app = PyRxApp::instance();
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfWaitForDebug)))
-        acedAlert(_T("Waiting for debugger! "));
-    if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfNoOptimize)))
-        config.optimization_level = 0;
-
-    if (const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path(); es == true)
     {
-        auto status = PyConfig_SetString(&config, &config.executable, pyexecutable.c_str());
-        if (PyStatus_Exception(status))
+        acedAlert(_T("Waiting for debugger! "));
+    }
+    if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfNoOptimize)))
+    {
+        optLevel = 0;
+    }
+    PyInitConfig_SetInt(config, "optimization_level", optLevel);
+
+    const auto& args = PyRxAppSettings::getCommandLineArgs();
+    if (args.empty())
+    {
+        PyInitConfig_SetInt(config, "parse_argv", FALSE);
+    }
+    else
+    {
+        PyInitConfig_SetInt(config, "parse_argv", TRUE);
+        std::vector<std::string> utf8Args;
+        utf8Args.reserve(args.size());
+        for (const auto& item : args)
+            utf8Args.push_back(wstr_to_utf8(item.c_str()));
+        std::vector<char*> argvPointers;
+        argvPointers.reserve(utf8Args.size());
+        for (auto& str : utf8Args)
+            argvPointers.push_back(str.data());
+        if (PyInitConfig_SetStrList(config, "argv", argvPointers.size(), argvPointers.data()) < 0)
         {
-            PyConfig_Clear(&config);
-            acutPrintf(_T("\nPyConfig_SetString failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
+            const char* err_msg = nullptr;
+            PyInitConfig_GetError(config, &err_msg);
+            PyInitConfig_Free(config);
+            acutPrintf(_T("\nPyInitConfig_SetStrList failed %ls, msg=%ls: "),
+                __FUNCTIONW__,
+                utf8_to_wstr(err_msg ? err_msg : "Unknown error").c_str());
             return false;
         }
     }
 
-    auto status = Py_InitializeFromConfig(&config);
-    PyConfig_Clear(&config);
-
-    if (PyStatus_Exception(status))
+    if (const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path(); es == true)
     {
-        acutPrintf(_T("\nInitializeFromConfig failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
+        std::string utf8Path = wstr_to_utf8(pyexecutable.c_str());
+        if (PyInitConfig_SetStr(config, "executable", utf8Path.c_str()) < 0)
+        {
+            const char* err_msg = nullptr;
+            PyInitConfig_GetError(config, &err_msg);
+            PyInitConfig_Free(config);
+            acutPrintf(_T("\nPyInitConfig_SetStr failed for 'executable' %ls, msg=%ls: "),
+                __FUNCTIONW__,
+                utf8_to_wstr(err_msg ? err_msg : "Unknown error").c_str());
+            return false;
+        }
+    }
+
+    if (Py_InitializeFromInitConfig(config) < 0)
+    {
+        const char* err_msg = nullptr;
+        PyInitConfig_GetError(config, &err_msg); //
+        PyInitConfig_Free(config);
+        acutPrintf(_T("\nPy_InitializeFromInitConfig failed %ls, msg=%ls: "),
+            __FUNCTIONW__,
+            utf8_to_wstr(err_msg ? err_msg : "Unknown initialization error").c_str());
         return false;
     }
+
+    PyInitConfig_Free(config);
     return true;
 }
 
 bool WxRxApp::Init_wxPython()
 {
-    PyStatus status;
-    PyPreConfig preConfig;
-    PyPreConfig_InitPythonConfig(&preConfig);
-    const auto& args = PyRxAppSettings::getCommandLineArgs();
-
-    preConfig.utf8_mode = 1;
-
-    if (args.empty())
+    if (!initializeFromInitConfig())
     {
-        status = Py_PreInitialize(&preConfig);
-    }
-    else
-    {
-        std::vector<const wchar_t*> argvPtrs;
-        for (const auto& arg : args)
-            argvPtrs.push_back(arg.c_str());
-        status = Py_PreInitializeFromArgs(&preConfig, (Py_ssize_t)argvPtrs.size(), (wchar_t**)argvPtrs.data());
-    }
-
-    if (PyStatus_Exception(status))
-    {
-        acutPrintf(_T("\nPreInitialize failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
-        return false;
-    }
-
-    if (!initializeFromConfig())
-    {
-        acutPrintf(_T("\ninitializeFromConfig failed, trying Py_InitializeEx %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\ninitializeFromInitConfig failed, trying Py_InitializeEx %ls: "), __FUNCTIONW__);
         Py_InitializeEx(0);
     }
 
@@ -231,31 +241,11 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(_T("\n*****Error importing the wxPython API!*****: \n"));
         return false;
     }
+
     m_mainTState = wxPyBeginAllowThreads();
     PyAutoLockGIL::canLock = true;
     return true;
 }
-
-//------------------------------------------------------------------------------------------------
-// hasWxXmlResourceModule helper [#422]
-#if !wxCHECK_VERSION(3, 3, 0)
-static bool hasWxXmlResourceModule()
-{
-    int found = 0;
-    wxDynamicLibraryDetailsArray modules = wxDynamicLibrary::ListLoaded();
-    for (size_t i = 0, len = modules.GetCount(); i < len; ++i)
-    {
-        const auto& name = modules[i].GetName();
-        if (name.Contains(_T("_xrc.cp")))
-            found++;
-        if (name.Contains(_T("_xml.cp")))
-            found++;
-        if (found == 2)
-            return true;
-    }
-    return false;
-}
-#endif //wxVERSION_33
 
 //------------------------------------------------------------------------------------------------
 // initWxApp
@@ -278,15 +268,6 @@ static bool uninitWxApp()
 {
     wxTheApp->OnExit();
     wxEntryCleanup();
-#if !wxCHECK_VERSION(3, 3, 0)
-#if defined(_GRXTARGET) && (_GRXTARGET >= 260)
-    if (hasWxXmlResourceModule())
-        wxExit();
-#elif defined(_GRXTARGET) && (_GRXTARGET < 260)
-    if (hasWxXmlResourceModule())
-        std::quick_exit(EXIT_SUCCESS);
-#endif //_GRXTARGET
-#endif //wxVERSION_33
     return true;
 }
 
