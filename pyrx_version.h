@@ -1,10 +1,10 @@
 //-----------------------------------------------------
 // auto generated from pyrx_version.tpl 
 
-#define VERSION_MAJOR 2
-#define VERSION_MINOR 2
-#define VERSION_BUILD 63
-#define VERSION_REVISION 5628
+#define VERSION_MAJOR 3
+#define VERSION_MINOR 1
+#define VERSION_BUILD 2
+#define VERSION_REVISION 5653
 
 #define VERSION_STRINGIZE_I(x) #x
 #define VERSION_STRINGIZE(x) VERSION_STRINGIZE_I(x)
