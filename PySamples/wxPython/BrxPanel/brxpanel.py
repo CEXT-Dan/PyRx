@@ -88,7 +88,7 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
 
-        self.set_dark_mode(self)
+        #self.set_dark_mode(self)
 
     def set_dark_mode(self, control):
         bkclr = wx.Colour(brxPanel.backgroundColor())

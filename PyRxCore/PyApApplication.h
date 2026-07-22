@@ -85,4 +85,15 @@ public:
     static bool                 icompare(const std::string& left, const std::string& right);
     static std::string          exceptionTest();
 };
+
+
+//-----------------------------------------------------------------------------------------
+//AppSettings
+void makeAppSettingsWrapper();
+
+class AppSettings
+{
+public:
+  
+};
 #pragma pack (pop)
