@@ -615,6 +615,7 @@ void makeInternalWrapper()
         .def("exceptionTest", &Internal::exceptionTest, DS.SARGS()).staticmethod("exceptionTest")
         ;
 }
+
 boost::python::list Internal::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
@@ -662,4 +663,14 @@ std::string Internal::exceptionTest()
 {
     PyThrowBadEs(Acad::ErrorStatus::eNotAssociative);
     return std::string{};
+}
+
+//-----------------------------------------------------------------------------------------
+//AppSettings
+void makeAppSettingsWrapper()
+{
+    PyDocString DS("AppSettings");
+    class_<AppSettings>("AppSettings")
+        .def(init<>(DS.ARGS()))
+        ;
 }

@@ -44,6 +44,10 @@ public:
         COLORREF clr = theme->GetColor(kPaletteBackground);
         mgr.ReleaseTheme(theme);
         return clr;
+#elif _GRXTARGET
+        return RGB(58, 69, 86);
+#elif _ZRXTARGET
+        return RGB(33, 37, 46);
 #else
         return RGB(49, 56, 66);
 #endif

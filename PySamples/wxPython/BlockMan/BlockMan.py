@@ -62,7 +62,7 @@ class PalettePanel(wx.Panel):
         self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
 
         self.documentBecameCurrent(Ap.curDoc())
-        self.set_dark_mode(self)
+        #self.set_dark_mode(self)
 
     # some colors I thought were cool
     def set_dark_mode(self, control):

@@ -39,7 +39,7 @@ class PalettePanel(wx.Panel):
         # bind events
         self.Bind(wx.EVT_SIZE, self.OnSize)
         self.Bind(wx.EVT_BUTTON, self.OnSend, self.bsend)
-        self.set_dark_mode(self)
+        #self.set_dark_mode(self)
 
     # some colors I thought were cool
     def set_dark_mode(self, control):
