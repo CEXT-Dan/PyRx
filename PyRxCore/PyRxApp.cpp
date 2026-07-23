@@ -158,14 +158,15 @@ void WxRxApp::WakeUpIdle()
 static bool initializeFromInitConfig()
 {
     // 1. Create the opaque initialization configuration instance (PEP 741)
-    PyInitConfig* config = PyInitConfig_Create();
+    using PyInitConfigPtr = std::unique_ptr < PyInitConfig, decltype([](PyInitConfig* p) noexcept { PyInitConfig_Free(p); }) > ;
+    PyInitConfigPtr config{ PyInitConfig_Create() };
     if (config == nullptr)
     {
         acutPrintf(_T("\nPyInitConfig_Create failed in %ls"), __FUNCTIONW__);
         return false;
     }
 
-    PyInitConfig_SetInt(config, "utf8_mode", 1);
+    PyInitConfig_SetInt(config.get(), "utf8_mode", 1);
     int optLevel = PyRxAppSettings::optimizationLevel();
 
     const auto& app = PyRxApp::instance();
@@ -177,16 +178,16 @@ static bool initializeFromInitConfig()
     {
         optLevel = 0;
     }
-    PyInitConfig_SetInt(config, "optimization_level", optLevel);
+    PyInitConfig_SetInt(config.get(), "optimization_level", optLevel);
 
     const auto& args = PyRxAppSettings::getCommandLineArgs();
     if (args.empty())
     {
-        PyInitConfig_SetInt(config, "parse_argv", FALSE);
+        PyInitConfig_SetInt(config.get(), "parse_argv", FALSE);
     }
     else
     {
-        PyInitConfig_SetInt(config, "parse_argv", TRUE);
+        PyInitConfig_SetInt(config.get(), "parse_argv", TRUE);
         std::vector<std::string> utf8Args;
         utf8Args.reserve(args.size());
         for (const auto& item : args)
@@ -195,11 +196,10 @@ static bool initializeFromInitConfig()
         argvPointers.reserve(utf8Args.size());
         for (auto& str : utf8Args)
             argvPointers.push_back(str.data());
-        if (PyInitConfig_SetStrList(config, "argv", argvPointers.size(), argvPointers.data()) < 0)
+        if (PyInitConfig_SetStrList(config.get(), "argv", argvPointers.size(), argvPointers.data()) < 0)
         {
             const char* err_msg = nullptr;
-            PyInitConfig_GetError(config, &err_msg);
-            PyInitConfig_Free(config);
+            PyInitConfig_GetError(config.get(), &err_msg);
             acutPrintf(_T("\nPyInitConfig_SetStrList failed %ls, msg=%ls: "),
                 __FUNCTIONW__,
                 utf8_to_wstr(err_msg ? err_msg : "Unknown error").c_str());
@@ -210,11 +210,10 @@ static bool initializeFromInitConfig()
     if (const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path(); es == true)
     {
         std::string utf8Path = wstr_to_utf8(pyexecutable.c_str());
-        if (PyInitConfig_SetStr(config, "executable", utf8Path.c_str()) < 0)
+        if (PyInitConfig_SetStr(config.get(), "executable", utf8Path.c_str()) < 0)
         {
             const char* err_msg = nullptr;
-            PyInitConfig_GetError(config, &err_msg);
-            PyInitConfig_Free(config);
+            PyInitConfig_GetError(config.get(), &err_msg);
             acutPrintf(_T("\nPyInitConfig_SetStr failed for 'executable' %ls, msg=%ls: "),
                 __FUNCTIONW__,
                 utf8_to_wstr(err_msg ? err_msg : "Unknown error").c_str());
@@ -222,18 +221,15 @@ static bool initializeFromInitConfig()
         }
     }
 
-    if (Py_InitializeFromInitConfig(config) < 0)
+    if (Py_InitializeFromInitConfig(config.get()) < 0)
     {
         const char* err_msg = nullptr;
-        PyInitConfig_GetError(config, &err_msg); //
-        PyInitConfig_Free(config);
+        PyInitConfig_GetError(config.get(), &err_msg);
         acutPrintf(_T("\nPy_InitializeFromInitConfig failed %ls, msg=%ls: "),
             __FUNCTIONW__,
             utf8_to_wstr(err_msg ? err_msg : "Unknown initialization error").c_str());
         return false;
     }
-
-    PyInitConfig_Free(config);
     return true;
 }
 
