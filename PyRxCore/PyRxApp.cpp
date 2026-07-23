@@ -36,14 +36,17 @@ public:
 #ifdef _BRXTARGET
         return RGB(45, 49, 53);
 #elif _ARXTARGET
-
         auto mgr = CAdUiThemeManager{};
-        auto theme = mgr.GetTheme(PALETTE_SET_THEME);
-        if (theme == nullptr)
+        if (auto theme = mgr.GetTheme(PALETTE_SET_THEME); theme != nullptr)
+        {
+            COLORREF clr = theme->GetColor(kPaletteBackground);
+            mgr.ReleaseTheme(theme);
+            return clr;
+        }
+        else
+        {
             return RGB(49, 56, 66);
-        COLORREF clr = theme->GetColor(kPaletteBackground);
-        mgr.ReleaseTheme(theme);
-        return clr;
+        }
 #elif _GRXTARGET
         return RGB(58, 69, 86);
 #elif _ZRXTARGET
@@ -55,7 +58,7 @@ public:
 
     wxColour GetColour(wxSystemColour index) override
     {
-        static COLORREF clr = backgroundColor();
+        static wxColour clr{ backgroundColor() };
         switch (index)
         {
             case wxSYS_COLOUR_APPWORKSPACE:
@@ -63,7 +66,7 @@ public:
             case wxSYS_COLOUR_LISTBOX:
             case wxSYS_COLOUR_WINDOW:
             case wxSYS_COLOUR_BTNFACE: //TODO: does not stick
-                return wxColour(clr);
+                return clr;
             default:
                 return wxDarkModeSettings::GetColour(index);
         }
@@ -115,17 +118,20 @@ bool WxRxApp::OnInit()
 {
     if (isAcadDark() && useColorTheme())
     {
-        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr))
+        auto themeOverride = useColorThemeOverride() ? new PyRxDarkModeSettings() : nullptr;
+        if (!wxTheApp->MSWEnableDarkMode(wxApp::DarkMode_Always, themeOverride))
             acutPrintf(_T("MSWEnableDarkMode failed"));
     }
+
     wxTheApp->SetTopWindow(new ArxTopLevelWindow());
     if (wxTheApp->GetTopWindow() == nullptr)
         return false;
+
     wxTheApp->SetExitOnFrameDelete(false);
     if (Init_wxPython() == false)
         return false;
-    {
-        // Hold a ref so wxPython wx.App.Get() returns our app 
+
+    { // Hold a ref so wxPython wx.App.Get() returns our app 
         PyAutoLockGIL lock;
         wxPyConstructObject(wxTheApp, wxT("wxPyApp"), true);
     }
@@ -134,8 +140,7 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
-    auto top = wxTheApp->GetTopWindow();
-    if (top != nullptr)
+    if (auto top = wxTheApp->GetTopWindow(); top != nullptr)
         top->SetHWND(0);
     wxTopLevelWindows.clear();
     wxPyEndAllowThreads(m_mainTState);
