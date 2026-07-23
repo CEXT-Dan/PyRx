@@ -240,12 +240,57 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
+    [[nodiscard]] static auto tryFindPythonFromRegistry() -> std::tuple<bool, std::filesystem::path>
+    {
+        std::error_code ec;
+        // Append \\InstallPath to the key paths to target the subkey directly
+        const wchar_t* keys[] = {
+            L"Software\\Python\\PythonCore\\3.14\\InstallPath",
+            L"Software\\Python\\Core\\3.14\\InstallPath"
+        };
+
+        // Use HKEY explicitly instead of auto* due to type variations in Windows headers
+        for (HKEY hive : { HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE })
+        {
+            for (const auto* key : keys)
+            {
+                HKEY hKey;
+                if (RegOpenKeyExW(hive, key, 0, KEY_READ, &hKey) == ERROR_SUCCESS)
+                {
+                    wchar_t installPath[MAX_PATH * 2] = {};
+                    DWORD size = sizeof(installPath);
+
+                    // Passing nullptr as the second argument reads the key's (Default) value
+                    LONG res = RegQueryValueExW(hKey, nullptr, nullptr, nullptr,
+                        reinterpret_cast<LPBYTE>(installPath), &size);
+                    RegCloseKey(hKey);
+
+                    if (res == ERROR_SUCCESS)
+                    {
+                        std::filesystem::path p(installPath);
+                        if (std::filesystem::exists(p / PYTHONEXEC, ec))
+                        {
+                            appendLog(std::format(_T("Registry found Python: {}"), p.wstring()));
+                            return { true, p };
+                        }
+                    }
+                }
+            }
+        }
+        appendLog(_T("Registry Python search failed"));
+        return { false, {} };
+    }
+
     [[nodiscard]] static auto tryFindPythonPath() -> std::tuple<bool, std::filesystem::path>
     {
         static std::filesystem::path path;
         if (path.empty())
         {
-            if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
+            if (auto [bfound, fpath] = tryFindPythonFromRegistry(); bfound)
+            {
+                path = fpath;
+            }
+            else if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
             {
                 path = fpath;
             }
