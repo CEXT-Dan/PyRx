@@ -40,6 +40,8 @@ constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python314");
 
+#define PY_REGKEY_PATH L"Software\\Python\\PythonCore\\3.14\\InstallPath"
+#define PY_REGKEY_PATH_FALLBACK L"Software\\Python\\Core\\3.14\\InstallPath"
 
 //-----------------------------------------------------------------------------
 //----- pyrx_locale
@@ -243,13 +245,8 @@ public:
     [[nodiscard]] static auto tryFindPythonFromRegistry() -> std::tuple<bool, std::filesystem::path>
     {
         std::error_code ec;
-        // Append \\InstallPath to the key paths to target the subkey directly
-        const wchar_t* keys[] = {
-            L"Software\\Python\\PythonCore\\3.14\\InstallPath",
-            L"Software\\Python\\Core\\3.14\\InstallPath"
-        };
+        const wchar_t* keys[] = { PY_REGKEY_PATH ,PY_REGKEY_PATH_FALLBACK };
 
-        // Use HKEY explicitly instead of auto* due to type variations in Windows headers
         for (HKEY hive : { HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE })
         {
             for (const auto* key : keys)
@@ -259,8 +256,6 @@ public:
                 {
                     wchar_t installPath[MAX_PATH * 2] = {};
                     DWORD size = sizeof(installPath);
-
-                    // Passing nullptr as the second argument reads the key's (Default) value
                     LONG res = RegQueryValueExW(hKey, nullptr, nullptr, nullptr,
                         reinterpret_cast<LPBYTE>(installPath), &size);
                     RegCloseKey(hKey);
