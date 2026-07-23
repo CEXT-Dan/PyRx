@@ -28,7 +28,7 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-//FORCEBUILD = 23
+//FORCEBUILD = 24
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python314");
 constexpr const wchar_t* PYTHONDLLNAME = _T("python314.dll");
@@ -281,11 +281,12 @@ public:
         static std::filesystem::path path;
         if (path.empty())
         {
-            if (auto [bfound, fpath] = tryFindPythonFromRegistry(); bfound)
+            //look for embedded first
+            if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
             {
                 path = fpath;
             }
-            else if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
+            else if (auto [bfound, fpath] = tryFindPythonFromRegistry(); bfound)
             {
                 path = fpath;
             }
