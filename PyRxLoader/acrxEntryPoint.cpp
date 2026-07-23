@@ -39,9 +39,9 @@ constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python314");
+constexpr const wchar_t* PY_REGKEY_PATH = _T("Software\\Python\\PythonCore\\3.14\\InstallPath");
+constexpr const wchar_t* PY_REGKEY_PATH_FALLBACK = _T("Software\\Python\\Core\\3.14\\InstallPath");
 
-#define PY_REGKEY_PATH L"Software\\Python\\PythonCore\\3.14\\InstallPath"
-#define PY_REGKEY_PATH_FALLBACK L"Software\\Python\\Core\\3.14\\InstallPath"
 
 //-----------------------------------------------------------------------------
 //----- pyrx_locale
