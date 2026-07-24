@@ -213,6 +213,7 @@
 #endif
 
 #if defined(_BRXTARGET)
+using AcDbIntArray = AcArray<int>;
 #include "AcGi.h"
 #pragma comment( lib , "Ice.lib" )
 #endif
