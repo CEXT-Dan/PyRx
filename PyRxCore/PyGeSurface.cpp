@@ -698,6 +698,83 @@ PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeEntity3d* src)
 {
 }
 
+AcGe::ExternalEntityKind PyGeExternalBoundedSurface::externalSurfaceKind() const
+{
+    return impObj()->externalSurfaceKind();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isDefined() const
+{
+    return impObj()->isDefined();
+}
+
+PyGeSurface PyGeExternalBoundedSurface::getExternalSurface() const
+{
+    //TODO: test
+    void* pRawSurface = nullptr;
+    impObj()->getExternalSurface(pRawSurface);
+    if (pRawSurface == nullptr)
+        PyThrowBadEs(Acad::eNullPtr);
+    AcGeSurface* pSurface = static_cast<AcGeSurface*>(pRawSurface);
+    return PyGeSurface(pSurface);
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isPlane() const
+{
+    return impObj()->isPlane();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isSphere() const
+{
+    return impObj()->isSphere();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isCylinder() const
+{
+    return impObj()->isCylinder();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isCone() const
+{
+    return impObj()->isCone();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isTorus() const
+{
+    return impObj()->isTorus();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isNurbs() const
+{
+    return impObj()->isNurbs();
+}
+
+Adesk::Boolean PyGeExternalBoundedSurface::isExternalSurface() const
+{
+    return impObj()->isExternalSurface();
+}
+
+PyGeSurface PyGeExternalBoundedSurface::getBaseSurface() const
+{
+    AcGeSurface* pSurface = nullptr;
+    impObj()->getBaseSurface(pSurface);
+    if (pSurface == nullptr)
+        PyThrowBadEs(Acad::eNullPtr);
+    return PyGeSurface(pSurface);
+}
+
+PyGeExternalSurface PyGeExternalBoundedSurface::getBaseExternalSurface() const
+{
+    auto surf = PyGeExternalSurface();
+    impObj()->getBaseSurface(*surf.impObj());
+    return surf;
+}
+
+int PyGeExternalBoundedSurface::numContours() const
+{
+    return impObj()->numContours();
+}
+
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::cast(const PyGeEntity3d& src)
 {
     return PyGeEntity3dCast<PyGeExternalBoundedSurface, AcGeExternalBoundedSurface>(src);
@@ -730,6 +807,7 @@ void makePyGeExternalSurfaceWrapper()
     PyDocString DS("ExternalSurface");
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
         .def(init<>(DS.ARGS(12102)))
+        .def("getExternalSurface", &PyGeExternalSurface::getExternalSurface, DS.ARGS())
         .def("cast", &PyGeExternalSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeExternalSurface::className, DS.SARGS()).staticmethod("className")
@@ -756,6 +834,17 @@ PyGeExternalSurface::PyGeExternalSurface(AcGeExternalSurface* src)
 PyGeExternalSurface::PyGeExternalSurface(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
+}
+
+PyGeSurface PyGeExternalSurface::getExternalSurface() const
+{
+    //TODO: test
+    void* pRawSurface = nullptr;
+    impObj()->getExternalSurface(pRawSurface);
+    if (pRawSurface == nullptr)
+        PyThrowBadEs(Acad::eNullPtr);
+    AcGeSurface* pSurface = static_cast<AcGeSurface*>(pRawSurface);
+    return PyGeSurface(pSurface);
 }
 
 PyGeExternalSurface PyGeExternalSurface::cast(const PyGeEntity3d& src)
