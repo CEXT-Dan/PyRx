@@ -14,7 +14,6 @@
 #include "RgbModel.h"
 #include "RgbGrayModel.h"
 #include "RgbPaletteModel.h"
-#include "RgbPaletteModel.h"
 #include "codec_properties/FormatCodecPropertyInterface.h"
 #include "format_codecs/BmpFormatCodec.h"
 #include "RowProviderInterface.h"
