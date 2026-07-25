@@ -173,7 +173,6 @@ public:
 void makePyGeExternalBoundedSurfaceWrapper();
 class PyGeExternalBoundedSurface : public PyGeSurface
 {
-#if !defined(_BRXTARGET270)
 public:
     PyGeExternalBoundedSurface();
     PyGeExternalBoundedSurface(AcGeEntity3d* src);
@@ -195,7 +194,7 @@ public:
     PyGeSurface    getBaseSurface() const;
     PyGeExternalSurface getBaseExternalSurface() const;
     int            numContours() const;
-
+    boost::python::tuple getContours() const;
 
     virtual ~PyGeExternalBoundedSurface() override = default;
     static PyGeExternalBoundedSurface cast(const PyGeEntity3d& src);
@@ -203,7 +202,6 @@ public:
     static std::string  className();
 public:
     AcGeExternalBoundedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
-#endif
 };
 
 //-----------------------------------------------------------------------------------------

@@ -666,18 +666,29 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 //AcGeExternalBoundedSurface wrapper
 void makePyGeExternalBoundedSurfaceWrapper()
 {
-#if !defined(_BRXTARGET270)
     PyDocString DS("ExternalBoundedSurface");
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
         .def(init<>(DS.ARGS(12057)))
+        .def("externalSurfaceKind", &PyGeExternalBoundedSurface::externalSurfaceKind, DS.ARGS())
+        .def("isDefined", &PyGeExternalBoundedSurface::isDefined, DS.ARGS())
+        .def("getExternalSurface", &PyGeExternalBoundedSurface::getExternalSurface, DS.ARGS())
+        .def("isPlane", &PyGeExternalBoundedSurface::isPlane, DS.ARGS())
+        .def("isSphere", &PyGeExternalBoundedSurface::isSphere, DS.ARGS())
+        .def("isCylinder", &PyGeExternalBoundedSurface::isCylinder, DS.ARGS())
+        .def("isCone", &PyGeExternalBoundedSurface::isCone, DS.ARGS())
+        .def("isTorus", &PyGeExternalBoundedSurface::isTorus, DS.ARGS())
+        .def("isNurbs", &PyGeExternalBoundedSurface::isNurbs, DS.ARGS())
+        .def("isExternalSurface", &PyGeExternalBoundedSurface::isExternalSurface, DS.ARGS())
+        .def("getBaseSurface", &PyGeExternalBoundedSurface::getBaseSurface, DS.ARGS())
+        .def("getBaseExternalSurface", &PyGeExternalBoundedSurface::getBaseExternalSurface, DS.ARGS())
+        .def("numContours", &PyGeExternalBoundedSurface::numContours, DS.ARGS())
+        .def("getContours", &PyGeExternalBoundedSurface::getContours, DS.ARGS())
         .def("cast", &PyGeExternalBoundedSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalBoundedSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeExternalBoundedSurface::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET270)
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface()
     : PyGeSurface(new AcGeExternalBoundedSurface())
 {
@@ -765,14 +776,23 @@ PyGeSurface PyGeExternalBoundedSurface::getBaseSurface() const
 
 PyGeExternalSurface PyGeExternalBoundedSurface::getBaseExternalSurface() const
 {
+#if defined(_BRXTARGET270)
+    throw PyNotimplementedByHost();
+#else
     auto surf = PyGeExternalSurface();
     impObj()->getBaseSurface(*surf.impObj());
     return surf;
+#endif
 }
 
 int PyGeExternalBoundedSurface::numContours() const
 {
     return impObj()->numContours();
+}
+
+boost::python::tuple PyGeExternalBoundedSurface::getContours() const
+{
+    throw PyNotimplementedByHost();
 }
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::cast(const PyGeEntity3d& src)
@@ -797,7 +817,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
     }
     return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
 }
-#endif
+
 
 //-----------------------------------------------------------------------------------------
 //AcGeExternalSurface wrapper
