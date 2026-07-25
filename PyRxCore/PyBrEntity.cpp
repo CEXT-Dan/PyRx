@@ -642,7 +642,6 @@ double PyBrFace::getArea() const
 {
     double area = 0.0;
     PyThrowBadBr(impObj()->getArea(area));
-    PyAutoLockGIL lock;
     return area;
 }
 
