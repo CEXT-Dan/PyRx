@@ -6,6 +6,8 @@ class PyGeInterval;
 class PyGePointOnSurface;
 class PyGeLinearEnt3d;
 class PyGeExternalSurface;
+class PyGeExternalSurface;
+
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
 void makePyGeSurfaceWrapper();
@@ -217,13 +219,15 @@ public:
     PyGeExternalSurface(const AcGeExternalSurface& src);
     virtual ~PyGeExternalSurface() override = default;
 
-    //Adesk::Boolean    isPlane() const;
-    //Adesk::Boolean    isSphere() const;
-    //Adesk::Boolean    isCylinder() const;
-    //Adesk::Boolean    isCone() const;
-    //Adesk::Boolean    isTorus() const;
-    //Adesk::Boolean    isNurbSurface() const;
-    //Adesk::Boolean    isDefined() const;
+    AcGe::ExternalEntityKind  externalSurfaceKind() const;
+
+    Adesk::Boolean    isPlane() const;
+    Adesk::Boolean    isSphere() const;
+    Adesk::Boolean    isCylinder() const;
+    Adesk::Boolean    isCone() const;
+    Adesk::Boolean    isTorus() const;
+    Adesk::Boolean    isNurbSurface() const;
+    Adesk::Boolean    isDefined() const;
 
     PyGeSurface getExternalSurface() const;
 

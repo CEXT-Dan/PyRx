@@ -827,6 +827,14 @@ void makePyGeExternalSurfaceWrapper()
     PyDocString DS("ExternalSurface");
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
         .def(init<>(DS.ARGS(12102)))
+        .def("externalSurfaceKind", &PyGeExternalSurface::externalSurfaceKind, DS.ARGS())
+        .def("isPlane", &PyGeExternalSurface::isPlane, DS.ARGS())
+        .def("isSphere", &PyGeExternalSurface::isSphere, DS.ARGS())
+        .def("isCylinder", &PyGeExternalSurface::isCylinder, DS.ARGS())
+        .def("isCone", &PyGeExternalSurface::isCone, DS.ARGS())
+        .def("isTorus", &PyGeExternalSurface::isTorus, DS.ARGS())
+        .def("isNurbSurface", &PyGeExternalSurface::isNurbSurface, DS.ARGS())
+        .def("isDefined", &PyGeExternalSurface::isDefined, DS.ARGS())
         .def("getExternalSurface", &PyGeExternalSurface::getExternalSurface, DS.ARGS())
         .def("cast", &PyGeExternalSurface::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalSurface::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
@@ -854,6 +862,46 @@ PyGeExternalSurface::PyGeExternalSurface(AcGeExternalSurface* src)
 PyGeExternalSurface::PyGeExternalSurface(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
+}
+
+AcGe::ExternalEntityKind PyGeExternalSurface::externalSurfaceKind() const
+{
+    return impObj()->externalSurfaceKind();
+}
+
+Adesk::Boolean PyGeExternalSurface::isPlane() const
+{
+    return impObj()->isPlane();
+}
+
+Adesk::Boolean PyGeExternalSurface::isSphere() const
+{
+    return impObj()->isSphere();
+}
+
+Adesk::Boolean PyGeExternalSurface::isCylinder() const
+{
+    return impObj()->isCylinder();
+}
+
+Adesk::Boolean PyGeExternalSurface::isCone() const
+{
+    return impObj()->isCone();
+}
+
+Adesk::Boolean PyGeExternalSurface::isTorus() const
+{
+    return impObj()->isTorus();
+}
+
+Adesk::Boolean PyGeExternalSurface::isNurbSurface() const
+{
+    return impObj()->isNurbSurface();
+}
+
+Adesk::Boolean PyGeExternalSurface::isDefined() const
+{
+    return impObj()->isDefined();
 }
 
 PyGeSurface PyGeExternalSurface::getExternalSurface() const
