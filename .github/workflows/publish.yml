@@ -10,7 +10,8 @@ permissions:
 jobs:
   pypi-publish:
     name: Publish release to PyPI
-    runs-on: windows-latest
+    # FIXED: Changed from windows-latest to ubuntu-latest
+    runs-on: ubuntu-latest
     environment: pypi
     permissions:
       id-token: write
@@ -33,7 +34,6 @@ jobs:
       - name: Build package
         run: |
           python -m build
+
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        
-        
