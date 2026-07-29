@@ -16,14 +16,14 @@ PyRx provides Python bindings for CAD software:
 
 - **AutoCAD®**: ObjectARX® 2022-2027
 - **ZwCAD®**: ZRX® 2024-2027
-- **GstarCAD®**: GRX® 2024-2026
-- **BricsCAD®**: BRX® v24-v26
+- **GstarCAD®**: GRX® 2024-2027
+- **BricsCAD®**: BRX® v24-v27
 
 _This project will not work for AutoCAD LT or BricsCAD Lite, check that your CAD can load ARX Modules first._
 _Wherever in this project we talk about AutoCAD, we mean all supported applications (BricsCAD, GstarCAD, ZwCAD), and when we talk about ARX (Object ARX), we also mean BRX, GRX and ZRX._
 
 Uses wxPython for the GUI, dialogs, and CAdUiPalette wrapper.
-Embeds Python (3.14) and wxPython (4.2.3) into a loadable ARX module.
+Embeds Python (3.14) and wxPython (4.3.0) into a loadable ARX module.
 
 ## Installation
 
@@ -54,7 +54,7 @@ RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025
 RxLoader25.1.arx = 2026
 RxLoader26.0.arx = 2027
-RxLoaderV25.0.brx = BricsCAD v25
+RxLoaderV27.0.brx = BricsCAD v27
 ```
 
 You should now be able to load modules with the new PYLOAD command
