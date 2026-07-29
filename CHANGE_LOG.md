@@ -1,3 +1,12 @@
+## v3.1.4
+
+* PyRx based on Python 3.14 and wxPython 4.3.0
+* wxPython 4.3.0 introduces dark mode
+* The new version of wxPython fixes various bugs, such as sometimes causing GStarCAD to shutdown improperly when using .XRC files
+* improvements with the loader, now looks in the registry for determining the path
+* [#538] AcGeExternalBoundedSurface and AcGeExternalSurface
+* BoundBlock2d.clipCircArc3d and BoundBlock2d.clipLineSeg3d
+
 ## v2.2.63
 
 * Add support for BricsCAD V27(beta)
