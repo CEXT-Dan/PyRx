@@ -48,7 +48,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "wxPythonPyRx==4.3.0.1",
+    "wxPython==4.3.0",
     "pywin32; os_name == 'nt'",
     "debugpy>=1.8.0",
     "pydantic_settings",
