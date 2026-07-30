@@ -1,5 +1,7 @@
-from pyrx import Ap, Ax, Db, Ed, Ge, Rx
 import traceback
+
+from pyrx import Ap, Db, Ge
+
 
 def far(db: Db.Database, trm: Db.TransactionManager):
     # Sub-transaction 2
@@ -24,11 +26,11 @@ def doit():
     try:
         db = Db.curDb()
         trm = db.transactionManager()
-        master_tr = trm.startTransaction()
+        master_tr = trm.startTransaction()  # noqa: F841
         foo(db, trm)
         far(db, trm)
         trm.endTransaction() 
         print("\nOperation committed successfully.")
-    except Exception as e:
+    except Exception:
         trm.abortTransaction()
         traceback.print_exc()
