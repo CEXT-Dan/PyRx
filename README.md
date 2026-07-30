@@ -24,6 +24,7 @@ _Wherever in this project we talk about AutoCAD, we mean all supported applicati
 
 Uses wxPython for the GUI, dialogs, and CAdUiPalette wrapper.
 Embeds Python (3.14) and wxPython (4.3.0) into a loadable ARX module.
+Requires Operating System: Windows 10 (Version 1809, Build 17763 or later) or Windows 11.
 
 ## Installation
 
