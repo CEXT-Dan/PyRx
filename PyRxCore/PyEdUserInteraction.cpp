@@ -367,16 +367,16 @@ void  CPyFileDropTarget::OnDragLeave(CWnd* pWnd)
 
 //-----------------------------------------------------------------------------------------
 // PyAutoDropTarget
-void makePyDropTargetWrapper()
+void makePyDradEffectWrapper()
 {
-    PyDocString DS("DropTarget");
-    class_<PyDropTarget, boost::noncopyable>("DropTarget")
+    PyDocString DS("DragEffect");
+    class_<PyDragEffect, boost::noncopyable>("DragEffect")
         .def(init<>(DS.ARGS()))
-        .def("drag", &PyDropTarget::drag, DS.ARGS())
+        .def("drag", &PyDragEffect::drag, DS.ARGS())
         ;
 }
 
-bool PyDropTarget::drag()
+bool PyDragEffect::drag()
 {
 #if defined(_ARXTARGET) ||  defined(_BRXTARGET)
     if (!acedStartOverrideDropTarget(&dropTarget))
