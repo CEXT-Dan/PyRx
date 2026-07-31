@@ -372,30 +372,20 @@ void makePyDropTargetWrapper()
     PyDocString DS("DropTarget");
     class_<PyDropTarget, boost::noncopyable>("DropTarget")
         .def(init<>(DS.ARGS()))
-        .def("start", &PyDropTarget::start, DS.ARGS())
-        .def("isOk", &PyDropTarget::isOk, DS.ARGS())
-        .def("stop", &PyDropTarget::stop, DS.ARGS())
+        .def("drag", &PyDropTarget::drag, DS.ARGS())
         ;
 }
 
-void PyDropTarget::start()
+bool PyDropTarget::drag()
 {
 #if defined(_ARXTARGET) ||  defined(_BRXTARGET)
     if (!acedStartOverrideDropTarget(&dropTarget))
         acutPrintf(_T("Error in overriding Custom drop target!\n"));
-    dwEffect = source.DoDragDrop(DROPEFFECT_NONE | DROPEFFECT_MOVE);
-#endif
-}
-
-bool PyDropTarget::isOk() const
-{
-    return dwEffect != 0;
-}
-
-void PyDropTarget::stop()
-{
-#if defined(_ARXTARGET) ||  defined(_BRXTARGET)
+    DROPEFFECT dwEffect = source.DoDragDrop(DROPEFFECT_NONE | DROPEFFECT_MOVE);
     if (!acedEndOverrideDropTarget(&dropTarget))
         acutPrintf(_T("Error in ending override drop target\n"));
+    return dwEffect != 0;
 #endif
+    return true;
 }
+

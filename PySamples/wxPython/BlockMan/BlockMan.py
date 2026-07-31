@@ -101,11 +101,9 @@ class PalettePanel(wx.Panel):
         item_index = event.GetIndex()
         item_text = self.listctrl.GetItemText(item_index)
         
+        # drag effect 
         drag = Ed.DropTarget()
-        drag.start()
-        ok = drag.isOk()
-        drag.stop()
-        if ok:
+        if drag.drag():
             print(f"Dragging item index: {item_index}, Text: {item_text}")
 
 # jig

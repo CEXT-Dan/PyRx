@@ -129,12 +129,8 @@ class PyDropTarget
 public:
     PyDropTarget() = default;
     ~PyDropTarget() = default;
-
-    void start();
-    bool isOk() const;
-    void stop();
-
-    DROPEFFECT dwEffect;
+    bool drag();
+private:
     COleDataSource source;
     COleDropSource dropSource;
     CPyFileDropTarget dropTarget;
