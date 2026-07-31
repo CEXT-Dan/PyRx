@@ -16,9 +16,79 @@
                     <object class="sizeritem">
                         <flag>wxGROW|wxALL</flag>
                         <border>5</border>
-                        <object class="wxStaticBitmap" name="wxID_STATIC_PREVIEW">
-                            <size>256,144</size>
+                        <object class="wxStaticBitmap" name="ID_STATIC_PREVIEW">
+                            <size>400,225</size>
+                            <tooltip>Double click to insert</tooltip>
                             <style>wxSIMPLE_BORDER</style>
+                        </object>
+                    </object>
+                </object>
+            </object>
+            <object class="sizeritem">
+                <flag>wxGROW|wxALL</flag>
+                <border>5</border>
+                <object class="wxBoxSizer">
+                    <orient>wxVERTICAL</orient>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL</flag>
+                        <border>0</border>
+                        <option>1</option>
+                        <object class="wxBoxSizer">
+                            <orient>wxHORIZONTAL</orient>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL</flag>
+                                <border>5</border>
+                                <option>1</option>
+                                <object class="wxChoice" name="ID_CHOICE">
+                                    <tooltip>Choose item</tooltip>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxButton" name="ID_ADD_BUTTON">
+                                    <size>30,-1</size>
+                                    <tooltip>Click to add folder to favorites</tooltip>
+                                    <label>....</label>
+                                </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxBoxSizer">
+                            <orient>wxHORIZONTAL</orient>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxStaticText" name="wxID_STATIC">
+                                    <label>Rotation:</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxTextCtrl" name="ID_ROTATION_TEXTCTRL">
+                                    <tooltip>Set Rotation</tooltip>
+                                    <value>0</value>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxStaticText" name="wxID_STATIC">
+                                    <label>Scale:</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxTextCtrl" name="ID_SCALE_TEXTCTRL">
+                                    <tooltip>Set Scale</tooltip>
+                                    <value>1</value>
+                                </object>
+                            </object>
                         </object>
                     </object>
                 </object>
@@ -33,9 +103,27 @@
                         <flag>wxGROW|wxALL</flag>
                         <border>5</border>
                         <option>1</option>
-                        <object class="wxListCtrl" name="wxID_LISTCTRL">
-                            <size>256,-1</size>
-                            <style>wxLC_REPORT|wxLC_NO_HEADER|wxLC_NO_SORT_HEADER</style>
+                        <object class="wxBoxSizer">
+                            <orient>wxHORIZONTAL</orient>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL</flag>
+                                <border>5</border>
+                                <option>1</option>
+                                <object class="wxGenericDirCtrl" name="ID_DIRCTRL">
+                                    <size>100,100</size>
+                                    <filter>CAD Files (*.dwg)|*.dwg</filter>
+                                    <defaultfilter>0</defaultfilter>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL</flag>
+                                <border>5</border>
+                                <object class="wxListCtrl" name="ID_LISTCTRL">
+                                    <size>110,-1</size>
+                                    <tooltip>Double click or drag to insert</tooltip>
+                                    <style>wxLC_ICON</style>
+                                </object>
+                            </object>
                         </object>
                     </object>
                 </object>

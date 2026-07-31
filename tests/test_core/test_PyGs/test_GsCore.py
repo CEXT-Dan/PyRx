@@ -16,3 +16,13 @@ class TestGsCore:
         assert img.IsOk() == True
         assert img.GetHeight() == 32
         assert img.GetWidth() == 32
+        
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_IRX
+    def test_gs_getBlockImages(self, db_dynblock: Db.Database):
+        objHnd = Db.Handle("36f")
+        objId = db_dynblock.getObjectId(False, objHnd)
+        for img in Gs.Core.getBlockImages([objId], 32, 32, 1.0, [0, 0, 0]):
+            assert img.IsOk() == True
+            assert img.GetHeight() == 32
+            assert img.GetWidth() == 32
