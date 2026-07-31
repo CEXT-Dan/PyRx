@@ -190,7 +190,6 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
 #endif // _BRXTARGET
 }
 
-
 //------------------------------------------------------------------------------------
 //GsCore
 void makeGsCoreWrapper()
