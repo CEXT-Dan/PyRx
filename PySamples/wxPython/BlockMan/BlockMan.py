@@ -102,7 +102,7 @@ class PalettePanel(wx.Panel):
         item_text = self.listctrl.GetItemText(item_index)
         
         # drag effect 
-        drag = Ed.DropTarget()
+        drag = Ed.DragEffect()
         if drag.drag():
             print(f"Dragging item index: {item_index}, Text: {item_text}")
 

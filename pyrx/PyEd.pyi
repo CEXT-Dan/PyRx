@@ -1402,6 +1402,11 @@ class CursorType(_BoostPythonEnum):
     kPkfirstOrGrips: ClassVar[Self]  # 11
     kCrosshairDashed: ClassVar[Self]  # 12
 
+class DragEffect:
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def drag(self, /) -> bool: ...
+
 class DragStatus(_BoostPythonEnum):
     kModeless: ClassVar[Self]  # -17
     kNoChange: ClassVar[Self]  # -6
@@ -1475,11 +1480,6 @@ class DrawOrderCmdType(_BoostPythonEnum):
     kDrawOrderTop: ClassVar[Self]  # 2
     kDrawOrderBelow: ClassVar[Self]  # 3
     kDrawOrderAbove: ClassVar[Self]  # 4
-
-class DropTarget:
-    def __init__(self, /) -> None: ...
-    def __reduce__(self, /) -> Any: ...
-    def drag(self, /) -> bool: ...
 
 class Editor:
     def __init__(self, /) -> None: ...

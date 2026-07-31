@@ -122,13 +122,13 @@ public:
 
 //-----------------------------------------------------------------------------------------
 // PyAutoDropTarget
-void makePyDropTargetWrapper();
+void makePyDradEffectWrapper();
 
-class PyDropTarget
+class PyDragEffect
 {
 public:
-    PyDropTarget() = default;
-    ~PyDropTarget() = default;
+    PyDragEffect() = default;
+    ~PyDragEffect() = default;
     bool drag();
 private:
     COleDataSource source;
