@@ -81,7 +81,6 @@ class PalettePanel(wx.Panel):
             imgIdx = 0
             for itemIndex, info in enumerate(infos):
                 has_image = False
-
                 if info.image and info.image.IsOk():
                     imagelist.Add(wx.Bitmap(info.image))
                     has_image = True
@@ -127,18 +126,8 @@ class Blockig(Ed.Jig):
         self.ref.setPosition(self.curPoint)
         return True
 
-    # TODO make attibutes
-    def doit(self):
-        self.setDispPrompt("\nPick Point: ")
-        if self.drag() != Ed.DragStatus.kNormal:
-            print("oops")
-            return
-        self.db.addToCurrentspace(self.ref)
-        self.ref.close()
-
 
 palette = Ap.PaletteSet("BlockPalette")
-
 
 def createPalette() -> None:
     try:
