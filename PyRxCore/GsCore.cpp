@@ -128,6 +128,11 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
 #endif// _BRXTARGET
     m_pView->setVisualStyle(acdbGetViewportVisualStyle());
     setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
+#if !defined(_BRXTARGET)
+    m_upvector = m_pView->upVector().negate();
+#else
+    m_upvector = m_pView->upVector();
+#endif// _BRXTARGET
     m_isReady = true;
 }
 
@@ -144,9 +149,9 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     if (!m_pView->add(pBlock, m_pModel.get()))
         return wxImage{};
 #if !defined(_BRXTARGET)
-    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector().negate(), m_width, m_height);
+    m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_height);
 #else
-    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector(), m_width, m_width);
+    m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_width);
 #endif// _BRXTARGET
     AcDbExtents ex = calcBlockExtents(*pBlock);
     m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
@@ -181,9 +186,10 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     if (!wximage.IsOk())
         PyThrowBadEs(eInvalidInput);
 #if !defined(_BRXTARGET)
-    wximage = wximage.Mirror();
-#endif // _BRXTARGET
+    return wximage.Mirror();
+#else
     return wximage;
+#endif // _BRXTARGET
 }
 
 

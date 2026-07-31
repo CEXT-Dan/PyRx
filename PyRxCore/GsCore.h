@@ -57,6 +57,7 @@ private:
     bool m_isReady;
     Atil::RgbModel m_rgbModel;
     Atil::ImagePixel m_initialColor;
+    AcGeVector3d m_upvector;
 };
 
 //------------------------------------------------------------------------------------
