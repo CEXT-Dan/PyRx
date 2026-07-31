@@ -5,36 +5,26 @@ from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
 
-
-# create a docment reactor to notify the palette of document switching
-class DocReactor(Ap.DocManagerReactor):
-    def __init__(self, PalettePanel):
-        Ap.DocManagerReactor.__init__(self)
-        self.panel = PalettePanel
-
-    # froward the event
-    def documentBecameCurrent(self, dwgdoc: Ap.Document):
-        if not dwgdoc.isNullObj():
-            self.panel.documentBecameCurrent(dwgdoc)
-
-
-# the palette set holds a collection of panels, this is one
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
-        self.reactor = DocReactor(self)
-        self.reactor.addReactor()
         self.Bind(wx.EVT_SHOW, self.OnShow)
         self.imageDict = {}
-        self.dwgdoc = None
-
-    def documentBecameCurrent(self, dwgdoc):
-        self.dwgdoc = dwgdoc
-        self.validateimageDictForDoc(dwgdoc)
-        self.listctrl.DeleteAllItems()
-        d: dict = self.findImageDictForDoc(dwgdoc)
-        for idx, key in enumerate(d.keys()):
-            self.listctrl.InsertItem(idx, key)
+        
+    def init_members(self):
+        self.previewctrl = xrc.XRCCTRL(self, "ID_STATIC_PREVIEW")
+        self.choicectrl = xrc.XRCCTRL(self, "ID_CHOICE")
+        self.add_buttonctrl = xrc.XRCCTRL(self, "ID_ADD_BUTTON")
+        self.rot_textctrl = xrc.XRCCTRL(self, "ID_ROTATION_TEXTCTRL")
+        self.scale_txtctrl = xrc.XRCCTRL(self, "ID_SCALE_TEXTCTRL")
+        self.dirctrl: wx.GenericDirCtrl = xrc.XRCCTRL(self, "ID_DIRCTRL")
+        self.listctrl = xrc.XRCCTRL(self, "ID_LISTCTRL")
+        
+    def bind_events(self):
+        self.Bind(wx.EVT_SIZE, self.OnSize)
+        # ctrl events
+        self.dirctrl.Bind(wx.EVT_DIRCTRL_SELECTIONCHANGED, self.OnDirCtrlSelectionChanged)
+        self.listctrl.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit)
 
     # import the .XRC file and init the controls
     def OnShow(self, event):
@@ -45,86 +35,27 @@ class PalettePanel(wx.Panel):
         if not self.childpanel:
             raise Exception("failed to find xrc file")
 
-        # create a sizer and add the child
+        # # create a sizer and add the child
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.childpanel, 1, wx.ALL | wx.EXPAND)
         self.SetSizerAndFit(sizer)
         self.Layout()
-
-        # get ctrls as member variables
-        self.listctrl = xrc.XRCCTRL(self, "wxID_LISTCTRL")
-        self.imagectrl = xrc.XRCCTRL(self, "wxID_STATIC_PREVIEW")
-        self.OnInitListCtrl()
-
-        # bind events
-        self.Bind(wx.EVT_SIZE, self.OnSize)
-        self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
-        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
-
-        self.documentBecameCurrent(Ap.curDoc())
-        #self.set_dark_mode(self)
-
-    # some colors I thought were cool
-    def set_dark_mode(self, control):
-        bkclr = wx.Colour(palette.paletteBackgroundColor())
-        fgcolor = wx.Colour(palette.paletteTabTextColor())
-        for child in control.GetChildren():
-            child.SetForegroundColour(fgcolor)
-            child.SetBackgroundColour(bkclr)
-            self.set_dark_mode(child)
+        self.init_members()
+        self.bind_events()
+    
+    def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
+        dwgpath = self.dirctrl.GetPath()
+        if dwgpath.lower().endswith('.dwg'):
+            print(dwgpath)
 
     def OnSize(self, event):
         event.Skip()
 
-    def OnInitListCtrl(self):
-        self.listctrl.InsertColumn(0, "Item", width=245)
-
-    # create a new ref and pass it to the jig
     def OnDragInit(self, event: wx.ListEvent):
         _lock = Ap.AutoDocLock()
-        item = event.GetText()
-        db = self.dwgdoc.database()
-        bt = Db.BlockTable(db.blockTableId())
-        id = bt.getAt(item)
-        pos = Ed.Core.getMousePositionUCS()
-        ref = Db.BlockReference(pos, id)
-        jig = Blockig(ref, pos, db)
-        jig.doit()
-
-    # search for an image in the cache, if none, make one
-    def OnItemSelected(self, event: wx.ListEvent):
-        _lock = Ap.AutoDocLock()
-        item = event.GetText()
-        imdict = self.findImageDictForDoc(self.dwgdoc)
-        if imdict[item] is None:
-            db = self.dwgdoc.database()
-            bt = Db.BlockTable(db.blockTableId())
-            id = bt.getAt(item)
-            imdict[item] = Gs.Core.getBlockImage(id, 252, 140, 1.0, [49, 56, 66])
-        img: wx.Image = imdict[item]
-        self.imagectrl.SetBitmap(img.ConvertToBitmap())
-
-    def findImageDictForDoc(self, dwgdoc):
-        if dwgdoc not in self.imageDict:
-            self.imageDict[dwgdoc] = {}
-        return self.imageDict[dwgdoc]
-
-    def validateimageDictForDoc(self, dwgdoc: Ap.Document):
-        _lock = Ap.AutoDocLock()
-        imdict = self.findImageDictForDoc(dwgdoc)
-        db = dwgdoc.database()
-        bt = Db.BlockTable(db.blockTableId())
-        for name, id in bt.toDict().items():
-            if name.startswith("*") or name.startswith("A$"):
-                continue
-            btr = Db.BlockTableRecord(id)
-            if btr.isLayout() or btr.isAnonymous():
-                continue
-            if btr.isFromOverlayReference() or btr.isFromExternalReference():
-                continue
-            if name not in imdict:
-                imdict[name] = None
-
+        item_index = event.GetIndex()
+        item_text = self.listctrl.GetItemText(item_index)
+        print(f"Dragging item index: {item_index}, Text: {item_text}")
 
 # jig
 class Blockig(Ed.Jig):

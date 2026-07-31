@@ -6,65 +6,16 @@
 //#include "format_codecs/PngFormatCodec.h"
 
 
-#if defined(_ZRXTARGET250) || defined(_GRXTARGET250)
-//ZWCAD24 'register' is no longer a supported storage class
-#pragma warning( disable: 5033 )
-#endif
-#include "Image.h"
-#include "RgbModel.h"
-#include "RgbGrayModel.h"
-#include "RgbPaletteModel.h"
-#include "codec_properties/FormatCodecPropertyInterface.h"
-#include "format_codecs/BmpFormatCodec.h"
-#include "RowProviderInterface.h"
-#include "FileWriteDescriptor.h"
-#include "DataBuffer.h"
-#if defined(_ZRXTARGET250) || defined(_GRXTARGET250)
-#pragma warning( pop )
-#endif
+
 
 using namespace boost::python;
 
 //https://adndevblog.typepad.com/autocad/2013/01/capturing-a-screen-shot-using-objectarx.html
 
+
+
 //------------------------------------------------------------------------------------
 //GsCore Helpers
-struct AcGsDeviceDeleter
-{
-    void operator()(AcGsDevice* ptr)
-    {
-        if (ptr == nullptr)
-            return;
-        acgsGetGsManager()->destroyAutoCADDevice(ptr);
-    }
-};
-using AcGsDevicePtr = std::unique_ptr <AcGsDevice, AcGsDeviceDeleter>;
-
-struct AcGsViewDeleter
-{
-    void operator()(AcGsView* ptr)
-    {
-        if (ptr == nullptr)
-            return;
-        ptr->eraseAll();
-#if !defined (_BRXTARGET270)
-        acgsGetGsManager()->destroyView(ptr);
-#endif
-    }
-};
-using AcGsViewPtr = std::unique_ptr <AcGsView, AcGsViewDeleter>;
-
-struct AcGsModelDeleter
-{
-    void operator()(AcGsModel* ptr)
-    {
-        if (ptr == nullptr)
-            return;
-        acgsGetGsManager()->destroyAutoCADModel(ptr);
-    }
-};
-using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
-
 static int cvport()
 {
     struct resbuf rb;
@@ -114,6 +65,128 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
     return ex;
 }
 
+void AcGsDeviceDeleter::operator()(AcGsDevice* ptr)
+{
+    if (ptr == nullptr)
+        return;
+    acgsGetGsManager()->destroyAutoCADDevice(ptr);
+}
+
+void AcGsViewDeleter::operator()(AcGsView* ptr)
+{
+    if (ptr == nullptr)
+        return;
+    ptr->eraseAll();
+#if !defined (_BRXTARGET270)
+    acgsGetGsManager()->destroyView(ptr);
+#endif
+}
+
+void AcGsModelDeleter::operator()(AcGsModel* ptr)
+{
+    if (ptr == nullptr)
+        return;
+    acgsGetGsManager()->destroyAutoCADModel(ptr);
+}
+
+BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::object& rgb)
+    : m_pGraphicsKernel(nullptr)
+    , m_width(width)
+    , m_height(height)
+    , m_isReady(false)
+    , m_rgbModel(32)
+    , m_initialColor(m_rgbModel.pixelType())
+{
+    AcGsManager* gsManager = acgsGetGsManager();
+    AcGsKernelDescriptor descriptor;
+    descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
+    m_pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
+    if (m_pGraphicsKernel == nullptr)
+        return;
+    m_pOffDevice.reset(gsManager->createAutoCADOffScreenDevice(*m_pGraphicsKernel));
+    if (m_pOffDevice == nullptr)
+        return;
+#if defined(_ZRXTARGET) || defined(_GRXTARGET)//TODO: test this in acad, bcad
+    m_pView.reset(m_pGraphicsKernel->createView());
+    if (m_pView == nullptr)
+        PyThrowBadEs(eNullPtr);
+#else
+    m_pView.reset(gsManager->createView(m_pOffDevice.get()));
+    if (m_pView == nullptr)
+        PyThrowBadEs(eNullPtr);
+#endif
+    m_pModel.reset(gsManager->createAutoCADModel(*m_pGraphicsKernel));
+    if (m_pModel == nullptr)
+        return;
+    m_pOffDevice->onSize(m_width, m_height);
+    if (!m_pOffDevice->add(m_pView.get()))
+        return;
+    if (acgsGetViewParameters(cvport(), m_pView.get()) == false)
+        acutPrintf(_T("\nFailed to copy view parameters: "));
+#if defined(_BRXTARGET)
+    m_pView->setVisualStyle(acdbGetViewportVisualStyle());
+#endif// _BRXTARGET
+    m_pView->setVisualStyle(acdbGetViewportVisualStyle());
+    setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
+    m_isReady = true;
+}
+
+bool BlockImageRenderer::isValid() const
+{
+    return m_isReady;
+}
+
+wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFactor)
+{
+    if (pBlock == nullptr || !isValid())
+        return wxImage{};
+
+    if (!m_pView->add(pBlock, m_pModel.get()))
+        return wxImage{};
+#if !defined(_BRXTARGET)
+    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector().negate(), m_width, m_height);
+#else
+    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector(), m_width, m_width);
+#endif// _BRXTARGET
+    AcDbExtents ex = calcBlockExtents(*pBlock);
+    m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
+    m_pView->zoom(zoomFactor);
+    //do all view settings before here;
+    m_pOffDevice->update();
+    m_pView->update();
+    Atil::Image image(Atil::Size(m_width, m_height), &m_rgbModel, m_initialColor);
+    m_pView->getSnapShot(&image, AcGsDCPoint(0, 0));
+
+    wxImage wximage;
+    if (image.isValid())
+    {
+        Atil::Size imageSize = image.size();
+        Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0));
+        Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
+        if (pixelType == Atil::DataModelAttributes::kRgba)
+        {
+            wximage = wxImage(wxSize(imageSize.width, imageSize.height));
+            for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+            {
+                for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                {
+                    const Atil::RgbColor pix(imgContext->get32(x, y));
+                    wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                }
+            }
+        }
+    }
+    m_pView->eraseAll();
+
+    if (!wximage.IsOk())
+        PyThrowBadEs(eInvalidInput);
+#if !defined(_BRXTARGET)
+    wximage = wximage.Mirror();
+#endif // _BRXTARGET
+    return wximage;
+}
+
+
 //------------------------------------------------------------------------------------
 //GsCore
 void makeGsCoreWrapper()
@@ -130,6 +203,9 @@ void makeGsCoreWrapper()
 
         .def("getBlockImage", &GsCore::getBlockImage,
             DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
+
+        .def("getBlockImages", &GsCore::getBlockImages,
+            DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
         ;
 }
 
@@ -168,84 +244,37 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     throw PyNotimplementedByHost();
     return nullptr;
 #endif
-    PyAutoLockGIL lock;
-    AcGsManager* gsManager = acgsGetGsManager();
-    AcGsKernelDescriptor descriptor;
-    descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
-    AcGsGraphicsKernel* pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
-    if (pGraphicsKernel == nullptr)
-        return nullptr;
-    AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
-    if (pOffDevice == nullptr)
-        PyThrowBadEs(eNullPtr);
-#if defined(_ZRXTARGET) || defined(_GRXTARGET)//TODO: test this in acad, bcad
-    AcGsViewPtr pView(pGraphicsKernel->createView());
-    if (pView == nullptr)
-        PyThrowBadEs(eNullPtr);
-#else
-    AcGsViewPtr pView(gsManager->createView(pOffDevice.get()));
-    if (pView == nullptr)
-        PyThrowBadEs(eNullPtr);
-#endif
-    AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
-    if (pModel == nullptr)
-        PyThrowBadEs(eNullPtr);
-    pOffDevice->onSize(width, height);
-    if (!pOffDevice->add(pView.get()))
-        return nullptr;
-    if (acgsGetViewParameters(cvport(), pView.get()) == false)
-        acutPrintf(_T("\nFailed to copy view parameters: "));
-#if defined(_BRXTARGET)
-    pView->setVisualStyle(acdbGetViewportVisualStyle());
-#endif// _BRXTARGET
-    setBackgroundColorFromPy(pOffDevice.get(), pyrgb);
+    AcAxDocLock lock;
+    PyAutoLockGIL pylock;
+    BlockImageRenderer renderer(width, height, pyrgb);
+    if (!renderer.isValid())
+        throw PyErrorStatusException(eInvalidInput);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
-    PyThrowBadEs(pBlock.openStatus());
-    if (!pView->add(pBlock, pModel.get()))
-        PyThrowBadEs(eInvalidInput);
-#if !defined(_BRXTARGET)
-    pView->setView(pView->position(), pView->target(), pView->upVector().negate(), width, height);
-#else
-    pView->setView(pView->position(), pView->target(), pView->upVector(), width, height);
-#endif// _BRXTARGET
-    AcDbExtents ex = calcBlockExtents(*pBlock);
-    pView->zoomExtents(ex.minPoint(), ex.maxPoint());
-    pView->zoom(zf);
-    //do all view settings before here;
-    pOffDevice->update();
-    pView->update();
-    Atil::RgbModel rgbModel(32);
-    Atil::ImagePixel initialColor(rgbModel.pixelType());
-    Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
-    pView->getSnapShot(&image, AcGsDCPoint(0, 0));
-    if (!image.isValid())
-        PyThrowBadEs(eInvalidInput);;
-    Atil::Size imageSize = image.size();
-    Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0));
-    Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
-    if (pixelType != Atil::DataModelAttributes::kRgba) // !!GRX fails here, is not kRgba
-        PyThrowBadEs(eInvalidInput);;
-    //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
-    wxImage* pWxImage = new wxImage(wxSize(imageSize.width, imageSize.height));
-#ifdef never
-    pWxImage->SetAlpha();//maybe add a param id, 64, 64, 1.0, [0, 0, 0, A]
+    if (pBlock.openStatus() != eOk)
+        throw PyErrorStatusException(pBlock.openStatus());
+    const auto& image = renderer.render(pBlock, zf);
+    return wxPyConstructObject((void*)new wxImage(image.Copy()), wxT("wxImage"), true);
+}
+
+boost::python::list GsCore::getBlockImages(const boost::python::list& blkids, int x, int y, double zf, boost::python::object& rgb)
+{
+#if defined(_GRXTARGET270)
+    throw PyNotimplementedByHost();
 #endif
-    for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+    AcAxDocLock lock;
+    PyAutoLockGIL pylock;
+    auto ids = PyListToObjectIdArray(blkids);
+    BlockImageRenderer renderer(x, y, rgb);
+    if (!renderer.isValid())
+        throw PyErrorStatusException(eInvalidInput);
+    boost::python::list images;
+    for (auto& id : ids)
     {
-        for (Atil::Int32 y = 0; y < imageSize.height; ++y)
-        {
-            const Atil::RgbColor pix(imgContext->get32(x, y));
-            pWxImage->SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
-#ifdef never
-            pWxImage->SetAlpha(x, y, pix.rgba.alpha);
-#endif
-        }
+        AcDbBlockTableRecordPointer pBlock(id);
+        if (pBlock.openStatus() != eOk)
+            continue;
+        const auto& image = renderer.render(pBlock, zf);
+        images.append(boost::python::object(boost::python::handle<>(wxPyConstructObject((void*)new wxImage(image.Copy()), wxT("wxImage"), true))));
     }
-    if (!pWxImage->IsOk())
-        PyThrowBadEs(eInvalidInput);
-#if !defined(_BRXTARGET)
-    *pWxImage = pWxImage->Mirror();
-#endif // _BRXTARGET
-    //Python becomes the owner, tested : )
-    return wxPyConstructObject(pWxImage, wxT("wxImage"), true);
+    return images;
 }
