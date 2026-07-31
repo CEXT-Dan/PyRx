@@ -100,4 +100,44 @@ public:
 };
 
 
+//-----------------------------------------------------------------------------------------
+// CPyFileDropTarget
+class CPyFileDropTarget : public COleDropTarget
+{
+public:
+    virtual BOOL OnDrop(CWnd* pWnd, COleDataObject* pDataObject,
+        DROPEFFECT dropEffect, CPoint point);
+    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject,
+        DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point);
+    virtual DROPEFFECT OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject,
+        DWORD dwKeyState, CPoint point);
+    virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* pDataObject,
+        DWORD dwKeyState, CPoint point);
+    virtual void OnDragLeave(CWnd* pWnd);
+
+};
+
+//-----------------------------------------------------------------------------------------
+// PyAutoDropTarget
+
+//-----------------------------------------------------------------------------------------
+// PyAutoDropTarget
+void makePyDropTargetWrapper();
+
+class PyDropTarget
+{
+public:
+    PyDropTarget() = default;
+    ~PyDropTarget() = default;
+
+    void start();
+    bool isOk() const;
+    void stop();
+
+    DROPEFFECT dwEffect;
+    COleDataSource source;
+    COleDropSource dropSource;
+    CPyFileDropTarget dropTarget;
+};
+
 #pragma pack (pop)

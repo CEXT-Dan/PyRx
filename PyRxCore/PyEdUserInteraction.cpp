@@ -334,3 +334,68 @@ bool PyEdUIContext::removeDefaultContextMenu(PyEdUIContext& pContext)
     pContext.m_isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
     return !pContext.m_isAlive;
 }
+
+//-----------------------------------------------------------------------------------------
+// CPyFileDropTarget
+BOOL CPyFileDropTarget::OnDrop(CWnd* pWnd, COleDataObject* pDataObject,
+    DROPEFFECT dropEffect, CPoint point)
+{
+    return TRUE;
+}
+
+DROPEFFECT  CPyFileDropTarget::OnDropEx(CWnd* pWnd, COleDataObject* pDataObject,
+    DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point)
+{
+    return DROPEFFECT_MOVE;
+}
+
+DROPEFFECT CPyFileDropTarget::OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject,
+    DWORD dwKeyState, CPoint point)
+{
+    return DROPEFFECT_MOVE;
+}
+
+DROPEFFECT CPyFileDropTarget::OnDragOver(CWnd* pWnd, COleDataObject* pDataObject,
+    DWORD dwKeyState, CPoint point)
+{
+    return DROPEFFECT_MOVE;
+}
+
+void  CPyFileDropTarget::OnDragLeave(CWnd* pWnd)
+{
+}
+
+//-----------------------------------------------------------------------------------------
+// PyAutoDropTarget
+void makePyDropTargetWrapper()
+{
+    PyDocString DS("DropTarget");
+    class_<PyDropTarget, boost::noncopyable>("DropTarget")
+        .def(init<>(DS.ARGS()))
+        .def("start", &PyDropTarget::start, DS.ARGS())
+        .def("isOk", &PyDropTarget::isOk, DS.ARGS())
+        .def("stop", &PyDropTarget::stop, DS.ARGS())
+        ;
+}
+
+void PyDropTarget::start()
+{
+#if defined(_ARXTARGET) ||  defined(_BRXTARGET)
+    if (!acedStartOverrideDropTarget(&dropTarget))
+        acutPrintf(_T("Error in overriding Custom drop target!\n"));
+    dwEffect = source.DoDragDrop(DROPEFFECT_NONE | DROPEFFECT_MOVE);
+#endif
+}
+
+bool PyDropTarget::isOk() const
+{
+    return dwEffect != 0;
+}
+
+void PyDropTarget::stop()
+{
+#if defined(_ARXTARGET) ||  defined(_BRXTARGET)
+    if (!acedEndOverrideDropTarget(&dropTarget))
+        acutPrintf(_T("Error in ending override drop target\n"));
+#endif
+}

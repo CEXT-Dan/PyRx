@@ -100,7 +100,13 @@ class PalettePanel(wx.Panel):
         _lock = Ap.AutoDocLock()
         item_index = event.GetIndex()
         item_text = self.listctrl.GetItemText(item_index)
-        print(f"Dragging item index: {item_index}, Text: {item_text}")
+        
+        drag = Ed.DropTarget()
+        drag.start()
+        ok = drag.isOk()
+        drag.stop()
+        if ok:
+            print(f"Dragging item index: {item_index}, Text: {item_text}")
 
 # jig
 class Blockig(Ed.Jig):
