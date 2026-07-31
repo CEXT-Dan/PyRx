@@ -145,18 +145,14 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
 {
     if (pBlock == nullptr || !isValid())
         return wxImage{};
-
     if (!m_pView->add(pBlock, m_pModel.get()))
         return wxImage{};
-#if !defined(_BRXTARGET)
     m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_height);
-#else
-    m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_width);
-#endif// _BRXTARGET
     AcDbExtents ex = calcBlockExtents(*pBlock);
     m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     m_pView->zoom(zoomFactor);
     //do all view settings before here;
+
     m_pOffDevice->update();
     m_pView->update();
     Atil::Image image(Atil::Size(m_width, m_height), &m_rgbModel, m_initialColor);
@@ -166,23 +162,25 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     if (image.isValid())
     {
         Atil::Size imageSize = image.size();
-        Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0));
-        Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
-        if (pixelType == Atil::DataModelAttributes::kRgba)
+        std::unique_ptr<Atil::ImageContext> imgContext(image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0)));
+        if (imgContext)
         {
-            wximage = wxImage(wxSize(imageSize.width, imageSize.height));
-            for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+            Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
+            if (pixelType == Atil::DataModelAttributes::kRgba)
             {
-                for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                wximage = wxImage(wxSize(imageSize.width, imageSize.height));
+                for (Atil::Int32 x = 0; x < imageSize.width; ++x)
                 {
-                    const Atil::RgbColor pix(imgContext->get32(x, y));
-                    wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                    for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                    {
+                        const Atil::RgbColor pix(imgContext->get32(x, y));
+                        wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                    }
                 }
             }
         }
     }
     m_pView->eraseAll();
-
     if (!wximage.IsOk())
         PyThrowBadEs(eInvalidInput);
 #if !defined(_BRXTARGET)
@@ -259,7 +257,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (pBlock.openStatus() != eOk)
         throw PyErrorStatusException(pBlock.openStatus());
     const auto& image = renderer.render(pBlock, zf);
-    return wxPyConstructObject((void*)new wxImage(image.Copy()), wxT("wxImage"), true);
+    return wxPyConstructObject((void*)new wxImage(image), wxT("wxImage"), true);
 }
 
 boost::python::list GsCore::getBlockImages(const boost::python::list& blkids, int x, int y, double zf, boost::python::object& rgb)
@@ -280,7 +278,7 @@ boost::python::list GsCore::getBlockImages(const boost::python::list& blkids, in
         if (pBlock.openStatus() != eOk)
             continue;
         const auto& image = renderer.render(pBlock, zf);
-        images.append(boost::python::object(boost::python::handle<>(wxPyConstructObject((void*)new wxImage(image.Copy()), wxT("wxImage"), true))));
+        images.append(boost::python::object(boost::python::handle<>(wxPyConstructObject((void*)new wxImage(image), wxT("wxImage"), true))));
     }
     return images;
 }
