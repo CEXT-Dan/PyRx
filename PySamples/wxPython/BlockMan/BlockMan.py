@@ -34,14 +34,14 @@ def getBlockInfos(db: Db.Database):
 
 def insertDwg(db: Db.Database, scale: float, rotation: float):
     if not db:
-        raise RuntimeError("eNoDatabase")
+        raise Db.ErrorStatusException(Db.ErrorStatus.eNoDatabase)
     srcBlockId = db.currentSpaceId()
     blockName = db.getFilename()
     flag, point = moveEnt(srcBlockId, scale, rotation)
     if flag:
         if insertBlockViaActiveX(blockName, point, scale, rotation):
             return Db.ErrorStatus.eOk
-        raise RuntimeError("eInvalidInput")
+        raise Db.ErrorStatusException(Db.ErrorStatus.eInvalidInput)
     return Db.ErrorStatus.eOk
 
 
@@ -52,7 +52,7 @@ def insertBlockTableRecord(
     # Check if the block is already inserted
     pDestDb = Db.workingDb()
     if not pDestDb:
-        raise RuntimeError("eNoDatabase")
+        raise Db.ErrorStatusException(Db.ErrorStatus.eNoDatabase)
 
     pDestBlockTable = Db.BlockTable(pDestDb.blockTableId())
     bBlockExists = pDestBlockTable.has(blockName)
