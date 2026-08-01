@@ -1,3 +1,9 @@
+## v3.1.5
+
+* Target wxPython 4.3.1
+* Added BlockImageRenderer to handle Gs.Core.getBlockImage and the newly added Gs.Core.getBlockImages, BlockImageRenderer caches the device
+* Added Ed.DragEffect class, AutoCAD and BricsCAD only. Shows the drag cursor during drag and drop operations
+
 ## v3.1.4
 
 * PyRx based on Python 3.14 and wxPython 4.3.0
