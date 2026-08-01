@@ -1,6 +1,6 @@
 import wx
 from wx import xrc
-from pyrx import Ap, Db, Ed, Ge, Gs
+from pyrx import Ap, Db, Ed, Ge, Gs, Ax
 from typing import NamedTuple  # Fixed: Imported from typing for class syntax
 import wx  # Assumed dependency based on wx.Image
 
@@ -28,6 +28,81 @@ def getBlockInfos(db: Db.Database):
     for idx, image in enumerate(Gs.Core.getBlockImages(ids, 64, 64, 1.0, [25, 25, 25])):
         infos[idx] = infos[idx]._replace(image=image)
     return infos
+
+
+def insertBlockTableRecord(
+    sourceDb: Db.Database, blockName: str, scale: float, rotation: float
+) -> Db.ErrorStatus:
+
+    # Check if the block is already inserted
+    pDestDb = Db.workingDb()
+    if not pDestDb:
+        return Db.ErrorStatus.eNoDatabase
+
+    pDestBlockTable = Db.BlockTable(pDestDb.blockTableId(), Db.OpenMode.kForRead)
+
+    bBlockExists = pDestBlockTable.has(blockName)
+    srcBlockId = Db.ObjectId()
+
+    if bBlockExists:
+        srcBlockId = pDestBlockTable.getAt(blockName)
+        pDestBlockTable.close()
+
+        flag, point = moveEnt(srcBlockId, scale, rotation)
+        if flag:
+            hr = insertBlockViaActiveX(blockName, point, scale, rotation)
+            if hr:
+                return Db.ErrorStatus.eOk
+            return Db.ErrorStatus.eInvalidInput
+    else:
+        pDestBlockTable.close()
+
+    # Else Wblock routing
+    if not sourceDb:
+        print("\nDrawing was closed: ")
+        return Db.ErrorStatus.eNoDatabase
+
+    pSrcBlockTable = Db.BlockTable(sourceDb.blockTableId(), Db.OpenMode.kForRead)
+    if not pSrcBlockTable.has(blockName):
+        pSrcBlockTable.close()
+        return Db.ErrorStatus.eInvalidInput
+
+    srcBlockId = pSrcBlockTable.getAt(blockName)
+    pSrcBlockTable.close()
+    pTmpDb = sourceDb.wblock(srcBlockId)
+
+    blkId = Db.ObjectId()
+    pDestDb.insert(blkId, blockName, pTmpDb, True)
+    pTmpDb = None
+
+    flag, point = moveEnt(srcBlockId, scale, rotation)
+    if flag:
+        hr = insertBlockViaActiveX(blockName, point, scale, rotation)
+        if hr:
+            return Db.ErrorStatus.eOk
+        return Db.ErrorStatus.eInvalidInput
+
+    return Db.ErrorStatus.eOk
+
+
+def moveEnt(blockId: Db.ObjectId, scale: float, rotation: float) -> bool:
+    jig = BlockJig(blockId, scale, rotation)
+    if jig.drag() == Ed.DragStatus.eNormal:
+        point = jig.getPoint()
+        return True, point
+    return False, point
+
+
+def insertBlockViaActiveX(blkname: str, point: Ge.Point3d, scale: float, rot: float) -> bool:
+    axApp = Ap.Application.acadApplication()
+    axDoc = axApp.activeDocument()
+    db = Db.workingDb()
+    if db.tilemode():
+        space = axDoc.modelSpace()
+    else:
+        space = axDoc.paperSpace()
+    ref = space.insertBlock(point, blkname, Ge.Scale3d(scale), rot)
+    return ref is not None
 
 
 class PalettePanel(wx.Panel):
@@ -96,42 +171,50 @@ class PalettePanel(wx.Panel):
     def OnSize(self, event):
         event.Skip()
 
+    def getScaleValue(self):
+        strval = self.scale_txtctrl.GetValue()
+        val = float(strval)
+        return 1.0 if val == 0.0 else val
+
+    def getRotValue(self):
+        strval = self.rot_textctrl.GetValue()
+        return float(strval)
+
     def OnDragInit(self, event: wx.ListEvent):
         _lock = Ap.AutoDocLock()
         item_index = event.GetIndex()
         item_text = self.listctrl.GetItemText(item_index)
-        
-        # drag effect 
         drag = Ed.DragEffect()
-        if drag.drag():
-            print(f"Dragging item index: {item_index}, Text: {item_text}")
+        if drag.drag() and self.db is not None:
+            insertBlockTableRecord(self.db, item_text, self.getScaleValue(), self.getRotValue())
 
-# jig
-class Blockig(Ed.Jig):
-    def __init__(self, blockRef, basepoint, db):
-        Ed.Jig.__init__(self, blockRef)
-        self.ref: Db.BlockReference = blockRef
-        self.curPoint: Ge.Point3d = basepoint
-        self.db: Db.Database = db
 
-    def sampler(self):
-        self.setUserInputControls
-        (
-            Ed.UserInputControls(
-                Ed.UserInputControls.kAccept3dCoordinates
-                | Ed.UserInputControls.kNullResponseAccepted
-            )
-        )
-        point_result_tuple = self.acquirePoint(self.curPoint)
-        self.curPoint = point_result_tuple[1]
-        return point_result_tuple[0]
+class BlockJig(Ed.Jig):
+    def __init__(self, blockTableRecordId: Db.ObjectId, scale: float, rotation: float):
+        self.ref = Db.BlockReference(Ge.Point3d.kOrigin, blockTableRecordId)
+        Ed.Jig.__init__(self, self.ref)
+        ucs = Ed.Editor.getCurrentUCS()
+        rotMat = Ge.Matrix3d.rotation(rotation, ucs.zAxis(), Ge.Point3d.kOrigin)
+        scaleMat = Ge.Matrix3d.scaling(scale, Ge.Point3d.kOrigin)
+        self.localTransform = rotMat * scaleMat
+        self.ref.transformBy(self.localTransform)
+        self.point = Ge.Point3d.kOrigin
 
-    def update(self):
-        self.ref.setPosition(self.curPoint)
+    def sampler(self) -> Ed.DragStatus:
+        self.setUserInputControls(Ed.UserInputControls.kAccept3dCoordinates)
+        status, self.point = self.acquirePoint()
+        return status
+
+    def update(self) -> bool:
+        self.ref.setPosition(self.point)
         return True
+
+    def getPoint(self):
+        return self.point
 
 
 palette = Ap.PaletteSet("BlockPalette")
+
 
 def createPalette() -> None:
     try:
