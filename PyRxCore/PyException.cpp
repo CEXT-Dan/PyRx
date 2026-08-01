@@ -30,7 +30,7 @@ const char* acadBrStatusText(const AcBr::ErrorStatus stat) noexcept
         case AcBr::eNullSubentityId:
             return "eNullSubentityId";
         case AcBr::eObjectIdMismatch:
-            return "eTopologyMismatch";
+            return "eObjectIdMismatch";
         case AcBr::eUnsuitableGeometry:
             return "eUnsuitableGeometry";
         case AcBr::eMissingGeometry:
