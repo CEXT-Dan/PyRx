@@ -3,6 +3,7 @@ from typing import NamedTuple
 import wx
 from wx import xrc
 
+from pathlib import Path
 from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
@@ -33,14 +34,14 @@ def getBlockInfos(db: Db.Database):
 
 def insertDwg(db: Db.Database, scale: float, rotation: float):
     if not db:
-        return Db.ErrorStatus.eNoDatabase
+        raise RuntimeError("eNoDatabase")
     srcBlockId = db.currentSpaceId()
     blockName = db.getFilename()
     flag, point = moveEnt(srcBlockId, scale, rotation)
     if flag:
         if insertBlockViaActiveX(blockName, point, scale, rotation):
             return Db.ErrorStatus.eOk
-        return Db.ErrorStatus.eInvalidInput
+        raise RuntimeError("eInvalidInput")
     return Db.ErrorStatus.eOk
 
 
@@ -51,7 +52,7 @@ def insertBlockTableRecord(
     # Check if the block is already inserted
     pDestDb = Db.workingDb()
     if not pDestDb:
-        return Db.ErrorStatus.eNoDatabase
+        raise RuntimeError("eNoDatabase")
 
     pDestBlockTable = Db.BlockTable(pDestDb.blockTableId())
     bBlockExists = pDestBlockTable.has(blockName)
@@ -63,7 +64,7 @@ def insertBlockTableRecord(
         if flag:
             if insertBlockViaActiveX(blockName, point, scale, rotation):
                 return Db.ErrorStatus.eOk
-            return Db.ErrorStatus.eInvalidInput
+            raise RuntimeError("insertBlockViaActiveX Failed")
     else:
         pDestBlockTable.close()
 
@@ -86,9 +87,8 @@ def insertBlockTableRecord(
     flag, point = moveEnt(srcBlockId, scale, rotation)
     pTmpDb = None
     if flag:
-        if insertBlockViaActiveX(blockName, point, scale, rotation):
-            return Db.ErrorStatus.eOk
-        return Db.ErrorStatus.eInvalidInput
+        if not insertBlockViaActiveX(blockName, point, scale, rotation):
+            raise RuntimeError("insertBlockViaActiveX Failed")
     return Db.ErrorStatus.eOk
 
 
@@ -122,8 +122,8 @@ class PalettePanel(wx.Panel):
 
     def init_members(self):
         self.previewctrl = xrc.XRCCTRL(self, "ID_STATIC_PREVIEW")
-        self.choicectrl = xrc.XRCCTRL(self, "ID_CHOICE")
-        self.add_buttonctrl = xrc.XRCCTRL(self, "ID_ADD_BUTTON")
+        self.choicectrl: wx.Choice = xrc.XRCCTRL(self, "ID_CHOICE")
+        self.add_buttonctrl: wx.Button = xrc.XRCCTRL(self, "ID_ADD_BUTTON")
         self.rot_textctrl = xrc.XRCCTRL(self, "ID_ROTATION_TEXTCTRL")
         self.scale_txtctrl = xrc.XRCCTRL(self, "ID_SCALE_TEXTCTRL")
         self.dirctrl: wx.GenericDirCtrl = xrc.XRCCTRL(self, "ID_DIRCTRL")
@@ -136,6 +136,8 @@ class PalettePanel(wx.Panel):
         self.dirctrl.Bind(wx.EVT_DIRCTRL_SELECTIONCHANGED, self.OnDirCtrlSelectionChanged)
         self.listctrl.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit)
         self.previewctrl.Bind(wx.EVT_LEFT_DCLICK, self.OnPreviewLeftDClick)
+        self.add_buttonctrl.Bind(wx.EVT_BUTTON, self.OnAddButtonClick)
+        self.choicectrl.Bind(wx.EVT_CHOICE, self.OnChoiceSelected)
 
     # import the .XRC file and init the controls
     def OnShow(self, event):
@@ -154,7 +156,35 @@ class PalettePanel(wx.Panel):
         self.init_members()
         self.bind_events()
 
-    # TODO: image genration is slow, can be cached {path,infos}
+    def OnAddButtonClick(self, event):
+        default_path = self.dirctrl.GetPath()
+        style = wx.DD_DEFAULT_STYLE | wx.DD_DIR_MUST_EXIST
+        with wx.DirDialog(
+            self, "Choose a Folder", defaultPath=default_path, style=style
+        ) as dirDlg:
+            if dirDlg.ShowModal() == wx.ID_OK:
+                result = dirDlg.GetPath()
+                existingIndex = self.choicectrl.FindString(result)
+                if existingIndex == wx.NOT_FOUND:
+                    newIndex = self.choicectrl.Append(result)
+                    self.choicectrl.SetSelection(newIndex)
+                else:
+                    self.choicectrl.SetSelection(existingIndex)
+                self.NavigateToFolder(result)
+
+    def OnChoiceSelected(self, event):
+        selected_path = event.GetString()
+        self.NavigateToFolder(selected_path)
+
+    def NavigateToFolder(self, folder: str):
+        if not Path(folder).is_dir():
+            print("\nNavigateToFolder failed: Path does not exist -> {}".format(folder))
+        self.dirctrl.CollapseTree()
+        self.dirctrl.SelectPath(folder)
+        self.dirctrl.ExpandPath(folder)
+
+    # TODO: image genration is slow
+    # create (db, mainimage, list[BlockInfo]) cache
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
         self.db = None
         self.listctrl.DeleteAllItems()
@@ -192,16 +222,25 @@ class PalettePanel(wx.Panel):
         return float(strval)
 
     def OnDragInit(self, event: wx.ListEvent):
-        _lock = Ap.AutoDocLock()
-        item_index = event.GetIndex()
-        item_text = self.listctrl.GetItemText(item_index)
-        drag = Ed.DragEffect()
-        if drag.drag() and self.db is not None:
-            insertBlockTableRecord(self.db, item_text, self.getScaleValue(), self.getRotValue())
+        try:
+            _lock = Ap.AutoDocLock()
+            item_index = event.GetIndex()
+            item_text = self.listctrl.GetItemText(item_index)
+            drag = Ed.DragEffect()
+            if drag.drag() and self.db is not None:
+                insertBlockTableRecord(
+                    self.db, item_text, self.getScaleValue(), self.getRotValue()
+                )
+        except Exception as e:
+            print(f"OnDragInit failed: {e}")
 
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
-        insertDwg(self.db, self.getScaleValue(), self.getRotValue())
-        event.Skip()
+        try:
+            insertDwg(self.db, self.getScaleValue(), self.getRotValue())
+        except Exception as e:
+            print(f"OnPreviewLeftDClick failed: {e}")
+        finally:
+            event.Skip()
 
 
 class BlockJig(Ed.Jig):
