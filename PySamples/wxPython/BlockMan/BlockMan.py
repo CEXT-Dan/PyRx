@@ -40,30 +40,26 @@ def insertBlockTableRecord(
     if not pDestDb:
         return Db.ErrorStatus.eNoDatabase
 
-    pDestBlockTable = Db.BlockTable(pDestDb.blockTableId(), Db.OpenMode.kForRead)
-
+    pDestBlockTable = Db.BlockTable(pDestDb.blockTableId())
     bBlockExists = pDestBlockTable.has(blockName)
-    srcBlockId = Db.ObjectId()
 
     if bBlockExists:
         srcBlockId = pDestBlockTable.getAt(blockName)
         pDestBlockTable.close()
-
         flag, point = moveEnt(srcBlockId, scale, rotation)
         if flag:
-            hr = insertBlockViaActiveX(blockName, point, scale, rotation)
-            if hr:
+            if insertBlockViaActiveX(blockName, point, scale, rotation):
                 return Db.ErrorStatus.eOk
             return Db.ErrorStatus.eInvalidInput
     else:
         pDestBlockTable.close()
 
-    # Else Wblock routing
+    # Else clone it
     if not sourceDb:
         print("\nDrawing was closed: ")
         return Db.ErrorStatus.eNoDatabase
 
-    pSrcBlockTable = Db.BlockTable(sourceDb.blockTableId(), Db.OpenMode.kForRead)
+    pSrcBlockTable = Db.BlockTable(sourceDb.blockTableId())
     if not pSrcBlockTable.has(blockName):
         pSrcBlockTable.close()
         return Db.ErrorStatus.eInvalidInput
@@ -74,15 +70,12 @@ def insertBlockTableRecord(
 
     blkId = Db.ObjectId()
     pDestDb.insert(blkId, blockName, pTmpDb, True)
-    pTmpDb = None
-
     flag, point = moveEnt(srcBlockId, scale, rotation)
+    pTmpDb = None
     if flag:
-        hr = insertBlockViaActiveX(blockName, point, scale, rotation)
-        if hr:
+        if insertBlockViaActiveX(blockName, point, scale, rotation):
             return Db.ErrorStatus.eOk
         return Db.ErrorStatus.eInvalidInput
-
     return Db.ErrorStatus.eOk
 
 
@@ -106,6 +99,7 @@ def insertBlockViaActiveX(blkname: str, point: Ge.Point3d, scale: float, rot: fl
     ref = space.insertBlock(point, blkname, Ge.Scale3d(scale), rot)
     return ref is not None
 
+
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
@@ -122,7 +116,7 @@ class PalettePanel(wx.Panel):
         self.dirctrl: wx.GenericDirCtrl = xrc.XRCCTRL(self, "ID_DIRCTRL")
         self.listctrl: wx.ListCtrl = xrc.XRCCTRL(self, "ID_LISTCTRL")
 
-    #todo handle previewctrl,choicectrl and add_buttonctrl
+    # todo handle previewctrl,choicectrl and add_buttonctrl
     def bind_events(self):
         self.Bind(wx.EVT_SIZE, self.OnSize)
         # ctrl events
@@ -146,7 +140,7 @@ class PalettePanel(wx.Panel):
         self.init_members()
         self.bind_events()
 
-    #TODO: image genration is slow, can be cached {path,infos}
+    # TODO: image genration is slow, can be cached {path,infos}
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
         self.db = None
         self.listctrl.DeleteAllItems()
