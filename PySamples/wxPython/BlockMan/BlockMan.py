@@ -1,8 +1,9 @@
+from typing import NamedTuple  # Fixed: Imported from typing for class syntax
+
 import wx
 from wx import xrc
-from pyrx import Ap, Db, Ed, Ge, Gs, Ax
-from typing import NamedTuple  # Fixed: Imported from typing for class syntax
-import wx  # Assumed dependency based on wx.Image
+
+from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
 
