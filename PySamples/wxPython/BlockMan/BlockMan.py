@@ -1,4 +1,4 @@
-from typing import NamedTuple  # Fixed: Imported from typing for class syntax
+from typing import NamedTuple
 
 import wx
 from wx import xrc
@@ -94,6 +94,7 @@ def moveEnt(blockId: Db.ObjectId, scale: float, rotation: float) -> bool:
     return False, point
 
 
+# use Ax to do the actual insert as it handles attributes, dynamic
 def insertBlockViaActiveX(blkname: str, point: Ge.Point3d, scale: float, rot: float) -> bool:
     axApp = Ap.Application.acadApplication()
     axDoc = axApp.activeDocument()
@@ -104,7 +105,6 @@ def insertBlockViaActiveX(blkname: str, point: Ge.Point3d, scale: float, rot: fl
         space = axDoc.paperSpace()
     ref = space.insertBlock(point, blkname, Ge.Scale3d(scale), rot)
     return ref is not None
-
 
 class PalettePanel(wx.Panel):
     def __init__(self):
@@ -122,6 +122,7 @@ class PalettePanel(wx.Panel):
         self.dirctrl: wx.GenericDirCtrl = xrc.XRCCTRL(self, "ID_DIRCTRL")
         self.listctrl: wx.ListCtrl = xrc.XRCCTRL(self, "ID_LISTCTRL")
 
+    #todo handle previewctrl,choicectrl and add_buttonctrl
     def bind_events(self):
         self.Bind(wx.EVT_SIZE, self.OnSize)
         # ctrl events
@@ -145,6 +146,7 @@ class PalettePanel(wx.Panel):
         self.init_members()
         self.bind_events()
 
+    #TODO: image genration is slow, can be cached {path,infos}
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
         self.db = None
         self.listctrl.DeleteAllItems()
