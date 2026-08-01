@@ -1,9 +1,9 @@
+from pathlib import Path
 from typing import NamedTuple
 
 import wx
 from wx import xrc
 
-from pathlib import Path
 from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
