@@ -31,6 +31,19 @@ def getBlockInfos(db: Db.Database):
     return infos
 
 
+def insertDwg(db: Db.Database, scale: float, rotation: float):
+    if not db:
+        return Db.ErrorStatus.eNoDatabase
+    srcBlockId = db.currentSpaceId()
+    blockName = db.getFilename()
+    flag, point = moveEnt(srcBlockId, scale, rotation)
+    if flag:
+        if insertBlockViaActiveX(blockName, point, scale, rotation):
+            return Db.ErrorStatus.eOk
+        return Db.ErrorStatus.eInvalidInput
+    return Db.ErrorStatus.eOk
+
+
 def insertBlockTableRecord(
     sourceDb: Db.Database, blockName: str, scale: float, rotation: float
 ) -> Db.ErrorStatus:
@@ -122,6 +135,7 @@ class PalettePanel(wx.Panel):
         # ctrl events
         self.dirctrl.Bind(wx.EVT_DIRCTRL_SELECTIONCHANGED, self.OnDirCtrlSelectionChanged)
         self.listctrl.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit)
+        self.previewctrl.Bind(wx.EVT_LEFT_DCLICK, self.OnPreviewLeftDClick)
 
     # import the .XRC file and init the controls
     def OnShow(self, event):
@@ -184,6 +198,10 @@ class PalettePanel(wx.Panel):
         drag = Ed.DragEffect()
         if drag.drag() and self.db is not None:
             insertBlockTableRecord(self.db, item_text, self.getScaleValue(), self.getRotValue())
+
+    def OnPreviewLeftDClick(self, event: wx.MouseEvent):
+        insertDwg(self.db, self.getScaleValue(), self.getRotValue())
+        event.Skip()
 
 
 class BlockJig(Ed.Jig):
