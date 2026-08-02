@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import pickle
-import unittest
 
 import pytest
 
@@ -19,31 +18,24 @@ class PyData:
 
 
 class TestDbObject:
-    def setup_class(self):
-        self.assertions = unittest.TestCase("__init__")
-        self.assertEqual = self.assertions.assertEqual
-        self.assertNotEqual = self.assertions.assertNotEqual
-        self.assertGreater = self.assertions.assertGreater
-        self.assertFalse = self.assertions.assertFalse
-        self.assertTrue = self.assertions.assertTrue
 
     def test_property_ids(self):
         id = Db.HostApplicationServices().workingDatabase().blockTableId()
         bdo = Db.DbObject(id, Db.OpenMode.ForRead)
-        self.assertEqual(bdo.className(), "AcDbObject")
-        self.assertEqual(bdo.isA().name(), "AcDbBlockTable")
-        self.assertEqual(bdo.isReadEnabled(), True)
-        self.assertEqual(bdo.isWriteEnabled(), False)
-        self.assertEqual(bdo.isAProxy(), False)
-        self.assertEqual(bdo.isNewObject(), False)
+        assert bdo.className() == "AcDbObject"
+        assert bdo.isA().name() == "AcDbBlockTable"
+        assert bdo.isReadEnabled()
+        assert not bdo.isWriteEnabled()
+        assert not bdo.isAProxy()
+        assert not bdo.isNewObject()
         #
         bdo.upgradeOpen()
-        self.assertEqual(bdo.isWriteEnabled(), True)
+        assert bdo.isWriteEnabled()
         #
         bdo.downgradeOpen()
-        self.assertEqual(bdo.isWriteEnabled(), False)
+        assert not bdo.isWriteEnabled()
         #
-        self.assertEqual(bdo.database(), Db.HostApplicationServices().workingDatabase())
+        assert bdo.database() == Db.workingDb()
 
     @pytest.mark.known_failure_IRX
     def test_property_ids2(self):
@@ -52,7 +44,7 @@ class TestDbObject:
         
         #iacad is deleted
         bdo.close()
-        self.assertEqual(bdo.isReadEnabled(), False)
+        assert not bdo.isReadEnabled()
 
     @pytest.mark.known_failure_IRX
     def test_undo_recording(self):
@@ -60,9 +52,9 @@ class TestDbObject:
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         curstate = not model.isUndoRecordingDisabled()
         model.disableUndoRecording(True)
-        self.assertEqual(model.isUndoRecordingDisabled(), True)
+        assert model.isUndoRecordingDisabled()
         model.disableUndoRecording(False)
-        self.assertEqual(model.isUndoRecordingDisabled(), False)
+        assert not model.isUndoRecordingDisabled()
         model.disableUndoRecording(curstate)
 
     def test_propertys(self):
@@ -70,19 +62,19 @@ class TestDbObject:
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForRead)
         oid = model.ownerId()
         dbo = Db.DbObject(oid, Db.OpenMode.ForRead)
-        self.assertEqual(dbo.isA().name(), "AcDbBlockTable")
-        self.assertEqual(dbo.database(), db)
-        self.assertEqual(dbo.isAProxy(), False)
-        self.assertEqual(dbo.isErased(), False)
+        assert dbo.isA().name() == "AcDbBlockTable"
+        assert dbo.database() == db
+        assert not dbo.isAProxy()
+        assert not dbo.isErased()
 
     def test_xdata(self):
         # regapp
         success = Db.Core.regApp("PYTHONTEST")
-        self.assertEqual(success, True)
+        assert success
         # set
         id = Db.HostApplicationServices().workingDatabase().textstyle()
         dbo = Db.DbObject(id, Db.OpenMode.kForWrite)
-        self.assertEqual(dbo.isWriteEnabled(), True)
+        assert dbo.isWriteEnabled()
         xd = [
             (Db.DxfCode.kDxfRegAppName, "PYTHONTEST"),
             (Db.DxfCode.kDxfXdXCoord, Ge.Point3d(1, 10, 100)),
@@ -92,9 +84,9 @@ class TestDbObject:
         # get
         xdres = dbo.xData("PYTHONTEST")
         p = xdres[1][1]
-        self.assertEqual(p.x, 1)
-        self.assertEqual(p.y, 10)
-        self.assertEqual(p.z, 100)
+        assert p.x == 1
+        assert p.y == 10
+        assert p.z == 100
 
     @pytest.mark.known_failure_IRX
     def test_BinaryData(self):
@@ -104,9 +96,9 @@ class TestDbObject:
         dbo = Db.DbObject(id, Db.OpenMode.kForWrite)
         xrid: Db.ObjectId = dbo.setBinaryData("PYXR", dataBytes)
         bOut = dbo.getBinaryData("PYXR")
-        self.assertEqual(bOut, dataBytes)
-        self.assertFalse(xrid.isNull())
-        self.assertTrue(xrid.isDerivedFrom(Db.Xrecord.desc()))
+        assert bOut == dataBytes
+        assert not xrid.isNull()
+        assert xrid.isDerivedFrom(Db.Xrecord.desc())
 
     @pytest.mark.known_failure_IRX
     def test_BinaryXdData(self):
@@ -116,19 +108,19 @@ class TestDbObject:
         dbo = Db.DbObject(id, Db.OpenMode.kForWrite)
         dbo.setXDBinaryData("PYXD", dataBytes)
         bOut = dbo.getXDBinaryData("PYXD")
-        self.assertEqual(bOut, dataBytes)
+        assert bOut == dataBytes
 
     def test_isdynamicblock(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("36f")
         objId = db_dynblock.getObjectId(False, objHnd)
-        self.assertTrue(Db.DynBlockTableRecord.getIsDynamicBlock(objId))
+        assert Db.DynBlockTableRecord.getIsDynamicBlock(objId)
         btr = Db.BlockTableRecord(objId)
-        self.assertTrue(btr.isDynamicBlock())
+        assert btr.isDynamicBlock()
 
     def test_isDerivedFrom(self):
         line = Db.Line()
-        self.assertFalse(line.isDerivedFrom(Db.Circle.desc()))
-        self.assertTrue(line.isDerivedFrom(Db.Curve.desc()))
+        assert not line.isDerivedFrom(Db.Circle.desc())
+        assert line.isDerivedFrom(Db.Curve.desc())
 
     def EntityHyperlinkPE(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c95f5")
@@ -136,8 +128,8 @@ class TestDbObject:
         obj = Db.DbObject(objId)
         pe = Db.EntityHyperlinkPE(obj.queryX(Db.EntityHyperlinkPE.desc()))
         hpc = pe.getHyperlinkCollection(obj)
-        self.assertEqual(hpc.count(), 1)
+        assert hpc.count() == 1
         for idx in range(hpc.count()):
             lnk = hpc.item(idx)
-            self.assertEqual(lnk.name(), "http://www.theswamp.org/")
-            self.assertEqual(lnk.description(), "theSwamp")
+            assert lnk.name() == "http://www.theswamp.org/"
+            assert lnk.description() == "theSwamp"
