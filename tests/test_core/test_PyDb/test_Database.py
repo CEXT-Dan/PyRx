@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import math
 import time
-import unittest
 
 import pytest
 
@@ -23,8 +22,6 @@ def do_capture_audit() -> str:
 
 
 class TestDatabase:
-    def setup_class(self):
-        self.assertions = unittest.TestCase("__init__")
 
     def test_getBlocks(self, db_06457: Db.Database):
         blks = db_06457.getBlocks()
@@ -75,76 +72,62 @@ class TestDatabase:
 
     def test_dbcore_strconversions(self):
         flag = Ed.Core.setVar("ANGBASE", 0)
-        self.assertions.assertEqual(flag, True)
+        assert flag
         flag = Ed.Core.setVar("DIMZIN", 0)
-        self.assertions.assertEqual(flag, True)
+        assert flag
         val = Db.Core.angToF("180", 0)
-        self.assertions.assertAlmostEqual(val, math.pi, 8)
+        assert val == pytest.approx(math.pi, rel=1e-8)
         val = Db.Core.angToF("180d0'0\"", 1)
-        self.assertions.assertAlmostEqual(val, math.pi, 8)
+        assert val == pytest.approx(math.pi, rel=1e-8)
         val = Db.Core.angToF("200.0000g", 2)
-        self.assertions.assertAlmostEqual(val, math.pi, 8)
+        assert val == pytest.approx(math.pi, rel=1e-8)
         val = Db.Core.angToF("3.1416r", 3)
-        self.assertions.assertEqual(val, 3.1416)
+        assert val == 3.1416
         val = Db.Core.angToF("W", 4)
-        self.assertions.assertAlmostEqual(val, math.pi, 8)
+        assert val == pytest.approx(math.pi, rel=1e-8)
         sval = Db.Core.angToS(math.pi, 0, 2)
-        self.assertions.assertEqual(sval, "180.00")
+        assert sval == "180.00"
 
     def test_dbcore_activeDatabaseArray(self):
         dbs = Db.Core.activeDatabaseArray()
-        self.assertions.assertNotEqual(len(dbs), 0)
+        assert len(dbs) != 0
 
     def test_property_ids(self):
-        self.assertions.assertEqual(Db.Database.className(), "AcDbDatabase")
+        assert Db.Database.className() == "AcDbDatabase"
         db = Db.HostApplicationServices().workingDatabase()
         angbase = db.angbase()
         db.setAngbase(1)
-        self.assertions.assertEqual(db.angbase(), 1)
+        assert db.angbase() == 1
         db.setAngbase(angbase)
-        self.assertions.assertEqual(db.angbase(), angbase)
-        self.assertions.assertEqual(
-            db.byBlockLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
-        )
-        self.assertions.assertEqual(
-            db.byBlockMaterial().objectClass().name(), "AcDbMaterial"
-        )
-        self.assertions.assertEqual(
-            db.byLayerLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
-        )
-        self.assertions.assertEqual(
-            db.byLayerMaterial().objectClass().name(), "AcDbMaterial"
-        )
-        self.assertions.assertEqual(
-            db.clayer().objectClass().name(), "AcDbLayerTableRecord"
-        )
-        self.assertions.assertEqual(
-            db.cmlstyleID().objectClass().name(), "AcDbMlineStyle"
-        )
-        self.assertions.assertEqual(
-            db.colorDictionaryId().objectClass().name(), "AcDbDictionary"
-        )
+        assert db.angbase() == angbase
+        assert db.byBlockLinetype().objectClass().name() == "AcDbLinetypeTableRecord"
+        assert db.byBlockMaterial().objectClass().name() == "AcDbMaterial"
+        assert db.byLayerLinetype().objectClass().name() == "AcDbLinetypeTableRecord"
+        assert db.byLayerMaterial().objectClass().name() == "AcDbMaterial"
+        assert db.clayer().objectClass().name() == "AcDbLayerTableRecord"
+        assert db.cmlstyleID().objectClass().name() == "AcDbMlineStyle"
+        assert db.colorDictionaryId().objectClass().name() == "AcDbDictionary"
 
     @pytest.mark.known_failure_GRX
     def test_SymUtilServices(self):
         db = Db.HostApplicationServices().workingDatabase()
         sus = Db.SymUtilServices()
-        self.assertions.assertEqual(sus.blockModelSpaceId(db), db.modelSpaceId())
-        self.assertions.assertEqual(sus.blockModelSpaceName(), "*Model_Space")
-        self.assertions.assertEqual(sus.hasVerticalBar("str|str"), True)
-        self.assertions.assertEqual(sus.hasVerticalBar("strstr"), False)
-        self.assertions.assertEqual(sus.compareSymbolName("strstr", "strstr"), 0)
-        self.assertions.assertEqual(sus.compareSymbolName("strstr", "ztrstr"), -1)
+        assert sus.blockModelSpaceId(db) == db.modelSpaceId()
+        assert sus.blockModelSpaceName() == "*Model_Space"
+        assert sus.hasVerticalBar("str|str")
+        assert not sus.hasVerticalBar("strstr")
+        assert sus.compareSymbolName("strstr", "strstr") == 0
+        assert sus.compareSymbolName("strstr","ztrstr") == -1
 
     def test_handle(self, db_06457: Db.Database):
         lineHnd = Db.Handle("20127")
         lineId = db_06457.getObjectId(False, lineHnd)
-        self.assertions.assertEqual(lineId.isNull(), False)
-        self.assertions.assertEqual(lineHnd.isNull(), False)
-        self.assertions.assertEqual(lineId.isDerivedFrom(Db.Line.desc()), True)
-        self.assertions.assertEqual(lineHnd.toString(), "20127")
-        self.assertions.assertEqual(Db.Handle("20127") == Db.Handle("20127"), True)
-        self.assertions.assertEqual(Db.Handle("20127") != Db.Handle("20127"), False)
+        assert not lineId.isNull()
+        assert not lineHnd.isNull()
+        assert lineId.isDerivedFrom(Db.Line.desc())
+        assert lineHnd.toString() == "20127"
+        assert Db.Handle("20127") == Db.Handle("20127")
+        assert not Db.Handle("20127") != Db.Handle("20127")
 
     @staticmethod
     def putSummaryInfo() -> None:
@@ -168,71 +151,71 @@ class TestDatabase:
         customDict = {"Ford": "Mustang", "Chevy": "Camaro", "VW": " Bug"}
         db = Db.curDb()
         info = Db.Core.getSummaryInfo(db)
-        self.assertions.assertEqual(info.getTitle(), "MyTitle")
-        self.assertions.assertEqual(info.getSubject(), "MySubject")
-        self.assertions.assertEqual(info.getAuthor(), "MyAuthor")
-        self.assertions.assertEqual(info.getKeywords(), "MyKeywords")
-        self.assertions.assertEqual(info.getComments(), "MyComments")
-        self.assertions.assertEqual(info.getLastSavedBy(), "Me")
-        self.assertions.assertEqual(info.getRevisionNumber(), "1.1.0001")
-        self.assertions.assertEqual(info.getHyperlinkBase(), "myHyperlinkBase")
+        assert info.getTitle() == "MyTitle"
+        assert info.getSubject() == "MySubject"
+        assert info.getAuthor() == "MyAuthor"
+        assert info.getKeywords() == "MyKeywords"
+        assert info.getComments() == "MyComments"
+        assert info.getLastSavedBy() == "Me"
+        assert info.getRevisionNumber() == "1.1.0001"
+        assert info.getHyperlinkBase() == "myHyperlinkBase"
 
         cs = info.asDict()
         keys = cs.keys()
         values = cs.values()
 
         for key, value in customDict.items():
-            self.assertions.assertEqual(key in keys, True)
-            self.assertions.assertEqual(value in values, True)
+            assert key in keys
+            assert value in values
 
     def test_dbentityforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isNull(), False)
+        assert not objId.isNull()
         dbo = Db.Entity(objId)
-        self.assertions.assertEqual(dbo.isA().name(), "AcDbLine")
+        assert dbo.isA().name() == "AcDbLine"
 
     def test_dbcurveforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isNull(), False)
+        assert not objId.isNull()
         dbo = Db.Curve(objId)
-        self.assertions.assertEqual(dbo.isA(), Db.Line.desc())
+        assert dbo.isA() == Db.Line.desc()
 
     def test_dblineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("20127")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isNull(), False)
+        assert not objId.isNull()
         line = Db.Line(objId)
-        self.assertions.assertEqual(line.isKindOf(Db.Line.desc()), True)
-        self.assertions.assertEqual(line.layer(), "1_1_WALLS")
+        assert line.isKindOf(Db.Line.desc())
+        assert line.layer() == "1_1_WALLS"
 
     def test_dbpolylineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("201ee")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isNull(), False)
+        assert not objId.isNull()
         pline = Db.Polyline(objId)
-        self.assertions.assertEqual(pline.isKindOf(Db.Curve.desc()), True)
-        self.assertions.assertEqual(pline.isKindOf(Db.Polyline.desc()), True)
-        self.assertions.assertEqual(pline.layer(), "1_CRP_WALLS")
-        self.assertions.assertEqual(pline.numVerts(), 5)
-        self.assertions.assertAlmostEqual(pline.getArea(), 7222764.7277, 4)
+        assert pline.isKindOf(Db.Curve.desc())
+        assert pline.isKindOf(Db.Polyline.desc())
+        assert pline.layer() == "1_CRP_WALLS"
+        assert pline.numVerts() == 5
+        assert pline.getArea() == pytest.approx(7222764.7277, rel=1e-4)
 
     def test_dbsplineforread(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c62a1")
         objId = db_06457.getObjectId(False, objHnd)
-        self.assertions.assertEqual(objId.isNull(), False)
+        assert not objId.isNull()
         spline = Db.Spline(objId)
-        self.assertions.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
-        self.assertions.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
-        self.assertions.assertEqual(spline.numFitPoints(), 3)
+        assert spline.isKindOf(Db.Curve.desc())
+        assert spline.isKindOf(Db.Spline.desc())
+        assert spline.numFitPoints() == 3
 
     def test_addToModelspaced1(self, db_06457: Db.Database):
         db = db_06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToModelspace(line)
-        self.assertions.assertFalse(id.isNull())
-        self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+        assert not id.isNull()
+        assert id.isDerivedFrom(Db.Line.desc())
 
     def test_addToModelspaced2(self, db_06457: Db.Database):
         db = db_06457
@@ -242,8 +225,8 @@ class TestDatabase:
         ]
         ids = db.addToBlock(db.modelSpaceId(), lines)
         for id in ids:
-            self.assertions.assertFalse(id.isNull())
-            self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+            assert not id.isNull()
+            assert id.isDerivedFrom(Db.Line.desc())
 
     @pytest.mark.known_failure_IRX
     def test_blocktable(self, db_06457: Db.Database):
@@ -256,20 +239,20 @@ class TestDatabase:
         pid = Db.SymUtilServices().blockPaperSpaceId(db)
         pname = Db.SymUtilServices().blockPaperSpaceName()
 
-        self.assertions.assertTrue(bt.has(mid))
-        self.assertions.assertTrue(bt.has(mname))
-        self.assertions.assertTrue(bt.has(pid))
-        self.assertions.assertTrue(bt.has(pname))
+        assert bt.has(mid)
+        assert bt.has(mname)
+        assert bt.has(pid)
+        assert bt.has(pname)
 
-        self.assertions.assertTrue((mid in bt))
-        self.assertions.assertTrue((mname in bt))
-        self.assertions.assertTrue((pid in bt))
-        self.assertions.assertTrue((pname in bt))
+        assert mid in bt
+        assert mname in bt
+        assert pid in bt
+        assert pname in bt
 
-        self.assertions.assertTrue((mid in data.values()))
-        self.assertions.assertTrue((mname in data.keys()))
-        self.assertions.assertTrue((pid in data.values()))
-        self.assertions.assertTrue((pname in data.keys()))
+        assert mid in data.values()
+        assert mname in data.keys()
+        assert pid in data.values()
+        assert pname in data.keys()
 
         cnt1 = 0
         for id in bt:
@@ -277,7 +260,7 @@ class TestDatabase:
         cnt2 = 0
         for id in data.values():
             cnt2 += 1
-        self.assertions.assertEqual(cnt1, cnt2)
+        assert cnt1 == cnt2
 
     def test_btr_iter(self, db_points: Db.Database):
         db: Db.Database = db_points
@@ -288,14 +271,14 @@ class TestDatabase:
         cnt2 = 0
         for id in model.objectIds():
             cnt2 += 1
-        self.assertions.assertEqual(cnt1, cnt2)
+        assert cnt1 == cnt2
 
     def test_addToBlock1(self, db_06457: Db.Database):
         db = db_06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToBlock(db.modelSpaceId(), line)
-        self.assertions.assertFalse(id.isNull())
-        self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+        assert not id.isNull()
+        assert id.isDerivedFrom(Db.Line.desc())
 
     def test_addToBlock2(self, db_06457: Db.Database):
         db = db_06457
@@ -306,15 +289,15 @@ class TestDatabase:
 
         ids = db.addToBlock(db.modelSpaceId(), lines)
         for id in ids:
-            self.assertions.assertFalse(id.isNull())
-            self.assertions.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+            assert not id.isNull()
+            assert id.isDerivedFrom(Db.Line.desc())
 
     def test_inrecord(self, db_06457: Db.Database):
         db = db_06457
         lt = Db.LayerTable(db.layerTableId())
-        self.assertions.assertTrue("0" in lt)
-        self.assertions.assertTrue(db.layerZero() in lt)
-        self.assertions.assertEqual(db.layerZero(), lt["0"])
+        assert "0" in lt
+        assert db.layerZero() in lt
+        assert db.layerZero() == lt["0"]
 
     @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
@@ -325,20 +308,20 @@ class TestDatabase:
         geoPosDesc = Db.GeoPositionMarker.desc()
         markers = [Db.GeoPositionMarker(id) for id in model.objectIds(geoPosDesc)]
         for marker in markers:
-            self.assertions.assertIsNotNone(marker.latLonAlt())
+            assert marker.latLonAlt() is not None
         for marker in markers:
-            self.assertions.assertIsNotNone(marker.position())
+            assert marker.position() is not None
         for marker in markers:
-            self.assertions.assertIsNotNone(marker.geoPosition())
+            assert marker.geoPosition() is not None
 
     @pytest.mark.known_failure_ZRX
     @pytest.mark.known_failure_IRX
     def test_GeoData(self, db_geo: Db.Database) -> None:
         db = db_geo
         geoDataId = Db.Core.getGeoDataObjId(db)
-        self.assertions.assertFalse(geoDataId.isNull())
+        assert not geoDataId.isNull()
         geoData = Db.GeoData(geoDataId)
-        self.assertions.assertIsNotNone(geoData.coordinateSystem())
+        assert geoData.coordinateSystem() is not None
 
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_GRX
@@ -349,15 +332,15 @@ class TestDatabase:
         geoDataId = Db.Core.getGeoDataObjId(db)
         geoData = Db.GeoData(geoDataId)
         result = geoData.transformFromLonLatAlt(Ge.Point3d(0.8894, 90.0000, 1))
-        self.assertions.assertEqual(result.x, -13839395.1337296)
-        self.assertions.assertEqual(result.y, 8430914.179736577)
-        self.assertions.assertEqual(result.z, 1.00000000000000)
+        assert result.x == -13839395.1337296
+        assert result.y == 8430914.179736577
+        assert result.z == 1.00000000000000
 
     def test_dbextents(self) -> None:
         ex1 = Db.Extents(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 100))
         ex2 = Db.Extents(Ge.Point3d(10, 10, 0), Ge.Point3d(110, 110, 110))
-        self.assertions.assertEqual(ex1.intersectsWith(ex2), True)
-        self.assertions.assertEqual(ex1.midPoint(), Ge.Point3d(50, 50, 50))
+        assert ex1.intersectsWith(ex2)
+        assert ex1.midPoint() == Ge.Point3d(50, 50, 50)
 
     @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_IRX
@@ -367,25 +350,25 @@ class TestDatabase:
         date1 = db.tdusrtimer()
         time.sleep(1)
         date2 = db.tdusrtimer()
-        self.assertions.assertEqual(date2.second() - date1.second(), 1)
+        assert date2.second() - date1.second() == 1
         date3 = date2 - date1
         date1 += date3
-        self.assertions.assertEqual(date1, date2)
+        assert date1 == date2
 
     def test_dblayoutmanager_sidedb_countLayouts(self, db_06457: Db.Database) -> None:
         lm = Db.LayoutManager()
         cnt = lm.countLayouts(db_06457)
-        self.assertions.assertEqual(cnt, 12)
+        assert cnt == 12
 
     def test_symboltable_contains(self):
         db = Db.curDb()
         lt = Db.LayerTable(db.layerTableId())
-        self.assertions.assertTrue("0" in lt)
+        assert "0" in lt
         id = lt["0"]
-        self.assertions.assertTrue(id in lt)
-        self.assertions.assertTrue(db.layerZero() in lt)
+        assert id in lt
+        assert db.layerZero() in lt
         bt = Db.BlockTable(db.blockTableId())
-        self.assertions.assertTrue(Db.SymUtilServices().blockModelSpaceName() in bt)
+        assert Db.SymUtilServices().blockModelSpaceName() in bt
 
     def test_using_decorator(self):
         sdb = Db.Database(False, True)
@@ -399,17 +382,17 @@ class TestDatabase:
             ids.extend([Db.Curve(id).objectId() for id in ms.objectIds(Db.Curve.desc())])
 
         assert len(ids) != 0
-        
-    def helper(self,sdb,ids):
-            ms = sdb.modelSpace()
-            ids.extend([Db.Curve(id).objectId() for id in ms.objectIds(Db.Curve.desc())])
-        
+
+    def helper(self, sdb, ids):
+        ms = sdb.modelSpace()
+        ids.extend([Db.Curve(id).objectId() for id in ms.objectIds(Db.Curve.desc())])
+
     def test_using_helper(self):
         sdb = Db.Database(False, True)
         sdb.readDwgFile(str(MEDIA_DIR / "sidedb.dwg"))
         sdb.closeInput(True)
         ids = []
-        self.helper(sdb,ids)
+        self.helper(sdb, ids)
         assert len(ids) != 0
 
     def test_overrulableEntity(self, db_06457: Db.Database):
@@ -436,7 +419,7 @@ class TestDatabase:
         for k, v in db_06457.blockTable():
             niter += 1
         assert niter != 0
-        
+
     def test_regapp_db(delf):
         name = "TESTAPPSDB"
         sdb = Db.Database()
@@ -444,19 +427,15 @@ class TestDatabase:
         assert sdb.isAppRegistered(name) == True
         cur_db = Db.curDb()
         assert cur_db.isAppRegistered(name) == False
-        
+
     def test_layerTable1(self, db_06457: Db.Database):
         data = []
         for name, id in db_06457.layerTable():
             data.append((name, id))
         assert len(data) != 0
-        
+
     def test_layerTable2(self, db_06457: Db.Database):
         data = []
         for name, id in db_06457.layerTable(Db.OpenMode.kForRead):
             data.append((name, id))
         assert len(data) != 0
-        
-        
-            
-        
