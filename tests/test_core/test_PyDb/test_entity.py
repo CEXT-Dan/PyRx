@@ -41,7 +41,7 @@ class TestDbEntity:
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(point)
         assert point.position() == Ge.Point3d(1, 2, 3)
-        assert point.objectId() == Db.ObjectId()
+        assert point.objectId() != Db.ObjectId()
         assert Db.Point.className() == "AcDbPoint"
         point.downgradeOpen()
         assert not point.isWriteEnabled()
@@ -311,11 +311,11 @@ class TestDbEntity:
         rec = Db.TableStyle(db.tablestyle())
         ts = rec.textStyle(Db.RowType.kDataRow)
         w, h = Db.Table.calcTextExtents("This is", ts)
-        assert w == 0, 2
-        assert h == 0, 2
+        assert w > 0
+        assert h > 0
         w, h = Db.Table.calcTextExtents("This is a test", ts)
-        assert w == 0, 2
-        assert h == 0, 2
+        assert w > 0
+        assert h > 0
 
     @pytest.mark.known_failure_IRX
     def test_create_wipout(self):
