@@ -262,9 +262,9 @@ bool PyDbObject::hasXData(const std::string& regappName) const
 
 void PyDbObject::setXData(const boost::python::list& xdata) const
 {
-    AcResBufPtr pData(listToResbuf(xdata));
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
+    AcResBufPtr pData(listToResbuf(xdata));
     PyThrowBadEs(impObj()->setXData(pData.get()));
 }
 
