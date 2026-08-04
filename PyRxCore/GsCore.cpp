@@ -77,9 +77,7 @@ void AcGsViewDeleter::operator()(AcGsView* ptr)
     if (ptr == nullptr)
         return;
     ptr->eraseAll();
-#if !defined (_BRXTARGET270)
     acgsGetGsManager()->destroyView(ptr);
-#endif
 }
 
 void AcGsModelDeleter::operator()(AcGsModel* ptr)
@@ -145,16 +143,18 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
 {
     if (pBlock == nullptr || !isValid())
         return wxImage{};
+
     if (!m_pView->add(pBlock, m_pModel.get()))
         return wxImage{};
+
     m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_height);
+
     AcDbExtents ex = calcBlockExtents(*pBlock);
     m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     m_pView->zoom(zoomFactor);
-    //do all view settings before here;
 
     m_pOffDevice->update();
-    m_pView->update();
+
     Atil::Image image(Atil::Size(m_width, m_height), &m_rgbModel, m_initialColor);
     m_pView->getSnapShot(&image, AcGsDCPoint(0, 0));
 
@@ -169,6 +169,7 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
             if (pixelType == Atil::DataModelAttributes::kRgba)
             {
                 wximage = wxImage(wxSize(imageSize.width, imageSize.height));
+#if defined(_BRXTARGET)
                 for (Atil::Int32 x = 0; x < imageSize.width; ++x)
                 {
                     for (Atil::Int32 y = 0; y < imageSize.height; ++y)
@@ -177,17 +178,24 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
                         wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
                     }
                 }
+#else
+                for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                {
+                    Atil::Int32 atilY = imageSize.height - 1 - y; // Invert vertical tracking
+                    for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+                    {
+                        const Atil::RgbColor pix(imgContext->get32(x, atilY));
+                        wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                    }
+                }
+#endif
             }
         }
     }
-    m_pView->eraseAll();
+    m_pView->erase(pBlock);
     if (!wximage.IsOk())
         PyThrowBadEs(eInvalidInput);
-#if !defined(_BRXTARGET)
-    return wximage.Mirror();
-#else
     return wximage;
-#endif // _BRXTARGET
 }
 
 //------------------------------------------------------------------------------------
