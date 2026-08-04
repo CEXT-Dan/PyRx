@@ -77,7 +77,9 @@ void AcGsViewDeleter::operator()(AcGsView* ptr)
     if (ptr == nullptr)
         return;
     ptr->eraseAll();
+#ifndef _BRXTARGET
     acgsGetGsManager()->destroyView(ptr);
+#endif // !_BRXTARGET
 }
 
 void AcGsModelDeleter::operator()(AcGsModel* ptr)
@@ -121,9 +123,6 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
         return;
     if (acgsGetViewParameters(cvport(), m_pView.get()) == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
-#if defined(_BRXTARGET)
-    m_pView->setVisualStyle(acdbGetViewportVisualStyle());
-#endif// _BRXTARGET
     m_pView->setVisualStyle(acdbGetViewportVisualStyle());
     setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
 #if !defined(_BRXTARGET)
