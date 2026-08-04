@@ -109,8 +109,6 @@
 #include "arxHeaders.h"
 #pragma warning (pop)
 
-#pragma comment( lib , "version.lib" )
-
 #if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
 #endif
