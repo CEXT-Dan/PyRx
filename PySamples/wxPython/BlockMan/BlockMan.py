@@ -118,7 +118,7 @@ class PalettePanel(wx.Panel):
         super().__init__()
         self.Bind(wx.EVT_SHOW, self.OnShow)
         self.imageDict = {}
-        self.mainimageDict = {}
+        self.dwgimageDict = {}
         self.db = None
 
     def init_members(self):
@@ -184,14 +184,15 @@ class PalettePanel(wx.Panel):
         self.dirctrl.SelectPath(folder)
         self.dirctrl.ExpandPath(folder)
 
-
     def getCachedDwgImage(self, dwgpath: str):
-        """Get cached image DWG path, or generate and cache them."""
-        if dwgpath in self.mainimageDict:
-            return self.mainimageDict[dwgpath]
-        self.mainimageDict[dwgpath] = Gs.Core.getBlockImage(self.db.modelSpaceId(), 400, 225, 1.0, [25, 25, 25])
-        return self.mainimageDict[dwgpath]
-    
+        """Get cached modelSpace image for the given DWG path, or generate and cache them."""
+        if dwgpath in self.dwgimageDict:
+            return self.dwgimageDict[dwgpath]
+        self.dwgimageDict[dwgpath] = Gs.Core.getBlockImage(
+            self.db.modelSpaceId(), 400, 225, 1.0, [25, 25, 25]
+        )
+        return self.dwgimageDict[dwgpath]
+
     def getCachedBlockInfos(self, dwgpath: str):
         """Get cached block infos for the given DWG path, or generate and cache them."""
         if dwgpath in self.imageDict:
