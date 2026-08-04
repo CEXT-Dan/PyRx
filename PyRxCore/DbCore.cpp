@@ -495,7 +495,7 @@ boost::python::tuple DbCore::findField(const std::string& pszText, int iSearchFr
 
 void DbCore::forceTextAdjust(const boost::python::list& ids)
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     auto _ids = PyListToObjectIdArray(ids);
