@@ -1,3 +1,8 @@
+## v3.1.6
+
+* Target BricsCAD Beta 2
+* improve BlockImageRenderer for getBlockImage and getBlockImages
+
 ## v3.1.5
 
 * Target wxPython 4.3.1
