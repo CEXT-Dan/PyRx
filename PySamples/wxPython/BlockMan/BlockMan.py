@@ -183,16 +183,21 @@ class PalettePanel(wx.Panel):
         self.dirctrl.SelectPath(folder)
         self.dirctrl.ExpandPath(folder)
 
-    # TODO: image genration is slow
-    # create (db, mainimage, list[BlockInfo]) cache
+    def getCachedBlockInfos(self, dwgpath: str):
+        """Get cached block infos for the given DWG path, or generate and cache them."""
+        db = Db.Database.createFromDWG(dwgpath)
+        if dwgpath in self.imageDict:
+            return db, self.imageDict[dwgpath]
+        self.imageDict[dwgpath] = getBlockInfos(db)
+        return db, self.imageDict[dwgpath]
+
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
         self.db = None
         self.listctrl.DeleteAllItems()
         self.listctrl.AssignImageList(None, wx.IMAGE_LIST_NORMAL)
         dwgpath = self.dirctrl.GetPath()
         if dwgpath.lower().endswith(".dwg"):
-            self.db = Db.Database.createFromDWG(dwgpath)
-            infos = getBlockInfos(self.db)
+            self.db, infos = self.getCachedBlockInfos(dwgpath)
             imagelist = wx.ImageList(64, 64, False, len(infos))
             imgIdx = 0
             for itemIndex, info in enumerate(infos):
