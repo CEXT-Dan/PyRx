@@ -368,10 +368,8 @@ void PyPlDSDData::setPassword(const std::string& pVal) const
 boost::python::tuple PyPlDSDData::getUnrecognizedData() const
 {
     PyAutoLockGIL lock;
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
-    // AcArray<ACHAR*> _sectionArray;
-    // AcArray<ACHAR*> _dataArray;//leak?
 #else
     AcStringArray _sectionArray;
     AcStringArray _dataArray;
@@ -393,7 +391,7 @@ void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const st
 
 void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray) const
 {
-#if defined(_BRXTARGET270)
+#if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     impObj()->setUnrecognizedData(PyListToAcStringArray(sectionArray), PyListToAcStringArray(dataArray));

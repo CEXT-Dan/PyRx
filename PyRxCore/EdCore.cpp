@@ -46,7 +46,7 @@ extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcD
 extern Adesk::Boolean           acedGetPredefinedPattens(AcStringArray& patterns);
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 extern bool                     acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
-extern int                      acedPostCommand(const ACHAR*);
+extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 extern bool                     acedLinetypeDialog(AcDbObjectId old_linetypeId, bool IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     acedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
 #endif// BRXAPP
@@ -1284,7 +1284,10 @@ void EdCore::postCommand(const std::string& str)
 #if defined(_GRXTARGET)
     gcedPostCommand(AsWStr(str));
 #endif
-#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+#if defined(_ARXTARGET)
+    acedPostCommand(AsWStr(str));
+#endif
+#if defined(_BRXTARGET) 
     acedPostCommand(AsWStr(str));
 #endif
 }
