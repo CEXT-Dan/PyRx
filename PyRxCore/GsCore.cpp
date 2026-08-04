@@ -179,13 +179,13 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
                     }
                 }
 #else
-                for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                for (Atil::Int32 x = 0; x < imageSize.width; ++x)
                 {
-                    Atil::Int32 atilY = imageSize.height - 1 - y; // Invert vertical tracking
-                    for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+                    for (Atil::Int32 y = 0; y < imageSize.height; ++y)
                     {
-                        const Atil::RgbColor pix(imgContext->get32(x, atilY));
-                        wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                        const Atil::RgbColor pix(imgContext->get32(x, y));
+                        int targetX = imageSize.width - 1 - x;
+                        wximage.SetRGB(targetX, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
                     }
                 }
 #endif
