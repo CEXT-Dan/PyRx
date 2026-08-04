@@ -118,6 +118,7 @@ class PalettePanel(wx.Panel):
         super().__init__()
         self.Bind(wx.EVT_SHOW, self.OnShow)
         self.imageDict = {}
+        self.mainimageDict = {}
         self.db = None
 
     def init_members(self):
@@ -183,13 +184,20 @@ class PalettePanel(wx.Panel):
         self.dirctrl.SelectPath(folder)
         self.dirctrl.ExpandPath(folder)
 
+
+    def getCachedDwgImage(self, dwgpath: str):
+        """Get cached image DWG path, or generate and cache them."""
+        if dwgpath in self.mainimageDict:
+            return self.mainimageDict[dwgpath]
+        self.mainimageDict[dwgpath] = Gs.Core.getBlockImage(self.db.modelSpaceId(), 400, 225, 1.0, [25, 25, 25])
+        return self.mainimageDict[dwgpath]
+    
     def getCachedBlockInfos(self, dwgpath: str):
         """Get cached block infos for the given DWG path, or generate and cache them."""
-        db = Db.Database.createFromDWG(dwgpath)
         if dwgpath in self.imageDict:
-            return db, self.imageDict[dwgpath]
-        self.imageDict[dwgpath] = getBlockInfos(db)
-        return db, self.imageDict[dwgpath]
+            return self.imageDict[dwgpath]
+        self.imageDict[dwgpath] = getBlockInfos(self.db)
+        return self.imageDict[dwgpath]
 
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
         self.db = None
@@ -197,7 +205,8 @@ class PalettePanel(wx.Panel):
         self.listctrl.AssignImageList(None, wx.IMAGE_LIST_NORMAL)
         dwgpath = self.dirctrl.GetPath()
         if dwgpath.lower().endswith(".dwg"):
-            self.db, infos = self.getCachedBlockInfos(dwgpath)
+            self.db = Db.Database.createFromDWG(dwgpath)
+            infos = self.getCachedBlockInfos(dwgpath)
             imagelist = wx.ImageList(64, 64, False, len(infos))
             imgIdx = 0
             for itemIndex, info in enumerate(infos):
@@ -210,8 +219,7 @@ class PalettePanel(wx.Panel):
                 if has_image:
                     imgIdx += 1
             self.listctrl.AssignImageList(imagelist, wx.IMAGE_LIST_NORMAL)
-            dwgimg = Gs.Core.getBlockImage(self.db.modelSpaceId(), 400, 225, 1.0, [25, 25, 25])
-            self.previewctrl.SetBitmap(wx.Bitmap(dwgimg))
+            self.previewctrl.SetBitmap(self.getCachedDwgImage(dwgpath))
         event.Skip()
 
     def OnSize(self, event):
