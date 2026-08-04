@@ -1320,7 +1320,7 @@ boost::python::tuple PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::faceAt(const 
 
 boost::python::list PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::points() const
 {
-    return Point3dArrayToPyList(impObj()->facesCount());
+    return Point3dArrayToPyList(impObj()->points());
 }
 
 bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::isApplyEdgesVisibility() const
