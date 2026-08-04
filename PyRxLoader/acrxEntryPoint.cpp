@@ -414,8 +414,43 @@ public:
         return pythonPathFound && wxpythonPathFound;
     }
 
+    [[nodiscard]] static bool checkFileVersionInfo(const CString& ver)
+    {
+        HINSTANCE hInst = AfxGetInstanceHandle();
+        std::wstring fpath(MAX_PATH, 0);
+        GetModuleFileName(hInst, fpath.data(), fpath.size());
+        const auto infoSize = GetFileVersionInfoSize(fpath.c_str(), nullptr);
+
+        auto lpInfo = std::make_unique<BYTE[]>(infoSize);
+        GetFileVersionInfo(fpath.c_str(), 0, infoSize, lpInfo.get());
+
+        UINT valLen = MAX_PATH;
+        LPVOID valPtr = NULL;
+        CString valStr;
+
+        if (::VerQueryValue(lpInfo.get(), TEXT("\\"), &valPtr, &valLen))
+        {
+            VS_FIXEDFILEINFO* pFinfo = (VS_FIXEDFILEINFO*)valPtr;
+            valStr.Format(_T("%d.%d.%d.%d"),
+                HIWORD(pFinfo->dwFileVersionMS),
+                LOWORD(pFinfo->dwFileVersionMS),
+                HIWORD(pFinfo->dwFileVersionLS),
+                LOWORD(pFinfo->dwFileVersionLS)
+            );
+        }
+        return valStr == ver;
+    }
+
     static void PyRxLoader_loader(void)
     {
+#ifdef NEVER
+        CString ver = _T("26.1.3.0");
+        if (!checkFileVersionInfo(ver))
+        {
+            acutPrintf(_T("\nWrong version!"));
+            return;
+        }
+#endif
         std::error_code ec;
         bool envSet = false;
 
