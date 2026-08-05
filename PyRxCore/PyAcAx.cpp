@@ -8,6 +8,54 @@
 #include "PyAcadApplication.h"
 using namespace boost::python;
 
+#pragma once
+
+enum class AcEntityNameNative : int
+{
+    ac3dFace = 1,
+    ac3dPolyline = 2,
+    ac3dSolid = 3,
+    acArc = 4,
+    acAttribute = 5,
+    acAttributeReference = 6,
+    acBlockReference = 7,
+    acCircle = 8,
+    acDimAligned = 9,
+    acDimAngular = 10,
+    acDimDiametric = 11,
+    acDimOrdinate = 12,
+    acDimRadial = 13,
+    acDimRotated = 14,
+    acEllipse = 16,
+    acHatch = 17,
+    acLeader = 18,
+    acLine = 19,
+    acMline = 20,
+    acMtext = 21,
+    acPoint = 22,
+    acPolyline = 23,
+    acPolylineLight = 24,
+    acPolygonMesh = 25,
+    acPolyfaceMesh = 26,
+    acRegion = 28,
+    acRay = 29,
+    acSolid = 30,
+    acSpline = 31,
+    acText = 32,
+    acTolerance = 33,
+    acTrace = 34,
+    acPViewport = 35,
+    acXline = 36,
+    acGroup = 37,
+    acMInsertBlock = 38,
+    acPolyline2d = 39,
+    acPolyline3d = 40,
+    acSurface = 41,
+    acLightWeightPolyline = 42,
+    acTable = 43
+};
+
+
 static BOOST_PYTHON_MODULE(PyAx)
 {
     makePyAcadUtilityWrapper();
@@ -1214,6 +1262,51 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acSectionSubItemBackLineBottom", PyAcSectionSubItem::pyacSectionSubItemBackLineBottom)
         .value("acSectionSubItemVerticalLineTop", PyAcSectionSubItem::pyacSectionSubItemVerticalLineTop)
         .value("acSectionSubItemVerticalLineBottom", PyAcSectionSubItem::pyacSectionSubItemVerticalLineBottom)
+        .export_values()
+        ;
+
+    enum_<AcEntityNameNative>("AcEntityName")
+        .value("ac3dFace", AcEntityNameNative::ac3dFace)
+        .value("ac3dPolyline", AcEntityNameNative::ac3dPolyline)
+        .value("ac3dSolid", AcEntityNameNative::ac3dSolid)
+        .value("acArc", AcEntityNameNative::acArc)
+        .value("acAttribute", AcEntityNameNative::acAttribute)
+        .value("acAttributeReference", AcEntityNameNative::acAttributeReference)
+        .value("acBlockReference", AcEntityNameNative::acBlockReference)
+        .value("acCircle", AcEntityNameNative::acCircle)
+        .value("acDimAligned", AcEntityNameNative::acDimAligned)
+        .value("acDimAngular", AcEntityNameNative::acDimAngular)
+        .value("acDimDiametric", AcEntityNameNative::acDimDiametric)
+        .value("acDimOrdinate", AcEntityNameNative::acDimOrdinate)
+        .value("acDimRadial", AcEntityNameNative::acDimRadial)
+        .value("acDimRotated", AcEntityNameNative::acDimRotated)
+        .value("acEllipse", AcEntityNameNative::acEllipse)
+        .value("acHatch", AcEntityNameNative::acHatch)
+        .value("acLeader", AcEntityNameNative::acLeader)
+        .value("acLine", AcEntityNameNative::acLine)
+        .value("acMline", AcEntityNameNative::acMline)
+        .value("acMtext", AcEntityNameNative::acMtext)
+        .value("acPoint", AcEntityNameNative::acPoint)
+        .value("acPolyline", AcEntityNameNative::acPolyline)
+        .value("acPolylineLight", AcEntityNameNative::acPolylineLight)
+        .value("acPolygonMesh", AcEntityNameNative::acPolygonMesh)
+        .value("acPolyfaceMesh", AcEntityNameNative::acPolyfaceMesh)
+        .value("acRegion", AcEntityNameNative::acRegion)
+        .value("acRay", AcEntityNameNative::acRay)
+        .value("acSolid", AcEntityNameNative::acSolid)
+        .value("acSpline", AcEntityNameNative::acSpline)
+        .value("acText", AcEntityNameNative::acText)
+        .value("acTolerance", AcEntityNameNative::acTolerance)
+        .value("acTrace", AcEntityNameNative::acTrace)
+        .value("acPViewport", AcEntityNameNative::acPViewport)
+        .value("acXline", AcEntityNameNative::acXline)
+        .value("acGroup", AcEntityNameNative::acGroup)
+        .value("acMInsertBlock", AcEntityNameNative::acMInsertBlock)
+        .value("acPolyline2d", AcEntityNameNative::acPolyline2d)
+        .value("acPolyline3d", AcEntityNameNative::acPolyline3d)
+        .value("acSurface", AcEntityNameNative::acSurface)
+        .value("acLightWeightPolyline", AcEntityNameNative::acLightWeightPolyline)
+        .value("acTable", AcEntityNameNative::acTable)
         .export_values()
         ;
 

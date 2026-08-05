@@ -56,6 +56,9 @@ ac3_16in_1ft: AcPlotScale  # 7
 ac3_32in_1ft: AcPlotScale  # 5
 ac3_4in_1ft: AcPlotScale  # 11
 ac3_8in_1ft: AcPlotScale  # 9
+ac3dFace: AcEntityName  # 1
+ac3dPolyline: AcEntityName  # 2
+ac3dSolid: AcEntityName  # 3
 ac3in_1ft: AcPlotScale  # 13
 ac4_1: AcPlotScale  # 29
 ac6in_1ft: AcPlotScale  # 14
@@ -86,6 +89,7 @@ acAllViewports: AcRegenType  # 1
 acAlwaysRightReadingAngle: AcTextAngleType  # 2
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
+acArc: AcEntityName  # 4
 acArchitectural: AcUnits  # 4
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
 acArrowArchTick: AcDimArrowheadType  # 4
@@ -132,6 +136,7 @@ acAttachmentPointTopLeft: AcAttachmentPoint  # 1
 acAttachmentPointTopRight: AcAttachmentPoint  # 3
 acAttachmentTopOfTop: AcTextAttachmentType  # 0
 acAttachmentVertical: AcTextAttachmentDirection  # 1
+acAttribute: AcEntityName  # 5
 acAttributeModeConstant: AcAttributeMode  # 2
 acAttributeModeInvisible: AcAttributeMode  # 1
 acAttributeModeLockPosition: AcAttributeMode  # 16
@@ -139,6 +144,7 @@ acAttributeModeMultipleLine: AcAttributeMode  # 32
 acAttributeModeNormal: AcAttributeMode  # 0
 acAttributeModePreset: AcAttributeMode  # 8
 acAttributeModeVerify: AcAttributeMode  # 4
+acAttributeReference: AcEntityName  # 6
 acAutoScale: AcCellProperty  # 32768
 acBackgroundColor: AcCellProperty  # 128
 acBaseMenuGroup: AcMenuGroupType  # 0
@@ -151,6 +157,7 @@ acBlockCircle: AcPredefBlockType  # 2
 acBlockContent: AcMLeaderContentType  # 1
 acBlockHexagon: AcPredefBlockType  # 4
 acBlockImperial: AcPredefBlockType  # 0
+acBlockReference: AcEntityName  # 7
 acBlockSlot: AcPredefBlockType  # 1
 acBlockTriangle: AcPredefBlockType  # 5
 acBlockUserDefined: AcPredefBlockType  # 6
@@ -191,6 +198,7 @@ acCenterLine: AcDimCenterType  # 1
 acCenterMark: AcDimCenterType  # 0
 acCenterNone: AcDimCenterType  # 2
 acChord: AcSplineKnotParameterizationType  # 0
+acCircle: AcEntityName  # 8
 acColorMethodByACI: AcColorMethod  # 195
 acColorMethodByBlock: AcColorMethod  # 193
 acColorMethodByLayer: AcColorMethod  # 192
@@ -231,9 +239,12 @@ acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
 acDiagonal: AcDimFractionType  # 1
+acDimAligned: AcEntityName  # 9
+acDimAngular: AcEntityName  # 10
 acDimArchitectural: AcDimUnits  # 6
 acDimArchitecturalStacked: AcDimUnits  # 4
 acDimDecimal: AcDimUnits  # 2
+acDimDiametric: AcEntityName  # 11
 acDimEngineering: AcDimUnits  # 3
 acDimFractional: AcDimUnits  # 7
 acDimFractionalStacked: AcDimUnits  # 5
@@ -244,6 +255,7 @@ acDimLFractional: AcDimLUnits  # 5
 acDimLScientific: AcDimLUnits  # 1
 acDimLWindowsDesktop: AcDimLUnits  # 6
 acDimLineWithText: AcDimTextMovement  # 0
+acDimOrdinate: AcEntityName  # 12
 acDimPrecisionEight: AcDimPrecision  # 8
 acDimPrecisionFive: AcDimPrecision  # 5
 acDimPrecisionFour: AcDimPrecision  # 4
@@ -253,6 +265,8 @@ acDimPrecisionSix: AcDimPrecision  # 6
 acDimPrecisionThree: AcDimPrecision  # 3
 acDimPrecisionTwo: AcDimPrecision  # 2
 acDimPrecisionZero: AcDimPrecision  # 0
+acDimRadial: AcEntityName  # 13
+acDimRotated: AcEntityName  # 14
 acDimScientific: AcDimUnits  # 1
 acDimWindowsDesktop: AcDimUnits  # 8
 acDisplay: AcPlotType  # 0
@@ -265,6 +279,7 @@ acDrawLeaderHeadFirst: AcDrawLeaderOrderType  # 0
 acDrawLeaderTailFirst: AcDrawLeaderOrderType  # 1
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
 acEdSCM: AcDrawingAreaSCMEdit  # 1
+acEllipse: AcEntityName  # 16
 acEnableBackgroundColor: AcCellProperty  # 16384
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
 acEnableSCMOptions: AcDrawingAreaSCMCommand  # 1
@@ -293,6 +308,8 @@ acGrads: AcAngleUnits  # 2
 acGreen: AcColor  # 3
 acGridLineStyleDouble: AcGridLineStyle  # 2
 acGridLineStyleSingle: AcGridLineStyle  # 1
+acGroup: AcEntityName  # 37
+acHatch: AcEntityName  # 17
 acHatchLoopTypeDefault: AcLoopType  # 0
 acHatchLoopTypeDerived: AcLoopType  # 4
 acHatchLoopTypeExternal: AcLoopType  # 1
@@ -356,10 +373,13 @@ acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
 acLayout: AcPlotType  # 5
+acLeader: AcEntityName  # 18
 acLeftAlignment: AcTextAlignmentType  # 0
 acLeftMask: AcCellEdgeMask  # 8
 acLeftToRight: AcDrawingDirection  # 1
+acLightWeightPolyline: AcEntityName  # 42
 acLimits: AcPlotType  # 2
+acLine: AcEntityName  # 19
 acLineNoArrow: AcLeaderType  # 0
 acLineSpacingStyleAtLeast: AcLineSpacingStyle  # 1
 acLineSpacingStyleExactly: AcLineSpacingStyle  # 2
@@ -393,6 +413,7 @@ acLnWtByLayer: AcLineWeight  # -1
 acLnWtByLwDefault: AcLineWeight  # -3
 acLock: AcCellProperty  # 1
 acLong: AcValueDataType  # 1
+acMInsertBlock: AcEntityName  # 38
 acMTextContent: AcMLeaderContentType  # 2
 acMagenta: AcColor  # 6
 acMarginBottom: AcCellProperty  # 8192
@@ -416,9 +437,11 @@ acMiddleLeft: AcCellAlignment  # 4
 acMiddleRight: AcCellAlignment  # 6
 acMillimeters: AcPlotPaperUnits  # 1
 acMin: AcWindowState  # 2
+acMline: AcEntityName  # 20
 acModelSpace: AcActiveSpace  # 1
 acMoveTextAddLeader: AcDimTextMovement  # 1
 acMoveTextNoLeader: AcDimTextMovement  # 2
+acMtext: AcEntityName  # 21
 acNative: AcSaveAsType  # 64
 acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
 acNoneContent: AcMLeaderContentType  # 0
@@ -434,6 +457,7 @@ acObjectId: AcValueDataType  # 64
 acOutside: AcDimVerticalJustification  # 2
 acOverFirstExtension: AcDimHorizontalJustification  # 3
 acOverSecondExtension: AcDimHorizontalJustification  # 4
+acPViewport: AcEntityName  # 35
 acPaperSpace: AcActiveSpace  # 0
 acPaperSpaceDCS: AcCoordinateSystem  # 3
 acParseOptionNone: AcParseOption  # 0
@@ -450,8 +474,15 @@ acPenWidth140: AcISOPenWidth  # 140
 acPenWidth200: AcISOPenWidth  # 200
 acPenWidthUnk: AcISOPenWidth  # -1
 acPixels: AcPlotPaperUnits  # 2
+acPoint: AcEntityName  # 22
 acPoint2d: AcValueDataType  # 16
 acPoint3d: AcValueDataType  # 32
+acPolyfaceMesh: AcEntityName  # 26
+acPolygonMesh: AcEntityName  # 25
+acPolyline: AcEntityName  # 23
+acPolyline2d: AcEntityName  # 39
+acPolyline3d: AcEntityName  # 40
+acPolylineLight: AcEntityName  # 24
 acPreferenceClassic: AcKeyboardAccelerator  # 1
 acPreserveMtextFormat: AcParseOption  # 2
 acPrinterAlertOnce: AcPrinterSpoolAlert  # 1
@@ -476,7 +507,9 @@ acR18_Template: AcSaveAsType  # 26
 acR18_dwg: AcSaveAsType  # 24
 acR18_dxf: AcSaveAsType  # 25
 acRadians: AcAngleUnits  # 3
+acRay: AcEntityName  # 29
 acRed: AcColor  # 1
+acRegion: AcEntityName  # 28
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
 acResbuf: AcValueDataType  # 256
 acRightAlignment: AcTextAlignmentType  # 2
@@ -520,6 +553,8 @@ acShow: AcSplineFrameType  # 0
 acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
 acSimplePoly: AcPolylineType  # 0
+acSolid: AcEntityName  # 30
+acSpline: AcEntityName  # 31
 acSplineLeader: AcMLeaderType  # 2
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
@@ -527,9 +562,11 @@ acSqrtChord: AcSplineKnotParameterizationType  # 1
 acStraightLeader: AcMLeaderType  # 1
 acString: AcValueDataType  # 4
 acSubtraction: AcBooleanType  # 2
+acSurface: AcEntityName  # 41
 acSymAbove: AcDimArcLengthSymbol  # 1
 acSymInFront: AcDimArcLengthSymbol  # 0
 acSymNone: AcDimArcLengthSymbol  # 2
+acTable: AcEntityName  # 43
 acTableBottomToTop: AcTableDirection  # 1
 acTableFlowDownOrUp: AcTableFlowDirection  # 2
 acTableFlowLeft: AcTableFlowDirection  # 4
@@ -537,6 +574,7 @@ acTableFlowRight: AcTableFlowDirection  # 1
 acTableSelectCrossing: AcSelectType  # 2
 acTableSelectWindow: AcSelectType  # 1
 acTableTopToBottom: AcTableDirection  # 0
+acText: AcEntityName  # 32
 acTextAndArrows: AcDimFit  # 0
 acTextCell: AcCellType  # 1
 acTextHeight: AcCellProperty  # 512
@@ -551,6 +589,7 @@ acTolMiddle: AcDimToleranceJustify  # 1
 acTolNone: AcDimToleranceMethod  # 0
 acTolSymmetrical: AcDimToleranceMethod  # 1
 acTolTop: AcDimToleranceJustify  # 2
+acTolerance: AcEntityName  # 33
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
 acToolbarDockBottom: AcToolbarDockStatus  # 1
@@ -566,6 +605,7 @@ acTopLeft: AcCellAlignment  # 1
 acTopMask: AcCellEdgeMask  # 1
 acTopRight: AcCellAlignment  # 3
 acTopToBottom: AcDrawingDirection  # 3
+acTrace: AcEntityName  # 34
 acUCS: AcCoordinateSystem  # 1
 acUnder: AcDimVerticalJustification  # 4
 acUniform: AcBlockScaling  # 1
@@ -644,6 +684,7 @@ acVpScaleToFit: AcViewportScale  # 0
 acWhite: AcColor  # 7
 acWindow: AcPlotType  # 4
 acWorld: AcCoordinateSystem  # 0
+acXline: AcEntityName  # 36
 acYellow: AcColor  # 2
 acZero: AcMLineJustification  # 1
 acZoomScaledAbsolute: AcZoomScaleType  # 0
@@ -970,6 +1011,49 @@ class AcDynamicBlockReferencePropertyUnitsType(_BoostPythonEnum):
     acAngular: ClassVar[Self]  # 1
     acDistance: ClassVar[Self]  # 2
     acArea: ClassVar[Self]  # 3
+
+class AcEntityName(_BoostPythonEnum):
+    ac3dFace: ClassVar[Self]  # 1
+    ac3dPolyline: ClassVar[Self]  # 2
+    ac3dSolid: ClassVar[Self]  # 3
+    acArc: ClassVar[Self]  # 4
+    acAttribute: ClassVar[Self]  # 5
+    acAttributeReference: ClassVar[Self]  # 6
+    acBlockReference: ClassVar[Self]  # 7
+    acCircle: ClassVar[Self]  # 8
+    acDimAligned: ClassVar[Self]  # 9
+    acDimAngular: ClassVar[Self]  # 10
+    acDimDiametric: ClassVar[Self]  # 11
+    acDimOrdinate: ClassVar[Self]  # 12
+    acDimRadial: ClassVar[Self]  # 13
+    acDimRotated: ClassVar[Self]  # 14
+    acEllipse: ClassVar[Self]  # 16
+    acHatch: ClassVar[Self]  # 17
+    acLeader: ClassVar[Self]  # 18
+    acLine: ClassVar[Self]  # 19
+    acMline: ClassVar[Self]  # 20
+    acMtext: ClassVar[Self]  # 21
+    acPoint: ClassVar[Self]  # 22
+    acPolyline: ClassVar[Self]  # 23
+    acPolylineLight: ClassVar[Self]  # 24
+    acPolygonMesh: ClassVar[Self]  # 25
+    acPolyfaceMesh: ClassVar[Self]  # 26
+    acRegion: ClassVar[Self]  # 28
+    acRay: ClassVar[Self]  # 29
+    acSolid: ClassVar[Self]  # 30
+    acSpline: ClassVar[Self]  # 31
+    acText: ClassVar[Self]  # 32
+    acTolerance: ClassVar[Self]  # 33
+    acTrace: ClassVar[Self]  # 34
+    acPViewport: ClassVar[Self]  # 35
+    acXline: ClassVar[Self]  # 36
+    acGroup: ClassVar[Self]  # 37
+    acMInsertBlock: ClassVar[Self]  # 38
+    acPolyline2d: ClassVar[Self]  # 39
+    acPolyline3d: ClassVar[Self]  # 40
+    acSurface: ClassVar[Self]  # 41
+    acLightWeightPolyline: ClassVar[Self]  # 42
+    acTable: ClassVar[Self]  # 43
 
 class AcExtendOption(_BoostPythonEnum):
     acExtendNone: ClassVar[Self]  # 0
