@@ -61,6 +61,62 @@ class PyIAcadAttributeReferenceImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
+
+enum class AcEntityNameNative : int
+{
+    ac3dFace = 1,
+    ac3dPolyline = 2,
+    ac3dSolid = 3,
+    acArc = 4,
+    acAttribute = 5,
+    acAttributeReference = 6,
+    acBlockReference = 7,
+    acCircle = 8,
+    acDimAligned = 9,
+    acDimAngular = 10,
+    acDimDiametric = 12,
+    acDimOrdinate = 13,
+    acDimRadial = 14,
+    acDimRotated = 15,
+    acEllipse = 16,
+    acHatch = 17,
+    acLeader = 18,
+    acLine = 19,
+    acMtext = 21,
+    acPoint = 22,
+    acPolyline = 23,
+    acPolylineLight = 24,
+    acPolygonMesh = 25,
+    acRaster = 26,
+    acRay = 27,
+    acRegion = 28,
+    acSolid = 30,
+    acSpline = 31,
+    acText = 32,
+    acTolerance = 33,
+    acTrace = 34,
+    acPViewport = 35,
+    acXline = 36,
+    acGroup = 37,
+    acMInsertBlock = 38,
+    acPolyfaceMesh = 39,
+    acMline = 40,
+    acDim3PointAngular = 41,
+    acTable = 43,
+    acDimArcLength = 44,
+    acDimRadialLarge = 45,
+    acDwfUnderlay = 46,
+    acDgnUnderlay = 47,
+    acMLeader = 48,
+    acSubDMesh = 49,
+    acSurface = 50,
+    acSection = 51,
+    acPolyline2d = acPolyline,
+    acPolyline3d = ac3dPolyline,
+    acLightWeightPolyline = 24
+};
+
+
 void makePyAcadEntityWrapper();
 
 class PyAcadEntity : public PyAcadObject
@@ -103,7 +159,7 @@ public:
     std::string             material() const;
     void                    setMaterial(const std::string& val) const;
     std::string             entityName() const;
-    long                    entityType() const;
+    AcEntityNameNative      entityType() const;
     PyAcColor               color() const;
     void                    setColor(PyAcColor color) const;
 
