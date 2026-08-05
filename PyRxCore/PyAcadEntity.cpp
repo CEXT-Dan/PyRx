@@ -1,7 +1,11 @@
 #include "stdafx.h"
 #include "PyAcadEntity.h"
 #include "PyAcadEntityImpl.h"
+#include "DbSection.h"
 
+#if defined(_GRXTARGET)
+#include "dbmleader.h"
+#endif
 
 using namespace boost::python;
 //----------------------------------------------------------------------------------------
@@ -243,10 +247,114 @@ std::string PyAcadEntity::entityName() const
     return wstr_to_utf8(impObj()->GetEntityName());
 }
 
-long PyAcadEntity::entityType() const
+AcEntityNameNative PyAcadEntity::entityType() const
 {
-    return impObj()->GetEntityType();
+    auto pyid = this->objectId();
+    auto* pClass = pyid.m_id.objectClass();
+#ifdef _BRXTARGET
+    // --- Primitives with no cross-inheritance conflicts ---
+    if (pClass->isDerivedFrom(AcDbLine::desc()))
+        return AcEntityNameNative::acLine;
+    if (pClass->isDerivedFrom(AcDbCircle::desc()))
+        return AcEntityNameNative::acCircle;
+    if (pClass->isDerivedFrom(AcDbArc::desc()))
+        return AcEntityNameNative::acArc;
+    if (pClass->isDerivedFrom(AcDbMText::desc()))
+        return AcEntityNameNative::acMtext;
+    if (pClass->isDerivedFrom(AcDbPolyline::desc()))
+        return AcEntityNameNative::acPolylineLight;
+    if (pClass->isDerivedFrom(AcDb2dPolyline::desc()))
+        return AcEntityNameNative::acPolyline2d;
+    if (pClass->isDerivedFrom(AcDb3dPolyline::desc()))
+        return AcEntityNameNative::acPolyline3d;
+    if (pClass->isDerivedFrom(AcDbSpline::desc()))
+        return AcEntityNameNative::acSpline;
+    if (pClass->isDerivedFrom(AcDbEllipse::desc()))
+        return AcEntityNameNative::acEllipse;
+    if (pClass->isDerivedFrom(AcDbHatch::desc()))
+        return AcEntityNameNative::acHatch;
+    if (pClass->isDerivedFrom(AcDbRegion::desc()))
+        return AcEntityNameNative::acRegion;
+    if (pClass->isDerivedFrom(AcDbSolid::desc()))
+        return AcEntityNameNative::acSolid;
+    if (pClass->isDerivedFrom(AcDbPoint::desc()))
+        return AcEntityNameNative::acPoint;
+    if (pClass->isDerivedFrom(AcDbRay::desc()))
+        return AcEntityNameNative::acRay;
+    if (pClass->isDerivedFrom(AcDbMline::desc()))
+        return AcEntityNameNative::acMline;
+
+    // --- Meshes (Subclasses FIRST) ---
+    if (pClass->isDerivedFrom(AcDbPolyFaceMesh::desc()))
+        return AcEntityNameNative::acPolyfaceMesh;
+    if (pClass->isDerivedFrom(AcDbPolygonMesh::desc()))
+        return AcEntityNameNative::acPolygonMesh;
+
+    // --- Text & Attributes (Subclasses FIRST) ---
+    if (pClass->isDerivedFrom(AcDbAttributeDefinition::desc()))
+        return AcEntityNameNative::acAttribute;
+    if (pClass->isDerivedFrom(AcDbAttribute::desc()))
+        return AcEntityNameNative::acAttributeReference;
+    if (pClass->isDerivedFrom(AcDbText::desc()))
+        return AcEntityNameNative::acText;
+
+    // --- Dimensions & Annotations ---
+    if (pClass->isDerivedFrom(AcDbFcf::desc()))
+        return AcEntityNameNative::acTolerance;
+    if (pClass->isDerivedFrom(AcDb2LineAngularDimension::desc()))
+        return AcEntityNameNative::acDimAngular;
+    if (pClass->isDerivedFrom(AcDb3PointAngularDimension::desc()))
+        return AcEntityNameNative::acDim3PointAngular;
+    if (pClass->isDerivedFrom(AcDbAlignedDimension::desc()))
+        return AcEntityNameNative::acDimAligned;
+    if (pClass->isDerivedFrom(AcDbRotatedDimension::desc()))
+        return AcEntityNameNative::acDimRotated;
+    if (pClass->isDerivedFrom(AcDbRadialDimension::desc()))
+        return AcEntityNameNative::acDimRadial;
+    if (pClass->isDerivedFrom(AcDbDiametricDimension::desc()))
+        return AcEntityNameNative::acDimDiametric;
+    if (pClass->isDerivedFrom(AcDbOrdinateDimension::desc()))
+        return AcEntityNameNative::acDimOrdinate;
+    if (pClass->isDerivedFrom(AcDbLeader::desc()))
+        return AcEntityNameNative::acLeader;
+    if (pClass->isDerivedFrom(AcDbMLeader::desc()))
+        return AcEntityNameNative::acMLeader;
+
+    // --- Complex Blocks & Tables (Subclasses FIRST) ---
+    if (pClass->isDerivedFrom(AcDbTable::desc()))
+        return AcEntityNameNative::acTable;
+    if (pClass->isDerivedFrom(AcDbMInsertBlock::desc()))
+        return AcEntityNameNative::acMInsertBlock;
+    if (pClass->isDerivedFrom(AcDbBlockReference::desc())) // Normal inserts & XRefs drop here
+        return AcEntityNameNative::acBlockReference;
+
+    // --- Advanced Modern Elements ---
+    if (pClass->isDerivedFrom(AcDbSection::desc()))
+        return AcEntityNameNative::acSection;
+    if (pClass->isDerivedFrom(AcDbRasterImage::desc()))
+        return AcEntityNameNative::acRaster;
+    if (pClass->isDerivedFrom(AcDbSurface::desc()))
+        return AcEntityNameNative::acSurface;
+    if (pClass->isDerivedFrom(AcDb3dSolid::desc()))
+        return AcEntityNameNative::ac3dSolid;
+    if (pClass->isDerivedFrom(AcDbFace::desc()))
+        return AcEntityNameNative::ac3dFace;
+#elif defined(_GRXTARGET)
+    if (pClass->isDerivedFrom(AcDbMLeader::desc()))
+        return AcEntityNameNative::acMLeader;
+    if (pClass->isDerivedFrom(AcDbFace::desc()))
+        return AcEntityNameNative::ac3dFace;
+    if (pClass->isDerivedFrom(AcDbAttributeDefinition::desc()))
+        return AcEntityNameNative::acAttribute;
+    if (pClass->isDerivedFrom(AcDbSection::desc()))
+        return AcEntityNameNative::acSection;
+#else
+    if (pClass->isDerivedFrom(AcDbSection::desc()))
+        return AcEntityNameNative::acSection;
+#endif
+    return (AcEntityNameNative)impObj()->GetEntityType();
 }
+
 
 PyAcColor PyAcadEntity::color() const
 {

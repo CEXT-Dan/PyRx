@@ -10,52 +10,6 @@ using namespace boost::python;
 
 #pragma once
 
-enum class AcEntityNameNative : int
-{
-    ac3dFace = 1,
-    ac3dPolyline = 2,
-    ac3dSolid = 3,
-    acArc = 4,
-    acAttribute = 5,
-    acAttributeReference = 6,
-    acBlockReference = 7,
-    acCircle = 8,
-    acDimAligned = 9,
-    acDimAngular = 10,
-    acDimDiametric = 11,
-    acDimOrdinate = 12,
-    acDimRadial = 13,
-    acDimRotated = 14,
-    acEllipse = 16,
-    acHatch = 17,
-    acLeader = 18,
-    acLine = 19,
-    acMline = 20,
-    acMtext = 21,
-    acPoint = 22,
-    acPolyline = 23,
-    acPolylineLight = 24,
-    acPolygonMesh = 25,
-    acPolyfaceMesh = 26,
-    acRegion = 28,
-    acRay = 29,
-    acSolid = 30,
-    acSpline = 31,
-    acText = 32,
-    acTolerance = 33,
-    acTrace = 34,
-    acPViewport = 35,
-    acXline = 36,
-    acGroup = 37,
-    acMInsertBlock = 38,
-    acPolyline2d = 39,
-    acPolyline3d = 40,
-    acSurface = 41,
-    acLightWeightPolyline = 42,
-    acTable = 43
-};
-
-
 static BOOST_PYTHON_MODULE(PyAx)
 {
     makePyAcadUtilityWrapper();
@@ -1292,6 +1246,7 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acPolygonMesh", AcEntityNameNative::acPolygonMesh)
         .value("acPolyfaceMesh", AcEntityNameNative::acPolyfaceMesh)
         .value("acRegion", AcEntityNameNative::acRegion)
+        .value("acRaster", AcEntityNameNative::acRaster)
         .value("acRay", AcEntityNameNative::acRay)
         .value("acSolid", AcEntityNameNative::acSolid)
         .value("acSpline", AcEntityNameNative::acSpline)
@@ -1304,9 +1259,14 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acMInsertBlock", AcEntityNameNative::acMInsertBlock)
         .value("acPolyline2d", AcEntityNameNative::acPolyline2d)
         .value("acPolyline3d", AcEntityNameNative::acPolyline3d)
-        .value("acSurface", AcEntityNameNative::acSurface)
+        .value("acDim3PointAngular", AcEntityNameNative::acDim3PointAngular)
         .value("acLightWeightPolyline", AcEntityNameNative::acLightWeightPolyline)
         .value("acTable", AcEntityNameNative::acTable)
+        .value("acDimArcLength", AcEntityNameNative::acDimArcLength)
+        .value("acMLeader", AcEntityNameNative::acMLeader)
+        .value("acSubDMesh", AcEntityNameNative::acSubDMesh)
+        .value("acSurface", AcEntityNameNative::acSurface)
+        .value("acSection", AcEntityNameNative::acSection)
         .export_values()
         ;
 

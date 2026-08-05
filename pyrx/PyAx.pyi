@@ -239,12 +239,14 @@ acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
 acDiagonal: AcDimFractionType  # 1
+acDim3PointAngular: AcEntityName  # 41
 acDimAligned: AcEntityName  # 9
 acDimAngular: AcEntityName  # 10
+acDimArcLength: AcEntityName  # 44
 acDimArchitectural: AcDimUnits  # 6
 acDimArchitecturalStacked: AcDimUnits  # 4
 acDimDecimal: AcDimUnits  # 2
-acDimDiametric: AcEntityName  # 11
+acDimDiametric: AcEntityName  # 12
 acDimEngineering: AcDimUnits  # 3
 acDimFractional: AcDimUnits  # 7
 acDimFractionalStacked: AcDimUnits  # 5
@@ -255,7 +257,7 @@ acDimLFractional: AcDimLUnits  # 5
 acDimLScientific: AcDimLUnits  # 1
 acDimLWindowsDesktop: AcDimLUnits  # 6
 acDimLineWithText: AcDimTextMovement  # 0
-acDimOrdinate: AcEntityName  # 12
+acDimOrdinate: AcEntityName  # 13
 acDimPrecisionEight: AcDimPrecision  # 8
 acDimPrecisionFive: AcDimPrecision  # 5
 acDimPrecisionFour: AcDimPrecision  # 4
@@ -265,8 +267,8 @@ acDimPrecisionSix: AcDimPrecision  # 6
 acDimPrecisionThree: AcDimPrecision  # 3
 acDimPrecisionTwo: AcDimPrecision  # 2
 acDimPrecisionZero: AcDimPrecision  # 0
-acDimRadial: AcEntityName  # 13
-acDimRotated: AcEntityName  # 14
+acDimRadial: AcEntityName  # 14
+acDimRotated: AcEntityName  # 15
 acDimScientific: AcDimUnits  # 1
 acDimWindowsDesktop: AcDimUnits  # 8
 acDisplay: AcPlotType  # 0
@@ -377,7 +379,7 @@ acLeader: AcEntityName  # 18
 acLeftAlignment: AcTextAlignmentType  # 0
 acLeftMask: AcCellEdgeMask  # 8
 acLeftToRight: AcDrawingDirection  # 1
-acLightWeightPolyline: AcEntityName  # 42
+acLightWeightPolyline: AcEntityName  # 24
 acLimits: AcPlotType  # 2
 acLine: AcEntityName  # 19
 acLineNoArrow: AcLeaderType  # 0
@@ -414,6 +416,7 @@ acLnWtByLwDefault: AcLineWeight  # -3
 acLock: AcCellProperty  # 1
 acLong: AcValueDataType  # 1
 acMInsertBlock: AcEntityName  # 38
+acMLeader: AcEntityName  # 48
 acMTextContent: AcMLeaderContentType  # 2
 acMagenta: AcColor  # 6
 acMarginBottom: AcCellProperty  # 8192
@@ -437,7 +440,7 @@ acMiddleLeft: AcCellAlignment  # 4
 acMiddleRight: AcCellAlignment  # 6
 acMillimeters: AcPlotPaperUnits  # 1
 acMin: AcWindowState  # 2
-acMline: AcEntityName  # 20
+acMline: AcEntityName  # 40
 acModelSpace: AcActiveSpace  # 1
 acMoveTextAddLeader: AcDimTextMovement  # 1
 acMoveTextNoLeader: AcDimTextMovement  # 2
@@ -477,11 +480,11 @@ acPixels: AcPlotPaperUnits  # 2
 acPoint: AcEntityName  # 22
 acPoint2d: AcValueDataType  # 16
 acPoint3d: AcValueDataType  # 32
-acPolyfaceMesh: AcEntityName  # 26
+acPolyfaceMesh: AcEntityName  # 39
 acPolygonMesh: AcEntityName  # 25
 acPolyline: AcEntityName  # 23
-acPolyline2d: AcEntityName  # 39
-acPolyline3d: AcEntityName  # 40
+acPolyline2d: AcEntityName  # 23
+acPolyline3d: AcEntityName  # 2
 acPolylineLight: AcEntityName  # 24
 acPreferenceClassic: AcKeyboardAccelerator  # 1
 acPreserveMtextFormat: AcParseOption  # 2
@@ -507,7 +510,8 @@ acR18_Template: AcSaveAsType  # 26
 acR18_dwg: AcSaveAsType  # 24
 acR18_dxf: AcSaveAsType  # 25
 acRadians: AcAngleUnits  # 3
-acRay: AcEntityName  # 29
+acRaster: AcEntityName  # 26
+acRay: AcEntityName  # 27
 acRed: AcColor  # 1
 acRegion: AcEntityName  # 28
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
@@ -521,6 +525,7 @@ acScale: AcCellProperty  # 16
 acScaleToFit: AcPlotScale  # 0
 acScientific: AcUnits  # 1
 acSecondExtensionLine: AcDimHorizontalJustification  # 2
+acSection: AcEntityName  # 51
 acSectionGenerationDestinationFile: AcSectionGeneration  # 64
 acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
@@ -561,8 +566,9 @@ acSplineWithArrow: AcLeaderType  # 3
 acSqrtChord: AcSplineKnotParameterizationType  # 1
 acStraightLeader: AcMLeaderType  # 1
 acString: AcValueDataType  # 4
+acSubDMesh: AcEntityName  # 49
 acSubtraction: AcBooleanType  # 2
-acSurface: AcEntityName  # 41
+acSurface: AcEntityName  # 50
 acSymAbove: AcDimArcLengthSymbol  # 1
 acSymInFront: AcDimArcLengthSymbol  # 0
 acSymNone: AcDimArcLengthSymbol  # 2
@@ -1023,23 +1029,24 @@ class AcEntityName(_BoostPythonEnum):
     acCircle: ClassVar[Self]  # 8
     acDimAligned: ClassVar[Self]  # 9
     acDimAngular: ClassVar[Self]  # 10
-    acDimDiametric: ClassVar[Self]  # 11
-    acDimOrdinate: ClassVar[Self]  # 12
-    acDimRadial: ClassVar[Self]  # 13
-    acDimRotated: ClassVar[Self]  # 14
+    acDimDiametric: ClassVar[Self]  # 12
+    acDimOrdinate: ClassVar[Self]  # 13
+    acDimRadial: ClassVar[Self]  # 14
+    acDimRotated: ClassVar[Self]  # 15
     acEllipse: ClassVar[Self]  # 16
     acHatch: ClassVar[Self]  # 17
     acLeader: ClassVar[Self]  # 18
     acLine: ClassVar[Self]  # 19
-    acMline: ClassVar[Self]  # 20
+    acMline: ClassVar[Self]  # 40
     acMtext: ClassVar[Self]  # 21
     acPoint: ClassVar[Self]  # 22
     acPolyline: ClassVar[Self]  # 23
     acPolylineLight: ClassVar[Self]  # 24
     acPolygonMesh: ClassVar[Self]  # 25
-    acPolyfaceMesh: ClassVar[Self]  # 26
+    acPolyfaceMesh: ClassVar[Self]  # 39
     acRegion: ClassVar[Self]  # 28
-    acRay: ClassVar[Self]  # 29
+    acRaster: ClassVar[Self]  # 26
+    acRay: ClassVar[Self]  # 27
     acSolid: ClassVar[Self]  # 30
     acSpline: ClassVar[Self]  # 31
     acText: ClassVar[Self]  # 32
@@ -1049,11 +1056,16 @@ class AcEntityName(_BoostPythonEnum):
     acXline: ClassVar[Self]  # 36
     acGroup: ClassVar[Self]  # 37
     acMInsertBlock: ClassVar[Self]  # 38
-    acPolyline2d: ClassVar[Self]  # 39
-    acPolyline3d: ClassVar[Self]  # 40
-    acSurface: ClassVar[Self]  # 41
-    acLightWeightPolyline: ClassVar[Self]  # 42
+    acPolyline2d: ClassVar[Self]  # 23
+    acPolyline3d: ClassVar[Self]  # 2
+    acDim3PointAngular: ClassVar[Self]  # 41
+    acLightWeightPolyline: ClassVar[Self]  # 24
     acTable: ClassVar[Self]  # 43
+    acDimArcLength: ClassVar[Self]  # 44
+    acMLeader: ClassVar[Self]  # 48
+    acSubDMesh: ClassVar[Self]  # 49
+    acSurface: ClassVar[Self]  # 50
+    acSection: ClassVar[Self]  # 51
 
 class AcExtendOption(_BoostPythonEnum):
     acExtendNone: ClassVar[Self]  # 0
@@ -3701,7 +3713,7 @@ class AcadEntity(PyAx.AcadObject):
     def copy(self, /) -> AcadEntity: ...
     def entityName(self, /) -> str: ...
     def entityTransparency(self, /) -> str: ...
-    def entityType(self, /) -> int: ...
+    def entityType(self, /) -> AcEntityName: ...
     def highlight(self, bHighlight: bool, /) -> None: ...
     def hyperlinks(self, /) -> AcadHyperlinks: ...
     def intersectWith(
