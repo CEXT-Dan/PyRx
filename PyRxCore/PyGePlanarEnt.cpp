@@ -30,6 +30,8 @@ void makePyGePlanarEntWrapper()
         .def("normal", &PyGePlanarEnt::normal, DS.ARGS())
         .def("getCoefficients", &PyGePlanarEnt::getCoefficients, DS.ARGS())
         .def("getCoordSystem", &PyGePlanarEnt::getCoordSystem, DS.ARGS())
+        .def("get", &PyGePlanarEnt::get)
+        .def("getPoints", &PyGePlanarEnt::getPoints)
         .def("cast", &PyGePlanarEnt::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGePlanarEnt::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGePlanarEnt::className, DS.SARGS()).staticmethod("className")
@@ -153,6 +155,24 @@ AcGePoint3d PyGePlanarEnt::pointOnPlane() const
 AcGeVector3d PyGePlanarEnt::normal() const
 {
     return impObj()->normal();
+}
+
+boost::python::tuple PyGePlanarEnt::get() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d origin;
+    AcGeVector3d uAxis, vAxis;
+    impObj()->get(origin, uAxis, vAxis);
+    return  boost::python::make_tuple(origin, uAxis, vAxis);
+}
+
+boost::python::tuple PyGePlanarEnt::getPoints() const
+{
+    PyAutoLockGIL lock;
+    namespace bp = boost::python;
+    AcGePoint3d a, b, c;
+    impObj()->get(a, b, c);
+    return bp::make_tuple(a, b, c);
 }
 
 boost::python::tuple PyGePlanarEnt::getCoefficients() const

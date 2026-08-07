@@ -35,6 +35,8 @@ public:
     Adesk::Boolean       isCoplanarTo2(const PyGePlanarEnt& otherPlnEnt, const AcGeTol& tol) const;
     AcGePoint3d          pointOnPlane() const;
     AcGeVector3d         normal() const;
+    boost::python::tuple get() const;
+    boost::python::tuple getPoints() const;
     boost::python::tuple getCoefficients() const;
     boost::python::tuple getCoordSystem() const;
     static PyGePlanarEnt cast(const PyGeEntity3d& src);

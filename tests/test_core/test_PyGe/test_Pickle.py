@@ -67,5 +67,15 @@ class TestGePickle:
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
         restored.get() == original.get()
+        
+    def test_BoundedPlane(self):
+        origin = Ge.Point3d(0, 0, 0)
+        u_axis = Ge.Point3d(100, 0, 0) - origin
+        v_axis = Ge.Point3d(0, 100, 0) - origin
+        original = Ge.BoundedPlane(origin, u_axis, v_axis)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        restored.get() == original.get()
+
 
 
