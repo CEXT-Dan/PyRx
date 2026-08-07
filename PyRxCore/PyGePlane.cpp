@@ -176,38 +176,22 @@ boost::python::tuple PyGePlane::intersectWith6(const PyGeBoundedPlane& bndPln, c
 
 void PyGePlane::set1(const AcGePoint3d& pnt, const AcGeVector3d& normal) const
 {
-#if defined(_BRXTARGET270)
-    *impObj() = AcGePlane(pnt, normal);
-#else
     impObj()->set(pnt, normal);
-#endif
 }
 
 void PyGePlane::set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV) const
 {
-#if defined(_BRXTARGET270)
-    *impObj() = AcGePlane(pntU, org, pntV);
-#else
     impObj()->set(pntU, org, pntV);
-#endif
 }
 
 void PyGePlane::set3(double a, double b, double c, double d) const
 {
-#if defined(_BRXTARGET270)
-    *impObj() = AcGePlane(a, b, c, d);
-#else
     impObj()->set(a, b, c, d);
-#endif
 }
 
 void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis) const
 {
-#if defined(_BRXTARGET270)
-    *impObj() = AcGePlane(org, uAxis, vAxis);
-#else
     impObj()->set(org, uAxis, vAxis);
-#endif
 }
 
 PyGePlane PyGePlane::cast(const PyGeEntity3d& src)
