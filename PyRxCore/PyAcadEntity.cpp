@@ -349,12 +349,17 @@ AcEntityNameNative PyAcadEntity::entityType() const
     if (pClass->isDerivedFrom(AcDbSection::desc()))
         return AcEntityNameNative::acSection;
 #else
+    if (pClass->isDerivedFrom(AcDbTable::desc()))
+        return AcEntityNameNative::acTable;
+    if (pClass->isDerivedFrom(AcDbMInsertBlock::desc()))
+        return AcEntityNameNative::acMInsertBlock;
+    if (pClass->isDerivedFrom(AcDbBlockReference::desc())) // Normal inserts & XRefs drop here
+        return AcEntityNameNative::acBlockReference;
     if (pClass->isDerivedFrom(AcDbSection::desc()))
         return AcEntityNameNative::acSection;
 #endif
     return (AcEntityNameNative)impObj()->GetEntityType();
 }
-
 
 PyAcColor PyAcadEntity::color() const
 {

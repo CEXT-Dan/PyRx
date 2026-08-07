@@ -326,6 +326,19 @@ static std::vector<int> PyGePointArrayApproxShortestTourImpl(const T& pts) noexc
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale2d
+struct AcGeScale2dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getstate(const AcGeScale2d& val)
+    {
+        return boost::python::make_tuple(val.sx, val.sy);
+    }
+
+    static void setstate(AcGeScale2d& val, boost::python::tuple state)
+    {
+        val.set(extract<double>(state[0]), extract<double>(state[1]));
+    }
+};
+
 static double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
 {
     switch (idx)
@@ -400,6 +413,7 @@ static void makePyGeScale2dWrapper()
         .def<AcGeScale2d(AcGeScale2d::*)(const AcGeScale2d&)const>("__mul__", &AcGeScale2d::operator*, DS.ARGS({ "val: PyGe.Scale2d" }))
         .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&)>("__imul__", &AcGeScale2d::operator*=, DS.ARGS({ "val: PyGe.Scale2d" }), return_self<>())
         .def("toString", &AcGeScale2dToString, DS.ARGS())
+        .def_pickle(AcGeScale2dpickle())
         .def("__str__", &AcGeScale2dToString, DS.ARGS())
         .def("__repr__", &AcGeScale2dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale2dGetItem, DS.ARGS({ "idx: int" }))
@@ -1028,6 +1042,38 @@ static void makePyGeVector2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeMatrix2d
+struct AcGeMatrix2dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getstate(const AcGeMatrix2d& mat)
+    {
+        boost::python::list elements;
+        for (int row = 0; row < 3; ++row) {
+            for (int col = 0; col < 3; ++col) {
+                elements.append(mat.entry[row][col]);
+            }
+        }
+        return boost::python::make_tuple(elements);
+    }
+
+    static void setstate(AcGeMatrix2d& mat, boost::python::tuple state)
+    {
+        namespace bp = boost::python;
+        bp::list elements = bp::extract<bp::list>(state[0]); // Directly access index 0
+
+        if (bp::len(elements) != 9) {
+            PyErr_SetString(PyExc_ValueError, "Matrix2d pickle data must contain exactly 9 values");
+            bp::throw_error_already_set();
+        }
+
+        int index = 0;
+        for (int row = 0; row < 3; ++row) {
+            for (int col = 0; col < 3; ++col) {
+                mat.entry[row][col] = bp::extract<double>(elements[index++]);
+            }
+        }
+    }
+};
+
 static AcGeMatrix2d AcGeMatrix2dkIdentity()
 {
     return AcGeMatrix2d::kIdentity;
@@ -1039,7 +1085,7 @@ static boost::python::tuple AcGeMatrix2dToTuple(const AcGeMatrix2d& x)
     PyObject* main_tuple = PyTuple_New(3);
     if (!main_tuple) [[unlikely]]
         return boost::python::tuple();
-    for (int i = 0; i < 3; ++i) 
+    for (int i = 0; i < 3; ++i)
     {
         PyObject* row = PyTuple_New(3);
         if (!row) [[unlikely]]
@@ -1061,7 +1107,7 @@ static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
     PyObject* main_list = PyList_New(3);
     if (!main_list) [[unlikely]]
         return boost::python::list();
-    for (int i = 0; i < 3; ++i) 
+    for (int i = 0; i < 3; ++i)
     {
         PyObject* row = PyList_New(3);
         if (!row) [[unlikely]]
@@ -1099,7 +1145,7 @@ static AcGeMatrix2d AcGeMatrix2dInitFromCollection(const boost::python::object& 
     if (boost::python::len(obj) != 3)
         PyThrowBadEs(eInvalidInput);
     AcGeMatrix2d x;
-    for (int i = 0; i < 3; ++i) 
+    for (int i = 0; i < 3; ++i)
     {
         boost::python::object row = obj[i];
         if (boost::python::len(row) != 3)
@@ -1247,6 +1293,7 @@ static void makePyGeMatrix2dWrapper()
         .def("toString", &AcGeMatrix2dToString, DS.ARGS())
         .def("toTuple", &AcGeMatrix2dToTuple, DS.ARGS())
         .def("toList", &AcGeMatrix2dToList, DS.ARGS())
+        .def_pickle(AcGeMatrix2dpickle())
         .def("__str__", &AcGeMatrix2dToString, DS.ARGS())
         .def("__repr__", &AcGeMatrix2dToStringRepr, DS.ARGS())
         .def("__init__", make_constructor(&AcGeMatrix2dInitFromCollectionCtor))
@@ -1255,6 +1302,21 @@ static void makePyGeMatrix2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
+struct AcGeScale3dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getstate(const AcGeScale3d& val)
+    {
+        return boost::python::make_tuple(val.sx, val.sy, val.sz);
+    }
+
+    static void setstate(AcGeScale3d& val, boost::python::tuple state)
+    {
+        val.set(
+            extract<double>(state[0]),
+            extract<double>(state[1]),
+            extract<double>(state[2]));
+    }
+};
 static double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
 {
     switch (idx)
@@ -1335,6 +1397,7 @@ static void makePyGeScale3dWrapper()
         .def("__eq__", &AcGeScale3d::operator==, DS.ARGS({ "other: PyGe.Scale3d" }))
         .def("__ne__", &AcGeScale3d::operator!=, DS.ARGS({ "other: PyGe.Scale3d" }))
         .def("toString", &AcGeScale3dToString, DS.ARGS())
+        .def_pickle(AcGeScale3dpickle())
         .def("__str__", &AcGeScale3dToString, DS.ARGS())
         .def("__repr__", &AcGeScale3dToStringRepr, DS.ARGS())
         .def("__getitem__", &AcGeScale3dGetItem, DS.ARGS({ "idx: int" }))
@@ -2109,6 +2172,38 @@ static void makePyGeVector3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeMatrix3d
+struct AcGeMatrix3dpickle : boost::python::pickle_suite
+{
+    static boost::python::object getstate(const AcGeMatrix3d& mat)
+    {
+        boost::python::list elements;
+        for (int row = 0; row < 4; ++row) {
+            for (int col = 0; col < 4; ++col) {
+                elements.append(mat.entry[row][col]);
+            }
+        }
+        return boost::python::tuple(elements);
+    }
+
+    static void setstate(AcGeMatrix3d& mat, boost::python::object state)
+    {
+        namespace bp = boost::python;
+        bp::tuple elements = bp::extract<bp::tuple>(state);
+
+        if (bp::len(elements) != 16) {
+            PyErr_SetString(PyExc_ValueError, "Matrix3d pickle data must contain exactly 16 values");
+            bp::throw_error_already_set();
+        }
+
+        int index = 0;
+        for (int row = 0; row < 4; ++row) {
+            for (int col = 0; col < 4; ++col) {
+                mat.entry[row][col] = bp::extract<double>(elements[index++]);
+            }
+        }
+    }
+};
+
 static AcGeMatrix3d AcGeMatrix3dkIdentity()
 {
     return AcGeMatrix3d::kIdentity;
@@ -2212,7 +2307,7 @@ static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
     PyObject* main_tuple = PyTuple_New(4);
     if (!main_tuple) [[unlikely]]
         return boost::python::tuple();
-    for (int i = 0; i < 4; ++i) 
+    for (int i = 0; i < 4; ++i)
     {
         PyObject* row = PyTuple_New(4);
         if (!row) [[unlikely]]
@@ -2235,7 +2330,7 @@ static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
     PyObject* main_list = PyList_New(4);
     if (!main_list) [[unlikely]]
         return boost::python::list();
-    for (int i = 0; i < 4; ++i) 
+    for (int i = 0; i < 4; ++i)
     {
         PyObject* row = PyList_New(4);
         if (!row) [[unlikely]]
@@ -2257,7 +2352,7 @@ static AcGeMatrix3d AcGeMatrix3dInitFromCollection(const boost::python::object& 
     if (boost::python::len(obj) != 4)
         PyThrowBadEs(eInvalidInput);
     AcGeMatrix3d x;
-    for (int i = 0; i < 4; ++i) 
+    for (int i = 0; i < 4; ++i)
     {
         boost::python::object row = obj[i];
         if (boost::python::len(row) != 4) [[unlikely]]
@@ -2455,6 +2550,7 @@ static void makePyGeMatrix3dWrapper()
         .def("toString", &AcGeMatrix3dToString, DS.ARGS())
         .def("toList", &AcGeMatrix3dToList, DS.ARGS())
         .def("toTuple", &AcGeMatrix3dToTuple, DS.ARGS())
+        .def_pickle(AcGeMatrix3dpickle())
         .def("__str__", &AcGeMatrix3dToString, DS.ARGS())
         .def("__repr__", &AcGeMatrix3dToStringRepr, DS.ARGS())
         .def("__init__", make_constructor(&AcGeMatrix3dInitFromCollectionCtor))
