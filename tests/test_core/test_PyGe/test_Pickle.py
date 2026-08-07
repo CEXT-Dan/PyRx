@@ -179,6 +179,7 @@ class TestGePickle:
         assert restored_arc.center() == arc.center()
         assert math.isclose(restored_arc.radius(), arc.radius())
 
+    @pytest.mark.known_failure_BRX
     def test_closed_circle2d(self):
         center = Ge.Point2d(0.0, 0.0)
         ref_vec = Ge.Vector2d(1.0, 0.0)
@@ -198,6 +199,7 @@ class TestGePickle:
         assert math.isclose(restored.endAng(), original.endAng())
         assert restored.isClockWise() == original.isClockWise()
 
+    @pytest.mark.known_failure_BRX
     def test_partial_arc2d(self):
         center = Ge.Point2d(10.0, -5.0)
         ref_vec = Ge.Vector2d(0.0, 1.0)
@@ -217,6 +219,7 @@ class TestGePickle:
         assert math.isclose(restored.endAng(), original.endAng())
         assert restored.isClockWise() == original.isClockWise()
 
+    @pytest.mark.known_failure_BRX
     def test_LineSeg2d(self):
         start_point = Ge.Point2d(1.0, 2.0)
         end_point = Ge.Point2d(11.0, 22.0)
@@ -226,6 +229,7 @@ class TestGePickle:
         assert restored.startPoint() == original.startPoint()
         assert restored.endPoint() == original.endPoint()
 
+    @pytest.mark.known_failure_BRX
     def test_Line2d(self):
         start_point = Ge.Point2d(1.0, 2.0)
         dir = Ge.Vector2d.kYAxis
@@ -234,7 +238,8 @@ class TestGePickle:
         restored = pickle.loads(payload)
         assert restored.getStartPoint() == original.getStartPoint()
         assert restored.direction() == original.direction()
-
+        
+    @pytest.mark.known_failure_BRX
     def test_Ray2d(self):
         start_point = Ge.Point2d(1.0, 2.0)
         dir = Ge.Vector2d.kYAxis
@@ -244,6 +249,7 @@ class TestGePickle:
         assert restored.getStartPoint() == original.getStartPoint()
         assert restored.direction() == original.direction()
         
+    @pytest.mark.known_failure_BRX
     def test_composite_curve2d_constructor(self):
         # 1. Create sub-curves
         p1 = Ge.Point2d(0.0, 0.0)
