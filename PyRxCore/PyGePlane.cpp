@@ -6,6 +6,32 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //PyGePlane wrapper
+struct PyGePlanePickleSuite : boost::python::pickle_suite
+{
+    static boost::python::object getstate(const PyGePlane& plane)
+    {
+        namespace bp = boost::python;
+        AcGePoint3d origin;
+        AcGeVector3d uAxis, vAxis;
+        plane.impObj()->get(origin, uAxis, vAxis);
+        return bp::make_tuple(origin, uAxis, vAxis);
+    }
+
+    static void setstate(PyGePlane& plane, boost::python::object state)
+    {
+        namespace bp = boost::python;
+        bp::tuple outer = bp::extract<bp::tuple>(state);
+        if (bp::len(outer) != 3) {
+            PyErr_SetString(PyExc_ValueError, "Invalid pickle state for AcGePlane.");
+            bp::throw_error_already_set();
+        }
+        AcGePoint3d origin = bp::extract<AcGePoint3d>(outer[0]);
+        AcGeVector3d uAxis = bp::extract<AcGeVector3d>(outer[1]);
+        AcGeVector3d vAxis = bp::extract<AcGeVector3d>(outer[2]);
+        plane.set4(origin, uAxis, vAxis);
+    }
+};
+
 void makePyGePlaneWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -35,10 +61,12 @@ void makePyGePlaneWrapper()
         .def("intersectWith", &PyGePlane::intersectWith4)
         .def("intersectWith", &PyGePlane::intersectWith5)
         .def("intersectWith", &PyGePlane::intersectWith6, DS.ARGS({ "val: PyGe.LinearEnt3d | PyGe.Plane | PyGe.BoundedPlane", "tol: PyGe.Tol = ..." }))
+        .def("get", &PyGePlane::get)
         .def("set", &PyGePlane::set1)
         .def("set", &PyGePlane::set2)
         .def("set", &PyGePlane::set3)
         .def("set", &PyGePlane::set4, DS.OVRL(setOverloads))
+        .def_pickle(PyGePlanePickleSuite())
         .def("cast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGePlane::className, DS.SARGS()).staticmethod("className")
@@ -177,10 +205,19 @@ void PyGePlane::set3(double a, double b, double c, double d) const
 void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis) const
 {
 #if defined(_BRXTARGET270)
-    throw PyNotimplementedByHost();
+    *impObj() = AcGePlane(org, uAxis, vAxis);
 #else
     impObj()->set(org, uAxis, vAxis);
 #endif
+}
+
+boost::python::tuple PyGePlane::get() const
+{
+    namespace bp = boost::python;
+    AcGePoint3d origin;
+    AcGeVector3d uAxis, vAxis;
+    impObj()->get(origin, uAxis, vAxis);
+    return bp::make_tuple(origin, uAxis, vAxis);
 }
 
 PyGePlane PyGePlane::cast(const PyGeEntity3d& src)

@@ -58,3 +58,14 @@ class TestGePickle:
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
         assert original == restored
+        
+    def test_Plane(self):
+        origin = Ge.Point3d(1.0, 2.0, 3.0)
+        u_axis = Ge.Vector3d(1.0, 0.0, 0.0)
+        v_axis = Ge.Vector3d(0.0, 1.0, 0.0)
+        original = Ge.Plane(origin, u_axis, v_axis)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        restored.get() == original.get()
+
+

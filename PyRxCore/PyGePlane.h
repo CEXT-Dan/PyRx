@@ -31,6 +31,8 @@ public:
     void                    set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV) const;
     void                    set3(double a, double b, double c, double d) const;
     void                    set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis) const;
+    boost::python::tuple    get() const;
+
     static PyGePlane   cast(const PyGeEntity3d& src);
     static PyGePlane   copycast(const PyGeEntity3d& src);
     static std::string className();
