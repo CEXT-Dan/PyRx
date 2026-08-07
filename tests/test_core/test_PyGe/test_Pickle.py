@@ -58,7 +58,7 @@ class TestGePickle:
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
         assert original == restored
-        
+
     def test_Plane(self):
         origin = Ge.Point3d(1.0, 2.0, 3.0)
         u_axis = Ge.Vector3d(1.0, 0.0, 0.0)
@@ -67,7 +67,7 @@ class TestGePickle:
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
         restored.get() == original.get()
-        
+
     def test_BoundedPlane(self):
         origin = Ge.Point3d(0, 0, 0)
         u_axis = Ge.Point3d(100, 0, 0) - origin
@@ -84,11 +84,11 @@ class TestGePickle:
         radius = 5.0
         start_ang = 0.0
         end_ang = 2 * math.pi
-        
+
         original = Ge.CircArc3d(center, normal, ref_vec, radius, start_ang, end_ang)
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
-        
+
         assert restored.center() == original.center()
         assert restored.normal() == original.normal()
         assert restored.refVec() == original.refVec()
@@ -101,13 +101,13 @@ class TestGePickle:
         normal = Ge.Vector3d(0.0, 1.0, 0.0)
         ref_vec = Ge.Vector3d(0.0, 0.0, 1.0)
         radius = 12.34
-        start_ang = math.pi / 4.0   # 45 degrees
-        end_ang = math.pi / 2.0     # 90 degrees
-        
+        start_ang = math.pi / 4.0  # 45 degrees
+        end_ang = math.pi / 2.0  # 90 degrees
+
         original = Ge.CircArc3d(center, normal, ref_vec, radius, start_ang, end_ang)
         payload = pickle.dumps(original)
         restored = pickle.loads(payload)
-        
+
         assert restored.center() == original.center()
         assert restored.normal() == original.normal()
         assert restored.refVec() == original.refVec()
@@ -115,4 +115,48 @@ class TestGePickle:
         assert math.isclose(restored.startAng(), original.startAng())
         assert math.isclose(restored.endAng(), original.endAng())
 
+    def test_LineSeg3d(self):
+        start_point = Ge.Point3d(1.0, 2.0, 3.0)
+        end_point = Ge.Point3d(11.0, 22.0, 33.0)
+        original = Ge.LineSeg3d(start_point, end_point)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        assert restored.startPoint() == original.startPoint()
+        assert restored.endPoint() == original.endPoint()
 
+    def test_composite_curve_constructor(self):
+        # 1. Create sub-curves
+        p1 = Ge.Point3d(0.0, 0.0, 0.0)
+        p2 = Ge.Point3d(10.0, 0.0, 0.0)
+        line_seg = Ge.LineSeg3d(p1, p2)
+        
+        center = Ge.Point3d(10.0, 5.0, 0.0)
+        normal = Ge.Vector3d(0.0, 0.0, 1.0)
+        ref_vec = Ge.Vector3d(0.0, -1.0, 0.0)
+        radius = 5.0
+        arc = Ge.CircArc3d(center, normal, ref_vec, radius, 0.0, math.pi / 2.0)
+        sub_curves = [line_seg, arc]
+        
+        # 2. Instantiate and pickle
+        original = Ge.CompositeCurve3d(sub_curves)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        
+        # 3. Extract the unpickled raw base curve list
+        restored_curves = restored.getCurveList()
+        assert len(restored_curves) == 2
+        
+        # Element 0: Verify it's a LineSeg3d under the hood
+        assert restored_curves[0].type() == Ge.EntityId.kLineSeg3d
+        restored_line = Ge.LineSeg3d.cast(restored_curves[0]) 
+        
+        # Element 1: Verify it's a CircArc3d under the hood
+        assert restored_curves[1].type() == Ge.EntityId.kCircArc3d
+        restored_arc = Ge.CircArc3d.cast(restored_curves[1])
+        
+        # 5. Perform the geometric assertions on the casted instances
+        assert restored_line.startPoint() == line_seg.startPoint()
+        assert restored_line.endPoint() == line_seg.endPoint()
+        
+        assert restored_arc.center() == arc.center()
+        assert math.isclose(restored_arc.radius(), arc.radius())

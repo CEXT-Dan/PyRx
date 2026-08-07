@@ -373,14 +373,14 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 //-----------------------------------------------------------------------------------
 //PyGeLineSeg3d
 struct PyGeLineSeg3dpickle : boost::python::pickle_suite {
-    static boost::python::tuple getstate(const AcGeLineSeg3d& line) {
+    static boost::python::tuple getstate(const PyGeLineSeg3d& line) {
         return boost::python::make_tuple(
             line.startPoint(),
             line.endPoint()
         );
     }
 
-    static void setstate(AcGeLineSeg3d& line, boost::python::tuple state) {
+    static void setstate(PyGeLineSeg3d& line, boost::python::tuple state) {
         namespace bp = boost::python;
         if (bp::len(state) != 2) {
             PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
@@ -389,8 +389,7 @@ struct PyGeLineSeg3dpickle : boost::python::pickle_suite {
 
         AcGePoint3d start = bp::extract<AcGePoint3d>(state[0]);
         AcGePoint3d end = bp::extract<AcGePoint3d>(state[1]);
-
-        line.set(start, end);
+        line.set2(start, end);
     }
 };
 
@@ -425,6 +424,7 @@ void makePyGeLineSeg3dWrapper()
         .def("length", &PyGeLineSeg3d::length3, DS.OVRL(lengthOverloads))
         .def("set", &PyGeLineSeg3d::set1)
         .def("set", &PyGeLineSeg3d::set2, DS.OVRL(setOverloads))
+        .def_pickle(PyGeLineSeg3dpickle())
         .def("cast", &PyGeLineSeg3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeLineSeg3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeLineSeg3d::className, DS.SARGS()).staticmethod("className")

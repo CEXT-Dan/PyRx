@@ -25,6 +25,7 @@ void makePyGeEntity3dWrapper()
         .def("isOn", &PyGeEntity3d::isOn1)
         .def("isOn", &PyGeEntity3d::isOn2, DS.ARGS({ "pt : PyGe.Point3d","tol : PyGe.Tol = ..." }, 12048))
         .def("isNull", &PyGeEntity3d::isNull, DS.ARGS())
+        .def("keepAlive", &PyGeEntity3d::keepAlive, DS.ARGS())
         .def("__eq__", &PyGeEntity3d::operator==)
         .def("__ne__", &PyGeEntity3d::operator!=)
         .def("__hash__", &PyGeEntity3d::hash)
@@ -61,6 +62,12 @@ struct PyGePyGeEntity3dDeleter
         else
             delete p;
     }
+
+    inline void setKeepAlive(bool flag)
+    {
+        m_autoDelete = !flag;
+    }
+
     bool m_autoDelete = true;
 };
 
@@ -166,6 +173,14 @@ bool PyGeEntity3d::isNull() const
 std::size_t PyGeEntity3d::hash() const
 {
     return std::hash<AcGeEntity3d*>{}(m_imp.get());
+}
+
+void PyGeEntity3d::keepAlive(bool flag)
+{
+    auto del_p = std::get_deleter<PyGePyGeEntity3dDeleter>(m_imp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->setKeepAlive(flag);
 }
 
 std::string PyGeEntity3d::className()
