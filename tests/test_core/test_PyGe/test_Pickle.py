@@ -77,5 +77,42 @@ class TestGePickle:
         restored = pickle.loads(payload)
         restored.get() == original.get()
 
+    def test_closed_circle(self):
+        center = Ge.Point3d(0.0, 0.0, 0.0)
+        normal = Ge.Vector3d(0.0, 0.0, 1.0)
+        ref_vec = Ge.Vector3d(1.0, 0.0, 0.0)
+        radius = 5.0
+        start_ang = 0.0
+        end_ang = 2 * math.pi
+        
+        original = Ge.CircArc3d(center, normal, ref_vec, radius, start_ang, end_ang)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        
+        assert restored.center() == original.center()
+        assert restored.normal() == original.normal()
+        assert restored.refVec() == original.refVec()
+        assert math.isclose(restored.radius(), original.radius())
+        assert math.isclose(restored.startAng(), original.startAng())
+        assert math.isclose(restored.endAng(), original.endAng())
+
+    def test_partial_arc(self):
+        center = Ge.Point3d(10.0, -5.0, 2.5)
+        normal = Ge.Vector3d(0.0, 1.0, 0.0)
+        ref_vec = Ge.Vector3d(0.0, 0.0, 1.0)
+        radius = 12.34
+        start_ang = math.pi / 4.0   # 45 degrees
+        end_ang = math.pi / 2.0     # 90 degrees
+        
+        original = Ge.CircArc3d(center, normal, ref_vec, radius, start_ang, end_ang)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+        
+        assert restored.center() == original.center()
+        assert restored.normal() == original.normal()
+        assert restored.refVec() == original.refVec()
+        assert math.isclose(restored.radius(), original.radius())
+        assert math.isclose(restored.startAng(), original.startAng())
+        assert math.isclose(restored.endAng(), original.endAng())
 
 
