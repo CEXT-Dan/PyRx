@@ -372,6 +372,28 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 
 //-----------------------------------------------------------------------------------
 //PyGeLineSeg3d
+struct PyGeLineSeg3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const AcGeLineSeg3d& line) {
+        return boost::python::make_tuple(
+            line.startPoint(),
+            line.endPoint()
+        );
+    }
+
+    static void setstate(AcGeLineSeg3d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint3d start = bp::extract<AcGePoint3d>(state[0]);
+        AcGePoint3d end = bp::extract<AcGePoint3d>(state[1]);
+
+        line.set(start, end);
+    }
+};
+
 void makePyGeLineSeg3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"

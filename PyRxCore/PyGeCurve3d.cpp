@@ -647,6 +647,34 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 
 //-----------------------------------------------------------------------------------
 //AcGeCircArc3d
+struct PyGeCircArc3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const AcGeCircArc3d& arc) {
+        return boost::python::make_tuple(
+            arc.center(),
+            arc.normal(),
+            arc.refVec(),
+            arc.radius(),
+            arc.startAng(),
+            arc.endAng()
+        );
+    }
+
+    static void setstate(AcGeCircArc3d& arc, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 6) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for CircArc3d");
+            bp::throw_error_already_set();
+        }
+        AcGePoint3d center = bp::extract<AcGePoint3d>(state[0]);
+        AcGeVector3d normal = bp::extract<AcGeVector3d>(state[1]);
+        AcGeVector3d refAxis = bp::extract<AcGeVector3d>(state[2]);
+        double radius = bp::extract<double>(state[3]);
+        double startAngle = bp::extract<double>(state[4]);
+        double endAngle = bp::extract<double>(state[5]);
+        arc.set(center, normal, refAxis, radius, startAngle, endAngle);
+    }
+};
+
 void makePyGeCircArc3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
