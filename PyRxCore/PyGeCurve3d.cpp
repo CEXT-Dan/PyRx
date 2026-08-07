@@ -648,7 +648,7 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 //-----------------------------------------------------------------------------------
 //AcGeCircArc3d
 struct PyGeCircArc3dpickle : boost::python::pickle_suite {
-    static boost::python::tuple getstate(const AcGeCircArc3d& arc) {
+    static boost::python::tuple getstate(const PyGeCircArc3d& arc) {
         return boost::python::make_tuple(
             arc.center(),
             arc.normal(),
@@ -659,7 +659,7 @@ struct PyGeCircArc3dpickle : boost::python::pickle_suite {
         );
     }
 
-    static void setstate(AcGeCircArc3d& arc, boost::python::tuple state) {
+    static void setstate(PyGeCircArc3d& arc, boost::python::tuple state) {
         namespace bp = boost::python;
         if (bp::len(state) != 6) {
             PyErr_SetString(PyExc_ValueError, "Invalid state for CircArc3d");
@@ -671,7 +671,7 @@ struct PyGeCircArc3dpickle : boost::python::pickle_suite {
         double radius = bp::extract<double>(state[3]);
         double startAngle = bp::extract<double>(state[4]);
         double endAngle = bp::extract<double>(state[5]);
-        arc.set(center, normal, refAxis, radius, startAngle, endAngle);
+        arc.set2(center, normal, refAxis, radius, startAngle, endAngle);
     }
 };
 
@@ -729,6 +729,7 @@ void makePyGeCircArc3dWrapper()
         .def("set", &PyGeCircArc3d::set3)
         .def("set", &PyGeCircArc3d::set4)
         .def("set", &PyGeCircArc3d::set5, DS.OVRL(setOverloads))
+        .def_pickle(PyGeCircArc3dpickle())
         .def("cast", &PyGeCircArc3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCircArc3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCircArc3d::className, DS.SARGS()).staticmethod("className")
@@ -964,7 +965,6 @@ void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, 
 
 void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius) const
 {
-    //TODO:
     double param1;
     double param2;
     Adesk::Boolean success;
