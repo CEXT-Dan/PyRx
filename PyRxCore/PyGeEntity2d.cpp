@@ -25,6 +25,7 @@ void makePyGeEntity2dWrapper()
         .def("isOn", &PyGeEntity2d::isOn1)
         .def("isOn", &PyGeEntity2d::isOn2, DS.ARGS({ "pt : PyGe.Point2d","tol : PyGe.Tol = ..." }))
         .def("isNull", &PyGeEntity2d::isNull, DS.ARGS())
+        .def("keepAlive", &PyGeEntity2d::keepAlive, DS.ARGS())
         .def("__eq__", &PyGeEntity2d::operator==)
         .def("__ne__", &PyGeEntity2d::operator!=)
         .def("__hash__", &PyGeEntity2d::hash)
@@ -60,6 +61,12 @@ struct PyGePyGeEntity2dDeleter
         else
             delete p;
     }
+
+    inline void setKeepAlive(bool flag)
+    {
+        m_autoDelete = !flag;
+    }
+
     bool m_autoDelete = true;
 };
 
@@ -165,6 +172,14 @@ bool PyGeEntity2d::isNull() const
 std::size_t PyGeEntity2d::hash() const
 {
     return std::hash<AcGeEntity2d*>{}(m_imp.get());
+}
+
+void PyGeEntity2d::keepAlive(bool flag)
+{
+    auto del_p = std::get_deleter<PyGePyGeEntity2dDeleter>(m_imp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->setKeepAlive(flag);
 }
 
 PyGeEntity2d PyGeEntity2d::copycast(const PyGeEntity2d& src)

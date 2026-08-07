@@ -1009,6 +1009,52 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------
 //AcGeCompositeCurve3d
+struct PyGeCompositeCurve3dpickle : boost::python::pickle_suite
+{
+    static boost::python::object getstate(const PyGeCompositeCurve3d& compCurve)
+    {
+        namespace bp = boost::python;
+
+        bp::list rawCurveList = compCurve.getCurveList();
+        bp::list polymorphicList;
+
+        ssize_t numCurves = bp::len(rawCurveList);
+        for (ssize_t i = 0; i < numCurves; ++i) 
+        {
+            const PyGeCurve3d& baseCurve = bp::extract<const PyGeCurve3d&>(rawCurveList[i]);
+
+            if (baseCurve.type() == AcGe::kLineSeg3d)
+            {
+                polymorphicList.append(PyGeLineSeg3d::cast(baseCurve));
+            }
+            else if (baseCurve.type() == AcGe::kCircArc3d) 
+            {
+                polymorphicList.append(PyGeCircArc3d::cast(baseCurve));
+            }
+            else 
+            {
+                PyThrowBadEs(eInvalidInput);
+            }
+        }
+        return polymorphicList;
+    }
+
+    static void setstate(PyGeCompositeCurve3d& compCurve, boost::python::object state)
+    {
+        namespace bp = boost::python;
+        bp::list curveList = bp::extract<bp::list>(state);
+        const ssize_t numCurves = bp::len(curveList);
+        bp::list isOwnerOfCurves;
+        for (ssize_t i = 0; i < numCurves; ++i) 
+        {
+            isOwnerOfCurves.append(1);
+            PyGeCurve3d& baseCurve = bp::extract<PyGeCurve3d&>(curveList[i]);
+            baseCurve.keepAlive(true); //detach
+        }
+        compCurve.setCurveList2(curveList, isOwnerOfCurves);
+    }
+};
+
 using Segment = std::pair<AcGePoint3d, AcGePoint3d>;
 using Segments = std::vector<Segment>;
 
@@ -1151,6 +1197,7 @@ void makePyGeCompositeCurve3dWrapper()
         .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
         .def("createFromLineSeg3dArray", &PyGeCompositeCurve3d::createFromLineSeg3dArray, DS.SARGS({ "seg: list[PyGe.LineSeg3d]" })).staticmethod("createFromLineSeg3dArray")
         .def("createFromPolyCurves", &PyGeCompositeCurve3d::createFromPolyCurves, DS.SARGS({ "curveList: list[PyGe.Curve3d]" })).staticmethod("createFromPolyCurves")
+        .def_pickle(PyGeCompositeCurve3dpickle())
         .def("cast", &PyGeCompositeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve3d::className, DS.SARGS()).staticmethod("className")

@@ -32,6 +32,7 @@ public:
     Adesk::Boolean      isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
     bool                isNull() const;
     std::size_t         hash() const;
+    void                keepAlive(bool flag);
     static PyGeEntity2d copycast(const PyGeEntity2d& src);
     static std::string  className();
 public:
