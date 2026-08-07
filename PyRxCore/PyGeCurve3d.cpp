@@ -1423,6 +1423,37 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc3d wrapper
+struct PyGeEllipArc3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeEllipArc3d& arc) {
+        return boost::python::make_tuple(
+            arc.center(),
+            arc.majorAxis(),
+            arc.minorAxis(),
+            arc.majorRadius(),
+            arc.minorRadius(),
+            arc.startAng(),
+            arc.endAng()
+        );
+    }
+
+    static void setstate(PyGeEllipArc3d& arc, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 7) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for EllipArc3d");
+            bp::throw_error_already_set();
+        }
+        AcGePoint3d center = bp::extract<AcGePoint3d>(state[0]);
+        AcGeVector3d majorAxis = bp::extract<AcGeVector3d>(state[1]);
+        AcGeVector3d minorAxis = bp::extract<AcGeVector3d>(state[2]);
+        double majorRadius = bp::extract<double>(state[3]);
+        double minorRadius = bp::extract<double>(state[4]);
+        double startAngle = bp::extract<double>(state[5]);
+        double endAngle = bp::extract<double>(state[6]);
+
+        arc.set2(center, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+    }
+};
+
 void makePyGeEllipArc3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -1476,6 +1507,7 @@ void makePyGeEllipArc3dWrapper()
         .def("set", &PyGeEllipArc3d::set1)
         .def("set", &PyGeEllipArc3d::set2)
         .def("set", &PyGeEllipArc3d::set3, DS.OVRL(setOverloads))
+        .def_pickle(PyGeEllipArc3dpickle())
         .def("cast", &PyGeEllipArc3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeEllipArc3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeEllipArc3d::className, DS.SARGS()).staticmethod("className")

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 import pickle
-
+import pytest
 
 from pyrx import Ge
 
@@ -142,7 +142,7 @@ class TestGePickle:
         assert restored.getStartPoint() == original.getStartPoint()
         assert restored.direction() == original.direction()
 
-    def test_composite_curve_constructor(self):
+    def test_composite_curve3d_constructor(self):
         # 1. Create sub-curves
         p1 = Ge.Point3d(0.0, 0.0, 0.0)
         p2 = Ge.Point3d(10.0, 0.0, 0.0)
@@ -280,4 +280,48 @@ class TestGePickle:
 
         assert restored_arc.center() == arc.center()
         assert math.isclose(restored_arc.radius(), arc.radius())
+        
+    def test_EllipArc3d(self):
+        center = Ge.Point3d(1.0, 2.0, 3.0)
+        major_axis = Ge.Vector3d(1.0, 0.0, 0.0)
+        minor_axis = Ge.Vector3d(0.0, 1.0, 0.0)
+        major_radius = 10.0
+        minor_radius = 5.0
+        start_ang = 0.0
+        end_ang = math.pi  # Half ellipse
+
+        original = Ge.EllipArc3d(center, major_axis, minor_axis, major_radius, minor_radius, start_ang, end_ang)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+
+        assert restored.center() == original.center()
+        assert restored.majorAxis() == original.majorAxis()
+        assert restored.minorAxis() == original.minorAxis()
+        assert math.isclose(restored.majorRadius(), original.majorRadius())
+        assert math.isclose(restored.minorRadius(), original.minorRadius())
+        assert math.isclose(restored.startAng(), original.startAng())
+        assert math.isclose(restored.endAng(), original.endAng())
+
+    @pytest.mark.known_failure_BRX
+    def test_EllipArc2d(self):
+        center = Ge.Point2d(-5.0, 10.0)
+        major_axis = Ge.Vector2d(0.0, 1.0)  # Rotated 90 degrees
+        minor_axis = Ge.Vector2d(-1.0, 0.0)
+        major_radius = 8.5
+        minor_radius = 4.25
+        start_ang = math.pi / 4.0        # 45 degrees
+        end_ang = 3.0 * math.pi / 4.0    # 135 degrees
+
+        original = Ge.EllipArc2d(center, major_axis, minor_axis, major_radius, minor_radius, start_ang, end_ang)
+        payload = pickle.dumps(original)
+        restored = pickle.loads(payload)
+
+        assert restored.center() == original.center()
+        assert restored.majorAxis() == original.majorAxis()
+        assert restored.minorAxis() == original.minorAxis()
+        assert math.isclose(restored.majorRadius(), original.majorRadius())
+        assert math.isclose(restored.minorRadius(), original.minorRadius())
+        assert math.isclose(restored.startAng(), original.startAng())
+        assert math.isclose(restored.endAng(), original.endAng())
+
 

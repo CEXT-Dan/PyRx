@@ -882,6 +882,39 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 
 //----------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
+#if !defined(_BRXTARGET270)
+struct PyGeEllipArc2dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeEllipArc2d& arc) {
+        return boost::python::make_tuple(
+            arc.center(),
+            arc.majorAxis(),
+            arc.minorAxis(),
+            arc.majorRadius(),
+            arc.minorRadius(),
+            arc.startAng(),
+            arc.endAng()
+        );
+    }
+
+    static void setstate(PyGeEllipArc2d& arc, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 7) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for EllipArc2d");
+            bp::throw_error_already_set();
+        }
+        AcGePoint2d center = bp::extract<AcGePoint2d>(state[0]);
+        AcGeVector2d majorAxis = bp::extract<AcGeVector2d>(state[1]);
+        AcGeVector2d minorAxis = bp::extract<AcGeVector2d>(state[2]);
+        double majorRadius = bp::extract<double>(state[3]);
+        double minorRadius = bp::extract<double>(state[4]);
+        double startAngle = bp::extract<double>(state[5]);
+        double endAngle = bp::extract<double>(state[6]);
+
+        arc.set2(center, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+    }
+};
+#endif
+
 void makePyGeEllipArc2Wrapper()
 {
 #if !defined(_BRXTARGET270)
@@ -926,6 +959,7 @@ void makePyGeEllipArc2Wrapper()
         .def("set", &PyGeEllipArc2d::set1)
         .def("set", &PyGeEllipArc2d::set2)
         .def("set", &PyGeEllipArc2d::set3, DS.OVRL(setOverloads))
+        .def_pickle(PyGeEllipArc2dpickle())
         .def("cast", &PyGeEllipArc2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeEllipArc2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeEllipArc2d::className, DS.SARGS()).staticmethod("className")
