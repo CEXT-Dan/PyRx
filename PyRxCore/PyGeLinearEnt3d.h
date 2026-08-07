@@ -5,6 +5,7 @@
 class PyGePlanarEnt;
 class PyGePlane;
 class PyGeLine3d;
+
 //-----------------------------------------------------------------------------------
 //PyGeLinearEnt3d
 void makePyGeLinearEnt3dWrapper();
@@ -71,6 +72,7 @@ public:
 public:
     AcGeLine3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------
 //PyGeLineSeg3d
 void makePyGeLineSeg3dWrapper();

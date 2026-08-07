@@ -525,6 +525,33 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
+struct PyGeCircArc2dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeCircArc2d& arc) {
+        return boost::python::make_tuple(
+            arc.center(),
+            arc.radius(),
+            arc.startAng(),
+            arc.endAng(),
+            arc.refVec(),
+            arc.isClockWise()
+        );
+    }
+
+    static void setstate(PyGeCircArc2d& arc, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 6) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for CircArc3d");
+            bp::throw_error_already_set();
+        }
+        AcGePoint2d center = bp::extract<AcGePoint2d>(state[0]);
+        double radius = bp::extract<double>(state[1]);
+        double startAngle = bp::extract<double>(state[2]);
+        double endAngle = bp::extract<double>(state[3]);
+        AcGeVector2d refVec = bp::extract<AcGeVector2d>(state[4]);
+        bool isClockWise = bp::extract<bool>(state[5]);
+        arc.set2(center, radius, startAngle, endAngle, refVec, isClockWise);
+    }
+};
 void makePyGeCircArc2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -578,6 +605,7 @@ void makePyGeCircArc2dWrapper()
         .def("set", &PyGeCircArc2d::set4)
         .def("set", &PyGeCircArc2d::set5)
         .def("set", &PyGeCircArc2d::set6, DS.OVRL(setOverloads))
+        .def_pickle(PyGeCircArc2dpickle())
         .def("cast", &PyGeCircArc2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeCircArc2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeCircArc2d::className, DS.SARGS()).staticmethod("className")
@@ -1183,6 +1211,52 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 
 //-----------------------------------------------------------------------------------------
 //AcGeCompositeCurve2d wrapper
+struct PyGeCompositeCurve2dpickle : boost::python::pickle_suite
+{
+    static boost::python::object getstate(const PyGeCompositeCurve2d& compCurve)
+    {
+        namespace bp = boost::python;
+
+        bp::list rawCurveList = compCurve.getCurveList();
+        bp::list polymorphicList;
+
+        ssize_t numCurves = bp::len(rawCurveList);
+        for (ssize_t i = 0; i < numCurves; ++i)
+        {
+            const PyGeCurve2d& baseCurve = bp::extract<const PyGeCurve2d&>(rawCurveList[i]);
+
+            if (baseCurve.type() == AcGe::kLineSeg2d)
+            {
+                polymorphicList.append(PyGeLineSeg2d::cast(baseCurve));
+            }
+            else if (baseCurve.type() == AcGe::kCircArc2d)
+            {
+                polymorphicList.append(PyGeCircArc2d::cast(baseCurve));
+            }
+            else
+            {
+                PyThrowBadEs(eInvalidInput);
+            }
+        }
+        return polymorphicList;
+    }
+
+    static void setstate(PyGeCompositeCurve2d& compCurve, boost::python::object state)
+    {
+        namespace bp = boost::python;
+        bp::list curveList = bp::extract<bp::list>(state);
+        const ssize_t numCurves = bp::len(curveList);
+        bp::list isOwnerOfCurves;
+        for (ssize_t i = 0; i < numCurves; ++i)
+        {
+            isOwnerOfCurves.append(1);
+            PyGeCurve2d& baseCurve = bp::extract<PyGeCurve2d&>(curveList[i]);
+            baseCurve.keepAlive(true); //detach
+        }
+        compCurve.setCurveList2(curveList, isOwnerOfCurves);
+    }
+};
+
 void makePyGeCompositeCurve2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -1204,6 +1278,7 @@ void makePyGeCompositeCurve2dWrapper()
         .def("setCurveList", &PyGeCompositeCurve2d::setCurveList2, DS.OVRL(setCurveListOverloads))
         .def("globalToLocalParam", &PyGeCompositeCurve2d::globalToLocalParam, DS.ARGS({ "param: float" }))
         .def("localToGlobalParam", &PyGeCompositeCurve2d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
+        .def_pickle(PyGeCompositeCurve2dpickle())
         .def("cast", &PyGeCompositeCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve2d::className, DS.SARGS()).staticmethod("className")
