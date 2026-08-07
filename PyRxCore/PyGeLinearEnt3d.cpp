@@ -270,6 +270,27 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------
 //AcGeLine3d
+struct PyGeLine3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeLine3d& line) {
+        return boost::python::make_tuple(
+            line.getStartPoint(),
+            line.direction()
+        );
+    }
+
+    static void setstate(PyGeLine3d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint3d start = bp::extract<AcGePoint3d>(state[0]);
+        AcGeVector3d dir = bp::extract<AcGeVector3d>(state[1]);
+        line.set1(start, dir);
+    }
+};
+
 void makePyGeLine3dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -291,6 +312,7 @@ void makePyGeLine3dWrapper()
         .add_static_property("kZAxis", PyGeLine3d::kZAxis)
         .def("set", &PyGeLine3d::set1)
         .def("set", &PyGeLine3d::set2, DS.OVRL(setOverloads))
+        .def_pickle(PyGeLine3dpickle())
         .def("cast", &PyGeLine3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeLine3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeLine3d::className, DS.SARGS()).staticmethod("className")
@@ -555,6 +577,26 @@ boost::python::list AcGeLineSeg3dArrayToPyList(const AcArray<AcGeLineSeg3d>& arr
 
 //-----------------------------------------------------------------------------------
 //AcGeRay3d
+struct PyGeRay3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeRay3d& line) {
+        return boost::python::make_tuple(
+            line.getStartPoint(),
+            line.direction()
+        );
+    }
+
+    static void setstate(PyGeRay3d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint3d start = bp::extract<AcGePoint3d>(state[0]);
+        AcGeVector3d dir = bp::extract<AcGeVector3d>(state[1]);
+        line.set1(start, dir);
+    }
+};
 void makePyGeRay3ddWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -573,6 +615,7 @@ void makePyGeRay3ddWrapper()
         .def(init<const AcGePoint3d&, const AcGePoint3d&>(DS.CTOR(ctor, 12671)))
         .def("set", &PyGeRay3d::set1)
         .def("set", &PyGeRay3d::set2, DS.OVRL(setOverloads))
+        .def_pickle(PyGeRay3dpickle())
         .def("cast", &PyGeRay3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeRay3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeRay3d::className, DS.SARGS()).staticmethod("className")

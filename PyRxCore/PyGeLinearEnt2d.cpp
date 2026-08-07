@@ -144,6 +144,27 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------------
 //AcGeLine2d  wrapper
+struct PyGeLine2dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeLine2d& line) {
+        return boost::python::make_tuple(
+            line.getStartPoint(),
+            line.direction()
+        );
+    }
+
+    static void setstate(PyGeLine2d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint2d start = bp::extract<AcGePoint2d>(state[0]);
+        AcGeVector2d dir = bp::extract<AcGeVector2d>(state[1]);
+        line.set1(start, dir);
+    }
+};
+
 void makePyGeLine2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -164,6 +185,7 @@ void makePyGeLine2dWrapper()
         .add_static_property("kYAxis", PyGeLine2d::kYAxis)
         .def("set", &PyGeLine2d::set1)
         .def("set", &PyGeLine2d::set2, DS.OVRL(setOverloads))
+        .def_pickle(PyGeLine2dpickle())
         .def("cast", &PyGeLine2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeLine2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeLine2d::className, DS.SARGS()).staticmethod("className")
@@ -247,7 +269,27 @@ AcGeLine2d* PyGeLine2d::impObj(const std::source_location& src /*= std::source_l
 }
 
 //-----------------------------------------------------------------------------------------
-//AcGeLine2d  wrapper
+//AcGeLineSeg2d  wrapper
+struct PyGeLineSeg3dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeLineSeg2d& line) {
+        return boost::python::make_tuple(
+            line.startPoint(),
+            line.endPoint()
+        );
+    }
+
+    static void setstate(PyGeLineSeg2d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint2d start = bp::extract<AcGePoint2d>(state[0]);
+        AcGePoint2d end = bp::extract<AcGePoint2d>(state[1]);
+        line.set2(start, end);
+    }
+};
 void makePyGeLineSeg2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -283,6 +325,7 @@ void makePyGeLineSeg2dWrapper()
         .def("length", &PyGeLineSeg2d::length1)
         .def("length", &PyGeLineSeg2d::length2)
         .def("length", &PyGeLineSeg2d::length3, DS.OVRL(lengthOverloads))
+        .def_pickle(PyGeLineSeg3dpickle())
         .def("cast", &PyGeLineSeg2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeLineSeg2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeLineSeg2d::className, DS.SARGS()).staticmethod("className")
@@ -447,6 +490,26 @@ boost::python::list AcGeLineSeg2dArrayToPyList(const AcArray<AcGeLineSeg2d>& arr
 
 //-----------------------------------------------------------------------------------------
 //AcGeRay2d  wrapper
+struct PyGeRay2dpickle : boost::python::pickle_suite {
+    static boost::python::tuple getstate(const PyGeRay2d& line) {
+        return boost::python::make_tuple(
+            line.getStartPoint(),
+            line.direction()
+        );
+    }
+
+    static void setstate(PyGeRay2d& line, boost::python::tuple state) {
+        namespace bp = boost::python;
+        if (bp::len(state) != 2) {
+            PyErr_SetString(PyExc_ValueError, "Invalid state for LineSeg3d");
+            bp::throw_error_already_set();
+        }
+
+        AcGePoint2d start = bp::extract<AcGePoint2d>(state[0]);
+        AcGeVector2d dir = bp::extract<AcGeVector2d>(state[1]);
+        line.set1(start, dir);
+    }
+};
 void makePyGeRay2dWrapper()
 {
     constexpr const std::string_view ctor = "Overloads:\n"
@@ -465,6 +528,7 @@ void makePyGeRay2dWrapper()
         .def(init<const AcGePoint2d&, const AcGePoint2d&>(DS.CTOR(ctor, 12667)))
         .def("set", &PyGeRay2d::set1)
         .def("set", &PyGeRay2d::set2, DS.OVRL(setOverloads))
+        .def_pickle(PyGeRay2dpickle())
         .def("cast", &PyGeRay2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeRay2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeRay2d::className, DS.SARGS()).staticmethod("className")
