@@ -8,7 +8,9 @@ from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
 
-
+def OnPyUnloadApp():
+    panel.ClearDatabase()
+    
 class BlockInfo(NamedTuple):
     id: int
     name: str
@@ -119,6 +121,13 @@ class PalettePanel(wx.Panel):
         self.Bind(wx.EVT_SHOW, self.OnShow)
         self.imageDict = {}
         self.dwgimageDict = {}
+        self.db = None
+        
+    def __del__(self):
+        self.db = None
+        Ed.Core.alert("hi")
+        
+    def ClearDatabase(self):
         self.db = None
 
     def init_members(self):
@@ -282,11 +291,10 @@ class BlockJig(Ed.Jig):
 
 
 palette = Ap.PaletteSet("BlockPalette")
-
+panel = PalettePanel()
 
 def createPalette() -> None:
     try:
-        panel = PalettePanel()
         palette.add("BlockPanel", panel)
         palette.setVisible(True)
     except Exception as err:
