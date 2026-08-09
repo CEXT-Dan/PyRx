@@ -3,16 +3,10 @@
 #include "PyGsView.h"
 #include "PyDbObjectId.h"
 #include "AcGsManager.h"
-//#include "format_codecs/PngFormatCodec.h"
-
-
-
 
 using namespace boost::python;
 
 //https://adndevblog.typepad.com/autocad/2013/01/capturing-a-screen-shot-using-objectarx.html
-
-
 
 //------------------------------------------------------------------------------------
 //GsCore Helpers
@@ -99,9 +93,11 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
     m_pGraphicsKernel.reset(AcGsManager::acquireGraphicsKernel(descriptor));
     if (m_pGraphicsKernel == nullptr)
         return;
+
     m_pOffDevice.reset(gsManager->createAutoCADOffScreenDevice(*m_pGraphicsKernel));
     if (m_pOffDevice == nullptr)
         return;
+
 #if defined(_ZRXTARGET) || defined(_GRXTARGET)//TODO: test this in acad, bcad
     m_pView.reset(m_pGraphicsKernel->createView());
     if (m_pView == nullptr)
@@ -111,19 +107,23 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
     if (m_pView == nullptr)
         PyThrowBadEs(eNullPtr);
 #endif
+
     m_pModel.reset(gsManager->createAutoCADModel(*m_pGraphicsKernel));
     if (m_pModel == nullptr)
         return;
+
     m_pOffDevice->onSize(m_width, m_height);
     if (!m_pOffDevice->add(m_pView.get()))
         return;
+
     m_pView->setVisualStyle(acdbGetViewportVisualStyle());
     setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
 #if !defined(_BRXTARGET)
-    m_upvector = m_pView->upVector().negate();
+    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector().negate(), m_width, m_height);
 #else
-    m_upvector = m_pView->upVector();
+    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector(), m_width, m_height);
 #endif// _BRXTARGET
+    setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
     m_isReady = true;
 }
 
@@ -139,8 +139,6 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
 
     if (!m_pView->add(pBlock, m_pModel.get()))
         return wxImage{};
-
-    m_pView->setView(m_pView->position(), m_pView->target(), m_upvector, m_width, m_height);
 
     AcDbExtents ex = calcBlockExtents(*pBlock);
     m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
