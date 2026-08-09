@@ -60,13 +60,13 @@ public:
     PyGeCone();
 
     PyGeCone(double cosineAngle, double sineAngle,
-        const  AcGePoint3d& baseOrigin, double baseRadius,
-        const  AcGeVector3d& axisOfSymmetry);
+        const AcGePoint3d& baseOrigin, double baseRadius,
+        const AcGeVector3d& axisOfSymmetry);
 
     PyGeCone(double cosineAngle, double sineAngle,
-        const  AcGePoint3d& baseOrigin, double baseRadius,
-        const  AcGeVector3d& axisOfSymmetry,
-        const  AcGeVector3d& refAxis, const  PyGeInterval& height,
+        const AcGePoint3d& baseOrigin, double baseRadius,
+        const AcGeVector3d& axisOfSymmetry,
+        const AcGeVector3d& refAxis, const PyGeInterval& height,
         double startAngle, double endAngle);
 
     PyGeCone(AcGeEntity3d* src);
@@ -126,7 +126,6 @@ public:
 
     PyGeCylinder(double radius, const AcGePoint3d& origin,
         const AcGeVector3d& axisOfSymmetry);
-
 
     PyGeCylinder(double radius, const AcGePoint3d& origin,
         const AcGeVector3d& axisOfSymmetry,

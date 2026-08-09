@@ -16,13 +16,6 @@ using namespace boost::python;
 
 //------------------------------------------------------------------------------------
 //GsCore Helpers
-static int cvport()
-{
-    struct resbuf rb;
-    acedGetVar(_T("CVPORT"), &rb);
-    return rb.resval.rint;
-}
-
 static void setBackgroundColorFromPy(AcGsDevice* pDevice, boost::python::object& rgb)
 {
     if (pDevice != nullptr && !rgb.is_none())
@@ -65,6 +58,13 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
     return ex;
 }
 
+void AcGsGraphicsKernelDeleter::operator()(AcGsGraphicsKernel* ptr)
+{
+    if (ptr == nullptr)
+        return;
+    acgsGetGsManager()->releaseGraphicsKernel(ptr);
+}
+
 void AcGsDeviceDeleter::operator()(AcGsDevice* ptr)
 {
     if (ptr == nullptr)
@@ -76,10 +76,7 @@ void AcGsViewDeleter::operator()(AcGsView* ptr)
 {
     if (ptr == nullptr)
         return;
-    ptr->eraseAll();
-#ifndef _BRXTARGET
-    acgsGetGsManager()->destroyView(ptr);
-#endif // !_BRXTARGET
+    acgsGetGsManager()->destroyAutoCADView(ptr);
 }
 
 void AcGsModelDeleter::operator()(AcGsModel* ptr)
@@ -90,8 +87,7 @@ void AcGsModelDeleter::operator()(AcGsModel* ptr)
 }
 
 BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::object& rgb)
-    : m_pGraphicsKernel(nullptr)
-    , m_width(width)
+    : m_width(width)
     , m_height(height)
     , m_isReady(false)
     , m_rgbModel(32)
@@ -100,7 +96,7 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
     AcGsManager* gsManager = acgsGetGsManager();
     AcGsKernelDescriptor descriptor;
     descriptor.addRequirement(AcGsKernelDescriptor::k3DDrawing);
-    m_pGraphicsKernel = AcGsManager::acquireGraphicsKernel(descriptor);
+    m_pGraphicsKernel.reset(AcGsManager::acquireGraphicsKernel(descriptor));
     if (m_pGraphicsKernel == nullptr)
         return;
     m_pOffDevice.reset(gsManager->createAutoCADOffScreenDevice(*m_pGraphicsKernel));
@@ -121,8 +117,6 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, boost::python::obj
     m_pOffDevice->onSize(m_width, m_height);
     if (!m_pOffDevice->add(m_pView.get()))
         return;
-    if (acgsGetViewParameters(cvport(), m_pView.get()) == false)
-        acutPrintf(_T("\nFailed to copy view parameters: "));
     m_pView->setVisualStyle(acdbGetViewportVisualStyle());
     setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
 #if !defined(_BRXTARGET)
