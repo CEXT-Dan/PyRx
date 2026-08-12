@@ -1,3 +1,8 @@
+## v3.1.7
+
+* [#542] Pickling Support for Ge classes
+* improve BlockImageRenderer for getBlockImage and getBlockImages again
+
 ## v3.1.6
 
 * Target BricsCAD Beta 2
