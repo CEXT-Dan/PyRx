@@ -23587,6 +23587,7 @@ class Polyline2d(PyDb.Curve):
         This function returns the normal vector of the plane containing the polyline. The normal
         vector is in WCS coordinates. The normal value is used for DXF group code 210.
         """
+    def numVerts(self, /) -> int: ...
     def openSequenceEnd(self, mode: PyDb.OpenMode, /) -> SequenceEnd:
         """
         This function provides access to the AcDbSequenceEnd entity for the polyline for the
@@ -23926,6 +23927,7 @@ class Polyline3d(PyDb.Curve):
         vertex and the first vertex, so the polyline will not form a closed polygon. This clears
         the first bit of DXF group code 70. Returns Acad::eOk.
         """
+    def numVerts(self, /) -> int: ...
     def openSequenceEnd(self, mode: PyDb.OpenMode, /) -> SequenceEnd:
         """
         This function provides access to the AcDbSequenceEnd entity for the polyline for the

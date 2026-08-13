@@ -374,6 +374,7 @@ public:
     void                makeClosedIfStartAndEndVertexCoincide(double distTol) const;
     boost::python::list toPoint3dList() const;
     PyGePoint3dArray    toPoint3dArray() const;
+    unsigned int        numVerts() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -419,6 +420,7 @@ public:
     boost::python::list vertexIds() const;
     boost::python::list toPoint3dList() const;
     PyGePoint3dArray    toPoint3dArray() const;
+    unsigned int        numVerts() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -634,7 +636,7 @@ public:
     void                addVertexAt1(unsigned int index, const AcGePoint2d&) const;
     void                addVertexAt2(unsigned int index, const AcGePoint2d&, double bulge, double startWidth, double endWidth) const;
     void                removeVertexAt(unsigned int index) const;
-    unsigned int        numVerts()const;
+    unsigned int        numVerts() const;
     double              getBulgeAt(unsigned int index) const;
     double              getStartWidthAt(unsigned int index) const;
     double              getEndWidthAt(unsigned int index) const;

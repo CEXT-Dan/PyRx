@@ -1491,6 +1491,7 @@ void makePyDb2dPolylineWrapper()
         .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide, DS.ARGS({ "tolerance : float" }, 1173))
         .def("toPoint3dList", &PyDb2dPolyline::toPoint3dList, DS.ARGS())
         .def("toPoint3dArray", &PyDb2dPolyline::toPoint3dArray, DS.ARGS())
+        .def("numVerts", &PyDb2dPolyline::numVerts, DS.ARGS())
         .def("className", &PyDb2dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb2dPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDb2dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1523,7 +1524,7 @@ PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list&
 {
     PyAutoLockGIL lock;
     using Iter = boost::python::stl_input_iterator<AcGePoint3d>;
-    AcGePoint3dArray verticesArray;                             
+    AcGePoint3dArray verticesArray;
     int length = boost::python::len(vertices);
     verticesArray.setPhysicalLength(length);
     for (Iter it(vertices), end; it != end; ++it) {
@@ -1757,6 +1758,16 @@ PyGePoint3dArray PyDb2dPolyline::toPoint3dArray() const
     return ids;
 }
 
+unsigned int PyDb2dPolyline::numVerts() const
+{
+    unsigned int n = 0;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        n++;
+    }
+    return n;
+}
+
 std::string PyDb2dPolyline::className()
 {
     return "AcDb2dPolyline";
@@ -1838,6 +1849,7 @@ void makePyDb3dPolylineWrapper()
         .def("getAcGeCurve", &PyDb3dPolyline::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = ..." }, 2775))
         .def("toPoint3dList", &PyDb3dPolyline::toPoint3dList, DS.ARGS())
         .def("toPoint3dArray", &PyDb3dPolyline::toPoint3dArray, DS.ARGS())
+        .def("numVerts", &PyDb3dPolyline::numVerts, DS.ARGS())
         .def("className", &PyDb3dPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2025,6 +2037,16 @@ PyGePoint3dArray PyDb3dPolyline::toPoint3dArray() const
         ids.emplace_back(pVtx->position());
     }
     return ids;
+}
+
+unsigned int PyDb3dPolyline::numVerts() const
+{
+    unsigned int n = 0;
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
+    {
+        n++;
+    }
+    return n;
 }
 
 std::string PyDb3dPolyline::className()
