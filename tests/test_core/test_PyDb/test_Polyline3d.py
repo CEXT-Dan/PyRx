@@ -28,8 +28,8 @@ class TestDbPolyline3d:
         # Verify vertices exist and have correct positions
         vtids = pline.vertexIds()
         assert len(vtids) == 5
+        assert pline.numVerts() == 5
         
-
         for i, expected_pos in enumerate(pnts):
             vt = Db.Polyline3dVertex(vtids[i])
             assert vt.position() == expected_pos
