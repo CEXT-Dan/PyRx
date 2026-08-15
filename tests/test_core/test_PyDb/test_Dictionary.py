@@ -13,6 +13,7 @@ class TestDbDictionary:
         id = d.setAt("my_key",xr)
         assert d.getAt("my_key") == id
         assert d["my_key"] == id
+        assert d.has("my_key") == True
         
     def test_iter(self):
         db = Db.curDb()
