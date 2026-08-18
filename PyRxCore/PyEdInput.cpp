@@ -496,8 +496,7 @@ PyEdInputPointMonitorResult::PyEdInputPointMonitorResult(AcEdInputPointMonitorRe
 
 void PyEdInputPointMonitorResult::setAdditionalTooltipString(const std::string& newValue)
 {
-    const AcString str{ utf8_to_wstr(newValue).c_str() };
-    rpyimp.setAdditionalTooltipString(str);
+    rpyimp.setAdditionalTooltipString(utf8_to_wstr(newValue).c_str());
 }
 
 bool PyEdInputPointMonitorResult::appendToTooltipStr() const
