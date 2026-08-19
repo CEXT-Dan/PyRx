@@ -32,8 +32,9 @@ jobs:
           python -m pip install build
           
       - name: Build package
+        # CHANGED: Added --wheel flag to skip creating the source (.tar.gz) file
         run: |
-          python -m build
+          python -m build --wheel
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
