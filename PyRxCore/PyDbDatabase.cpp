@@ -1077,9 +1077,9 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
-static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb, AcRxClass* pClass)
+static PyDbObjectIdArray getAllIdsFromDatabase(AcDbDatabase* pDb, AcRxClass* pClass)
 {
-    std::vector<PyDbObjectId> ids;
+    PyDbObjectIdArray ids;
     if (pDb == nullptr)
         return ids;
     ids.reserve(pDb->approxNumObjects());
@@ -1091,7 +1091,7 @@ static std::vector<PyDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb, AcRxCl
         {
             if (id.m_id.objectClass()->isDerivedFrom(pClass))
             {
-                if (!id.m_id.isNull() && !id.m_id.isErased() && !id.m_id.isEffectivelyErased())
+                if (!id.m_id.isErased() && !id.m_id.isEffectivelyErased())
                     ids.emplace_back(id.m_id);
             }
         }
