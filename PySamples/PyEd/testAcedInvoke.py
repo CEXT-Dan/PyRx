@@ -48,7 +48,7 @@ def doit1(CmDFlags=Ap.CmdFlags.SESSION):
     try:
         # Define arguments for Lisp function call
         # Format: [(Rx.LispType.kText, "function_name"), (Rx.LispType.kInt16, parameter_value), (Rx.LispType.kNone, 0)]
-        args = [(Rx.LispType.kText, "C:ADDNUM"), (Rx.LispType.kInt16, 10), (Rx.LispType.kNone, 0)]
+        args = [(Rx.LispType.kText, "C:ADDNUM"), (Rx.LispType.kInt16, 10)]
         
         # Execute the Lisp function through PyRx interface
         result = Ed.Core.invoke(args)
@@ -85,7 +85,7 @@ def doit2(CmDFlags=Ap.CmdFlags.SESSION):
     """
     try:
         # Define arguments for Lisp function call (no parameters needed)
-        args = [(Rx.LispType.kText, "C:GETLASTENT"), (Rx.LispType.kNone, 0)]
+        args = [(Rx.LispType.kText, "C:GETLASTENT")]
         
         # Execute the Lisp function through PyRx interface
         result = Ed.Core.invoke(args)
@@ -124,7 +124,7 @@ def doit3():
     """
     try:
         # Define arguments for Lisp function call (no parameters needed)
-        args = [(Rx.LispType.kText, "C:GETENTSEL"), (Rx.LispType.kNone, 0)]
+        args = [(Rx.LispType.kText, "C:GETENTSEL")]
         
         # Execute the Lisp function through PyRx interface
         result = Ed.Core.invoke(args)
