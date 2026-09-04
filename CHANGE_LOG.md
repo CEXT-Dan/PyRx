@@ -1,3 +1,9 @@
+## v3.1.8
+
+* Build for BricsCAD V27 beta-3
+* improve InputPointMonitorResult.setAdditionalTooltipString
+* add Polyline2d.numVerts and Polyline3d.numVerts
+
 ## v3.1.7
 
 * [#542] Pickling Support for Ge classes
