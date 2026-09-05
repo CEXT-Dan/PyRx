@@ -154,40 +154,47 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     {
         Atil::Size imageSize = image.size();
         std::unique_ptr<Atil::ImageContext> imgContext(image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0)));
-        if (imgContext)
+        if (imgContext && imgContext->getPixelType() == Atil::DataModelAttributes::kRgba)
         {
-            Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
-            if (pixelType == Atil::DataModelAttributes::kRgba)
+            wximage.Create(wxSize(imageSize.width, imageSize.height), false);
+            unsigned char* rgbData = wximage.GetData();
+
+            wximage.InitAlpha();
+            unsigned char* alphaData = wximage.GetAlpha();
+            std::vector<Atil::RgbColor> rowBuffer(imageSize.width);
+
+            for (Atil::Int32 y = 0; y < imageSize.height; ++y)
             {
-                wximage = wxImage(wxSize(imageSize.width, imageSize.height));
+                imgContext->getRow(y, 0, imageSize.width, rowBuffer.data());
+
+                for (Atil::Int32 x = 0; x < imageSize.width; ++x)
+                {
 #if defined(_BRXTARGET)
-                for (Atil::Int32 x = 0; x < imageSize.width; ++x)
-                {
-                    for (Atil::Int32 y = 0; y < imageSize.height; ++y)
-                    {
-                        const Atil::RgbColor pix(imgContext->get32(x, y));
-                        wximage.SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
-                    }
-                }
+                    const Atil::RgbColor& pix = rowBuffer[x];
 #else
-                for (Atil::Int32 x = 0; x < imageSize.width; ++x)
-                {
-                    for (Atil::Int32 y = 0; y < imageSize.height; ++y)
+                    const Atil::RgbColor& pix = rowBuffer[imageSize.width - 1 - x];
+#endif
+
+                    * rgbData++ = pix.rgba.red;
+                    *rgbData++ = pix.rgba.green;
+                    *rgbData++ = pix.rgba.blue;
+
+                    if (alphaData)
                     {
-                        const Atil::RgbColor pix(imgContext->get32(x, y));
-                        int targetX = imageSize.width - 1 - x;
-                        wximage.SetRGB(targetX, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+                        *alphaData++ = pix.rgba.alpha;
                     }
                 }
-#endif
             }
         }
     }
     m_pView->erase(pBlock);
     if (!wximage.IsOk())
+    {
         PyThrowBadEs(eInvalidInput);
+    }
     return wximage;
 }
+
 
 //------------------------------------------------------------------------------------
 //GsCore
