@@ -240,6 +240,7 @@ boost::python::list         FullSubentPathArrayToPyList(const AcDbFullSubentPath
 //-------------------------------------------------------------------------------------------------------------
 //PyDbProxyEntity
 void makePyDbProxyEntityWrapper();
+
 class PyDbProxyEntity : public PyDbEntity
 {
 protected:

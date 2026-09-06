@@ -659,19 +659,18 @@ AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_l
     return static_cast<AcDbObject*>(m_pyImp.get());
 }
 
-
 //-------------------------------------------------------------------------------------------------------------
-//PyDbProxyEntity
+//PyDbProxyObject
 void makePyDbProxyObjectWrapper()
 {
     PyDocString DS("ProxyObject");
     class_<PyDbProxyObject, bases<PyDbObject>>("ProxyObject", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"})))
-        .def("proxyFlags", &PyDbProxyEntity::proxyFlags, DS.ARGS())
-        .def("originalClassName", &PyDbProxyEntity::originalClassName, DS.ARGS())
-        .def("originalDxfName", &PyDbProxyEntity::originalDxfName, DS.ARGS())
-        .def("applicationDescription", &PyDbProxyEntity::applicationDescription, DS.ARGS())
+        .def("proxyFlags", &PyDbProxyObject::proxyFlags, DS.ARGS())
+        .def("originalClassName", &PyDbProxyObject::originalClassName, DS.ARGS())
+        .def("originalDxfName", &PyDbProxyObject::originalDxfName, DS.ARGS())
+        .def("applicationDescription", &PyDbProxyObject::applicationDescription, DS.ARGS())
         .def("className", &PyDbProxyObject::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbProxyObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbProxyObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
