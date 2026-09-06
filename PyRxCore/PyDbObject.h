@@ -24,6 +24,7 @@ enum class AnnotativeStates
 //----------------------------------------------------------------------------------------
 //PyDbObject
 void makePyDbObjectWrapper();
+
 class PyDbObject : public PyGiDrawable
 {
 public:
@@ -137,6 +138,31 @@ inline T1 PyDbObjectCloneFrom(const PyRxObject& src)
     return T1(static_cast<T2*>(src.impObj()->clone()), true);
 }
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDbProxyObject
+void makePyDbProxyObjectWrapper();
+
+class PyDbProxyObject : public PyDbObject
+{
+protected:
+    inline PyDbProxyObject() = default;
+public:
+    PyDbProxyObject(const PyDbObjectId& id);
+    PyDbProxyObject(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbProxyObject(AcDbProxyObject* ptr, bool autoDelete);
+    virtual ~PyDbProxyObject() override = default;
+
+    Adesk::UInt16   proxyFlags() const;
+    std::string     originalClassName() const;
+    std::string     originalDxfName() const;
+    std::string     applicationDescription() const;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbProxyObject  cast(const PyRxObject& src);
+public:
+    AcDbProxyObject* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 // TODO: This could be done better 
 // boost::python::wrapper<> causes issues with subclassing i couldn't solve
@@ -172,6 +198,7 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactor
 void makePyDbObjectReactorWrapper();
+
 class PyDbObjectReactor : public PyRxObject, public boost::python::wrapper<PyDbObjectReactor>
 {
 public:
@@ -242,6 +269,7 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyDbEntityReactor
 void makePyDbEntityReactorWrapper();
+
 class PyDbEntityReactor : public PyRxObject, public boost::python::wrapper<PyDbEntityReactor>
 {
 public:
@@ -284,7 +312,6 @@ public://prevent reentry on error
     bool reg_modifiedGraphics = true;
     bool reg_dragCloneToBeDeleted = true;
 };
-
 
 void makeDbObjectCloseScope();
 

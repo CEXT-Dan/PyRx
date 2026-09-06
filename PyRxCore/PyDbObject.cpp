@@ -659,6 +659,83 @@ AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_l
     return static_cast<AcDbObject*>(m_pyImp.get());
 }
 
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbProxyEntity
+void makePyDbProxyObjectWrapper()
+{
+    PyDocString DS("ProxyObject");
+    class_<PyDbProxyObject, bases<PyDbObject>>("ProxyObject", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"})))
+        .def("proxyFlags", &PyDbProxyEntity::proxyFlags, DS.ARGS())
+        .def("originalClassName", &PyDbProxyEntity::originalClassName, DS.ARGS())
+        .def("originalDxfName", &PyDbProxyEntity::originalDxfName, DS.ARGS())
+        .def("applicationDescription", &PyDbProxyEntity::applicationDescription, DS.ARGS())
+        .def("className", &PyDbProxyObject::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbProxyObject::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbProxyObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbProxyObject::PyDbProxyObject(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbProxyEntity>(id), false)
+{
+}
+
+PyDbProxyObject::PyDbProxyObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(openAcDbObject<AcDbProxyEntity>(id, mode), false)
+{
+}
+
+PyDbProxyObject::PyDbProxyObject(AcDbProxyObject* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+Adesk::UInt16 PyDbProxyObject::proxyFlags() const
+{
+    return impObj()->proxyFlags();
+}
+
+std::string PyDbProxyObject::originalClassName() const
+{
+    return wstr_to_utf8(impObj()->originalClassName());
+}
+
+std::string PyDbProxyObject::originalDxfName() const
+{
+    return wstr_to_utf8(impObj()->originalDxfName());
+}
+
+std::string PyDbProxyObject::applicationDescription() const
+{
+    return wstr_to_utf8(impObj()->applicationDescription());
+}
+
+std::string PyDbProxyObject::className()
+{
+    return "AcDbProxyObject";
+}
+
+PyRxClass PyDbProxyObject::desc()
+{
+    return PyRxClass(AcDbProxyObject::desc(), false);
+}
+
+PyDbProxyObject PyDbProxyObject::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbProxyObject>(src);
+}
+
+AcDbProxyObject* PyDbProxyObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbProxyObject*>(m_pyImp.get());
+}
+
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactorImpl
 PyDbObjectReactorImpl::PyDbObjectReactorImpl(PyDbObjectReactor* ptr)

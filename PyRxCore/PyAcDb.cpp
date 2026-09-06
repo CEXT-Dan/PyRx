@@ -395,6 +395,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbXrefObjectIdWrapper();
     makePyAdsNameWrapper();
     makePyDbObjectWrapper();
+    makePyDbProxyObjectWrapper();
     makeDbObjectCloseScope();
     makePyDbSpatialFilterWrapper();
     makePyDbIndexFilterManagerWrapper();
@@ -406,6 +407,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDdFieldEvaluatorWrapper();
     makePyDbFieldEngineWrapper();
     makePyDbEntityWrapper();
+    makePyDbProxyEntityWrapper();
     makePyDbBlockBeginWrapper();
     makePyDbBlockEndWrapper();
     makePyDbSequenceEndWrapper();
@@ -2170,6 +2172,15 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kDimDataToBeDeleted", AcDb::kDimDataToBeDeleted)
         .export_values()
         ;
+
+#if !defined (_BRXTARGET270)
+    enum_<AcDbDatabase::EraseMask>("EraseMask")
+        .value("kZeroLengthCurve", AcDbDatabase::EraseMask::kZeroLengthCurve)
+        .value("kEmptyText", AcDbDatabase::EraseMask::kEmptyText)
+        .value("kAllEmptyObj", AcDbDatabase::EraseMask::kAllEmptyObj)
+        .export_values()
+        ;
+#endif
 };
 
 void initPyDbModule()

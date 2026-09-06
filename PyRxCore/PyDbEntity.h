@@ -108,7 +108,7 @@ public:
     void                moveGripPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const;
     void                moveStretchPointsAt(const boost::python::object& indices, const AcGeVector3d& offset) const;
 
-        static std::string  className();
+    static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
     static PyDbEntity   cast(const PyRxObject& src);
@@ -236,5 +236,30 @@ public:
 
 AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable);
 boost::python::list         FullSubentPathArrayToPyList(const AcDbFullSubentPathArray& arr);
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbProxyEntity
+void makePyDbProxyEntityWrapper();
+class PyDbProxyEntity : public PyDbEntity
+{
+protected:
+    inline PyDbProxyEntity() = default;
+public:
+    PyDbProxyEntity(const PyDbObjectId& id);
+    PyDbProxyEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbProxyEntity(AcDbProxyEntity* ptr, bool autoDelete);
+    virtual ~PyDbProxyEntity() override = default;
+
+    Adesk::UInt16   proxyFlags() const;
+    std::string     originalClassName() const;
+    std::string     originalDxfName() const;
+    std::string     applicationDescription() const;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbProxyEntity  cast(const PyRxObject& src);
+public:
+    AcDbProxyEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #pragma pack (pop)
