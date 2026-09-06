@@ -592,6 +592,7 @@ kAlaska: TimeZone  # -9000
 kAlignSweepEntityToPath: SweepAlignOption  # 1
 kAll: LayerStateMask  # 2047
 kAllCellStates: CellState  # 127
+kAllEmptyObj: EraseMask  # -1
 kAllGridLineTypes: GridLineType  # 63
 kAllRowTypes: RowType  # 7
 kAlmaty: TimeZone  # 6000
@@ -1067,6 +1068,7 @@ kEdgeSubentType: SubentType  # 2
 kEkaterinburg: TimeZone  # 5000
 kEllArc: HatchEdgeType  # 3
 kEmbeddedImageFile: FindFileHint  # 4
+kEmptyText: EraseMask  # 2
 kEnableDogleg: MLeaderPropertyOverrideType  # 6
 kEnableFrameText: MLeaderPropertyOverrideType  # 17
 kEnableLanding: MLeaderPropertyOverrideType  # 4
@@ -1852,6 +1854,7 @@ kXrfUnresolved: XrefStatus  # 5
 kYakutsk: TimeZone  # 9002
 kYard: ImageUnits  # 7
 kZero: MlineJustification  # 1
+kZeroLengthCurve: EraseMask  # 1
 
 class ACIcolorMethod(_BoostPythonEnum):
     kACIbyBlock: ClassVar[Self]  # 0
@@ -6491,7 +6494,7 @@ class Database(PyRx.RxObject):
         for an AutoCAD session, please use the acedGetVar() function. See the System Variables
         section of the AutoCAD Command Reference for information on COORDS.
         """
-    def countEmptyObjects(self, flag: int, /) -> int:
+    def countEmptyObjects(self, flag: PyDb.EraseMask, /) -> int:
         """
         Counts the empty objects (zero length curves and/or empty TEXT/MTEXT) in the database.
         """
@@ -6698,7 +6701,7 @@ class Database(PyRx.RxObject):
         Returns the current Model Space ELEVATION value for the database. See the System Variables
         section of the AutoCAD Command Reference for information on ELEVATION.
         """
-    def eraseEmptyObjects(self, flag: int, /) -> int:
+    def eraseEmptyObjects(self, flag: PyDb.EraseMask, /) -> int:
         """
         Erase empty objects (zero length curves and/or empty TEXT/MTEXT) in the database.
         """
@@ -13688,6 +13691,11 @@ class EntityReactor(PyRx.RxObject):
     def reappended(self, obj: PyDb.DbObject, /) -> None: ...
     def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None: ...
     def unappended(self, obj: PyDb.DbObject, /) -> None: ...
+
+class EraseMask(_BoostPythonEnum):
+    kZeroLengthCurve: ClassVar[Self]  # 1
+    kEmptyText: ClassVar[Self]  # 2
+    kAllEmptyObj: ClassVar[Self]  # -1
 
 class ErrorStatus(_BoostPythonEnum):
     Ok: ClassVar[Self]  # 0
@@ -24147,6 +24155,62 @@ class Profile3d(PyRx.RxObject):
     def isPlanar(self, /) -> tuple[bool, PyGe.Plane]: ...
     def isSubent(self, /) -> bool: ...
     def isValid(self, /) -> bool: ...
+
+class ProxyEntity(PyDb.Entity):
+    def __init__(
+        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+    ) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def applicationDescription(self, /) -> str: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> ProxyEntity: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def originalClassName(self, /) -> str: ...
+    def originalDxfName(self, /) -> str: ...
+    def proxyFlags(self, /) -> int: ...
+
+class ProxyObject(PyDb.DbObject):
+    def __init__(
+        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+    ) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def applicationDescription(self, /) -> str: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> ProxyObject: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def originalClassName(self, /) -> str: ...
+    def originalDxfName(self, /) -> str: ...
+    def proxyFlags(self, /) -> int: ...
 
 class RadialDimension(PyDb.Dimension):
     @overload
