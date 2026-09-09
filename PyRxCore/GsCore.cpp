@@ -306,7 +306,6 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
     int imageWidth = img->GetWidth();
     int imageHeight = img->GetHeight();
     bool hasAlpha = img->HasAlpha();
-
     int numPixels = imageWidth * imageHeight;
 
     // Allocate contiguous array of 32-bit longwords (Adesk::Int32)
@@ -316,9 +315,9 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
     const unsigned char* alphaData = hasAlpha ? img->GetAlpha() : nullptr;
 
 #if defined(_BRXTARGET)
-
     // Flip vertically for BricsCAD
-    for (int y = 0; y < imageHeight; ++y) {
+    for (int y = 0; y < imageHeight; ++y)
+    {
         // Read from the bottom up in the source image
         int srcY = imageHeight - 1 - y;
 
@@ -341,10 +340,9 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
                 (static_cast<Adesk::Int32>(b));
         }
     }
-
 #else
-
-    for (int i = 0; i < numPixels; ++i) {
+    for (int i = 0; i < numPixels; ++i)
+    {
         unsigned char r = rgbData[i * 3 + 0];
         unsigned char g = rgbData[i * 3 + 1];
         unsigned char b = rgbData[i * 3 + 2];
@@ -363,9 +361,7 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
             (static_cast<Adesk::Int32>(g) << 8) |
             (static_cast<Adesk::Int32>(b));
     }
-
 #endif
-
     // Call native AutoCAD/BricsCAD API
     Adesk::Boolean result = acgsDisplayImage(
         viewportNumber,
