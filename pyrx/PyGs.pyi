@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any, ClassVar, Self
 
+import wx
+
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Gs as PyGs
@@ -13,6 +15,8 @@ kNoMap: ViewProjection  # 0
 class Core:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def displayImage(vpNum: int, originLeft: int, originTop: int, img: wx.Image, /) -> bool: ...
     @staticmethod
     def getBlockImage(
         blkid: PyDb.ObjectId, sx: int, sy: int, zoomFactor: float, bkrgb: list[int] = ..., /

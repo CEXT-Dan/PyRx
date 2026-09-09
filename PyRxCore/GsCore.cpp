@@ -215,6 +215,10 @@ void makeGsCoreWrapper()
 
         .def("getBlockImages", &GsCore::getBlockImages,
             DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
+
+
+        .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originTop : int" , "img : wx.Image" })).staticmethod("displayImage")
+
         ;
 }
 
@@ -286,4 +290,93 @@ boost::python::list GsCore::getBlockImages(const boost::python::list& blkids, in
         images.append(boost::python::object(boost::python::handle<>(wxPyConstructObject((void*)new wxImage(image), wxT("wxImage"), true))));
     }
     return images;
+}
+
+bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image)
+{
+#if defined(_BRXTARGET260)
+    throw PyNotimplementedByHost();
+#else
+    wxImage* img = nullptr;// we are NOT the owner!
+    if (!wxPyConvertWrappedPtr(image.ptr(), (void**)&img, wxT("wxImage")))
+        return false;
+    if (!img->IsOk())
+        return false;
+
+    int imageWidth = img->GetWidth();
+    int imageHeight = img->GetHeight();
+    bool hasAlpha = img->HasAlpha();
+
+    int numPixels = imageWidth * imageHeight;
+
+    // Allocate contiguous array of 32-bit longwords (Adesk::Int32)
+    std::vector<Adesk::Int32> argbBuffer(numPixels);
+
+    const unsigned char* rgbData = img->GetData();
+    const unsigned char* alphaData = hasAlpha ? img->GetAlpha() : nullptr;
+
+#if defined(_BRXTARGET)
+
+    // Flip vertically for BricsCAD
+    for (int y = 0; y < imageHeight; ++y) {
+        // Read from the bottom up in the source image
+        int srcY = imageHeight - 1 - y;
+
+        for (int x = 0; x < imageWidth; ++x) {
+            int destIndex = y * imageWidth + x;
+            int srcIndex = srcY * imageWidth + x;
+
+            unsigned char r = rgbData[srcIndex * 3 + 0];
+            unsigned char g = rgbData[srcIndex * 3 + 1];
+            unsigned char b = rgbData[srcIndex * 3 + 2];
+            unsigned char a = 0xFF;
+
+            if (hasAlpha && alphaData) {
+                a = alphaData[srcIndex];
+            }
+
+            argbBuffer[destIndex] = (static_cast<Adesk::Int32>(a) << 24) |
+                (static_cast<Adesk::Int32>(r) << 16) |
+                (static_cast<Adesk::Int32>(g) << 8) |
+                (static_cast<Adesk::Int32>(b));
+        }
+    }
+
+#else
+
+    for (int i = 0; i < numPixels; ++i) {
+        unsigned char r = rgbData[i * 3 + 0];
+        unsigned char g = rgbData[i * 3 + 1];
+        unsigned char b = rgbData[i * 3 + 2];
+        unsigned char a = 0xFF; // Default fully opaque
+
+        if (hasAlpha && alphaData) {
+            // AutoCAD docs: 0x00 = transparent, 0xFF = opaque. 
+            // Intermediate values not supported, so thresholding can be applied if needed.
+            a = alphaData[i];
+        }
+
+        // Pack into an ARGB 32-bit longword
+        // Bit shifts ensure the true color longword is structured correctly regardless of memory endianness
+        argbBuffer[i] = (static_cast<Adesk::Int32>(a) << 24) |
+            (static_cast<Adesk::Int32>(r) << 16) |
+            (static_cast<Adesk::Int32>(g) << 8) |
+            (static_cast<Adesk::Int32>(b));
+    }
+
+#endif
+
+    // Call native AutoCAD/BricsCAD API
+    Adesk::Boolean result = acgsDisplayImage(
+        viewportNumber,
+        originLeft,
+        originTop,
+        imageWidth,
+        imageHeight,
+        static_cast<const void*>(argbBuffer.data()),
+        hasAlpha ? 1 : 0
+    );
+
+    return (result == Adesk::kTrue);
+#endif
 }
