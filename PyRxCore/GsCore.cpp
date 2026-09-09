@@ -216,9 +216,7 @@ void makeGsCoreWrapper()
         .def("getBlockImages", &GsCore::getBlockImages,
             DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
 
-
         .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originBottom : int" , "img : wx.Image" })).staticmethod("displayImage")
-
         ;
 }
 
@@ -321,7 +319,8 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
         // Read from the bottom up in the source image
         int srcY = imageHeight - 1 - y;
 
-        for (int x = 0; x < imageWidth; ++x) {
+        for (int x = 0; x < imageWidth; ++x) 
+        {
             int destIndex = y * imageWidth + x;
             int srcIndex = srcY * imageWidth + x;
 
