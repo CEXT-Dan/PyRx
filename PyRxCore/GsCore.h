@@ -79,6 +79,7 @@ public:
     static bool setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired);
     static PyObject* getBlockImage(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
     static boost::python::list getBlockImages(const boost::python::list& blkid, int x, int y, double zf, boost::python::object& rgb);
+    static bool displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image);
 };
 
 #pragma pack (pop)
