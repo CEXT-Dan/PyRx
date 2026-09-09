@@ -217,7 +217,7 @@ void makeGsCoreWrapper()
             DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
 
 
-        .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originTop : int" , "img : wx.Image" })).staticmethod("displayImage")
+        .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originBottom : int" , "img : wx.Image" })).staticmethod("displayImage")
 
         ;
 }
@@ -292,7 +292,7 @@ boost::python::list GsCore::getBlockImages(const boost::python::list& blkids, in
     return images;
 }
 
-bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image)
+bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originBottom, const boost::python::object& image)
 {
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
@@ -366,7 +366,7 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
     Adesk::Boolean result = acgsDisplayImage(
         viewportNumber,
         originLeft,
-        originTop,
+        originBottom + imageHeight,
         imageWidth,
         imageHeight,
         static_cast<const void*>(argbBuffer.data()),
