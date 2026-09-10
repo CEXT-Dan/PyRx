@@ -600,6 +600,10 @@ kAlwaysRightReadingAngle: MLeaderTextAngleType  # 2
 kAngLineEnd: DimAssocPointType  # 3
 kAngLineStart: DimAssocPointType  # 2
 kAngle: ValueUnitType  # 2
+kAngle0AssocConstraintType: AssocConstraintType  # 4
+kAngle1AssocConstraintType: AssocConstraintType  # 5
+kAngle2AssocConstraintType: AssocConstraintType  # 6
+kAngle3AssocConstraintType: AssocConstraintType  # 7
 kAngleNotTransformed: ValueUnitType  # 65536
 kAngstroms: ImageUnits  # 11
 kAngular: DynUnitsType  # 1
@@ -688,6 +692,8 @@ kByColor: ReservedStringEnumType  # 9
 kByLayer: ReservedStringEnumType  # 0
 kByStyle: MTextFlowDirection  # 5
 kCairo: TimeZone  # 2002
+kCanBeEvaluatedAssocEvaluationPriority: AssocEvaluationPriority  # 1000
+kCannotDermineAssocEvaluationPriority: AssocEvaluationPriority  # 0
 kCapeVerde: TimeZone  # -1001
 kCapsHeight: MTextFragmentType  # 7
 kCaracas: TimeZone  # -4001
@@ -742,6 +748,9 @@ kCentimeter: ImageUnits  # 2
 kCentral: TimeZone  # -6000
 kCentralAmerica: TimeZone  # -6001
 kChangeDataType: ValueParseOption  # 8
+kChangedDirectlyAssocStatus: AssocStatus  # 1
+kChangedNoDifferenceAssocStatus: AssocStatus  # 3
+kChangedTransitivelyAssocStatus: AssocStatus  # 2
 kChildObjectReference: FieldCodeFlag  # 2048
 kChordPoint: DimAssocPointType  # 0
 kCirArc: HatchEdgeType  # 2
@@ -852,11 +861,13 @@ kDestinationNewBlock: SectionGeneration  # 16
 kDestinationReplaceBlock: SectionGeneration  # 32
 kDetachChildren: FieldCodeFlag  # 1024
 kDhaka: TimeZone  # 6001
+kDiameterAssocConstraintType: AssocConstraintType  # 9
 kDimDataToBeDeleted: GripStat  # 2
 kDirection: MTextFragmentType  # 2
 kDisable: FieldEvalOption  # 0
 kDisplay: PlotType  # 0
 kDistance: ValueUnitType  # 1
+kDistanceAssocConstraintType: AssocConstraintType  # 1
 kDoesNotSupportScale: HatchLoopType  # 1024
 kDoglegLength: MLeaderPropertyOverrideType  # 7
 kDoglegMark: MLeaderGsMarkType  # 10001
@@ -1078,6 +1089,7 @@ kEndCapRound: EndCaps  # 1
 kEndCapSquare: EndCaps  # 3
 kEndFragmentTypes: MTextFragmentType  # 23
 kEnglish: MeasurementValue  # 0
+kErasedAssocStatus: AssocStatus  # 5
 kEscapeBackslash: FieldCodeFlag  # 32
 kEsriDarkGray: AcGeoMapType  # 8
 kEsriImagery: AcGeoMapType  # 4
@@ -1099,6 +1111,7 @@ kExtents: PlotType  # 1
 kExterior: MPolygonloopDir  # 0
 kExternal: HatchLoopType  # 1
 kFaceSubentType: SubentType  # 1
+kFailedToEvaluateAssocStatus: AssocStatus  # 4
 kFalse: AdskBoolean  # 0
 kFarChordPoint: DimAssocPointType  # 1
 kFcf: AnnoType  # 1
@@ -1109,6 +1122,7 @@ kFine: AcGeoMapResolution  # 1
 kFiner: AcGeoMapResolution  # 2
 kFirstLevel: GraphNodeFlags  # 16
 kFirstPointRef: AssocFlags  # 1
+kFirstSampleAssocDraggingState: AssocDraggingState  # 1
 kFitPoints: SplineType  # 0
 kFont: MTextFragmentType  # 4
 kFontFile: FindFileHint  # 1
@@ -1167,6 +1181,7 @@ kHidden: ShadePlotType  # 2
 kHidePoints: PointCloudDispOptionOutOfRange  # 2
 kHobart: TimeZone  # 10003
 kHorizontalAngle: MLeaderTextAngleType  # 1
+kHorizontalDistanceAssocConstraintType: AssocConstraintType  # 2
 kHorz: MLeaderSegmentAngleType  # 12
 kHorzBottom: GridLineType  # 4
 kHorzGridLineTypes: GridLineType  # 7
@@ -1188,6 +1203,7 @@ kInsertAngle: MLeaderTextAngleType  # 0
 kIntensity: PointCloudProperty  # 2
 kIntensityRamp: PointCloudStylizationType  # 5
 kInterior: MPolygonloopDir  # 1
+kIntermediateSampleAssocDraggingState: AssocDraggingState  # 2
 kInternationalDateLine: TimeZone  # -12000
 kIntersectionBoundary: SectionGeometry  # 1
 kIntersectionFill: SectionGeometry  # 2
@@ -1199,6 +1215,7 @@ kInvisible: Visibility  # 1
 kIrkutsk: TimeZone  # 8003
 kIsAnnotative: HatchLoopType  # 512
 kIsAnnotativeBlock: HatchLoopType  # 8192
+kIsUpToDateAssocStatus: AssocEvaluationPriority  # -1000
 kIslamabad: TimeZone  # 5001
 kIsolines: SurfaceWireframeType  # 0
 kIsoparms: SurfaceWireframeType  # 1
@@ -1216,6 +1233,7 @@ kKolkata: TimeZone  # 5300
 kKrasnoyarsk: TimeZone  # 7001
 kLandingGap: MLeaderPropertyOverrideType  # 5
 kLastRestored: LayerStateMask  # 65536
+kLastSampleAssocDraggingState: AssocDraggingState  # 3
 kLayout: PlotType  # 5
 kLeaderLineColor: MLeaderPropertyOverrideType  # 1
 kLeaderLineMark: MLeaderGsMarkType  # 5001
@@ -1302,9 +1320,12 @@ kMissing: ReservedStringEnumType  # 8
 kMlineSubentCache: SubentType  # 4
 kModel: ReservedStringEnumType  # 10
 kModified: FieldState  # 4
+kModifyActionAssocEvaluationMode: AssocEvaluationMode  # 1
+kModifyObjectsAssocEvaluationMode: AssocEvaluationMode  # 0
 kMonrovia: TimeZone  # 2
 kMoscow: TimeZone  # 3000
 kMountain: TimeZone  # -7000
+kMove: AssocTransformationType  # 3
 kMoveAllExceptArrowHeaderPoints: MLeaderMoveType  # 1
 kMoveAllPoints: MLeaderMoveType  # 0
 kMoveContentAndDoglegPoints: MLeaderMoveType  # 2
@@ -1321,11 +1342,14 @@ kNoUnits: DynUnitsType  # 0
 kNonOrthoView: OrthographicView  # 0
 kNonPlanar: Planarity  # 0
 kNone: ReservedStringEnumType  # 2
+kNoneAssocConstraintType: AssocConstraintType  # 0
 kNoneContent: MLeaderContentType  # 0
 kNormal: ReservedStringEnumType  # 5
 kNormalRamp: PointCloudStylizationType  # 3
 kNotApplicable: AnnotativeStates  # 2
 kNotClosed: HatchLoopType  # 32
+kNotDraggingAssocDraggingState: AssocDraggingState  # 0
+kNotSpecified: AssocTransformationType  # 0
 kNotYetEvaluated: FieldEvalStatus  # 1
 kNullSubentType: SubentType  # 0
 kObjectId: ValueDataType  # 64
@@ -1510,6 +1534,7 @@ kProjectionCodeWccsl: GeoCoordinateSystemProjectionCode  # 39
 kProjectionCodeWccst: GeoCoordinateSystemProjectionCode  # 40
 kProjectionCodeWinkl: GeoCoordinateSystemProjectionCode  # 63
 kPurgeFiler: FilerType  # 8
+kRadiusAssocConstraintType: AssocConstraintType  # 8
 kRangoon: TimeZone  # 6300
 kRasterResolution: RemapFileContext  # 2
 kRect: ClipBoundaryType  # 1
@@ -1526,6 +1551,7 @@ kRightMask: CellEdgeMask  # 2
 kRightView: OrthographicView  # 6
 kRiyadh: TimeZone  # 3001
 kRoad: AcGeoMapType  # 2
+kRotate: AssocTransformationType  # 2
 kRtoL: MTextFlowDirection  # 2
 kSantiago: TimeZone  # -4002
 kSarajevo: TimeZone  # 1003
@@ -1571,12 +1597,14 @@ kStandard: ReservedStringEnumType  # 4
 kStateIsHidden: LayerStateMask  # 32768
 kStaticColumns: MTextColumnType  # 1
 kStraightLeader: MLeaderLeaderType  # 1
+kStretch: AssocTransformationType  # 1
 kStretchEdge: SurfaceEdgeExtensionType  # 1
 kStrikePoints: MTextFragmentType  # 19
 kStrikethrough: MTextFragmentType  # 16
 kString: ValueDataType  # 4
 kStripOptions: FieldCodeFlag  # 64
 kSuccess: FieldEvalStatus  # 2
+kSuppressedAssocStatus: AssocStatus  # 6
 kSydney: TimeZone  # 10000
 kSyntaxError: FieldEvalStatus  # 8
 kTableBreakAllowManualHeights: TableBreakOption  # 16
@@ -1779,6 +1807,7 @@ kUnknownCell: CellType  # 0
 kUnknownLeader: MLeaderLeaderDirectionType  # 0
 kUnknownRow: RowType  # 0
 kUnresTree: GraphNodeFlags  # 32
+kUnresolvedAssocStatus: AssocStatus  # 7
 kUpdateDirDataToSource: UpdateDirection  # 2
 kUpdateDirSourceToData: UpdateDirection  # 1
 kUpdateOptionAllowSourceUpdate: UpdateOption  # 1048576
@@ -1812,6 +1841,7 @@ kVertLeft: GridLineType  # 8
 kVertRight: GridLineType  # 32
 kVertexPoint: DimAssocPointType  # 2
 kVertexSubentType: SubentType  # 3
+kVerticalDistanceAssocConstraintType: AssocConstraintType  # 3
 kVerticalLineBottom: SectionSubItem  # 128
 kVerticalLineTop: SectionSubItem  # 64
 kView: PlotType  # 3
@@ -2983,11 +3013,356 @@ class ArcDimension(PyDb.Dimension):
         Returns the start point for the arc length dimension's second extension line.
         """
 
+class AssocAction(PyDb.DbObject):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, createImpObject: bool, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def actionBody(self, /) -> ObjectId: ...
+    def addDependency(
+        self, actionBodyId: PyDb.ObjectId, setThisActionAsOwningAction: bool, /
+    ) -> None: ...
+    def addMoreObjectsToDeepClone(
+        self, idMap: PyDb.PIdMapping, additionalObjectsToClone: list[PyDb.DbObject], /
+    ) -> list: ...
+    @overload
+    def addParam(self, paramId: PyDb.ObjectId, /) -> int: ...
+    @overload
+    def addParam(
+        self, paramName: str, paramClass: PyRx.RxClass, paramId: PyDb.ObjectId, /
+    ) -> int: ...
+    @overload
+    def addParam(self, *args) -> int: ...
+    def appendDependency(
+        self,
+        dependencyClass: PyRx.RxClass,
+        dependencyBodyClass: PyRx.RxClass,
+        isReadDep: bool,
+        isWriteDep: bool,
+        order: int,
+        /,
+    ) -> ObjectId: ...
+    def areDependenciesEqual(
+        self, dependency1: PyDb.AssocDependency, dependency2: PyDb.AssocDependency, /
+    ) -> bool: ...
+    def areDependenciesOnTheSameThing(
+        self, dependency1: PyDb.AssocDependency, dependency2: PyDb.AssocDependency, /
+    ) -> bool: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> AssocAction: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AssocAction: ...
+    def dependentObjectCloned(
+        self, dependency: PyDb.AssocDependency, dbObj: PyDb.DbObject, newObj: PyDb.DbObject, /
+    ) -> None: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    @staticmethod
+    def doesObjectHaveActiveActions(pObject: PyDb.DbObject, /) -> bool: ...
+    def dragStatus(self, status: PyDb.DragStat, /) -> None: ...
+    def evaluate(self, refEvaluate: PyDb.ActionsToEvaluateCallback, /) -> None: ...
+    def evaluateDependencies(self, /) -> None: ...
+    def evaluateDependency(self, dependency: PyDb.AssocDependency, /) -> None: ...
+    def evaluationPriority(self, /) -> AssocEvaluationPriority: ...
+    @staticmethod
+    def getActionBody(actionId: PyDb.ObjectId, /) -> ObjectId: ...
+    @staticmethod
+    def getActionsDependentOnObject(
+        pObject: PyDb.DbObject, readDependenciesWanted: bool, writeDependenciesWanted: bool, /
+    ) -> list: ...
+    def getDependencies(
+        self, readDependenciesWanted: bool, writeDependenciesWanted: bool, /
+    ) -> list: ...
+    def getDependentActionsToEvaluate(
+        self, refActionsToEvaluateCallback: PyDb.ActionsToEvaluateCallback, /
+    ) -> None: ...
+    def getDependentObjects(
+        self, readDependenciesWanted: bool, writeDependenciesWanted: bool, /
+    ) -> list: ...
+    def getValueParam(self, paramName: str, index: int, /) -> tuple: ...
+    def getValueParamArray(self, paramName: str, /) -> tuple: ...
+    def hasDependencyCachedValue(self, dependency: PyDb.AssocDependency, /) -> bool: ...
+    def isActionBodyAProxy(self, /) -> bool: ...
+    def isActionEvaluationInProgress(self, /) -> bool: ...
+    def isEqualTo(self, otherAction: PyDb.AssocAction, /) -> bool: ...
+    def isExternalDependency(self, dependency: PyDb.AssocDependency, /) -> bool: ...
+    def isOwnedDependency(self, dependency: PyDb.AssocDependency, /) -> bool: ...
+    def isRelevantDependencyChange(self, dependency: PyDb.AssocDependency, /) -> bool: ...
+    def objectThatOwnsNetworkInstance(self, /) -> ObjectId: ...
+    def ownedDependencyStatusChanged(
+        self, ownedDependency: PyDb.AssocDependency, previousStatus: PyDb.AssocStatus, /
+    ) -> None: ...
+    def ownedParams(self, /) -> list: ...
+    def ownedValueParamNames(self, /) -> list: ...
+    def owningNetwork(self, /) -> ObjectId: ...
+    def paramAtIndex(self, index: int, /) -> ObjectId: ...
+    def paramAtName(self, paramName: str, index: int = 0, /) -> ObjectId: ...
+    def paramCount(self, /) -> int: ...
+    def paramsAtName(self, paramName: str, /) -> list: ...
+    def postProcessAfterDeepClone(self, idMap: PyDb.PIdMapping, /) -> None: ...
+    def postProcessAfterDeepCloneCancel(self, idMap: PyDb.PIdMapping, /) -> None: ...
+    @overload
+    @staticmethod
+    def removeActionsControllingObject(objectToRemoveActionsFrom: PyDb.ObjectId, /) -> None: ...
+    @overload
+    @staticmethod
+    def removeActionsControllingObject(
+        objectToRemoveActionsFrom: PyDb.ObjectId,
+        readOnlyDependencyHandling: bool,
+        objectToRedirectReadOnlyDependenciesTo: PyDb.ObjectId,
+        /,
+    ) -> None: ...
+    @overload
+    @staticmethod
+    def removeActionsControllingObject(*args) -> None: ...
+    def removeAllDependencies(self, alsoEraseThem: bool, /) -> None: ...
+    def removeAllParams(self, alsoEraseThem: bool, /) -> None: ...
+    def removeDependency(self, dependencyId: PyDb.ObjectId, alsoEraseIt: bool, /) -> None: ...
+    def removeParam(self, paramName: str, alsoEraseIt: bool, /) -> int: ...
+    def removeValueParam(self, paramName: str, /) -> None: ...
+    def scaleAllDistanceValueParams(self, scaleFactor: float, /) -> None: ...
+    def setActionBody(self, actionBodyId: PyDb.ObjectId, /) -> None: ...
+    def setOwningNetwork(
+        self, networkId: PyDb.ObjectId, alsoSetAsDatabaseOwner: bool, /
+    ) -> None: ...
+    def setStatus(
+        self,
+        newStatus: PyDb.AssocStatus,
+        notifyOwningNetwork: bool = True,
+        setInOwnedActions: bool = False,
+        /,
+    ) -> None: ...
+    def setValueParam(
+        self,
+        paramName: str,
+        value: PyDb.EvalVariant,
+        expression: str,
+        evaluatorId: str,
+        silentMode: bool,
+        valueIndex: int,
+        /,
+    ) -> str: ...
+    def setValueParamArray(
+        self,
+        paramName: str,
+        values: list[PyDb.EvalVariant],
+        expressions: list[str],
+        evaluatorIds: list[str],
+        silentMode: bool,
+        /,
+    ) -> list: ...
+    def setValueParamControlledObjectDep(
+        self, paramName: str, controlledObjectDepId: PyDb.ObjectId, /
+    ) -> None: ...
+    def setValueParamUnitType(self, paramName: str, unitType: PyDb.ValueUnitType, /) -> None: ...
+    def status(self, /) -> AssocStatus: ...
+    def transformActionBy(self, transform: PyGe.AcGeMatrix3d, /) -> None: ...
+    def transformAllConstantGeometryParams(self, transform: PyGe.Matrix3d, /) -> None: ...
+    def updateAllObjectsControlledByValueParams(self, /) -> None: ...
+    def updateValueParamControlledObject(self, paramName: str, /) -> None: ...
+    def updateValueParamFromControlledObject(self, paramName: str, /) -> None: ...
+    def valueParamInputVariables(self, paramName: str, /) -> list: ...
+    def valueParamUnitType(self, paramName: str, /) -> ValueUnitType: ...
+
+class AssocConstraintType(_BoostPythonEnum):
+    kNoneAssocConstraintType: ClassVar[Self]  # 0
+    kDistanceAssocConstraintType: ClassVar[Self]  # 1
+    kHorizontalDistanceAssocConstraintType: ClassVar[Self]  # 2
+    kVerticalDistanceAssocConstraintType: ClassVar[Self]  # 3
+    kAngle0AssocConstraintType: ClassVar[Self]  # 4
+    kAngle1AssocConstraintType: ClassVar[Self]  # 5
+    kAngle2AssocConstraintType: ClassVar[Self]  # 6
+    kAngle3AssocConstraintType: ClassVar[Self]  # 7
+    kRadiusAssocConstraintType: ClassVar[Self]  # 8
+    kDiameterAssocConstraintType: ClassVar[Self]  # 9
+
+class AssocDependency(PyDb.DbObject):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, createImpObject: bool, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> AssocDependency: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AssocDependency: ...
+    def copied(self, dbObj: PyDb.DbObject, pNewObj: PyDb.DbObject, /) -> None: ...
+    def dependencyBody(self, /) -> ObjectId: ...
+    def dependentOnObjectStatus(self, /) -> ErrorStatus: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def detachFromObject(self, /) -> None: ...
+    def erased(self, dbObj: PyDb.DbObject, isErasing: bool, /) -> None: ...
+    def evaluate(self, /) -> None: ...
+    @staticmethod
+    def getDependenciesOnObject(
+        pObject: PyRx.DbObject, readDependenciesWanted: bool, writeDependenciesWanted: bool, /
+    ) -> list: ...
+    @staticmethod
+    def getFirstDependencyOnObject(pObject: PyRx.DbObject, /) -> ObjectId: ...
+    def hasCachedValue(self, /) -> bool: ...
+    def isActionEvaluationInProgress(self, /) -> bool: ...
+    def isAttachedToObject(self, /) -> bool: ...
+    def isDelegatingToOwningAction(self, /) -> bool: ...
+    def isDependentOnCompoundObject(self, /) -> bool: ...
+    def isDependentOnObjectReadOnly(self, /) -> bool: ...
+    def isDependentOnTheSameThingAs(self, otherDependency: PyDb.AssocDependency, /) -> bool: ...
+    def isEqualTo(self, otherDependency: PyDb.AssocDependency, /) -> bool: ...
+    def isObjectStateDependent(self, /) -> bool: ...
+    def isReadDependency(self, /) -> bool: ...
+    def isRelevantChange(self, /) -> bool: ...
+    def isWriteDependency(self, /) -> bool: ...
+    def modified(self, dbObj: PyDb.DbObject, /) -> None: ...
+    def nextDependencyOnObject(self, /) -> ObjectId: ...
+    @staticmethod
+    def notifyDependenciesOnObject(
+        pObject: PyRx.DbObject, newStatus: PyDb.AssocStatus, /
+    ) -> None: ...
+    def order(self, /) -> int: ...
+    def owningAction(self, /) -> ObjectId: ...
+    def prevDependencyOnObject(self, /) -> ObjectId: ...
+    def setDependencyBody(self, dependencyBodyId: PyDb.ObjectId, /) -> None: ...
+    def setIsDelegatingToOwningAction(self, yesNo: bool, /) -> None: ...
+    def setIsObjectStateDependent(self, yesNo: bool, /) -> None: ...
+    def setIsReadDependency(self, yesNo: bool, /) -> None: ...
+    def setIsWriteDependency(self, yesNo: bool, /) -> None: ...
+    def setNextDependencyOnObject(self, depId: PyDb.ObjectId, /) -> None: ...
+    def setOrder(self, newOrder: int, /) -> None: ...
+    def setOwningAction(self, actionId: PyDb.ObjectId, /) -> None: ...
+    def setPrevDependencyOnObject(self, depId: PyDb.ObjectId, /) -> None: ...
+    def setStatus(self, newStatus: PyDb.AssocStatus, notifyOwningAction: bool, /) -> None: ...
+    def status(self, /) -> AssocStatus: ...
+    def updateDependentOnObject(self, /) -> None: ...
+
+class AssocDraggingState(_BoostPythonEnum):
+    kNotDraggingAssocDraggingState: ClassVar[Self]  # 0
+    kFirstSampleAssocDraggingState: ClassVar[Self]  # 1
+    kIntermediateSampleAssocDraggingState: ClassVar[Self]  # 2
+    kLastSampleAssocDraggingState: ClassVar[Self]  # 3
+
+class AssocEvaluationMode(_BoostPythonEnum):
+    kModifyObjectsAssocEvaluationMode: ClassVar[Self]  # 0
+    kModifyActionAssocEvaluationMode: ClassVar[Self]  # 1
+
+class AssocEvaluationPriority(_BoostPythonEnum):
+    kIsUpToDateAssocStatus: ClassVar[Self]  # -1000
+    kCannotDermineAssocEvaluationPriority: ClassVar[Self]  # 0
+    kCanBeEvaluatedAssocEvaluationPriority: ClassVar[Self]  # 1000
+
 class AssocFlags(_BoostPythonEnum):
     kFirstPointRef: ClassVar[Self]  # 1
     kSecondPointRef: ClassVar[Self]  # 2
     kThirdPointRef: ClassVar[Self]  # 4
     kFourthPointRef: ClassVar[Self]  # 8
+
+class AssocNetwork(PyDb.AssocAction):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, createImpObject: bool, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addAction(self, actionId: PyDb.ObjectId, alsoSetAsDatabaseOwner: bool, /) -> None: ...
+    def assocNetworkIterator(self, /) -> list: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> AssocNetwork: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AssocNetwork: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def getActions(self, /) -> list: ...
+    def getActionsToEvaluate(self, /) -> list: ...
+    @staticmethod
+    def getInstanceFromDatabase(
+        db: PyDb.Database, createIfDoesNotExist: bool, dictionaryKey: str, /
+    ) -> ObjectId: ...
+    @staticmethod
+    def getInstanceFromObject(
+        owningId: PyDb.ObjectId,
+        createIfDoesNotExist: bool,
+        addToTopLevelNetwork: bool,
+        dictionaryKey: str,
+        /,
+    ) -> ObjectId: ...
+    def ownedActionStatusChanged(
+        self, pOwnedAction: PyDb.AssocAction, previousStatus: PyDb.AssocStatus, /
+    ) -> None: ...
+    def removeAction(self, actionId: PyDb.ObjectId, alsoEraseIt: bool, /) -> None: ...
+    def removeAllActions(self, alsoEraseThem: bool, /) -> None: ...
+    @staticmethod
+    def removeInstanceFromDatabase(
+        db: PyDb.Database, alsoEraseIt: bool, dictionaryKey: str, /
+    ) -> None: ...
+    @staticmethod
+    def removeInstanceFromObject(
+        owningObjectId: PyDb.ObjectId, alsoEraseIt: bool, dictionaryKey: str, /
+    ) -> None: ...
 
 class AssocPersSubentIdPE(PyRx.RxObject):
     def __init__(self, obj: PyRx.RxObject, /) -> None: ...
@@ -3066,6 +3441,142 @@ class AssocPersSubentIdPE(PyRx.RxObject):
         Gets the coordinates of a vertex subentity. The default implementation just returns
         Acad::eNotImplemented.
         """
+
+class AssocStatus(_BoostPythonEnum):
+    kIsUpToDateAssocStatus: ClassVar[Self]  # 0
+    kChangedDirectlyAssocStatus: ClassVar[Self]  # 1
+    kChangedTransitivelyAssocStatus: ClassVar[Self]  # 2
+    kChangedNoDifferenceAssocStatus: ClassVar[Self]  # 3
+    kFailedToEvaluateAssocStatus: ClassVar[Self]  # 4
+    kErasedAssocStatus: ClassVar[Self]  # 5
+    kSuppressedAssocStatus: ClassVar[Self]  # 6
+    kUnresolvedAssocStatus: ClassVar[Self]  # 7
+
+class AssocTransformationType(_BoostPythonEnum):
+    kNotSpecified: ClassVar[Self]  # 0
+    kStretch: ClassVar[Self]  # 1
+    kRotate: ClassVar[Self]  # 2
+    kMove: ClassVar[Self]  # 3
+
+class AssocValueDependency(PyDb.AssocDependency):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, createImpObject: bool, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> AssocValueDependency: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AssocValueDependency: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def getDependentOnObjectValue(self, /) -> EvalVariant: ...
+    def setDependentOnObjectValue(self, val: PyDb.EvalVariant, /) -> None: ...
+    def setValueName(self, val: str, /) -> None: ...
+    def valueName(self, /) -> str: ...
+
+class AssocVariable(PyDb.AssocAction):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, createImpObject: bool, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> AssocVariable: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AssocVariable: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def description(self, /) -> str: ...
+    @overload
+    def evaluateExpression(self, /) -> tuple: ...
+    @overload
+    def evaluateExpression(
+        self, expression: str, evaluatorId: str, networkId: PyDb.ObjectId, /
+    ) -> tuple: ...
+    @overload
+    def evaluateExpression(
+        self, objectIds: list[PyDb.ObjectId], objectValues: list[PyDb.EvalVariant], /
+    ) -> tuple: ...
+    @overload
+    def evaluateExpression(self, *args) -> tuple: ...
+    def evaluatorId(self, /) -> str: ...
+    def expression(self, convertSymbolNamesFromCanonicalForm: bool = False, /) -> str: ...
+    def findObjectByName(self, objectName: str, pObjectClass: PyRx.RxClass, /) -> ObjectId: ...
+    def isAnonymous(self, /) -> bool: ...
+    def isMergeable(self, /) -> bool: ...
+    def mergeableVariableName(self, /) -> str: ...
+    def mustMerge(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, /) -> None: ...
+    def setEvaluatorId(self, evalId: str, /) -> None: ...
+    def setExpression(
+        self,
+        newExpression: str,
+        evaluatorId: str,
+        checkForCyclicalDependencies: bool,
+        updateDependenciesOnReferencedSymbol: bool,
+        silentMode: bool = False,
+        /,
+    ) -> tuple: ...
+    @overload
+    def setIsMergeable(self, isMerg: bool, /) -> None: ...
+    @overload
+    def setIsMergeable(
+        self, isMerg: bool, mustMerg: bool, mergeableVariableName: bool, /
+    ) -> None: ...
+    @overload
+    def setIsMergeable(self, *args) -> None: ...
+    def setName(self, newName: str, updateReferencingExpressions: bool, /) -> None: ...
+    def setValue(self, evalId: PyDb.EvalVariant, /) -> None: ...
+    def validateNameAndExpression(
+        self, nameToValidate: str, expressionToValidate: str, /
+    ) -> tuple: ...
+    def value(self, /) -> EvalVariant: ...
 
 class AttributeDefinition(PyDb.Text):
     @overload
