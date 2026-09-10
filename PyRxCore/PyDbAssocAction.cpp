@@ -239,7 +239,6 @@ void makePyDbAssocDependencyWrapper()
         ;
 }
 
-
 PyDbAssocDependency::PyDbAssocDependency()
     : PyDbAssocDependency(new AcDbAssocDependency(), true)
 {
@@ -622,7 +621,7 @@ PyRxClass PyDbAssocValueDependency::desc()
 
 std::string PyDbAssocValueDependency::className()
 {
-    return "AcDbAssocAction";
+    return "AcDbAssocValueDependency";
 }
 
 PyDbAssocValueDependency PyDbAssocValueDependency::cloneFrom(const PyRxObject& src)
@@ -1439,7 +1438,7 @@ void makePyDbAssocVariableWrapper()
         .def("setValue", &PyDbAssocVariable::setValue, DS.ARGS({ "evalId:PyDb.EvalVariant" }))
         .def("description", &PyDbAssocVariable::description, DS.ARGS())
         .def("isAnonymous", &PyDbAssocVariable::isAnonymous, DS.ARGS())
-        .def("setName", &PyDbAssocVariable::isAnonymous, DS.ARGS({ "newName:str","updateReferencingExpressions:bool" }))
+        .def("setName", &PyDbAssocVariable::setName, DS.ARGS({ "newName:str","updateReferencingExpressions:bool" }))
         .def("findObjectByName", &PyDbAssocVariable::findObjectByName, DS.ARGS({ "objectName:str","pObjectClass:PyRx.RxClass" }))
         .def("validateNameAndExpression", &PyDbAssocVariable::validateNameAndExpression, DS.ARGS({ "nameToValidate:str","expressionToValidate:str" }))
         .def("setExpression", &PyDbAssocVariable::setExpression1)

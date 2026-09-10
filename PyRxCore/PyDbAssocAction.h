@@ -2,6 +2,10 @@
 
 #pragma pack (push, 8)
 
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+#define ASSOCNETWORK_FEATURE
+#endif
+
 #if defined(ASSOCNETWORK_FEATURE)
 
 #include "PyDbObject.h"
