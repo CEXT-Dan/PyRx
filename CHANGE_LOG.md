@@ -1,3 +1,12 @@
+## v3.1.9
+
+* enable [#423] (AcDbAssoc*) for testing
+* Add Gs.Core.displayImage
+* [#546] add AcDbProxyObject
+* [#546] add AcDbProxyEntity
+* add enum Db.EraseMask
+* improve BlockImageRenderer::render performance 
+
 ## v3.1.8
 
 * Build for BricsCAD V27 beta-3
