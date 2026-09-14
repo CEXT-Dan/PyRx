@@ -57,8 +57,8 @@ public:
     void                swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict) const;
     bool                hasXData(const std::string& regappName) const;
     void                setXData(const boost::python::list& xdata) const;
-    virtual boost::python::list xData1() const;
-    virtual boost::python::list xData2(const std::string& regappName) const;
+    boost::python::list xData1() const;
+    boost::python::list xData2(const std::string& regappName) const;
     void                xDataTransformBy(const AcGeMatrix3d& xform) const;
     Adesk::Boolean      isEraseStatusToggled() const;
     Adesk::Boolean      isErased() const;
@@ -94,6 +94,7 @@ public:
     PyDbObjectId        getFieldDictionary(void) const;
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
+    boost::python::list dwgOut();
     void                snoop(PyDbSnoopDwgFiler& filer) const;
     void                snoopdxf(PyDbSnoopDxfFiler& filer) const;
     PyDbObject          deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap) const;

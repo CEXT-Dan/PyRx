@@ -10297,6 +10297,7 @@ class DbObject(PyGi.Drawable):
         proper open status. This function must have been preceded by a call to upgradeFromNotify().
         Returns Acad::eOk if successful.
         """
+    def dwgOut(self, /) -> list: ...
     def erase(self, erasing: bool = True, /) -> None:
         """
         Sets the erase bit of the object. If erasing == Adesk::kTrue, then the erase bit is set on.
