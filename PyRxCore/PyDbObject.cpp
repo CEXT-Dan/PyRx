@@ -97,7 +97,7 @@ void makePyDbObjectWrapper()
         .def("setBinaryData", &PyDbObject::setBinaryData, DS.ARGS({ "key: str", "data: memoryview" }))
         .def("getXDBinaryData", &PyDbObject::getXDBinaryData, DS.ARGS({ "key: str" }))
         .def("setXDBinaryData", &PyDbObject::setXDBinaryData, DS.ARGS({ "key: str", "data: memoryview" }))
-        .def("dwgOut", &PyDbObject::dwgOut, DS.ARGS())
+        .def("dwgDump", &PyDbObject::dwgDump, DS.ARGS())
         .def("desc", &PyDbObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -466,7 +466,7 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 }
 
-boost::python::list PyDbObject::dwgOut()
+boost::python::list PyDbObject::dwgDump()
 {
     PyDbSnoopDwgFiler filer(AcDb::FilerType::kCopyFiler);
     PyThrowBadEs(impObj()->dwgOut(&filer));

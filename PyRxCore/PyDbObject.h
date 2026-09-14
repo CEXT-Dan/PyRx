@@ -94,7 +94,7 @@ public:
     PyDbObjectId        getFieldDictionary(void) const;
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
-    boost::python::list dwgOut();
+    boost::python::list dwgDump();
     void                snoop(PyDbSnoopDwgFiler& filer) const;
     void                snoopdxf(PyDbSnoopDxfFiler& filer) const;
     PyDbObject          deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap) const;
