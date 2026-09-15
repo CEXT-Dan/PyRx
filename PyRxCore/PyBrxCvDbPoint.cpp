@@ -27,7 +27,7 @@ void makePyBrxCvDbPointWrapper()
         .def("setRawDescription", &PyBrxCvDbPoint::setRawDescription, DS.ARGS({ "val : str" }))
         .def("fullDescription", &PyBrxCvDbPoint::fullDescription, DS.ARGS())
 #if !defined(_BRXTARGET240)
-        .def("setFullDescription", &PyBrxCvDbPoint::setRawDescription, DS.ARGS({ "val : str" }))
+        .def("setFullDescription", &PyBrxCvDbPoint::setFullDescription, DS.ARGS({ "val : str" }))
 #endif
         .def("easting", &PyBrxCvDbPoint::easting, DS.ARGS())
         .def("setEasting", &PyBrxCvDbPoint::setEasting, DS.ARGS({ "val : float" }))

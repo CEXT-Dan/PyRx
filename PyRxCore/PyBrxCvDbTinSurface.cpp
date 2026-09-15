@@ -216,7 +216,7 @@ void makePyBrxCvDbTinSurfaceBoundaryWrapper()
     PyDocString DS("CvDbTinSurfaceBoundary");
     class_<PyBrxCvDbTinSurfaceBoundary, bases<PyBrxCvDbTinSurfaceConstraint>>("CvDbTinSurfaceBoundary", no_init)
         .def(init<BrxCvDbTinSurfaceBoundary::ETinBoundaryType>(DS.ARGS({ "type: PyBrxCv.TinBoundaryType" })))
-        .def("wallType", &PyBrxCvDbTinSurfaceBoundary::boundaryType, DS.ARGS())
+        .def("boundaryType", &PyBrxCvDbTinSurfaceBoundary::boundaryType, DS.ARGS())
         .def("className", &PyBrxCvDbTinSurfaceBoundary::className, DS.SARGS()).staticmethod("className")
         ;
 }

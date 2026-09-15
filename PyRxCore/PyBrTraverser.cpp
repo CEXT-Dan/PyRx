@@ -900,7 +900,7 @@ void makePyBrFaceLoopTraverserWrapper()
         .def("setFaceAndLoop", &PyBrFaceLoopTraverser::setFaceAndLoop, DS.ARGS({ "val: PyBr.Loop" }))
         .def("setFace", &PyBrFaceLoopTraverser::setFace, DS.ARGS({ "val: PyBr.Face" }))
         .def("setLoop", &PyBrFaceLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.Loop" }))
-        .def("setFaceTraverser", &PyBrFaceLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.ShellFaceTraverser" }))
+        .def("setFaceTraverser", &PyBrFaceLoopTraverser::setFaceTraverser, DS.ARGS({ "val: PyBr.ShellFaceTraverser" }))
         .def("className", &PyBrFaceLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrFaceLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;

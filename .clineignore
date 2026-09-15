@@ -1,0 +1,41 @@
+# ==========================================
+# 1. CRITICAL EXCLUSIONS (Block these completely first)
+# ==========================================
+node_modules/
+.git/
+build/
+dist/
+venv/
+.venv/
+__pycache__/
+
+# Block all specific versioned project variants completely
+PyRx[0-9]*/
+PyRxG[0-9]*/
+PyRxV[0-9]*/
+PyRxZ[0-9]*/
+
+# Block binaries, dynamic libraries, and CAD runtime modules
+*.pyc
+*.pyd
+*.so
+*.dll
+*.lib
+*.arx
+*.brx
+*.grx
+*.zrx
+
+# ==========================================
+# 2. THE C++ SCOPING FILTER
+# ==========================================
+# Step A: Ignore everything left over by default
+*
+
+# Step B: Re-allow directories so Cline can look inside them for C++ files
+!*/
+
+# Step C: Explicitly whitelist only our target source and header files
+!*.cpp
+!*.h
+!*.hpp

@@ -67,7 +67,7 @@ void makePyGePlaneWrapper()
         .def("set", &PyGePlane::set4, DS.OVRL(setOverloads))
         .def_pickle(PyGePlanePickleSuite())
         .def("cast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
-        .def("copycast", &PyGePlane::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
+        .def("copycast", &PyGePlane::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGePlane::className, DS.SARGS()).staticmethod("className")
         ;
 }
