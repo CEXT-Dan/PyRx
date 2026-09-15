@@ -137,7 +137,7 @@ void makePyBrxBimIfcImportInfoWrapper()
 {
     PyDocString DS("IfcImportInfo");
     class_<PyBrxBimIfcImportInfo>("IfcImportInfo")
-        .def("className", &PyBrxBimIfcImportInfo::fileName, DS.ARGS())
+        .def("fileName", &PyBrxBimIfcImportInfo::fileName, DS.ARGS())
         .def("timeStamp", &PyBrxBimIfcImportInfo::timeStamp, DS.ARGS())
         .def("author", &PyBrxBimIfcImportInfo::author, DS.ARGS())
         .def("organization", &PyBrxBimIfcImportInfo::organization, DS.ARGS())

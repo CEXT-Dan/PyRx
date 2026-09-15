@@ -121,7 +121,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("initFloatingPosition", &PyCAdUiPaletteSet::initFloatingPosition, DS.ARGS({ "rect: tuple[int,int,int,int]" }))
         .def("dockControlBar", &PyCAdUiPaletteSet::dockControlBar, DS.ARGS({ "style: PyAp.PaletteDockStyle","rect: tuple[int,int,int,int]" }))
         .def("showPalettes", &PyCAdUiPaletteSet::showPalettes, DS.SARGS()).staticmethod("showPalettes")
-        .def("hidePalettes", &PyCAdUiPaletteSet::showPalettes, DS.SARGS()).staticmethod("hidePalettes")
+        .def("hidePalettes", &PyCAdUiPaletteSet::hidePalettes, DS.SARGS()).staticmethod("hidePalettes")
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)

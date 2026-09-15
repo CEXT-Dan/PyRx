@@ -853,7 +853,7 @@ void makePyDbGeoCoordinateSystemTransformerWrapper()
     PyDocString DS("GeoCoordinateSystemTransformer");
     class_<PyDbGeoCoordinateSystemTransformer>("GeoCoordinateSystemTransformer", no_init)
         .def("getSourceCoordinateSystemId", &PyDbGeoCoordinateSystemTransformer::getSourceCoordinateSystemId, DS.ARGS())
-        .def("getSourceCoordinateSystemId", &PyDbGeoCoordinateSystemTransformer::getTargetCoordinateSystemId, DS.ARGS())
+        .def("getTargetCoordinateSystemId", &PyDbGeoCoordinateSystemTransformer::getTargetCoordinateSystemId, DS.ARGS())
         .def("transformPoint", &PyDbGeoCoordinateSystemTransformer::transformPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("transformPoints", &PyDbGeoCoordinateSystemTransformer::transformPoints, DS.ARGS({ "pts: list[PyGe.Point3d]" }))
         .def("create", &PyDbGeoCoordinateSystemTransformer::create, DS.SARGS({ "sourceCoordSysId : str","targetCoordSysId : str" })).staticmethod("create")

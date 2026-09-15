@@ -15,7 +15,7 @@ void makePyBrxCvDbStylePartDisplaySettingsWrapper()
 {
     PyDocString DS("CvDbStylePartDisplaySettings");
     class_<PyBrxCvDbStylePartDisplaySettings, bases<PyBrxCvDbSubObject>>("CvDbStylePartDisplaySettings", boost::python::no_init)
-        .def("displaySetting", &PyBrxCvDbStylePartDisplaySettings::isVisible, DS.ARGS())
+        .def("isVisible", &PyBrxCvDbStylePartDisplaySettings::isVisible, DS.ARGS())
         .def("setVisible", &PyBrxCvDbStylePartDisplaySettings::setVisible, DS.ARGS({ "val: bool" }))
         .def("color", &PyBrxCvDbStylePartDisplaySettings::color, DS.ARGS())
         .def("setColor", &PyBrxCvDbStylePartDisplaySettings::setColor, DS.ARGS({ "clr: PyDb.Color" }))
