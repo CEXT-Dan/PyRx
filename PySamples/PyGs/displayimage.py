@@ -1,5 +1,6 @@
-from pyrx import Ap, Ax, Db, Ed, Ge, Gs
 import wx
+
+from pyrx import Ap, Ed, Gs
 
 
 @Ap.Command()
