@@ -170,6 +170,8 @@ public:
     PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete);
     virtual ~PyDbEvalExpr() override = default;
 
+    AcDbEvalNodeId          nodeId() const;
+
     static std::string      className();
     static PyRxClass        desc();
     static PyDbEvalExpr  cast(const PyRxObject& src);

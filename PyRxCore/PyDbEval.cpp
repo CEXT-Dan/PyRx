@@ -802,9 +802,10 @@ void makePyDbEvalExprWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("className", &PyDbProxyObject::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyDbProxyObject::desc, DS.SARGS(15560)).staticmethod("desc")
-        .def("cast", &PyDbProxyObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("nodeId", &PyDbEvalExpr::nodeId, DS.ARGS())
+        .def("className", &PyDbEvalExpr::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbEvalExpr::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbEvalExpr::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 #endif
 }
@@ -828,6 +829,11 @@ PyDbEvalExpr::PyDbEvalExpr(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbEvalExpr::PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
+}
+
+AcDbEvalNodeId PyDbEvalExpr::nodeId() const
+{
+    return impObj()->nodeId();
 }
 
 std::string PyDbEvalExpr::className()
