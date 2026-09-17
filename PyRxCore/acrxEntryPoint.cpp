@@ -695,7 +695,7 @@ public:
         PyDbDbBlockUserParameter param;
         param.setAcDbAssocVariable(varId);
         param.setVisible(false);
-        acutPrintf(param.isVisible() ? _T("\nTrue"): _T("\nFalse"));
+        acutPrintf(param.isVisible() ? _T("\nTrue") : _T("\nFalse"));
 
         AcDbEvalNodeId nodeid;
         pgraph->addNode(AcDbEvalExpr::cast(param.impObj()), nodeid);
