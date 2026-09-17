@@ -578,6 +578,9 @@ static BOOST_PYTHON_MODULE(PyDb)
 #if defined(_ARXTARGET)
     makeXRefLayerPropertyOverride();
 #endif
+    makePyDbEvalExprWrapper();
+    makePyDbDbBlockUserParameterWrapper();
+
     makeDbCoreWrapper();//LAST?
 
     //convenience 
