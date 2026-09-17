@@ -1,5 +1,5 @@
 #pragma once
-#include "PyRxObject.h"
+#include "PyDbObject.h"
 
 #pragma pack (push, 8)
 class AcRxValue;
@@ -154,5 +154,62 @@ public:
 public:
     AcValue* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------------
+//PyDbEvalExpr
+void makePyDbEvalExprWrapper();
+
+#if defined(_ARXTARGET)
+class PyDbEvalExpr : public PyDbObject
+{
+public:
+    PyDbEvalExpr();
+    PyDbEvalExpr(const PyDbObjectId& id);
+    PyDbEvalExpr(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete);
+    virtual ~PyDbEvalExpr() override = default;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbEvalExpr  cast(const PyRxObject& src);
+public:
+    AcDbEvalExpr* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+//-----------------------------------------------------------------------------------------
+//PyDbDbBlockUserParameter
+void makePyDbDbBlockUserParameterWrapper();
+
+#if defined(_ARXTARGET)
+class PyDbDbBlockUserParameter : public PyDbEvalExpr
+{
+public:
+    PyDbDbBlockUserParameter();
+    PyDbDbBlockUserParameter(const PyDbObjectId& id);
+    PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbDbBlockUserParameter(AcDbEvalExpr* ptr, bool autoDelete);
+    virtual ~PyDbDbBlockUserParameter() override = default;
+
+    //AcDbBlockParameter
+    bool            isShownInProperties() const;
+    void            setShownInProperties(bool flag) const;
+
+    //AcDbBlockUserParameter
+    PyDbObjectId    getAssocVariable() const;
+    void            setAssocVariable(const PyDbObjectId& varid);
+    void            checkValid() const;
+
+    static std::string   className();
+    static PyRxClass     desc();
+    static PyDbEvalExpr  cast(const PyRxObject& src);
+    static AcDbEvalExpr* create();
+public:
+    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+
 
 #pragma pack (pop)

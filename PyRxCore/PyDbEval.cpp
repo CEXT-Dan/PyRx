@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PyDbEval.h"
 #include "PyDbObjectId.h"
+#include "PyDbFiler.h"
+#include "AcDbAssocVariable.h"
 
 using namespace boost::python;
 
@@ -789,3 +791,253 @@ AcValue* PyDbAcValue::impObj(const std::source_location& src /*= std::source_loc
     }
     return static_cast<AcValue*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyDbEvalExpr
+void makePyDbEvalExprWrapper()
+{
+#if defined(_ARXTARGET)
+    PyDocString DS("EvalExpr");
+    class_<PyDbEvalExpr, bases<PyDbObject>>("EvalExpr")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("className", &PyDbProxyObject::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbProxyObject::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbProxyObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+#endif
+}
+
+#if defined(_ARXTARGET)
+PyDbEvalExpr::PyDbEvalExpr()
+    : PyDbObject(new AcDbEvalExpr(), true)
+{
+}
+
+PyDbEvalExpr::PyDbEvalExpr(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbEvalExpr>(id), false)
+{
+}
+
+PyDbEvalExpr::PyDbEvalExpr(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(openAcDbObject<AcDbEvalExpr>(id, mode), false)
+{
+}
+
+PyDbEvalExpr::PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+std::string PyDbEvalExpr::className()
+{
+    return "AcDbEvalExpr";
+}
+
+PyRxClass PyDbEvalExpr::desc()
+{
+    return PyRxClass(AcDbEvalExpr::desc(), false);
+}
+
+PyDbEvalExpr PyDbEvalExpr::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbEvalExpr>(src);
+}
+
+AcDbEvalExpr* PyDbEvalExpr::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbEvalExpr*>(m_pyImp.get());
+}
+#endif
+
+//-----------------------------------------------------------------------------------------
+//makePyDbDbBlockUserParameterWrapper
+void makePyDbDbBlockUserParameterWrapper()
+{
+#if defined(_ARXTARGET)
+    PyDocString DS("BlockUserParameter");
+    class_<PyDbDbBlockUserParameter, bases<PyDbEvalExpr>>("BlockUserParameter")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+
+        .def("isShownInProperties", &PyDbDbBlockUserParameter::isShownInProperties, DS.ARGS())
+        .def("setShownInProperties", &PyDbDbBlockUserParameter::setShownInProperties, DS.ARGS({"show : bool"}))
+        .def("getAssocVariable", &PyDbDbBlockUserParameter::getAssocVariable, DS.ARGS())
+        .def("setAssocVariable", &PyDbDbBlockUserParameter::setAssocVariable, DS.ARGS({ "assocId: PyDb.ObjectId" }))
+
+        .def("className", &PyDbDbBlockUserParameter::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDbBlockUserParameter::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbDbBlockUserParameter::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+#endif
+}
+
+#if defined(_ARXTARGET)
+PyDbDbBlockUserParameter::PyDbDbBlockUserParameter()
+    : PyDbDbBlockUserParameter(create(), true)
+{
+}
+
+PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(const PyDbObjectId& id)
+    : PyDbDbBlockUserParameter(openAcDbObject<AcDbEvalExpr>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbDbBlockUserParameter(openAcDbObject<AcDbEvalExpr>(id, mode), false)
+{
+}
+
+PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(AcDbEvalExpr* ptr, bool autoDelete)
+    : PyDbEvalExpr(ptr, autoDelete)
+{
+    checkValid();
+}
+
+bool PyDbDbBlockUserParameter::isShownInProperties() const
+{
+    bool flag = false;
+    AcDbObject* pObj = impObj();
+    pObj->assertReadEnabled();
+
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+    if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+        PyThrowBadEs(Acad::eFilerError);
+
+    PyThrowBadEs(memoryFiler.seek(12, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kBoolean))
+        PyThrowBadEs(memoryFiler.readBool(&flag));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    return flag;
+}
+
+void PyDbDbBlockUserParameter::setShownInProperties(bool flag) const
+{
+    AcDbObject* pObj = impObj();
+    pObj->assertWriteEnabled();
+
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+    if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+        PyThrowBadEs(Acad::eFilerError);
+
+    PyThrowBadEs(memoryFiler.seek(12, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kBoolean))
+        PyThrowBadEs(memoryFiler.writeBool(flag));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    PyThrowBadEs(memoryFiler.seek(0, SEEK_SET));
+    PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
+}
+
+PyDbObjectId PyDbDbBlockUserParameter::getAssocVariable() const
+{
+    AcDbSoftPointerId id;
+    AcDbObject* pObj = impObj();
+    pObj->assertReadEnabled();
+
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+    if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+        PyThrowBadEs(Acad::eFilerError);
+
+    PyThrowBadEs(memoryFiler.seek(19, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId))
+        PyThrowBadEs(memoryFiler.readSoftPointerId(&id));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    return PyDbObjectId(id);
+}
+
+void PyDbDbBlockUserParameter::setAssocVariable(const PyDbObjectId& varid)
+{
+    AcDbObject* pObj = impObj();
+    pObj->assertWriteEnabled();
+
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+    if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+        PyThrowBadEs(Acad::eFilerError);
+
+    PyThrowBadEs(memoryFiler.seek(19, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId))
+    {
+        PyThrowBadEs(memoryFiler.writeSoftPointerId(varid.m_id));
+    }
+    else
+    {
+        PyThrowBadEs(Acad::eWrongObjectType);
+    }
+    {   //scope
+        AcDbObjectPointer<AcDbAssocVariable> pVar(varid.m_id, AcDb::kForRead);
+        PyThrowBadEs(pVar.openStatus());
+        PyThrowBadEs(memoryFiler.seek(20, SEEK_SET));
+        if (memoryFiler.peekType(FilerToken::Type::kString))
+            PyThrowBadEs(memoryFiler.writeString(pVar->description()));
+        else
+            PyThrowBadEs(Acad::eWrongObjectType);
+
+    }
+    PyThrowBadEs(memoryFiler.seek(0, SEEK_SET));
+    PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
+}
+
+void PyDbDbBlockUserParameter::checkValid() const
+{
+    if (m_pyImp != nullptr) {
+        AcRxClass* pClass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
+        if (pClass == nullptr || m_pyImp->isA() != pClass) {
+            PyThrowBadEs(Acad::ErrorStatus::eWrongObjectType);
+        }
+    }
+}
+
+std::string PyDbDbBlockUserParameter::className()
+{
+    return "AcDbBlockUserParameter";
+}
+
+PyRxClass PyDbDbBlockUserParameter::desc()
+{
+    return PyRxClass(AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter"))), false);
+}
+
+PyDbEvalExpr PyDbDbBlockUserParameter::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbEvalExpr>(src);
+}
+
+AcDbEvalExpr* PyDbDbBlockUserParameter::create()
+{
+    AcRxObject* pRxObj = acrxClassDictionary->at(_T("AcDbBlockUserParameter"));
+    AcRxClass* pClass = AcRxClass::cast(pRxObj);
+
+    if (pClass != nullptr)
+    {
+        AcDbObject* pObj = static_cast<AcDbObject*>(pClass->create());
+        if (pObj != nullptr)
+            return AcDbEvalExpr::cast(pObj);
+    }
+    PyThrowBadEs(Acad::ErrorStatus::eNullEntityPointer);
+    return nullptr;
+}
+
+AcDbObject* PyDbDbBlockUserParameter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbObject*>(m_pyImp.get());
+}
+#endif
