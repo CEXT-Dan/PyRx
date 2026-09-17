@@ -37,6 +37,8 @@
 
 //for testing 
 #ifdef PYRXDEBUG
+#include "PyDbFiler.h"
+#include "AcDbAssocVariable.h"
 #endif
 
 //-----------------------------------------------------------------------------
@@ -479,6 +481,102 @@ public:
     }
 #endif
 };
+
+class PyDbDbBlockUserParameter : public PyDbObject
+{
+    PyDbDbBlockUserParameter(): PyDbObject(create(), true) //auto delete = True
+    {
+        checkValid();
+    }
+
+    PyDbDbBlockUserParameter(const PyDbObjectId& id)
+        : PyDbObject(openAcDbObject<AcDbObject>(id, AcDb::OpenMode::kForRead), false)
+    {
+        checkValid();
+    }
+
+    PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode)
+        : PyDbObject(openAcDbObject<AcDbObject>(id,mode), false)
+    {
+        checkValid();
+    }
+
+    void checkValid()
+    {
+        if (m_pyImp != nullptr) {
+            AcRxClass* pClass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
+            if (pClass == nullptr || m_pyImp->isA() != pClass) {
+                PyThrowBadEs(Acad::ErrorStatus::eWrongObjectType);
+            }
+        }
+    }
+
+    void setAcDbAssocVariable(const AcDbObjectId& varid)
+    {
+        AcDbObject* pObj = impObj();
+        pObj->assertWriteEnabled();
+
+        CMemoryDwgFiler memoryFiler;
+        pObj->dwgOutFields(&memoryFiler);
+
+        // 1. Move to index 19 and verify it is a SoftOwnershipId
+        if (memoryFiler.seek(19, SEEK_SET) == Acad::eOk) {
+            if (memoryFiler.peekType(FilerToken::Type::kSoftOwnershipId)) {
+                memoryFiler.writeSoftOwnershipId(varid);
+            }
+            else {
+                // Handle unexpected type mismatch error here
+                memoryFiler.setFilerStatus(Acad::eWrongObjectType);
+                return;
+            }
+        }
+
+        // 2. Move to index 20 and verify it is a String
+        AcDbObjectPointer<AcDbAssocVariable> pVar(varid, AcDb::kForRead);
+        if (pVar.openStatus() == Acad::eOk) {
+            if (memoryFiler.seek(20, SEEK_SET) == Acad::eOk) {
+                if (memoryFiler.peekType(FilerToken::Type::kString)) {
+                    memoryFiler.writeString(pVar->description());
+                }
+                else {
+                    // Handle unexpected type mismatch error here
+                    memoryFiler.setFilerStatus(Acad::eWrongObjectType);
+                    return;
+                }
+            }
+        }
+
+        // 3. Reload the modified stream back into the object
+        memoryFiler.seek(0, SEEK_SET);
+        pObj->dwgInFields(&memoryFiler);
+    }
+
+    static AcDbObject* create()
+    {
+        AcRxObject* pRxObj = acrxClassDictionary->at(_T("AcDbBlockUserParameter"));
+        AcRxClass* pClass = AcRxClass::cast(pRxObj);
+
+        if (pClass != nullptr)
+        {
+            AcDbObject* pObj = static_cast<AcDbObject*>(pClass->create());
+            if (pObj != nullptr)
+                return pObj;
+        }
+        PyThrowBadEs(Acad::ErrorStatus::eNullEntityPointer);
+        return nullptr;
+    }
+
+    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const
+    {
+        if (m_pyImp == nullptr) [[unlikely]] {
+            throw PyNullObject(src);
+        }
+        return static_cast<AcDbObject*>(m_pyImp.get());
+    }
+
+};
+
+
 
 //-----------------------------------------------------------------------------
 #pragma warning ( push )
