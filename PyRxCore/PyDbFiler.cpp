@@ -672,18 +672,16 @@ Acad::ErrorStatus CMemoryDwgFiler::readUInt8(Adesk::UInt8* pVal) { return readTo
 Acad::ErrorStatus CMemoryDwgFiler::writeUInt8(Adesk::UInt8 val) { return writeToken(FilerToken::Type::kUInt8, val); }
 Acad::ErrorStatus CMemoryDwgFiler::readBool(bool* pVal) { return readToken(FilerToken::Type::kBoolean, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeBool(bool val) { return writeToken(FilerToken::Type::kBoolean, val); }
-
-Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) {return writeBool(val ? true : false);}
+Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) { return writeBool(val ? true : false); }
 Acad::ErrorStatus CMemoryDwgFiler::readBoolean(Adesk::Boolean* pVal) {
-    if (!pVal) 
+    if (!pVal)
         return Acad::eInvalidInput;
     bool val;
     Acad::ErrorStatus es = readBool(&val);
-    if (es == Acad::eOk) 
+    if (es == Acad::eOk)
         *pVal = val ? Adesk::kTrue : Adesk::kFalse;
     return es;
 }
-
 Acad::ErrorStatus CMemoryDwgFiler::readDouble(double* pVal) { return readToken(FilerToken::Type::kDouble, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeDouble(double val) { return writeToken(FilerToken::Type::kDouble, val); }
 Acad::ErrorStatus CMemoryDwgFiler::readPoint2d(AcGePoint2d* pVal) { return readToken(FilerToken::Type::kPoint2d, pVal); }
@@ -700,7 +698,7 @@ Acad::ErrorStatus CMemoryDwgFiler::readAcDbHandle(AcDbHandle* pVal) { return rea
 Acad::ErrorStatus CMemoryDwgFiler::writeAcDbHandle(const AcDbHandle& val) { return writeToken(FilerToken::Type::kHandle, val); }
 
 // --- String Fields Handling ---
-Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) {return readToken(FilerToken::Type::kString, &val);}
+Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) { return readToken(FilerToken::Type::kString, &val); }
 Acad::ErrorStatus CMemoryDwgFiler::writeString(const AcString& val) { return writeToken(FilerToken::Type::kString, val); }
 Acad::ErrorStatus CMemoryDwgFiler::writeString(const ACHAR* pVal) {
     if (pVal == nullptr) return Acad::eInvalidInput;
