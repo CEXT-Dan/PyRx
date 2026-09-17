@@ -257,8 +257,7 @@ public:
     virtual Acad::ErrorStatus   writeAddress(const void* pVal) override;
     virtual Acad::ErrorStatus   seek(Adesk::Int64 nOffset, int nMethod) override;
     virtual Adesk::Int64        tell() const override;
-    bool peekType(FilerToken::Type expectedType) const;
-
+    bool                        peekType(FilerToken::Type expectedType) const;
 
 public:
     Acad::ErrorStatus   m_stat = eOk;

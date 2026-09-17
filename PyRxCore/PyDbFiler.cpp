@@ -586,7 +586,14 @@ CMemoryDwgFiler::CMemoryDwgFiler()
 {
 }
 
-// --- Position Controls (Seek / Tell) ---
+bool CMemoryDwgFiler::peekType(FilerToken::Type expectedType) const
+{
+    if (m_index >= m_tokens.size()) {
+        return false;
+    }
+    const auto curtype = m_tokens[m_index].type;
+    return curtype == expectedType;
+}
 
 Adesk::Int64 CMemoryDwgFiler::tell() const
 {
@@ -869,14 +876,4 @@ Acad::ErrorStatus CMemoryDwgFiler::readAddress(void** pVal) {
     Acad::ErrorStatus es = readInt64(&val);
     if (es == Acad::eOk) *pVal = reinterpret_cast<void*>(val);
     return es;
-}
-
-bool CMemoryDwgFiler::peekType(FilerToken::Type expectedType) const
-{
-    // Ensure the current index points to a valid, existing token
-    if (m_index >= m_tokens.size()) {
-        return false;
-    }
-    // Verify if the token type matches what you expect
-    return m_tokens[m_index].type == expectedType;
 }
