@@ -272,21 +272,28 @@ private:
     template <typename T>
     Acad::ErrorStatus writeToken(FilerToken::Type type, T&& value)
     {
-        if (m_index > m_tokens.size()) {
+        if (m_index > m_tokens.size())
+        {
             m_stat = Acad::eInvalidInput;
             return m_stat;
         }
 
-        try {
+        try
+        {
             FilerToken token{ type, std::forward<T>(value) };
-            if (m_index == m_tokens.size()) {
+            if (m_index == m_tokens.size())
+            {
                 m_tokens.push_back(std::move(token));
             }
-            else {
+            else
+            {
+                if (type != m_tokens[m_index].type)
+                    PyThrowBadEs(eInvalidInput);
                 m_tokens[m_index] = std::move(token);
             }
         }
-        catch (const std::bad_alloc&) {
+        catch (const std::bad_alloc&)
+        {
             m_stat = Acad::eOutOfMemory;
             return m_stat;
         }
