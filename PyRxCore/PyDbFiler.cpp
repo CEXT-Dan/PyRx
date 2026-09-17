@@ -630,13 +630,13 @@ Acad::ErrorStatus CMemoryDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
     if (nOffset == (std::numeric_limits<Adesk::Int64>::min)()
         || (nOffset < 0 && baseIndex < -nOffset)
         || (nOffset > 0 && baseIndex > kMaxIndex - nOffset)) {
-        m_stat = Acad::eEndOfFile;
+        m_stat = Acad::eEndOfObject;
         return m_stat;
     }
 
     const Adesk::Int64 targetIndex = baseIndex + nOffset;
     if (targetIndex > static_cast<Adesk::Int64>(m_tokens.size())) {
-        m_stat = Acad::eEndOfFile;
+        m_stat = Acad::eEndOfObject;
         return m_stat;
     }
 
@@ -752,7 +752,7 @@ Acad::ErrorStatus CMemoryDwgFiler::readByteBuffer(const FilerToken::ByteBuffer**
 {
     if (pBytes == nullptr) return Acad::eInvalidInput;
     if (m_index >= m_tokens.size()) {
-        m_stat = Acad::eEndOfFile;
+        m_stat = Acad::eEndOfObject;
         return m_stat;
     }
 
