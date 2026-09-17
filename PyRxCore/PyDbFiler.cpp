@@ -576,3 +576,307 @@ boost::python::object PyDbSnoopDxfFiler::getitem(int idx)
 {
     return m_list[idx];
 }
+
+
+//-----------------------------------------------------------------------------------------
+//CMemoryDwgFiler
+// 
+CMemoryDwgFiler::CMemoryDwgFiler()
+    : m_stat(Acad::eOk), m_filerType(AcDb::kCopyFiler), m_index(0)
+{
+}
+
+// --- Position Controls (Seek / Tell) ---
+
+Adesk::Int64 CMemoryDwgFiler::tell() const
+{
+    return static_cast<Adesk::Int64>(m_index);
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
+{
+    size_t targetIndex = m_index;
+    if (nMethod == SEEK_SET) {
+        targetIndex = static_cast<size_t>(nOffset);
+    }
+    else if (nMethod == SEEK_CUR) {
+        targetIndex = m_index + static_cast<size_t>(nOffset);
+    }
+    else if (nMethod == SEEK_END) {
+        targetIndex = m_tokens.size() + static_cast<size_t>(nOffset);
+    }
+    else {
+        m_stat = Acad::eInvalidInput;
+        return m_stat;
+    }
+
+    if (targetIndex > m_tokens.size()) {
+        m_stat = Acad::eEndOfFile;
+        return m_stat;
+    }
+
+    m_index = targetIndex;
+    return Acad::eOk;
+}
+
+// --- Helper Macros for Read/Write Boilerplate ---
+#define IMPLEMENT_FILER_WRITE(Func, TypeEnum, DataType) \
+Acad::ErrorStatus CMemoryDwgFiler::Func(const DataType& val) { \
+    FilerToken token; \
+    token.type = FilerToken::Type::TypeEnum; \
+    token.value = val; \
+    if (m_index >= m_tokens.size()) { \
+        m_tokens.push_back(token); \
+        m_index++; \
+    } else { \
+        m_tokens[m_index++] = token; \
+    } \
+    return Acad::eOk; \
+}
+
+#define IMPLEMENT_FILER_WRITE_VAL(Func, TypeEnum, DataType) \
+Acad::ErrorStatus CMemoryDwgFiler::Func(DataType val) { \
+    FilerToken token; \
+    token.type = FilerToken::Type::TypeEnum; \
+    token.value = val; \
+    if (m_index >= m_tokens.size()) { \
+        m_tokens.push_back(token); \
+        m_index++; \
+    } else { \
+        m_tokens[m_index++] = token; \
+    } \
+    return Acad::eOk; \
+}
+
+#define IMPLEMENT_FILER_READ(Func, TypeEnum, DataType) \
+Acad::ErrorStatus CMemoryDwgFiler::Func(DataType* pVal) { \
+    if (!pVal) return Acad::eInvalidInput; \
+    if (m_index >= m_tokens.size()) { \
+        m_stat = Acad::eEndOfFile; \
+        return m_stat; \
+    } \
+    const auto& token = m_tokens[m_index]; \
+    if (token.type != FilerToken::Type::TypeEnum) { \
+        m_stat = Acad::eWrongObjectType; \
+        return m_stat; \
+    } \
+    *pVal = std::get<DataType>(token.value); \
+    m_index++; \
+    return Acad::eOk; \
+}
+
+// --- ID Field Implementations ---
+IMPLEMENT_FILER_READ(readHardOwnershipId, kHardOwnershipId, AcDbHardOwnershipId)
+IMPLEMENT_FILER_WRITE(writeHardOwnershipId, kHardOwnershipId, AcDbHardOwnershipId)
+
+IMPLEMENT_FILER_READ(readSoftOwnershipId, kSoftOwnershipId, AcDbSoftOwnershipId)
+IMPLEMENT_FILER_WRITE(writeSoftOwnershipId, kSoftOwnershipId, AcDbSoftOwnershipId)
+
+IMPLEMENT_FILER_READ(readHardPointerId, kHardPointerId, AcDbHardPointerId)
+IMPLEMENT_FILER_WRITE(writeHardPointerId, kHardPointerId, AcDbHardPointerId)
+
+IMPLEMENT_FILER_READ(readSoftPointerId, kSoftPointerId, AcDbSoftPointerId)
+IMPLEMENT_FILER_WRITE(writeSoftPointerId, kSoftPointerId, AcDbSoftPointerId)
+
+// --- Primitive Integer Implementations ---
+Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal) 
+{
+    if (!pVal) return Acad::eInvalidInput;
+    Adesk::UInt8 val;
+    Acad::ErrorStatus es = readUInt8(&val);
+    if (es == Acad::eOk) *pVal = static_cast<Adesk::Int8>(val);
+    return es;
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::writeInt8(Adesk::Int8 val) {
+    FilerToken token;
+    token.type = FilerToken::Type::kUInt8;
+    // Explicitly cast the signed byte to an unsigned byte for variant storage
+    token.value = static_cast<Adesk::UInt8>(val);
+
+    if (m_index >= m_tokens.size()) {
+        m_tokens.push_back(token);
+        m_index++;
+    }
+    else {
+        m_tokens[m_index++] = token;
+    }
+    return Acad::eOk;
+}
+
+IMPLEMENT_FILER_READ(readInt16, kInt16, Adesk::Int16)
+IMPLEMENT_FILER_WRITE_VAL(writeInt16, kInt16, Adesk::Int16)
+
+IMPLEMENT_FILER_READ(readUInt16, kUInt16, Adesk::UInt16)
+IMPLEMENT_FILER_WRITE_VAL(writeUInt16, kUInt16, Adesk::UInt16)
+
+IMPLEMENT_FILER_READ(readInt32, kInt32, Adesk::Int32)
+IMPLEMENT_FILER_WRITE_VAL(writeInt32, kInt32, Adesk::Int32)
+
+IMPLEMENT_FILER_READ(readUInt32, kUInt32, Adesk::UInt32)
+IMPLEMENT_FILER_WRITE_VAL(writeUInt32, kUInt32, Adesk::UInt32)
+
+IMPLEMENT_FILER_READ(readInt64, kInt64, Adesk::Int64)
+IMPLEMENT_FILER_WRITE_VAL(writeInt64, kInt64, Adesk::Int64)
+
+IMPLEMENT_FILER_READ(readUInt64, kUInt64, Adesk::UInt64)
+IMPLEMENT_FILER_WRITE_VAL(writeUInt64, kUInt64, Adesk::UInt64)
+
+IMPLEMENT_FILER_READ(readUInt8, kUInt8, Adesk::UInt8)
+IMPLEMENT_FILER_WRITE_VAL(writeUInt8, kUInt8, Adesk::UInt8)
+
+// --- Boolean and Real Implementations ---
+IMPLEMENT_FILER_READ(readBool, kBoolean, bool)
+IMPLEMENT_FILER_WRITE_VAL(writeBool, kBoolean, bool)
+
+Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) {
+    return writeBool(val ? true : false);
+}
+Acad::ErrorStatus CMemoryDwgFiler::readBoolean(Adesk::Boolean* pVal) {
+    if (!pVal) return Acad::eInvalidInput;
+    bool val;
+    Acad::ErrorStatus es = readBool(&val);
+    if (es == Acad::eOk) *pVal = val ? Adesk::kTrue : Adesk::kFalse;
+    return es;
+}
+
+IMPLEMENT_FILER_READ(readDouble, kDouble, double)
+IMPLEMENT_FILER_WRITE_VAL(writeDouble, kDouble, double)
+
+// --- Geometric Data Types ---
+IMPLEMENT_FILER_READ(readPoint2d, kPoint2d, AcGePoint2d)
+IMPLEMENT_FILER_WRITE(writePoint2d, kPoint2d, AcGePoint2d)
+
+IMPLEMENT_FILER_READ(readPoint3d, kPoint3d, AcGePoint3d)
+IMPLEMENT_FILER_WRITE(writePoint3d, kPoint3d, AcGePoint3d)
+
+IMPLEMENT_FILER_READ(readVector2d, kVector2d, AcGeVector2d)
+IMPLEMENT_FILER_WRITE(writeVector2d, kVector2d, AcGeVector2d)
+
+IMPLEMENT_FILER_READ(readVector3d, kVector3d, AcGeVector3d)
+IMPLEMENT_FILER_WRITE(writeVector3d, kVector3d, AcGeVector3d)
+
+// Scale3d acts as a composite wrapper for a vector mapping
+Acad::ErrorStatus CMemoryDwgFiler::writeScale3d(const AcGeScale3d& val) {
+    return writeVector3d(AcGeVector3d(val.sx, val.sy, val.sz));
+}
+Acad::ErrorStatus CMemoryDwgFiler::readScale3d(AcGeScale3d* pVal) {
+    if (!pVal) return Acad::eInvalidInput;
+    AcGeVector3d vec;
+    Acad::ErrorStatus es = readVector3d(&vec);
+    if (es == Acad::eOk) {
+        pVal->set(vec.x, vec.y, vec.z);
+    }
+    return es;
+}
+
+// --- Handle Implementations ---
+IMPLEMENT_FILER_READ(readAcDbHandle, kHandle, AcDbHandle)
+IMPLEMENT_FILER_WRITE(writeAcDbHandle, kHandle, AcDbHandle)
+
+// --- String Fields Handling ---
+Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) {
+    if (m_index >= m_tokens.size()) {
+        m_stat = Acad::eEndOfFile;
+        return m_stat;
+    }
+    const auto& token = m_tokens[m_index];
+    if (token.type != FilerToken::Type::kString) {
+        m_stat = Acad::eWrongObjectType;
+        return m_stat;
+    }
+    // Extract directly into the reference
+    val = std::get<AcString>(token.value);
+    m_index++;
+    return Acad::eOk;
+}
+
+// This one works perfectly with the macro because it takes a reference via const AcString&
+IMPLEMENT_FILER_WRITE(writeString, kString, AcString)
+
+
+Acad::ErrorStatus CMemoryDwgFiler::writeString(const ACHAR* pVal) {
+    return writeString(AcString(pVal));
+}
+
+#if !defined(_ARXTARGET) || (_ARXTARGET < 260)
+Acad::ErrorStatus CMemoryDwgFiler::readString(ACHAR** pVal) {
+    if (!pVal) return Acad::eInvalidInput;
+    AcString str;
+    Acad::ErrorStatus es = readString(str);
+    if (es == Acad::eOk) {
+        size_t len = str.length() + 1;
+        *pVal = static_cast<ACHAR*>(acad_malloc(len * sizeof(ACHAR)));
+        if (*pVal) {
+           _tcscpy_s(*pVal, len, str.constPtr());
+        }
+        else {
+            es = Acad::eOutOfMemory;
+        }
+    }
+    return es;
+}
+#endif
+
+// --- Binary Chunk and Raw Data Fallbacks ---
+// Since token serialization handles object state properties fields natively,
+// complex chunks fall back to byte streaming array elements or handles errors.
+
+Acad::ErrorStatus CMemoryDwgFiler::writeBChunk(const ads_binary& val) {
+    // Write length first, then chunk bytes elements sequence
+    writeInt32(val.clen);
+    return writeBytes(val.buf, val.clen);
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readBChunk(ads_binary* pVal) {
+    if (!pVal) return Acad::eInvalidInput;
+    Adesk::Int32 length = 0;
+    Acad::ErrorStatus es = readInt32(&length);
+    if (es != Acad::eOk) return es;
+
+    pVal->clen = length;
+    pVal->buf = static_cast<char*>(acad_malloc(length));
+    return readBytes(pVal->buf, length);
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes) {
+    if (!pSrc) return Acad::eInvalidInput;
+    const Adesk::UInt8* bytePtr = static_cast<const Adesk::UInt8*>(pSrc);
+    for (Adesk::UIntPtr i = 0; i < nBytes; ++i) {
+        writeUInt8(bytePtr[i]);
+    }
+    return Acad::eOk;
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nBytes) {
+    if (!pDest) return Acad::eInvalidInput;
+    Adesk::UInt8* bytePtr = static_cast<Adesk::UInt8*>(pDest);
+    for (Adesk::UIntPtr i = 0; i < nBytes; ++i) {
+        Acad::ErrorStatus es = readUInt8(&bytePtr[i]);
+        if (es != Acad::eOk) return es;
+    }
+    return Acad::eOk;
+}
+
+// Memory pointers addresses aren't preserved natively over standard object state serializations
+Acad::ErrorStatus CMemoryDwgFiler::writeAddress(const void* pVal) {
+    return writeInt64(reinterpret_cast<Adesk::Int64>(pVal));
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readAddress(void** pVal) {
+    if (!pVal) return Acad::eInvalidInput;
+    Adesk::Int64 val;
+    Acad::ErrorStatus es = readInt64(&val);
+    if (es == Acad::eOk) *pVal = reinterpret_cast<void*>(val);
+    return es;
+}
+
+bool CMemoryDwgFiler::peekType(FilerToken::Type expectedType) const
+{
+    // Ensure the current index points to a valid, existing token
+    if (m_index >= m_tokens.size()) {
+        return false;
+    }
+    // Verify if the token type matches what you expect
+    return m_tokens[m_index].type == expectedType;
+}
