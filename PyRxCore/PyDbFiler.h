@@ -170,7 +170,7 @@ struct FilerToken
     };
 
     Type type;
-    std::variant<
+    std::variant <
         Adesk::UInt8,
         Adesk::Int16,
         Adesk::UInt16,

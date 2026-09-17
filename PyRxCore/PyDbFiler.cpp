@@ -655,7 +655,7 @@ Acad::ErrorStatus CMemoryDwgFiler::readSoftPointerId(AcDbSoftPointerId* pVal) { 
 Acad::ErrorStatus CMemoryDwgFiler::writeSoftPointerId(const AcDbSoftPointerId& val) { return writeToken(FilerToken::Type::kSoftPointerId, val); }
 
 // --- Primitive Integer Implementations ---
-Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal) 
+Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal)
 {
     if (pVal == nullptr) return Acad::eInvalidInput;
     Adesk::UInt8 val;
@@ -743,7 +743,7 @@ Acad::ErrorStatus CMemoryDwgFiler::readString(ACHAR** pVal) {
         size_t len = str.length() + 1;
         *pVal = static_cast<ACHAR*>(acad_malloc(len * sizeof(ACHAR)));
         if (*pVal) {
-           _tcscpy_s(*pVal, len, str.constPtr());
+            _tcscpy_s(*pVal, len, str.constPtr());
         }
         else {
             es = Acad::eOutOfMemory;
