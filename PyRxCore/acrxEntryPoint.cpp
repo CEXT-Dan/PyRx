@@ -85,7 +85,7 @@ public:
         // 1. Move to index 19 and verify it is a kSoftPointerId
         if (memoryFiler.seek(19, SEEK_SET) == Acad::eOk) {
             if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId)) {
-                memoryFiler.writeSoftPointerId(varid);
+                PyThrowBadEs(memoryFiler.writeSoftPointerId(varid));
             }
             else {
                 // Handle unexpected type mismatch error here
@@ -99,7 +99,7 @@ public:
         if (pVar.openStatus() == Acad::eOk) {
             if (memoryFiler.seek(20, SEEK_SET) == Acad::eOk) {
                 if (memoryFiler.peekType(FilerToken::Type::kString)) {
-                    memoryFiler.writeString(pVar->description());
+                    PyThrowBadEs(memoryFiler.writeString(pVar->description()));
                 }
                 else {
                     // Handle unexpected type mismatch error here
@@ -111,7 +111,7 @@ public:
 
         // 3. Reload the modified stream back into the object
         memoryFiler.seek(0, SEEK_SET);
-        pObj->dwgInFields(&memoryFiler);
+        PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
     }
 
     static AcDbObject* create()

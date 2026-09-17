@@ -595,6 +595,11 @@ bool CMemoryDwgFiler::peekType(FilerToken::Type expectedType) const
     return curtype == expectedType;
 }
 
+size_t CMemoryDwgFiler::size() const
+{
+    return m_tokens.size();
+}
+
 Adesk::Int64 CMemoryDwgFiler::tell() const
 {
     return static_cast<Adesk::Int64>(m_index);
@@ -602,139 +607,80 @@ Adesk::Int64 CMemoryDwgFiler::tell() const
 
 Acad::ErrorStatus CMemoryDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
 {
-    size_t targetIndex = m_index;
+    constexpr Adesk::Int64 kMaxIndex = (std::numeric_limits<Adesk::Int64>::max)();
+    if (m_index > static_cast<size_t>(kMaxIndex) || m_tokens.size() > static_cast<size_t>(kMaxIndex)) {
+        m_stat = Acad::eInvalidInput;
+        return m_stat;
+    }
+
+    Adesk::Int64 baseIndex = 0;
     if (nMethod == SEEK_SET) {
-        targetIndex = static_cast<size_t>(nOffset);
+        baseIndex = 0;
     }
     else if (nMethod == SEEK_CUR) {
-        targetIndex = m_index + static_cast<size_t>(nOffset);
+        baseIndex = static_cast<Adesk::Int64>(m_index);
     }
     else if (nMethod == SEEK_END) {
-        targetIndex = m_tokens.size() + static_cast<size_t>(nOffset);
+        baseIndex = static_cast<Adesk::Int64>(m_tokens.size());
     }
     else {
         m_stat = Acad::eInvalidInput;
         return m_stat;
     }
 
-    if (targetIndex > m_tokens.size()) {
+    if (nOffset == (std::numeric_limits<Adesk::Int64>::min)()
+        || (nOffset < 0 && baseIndex < -nOffset)
+        || (nOffset > 0 && baseIndex > kMaxIndex - nOffset)) {
         m_stat = Acad::eEndOfFile;
         return m_stat;
     }
 
-    m_index = targetIndex;
+    const Adesk::Int64 targetIndex = baseIndex + nOffset;
+    if (targetIndex > static_cast<Adesk::Int64>(m_tokens.size())) {
+        m_stat = Acad::eEndOfFile;
+        return m_stat;
+    }
+
+    m_index = static_cast<size_t>(targetIndex);
     return Acad::eOk;
 }
 
-// --- Helper Macros for Read/Write Boilerplate ---
-#define IMPLEMENT_FILER_WRITE(Func, TypeEnum, DataType) \
-Acad::ErrorStatus CMemoryDwgFiler::Func(const DataType& val) { \
-    FilerToken token; \
-    token.type = FilerToken::Type::TypeEnum; \
-    token.value = val; \
-    if (m_index >= m_tokens.size()) { \
-        m_tokens.push_back(token); \
-        m_index++; \
-    } else { \
-        m_tokens[m_index++] = token; \
-    } \
-    return Acad::eOk; \
-}
-
-#define IMPLEMENT_FILER_WRITE_VAL(Func, TypeEnum, DataType) \
-Acad::ErrorStatus CMemoryDwgFiler::Func(DataType val) { \
-    FilerToken token; \
-    token.type = FilerToken::Type::TypeEnum; \
-    token.value = val; \
-    if (m_index >= m_tokens.size()) { \
-        m_tokens.push_back(token); \
-        m_index++; \
-    } else { \
-        m_tokens[m_index++] = token; \
-    } \
-    return Acad::eOk; \
-}
-
-#define IMPLEMENT_FILER_READ(Func, TypeEnum, DataType) \
-Acad::ErrorStatus CMemoryDwgFiler::Func(DataType* pVal) { \
-    if (!pVal) return Acad::eInvalidInput; \
-    if (m_index >= m_tokens.size()) { \
-        m_stat = Acad::eEndOfFile; \
-        return m_stat; \
-    } \
-    const auto& token = m_tokens[m_index]; \
-    if (token.type != FilerToken::Type::TypeEnum) { \
-        m_stat = Acad::eWrongObjectType; \
-        return m_stat; \
-    } \
-    *pVal = std::get<DataType>(token.value); \
-    m_index++; \
-    return Acad::eOk; \
-}
-
-// --- ID Field Implementations ---
-IMPLEMENT_FILER_READ(readHardOwnershipId, kHardOwnershipId, AcDbHardOwnershipId)
-IMPLEMENT_FILER_WRITE(writeHardOwnershipId, kHardOwnershipId, AcDbHardOwnershipId)
-
-IMPLEMENT_FILER_READ(readSoftOwnershipId, kSoftOwnershipId, AcDbSoftOwnershipId)
-IMPLEMENT_FILER_WRITE(writeSoftOwnershipId, kSoftOwnershipId, AcDbSoftOwnershipId)
-
-IMPLEMENT_FILER_READ(readHardPointerId, kHardPointerId, AcDbHardPointerId)
-IMPLEMENT_FILER_WRITE(writeHardPointerId, kHardPointerId, AcDbHardPointerId)
-
-IMPLEMENT_FILER_READ(readSoftPointerId, kSoftPointerId, AcDbSoftPointerId)
-IMPLEMENT_FILER_WRITE(writeSoftPointerId, kSoftPointerId, AcDbSoftPointerId)
+Acad::ErrorStatus CMemoryDwgFiler::readHardOwnershipId(AcDbHardOwnershipId* pVal) { return readToken(FilerToken::Type::kHardOwnershipId, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeHardOwnershipId(const AcDbHardOwnershipId& val) { return writeToken(FilerToken::Type::kHardOwnershipId, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readSoftOwnershipId(AcDbSoftOwnershipId* pVal) { return readToken(FilerToken::Type::kSoftOwnershipId, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeSoftOwnershipId(const AcDbSoftOwnershipId& val) { return writeToken(FilerToken::Type::kSoftOwnershipId, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readHardPointerId(AcDbHardPointerId* pVal) { return readToken(FilerToken::Type::kHardPointerId, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeHardPointerId(const AcDbHardPointerId& val) { return writeToken(FilerToken::Type::kHardPointerId, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readSoftPointerId(AcDbSoftPointerId* pVal) { return readToken(FilerToken::Type::kSoftPointerId, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeSoftPointerId(const AcDbSoftPointerId& val) { return writeToken(FilerToken::Type::kSoftPointerId, val); }
 
 // --- Primitive Integer Implementations ---
 Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal) 
 {
-    if (!pVal) return Acad::eInvalidInput;
+    if (pVal == nullptr) return Acad::eInvalidInput;
     Adesk::UInt8 val;
-    Acad::ErrorStatus es = readUInt8(&val);
+    Acad::ErrorStatus es = readToken(FilerToken::Type::kUInt8, &val);
     if (es == Acad::eOk) *pVal = static_cast<Adesk::Int8>(val);
     return es;
 }
 
-Acad::ErrorStatus CMemoryDwgFiler::writeInt8(Adesk::Int8 val) {
-    FilerToken token;
-    token.type = FilerToken::Type::kUInt8;
-    // Explicitly cast the signed byte to an unsigned byte for variant storage
-    token.value = static_cast<Adesk::UInt8>(val);
-
-    if (m_index >= m_tokens.size()) {
-        m_tokens.push_back(token);
-        m_index++;
-    }
-    else {
-        m_tokens[m_index++] = token;
-    }
-    return Acad::eOk;
-}
-
-IMPLEMENT_FILER_READ(readInt16, kInt16, Adesk::Int16)
-IMPLEMENT_FILER_WRITE_VAL(writeInt16, kInt16, Adesk::Int16)
-
-IMPLEMENT_FILER_READ(readUInt16, kUInt16, Adesk::UInt16)
-IMPLEMENT_FILER_WRITE_VAL(writeUInt16, kUInt16, Adesk::UInt16)
-
-IMPLEMENT_FILER_READ(readInt32, kInt32, Adesk::Int32)
-IMPLEMENT_FILER_WRITE_VAL(writeInt32, kInt32, Adesk::Int32)
-
-IMPLEMENT_FILER_READ(readUInt32, kUInt32, Adesk::UInt32)
-IMPLEMENT_FILER_WRITE_VAL(writeUInt32, kUInt32, Adesk::UInt32)
-
-IMPLEMENT_FILER_READ(readInt64, kInt64, Adesk::Int64)
-IMPLEMENT_FILER_WRITE_VAL(writeInt64, kInt64, Adesk::Int64)
-
-IMPLEMENT_FILER_READ(readUInt64, kUInt64, Adesk::UInt64)
-IMPLEMENT_FILER_WRITE_VAL(writeUInt64, kUInt64, Adesk::UInt64)
-
-IMPLEMENT_FILER_READ(readUInt8, kUInt8, Adesk::UInt8)
-IMPLEMENT_FILER_WRITE_VAL(writeUInt8, kUInt8, Adesk::UInt8)
-
-// --- Boolean and Real Implementations ---
-IMPLEMENT_FILER_READ(readBool, kBoolean, bool)
-IMPLEMENT_FILER_WRITE_VAL(writeBool, kBoolean, bool)
+Acad::ErrorStatus CMemoryDwgFiler::writeInt8(Adesk::Int8 val) { return writeToken(FilerToken::Type::kUInt8, static_cast<Adesk::UInt8>(val)); }
+Acad::ErrorStatus CMemoryDwgFiler::readInt16(Adesk::Int16* pVal) { return readToken(FilerToken::Type::kInt16, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeInt16(Adesk::Int16 val) { return writeToken(FilerToken::Type::kInt16, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readUInt16(Adesk::UInt16* pVal) { return readToken(FilerToken::Type::kUInt16, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeUInt16(Adesk::UInt16 val) { return writeToken(FilerToken::Type::kUInt16, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readInt32(Adesk::Int32* pVal) { return readToken(FilerToken::Type::kInt32, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeInt32(Adesk::Int32 val) { return writeToken(FilerToken::Type::kInt32, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readUInt32(Adesk::UInt32* pVal) { return readToken(FilerToken::Type::kUInt32, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeUInt32(Adesk::UInt32 val) { return writeToken(FilerToken::Type::kUInt32, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readInt64(Adesk::Int64* pVal) { return readToken(FilerToken::Type::kInt64, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeInt64(Adesk::Int64 val) { return writeToken(FilerToken::Type::kInt64, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readUInt64(Adesk::UInt64* pVal) { return readToken(FilerToken::Type::kUInt64, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeUInt64(Adesk::UInt64 val) { return writeToken(FilerToken::Type::kUInt64, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readUInt8(Adesk::UInt8* pVal) { return readToken(FilerToken::Type::kUInt8, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeUInt8(Adesk::UInt8 val) { return writeToken(FilerToken::Type::kUInt8, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readBool(bool* pVal) { return readToken(FilerToken::Type::kBoolean, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeBool(bool val) { return writeToken(FilerToken::Type::kBoolean, val); }
 
 Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) {
     return writeBool(val ? true : false);
@@ -747,21 +693,16 @@ Acad::ErrorStatus CMemoryDwgFiler::readBoolean(Adesk::Boolean* pVal) {
     return es;
 }
 
-IMPLEMENT_FILER_READ(readDouble, kDouble, double)
-IMPLEMENT_FILER_WRITE_VAL(writeDouble, kDouble, double)
-
-// --- Geometric Data Types ---
-IMPLEMENT_FILER_READ(readPoint2d, kPoint2d, AcGePoint2d)
-IMPLEMENT_FILER_WRITE(writePoint2d, kPoint2d, AcGePoint2d)
-
-IMPLEMENT_FILER_READ(readPoint3d, kPoint3d, AcGePoint3d)
-IMPLEMENT_FILER_WRITE(writePoint3d, kPoint3d, AcGePoint3d)
-
-IMPLEMENT_FILER_READ(readVector2d, kVector2d, AcGeVector2d)
-IMPLEMENT_FILER_WRITE(writeVector2d, kVector2d, AcGeVector2d)
-
-IMPLEMENT_FILER_READ(readVector3d, kVector3d, AcGeVector3d)
-IMPLEMENT_FILER_WRITE(writeVector3d, kVector3d, AcGeVector3d)
+Acad::ErrorStatus CMemoryDwgFiler::readDouble(double* pVal) { return readToken(FilerToken::Type::kDouble, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeDouble(double val) { return writeToken(FilerToken::Type::kDouble, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readPoint2d(AcGePoint2d* pVal) { return readToken(FilerToken::Type::kPoint2d, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writePoint2d(const AcGePoint2d& val) { return writeToken(FilerToken::Type::kPoint2d, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readPoint3d(AcGePoint3d* pVal) { return readToken(FilerToken::Type::kPoint3d, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writePoint3d(const AcGePoint3d& val) { return writeToken(FilerToken::Type::kPoint3d, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readVector2d(AcGeVector2d* pVal) { return readToken(FilerToken::Type::kVector2d, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeVector2d(const AcGeVector2d& val) { return writeToken(FilerToken::Type::kVector2d, val); }
+Acad::ErrorStatus CMemoryDwgFiler::readVector3d(AcGeVector3d* pVal) { return readToken(FilerToken::Type::kVector3d, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeVector3d(const AcGeVector3d& val) { return writeToken(FilerToken::Type::kVector3d, val); }
 
 // Scale3d acts as a composite wrapper for a vector mapping
 Acad::ErrorStatus CMemoryDwgFiler::writeScale3d(const AcGeScale3d& val) {
@@ -777,32 +718,19 @@ Acad::ErrorStatus CMemoryDwgFiler::readScale3d(AcGeScale3d* pVal) {
     return es;
 }
 
-// --- Handle Implementations ---
-IMPLEMENT_FILER_READ(readAcDbHandle, kHandle, AcDbHandle)
-IMPLEMENT_FILER_WRITE(writeAcDbHandle, kHandle, AcDbHandle)
+Acad::ErrorStatus CMemoryDwgFiler::readAcDbHandle(AcDbHandle* pVal) { return readToken(FilerToken::Type::kHandle, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeAcDbHandle(const AcDbHandle& val) { return writeToken(FilerToken::Type::kHandle, val); }
 
 // --- String Fields Handling ---
 Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) {
-    if (m_index >= m_tokens.size()) {
-        m_stat = Acad::eEndOfFile;
-        return m_stat;
-    }
-    const auto& token = m_tokens[m_index];
-    if (token.type != FilerToken::Type::kString) {
-        m_stat = Acad::eWrongObjectType;
-        return m_stat;
-    }
-    // Extract directly into the reference
-    val = std::get<AcString>(token.value);
-    m_index++;
-    return Acad::eOk;
+    return readToken(FilerToken::Type::kString, &val);
 }
 
-// This one works perfectly with the macro because it takes a reference via const AcString&
-IMPLEMENT_FILER_WRITE(writeString, kString, AcString)
+Acad::ErrorStatus CMemoryDwgFiler::writeString(const AcString& val) { return writeToken(FilerToken::Type::kString, val); }
 
 
 Acad::ErrorStatus CMemoryDwgFiler::writeString(const ACHAR* pVal) {
+    if (pVal == nullptr) return Acad::eInvalidInput;
     return writeString(AcString(pVal));
 }
 
@@ -825,43 +753,105 @@ Acad::ErrorStatus CMemoryDwgFiler::readString(ACHAR** pVal) {
 }
 #endif
 
-// --- Binary Chunk and Raw Data Fallbacks ---
-// Since token serialization handles object state properties fields natively,
-// complex chunks fall back to byte streaming array elements or handles errors.
-
-Acad::ErrorStatus CMemoryDwgFiler::writeBChunk(const ads_binary& val) {
-    // Write length first, then chunk bytes elements sequence
-    writeInt32(val.clen);
-    return writeBytes(val.buf, val.clen);
-}
-
-Acad::ErrorStatus CMemoryDwgFiler::readBChunk(ads_binary* pVal) {
-    if (!pVal) return Acad::eInvalidInput;
-    Adesk::Int32 length = 0;
-    Acad::ErrorStatus es = readInt32(&length);
-    if (es != Acad::eOk) return es;
-
-    pVal->clen = length;
-    pVal->buf = static_cast<char*>(acad_malloc(length));
-    return readBytes(pVal->buf, length);
-}
-
-Acad::ErrorStatus CMemoryDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes) {
-    if (!pSrc) return Acad::eInvalidInput;
-    const Adesk::UInt8* bytePtr = static_cast<const Adesk::UInt8*>(pSrc);
-    for (Adesk::UIntPtr i = 0; i < nBytes; ++i) {
-        writeUInt8(bytePtr[i]);
+Acad::ErrorStatus CMemoryDwgFiler::writeByteBuffer(const void* pSrc, Adesk::UIntPtr nBytes)
+{
+    if (nBytes > static_cast<Adesk::UIntPtr>((std::numeric_limits<size_t>::max)())
+        || (pSrc == nullptr && nBytes != 0)) {
+        return Acad::eInvalidInput;
     }
+
+    const size_t byteCount = static_cast<size_t>(nBytes);
+    FilerToken::ByteBuffer bytes;
+    try {
+        if (byteCount != 0) {
+            const auto* first = static_cast<const Adesk::UInt8*>(pSrc);
+            bytes.assign(first, first + byteCount);
+        }
+    }
+    catch (const std::bad_alloc&) {
+        m_stat = Acad::eOutOfMemory;
+        return m_stat;
+    }
+    return writeToken(FilerToken::Type::kBytes, std::move(bytes));
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readByteBuffer(const FilerToken::ByteBuffer** pBytes)
+{
+    if (pBytes == nullptr) return Acad::eInvalidInput;
+    if (m_index >= m_tokens.size()) {
+        m_stat = Acad::eEndOfFile;
+        return m_stat;
+    }
+
+    const FilerToken& token = m_tokens[m_index];
+    const auto* bytes = std::get_if<FilerToken::ByteBuffer>(&token.value);
+    if (token.type != FilerToken::Type::kBytes || bytes == nullptr) {
+        m_stat = Acad::eWrongObjectType;
+        return m_stat;
+    }
+    *pBytes = bytes;
     return Acad::eOk;
 }
 
-Acad::ErrorStatus CMemoryDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nBytes) {
-    if (!pDest) return Acad::eInvalidInput;
-    Adesk::UInt8* bytePtr = static_cast<Adesk::UInt8*>(pDest);
-    for (Adesk::UIntPtr i = 0; i < nBytes; ++i) {
-        Acad::ErrorStatus es = readUInt8(&bytePtr[i]);
-        if (es != Acad::eOk) return es;
+Acad::ErrorStatus CMemoryDwgFiler::writeBChunk(const ads_binary& val)
+{
+    if (val.clen < 0) return Acad::eInvalidInput;
+    return writeByteBuffer(val.buf, static_cast<Adesk::UIntPtr>(val.clen));
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readBChunk(ads_binary* pVal)
+{
+    if (pVal == nullptr) return Acad::eInvalidInput;
+
+    const FilerToken::ByteBuffer* bytes = nullptr;
+    Acad::ErrorStatus es = readByteBuffer(&bytes);
+    if (es != Acad::eOk) return es;
+    if (bytes->size() > static_cast<size_t>((std::numeric_limits<Adesk::Int32>::max)())) {
+        m_stat = Acad::eInvalidInput;
+        return m_stat;
     }
+
+    char* buffer = nullptr;
+    if (!bytes->empty()) {
+        buffer = static_cast<char*>(acad_malloc(bytes->size()));
+        if (buffer == nullptr) {
+            m_stat = Acad::eOutOfMemory;
+            return m_stat;
+        }
+        std::memcpy(buffer, bytes->data(), bytes->size());
+    }
+
+    pVal->buf = buffer;
+    pVal->clen = static_cast<Adesk::Int32>(bytes->size());
+    ++m_index;
+    return Acad::eOk;
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
+{
+    return writeByteBuffer(pSrc, nBytes);
+}
+
+Acad::ErrorStatus CMemoryDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nBytes)
+{
+    if (nBytes > static_cast<Adesk::UIntPtr>((std::numeric_limits<size_t>::max)())
+        || (pDest == nullptr && nBytes != 0)) {
+        return Acad::eInvalidInput;
+    }
+
+    const FilerToken::ByteBuffer* bytes = nullptr;
+    Acad::ErrorStatus es = readByteBuffer(&bytes);
+    if (es != Acad::eOk) return es;
+
+    const size_t byteCount = static_cast<size_t>(nBytes);
+    if (bytes->size() != byteCount) {
+        m_stat = Acad::eInvalidInput;
+        return m_stat;
+    }
+    if (byteCount != 0) {
+        std::memcpy(pDest, bytes->data(), byteCount);
+    }
+    ++m_index;
     return Acad::eOk;
 }
 

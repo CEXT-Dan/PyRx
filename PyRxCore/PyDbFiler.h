@@ -2,6 +2,7 @@
 #include "PyRxObject.h"
 
 #pragma pack (push, 8)
+
 class PyDbHandle;
 class PyDbDwgFiler;
 class PyDbObjectId;
@@ -142,6 +143,8 @@ public:
 //CMemoryDwgFiler
 struct FilerToken
 {
+    using ByteBuffer = std::vector<Adesk::UInt8>;
+
     enum class Type
     {
         kUInt8,
@@ -162,7 +165,8 @@ struct FilerToken
         kPoint3d,
         kVector2d,
         kVector3d,
-        kHandle
+        kHandle,
+        kBytes
     };
 
     Type type;
@@ -185,10 +189,10 @@ struct FilerToken
         AcGePoint3d,
         AcGeVector2d,
         AcGeVector3d,
-        AcDbHandle
+        AcDbHandle,
+        ByteBuffer
     > value;
 };
-
 
 class CMemoryDwgFiler : public AcDbDwgFiler
 {
@@ -258,6 +262,58 @@ public:
     virtual Acad::ErrorStatus   seek(Adesk::Int64 nOffset, int nMethod) override;
     virtual Adesk::Int64        tell() const override;
     bool                        peekType(FilerToken::Type expectedType) const;
+    size_t                      size() const;
+
+private:
+    template <typename T>
+    Acad::ErrorStatus writeToken(FilerToken::Type type, T&& value)
+    {
+        if (m_index > m_tokens.size()) {
+            m_stat = Acad::eInvalidInput;
+            return m_stat;
+        }
+
+        try {
+            FilerToken token{ type, std::forward<T>(value) };
+            if (m_index == m_tokens.size()) {
+                m_tokens.push_back(std::move(token));
+            }
+            else {
+                m_tokens[m_index] = std::move(token);
+            }
+        }
+        catch (const std::bad_alloc&) {
+            m_stat = Acad::eOutOfMemory;
+            return m_stat;
+        }
+        ++m_index;
+        return Acad::eOk;
+    }
+
+    template <typename T>
+    Acad::ErrorStatus readToken(FilerToken::Type expectedType, T* pVal)
+    {
+        if (pVal == nullptr) {
+            return Acad::eInvalidInput;
+        }
+        if (m_index >= m_tokens.size()) {
+            m_stat = Acad::eEndOfFile;
+            return m_stat;
+        }
+
+        const FilerToken& token = m_tokens[m_index];
+        if (token.type != expectedType || !std::holds_alternative<T>(token.value)) {
+            m_stat = Acad::eWrongObjectType;
+            return m_stat;
+        }
+
+        *pVal = std::get<T>(token.value);
+        ++m_index;
+        return Acad::eOk;
+    }
+
+    Acad::ErrorStatus writeByteBuffer(const void* pSrc, Adesk::UIntPtr nBytes);
+    Acad::ErrorStatus readByteBuffer(const FilerToken::ByteBuffer** pBytes);
 
 public:
     Acad::ErrorStatus   m_stat = eOk;
