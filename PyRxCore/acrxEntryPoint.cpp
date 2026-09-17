@@ -80,37 +80,79 @@ public:
         pObj->assertWriteEnabled();
 
         CMemoryDwgFiler memoryFiler;
-        pObj->dwgOutFields(&memoryFiler);
+        PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
 
-        // 1. Move to index 19 and verify it is a kSoftPointerId
-        if (memoryFiler.seek(19, SEEK_SET) == Acad::eOk) {
-            if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId)) {
-                PyThrowBadEs(memoryFiler.writeSoftPointerId(varid));
-            }
-            else {
-                // Handle unexpected type mismatch error here
-                memoryFiler.setFilerStatus(Acad::eWrongObjectType);
-                return;
-            }
+        if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+            PyThrowBadEs(Acad::eFilerError);
+
+        PyThrowBadEs(memoryFiler.seek(19, SEEK_SET));
+        if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId))
+        {
+            PyThrowBadEs(memoryFiler.writeSoftPointerId(varid));
         }
-
-        // 2. Move to index 20 and verify it is a String
-        AcDbObjectPointer<AcDbAssocVariable> pVar(varid, AcDb::kForRead);
-        if (pVar.openStatus() == Acad::eOk) {
-            if (memoryFiler.seek(20, SEEK_SET) == Acad::eOk) {
-                if (memoryFiler.peekType(FilerToken::Type::kString)) {
-                    PyThrowBadEs(memoryFiler.writeString(pVar->description()));
-                }
-                else {
-                    // Handle unexpected type mismatch error here
-                    memoryFiler.setFilerStatus(Acad::eWrongObjectType);
-                    return;
-                }
-            }
+        else
+        {
+            PyThrowBadEs(Acad::eWrongObjectType);
         }
+        {   //scope
+            AcDbObjectPointer<AcDbAssocVariable> pVar(varid, AcDb::kForRead);
+            PyThrowBadEs(pVar.openStatus());
+            PyThrowBadEs(memoryFiler.seek(20, SEEK_SET));
+            if (memoryFiler.peekType(FilerToken::Type::kString))
+                PyThrowBadEs(memoryFiler.writeString(pVar->description()));
+            else
+                PyThrowBadEs(Acad::eWrongObjectType);
 
-        // 3. Reload the modified stream back into the object
-        memoryFiler.seek(0, SEEK_SET);
+        }
+        PyThrowBadEs(memoryFiler.seek(0, SEEK_SET));
+        PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
+    }
+
+    bool isVisible() const
+    {
+        bool flag = false;
+        AcDbObject* pObj = impObj();
+        pObj->assertReadEnabled();
+
+        CMemoryDwgFiler memoryFiler;
+        PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+        if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+            PyThrowBadEs(Acad::eFilerError);
+
+        PyThrowBadEs(memoryFiler.seek(12, SEEK_SET));
+        if (memoryFiler.peekType(FilerToken::Type::kBoolean))
+        {
+            PyThrowBadEs(memoryFiler.readBool(&flag));
+        }
+        else
+        {
+            PyThrowBadEs(Acad::eWrongObjectType);
+        }
+        return flag;
+    }
+
+    void setVisible(bool flag)
+    {
+        AcDbObject* pObj = impObj();
+        pObj->assertWriteEnabled();
+
+        CMemoryDwgFiler memoryFiler;
+        PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+
+        if (memoryFiler.size() == 0 || memoryFiler.size() < 23)
+            PyThrowBadEs(Acad::eFilerError);
+
+        PyThrowBadEs(memoryFiler.seek(12, SEEK_SET));
+        if (memoryFiler.peekType(FilerToken::Type::kBoolean))
+        {
+            PyThrowBadEs(memoryFiler.writeBool(flag));
+        }
+        else
+        {
+            PyThrowBadEs(Acad::eWrongObjectType);
+        }
+        PyThrowBadEs(memoryFiler.seek(0, SEEK_SET));
         PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
     }
 
@@ -625,8 +667,8 @@ public:
         AcDbAssocVariable* pNewVar = new AcDbAssocVariable();
 
         // Set parameter properties
-        pNewVar->setName(_T("Slope_Factor"),false);      // Name of the custom property
-        pNewVar->setExpression(_T("0.15"),_T("AcDbCalc:1.0"),false,false);   // Default literal value or mathematical formula
+        pNewVar->setName(_T("Slope_Factor"), false);      // Name of the custom property
+        pNewVar->setExpression(_T("0.15"), _T("AcDbCalc:1.0"), false, false);   // Default literal value or mathematical formula
         pNewVar->setDescription(_T("Calculates height variants based on slope run."));
 
         // 6. Post the variable to the drawing database
@@ -650,9 +692,10 @@ public:
         pdict->getAt(_T("ACAD_ENHANCEDBLOCK"), graphid);
         AcDbObjectPointer<AcDbEvalGraph> pgraph(graphid, AcDb::OpenMode::kForWrite);
 
-        AcDbObjectId paramid;
         PyDbDbBlockUserParameter param;
         param.setAcDbAssocVariable(varId);
+        param.setVisible(false);
+        acutPrintf(param.isVisible() ? _T("\nTrue"): _T("\nFalse"));
 
         AcDbEvalNodeId nodeid;
         pgraph->addNode(AcDbEvalExpr::cast(param.impObj()), nodeid);
