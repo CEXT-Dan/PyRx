@@ -147,6 +147,7 @@ struct FilerToken
 
     enum class Type
     {
+        kInt8,
         kUInt8,
         kInt16,
         kUInt16,
@@ -165,12 +166,14 @@ struct FilerToken
         kPoint3d,
         kVector2d,
         kVector3d,
+        kScale3d,
         kHandle,
         kBytes
     };
 
     Type type;
     std::variant <
+        Adesk::Int8,
         Adesk::UInt8,
         Adesk::Int16,
         Adesk::UInt16,
@@ -189,6 +192,7 @@ struct FilerToken
         AcGePoint3d,
         AcGeVector2d,
         AcGeVector3d,
+        AcGeScale3d,
         AcDbHandle,
         ByteBuffer
     > value;

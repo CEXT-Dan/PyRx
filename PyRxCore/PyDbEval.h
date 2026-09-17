@@ -181,7 +181,10 @@ public:
 #endif
 
 //-----------------------------------------------------------------------------------------
-//PyDbDbBlockUserParameter
+// PyDbDbBlockUserParameter
+// ...
+// This Class is not exposed in ARX, we use dwgOutFields, dwgInFields
+// to read/write to members 
 void makePyDbDbBlockUserParameterWrapper();
 
 #if defined(_ARXTARGET)

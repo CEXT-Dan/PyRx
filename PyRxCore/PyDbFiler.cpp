@@ -580,7 +580,6 @@ boost::python::object PyDbSnoopDxfFiler::getitem(int idx)
 
 //-----------------------------------------------------------------------------------------
 //CMemoryDwgFiler
-// 
 CMemoryDwgFiler::CMemoryDwgFiler()
     : m_stat(Acad::eOk), m_filerType(AcDb::kCopyFiler), m_index(0)
 {
@@ -655,15 +654,7 @@ Acad::ErrorStatus CMemoryDwgFiler::readSoftPointerId(AcDbSoftPointerId* pVal) { 
 Acad::ErrorStatus CMemoryDwgFiler::writeSoftPointerId(const AcDbSoftPointerId& val) { return writeToken(FilerToken::Type::kSoftPointerId, val); }
 
 // --- Primitive Integer Implementations ---
-Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal)
-{
-    if (pVal == nullptr) return Acad::eInvalidInput;
-    Adesk::UInt8 val;
-    Acad::ErrorStatus es = readToken(FilerToken::Type::kUInt8, &val);
-    if (es == Acad::eOk) *pVal = static_cast<Adesk::Int8>(val);
-    return es;
-}
-
+Acad::ErrorStatus CMemoryDwgFiler::readInt8(Adesk::Int8* pVal) { return readToken(FilerToken::Type::kInt8, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeInt8(Adesk::Int8 val) { return writeToken(FilerToken::Type::kUInt8, static_cast<Adesk::UInt8>(val)); }
 Acad::ErrorStatus CMemoryDwgFiler::readInt16(Adesk::Int16* pVal) { return readToken(FilerToken::Type::kInt16, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeInt16(Adesk::Int16 val) { return writeToken(FilerToken::Type::kInt16, val); }
@@ -682,14 +673,14 @@ Acad::ErrorStatus CMemoryDwgFiler::writeUInt8(Adesk::UInt8 val) { return writeTo
 Acad::ErrorStatus CMemoryDwgFiler::readBool(bool* pVal) { return readToken(FilerToken::Type::kBoolean, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeBool(bool val) { return writeToken(FilerToken::Type::kBoolean, val); }
 
-Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) {
-    return writeBool(val ? true : false);
-}
+Acad::ErrorStatus CMemoryDwgFiler::writeBoolean(Adesk::Boolean val) {return writeBool(val ? true : false);}
 Acad::ErrorStatus CMemoryDwgFiler::readBoolean(Adesk::Boolean* pVal) {
-    if (!pVal) return Acad::eInvalidInput;
+    if (!pVal) 
+        return Acad::eInvalidInput;
     bool val;
     Acad::ErrorStatus es = readBool(&val);
-    if (es == Acad::eOk) *pVal = val ? Adesk::kTrue : Adesk::kFalse;
+    if (es == Acad::eOk) 
+        *pVal = val ? Adesk::kTrue : Adesk::kFalse;
     return es;
 }
 
@@ -703,32 +694,14 @@ Acad::ErrorStatus CMemoryDwgFiler::readVector2d(AcGeVector2d* pVal) { return rea
 Acad::ErrorStatus CMemoryDwgFiler::writeVector2d(const AcGeVector2d& val) { return writeToken(FilerToken::Type::kVector2d, val); }
 Acad::ErrorStatus CMemoryDwgFiler::readVector3d(AcGeVector3d* pVal) { return readToken(FilerToken::Type::kVector3d, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeVector3d(const AcGeVector3d& val) { return writeToken(FilerToken::Type::kVector3d, val); }
-
-// Scale3d acts as a composite wrapper for a vector mapping
-Acad::ErrorStatus CMemoryDwgFiler::writeScale3d(const AcGeScale3d& val) {
-    return writeVector3d(AcGeVector3d(val.sx, val.sy, val.sz));
-}
-Acad::ErrorStatus CMemoryDwgFiler::readScale3d(AcGeScale3d* pVal) {
-    if (!pVal) return Acad::eInvalidInput;
-    AcGeVector3d vec;
-    Acad::ErrorStatus es = readVector3d(&vec);
-    if (es == Acad::eOk) {
-        pVal->set(vec.x, vec.y, vec.z);
-    }
-    return es;
-}
-
+Acad::ErrorStatus CMemoryDwgFiler::readScale3d(AcGeScale3d* pVal) { return readToken(FilerToken::Type::kScale3d, pVal); }
+Acad::ErrorStatus CMemoryDwgFiler::writeScale3d(const AcGeScale3d& val) { return writeToken(FilerToken::Type::kScale3d, val); }
 Acad::ErrorStatus CMemoryDwgFiler::readAcDbHandle(AcDbHandle* pVal) { return readToken(FilerToken::Type::kHandle, pVal); }
 Acad::ErrorStatus CMemoryDwgFiler::writeAcDbHandle(const AcDbHandle& val) { return writeToken(FilerToken::Type::kHandle, val); }
 
 // --- String Fields Handling ---
-Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) {
-    return readToken(FilerToken::Type::kString, &val);
-}
-
+Acad::ErrorStatus CMemoryDwgFiler::readString(AcString& val) {return readToken(FilerToken::Type::kString, &val);}
 Acad::ErrorStatus CMemoryDwgFiler::writeString(const AcString& val) { return writeToken(FilerToken::Type::kString, val); }
-
-
 Acad::ErrorStatus CMemoryDwgFiler::writeString(const ACHAR* pVal) {
     if (pVal == nullptr) return Acad::eInvalidInput;
     return writeString(AcString(pVal));
