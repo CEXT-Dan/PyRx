@@ -228,6 +228,8 @@ public:
     void                setAssocVarId(const PyDbObjectId& varid);
     UserParameterType   parameterType() const;
     void                setParameterType(UserParameterType paramType);
+    std::string         userVarDescription() const;
+    void                setUserVarDescription(const std::string& descr);
 
     //this
     void                checkValid() const;
