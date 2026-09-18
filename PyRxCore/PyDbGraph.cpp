@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyDbGraph.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -667,3 +668,78 @@ AcDbXrefGraph* PyDbXrefGraph::impObj(const std::source_location& src /*= std::so
     }
     return static_cast<AcDbXrefGraph*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyDbEvalExpr
+void makePyDbEvalGraphWrapper()
+{
+#if defined(_ARXTARGET)
+    PyDocString DS("EvalGraph");
+    class_<PyDbEvalGraph, bases<PyDbObject>>("EvalGraph")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("addNode", &PyDbEvalGraph::addNode, DS.ARGS({"node:PyDb.EvalExpr"}))
+        .def("evaluate", &PyDbEvalGraph::evaluate, DS.ARGS())
+        .def("className", &PyDbEvalGraph::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbEvalGraph::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyDbEvalGraph::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+#endif
+}
+
+#if defined(_ARXTARGET)
+PyDbEvalGraph::PyDbEvalGraph()
+    : PyDbObject(new AcDbEvalGraph(), true)
+{
+}
+
+PyDbEvalGraph::PyDbEvalGraph(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbEvalGraph>(id), false)
+{
+}
+
+PyDbEvalGraph::PyDbEvalGraph(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(openAcDbObject<AcDbEvalGraph>(id, mode), false)
+{
+}
+
+PyDbEvalGraph::PyDbEvalGraph(AcDbEvalGraph* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+AcDbEvalNodeId PyDbEvalGraph::addNode(const PyDbEvalExpr& expr)
+{
+    AcDbEvalNodeId node = 0;
+    PyThrowBadEs(impObj()->addNode(expr.impObj(), node));
+    return node;
+}
+
+void PyDbEvalGraph::evaluate()
+{
+    PyThrowBadEs(impObj()->evaluate());
+}
+
+std::string PyDbEvalGraph::className()
+{
+    return "AcDbEvalGraph";
+}
+
+PyRxClass PyDbEvalGraph::desc()
+{
+    return PyRxClass(AcDbEvalExpr::desc(), false);
+}
+
+PyDbEvalGraph PyDbEvalGraph::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbEvalGraph>(src);
+}
+AcDbEvalGraph* PyDbEvalGraph::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbEvalGraph*>(m_pyImp.get());
+}
+#endif

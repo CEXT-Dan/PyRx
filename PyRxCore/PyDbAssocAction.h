@@ -107,7 +107,7 @@ public:
     void                setOwningAction(const PyDbObjectId& actionId) const;
     PyDbObjectId        dependentOnObject() const;
     //void              getDependentOnCompoundObject(AcDbCompoundObjectId& compoundId) const;
-    //void              attachToObject(const AcDbCompoundObjectId& compoundId);
+    void                attachToObject1(const PyDbObjectId& id);
     //void              transferToObject(const AcDbCompoundObjectId& compoundId);
     //void              setDependentOnObject(const AcDbCompoundObjectId& compoundId);
     bool                isDependentOnCompoundObject() const;

@@ -580,6 +580,7 @@ static BOOST_PYTHON_MODULE(PyDb)
 #endif
     makePyDbEvalExprWrapper();
     makePyDbDbBlockUserParameterWrapper();
+    makePyDbEvalGraphWrapper();
 
     makeDbCoreWrapper();//LAST?
 
@@ -2181,6 +2182,18 @@ static BOOST_PYTHON_MODULE(PyDb)
         .value("kZeroLengthCurve", AcDbDatabase::EraseMask::kZeroLengthCurve)
         .value("kEmptyText", AcDbDatabase::EraseMask::kEmptyText)
         .value("kAllEmptyObj", AcDbDatabase::EraseMask::kAllEmptyObj)
+        .export_values()
+        ;
+#endif
+
+#if defined(_ARXTARGET)
+    enum_<PyDbDbBlockUserParameter::UserParameterType>("UserParameterType")
+        .value("kDistance", PyDbDbBlockUserParameter::UserParameterType::kDistance)
+        .value("kArea", PyDbDbBlockUserParameter::UserParameterType::kArea)
+        .value("kVolume", PyDbDbBlockUserParameter::UserParameterType::kVolume)
+        .value("kReal", PyDbDbBlockUserParameter::UserParameterType::kReal)
+        .value("kAngle", PyDbDbBlockUserParameter::UserParameterType::kAngle)
+        .value("kString", PyDbDbBlockUserParameter::UserParameterType::kString)
         .export_values()
         ;
 #endif

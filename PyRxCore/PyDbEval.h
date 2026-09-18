@@ -155,7 +155,6 @@ public:
     AcValue* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyDbEvalExpr
 void makePyDbEvalExprWrapper();
@@ -170,7 +169,9 @@ public:
     PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete);
     virtual ~PyDbEvalExpr() override = default;
 
+    PyDbObjectId            postInDatabase(const PyDbDatabase& db);
     AcDbEvalNodeId          nodeId() const;
+    PyDbEvalVariant         value() const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -191,6 +192,27 @@ void makePyDbDbBlockUserParameterWrapper();
 class PyDbDbBlockUserParameter : public PyDbEvalExpr
 {
 public:
+    enum UserParameterType 
+    {
+        kDistance = 0,
+        kArea = 1,
+        kVolume = 2,
+        kReal = 3,
+        kAngle = 4,
+        kString = 5
+    };
+
+    enum Offset 
+    {
+        kBegin = 0,
+        kShowProperties = 12,
+        kAssocVarId = 19,
+        kDescription = 20,
+        kParameterType = 22,
+        kEnd = 23
+    };
+
+public:
     PyDbDbBlockUserParameter();
     PyDbDbBlockUserParameter(const PyDbObjectId& id);
     PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -198,20 +220,24 @@ public:
     virtual ~PyDbDbBlockUserParameter() override = default;
 
     //AcDbBlockParameter
-    bool            isShownInProperties() const;
-    void            setShownInProperties(bool flag) const;
+    bool                showProperties() const;
+    void                setShowProperties(bool flag) const;
 
     //AcDbBlockUserParameter
-    PyDbObjectId    getAssocVariable() const;
-    void            setAssocVariable(const PyDbObjectId& varid);
-    void            checkValid() const;
+    PyDbObjectId        assocVarId() const;
+    void                setAssocVarId(const PyDbObjectId& varid);
+    UserParameterType   parameterType() const;
+    void                setParameterType(UserParameterType paramType);
 
-    static std::string   className();
-    static PyRxClass     desc();
-    static PyDbEvalExpr  cast(const PyRxObject& src);
-    static AcDbEvalExpr* create();
+    //this
+    void                checkValid() const;
+
+    static std::string              className();
+    static PyRxClass                desc();
+    static PyDbDbBlockUserParameter cast(const PyRxObject& src);
+    static AcDbEvalExpr*            create();
 public:
-    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbEvalExpr* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
