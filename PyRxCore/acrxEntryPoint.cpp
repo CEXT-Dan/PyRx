@@ -473,96 +473,9 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
-    static void AddUserParameterToBlock()
-    {
-#if defined(_NEVER)
-        ACHAR blockName[256];
-        if (acedGetString(0, _T("\nEnter dynamic block name: "), blockName) != RTNORM)
-            return;
-
-        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
-        if (!pDb) return;
-
-        // 2. Open the Block Table for reading
-        AcDbBlockTablePointer pBlockTable(pDb->blockTableId(), AcDb::kForRead);
-        if (pBlockTable.openStatus() != Acad::eOk) {
-            acutPrintf(_T("\nFailed to open Block Table."));
-            return;
-        }
-
-        // Check if the block exists
-        if (!pBlockTable->has(blockName)) {
-            acutPrintf(_T("\nBlock definition not found."));
-            return;
-        }
-
-        AcDbObjectId btrId;
-        pBlockTable->getAt(blockName, btrId);
-
-        // 3. Open the Block Table Record for writing
-        AcDbBlockTableRecordPointer pBTR(btrId, AcDb::kForWrite);
-        if (pBTR.openStatus() != Acad::eOk) {
-            acutPrintf(_T("\nFailed to open Block Definition for write."));
-            return;
-        }
-
-        // 4. Access or create the main Associative Network for the block definition
-        AcDbObjectId networkId = AcDbAssocNetwork::getInstanceFromObject(pBTR->objectId(), true);
-        if (networkId.isNull()) {
-            acutPrintf(_T("\nFailed to obtain Associative Network for this block."));
-            return;
-        }
-
-        AcDbObjectPointer<AcDbAssocNetwork> pNetwork(networkId, AcDb::kForWrite);
-        if (pNetwork.openStatus() != Acad::eOk) {
-            acutPrintf(_T("\nFailed to open Associative Network."));
-            return;
-        }
-
-        // 5. Instantiate the new User Parameter (AcDbAssocVariable)
-        AcDbAssocVariable* pNewVar = new AcDbAssocVariable();
-
-        // Set parameter properties
-        pNewVar->setName(_T("Slope_Factor"), false);      // Name of the custom property
-        pNewVar->setExpression(_T("0.15"), _T("AcDbCalc:1.0"), false, false);   // Default literal value or mathematical formula
-        pNewVar->setDescription(_T("Calculates height variants based on slope run."));
-
-        // 6. Post the variable to the drawing database
-        AcDbObjectId varId;
-        Acad::ErrorStatus es = pDb->addAcDbObject(varId, pNewVar);
-        if (es != Acad::eOk) {
-            acutPrintf(_T("\nFailed to add parameter object to database."));
-            delete pNewVar;
-            return;
-        }
-        pNewVar->close();
-
-        es = pNetwork->addAction(varId, true);
-        if (es != Acad::eOk) {
-            acutPrintf(_T("\nFailed to add parameter to network."));
-            return;
-        }
-
-        AcDbDictionaryPointer pdict(pBTR->extensionDictionary());
-        AcDbObjectId graphid;
-        pdict->getAt(_T("ACAD_ENHANCEDBLOCK"), graphid);
-        AcDbObjectPointer<AcDbEvalGraph> pgraph(graphid, AcDb::OpenMode::kForWrite);
-
-        PyDbDbBlockUserParameter param;
-        param.setAcDbAssocVariable(varId);
-        param.setVisible(false);
-        acutPrintf(param.isVisible() ? _T("\nTrue") : _T("\nFalse"));
-
-        AcDbEvalNodeId nodeid;
-        pgraph->addNode(AcDbEvalExpr::cast(param.impObj()), nodeid);
-
-        acutPrintf(_T("\nSuccessfully added user parameter 'Slope_Factor' to block definition '%s'."), blockName);
-#endif
-    }
-
     static void AcRxPyApp_idoit1(void)
     {
-        AddUserParameterToBlock();
+
     }
 #endif
 };
