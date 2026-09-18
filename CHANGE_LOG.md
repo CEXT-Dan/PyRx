@@ -1,3 +1,12 @@
+## v3.1.11
+
+* added utility function Db.DbObject.dwgDump () same as snoop filer
+* added cline to vscode for my agent
+* AI parsed the boost::python::classes and fixed several issues with mismatched command names
+* added Db.EvalExpr class
+* added Db.BlockUserParameter class(beta)
+* added internal CMemoryDwgFiler class(beta)
+
 ## v3.1.9
 
 * enable [#423] (AcDbAssoc*) for testing
@@ -5,7 +14,7 @@
 * [#546] add AcDbProxyObject
 * [#546] add AcDbProxyEntity
 * add enum Db.EraseMask
-* improve BlockImageRenderer::render performance 
+* improve BlockImageRenderer::render performance
 
 ## v3.1.8
 
