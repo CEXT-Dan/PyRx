@@ -894,6 +894,8 @@ void makePyDbDbBlockUserParameterWrapper()
         .def("setAssocVarId", &PyDbDbBlockUserParameter::setAssocVarId, DS.ARGS({ "assocId: PyDb.ObjectId" }))
         .def("parameterType", &PyDbDbBlockUserParameter::parameterType, DS.ARGS())
         .def("setParameterType", &PyDbDbBlockUserParameter::setParameterType, DS.ARGS({ "flags : PyDb.UserParameterType" }))
+        .def("userVarDescription", &PyDbDbBlockUserParameter::userVarDescription, DS.ARGS())
+        .def("setUserVarDescription", &PyDbDbBlockUserParameter::setUserVarDescription, DS.ARGS({ "desc : str" }))
 
         .def("className", &PyDbDbBlockUserParameter::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbDbBlockUserParameter::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -929,13 +931,10 @@ bool PyDbDbBlockUserParameter::showProperties() const
     bool flag = false;
     AcDbObject* pObj = impObj();
     pObj->assertReadEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(kShowProperties, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kBoolean))
         PyThrowBadEs(memoryFiler.readBool(&flag));
@@ -944,17 +943,14 @@ bool PyDbDbBlockUserParameter::showProperties() const
     return flag;
 }
 
-void PyDbDbBlockUserParameter::setShowProperties (bool flag) const
+void PyDbDbBlockUserParameter::setShowProperties(bool flag) const
 {
     AcDbObject* pObj = impObj();
     pObj->assertWriteEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(kShowProperties, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kBoolean))
         PyThrowBadEs(memoryFiler.writeBool(flag));
@@ -969,13 +965,10 @@ PyDbObjectId PyDbDbBlockUserParameter::assocVarId() const
     AcDbSoftPointerId id;
     AcDbObject* pObj = impObj();
     pObj->assertReadEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(19, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId))
         PyThrowBadEs(memoryFiler.readSoftPointerId(&id));
@@ -988,32 +981,15 @@ void PyDbDbBlockUserParameter::setAssocVarId(const PyDbObjectId& varid)
 {
     AcDbObject* pObj = impObj();
     pObj->assertWriteEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(kAssocVarId, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kSoftPointerId))
-    {
         PyThrowBadEs(memoryFiler.writeSoftPointerId(varid.m_id));
-    }
     else
-    {
         PyThrowBadEs(Acad::eWrongObjectType);
-    }
-    {   //scope
-        AcDbObjectPointer<AcDbAssocVariable> pVar(varid.m_id, AcDb::kForRead);
-        PyThrowBadEs(pVar.openStatus());
-        PyThrowBadEs(memoryFiler.seek(kDescription, SEEK_SET));
-        if (memoryFiler.peekType(FilerToken::Type::kString))
-            PyThrowBadEs(memoryFiler.writeString(pVar->description()));
-        else
-            PyThrowBadEs(Acad::eWrongObjectType);
-
-    }
     PyThrowBadEs(memoryFiler.seek(kBegin, SEEK_SET));
     PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
 }
@@ -1023,13 +999,10 @@ PyDbDbBlockUserParameter::UserParameterType PyDbDbBlockUserParameter::parameterT
     Adesk::Int16 flags = 0;
     AcDbObject* pObj = impObj();
     pObj->assertReadEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(kParameterType, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kInt16))
         PyThrowBadEs(memoryFiler.readInt16(&flags));
@@ -1042,16 +1015,48 @@ void PyDbDbBlockUserParameter::setParameterType(UserParameterType paramType)
 {
     AcDbObject* pObj = impObj();
     pObj->assertWriteEnabled();
-
     CMemoryDwgFiler memoryFiler;
     PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
-
     if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
         PyThrowBadEs(Acad::eFilerError);
-
     PyThrowBadEs(memoryFiler.seek(kParameterType, SEEK_SET));
     if (memoryFiler.peekType(FilerToken::Type::kInt16))
         PyThrowBadEs(memoryFiler.writeInt16(Adesk::Int16(paramType)));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    PyThrowBadEs(memoryFiler.seek(kBegin, SEEK_SET));
+    PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
+}
+
+std::string PyDbDbBlockUserParameter::userVarDescription() const
+{
+    AcString val;
+    AcDbObject* pObj = impObj();
+    pObj->assertReadEnabled();
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+    if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
+        PyThrowBadEs(Acad::eFilerError);
+    PyThrowBadEs(memoryFiler.seek(kDescription, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kString))
+        PyThrowBadEs(memoryFiler.readString(val));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    return wstr_to_utf8(val);
+}
+
+void PyDbDbBlockUserParameter::setUserVarDescription(const std::string& descr)
+{
+    AcDbObject* pObj = impObj();
+    pObj->assertWriteEnabled();
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+    if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
+        PyThrowBadEs(Acad::eFilerError);
+    AcString _acdesk = utf8_to_wstr(descr).c_str();
+    PyThrowBadEs(memoryFiler.seek(kDescription, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kString))
+        PyThrowBadEs(memoryFiler.writeString(_acdesk));
     else
         PyThrowBadEs(Acad::eWrongObjectType);
     PyThrowBadEs(memoryFiler.seek(kBegin, SEEK_SET));
