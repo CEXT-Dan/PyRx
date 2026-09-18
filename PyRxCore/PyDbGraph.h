@@ -1,6 +1,7 @@
 #pragma once
 
 class PyDbGraph;
+class PyDbEvalExpr;
 
 //-----------------------------------------------------------------------------------------
 //PyDbGraphNode
@@ -154,5 +155,30 @@ public:
     static std::string  className();
 public:
     AcDbXrefGraph* impObj(const std::source_location& src = std::source_location::current()) const;
-
 };
+
+
+//-----------------------------------------------------------------------------------------
+//PyDbEvalExpr
+void makePyDbEvalGraphWrapper();
+
+#if defined(_ARXTARGET)
+class PyDbEvalGraph : public PyDbObject
+{
+public:
+    PyDbEvalGraph();
+    PyDbEvalGraph(const PyDbObjectId& id);
+    PyDbEvalGraph(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbEvalGraph(AcDbEvalGraph* ptr, bool autoDelete);
+    virtual ~PyDbEvalGraph() override = default;
+
+    AcDbEvalNodeId        addNode(const PyDbEvalExpr& expr);
+    void                  evaluate();
+
+    static std::string    className();
+    static PyRxClass      desc();
+    static PyDbEvalGraph  cast(const PyRxObject& src);
+public:
+    AcDbEvalGraph* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif

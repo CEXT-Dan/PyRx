@@ -288,7 +288,10 @@ private:
             else
             {
                 if (type != m_tokens[m_index].type)
-                    PyThrowBadEs(eInvalidInput);
+                {
+                    m_stat = Acad::eInvalidInput;
+                    return m_stat;
+                }
                 m_tokens[m_index] = std::move(token);
             }
         }

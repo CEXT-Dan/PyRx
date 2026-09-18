@@ -599,7 +599,7 @@ kAlmaty: TimeZone  # 6000
 kAlwaysRightReadingAngle: MLeaderTextAngleType  # 2
 kAngLineEnd: DimAssocPointType  # 3
 kAngLineStart: DimAssocPointType  # 2
-kAngle: ValueUnitType  # 2
+kAngle: UserParameterType  # 4
 kAngle0AssocConstraintType: AssocConstraintType  # 4
 kAngle1AssocConstraintType: AssocConstraintType  # 5
 kAngle2AssocConstraintType: AssocConstraintType  # 6
@@ -609,7 +609,7 @@ kAngstroms: ImageUnits  # 11
 kAngular: DynUnitsType  # 1
 kAnnotation: MPolygonloopDir  # 2
 kAny: BlockScaling  # 0
-kArea: ValueUnitType  # 4
+kArea: UserParameterType  # 1
 kArizona: TimeZone  # -7001
 kArrowMark: MLeaderGsMarkType  # 1
 kArrowSize: MLeaderPropertyOverrideType  # 9
@@ -866,7 +866,7 @@ kDimDataToBeDeleted: GripStat  # 2
 kDirection: MTextFragmentType  # 2
 kDisable: FieldEvalOption  # 0
 kDisplay: PlotType  # 0
-kDistance: ValueUnitType  # 1
+kDistance: UserParameterType  # 0
 kDistanceAssocConstraintType: AssocConstraintType  # 1
 kDoesNotSupportScale: HatchLoopType  # 1024
 kDoglegLength: MLeaderPropertyOverrideType  # 7
@@ -1537,6 +1537,7 @@ kPurgeFiler: FilerType  # 8
 kRadiusAssocConstraintType: AssocConstraintType  # 8
 kRangoon: TimeZone  # 6300
 kRasterResolution: RemapFileContext  # 2
+kReal: UserParameterType  # 3
 kRect: ClipBoundaryType  # 1
 kRectangular: PointCloudCropType  # 1
 kRegen: FieldEvalContext  # 16
@@ -1601,7 +1602,7 @@ kStretch: AssocTransformationType  # 1
 kStretchEdge: SurfaceEdgeExtensionType  # 1
 kStrikePoints: MTextFragmentType  # 19
 kStrikethrough: MTextFragmentType  # 16
-kString: ValueDataType  # 4
+kString: UserParameterType  # 5
 kStripOptions: FieldCodeFlag  # 64
 kSuccess: FieldEvalStatus  # 2
 kSuppressedAssocStatus: AssocStatus  # 6
@@ -1849,7 +1850,7 @@ kVisible: Visibility  # 0
 kVisited: GraphNodeFlags  # 1
 kVisualStyle: ShadePlotType  # 4
 kVladivostock: TimeZone  # 10004
-kVolume: ValueUnitType  # 8
+kVolume: UserParameterType  # 2
 kWblockCloneFiler: FilerType  # 9
 kWellington: TimeZone  # 12000
 kWestCentralAfrica: TimeZone  # 1004
@@ -3213,6 +3214,7 @@ class AssocDependency(PyDb.DbObject):
     @overload
     def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
+    def attachToObject(self, depId: PyDb.ObjectId, /) -> None: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AssocDependency: ...
     @staticmethod
@@ -4880,8 +4882,9 @@ class BlockUserParameter(PyDb.EvalExpr):
         self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
     ) -> None: ...
     def __reduce__(self, /) -> Any: ...
+    def assocVarId(self, /) -> ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> EvalExpr: ...
+    def cast(otherObject: PyRx.RxObject, /) -> BlockUserParameter: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
@@ -4898,10 +4901,11 @@ class BlockUserParameter(PyDb.EvalExpr):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAssocVariable(self, /) -> ObjectId: ...
-    def isShownInProperties(self, /) -> bool: ...
-    def setAssocVariable(self, assocId: PyDb.ObjectId, /) -> None: ...
-    def setShownInProperties(self, show: bool, /) -> None: ...
+    def parameterType(self, /) -> UserParameterType: ...
+    def setAssocVarId(self, assocId: PyDb.ObjectId, /) -> None: ...
+    def setParameterType(self, flags: PyDb.UserParameterType, /) -> None: ...
+    def setShowProperties(self, show: bool, /) -> None: ...
+    def showProperties(self, /) -> bool: ...
 
 class Body(PyDb.Entity):
     @overload
@@ -14779,6 +14783,34 @@ class EvalExpr(PyDb.DbObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     def nodeId(self, /) -> int: ...
+    def postInDatabase(self, db: PyDb.Database, /) -> ObjectId: ...
+    def value(self, /) -> EvalVariant: ...
+
+class EvalGraph(PyDb.DbObject):
+    def __init__(
+        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+    ) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addNode(self, node: PyDb.EvalExpr, /) -> int: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> EvalGraph: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def evaluate(self, /) -> None: ...
 
 class EvalVariant(PyRx.RxObject):
     def __ge__(self, other: PyDb.EvalVariant, /) -> bool: ...
@@ -33603,6 +33635,14 @@ class UpdateOption(_BoostPythonEnum):
     kUpdateOptionForPreview: ClassVar[Self]  # 16777216
     kUpdateOptionIncludeXrefs: ClassVar[Self]  # 33554432
     kSkipFormatAfterFirstUpdate: ClassVar[Self]  # 67108864
+
+class UserParameterType(_BoostPythonEnum):
+    kDistance: ClassVar[Self]  # 0
+    kArea: ClassVar[Self]  # 1
+    kVolume: ClassVar[Self]  # 2
+    kReal: ClassVar[Self]  # 3
+    kAngle: ClassVar[Self]  # 4
+    kString: ClassVar[Self]  # 5
 
 class ValueDataType(_BoostPythonEnum):
     kUnknown: ClassVar[Self]  # 0

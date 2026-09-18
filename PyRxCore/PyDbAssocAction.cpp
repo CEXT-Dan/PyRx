@@ -194,6 +194,7 @@ void makePyDbAssocDependencyWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+        .def("attachToObject", &PyDbAssocDependency::attachToObject1, DS.ARGS({ "depId: PyDb.ObjectId" }))
         .def("dependencyBody", &PyDbAssocDependency::dependencyBody, DS.ARGS())
         .def("setDependencyBody", &PyDbAssocDependency::setDependencyBody, DS.ARGS({"dependencyBodyId: PyDb.ObjectId"}))
         .def("status", &PyDbAssocDependency::status, DS.ARGS())
@@ -349,6 +350,13 @@ void PyDbAssocDependency::setOwningAction(const PyDbObjectId& actionId) const
 PyDbObjectId PyDbAssocDependency::dependentOnObject() const
 {
     return PyDbObjectId(impObj()->dependentOnObject());
+}
+
+void PyDbAssocDependency::attachToObject1(const PyDbObjectId& id)
+{
+    AcDbCompoundObjectId cid;
+    cid.set(id.m_id);
+    PyThrowBadEs(impObj()->attachToObject(cid));
 }
 
 bool PyDbAssocDependency::isDependentOnCompoundObject() const
