@@ -679,7 +679,7 @@ void makePyDbEvalGraphWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("addNode", &PyDbEvalGraph::addNode, DS.ARGS({"node:PyDb.EvalExpr"}))
+        .def("addNode", &PyDbEvalGraph::addNode, DS.ARGS({ "node:PyDb.EvalExpr" }))
         .def("evaluate", &PyDbEvalGraph::evaluate, DS.ARGS())
         .def("className", &PyDbEvalGraph::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEvalGraph::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -735,6 +735,7 @@ PyDbEvalGraph PyDbEvalGraph::cast(const PyRxObject& src)
 {
     return PyDbObjectCast<PyDbEvalGraph>(src);
 }
+
 AcDbEvalGraph* PyDbEvalGraph::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {

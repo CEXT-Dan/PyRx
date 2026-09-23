@@ -162,9 +162,9 @@ public:
 //PyDbEvalExpr
 void makePyDbEvalGraphWrapper();
 
-#if defined(_ARXTARGET)
 class PyDbEvalGraph : public PyDbObject
 {
+#if defined(_ARXTARGET)
 public:
     PyDbEvalGraph();
     PyDbEvalGraph(const PyDbObjectId& id);
@@ -180,5 +180,5 @@ public:
     static PyDbEvalGraph  cast(const PyRxObject& src);
 public:
     AcDbEvalGraph* impObj(const std::source_location& src = std::source_location::current()) const;
-};
 #endif
+};

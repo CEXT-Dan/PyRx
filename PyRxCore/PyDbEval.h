@@ -4,6 +4,7 @@
 #pragma pack (push, 8)
 class AcRxValue;
 class PyDbObjectId;
+class PyDbEvalGraph;
 //-----------------------------------------------------------------------------------------
 //PyDbEvalVariant
 
@@ -69,7 +70,6 @@ public:
 };
 
 AcArray<AcDbEvalVariant> PyListToAcDbEvalVariantArray(const boost::python::object& iterable);
-
 
 //-----------------------------------------------------------------------------------------
 //PyDbDynBlockReferenceProperty
@@ -169,6 +169,8 @@ public:
     PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete);
     virtual ~PyDbEvalExpr() override = default;
 
+    PyDbEvalGraph           getGraph(AcDb::OpenMode mode) const;
+
     PyDbObjectId            postInDatabase(const PyDbDatabase& db);
     AcDbEvalNodeId          nodeId() const;
     PyDbEvalVariant         value() const;
@@ -192,7 +194,7 @@ void makePyDbDbBlockUserParameterWrapper();
 class PyDbDbBlockUserParameter : public PyDbEvalExpr
 {
 public:
-    enum UserParameterType 
+    enum UserParameterType
     {
         kDistance = 0,
         kArea = 1,
@@ -202,7 +204,7 @@ public:
         kString = 5
     };
 
-    enum Offset 
+    enum Offset
     {
         kBegin = 0,
         kShowProperties = 12,
@@ -237,12 +239,10 @@ public:
     static std::string              className();
     static PyRxClass                desc();
     static PyDbDbBlockUserParameter cast(const PyRxObject& src);
-    static AcDbEvalExpr*            create();
+    static AcDbEvalExpr* create();
 public:
     AcDbEvalExpr* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
-
-
 
 #pragma pack (pop)
