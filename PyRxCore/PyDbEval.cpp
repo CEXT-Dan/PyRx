@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbFiler.h"
 #include "AcDbAssocVariable.h"
+#include "PyDbGraph.h"
 
 using namespace boost::python;
 
@@ -802,8 +803,9 @@ void makePyDbEvalExprWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("getGraph", &PyDbEvalExpr::getGraph, DS.ARGS({"mode: PyDb.OpenMode"}))
         .def("nodeId", &PyDbEvalExpr::nodeId, DS.ARGS())
-        .def("postInDatabase", &PyDbEvalExpr::postInDatabase, DS.ARGS({"db:PyDb.Database"}))
+        .def("postInDatabase", &PyDbEvalExpr::postInDatabase, DS.ARGS({ "db:PyDb.Database" }))
         .def("value", &PyDbEvalExpr::value, DS.ARGS())
         .def("className", &PyDbEvalExpr::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEvalExpr::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -833,10 +835,21 @@ PyDbEvalExpr::PyDbEvalExpr(AcDbEvalExpr* ptr, bool autoDelete)
 {
 }
 
+PyDbEvalGraph PyDbEvalExpr::getGraph(AcDb::OpenMode mode) const
+{
+#if !defined(_ARXTARGET)
+    AcDbEvalGraph* pGraph = nullptr;
+    PyThrowBadEs(impObj()->getGraph(&pGraph, mode));
+    return PyDbEvalGraph(pGraph, true);
+#else
+    throw PyNotimplementedByHost{};
+#endif
+}
+
 PyDbObjectId PyDbEvalExpr::postInDatabase(const PyDbDatabase& db)
 {
     PyDbObjectId id;
-    PyThrowFalse(impObj()->postInDatabase(id.m_id, db.impObj()));
+    PyThrowBadEs(impObj()->postInDatabase(id.m_id, db.impObj()));
     return id;
 }
 
@@ -847,7 +860,7 @@ AcDbEvalNodeId PyDbEvalExpr::nodeId() const
 
 PyDbEvalVariant PyDbEvalExpr::value() const
 {
-   return PyDbEvalVariant{ impObj()->value() };
+    return PyDbEvalVariant{ impObj()->value() };
 }
 
 std::string PyDbEvalExpr::className()
@@ -887,7 +900,7 @@ void makePyDbDbBlockUserParameterWrapper()
 
         //AcDbBlockParameter
         .def("showProperties", &PyDbDbBlockUserParameter::showProperties, DS.ARGS())
-        .def("setShowProperties", &PyDbDbBlockUserParameter::setShowProperties , DS.ARGS({"show : bool"}))
+        .def("setShowProperties", &PyDbDbBlockUserParameter::setShowProperties, DS.ARGS({ "show : bool" }))
 
         //AcDbBlockUserParameter
         .def("assocVarId", &PyDbDbBlockUserParameter::assocVarId, DS.ARGS())
