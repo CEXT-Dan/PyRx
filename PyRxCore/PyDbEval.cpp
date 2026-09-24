@@ -995,7 +995,7 @@ PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb:
 PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(AcDbEvalConnectable* ptr, bool autoDelete)
     : PyDbEvalConnectable(ptr, autoDelete)
 {
-    // don't check here because ptr may be null 
+    // don't checkValid here because ptr may be null 
 }
 
 bool PyDbDbBlockUserParameter::showProperties() const
