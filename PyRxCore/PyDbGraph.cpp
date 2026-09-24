@@ -680,7 +680,13 @@ void makePyDbEvalGraphWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
         .def("addNode", &PyDbEvalGraph::addNode, DS.ARGS({ "node:PyDb.EvalExpr" }))
+        .def("removeNode", &PyDbEvalGraph::removeNode1)
+        .def("removeNode", &PyDbEvalGraph::removeNode2, DS.ARGS({ "node:int|PyDb.EvalExpr" }))
         .def("evaluate", &PyDbEvalGraph::evaluate, DS.ARGS())
+        .def("hasGraph", &PyDbEvalGraph::hasGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str" })).staticmethod("hasGraph")
+        .def("getGraph", &PyDbEvalGraph::getGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str", "mode: PyDb.OpenMode" })).staticmethod("getGraph")
+        .def("createGraph", &PyDbEvalGraph::createGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str" })).staticmethod("createGraph")
+        .def("removeGraph", &PyDbEvalGraph::removeGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str" })).staticmethod("removeGraph")
         .def("className", &PyDbEvalGraph::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEvalGraph::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbEvalGraph::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -719,6 +725,38 @@ AcDbEvalNodeId PyDbEvalGraph::addNode(const PyDbEvalExpr& expr)
 void PyDbEvalGraph::evaluate()
 {
     PyThrowBadEs(impObj()->evaluate());
+}
+
+void PyDbEvalGraph::removeNode1(const AcDbEvalNodeId& id)
+{
+    PyThrowBadEs(impObj()->removeNode(id));
+}
+
+void PyDbEvalGraph::removeNode2(const PyDbEvalExpr& id)
+{
+    PyThrowBadEs(impObj()->removeNode(id.impObj()));
+}
+
+bool PyDbEvalGraph::hasGraph(const PyDbObject& obj, const std::string& key)
+{
+    return AcDbEvalGraph::hasGraph(obj.impObj(), AsWStr(key));
+}
+
+PyDbEvalGraph PyDbEvalGraph::getGraph(const PyDbObject& obj, const std::string& key, AcDb::OpenMode mode)
+{
+    AcDbEvalGraph* pgraph = nullptr;
+    PyThrowBadEs(AcDbEvalGraph::getGraph(obj.impObj(), AsWStr(key), &pgraph, mode));
+    return PyDbEvalGraph(pgraph, false);//same as open
+}
+
+void PyDbEvalGraph::createGraph(const PyDbObject& obj, const std::string& key)
+{
+    PyThrowBadEs(AcDbEvalGraph::createGraph(obj.impObj(), AsWStr(key)));
+}
+
+void PyDbEvalGraph::removeGraph(const PyDbObject& obj, const std::string& key)
+{
+    PyThrowBadEs(AcDbEvalGraph::removeGraph(obj.impObj(), AsWStr(key)));
 }
 
 std::string PyDbEvalGraph::className()

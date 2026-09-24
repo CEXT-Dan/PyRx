@@ -174,6 +174,13 @@ public:
 
     AcDbEvalNodeId        addNode(const PyDbEvalExpr& expr);
     void                  evaluate();
+    void                  removeNode1(const AcDbEvalNodeId& id);
+    void                  removeNode2(const PyDbEvalExpr& id);
+
+    static bool           hasGraph(const PyDbObject& obj, const std::string& key);
+    static PyDbEvalGraph  getGraph(const PyDbObject& pObj, const std::string& key,AcDb::OpenMode mode);
+    static void           createGraph(const PyDbObject& obj, const std::string& key);
+    static void           removeGraph(const PyDbObject& obj, const std::string& key);
 
     static std::string    className();
     static PyRxClass      desc();
