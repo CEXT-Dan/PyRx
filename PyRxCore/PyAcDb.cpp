@@ -579,6 +579,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makeXRefLayerPropertyOverride();
 #endif
     makePyDbEvalExprWrapper();
+    makePyDbEvalConnectableWrapper();
     makePyDbDbBlockUserParameterWrapper();
     makePyDbEvalGraphWrapper();
 
