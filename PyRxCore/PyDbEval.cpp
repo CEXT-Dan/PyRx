@@ -1149,7 +1149,8 @@ std::string PyDbDbBlockUserParameter::className()
 
 PyRxClass PyDbDbBlockUserParameter::desc()
 {
-    return PyRxClass(AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter"))), false);
+    static AcRxClass* pclass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
+    return PyRxClass(pclass, false);
 }
 
 PyDbDbBlockUserParameter PyDbDbBlockUserParameter::cast(const PyRxObject& src)
