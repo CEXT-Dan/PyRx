@@ -261,6 +261,7 @@ public:
     static PyRxClass                desc();
     static PyDbDbBlockUserParameter cast(const PyRxObject& src);
     static AcDbEvalConnectable* create();
+    static AcRxClass* getClass();
 public:
     AcDbEvalConnectable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

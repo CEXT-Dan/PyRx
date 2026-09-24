@@ -803,7 +803,7 @@ void makePyDbEvalExprWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
-        .def("getGraph", &PyDbEvalExpr::getGraph, DS.ARGS({"mode: PyDb.OpenMode"}))
+        .def("getGraph", &PyDbEvalExpr::getGraph, DS.ARGS({ "mode: PyDb.OpenMode" }))
         .def("nodeId", &PyDbEvalExpr::nodeId, DS.ARGS())
         .def("postInDatabase", &PyDbEvalExpr::postInDatabase, DS.ARGS({ "db:PyDb.Database" }))
         .def("value", &PyDbEvalExpr::value, DS.ARGS())
@@ -977,22 +977,25 @@ void makePyDbDbBlockUserParameterWrapper()
 PyDbDbBlockUserParameter::PyDbDbBlockUserParameter()
     : PyDbDbBlockUserParameter(create(), true)
 {
+    checkValid();
 }
 
 PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(const PyDbObjectId& id)
     : PyDbDbBlockUserParameter(openAcDbObject<AcDbEvalConnectable>(id, AcDb::OpenMode::kForRead), false)
 {
+    checkValid();
 }
 
 PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbDbBlockUserParameter(openAcDbObject<AcDbEvalConnectable>(id, mode), false)
 {
+    checkValid();
 }
 
 PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(AcDbEvalConnectable* ptr, bool autoDelete)
     : PyDbEvalConnectable(ptr, autoDelete)
 {
-    checkValid();
+    // don't check here because ptr may be null 
 }
 
 bool PyDbDbBlockUserParameter::showProperties() const
@@ -1134,11 +1137,12 @@ void PyDbDbBlockUserParameter::setUserVarDescription(const std::string& descr)
 
 void PyDbDbBlockUserParameter::checkValid() const
 {
-    if (m_pyImp != nullptr) {
-        AcRxClass* pClass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
-        if (pClass == nullptr || m_pyImp->isA() != pClass) {
-            PyThrowBadEs(Acad::ErrorStatus::eWrongObjectType);
-        }
+    if (m_pyImp == nullptr) {
+        PyThrowBadEs(Acad::ErrorStatus::eNotInitializedYet);
+    }
+    AcRxClass* pClass = getClass();
+    if (pClass == nullptr || !m_pyImp->isA()->isDerivedFrom(pClass)) {
+        PyThrowBadEs(Acad::ErrorStatus::eWrongObjectType);
     }
 }
 
@@ -1149,8 +1153,7 @@ std::string PyDbDbBlockUserParameter::className()
 
 PyRxClass PyDbDbBlockUserParameter::desc()
 {
-    static AcRxClass* pclass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
-    return PyRxClass(pclass, false);
+    return PyRxClass(getClass(), false);
 }
 
 PyDbDbBlockUserParameter PyDbDbBlockUserParameter::cast(const PyRxObject& src)
@@ -1160,9 +1163,7 @@ PyDbDbBlockUserParameter PyDbDbBlockUserParameter::cast(const PyRxObject& src)
 
 AcDbEvalConnectable* PyDbDbBlockUserParameter::create()
 {
-    AcRxObject* pRxObj = acrxClassDictionary->at(_T("AcDbBlockUserParameter"));
-    AcRxClass* pClass = AcRxClass::cast(pRxObj);
-
+    AcRxClass* pClass = getClass();
     if (pClass != nullptr)
     {
         AcDbObject* pObj = static_cast<AcDbObject*>(pClass->create());
@@ -1171,6 +1172,12 @@ AcDbEvalConnectable* PyDbDbBlockUserParameter::create()
     }
     PyThrowBadEs(Acad::ErrorStatus::eNullEntityPointer);
     return nullptr;
+}
+
+AcRxClass* PyDbDbBlockUserParameter::getClass()
+{
+    static AcRxClass* pclass = AcRxClass::cast(acrxClassDictionary->at(_T("AcDbBlockUserParameter")));
+    return pclass;
 }
 
 AcDbEvalConnectable* PyDbDbBlockUserParameter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
