@@ -184,6 +184,27 @@ public:
 #endif
 
 //-----------------------------------------------------------------------------------------
+//PyDbEvalConnectable
+void makePyDbEvalConnectableWrapper();
+
+#if defined(_ARXTARGET)
+class PyDbEvalConnectable : public PyDbEvalExpr
+{
+public:
+    PyDbEvalConnectable(const PyDbObjectId& id);
+    PyDbEvalConnectable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbEvalConnectable(AcDbEvalConnectable* ptr, bool autoDelete);
+    virtual ~PyDbEvalConnectable() override = default;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbEvalConnectable  cast(const PyRxObject& src);
+public:
+    AcDbEvalConnectable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+//-----------------------------------------------------------------------------------------
 // PyDbDbBlockUserParameter
 // ...
 // This Class is not exposed in ARX, we use dwgOutFields, dwgInFields
@@ -191,7 +212,7 @@ public:
 void makePyDbDbBlockUserParameterWrapper();
 
 #if defined(_ARXTARGET)
-class PyDbDbBlockUserParameter : public PyDbEvalExpr
+class PyDbDbBlockUserParameter : public PyDbEvalConnectable
 {
 public:
     enum UserParameterType
@@ -218,7 +239,7 @@ public:
     PyDbDbBlockUserParameter();
     PyDbDbBlockUserParameter(const PyDbObjectId& id);
     PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbDbBlockUserParameter(AcDbEvalExpr* ptr, bool autoDelete);
+    PyDbDbBlockUserParameter(AcDbEvalConnectable* ptr, bool autoDelete);
     virtual ~PyDbDbBlockUserParameter() override = default;
 
     //AcDbBlockParameter
@@ -239,9 +260,9 @@ public:
     static std::string              className();
     static PyRxClass                desc();
     static PyDbDbBlockUserParameter cast(const PyRxObject& src);
-    static AcDbEvalExpr* create();
+    static AcDbEvalConnectable* create();
 public:
-    AcDbEvalExpr* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbEvalConnectable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
