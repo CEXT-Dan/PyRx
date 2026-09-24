@@ -181,7 +181,7 @@ public:
     bool                  hasNode(const AcDbEvalNodeId& nodeId) const;
 
     static bool           hasGraph(const PyDbObject& obj, const std::string& key);
-    static PyDbEvalGraph  getGraph(const PyDbObject& pObj, const std::string& key,AcDb::OpenMode mode);
+    static PyDbEvalGraph  getGraph(const PyDbObject& pObj, const std::string& key, AcDb::OpenMode mode);
     static void           createGraph(const PyDbObject& obj, const std::string& key);
     static void           removeGraph(const PyDbObject& obj, const std::string& key);
 
