@@ -176,6 +176,9 @@ public:
     void                  evaluate();
     void                  removeNode1(const AcDbEvalNodeId& id);
     void                  removeNode2(const PyDbEvalExpr& id);
+    boost::python::list   getAllNodes() const;
+    PyDbObject            getNode(const AcDbEvalNodeId& nodeId, AcDb::OpenMode mode) const;
+    bool                  hasNode(const AcDbEvalNodeId& nodeId) const;
 
     static bool           hasGraph(const PyDbObject& obj, const std::string& key);
     static PyDbEvalGraph  getGraph(const PyDbObject& pObj, const std::string& key,AcDb::OpenMode mode);
