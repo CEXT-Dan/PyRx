@@ -683,6 +683,9 @@ void makePyDbEvalGraphWrapper()
         .def("removeNode", &PyDbEvalGraph::removeNode1)
         .def("removeNode", &PyDbEvalGraph::removeNode2, DS.ARGS({ "node:int|PyDb.EvalExpr" }))
         .def("evaluate", &PyDbEvalGraph::evaluate, DS.ARGS())
+        .def("getNode", &PyDbEvalGraph::getNode, DS.ARGS({ "nodeId:int", "mode: PyDb.OpenMode" }))
+        .def("hasNode", &PyDbEvalGraph::hasNode, DS.ARGS({ "nodeId:int" }))
+        .def("getAllNodes", &PyDbEvalGraph::getAllNodes, DS.ARGS())
         .def("hasGraph", &PyDbEvalGraph::hasGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str" })).staticmethod("hasGraph")
         .def("getGraph", &PyDbEvalGraph::getGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str", "mode: PyDb.OpenMode" })).staticmethod("getGraph")
         .def("createGraph", &PyDbEvalGraph::createGraph, DS.SARGS({ "obj: PyDb.DbObject", "key: str" })).staticmethod("createGraph")
@@ -735,6 +738,35 @@ void PyDbEvalGraph::removeNode1(const AcDbEvalNodeId& id)
 void PyDbEvalGraph::removeNode2(const PyDbEvalExpr& id)
 {
     PyThrowBadEs(impObj()->removeNode(id.impObj()));
+}
+
+boost::python::list PyDbEvalGraph::getAllNodes() const
+{
+    PyAutoLockGIL lock;
+    AcDbEvalNodeIdArray nodes;
+    PyThrowBadEs(impObj()->getAllNodes(nodes));
+    boost::python::list pylist;
+    for (auto node : nodes)
+        pylist.append(node);
+    return pylist;
+}
+
+PyDbObject PyDbEvalGraph::getNode(const AcDbEvalNodeId& nodeId, AcDb::OpenMode mode) const
+{
+    AcDbObject* pNode = nullptr;
+    PyThrowBadEs(impObj()->getNode(nodeId, mode, &pNode));
+    return PyDbObject(pNode, false);
+}
+
+bool PyDbEvalGraph::hasNode(const AcDbEvalNodeId& nodeId) const
+{
+    AcDbObject* pNode = nullptr;
+    if (auto es = impObj()->getNode(nodeId, AcDb::kForRead, &pNode); es == eOk && pNode != nullptr)
+    {
+        PyThrowBadEs(pNode->close());
+        return true;
+    }
+    return false;
 }
 
 bool PyDbEvalGraph::hasGraph(const PyDbObject& obj, const std::string& key)
