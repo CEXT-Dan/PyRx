@@ -228,6 +228,7 @@ public:
     enum Offset
     {
         kBegin = 0,
+        kName = 8,
         kShowProperties = 12,
         kAssocVarId = 19,
         kDescription = 20,
@@ -241,6 +242,10 @@ public:
     PyDbDbBlockUserParameter(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbDbBlockUserParameter(AcDbEvalConnectable* ptr, bool autoDelete);
     virtual ~PyDbDbBlockUserParameter() override = default;
+
+    //AcDbBlockElement
+    std::string         name() const;
+    void                setName(const std::string& descr);
 
     //AcDbBlockParameter
     bool                showProperties() const;
