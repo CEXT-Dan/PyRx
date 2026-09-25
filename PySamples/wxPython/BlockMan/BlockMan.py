@@ -8,9 +8,11 @@ from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
 
+
 def OnPyUnloadApp():
     panel.ClearDatabase()
-    
+
+
 class BlockInfo(NamedTuple):
     id: int
     name: str
@@ -122,11 +124,11 @@ class PalettePanel(wx.Panel):
         self.imageDict = {}
         self.dwgimageDict = {}
         self.db = None
-        
+
     def __del__(self):
         self.db = None
         Ed.Core.alert("hi")
-        
+
     def ClearDatabase(self):
         self.db = None
 
@@ -289,9 +291,93 @@ class BlockJig(Ed.Jig):
     def getPoint(self):
         return self.point
 
+    def doit(self):
+        self.setDispPrompt("\nInsertion Point: ")
+        stat = self.drag()
+        if stat == Ed.DragStatus.kNormal:
+            return Ed.PromptStatus.kNormal
+        return Ed.PromptStatus.eFailed
+
+
+class BlockJigScale(Ed.Jig):
+    def __init__(self, blockTableRecordId: Db.ObjectId, pos: Ge.Point3d, scale: float):
+        self.pos = pos
+        self.curScale = scale
+        self.ref = Db.BlockReference(pos, blockTableRecordId)
+        self.ref.setDatabaseDefaults()
+        self.baseMat = self.ref.blockTransform() * Ed.Editor.getCurrentUCS()
+        self.refDist = self.curScale
+        if self.refDist < 1e-4:
+            self.refDist = 1.0
+
+    def sampler(self) -> Ed.DragStatus:
+        self.setUserInputControls(Ed.UserInputControls.kNullResponseAccepted)
+        status, self.curScale = self.acquireDist(self.pos)
+        if status == Ed.DragStatus.kCancel:
+            return status
+        return Ed.DragStatus.kNormal
+
+    def update(self) -> bool:
+        if self.curScale < 1e-6:
+            self.curScale = 1e-6
+        totalScaleFactor = self.curScale / self.refDist
+        scaleMat = Ge.Matrix3d.scaling(totalScaleFactor, self.pos)
+        self.ref.setBlockTransform(scaleMat * self.baseMat)
+        return True
+
+    def doit(self):
+        self.setDispPrompt("\nSpecify scale factor: ")
+        stat = self.drag()
+        if stat == Ed.DragStatus.kNormal:
+            return Ed.PromptStatus.kNormal
+        return Ed.PromptStatus.eFailed
+
+    def getScale(self):
+        return self.curScale
+
+
+class BlockJig(Ed.Jig):
+    def __init__(
+        self, blockTableRecordId: Db.ObjectId, pos: Ge.Point3d, rotation: float, scale: float
+    ):
+        self.pos = pos
+        self.curAng = rotation
+        self.prevAng = 0.0
+        self.ref = Db.BlockReference(pos, blockTableRecordId)
+        self.ref.setDatabaseDefaults()
+        matUcs = Ed.Editor.getCurrentUCS()
+        self.normal = matUcs.yAxis()
+        scaleMat = Ge.Matrix3d.scaling(scale, self.pos)
+        rotMat = Ge.Matrix3d.rotation(rotation, self.normal, self.pos)
+        self.ref.transformBy(rotMat * scaleMat)
+        self.baseMat = self.ref.blockTransform() * matUcs
+
+    def sampler(self) -> Ed.DragStatus:
+        self.setUserInputControls(Ed.UserInputControls.kNullResponseAccepted)
+        status, self.curAng = self.acquireAngle(self.pos)
+        if status == Ed.DragStatus.kCancel:
+            return status
+        return Ed.DragStatus.kNormal
+
+    def update(self) -> bool:
+        dynamicRot = Ge.Matrix3d.rotation(self.curAng, self.normal, self.pos)
+        self.ref.setBlockTransform(dynamicRot * self.baseMat)
+        return True
+
+    def doit(self):
+        self.setDispPrompt("\nSpecify rotation angle: ")
+        stat = self.drag()
+        if stat == Ed.DragStatus.kNormal:
+            return Ed.PromptStatus.kNormal
+        return Ed.PromptStatus.eFailed
+
+    def getRotation(self):
+        return self.curAng
+
 
 palette = Ap.PaletteSet("BlockPalette")
 panel = PalettePanel()
+
 
 def createPalette() -> None:
     try:
