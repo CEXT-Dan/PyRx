@@ -954,6 +954,10 @@ void makePyDbDbBlockUserParameterWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
 
+        //AcDbBlockElement
+        .def("name", &PyDbDbBlockUserParameter::name, DS.ARGS())
+        .def("setName", &PyDbDbBlockUserParameter::setName, DS.ARGS({ "name : str" }))
+
         //AcDbBlockParameter
         .def("showProperties", &PyDbDbBlockUserParameter::showProperties, DS.ARGS())
         .def("setShowProperties", &PyDbDbBlockUserParameter::setShowProperties, DS.ARGS({ "show : bool" }))
@@ -996,6 +1000,41 @@ PyDbDbBlockUserParameter::PyDbDbBlockUserParameter(AcDbEvalConnectable* ptr, boo
     : PyDbEvalConnectable(ptr, autoDelete)
 {
     // don't checkValid here because ptr may be null 
+}
+
+std::string PyDbDbBlockUserParameter::name() const
+{
+    AcString val;
+    AcDbObject* pObj = impObj();
+    pObj->assertReadEnabled();
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+    if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
+        PyThrowBadEs(Acad::eFilerError);
+    PyThrowBadEs(memoryFiler.seek(kName, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kString))
+        PyThrowBadEs(memoryFiler.readString(val));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    return wstr_to_utf8(val);
+}
+
+void PyDbDbBlockUserParameter::setName(const std::string& descr)
+{
+    AcDbObject* pObj = impObj();
+    pObj->assertWriteEnabled();
+    CMemoryDwgFiler memoryFiler;
+    PyThrowBadEs(pObj->dwgOutFields(&memoryFiler));
+    if (memoryFiler.size() == kBegin || memoryFiler.size() < kEnd)
+        PyThrowBadEs(Acad::eFilerError);
+    AcString _acdesk = utf8_to_wstr(descr).c_str();
+    PyThrowBadEs(memoryFiler.seek(kName, SEEK_SET));
+    if (memoryFiler.peekType(FilerToken::Type::kString))
+        PyThrowBadEs(memoryFiler.writeString(_acdesk));
+    else
+        PyThrowBadEs(Acad::eWrongObjectType);
+    PyThrowBadEs(memoryFiler.seek(kBegin, SEEK_SET));
+    PyThrowBadEs(pObj->dwgInFields(&memoryFiler));
 }
 
 bool PyDbDbBlockUserParameter::showProperties() const
