@@ -5,12 +5,33 @@ import wx
 from wx import xrc
 
 from pyrx import Ap, Db, Ed, Ge, Gs
+from enum import Flag, auto
 
 print("added command wxblockman")
 
 
 def OnPyUnloadApp():
     panel.ClearDatabase()
+
+
+from enum import Flag, auto
+
+
+class OnScreenFlags(Flag):
+    NONE = 0
+    ROTATE = auto()  # 1
+    SCALE = auto()  # 2
+
+
+def set_bit(flags: OnScreenFlags, bit: OnScreenFlags, value: bool) -> OnScreenFlags:
+    if value:
+        return flags | bit
+    else:
+        return flags & ~bit
+
+
+def get_bit(flags: OnScreenFlags, bit: OnScreenFlags) -> bool:
+    return bit in flags
 
 
 class BlockInfo(NamedTuple):
@@ -36,12 +57,13 @@ def getBlockInfos(db: Db.Database):
     return infos
 
 
-def insertDwg(db: Db.Database, scale: float, rotation: float):
+def insertDwg(db: Db.Database, scale: float, rotation: float, flags):
     if not db:
         raise Db.ErrorStatusException(Db.ErrorStatus.eNoDatabase)
     srcBlockId = db.currentSpaceId()
     blockName = db.getFilename()
-    flag, point = moveEnt(srcBlockId, scale, rotation)
+    point = Ge.Point3d()
+    flag, point, scale, rotation = xform_block_jig(srcBlockId, point, scale, rotation, flags)
     if flag:
         if insertBlockViaActiveX(blockName, point, scale, rotation):
             return Db.ErrorStatus.eOk
@@ -49,10 +71,27 @@ def insertDwg(db: Db.Database, scale: float, rotation: float):
     return Db.ErrorStatus.eOk
 
 
-def insertBlockTableRecord(
-    sourceDb: Db.Database, blockName: str, scale: float, rotation: float
-) -> Db.ErrorStatus:
+def xform_block_jig(block_id, point, scale, rotation, flags):
+    lock = Ap.AutoDocLock()
+    jig = BlockJig(block_id, scale, rotation)
+    if jig.doit() == Ed.PromptStatus.eOk:
+        point = jig.getPoint()
+    if flags & OnScreenFlags.SCALE:
+        sjig = BlockJigScale(block_id, point, rotation)
+        if sjig.doit() != Ed.PromptStatus.eOk:
+            return False, point, scale, rotation
+        scale = sjig.getScale()
+    if flags & OnScreenFlags.ROTATE:
+        rjig = BlockJigRotate(block_id, point, rotation, scale)
+        if rjig.doit() != Ed.PromptStatus.eOk:
+            return False, point, scale, rotation
+        rotation = rjig.getRotation()
+    return True, point, scale, rotation
 
+
+def insertBlockTableRecord(sourceDb: Db.Database, blockName, scale, rotation, flags):
+    lock = Ap.AutoDocLock()
+    point = Ge.Point3d()
     # Check if the block is already inserted
     pDestDb = Db.workingDb()
     if not pDestDb:
@@ -64,7 +103,7 @@ def insertBlockTableRecord(
     if bBlockExists:
         srcBlockId = pDestBlockTable.getAt(blockName)
         pDestBlockTable.close()
-        flag, point = moveEnt(srcBlockId, scale, rotation)
+        flag, point, scale, rotation = xform_block_jig(srcBlockId, point, scale, rotation, flags)
         if flag:
             if insertBlockViaActiveX(blockName, point, scale, rotation):
                 return Db.ErrorStatus.eOk
@@ -88,20 +127,12 @@ def insertBlockTableRecord(
 
     blkId = Db.ObjectId()
     pDestDb.insert(blkId, blockName, pTmpDb, True)
-    flag, point = moveEnt(srcBlockId, scale, rotation)
+    flag, point, scale, rotation = xform_block_jig(srcBlockId, point, scale, rotation, flags)
     pTmpDb = None
     if flag:
         if not insertBlockViaActiveX(blockName, point, scale, rotation):
             raise RuntimeError("insertBlockViaActiveX Failed")
     return Db.ErrorStatus.eOk
-
-
-def moveEnt(blockId: Db.ObjectId, scale: float, rotation: float) -> bool:
-    jig = BlockJig(blockId, scale, rotation)
-    if jig.drag() == Ed.DragStatus.eNormal:
-        point = jig.getPoint()
-        return True, point
-    return False, point
 
 
 # use Ax to do the actual insert as it handles attributes, dynamic
@@ -140,6 +171,8 @@ class PalettePanel(wx.Panel):
         self.scale_txtctrl = xrc.XRCCTRL(self, "ID_SCALE_TEXTCTRL")
         self.dirctrl: wx.GenericDirCtrl = xrc.XRCCTRL(self, "ID_DIRCTRL")
         self.listctrl: wx.ListCtrl = xrc.XRCCTRL(self, "ID_LISTCTRL")
+        self.rosCheckBoxCtrl = xrc.XRCCTRL(self, "ID_CHECKBOX_ROS")
+        self.sosCheckBoxCtrl = xrc.XRCCTRL(self, "ID_CHECKBOX_SOS")
 
     # todo handle previewctrl,choicectrl and add_buttonctrl
     def bind_events(self):
@@ -251,26 +284,41 @@ class PalettePanel(wx.Panel):
             _lock = Ap.AutoDocLock()
             item_index = event.GetIndex()
             item_text = self.listctrl.GetItemText(item_index)
+
+            os_flags = OnScreenFlags.NONE
+            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+
             drag = Ed.DragEffect()
             if drag.drag() and self.db is not None:
                 insertBlockTableRecord(
-                    self.db, item_text, self.getScaleValue(), self.getRotValue()
+                    self.db, item_text, self.getScaleValue(), self.getRotValue(), os_flags
                 )
         except Exception as e:
             print(f"OnDragInit failed: {e}")
 
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
         try:
-            insertDwg(self.db, self.getScaleValue(), self.getRotValue())
+            os_flags = OnScreenFlags.NONE
+            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+            insertDwg(self.db, self.getScaleValue(), self.getRotValue(), os_flags)
         except Exception as e:
             print(f"OnPreviewLeftDClick failed: {e}")
         finally:
             event.Skip()
 
+    def isRosChecked(self):
+        return self.rosCheckBoxCtrl.IsChecked()
+
+    def isSosChecked(self):
+        return self.sosCheckBoxCtrl.IsChecked()
+
 
 class BlockJig(Ed.Jig):
     def __init__(self, blockTableRecordId: Db.ObjectId, scale: float, rotation: float):
         self.ref = Db.BlockReference(Ge.Point3d.kOrigin, blockTableRecordId)
+        self.ref.setDatabaseDefaults()
         Ed.Jig.__init__(self, self.ref)
         ucs = Ed.Editor.getCurrentUCS()
         rotMat = Ge.Matrix3d.rotation(rotation, ucs.zAxis(), Ge.Point3d.kOrigin)
@@ -305,6 +353,7 @@ class BlockJigScale(Ed.Jig):
         self.curScale = scale
         self.ref = Db.BlockReference(pos, blockTableRecordId)
         self.ref.setDatabaseDefaults()
+        Ed.Jig.__init__(self, self.ref)
         self.baseMat = self.ref.blockTransform() * Ed.Editor.getCurrentUCS()
         self.refDist = self.curScale
         if self.refDist < 1e-4:
@@ -336,7 +385,7 @@ class BlockJigScale(Ed.Jig):
         return self.curScale
 
 
-class BlockJig(Ed.Jig):
+class BlockJigRotate(Ed.Jig):
     def __init__(
         self, blockTableRecordId: Db.ObjectId, pos: Ge.Point3d, rotation: float, scale: float
     ):
@@ -345,8 +394,9 @@ class BlockJig(Ed.Jig):
         self.prevAng = 0.0
         self.ref = Db.BlockReference(pos, blockTableRecordId)
         self.ref.setDatabaseDefaults()
+        Ed.Jig.__init__(self, self.ref)
         matUcs = Ed.Editor.getCurrentUCS()
-        self.normal = matUcs.yAxis()
+        self.normal = matUcs.zAxis()
         scaleMat = Ge.Matrix3d.scaling(scale, self.pos)
         rotMat = Ge.Matrix3d.rotation(rotation, self.normal, self.pos)
         self.ref.transformBy(rotMat * scaleMat)
