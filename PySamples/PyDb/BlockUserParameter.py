@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ge, Ed
+
+from pyrx import Ap, Db, Ed, Ge
 
 
 @Ap.Command()

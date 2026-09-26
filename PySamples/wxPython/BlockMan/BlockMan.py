@@ -1,3 +1,4 @@
+from enum import Flag, auto
 from pathlib import Path
 from typing import NamedTuple
 
@@ -5,16 +6,12 @@ import wx
 from wx import xrc
 
 from pyrx import Ap, Db, Ed, Ge, Gs
-from enum import Flag, auto
 
 print("added command wxblockman")
 
 
 def OnPyUnloadApp():
     panel.ClearDatabase()
-
-
-from enum import Flag, auto
 
 
 class OnScreenFlags(Flag):
@@ -72,7 +69,7 @@ def insertDwg(db: Db.Database, scale: float, rotation: float, flags):
 
 
 def xform_block_jig(block_id, point, scale, rotation, flags):
-    lock = Ap.AutoDocLock()
+    __annotations__lock = Ap.AutoDocLock()
     jig = BlockJig(block_id, scale, rotation)
     if jig.doit() == Ed.PromptStatus.eOk:
         point = jig.getPoint()
@@ -90,7 +87,7 @@ def xform_block_jig(block_id, point, scale, rotation, flags):
 
 
 def insertBlockTableRecord(sourceDb: Db.Database, blockName, scale, rotation, flags):
-    lock = Ap.AutoDocLock()
+    __annotations__lock = Ap.AutoDocLock()
     point = Ge.Point3d()
     # Check if the block is already inserted
     pDestDb = Db.workingDb()
@@ -333,7 +330,7 @@ class PalettePanel(wx.Panel):
 
     def OnDragInit(self, event: wx.ListEvent):
         __annotations__res = Ap.ResourceOverride()
-        _lock = Ap.AutoDocLock()
+        __annotations__lock = Ap.AutoDocLock()
         item_index = event.GetIndex()
         item_text = self.listctrl.GetItemText(item_index)
 
@@ -349,7 +346,7 @@ class PalettePanel(wx.Panel):
 
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
         __annotations__res = Ap.ResourceOverride()
-        _lock = Ap.AutoDocLock()
+        __annotations__lock = Ap.AutoDocLock()
         os_flags = OnScreenFlags.NONE
         os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
         os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
