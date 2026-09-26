@@ -156,14 +156,11 @@ class PalettePanel(wx.Panel):
         self.dwgimageDict = {}
         self.db = None
 
-    def __del__(self):
-        self.db = None
-        Ed.Core.alert("hi")
-
     def ClearDatabase(self):
         self.db = None
 
     def init_members(self):
+        # init from xrc
         self.previewctrl = xrc.XRCCTRL(self, "ID_STATIC_PREVIEW")
         self.choicectrl: wx.Choice = xrc.XRCCTRL(self, "ID_CHOICE")
         self.add_buttonctrl: wx.Button = xrc.XRCCTRL(self, "ID_ADD_BUTTON")
@@ -174,18 +171,27 @@ class PalettePanel(wx.Panel):
         self.rosCheckBoxCtrl = xrc.XRCCTRL(self, "ID_CHECKBOX_ROS")
         self.sosCheckBoxCtrl = xrc.XRCCTRL(self, "ID_CHECKBOX_SOS")
 
-    # todo handle previewctrl,choicectrl and add_buttonctrl
+        # theme
+        bkl = wx.Colour(45, 45, 45)
+        self.rot_textctrl.SetBackgroundColour(bkl)
+        self.scale_txtctrl.SetBackgroundColour(bkl)
+
     def bind_events(self):
         self.Bind(wx.EVT_SIZE, self.OnSize)
         # ctrl events
         self.dirctrl.Bind(wx.EVT_DIRCTRL_SELECTIONCHANGED, self.OnDirCtrlSelectionChanged)
+        if self.dirctrl:
+            internal_tree = self.dirctrl.GetTreeCtrl()
+            if internal_tree:
+                internal_tree.Bind(wx.EVT_TREE_ITEM_RIGHT_CLICK, self.OnDirCtrlRightClick)
         self.listctrl.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit)
+        self.listctrl.Bind(wx.EVT_LEFT_DCLICK, self.OnListCtrlLeftDClick)
         self.previewctrl.Bind(wx.EVT_LEFT_DCLICK, self.OnPreviewLeftDClick)
         self.add_buttonctrl.Bind(wx.EVT_BUTTON, self.OnAddButtonClick)
         self.choicectrl.Bind(wx.EVT_CHOICE, self.OnChoiceSelected)
 
-    # import the .XRC file and init the controls
     def OnShow(self, event):
+        # import the .XRC file and init the controls
         __annotations__res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./BlockMan.xrc")
@@ -193,7 +199,7 @@ class PalettePanel(wx.Panel):
         if not self.childpanel:
             raise Exception("failed to find xrc file")
 
-        # # create a sizer and add the child
+        # create a sizer and add the child
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.childpanel, 1, wx.ALL | wx.EXPAND)
         self.SetSizerAndFit(sizer)
@@ -202,6 +208,7 @@ class PalettePanel(wx.Panel):
         self.bind_events()
 
     def OnAddButtonClick(self, event):
+        __annotations__res = Ap.ResourceOverride()
         default_path = self.dirctrl.GetPath()
         style = wx.DD_DEFAULT_STYLE | wx.DD_DIR_MUST_EXIST
         with wx.DirDialog(
@@ -245,6 +252,7 @@ class PalettePanel(wx.Panel):
         return self.imageDict[dwgpath]
 
     def OnDirCtrlSelectionChanged(self, event: wx.TreeEvent):
+        __annotations__res = Ap.ResourceOverride()
         self.db = None
         self.listctrl.DeleteAllItems()
         self.listctrl.AssignImageList(None, wx.IMAGE_LIST_NORMAL)
@@ -268,7 +276,51 @@ class PalettePanel(wx.Panel):
         event.Skip()
 
     def OnSize(self, event):
+        __annotations__res = Ap.ResourceOverride()
         event.Skip()
+
+    def OnListCtrlLeftDClick(self, event):
+        __annotations__res = Ap.ResourceOverride()
+        pos = event.GetPosition()
+        item_index, flags = self.listctrl.HitTest(pos)
+        if item_index != wx.NOT_FOUND:
+            os_flags = OnScreenFlags.NONE
+            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+            item_text = self.listctrl.GetItemText(item_index)
+            sc = self.getScaleValue()
+            rot = self.getRotValue()
+            if insertBlockTableRecord(self.db, item_text, sc, rot, os_flags) == Db.ErrorStatus.eOk:
+                print("\n")
+            else:
+                print("\nOops, Something went wrong")
+        event.Skip()
+
+    def OnDirCtrlRightClick(self, event):
+        __annotations__res = Ap.ResourceOverride()
+        path = self.dirctrl.GetPath()
+        if path.lower().endswith(".dwg"):
+            self.ClearDatabase()
+            if Ap.DocManager().isApplicationContext():
+                Ap.DocManager().appContextOpenDocument(path)
+            else:
+                print("\n[Error] Failed to acquire main Application Context.\n")
+        else:
+            response = wx.MessageBox(
+                "Add this folder to favorites?",
+                "Add Favorites",
+                wx.YES_NO | wx.ICON_QUESTION,
+                self,
+            )
+            if response == wx.YES:
+                existing_index = self.choicectrl.FindString(path)
+                if existing_index == wx.NOT_FOUND:
+                    new_index = self.choicectrl.Append(path)
+                    self.choicectrl.SetSelection(new_index)
+                else:
+                    self.choicectrl.SetSelection(existing_index)
+        self.NavigateToFolder(path)
+        # self.SaveChoiceSetting()
 
     def getScaleValue(self):
         strval = self.scale_txtctrl.GetValue()
@@ -280,33 +332,29 @@ class PalettePanel(wx.Panel):
         return float(strval)
 
     def OnDragInit(self, event: wx.ListEvent):
-        try:
-            _lock = Ap.AutoDocLock()
-            item_index = event.GetIndex()
-            item_text = self.listctrl.GetItemText(item_index)
+        __annotations__res = Ap.ResourceOverride()
+        _lock = Ap.AutoDocLock()
+        item_index = event.GetIndex()
+        item_text = self.listctrl.GetItemText(item_index)
 
-            os_flags = OnScreenFlags.NONE
-            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+        os_flags = OnScreenFlags.NONE
+        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
 
-            drag = Ed.DragEffect()
-            if drag.drag() and self.db is not None:
-                insertBlockTableRecord(
-                    self.db, item_text, self.getScaleValue(), self.getRotValue(), os_flags
-                )
-        except Exception as e:
-            print(f"OnDragInit failed: {e}")
+        drag = Ed.DragEffect()
+        if drag.drag() and self.db is not None:
+            insertBlockTableRecord(
+                self.db, item_text, self.getScaleValue(), self.getRotValue(), os_flags
+            )
 
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
-        try:
-            os_flags = OnScreenFlags.NONE
-            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
-            insertDwg(self.db, self.getScaleValue(), self.getRotValue(), os_flags)
-        except Exception as e:
-            print(f"OnPreviewLeftDClick failed: {e}")
-        finally:
-            event.Skip()
+        __annotations__res = Ap.ResourceOverride()
+        _lock = Ap.AutoDocLock()
+        os_flags = OnScreenFlags.NONE
+        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+        insertDwg(self.db, self.getScaleValue(), self.getRotValue(), os_flags)
+        event.Skip()
 
     def isRosChecked(self):
         return self.rosCheckBoxCtrl.IsChecked()
