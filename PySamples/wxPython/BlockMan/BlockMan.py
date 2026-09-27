@@ -12,6 +12,7 @@ print("added command wxblockman")
 
 
 def OnPyUnloadApp():
+    # close any cached database here
     panel.ClearDatabase()
 
 
@@ -26,10 +27,6 @@ def set_bit(flags: OnScreenFlags, bit: OnScreenFlags, value: bool) -> OnScreenFl
         return flags | bit
     else:
         return flags & ~bit
-
-
-def get_bit(flags: OnScreenFlags, bit: OnScreenFlags) -> bool:
-    return bit in flags
 
 
 class BlockInfo(NamedTuple):
@@ -389,16 +386,10 @@ class PalettePanel(wx.Panel):
         insertDwg(self.db, self.getScaleValue(), self.getRotValue(), os_flags)
         event.Skip()
 
-    def isRosChecked(self):
-        return self.rosCheckBoxCtrl.IsChecked()
-
-    def isSosChecked(self):
-        return self.sosCheckBoxCtrl.IsChecked()
-
     def getOnScreenFlags(self):
         os_flags = OnScreenFlags.NONE
-        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.rosCheckBoxCtrl.IsChecked())
+        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.sosCheckBoxCtrl.IsChecked())
         return os_flags
 
 
