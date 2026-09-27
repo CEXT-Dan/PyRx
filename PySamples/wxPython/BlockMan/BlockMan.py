@@ -49,7 +49,7 @@ def getBlockInfos(db: Db.Database):
         ids.append(id)
     for idx, image in enumerate(Gs.Core.getBlockImages(ids, 64, 64, 1.0, [25, 25, 25])):
         infos[idx] = infos[idx]._replace(image=image)
-    return infos
+    return sorted(infos, key=lambda info: info.name)
 
 
 def insertDwg(db: Db.Database, scale: float, rotation: float, flags):
@@ -398,11 +398,10 @@ class BlockJig(Ed.Jig):
         self.ref = Db.BlockReference(Ge.Point3d.kOrigin, blockTableRecordId)
         self.ref.setDatabaseDefaults()
         Ed.Jig.__init__(self, self.ref)
-        ucs = Ed.Editor.getCurrentUCS()
-        rotMat = Ge.Matrix3d.rotation(rotation, ucs.zAxis(), Ge.Point3d.kOrigin)
-        scaleMat = Ge.Matrix3d.scaling(scale, Ge.Point3d.kOrigin)
-        self.localTransform = rotMat * scaleMat
-        self.ref.transformBy(self.localTransform)
+        matUcs = Ed.Editor.getCurrentUCS()
+        matUcs = matUcs * Ge.Matrix3d.rotation(rotation, matUcs.zAxis(), Ge.Point3d.kOrigin)
+        matUcs = matUcs * Ge.Matrix3d.scaling(scale, Ge.Point3d.kOrigin)
+        self.ref.transformBy(matUcs)
         self.point = Ge.Point3d.kOrigin
 
     def sampler(self) -> Ed.DragStatus:
