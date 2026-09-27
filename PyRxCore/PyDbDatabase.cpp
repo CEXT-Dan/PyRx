@@ -2350,7 +2350,7 @@ void PyDbDatabase::setFullSaveRequired() const
 void PyDbDatabase::readDwgAndClose(const char* fileName) const
 {
     std::wstring wsfileName{ utf8_to_wstr(fileName) };
-    PyThrowBadEs(impObj()->readDwgFile(wsfileName.c_str()));
+    PyThrowBadEs(impObj()->readDwgFile(wsfileName.c_str(), AcDbDatabase::kTryForReadShare));
     PyThrowBadEs(impObj()->closeInput(true));
 }
 
@@ -3692,7 +3692,7 @@ PyDbDatabase PyDbDatabase::createFromDWG2(const std::string& path, bool closeInp
 {
     AcDbDatabase* pDb = new AcDbDatabase(false, true);
     std::wstring wsPath = utf8_to_wstr(path);
-    PyThrowBadEs(pDb->readDwgFile(wsPath.c_str()));
+    PyThrowBadEs(pDb->readDwgFile(wsPath.c_str(), AcDbDatabase::kTryForReadShare));
     if (closeInput)
         PyThrowBadEs(pDb->closeInput(true));
     return PyDbDatabase(pDb, true);

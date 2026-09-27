@@ -40,7 +40,7 @@
                                 <border>5</border>
                                 <option>1</option>
                                 <object class="wxChoice" name="ID_CHOICE">
-                                    <tooltip>Choose item</tooltip>
+                                    <tooltip>Choose item, right click to clear</tooltip>
                                 </object>
                             </object>
                             <object class="sizeritem">

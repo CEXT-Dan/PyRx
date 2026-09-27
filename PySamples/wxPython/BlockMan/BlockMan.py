@@ -230,7 +230,15 @@ class PalettePanel(wx.Panel):
         self.NavigateToFolder(selected_path)
 
     def OnClearChoice(self, event):
-        self.choicectrl.Clear()
+        response = wx.MessageBox(
+            "Clear all favorites?",
+            "Clear Favorites",
+            wx.YES_NO | wx.ICON_QUESTION,
+            self,
+        )
+        if response == wx.YES:
+            self.choicectrl.Clear()
+            self.SaveChoiceSetting()
 
     def NavigateToFolder(self, folder: str):
         if not Path(folder).is_dir():
@@ -262,7 +270,9 @@ class PalettePanel(wx.Panel):
         self.listctrl.AssignImageList(None, wx.IMAGE_LIST_NORMAL)
         dwgpath = self.dirctrl.GetPath()
         if dwgpath.lower().endswith(".dwg"):
-            self.db = Db.Database.createFromDWG(dwgpath)
+            self.db = Db.Database(False, True)
+            self.db.readDwgFile(dwgpath, Db.DatabaseOpenMode.kTryForReadShare, False, "")
+            self.db.closeInput(True)
             infos = self.getCachedBlockInfos(dwgpath)
             imagelist = wx.ImageList(64, 64, False, len(infos))
             imgIdx = 0
@@ -288,9 +298,7 @@ class PalettePanel(wx.Panel):
         pos = event.GetPosition()
         item_index, flags = self.listctrl.HitTest(pos)
         if item_index != wx.NOT_FOUND:
-            os_flags = OnScreenFlags.NONE
-            os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-            os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+            os_flags = self.getOnScreenFlags()
             item_text = self.listctrl.GetItemText(item_index)
             sc = self.getScaleValue()
             rot = self.getRotValue()
@@ -363,11 +371,7 @@ class PalettePanel(wx.Panel):
         __annotations__lock = Ap.AutoDocLock()
         item_index = event.GetIndex()
         item_text = self.listctrl.GetItemText(item_index)
-
-        os_flags = OnScreenFlags.NONE
-        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
-
+        os_flags = self.getOnScreenFlags()
         sc = self.getScaleValue()
         rot = self.getRotValue()
 
@@ -381,9 +385,7 @@ class PalettePanel(wx.Panel):
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
         __annotations__res = Ap.ResourceOverride()
         __annotations__lock = Ap.AutoDocLock()
-        os_flags = OnScreenFlags.NONE
-        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
-        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+        os_flags = self.getOnScreenFlags()
         insertDwg(self.db, self.getScaleValue(), self.getRotValue(), os_flags)
         event.Skip()
 
@@ -392,6 +394,12 @@ class PalettePanel(wx.Panel):
 
     def isSosChecked(self):
         return self.sosCheckBoxCtrl.IsChecked()
+
+    def getOnScreenFlags(self):
+        os_flags = OnScreenFlags.NONE
+        os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
+        os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
+        return os_flags
 
 
 class BlockJig(Ed.Jig):
