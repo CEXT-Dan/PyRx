@@ -156,6 +156,7 @@ class PalettePanel(wx.Panel):
 
     def init_members(self):
         # init from xrc
+        __annotations__res = Ap.ResourceOverride()
         self.previewctrl = xrc.XRCCTRL(self, "ID_STATIC_PREVIEW")
         self.choicectrl: wx.Choice = xrc.XRCCTRL(self, "ID_CHOICE")
         self.add_buttonctrl: wx.Button = xrc.XRCCTRL(self, "ID_ADD_BUTTON")
@@ -172,6 +173,7 @@ class PalettePanel(wx.Panel):
         self.scale_txtctrl.SetBackgroundColour(bkl)
 
     def bind_events(self):
+        __annotations__res = Ap.ResourceOverride()
         self.Bind(wx.EVT_SIZE, self.OnSize)
         # ctrl events
         self.dirctrl.Bind(wx.EVT_DIRCTRL_SELECTIONCHANGED, self.OnDirCtrlSelectionChanged)
