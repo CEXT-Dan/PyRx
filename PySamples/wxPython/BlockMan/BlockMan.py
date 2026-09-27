@@ -1,3 +1,4 @@
+from configparser import ConfigParser
 from enum import Flag, auto
 from pathlib import Path
 from typing import NamedTuple
@@ -186,6 +187,7 @@ class PalettePanel(wx.Panel):
         self.previewctrl.Bind(wx.EVT_LEFT_DCLICK, self.OnPreviewLeftDClick)
         self.add_buttonctrl.Bind(wx.EVT_BUTTON, self.OnAddButtonClick)
         self.choicectrl.Bind(wx.EVT_CHOICE, self.OnChoiceSelected)
+        self.choicectrl.Bind(wx.EVT_RIGHT_DOWN, self.OnClearChoice)
 
     def OnShow(self, event):
         # import the .XRC file and init the controls
@@ -203,6 +205,7 @@ class PalettePanel(wx.Panel):
         self.Layout()
         self.init_members()
         self.bind_events()
+        self.LoadChoiceSetting()
 
     def OnAddButtonClick(self, event):
         __annotations__res = Ap.ResourceOverride()
@@ -220,10 +223,14 @@ class PalettePanel(wx.Panel):
                 else:
                     self.choicectrl.SetSelection(existingIndex)
                 self.NavigateToFolder(result)
+                self.SaveChoiceSetting()
 
     def OnChoiceSelected(self, event):
         selected_path = event.GetString()
         self.NavigateToFolder(selected_path)
+
+    def OnClearChoice(self, event):
+        self.choicectrl.Clear()
 
     def NavigateToFolder(self, folder: str):
         if not Path(folder).is_dir():
@@ -317,7 +324,30 @@ class PalettePanel(wx.Panel):
                 else:
                     self.choicectrl.SetSelection(existing_index)
         self.NavigateToFolder(path)
-        # self.SaveChoiceSetting()
+        self.SaveChoiceSetting()
+
+    def SaveChoiceSetting(self):
+        settings = ConfigParser(interpolation=None)
+        settings["favorites"] = {
+            str(index): path for index, path in enumerate(self.choicectrl.GetStrings())
+        }
+        settings_path = Path(__file__).with_name("favorites.ini")
+        with settings_path.open("w", encoding="utf-8") as settings_file:
+            settings.write(settings_file)
+
+    def LoadChoiceSetting(self):
+        self.choicectrl.Clear()
+        settings_path = Path(__file__).with_name("favorites.ini")
+        settings = ConfigParser(interpolation=None)
+        if not settings_path.exists():
+            return
+        settings.read(settings_path, encoding="utf-8")
+        if settings.has_section("favorites"):
+            favorites = sorted(settings.items("favorites"), key=lambda item: int(item[0]))
+            for _, path in favorites:
+                self.choicectrl.Append(path)
+            if favorites:
+                self.choicectrl.SetSelection(0)
 
     def getScaleValue(self):
         strval = self.scale_txtctrl.GetValue()
@@ -338,11 +368,15 @@ class PalettePanel(wx.Panel):
         os_flags = set_bit(os_flags, OnScreenFlags.ROTATE, self.isRosChecked())
         os_flags = set_bit(os_flags, OnScreenFlags.SCALE, self.isSosChecked())
 
+        sc = self.getScaleValue()
+        rot = self.getRotValue()
+
         drag = Ed.DragEffect()
         if drag.drag() and self.db is not None:
-            insertBlockTableRecord(
-                self.db, item_text, self.getScaleValue(), self.getRotValue(), os_flags
-            )
+            if insertBlockTableRecord(self.db, item_text, sc, rot, os_flags) == Db.ErrorStatus.eOk:
+                print("\n")
+            else:
+                print("\nOops, Something went wrong")
 
     def OnPreviewLeftDClick(self, event: wx.MouseEvent):
         __annotations__res = Ap.ResourceOverride()
