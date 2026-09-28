@@ -140,6 +140,26 @@ inline T1 PyDbObjectCloneFrom(const PyRxObject& src)
 }
 
 //-------------------------------------------------------------------------------------------------------------
+//PyDbPlaceHolder
+void makePyDbPlaceHolderWrapper();
+
+class PyDbPlaceHolder : public PyDbObject
+{
+public:
+    PyDbPlaceHolder();
+    PyDbPlaceHolder(const PyDbObjectId& id);
+    PyDbPlaceHolder(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPlaceHolder(AcDbPlaceHolder* ptr, bool autoDelete);
+    virtual ~PyDbPlaceHolder() override = default;
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbPlaceHolder  cloneFrom(const PyRxObject& src);
+    static PyDbPlaceHolder  cast(const PyRxObject& src);
+public:
+    AcDbPlaceHolder* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
 //PyDbProxyObject
 void makePyDbProxyObjectWrapper();
 

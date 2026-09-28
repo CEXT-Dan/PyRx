@@ -668,6 +668,70 @@ AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_l
 }
 
 //-------------------------------------------------------------------------------------------------------------
+//PyDbPlaceHolder
+void makePyDbPlaceHolderWrapper()
+{
+    PyDocString DS("PlaceHolder");
+    class_<PyDbPlaceHolder, bases<PyDbObject>>("PlaceHolder")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def("className", &PyDbPlaceHolder::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbPlaceHolder::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbPlaceHolder::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPlaceHolder::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbPlaceHolder::PyDbPlaceHolder()
+    : PyDbObject(new AcDbPlaceHolder(), false)
+{
+}
+
+PyDbPlaceHolder::PyDbPlaceHolder(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbPlaceHolder>(id), false)
+{
+}
+
+PyDbPlaceHolder::PyDbPlaceHolder(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(openAcDbObject<AcDbPlaceHolder>(id, mode), false)
+{
+}
+
+PyDbPlaceHolder::PyDbPlaceHolder(AcDbPlaceHolder* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+std::string PyDbPlaceHolder::className()
+{
+    return "AcDbPlaceHolder";
+}
+
+PyRxClass PyDbPlaceHolder::desc()
+{
+    return PyRxClass(AcDbPlaceHolder::desc(), false);
+}
+
+PyDbPlaceHolder PyDbPlaceHolder::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbPlaceHolder, AcDbPlaceHolder>(src);
+}
+
+PyDbPlaceHolder PyDbPlaceHolder::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbPlaceHolder>(src);
+}
+
+AcDbPlaceHolder* PyDbPlaceHolder::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbPlaceHolder*>(m_pyImp.get());
+}
+
+//-------------------------------------------------------------------------------------------------------------
 //PyDbProxyObject
 void makePyDbProxyObjectWrapper()
 {
@@ -914,6 +978,7 @@ boost::python::list AcDbObjectArrayToPyList(const AcArray<AcDbObject*>& arr)
         pyPyList.append(PyDbObject(item, true));
     return pyPyList;
 }
+
 
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactor
