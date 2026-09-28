@@ -776,16 +776,12 @@ class LayerFilter(PyRx.RxObject):
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
-        Returns a pointer to the AcRxClass object representing the specific class, or most recent
-        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
-        it or the class qualifier used with it. (Remember that when a static member function is
-        invoked via a pointer, the pointer type, not the object type, determines which
-        implementation of the function is invoked.) When working with a pointer to an object and
-        the proper AcRxClass object for the class of the object pointed to is desired, the
-        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
-        therefore not pointer type dependent. Caching the value of the pointer returned by this
-        method is acceptable, provided the application knows that the AcRxClass object pointed to
-        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        Returns the RxClass type descriptor for this specific class. In Python, this method is used
+        to get the runtime type descriptor of a class (typically via the static `.desc()` method)
+        for type checking and hierarchy inspection.To check the runtime type of a specific object
+        instance rather than a static pointer, use the instance's `.isA()` method instead. `.isA()`
+        dynamically evaluates the object's actual runtime type, making it independent of the
+        variable's type qualifier.
         """
     def dynamicallyGenerated(self, /) -> bool:
         """
@@ -884,16 +880,12 @@ class LayerGroup(PyAp.LayerFilter):
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
-        Returns a pointer to the AcRxClass object representing the specific class, or most recent
-        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
-        it or the class qualifier used with it. (Remember that when a static member function is
-        invoked via a pointer, the pointer type, not the object type, determines which
-        implementation of the function is invoked.) When working with a pointer to an object and
-        the proper AcRxClass object for the class of the object pointed to is desired, the
-        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
-        therefore not pointer type dependent. Caching the value of the pointer returned by this
-        method is acceptable, provided the application knows that the AcRxClass object pointed to
-        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        Returns the RxClass type descriptor for this specific class. In Python, this method is used
+        to get the runtime type descriptor of a class (typically via the static `.desc()` method)
+        for type checking and hierarchy inspection.To check the runtime type of a specific object
+        instance rather than a static pointer, use the instance's `.isA()` method instead. `.isA()`
+        dynamically evaluates the object's actual runtime type, making it independent of the
+        variable's type qualifier.
         """
     def layerIds(self, /) -> list[PyDb.ObjectId]: ...
     def removeLayerId(self, id: PyDb.ObjectId, /) -> None: ...
@@ -922,16 +914,12 @@ class LayoutManager(PyDb.LayoutManager):
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
-        Returns a pointer to the AcRxClass object representing the specific class, or most recent
-        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
-        it or the class qualifier used with it. (Remember that when a static member function is
-        invoked via a pointer, the pointer type, not the object type, determines which
-        implementation of the function is invoked.) When working with a pointer to an object and
-        the proper AcRxClass object for the class of the object pointed to is desired, the
-        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
-        therefore not pointer type dependent. Caching the value of the pointer returned by this
-        method is acceptable, provided the application knows that the AcRxClass object pointed to
-        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        Returns the RxClass type descriptor for this specific class. In Python, this method is used
+        to get the runtime type descriptor of a class (typically via the static `.desc()` method)
+        for type checking and hierarchy inspection.To check the runtime type of a specific object
+        instance rather than a static pointer, use the instance's `.isA()` method instead. `.isA()`
+        dynamically evaluates the object's actual runtime type, making it independent of the
+        variable's type qualifier.
         """
     def generateNextNewLayoutName(self, useDb: PyDb.Database = ..., /) -> str:
         """
@@ -1338,16 +1326,12 @@ class TransactionManager(PyDb.TransactionManager):
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
-        Returns a pointer to the AcRxClass object representing the specific class, or most recent
-        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
-        it or the class qualifier used with it. (Remember that when a static member function is
-        invoked via a pointer, the pointer type, not the object type, determines which
-        implementation of the function is invoked.) When working with a pointer to an object and
-        the proper AcRxClass object for the class of the object pointed to is desired, the
-        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
-        therefore not pointer type dependent. Caching the value of the pointer returned by this
-        method is acceptable, provided the application knows that the AcRxClass object pointed to
-        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        Returns the RxClass type descriptor for this specific class. In Python, this method is used
+        to get the runtime type descriptor of a class (typically via the static `.desc()` method)
+        for type checking and hierarchy inspection.To check the runtime type of a specific object
+        instance rather than a static pointer, use the instance's `.isA()` method instead. `.isA()`
+        dynamically evaluates the object's actual runtime type, making it independent of the
+        variable's type qualifier.
         """
     def enableGraphicsFlush(self, val: bool, /) -> None: ...
     def flushGraphics(self, /) -> None: ...
