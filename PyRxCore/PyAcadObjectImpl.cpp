@@ -4095,7 +4095,11 @@ void PyIAcadPlotImpl::SetDisplayPlotPreview(PyAcPreviewMode mode) const
 void PyIAcadPlotImpl::SetLayoutsToPlot(const wstringArray& layouts) const
 {
     _variant_t rtVal;
-    InitVariantFromStringArray((PCWSTR*)layouts.data(), layouts.size(), &rtVal.GetVARIANT());
+    std::vector<const wchar_t*> buffer;
+    buffer.reserve(layouts.size());
+    for (const auto& str : layouts) 
+        buffer.push_back(str.c_str());
+    InitVariantFromStringArray((PCWSTR*)buffer.data(), buffer.size(), &rtVal.GetVARIANT());
     PyThrowBadHr(impObj()->SetLayoutsToPlot(rtVal));
 }
 
