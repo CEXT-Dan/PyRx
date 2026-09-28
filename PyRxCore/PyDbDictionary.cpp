@@ -31,7 +31,7 @@ struct Dictionary_Iterator
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyDbDictionary wrapper
+//PyDbDictionary
 void makePyDbDictionaryWrapper()
 {
     class_<Dictionary_Iterator>("DictionaryIterator", no_init)
@@ -77,9 +77,6 @@ void makePyDbDictionaryWrapper()
         .def("__contains__", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }, 3764))
         ;
 }
-
-//---------------------------------------------------------------------------------------- -
-//PyDbDictionary
 
 PyDbDictionary::PyDbDictionary()
     : PyDbObject(new AcDbDictionary(), true)
@@ -209,7 +206,6 @@ AcDbDictionary* PyDbDictionary::impObj(const std::source_location& src /*= std::
     return static_cast<AcDbDictionary*>(m_pyImp.get());
 }
 
-
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionaryWithDefault
 void makePyDbDictionaryWithDefaultWrapper()
@@ -242,17 +238,17 @@ PyDbDictionaryWithDefault::PyDbDictionaryWithDefault()
 }
 
 PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id)
-    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id), true)
+    : PyDbDictionaryWithDefault(openAcDbObject<AcDbDictionaryWithDefault>(id), true)
 {
 }
 
 PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id, mode), true)
+    : PyDbDictionaryWithDefault(openAcDbObject<AcDbDictionaryWithDefault>(id, mode), true)
 {
 }
 
 PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id, mode, erased), true)
+    : PyDbDictionaryWithDefault(openAcDbObject<AcDbDictionaryWithDefault>(id, mode, erased), true)
 {
 }
 

@@ -2,9 +2,9 @@
 #include "PyDbObject.h"
 
 #pragma pack (push, 8)
+
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
-
 void makePyDbDictionaryWrapper();
 
 class PyDbDictionary : public PyDbObject
@@ -61,6 +61,5 @@ public:
 public:
     AcDbDictionaryWithDefault* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 #pragma pack (pop)
