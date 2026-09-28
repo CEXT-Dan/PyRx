@@ -208,3 +208,102 @@ AcDbDictionary* PyDbDictionary::impObj(const std::source_location& src /*= std::
     }
     return static_cast<AcDbDictionary*>(m_pyImp.get());
 }
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbDictionaryWithDefault
+void makePyDbDictionaryWithDefaultWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("DictionaryWithDefault");
+    class_<PyDbDictionaryWithDefault, bases<PyDbDictionary>>("DictionaryWithDefault")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 3737)))
+        .def("defaultId", &PyDbDictionaryWithDefault::defaultId, DS.ARGS())
+        .def("setDefaultId", &PyDbDictionaryWithDefault::setDefaultId, DS.ARGS({"newId: PyDb.ObjectId"}))
+        .def("getObjectBirthVersion", &PyDbDictionaryWithDefault::getObjectBirthVersion, DS.ARGS())
+        .def("className", &PyDbDictionaryWithDefault::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDictionaryWithDefault::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyDbDictionaryWithDefault::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbDictionaryWithDefault::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbDictionaryWithDefault::PyDbDictionaryWithDefault()
+    : PyDbDictionaryWithDefault(new AcDbDictionaryWithDefault(), true)
+{
+}
+
+PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id)
+    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id), true)
+{
+}
+
+PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id, mode), true)
+{
+}
+
+PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbDictionary(openAcDbObject<AcDbDictionaryWithDefault>(id, mode, erased), true)
+{
+}
+
+PyDbDictionaryWithDefault::PyDbDictionaryWithDefault(AcDbDictionaryWithDefault* ptr, bool autoDelete)
+    : PyDbDictionary(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyDbDictionaryWithDefault::defaultId() const
+{
+    return PyDbObjectId{ impObj()->defaultId() };
+}
+
+void PyDbDictionaryWithDefault::setDefaultId(const PyDbObjectId& newid)
+{
+    PyThrowBadEs(impObj()->setDefaultId(newid.m_id));
+}
+
+boost::python::tuple PyDbDictionaryWithDefault::getObjectBirthVersion() const
+{
+    PyAutoLockGIL lock;
+    AcDb::AcDbDwgVersion ver;
+    AcDb::MaintenanceReleaseVersion maintVer;
+    PyThrowBadEs(impObj()->getObjectBirthVersion(ver, maintVer));
+    return boost::python::make_tuple(int(ver), int(maintVer));
+}
+
+std::string PyDbDictionaryWithDefault::className()
+{
+    return "AcDbDictionaryWithDefault";
+}
+
+PyRxClass PyDbDictionaryWithDefault::desc()
+{
+    return PyRxClass(AcDbDictionaryWithDefault::desc(), false);
+}
+
+PyDbDictionaryWithDefault PyDbDictionaryWithDefault::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbDictionaryWithDefault, AcDbDictionaryWithDefault>(src);
+}
+
+PyDbDictionaryWithDefault PyDbDictionaryWithDefault::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbDictionaryWithDefault>(src);
+}
+
+AcDbDictionaryWithDefault* PyDbDictionaryWithDefault::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbDictionaryWithDefault*>(m_pyImp.get());
+}

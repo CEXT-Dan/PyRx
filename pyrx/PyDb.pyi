@@ -11248,6 +11248,112 @@ class DictionaryIterator:
     def __next__(self, /) -> tuple[str, PyDb.ObjectId]: ...
     def __reduce__(self, /) -> Any: ...
 
+class DictionaryWithDefault(PyDb.Dictionary):
+    @overload
+    def __init__(self, /) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
+    @overload
+    def __init__(self, *args) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> DictionaryWithDefault: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DictionaryWithDefault: ...
+    def defaultId(self, /) -> ObjectId: ...
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def getObjectBirthVersion(self, /) -> tuple: ...
+    def setDefaultId(self, newId: PyDb.ObjectId, /) -> None: ...
+
 class DimArrowFlags(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1

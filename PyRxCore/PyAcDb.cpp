@@ -453,6 +453,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbHatchWrapper();
     makePyDbMPolygonWrapper();
     makePyDbDictionaryWrapper();
+    makePyDbDictionaryWithDefaultWrapper();
     makePyDbSymbolTableWrapper();
     makePyDbSymbolTableRecordWrapper();
     makePyDbDimStyleTableWrapper();

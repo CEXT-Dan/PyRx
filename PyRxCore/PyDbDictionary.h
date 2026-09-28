@@ -2,10 +2,11 @@
 #include "PyDbObject.h"
 
 #pragma pack (push, 8)
-void makePyDbDictionaryWrapper();
-
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
+
+void makePyDbDictionaryWrapper();
+
 class PyDbDictionary : public PyDbObject
 {
 public:
@@ -34,5 +35,32 @@ public:
 public:
     AcDbDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//---------------------------------------------------------------------------------------- -
+//PyDbDictionaryWithDefault
+void makePyDbDictionaryWithDefaultWrapper();
+
+class PyDbDictionaryWithDefault : public PyDbDictionary
+{
+public:
+    PyDbDictionaryWithDefault();
+    PyDbDictionaryWithDefault(const PyDbObjectId& id);
+    PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbDictionaryWithDefault(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbDictionaryWithDefault(AcDbDictionaryWithDefault* ptr, bool autoDelete);
+    virtual ~PyDbDictionaryWithDefault() override = default;
+
+    PyDbObjectId            defaultId() const;
+    void                    setDefaultId(const PyDbObjectId& newid);
+    boost::python::tuple    getObjectBirthVersion() const;
+   
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbDictionaryWithDefault   cloneFrom(const PyRxObject& src);
+    static PyDbDictionaryWithDefault   cast(const PyRxObject& src);
+public:
+    AcDbDictionaryWithDefault* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #pragma pack (pop)
