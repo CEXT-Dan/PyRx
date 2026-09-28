@@ -15,7 +15,7 @@ class PyIAcadToolbarImpl;
 using PyIAcadToolbarPtr = std::unique_ptr<PyIAcadToolbarImpl>;
 class PyIAcadBlockImpl;
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
-
+class PyIAcadPlotConfigurationImpl;
 
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
@@ -769,6 +769,9 @@ public:
     void       SetDisplayPlotPreview(PyAcPreviewMode mode) const;
     void       SetLayoutsToPlot(const wstringArray& layouts) const;
     void       StartBatchMode(long val) const;
+    bool       PlotToFile(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config);
+    bool       PlotToDevice(const PyIAcadPlotConfigurationImpl& config);
+
     IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPlotPtr m_pimpl;

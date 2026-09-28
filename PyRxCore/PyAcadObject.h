@@ -45,6 +45,7 @@ class PyAcadMenuGroups;
 class PyAcadToolbars;
 class PyAcadToolbar;
 class PyAcadBlock;
+class PyAcadPlotConfiguration;
 
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
@@ -858,6 +859,8 @@ public:
     void       setDisplayPlotPreview(PyAcPreviewMode mode) const;
     void       setLayoutsToPlot(const boost::python::list& layouts) const;
     void       startBatchMode(long val) const;
+    bool       plotToFile(const std::string& filepath, const PyAcadPlotConfiguration& config);
+    bool       plotToDevice(const PyAcadPlotConfiguration& config);
     static std::string  className();
 public:
     PyIAcadPlotImpl* impObj(const std::source_location& src = std::source_location::current()) const;

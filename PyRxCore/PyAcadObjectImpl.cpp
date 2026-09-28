@@ -3,7 +3,6 @@
 #include "PyAcadDbObjectImpl.h"
 #include "PyAcadApplicationImpl.h"
 
-
 //------------------------------------------------------------------------------------
 // Helpers
 HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids)
@@ -90,7 +89,6 @@ HRESULT VariantToInt16Array(VARIANT& var, std::vector<int16_t>& vec)
     }
     return hr;
 }
-
 
 HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& vec)
 {
@@ -4104,6 +4102,23 @@ void PyIAcadPlotImpl::SetLayoutsToPlot(const wstringArray& layouts) const
 void PyIAcadPlotImpl::StartBatchMode(long val) const
 {
     PyThrowBadHr(impObj()->StartBatchMode(val));
+}
+
+bool PyIAcadPlotImpl::PlotToFile(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config)
+{
+    _bstr_t bstrfile{ plotFile };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((IDispatch*)config.impObj());
+    PyThrowBadHr(impObj()->PlotToFile(bstrfile, vtconfig,&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadPlotImpl::PlotToDevice(const PyIAcadPlotConfigurationImpl& config)
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((IDispatch*)config.impObj());
+    PyThrowBadHr(impObj()->PlotToDevice(vtconfig, &rtVal));
+    return rtVal != VARIANT_FALSE;
 }
 
 IAcadPlot* PyIAcadPlotImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
