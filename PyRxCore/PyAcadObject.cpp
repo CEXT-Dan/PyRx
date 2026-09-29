@@ -3474,8 +3474,10 @@ void makePyAcadPlotWrapper()
         .def("setDisplayPlotPreview", &PyAcadPlot::setDisplayPlotPreview, DS.ARGS({ "val:PyAx.AcPreviewMode" }))
         .def("setLayoutsToPlot", &PyAcadPlot::setLayoutsToPlot, DS.ARGS({ "layouts:list[str]" }))
         .def("startBatchMode", &PyAcadPlot::startBatchMode, DS.ARGS({ "val:bool" }))
-        .def("plotToFile", &PyAcadPlot::plotToFile, DS.ARGS({ "filepath:str", "config: PyAx.AcadPlotConfiguration" }))
-        .def("plotToDevice", &PyAcadPlot::plotToDevice, DS.ARGS({ "config: PyAx.AcadPlotConfiguration" }))
+        .def("plotToFile", &PyAcadPlot::plotToFile1)
+        .def("plotToFile", &PyAcadPlot::plotToFile2, DS.ARGS({ "filepath:str", "config: PyAx.AcadPlotConfiguration = None" }))
+        .def("plotToDevice", &PyAcadPlot::plotToDevice1)
+        .def("plotToDevice", &PyAcadPlot::plotToDevice2, DS.ARGS({ "config: PyAx.AcadPlotConfiguration = None" }))
         .def("className", &PyAcadPlot::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3535,14 +3537,24 @@ void PyAcadPlot::startBatchMode(long val) const
     impObj()->StartBatchMode(val);
 }
 
-bool PyAcadPlot::plotToFile(const std::string& filepath, const PyAcadPlotConfiguration& config)
+bool PyAcadPlot::plotToFile1(const std::string& filepath)
 {
-    return impObj()->PlotToFile(utf8_to_wstr(filepath).c_str(), *config.impObj());
+    return impObj()->PlotToFile1(utf8_to_wstr(filepath).c_str());
 }
 
-bool PyAcadPlot::plotToDevice(const PyAcadPlotConfiguration& config)
+bool PyAcadPlot::plotToFile2(const std::string& filepath, const PyAcadPlotConfiguration& config)
 {
-    return impObj()->PlotToDevice(*config.impObj());
+    return impObj()->PlotToFile2(utf8_to_wstr(filepath).c_str(), *config.impObj());
+}
+
+bool PyAcadPlot::plotToDevice1()
+{
+    return impObj()->PlotToDevice1();
+}
+
+bool PyAcadPlot::plotToDevice2(const PyAcadPlotConfiguration& config)
+{
+    return impObj()->PlotToDevice2(*config.impObj());
 }
 
 std::string PyAcadPlot::className()

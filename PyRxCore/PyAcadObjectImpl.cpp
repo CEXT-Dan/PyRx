@@ -4097,7 +4097,7 @@ void PyIAcadPlotImpl::SetLayoutsToPlot(const wstringArray& layouts) const
     _variant_t rtVal;
     std::vector<const wchar_t*> buffer;
     buffer.reserve(layouts.size());
-    for (const auto& str : layouts) 
+    for (const auto& str : layouts)
         buffer.push_back(str.c_str());
     InitVariantFromStringArray((PCWSTR*)buffer.data(), buffer.size(), &rtVal.GetVARIANT());
     PyThrowBadHr(impObj()->SetLayoutsToPlot(rtVal));
@@ -4108,19 +4108,36 @@ void PyIAcadPlotImpl::StartBatchMode(long val) const
     PyThrowBadHr(impObj()->StartBatchMode(val));
 }
 
-bool PyIAcadPlotImpl::PlotToFile(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config)
+bool PyIAcadPlotImpl::PlotToFile1(const CString& plotFile)
 {
     _bstr_t bstrfile{ plotFile };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    _variant_t vtconfig((IDispatch*)config.impObj());
-    PyThrowBadHr(impObj()->PlotToFile(bstrfile, vtconfig,&rtVal));
+    _variant_t vtconfig;
+    PyThrowBadHr(impObj()->PlotToFile(bstrfile, vtconfig, &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToDevice(const PyIAcadPlotConfigurationImpl& config)
+bool PyIAcadPlotImpl::PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config)
+{
+    _bstr_t bstrfile{ plotFile };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((const wchar_t*)config.GetConfigName());
+    PyThrowBadHr(impObj()->PlotToFile(bstrfile, vtconfig, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadPlotImpl::PlotToDevice1()
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    _variant_t vtconfig((IDispatch*)config.impObj());
+    _variant_t vtconfig;
+    PyThrowBadHr(impObj()->PlotToDevice(vtconfig, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadPlotImpl::PlotToDevice2(const PyIAcadPlotConfigurationImpl& config)
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((const wchar_t*)config.GetConfigName());
     PyThrowBadHr(impObj()->PlotToDevice(vtconfig, &rtVal));
     return rtVal != VARIANT_FALSE;
 }

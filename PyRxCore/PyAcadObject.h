@@ -859,8 +859,10 @@ public:
     void       setDisplayPlotPreview(PyAcPreviewMode mode) const;
     void       setLayoutsToPlot(const boost::python::list& layouts) const;
     void       startBatchMode(long val) const;
-    bool       plotToFile(const std::string& filepath, const PyAcadPlotConfiguration& config);
-    bool       plotToDevice(const PyAcadPlotConfiguration& config);
+    bool       plotToFile1(const std::string& filepath);
+    bool       plotToFile2(const std::string& filepath, const PyAcadPlotConfiguration& config);
+    bool       plotToDevice1();
+    bool       plotToDevice2(const PyAcadPlotConfiguration& config);
     static std::string  className();
 public:
     PyIAcadPlotImpl* impObj(const std::source_location& src = std::source_location::current()) const;
