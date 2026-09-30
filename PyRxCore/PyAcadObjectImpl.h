@@ -771,8 +771,10 @@ public:
     void       StartBatchMode(long val) const;
     bool       PlotToFile1(const CString& plotFile);
     bool       PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config);
+    bool       PlotToFile3(const CString& plotFile, const CString& config);
     bool       PlotToDevice1();
     bool       PlotToDevice2(const PyIAcadPlotConfigurationImpl& config);
+    bool       PlotToDevice3(const CString& config);
 
     IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

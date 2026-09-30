@@ -861,8 +861,10 @@ public:
     void       startBatchMode(long val) const;
     bool       plotToFile1(const std::string& filepath);
     bool       plotToFile2(const std::string& filepath, const PyAcadPlotConfiguration& config);
+    bool       plotToFile3(const std::string& filepath, const std::string& config);
     bool       plotToDevice1();
     bool       plotToDevice2(const PyAcadPlotConfiguration& config);
+    bool       plotToDevice3(const std::string& config);
     static std::string  className();
 public:
     PyIAcadPlotImpl* impObj(const std::source_location& src = std::source_location::current()) const;

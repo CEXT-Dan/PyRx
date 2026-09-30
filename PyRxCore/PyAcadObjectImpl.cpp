@@ -4126,6 +4126,15 @@ bool PyIAcadPlotImpl::PlotToFile2(const CString& plotFile, const PyIAcadPlotConf
     return rtVal != VARIANT_FALSE;
 }
 
+bool PyIAcadPlotImpl::PlotToFile3(const CString& plotFile, const CString& config)
+{
+    _bstr_t bstrfile{ plotFile };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((const wchar_t*)config);
+    PyThrowBadHr(impObj()->PlotToFile(bstrfile, vtconfig, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
 bool PyIAcadPlotImpl::PlotToDevice1()
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -4138,6 +4147,14 @@ bool PyIAcadPlotImpl::PlotToDevice2(const PyIAcadPlotConfigurationImpl& config)
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     _variant_t vtconfig((const wchar_t*)config.GetConfigName());
+    PyThrowBadHr(impObj()->PlotToDevice(vtconfig, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadPlotImpl::PlotToDevice3(const CString& config)
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    _variant_t vtconfig((const wchar_t*)config);
     PyThrowBadHr(impObj()->PlotToDevice(vtconfig, &rtVal));
     return rtVal != VARIANT_FALSE;
 }

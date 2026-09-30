@@ -3475,9 +3475,11 @@ void makePyAcadPlotWrapper()
         .def("setLayoutsToPlot", &PyAcadPlot::setLayoutsToPlot, DS.ARGS({ "layouts:list[str]" }))
         .def("startBatchMode", &PyAcadPlot::startBatchMode, DS.ARGS({ "val:bool" }))
         .def("plotToFile", &PyAcadPlot::plotToFile1)
-        .def("plotToFile", &PyAcadPlot::plotToFile2, DS.ARGS({ "filepath:str", "config: PyAx.AcadPlotConfiguration = None" }))
+        .def("plotToFile", &PyAcadPlot::plotToFile2)
+        .def("plotToFile", &PyAcadPlot::plotToFile3, DS.ARGS({ "filepath:str", "config: PyAx.AcadPlotConfiguration | str = ..." }))
         .def("plotToDevice", &PyAcadPlot::plotToDevice1)
-        .def("plotToDevice", &PyAcadPlot::plotToDevice2, DS.ARGS({ "config: PyAx.AcadPlotConfiguration = None" }))
+        .def("plotToDevice", &PyAcadPlot::plotToDevice2)
+        .def("plotToDevice", &PyAcadPlot::plotToDevice3, DS.ARGS({ "config: PyAx.AcadPlotConfiguration | str = ..." }))
         .def("className", &PyAcadPlot::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3547,6 +3549,11 @@ bool PyAcadPlot::plotToFile2(const std::string& filepath, const PyAcadPlotConfig
     return impObj()->PlotToFile2(utf8_to_wstr(filepath).c_str(), *config.impObj());
 }
 
+bool PyAcadPlot::plotToFile3(const std::string& filepath, const std::string& config)
+{
+    return impObj()->PlotToFile3(utf8_to_wstr(filepath).c_str(), utf8_to_wstr(config).c_str());
+}
+
 bool PyAcadPlot::plotToDevice1()
 {
     return impObj()->PlotToDevice1();
@@ -3555,6 +3562,11 @@ bool PyAcadPlot::plotToDevice1()
 bool PyAcadPlot::plotToDevice2(const PyAcadPlotConfiguration& config)
 {
     return impObj()->PlotToDevice2(*config.impObj());
+}
+
+bool PyAcadPlot::plotToDevice3(const std::string& config)
+{
+    return impObj()->PlotToDevice3(utf8_to_wstr(config).c_str());
 }
 
 std::string PyAcadPlot::className()
