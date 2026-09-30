@@ -3539,32 +3539,32 @@ void PyAcadPlot::startBatchMode(long val) const
     impObj()->StartBatchMode(val);
 }
 
-bool PyAcadPlot::plotToFile1(const std::string& filepath)
+bool PyAcadPlot::plotToFile1(const std::string& filepath) const
 {
     return impObj()->PlotToFile1(utf8_to_wstr(filepath).c_str());
 }
 
-bool PyAcadPlot::plotToFile2(const std::string& filepath, const PyAcadPlotConfiguration& config)
+bool PyAcadPlot::plotToFile2(const std::string& filepath, const PyAcadPlotConfiguration& config) const
 {
     return impObj()->PlotToFile2(utf8_to_wstr(filepath).c_str(), *config.impObj());
 }
 
-bool PyAcadPlot::plotToFile3(const std::string& filepath, const std::string& config)
+bool PyAcadPlot::plotToFile3(const std::string& filepath, const std::string& config) const
 {
     return impObj()->PlotToFile3(utf8_to_wstr(filepath).c_str(), utf8_to_wstr(config).c_str());
 }
 
-bool PyAcadPlot::plotToDevice1()
+bool PyAcadPlot::plotToDevice1() const
 {
     return impObj()->PlotToDevice1();
 }
 
-bool PyAcadPlot::plotToDevice2(const PyAcadPlotConfiguration& config)
+bool PyAcadPlot::plotToDevice2(const PyAcadPlotConfiguration& config) const
 {
     return impObj()->PlotToDevice2(*config.impObj());
 }
 
-bool PyAcadPlot::plotToDevice3(const std::string& config)
+bool PyAcadPlot::plotToDevice3(const std::string& config) const
 {
     return impObj()->PlotToDevice3(utf8_to_wstr(config).c_str());
 }

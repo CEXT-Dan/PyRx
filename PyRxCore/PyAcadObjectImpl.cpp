@@ -4108,7 +4108,7 @@ void PyIAcadPlotImpl::StartBatchMode(long val) const
     PyThrowBadHr(impObj()->StartBatchMode(val));
 }
 
-bool PyIAcadPlotImpl::PlotToFile1(const CString& plotFile)
+bool PyIAcadPlotImpl::PlotToFile1(const CString& plotFile) const
 {
     _bstr_t bstrfile{ plotFile };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -4117,7 +4117,7 @@ bool PyIAcadPlotImpl::PlotToFile1(const CString& plotFile)
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config)
+bool PyIAcadPlotImpl::PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config) const
 {
     _bstr_t bstrfile{ plotFile };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -4126,7 +4126,7 @@ bool PyIAcadPlotImpl::PlotToFile2(const CString& plotFile, const PyIAcadPlotConf
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToFile3(const CString& plotFile, const CString& config)
+bool PyIAcadPlotImpl::PlotToFile3(const CString& plotFile, const CString& config) const
 {
     _bstr_t bstrfile{ plotFile };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -4135,7 +4135,7 @@ bool PyIAcadPlotImpl::PlotToFile3(const CString& plotFile, const CString& config
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToDevice1()
+bool PyIAcadPlotImpl::PlotToDevice1() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     _variant_t vtconfig;
@@ -4143,7 +4143,7 @@ bool PyIAcadPlotImpl::PlotToDevice1()
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToDevice2(const PyIAcadPlotConfigurationImpl& config)
+bool PyIAcadPlotImpl::PlotToDevice2(const PyIAcadPlotConfigurationImpl& config) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     _variant_t vtconfig((const wchar_t*)config.GetConfigName());
@@ -4151,7 +4151,7 @@ bool PyIAcadPlotImpl::PlotToDevice2(const PyIAcadPlotConfigurationImpl& config)
     return rtVal != VARIANT_FALSE;
 }
 
-bool PyIAcadPlotImpl::PlotToDevice3(const CString& config)
+bool PyIAcadPlotImpl::PlotToDevice3(const CString& config) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     _variant_t vtconfig((const wchar_t*)config);

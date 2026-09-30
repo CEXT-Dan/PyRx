@@ -769,12 +769,12 @@ public:
     void       SetDisplayPlotPreview(PyAcPreviewMode mode) const;
     void       SetLayoutsToPlot(const wstringArray& layouts) const;
     void       StartBatchMode(long val) const;
-    bool       PlotToFile1(const CString& plotFile);
-    bool       PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config);
-    bool       PlotToFile3(const CString& plotFile, const CString& config);
-    bool       PlotToDevice1();
-    bool       PlotToDevice2(const PyIAcadPlotConfigurationImpl& config);
-    bool       PlotToDevice3(const CString& config);
+    bool       PlotToFile1(const CString& plotFile) const;
+    bool       PlotToFile2(const CString& plotFile, const PyIAcadPlotConfigurationImpl& config) const;
+    bool       PlotToFile3(const CString& plotFile, const CString& config) const;
+    bool       PlotToDevice1() const;
+    bool       PlotToDevice2(const PyIAcadPlotConfigurationImpl& config) const;
+    bool       PlotToDevice3(const CString& config) const;
 
     IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
