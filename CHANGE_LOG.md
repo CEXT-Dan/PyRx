@@ -1,3 +1,16 @@
+## v3.1.13
+
+* add Ax.Plot.plotToFile
+* add Ax.Plot.plotToDevice
+* fix Ax.Plot.setLayoutsToPlot
+* [#548] add Db.PlaceHolder
+* [#547] add Db.DictionaryWithDefault
+* improve Db.Database.readDwgAndClose and Db.Database.createFromDWG to use flag kTryForReadShare
+
+## v3.1.12
+
+* test build
+
 ## v3.1.11
 
 * added utility function Db.DbObject.dwgDump () same as snoop filer
