@@ -54,20 +54,6 @@ struct CDT_EXPORT VertexInsertionOrder
     };
 };
 
-/// Enum of what type of geometry used to embed triangulation into
-struct CDT_EXPORT SuperGeometryType
-{
-    /**
-     * The Enum itself
-     * @note needed to pre c++11 compilers that don't support 'class enum'
-     */
-    enum Enum
-    {
-        SuperTriangle, ///< conventional super-triangle
-        Custom,        ///< user-specified custom geometry (e.g., grid)
-    };
-};
-
 /**
  * Enum of strategies for treating intersecting constraint edges
  */
@@ -87,6 +73,54 @@ struct CDT_EXPORT IntersectingConstraintEdges
          */
         DontCheck,
     };
+};
+
+/**
+ * Enum of strategies for triangles refinement
+ */
+struct CDT_EXPORT RefinementCriterion
+{
+    /**
+     * The Enum itself
+     * @note needed to pre c++11 compilers that don't support 'class enum'
+     */
+    enum Enum
+    {
+        SmallestAngle, ///< constraint minimum triangles angle
+        LargestArea,   ///< constraint maximum triangles area
+    };
+};
+
+/**
+ * Counts of the refinements that Triangulation::refineTriangles was not able
+ * to perform
+ * @note a triangle or an edge is counted once per attempt to refine it and is
+ * re-visited after nearby splits: the same triangle or edge can be counted
+ * more than once
+ * @note to locate the problems in the resulting triangulation use
+ * Triangulation::findUnrefinedTriangles and
+ * Triangulation::findEncroachedFixedEdges
+ */
+struct CDT_EXPORT Unrefined
+{
+    /// triangles whose shortest edge is shorter than the threshold
+    std::size_t shortEdgeTriangles;
+    /// triangles whose circumcenter is outside the triangulated area
+    std::size_t circumcenterOutside;
+    /// triangles whose circumcenter coincides with an existing vertex
+    std::size_t circumcenterOnVertex;
+    /// triangles whose smallest angle is enclosed by two fixed edges: such an
+    /// angle comes from the input and can not be made any larger
+    std::size_t sharpFixedCorner;
+    /// fixed edges that are shorter than the threshold
+    std::size_t shortEdges;
+    /// fixed edges whose split vertex can not be placed: inserting it would
+    /// break the triangulation's topology
+    /// @note in practice one of the edge's triangles is thinner than an ulp
+    std::size_t splitVertexInvalid;
+
+    /// Constructor: all the counts start at zero
+    Unrefined();
 };
 
 /**
@@ -139,7 +173,7 @@ private:
  * Base class for errors. Contains error description and source location: file,
  * function, line
  */
-class Error : public std::runtime_error
+class CDT_EXPORT Error : public std::runtime_error
 {
 public:
     /// Constructor
@@ -149,6 +183,9 @@ public:
               ":" + CDT::to_string(srcLoc.line()))
         , m_description(description)
         , m_srcLoc(srcLoc)
+    {}
+    /// Destructor
+    virtual ~Error() CDT_NOEXCEPT
     {}
     /// Get error description
     const std::string& description() const
@@ -170,7 +207,7 @@ private:
  * Error thrown when triangulation modification is attempted after it was
  * finalized
  */
-class FinalizedError : public Error
+class CDT_EXPORT FinalizedError : public Error
 {
 public:
     /// Constructor
@@ -185,7 +222,7 @@ public:
 /**
  * Error thrown when duplicate vertex is detected during vertex insertion
  */
-class DuplicateVertexError : public Error
+class CDT_EXPORT DuplicateVertexError : public Error
 {
 public:
     /// Constructor
@@ -219,7 +256,7 @@ private:
  * Error thrown when intersecting constraint edges are detected, but
  * triangulation is not configured to attempt to resolve them
  */
-class IntersectingConstraintsError : public Error
+class CDT_EXPORT IntersectingConstraintsError : public Error
 {
 public:
     /// Constructor
@@ -251,7 +288,75 @@ private:
     Edge m_e1, m_e2;
 };
 
-#ifdef CDT_ENABLE_CALLBACK_HANDLER
+/**
+ * Error thrown when resolving intersecting constraints fails: floating-point
+ * rounding places the computed split vertex outside the edge's adjacent
+ * triangles, so it can not be inserted
+ */
+class CDT_EXPORT InvalidEdgeSplitVertex : public Error
+{
+public:
+    /// Constructor
+    InvalidEdgeSplitVertex(
+        const Edge& e1,
+        const Edge& e2,
+        const SourceLocation& srcLoc)
+        : Error(
+              "Intersection of constraint edges (" + CDT::to_string(e1.v1()) +
+                  ", " + CDT::to_string(e1.v2()) + ") and (" +
+                  CDT::to_string(e2.v1()) + ", " + CDT::to_string(e2.v2()) +
+                  ") can not be resolved: computed split vertex is invalid",
+              srcLoc)
+        , m_e1(e1)
+        , m_e2(e2)
+    {}
+    /// first intersecting constraint
+    const Edge& e1() const
+    {
+        return m_e1;
+    }
+    /// second intersecting constraint
+    const Edge& e2() const
+    {
+        return m_e2;
+    }
+
+private:
+    Edge m_e1, m_e2;
+};
+
+class CDT_EXPORT AccessingInvalidIndex : public Error
+{
+public:
+    AccessingInvalidIndex(const SourceLocation& srcLoc)
+        : Error("Accessing invalid index", srcLoc)
+    {}
+};
+
+template <typename TIndex>
+class CDT_EXPORT OptionalIndex
+{
+public:
+    OptionalIndex(const TIndex index)
+        : m_index(index)
+    {}
+    bool hasValue() const
+    {
+        return m_index != TIndex(invalidIndexSizeType);
+    }
+    TIndex value() const
+    {
+        if(!hasValue())
+            handleException(AccessingInvalidIndex(CDT_SOURCE_LOCATION));
+        return m_index;
+    }
+
+private:
+    TIndex m_index;
+};
+
+typedef OptionalIndex<VertInd> OptionalVertInd; ///< Optional vertex index
+typedef OptionalIndex<TriInd> OptionalTriInd;   ///< Optional triangle index
 
 /**
  * What type of vertex is added to the triangulation
@@ -270,8 +375,14 @@ struct CDT_EXPORT AddVertexType
         FixedEdgeMidpoint,
         /// Resolving fixed/constraint edges' intersection
         FixedEdgesIntersection,
+        /// Refinement: circumcenter of a poor-quality triangle
+        RefinementCircumcenter,
+        /// Refinement: split of an encroached fixed edge
+        RefinementEdgeSplit,
     };
 };
+
+#ifdef CDT_ENABLE_CALLBACK_HANDLER
 
 /**
  * What type of triangle change happened
@@ -482,6 +593,8 @@ public:
      * @param last end of the range of vertices to add
      * @param getX getter of X-coordinate
      * @param getY getter of Y-coordinate
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw DuplicateVertexError if an inserted vertex is a duplicate
      */
     template <
         typename TVertexIter,
@@ -495,6 +608,8 @@ public:
     /**
      * Insert vertices into triangulation
      * @param vertices vector of vertices to insert
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw DuplicateVertexError if an inserted vertex is a duplicate
      */
     void insertVertices(const std::vector<V2d<T> >& vertices);
     /**
@@ -525,6 +640,11 @@ public:
      * @param last end of the range of edges to add
      * @param getStart getter of edge start vertex index
      * @param getEnd getter of edge end vertex index
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw IntersectingConstraintsError if edges intersect and intersecting
+     * constraint edges are not allowed
+     * @throw InvalidEdgeSplitVertex if an edges intersection position breaks
+     * triangulation topology due to floating-point rounding
      */
     template <
         typename TEdgeIter,
@@ -554,6 +674,11 @@ public:
      * algorithm of Triangulation::eraseOuterTrianglesAndHoles works.
      * <b>Make sure there are no erroneous duplicates.</b>
      * @tparam edges constraint edges
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw IntersectingConstraintsError if edges intersect and intersecting
+     * constraint edges are not allowed
+     * @throw InvalidEdgeSplitVertex if an edges intersection position breaks
+     * triangulation topology due to floating-point rounding
      */
     void insertEdges(const std::vector<Edge>& edges);
     /**
@@ -584,6 +709,11 @@ public:
      * @param last end of the range of edges to add
      * @param getStart getter of edge start vertex index
      * @param getEnd getter of edge end vertex index
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw IntersectingConstraintsError if edges intersect and intersecting
+     * constraint edges are not allowed
+     * @throw InvalidEdgeSplitVertex if an edges intersection position breaks
+     * triangulation topology due to floating-point rounding
      */
     template <
         typename TEdgeIter,
@@ -613,28 +743,108 @@ public:
      * detection algorithm of Triangulation::eraseOuterTrianglesAndHoles works.
      * <b>Make sure there are no erroneous duplicates.</b>
      * @tparam edges edges to conform to
+     * @throw FinalizedError if triangulation was already finalized
+     * @throw IntersectingConstraintsError if edges intersect and intersecting
+     * constraint edges are not allowed
+     * @throw InvalidEdgeSplitVertex if an edges intersection position breaks
+     * triangulation topology due to floating-point rounding
      */
     void conformToEdges(const std::vector<Edge>& edges);
     /**
+     * Triangles refinement by splitting bad triangles
+     * @note bad triangles don't fulfill constraints defined by the user
+     * @param maxVerticesToInsert budget of Steiner vertices to insert
+     * @param refinementCriterion refinement strategy that is used to identify
+     * bad triangles
+     * @param refinementThreshold threshold value for refinement
+     * @param toEraseOrNull if not null, triangles in this set are skipped as
+     * refinement candidates and triangles replacing them are added to it.
+     * Must come from a `collectXXX` method; caller then passes it to
+     * #finalizeTriangulation.
+     * @param minEdgeLength don't split edges/triangles already this short:
+     * acute corners and close fixed edges can otherwise force ever-shrinking
+     * splits. 0 never gives up.
+     * @return refinements that could not be performed
+     * @throw FinalizedError if triangulation was already finalized
+     */
+    Unrefined refineTriangles(
+        VertInd maxVerticesToInsert,
+        RefinementCriterion::Enum refinementCriterion =
+            RefinementCriterion::SmallestAngle,
+        T refinementThreshold = degToRad(T(20)),
+        TriIndUSet* toEraseOrNull = NULL,
+        T minEdgeLength = T(1e-6));
+    /**
+     * Find all fixed edges encroached by their opposed vertices
+     * @return encroached fixed edges, sorted for deterministic order
+     * @note can be used to scan the triangulation for the problems that
+     * #refineTriangles was not able to resolve
+     * @throw FinalizedError if triangulation was already finalized: finalizing
+     * discards the vertex adjacency this relies on
+     */
+    EdgeVec findEncroachedFixedEdges() const;
+    /**
+     * Find triangles that don't fulfill the refinement criterion
+     * @param refinementCriterion refinement strategy that is used to identify
+     * bad triangles
+     * @param refinementThreshold threshold value for refinement
+     * @return indices of the triangles that are still bad
+     * @note triangles whose smallest angle is enclosed by two fixed edges are
+     * reported as well: such an angle comes from the input and can not be
+     * refined (see Unrefined::sharpFixedCorner)
+     * @note can be used to scan the triangulation for the problems that
+     * #refineTriangles was not able to resolve
+     */
+    TriIndVec findUnrefinedTriangles(
+        RefinementCriterion::Enum refinementCriterion =
+            RefinementCriterion::SmallestAngle,
+        T refinementThreshold = degToRad(T(20))) const;
+    /**
      * Erase triangles adjacent to super triangle
-     *
-     * @note does nothing if custom geometry is used
+     * @throw FinalizedError if triangulation was already finalized
      */
     void eraseSuperTriangle();
-    /// Erase triangles outside of constrained boundary using growing
+    /**
+     * Erase triangles outside of constrained boundary using growing
+     * @throw FinalizedError if triangulation was already finalized
+     */
     void eraseOuterTriangles();
     /**
      * Erase triangles outside of constrained boundary and auto-detected holes
      *
      * @note detecting holes relies on layer peeling based on layer depth
      * @note supports overlapping or touching boundaries
+     * @throw FinalizedError if triangulation was already finalized
      */
     void eraseOuterTrianglesAndHoles();
     /**
-     * Call this method after directly setting custom super-geometry via
-     * vertices and triangles members
+     * Collect triangles adjacent to super-triangle: same triangles that
+     * #eraseSuperTriangle would remove.
+     * @throw FinalizedError if triangulation was already finalized
      */
-    void initializedWithCustomSuperGeometry();
+    TriIndUSet collectSuperTriangle() const;
+    /**
+     * Collect triangles outside of constrained boundary: same triangles that
+     * #eraseOuterTriangles would remove.
+     * @throw FinalizedError if triangulation was already finalized
+     */
+    TriIndUSet collectOuterTriangles() const;
+    /**
+     * Collect triangles outside of constrained boundary and auto-detected
+     * holes: same triangles that #eraseOuterTrianglesAndHoles would remove.
+     * @throw FinalizedError if triangulation was already finalized
+     */
+    TriIndUSet collectOuterTrianglesAndHoles() const;
+    /**
+     * Remove super-triangle and triangles with specified indices.
+     * Adjust internal triangulation state accordingly.
+     * @param removedTriangles indices of triangles to remove
+     * @note pair with one of the `collectXXX` methods to combine erasing with
+     * #refineTriangles
+     * @note invalidates caller-held vertex indices and edges
+     * @throw FinalizedError if triangulation was already finalized
+     */
+    void finalizeTriangulation(const TriIndUSet& removedTriangles);
 
     /**
      * Check if the triangulation was finalized with `erase...` method and
@@ -817,7 +1027,10 @@ private:
     array<TriInd, 2> trianglesAt(const V2d<T>& pos) const;
     array<TriInd, 2>
     walkingSearchTrianglesAt(VertInd iV, VertInd startVertex) const;
-    TriInd walkTriangles(VertInd startVertex, const V2d<T>& pos) const;
+    /// Walk to the triangle at a given position
+    /// @return triangle containing the position or no value when the position
+    /// is outside of the triangulated area
+    OptionalTriInd walkTriangles(VertInd startVertex, const V2d<T>& pos) const;
     /// Given triangle and its vertex find opposite triangle and the other three
     /// vertices and surrounding neighbors
     void edgeFlipInfo(
@@ -831,7 +1044,45 @@ private:
         TriInd& n2,
         TriInd& n3,
         TriInd& n4);
-    bool isFlipNeeded(VertInd iV1, VertInd iV2, VertInd iV3, VertInd iV4) const;
+    bool isFlipNeeded(
+        VertInd iV1,
+        VertInd iV2,
+        VertInd iV3,
+        VertInd iV4,
+        const bool doFlipFixedEdges = false) const;
+    /// Check if two fixed edges are pieces of the same original input edge
+    bool isSameOriginalEdge(const Edge& e1, const Edge& e2) const;
+    bool isRefinementNeeded(
+        const Triangle& tri,
+        RefinementCriterion::Enum refinementCriterion,
+        T refinementThreshold) const;
+    /// Check if the triangle's smallest angle is enclosed by two fixed edges:
+    /// such an angle comes from the input and can not be made any larger
+    bool isSmallestAngleFixed(const Triangle& tri) const;
+    /// Check if edge is encroached by its opposed vertices
+    bool isEdgeEncroached(const Edge& edge) const;
+    bool isEdgeEncroachedBy(const Edge& edge, const V2d<T>& v) const;
+    /// Find all fixed edges encroached by a vertex that is about to be added
+    /// at a given position
+    /// @param v position of the vertex
+    /// @param iT triangle containing the position
+    EdgeVec edgesEncroachedBy(const V2d<T>& v, TriInd iT) const;
+    /// Recursively split encroached edges
+    TriIndVec resolveEncroachedEdges(
+        EdgeQueue encroachedEdges,
+        VertInd& newVertBudget,
+        VertInd steinerVerticesOffset,
+        const V2d<T>* circumcenterOrNull,
+        RefinementCriterion::Enum refinementCriterion,
+        T badTriangleThreshold,
+        TriIndUSet* toEraseOrNull,
+        T minEdgeLength,
+        Unrefined& unrefined);
+    OptionalVertInd splitEncroachedEdge(
+        Edge edge,
+        VertInd steinerVerticesOffset,
+        TriIndUSet* toEraseOrNull,
+        Unrefined& unrefined);
     void changeNeighbor(TriInd iT, TriInd oldNeighbor, TriInd newNeighbor);
     void changeNeighbor(
         TriInd iT,
@@ -856,12 +1107,8 @@ private:
         IndexSizeType iB) const;
     TriInd addTriangle(const Triangle& t);
     TriInd addTriangle();
-    /**
-     * Remove super-triangle (if used) and triangles with specified indices.
-     * Adjust internal triangulation state accordingly.
-     * @removedTriangles indices of triangles to remove
-     */
-    void finalizeTriangulation(const TriIndUSet& removedTriangles);
+    VertInd verticesCount() const;
+    TriInd trianglesCount() const;
     TriIndUSet growToBoundary(std::stack<TriInd> seeds) const;
     void fixEdge(const Edge& edge);
     void fixEdge(const Edge& edge, const Edge& originalEdge);
@@ -877,12 +1124,16 @@ private:
      * @param iT index of a first triangle adjacent to the split edge
      * @param iTopo index of a second triangle adjacent to the split edge
      * (opposed to the first triangle)
+     * @param vertexType what the split vertex is added for: only used to
+     * report the vertex to a callback handler
      * @return index of a newly added split vertex
      */
     VertInd addSplitEdgeVertex(
+        const Edge& edge,
         const V2d<T>& splitVert,
         const TriInd iT,
-        const TriInd iTopo);
+        const TriInd iTopo,
+        const AddVertexType::Enum vertexType);
     /**
      * Split fixed edge and add a split vertex into the triangulation
      * @param edge fixed edge to split
@@ -890,13 +1141,50 @@ private:
      * @param iT index of a first triangle adjacent to the split edge
      * @param iTopo index of a second triangle adjacent to the split edge
      * (opposed to the first triangle)
-     * @return index of a newly added split vertex
+     * @param vertexType what the split vertex is added for: only used to
+     * report the vertex to a callback handler
+     * @return index of a newly added split vertex, or no value when the split
+     * vertex is invalid (see #isEdgeSplitVertexValid) and nothing was split
      */
-    VertInd splitFixedEdgeAt(
+    OptionalVertInd splitFixedEdgeAt(
         const Edge& edge,
         const V2d<T>& splitVert,
         const TriInd iT,
-        const TriInd iTopo);
+        const TriInd iTopo,
+        const AddVertexType::Enum vertexType);
+    /**
+     * Check that a computed fixed-edge split vertex can be safely inserted.
+     *
+     * Splitting fans four triangles around the split vertex, so all of them are
+     * wound correctly only if the (floating-point-rounded) vertex lies strictly
+     * inside the kernel of the quadrilateral formed by the two triangles being
+     * split. Containment in one of them is not enough: the quadrilateral can be
+     * non-convex.
+     * @param splitVert position of the candidate split vertex
+     * @param iT index of a first triangle adjacent to the split edge
+     * @param iTopo index of a second triangle adjacent to the split edge
+     * @return true if the split vertex can be inserted
+     */
+    bool isEdgeSplitVertexValid(
+        const V2d<T>& splitVert,
+        TriInd iT,
+        TriInd iTopo) const;
+    /**
+     * Convert an internal edge to the original input edge it represents:
+     * resolve edge pieces to their original and drop the super-triangle vertex
+     * offset. Used to report meaningful edges in constraint-related exceptions.
+     * @param e internal edge
+     * @return corresponding original input edge
+     */
+    Edge originalInputEdge(const Edge& e) const;
+    /**
+     * Bounds-checked triangle access (like std::vector::at but throwing
+     * CDT::Error). Guards against dereferencing a 'noNeighbor' index, e.g. when
+     * an edge-insertion walk reaches the triangulation boundary.
+     * @param iT triangle index
+     * @return triangle at the given index
+     */
+    const Triangle& triangleAt(TriInd iT) const;
     /**
      * Depth-peel a layer in triangulation, used when calculating triangle
      * depths
@@ -922,6 +1210,8 @@ private:
     void insertVertices_KDTreeBFS(VertInd superGeomVertCount, Box2d<T> box);
     std::pair<TriInd, TriInd> edgeTriangles(VertInd a, VertInd b) const;
     bool hasEdge(VertInd a, VertInd b) const;
+    bool
+    hasAnotherFixedEdgeAtSmallAngle(VertInd v, const Edge& excludeEdge) const;
     void setAdjacentTriangle(const VertInd v, const TriInd t);
     void pivotVertexTriangleCW(VertInd v);
     /// Add vertex to nearest-point locator if locator is initialized
@@ -931,8 +1221,6 @@ private:
     void tryInitNearestPointLocator();
 
     TNearPointLocator m_nearPtLocator;
-    VertInd m_nTargetVerts;
-    SuperGeometryType::Enum m_superGeomType;
     VertexInsertionOrder::Enum m_vertexInsertionOrder;
     IntersectingConstraintEdges::Enum m_intersectingEdgesStrategy;
     T m_minDistToConstraintEdge;
@@ -1025,7 +1313,7 @@ void Triangulation<T, TNearPointLocator>::insertVertices(
     if(isFirstTime) // account for adding super-triangle on the first run
     {
         exactCapacityTriangles += 1;
-        exactCapacityVertices += nSuperTriangleVertices;
+        exactCapacityVertices += nSuperTriVerts;
     }
     std::size_t capacityTriangles = exactCapacityTriangles;
     std::size_t capacityVertices = exactCapacityVertices;
@@ -1035,15 +1323,15 @@ void Triangulation<T, TNearPointLocator>::insertVertices(
     // because vertex is added for each intersection
     // and total number of intersections is unknown
     const VertInd overAllocationVerticesThreshold(1000);
-    const T overAllocationFactor(1.1);
+    const std::size_t overAllocationFraction(10);
     const bool isOverPreAllocated =
         m_intersectingEdgesStrategy ==
             IntersectingConstraintEdges::TryResolve &&
         VertInd(nNewVertices) >= overAllocationVerticesThreshold;
     if(isOverPreAllocated)
     {
-        capacityTriangles *= overAllocationFactor;
-        capacityVertices *= overAllocationFactor;
+        capacityTriangles += capacityTriangles / overAllocationFraction;
+        capacityVertices += capacityVertices / overAllocationFraction;
     }
     triangles.reserve(capacityTriangles);
     vertices.reserve(capacityVertices);
@@ -1056,7 +1344,7 @@ void Triangulation<T, TNearPointLocator>::insertVertices(
         addSuperTriangle(box);
     }
     tryInitNearestPointLocator();
-    const VertInd nExistingVerts = static_cast<VertInd>(vertices.size());
+    const VertInd nExistingVerts = verticesCount();
 
     for(TVertexIter it = first; it != last; ++it)
         addNewVertex(V2d<T>(getX(*it), getY(*it)), noNeighbor);
@@ -1112,8 +1400,8 @@ void Triangulation<T, TNearPointLocator>::insertEdges(
 #endif
         // +3 to account for super-triangle vertices
         const Edge edge(
-            VertInd(getStart(*first) + m_nTargetVerts),
-            VertInd(getEnd(*first) + m_nTargetVerts));
+            VertInd(getStart(*first) + nSuperTriVerts),
+            VertInd(getEnd(*first) + nSuperTriVerts));
         insertEdge(edge, edge, remaining, tppIterations);
     }
 }
@@ -1145,8 +1433,8 @@ void Triangulation<T, TNearPointLocator>::conformToEdges(
 #endif
         // +3 to account for super-triangle vertices
         const Edge e(
-            VertInd(getStart(*first) + m_nTargetVerts),
-            VertInd(getEnd(*first) + m_nTargetVerts));
+            VertInd(getStart(*first) + nSuperTriVerts),
+            VertInd(getEnd(*first) + nSuperTriVerts));
         conformToEdge(e, EdgeVec(1, e), 0, remaining);
     }
 }
