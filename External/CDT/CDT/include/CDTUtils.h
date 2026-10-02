@@ -24,6 +24,15 @@ typedef char CDT_DONT_USE_BOOST_RTREE__was__replaced__with__CDT_USE_BOOST[-1];
 typedef char couldnt_parse_cxx_standard[-1]; ///< Error: couldn't parse standard
 #endif
 
+// 'noexcept' is only available since c++11 and its c++98 spelling 'throw()'
+// is in turn removed in c++20
+#ifdef CDT_CXX11_IS_SUPPORTED
+/// Portable 'noexcept': falls back to 'throw()' when only c++98 is available
+#define CDT_NOEXCEPT noexcept
+#else
+#define CDT_NOEXCEPT throw()
+#endif
+
 // Functions defined outside the class need to be 'inline'
 // if CDT is configured to be used as header-only library:
 // single-definition rule is violated otherwise
@@ -44,7 +53,14 @@ typedef char couldnt_parse_cxx_standard[-1]; ///< Error: couldn't parse standard
 #include <cassert>
 #include <cmath>
 #include <limits>
+#include <queue>
 #include <vector>
+
+#ifdef M_PI
+#define CDT_M_PI M_PI
+#else
+#define CDT_M_PI 3.14159265358979323846
+#endif
 
 #ifdef CDT_USE_STRONG_TYPING
 #include <boost/serialization/strong_typedef.hpp>
@@ -99,6 +115,46 @@ std::string to_string(const T& value)
     return boost::lexical_cast<std::string>(value);
 }
 } // namespace CDT
+#endif
+
+/// Ensure precise floating-point math without contraction to fused multiply-add operations.
+#ifdef _MSC_VER
+#define CDT_ENSURE_PRECISE_MATH \
+    __pragma(float_control(push)) \
+    __pragma(float_control(precise, on)) \
+    __pragma(fp_contract(off))
+#elif defined(__clang__)
+#define CDT_ENSURE_PRECISE_MATH \
+    _Pragma("float_control(push)") \
+    _Pragma("float_control(precise, on)") \
+    _Pragma("clang fp contract(off)")
+#elif defined(__GNUC__)
+#define CDT_ENSURE_PRECISE_MATH \
+    _Pragma("GCC push_options") \
+    _Pragma("GCC optimize(\"no-fast-math\")") \
+    _Pragma("GCC optimize(\"fp-contract=off\")")
+#else
+#define CDT_ENSURE_PRECISE_MATH _Pragma("STDC FP_CONTRACT OFF")
+#endif
+
+/// Restore default state for floating-point math.
+#if defined(_MSC_VER)
+#define CDT_RESTORE_MATH_SETTINGS __pragma(float_control(pop))
+#elif defined(__clang__)
+#define CDT_RESTORE_MATH_SETTINGS _Pragma("float_control(pop)")
+#elif defined(__GNUC__)
+#define CDT_RESTORE_MATH_SETTINGS _Pragma("GCC pop_options")
+#else
+#define CDT_RESTORE_MATH_SETTINGS _Pragma("STDC FP_CONTRACT DEFAULT")
+#endif
+
+/// Precise math for constructions (non-predicate code): opt-in
+#ifdef CDT_ENSURE_PRECISE_MATH_IN_CONSTRUCTIONS
+#define CDT_ENSURE_PRECISE_MATH_FOR_CONSTRUCTIONS CDT_ENSURE_PRECISE_MATH
+#define CDT_RESTORE_MATH_SETTINGS_FOR_CONSTRUCTIONS CDT_RESTORE_MATH_SETTINGS
+#else
+#define CDT_ENSURE_PRECISE_MATH_FOR_CONSTRUCTIONS
+#define CDT_RESTORE_MATH_SETTINGS_FOR_CONSTRUCTIONS
 #endif
 
 namespace CDT
@@ -171,6 +227,13 @@ bool operator==(const CDT::V2d<T>& lhs, const CDT::V2d<T>& rhs)
     return lhs.x == rhs.x && lhs.y == rhs.y;
 }
 
+/// If two 2D vectors are not exactly equal
+template <typename T>
+bool operator!=(const CDT::V2d<T>& lhs, const CDT::V2d<T>& rhs)
+{
+    return !(lhs == rhs);
+}
+
 #ifdef CDT_USE_64_BIT_INDEX_TYPE
 typedef unsigned long long IndexSizeType;
 #else
@@ -200,7 +263,7 @@ const static IndexSizeType
     invalidIndexSizeType(std::numeric_limits<IndexSizeType>::max());
 /// Number of super triangle vertices
 /// @note placed in a constant so that it's easier to find usages in code
-const static IndexSizeType nSuperTriangleVertices(3);
+const static IndexSizeType nSuperTriVerts(3);
 /// Constant representing no valid neighbor for a triangle
 const static TriInd noNeighbor(invalidIndexSizeType);
 /// Constant representing no valid vertex for a triangle
@@ -287,6 +350,13 @@ struct CDT_EXPORT Edge
         return !(this->operator==(other));
     }
 
+    /// Less-than operator: orders by (v1, v2); used to get a deterministic
+    /// order out of hash-set iteration (which is platform-dependent)
+    bool operator<(const Edge& other) const
+    {
+        return m_vertices < other.m_vertices;
+    }
+
     /// V1 getter
     VertInd v1() const
     {
@@ -328,6 +398,8 @@ inline Edge edge_make(VertInd iV1, VertInd iV2)
 }
 
 typedef std::vector<Edge> EdgeVec;                ///< Vector of edges
+typedef std::queue<Edge> EdgeQueue;               ///< Queue of edges
+typedef std::queue<TriInd> TriIndQueue;           ///< Queue of triangles
 typedef unordered_set<Edge> EdgeUSet;             ///< Hash table of edges
 typedef unordered_set<TriInd> TriIndUSet;         ///< Hash table of triangles
 typedef unordered_map<TriInd, TriInd> TriIndUMap; ///< Triangle hash map
@@ -470,7 +542,7 @@ CDT_EXPORT CDT_INLINE_IF_HEADER_ONLY Index
 opposedTriangleInd(const VerticesArr3& vv, VertInd iVert);
 
 /// Index of triangle's neighbor opposed to an edge
-CDT_INLINE_IF_HEADER_ONLY Index
+CDT_EXPORT CDT_INLINE_IF_HEADER_ONLY Index
 edgeNeighborInd(const VerticesArr3& vv, VertInd iVedge1, VertInd iVedge2);
 
 /// Index of triangle's vertex opposed to a triangle
@@ -514,7 +586,45 @@ template <typename T>
 CDT_EXPORT T distanceSquared(const V2d<T>& a, const V2d<T>& b);
 
 /// Check if any of triangle's vertices belongs to a super-triangle
-CDT_INLINE_IF_HEADER_ONLY bool touchesSuperTriangle(const Triangle& t);
+CDT_EXPORT CDT_INLINE_IF_HEADER_ONLY bool
+touchesSuperTriangle(const Triangle& t);
+
+namespace detail
+{
+
+/// Check if vertex V is encroaching on diametral circle of an edge
+template <typename T>
+bool isEncroachingOnEdge(
+    const V2d<T>& v,
+    const V2d<T>& edgeStart,
+    const V2d<T>& edgeEnd);
+
+/// Doubled surface area of a triangle ABC
+template <typename T>
+T doubledArea(const V2d<T>& a, const V2d<T>& b, const V2d<T>& c);
+
+/// Sine of smallest angle of triangle ABC
+template <typename T>
+T sineOfSmallestAngle(const V2d<T>& a, const V2d<T>& b, const V2d<T>& c);
+
+} // namespace detail
+
+/// Surface area of a triangle ABC
+template <typename T>
+CDT_EXPORT T area(const V2d<T>& a, const V2d<T>& b, const V2d<T>& c);
+
+/// Position of ABC triangle circumcenter
+template <typename T>
+CDT_EXPORT V2d<T> circumcenter(V2d<T> a, V2d<T> b, V2d<T> c);
+
+/// Smallest angle of triangle ABC in radians
+template <typename T>
+CDT_EXPORT T smallestAngle(const V2d<T>& a, const V2d<T>& b, const V2d<T>& c);
+
+/// Convert an angle from degrees to radians
+template <typename T>
+CDT_EXPORT T degToRad(T degrees);
+
 } // namespace CDT
 
 #ifndef CDT_USE_AS_COMPILED_LIBRARY
