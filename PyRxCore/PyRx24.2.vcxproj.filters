@@ -907,7 +907,7 @@
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="PyDbViewSymbol.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

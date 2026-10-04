@@ -503,7 +503,7 @@
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
     <ClCompile Include="PyDbViewSymbol.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PyDb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1021,7 +1021,7 @@
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="PyDbViewSymbol.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
