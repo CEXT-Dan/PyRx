@@ -210,6 +210,7 @@
 #pragma comment( lib , "AdImaging.lib" )
 #pragma comment( lib , "AdIntImgServices.lib" )
 #pragma comment( lib , "axdb.lib" )
+#pragma comment( lib , "acModelDocObj.lib" )
 #endif
 
 #if defined(_BRXTARGET)
