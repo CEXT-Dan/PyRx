@@ -57,6 +57,12 @@ extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::B
 extern Adesk::Boolean           gcedPostCommand(const ACHAR*);
 extern Adesk::Boolean           gcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     gcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
+
+#define acedHatchPalletteDialog gcedHatchPalletteDialog
+#define acedPostCommand         gcedPostCommand
+#define acedLinetypeDialog      gcedLinetypeDialog
+#define acedLineWeightDialog    gcedLineWeightDialog
+#define acedEvaluateLisp        gcedEvaluateLisp
 #endif// GRXAPP
 
 #ifdef ZRXAPP
@@ -64,9 +70,22 @@ int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& resu
 extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
 extern Adesk::Boolean           zcedLinetypeDialog(AcDbObjectId old_linetypeId, Adesk::Boolean IncludeByBlockByLayer, ACHAR*& new_linetypeName, AcDbObjectId& new_linetypeId);
 extern bool                     zcedLineWeightDialog(AcDb::LineWeight, bool, AcDb::LineWeight&);
+
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
 extern Adesk::Boolean           zcedPostCommand(const ACHAR*);
+#define acedPostCommand         zcedPostCommand
+#else
+Adesk::Boolean                  zcedPostCommand(const ACHAR*)
+{
+    return Adesk::kFalse;
+}
+#define acedPostCommand         zcedPostCommand
 #endif
+
+#define acedEvaluateLisp        zcedEvaluateLisp
+#define acedHatchPalletteDialog zcedHatchPalletteDialog
+#define acedLinetypeDialog      zcedLinetypeDialog
+#define acedLineWeightDialog    zcedLineWeightDialog
 #endif// ZRXAPP
 
 //-----------------------------------------------------------------------------------------
@@ -666,18 +685,7 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
         PyThrowBadEs(eInvalidInput);
     }
     resbuf* pRb = nullptr;
-#ifdef _ZRXTARGET 
-    zcedEvaluateLisp(AsWStr(str), pRb);
-#endif
-#ifdef _GRXTARGET 
-    gcedEvaluateLisp(AsWStr(str), pRb);
-#endif
-#ifdef _BRXTARGET 
     acedEvaluateLisp(AsWStr(str), pRb);
-#endif
-#ifdef _ARXTARGET 
-    acedEvaluateLisp(AsWStr(str), pRb);
-#endif
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
 }
@@ -1029,15 +1037,7 @@ boost::python::tuple EdCore::linetypeDialog1(const PyDbObjectId& id, bool Includ
     PyAutoLockGIL lock;
     PyDbObjectId new_linetypeId;
     RxAutoOutStr new_linetypename;
-#if defined(_GRXTARGET)
-    flag = gcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
-#elif defined(_ZRXTARGET)
-    flag = zcedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
-#elif defined(_ARXTARGET) || defined(_BRXTARGET)
     flag = acedLinetypeDialog(id.m_id, true, new_linetypename.buf, new_linetypeId.m_id);
-#else
-    throw PyNotimplementedByHost{};
-#endif
     return boost::python::make_tuple(flag, new_linetypename.str(), new_linetypeId);
 }
 
@@ -1058,15 +1058,7 @@ boost::python::tuple EdCore::lineWeightDialog(AcDb::LineWeight lt, bool IncludeB
 {
     bool flag = false;
     AcDb::LineWeight outlt = AcDb::LineWeight::kLnWt000;
-#if defined(_GRXTARGET)
-    flag = gcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
-#elif defined(_ZRXTARGET)
-    flag = zcedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
-#elif defined(_ARXTARGET) || defined(_BRXTARGET)
     flag = acedLineWeightDialog(lt, IncludeByBlockByLayer, outlt);
-#else
-    throw PyNotimplementedByHost{};
-#endif
     return boost::python::make_tuple(flag, outlt);
 }
 
@@ -1278,18 +1270,7 @@ void EdCore::pSpace()
 
 void EdCore::postCommand(const std::string& str)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
-    zcedPostCommand(AsWStr(str));
-#endif
-#if defined(_GRXTARGET)
-    gcedPostCommand(AsWStr(str));
-#endif
-#if defined(_ARXTARGET)
     acedPostCommand(AsWStr(str));
-#endif
-#if defined(_BRXTARGET) 
-    acedPostCommand(AsWStr(str));
-#endif
 }
 
 void EdCore::postCommandPrompt()
@@ -1556,15 +1537,7 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
     throw PyNotimplementedByHost();
     //zcedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
 #endif
-#ifdef _GRXTARGET 
-    gcedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
-#endif
-#ifdef _BRXTARGET 
     acedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
-#endif
-#ifdef _ARXTARGET 
-    acedHatchPalletteDialog(AsWStr(pattern), showCustom, outstr.buf);
-#endif
     return outstr.str();
 }
 
