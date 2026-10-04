@@ -51,6 +51,100 @@ PyDbViewSymbol::PyDbViewSymbol(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 {
 }
 
+PyDbObjectId PyDbViewSymbol::symbolStyleId() const
+{
+    return PyDbObjectId{ impObj()->symbolStyleId() };
+}
+
+void PyDbViewSymbol::setSymbolStyleId(const PyDbObjectId& styleId) const
+{
+    impObj()->setSymbolStyleId(styleId.m_id);
+}
+
+double PyDbViewSymbol::scale() const
+{
+    return impObj()->scale();
+}
+
+void PyDbViewSymbol::setScale(double val) const
+{
+    impObj()->setScale(val);
+}
+
+std::string PyDbViewSymbol::getIdentifier() const
+{
+    AcString sName;
+    PyThrowBadEs(impObj()->getIdentifier(sName));
+    return wstr_to_utf8(sName);
+}
+
+void PyDbViewSymbol::setIdentifier(const std::string& sName) const
+{
+    PyThrowBadEs(impObj()->setIdentifier(utf8_to_wstr(sName).c_str()));
+}
+
+PyDbObjectId PyDbViewSymbol::owningViewRep() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId{ impObj()->owningViewRep() };
+#endif
+}
+
+void PyDbViewSymbol::setOwningViewRep(const PyDbObjectId& owner) const
+{
+    impObj()->setSymbolStyleId(owner.m_id);
+}
+
+boost::python::list PyDbViewSymbol::exportSymbolGeometry(const PyDbObjectId& viewRepId) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    AcArray<AcGeCurve3d*> geomArr;
+    PyThrowBadEs(impObj()->exportSymbolGeometry(geomArr, viewRepId.m_id));
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto item : geomArr)
+        pylist.append(PyGeCurve3d(item));
+    return pylist;
+#endif
+}
+
+void PyDbViewSymbol::setSymbolGeometry(const boost::python::list& entIds) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setSymbolGeometry(PyListToObjectIdArray(entIds)));
+#endif
+}
+
+void PyDbViewSymbol::setSymbolGeometryEntities(const boost::python::list& pyentities) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    using Iter = boost::python::stl_input_iterator<PyDbObject>;
+    AcArray<AcDbObject*> _entities;
+    int length = boost::python::len(pyentities);
+    _entities.setPhysicalLength(length);
+    for (Iter it(pyentities), end; it != end; ++it) 
+        _entities.append(it->impObj());
+    PyThrowBadEs(impObj()->setSymbolGeometry(_entities));
+#endif
+}
+
+void PyDbViewSymbol::updateDefinition() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->updateDefinition());
+#endif
+}
+
 PyRxClass PyDbViewSymbol::desc()
 {
     return PyRxClass(AcDbViewSymbol::desc(), false);

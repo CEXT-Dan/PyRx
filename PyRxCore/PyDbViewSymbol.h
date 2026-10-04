@@ -25,6 +25,22 @@ public:
     PyDbViewSymbol(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbViewSymbol() override = default;
 
+    PyDbObjectId        symbolStyleId() const;
+    void                setSymbolStyleId(const PyDbObjectId& styleId) const;
+    double              scale() const;
+    void                setScale(double val) const;
+    std::string         getIdentifier() const;
+    void                setIdentifier(const std::string& sName) const;
+
+    PyDbObjectId        owningViewRep() const;
+    void                setOwningViewRep(const PyDbObjectId& owner) const;
+
+    boost::python::list exportSymbolGeometry(const PyDbObjectId& viewRepId) const;
+    void                setSymbolGeometry(const boost::python::list& entIds) const;
+    void                setSymbolGeometryEntities(const boost::python::list& pyentities) const;
+    void			    updateDefinition() const;
+
+
     static PyRxClass    desc();
     static std::string  className();
     static PyDbViewSymbol   cloneFrom(const PyRxObject& src);
