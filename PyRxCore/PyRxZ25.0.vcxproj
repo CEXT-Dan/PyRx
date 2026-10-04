@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PyConverter.cpp" />
+    <ClCompile Include="PyDbViewSymbol.cpp" />
     <ClCompile Include="PyRxOverrulableEntity.cpp" />
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="DbCore.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="delaunator.h" />
     <ClInclude Include="nanoflann.hpp" />
     <ClInclude Include="PyConverter.h" />
+    <ClInclude Include="PyDbViewSymbol.h" />
     <ClInclude Include="PyRxOverrulableEntity.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />

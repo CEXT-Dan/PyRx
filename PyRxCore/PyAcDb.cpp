@@ -54,6 +54,7 @@
 #include "PyGeLinearEnt3d.h"
 #include "PyDbAssocAction.h"
 #include "PyGeBoundBlock2d.h"
+#include "PyDbViewSymbol.h"
 
 using namespace boost::python;
 
@@ -584,6 +585,10 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbEvalConnectableWrapper();
     makePyDbDbBlockUserParameterWrapper();
     makePyDbEvalGraphWrapper();
+
+    makePyDbViewSymbolWrapper();
+    makePyDbDetailSymbolWrapper();
+    makePyDbSectionSymbolWrapper();
 
     makeDbCoreWrapper();//LAST?
 
