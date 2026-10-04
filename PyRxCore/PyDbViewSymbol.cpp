@@ -8,6 +8,7 @@ using namespace boost::python;
 // PyDbViewSymbol wrapper
 void makePyDbViewSymbolWrapper()
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
     constexpr const std::string_view ctords = "Overloads:\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
@@ -24,10 +25,12 @@ void makePyDbViewSymbolWrapper()
         .def("cloneFrom", &PyDbViewSymbol::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbViewSymbol::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
+#endif
 }
 
 //-------------------------------------------------------------------------------------------------------------
 // PyDbViewSymbol
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 PyDbViewSymbol::PyDbViewSymbol(AcDbViewSymbol* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
@@ -75,11 +78,13 @@ AcDbViewSymbol* PyDbViewSymbol::impObj(const std::source_location& src) const
         throw PyNullObject(src);
     return res;
 }
+#endif
 
 //-------------------------------------------------------------------------------------------------------------
 // PyDbDetailSymbol wrapper
 void makePyDbDetailSymbolWrapper()
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- id: PyDb.ObjectId\n"
@@ -98,10 +103,12 @@ void makePyDbDetailSymbolWrapper()
         .def("cloneFrom", &PyDbDetailSymbol::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDetailSymbol::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
+#endif
 }
 
 //-------------------------------------------------------------------------------------------------------------
 // PyDbDetailSymbol
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 PyDbDetailSymbol::PyDbDetailSymbol()
     : PyDbViewSymbol(new AcDbDetailSymbol(), true)
 {
@@ -154,11 +161,13 @@ AcDbDetailSymbol* PyDbDetailSymbol::impObj(const std::source_location& src) cons
         throw PyNullObject(src);
     return res;
 }
+#endif
 
 //-------------------------------------------------------------------------------------------------------------
 // PyDbSectionSymbol wrapper
 void makePyDbSectionSymbolWrapper()
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- id: PyDb.ObjectId\n"
@@ -177,10 +186,12 @@ void makePyDbSectionSymbolWrapper()
         .def("cloneFrom", &PyDbSectionSymbol::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbSectionSymbol::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
+#endif
 }
 
 //-------------------------------------------------------------------------------------------------------------
 // PyDbSectionSymbol
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 PyDbSectionSymbol::PyDbSectionSymbol()
     : PyDbViewSymbol(new AcDbSectionSymbol(), true)
 {
@@ -233,3 +244,4 @@ AcDbSectionSymbol* PyDbSectionSymbol::impObj(const std::source_location& src) co
         throw PyNullObject(src);
     return res;
 }
+#endif

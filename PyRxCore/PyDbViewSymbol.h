@@ -1,8 +1,11 @@
 #pragma once
 #include "PyDbEntity.h"
+
+#if defined(_ARXTARGET)
 #include "dbViewSymbol.h"
 #include "dbDetailSymbol.h"
 #include "dbSectionSymbol.h"
+#endif
 
 #pragma pack (push, 8)
 
@@ -14,6 +17,7 @@ void makePyDbViewSymbolWrapper();
 
 class PyDbViewSymbol : public PyDbEntity
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 public:
     PyDbViewSymbol(AcDbViewSymbol* ptr, bool autoDelete);
     PyDbViewSymbol(const PyDbObjectId& id);
@@ -27,6 +31,7 @@ public:
     static PyDbViewSymbol   cast(const PyRxObject& src);
 public:
     AcDbViewSymbol* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -35,6 +40,7 @@ void makePyDbDetailSymbolWrapper();
 
 class PyDbDetailSymbol : public PyDbViewSymbol
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 public:
     PyDbDetailSymbol();
     PyDbDetailSymbol(AcDbDetailSymbol* ptr, bool autoDelete);
@@ -49,6 +55,7 @@ public:
     static PyDbDetailSymbol   cast(const PyRxObject& src);
 public:
     AcDbDetailSymbol* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -57,6 +64,7 @@ void makePyDbSectionSymbolWrapper();
 
 class PyDbSectionSymbol : public PyDbViewSymbol
 {
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
 public:
     PyDbSectionSymbol();
     PyDbSectionSymbol(AcDbSectionSymbol* ptr, bool autoDelete);
@@ -72,6 +80,7 @@ public:
     static PyDbSectionSymbol   cast(const PyRxObject& src);
 public:
     AcDbSectionSymbol* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 #pragma pack (pop)
