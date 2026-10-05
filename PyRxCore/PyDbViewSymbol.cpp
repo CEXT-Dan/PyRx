@@ -228,6 +228,194 @@ PyDbDetailSymbol::PyDbDetailSymbol(const PyDbObjectId& id, AcDb::OpenMode mode, 
 {
 }
 
+AcDbDetailSymbol::BoundaryType PyDbDetailSymbol::boundaryType() const
+{
+    return impObj()->boundaryType();
+}
+
+AcDbDetailViewStyle::ModelEdge PyDbDetailSymbol::modelEdgeType() const
+{
+    return impObj()->modelEdgeType();
+}
+
+bool PyDbDetailSymbol::isOverriddenProperty(AcDbDetailSymbol::OverriddenProperty property) const
+{
+    return impObj()->isOverriddenProperty(property);
+}
+
+bool PyDbDetailSymbol::displayIdentifier() const
+{
+    return impObj()->displayIdentifier();
+}
+
+AcGePoint3d PyDbDetailSymbol::origin() const
+{
+    return impObj()->origin();
+}
+
+AcGeVector3d PyDbDetailSymbol::direction() const
+{
+    return impObj()->direction();
+}
+
+AcGeVector2d PyDbDetailSymbol::boundarySize() const
+{
+    return impObj()->boundarySize();
+}
+
+AcGePoint3d PyDbDetailSymbol::modelEdgeOrigin() const
+{
+    return impObj()->modelEdgeOrigin();
+}
+
+double PyDbDetailSymbol::owningViewScale() const
+{
+    return impObj()->owningViewScale();
+}
+
+double PyDbDetailSymbol::detailViewScale() const
+{
+    return impObj()->detailViewScale();
+}
+
+AcGeVector3d PyDbDetailSymbol::modelEdgeDirection() const
+{
+    return impObj()->modelEdgeDirection();
+}
+
+AcGePoint3d PyDbDetailSymbol::identifierPosition() const
+{
+    return impObj()->identifierPosition();
+}
+
+void PyDbDetailSymbol::setBoundaryType(AcDbDetailSymbol::BoundaryType bndType) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setBoundaryType(bndType));
+#endif
+}
+
+void PyDbDetailSymbol::setModelEdgeType(AcDbDetailViewStyle::ModelEdge modelEdgeType) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setModelEdgeType(modelEdgeType));
+#endif
+}
+
+void PyDbDetailSymbol::setPickPoints(const boost::python::list& pickPoints) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setPickPoints(PyListToPoint3dArray(pickPoints)));
+#endif
+}
+
+void PyDbDetailSymbol::setModelEdgeOrigin(const AcGePoint3d& pt) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setModelEdgeOrigin(pt));
+#endif
+}
+
+void PyDbDetailSymbol::setOwningViewScale(double viewScale) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setOwningViewScale(viewScale));
+#endif
+}
+
+void PyDbDetailSymbol::setDetailViewScale(double viewScale) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setOwningViewScale(viewScale));
+#endif
+}
+
+void PyDbDetailSymbol::setModelEdgeDirection(const AcGeVector3d& dir) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setModelEdgeDirection(dir));
+#endif
+}
+
+void PyDbDetailSymbol::setIdentifierPosition(const AcGePoint3d& pt) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setIdentifierPosition(pt));
+#endif
+}
+
+void PyDbDetailSymbol::initializeIdentifierPositionAt(const AcGePoint3d& pt) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->initializeIdentifierPositionAt(pt));
+#endif
+}
+
+void PyDbDetailSymbol::resetIdentifierPosition() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->resetIdentifierPosition());
+#endif
+}
+
+void PyDbDetailSymbol::setDisplayIdentifier(const bool displayIdentifier) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setDisplayIdentifier(displayIdentifier));
+#endif
+}
+
+void PyDbDetailSymbol::setOrigin(const AcGePoint3d& pt) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setOrigin(pt));
+#endif
+}
+
+void PyDbDetailSymbol::setBoundarySize(const AcGeVector2d& size) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setBoundarySize(size));
+#endif
+}
+
+AcDbExtents PyDbDetailSymbol::modelEdgeBorderExtents() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    AcDbExtents ex;
+    PyThrowBadEs(impObj()->modelEdgeBorderExtents(ex));
+    return ex;
+#endif
+}
+
 PyRxClass PyDbDetailSymbol::desc()
 {
     return PyRxClass(AcDbDetailSymbol::desc(), false);
