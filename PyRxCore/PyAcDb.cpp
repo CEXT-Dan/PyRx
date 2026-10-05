@@ -2205,6 +2205,22 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 #endif
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET) && (_BRXTARGET > 240)
+    enum_<AcDbDetailSymbol::BoundaryType>("DetailSymbolBoundaryType")
+        .value("kCircularBoundary", AcDbDetailSymbol::kCircularBoundary)
+        .value("kRectangularBoundary", AcDbDetailSymbol::kRectangularBoundary)
+        .value("kCustomBoundary", AcDbDetailSymbol::kCustomBoundary)
+        .export_values()
+        ;
+
+    enum_<AcDbDetailSymbol::OverriddenProperty>("DetailSymbolOverriddenProperty")
+        .value("kModelEdge", AcDbDetailSymbol::kModelEdge)
+        .value("kIdentifierPosition", AcDbDetailSymbol::kIdentifierPosition)
+        .export_values()
+        ;
+#endif
+
 };
 
 void initPyDbModule()
