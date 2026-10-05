@@ -65,6 +65,34 @@ public:
     PyDbDetailSymbol(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbDetailSymbol() override = default;
 
+    AcDbDetailSymbol::BoundaryType  boundaryType() const;
+    AcDbDetailViewStyle::ModelEdge	modelEdgeType() const;
+    bool							isOverriddenProperty(AcDbDetailSymbol::OverriddenProperty property) const;
+    bool							displayIdentifier() const;
+    AcGePoint3d						origin() const;
+    AcGeVector3d                    direction() const;
+    AcGeVector2d                    boundarySize() const;
+    AcGePoint3d                     modelEdgeOrigin() const;
+    double							owningViewScale() const;
+    double							detailViewScale() const;
+    AcGeVector3d                    modelEdgeDirection() const;
+    AcGePoint3d				        identifierPosition() const;
+
+    void				            setBoundaryType(AcDbDetailSymbol::BoundaryType bndType) const;
+    void				            setModelEdgeType(AcDbDetailViewStyle::ModelEdge modelEdgeType) const;
+    void				            setPickPoints(const boost::python::list& pickPoints) const;
+    void				            setModelEdgeOrigin(const AcGePoint3d& pt) const;
+    void				            setOwningViewScale(double viewScale) const;
+    void				            setDetailViewScale(double viewScale) const;
+    void				            setModelEdgeDirection(const AcGeVector3d& dir) const;
+    void				            setIdentifierPosition(const AcGePoint3d& pt) const;
+    void				            initializeIdentifierPositionAt(const AcGePoint3d& pt) const;
+    void				            resetIdentifierPosition() const;
+    void				            setDisplayIdentifier(const bool displayIdentifier) const;
+    void				            setOrigin(const AcGePoint3d& pt) const;
+    void				            setBoundarySize(const AcGeVector2d& size) const;
+    AcDbExtents		                modelEdgeBorderExtents() const;
+
     static PyRxClass    desc();
     static std::string  className();
     static PyDbDetailSymbol   cloneFrom(const PyRxObject& src);
