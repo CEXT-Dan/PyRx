@@ -41,10 +41,10 @@ public:
     void			    updateDefinition() const;
 
 
-    static PyRxClass    desc();
-    static std::string  className();
-    static PyDbViewSymbol   cloneFrom(const PyRxObject& src);
-    static PyDbViewSymbol   cast(const PyRxObject& src);
+    static PyRxClass      desc();
+    static std::string    className();
+    static PyDbViewSymbol cloneFrom(const PyRxObject& src);
+    static PyDbViewSymbol cast(const PyRxObject& src);
 public:
     AcDbViewSymbol* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
@@ -93,10 +93,10 @@ public:
     void				            setBoundarySize(const AcGeVector2d& size) const;
     AcDbExtents		                modelEdgeBorderExtents() const;
 
-    static PyRxClass    desc();
-    static std::string  className();
-    static PyDbDetailSymbol   cloneFrom(const PyRxObject& src);
-    static PyDbDetailSymbol   cast(const PyRxObject& src);
+    static PyRxClass                desc();
+    static std::string              className();
+    static PyDbDetailSymbol         cloneFrom(const PyRxObject& src);
+    static PyDbDetailSymbol         cast(const PyRxObject& src);
 public:
     AcDbDetailSymbol* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
@@ -118,7 +118,7 @@ public:
     virtual ~PyDbSectionSymbol() override = default;
 
     int                 sectionPointsCount() const;
-    boost::python::list getSectionPoints() const;        
+    boost::python::list getSectionPoints() const;
     AcGePoint3d         getSectionPointAt(int idx) const;
     double              getBulgeAt(int idx) const;
     std::string         getLabelNameAt(int idx) const;
@@ -144,8 +144,8 @@ public:
     bool                flipDirection() const;
 
 
-    static PyRxClass    desc();
-    static std::string  className();
+    static PyRxClass           desc();
+    static std::string         className();
     static PyDbSectionSymbol   cloneFrom(const PyRxObject& src);
     static PyDbSectionSymbol   cast(const PyRxObject& src);
 public:

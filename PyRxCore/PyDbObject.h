@@ -39,7 +39,7 @@ public:
     void                setAnnotative(AnnotativeStates status) const;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
-    void                setOwnerId(const PyDbObjectId&  constobjId) const;
+    void                setOwnerId(const PyDbObjectId& constobjId) const;
     PyDbDatabase        database() const;
     PyDbDatabase        databaseToUse() const;
     void                createExtensionDictionary() const;

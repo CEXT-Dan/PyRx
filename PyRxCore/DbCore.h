@@ -127,6 +127,8 @@ public:
     static void                 resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, bool doNewOnly);
     static AcDb::DwgDataType    groupCodeToType(AcDb::DxfCode pCode);
     static bool                 isVisible(const PyDbObjectId& id);
+    static boost::python::list  tessellateString1(const std::string& str);
+    static boost::python::list  tessellateString2(const std::string& str, const std::string& font);
 };
 
 #pragma pack (pop)
