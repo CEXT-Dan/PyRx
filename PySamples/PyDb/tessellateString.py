@@ -18,7 +18,7 @@ def doit():
         ]
         line_gap = 1.5
         for idx, font in enumerate(fonts):
-            val = f"This some text in {font}"
+            val = f"This is some text in {font}"
             plines = Db.Core.tessellateString(val, font)
             mat = Ge.Matrix3d.translation(Ge.Vector3d(0, idx * line_gap, 0))
             for pline in plines:
