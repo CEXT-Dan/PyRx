@@ -499,6 +499,198 @@ PyDbSectionSymbol::PyDbSectionSymbol(const PyDbObjectId& id, AcDb::OpenMode mode
 {
 }
 
+int PyDbSectionSymbol::sectionPointsCount() const
+{
+    return impObj()->sectionPointsCount();
+}
+
+boost::python::list PyDbSectionSymbol::getSectionPoints() const
+{
+    AcGePoint3dArray pts;
+    impObj()->getSectionPoints(pts);
+    return Point3dArrayToPyList(pts);
+}
+
+AcGePoint3d PyDbSectionSymbol::getSectionPointAt(int idx) const
+{
+    AcGePoint3d pt;
+    PyThrowBadEs(impObj()->getSectionPointAt(idx, pt));
+    return pt;
+}
+
+double PyDbSectionSymbol::getBulgeAt(int idx) const
+{
+    double bulge = 0;
+    PyThrowBadEs(impObj()->getBulgeAt(idx, bulge));
+    return bulge;
+}
+
+std::string PyDbSectionSymbol::getLabelNameAt(int idx) const
+{
+    AcString sName;
+    PyThrowBadEs(impObj()->getLabelNameAt(idx, sName));
+    return wstr_to_utf8(sName);
+}
+
+AcGeVector3d PyDbSectionSymbol::getLabelOffsetAt(int idx) const
+{
+    AcGeVector3d offset;
+    PyThrowBadEs(impObj()->getLabelOffsetAt(idx, offset));
+    return offset;
+}
+
+boost::python::list PyDbSectionSymbol::getLabelOffsets() const
+{
+    AcGeVector3dArray offsets;
+    impObj()->getLabelOffsets(offsets);
+    return Vector3dArrayToPyList(offsets);
+}
+
+bool PyDbSectionSymbol::isViewDirectionLeft() const
+{
+    return impObj()->isViewDirectionLeft();
+}
+
+bool PyDbSectionSymbol::isHalfSection() const
+{
+    return impObj()->isHalfSection();
+}
+
+void PyDbSectionSymbol::setSectionPoints1(const boost::python::list& pts) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setSectionPoints(PyListToPoint3dArray(pts)));
+#endif
+}
+
+void PyDbSectionSymbol::setSectionPoints2(const boost::python::list& pts, const boost::python::list& bulges) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setSectionPoints(PyListToPoint3dArray(pts), PyListToDoubleArray(bulges)));
+#endif
+}
+
+void PyDbSectionSymbol::addSectionPoint(const AcGePoint3d& pt, double bulge) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->addSectionPoint(pt, bulge));
+#endif
+}
+
+void PyDbSectionSymbol::removeSectionPointAt(int idx) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->removeSectionPointAt(idx));
+#endif
+}
+
+void PyDbSectionSymbol::setSectionPointAt(int idx, const AcGePoint3d& pt, double bulge) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setSectionPointAt(idx,pt,bulge));
+#endif
+}
+
+void PyDbSectionSymbol::clearSectionPoints() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->clearSectionPoints();
+#endif
+}
+
+void PyDbSectionSymbol::setLabelNameAt(int idx, const std::string& pName) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setLabelNameAt(idx, AsWStr(pName)));
+#endif
+}
+
+void PyDbSectionSymbol::setLabelNames(const boost::python::list& names) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setLabelNames(PyListToAcStringArray(names)));
+#endif
+}
+
+void PyDbSectionSymbol::setLabelOffsetAt(int idx, const AcGeVector3d& offset) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setLabelOffsetAt(idx, offset));
+#endif
+}
+
+void PyDbSectionSymbol::setLabelOffsets(const boost::python::list& offsets) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setLabelOffsets(PyListToVector3dArray(offsets)));
+#endif
+}
+
+void PyDbSectionSymbol::resetLabelOffsets1() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->resetLabelOffsets();
+#endif
+}
+
+void PyDbSectionSymbol::resetLabelOffsets2(bool allOffsets) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->resetLabelOffsets(allOffsets);
+#endif
+}
+
+void PyDbSectionSymbol::setViewDirectionLeft(bool bLeft) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setViewDirectionLeft(bLeft);
+#endif
+}
+
+void PyDbSectionSymbol::setIsHalfSection(bool bHalfSection) const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setIsHalfSection(bHalfSection);
+#endif
+}
+
+bool PyDbSectionSymbol::flipDirection() const
+{
+ #if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->flipDirection();
+#endif
+}
+
 PyRxClass PyDbSectionSymbol::desc()
 {
     return PyRxClass(AcDbSectionSymbol::desc(), false);

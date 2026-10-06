@@ -117,6 +117,32 @@ public:
     PyDbSectionSymbol(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbSectionSymbol() override = default;
 
+    int                 sectionPointsCount() const;
+    boost::python::list getSectionPoints() const;        
+    AcGePoint3d         getSectionPointAt(int idx) const;
+    double              getBulgeAt(int idx) const;
+    std::string         getLabelNameAt(int idx) const;
+    AcGeVector3d        getLabelOffsetAt(int idx) const;
+    boost::python::list getLabelOffsets() const;
+    bool                isViewDirectionLeft() const;
+    bool                isHalfSection() const;
+
+    void                setSectionPoints1(const boost::python::list& pts) const;
+    void                setSectionPoints2(const boost::python::list& pts, const boost::python::list& bulges) const;
+    void                addSectionPoint(const AcGePoint3d& pt, double bulge) const;
+    void                removeSectionPointAt(int idx) const;
+    void                setSectionPointAt(int idx, const AcGePoint3d& pt, double bulge) const;
+    void                clearSectionPoints() const;
+    void                setLabelNameAt(int idx, const std::string& pName) const;
+    void                setLabelNames(const boost::python::list& names) const;
+    void                setLabelOffsetAt(int idx, const AcGeVector3d& offset) const;
+    void                setLabelOffsets(const boost::python::list& offsets) const;
+    void                resetLabelOffsets1() const;
+    void                resetLabelOffsets2(bool allOffsets) const;
+    void                setViewDirectionLeft(bool bLeft) const;
+    void                setIsHalfSection(bool bHalfSection) const;
+    bool                flipDirection() const;
+
 
     static PyRxClass    desc();
     static std::string  className();
