@@ -6080,6 +6080,8 @@ class Core:
         When acdbTblSearch() fails, it sets the system variable ERRNO to a value that indicates the
         reason for the failure.
         """
+    @staticmethod
+    def tessellateString(val: str, font: str = ..., /) -> list: ...
     @overload
     @staticmethod
     def textFind(db: PyDb.Database, findString: str, /) -> list[PyDb.ObjectId]:

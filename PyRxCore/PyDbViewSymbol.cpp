@@ -143,7 +143,7 @@ void PyDbViewSymbol::setSymbolGeometryEntities(const boost::python::list& pyenti
     AcArray<AcDbObject*> _entities;
     int length = boost::python::len(pyentities);
     _entities.setPhysicalLength(length);
-    for (Iter it(pyentities), end; it != end; ++it) 
+    for (Iter it(pyentities), end; it != end; ++it)
         _entities.append(it->impObj());
     PyThrowBadEs(impObj()->setSymbolGeometry(_entities));
 #endif
@@ -662,7 +662,7 @@ void PyDbSectionSymbol::setSectionPointAt(int idx, const AcGePoint3d& pt, double
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
-    PyThrowBadEs(impObj()->setSectionPointAt(idx,pt,bulge));
+    PyThrowBadEs(impObj()->setSectionPointAt(idx, pt, bulge));
 #endif
 }
 
@@ -749,7 +749,7 @@ void PyDbSectionSymbol::setIsHalfSection(bool bHalfSection) const
 
 bool PyDbSectionSymbol::flipDirection() const
 {
- #if defined(_BRXTARGET)
+#if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
 #else
     return impObj()->flipDirection();

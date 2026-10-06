@@ -113,7 +113,7 @@ void makePyDbEntityWrapper()
         .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = ...","highlightAll : bool = False" }, 4322))
         .def("subent", &PyDbEntity::subentPtr, DS.ARGS({ "path: PyDb.FullSubentPath" }))
 #if !defined (_BRXTARGET270)
-        .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle"}))
+        .def("pushHighlight", &PyDbEntity::pushHighlight, DS.ARGS({ "path: PyDb.FullSubentPath", "highlightStyle: PyGi.HighlightStyle" }))
 #endif
         .def("moveGripPointsAt", &PyDbEntity::moveGripPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))
         .def("moveStretchPointsAt", &PyDbEntity::moveStretchPointsAt, DS.ARGS({ "indices:Collection[int]","offset:PyGe.Vector3d" }))

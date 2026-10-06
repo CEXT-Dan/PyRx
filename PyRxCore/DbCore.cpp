@@ -12,7 +12,7 @@
 #include "PyDbDimAssoc.h"
 #include "AcPointCloud.h"
 #include "dbGeoData.h"
-
+#include "PyDbEnts.h"
 //todo acdbMakeFieldCode
 
 using namespace boost::python;
@@ -160,6 +160,9 @@ void makeDbCoreWrapper()
         .def("resolveCurrentXRefs", &DbCore::resolveCurrentXRefs, DS.SARGS({ "db: PyDb.Database","useThreadEngine: bool","doNewOnly: bool" })).staticmethod("resolveCurrentXRefs")
         .def("groupCodeToType", &DbCore::groupCodeToType, DS.SARGS({ "code: PyDb.DxfCode" })).staticmethod("groupCodeToType")
         .def("isVisible", &DbCore::isVisible, DS.SARGS({ "entityId: PyDb.ObjectId" })).staticmethod("isVisible")
+
+        .def("tessellateString", &DbCore::tessellateString1)
+        .def("tessellateString", &DbCore::tessellateString2, DS.SARGS({ "val: str", "font : str = ..." })).staticmethod("tessellateString")
         ;
 }
 
@@ -1034,4 +1037,63 @@ bool DbCore::isVisible(const PyDbObjectId& id)
         return ptr->visibility() == AcDb::kVisible;
     }
     return false;
+}
+
+static void polylineCallback(int numPolylines, const int* pPolylineSizeArray, const AcGePoint3d* pVertexList, void* pVoid)
+{
+    boost::python::list* pList = reinterpret_cast<boost::python::list*>(pVoid);
+    if (pList == nullptr)
+        return;
+    int vertexIndex = 0;
+    for (int pLineIdx = 0; pLineIdx < numPolylines; pLineIdx++)
+    {
+        int vertexCountInThisPolyline = pPolylineSizeArray[pLineIdx];
+        if (vertexCountInThisPolyline < 2)
+        {
+            vertexIndex += vertexCountInThisPolyline;
+            continue;
+        }
+        AcDbPolyline* pNewPolyline = new AcDbPolyline(vertexCountInThisPolyline);
+        for (int vIdx = 0; vIdx < vertexCountInThisPolyline; vIdx++)
+        {
+            AcGePoint3d pt3d = pVertexList[vertexIndex];
+            AcGePoint2d pt2d(pt3d.x, pt3d.y);
+            pNewPolyline->addVertexAt(vIdx, pt2d, 0.0, 0.0, 0.0);
+            vertexIndex++;
+        }
+        pList->append(PyDbPolyline(pNewPolyline, true));
+    }
+}
+
+boost::python::list DbCore::tessellateString1(const std::string& str)
+{
+    return tessellateString2(str, std::string{ "simplex.shx" });
+}
+
+boost::python::list DbCore::tessellateString2(const std::string& str, const std::string& font)
+{
+    boost::python::list pylst;
+    std::wstring stringToTessalate = utf8_to_wstr(str);
+    AcGiTextStyle textStyle;
+   
+    AcString outFile;
+    PyThrowBadEs(acdbHostApplicationServices()->findFile(outFile, utf8_to_wstr(font).c_str(), acdbCurDwg(), AcDbHostApplicationServices::kFontFile));
+    textStyle.setFileName(outFile);
+    auto stat = textStyle.loadStyleRec();
+
+    std::unique_ptr<AcGiTextEngine> pTextEngine(AcGiTextEngine::create());
+    if (pTextEngine != nullptr)
+    {
+        acutPrintf(_T("\nTessellating text string..."));
+        pTextEngine->tessellate(
+            textStyle,
+            stringToTessalate.c_str(),
+            stringToTessalate.size(),
+            true,
+            0.5,
+            &pylst,
+            polylineCallback
+        );
+    }
+    return pylst;
 }
