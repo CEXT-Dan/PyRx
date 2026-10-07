@@ -1532,7 +1532,7 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
             polylineCallback
         );
     }
-#if defined (_ZRXTARGET270)
+#if defined (_ZRXTARGET)
     for (auto& pnts : vec)
     {
         for (auto& pnt : pnts)
@@ -1553,7 +1553,7 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
             memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
         }
         ads_matrix targetAdsMatrix = { { 0 } };
-#if !defined (_ZRXTARGET270)
+#if !defined (_ZRXTARGET)
         std::memcpy(targetAdsMatrix, mat.entry, sizeof(ads_matrix));
 #endif
         if (acedGrVecs(rb.get(), targetAdsMatrix) != RTNORM)
@@ -1565,7 +1565,7 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
 int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
 {
     AcResBufPtr rb(listToResbuf(iterable));
-#if defined (_ZRXTARGET270)
+#if defined (_ZRXTARGET)
     for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
     {
         if (pTail->restype == RT3DPOINT || pTail->restype == RTPOINT)
@@ -1573,7 +1573,7 @@ int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
     }
 #endif
     ads_matrix adsmat = { { 0 } };
-#if !defined (_ZRXTARGET270)
+#if !defined (_ZRXTARGET)
     memcpy_s(adsmat, sizeof(ads_matrix), mat.entry, sizeof(ads_matrix));
 #endif
     return acedGrVecs(rb.get(), adsmat);
