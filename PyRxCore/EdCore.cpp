@@ -1570,7 +1570,6 @@ int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
     {
         if (pTail->restype == RT3DPOINT || pTail->restype == RTPOINT)
             asPnt3d(pTail->resval.rpoint).transformBy(mat);
-
     }
 #endif
     ads_matrix adsmat = { { 0 } };
