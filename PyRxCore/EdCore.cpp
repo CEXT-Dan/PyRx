@@ -1481,7 +1481,7 @@ int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
 
 static void polylineCallback(int numPolylines, const int* pPolylineSizeArray, const AcGePoint3d* pVertexList, void* pVoid)
 {
-    std::vector<PyGePoint3dArray> *pvec = reinterpret_cast<std::vector<PyGePoint3dArray>*>(pVoid);
+    std::vector<PyGePoint3dArray>* pvec = reinterpret_cast<std::vector<PyGePoint3dArray>*>(pVoid);
     if (pvec == nullptr)
         return;
     int vertexIndex = 0;
@@ -1515,7 +1515,7 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
 
     AcString outFile;
     PyThrowBadEs(acdbHostApplicationServices()->findFile(outFile, utf8_to_wstr(font).c_str(), acdbCurDwg(), AcDbHostApplicationServices::kFontFile));
-    textStyle.setFileName(outFile);
+    textStyle.setFileName(utf8_to_wstr(font).c_str());
     if ((textStyle.loadStyleRec() & 1) == 0)
         PyThrowBadEs(eInvalidInput);
 
@@ -1532,6 +1532,13 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
             polylineCallback
         );
     }
+#if defined (_ZRXTARGET270)
+    for (auto& pnts : vec)
+    {
+        for (auto& pnt : pnts)
+            pnt.transformBy(mat);
+    }
+#endif
     for (const auto& pnts : vec)
     {
         AcResBufPtr rb(acutNewRb(RTSHORT));
@@ -1545,8 +1552,10 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
             rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
             memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
         }
-        ads_matrix targetAdsMatrix;
+        ads_matrix targetAdsMatrix = { { 0 } };
+#if !defined (_ZRXTARGET270)
         std::memcpy(targetAdsMatrix, mat.entry, sizeof(ads_matrix));
+#endif
         if (acedGrVecs(rb.get(), targetAdsMatrix) != RTNORM)
             PyThrowBadEs(eInvalidInput);
     }
