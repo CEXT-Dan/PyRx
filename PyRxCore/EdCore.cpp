@@ -1565,8 +1565,18 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
 int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)
 {
     AcResBufPtr rb(listToResbuf(iterable));
+#if defined (_ZRXTARGET270)
+    for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
+    {
+        if (pTail->restype == RT3DPOINT || pTail->restype == RTPOINT)
+            asPnt3d(pTail->resval.rpoint).transformBy(mat);
+
+    }
+#endif
     ads_matrix adsmat = { { 0 } };
+#if !defined (_ZRXTARGET270)
     memcpy_s(adsmat, sizeof(ads_matrix), mat.entry, sizeof(ads_matrix));
+#endif
     return acedGrVecs(rb.get(), adsmat);
 }
 
