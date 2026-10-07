@@ -473,6 +473,7 @@ public:
         return std::make_tuple(res, id, pnt);
     }
 
+#ifdef NEVER
     static const ACHAR* fragmentText(const AcDbMTextFragment& fragment) noexcept
     {
         return fragment.msText.constPtr();
@@ -605,9 +606,11 @@ public:
             return 1;
         }
     };
+#endif
 
     static void AcRxPyApp_idoit1(void)
     {
+#ifdef NEVER
         const auto selection = entsel(L"\nSelect MText: ", AcDbMText::desc());
         const auto status = std::get<0>(selection);
         if (status != Acad::eNormal)
@@ -623,6 +626,7 @@ public:
         MTextCharacterBoxReporter reporter;
         mtext->explodeFragments(MTextCharacterBoxReporter::callback, &reporter, nullptr);
         acutPrintf(L"\nNote: surrogate pairs are kept together. Combining marks and font ligatures may require a shaping engine for true ink bounds.");
+#endif
     }
 #endif
 };

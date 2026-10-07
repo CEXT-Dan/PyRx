@@ -174,6 +174,10 @@ void makePyEdCoreWrapper()
         "- commandName:str\n"
         "- resultBuffer:list[tuple[int,Any]]\n";
 
+    constexpr const std::string_view  grDrawTextOverloads = "Overloads:\n"
+        "- text:str, mat:PyGeMatrix3d, colorIndex:int\n"
+        "- text:str, font:str, mat:PyGeMatrix3d, colorIndex:int\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def(init<>(DS.ARGS()))
@@ -237,6 +241,8 @@ void makePyEdCoreWrapper()
         .def("grDrawCircle", &EdCore::grDrawCircle, DS.SARGS({ "cen: PyGe.Point3d", "radius: float", "numsegs: int","color: int" })).staticmethod("grDrawCircle")
         .def("grDrawPoly2d", &EdCore::grDrawPoly2d, DS.SARGS({ "pts: list[PyGe.Point2d]","color: int" })).staticmethod("grDrawPoly2d")
         .def("grDrawPoly3d", &EdCore::grDrawPoly3d, DS.SARGS({ "pts: list[PyGe.Point3d]","color: int" })).staticmethod("grDrawPoly3d")
+        .def("grDrawText", &EdCore::grDrawText1)
+        .def("grDrawText", &EdCore::grDrawText2, DS.SOVRL(grDrawTextOverloads)).staticmethod("grDrawText")
         .def("grVecs", &EdCore::grVecs, DS.SARGS({ "resbuf: list","xform: PyGe.Matrix3d" }, 10890)).staticmethod("grVecs")
         .def("grText", &EdCore::grText, DS.SARGS({ "box: int","text: str","hl: int" }, 10889)).staticmethod("grText")
         .def("getCommandPromptString", &EdCore::getCommandPromptString, DS.SARGS()).staticmethod("getCommandPromptString")
@@ -1471,6 +1477,80 @@ int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
         memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
     }
     return acedGrVecs(rb.get(), NULL);
+}
+
+static void polylineCallback(int numPolylines, const int* pPolylineSizeArray, const AcGePoint3d* pVertexList, void* pVoid)
+{
+    std::vector<PyGePoint3dArray> *pvec = reinterpret_cast<std::vector<PyGePoint3dArray>*>(pVoid);
+    if (pvec == nullptr)
+        return;
+    int vertexIndex = 0;
+    for (int pLineIdx = 0; pLineIdx < numPolylines; pLineIdx++)
+    {
+        int vertexCountInThisPolyline = pPolylineSizeArray[pLineIdx];
+        if (vertexCountInThisPolyline < 2)
+        {
+            vertexIndex += vertexCountInThisPolyline;
+            continue;
+        }
+        PyGePoint3dArray pNewPolyline;
+        for (int vIdx = 0; vIdx < vertexCountInThisPolyline; vIdx++)
+        {
+            pNewPolyline.push_back(pVertexList[vertexIndex]);
+            vertexIndex++;
+        }
+        pvec->push_back(pNewPolyline);
+    }
+}
+int EdCore::grDrawText1(const std::string& text, const AcGeMatrix3d& mat, int colorIndex)
+{
+    return grDrawText2(text, std::string{ "simplex.shx" }, mat, colorIndex);
+}
+
+int EdCore::grDrawText2(const std::string& text, const std::string& font, const AcGeMatrix3d& mat, int colorIndex)
+{
+    std::vector<PyGePoint3dArray> vec;
+    std::wstring stringToTessalate = utf8_to_wstr(text);
+    AcGiTextStyle textStyle;
+
+    AcString outFile;
+    PyThrowBadEs(acdbHostApplicationServices()->findFile(outFile, utf8_to_wstr(font).c_str(), acdbCurDwg(), AcDbHostApplicationServices::kFontFile));
+    textStyle.setFileName(outFile);
+    if ((textStyle.loadStyleRec() & 1) == 0)
+        PyThrowBadEs(eInvalidInput);
+
+    std::unique_ptr<AcGiTextEngine> pTextEngine(AcGiTextEngine::create());
+    if (pTextEngine != nullptr)
+    {
+        pTextEngine->tessellate(
+            textStyle,
+            stringToTessalate.c_str(),
+            stringToTessalate.size(),
+            true,
+            0.5,
+            &vec,
+            polylineCallback
+        );
+    }
+    for (const auto& pnts : vec)
+    {
+        AcResBufPtr rb(acutNewRb(RTSHORT));
+        rb->resval.rint = colorIndex;
+        resbuf* rbTail = rb.get();
+        constexpr const size_t copysize = sizeof(ads_point);
+        for (size_t idx = 1; idx < pnts.size(); idx++)
+        {
+            rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+            memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx - 1]), copysize);
+            rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
+            memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
+        }
+        ads_matrix targetAdsMatrix;
+        std::memcpy(targetAdsMatrix, &mat.entry[0][0], sizeof(ads_matrix));
+        if (acedGrVecs(rb.get(), targetAdsMatrix) != RTNORM)
+            PyThrowBadEs(eInvalidInput);
+    }
+    return RTNORM;
 }
 
 int EdCore::grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat)

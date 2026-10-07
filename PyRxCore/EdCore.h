@@ -108,6 +108,8 @@ public:
     static int                  grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int colorIndex);
     static int                  grDrawPoly2d(const boost::python::object& iterable, int colorIndex);
     static int                  grDrawPoly3d(const boost::python::object& iterable, int colorIndex);
+    static int                  grDrawText1(const std::string& text, const AcGeMatrix3d& mat, int colorIndex);
+    static int                  grDrawText2(const std::string& text, const std::string& font, const AcGeMatrix3d& mat, int colorIndex);
     static int                  grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat);
     static int                  grText(int box, const std::string& text, int hl);
     static AcGePoint3d          getMousePositionUCS();
