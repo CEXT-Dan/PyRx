@@ -1546,7 +1546,7 @@ int EdCore::grDrawText2(const std::string& text, const std::string& font, const 
             memcpy_s(rbTail->resval.rpoint, copysize, asDblArray(pnts[idx]), copysize);
         }
         ads_matrix targetAdsMatrix;
-        std::memcpy(targetAdsMatrix, &mat.entry[0][0], sizeof(ads_matrix));
+        std::memcpy(targetAdsMatrix, mat.entry, sizeof(ads_matrix));
         if (acedGrVecs(rb.get(), targetAdsMatrix) != RTNORM)
             PyThrowBadEs(eInvalidInput);
     }

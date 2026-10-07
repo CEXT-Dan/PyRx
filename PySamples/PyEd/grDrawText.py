@@ -20,7 +20,7 @@ def doit2():
         val = "This is some text"
         
         # explicit font
-        font = "italic.shx"
+        font = "simplex.shx"
         
         # Translation)
         mat = Ge.Matrix3d.translation(Ge.Vector3d(7.5, 7.5, 0))
