@@ -175,8 +175,8 @@ void makePyEdCoreWrapper()
         "- resultBuffer:list[tuple[int,Any]]\n";
 
     constexpr const std::string_view  grDrawTextOverloads = "Overloads:\n"
-        "- text:str, mat:PyGeMatrix3d, colorIndex:int\n"
-        "- text:str, font:str, mat:PyGeMatrix3d, colorIndex:int\n";
+        "- text:str, mat:PyGe.Matrix3d, colorIndex:int\n"
+        "- text:str, font:str, mat:PyGe.Matrix3d, colorIndex:int\n";
 
     PyDocString DS("Core");
     class_<EdCore>("Core")
