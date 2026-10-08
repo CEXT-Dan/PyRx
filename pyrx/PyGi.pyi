@@ -54,7 +54,19 @@ kAcGiWorldScale: ScaleTransformBehavior  # 0
 kAcGiWorldWithScreenOffsetPosition: PositionTransformBehavior  # 4
 kAcGiZAxisOrientation: OrientationTransformBehavior  # 2
 kAmbientLight: GiDrawableType  # 4
+kAnsiCharset: Charset  # 0
+kArabicCharset: Charset  # 178
+kAssameseCharset: Charset  # 1
 kBackLighting: DefaultLightingType  # 2
+kBalticCharset: Charset  # 186
+kBelgianCharset: Charset  # 1
+kBengaliCharset: Charset  # 256
+kChineseSimpCharset: Charset  # 134
+kChineseTradCharset: Charset  # 136
+kDecorative: FontFamily  # 80
+kDefault: FontFamily  # 0
+kDefaultCharset: Charset  # 1
+kDevanagariCharset: Charset  # 263
 kDistantLight: GiDrawableType  # 1
 kDrawFillSelectionWindow: DrawFlags  # 1024
 kDrawFillTextBoundaryEnd: DrawFlags  # 512
@@ -87,15 +99,39 @@ kDrawableStandardDisplaySingleLOD: GiAttributesFlags  # 512
 kDrawableUsesNesting: GiAttributesFlags  # 2
 kDrawableViewDependentViewportDraw: GiAttributesFlags  # 2048
 kDrawableViewIndependentViewportDraw: GiAttributesFlags  # 8
+kEastEuropeCharset: Charset  # 238
+kFinnishCharset: Charset  # 1
+kFixed: FontPitch  # 1
 kGeometry: GiDrawableType  # 0
+kGeorgianCharset: Charset  # 1
 kGradientBackground: GiDrawableType  # 6
+kGreekCharset: Charset  # 161
 kGroundPlaneBackground: GiDrawableType  # 8
+kGujaratiCharset: Charset  # 258
+kGurmukhiCharset: Charset  # 257
+kHebrewCharset: Charset  # 177
+kHindiCharset: Charset  # 263
+kINTERNALCHARSET: Charset  # 256
 kImageBackground: GiDrawableType  # 7
 kImageBasedLightingBackground: GiDrawableType  # 12
+kJapaneseCharset: Charset  # 128
+kJohabCharset: Charset  # 130
+kKannadaCharset: Charset  # 261
+kKonkaniCharset: Charset  # 263
+kKoreanCharset: Charset  # 129
+kMalayalamCharset: Charset  # 262
+kMarathiCharset: Charset  # 263
+kModern: FontFamily  # 48
 kNoDrawFlags: ShadowFlags  # 0
 kNoSelectionFlags: SelectionFlags  # 0
 kOneDistantLight: DefaultLightingType  # 0
+kOriyaCharset: Charset  # 264
 kPointLight: GiDrawableType  # 2
+kPunjabiharset: Charset  # 257
+kRoman: FontFamily  # 16
+kRussianCharset: Charset  # 204
+kSanskritCharset: Charset  # 263
+kScript: FontFamily  # 64
 kSelectionIgnore: SelectionFlags  # 1
 kShadowsDoesNotCast: ShadowFlags  # 1
 kShadowsDoesNotReceive: ShadowFlags  # 2
@@ -103,11 +139,21 @@ kShadowsIgnore: ShadowFlags  # 3
 kSkyBackground: GiDrawableType  # 11
 kSolidBackground: GiDrawableType  # 5
 kSpotLight: GiDrawableType  # 3
+kSwiss: FontFamily  # 32
+kSymbolCharset: Charset  # 2
+kTamilCharset: Charset  # 259
+kTeluguCharset: Charset  # 260
+kThaiCharset: Charset  # 222
 kThreadedWorldDrawViewportDraw: GiAttributesFlags  # 131072
 kTransparency1Bit: TransparencyMode  # 1
 kTransparency8Bit: TransparencyMode  # 2
 kTransparencyOff: TransparencyMode  # 0
+kTurkishCharset: Charset  # 162
 kTwoDistantLights: DefaultLightingType  # 1
+kUndefinedCharset: Charset  # -1
+kUnicodeCharset: Charset  # 1
+kVariable: FontPitch  # 2
+kVietnameseCharset: Charset  # 163
 kViewport: GiDrawableType  # 9
 kWebLight: GiDrawableType  # 10
 
@@ -115,6 +161,46 @@ class ArcType(_BoostPythonEnum):
     kAcGiArcSimple: ClassVar[Self]  # 0
     kAcGiArcSector: ClassVar[Self]  # 1
     kAcGiArcChord: ClassVar[Self]  # 2
+
+class Charset(_BoostPythonEnum):
+    kUndefinedCharset: ClassVar[Self]  # -1
+    kAnsiCharset: ClassVar[Self]  # 0
+    kUnicodeCharset: ClassVar[Self]  # 1
+    kSymbolCharset: ClassVar[Self]  # 2
+    kJapaneseCharset: ClassVar[Self]  # 128
+    kKoreanCharset: ClassVar[Self]  # 129
+    kChineseSimpCharset: ClassVar[Self]  # 134
+    kChineseTradCharset: ClassVar[Self]  # 136
+    kJohabCharset: ClassVar[Self]  # 130
+    kHebrewCharset: ClassVar[Self]  # 177
+    kArabicCharset: ClassVar[Self]  # 178
+    kGreekCharset: ClassVar[Self]  # 161
+    kTurkishCharset: ClassVar[Self]  # 162
+    kVietnameseCharset: ClassVar[Self]  # 163
+    kThaiCharset: ClassVar[Self]  # 222
+    kEastEuropeCharset: ClassVar[Self]  # 238
+    kRussianCharset: ClassVar[Self]  # 204
+    kBalticCharset: ClassVar[Self]  # 186
+    kDefaultCharset: ClassVar[Self]  # 1
+    kINTERNALCHARSET: ClassVar[Self]  # 256
+    kBengaliCharset: ClassVar[Self]  # 256
+    kGurmukhiCharset: ClassVar[Self]  # 257
+    kGujaratiCharset: ClassVar[Self]  # 258
+    kTamilCharset: ClassVar[Self]  # 259
+    kTeluguCharset: ClassVar[Self]  # 260
+    kKannadaCharset: ClassVar[Self]  # 261
+    kMalayalamCharset: ClassVar[Self]  # 262
+    kDevanagariCharset: ClassVar[Self]  # 263
+    kOriyaCharset: ClassVar[Self]  # 264
+    kMarathiCharset: ClassVar[Self]  # 263
+    kHindiCharset: ClassVar[Self]  # 263
+    kKonkaniCharset: ClassVar[Self]  # 263
+    kSanskritCharset: ClassVar[Self]  # 263
+    kPunjabiharset: ClassVar[Self]  # 257
+    kAssameseCharset: ClassVar[Self]  # 1
+    kFinnishCharset: ClassVar[Self]  # 1
+    kBelgianCharset: ClassVar[Self]  # 1
+    kGeorgianCharset: ClassVar[Self]  # 1
 
 class CommonDraw(PyRx.RxObject):
     def __init__(self) -> None:
@@ -344,6 +430,19 @@ class FaceData(PyGi.Parameter):
 class FillType(_BoostPythonEnum):
     kAcGiFillAlways: ClassVar[Self]  # 1
     kAcGiFillNever: ClassVar[Self]  # 2
+
+class FontFamily(_BoostPythonEnum):
+    kDefault: ClassVar[Self]  # 0
+    kRoman: ClassVar[Self]  # 16
+    kSwiss: ClassVar[Self]  # 32
+    kModern: ClassVar[Self]  # 48
+    kScript: ClassVar[Self]  # 64
+    kDecorative: ClassVar[Self]  # 80
+
+class FontPitch(_BoostPythonEnum):
+    kDefault: ClassVar[Self]  # 0
+    kFixed: ClassVar[Self]  # 1
+    kVariable: ClassVar[Self]  # 2
 
 class Geometry(PyRx.RxObject):
     def __init__(self) -> None:
@@ -877,18 +976,96 @@ class SubEntityTraits(PyRx.RxObject):
     def visualStyle(self, /) -> PyDb.ObjectId: ...
 
 class TextStyle(PyGi.Parameter):
-    def __init__(self) -> None:
-        """
-        Raises an exception.
-        This class cannot be instantiated from Python.
-        """
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, db: PyDb.Database, /) -> None: ...
+    @overload
+    def __init__(
+        self,
+        fontName: str,
+        bigFontName: str,
+        textSize: float,
+        xScale: float,
+        obliqueAngle: float,
+        trPercent: float,
+        isBackward: bool,
+        isUpsideDown: bool,
+        isVertical: bool,
+        isOverlined: bool,
+        isUnderlined: bool,
+        /,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self,
+        fontName: str,
+        bigFontName: str,
+        textSize: float,
+        xScale: float,
+        obliqueAngle: float,
+        trPercent: float,
+        isBackward: bool,
+        isUpsideDown: bool,
+        isVertical: bool,
+        isOverlined: bool,
+        isUnderlined: bool,
+        isStrikethrough: bool,
+        styleName: str,
+        /,
+    ) -> None: ...
+    @overload
+    def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
+    def bigFontFileName(self, /) -> str: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> TextStyle: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass: ...
+    def extents(self, pStr: str, penups: bool, len: int, raw: bool, /) -> PyGe.Point2d: ...
+    def extentsBox(self, pStr: str, penups: bool, len: int, raw: bool, /) -> tuple: ...
+    def fileName(self, /) -> str: ...
+    def font(self, /) -> tuple: ...
+    def isBackward(self, /) -> bool: ...
+    def isOverlined(self, /) -> bool: ...
+    def isStrikethrough(self, /) -> bool: ...
+    def isUnderlined(self, /) -> bool: ...
+    def isUpsideDown(self, /) -> bool: ...
+    def isVertical(self, /) -> bool: ...
+    def loadStyleRec(self, db: PyDb.Database, /) -> int: ...
+    def obliquingAngle(self, /) -> float: ...
+    def preLoaded(self, /) -> bool: ...
+    def setBackward(self, isBackward: bool, /) -> None: ...
+    def setBigFontFileName(self, bigFontFileName: str, /) -> None: ...
+    def setFileName(self, fontName: str, /) -> None: ...
+    def setFont(
+        self,
+        pTypeface: str,
+        bold: bool,
+        italic: bool,
+        charset: PyGi.Charset,
+        pitch: PyGi.FontPitch,
+        family: PyGi.FontFamily,
+        /,
+    ) -> None: ...
+    def setObliquingAngle(self, obliquingAngle: float, /) -> None: ...
+    def setOverlined(self, isOverlined: bool, /) -> None: ...
+    def setPreLoaded(self, val: bool, /) -> None: ...
+    def setStrikethrough(self, isStrikethrough: bool, /) -> None: ...
+    def setStyleName(self, val: str, /) -> None: ...
+    def setTextSize(self, size: float, /) -> None: ...
+    def setTrackKerning(self, trackPercent: float, /) -> None: ...
+    def setTrackingPercent(self, trPercent: float, /) -> None: ...
+    def setUnderlined(self, isUnderlined: bool, /) -> None: ...
+    def setUpsideDown(self, isUpsideDown: bool, /) -> None: ...
+    def setVertical(self, isVertical: bool, /) -> None: ...
+    def setXScale(self, xScale: float, /) -> None: ...
+    def styleName(self, /) -> str: ...
+    def textSize(self, /) -> float: ...
+    def trackingPercent(self, /) -> float: ...
+    def xScale(self, /) -> float: ...
 
 class TransientDrawingMode(_BoostPythonEnum):
     kAcGiMain: ClassVar[Self]  # 0
