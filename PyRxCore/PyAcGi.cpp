@@ -49,6 +49,13 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
     makePyGiParameterWrapper();
+    makePyGiEdgeDataWrapper();
+    makePyGiFaceDataWrapper();
+    makePyGiMapperWrapper();
+    makePyGiPolylineWrapper();
+    makePyGiTextStyleWrapper();
+    makePyGiVertexDataWrapper();
+
 
 #ifdef PYRX_IN_PROGRESS_GS_GI
     makePyGiKernelDescriptorWrapper();

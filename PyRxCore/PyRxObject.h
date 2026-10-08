@@ -146,6 +146,31 @@ public:
 
 AcRxClassArray PyListToAcRxClassArray(const boost::python::object& iterable);
 
+//-----------------------------------------------------------------------------------------
+// PyRxCopyOnWriteObject
+template<typename T>
+inline T PyRxCopyOnWriteObjectCast(const PyRxObject& src)
+{
+    T dest(nullptr, false);
+    dest.m_pyImp = src.m_pyImp;
+    return dest;
+}
+
+void makePyRxCopyOnWriteObjectWrapper();
+
+class PyRxCopyOnWriteObject : public PyRxObject
+{
+public:
+    PyRxCopyOnWriteObject(AcRxCopyOnWriteObject* ptr, bool autoDelete);
+    virtual ~PyRxCopyOnWriteObject() override = default;
+
+    static PyRxClass desc();
+    static std::string className();
+    static PyRxCopyOnWriteObject cast(const PyRxObject& src);
+
+public:
+    AcRxCopyOnWriteObject* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 #pragma pack (pop)
