@@ -112,14 +112,11 @@ public:
         const double xScale,
         const double obliqueAngle,
         const double trPercent,
-
         const Adesk::Boolean isBackward,
         const Adesk::Boolean isUpsideDown,
         const Adesk::Boolean isVertical,
-
         const Adesk::Boolean isOverlined,
         const Adesk::Boolean isUnderlined);
-
 
     PyGiTextStyle(
         const std::string& fontName,
@@ -128,20 +125,71 @@ public:
         const double xScale,
         const double obliqueAngle,
         const double trPercent,
-
         const Adesk::Boolean isBackward,
         const Adesk::Boolean isUpsideDown,
         const Adesk::Boolean isVertical,
-
         const Adesk::Boolean isOverlined,
         const Adesk::Boolean isUnderlined,
         const Adesk::Boolean isStrikethrough,
-
         const std::string& styleName);
-
 
     PyGiTextStyle(AcGiTextStyle* ptr, bool autoDelete);
     virtual ~PyGiTextStyle() override = default;
+    int loadStyleRec1() const;
+    int loadStyleRec2(PyDbDatabase& pDb) const;
+    void setTextSize(const double size) const;
+    void setXScale(const double xScale) const;
+    void setObliquingAngle(const double obliquingAngle) const;
+    void setTrackingPercent(const double trPercent) const;
+    void setBackward(const Adesk::Boolean isBackward) const;
+    void setUpsideDown(const Adesk::Boolean isUpsideDown) const;
+    void setVertical(const Adesk::Boolean isVertical) const;
+    void setUnderlined(const Adesk::Boolean isUnderlined) const;
+    void setOverlined(const Adesk::Boolean isOverlined) const;
+    void setStrikethrough(const Adesk::Boolean isStrikethrough) const;
+    void setFileName(const std::string& fontName) const;
+    void setBigFontFileName(const std::string& bigFontFileName) const;
+    void setStyleName(const std::string& val) const;
+    void setPreLoaded(bool val) const;
+    void setTrackKerning(double trackPercent) const;
+
+    double textSize() const;
+    double xScale() const;
+    double obliquingAngle() const;
+    double trackingPercent() const;
+    Adesk::Boolean isBackward() const;
+    Adesk::Boolean isUpsideDown() const;
+    Adesk::Boolean isVertical() const;
+    Adesk::Boolean isUnderlined() const;
+    Adesk::Boolean isOverlined() const;
+    Adesk::Boolean isStrikethrough() const;
+    bool preLoaded() const;
+    std::string fileName() const;
+    std::string bigFontFileName() const;
+    std::string styleName() const;
+
+    AcGePoint2d extents1(const std::string& pStr, const Adesk::Boolean penups, const int len, const Adesk::Boolean raw) const;
+    AcGePoint2d extents2(const std::string& pStr, const Adesk::Boolean penups, const int len, const Adesk::Boolean raw, const PyGiWorldDraw& ctxt) const;
+
+    void setFont(const std::string& pTypeface,
+        Adesk::Boolean bold,
+        Adesk::Boolean italic,
+        Charset charset,
+        Autodesk::AutoCAD::PAL::FontUtils::FontPitch pitch,
+        Autodesk::AutoCAD::PAL::FontUtils::FontFamily family) const;
+
+    boost::python::tuple font() const;
+
+    boost::python::tuple extentsBox1(const std::string& pStr,
+        const Adesk::Boolean penups,
+        const int len,
+        const Adesk::Boolean raw) const;
+
+    boost::python::tuple extentsBox2(const std::string& pStr,
+        const Adesk::Boolean penups,
+        const int len,
+        const Adesk::Boolean raw,
+        PyGiWorldDraw& ctxt) const;
 
     static PyRxClass desc();
     static std::string className();
