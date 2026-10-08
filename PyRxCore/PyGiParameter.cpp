@@ -240,19 +240,109 @@ AcGiPolyline* PyGiPolyline::impObj(const std::source_location& src /*= std::sour
 void makePyGiTextStyleWrapper()
 {
     PyDocString DS("TextStyle");
-    class_<PyGiTextStyle, bases<PyGiParameter>>("TextStyle", no_init)
+    class_<PyGiTextStyle, bases<PyGiParameter>>("TextStyle")
+        .def(init<>())
         .def("cast", &PyGiTextStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         .def("className", &PyGiTextStyle::className).staticmethod("className")
         .def("desc", &PyGiTextStyle::desc).staticmethod("desc")
         ;
 }
 
+PyGiTextStyle::PyGiTextStyle()
+    : PyGiTextStyle(new AcGiTextStyle(), true)
+{
+}
+
+PyGiTextStyle::PyGiTextStyle(const PyDbDatabase& db)
+#if defined(_BRXTARGET270)
+    : PyGiTextStyle(new AcGiTextStyle(), true)
+#else
+    : PyGiTextStyle(new AcGiTextStyle(db.impObj()), true)
+#endif
+{
+#if defined(_BRXTARGET270)
+    throw PyNotimplementedByHost();
+#endif
+}
+
+PyGiTextStyle::PyGiTextStyle(
+    const std::string& fontName,
+    const std::string& bigFontName,
+    const double textSize,
+    const double xScale,
+    const double obliqueAngle,
+    const double trPercent,
+    const Adesk::Boolean isBackward,
+    const Adesk::Boolean isUpsideDown,
+    const Adesk::Boolean isVertical,
+    const Adesk::Boolean isOverlined,
+    const Adesk::Boolean isUnderlined)
+    : PyGiTextStyle(new AcGiTextStyle(
+        utf8_to_wstr(fontName).c_str(), 
+        utf8_to_wstr(bigFontName).c_str(),
+        textSize, 
+        xScale, 
+        obliqueAngle, 
+        trPercent, 
+        isBackward, 
+        isUpsideDown, 
+        isVertical, 
+        isOverlined, 
+        isUnderlined), true)
+{
+}
+
+PyGiTextStyle::PyGiTextStyle(
+    const std::string& fontName, 
+    const std::string& bigFontName,
+    const double textSize, 
+    const double xScale, 
+    const double obliqueAngle,
+    const double trPercent, 
+    const Adesk::Boolean isBackward, 
+    const Adesk::Boolean isUpsideDown, 
+    const Adesk::Boolean isVertical, 
+    const Adesk::Boolean isOverlined, 
+    const Adesk::Boolean isUnderlined, 
+    const Adesk::Boolean isStrikethrough, 
+    const std::string& styleName)
+#if defined(_BRXTARGET270)
+    : PyGiTextStyle(new AcGiTextStyle(
+        utf8_to_wstr(fontName).c_str(),
+        utf8_to_wstr(bigFontName).c_str(),
+        textSize,
+        xScale,
+        obliqueAngle,
+        trPercent,
+        isBackward,
+        isUpsideDown,
+        isVertical,
+        isOverlined,
+        isUnderlined,
+        utf8_to_wstr(styleName).c_str()), true)
+#else
+    : PyGiTextStyle(new AcGiTextStyle(
+        utf8_to_wstr(fontName).c_str(),
+        utf8_to_wstr(bigFontName).c_str(),
+        textSize,
+        xScale,
+        obliqueAngle,
+        trPercent,
+        isBackward,
+        isUpsideDown,
+        isVertical,
+        isOverlined,
+        isUnderlined, 
+        isStrikethrough,
+        utf8_to_wstr(styleName).c_str()), true)
+#endif
+{
+}
 
 PyGiTextStyle::PyGiTextStyle(AcGiTextStyle* ptr, bool autoDelete)
     : PyGiParameter(ptr, autoDelete)
 {
 }
-
 
 PyRxClass PyGiTextStyle::desc()
 {
