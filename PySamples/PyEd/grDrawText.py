@@ -1,6 +1,7 @@
-import traceback
 import math
-from pyrx import Ap, Db, Ge, Ed
+import traceback
+
+from pyrx import Ap, Db, Ed, Ge
 
 
 @Ap.Command()
@@ -9,7 +10,7 @@ def doit1():
         val = "This is some text"
         mat = Ge.Matrix3d.translation(Ge.Point3d(10, 10, 0).asVector())
         Ed.Core.grDrawText(val, mat, 1)
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
 
 
@@ -34,5 +35,5 @@ def doit2():
         # Translation * Rotation * Scale
         Ed.Core.grDrawText(val, font, mat, 2)
         
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
