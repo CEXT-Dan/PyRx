@@ -102,6 +102,44 @@ void makePyGiTextStyleWrapper();
 class PyGiTextStyle : public PyGiParameter
 {
 public:
+    PyGiTextStyle();
+    PyGiTextStyle(const PyDbDatabase& db);
+
+    PyGiTextStyle(
+        const std::string& fontName,
+        const std::string& bigFontName,
+        const double textSize,
+        const double xScale,
+        const double obliqueAngle,
+        const double trPercent,
+
+        const Adesk::Boolean isBackward,
+        const Adesk::Boolean isUpsideDown,
+        const Adesk::Boolean isVertical,
+
+        const Adesk::Boolean isOverlined,
+        const Adesk::Boolean isUnderlined);
+
+
+    PyGiTextStyle(
+        const std::string& fontName,
+        const std::string& bigFontName,
+        const double textSize,
+        const double xScale,
+        const double obliqueAngle,
+        const double trPercent,
+
+        const Adesk::Boolean isBackward,
+        const Adesk::Boolean isUpsideDown,
+        const Adesk::Boolean isVertical,
+
+        const Adesk::Boolean isOverlined,
+        const Adesk::Boolean isUnderlined,
+        const Adesk::Boolean isStrikethrough,
+
+        const std::string& styleName);
+
+
     PyGiTextStyle(AcGiTextStyle* ptr, bool autoDelete);
     virtual ~PyGiTextStyle() override = default;
 
