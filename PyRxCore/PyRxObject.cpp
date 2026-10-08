@@ -270,3 +270,42 @@ AcRxClassArray PyListToAcRxClassArray(const boost::python::object& iterable)
     }
     return arr;
 }
+
+//-----------------------------------------------------------------------------------------
+// PyRxCopyOnWriteObject
+void makePyRxCopyOnWriteObjectWrapper()
+{
+    PyDocString DS("CopyOnWriteObject");
+    class_<PyRxCopyOnWriteObject, bases<PyRxObject>>("CopyOnWriteObject", boost::python::no_init)
+        .def("desc", &PyRxCopyOnWriteObject::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("className", &PyRxCopyOnWriteObject::className, DS.SARGS()).staticmethod("className")
+        .def("cast", &PyRxCopyOnWriteObject::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyRxCopyOnWriteObject::PyRxCopyOnWriteObject(AcRxCopyOnWriteObject* ptr, bool autoDelete)
+    : PyRxObject(ptr, autoDelete, false)
+{
+}
+
+PyRxClass PyRxCopyOnWriteObject::desc()
+{
+    return PyRxClass(AcRxCopyOnWriteObject::desc(), false);
+}
+
+std::string PyRxCopyOnWriteObject::className()
+{
+    return "AcRxCopyOnWriteObject";
+}
+
+PyRxCopyOnWriteObject PyRxCopyOnWriteObject::cast(const PyRxObject& src)
+{
+    return PyRxCopyOnWriteObjectCast<PyRxCopyOnWriteObject>(src);
+}
+
+AcRxCopyOnWriteObject* PyRxCopyOnWriteObject::impObj(const std::source_location& src) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcRxCopyOnWriteObject*>(m_pyImp.get());
+}

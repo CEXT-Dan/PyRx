@@ -28,6 +28,28 @@ kText: LispType  # 5005
 kVector3d: LispType  # 5008
 kVoid: LispType  # 5014
 
+class CopyOnWriteObject(PyRx.RxObject):
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> CopyOnWriteObject: ...
+    @staticmethod
+    def className() -> str: ...
+    @staticmethod
+    def desc() -> RxClass:
+        """
+        Returns the RxClass type descriptor for this specific class. In Python, this method is used
+        to get the runtime type descriptor of a class (typically via the static `.desc()` method)
+        for type checking and hierarchy inspection.To check the runtime type of a specific object
+        instance rather than a static pointer, use the instance's `.isA()` method instead. `.isA()`
+        dynamically evaluates the object's actual runtime type, making it independent of the
+        variable's type qualifier.
+        """
+
 class LispType(_BoostPythonEnum):
     kAngle: ClassVar[Self]  # 5004
     kDottedPair: ClassVar[Self]  # 5018

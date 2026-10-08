@@ -3,25 +3,9 @@
 
 #pragma pack(push, 8)
 
-void makePyGiParameterWrapper();
-
-//-----------------------------------------------------------------------------------------
-// PyRxCopyOnWriteObject
-class PyRxCopyOnWriteObject : public PyRxObject
-{
-public:
-    PyRxCopyOnWriteObject(AcRxCopyOnWriteObject* ptr, bool autoDelete);
-    virtual ~PyRxCopyOnWriteObject() override = default;
-
-    static PyRxClass desc();
-    static std::string className();
-    static PyRxCopyOnWriteObject cast(const PyRxObject& src);
-
-    AcRxCopyOnWriteObject* impObj(const std::source_location& src = std::source_location::current()) const;
-};
-
 //-----------------------------------------------------------------------------------------
 // PyGiParameter
+void makePyGiParameterWrapper();
 class PyGiParameter : public PyRxCopyOnWriteObject
 {
 public:
@@ -32,11 +16,13 @@ public:
     static std::string className();
     static PyGiParameter cast(const PyRxObject& src);
 
+public:
     AcGiParameter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiEdgeData
+void makePyGiEdgeDataWrapper();
 class PyGiEdgeData : public PyGiParameter
 {
 public:
@@ -48,11 +34,13 @@ public:
     static std::string className();
     static PyGiEdgeData cast(const PyRxObject& src);
 
+public:
     AcGiEdgeData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiFaceData
+void makePyGiFaceDataWrapper();
 class PyGiFaceData : public PyGiParameter
 {
 public:
@@ -64,11 +52,13 @@ public:
     static std::string className();
     static PyGiFaceData cast(const PyRxObject& src);
 
+public:
     AcGiFaceData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiMapper
+void makePyGiMapperWrapper();
 class PyGiMapper : public PyGiParameter
 {
 public:
@@ -80,12 +70,18 @@ public:
     static std::string className();
     static PyGiMapper cast(const PyRxObject& src);
 
+public:
     AcGiMapper* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiPolyline
+void makePyGiPolylineWrapper();
+#if defined(_BRXTARGET270)
+class PyGiPolyline : public PyRxObject
+#else
 class PyGiPolyline : public PyGiParameter
+#endif
 {
 public:
     PyGiPolyline();
@@ -96,15 +92,16 @@ public:
     static std::string className();
     static PyGiPolyline cast(const PyRxObject& src);
 
+public:
     AcGiPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiTextStyle
+void makePyGiTextStyleWrapper();
 class PyGiTextStyle : public PyGiParameter
 {
 public:
-    PyGiTextStyle();
     PyGiTextStyle(AcGiTextStyle* ptr, bool autoDelete);
     virtual ~PyGiTextStyle() override = default;
 
@@ -112,11 +109,13 @@ public:
     static std::string className();
     static PyGiTextStyle cast(const PyRxObject& src);
 
+public:
     AcGiTextStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
 // PyGiVertexData
+void makePyGiVertexDataWrapper();
 class PyGiVertexData : public PyGiParameter
 {
 public:
@@ -128,6 +127,7 @@ public:
     static std::string className();
     static PyGiVertexData cast(const PyRxObject& src);
 
+public:
     AcGiVertexData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

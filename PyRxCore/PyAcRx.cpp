@@ -175,6 +175,7 @@ static BOOST_PYTHON_MODULE(PyRx)
     boost::python::import("sys").attr("stderr") = make_stderr_redirector().get();
 
     makePyRxObjectWrapper();
+    makePyRxCopyOnWriteObjectWrapper();
     makePyRxClassWrapper();
     makePyRxOverruleWrapper();
 
