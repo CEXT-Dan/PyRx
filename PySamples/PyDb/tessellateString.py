@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ge, Ed
+
+from pyrx import Ap, Db, Ge
 
 
 @Ap.Command()
@@ -24,5 +25,5 @@ def doit():
             for pline in plines:
                 pline.transformBy(mat)
                 db.addToCurrentspace(pline)
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
