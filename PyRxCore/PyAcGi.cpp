@@ -5,6 +5,7 @@
 #include "PyGiSubEntityTraits.h"
 #include "PyGiTransientManager.h"
 #include "PyGiGraphicsKernel.h"
+#include "PyGiParameter.h"
 
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 
@@ -47,6 +48,7 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiWorldGeometryWrapper();
     makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
+    makePyGiParameterWrapper();
 
 #ifdef PYRX_IN_PROGRESS_GS_GI
     makePyGiKernelDescriptorWrapper();

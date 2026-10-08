@@ -277,6 +277,9 @@
     <ClCompile Include="PyGiGraphicsKernel.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyGiParameter.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
     <ClCompile Include="PyDbEllipse.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
@@ -784,6 +787,9 @@
       <Filter>Header Files\PyGs</Filter>
     </ClInclude>
     <ClInclude Include="PyGiGraphicsKernel.h">
+      <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiParameter.h">
       <Filter>Header Files\PyGi</Filter>
     </ClInclude>
     <ClInclude Include="PyAcEditor.h">
