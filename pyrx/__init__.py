@@ -24,7 +24,7 @@ import importlib.util
 import warnings
 from typing import TYPE_CHECKING
 
-__version__ = "3.1.13.5797"
+__version__ = "3.1.14.5829"
 
 try:
     import PyRx as Rx  # isort: skip  # type: ignore

@@ -1,3 +1,13 @@
+## v3.1.14
+
+* update to nanoflann.hpp 1.14
+* update to CDT v2.0
+* [#541] wrap AcDbViewSymbol
+* added Ed.Core.grDrawText
+* [#551] added PyGiTextStyle
+* added text size overload for calcTextExtents
+* added Db.Core.tessellateString
+
 ## v3.1.13
 
 * add Ax.Plot.plotToFile
