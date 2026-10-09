@@ -648,6 +648,8 @@ void makePyDbLayerTableWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbLayerTable::add, DS.ARGS({ "val: PyDb.LayerTableRecord" }, 5819))
+        .def("hasUnreconciledLayers", &PyDbLayerTable::hasUnreconciledLayers, DS.ARGS())
+        .def("getUnreconciledLayers", &PyDbLayerTable::getUnreconciledLayers, DS.ARGS())
         .def("desc", &PyDbLayerTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbLayerTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         .def("cloneFrom", &PyDbLayerTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -682,6 +684,18 @@ PyDbObjectId PyDbLayerTable::add(const PyDbLayerTableRecord& entry) const
         PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
+}
+
+bool PyDbLayerTable::hasUnreconciledLayers() const
+{
+    return impObj()->hasUnreconciledLayers();
+}
+
+boost::python::list PyDbLayerTable::getUnreconciledLayers() const
+{
+    AcDbObjectIdArray ids; 
+    impObj()->getUnreconciledLayers(ids);
+    return ObjectIdArrayToPyList(ids);
 }
 
 std::string PyDbLayerTable::className()
