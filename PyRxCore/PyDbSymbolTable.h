@@ -194,6 +194,8 @@ public:
     PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbLayerTable() override = default;
     PyDbObjectId        add(const PyDbLayerTableRecord& entry) const;
+    bool                hasUnreconciledLayers() const;
+    boost::python::list getUnreconciledLayers() const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLayerTable cloneFrom(const PyRxObject& src);

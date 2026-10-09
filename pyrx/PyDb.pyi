@@ -19052,6 +19052,8 @@ class LayerTable(PyDb.SymbolTable):
         dynamically evaluates the object's actual runtime type, making it independent of the
         variable's type qualifier.
         """
+    def getUnreconciledLayers(self, /) -> list: ...
+    def hasUnreconciledLayers(self, /) -> bool: ...
 
 class LayerTableRecord(PyDb.SymbolTableRecord):
     def VPDFLT(self, /) -> bool:
