@@ -159,7 +159,9 @@ class Core:
     @staticmethod
     def autoSetVar(name: str, value, /) -> AutoSysVar: ...
     @staticmethod
-    def calcTextExtents(val: str, textStyleId: PyDb.ObjectId, /) -> tuple[float, float]: ...
+    def calcTextExtents(
+        val: str, textStyleId: PyDb.ObjectId, textHeight: float = ..., /
+    ) -> tuple[float, float]: ...
     @staticmethod
     def callBackOnCancel() -> None:
         """

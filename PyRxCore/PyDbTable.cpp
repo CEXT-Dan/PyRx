@@ -575,7 +575,8 @@ void makePyDbTableWrapper()
         .def("clearCustomData", &PyDbTable::clearCustomData, DS.ARGS({ "row: int", "col: int", "style: str" }))
         .def("getCustomData", &PyDbTable::getCustomData, DS.ARGS({ "row: int", "col: int", "style: str" }, 9309))
         .def("setCustomData", &PyDbTable::setCustomData, DS.ARGS({ "row: int", "col: int", "style: str", "val: PyDb.AcValue" }, 9391))
-        .def("calcTextExtents", &PyDbTable::calcTextExtents, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId" })).staticmethod("calcTextExtents")
+        .def("calcTextExtents", &PyDbTable::calcTextExtents1)
+        .def("calcTextExtents", &PyDbTable::calcTextExtents2, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId", "textHeight:float = ..."})).staticmethod("calcTextExtents")
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2262,10 +2263,23 @@ void PyDbTable::setCustomData(int nrow, int ncol, const std::string& key, const 
     PyThrowBadEs(impObj()->setCustomData(nrow, ncol, AsWStr(key), val.impObj()));
 }
 
-boost::python::tuple PyDbTable::calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle)
+boost::python::tuple PyDbTable::calcTextExtents1(const std::string& strval, const PyDbObjectId& textStyle)
 {
     AcGiTextStyle iStyle;
     PyThrowBadEs(fromAcDbTextStyle(iStyle, textStyle.m_id));
+    iStyle.loadStyleRec();
+    const std::wstring wstrval = utf8_to_wstr(strval);
+    auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(pnt.x, pnt.y);
+}
+
+boost::python::tuple PyDbTable::calcTextExtents2(const std::string& strval, const PyDbObjectId& textStyle, double txtHeight)
+{
+    AcGiTextStyle iStyle;
+    PyThrowBadEs(fromAcDbTextStyle(iStyle, textStyle.m_id));
+    iStyle.loadStyleRec();
+    iStyle.setTextSize(txtHeight);
     const std::wstring wstrval = utf8_to_wstr(strval);
     auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
     PyAutoLockGIL lock;

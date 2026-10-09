@@ -29483,7 +29483,9 @@ class Table(PyDb.BlockReference):
         This function gets the spacing between multiple tables when table breaking is enabled.
         """
     @staticmethod
-    def calcTextExtents(val: str, textStyleId: PyDb.ObjectId, /) -> tuple[float, float]: ...
+    def calcTextExtents(
+        val: str, textStyleId: PyDb.ObjectId, textHeight: float = ..., /
+    ) -> tuple[float, float]: ...
     def canDelete(self, row: int, col: int, brow: bool, /) -> bool:
         """
         This function checks if the row or column can be deleted Returns true if the row or column

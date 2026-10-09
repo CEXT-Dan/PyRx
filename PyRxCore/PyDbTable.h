@@ -323,7 +323,8 @@ public:
     void                setCustomData(int nrow, int ncol, const std::string& key, const PyDbAcValue& val) const;
 
 public:
-    static boost::python::tuple  calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle);
+    static boost::python::tuple calcTextExtents1(const std::string& strval, const PyDbObjectId& textStyle);
+    static boost::python::tuple calcTextExtents2(const std::string& strval, const PyDbObjectId& textStyle, double txtHeight);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbTable    cloneFrom(const PyRxObject& src);
