@@ -170,6 +170,7 @@ BOOST_PYTHON_MODULE(PyGi)
 
     enum_<Autodesk::AutoCAD::PAL::FontUtils::FontFamily>("FontFamily")
         .value("kDefault", Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kDoNotCare)
+        .value("kDoNotCare", Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kDoNotCare)
         .value("kRoman", Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kRoman)
         .value("kSwiss", Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kSwiss)
         .value("kModern", Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kModern)

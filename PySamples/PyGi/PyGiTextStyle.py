@@ -1,6 +1,6 @@
 import traceback
-
-from pyrx import Ap, Db, Ed, Ge, Gi
+import math
+from pyrx import Ap, Db, Ge, Ed, Gi
 
 
 def next_utf16_code_point(text: str, first: int) -> int:
@@ -35,16 +35,18 @@ def make_style(frag: list):
         frag[Db.MTextFragmentType.kOverlined],
         frag[Db.MTextFragmentType.kUnderlined],
     )
-    if (st.loadStyleRec() & 1) == 0:
-        raise RuntimeError("loadStyleRec failed: ")
+
     st.setFont(
         frag[Db.MTextFragmentType.kFontname],
         frag[Db.MTextFragmentType.kBold],
         frag[Db.MTextFragmentType.kItalic],
         Gi.Charset.kDefaultCharset,
-        Gi.FontPitch.kDefault,
+        Gi.FontPitch.kFixed,
         Gi.FontFamily.kDefault,
     )
+    
+    if (st.loadStyleRec() & 1) == 0:
+        raise RuntimeError("loadStyleRec failed: ")
     return st
 
 
@@ -54,7 +56,7 @@ def doit():
         
         target_search = "C=B"
         
-        #db = Db.curDb()
+        db = Db.curDb()
         ps, id, _ = Ed.Editor.entSel("\nPick MText: ", Db.MText.desc())
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("Selection failed: {}".format(ps))
@@ -62,7 +64,7 @@ def doit():
         mt = Db.MText(id)
     
         for frag in mt.getFragments():
-            #print(frag)
+            print(frag)
             st = make_style(frag)
             vx: Ge.Vector3d = frag[Db.MTextFragmentType.kDirection].normal()
             vz: Ge.Vector3d = frag[Db.MTextFragmentType.kNormal].normal()
@@ -99,9 +101,10 @@ def doit():
                     Ed.Core.grDraw(p1, p2, 3, 0)
                     Ed.Core.grDraw(p2, p3, 3, 0)
                     Ed.Core.grDraw(p3, p0, 3, 0)
-
-                first = last
+                    first = last
+                else:
+                    first+=1
                 character_index += 1
 
-    except Exception:
+    except Exception as e:
         traceback.print_exc()
