@@ -68,6 +68,7 @@ kDefault: FontFamily  # 0
 kDefaultCharset: Charset  # 1
 kDevanagariCharset: Charset  # 263
 kDistantLight: GiDrawableType  # 1
+kDoNotCare: FontFamily  # 0
 kDrawFillSelectionWindow: DrawFlags  # 1024
 kDrawFillTextBoundaryEnd: DrawFlags  # 512
 kDrawFillTextBoundaryStart: DrawFlags  # 256
@@ -433,6 +434,7 @@ class FillType(_BoostPythonEnum):
 
 class FontFamily(_BoostPythonEnum):
     kDefault: ClassVar[Self]  # 0
+    kDoNotCare: ClassVar[Self]  # 0
     kRoman: ClassVar[Self]  # 16
     kSwiss: ClassVar[Self]  # 32
     kModern: ClassVar[Self]  # 48

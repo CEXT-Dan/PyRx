@@ -188,7 +188,8 @@ void makePyEdCoreWrapper()
         .def("audit", &EdCore::audit1)
         .def("audit", &EdCore::audit2, DS.SARGS({ "db: PyDb.Database", "fix: bool","echo: bool=False" }, 10721)).staticmethod("audit")
         .def("callBackOnCancel", &EdCore::callBackOnCancel, DS.SARGS(10722)).staticmethod("callBackOnCancel")
-        .def("calcTextExtents", &EdCore::calcTextExtents, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId" })).staticmethod("calcTextExtents")
+        .def("calcTextExtents", &EdCore::calcTextExtents1)
+        .def("calcTextExtents", &EdCore::calcTextExtents2, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId", "textHeight:float = ..."})).staticmethod("calcTextExtents")
         .def("clearOLELock", &EdCore::clearOLELock, DS.SARGS({ "handle: int" }, 10723)).staticmethod("clearOLELock")
         .def("clipFormatName", &EdCore::clipFormatName, DS.SARGS(10724)).staticmethod("clipFormatName")
         .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled, DS.SARGS(10726)).staticmethod("cmdCWasCancelled")
@@ -518,10 +519,23 @@ boost::python::dict EdCore::getCommands()
     return Pydict;
 }
 
-boost::python::tuple EdCore::calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle)
+boost::python::tuple EdCore::calcTextExtents1(const std::string& strval, const PyDbObjectId& textStyle)
 {
     AcGiTextStyle iStyle;
     PyThrowBadEs(fromAcDbTextStyle(iStyle, textStyle.m_id));
+    iStyle.loadStyleRec();
+    const std::wstring wstrval = utf8_to_wstr(strval);
+    auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(pnt.x, pnt.y);
+}
+
+boost::python::tuple EdCore::calcTextExtents2(const std::string& strval, const PyDbObjectId& textStyle, double txtHeight)
+{
+    AcGiTextStyle iStyle;
+    PyThrowBadEs(fromAcDbTextStyle(iStyle, textStyle.m_id));
+    iStyle.loadStyleRec();
+    iStyle.setTextSize(txtHeight);
     const std::wstring wstrval = utf8_to_wstr(strval);
     auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
     PyAutoLockGIL lock;
