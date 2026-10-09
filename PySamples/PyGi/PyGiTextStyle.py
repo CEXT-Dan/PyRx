@@ -44,7 +44,7 @@ def make_style(frag: list):
         Gi.FontPitch.kFixed,
         Gi.FontFamily.kDefault,
     )
-    
+
     if (st.loadStyleRec() & 1) == 0:
         raise RuntimeError("loadStyleRec failed: ")
     return st
@@ -53,58 +53,69 @@ def make_style(frag: list):
 @Ap.Command()
 def doit():
     try:
-        
-        target_search = "C=B"
-        
+
+        target_search = ["Architect", "casework configuration"]
+
         db = Db.curDb()
-        ps, id, _ = Ed.Editor.entSel("\nPick MText: ", Db.MText.desc())
+        ps, ss = Ed.Editor.select([(0, "MTEXT")])
         if ps != Ed.PromptStatus.eOk:
-            raise RuntimeError("Selection failed: {}".format(ps))
+            raise RuntimeError("oof {}:".format(ps))
 
-        mt = Db.MText(id)
-    
-        for frag in mt.getFragments():
-            print(frag)
-            st = make_style(frag)
-            vx: Ge.Vector3d = frag[Db.MTextFragmentType.kDirection].normal()
-            vz: Ge.Vector3d = frag[Db.MTextFragmentType.kNormal].normal()
-            vy = vz.crossProduct(vx).normal()
+        for id in ss:
+            mt = Db.MText(id)
+            if not any(candidate in mt.contents() for candidate in target_search):
+                continue
 
-            text = frag[Db.MTextFragmentType.kTextValue]
-            first = 0
-            character_index = 0
+            for frag in mt.getFragments():
+                # print(frag)
+                st = make_style(frag)
+                vx: Ge.Vector3d = frag[Db.MTextFragmentType.kDirection].normal()
+                vz: Ge.Vector3d = frag[Db.MTextFragmentType.kNormal].normal()
+                vy = vz.crossProduct(vx).normal()
 
-            while first < len(text):
-                last = next_utf16_code_point(text, first)
-                prefix = text[0:first]
+                text = frag[Db.MTextFragmentType.kTextValue]
+                first = 0
+                character_index = 0
 
-                if text[first:].startswith(target_search):
-                    lookahead_end = first
-                    for _ in range(len(target_search)):
-                        lookahead_end = next_utf16_code_point(text, lookahead_end)
-
-                    full_match_string = text[first:lookahead_end]
-                    advance = st.extents(prefix, True, len(prefix), False).x
-
-                    localMin, localMax = st.extentsBox(
-                        full_match_string, True, len(full_match_string), False
+                while first < len(text):
+                    last = next_utf16_code_point(text, first)
+                    prefix = text[0:first]
+                    matched_string = next(
+                        (
+                            candidate
+                            for candidate in target_search
+                            if text.startswith(candidate, first)
+                        ),
+                        None,
                     )
-                    localMin.x += advance
-                    localMax.x += advance
 
-                    p0 = fragment_point_to_wcs(frag, vx, vy, localMin)
-                    p1 = fragment_point_to_wcs(frag, vx, vy, Ge.Point2d(localMax.x, localMin.y))
-                    p2 = fragment_point_to_wcs(frag, vx, vy, localMax)
-                    p3 = fragment_point_to_wcs(frag, vx, vy, Ge.Point2d(localMin.x, localMax.y))
+                    if matched_string is not None:
+                        full_match_string = matched_string
+                        advance = st.extents(prefix, True, len(prefix), False).x
 
-                    Ed.Core.grDraw(p0, p1, 3, 0)
-                    Ed.Core.grDraw(p1, p2, 3, 0)
-                    Ed.Core.grDraw(p2, p3, 3, 0)
-                    Ed.Core.grDraw(p3, p0, 3, 0)
-                    first = last
-                else:
-                    first+=1
-                character_index += 1
+                        localMin, localMax = st.extentsBox(
+                            full_match_string, True, len(full_match_string), False
+                        )
+                        localMin.x += advance
+                        localMax.x += advance
+
+                        p0 = fragment_point_to_wcs(frag, vx, vy, localMin)
+                        p1 = fragment_point_to_wcs(
+                            frag, vx, vy, Ge.Point2d(localMax.x, localMin.y)
+                        )
+                        p2 = fragment_point_to_wcs(frag, vx, vy, localMax)
+                        p3 = fragment_point_to_wcs(
+                            frag, vx, vy, Ge.Point2d(localMin.x, localMax.y)
+                        )
+
+                        Ed.Core.grDraw(p0, p1, 3, 0)
+                        Ed.Core.grDraw(p1, p2, 3, 0)
+                        Ed.Core.grDraw(p2, p3, 3, 0)
+                        Ed.Core.grDraw(p3, p0, 3, 0)
+                        first = last
+                    else:
+                        first += 1
+                    character_index += 1
 
     except Exception as e:
         traceback.print_exc()
