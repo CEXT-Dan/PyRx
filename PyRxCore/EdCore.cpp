@@ -281,7 +281,8 @@ void makePyEdCoreWrapper()
         .def("postCommandPrompt", &EdCore::postCommandPrompt, DS.SARGS(11232)).staticmethod("postCommandPrompt")
         .def("prompt", &EdCore::prompt, DS.SARGS({ "val: str" }, 11233)).staticmethod("prompt")
         .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: PyGe.Point3d","mode: str" }, 11228)).staticmethod("osnap")
-        .def("redraw", &EdCore::redraw, DS.SARGS({ "id: PyDb.ObjectId","mode: int" }, 11236)).staticmethod("redraw")
+        .def("redraw", &EdCore::redraw1)
+        .def("redraw", &EdCore::redraw2, DS.SARGS({ "id: PyDb.ObjectId = ...","mode: int = ..." }, 11236)).staticmethod("redraw")
         .def("reloadMenus", &EdCore::reloadMenus, DS.SARGS({ "bIncrementalReloading: bool" }, 11248)).staticmethod("reloadMenus")
         .def("restoreCurrentView", &EdCore::restoreCurrentView, DS.SARGS({ "vid: PyDb.ObjectId" }, 11260)).staticmethod("restoreCurrentView")
         .def("restorePreviousUCS", &EdCore::restorePreviousUCS, DS.SARGS(11261)).staticmethod("restorePreviousUCS")
@@ -1303,7 +1304,12 @@ int EdCore::prompt(const std::string& str)
     return acedPrompt(AsWStr(str));
 }
 
-int EdCore::redraw(const PyDbObjectId& ent, int mode)
+int EdCore::redraw1()
+{
+    return acedRedraw(nullptr, 0);
+}
+
+int EdCore::redraw2(const PyDbObjectId& ent, int mode)
 {
     ads_name adsn = { 0L };
     acdbGetAdsName(adsn, ent.m_id);
