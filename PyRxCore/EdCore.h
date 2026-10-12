@@ -138,7 +138,8 @@ public:
     static void                 postCommand(const std::string& str);
     static void                 postCommandPrompt();
     static int                  prompt(const std::string& str);
-    static int                  redraw(const PyDbObjectId& ent, int mode);
+    static int                  redraw1();
+    static int                  redraw2(const PyDbObjectId& ent, int mode);
     static void                 reloadMenus(bool bIncrementalReloading);
     static void                 restoreCurrentView(const PyDbObjectId& namedViewId);
     static void                 restorePreviousUCS();

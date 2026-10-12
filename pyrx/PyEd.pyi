@@ -895,7 +895,7 @@ class Core:
         with this name and assigns it the value.
         """
     @staticmethod
-    def redraw(id: PyDb.ObjectId, mode: int, /) -> int:
+    def redraw(id: PyDb.ObjectId = ..., mode: int = ..., /) -> int:
         """
         Redraws either the graphics viewport or a single entity, according to the arguments. The
         following table shows the acceptable values for mode and the effect that each has. (If ent
