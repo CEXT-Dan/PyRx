@@ -894,8 +894,47 @@ class Core:
         If sname is not the name of a current symbol, acedPutSym() creates a new AutoLISP symbol
         with this name and assigns it the value.
         """
+    @overload
     @staticmethod
-    def redraw(id: PyDb.ObjectId = ..., mode: int = ..., /) -> int:
+    def redraw() -> int:
+        """
+        Redraws either the graphics viewport or a single entity, according to the arguments. The
+        following table shows the acceptable values for mode and the effect that each has. (If ent
+        is not NULL but mode is 0, the call has no effect.) Modes for acedRedraw: Redraw mode
+        Action 1 Redraw entity 2 Undraw entity (blank it out) 3 Highlight entity 4 Unhighlight
+        entity If ent is NULL, acedRedraw() is identical to the AutoCAD REDRAW command. If ent is a
+        valid entity name, and mode is nonzero, acedRedraw() affects only the specified entity.
+        acedRedraw() calls must be made in matched pairs. Every call with a mode of 2 must be
+        followed at some point by a call with a mode of 1. Every call with a mode of 3 must be
+        followed at some point by a call with a mode of 4. Mismatched calls such as a call with a
+        mode of 3 followed by a call with a mode of 1 are not allowed. (This is a change from the
+        previous behaviour of this function that was necessary for display performance
+        optimization.) If acedRedraw() succeeds, it returns RTNORM; otherwise, it returns an error
+        code. When acedRedraw() fails, it sets the system variable ERRNO to a value that indicates
+        the reason for the failure.
+        """
+    @overload
+    @staticmethod
+    def redraw(id: PyDb.ObjectId, mode: int, /) -> int:
+        """
+        Redraws either the graphics viewport or a single entity, according to the arguments. The
+        following table shows the acceptable values for mode and the effect that each has. (If ent
+        is not NULL but mode is 0, the call has no effect.) Modes for acedRedraw: Redraw mode
+        Action 1 Redraw entity 2 Undraw entity (blank it out) 3 Highlight entity 4 Unhighlight
+        entity If ent is NULL, acedRedraw() is identical to the AutoCAD REDRAW command. If ent is a
+        valid entity name, and mode is nonzero, acedRedraw() affects only the specified entity.
+        acedRedraw() calls must be made in matched pairs. Every call with a mode of 2 must be
+        followed at some point by a call with a mode of 1. Every call with a mode of 3 must be
+        followed at some point by a call with a mode of 4. Mismatched calls such as a call with a
+        mode of 3 followed by a call with a mode of 1 are not allowed. (This is a change from the
+        previous behaviour of this function that was necessary for display performance
+        optimization.) If acedRedraw() succeeds, it returns RTNORM; otherwise, it returns an error
+        code. When acedRedraw() fails, it sets the system variable ERRNO to a value that indicates
+        the reason for the failure.
+        """
+    @overload
+    @staticmethod
+    def redraw(*args) -> int:
         """
         Redraws either the graphics viewport or a single entity, according to the arguments. The
         following table shows the acceptable values for mode and the effect that each has. (If ent

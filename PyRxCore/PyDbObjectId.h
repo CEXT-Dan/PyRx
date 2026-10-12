@@ -40,6 +40,7 @@ public:
     std::size_t   hash() const;
     PyAcadObject  acadObject() const;
     static PyDbObjectId fromOldId(INT_PTR oldId);
+    static PyDbObjectId kNull();
 
 public:
     AcDbObjectId m_id;
