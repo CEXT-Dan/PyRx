@@ -193,7 +193,7 @@ void makePyEdCoreWrapper()
         .def("audit", &EdCore::audit2, DS.SARGS({ "db: PyDb.Database", "fix: bool","echo: bool=False" }, 10721)).staticmethod("audit")
         .def("callBackOnCancel", &EdCore::callBackOnCancel, DS.SARGS(10722)).staticmethod("callBackOnCancel")
         .def("calcTextExtents", &EdCore::calcTextExtents1)
-        .def("calcTextExtents", &EdCore::calcTextExtents2, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId", "textHeight:float = ..."})).staticmethod("calcTextExtents")
+        .def("calcTextExtents", &EdCore::calcTextExtents2, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId", "textHeight:float = ..." })).staticmethod("calcTextExtents")
         .def("clearOLELock", &EdCore::clearOLELock, DS.SARGS({ "handle: int" }, 10723)).staticmethod("clearOLELock")
         .def("clipFormatName", &EdCore::clipFormatName, DS.SARGS(10724)).staticmethod("clipFormatName")
         .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled, DS.SARGS(10726)).staticmethod("cmdCWasCancelled")
@@ -287,7 +287,7 @@ void makePyEdCoreWrapper()
         .def("prompt", &EdCore::prompt, DS.SARGS({ "val: str" }, 11233)).staticmethod("prompt")
         .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: PyGe.Point3d","mode: str" }, 11228)).staticmethod("osnap")
         .def("redraw", &EdCore::redraw1)
-        .def("redraw", &EdCore::redraw2,DS.SOVRL(redrawOverloads, 11236)).staticmethod("redraw")
+        .def("redraw", &EdCore::redraw2, DS.SOVRL(redrawOverloads, 11236)).staticmethod("redraw")
         .def("reloadMenus", &EdCore::reloadMenus, DS.SARGS({ "bIncrementalReloading: bool" }, 11248)).staticmethod("reloadMenus")
         .def("restoreCurrentView", &EdCore::restoreCurrentView, DS.SARGS({ "vid: PyDb.ObjectId" }, 11260)).staticmethod("restoreCurrentView")
         .def("restorePreviousUCS", &EdCore::restorePreviousUCS, DS.SARGS(11261)).staticmethod("restorePreviousUCS")
@@ -1316,6 +1316,8 @@ int EdCore::redraw1()
 
 int EdCore::redraw2(const PyDbObjectId& ent, int mode)
 {
+    if (ent.isNull())
+        return acedRedraw(nullptr, mode);
     ads_name adsn = { 0L };
     acdbGetAdsName(adsn, ent.m_id);
     return acedRedraw(adsn, mode);
@@ -1609,8 +1611,6 @@ int EdCore::grText(int box, const std::string& text, int hl)
     return acedGrText(box, AsWStr(text), hl);
 }
 
-#include <boost/python.hpp>
-
 boost::python::tuple EdCore::grRead(int track)
 {
     int type = 0;
@@ -1640,7 +1640,6 @@ boost::python::tuple EdCore::grRead(int track)
     }
     return boost::python::make_tuple(result, type, resbufToList(&pRb));
 }
-
 
 AcGePoint3d EdCore::getMousePositionUCS()
 {
