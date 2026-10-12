@@ -113,6 +113,7 @@ public:
     static int                  grDrawText2(const std::string& text, const std::string& font, const AcGeMatrix3d& mat, int colorIndex);
     static int                  grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat);
     static int                  grText(int box, const std::string& text, int hl);
+    static boost::python::tuple grRead(int track);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
     static std::string          hatchPalletteDialog(const std::string& pattern, bool showCustom);

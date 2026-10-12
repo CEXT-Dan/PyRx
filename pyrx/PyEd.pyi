@@ -691,6 +691,8 @@ class Core:
     @staticmethod
     def grDrawText(*args) -> int: ...
     @staticmethod
+    def grRead(track: int, /) -> tuple: ...
+    @staticmethod
     def grText(box: int, text: str, hl: int, /) -> int:
         """
         Displays the specified text in the menu, mode, or status area of the graphics screen. If
