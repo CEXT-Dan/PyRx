@@ -250,6 +250,7 @@ void makePyEdCoreWrapper()
         .def("grDrawText", &EdCore::grDrawText2, DS.SOVRL(grDrawTextOverloads)).staticmethod("grDrawText")
         .def("grVecs", &EdCore::grVecs, DS.SARGS({ "resbuf: list","xform: PyGe.Matrix3d" }, 10890)).staticmethod("grVecs")
         .def("grText", &EdCore::grText, DS.SARGS({ "box: int","text: str","hl: int" }, 10889)).staticmethod("grText")
+        .def("grRead", &EdCore::grRead, DS.SARGS({ "track: int" })).staticmethod("grRead")
         .def("getCommandPromptString", &EdCore::getCommandPromptString, DS.SARGS()).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines, DS.SARGS({ "lineCount: int","ignoreNull: bool" })).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode, DS.SARGS(10832)).staticmethod("getBlockEditMode")
@@ -1607,6 +1608,39 @@ int EdCore::grText(int box, const std::string& text, int hl)
 {
     return acedGrText(box, AsWStr(text), hl);
 }
+
+#include <boost/python.hpp>
+
+boost::python::tuple EdCore::grRead(int track)
+{
+    int type = 0;
+    struct resbuf pRb {};
+    int result = acedGrRead(track, &type, &pRb);
+
+    switch (pRb.restype)
+    {
+        case RT3DPOINT:
+            return boost::python::make_tuple(result, type, asPnt3d(pRb.resval.rpoint));
+        case RTSHORT:
+            return boost::python::make_tuple(result, type, pRb.resval.rint);
+        case RTLONG:
+            return boost::python::make_tuple(result, type, pRb.resval.rlong);
+        case RTREAL:
+            return boost::python::make_tuple(result, type, pRb.resval.rreal);
+        case RTSTR:
+            if (pRb.resval.rstring != nullptr)
+            {
+                boost::python::tuple ret = boost::python::make_tuple(result, type, wstr_to_utf8(pRb.resval.rstring));
+                acutDelString(pRb.resval.rstring);
+                return ret;
+            }
+            return boost::python::make_tuple(result, type, std::string(""));
+        default:
+            break;
+    }
+    return boost::python::make_tuple(result, type, resbufToList(&pRb));
+}
+
 
 AcGePoint3d EdCore::getMousePositionUCS()
 {
