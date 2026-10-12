@@ -178,6 +178,10 @@ void makePyEdCoreWrapper()
         "- text:str, mat:PyGe.Matrix3d, colorIndex:int\n"
         "- text:str, font:str, mat:PyGe.Matrix3d, colorIndex:int\n";
 
+    constexpr const std::string_view  redrawOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- id:PyDb.ObjectId, mode:int\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def(init<>(DS.ARGS()))
@@ -282,7 +286,7 @@ void makePyEdCoreWrapper()
         .def("prompt", &EdCore::prompt, DS.SARGS({ "val: str" }, 11233)).staticmethod("prompt")
         .def("osnap", &EdCore::osnap, DS.SARGS({ "pt: PyGe.Point3d","mode: str" }, 11228)).staticmethod("osnap")
         .def("redraw", &EdCore::redraw1)
-        .def("redraw", &EdCore::redraw2, DS.SARGS({ "id: PyDb.ObjectId = ...","mode: int = ..." }, 11236)).staticmethod("redraw")
+        .def("redraw", &EdCore::redraw2,DS.SOVRL(redrawOverloads, 11236)).staticmethod("redraw")
         .def("reloadMenus", &EdCore::reloadMenus, DS.SARGS({ "bIncrementalReloading: bool" }, 11248)).staticmethod("reloadMenus")
         .def("restoreCurrentView", &EdCore::restoreCurrentView, DS.SARGS({ "vid: PyDb.ObjectId" }, 11260)).staticmethod("restoreCurrentView")
         .def("restorePreviousUCS", &EdCore::restorePreviousUCS, DS.SARGS(11261)).staticmethod("restorePreviousUCS")

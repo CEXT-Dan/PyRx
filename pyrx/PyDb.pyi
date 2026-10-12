@@ -21720,6 +21720,7 @@ class ObjectId:
         behaved'. Well-behaved ids may be null, valid or 'stale', or they may be a garbage value,
         which happens to fail gracefully (without crashing) when operated on.
         """
+    kNull: PyDb.ObjectId
     def nonForwardedHandle(self, /) -> Handle:
         """
         If this object ID is in an xref database and the object associated with this object ID has

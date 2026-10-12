@@ -127,6 +127,7 @@ void makePyDbObjectIdWrapper()
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.ARGS({ "desc : PyRx.RxClass" }, 15281))
         .def("acadObject", &PyDbObjectId::acadObject, DS.ARGS())
         .def("fromOldId", &PyDbObjectId::fromOldId, DS.SARGS({ "oldId : int" }, 7088)).staticmethod("fromOldId")
+        .add_static_property("kNull", &PyDbObjectId::kNull)
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
         .def("__hash__", &PyDbObjectId::hash)
@@ -289,6 +290,12 @@ PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
 {
     PyDbObjectId id;
     id.setFromOldId(oldId);
+    return id;
+}
+
+PyDbObjectId PyDbObjectId::kNull()
+{
+    static PyDbObjectId id(AcDbObjectId::kNull);
     return id;
 }
 
