@@ -1,3 +1,15 @@
+## v3.1.15
+
+* wxPython 4.3.2
+* nanoflann 2.0.1 fixes performance issue
+* add Ed.SelectionSet.__getitem__
+* add Db.LayerTable.hasUnreconciledLayers
+* add Db.LayerTable.getUnreconciledLayers
+* add Ed.Core.redraw() with no arguments, improved existing method as well
+* add PyDb.ObjectId.kNull
+* add Ed.Core.grRead
+* update from boost_1_91_0 to boost_1_92_0, this adds __iadd__, clear, count, remove, reverse to boost::python::vector_indexing_suite affects Ge.Point2dArray, Ge.Point3dArray, Db.ObjectIdArray, Gi.PixelBGRA32Array
+
 ## v3.1.14
 
 * update to nanoflann.hpp 1.14
