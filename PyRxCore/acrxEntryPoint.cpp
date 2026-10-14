@@ -475,6 +475,7 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
+
     }
 #endif
 };
