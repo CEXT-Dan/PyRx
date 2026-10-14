@@ -1,12 +1,12 @@
 env $(ARX2027) = path to ARXSDK 
 
-env $(WXWIN) = path to wxWidgets' 3.3.3
+env $(WXWIN) = path to wxWidgets' 3.3.4
 
-env $(BOOST) = path to boost_1_91_0
-(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.91.0/
+env $(BOOST) = path to boost_1_92_0
+(pre built) https://sourceforge.net/projects/boost/files/boost-binaries/1.92.0/
 
-env $(Py312) = path to python 3.14.X headers and libraries 
-env $(WXPYWIN) = wxPython 4.3.1 install dir (...\AppData\Local\Programs\Python\Python312\Lib\site-packages\wx
+env $(PYTHON_LIB) = path to python 3.14.X headers and libraries 
+env $(WXPYWIN) = wxPython 4.3.2 install dir (...\AppData\Local\Programs\Python\Python314\Lib\site-packages\wx
 
 \External folder may have additional dependencies
 
