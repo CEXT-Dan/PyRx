@@ -11,26 +11,27 @@ Commands:
     doit3  - Iterates through selected table cells and prints their text values
     doit4  - Iterates through selected table cell values preserving data types
     doit5  - Iterates through selected table cell string values
+    hittest = hit test sample
 
 Functions:
     doit() -> None
         Creates a table from Excel file data
-        
-    doit2() -> None  
+
+    doit2() -> None
         Creates a table from pandas DataFrame with sample data
-        
+
     PyRxCmd_doit3() -> None
         Iterates through table cells and prints text content
-        
+
     PyRxCmd_doit4() -> None
         Iterates through table cell values preserving data types (int, float, string)
-        
+
     PyRxCmd_doit5() -> None
         Iterates through table cell string values and filters empty strings
-        
+
     PyRxCmd_setMargins1() -> None
         Creates a table with custom cell margins using vertical/horizontal settings
-        
+
     PyRxCmd_setMargins2() -> None
         Creates a table with custom cell margins using specific margin types
 
@@ -43,7 +44,7 @@ import traceback
 import openpyxl as xl
 import pandas as pd
 
-from pyrx import Ap, Db, Ed
+from pyrx import Ap, Db, Ed, Ge
 
 
 # create from excel
@@ -52,8 +53,8 @@ def doit() -> None:
     """
     Create an AutoCAD table from data in an Excel file.
 
-    This function reads data from E:\\ItsAlive.xlsx and creates a corresponding 
-    AutoCAD table with the same structure. The table includes all rows and columns 
+    This function reads data from E:\\ItsAlive.xlsx and creates a corresponding
+    AutoCAD table with the same structure. The table includes all rows and columns
     from the Excel sheet, with proper positioning of data cells.
 
     Features:
@@ -64,8 +65,8 @@ def doit() -> None:
 
     Example usage:
         Run 'doit' command in AutoCAD to create table from E:\\ItsAlive.xlsx
-        
-    Note: 
+
+    Note:
         OpenPyXL uses 1-based indexing for rows and columns, while AutoCAD uses 0-based.
         The function adjusts for this difference when mapping cells.
     """
@@ -83,9 +84,7 @@ def doit() -> None:
         # note openpyxl cell indexing is not zero based ..?..
         for row in ws.iter_rows():
             for cell in row:
-                table.setTextString(
-                    cell.row + 1, cell.column - 1, "{}".format(cell.value)
-                )
+                table.setTextString(cell.row + 1, cell.column - 1, "{}".format(cell.value))
 
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
@@ -102,23 +101,23 @@ def doit2() -> None:
     Create an AutoCAD table from a pandas DataFrame.
 
     This function creates a sample table with predefined data using pandas,
-    then transfers that data to an AutoCAD table entity. The resulting table 
+    then transfers that data to an AutoCAD table entity. The resulting table
     includes column headers, data rows, and a title row.
 
     Features:
     - Creates sample data: calories [420, 380, 390] and duration [50, 40, 45]
     - Uses pandas DataFrame for structured data handling
-    - Generates AutoCAD table with proper sizing based on DataFrame dimensions  
+    - Generates AutoCAD table with proper sizing based on DataFrame dimensions
     - Adds title row (row 0) with custom text
     - Populates header row (row 1) with column names
     - Fills data rows (starting from row 2) with values from DataFrame
 
     Example usage:
         Run 'doit2' command in AutoCAD to create table from pandas sample data
-        
+
     Data structure created:
         Row 0: "I Like to Move It, Move It" (title)
-        Row 1: "calories", "duration" (headers)  
+        Row 1: "calories", "duration" (headers)
         Rows 2-4: [420, 50], [380, 40], [390, 45] (data)
     """
     try:
@@ -161,7 +160,7 @@ def doit3() -> None:
     Iterate through a selected table's cells and print their text values.
 
     This function prompts the user to select an existing AutoCAD table, then
-    iterates through a specified range of cells (rows 1-3, columns 0-3) 
+    iterates through a specified range of cells (rows 1-3, columns 0-3)
     and prints each cell's text content to the console.
 
     Features:
@@ -172,7 +171,7 @@ def doit3() -> None:
 
     Example usage:
         Run 'doit3' command in AutoCAD, then select a table to see its contents
-        
+
     Cell range processed: rows 1-3, columns 0-3
     """
     try:
@@ -194,8 +193,8 @@ def doit4() -> None:
     """
     Iterate through a selected table's cells and print their values preserving data types.
 
-    This function prompts the user to select an existing AutoCAD table, then 
-    iterates through all cells (excluding merged cells) and prints each cell's 
+    This function prompts the user to select an existing AutoCAD table, then
+    iterates through all cells (excluding merged cells) and prints each cell's
     value with its preserved original data type (int, float, string).
 
     Features:
@@ -207,8 +206,8 @@ def doit4() -> None:
 
     Example usage:
         Run 'doit4' command in AutoCAD, then select a table to see its typed values
-        
-    Note: 
+
+    Note:
         Unlike textString(), this method preserves numeric types (int/float) rather than converting everything to string.
     """
     try:
@@ -233,11 +232,11 @@ def doit5() -> None:
     Iterate through a selected table's cells and print string representations.
 
     This function prompts the user to select an AutoCAD table, then iterates
-    through all cells (excluding merged cells) and prints each cell's 
+    through all cells (excluding merged cells) and prints each cell's
     position and string representation as tuples of (row, column, text).
 
     Features:
-    - Prompts user for table selection via entity pick  
+    - Prompts user for table selection via entity pick
     - Uses Db.TableIteratorOption.kTableIteratorSkipMerged to skip merged cells
     - Returns data as tuples: (row_index, column_index, cell_text_string)
     - Filters out empty string values and prints only non-empty cells
@@ -245,11 +244,11 @@ def doit5() -> None:
 
     Example usage:
         Run 'doit5' command in AutoCAD, then select a table to see formatted cell info
-        
+
     Output format:
         (row_number, column_number, "cell_content")
-        
-    Note: 
+
+    Note:
         This method is useful for processing table data where you need the exact
         position and string representation of each cell.
     """
@@ -273,19 +272,19 @@ def setMargins1():
 
     This function demonstrates setting uniform cell margins across all cells
     in an AutoCAD table using the vertCellMargin and horzCellMargin properties.
-    
+
     Features:
     - Creates new AutoCAD table with default settings
     - Sets table style from current database
     - Configures both vertical and horizontal cell margins to 0.07 units
-    - Sizes table to 5 rows x 5 columns  
+    - Sizes table to 5 rows x 5 columns
     - Generates layout and adds to model space
     - Prints the margin values after creation for verification
 
     Example usage:
         Run 'setMargins1' command in AutoCAD to create a table with custom spacing
-        
-    Margin settings: 
+
+    Margin settings:
         Vertical margins = 0.07 units
         Horizontal margins = 0.07 units
     """
@@ -312,22 +311,22 @@ def setMargins2():
     """
     Create a table with custom cell margins using specific margin types.
 
-    This function demonstrates setting different margin values for specific 
+    This function demonstrates setting different margin values for specific
     sides of cells in an AutoCAD table by specifying individual margin types.
-    
+
     Features:
     - Creates new AutoCAD table with default settings
     - Sets table style from current database
     - Sizes table to 5 rows x 5 columns
     - Generates layout and adds to model space
     - Sets left/right margins for all cells using Db.CellMargin.kCellMarginLeft | kCellMarginRight
-    - Sets top/bottom margins for all cells using Db.CellMargin.kCellMarginTop | kCellMarginBottom  
+    - Sets top/bottom margins for all cells using Db.CellMargin.kCellMarginTop | kCellMarginBottom
     - Applies margin value of 0.08 units to specified sides
 
     Example usage:
         Run 'setMargins2' command in AutoCAD to create a table with custom side-specific spacing
-        
-    Margin settings: 
+
+    Margin settings:
         All cells: Left/Right = 0.08 units, Top/Bottom = 0.08 units
     """
     try:
@@ -347,3 +346,39 @@ def setMargins2():
 
     except Exception as err:
         traceback.print_exception(err)
+
+
+@Ap.Command()
+def hittest():
+    try:
+        db = Db.curDb()
+        osmode = Ed.AutoSysVar("OSMODE", 0)
+        ps, pnt1 = Ed.Editor.getPoint("\nPick item on table: ")
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("oof {}:".format(ps))
+
+        pnt2 = Ed.Core.getVar("vsmax")
+        ps, ss = Ed.Editor.selectFence([pnt1, pnt2], [(0, "ACAD_TABLE")])
+        if ps != Ed.PromptStatus.eOk:
+            raise RuntimeError("oof {}:".format(ps))
+
+        table = Db.Table(ss.getAt(0))
+        flag, row, col, idx, what = table.hitTest(pnt1, Ge.Vector3d.kZAxis)
+
+        if not flag:
+            print("No Hit")
+
+        if what != Db.TableHitItem.kTableHitCell:
+            print("missed the cell, maybe you hit a grid line")
+
+        content = table.contentType(row, col, idx)
+        if content == Db.CellContentType.kCellContentTypeBlock:
+            blkid = table.blockTableRecordId(row, col, idx)
+            block = Db.BlockTableRecord(blkid)
+            print(block.name())
+        else:
+            cell_val = table.textString(row, col, idx)
+            print(cell_val)
+
+    except Exception as e:
+        traceback.print_exc()
