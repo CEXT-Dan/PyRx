@@ -75,6 +75,7 @@ void makePyEdSelectionSetWrapper()
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("keepAlive", &PyEdSelectionSet::forceKeepAlive, DS.ARGS({ "flag: bool" }))
+        .def("__getitem__", &PyEdSelectionSet::getAt, DS.ARGS({ "idx: int" }))
         .def("__iter__", +[](const PyEdSelectionSet& self) {return SS_Iterator(self); })
         ;
 }
