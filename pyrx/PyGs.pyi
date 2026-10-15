@@ -35,6 +35,8 @@ class Core:
     def setViewParameters(
         vpNum: int, view: PyGs.View, bRegen: bool, bRescale: bool, bSync: bool = False, /
     ) -> bool: ...
+    @staticmethod
+    def slideToWxImage(path: str, width: int, height: int, rgb: list, /) -> object: ...
 
 class GraphicsKernel:
     def __init__(self) -> None:

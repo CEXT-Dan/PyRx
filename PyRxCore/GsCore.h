@@ -49,7 +49,7 @@ using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
 class BlockImageRenderer
 {
 public:
-    BlockImageRenderer(int width, int height, boost::python::object& rgb);
+    BlockImageRenderer(int width, int height,const boost::python::object& rgb);
     bool isValid() const;
     wxImage render(AcDbBlockTableRecord* pBlock, double zoomFactor);
 
@@ -78,9 +78,9 @@ public:
     static bool setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired);
     static bool setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired);
     static PyObject* getBlockImage(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
-    static boost::python::list getBlockImages(const boost::python::list& blkid, int x, int y, double zf, boost::python::object& rgb);
+    static boost::python::list getBlockImages(const boost::python::list& blkid, int x, int y, double zf,const boost::python::object& rgb);
     static bool displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image);
-    static PyObject* slideToWxImage(const std::string& sld_path, int width, int height);
+    static PyObject* slideToWxImage(const std::string& sld_path, int width, int height,const boost::python::object& rgb);
 
 
 };
