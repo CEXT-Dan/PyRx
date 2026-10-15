@@ -33,7 +33,7 @@ class TestDialog(wx.Dialog):
         if not self.res.LoadDialog(self, parent, "ID_DWGPREVIEW"):
             raise Exception("failed to find xrc file")
 
-        self.SetTitle("Slide Preview")
+        self.SetTitle(title)
         self.m_dwgpath = ""
         self.m_previewCtrl = xrc.XRCCTRL(self, "wxID_DWG_PREVIEW")
         self.m_buttonBrowse = xrc.XRCCTRL(self, "wxID_BUTTON_BROWSE")

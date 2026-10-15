@@ -94,6 +94,6 @@ void makeAppSettingsWrapper();
 class AppSettings
 {
 public:
-  
+
 };
 #pragma pack (pop)

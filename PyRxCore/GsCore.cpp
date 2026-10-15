@@ -12,7 +12,7 @@ using namespace boost::python;
 
 //------------------------------------------------------------------------------------
 //GsCore Helpers
-static void setBackgroundColorFromPy(AcGsDevice* pDevice,const boost::python::object& rgb)
+static void setBackgroundColorFromPy(AcGsDevice* pDevice, const boost::python::object& rgb)
 {
     if (pDevice != nullptr && !rgb.is_none())
     {
@@ -220,7 +220,7 @@ void makeGsCoreWrapper()
 
         .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originBottom : int" , "img : wx.Image" })).staticmethod("displayImage")
 
-        .def("slideToWxImage", &GsCore::slideToWxImage, DS.SARGS({ "path : str", "width : int",  "height : int", "rgb:list"})).staticmethod("slideToWxImage")
+        .def("slideToWxImage", &GsCore::slideToWxImage, DS.SARGS({ "path : str", "width : int",  "height : int", "rgb:list" })).staticmethod("slideToWxImage")
         ;
 }
 
@@ -384,16 +384,15 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
 {
     wxBitmap bitmap(width, height);
     wxMemoryDC mdc(bitmap);
-
     wxColour bkg(0, 0, 0);
     auto _rgb = PyListToInt32Array(rgb);
+
     if (_rgb.length() >= 3)
     {
         bkg.Set(static_cast<unsigned char>(_rgb[0]),
             static_cast<unsigned char>(_rgb[1]),
             static_cast<unsigned char>(_rgb[2]));
     }
-
     wxBrush backgroundBrush(bkg);
     mdc.SetBackground(backgroundBrush);
     mdc.Clear();
@@ -583,9 +582,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
             continue;
         }
     }
-
     file.close();
-
     mdc.SelectObject(wxNullBitmap);
     wxImage* finalImage = new wxImage(bitmap.ConvertToImage());
     return wxPyConstructObject((void*)finalImage, wxT("wxImage"), true);
