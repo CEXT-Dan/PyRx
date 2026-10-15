@@ -380,55 +380,295 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
 #endif
 }
 
+struct SlideBounds {
+    int16_t minX, maxX, minY, maxY;
+};
+
+//------------------------------------------------------------------------------
+//GsCore::slideToWxImage
+using ExtractColorCallback = void (*)(uint8_t, wxPen&, wxMemoryDC&);
+
 static void ExtractColor(uint8_t lowByte, wxPen& currentPen, wxMemoryDC& mdc)
 {
-    wxColor penColor;
-    if (lowByte >= 1 && lowByte <= 7) {
-        static const wxColor primaries[] = { *wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE };
-        penColor = primaries[lowByte - 1];
-    }
-    else if (lowByte == 8) {
-        penColor = wxColour(128, 128, 128);
-    }
-    else if (lowByte == 9) {
-        penColor = wxColour(192, 192, 192);
-    }
-    else if (lowByte >= 10 && lowByte <= 249) {
-        int index = lowByte - 10;
-        int colorRow = index % 10;
-        int colorCol = index / 10;
-        double hue = (colorCol * 15.0) * (M_PI / 180.0);
-        double r_f = 0.0, g_f = 0.0, b_f = 0.0;
-
-        if (hue < (M_PI / 3.0)) { r_f = 1.0; g_f = hue / (M_PI / 3.0); }
-        else if (hue < (2.0 * M_PI / 3.0)) { g_f = 1.0; r_f = 2.0 - (hue / (M_PI / 3.0)); }
-        else if (hue < M_PI) { g_f = 1.0; b_f = (hue / (M_PI / 3.0)) - 2.0; }
-        else if (hue < (4.0 * M_PI / 3.0)) { b_f = 1.0; g_f = 4.0 - (hue / (M_PI / 3.0)); }
-        else if (hue < (5.0 * M_PI / 3.0)) { b_f = 1.0; r_f = (hue / (M_PI / 3.0)) - 4.0; }
-        else { r_f = 1.0; b_f = 6.0 - (hue / (M_PI / 3.0)); }
-
-        static const double lightMap[] = { 1.0, 0.65, 0.5, 0.35, 0.2, 0.9, 0.75, 0.6, 0.45, 0.3 };
-        static const double satMap[] = { 1.0, 1.0,  1.0, 1.0,  1.0, 0.5, 0.5,  0.5, 0.5,  0.5 };
-
-        double l = lightMap[colorRow];
-        double s = satMap[colorRow];
-
-        auto applyHSV = [=](double colorComponent) {
-            double v = colorComponent * s + (1.0 - s);
-            return static_cast<unsigned char>(std::max(0.0, std::min(255.0, v * l * 255.0)));
-            };
-        penColor.Set(applyHSV(r_f), applyHSV(g_f), applyHSV(b_f));
-    }
-    else if (lowByte >= 250 && lowByte <= 255) {
-        static const unsigned char greyLevels[] = { 51, 91, 132, 173, 214, 255 };
-        unsigned char g = greyLevels[lowByte - 250];
-        penColor.Set(g, g, g);
-    }
-    else {
-        penColor = *wxWHITE;
-    }
+    static const unsigned char aciLUT[256][3] = {
+        {255,255,255}, {255,0,0},     {255,255,0},   {0,255,0},     {0,255,255},   {0,0,255},     {255,0,255},   {255,255,255},
+        {128,128,128}, {192,192,192}, {255,0,0},     {255,127,127}, {204,0,0},     {204,102,102}, {153,0,0},     {153,76,76},
+        {102,0,0},     {102,51,51},   {51,0,0},      {51,25,25},    {255,63,0},    {255,159,127}, {204,51,0},    {204,127,102},
+        {153,38,0},    {153,95,76},   {102,25,0},    {102,63,51},   {51,12,0},     {51,31,25},    {255,127,0},   {255,191,127},
+        {204,102,0},   {204,153,102}, {153,76,0},    {153,114,76},  {102,51,0},    {102,76,51},   {51,25,0},     {51,38,25},
+        {255,191,0},   {255,223,127}, {204,153,0},   {204,178,102}, {153,114,0},   {153,133,76},  {102,76,0},    {102,89,51},
+        {51,38,0},     {51,44,25},    {255,255,0},   {255,255,127}, {204,204,0},   {204,204,102}, {153,153,0},   {153,153,76},
+        {102,102,0},   {102,102,51},  {51,51,0},     {51,51,25},    {191,255,0},   {223,255,127}, {153,204,0},   {178,204,102},
+        {114,153,0},   {133,153,76},  {76,102,0},    {89,102,51},   {38,51,0},     {44,51,25},    {127,255,0},   {191,255,127},
+        {102,204,0},   {153,204,102}, {76,153,0},    {114,153,76},  {51,102,0},    {76,102,51},   {25,51,0},     {38,51,25},
+        {63,255,0},    {159,255,127}, {51,204,0},    {127,204,102}, {38,153,0},    {95,153,76},   {25,102,0},    {63,102,51},
+        {12,51,0},     {31,51,25},    {0,255,0},     {127,255,127}, {0,204,0},     {102,204,102}, {0,153,0},     {76,153,76},
+        {0,102,0},     {51,102,51},   {0,51,0},      {25,51,25},    {0,255,63},    {127,255,159}, {0,204,51},    {102,204,127},
+        {0,153,38},    {76,153,95},   {0,102,25},    {51,102,63},   {0,51,12},     {25,51,31},    {0,255,127},   {127,255,191},
+        {0,204,102},   {102,204,153}, {0,153,76},    {76,153,114},  {0,102,51},    {51,102,76},   {0,51,25},     {25,51,38},
+        {0,255,191},   {127,255,223}, {0,204,153},   {102,204,178}, {0,153,114},   {76,153,133},  {0,102,76},    {51,102,89},
+        {0,51,38},     {25,51,44},    {0,255,255},   {127,255,255}, {0,204,204},   {102,204,204}, {0,153,153},   {76,153,153},
+        {0,102,102},   {51,102,102},  {0,51,51},     {25,51,25},    {0,191,255},   {127,223,255}, {0,153,204},   {102,178,204},
+        {0,114,153},   {76,133,153},  {0,76,102},    {51,89,102},   {0,38,51},     {25,44,51},    {0,127,255},   {127,191,255},
+        {0,102,204},   {102,153,204}, {0,76,153},    {76,114,153},  {0,51,102},    {51,76,102},   {0,25,51},     {25,38,51},
+        {0,63,255},    {127,159,255}, {0,51,204},    {102,127,204}, {0,38,153},    {76,95,153},   {0,25,102},    {51,63,102},
+        {0,12,51},     {25,31,51},    {0,0,255},     {127,127,255}, {0,0,204},     {102,102,204}, {0,0,153},     {76,76,153},
+        {0,0,102},     {51,51,102},   {0,0,51},      {25,25,51},    {63,0,255},    {159,127,255}, {51,0,204},    {127,102,204},
+        {38,0,153},    {95,76,153},   {25,0,102},    {63,51,102},   {12,0,51},     {31,25,51},    {127,0,255},   {191,127,255},
+        {102,0,204},   {153,102,204}, {76,0,153},    {76,114,153},  {0,51,102},    {51,76,102},   {25,0,51},     {38,25,51},
+        {191,0,255},   {223,127,255}, {153,0,204},   {178,102,204}, {114,0,153},   {133,76,153},  {76,0,102},    {89,51,102},
+        {38,0,51},     {44,25,51},    {255,0,255},   {255,127,255}, {204,0,204},   {204,102,204}, {153,0,153},   {153,76,153},
+        {102,0,102},   {102,51,102},  {51,0,51},     {51,25,51},    {255,0,191},   {255,127,223}, {204,0,153},   {204,102,178},
+        {153,0,114},   {153,76,133},  {102,0,76},    {102,51,89},   {51,0,38},     {51,25,44},    {255,0,127},   {255,127,191},
+        {204,0,102},   {204,102,153}, {153,0,76},    {153,76,114},  {102,0,51},    {102,51,76},   {51,0,25},     {51,25,38},
+        {255,0,63},    {255,127,159}, {204,0,51},    {204,102,127}, {153,0,38},    {153,76,95},   {102,0,25},    {102,51,63},
+        {51,0,12},     {51,25,31},    {51,51,51},    {91,91,91},    {132,132,132}, {173,173,173}, {214,214,214}, {255,255,255}
+    };
+    wxColor penColor(aciLUT[lowByte][0], aciLUT[lowByte][1], aciLUT[lowByte][2]);
     currentPen.SetColour(penColor);
     mdc.SetPen(currentPen);
+}
+
+static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStartPos)
+{
+    file.clear();
+    file.seekg(dataStartPos);
+
+    int16_t minX = 32767, maxX = -32768;
+    int16_t minY = 32767, maxY = -32768;
+    int lastX = 0, lastY = 0;
+    uint16_t firstWord = 0;
+
+    auto updateBounds = [&](int x, int y) {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+        };
+
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
+        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+        uint8_t lowByte = firstWord & 0x00FF;
+
+        if (highByte == 0xFF) continue;
+        if (highByte == 0xFC) break;
+
+        if (highByte == 0xFD) {
+            int16_t fillX = 0, fillY = 0;
+            if (!file.read(reinterpret_cast<char*>(&fillX), 2) || !file.read(reinterpret_cast<char*>(&fillY), 2)) break;
+            if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
+            continue;
+        }
+        if (highByte == 0xFE) {
+            int8_t dy = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+            lastX += static_cast<int8_t>(lowByte);
+            lastY += dy;
+            updateBounds(lastX, lastY);
+            continue;
+        }
+        if (highByte == 0xFB) {
+            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy1), 1) || !file.read(reinterpret_cast<char*>(&dx2), 1) || !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
+            const int x1 = lastX + static_cast<int8_t>(lowByte);
+            const int y1 = lastY + dy1;
+            lastX = x1 + dx2;
+            lastY = y1 + dy2;
+            updateBounds(x1, y1);
+            updateBounds(lastX, lastY);
+            continue;
+        }
+        if (highByte <= 0xFA) {
+            int16_t y1 = 0, x2 = 0, y2 = 0;
+            if (!file.read(reinterpret_cast<char*>(&y1), 2) || !file.read(reinterpret_cast<char*>(&x2), 2) || !file.read(reinterpret_cast<char*>(&y2), 2)) break;
+            updateBounds(static_cast<int16_t>(firstWord), y1);
+            updateBounds(x2, y2);
+            lastX = x2;
+            lastY = y2;
+            continue;
+        }
+    }
+
+    if (maxX <= minX) { minX = 0; maxX = 1; }
+    if (maxY <= minY) { minY = 0; maxY = 1; }
+    return { minX, maxX, minY, maxY };
+}
+
+#ifdef NEVER  // TODO:
+static void renderSolidFills(std::ifstream& file, std::streampos dataStartPos, wxMemoryDC& mdc,
+    wxPen& currentPen, const wxColour& bkg, int width, int height,
+    double scale, int offsetX, int offsetY,
+    ExtractColorCallback extractColorCallback)
+{
+    file.clear();
+    file.seekg(dataStartPos);
+    uint16_t firstWord = 0;
+
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
+        uint8_t lowByte = firstWord & 0x00FF;
+        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+
+        if (highByte == 0xFF) {
+            extractColorCallback(lowByte, currentPen, mdc);
+            continue;
+        }
+        if (highByte == 0xFC) break; // End of file marker
+
+        if (highByte == 0xFD) {
+            int16_t fillX = 0, fillY = 0;
+            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
+                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
+                break;
+            }
+
+            wxBrush fillBrush(currentPen.GetColour());
+            wxBrush oldBrush = mdc.GetBrush();
+            mdc.SetBrush(fillBrush);
+
+            if (fillY < 0) {
+                int16_t vertexCount = fillX;
+
+                // Safety check: Prevent memory allocation crashes or file parsing desyncs
+                if (vertexCount <= 0 || vertexCount > 1000) {
+                    mdc.SetBrush(oldBrush);
+                    break;
+                }
+
+                std::vector<wxPoint> points;
+                points.reserve(vertexCount);
+                bool readSuccess = true;
+
+                // Read all vertices sequentially from the stream
+                for (int16_t i = 0; i < vertexCount; ++i) {
+                    int16_t vx = 0, vy = 0;
+
+                    if (!file.read(reinterpret_cast<char*>(&vx), 2) ||
+                        !file.read(reinterpret_cast<char*>(&vy), 2)) {
+                        readSuccess = false;
+                        break;
+                    }
+
+                    // Correct Cartesian to Screen Coordinates Conversion
+                    int screenX = offsetX + static_cast<int>(vx * scale);
+                    int screenY = height - (offsetY + static_cast<int>(vy * scale));
+
+                    points.push_back(wxPoint(screenX, screenY));
+                }
+
+                if (!readSuccess) {
+                    mdc.SetBrush(oldBrush);
+                    break;
+                }
+
+                // Render by cleanly drawing the two structural triangular halves
+                if (!points.empty()) {
+                    wxPen oldPen = mdc.GetPen();
+                    mdc.SetPen(*wxTRANSPARENT_PEN);
+
+                    if (points.size() == 4) {
+                        // Wedge 1 (Triangle A)
+                        wxPoint tri1[3] = { points[0], points[1], points[2] };
+                        mdc.DrawPolygon(3, tri1);
+
+                        // Wedge 2 (Triangle B)
+                        wxPoint tri2[3] = { points[1], points[2], points[3] };
+                        mdc.DrawPolygon(3, tri2);
+                    }
+                    else {
+                        // Standard fallback for native 3-point solid fills
+                        mdc.DrawPolygon(static_cast<int>(points.size()), points.data());
+                    }
+
+                    mdc.SetPen(oldPen);
+                }
+            }
+            else {
+                // Standalone legacy FloodFill layout block
+                int sFillX = offsetX + static_cast<int>(fillX * scale);
+                int sFillY = height - (offsetY + static_cast<int>(fillY * scale));
+                if (sFillX >= 0 && sFillX < width && sFillY >= 0 && sFillY < height) {
+                    mdc.FloodFill(sFillX, sFillY, bkg, wxFLOOD_SURFACE);
+                }
+            }
+
+            mdc.SetBrush(oldBrush);
+            continue;
+        }
+
+        // Handle standard non-fill chunk skipping
+        if (highByte == 0xFE)
+            file.seekg(1, std::ios::cur);
+        else if (highByte == 0xFB)
+            file.seekg(3, std::ios::cur);
+        else if (highByte <= 0xFA)
+            file.seekg(2, std::ios::cur);
+    }
+}
+#endif
+
+static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMemoryDC& mdc,
+    wxPen& currentPen, int height, double scale, int offsetX, int offsetY,
+    ExtractColorCallback extractColorCallback)
+{
+    file.clear();
+    file.seekg(dataStartPos);
+    int lastX = 0, lastY = 0;
+    uint16_t firstWord = 0;
+
+    currentPen.SetColour(*wxWHITE);
+    mdc.SetPen(currentPen);
+
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
+        uint8_t lowByte = firstWord & 0x00FF;
+        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+
+        if (highByte == 0xFF) {
+            extractColorCallback(lowByte, currentPen, mdc);
+            continue;
+        }
+        if (highByte == 0xFC) break;
+
+        if (highByte == 0xFD) {
+            int16_t fillX = 0, fillY = 0;
+            if (!file.read(reinterpret_cast<char*>(&fillX), 2) || !file.read(reinterpret_cast<char*>(&fillY), 2)) break;
+            if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
+            continue;
+        }
+
+        if (highByte == 0xFE) {
+            int8_t dy = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+            int sx1 = offsetX + static_cast<int>(lastX * scale);
+            int sy1 = height - (offsetY + static_cast<int>(lastY * scale));
+            lastX += static_cast<int8_t>(lowByte);
+            lastY += dy;
+            mdc.DrawLine(sx1, sy1, offsetX + static_cast<int>(lastX * scale), height - (offsetY + static_cast<int>(lastY * scale)));
+            continue;
+        }
+
+        if (highByte == 0xFB) {
+            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy1), 1) || !file.read(reinterpret_cast<char*>(&dx2), 1) || !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
+            const int x1 = lastX + static_cast<int8_t>(lowByte);
+            const int y1 = lastY + dy1;
+            int sx1 = offsetX + static_cast<int>(x1 * scale);
+            int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
+            lastX = x1 + dx2;
+            lastY = y1 + dy2;
+            mdc.DrawLine(sx1, sy1, offsetX + static_cast<int>(lastX * scale), height - (offsetY + static_cast<int>(lastY * scale)));
+            continue;
+        }
+
+        if (highByte <= 0xFA) {
+            int16_t y1 = 0, x2 = 0, y2 = 0;
+            if (!file.read(reinterpret_cast<char*>(&y1), 2) || !file.read(reinterpret_cast<char*>(&x2), 2) || !file.read(reinterpret_cast<char*>(&y2), 2)) break;
+            mdc.DrawLine(offsetX + static_cast<int>(static_cast<int16_t>(firstWord) * scale), height - (offsetY + static_cast<int>(y1 * scale)),
+                offsetX + static_cast<int>(x2 * scale), height - (offsetY + static_cast<int>(y2 * scale)));
+            lastX = x2;
+            lastY = y2;
+            continue;
+        }
+    }
 }
 
 PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb)
@@ -456,167 +696,39 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
         return wxPyConstructObject((void*)new wxImage(width, height), wxT("wxImage"), true);
     }
 
-    // Validate the 31-byte AutoCAD Slide Header
     char header[31];
     file.read(header, 31);
     if (file.gcount() < 31 || std::string(header, 13) != "AutoCAD Slide") {
         return wxPyConstructObject((void*)new wxImage(width, height), wxT("wxImage"), true);
     }
 
-    // --- PHASE 1: Pre-scan stream to calculate true drawing bounds ---
-    int16_t minX = 32767, maxX = -32768;
-    int16_t minY = 32767, maxY = -32768;
-    int lastX = 0, lastY = 0;
-
-    auto updateBounds = [&](int x, int y) {
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-        };
-
-    uint16_t firstWord = 0;
     std::streampos dataStartPos = file.tellg();
 
-    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
-        uint8_t highByte = (firstWord & 0xFF00) >> 8;
-        uint8_t lowByte = firstWord & 0x00FF;
+    // Pass 1: Parse boundaries safely
+    SlideBounds bounds = parseSlideBounds(file, dataStartPos);
 
-        if (highByte == 0xFF) continue; // Color change (2 bytes total)
-        if (highByte == 0xFC) break;    // EOF
+    int drawingWidth = bounds.maxX - bounds.minX;
+    int drawingHeight = bounds.maxY - bounds.minY;
 
-        // Clean pre-scan coordinate mapping: accurately bypass solid fill segments
-        if (highByte == 0xFD) {
-            int16_t fillX = 0;
-            int16_t fillY = 0;
-            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
-                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
-                break;
-            }
-            if (fillY < 0) {
-                // Sequence Header block: fillX defines the vertex count to follow
-                int16_t vertexCount = fillX;
-                file.seekg(vertexCount * 6, std::ios::cur); // Fast skip past all sub-vertices
-            }
-            continue;
-        }
-
-        if (highByte == 0xFE)
-        {
-            const int8_t dx = static_cast<int8_t>(lowByte);
-            int8_t dy = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy), 1))
-                break;
-
-            lastX += dx;
-            lastY += dy;
-            updateBounds(lastX, lastY);
-            continue;
-        }
-
-        if (highByte == 0xFB)
-        {
-            const int8_t dx1 = static_cast<int8_t>(lowByte);
-            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy1), 1) ||
-                !file.read(reinterpret_cast<char*>(&dx2), 1) ||
-                !file.read(reinterpret_cast<char*>(&dy2), 1))
-                break;
-
-            const int x1 = lastX + dx1;
-            const int y1 = lastY + dy1;
-            lastX = x1 + dx2;
-            lastY = y1 + dy2;
-
-            updateBounds(x1, y1);
-            updateBounds(lastX, lastY);
-            continue;
-        }
-
-        if (highByte <= 0xFA) { // Standard Vector
-            int16_t x1 = static_cast<int16_t>(firstWord);
-            int16_t y1 = 0, x2 = 0, y2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
-                !file.read(reinterpret_cast<char*>(&x2), 2) ||
-                !file.read(reinterpret_cast<char*>(&y2), 2)) break;
-            updateBounds(x1, y1);
-            updateBounds(x2, y2);
-            lastX = x2;
-            lastY = y2;
-            continue;
-        }
-    }
-
-    // Fallback protection if no valid structural geometry was identified
-    if (maxX <= minX) { minX = 0; maxX = 1; }
-    if (maxY <= minY) { minY = 0; maxY = 1; }
-
-    int drawingWidth = maxX - minX;
-    int drawingHeight = maxY - minY;
-
-    // --- Compute Precise Padding Aspect Scale ---
     double paddingFactor = 0.90;
     double scaleX = (width * paddingFactor) / drawingWidth;
     double scaleY = (height * paddingFactor) / drawingHeight;
     double scale = std::min(scaleX, scaleY);
 
-    // Centering calculations relative to the calculated geometry bounding box
-    int offsetX = static_cast<int>((width - (drawingWidth * scale)) / 2.0) - static_cast<int>(minX * scale);
-    int offsetY = static_cast<int>((height - (drawingHeight * scale)) / 2.0) - static_cast<int>(minY * scale);
+    int offsetX = static_cast<int>((width - (drawingWidth * scale)) / 2.0) - static_cast<int>(bounds.minX * scale);
+    int offsetY = static_cast<int>((height - (drawingHeight * scale)) / 2.0) - static_cast<int>(bounds.minY * scale);
 
-    // --- PHASE 2: Rewind and Render ---
-    file.clear();
-    file.seekg(dataStartPos);
-    lastX = 0;
-    lastY = 0;
+    mdc.SetBrush(*wxTRANSPARENT_BRUSH);
 
-    while (file.read(reinterpret_cast<char*>(&firstWord), 2))
-    {
-        uint8_t lowByte = firstWord & 0x00FF;
-        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+    // Pass 2 & 3: Render components split into background/foreground layers
+#ifdef NEVER  // TODO:
+    renderSolidFills(file, dataStartPos, mdc, currentPen, bkg, width, height, scale, offsetX, offsetY, ExtractColor);
+#endif
+    renderVectors(file, dataStartPos, mdc, currentPen, height, scale, offsetX, offsetY, ExtractColor);
 
-        if (highByte == 0xFF)
-        {
-            ExtractColor(lowByte, currentPen, mdc);
-            continue;
-        }
-
-        if (highByte == 0xFC) break;
-
-        // Skip solid fill sequences entirely without breaking vector streaming tracks
-        if (highByte == 0xFD) {
-            int16_t fillX = 0;
-            int16_t fillY = 0;
-            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
-                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
-                break;
-            }
-            if (fillY < 0) {
-                int16_t vertexCount = fillX;
-                file.seekg(vertexCount * 6, std::ios::cur); // Fast forward past the fill coordinates
-            }
-            continue;
-        }
-
-        if (highByte <= 0xFA) { // Standard Vector
-            int16_t x1 = static_cast<int16_t>(firstWord);
-            int16_t y1 = 0, x2 = 0, y2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
-                !file.read(reinterpret_cast<char*>(&x2), 2) ||
-                !file.read(reinterpret_cast<char*>(&y2), 2)) break;
-
-            int sx1 = offsetX + static_cast<int>(x1 * scale);
-            int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
-            int sx2 = offsetX + static_cast<int>(x2 * scale);
-            int sy2 = height - (offsetY + static_cast<int>(y2 * scale));
-            mdc.DrawLine(sx1, sy1, sx2, sy2);
-            lastX = x2;
-            lastY = y2;
-            continue;
-        }
-    }
     file.close();
     mdc.SelectObject(wxNullBitmap);
     wxImage* finalImage = new wxImage(bitmap.ConvertToImage());
     return wxPyConstructObject((void*)finalImage, wxT("wxImage"), true);
 }
+
