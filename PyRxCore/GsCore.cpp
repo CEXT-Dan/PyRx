@@ -437,7 +437,9 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
     int16_t minX = 32767, maxX = -32768;
     int16_t minY = 32767, maxY = -32768;
     int lastX = 0, lastY = 0;
-    uint16_t firstWord = 0;
+
+    // CHANGED TO SIGNED: Native support for large/negative coordinates
+    int16_t firstWord = 0;
 
     auto updateBounds = [&](int x, int y) {
         if (x < minX) minX = x;
@@ -447,41 +449,76 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
         };
 
     while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
-        uint8_t highByte = (firstWord & 0xFF00) >> 8;
-        uint8_t lowByte = firstWord & 0x00FF;
+        uint16_t uWord = static_cast<uint16_t>(firstWord);
+        uint8_t highByte = (uWord & 0xFF00) >> 8;
+        uint8_t lowByte = uWord & 0x00FF;
 
-        if (highByte == 0xFF) continue;
-        if (highByte == 0xFC) break;
+        bool isControlCode = false;
 
-        if (highByte == 0xFD) {
-            int16_t fillX = 0, fillY = 0;
-            if (!file.read(reinterpret_cast<char*>(&fillX), 2) || !file.read(reinterpret_cast<char*>(&fillY), 2)) break;
-            if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
-            continue;
+        // Dynamic Stream Look-Ahead Parser Pass
+        if (highByte >= 0xFB) {
+            std::streampos peekPos = file.tellg();
+            if (highByte == 0xFF || highByte == 0xFC) {
+                isControlCode = true;
+            }
+            else if (highByte == 0xFD) {
+                int16_t fillX = 0, fillY = 0;
+                if (file.read(reinterpret_cast<char*>(&fillX), 2) && file.read(reinterpret_cast<char*>(&fillY), 2)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
+            else if (highByte == 0xFE) {
+                int8_t dy = 0;
+                if (file.read(reinterpret_cast<char*>(&dy), 1)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
+            else if (highByte == 0xFB) {
+                int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+                if (file.read(reinterpret_cast<char*>(&dy1), 1) && file.read(reinterpret_cast<char*>(&dx2), 1) && file.read(reinterpret_cast<char*>(&dy2), 1)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
         }
-        if (highByte == 0xFE) {
-            int8_t dy = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
-            lastX += static_cast<int8_t>(lowByte);
-            lastY += dy;
-            updateBounds(lastX, lastY);
-            continue;
+
+        if (isControlCode) {
+            if (highByte == 0xFF) continue;
+            if (highByte == 0xFC) break;
+
+            if (highByte == 0xFD) {
+                int16_t fillX = 0, fillY = 0;
+                if (!file.read(reinterpret_cast<char*>(&fillX), 2) || !file.read(reinterpret_cast<char*>(&fillY), 2)) break;
+                if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
+                continue;
+            }
+            if (highByte == 0xFE) {
+                int8_t dy = 0;
+                if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+                lastX += static_cast<int8_t>(lowByte);
+                lastY += dy;
+                updateBounds(lastX, lastY);
+                continue;
+            }
+            if (highByte == 0xFB) {
+                int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+                if (!file.read(reinterpret_cast<char*>(&dy1), 1) || !file.read(reinterpret_cast<char*>(&dx2), 1) || !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
+                const int x1 = lastX + static_cast<int8_t>(lowByte);
+                const int y1 = lastY + dy1;
+                lastX = x1 + dx2;
+                lastY = y1 + dy2;
+                updateBounds(x1, y1);
+                updateBounds(lastX, lastY);
+                continue;
+            }
         }
-        if (highByte == 0xFB) {
-            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy1), 1) || !file.read(reinterpret_cast<char*>(&dx2), 1) || !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
-            const int x1 = lastX + static_cast<int8_t>(lowByte);
-            const int y1 = lastY + dy1;
-            lastX = x1 + dx2;
-            lastY = y1 + dy2;
-            updateBounds(x1, y1);
-            updateBounds(lastX, lastY);
-            continue;
-        }
-        if (highByte <= 0xFA) {
+        else {
             int16_t y1 = 0, x2 = 0, y2 = 0;
             if (!file.read(reinterpret_cast<char*>(&y1), 2) || !file.read(reinterpret_cast<char*>(&x2), 2) || !file.read(reinterpret_cast<char*>(&y2), 2)) break;
-            updateBounds(static_cast<int16_t>(firstWord), y1);
+
+            updateBounds(firstWord, y1); // safe signed coordinate mapping
             updateBounds(x2, y2);
             lastX = x2;
             lastY = y2;
@@ -612,64 +649,128 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
 {
     file.clear();
     file.seekg(dataStartPos);
-    int lastX = 0, lastY = 0;
-    uint16_t firstWord = 0;
+
+    int anchorX = 0; int anchorY = 0;
+    int currentX = 0; int currentY = 0;
+
+    // CHANGED TO SIGNED: Native support for large/negative coordinates
+    int16_t firstWord = 0;
 
     currentPen.SetColour(*wxWHITE);
     mdc.SetPen(currentPen);
 
     while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
-        uint8_t lowByte = firstWord & 0x00FF;
-        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+        uint16_t uWord = static_cast<uint16_t>(firstWord);
+        uint8_t lowByte = uWord & 0x00FF;
+        uint8_t highByte = (uWord & 0xFF00) >> 8;
 
-        if (highByte == 0xFF) {
-            extractColorCallback(lowByte, currentPen, mdc);
-            continue;
-        }
-        if (highByte == 0xFC) break;
+        bool isControlCode = false;
 
-        if (highByte == 0xFD) {
-            int16_t fillX = 0, fillY = 0;
-            if (!file.read(reinterpret_cast<char*>(&fillX), 2) || !file.read(reinterpret_cast<char*>(&fillY), 2)) break;
-            if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
-            continue;
-        }
-
-        if (highByte == 0xFE) {
-            int8_t dy = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
-            int sx1 = offsetX + static_cast<int>(lastX * scale);
-            int sy1 = height - (offsetY + static_cast<int>(lastY * scale));
-            lastX += static_cast<int8_t>(lowByte);
-            lastY += dy;
-            mdc.DrawLine(sx1, sy1, offsetX + static_cast<int>(lastX * scale), height - (offsetY + static_cast<int>(lastY * scale)));
-            continue;
-        }
-
-        if (highByte == 0xFB) {
-            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy1), 1) || !file.read(reinterpret_cast<char*>(&dx2), 1) || !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
-            const int x1 = lastX + static_cast<int8_t>(lowByte);
-            const int y1 = lastY + dy1;
-            int sx1 = offsetX + static_cast<int>(x1 * scale);
-            int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
-            lastX = x1 + dx2;
-            lastY = y1 + dy2;
-            mdc.DrawLine(sx1, sy1, offsetX + static_cast<int>(lastX * scale), height - (offsetY + static_cast<int>(lastY * scale)));
-            continue;
+        // Dynamic Stream Look-Ahead Parser Pass
+        if (highByte >= 0xFB) {
+            std::streampos peekPos = file.tellg();
+            if (highByte == 0xFF || highByte == 0xFC) {
+                isControlCode = true;
+            }
+            else if (highByte == 0xFD) {
+                int16_t fillX = 0, fillY = 0;
+                if (file.read(reinterpret_cast<char*>(&fillX), 2) && file.read(reinterpret_cast<char*>(&fillY), 2)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
+            else if (highByte == 0xFE) {
+                int8_t dy = 0;
+                if (file.read(reinterpret_cast<char*>(&dy), 1)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
+            else if (highByte == 0xFB) {
+                int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+                if (file.read(reinterpret_cast<char*>(&dy1), 1) && file.read(reinterpret_cast<char*>(&dx2), 1) && file.read(reinterpret_cast<char*>(&dy2), 1)) {
+                    isControlCode = true;
+                }
+                file.seekg(peekPos);
+            }
         }
 
-        if (highByte <= 0xFA) {
+        if (isControlCode) {
+            if (highByte == 0xFF) {
+                extractColorCallback(lowByte, currentPen, mdc);
+                currentX = anchorX;
+                currentY = anchorY;
+                continue;
+            }
+            if (highByte == 0xFC) break;
+
+            if (highByte == 0xFD) {
+                int16_t fillX = 0, fillY = 0;
+                file.read(reinterpret_cast<char*>(&fillX), 2);
+                file.read(reinterpret_cast<char*>(&fillY), 2);
+                if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
+                currentX = anchorX;
+                currentY = anchorY;
+                continue;
+            }
+
+            if (highByte == 0xFE) {
+                int8_t dy = 0;
+                file.read(reinterpret_cast<char*>(&dy), 1);
+                int sx1 = offsetX + static_cast<int>(currentX * scale);
+                int sy1 = height - (offsetY + static_cast<int>(currentY * scale));
+
+                int8_t dx = *reinterpret_cast<int8_t*>(&lowByte);
+                currentX += dx;
+                currentY += dy;
+
+                int sx2 = offsetX + static_cast<int>(currentX * scale);
+                int sy2 = height - (offsetY + static_cast<int>(currentY * scale));
+                mdc.DrawLine(sx1, sy1, sx2, sy2);
+                continue;
+            }
+
+            if (highByte == 0xFB) {
+                int8_t dy1 = 0, dx2 = 0, dy2 = 0;
+                file.read(reinterpret_cast<char*>(&dy1), 1);
+                file.read(reinterpret_cast<char*>(&dx2), 1);
+                file.read(reinterpret_cast<char*>(&dy2), 1);
+
+                int8_t dx1 = *reinterpret_cast<int8_t*>(&lowByte);
+                const int x1 = currentX + dx1;
+                const int y1 = currentY + dy1;
+
+                int sx1 = offsetX + static_cast<int>(x1 * scale);
+                int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
+
+                currentX = x1 + dx2;
+                currentY = y1 + dy2;
+
+                int sx2 = offsetX + static_cast<int>(currentX * scale);
+                int sy2 = height - (offsetY + static_cast<int>(currentY * scale));
+                mdc.DrawLine(sx1, sy1, sx2, sy2);
+                continue;
+            }
+        }
+        else {
             int16_t y1 = 0, x2 = 0, y2 = 0;
             if (!file.read(reinterpret_cast<char*>(&y1), 2) || !file.read(reinterpret_cast<char*>(&x2), 2) || !file.read(reinterpret_cast<char*>(&y2), 2)) break;
-            mdc.DrawLine(offsetX + static_cast<int>(static_cast<int16_t>(firstWord) * scale), height - (offsetY + static_cast<int>(y1 * scale)),
-                offsetX + static_cast<int>(x2 * scale), height - (offsetY + static_cast<int>(y2 * scale)));
-            lastX = x2;
-            lastY = y2;
+
+            int sx1 = offsetX + static_cast<int>(firstWord * scale);
+            int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
+
+            int sx2 = offsetX + static_cast<int>(x2 * scale);
+            int sy2 = height - (offsetY + static_cast<int>(y2 * scale));
+
+            mdc.DrawLine(sx1, sy1, sx2, sy2);
+
+            anchorX = x2; anchorY = y2;
+            currentX = anchorX; currentY = anchorY;
             continue;
         }
     }
 }
+
 
 PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb)
 {
@@ -704,7 +805,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
 
     std::streampos dataStartPos = file.tellg();
 
-    // Pass 1: Parse boundaries safely
+    // Call bounds check with look-ahead strategy
     SlideBounds bounds = parseSlideBounds(file, dataStartPos);
 
     int drawingWidth = bounds.maxX - bounds.minX;
@@ -720,10 +821,11 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
 
     mdc.SetBrush(*wxTRANSPARENT_BRUSH);
 
-    // Pass 2 & 3: Render components split into background/foreground layers
 #ifdef NEVER  // TODO:
     renderSolidFills(file, dataStartPos, mdc, currentPen, bkg, width, height, scale, offsetX, offsetY, ExtractColor);
 #endif
+
+    // Core drawing execution loop
     renderVectors(file, dataStartPos, mdc, currentPen, height, scale, offsetX, offsetY, ExtractColor);
 
     file.close();
@@ -731,4 +833,3 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     wxImage* finalImage = new wxImage(bitmap.ConvertToImage());
     return wxPyConstructObject((void*)finalImage, wxT("wxImage"), true);
 }
-
