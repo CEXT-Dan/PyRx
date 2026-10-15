@@ -380,6 +380,58 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
 #endif
 }
 
+
+static void ExtractColor(uint8_t lowByte, wxPen& currentPen, wxMemoryDC& mdc)
+{
+    wxColor penColor;
+    if (lowByte >= 1 && lowByte <= 7) {
+        static const wxColor primaries[] = {*wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE};
+        penColor = primaries[lowByte - 1];
+    }
+    else if (lowByte == 8) {
+        penColor = wxColour(128, 128, 128);
+    }
+    else if (lowByte == 9) {
+        penColor = wxColour(192, 192, 192);
+    }
+    else if (lowByte >= 10 && lowByte <= 249) {
+        int index = lowByte - 10;
+        int colorRow = index % 10;
+        int colorCol = index / 10;
+        double hue = (colorCol * 15.0) * (M_PI / 180.0);
+        double r_f = 0.0, g_f = 0.0, b_f = 0.0;
+
+        if (hue < (M_PI / 3.0)) { r_f = 1.0; g_f = hue / (M_PI / 3.0); }
+        else if (hue < (2.0 * M_PI / 3.0)) { g_f = 1.0; r_f = 2.0 - (hue / (M_PI / 3.0)); }
+        else if (hue < M_PI) { g_f = 1.0; b_f = (hue / (M_PI / 3.0)) - 2.0; }
+        else if (hue < (4.0 * M_PI / 3.0)) { b_f = 1.0; g_f = 4.0 - (hue / (M_PI / 3.0)); }
+        else if (hue < (5.0 * M_PI / 3.0)) { b_f = 1.0; r_f = (hue / (M_PI / 3.0)) - 4.0; }
+        else { r_f = 1.0; b_f = 6.0 - (hue / (M_PI / 3.0)); }
+
+        static const double lightMap[] = { 1.0, 0.65, 0.5, 0.35, 0.2, 0.9, 0.75, 0.6, 0.45, 0.3 };
+        static const double satMap[] = { 1.0, 1.0,  1.0, 1.0,  1.0, 0.5, 0.5,  0.5, 0.5,  0.5 };
+
+        double l = lightMap[colorRow];
+        double s = satMap[colorRow];
+
+        auto applyHSV = [=](double colorComponent) {
+            double v = colorComponent * s + (1.0 - s);
+            return static_cast<unsigned char>(std::max(0.0, std::min(255.0, v * l * 255.0)));
+            };
+        penColor.Set(applyHSV(r_f), applyHSV(g_f), applyHSV(b_f));
+    }
+    else if (lowByte >= 250 && lowByte <= 255) {
+        static const unsigned char greyLevels[] = { 51, 91, 132, 173, 214, 255 };
+        unsigned char g = greyLevels[lowByte - 250];
+        penColor.Set(g, g, g);
+    }
+    else {
+        penColor = *wxWHITE;
+    }
+    currentPen.SetColour(penColor);
+    mdc.SetPen(currentPen);
+}
+
 PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb)
 {
     wxBitmap bitmap(width, height);
@@ -434,30 +486,58 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
         if (highByte == 0xFF) continue; // Color change (2 bytes total)
         if (highByte == 0xFC) break;    // EOF
 
-        if (highByte == 0xFE) { // Common-endpoint Vector
-            int8_t dx = static_cast<int8_t>(lowByte);
+        if (highByte == 0xFD) {
+            int16_t fillX = 0;
+            int16_t fillY = 0;
+
+            // Read the remaining 4 bytes (two 16-bit words) for this vertex record
+            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
+                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
+                break;
+            }
+
+            // A negative Y coordinate indicates a block sequence frame flag.
+            // If it's a valid coordinate position, track it to prevent line alignment drift.
+            if (fillY >= 0) {
+                lastX = fillX;
+                lastY = fillY;
+                updateBounds(lastX, lastY);
+            }
+            continue;
+        }
+
+        if (highByte == 0xFE)
+        {
+            const int8_t dx = static_cast<int8_t>(lowByte);
             int8_t dy = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+            if (!file.read(reinterpret_cast<char*>(&dy), 1))
+                break;
+
             lastX += dx;
             lastY += dy;
             updateBounds(lastX, lastY);
             continue;
         }
-        if (highByte == 0xFB) { // Offset Vector
-            int8_t dx1 = static_cast<int8_t>(lowByte);
+
+        if (highByte == 0xFB)
+        {
+            const int8_t dx1 = static_cast<int8_t>(lowByte);
             int8_t dy1 = 0, dx2 = 0, dy2 = 0;
             if (!file.read(reinterpret_cast<char*>(&dy1), 1) ||
                 !file.read(reinterpret_cast<char*>(&dx2), 1) ||
-                !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
-            int x1 = lastX + dx1;
-            int y1 = lastY + dy1;
+                !file.read(reinterpret_cast<char*>(&dy2), 1))
+                break;
+
+            const int x1 = lastX + dx1;
+            const int y1 = lastY + dy1;
             lastX = x1 + dx2;
             lastY = y1 + dy2;
+
             updateBounds(x1, y1);
             updateBounds(lastX, lastY);
             continue;
         }
-        if (highByte <= 0xFA) { // Standard Vector (Handles positive and negative coordinates)
+        if (highByte <= 0xFA) { // Standard Vector
             int16_t x1 = static_cast<int16_t>(firstWord);
             int16_t y1 = 0, x2 = 0, y2 = 0;
             if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
@@ -465,8 +545,8 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
                 !file.read(reinterpret_cast<char*>(&y2), 2)) break;
             updateBounds(x1, y1);
             updateBounds(x2, y2);
-            lastX = x1;
-            lastY = y1;
+            lastX = x2; // Set last vector track to endpoints
+            lastY = y2;
             continue;
         }
     }
@@ -479,7 +559,6 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     int drawingHeight = maxY - minY;
 
     // --- Compute Precise Padding Aspect Scale ---
-    // Leave a small 5% margin around the borders so geometry doesn't clip the outer canvas edge
     double paddingFactor = 0.90;
     double scaleX = (width * paddingFactor) / drawingWidth;
     double scaleY = (height * paddingFactor) / drawingHeight;
@@ -495,122 +574,40 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     lastX = 0;
     lastY = 0;
 
-    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) 
+    {
         uint8_t lowByte = firstWord & 0x00FF;
         uint8_t highByte = (firstWord & 0xFF00) >> 8;
 
-        if (highByte == 0xFF) {
-            wxColor penColor;
-
-            if (lowByte >= 1 && lowByte <= 7) {
-                // Primary Palette Mapping
-                static const wxColor primaries[] = {
-                    *wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE
-                };
-                penColor = primaries[lowByte - 1];
-            }
-            else if (lowByte == 8) {
-                penColor = wxColour(128, 128, 128); // Dark Grey
-            }
-            else if (lowByte == 9) {
-                penColor = wxColour(192, 192, 192); // Light Grey
-            }
-            else if (lowByte >= 10 && lowByte <= 249) {
-                // Procedural ACI Hue, Saturation, Value Calculations
-                int index = lowByte - 10;
-                int colorRow = index % 10;
-                int colorCol = index / 10;
-
-                // Derive core Hue segment from columns (24 steps total)
-                double hue = (colorCol * 15.0) * (M_PI / 180.0);
-                double r_f = 0.0, g_f = 0.0, b_f = 0.0;
-
-                if (hue < (M_PI / 3.0)) { r_f = 1.0; g_f = hue / (M_PI / 3.0); }
-                else if (hue < (2.0 * M_PI / 3.0)) { g_f = 1.0; r_f = 2.0 - (hue / (M_PI / 3.0)); }
-                else if (hue < M_PI) { g_f = 1.0; b_f = (hue / (M_PI / 3.0)) - 2.0; }
-                else if (hue < (4.0 * M_PI / 3.0)) { b_f = 1.0; g_f = 4.0 - (hue / (M_PI / 3.0)); }
-                else if (hue < (5.0 * M_PI / 3.0)) { b_f = 1.0; r_f = (hue / (M_PI / 3.0)) - 4.0; }
-                else { r_f = 1.0; b_f = 6.0 - (hue / (M_PI / 3.0)); }
-
-                // Map row parameters to Lightness/Saturation values
-                static const double lightMap[] = { 1.0, 0.65, 0.5, 0.35, 0.2, 0.9, 0.75, 0.6, 0.45, 0.3 };
-                static const double satMap[] = { 1.0, 1.0,  1.0, 1.0,  1.0, 0.5, 0.5,  0.5, 0.5,  0.5 };
-
-                double l = lightMap[colorRow];
-                double s = satMap[colorRow];
-
-                auto applyHSV = [=](double colorComponent) {
-                    double v = colorComponent * s + (1.0 - s);
-                    return static_cast<unsigned char>(std::max(0.0, std::min(255.0, v * l * 255.0)));
-                    };
-
-                penColor.Set(applyHSV(r_f), applyHSV(g_f), applyHSV(b_f));
-            }
-            else if (lowByte >= 250 && lowByte <= 255) {
-                // Greyscale Gradient Spectrum (ACI 250 to 255)
-                static const unsigned char greyLevels[] = { 51, 91, 132, 173, 214, 255 };
-                unsigned char g = greyLevels[lowByte - 250];
-                penColor.Set(g, g, g);
-            }
-            else {
-                penColor = *wxWHITE; // Fallback security
-            }
-
-            currentPen.SetColour(penColor);
-            mdc.SetPen(currentPen);
+        if (highByte == 0xFF)
+        {
+            ExtractColor(lowByte, currentPen, mdc);
             continue;
         }
 
         if (highByte == 0xFC) break;
 
-        if (highByte == 0xFE) {
-            int8_t dx = static_cast<int8_t>(lowByte);
-            int8_t dy = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+        if (highByte == 0xFD) {
+            int16_t fillX = 0;
+            int16_t fillY = 0;
 
-            int newX = lastX + dx;
-            int newY = lastY + dy;
+            // Read the remaining 4 bytes to keep the binary file pointer perfectly aligned
+            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
+                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
+                break;
+            }
 
-            int sx1 = offsetX + static_cast<int>(lastX * scale);
-            int sy1 = height - (offsetY + static_cast<int>(lastY * scale));
-            int sx2 = offsetX + static_cast<int>(newX * scale);
-            int sy2 = height - (offsetY + static_cast<int>(newY * scale));
-
-            mdc.DrawLine(sx1, sy1, sx2, sy2);
-
-            lastX = newX;
-            lastY = newY;
+            // Update coordinates so subsequent delta changes (0xFE / 0xFB) process correctly
+            if (fillY >= 0) {
+                lastX = fillX;
+                lastY = fillY;
+            }
             continue;
         }
 
-        if (highByte == 0xFB) {
-            int8_t dx1 = static_cast<int8_t>(lowByte);
-            int8_t dy1 = 0, dx2 = 0, dy2 = 0;
-            if (!file.read(reinterpret_cast<char*>(&dy1), 1) ||
-                !file.read(reinterpret_cast<char*>(&dx2), 1) ||
-                !file.read(reinterpret_cast<char*>(&dy2), 1)) break;
-
-            int x1 = lastX + dx1;
-            int y1 = lastY + dy1;
-            int x2 = x1 + dx2;
-            int y2 = y1 + dy2;
-
-            int sx1 = offsetX + static_cast<int>(x1 * scale);
-            int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
-            int sx2 = offsetX + static_cast<int>(x2 * scale);
-            int sy2 = height - (offsetY + static_cast<int>(y2 * scale));
-
-            mdc.DrawLine(sx1, sy1, sx2, sy2);
-
-            lastX = x2;
-            lastY = y2;
-            continue;
-        }
-
-        if (highByte <= 0xFA) { // Standard Vector (Handles positive and negative coordinates)
+        if (highByte <= 0xFA) { // Standard Vector
             int16_t x1 = static_cast<int16_t>(firstWord);
             int16_t y1 = 0, x2 = 0, y2 = 0;
-
             if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
                 !file.read(reinterpret_cast<char*>(&x2), 2) ||
                 !file.read(reinterpret_cast<char*>(&y2), 2)) break;
@@ -619,11 +616,9 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
             int sy1 = height - (offsetY + static_cast<int>(y1 * scale));
             int sx2 = offsetX + static_cast<int>(x2 * scale);
             int sy2 = height - (offsetY + static_cast<int>(y2 * scale));
-
             mdc.DrawLine(sx1, sy1, sx2, sy2);
-
-            lastX = x1;
-            lastY = y1;
+            lastX = x2;
+            lastY = y2;
             continue;
         }
     }
