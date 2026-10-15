@@ -501,18 +501,61 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
 
         if (highByte == 0xFF) {
             wxColor penColor;
-            switch (lowByte) {
-                case 1: penColor = *wxRED; break;
-                case 2: penColor = *wxYELLOW; break;
-                case 3: penColor = *wxGREEN; break;
-                case 4: penColor = *wxCYAN; break;
-                case 5: penColor = *wxBLUE; break;
-                case 6: penColor = wxColour(255, 0, 255); break; // Magenta
-                case 7: penColor = *wxWHITE; break;
-                case 8: penColor = wxColour(128, 128, 128); break; // Dark Grey
-                case 9: penColor = wxColour(192, 192, 192); break; // Light Grey
-                default: penColor = *wxWHITE; break;
+
+            if (lowByte >= 1 && lowByte <= 7) {
+                // Primary Palette Mapping
+                static const wxColor primaries[] = {
+                    *wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE
+                };
+                penColor = primaries[lowByte - 1];
             }
+            else if (lowByte == 8) {
+                penColor = wxColour(128, 128, 128); // Dark Grey
+            }
+            else if (lowByte == 9) {
+                penColor = wxColour(192, 192, 192); // Light Grey
+            }
+            else if (lowByte >= 10 && lowByte <= 249) {
+                // Procedural ACI Hue, Saturation, Value Calculations
+                int index = lowByte - 10;
+                int colorRow = index % 10;
+                int colorCol = index / 10;
+
+                // Derive core Hue segment from columns (24 steps total)
+                double hue = (colorCol * 15.0) * (M_PI / 180.0);
+                double r_f = 0.0, g_f = 0.0, b_f = 0.0;
+
+                if (hue < (M_PI / 3.0)) { r_f = 1.0; g_f = hue / (M_PI / 3.0); }
+                else if (hue < (2.0 * M_PI / 3.0)) { g_f = 1.0; r_f = 2.0 - (hue / (M_PI / 3.0)); }
+                else if (hue < M_PI) { g_f = 1.0; b_f = (hue / (M_PI / 3.0)) - 2.0; }
+                else if (hue < (4.0 * M_PI / 3.0)) { b_f = 1.0; g_f = 4.0 - (hue / (M_PI / 3.0)); }
+                else if (hue < (5.0 * M_PI / 3.0)) { b_f = 1.0; r_f = (hue / (M_PI / 3.0)) - 4.0; }
+                else { r_f = 1.0; b_f = 6.0 - (hue / (M_PI / 3.0)); }
+
+                // Map row parameters to Lightness/Saturation values
+                static const double lightMap[] = { 1.0, 0.65, 0.5, 0.35, 0.2, 0.9, 0.75, 0.6, 0.45, 0.3 };
+                static const double satMap[] = { 1.0, 1.0,  1.0, 1.0,  1.0, 0.5, 0.5,  0.5, 0.5,  0.5 };
+
+                double l = lightMap[colorRow];
+                double s = satMap[colorRow];
+
+                auto applyHSV = [=](double colorComponent) {
+                    double v = colorComponent * s + (1.0 - s);
+                    return static_cast<unsigned char>(std::max(0.0, std::min(255.0, v * l * 255.0)));
+                    };
+
+                penColor.Set(applyHSV(r_f), applyHSV(g_f), applyHSV(b_f));
+            }
+            else if (lowByte >= 250 && lowByte <= 255) {
+                // Greyscale Gradient Spectrum (ACI 250 to 255)
+                static const unsigned char greyLevels[] = { 51, 91, 132, 173, 214, 255 };
+                unsigned char g = greyLevels[lowByte - 250];
+                penColor.Set(g, g, g);
+            }
+            else {
+                penColor = *wxWHITE; // Fallback security
+            }
+
             currentPen.SetColour(penColor);
             mdc.SetPen(currentPen);
             continue;
