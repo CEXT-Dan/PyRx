@@ -457,7 +457,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
             updateBounds(lastX, lastY);
             continue;
         }
-        if (highByte <= 0x7F) { // Standard Vector
+        if (highByte <= 0xFA) { // Standard Vector (Handles positive and negative coordinates)
             int16_t x1 = static_cast<int16_t>(firstWord);
             int16_t y1 = 0, x2 = 0, y2 = 0;
             if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
@@ -507,8 +507,10 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
                 case 3: penColor = *wxGREEN; break;
                 case 4: penColor = *wxCYAN; break;
                 case 5: penColor = *wxBLUE; break;
-                case 6: penColor = wxColour(255, 0, 255); break;
+                case 6: penColor = wxColour(255, 0, 255); break; // Magenta
                 case 7: penColor = *wxWHITE; break;
+                case 8: penColor = wxColour(128, 128, 128); break; // Dark Grey
+                case 9: penColor = wxColour(192, 192, 192); break; // Light Grey
                 default: penColor = *wxWHITE; break;
             }
             currentPen.SetColour(penColor);
@@ -562,7 +564,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
             continue;
         }
 
-        if (highByte <= 0x7F) {
+        if (highByte <= 0xFA) { // Standard Vector (Handles positive and negative coordinates)
             int16_t x1 = static_cast<int16_t>(firstWord);
             int16_t y1 = 0, x2 = 0, y2 = 0;
 
