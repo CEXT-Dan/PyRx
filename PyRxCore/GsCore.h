@@ -80,6 +80,9 @@ public:
     static PyObject* getBlockImage(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
     static boost::python::list getBlockImages(const boost::python::list& blkid, int x, int y, double zf, boost::python::object& rgb);
     static bool displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image);
+    static PyObject* slideToWxImage(const std::string& sld_path, int width, int height);
+
+
 };
 
 #pragma pack (pop)

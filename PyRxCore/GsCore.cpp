@@ -3,6 +3,8 @@
 #include "PyGsView.h"
 #include "PyDbObjectId.h"
 #include "AcGsManager.h"
+#include <fstream>
+
 
 using namespace boost::python;
 
@@ -217,6 +219,8 @@ void makeGsCoreWrapper()
             DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
 
         .def("displayImage", &GsCore::displayImage, DS.SARGS({ "vpNum : int", "originLeft : int",  "originBottom : int" , "img : wx.Image" })).staticmethod("displayImage")
+
+        .def("slideToWxImage", &GsCore::slideToWxImage, DS.SARGS({ "path : str", "width : int",  "height : int" })).staticmethod("slideToWxImage")
         ;
 }
 
@@ -319,7 +323,7 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
         // Read from the bottom up in the source image
         int srcY = imageHeight - 1 - y;
 
-        for (int x = 0; x < imageWidth; ++x) 
+        for (int x = 0; x < imageWidth; ++x)
         {
             int destIndex = y * imageWidth + x;
             int srcIndex = srcY * imageWidth + x;
@@ -374,4 +378,151 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
 
     return (result == Adesk::kTrue);
 #endif
+}
+
+PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height)
+{
+    wxBitmap bitmap(width, height);
+    wxMemoryDC mdc(bitmap);
+
+    mdc.SetBackground(*wxBLACK_BRUSH);
+    mdc.Clear();
+
+    wxPen currentPen(*wxWHITE, 1);
+    mdc.SetPen(currentPen);
+
+    std::ifstream file(sld_path, std::ios::binary);
+    if (!file.is_open()) {
+        return wxPyConstructObject((void*)new wxImage(width, height), wxT("wxImage"), true);
+    }
+
+    // 1. Read and validate the full 31-byte Header
+    char header[31];
+    file.read(header, 31);
+    if (file.gcount() < 31 || std::string(header, 13) != "AutoCAD Slide") {
+        return wxPyConstructObject((void*)new wxImage(width, height), wxT("wxImage"), true);
+    }
+
+    // Extract original coordinate limits from header (little-endian 16-bit ints)
+    uint16_t highX = *reinterpret_cast<uint16_t*>(&header[19]); // Offset 19: High X dot
+    uint16_t highY = *reinterpret_cast<uint16_t*>(&header[21]); // Offset 21: High Y dot
+
+    // Avoid division by zero if header is corrupted
+    if (highX == 0) highX = 1;
+    if (highY == 0) highY = 1;
+
+    // Keep track of the "last point" for relative/offset vector records
+    int lastX = 0;
+    int lastY = 0;
+
+    // 2. Process variable-length data stream records
+    uint16_t firstWord = 0;
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
+        uint8_t lowByte = firstWord & 0x00FF;
+        uint8_t highByte = (firstWord & 0xFF00) >> 8;
+
+        // --- TYPE 1: Color Change Record (High Byte = 0xFF) ---
+        if (highByte == 0xFF) {
+            wxColor penColor;
+            switch (lowByte) {
+                case 1: penColor = *wxRED; break;
+                case 2: penColor = *wxYELLOW; break;
+                case 3: penColor = *wxGREEN; break;
+                case 4: penColor = *wxCYAN; break;
+                case 5: penColor = *wxBLUE; break;
+                case 6: penColor = wxColour(255, 0, 255); break; // Magenta
+                case 7: penColor = *wxWHITE; break;
+                default: penColor = *wxWHITE; break;
+            }
+            currentPen.SetColour(penColor);
+            mdc.SetPen(currentPen);
+            continue; // 2 bytes total processed
+        }
+
+        // --- TYPE 2: End of File (High Byte = 0xFC) ---
+        if (highByte == 0xFC) {
+            break;
+        }
+
+        // --- TYPE 3: Common-endpoint Vector (High Byte = 0xFE) ---
+        if (highByte == 0xFE) {
+            int8_t dx = static_cast<int8_t>(lowByte);
+            int8_t dy = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy), 1)) break;
+
+            int newX = lastX + dx;
+            int newY = lastY + dy;
+
+            int sx1 = static_cast<int>((static_cast<double>(lastX) / highX) * width);
+            int sy1 = height - static_cast<int>((static_cast<double>(lastY) / highY) * height);
+            int sx2 = static_cast<int>((static_cast<double>(newX) / highX) * width);
+            int sy2 = height - static_cast<int>((static_cast<double>(newY) / highY) * height);
+
+            mdc.DrawLine(sx1, sy1, sx2, sy2);
+
+            lastX = newX;
+            lastY = newY;
+            continue; // 3 bytes total processed
+        }
+
+        // --- TYPE 4: Offset Vector Record (High Byte = 0xFB) ---
+        if (highByte == 0xFB) {
+            int8_t dx1 = static_cast<int8_t>(lowByte);
+            int8_t dy1 = 0;
+            int8_t dx2 = 0;
+            int8_t dy2 = 0;
+            if (!file.read(reinterpret_cast<char*>(&dy1), 1) ||
+                !file.read(reinterpret_cast<char*>(&dx2), 1) ||
+                !file.read(reinterpret_cast<char*>(&dy2), 1)) {
+                break;
+            }
+
+            int x1 = lastX + dx1;
+            int y1 = lastY + dy1;
+            int x2 = x1 + dx2;
+            int y2 = y1 + dy2;
+
+            int sx1 = static_cast<int>((static_cast<double>(x1) / highX) * width);
+            int sy1 = height - static_cast<int>((static_cast<double>(y1) / highY) * height);
+            int sx2 = static_cast<int>((static_cast<double>(x2) / highX) * width);
+            int sy2 = height - static_cast<int>((static_cast<double>(y2) / highY) * height);
+
+            mdc.DrawLine(sx1, sy1, sx2, sy2);
+
+            lastX = x2;
+            lastY = y2;
+            continue; // 5 bytes total processed
+        }
+
+        // --- TYPE 5: Standard Vector Record (High Byte <= 0x7F) ---
+        if (highByte <= 0x7F) {
+            int16_t x1 = static_cast<int16_t>(firstWord);
+            int16_t y1 = 0, x2 = 0, y2 = 0;
+
+            if (!file.read(reinterpret_cast<char*>(&y1), 2) ||
+                !file.read(reinterpret_cast<char*>(&x2), 2) ||
+                !file.read(reinterpret_cast<char*>(&y2), 2)) {
+                break;
+            }
+
+            // Correct mapping relative to original bounds extracted from the header
+            int sx1 = static_cast<int>((static_cast<double>(x1) / highX) * width);
+            int sy1 = height - static_cast<int>((static_cast<double>(y1) / highY) * height);
+            int sx2 = static_cast<int>((static_cast<double>(x2) / highX) * width);
+            int sy2 = height - static_cast<int>((static_cast<double>(y2) / highY) * height);
+
+            mdc.DrawLine(sx1, sy1, sx2, sy2);
+
+            // Save the starting point as the reference "last point" per spec
+            lastX = x1;
+            lastY = y1;
+            continue; // 8 bytes total processed
+        }
+    }
+
+    file.close();
+
+    mdc.SelectObject(wxNullBitmap);
+    wxImage* finalImage = new wxImage(bitmap.ConvertToImage());
+    return wxPyConstructObject((void*)finalImage, wxT("wxImage"), true);
 }
