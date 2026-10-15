@@ -380,12 +380,11 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
 #endif
 }
 
-
 static void ExtractColor(uint8_t lowByte, wxPen& currentPen, wxMemoryDC& mdc)
 {
     wxColor penColor;
     if (lowByte >= 1 && lowByte <= 7) {
-        static const wxColor primaries[] = {*wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE};
+        static const wxColor primaries[] = { *wxRED, *wxYELLOW, *wxGREEN, *wxCYAN, *wxBLUE, wxColour(255, 0, 255), *wxWHITE };
         penColor = primaries[lowByte - 1];
     }
     else if (lowByte == 8) {
@@ -457,7 +456,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
         return wxPyConstructObject((void*)new wxImage(width, height), wxT("wxImage"), true);
     }
 
-    // Validate the 31-byte Header
+    // Validate the 31-byte AutoCAD Slide Header
     char header[31];
     file.read(header, 31);
     if (file.gcount() < 31 || std::string(header, 13) != "AutoCAD Slide") {
@@ -486,22 +485,18 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
         if (highByte == 0xFF) continue; // Color change (2 bytes total)
         if (highByte == 0xFC) break;    // EOF
 
+        // Clean pre-scan coordinate mapping: accurately bypass solid fill segments
         if (highByte == 0xFD) {
             int16_t fillX = 0;
             int16_t fillY = 0;
-
-            // Read the remaining 4 bytes (two 16-bit words) for this vertex record
             if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
                 !file.read(reinterpret_cast<char*>(&fillY), 2)) {
                 break;
             }
-
-            // A negative Y coordinate indicates a block sequence frame flag.
-            // If it's a valid coordinate position, track it to prevent line alignment drift.
-            if (fillY >= 0) {
-                lastX = fillX;
-                lastY = fillY;
-                updateBounds(lastX, lastY);
+            if (fillY < 0) {
+                // Sequence Header block: fillX defines the vertex count to follow
+                int16_t vertexCount = fillX;
+                file.seekg(vertexCount * 6, std::ios::cur); // Fast skip past all sub-vertices
             }
             continue;
         }
@@ -537,6 +532,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
             updateBounds(lastX, lastY);
             continue;
         }
+
         if (highByte <= 0xFA) { // Standard Vector
             int16_t x1 = static_cast<int16_t>(firstWord);
             int16_t y1 = 0, x2 = 0, y2 = 0;
@@ -545,13 +541,13 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
                 !file.read(reinterpret_cast<char*>(&y2), 2)) break;
             updateBounds(x1, y1);
             updateBounds(x2, y2);
-            lastX = x2; // Set last vector track to endpoints
+            lastX = x2;
             lastY = y2;
             continue;
         }
     }
 
-    // Fallback security if no valid geometry was found
+    // Fallback protection if no valid structural geometry was identified
     if (maxX <= minX) { minX = 0; maxX = 1; }
     if (maxY <= minY) { minY = 0; maxY = 1; }
 
@@ -564,7 +560,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     double scaleY = (height * paddingFactor) / drawingHeight;
     double scale = std::min(scaleX, scaleY);
 
-    // Centering calculations relative to the custom calculated geometry box
+    // Centering calculations relative to the calculated geometry bounding box
     int offsetX = static_cast<int>((width - (drawingWidth * scale)) / 2.0) - static_cast<int>(minX * scale);
     int offsetY = static_cast<int>((height - (drawingHeight * scale)) / 2.0) - static_cast<int>(minY * scale);
 
@@ -574,7 +570,7 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     lastX = 0;
     lastY = 0;
 
-    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) 
+    while (file.read(reinterpret_cast<char*>(&firstWord), 2))
     {
         uint8_t lowByte = firstWord & 0x00FF;
         uint8_t highByte = (firstWord & 0xFF00) >> 8;
@@ -587,20 +583,17 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
 
         if (highByte == 0xFC) break;
 
+        // Skip solid fill sequences entirely without breaking vector streaming tracks
         if (highByte == 0xFD) {
             int16_t fillX = 0;
             int16_t fillY = 0;
-
-            // Read the remaining 4 bytes to keep the binary file pointer perfectly aligned
             if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
                 !file.read(reinterpret_cast<char*>(&fillY), 2)) {
                 break;
             }
-
-            // Update coordinates so subsequent delta changes (0xFE / 0xFB) process correctly
-            if (fillY >= 0) {
-                lastX = fillX;
-                lastY = fillY;
+            if (fillY < 0) {
+                int16_t vertexCount = fillX;
+                file.seekg(vertexCount * 6, std::ios::cur); // Fast forward past the fill coordinates
             }
             continue;
         }
