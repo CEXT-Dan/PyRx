@@ -506,8 +506,8 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
                 int16_t fromX = lastX + dx1;
                 int16_t fromY = lastY + rawDy1;
 
-                int16_t toX = fromX + dx2;
-                int16_t toY = fromY + rawDy2;
+                int16_t toX = lastX + dx2;
+                int16_t toY = lastY + rawDy2;
 
                 updateBounds(fromX, fromY);
                 updateBounds(toX, toY);
@@ -523,7 +523,7 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
             updateBounds(firstWord, y1);
             updateBounds(x2, y2);
 
-            lastX = x2; lastY = y2;
+            lastX = firstWord; lastY = y1;
             continue;
         }
     }
@@ -539,112 +539,13 @@ static void renderSolidFills(std::ifstream& file, std::streampos dataStartPos, w
     double scale, int offsetX, int offsetY,
     ExtractColorCallback extractColorCallback)
 {
-    file.clear();
-    file.seekg(dataStartPos);
-    uint16_t firstWord = 0;
 
-    while (file.read(reinterpret_cast<char*>(&firstWord), 2)) {
-        uint8_t lowByte = firstWord & 0x00FF;
-        uint8_t highByte = (firstWord & 0xFF00) >> 8;
-
-        if (highByte == 0xFF) {
-            extractColorCallback(lowByte, currentPen, mdc);
-            continue;
-        }
-        if (highByte == 0xFC) break; // End of file marker
-
-        if (highByte == 0xFD) {
-            int16_t fillX = 0, fillY = 0;
-            if (!file.read(reinterpret_cast<char*>(&fillX), 2) ||
-                !file.read(reinterpret_cast<char*>(&fillY), 2)) {
-                break;
-            }
-
-            wxBrush fillBrush(currentPen.GetColour());
-            wxBrush oldBrush = mdc.GetBrush();
-            mdc.SetBrush(fillBrush);
-
-            if (fillY < 0) {
-                int16_t vertexCount = fillX;
-
-                // Safety check: Prevent memory allocation crashes or file parsing desyncs
-                if (vertexCount <= 0 || vertexCount > 1000) {
-                    mdc.SetBrush(oldBrush);
-                    break;
-                }
-
-                std::vector<wxPoint> points;
-                points.reserve(vertexCount);
-                bool readSuccess = true;
-
-                // Read all vertices sequentially from the stream
-                for (int16_t i = 0; i < vertexCount; ++i) {
-                    int16_t vx = 0, vy = 0;
-
-                    if (!file.read(reinterpret_cast<char*>(&vx), 2) ||
-                        !file.read(reinterpret_cast<char*>(&vy), 2)) {
-                        readSuccess = false;
-                        break;
-                    }
-
-                    // Correct Cartesian to Screen Coordinates Conversion
-                    int screenX = offsetX + static_cast<int>(vx * scale);
-                    int screenY = height - (offsetY + static_cast<int>(vy * scale));
-
-                    points.push_back(wxPoint(screenX, screenY));
-                }
-
-                if (!readSuccess) {
-                    mdc.SetBrush(oldBrush);
-                    break;
-                }
-
-                // Render by cleanly drawing the two structural triangular halves
-                if (!points.empty()) {
-                    wxPen oldPen = mdc.GetPen();
-                    mdc.SetPen(*wxTRANSPARENT_PEN);
-
-                    if (points.size() == 4) {
-                        // Wedge 1 (Triangle A)
-                        wxPoint tri1[3] = { points[0], points[1], points[2] };
-                        mdc.DrawPolygon(3, tri1);
-
-                        // Wedge 2 (Triangle B)
-                        wxPoint tri2[3] = { points[1], points[2], points[3] };
-                        mdc.DrawPolygon(3, tri2);
-                    }
-                    else {
-                        // Standard fallback for native 3-point solid fills
-                        mdc.DrawPolygon(static_cast<int>(points.size()), points.data());
-                    }
-
-                    mdc.SetPen(oldPen);
-                }
-            }
-            else {
-                // Standalone legacy FloodFill layout block
-                int sFillX = offsetX + static_cast<int>(fillX * scale);
-                int sFillY = height - (offsetY + static_cast<int>(fillY * scale));
-                if (sFillX >= 0 && sFillX < width && sFillY >= 0 && sFillY < height) {
-                    mdc.FloodFill(sFillX, sFillY, bkg, wxFLOOD_SURFACE);
-                }
-            }
-
-            mdc.SetBrush(oldBrush);
-            continue;
-        }
-
-        // Handle standard non-fill chunk skipping
-        if (highByte == 0xFE)
-            file.seekg(1, std::ios::cur);
-        else if (highByte == 0xFB)
-            file.seekg(3, std::ios::cur);
-        else if (highByte <= 0xFA)
-            file.seekg(2, std::ios::cur);
-    }
 }
 #endif
 
+#if defined(_BRXTARGET)
+//use if needed
+#endif
 static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMemoryDC& mdc,
     wxPen& currentPen, int height, double scale, int offsetX, int offsetY,
     ExtractColorCallback extractColorCallback)
@@ -688,7 +589,6 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
         if (isControlCode) {
             if (highByte == 0xFF) {
                 extractColorCallback(lowByte, currentPen, mdc);
-                currentX = anchorX; currentY = anchorY;
                 continue;
             }
             if (highByte == 0xFC) break;
@@ -717,12 +617,6 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
                 int sx2 = offsetX + static_cast<int>(currentX * scale);
                 int sy2 = height - (offsetY + static_cast<int>(currentY * scale));
 
-#if defined(_BRXTARGET)
-                // COMPILE FIXED DIRECTION SWITCH: Corrects BricsCAD's vertical output layout
-                sy1 = height - sy1;
-                sy2 = height - sy2;
-#endif
-
                 mdc.DrawLine(sx1, sy1, sx2, sy2);
                 continue;
             }
@@ -739,20 +633,14 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
                 int16_t fromX = currentX + dx1;
                 int16_t fromY = currentY + rawDy1;
 
-                int16_t toX = fromX + dx2;
-                int16_t toY = fromY + rawDy2;
+                int16_t toX = currentX + dx2;
+                int16_t toY = currentY + rawDy2;
 
                 int sx1 = offsetX + static_cast<int>(fromX * scale);
                 int sy1 = height - (offsetY + static_cast<int>(fromY * scale));
 
                 int sx2 = offsetX + static_cast<int>(toX * scale);
                 int sy2 = height - (offsetY + static_cast<int>(toY * scale));
-
-#if defined(_BRXTARGET)
-                // COMPILE FIXED DIRECTION SWITCH: Corrects BricsCAD's vertical output layout
-                sy1 = height - sy1;
-                sy2 = height - sy2;
-#endif
 
                 mdc.DrawLine(sx1, sy1, sx2, sy2);
 
@@ -773,7 +661,7 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
 
             mdc.DrawLine(sx1, sy1, sx2, sy2);
 
-            anchorX = x2; anchorY = y2;
+            anchorX = firstWord; anchorY = y1;
             currentX = anchorX; currentY = anchorY;
             continue;
         }
