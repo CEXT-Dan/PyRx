@@ -656,17 +656,25 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
 
 PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb)
 {
+    if (width <= 0 || height <= 0)
+        PyThrowBadEs(eInvalidInput);
+
+    if(bool flag = std::filesystem::exists(sld_path) && std::filesystem::is_regular_file(sld_path); !flag)
+        PyThrowBadEs(eInvalidInput);
+
+    auto _rgb = PyListToInt32Array(rgb);
+    if (_rgb.length() != 3 || std::any_of(_rgb.begin(), _rgb.end(), [](int item) {return item < 0 || item > 255; }))
+        throw std::invalid_argument("Background color must contain three values from 0 to 255");
+
     wxBitmap bitmap(width, height);
     wxMemoryDC mdc(bitmap);
-    wxColour bkg(49, 56, 66);
-    auto _rgb = PyListToInt32Array(rgb);
+    wxColour bkg
+    { 
+        static_cast<unsigned char>(_rgb[0]),
+        static_cast<unsigned char>(_rgb[1]),
+        static_cast<unsigned char>(_rgb[2]) 
+    };
 
-    if (_rgb.length() >= 3)
-    {
-        bkg.Set(static_cast<unsigned char>(_rgb[0]),
-            static_cast<unsigned char>(_rgb[1]),
-            static_cast<unsigned char>(_rgb[2]));
-    }
     wxBrush backgroundBrush(bkg);
     mdc.SetBackground(backgroundBrush);
     mdc.Clear();
