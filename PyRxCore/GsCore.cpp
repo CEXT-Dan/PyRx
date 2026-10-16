@@ -598,7 +598,6 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
                 file.read(reinterpret_cast<char*>(&fillX), 2);
                 file.read(reinterpret_cast<char*>(&fillY), 2);
                 if (fillY < 0) file.seekg(fillX * 6, std::ios::cur);
-                currentX = anchorX; currentY = anchorY;
                 continue;
             }
 
