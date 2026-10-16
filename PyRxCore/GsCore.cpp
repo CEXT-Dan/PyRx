@@ -380,12 +380,13 @@ bool GsCore::displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::In
 #endif
 }
 
-struct SlideBounds {
+//------------------------------------------------------------------------------
+//GsCore::slideToWxImage
+struct SlideBounds
+{
     int16_t minX, maxX, minY, maxY;
 };
 
-//------------------------------------------------------------------------------
-//GsCore::slideToWxImage
 using ExtractColorCallback = void (*)(uint8_t, wxPen&, wxMemoryDC&);
 
 static void ExtractColor(uint8_t lowByte, wxPen& currentPen, wxMemoryDC& mdc)
@@ -472,7 +473,6 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
                 file.seekg(peekPos);
             }
         }
-
         if (isControlCode) {
             if (highByte == 0xFF) continue;
             if (highByte == 0xFC) break;
@@ -533,19 +533,6 @@ static SlideBounds parseSlideBounds(std::ifstream& file, std::streampos dataStar
     return { minX, maxX, minY, maxY };
 }
 
-#ifdef NEVER  // TODO:
-static void renderSolidFills(std::ifstream& file, std::streampos dataStartPos, wxMemoryDC& mdc,
-    wxPen& currentPen, const wxColour& bkg, int width, int height,
-    double scale, int offsetX, int offsetY,
-    ExtractColorCallback extractColorCallback)
-{
-
-}
-#endif
-
-#if defined(_BRXTARGET)
-//use if needed
-#endif
 static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMemoryDC& mdc,
     wxPen& currentPen, int height, double scale, int offsetX, int offsetY,
     ExtractColorCallback extractColorCallback)
@@ -667,7 +654,6 @@ static void renderVectors(std::ifstream& file, std::streampos dataStartPos, wxMe
     }
 }
 
-
 PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb)
 {
     wxBitmap bitmap(width, height);
@@ -716,11 +702,6 @@ PyObject* GsCore::slideToWxImage(const std::string& sld_path, int width, int hei
     int offsetY = static_cast<int>((height - (drawingHeight * scale)) / 2.0) - static_cast<int>(bounds.minY * scale);
 
     mdc.SetBrush(*wxTRANSPARENT_BRUSH);
-
-#ifdef NEVER  // TODO:
-    renderSolidFills(file, dataStartPos, mdc, currentPen, bkg, width, height, scale, offsetX, offsetY, ExtractColor);
-#endif
-
     renderVectors(file, dataStartPos, mdc, currentPen, height, scale, offsetX, offsetY, ExtractColor);
 
     file.close();
