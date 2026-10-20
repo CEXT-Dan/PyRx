@@ -2220,6 +2220,13 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 #endif
+    enum_<AcFd::ConvertFieldToText >("ConvertFieldToTextOption")
+        .value("kConvertFieldToTextNone", AcFd::ConvertFieldToText::kConvertFieldToTextNone)
+        .value("kEvaluateBeforeConversion", AcFd::ConvertFieldToText::kEvaluateBeforeConversion)
+        .value("kExcludeEvaluatorsInList", AcFd::ConvertFieldToText::kExcludeEvaluatorsInList)
+        .value("kIgnoreEvaluatorVersion", AcFd::ConvertFieldToText::kIgnoreEvaluatorVersion)
+        .export_values()
+        ;
 
 };
 
