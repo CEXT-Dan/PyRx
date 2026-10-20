@@ -774,6 +774,7 @@ kConnectExtents: MLeaderBlockConnectionType  # 0
 kContentType: MLeaderPropertyOverrideType  # 10
 kContinuous: ReservedStringEnumType  # 3
 kControlPoints: SplineType  # 1
+kConvertFieldToTextNone: ConvertFieldToTextOption  # 0
 kConvertTextToValue: ValueParseOption  # 4
 kCoordTypGeographic: GeoTypeOfCoordinates  # 3
 kCoordTypGrid: GeoTypeOfCoordinates  # 2
@@ -1099,11 +1100,13 @@ kEsriLightGray: AcGeoMapType  # 7
 kEsriOpenStreetMap: AcGeoMapType  # 5
 kEsriStreets: AcGeoMapType  # 6
 kEtransmit: FieldEvalContext  # 8
+kEvaluateBeforeConversion: ConvertFieldToTextOption  # 1
 kEvaluated: FieldState  # 8
 kEvaluatedChildren: FieldCodeFlag  # 4
 kEvaluatedText: FieldCodeFlag  # 2
 kEvaluatorNotFound: FieldEvalStatus  # 4
 kExactly: LineSpacingStyle  # 2
+kExcludeEvaluatorsInList: ConvertFieldToTextOption  # 2
 kExtendArg: Intersect  # 2
 kExtendBoth: Intersect  # 3
 kExtendEdge: SurfaceEdgeExtensionType  # 0
@@ -1194,6 +1197,7 @@ kIdFiler: FilerType  # 7
 kIdXlateFiler: FilerType  # 4
 kIdentifierPosition: DetailSymbolOverriddenProperty  # 2
 kIgnore: HatchStyle  # 2
+kIgnoreEvaluatorVersion: ConvertFieldToTextOption  # 4
 kIgnoreMtextFormat: ValueFormatOption  # 8
 kInList: GraphNodeFlags  # 8
 kInVisibleLeader: MLeaderLeaderType  # 0
@@ -5190,6 +5194,12 @@ class ColorMethod(_BoostPythonEnum):
     kLayerFrozen: ClassVar[Self]  # 199
     kNone: ClassVar[Self]  # 200
 
+class ConvertFieldToTextOption(_BoostPythonEnum):
+    kConvertFieldToTextNone: ClassVar[Self]  # 0
+    kEvaluateBeforeConversion: ClassVar[Self]  # 1
+    kExcludeEvaluatorsInList: ClassVar[Self]  # 2
+    kIgnoreEvaluatorVersion: ClassVar[Self]  # 4
+
 class Core:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -5297,6 +5307,17 @@ class Core:
         """
         This function takes an AcDbCurve and returns an AcGeCurve3d that is geometrically identical
         to the AcDbCurve.
+        """
+    @staticmethod
+    def convertFieldsToText(
+        db: PyDb.Database | list[PyDb.ObjectId],
+        evalIds: list[str],
+        nOption: PyDb.ConvertFieldToTextOption,
+        /,
+    ) -> None:
+        """
+        This function takes an AcGeCurve3d and returns an AcDbCurve that is geometrically identical
+        to the AcGeCurve3d.
         """
     @staticmethod
     def convertGelibCurveToAcDbCurve(
