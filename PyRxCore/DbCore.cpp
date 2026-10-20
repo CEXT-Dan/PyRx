@@ -285,23 +285,27 @@ PyDbCurve DbCore::convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGe
     return PyDbCurve(pcurve, true);
 }
 
-void DbCore::convertFieldsToText1(const PyDbDatabase& pDb, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption)
+Acad::ErrorStatus DbCore::convertFieldsToText1(const PyDbDatabase& pDb, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption)
 {
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcStringArray buffer = PyListToAcStringArray(evalIds);
-    PyThrowBadEs(acdbConvertFieldsToText(pDb.impObj(), &buffer, nOption));
+    if (buffer.length() != 0)
+        return acdbConvertFieldsToText(pDb.impObj(), &buffer, nOption);
+    return acdbConvertFieldsToText(pDb.impObj(), nullptr, nOption);
 #endif
 }
 
-void DbCore::convertFieldsToText2(const boost::python::list& ids, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption)
+Acad::ErrorStatus DbCore::convertFieldsToText2(const boost::python::list& ids, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption)
 {
 #if defined(_BRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcStringArray buffer = PyListToAcStringArray(evalIds);
-    PyThrowBadEs(acdbConvertFieldsToText(PyListToObjectIdArray(ids), &buffer, nOption));
+    if (buffer.length() != 0)
+        return acdbConvertFieldsToText(PyListToObjectIdArray(ids), &buffer, nOption);
+    return acdbConvertFieldsToText(PyListToObjectIdArray(ids), nullptr, nOption);
 #endif
 }
 
