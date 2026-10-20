@@ -65,4 +65,6 @@ public:
 public:
     AcDbAssocPersSubentIdPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//TODO: wrap AcDbPaperOrientationPE
 #pragma pack (pop)
