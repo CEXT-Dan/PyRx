@@ -33,8 +33,8 @@ public:
     static PyDbCurve            convertGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve);
     static PyDbCurve            convertGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
     static PyDbCurve            convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
-    static void                 convertFieldsToText1(const PyDbDatabase& pDb, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption);
-    static void                 convertFieldsToText2(const boost::python::list& ids, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption);
+    static Acad::ErrorStatus    convertFieldsToText1(const PyDbDatabase& pDb, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption);
+    static Acad::ErrorStatus    convertFieldsToText2(const boost::python::list& ids, const boost::python::list& evalIds, AcFd::ConvertFieldToText nOption);
     static PyDbObjectId         createViewByViewport(const PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId);
     static std::string          canonicalToSystemRange(int eUnits, const std::string& strIn);
     static void                 detachXref(const PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId);

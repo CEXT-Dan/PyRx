@@ -5314,7 +5314,7 @@ class Core:
         evalIds: list[str],
         nOption: PyDb.ConvertFieldToTextOption,
         /,
-    ) -> None:
+    ) -> ErrorStatus:
         """
         This function takes an AcGeCurve3d and returns an AcDbCurve that is geometrically identical
         to the AcGeCurve3d.
