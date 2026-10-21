@@ -637,6 +637,7 @@ void makePyDbFieldEngineWrapper()
         .def("evaluatorLoaderCount", &PyDbFieldEngine::evaluatorLoaderCount, DS.ARGS())
         .def("isEvaluatorLoaded", &PyDbFieldEngine::isEvaluatorLoaded, DS.ARGS({ "pszEvalId:str" }))
         .def("evaluationOption", &PyDbFieldEngine::evaluationOption, DS.ARGS())
+        .def("getEvaluatorIds", &PyDbFieldEngine::getEvaluatorIds, DS.ARGS())
         .def("setEvaluationOption", &PyDbFieldEngine::setEvaluationOption, DS.ARGS({ "opt:PyDb.FieldEvalOption" }))
         .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_value_policy<reference_existing_object>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
@@ -737,6 +738,35 @@ void PyDbFieldEngine::setEvaluationOption(AcDbField::EvalOption nEvalOption)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(acdbGetFieldEngine()->setEvaluationOption(nEvalOption));
+#endif
+}
+
+boost::python::list PyDbFieldEngine::getEvaluatorIds() const
+{
+#if !defined(_ARXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    CAcFdUiFieldManager* pFieldMgr = AcFdUiGetFieldManager();
+    if (pFieldMgr != nullptr)
+    {
+        AcFdUiFieldDialogHookArray hooks;
+        auto nhooks = pFieldMgr->GetRegisteredDialogHooks(hooks);
+
+        for (int hidx = 0; hidx < nhooks; hidx++)
+        {
+            auto hook = hooks[hidx];
+            if (hook != nullptr)
+            {
+                CStringArray evalIds;
+                int numIds = hook->GetEvaluatorIds(evalIds);
+                for (int evalidx = 0; evalidx < numIds; evalidx++)
+                    pylist.append(wstr_to_utf8(evalIds[evalidx]));
+            }
+        }
+    }
+    return pylist;
 #endif
 }
 

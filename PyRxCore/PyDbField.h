@@ -152,8 +152,9 @@ public:
     bool                        isEvaluatorLoaded(const std::string& pszEvalId);
     AcDbField::EvalOption       evaluationOption(void) const;
     void                        setEvaluationOption(AcDbField::EvalOption nEvalOption);
+    boost::python::list         getEvaluatorIds() const;
 
-    static PyDbFieldEngine& getEngine();
+    static PyDbFieldEngine&     getEngine();
     static std::string          className();
 public:
     AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
