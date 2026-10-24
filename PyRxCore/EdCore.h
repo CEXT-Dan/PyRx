@@ -151,7 +151,7 @@ public:
     static boost::python::tuple setColorDialog(int color, Adesk::Boolean bAllowMetaColor, int nCurLayerColor);
     static boost::python::tuple setColorDialogTrueColor1(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor);
     static boost::python::tuple setColorDialogTrueColor2(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor, AcCm::DialogTabs tab);
-    static AcGePoint3d          osnap(const AcGePoint3d& pt, const std::string& mode);
+    static boost::python::tuple osnap(const AcGePoint3d& pt, const std::string& mode);
 
     static AcCmColor            setColorPrompt(const std::string& prompt, bool bAllowMetaColor);
     static void                 setUndoMark(bool flag);

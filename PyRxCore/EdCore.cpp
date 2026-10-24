@@ -1696,11 +1696,12 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
     return outstr.str();
 }
 
-AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
+boost::python::tuple EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
 {
+    PyAutoLockGIL lock;
     AcGePoint3d result;
-    PyThrowBadRt(acedOsnap(asDblArray(pt), AsWStr(mode), asDblArray(result)));
-    return result;
+    auto stat = static_cast<Acad::PromptStatus>(acedOsnap(asDblArray(pt), AsWStr(mode), asDblArray(result)));
+    return boost::python::make_tuple(stat, result);
 }
 
 AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor)
