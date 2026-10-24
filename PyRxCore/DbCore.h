@@ -131,9 +131,8 @@ public:
     static bool                 isVisible(const PyDbObjectId& id);
     static boost::python::list  tessellateString1(const std::string& str);
     static boost::python::list  tessellateString2(const std::string& str, const std::string& font);
-    AcGePoint2d                 modelToPixel(const AcGeMatrix3d& modToPix, const AcGePoint3d& modPt);
-    AcGePoint3d                 pixelToModel(const AcGeMatrix3d& pixToMod, const AcGePoint2d& pixPt);
-
+    static AcGePoint2d          modelToPixel(const AcGeMatrix3d& modToPix, const AcGePoint3d& modPt);
+    static AcGePoint3d          pixelToModel(const AcGeMatrix3d& pixToMod, const AcGePoint2d& pixPt);
 };
 
 #pragma pack (pop)
