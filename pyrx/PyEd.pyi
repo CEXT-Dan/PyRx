@@ -854,7 +854,7 @@ class Core:
     @staticmethod
     def menuCmd(cmd: str, /) -> int: ...
     @staticmethod
-    def osnap(pt: PyGe.Point3d, mode: str, /) -> PyGe.Point3d:
+    def osnap(pt: PyGe.Point3d, mode: str, /) -> tuple:
         """
         Finds a point by means of object snap. Applies the specified Object Snap modes to find the
         closest point to a reference point. The APERTURE system variable determines the allowable
