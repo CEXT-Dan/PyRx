@@ -167,6 +167,9 @@ void makeDbCoreWrapper()
 
         .def("tessellateString", &DbCore::tessellateString1)
         .def("tessellateString", &DbCore::tessellateString2, DS.SARGS({ "val: str", "font : str = ..." })).staticmethod("tessellateString")
+
+        .def("modelToPixel", &DbCore::modelToPixel, DS.SARGS({ "modToPix : PyGe.Matrix3d", "modPt : PyGe.Point3d" })).staticmethod("modelToPixel")
+        .def("pixelToModel", &DbCore::pixelToModel, DS.SARGS({ "pixToMod : PyGe.Matrix3d", "pixPt : PyGe.Point2d" })).staticmethod("pixelToModel")
         ;
 }
 
@@ -1124,4 +1127,18 @@ boost::python::list DbCore::tessellateString2(const std::string& str, const std:
         );
     }
     return pylst;
+}
+
+AcGePoint2d DbCore::modelToPixel(const AcGeMatrix3d& modToPix, const AcGePoint3d& modPt)
+{
+    AcGePoint2d pixPt;
+    ::modelToPixel(modToPix, modPt, pixPt);
+    return pixPt;
+}
+
+AcGePoint3d DbCore::pixelToModel(const AcGeMatrix3d& pixToMod, const AcGePoint2d& pixPt)
+{
+    AcGePoint3d modPt;
+    ::pixelToModel(pixToMod, pixPt, modPt);
+    return modPt;
 }
