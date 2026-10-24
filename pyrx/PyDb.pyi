@@ -5849,6 +5849,8 @@ class Core:
         specified and the transfer is not successful.
         """
     @staticmethod
+    def modelToPixel(modToPix: PyGe.Matrix3d, modPt: PyGe.Point3d, /) -> PyGe.Point2d: ...
+    @staticmethod
     def namedObjDict() -> ObjectId:
         """
         Returns the name of the named object dictionary, which is the root of all nongraphical
@@ -5947,6 +5949,8 @@ class Core:
         Acad::eNullObjectId. If the document is not locked, then the open attempt will fail and
         this function will return Acad::eLockViolation.
         """
+    @staticmethod
+    def pixelToModel(pixToMod: PyGe.Matrix3d, pixPt: PyGe.Point2d, /) -> PyGe.Point3d: ...
     @staticmethod
     def postDimAssoc(
         dimId: PyDb.ObjectId, assoc: PyDb.DimAssoc, isActive: bool = True, /
