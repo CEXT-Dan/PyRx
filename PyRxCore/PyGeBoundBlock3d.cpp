@@ -6,9 +6,9 @@ using namespace boost::python;
 //PyGeBoundBlock3d
 void makePyGeBoundBlock3dWrapper()
 {
-#if !defined(_BRXTARGET270)
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
+        "- pt1: PyGe.Point3d, pt2: PyGe.Point3d\n"
         "- base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d, dir3: PyGe.Vector3d\n";
 
     constexpr const std::string_view setOverloads = "Overloads:\n"
@@ -37,22 +37,26 @@ void makePyGeBoundBlock3dWrapper()
         .def("copycast", &PyGeBoundBlock3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeBoundBlock3d::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET270)
 PyGeBoundBlock3d::PyGeBoundBlock3d()
     :PyGeEntity3d(new AcGeBoundBlock3d())
 {
 }
 
-PyGeBoundBlock3d::PyGeBoundBlock3d(AcGeEntity3d* pEnt)
-    : PyGeEntity3d(pEnt)
+PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGePoint3d& point1, const AcGePoint3d& point2)
+    :PyGeEntity3d(new AcGeBoundBlock3d())
 {
+    impObj()->set(point1, point2);
 }
 
 PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
     : PyGeEntity3d(new AcGeBoundBlock3d(base, dir1, dir2, dir3))
+{
+}
+
+PyGeBoundBlock3d::PyGeBoundBlock3d(AcGeEntity3d* pEnt)
+    : PyGeEntity3d(pEnt)
 {
 }
 
@@ -169,4 +173,3 @@ AcGeBoundBlock3d* PyGeBoundBlock3d::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcGeBoundBlock3d*>(m_imp.get());
 }
-#endif
