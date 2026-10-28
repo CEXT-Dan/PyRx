@@ -302,6 +302,12 @@ class BoundBlock3d(PyGe.Entity3d):
         exist in two forms: as an ordinary coordinate-aligned bounding box and as a parallelepiped.
         """
     @overload
+    def __init__(self, pt1: PyGe.Point3d, pt2: PyGe.Point3d, /) -> None:
+        """
+        This class provides spatial dimensional bounding volume implementation. Bounding blocks may
+        exist in two forms: as an ordinary coordinate-aligned bounding box and as a parallelepiped.
+        """
+    @overload
     def __init__(
         self, base: PyGe.Point3d, dir1: PyGe.Vector3d, dir2: PyGe.Vector3d, dir3: PyGe.Vector3d, /
     ) -> None:
