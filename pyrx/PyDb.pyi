@@ -883,6 +883,7 @@ kDrawLeaderFirst: DrawMLeaderOrderType  # 1
 kDrawLeaderHeadFirst: DrawLeaderOrderType  # 0
 kDrawLeaderTailFirst: DrawLeaderOrderType  # 1
 kDrawingOpen: RemapFileContext  # 0
+kDrawingStandardsFile: FindFileHint  # 15
 kDrcIgnore: DuplicateRecordCloning  # 1
 kDrcMangleName: DuplicateRecordCloning  # 4
 kDrcNotApplicable: DuplicateRecordCloning  # 0
@@ -1258,6 +1259,7 @@ kLine: CenterMarkType  # 1
 kLineType: LayerStateMask  # 64
 kLineWeight: LayerStateMask  # 128
 kLinear: Planarity  # 2
+kLinetypeFile: FindFileHint  # 14
 kListAll: GraphNodeFlags  # 14
 kLiveSection: SectionType  # 1
 kLnWt000: LineWeight  # 0
@@ -1291,6 +1293,7 @@ kLocation: MTextFragmentType  # 0
 kLocked: LayerStateMask  # 4
 kLong: ValueDataType  # 1
 kLtoR: MTextFlowDirection  # 1
+kMLineStyleFile: FindFileHint  # 16
 kMText: AnnoType  # 0
 kMTextContent: MLeaderContentType  # 2
 kMTextMark: MLeaderGsMarkType  # 15001
@@ -16162,6 +16165,9 @@ class FindFileHint(_BoostPythonEnum):
     kPhotometricWebFile: ClassVar[Self]  # 11
     kMaterialMapFile: ClassVar[Self]  # 12
     kCloudOrProjectFile: ClassVar[Self]  # 13
+    kLinetypeFile: ClassVar[Self]  # 14
+    kDrawingStandardsFile: ClassVar[Self]  # 15
+    kMLineStyleFile: ClassVar[Self]  # 16
 
 class FullSubentPath:
     @overload

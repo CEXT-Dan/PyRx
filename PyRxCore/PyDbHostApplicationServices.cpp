@@ -174,6 +174,11 @@ void makePyDbHostApplicationServicesWrapper()
         .value("kPhotometricWebFile", AcDbHostApplicationServices::FindFileHint::kPhotometricWebFile)
         .value("kMaterialMapFile", AcDbHostApplicationServices::FindFileHint::kMaterialMapFile)
         .value("kCloudOrProjectFile", AcDbHostApplicationServices::FindFileHint::kCloudOrProjectFile)
+#if defined(_ARXTARGET) && (_ARXTARGET >= 260)
+        .value("kLinetypeFile", AcDbHostApplicationServices::FindFileHint::kLinetypeFile)
+        .value("kDrawingStandardsFile", AcDbHostApplicationServices::FindFileHint::kDrawingStandardsFile)
+        .value("kMLineStyleFile", AcDbHostApplicationServices::FindFileHint::kMLineStyleFile)
+#endif
         .export_values()
         ;
 
