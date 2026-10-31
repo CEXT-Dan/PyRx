@@ -372,7 +372,32 @@ class TestFace:
         erased = Db.Face(face_id, Db.OpenMode.kForRead, True)
         assert erased.isErased() == True
         erased.close()
-
-    # NOTE: do NOT call mutators (setVertexAt / makeEdge*At) on a face opened ForRead:
-    # the C++ side raises an uncatchable access violation (0xe0000001) that kills the host.
-    # Verified on AutoCAD 2027, 2026-10-31. Leave such a test out of the suite.
+        
+    def test_centroid(self):
+        # Test 1: 4-Point Quad Face (Centered at origin)
+        p0 = Ge.Point3d(-10, 10, 0)
+        p1 = Ge.Point3d(-10, -10, 0)
+        p2 = Ge.Point3d(10, -10, 0)
+        p3 = Ge.Point3d(10, 10, 0)
+        db_face1 = Db.Face(p0, p1, p2, p3)
+        centroid1 = db_face1.centroid()
+        assert centroid1 == Ge.Point3d.kOrigin
+        
+        # Test 2: 3-Point Triangle Face (Symmetrical balance centered at origin)
+        tp0 = Ge.Point3d(0, 10, 0)
+        tp1 = Ge.Point3d(-10, -5, 0)
+        tp2 = Ge.Point3d(10, -5, 0)
+        db_face2 = Db.Face(tp0, tp1, tp2)
+        centroid2 = db_face2.centroid()
+        assert centroid2 == Ge.Point3d.kOrigin
+        
+        # Test 3: 3-Point Triangle Face with Z-axis offset
+        # Expected centroid: (0, 0, 10)
+        zp0 = Ge.Point3d(0, 10, 5)
+        zp1 = Ge.Point3d(-10, -5, 10)
+        zp2 = Ge.Point3d(10, -5, 15)
+        db_face3 = Db.Face(zp0, zp1, zp2)
+        centroid3 = db_face3.centroid()
+        assert centroid3 == Ge.Point3d(0, 0, 10)
+        
+        

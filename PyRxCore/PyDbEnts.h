@@ -711,6 +711,7 @@ public:
     void                makeEdgeVisibleAt(Adesk::UInt16) const;
     void                makeEdgeInvisibleAt(Adesk::UInt16) const;
     boost::python::list intersectWith(const PyGeLinearEnt3d& linearEnt) const;
+    AcGePoint3d         centroid() const;
 public:
     static std::string  className();
     static PyRxClass    desc();
