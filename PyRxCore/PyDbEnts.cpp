@@ -3657,6 +3657,7 @@ void makePyDbFaceWrapper()
         .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt, DS.ARGS({ "vIndex:int" }, 4580))
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt, DS.ARGS({ "vIndex:int" }, 4579))
         .def("intersectWith", &PyDbFace::intersectWith, DS.ARGS({ "linearEnt:PyGe.LinearEnt3d" }))
+        .def("centroid", &PyDbFace::centroid, DS.ARGS())
         .def("className", &PyDbFace::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbFace::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbFace::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3826,6 +3827,37 @@ boost::python::list PyDbFace::intersectWith(const PyGeLinearEnt3d& linearEnt) co
     AcGePoint3dArray intersectionPoints;
     PyThrowBadEs(faceIntersectWith(impObj(), *linearEnt.impObj(), intersectionPoints));
     return Point3dArrayToPyList(intersectionPoints);
+}
+
+AcGePoint3d PyDbFace::centroid() const
+{
+    const AcDbFace* pFace = impObj();
+    AcGePoint3d pt0, pt1, pt2, pt3;
+
+    // Extract all vertices
+    pFace->getVertexAt(0, pt0);
+    pFace->getVertexAt(1, pt1);
+    pFace->getVertexAt(2, pt2);
+    pFace->getVertexAt(3, pt3);
+
+    // Per your requirement, we only consider 3-point faces.
+    // In AutoCAD DXF/ObjectARX, a 3-point face duplicates the 3rd vertex into the 4th slot.
+    if (pt2 == pt3)
+    {
+        // Formula for a triangle's centroid: (A + B + C) / 3
+        double x = (pt0.x + pt1.x + pt2.x) / 3.0;
+        double y = (pt0.y + pt1.y + pt2.y) / 3.0;
+        double z = (pt0.z + pt1.z + pt2.z) / 3.0;
+        return AcGePoint3d(x, y, z);
+    }
+    else
+    {
+        // Optional fallback: Handle 4-point quad centroid if it accidentally gets called
+        double x = (pt0.x + pt1.x + pt2.x + pt3.x) / 4.0;
+        double y = (pt0.y + pt1.y + pt2.y + pt3.y) / 4.0;
+        double z = (pt0.z + pt1.z + pt2.z + pt3.z) / 4.0;
+        return AcGePoint3d(x, y, z);
+    }
 }
 
 std::string PyDbFace::className()
