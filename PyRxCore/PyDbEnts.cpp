@@ -3656,6 +3656,7 @@ void makePyDbFaceWrapper()
         .def("isEdgeVisibleAt", &PyDbFace::isEdgeVisibleAt, DS.ARGS({ "vIndex:int" }, 4577))
         .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt, DS.ARGS({ "vIndex:int" }, 4580))
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt, DS.ARGS({ "vIndex:int" }, 4579))
+        .def("intersectWith", &PyDbFace::intersectWith, DS.ARGS({ "linearEnt:PyGe.LinearEnt3d" }))
         .def("className", &PyDbFace::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbFace::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbFace::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3735,6 +3736,98 @@ void PyDbFace::makeEdgeVisibleAt(Adesk::UInt16 val) const
 void PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->makeEdgeInvisibleAt(val));
+}
+
+static bool checkTriangleIntersection(
+    const AcGePoint3d& v0, const AcGePoint3d& v1, const AcGePoint3d& v2,
+    const AcGeLinearEnt3d& linearEnt, AcGePoint3d& outPt)
+{
+    // Define explicit, descriptive tolerances at the top of the scope
+    const double paramTol = 1e-5;
+    const double baryTol = 1e-6;
+
+    AcGePlane geoPlane(v0, v1, v2);
+
+    // 1. Check if the line intersects the infinite plane
+    if (!geoPlane.intersectWith(linearEnt, outPt)) {
+        return false;
+    }
+
+    // 2. Air-tight Segment/Ray Parametric Boundary Check
+    if (linearEnt.isKindOf(AcGe::kLineSeg3d)) {
+        double param = linearEnt.paramOf(outPt);
+        if (param < (0.0 - paramTol) || param >(1.0 + paramTol)) {
+            return false;
+        }
+    }
+    else if (linearEnt.isKindOf(AcGe::kRay3d)) {
+        double param = linearEnt.paramOf(outPt);
+        if (param < -paramTol) {
+            return false;
+        }
+    }
+
+    // 3. Robust 3D Barycentric coordinate bounds test
+    AcGeVector3d u = v1 - v0;
+    AcGeVector3d v = v2 - v0;
+    AcGeVector3d w = outPt - v0;
+
+    double u_dot_u = u.dotProduct(u);
+    double u_dot_v = u.dotProduct(v);
+    double v_dot_v = v.dotProduct(v);
+    double w_dot_u = w.dotProduct(u);
+    double w_dot_v = w.dotProduct(v);
+
+    double denom = u_dot_u * v_dot_v - u_dot_v * u_dot_v;
+    if (std::abs(denom) < 1e-9) {
+        return false; // Safely bypass collinear / flat degenerate triangles
+    }
+
+    double s = (v_dot_v * w_dot_u - u_dot_v * w_dot_v) / denom;
+    double t = (u_dot_u * w_dot_v - u_dot_v * w_dot_u) / denom;
+
+    return (s >= -baryTol) && (t >= -baryTol) && ((s + t) <= 1.0 + baryTol);
+}
+
+// The main utility function matching your signature layout
+static Acad::ErrorStatus faceIntersectWith(
+    AcDbFace* pFace,
+    const AcGeLinearEnt3d& linearEnt,
+    AcGePoint3dArray& intersectionPoints)
+{
+    if (pFace == nullptr) return Acad::eNullPtr;
+
+    AcGePoint3d p0, p1, p2, p3;
+    pFace->getVertexAt(0, p0);
+    pFace->getVertexAt(1, p1);
+    pFace->getVertexAt(2, p2);
+    pFace->getVertexAt(3, p3);
+
+    AcGePoint3d intPt;
+
+    // Test Triangle 1 (Vertices 0, 1, 2)
+    if (checkTriangleIntersection(p0, p1, p2, linearEnt, intPt)) {
+        intersectionPoints.append(intPt);
+    }
+
+    // Test Triangle 2 (Vertices 0, 2, 3) - Skip if a 3-sided face or degenerate quad
+    if (p3 != p2 && p3 != p0) {
+        if (checkTriangleIntersection(p0, p2, p3, linearEnt, intPt)) {
+            // Edge tolerance check: Uses global default AcGeTol automatically
+            if (intersectionPoints.isEmpty() || !intersectionPoints.last().isEqualTo(intPt)) {
+                intersectionPoints.append(intPt);
+            }
+        }
+    }
+
+    return Acad::eOk;
+}
+
+boost::python::list PyDbFace::intersectWith(const PyGeLinearEnt3d& linearEnt)
+{
+    AcGePoint3dArray intersectionPoints;
+    PyThrowBadEs(faceIntersectWith(impObj(), *linearEnt.impObj(), intersectionPoints));
+    return Point3dArrayToPyList(intersectionPoints);
 }
 
 std::string PyDbFace::className()
