@@ -1,0 +1,10 @@
+M:\Dev\Projects\PyRxGit\pyrx\__init__.py:56: UserWarning: PyRx modules are not available, they must be invoked from a CAD application.
+  warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
+------AutoCAD-------
+Return code: 0
+STDOUT:
+m_kernelList still has 2 entries.
+
+STDERR:
+D:\a\Phoenix\Phoenix\dist\wxpython-src\sip\cpp\sip_corecmodule.cpp(9543): 'CreateActCtx' failed with error 0x00000716 (The specified resource name cannot be found in the image file.).
+
