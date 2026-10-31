@@ -3754,13 +3754,13 @@ static bool checkTriangleIntersection(
     }
 
     // 2. Air-tight Segment/Ray Parametric Boundary Check
-    if (linearEnt.isKindOf(AcGe::kLineSeg3d)) {
+    if (linearEnt.type() == AcGe::kLineSeg3d) {
         double param = linearEnt.paramOf(outPt);
         if (param < (0.0 - paramTol) || param >(1.0 + paramTol)) {
             return false;
         }
     }
-    else if (linearEnt.isKindOf(AcGe::kRay3d)) {
+    else if (linearEnt.type() == AcGe::kRay3d) {
         double param = linearEnt.paramOf(outPt);
         if (param < -paramTol) {
             return false;
@@ -3795,15 +3795,14 @@ static Acad::ErrorStatus faceIntersectWith(
     const AcGeLinearEnt3d& linearEnt,
     AcGePoint3dArray& intersectionPoints)
 {
-    if (pFace == nullptr) return Acad::eNullPtr;
+    if (pFace == nullptr)
+        return Acad::eNullPtr;
 
-    AcGePoint3d p0, p1, p2, p3;
-    pFace->getVertexAt(0, p0);
-    pFace->getVertexAt(1, p1);
-    pFace->getVertexAt(2, p2);
-    pFace->getVertexAt(3, p3);
-
-    AcGePoint3d intPt;
+    AcGePoint3d p0, p1, p2, p3, intPt;
+    PyThrowBadEs(pFace->getVertexAt(0, p0));
+    PyThrowBadEs(pFace->getVertexAt(1, p1));
+    PyThrowBadEs(pFace->getVertexAt(2, p2));
+    PyThrowBadEs(pFace->getVertexAt(3, p3));
 
     // Test Triangle 1 (Vertices 0, 1, 2)
     if (checkTriangleIntersection(p0, p1, p2, linearEnt, intPt)) {
@@ -3813,7 +3812,6 @@ static Acad::ErrorStatus faceIntersectWith(
     // Test Triangle 2 (Vertices 0, 2, 3) - Skip if a 3-sided face or degenerate quad
     if (p3 != p2 && p3 != p0) {
         if (checkTriangleIntersection(p0, p2, p3, linearEnt, intPt)) {
-            // Edge tolerance check: Uses global default AcGeTol automatically
             if (intersectionPoints.isEmpty() || !intersectionPoints.last().isEqualTo(intPt)) {
                 intersectionPoints.append(intPt);
             }
@@ -3823,7 +3821,7 @@ static Acad::ErrorStatus faceIntersectWith(
     return Acad::eOk;
 }
 
-boost::python::list PyDbFace::intersectWith(const PyGeLinearEnt3d& linearEnt)
+boost::python::list PyDbFace::intersectWith(const PyGeLinearEnt3d& linearEnt) const
 {
     AcGePoint3dArray intersectionPoints;
     PyThrowBadEs(faceIntersectWith(impObj(), *linearEnt.impObj(), intersectionPoints));

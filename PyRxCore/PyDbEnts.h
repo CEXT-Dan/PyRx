@@ -710,7 +710,7 @@ public:
     Adesk::Boolean      isEdgeVisibleAt(Adesk::UInt16) const;
     void                makeEdgeVisibleAt(Adesk::UInt16) const;
     void                makeEdgeInvisibleAt(Adesk::UInt16) const;
-    boost::python::list intersectWith(const PyGeLinearEnt3d& linearEnt);
+    boost::python::list intersectWith(const PyGeLinearEnt3d& linearEnt) const;
 public:
     static std::string  className();
     static PyRxClass    desc();
