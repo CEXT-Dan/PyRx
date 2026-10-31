@@ -111,4 +111,6 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
 
 ## Helper files in this folder
 
+- `PROMPT_create_class_tests.md` — reusable prompt template: "Create tests for class XXXX",
+  with coverage checklist, hard rules, run/verify steps, and definition of done.
 - `parse_test_output.py` — summarize the newest test log (failures + summary).
