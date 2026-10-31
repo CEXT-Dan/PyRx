@@ -15216,7 +15216,6 @@ class Face(PyDb.Entity):
         e1vis: bool,
         e2vis: bool,
         e3vis: bool,
-        e4vis: bool,
         /,
     ) -> None:
         """
@@ -15233,7 +15232,6 @@ class Face(PyDb.Entity):
         e1vis: bool,
         e2vis: bool,
         e3vis: bool,
-        e4vis: bool,
         /,
     ) -> None:
         """
