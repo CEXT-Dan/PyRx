@@ -15283,6 +15283,7 @@ class Face(PyDb.Entity):
         then Acad::eInvalidIndex is returned. The vertex positions are used for DXF group codes 10
         through 13.
         """
+    def intersectWith(self, linearEnt: PyGe.LinearEnt3d, /) -> list[PyGe.Point3d]: ...
     def isEdgeVisibleAt(self, vIndex: int, /) -> bool:
         """
         This function uses the visibility argument to return the visibility value for the edge that

@@ -11,6 +11,7 @@ class PyGeLineSeg2d;
 class PyGeLineSeg3d;
 class PyGeCircArc2d;
 class PyGeCircArc3d;
+class PyGeLinearEnt3d;
 class PyDbMText;
 class PyDbHardPointerId;
 class PyGeCompositeCurve3d;
@@ -709,6 +710,7 @@ public:
     Adesk::Boolean      isEdgeVisibleAt(Adesk::UInt16) const;
     void                makeEdgeVisibleAt(Adesk::UInt16) const;
     void                makeEdgeInvisibleAt(Adesk::UInt16) const;
+    boost::python::list intersectWith(const PyGeLinearEnt3d& linearEnt);
 public:
     static std::string  className();
     static PyRxClass    desc();
