@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge
+
+from pyrx import Ap, Db, Ed
 
 
 @Ap.Command()
@@ -26,5 +27,5 @@ def doit():
         stat = Db.Core.convertFieldsToText(ss.toList(), ["AcExpr"], opt)
         print(stat)
 
-    except Exception as e:
+    except Exception:
         traceback.print_exc()

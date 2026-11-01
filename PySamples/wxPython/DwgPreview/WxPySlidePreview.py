@@ -1,7 +1,7 @@
 import wx
 from wx import xrc
 
-from pyrx import Ap, Db, Ed, Gs
+from pyrx import Ap, Ed, Gs
 
 print("added command = wxsld")
 

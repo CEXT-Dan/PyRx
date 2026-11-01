@@ -351,8 +351,7 @@ def setMargins2():
 @Ap.Command()
 def hittest():
     try:
-        db = Db.curDb()
-        osmode = Ed.AutoSysVar("OSMODE", 0)
+        __osmode = Ed.AutoSysVar("OSMODE", 0)
         ps, pnt1 = Ed.Editor.getPoint("\nPick item on table: ")
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("oof {}:".format(ps))
@@ -380,5 +379,5 @@ def hittest():
             cell_val = table.textString(row, col, idx)
             print(cell_val)
 
-    except Exception as e:
+    except Exception:
         traceback.print_exc()

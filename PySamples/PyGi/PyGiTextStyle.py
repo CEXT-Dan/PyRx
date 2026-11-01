@@ -1,6 +1,6 @@
 import traceback
-import math
-from pyrx import Ap, Db, Ge, Ed, Gi
+
+from pyrx import Ap, Db, Ed, Ge, Gi
 
 
 def next_utf16_code_point(text: str, first: int) -> int:
@@ -56,7 +56,6 @@ def doit():
 
         target_search = ["Architect", "casework configuration"]
 
-        db = Db.curDb()
         ps, ss = Ed.Editor.select([(0, "MTEXT")])
         if ps != Ed.PromptStatus.eOk:
             raise RuntimeError("oof {}:".format(ps))
@@ -117,5 +116,5 @@ def doit():
                         first += 1
                     character_index += 1
 
-    except Exception as e:
+    except Exception:
         traceback.print_exc()

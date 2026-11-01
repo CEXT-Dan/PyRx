@@ -1,7 +1,10 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge
+
 import win32clipboard
 import win32con
+
+from pyrx import Ap
+
 
 def set_clipboard_text(text):
     win32clipboard.OpenClipboard(0)
@@ -28,7 +31,7 @@ def doit1():
         set_clipboard_text("Hello from PyRx and AutoCAD!")
         # Writes directly to the AutoCAD Command Line history
         print("\n--> Text successfully copied to clipboard.\n")
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
 
 
@@ -37,5 +40,5 @@ def doit2():
     try:
         text = get_clipboard_text()
         print(f"\n--> Clipboard content: {text}\n")
-    except Exception as e:
+    except Exception:
         traceback.print_exc()
