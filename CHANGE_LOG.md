@@ -1,3 +1,19 @@
+## v3.1.17
+
+* add Db.FieldEngine.getEvaluatorIds (acad only)
+* fix Ed.Core.osnap, not has a return (PromptStatus, Ge.Point3d)
+* add Db.Core.modelToPixel
+* add Db.Core.pixelToModel
+* improve Ge.BoundBlock3d, added new ctor, it was wrongly disabled in bricscad
+* add Db.Face::intersectWith(Ge.LinearEnt3d linearEnt)
+* add Ge.Point3d Db.Face.centroid()
+* fix Db.Transparency ctor, alpha (int) was ignored
+
+## v3.1.16
+
+* add Db.Core.convertFieldsToText
+* add Gs.Core.slideToWxImage
+
 ## v3.1.15
 
 * wxPython 4.3.2
