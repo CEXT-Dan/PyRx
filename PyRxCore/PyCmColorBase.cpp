@@ -243,8 +243,8 @@ void makePyCmTransparencyWrapper()
 {
     PyDocString DS("Transparency");
     class_<AcCmTransparency>("Transparency")
+        .def(init<double>(DS.ARGS({ "alpha : int|float" }))) //ORDER is important 
         .def(init<Adesk::UInt8>())
-        .def(init<double>(DS.ARGS({ "alpha : int|float" })))
         .def("setAlpha", &AcCmTransparency::setAlpha, DS.ARGS({ "alpha : int" }))
         .def("setAlphaPercent", &AcCmTransparency::setAlphaPercent, DS.ARGS({ "alphaPercent : float" }))
         .def("alpha", &AcCmTransparency::alpha, DS.ARGS())
