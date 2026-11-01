@@ -68,34 +68,6 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
   Do NOT assume `setNormal`/`setThickness` exist on Face — see the Face section below.
   (For other entities, always verify the method is bound in `PyRxCore/*.cpp` before testing it.)
 - `RxClass` from `desc()` has `.name()`; `obj.isA() == Db.Face.desc()` comparison works.
-
-## Face-specific knowledge (AcDbFace)
-
-- `Face(p0,p1,p2)` → triangle: vertex 3 == vertex 2 (DXF group 70 bit 16 "triangular").
-- `Face(p0,p1,p2,p3)` → quad, split into triangles (v0,v1,v2) and (v0,v2,v3) — diagonal is v0→v2.
-  Non-planar quads are allowed (warped faces); `intersectWith` interpolates per-triangle.
-- Visibility ctors: **the C++ binding takes 4 edge-visibility booleans (e0..e3) only**,
-  even though `pyrx/PyDb.pyi` shows 5 (`e0vis`..`e4vis`). Verified against
-  `PyRxCore/PyDbEnts.cpp` (makePyDbFaceWrapper) — pass 4 bools, not 5.
-  `isEdgeVisibleAt(i)` is only valid for i in 0..3 (else eInvalidIndex).
-- Face has **NO** `setNormal`/`normal`/`setThickness`/`thickness` binding (those are bound per-entity
-  for Point/Line/Arc/Circle/etc.). Shared entity base (PyDbEntity.cpp) provides:
-  `color`, `setColor`, `colorIndex`, `setColorIndex`, `layerId`, `setLayer`, `castShadows`,
-  `setCastShadows`, `setDatabaseDefaults`; PyDbObject.cpp adds `objectId`, `close`, `erase`,
-  `isErased`, `isReadEnabled`, `isWriteEnabled`, `upgradeOpen`, `downgradeOpen`, `setXData`.
-- `intersectWith(linearEnt: PyGe.LinearEnt3d)` → `list[PyGe.Point3d]`; accepts `LineSeg3d`, `Ray3d`, `Line3d`.
-- Mutators (`setVertexAt`, `makeEdgeVisibleAt/InvisibleAt`) require write access when the object
-  is database-resident (else error eWasNotOpenForWrite); free (non-resident) faces can be mutated directly.
-
-## Gotchas verified while testing Face (2026-10-31, AutoCAD 2027 / ARX26)
-
-- `Face(id)` default ctor opens ForRead; `Face(id, kForWrite)` opens ForWrite.
-- `Db.curDb().addToModelspace(face)` leaves `face` open for write — call `face.close()` before
-  re-opening the id with another wrapper.
-- Error statuses DO raise `Db.ErrorStatusException` (subclass of RuntimeError) for bad values:
-  `Face.getVertexAt(4)`, `setVertexAt(4, p)`, `isEdgeVisibleAt(4)` all raise.
-  But **negative indices** raise `OverflowError` ("can't convert negative value to unsigned int")
-  because C++ params are unsigned — catch `(OverflowError, ValueError)` for those.
 - `.pyi` files can be WRONG vs the actual binding (5 bools vs 4). When a test fails with a
   constructor/arg error, check `PyRxCore/*.cpp` `makePy...Wrapper()` for the real `init<>` overloads.
 
