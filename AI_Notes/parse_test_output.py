@@ -1,3 +1,4 @@
+# ruff: noqa
 """Summarize the newest PyRx test log in tests/output.
 
 Usage:

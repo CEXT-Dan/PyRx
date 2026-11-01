@@ -1,4 +1,5 @@
 import traceback
+
 from pyrx import Ap, Db, Ed, Ge
 
 _index = 1
@@ -50,6 +51,6 @@ def doit():
         if _index > 255:
             _index = 1
             
-    except Exception as e:
+    except Exception:
         print("Error encountered:")
         traceback.print_exc()

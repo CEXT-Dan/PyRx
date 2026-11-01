@@ -1,4 +1,3 @@
-from pyrx import Ap
 
 # loads the first found!
 # put this next to the main module or somewhere in your CAD's search path
