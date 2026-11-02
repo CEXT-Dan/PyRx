@@ -2,7 +2,33 @@
 
 Notes for the AI assistant (and humans) working on the PyRx test suite.
 
-## How tests are run
+## Quick start: use the helper (RECOMMENDED)
+
+`AI_Notes/run_pyrx_tests.py` is a **blocking** wrapper that launches `run_tests.bat`, waits for the
+CAD host(s) to exit (no polling / log-size guessing), waits for the log to flush, evaluates **every
+host log**, and prints a PASS/FAIL verdict with a proper exit code. Prefer this over the raw
+`run_tests.bat` + `tasklist` dance.
+
+```bash
+# scoped (fast iteration) — AutoCAD only:
+python AI_Notes/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow -k <Class>
+
+# full suite, all hosts:
+python AI_Notes/run_pyrx_tests.py
+
+# examples:
+python AI_Notes/run_pyrx_tests.py --dry-run                                  # print cmd, don't run
+python AI_Notes/run_pyrx_tests.py --hosts acad --no-slow -k Face --tail 40    # show last 40 log lines
+python AI_Notes/run_pyrx_tests.py -k Face --pytest-args "--tb=short -q"       # extra pytest args
+```
+
+- Flags map to the runner: `--hosts`, `--no-slow`, `--pyinit`, `--known-failures`, `--debug`.
+- `-k <pat>` → pytest `-k`; `--pytest-args "..."` (one string) appends extra pytest args.
+- Exit codes: `0` = all hosts passed; `1` = a host failed; `3` = timeout; `4` = no log (host crash).
+- **Omitting `--hosts` runs on EVERY installed host** (BricsCAD, AutoCAD, ZwCAD, GstarCAD) — slower,
+  but the helper reports each host log and fails if any fails. Use `--hosts acad` for a fast loop.
+
+## How tests are run (manual / reference)
 
 - Tests run **inside a CAD host** (AutoCAD by default). There is no plain `pytest` here.
 - `local_test_runner.bat` → `./run_tests --pyinit 0x1 --no-slow --hosts acad`
@@ -105,6 +131,8 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
 
 ## Helper files in this folder
 
+- `run_pyrx_tests.py` — **recommended** blocking runner: launches the CAD host, blocks until it
+  exits, evaluates every host log, prints a PASS/FAIL verdict + exit code. See "Quick start" above.
 - `PROMPT_create_class_tests.md` — reusable prompt template: "Create tests for class XXXX",
   with coverage checklist, hard rules, run/verify steps, and definition of done.
 - `parse_test_output.py` — summarize the newest test log (failures + summary).
