@@ -82,22 +82,7 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
   Do NOT assume `setNormal`/`setThickness` exist on Face — see the Face section below.
   (For other entities, always verify the method is bound in `PyRxCore/*.cpp` before testing it.)
 - `RxClass` from `desc()` has `.name()`; `obj.isA() == Db.Face.desc()` comparison works.
-- `.pyi` files can be WRONG vs the actual binding (5 bools vs 4). When a test fails with a
-  constructor/arg error, check `PyRxCore/*.cpp` `makePy...Wrapper()` for the real `init<>` overloads.
-- **`className()` for user-defined `AcDbEntity` subclasses** returns the CUSTOM class name, not an
-  `AcDb...` name. E.g. `Db.OverrulableEntity.className() == "PyRxOverrulableEntity"` (and so does
-  `desc().name()`) — built-in entities like `Face` return `"AcDbFace"`. Don't assume the `AcDb` prefix.
-- `OverrulableEntity` (see `PyRxCore/PyRxOverrulableEntity.{h,cpp}` + `PyDbEnts.cpp`):
-  - All accessors/mutators are bound (position/direction/normal, guid/name/description,
-    typing/mask/index, flags/ints/doubles/strings/points, version). Setters are `const` (mutate via
-    the ARX object) and work on a **bare** constructed entity — no `ForWrite` needed to set before adding.
-  - Default values on a fresh instance: all collection getters (`flags/ints/doubles/strings/points`)
-    return `[]`; `typing()/mask()/index()` are `0`; `name()/guid()/description()` are `""`;
-    **`version()` is `0`** (not a positive number).
-  - `transformBy(matrix)` is inherited from `AcDbEntity` (bound in `PyDbEntity.cpp`) and runs without
-    error. The test only asserts it stays a valid `Point3d` (we did NOT verify it moves `position()`,
-    so don't assert an exact translation without checking the ARX behavior first).
-  - Sample usage: `PySamples/PyDb/testPyOverrulableEntity.py` (`pycreateoverrule`).
+- `.pyi` files can be WRONG vs the actual binding, check the cpp in `PyRxCore/*.cpp`
 
 ## Status (2026-11-02)
 
