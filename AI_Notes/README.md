@@ -6,7 +6,20 @@ Notes for the AI assistant (and humans) working on the PyRx test suite.
 
 - Tests run **inside a CAD host** (AutoCAD by default). There is no plain `pytest` here.
 - `local_test_runner.bat` → `./run_tests --pyinit 0x1 --no-slow --hosts acad`
-  - `run_tests.bat` → `python -m tests.runner` (parses args, launches `acad.exe /b test.scr`)
+  - `run_tests.bat` → `dotenv -f tests\.env run python -m tests.runner %*` (parses args, launches `acad.exe /b test.scr`)
+  - **`./run_tests` does NOT exist on this machine** (missing wrapper) — run **`run_tests.bat`** instead.
+  - **Launch recipe (verified from Git Bash, from the repo root):**
+    ```bash
+    cd /m/Dev/Projects/PyRxGit
+    rm -f tests/output/test_*.log
+    ./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k <Class> > /tmp/run.log 2>&1 &
+    ```
+    - `./` prefix is REQUIRED: bare `run_tests.bat` → `command not found` (bash won't add `.bat` to PATH).
+    - Backgrounding is done by the bash `&` (NOT `nohup`; `nohup` can't resolve `.bat` and `nohup`/`&`
+      do nothing inside `cmd //c`). If `./run_tests.bat` ever fails, the fallback is
+      `cmd //c "run_tests.bat …" > /tmp/run.log 2>&1 &` (still backgrounded by the bash `&`).
+    - Poll for completion: `tasklist 2>/dev/null | grep -i acad.exe` — loop until it prints nothing
+      (≈20–30 s for a scoped run, longer for a full run). The pytest log lands in `tests/output/`.
   - AutoCAD loads `tests/host_runner.py`, which runs `pytest.main(["-vv", tests/])`
     **twice**: once in "command context" (`-m "not slow and not appctx"`) and once in
     "application context" (`-m "appctx and not slow"`).
@@ -26,8 +39,9 @@ Notes for the AI assistant (and humans) working on the PyRx test suite.
 You can inject extra pytest args after a `--pytest` marker:
 
 ```
-./run_tests --pyinit 0x1 --no-slow --hosts acad --pytest -k Face
+./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k Face
 ```
+(background it with `> /tmp/run.log 2>&1 &` and poll `tasklist | grep -i acad.exe`, see above)
 
 - `-k Face` only selects `tests/test_core/test_PyDb/test_Face.py` (TestFace class).
 - Everything before `--pytest` goes to the runner; everything after goes to pytest.
@@ -70,14 +84,37 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
 - `RxClass` from `desc()` has `.name()`; `obj.isA() == Db.Face.desc()` comparison works.
 - `.pyi` files can be WRONG vs the actual binding (5 bools vs 4). When a test fails with a
   constructor/arg error, check `PyRxCore/*.cpp` `makePy...Wrapper()` for the real `init<>` overloads.
+- **`className()` for user-defined `AcDbEntity` subclasses** returns the CUSTOM class name, not an
+  `AcDb...` name. E.g. `Db.OverrulableEntity.className() == "PyRxOverrulableEntity"` (and so does
+  `desc().name()`) — built-in entities like `Face` return `"AcDbFace"`. Don't assume the `AcDb` prefix.
+- `OverrulableEntity` (see `PyRxCore/PyRxOverrulableEntity.{h,cpp}` + `PyDbEnts.cpp`):
+  - All accessors/mutators are bound (position/direction/normal, guid/name/description,
+    typing/mask/index, flags/ints/doubles/strings/points, version). Setters are `const` (mutate via
+    the ARX object) and work on a **bare** constructed entity — no `ForWrite` needed to set before adding.
+  - Default values on a fresh instance: all collection getters (`flags/ints/doubles/strings/points`)
+    return `[]`; `typing()/mask()/index()` are `0`; `name()/guid()/description()` are `""`;
+    **`version()` is `0`** (not a positive number).
+  - `transformBy(matrix)` is inherited from `AcDbEntity` (bound in `PyDbEntity.cpp`) and runs without
+    error. The test only asserts it stays a valid `Point3d` (we did NOT verify it moves `position()`,
+    so don't assert an exact translation without checking the ARX behavior first).
+  - Sample usage: `PySamples/PyDb/testPyOverrulableEntity.py` (`pycreateoverrule`).
+
+## Status (2026-11-02)
+
+- `tests/test_core/test_PyDb/test_OverrulableEntity.py` — **done, 29/29 tests green** in scoped run
+  (`-k OverrulableEntity`) and in the full run. Full `run_tests.bat --pyinit 0x1 --no-slow --hosts acad`
+  summary: **1407 passed, 3 skipped, 11 deselected, 4 xfailed, 0 failed**. Covers class introspection,
+  default ctor, `cloneFrom`/`cast`, default values, every getter/setter round-trip, DB persistence
+  (add → reopen ForRead/ForWrite → verify → erase), `erase()`, and `transformBy`. No `.pyi`/binding
+  discrepancies found (stub matched the binding exactly).
 
 ## Status (2026-10-31)
 
 - `tests/test_core/test_PyDb/test_Face.py` — **done, 40/40 tests green** in full run
   (`local_test_runner.bat`): suite summary `1377 passed, 3 skipped, 11 deselected, 4 xfailed, 0 failed`.
 - Fast-iteration loop that worked well:
-  1. `./run_tests --pyinit 0x1 --no-slow --hosts acad --pytest -k <Class>` (background + `nohup`)
-  2. poll `tasklist | grep -i acad` until it exits (~30 s per scoped run)
+  1. `./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k <Class> > /tmp/run.log 2>&1 &`
+  2. poll `tasklist | grep -i acad.exe` until it exits (~20–30 s per scoped run)
   3. `python AI_Notes/parse_test_output.py` for FAILURES + summary
   4. for binding doubts: check `PyRxCore/PyDb*.cpp` `makePy...Wrapper()` overloads (the `.pyi` can be wrong)
 

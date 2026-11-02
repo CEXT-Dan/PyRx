@@ -44,8 +44,12 @@ Create a complete unit test file for the class **`<ClassName>`** (namespace `PyD
 - Match repo assertion style (`assert x == True`), and keep docstrings short.
 
 **Run and verify**
-1. Scoped fast run (background): `./run_tests --pyinit 0x1 --no-slow --hosts acad --pytest -k <ClassName>`
-   - Poll `tasklist | grep -i acad` until it exits (~30 s per run); log lands in `tests/output/test_*.log`.
+1. Scoped fast run (background, from the repo root in Git Bash):
+   `./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k <ClassName> > /tmp/run.log 2>&1 &`
+   (NOTE: `./run_tests` does not exist on this machine — use `./run_tests.bat`; the `./` prefix is
+   required and backgrounding is the bash `&`, not `nohup`.)
+   - Poll `tasklist 2>/dev/null | grep -i acad.exe` until it prints nothing (~20–30 s per run);
+     log lands in `tests/output/test_*.log` (host id here is `ARX26`, not `ACAD`).
    - Inspect: `python AI_Notes/parse_test_output.py <ClassName>` (FAILURES section + summary).
    - If a test failed because a signature differs from the `.pyi`: fix the TEST to match the real
      binding (check `PyRxCore/*.cpp`), and note the discrepancy in `AI_Notes/README.md`.
