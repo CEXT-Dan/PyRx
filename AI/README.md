@@ -4,10 +4,10 @@ Notes for the AI assistant (and humans) working on the PyRx test suite.
 
 ## Paths
 
-All stub files are in pyrx\
-C++ headers and implmentation are in PyRxCore\
-Python samples are in \PySamples\
-most used test files are in tests\test_core\
+All stub files are in `pyrx\`
+C++ headers and implmentation are in `PyRxCore\`
+Python samples are in `PySamples\`
+most used test files are in `tests\test_core\`
 
 
 ## Quick start: use the helper (RECOMMENDED)
