@@ -2,24 +2,32 @@
 
 Notes for the AI assistant (and humans) working on the PyRx test suite.
 
+## Paths
+
+All stub files are in pyrx\
+C++ headers and implmentation are in PyRxCore\
+Python samples are in \PySamples\
+most used test files are in tests\test_core\
+
+
 ## Quick start: use the helper (RECOMMENDED)
 
-`AI_Notes/run_pyrx_tests.py` is a **blocking** wrapper that launches `run_tests.bat`, waits for the
+`AI/run_pyrx_tests.py` is a **blocking** wrapper that launches `run_tests.bat`, waits for the
 CAD host(s) to exit (no polling / log-size guessing), waits for the log to flush, evaluates **every
 host log**, and prints a PASS/FAIL verdict with a proper exit code. Prefer this over the raw
 `run_tests.bat` + `tasklist` dance.
 
 ```bash
 # scoped (fast iteration) — AutoCAD only:
-python AI_Notes/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow -k <Class>
+python AI/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow -k <Class>
 
 # full suite, all hosts:
-python AI_Notes/run_pyrx_tests.py
+python AI/run_pyrx_tests.py
 
 # examples:
-python AI_Notes/run_pyrx_tests.py --dry-run                                  # print cmd, don't run
-python AI_Notes/run_pyrx_tests.py --hosts acad --no-slow -k Face --tail 40    # show last 40 log lines
-python AI_Notes/run_pyrx_tests.py -k Face --pytest-args "--tb=short -q"       # extra pytest args
+python AI/run_pyrx_tests.py --dry-run                                  # print cmd, don't run
+python AI/run_pyrx_tests.py --hosts acad --no-slow -k Face --tail 40    # show last 40 log lines
+python AI/run_pyrx_tests.py -k Face --pytest-args "--tb=short -q"       # extra pytest args
 ```
 
 - Flags map to the runner: `--hosts`, `--no-slow`, `--pyinit`, `--known-failures`, `--debug`.
@@ -76,7 +84,7 @@ You can inject extra pytest args after a `--pytest` marker:
 
 ## Inspecting results
 
-Use the helper: `python AI_Notes/parse_test_output.py [substring]`
+Use the helper: `python AI/parse_test_output.py [substring]`
 - no arg → latest log in `tests/output/`: prints FAILURES section + short summary
 - with arg (e.g. `Face`) → also greps the log for that substring
 - or just read the last ~40 lines of the newest `tests/output/test_ACAD_*.log` (short summary)
@@ -126,7 +134,7 @@ Use the helper: `python AI_Notes/parse_test_output.py [substring]`
 - Fast-iteration loop that worked well:
   1. `./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k <Class> > /tmp/run.log 2>&1 &`
   2. poll `tasklist | grep -i acad.exe` until it exits (~20–30 s per scoped run)
-  3. `python AI_Notes/parse_test_output.py` for FAILURES + summary
+  3. `python AI/parse_test_output.py` for FAILURES + summary
   4. for binding doubts: check `PyRxCore/PyDb*.cpp` `makePy...Wrapper()` overloads (the `.pyi` can be wrong)
 
 ## Helper files in this folder
