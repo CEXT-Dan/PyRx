@@ -9,12 +9,12 @@ This removes the flakiest part of the manual workflow (polling ``acad.exe`` /
 guessing log size): the runner's own process exit is the reliable "done" signal.
 
 Usage (run from anywhere; paths are resolved relative to this file):
-    python AI_Notes/run_pyrx_tests.py -k OverrulableEntity        # scoped run
-    python AI_Notes/run_pyrx_tests.py                              # full suite
-    python AI_Notes/run_pyrx_tests.py --hosts bcad --pyinit 0x101 -k Face
-    python AI_Notes/run_pyrx_tests.py --known-failures --no-slow
-    python AI_Notes/run_pyrx_tests.py -k Face --pytest-args "--tb=short -q"   # extra pytest args
-    python AI_Notes/run_pyrx_tests.py -k Face --tail 40            # print last 40 log lines
+    python AI/run_pyrx_tests.py -k OverrulableEntity        # scoped run
+    python AI/run_pyrx_tests.py                              # full suite
+    python AI/run_pyrx_tests.py --hosts bcad --pyinit 0x101 -k Face
+    python AI/run_pyrx_tests.py --known-failures --no-slow
+    python AI/run_pyrx_tests.py -k Face --pytest-args "--tb=short -q"   # extra pytest args
+    python AI/run_pyrx_tests.py -k Face --tail 40            # print last 40 log lines
 
 Exit code: 0 = all selected tests passed; non-zero = failures, errors, host crash,
 or timeout.

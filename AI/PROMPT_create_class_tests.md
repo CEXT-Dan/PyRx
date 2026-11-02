@@ -1,7 +1,7 @@
 # Generic prompt: create tests for a class
 
 Copy the prompt below, replace `<ClassName>`, and hand it to the AI assistant.
-It assumes this repo (PyRx) and the conventions in `AI_Notes/README.md`.
+It assumes this repo (PyRx) and the conventions in `AI/README.md`.
 
 ---
 
@@ -18,7 +18,7 @@ Create a complete unit test file for the class **`<ClassName>`** (namespace `PyD
   and check the actual `init<>` overloads and which methods are bound (and what they return/throw).
 - Read 1–2 sibling test files in the same folder first (e.g. `test_Line.py`, `test_Circle.py`,
   or `test_Face.py` as the golden example) and match their style exactly.
-- Workflow notes: `AI_Notes/README.md` (how to run tests, done-detection, conventions, gotchas).
+- Workflow notes: `AI/README.md` (how to run tests, done-detection, conventions, gotchas).
 
 **Test coverage checklist** (adapt per class; skip what doesn't apply)
 1. Class introspection: `className()`, `desc().name()`, `isA()` / `isKindOf(...)`, `cast()`, `cloneFrom()`.
@@ -43,24 +43,24 @@ Create a complete unit test file for the class **`<ClassName>`** (namespace `PyD
   reopening the id with another wrapper.
 - Match repo assertion style (`assert x == True`), and keep docstrings short.
 
-**Run and verify** (use the blocking helper — see `AI_Notes/README.md` "Quick start")
+**Run and verify** (use the blocking helper — see `AI/README.md` "Quick start")
 1. Scoped fast run (AutoCAD only, blocks until done, prints a PASS/FAIL verdict + exit code):
-   `python AI_Notes/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow -k <ClassName>`
+   `python AI/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow -k <ClassName>`
    - A non-zero exit (or `OVERALL: FAIL`) means look at the printed FAILURES section.
    - If a test failed because a signature differs from the `.pyi`: fix the TEST to match the real
-     binding (check `PyRxCore/*.cpp`), and note the discrepancy in `AI_Notes/README.md`.
+     binding (check `PyRxCore/*.cpp`), and note the discrepancy in `AI/README.md`.
    - (Fallback if you must run the runner directly: `./run_tests.bat … --pytest -k <ClassName>`
      from the repo root in Git Bash — `./` prefix required, background with bash `&`, not `nohup`.)
 2. Iterate until all new tests pass in the scoped run.
-3. Final full run: `python AI_Notes/run_pyrx_tests.py` (all hosts) — confirm `OVERALL: PASS`
+3. Final full run: `python AI/run_pyrx_tests.py` (all hosts) — confirm `OVERALL: PASS`
    (0 failed) so new tests don't break others.
-4. Update `AI_Notes/README.md`: add class-specific findings/gotchas and a Status line
+4. Update `AI/README.md`: add class-specific findings/gotchas and a Status line
    (date, test count, suite summary).
 
 **Definition of done**
 - [ ] `tests/test_core/test_Py<Namespace>/test_<ClassName>.py` exists, all tests pass
-- [ ] Full run green (`python AI_Notes/run_pyrx_tests.py` → `OVERALL: PASS`)
-- [ ] `AI_Notes/README.md` updated with findings + status
+- [ ] Full run green (`python AI/run_pyrx_tests.py` → `OVERALL: PASS`)
+- [ ] `AI/README.md` updated with findings + status
 - [ ] Any `.pyi`/binding discrepancies documented (and reported to the user so they can fix the stubs)
 
 ---

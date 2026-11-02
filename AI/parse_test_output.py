@@ -2,9 +2,9 @@
 """Summarize the newest PyRx test log in tests/output.
 
 Usage:
-    python AI_Notes/parse_test_output.py            # FAILURES section + short summary of latest log
-    python AI_Notes/parse_test_output.py Face       # ... plus every line mentioning "Face"
-    python AI_Notes/parse_test_output.py path.log   # explicit log path
+    python AI/parse_test_output.py            # FAILURES section + short summary of latest log
+    python AI/parse_test_output.py Face       # ... plus every line mentioning "Face"
+    python AI/parse_test_output.py path.log   # explicit log path
 """
 
 from __future__ import annotations
