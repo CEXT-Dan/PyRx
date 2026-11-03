@@ -36,17 +36,15 @@ public:
 #ifdef _BRXTARGET
         return RGB(45, 49, 53);
 #elif _ARXTARGET
-        auto mgr = CAdUiThemeManager{};
-        if (auto theme = mgr.GetTheme(PALETTE_SET_THEME); theme != nullptr)
+        CAdUiThemeManager mgr;
+        CAdUiTheme* pTheme = mgr.GetTheme(PALETTE_SET_THEME);
+        if (pTheme != nullptr)
         {
-            COLORREF clr = theme->GetColor(kPaletteBackground);
-            mgr.ReleaseTheme(theme);
+            COLORREF clr = pTheme->GetColor(kPaletteBackground);
+            mgr.ReleaseTheme(pTheme);
             return clr;
         }
-        else
-        {
-            return RGB(49, 56, 66);
-        }
+        return RGB(49, 56, 66);
 #elif _GRXTARGET
         return RGB(58, 69, 86);
 #elif _ZRXTARGET
