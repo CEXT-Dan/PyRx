@@ -37,8 +37,7 @@ public:
         return RGB(45, 49, 53);
 #elif _ARXTARGET
         CAdUiThemeManager mgr;
-        CAdUiTheme* pTheme = mgr.GetTheme(PALETTE_SET_THEME);
-        if (pTheme != nullptr)
+        if (CAdUiTheme* pTheme = mgr.GetTheme(PALETTE_SET_THEME); pTheme != nullptr)
         {
             COLORREF clr = pTheme->GetColor(kPaletteBackground);
             mgr.ReleaseTheme(pTheme);
