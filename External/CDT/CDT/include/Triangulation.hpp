@@ -585,12 +585,6 @@ void Triangulation<T, TNearPointLocator>::insertEdgeIteration(
     if(iA == iB) // edge connects a vertex to itself
         return;
 
-    if(hasEdge(iA, iB))
-    {
-        fixEdge(edge, originalEdge);
-        return;
-    }
-
     const V2d<T>& a = vertices[iA];
     const V2d<T>& b = vertices[iB];
     const T distanceTolerance =
@@ -598,16 +592,28 @@ void Triangulation<T, TNearPointLocator>::insertEdgeIteration(
             ? T(0)
             : m_minDistToConstraintEdge * distance(a, b);
 
+    if(hasEdge(iA, iB))
+    {
+        const VertInd iV = opposedVertexOnEdge(edge, distanceTolerance);
+        if(iV != noVertex)
+        {
+            remaining.push_back(Edge(iV, iB));
+            remaining.push_back(Edge(iA, iV));
+            return;
+        }
+        fixEdge(edge, originalEdge);
+        return;
+    }
+
     TriInd iT;
     // Note: 'L' is left and 'R' is right of the inserted constraint edge
     VertInd iVL, iVR;
     tie(iT, iVL, iVR) = intersectedTriangle(iA, a, b, distanceTolerance);
-    // if one of the triangle vertices is on the edge, move edge start
+    // if one of the triangle vertices is on the edge, split edge at it
     if(iT == noNeighbor)
     {
-        const Edge edgePart(iA, iVL);
-        fixEdge(edgePart, originalEdge);
         remaining.push_back(Edge(iVL, iB));
+        remaining.push_back(Edge(iA, iVL));
         return;
     }
     Triangle t = triangles[iT];
@@ -789,8 +795,27 @@ void Triangulation<T, TNearPointLocator>::conformToEdgeIteration(
     if(iA == iB) // edge connects a vertex to itself
         return;
 
+    const V2d<T>& a = vertices[iA];
+    const V2d<T>& b = vertices[iB];
+    const T distanceTolerance =
+        m_minDistToConstraintEdge == T(0)
+            ? T(0)
+            : m_minDistToConstraintEdge * distance(a, b);
+
     if(hasEdge(iA, iB))
     {
+        const VertInd iV = opposedVertexOnEdge(edge, distanceTolerance);
+        if(iV != noVertex)
+        {
+#ifdef CDT_CXX11_IS_SUPPORTED
+            remaining.emplace_back(Edge(iV, iB), originals, overlaps);
+            remaining.emplace_back(Edge(iA, iV), originals, overlaps);
+#else
+            remaining.push_back(make_tuple(Edge(iV, iB), originals, overlaps));
+            remaining.push_back(make_tuple(Edge(iA, iV), originals, overlaps));
+#endif
+            return;
+        }
         fixEdge(edge);
         if(overlaps > 0)
             overlapCount[edge] = overlaps;
@@ -802,27 +827,18 @@ void Triangulation<T, TNearPointLocator>::conformToEdgeIteration(
         return;
     }
 
-    const V2d<T>& a = vertices[iA];
-    const V2d<T>& b = vertices[iB];
-    const T distanceTolerance =
-        m_minDistToConstraintEdge == T(0)
-            ? T(0)
-            : m_minDistToConstraintEdge * distance(a, b);
     TriInd iT;
     VertInd iVleft, iVright;
     tie(iT, iVleft, iVright) = intersectedTriangle(iA, a, b, distanceTolerance);
-    // if one of the triangle vertices is on the edge, move edge start
+    // if one of the triangle vertices is on the edge, split edge at it
     if(iT == noNeighbor)
     {
-        const Edge edgePart(iA, iVleft);
-        fixEdge(edgePart);
-        if(overlaps > 0)
-            overlapCount[edgePart] = overlaps;
-        detail::insert_unique(pieceToOriginals[edgePart], originals);
 #ifdef CDT_CXX11_IS_SUPPORTED
         remaining.emplace_back(Edge(iVleft, iB), originals, overlaps);
+        remaining.emplace_back(Edge(iA, iVleft), originals, overlaps);
 #else
         remaining.push_back(make_tuple(Edge(iVleft, iB), originals, overlaps));
+        remaining.push_back(make_tuple(Edge(iA, iVleft), originals, overlaps));
 #endif
         return;
     }
@@ -1665,9 +1681,7 @@ TriIndVec Triangulation<T, TNearPointLocator>::resolveEncroachedEdges(
                 const Edge triEdge(t.vertices[i], t.vertices[cw(i)]);
                 if(fixedEdges.find(triEdge) == fixedEdges.end())
                     continue;
-                if(isEdgeEncroached(triEdge) ||
-                   (circumcenterOrNull &&
-                    isEdgeEncroachedBy(triEdge, *circumcenterOrNull)))
+                if(isEdgeEncroached(triEdge))
                 {
                     encroachedEdges.push(triEdge);
                 }
@@ -2533,6 +2547,31 @@ bool Triangulation<T, TNearPointLocator>::hasEdge(
     return edgeTriangles(a, b).first != invalidIndexSizeType;
 }
 
+template <typename T, typename TNearPointLocator>
+VertInd Triangulation<T, TNearPointLocator>::opposedVertexOnEdge(
+    const Edge& edge,
+    const T tolerance) const
+{
+    if(fixedEdges.count(edge))
+        return noVertex;
+    const V2d<T>& a = vertices[edge.v1()];
+    const V2d<T>& b = vertices[edge.v2()];
+    const std::pair<TriInd, TriInd> tris = edgeTriangles(edge.v1(), edge.v2());
+    const VertInd opposed[] = {
+        opposedVertex(triangles[tris.first], tris.second),
+        opposedVertex(triangles[tris.second], tris.first)};
+    for(int i = 0; i < 2; ++i)
+    {
+        const V2d<T>& v = vertices[opposed[i]];
+        // near line ab and inside its diametral circle: both parts are
+        // shorter than ab, so splitting terminates
+        if(locatePointLine(v, a, b, tolerance) == PtLineLocation::OnLine &&
+           detail::isEncroachingOnEdge(v, a, b))
+            return opposed[i];
+    }
+    return noVertex;
+}
+
 /// Checks whether vertex v has a fixed edge, other than excludeEdge, incident
 /// to it at a small angle: recognizes a subsegment endpoint as a shared corner
 /// even after v's segments have already been split.
@@ -2635,7 +2674,8 @@ Unrefined Triangulation<T, TNearPointLocator>::refineTriangles(
         unrefined);
 
     // refine triangulation by inserting bad-quality triangles' circumcenters
-    TriIndQueue badTriangles;
+    // keep vertices to detect triangles modified after enqueueing
+    std::queue<std::pair<TriInd, VerticesArr3> > badTriangles;
     for(TriInd iT(0), n(triangles.size()); iT < n; ++iT)
     {
         const Triangle& t = triangles[iT];
@@ -2643,29 +2683,31 @@ Unrefined Triangulation<T, TNearPointLocator>::refineTriangles(
            !(toEraseOrNull && toEraseOrNull->count(iT)) &&
            isRefinementNeeded(t, refinementCriterion, refinementThreshold))
         {
-            badTriangles.push(iT);
+            badTriangles.push(std::make_pair(iT, t.vertices));
         }
     }
 
     while(!badTriangles.empty() && remainingVertexBudget > 0)
     {
-        const TriInd iT = badTriangles.front();
+        const TriInd iT = badTriangles.front().first;
+        const VerticesArr3 vv = badTriangles.front().second;
+        const Triangle& t = triangles[iT];
         badTriangles.pop();
         if(toEraseOrNull && toEraseOrNull->count(iT))
             continue;
-        if(!isRefinementNeeded(
-               triangles[iT], refinementCriterion, refinementThreshold) ||
+        if(vv != t.vertices)
+            continue; // skip triangle that got modified since put in queue
+        if(!isRefinementNeeded(t, refinementCriterion, refinementThreshold) ||
            (refinementCriterion == RefinementCriterion::SmallestAngle &&
-            isSmallestAngleFixed(triangles[iT])))
+            isSmallestAngleFixed(t)))
         {
             // fixed-edge sharp angle is impossible to refine
             continue;
         }
         // copy: resolveEncroachedEdges below can re-allocate 'triangles'
-        const VerticesArr3 badTVerts = triangles[iT].vertices;
-        const V2d<T>& v0 = vertices[badTVerts[0]];
-        const V2d<T>& v1 = vertices[badTVerts[1]];
-        const V2d<T>& v2 = vertices[badTVerts[2]];
+        const V2d<T>& v0 = vertices[vv[0]];
+        const V2d<T>& v1 = vertices[vv[1]];
+        const V2d<T>& v2 = vertices[vv[2]];
         const T shortestEdge = std::min(
             distance(v0, v1), std::min(distance(v1, v2), distance(v2, v0)));
         if(shortestEdge <= minEdgeLength)
@@ -2708,9 +2750,9 @@ Unrefined Triangulation<T, TNearPointLocator>::refineTriangles(
             typedef TriIndVec::const_iterator It;
             for(It it = badTris.begin(); it != badTris.end(); ++it)
             {
-                badTriangles.push(*it);
+                badTriangles.push(std::make_pair(*it, triangles[*it].vertices));
             }
-            badTriangles.push(iT);
+            badTriangles.push(std::make_pair(iT, triangles[iT].vertices));
             continue;
         }
         // splitting was given up on: inserting would encroach anyway
@@ -2769,7 +2811,7 @@ Unrefined Triangulation<T, TNearPointLocator>::refineTriangles(
                !touchesSuperTriangle(t) &&
                isRefinementNeeded(t, refinementCriterion, refinementThreshold))
             {
-                badTriangles.push(currTri);
+                badTriangles.push(std::make_pair(currTri, t.vertices));
             }
             currTri = t.next(iVert).first;
         } while(currTri != start);
