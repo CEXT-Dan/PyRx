@@ -1,8 +1,9 @@
-import traceback
-from pyrx import Ap, Db, Ed, Ge, Rx
 import os
+import traceback
+
 import wx
 
+from pyrx import Ap, Rx
 
 # (setq ufiles (dos_getfilem "Select Drawings" "c:\\drawings\\" "Drawing Files (*.DWG)|*.DWG"))
 # (setq pyfiles (py_getfilem "Select Drawings" "c:\\drawings\\" "Drawing Files (*.DWG)|*.DWG"))
@@ -46,6 +47,6 @@ def py_getfilem(args):
 
         return result_lisp_list
 
-    except Exception as e:
+    except Exception:
         print(f"\nPyRx Error: {traceback.format_exc()}")
         return None
