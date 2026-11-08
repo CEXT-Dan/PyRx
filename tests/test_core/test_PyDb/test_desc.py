@@ -176,7 +176,7 @@ class TestDesc:
                 "GeoMap",
                 "AcDbGeoMap",
                 marks=pytest.mark.xfail(
-                    condition=CURRENT_HOST in ["ARX", "BRX"], reason="Known issue", strict=True
+                    condition=CURRENT_HOST in ["ARX"], reason="Known issue", strict=True
                 ),
             ),
             pytest.param(
@@ -190,9 +190,7 @@ class TestDesc:
                 "Profile3d",
                 "AcDb3dProfile",
                 marks=pytest.mark.xfail(
-                    condition=CURRENT_HOST in ["BRX", "GRX", "ZRX"],
-                    reason="Known issue",
-                    strict=True,
+                    condition=CURRENT_HOST in ["BRX"], reason="Known issue", strict=True
                 ),
             ),
             pytest.param(
@@ -213,7 +211,7 @@ class TestDesc:
                 "NurbSurface",
                 "AcDbNurbSurface",
                 marks=pytest.mark.xfail(
-                    condition=CURRENT_HOST in ["GRX", "ZRX"], reason="Known issue", strict=True
+                    condition=CURRENT_HOST in ["ZRX"], reason="Known issue", strict=True
                 ),
             ),
             pytest.param(
