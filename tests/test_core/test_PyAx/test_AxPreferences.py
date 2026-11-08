@@ -151,7 +151,7 @@ class TestPrefFiles:
         axFiles.setHelpFilePath(self.cwd)
         assert os.path.normcase(axFiles.helpFilePath()) == self.cwd
         axFiles.setHelpFilePath(path)
-        assert axFiles.helpFilePath() == path
+        assert os.path.normcase(axFiles.helpFilePath()) == path
 
     def test_axFiles_logFilePath(self):
         axFiles = self.axPreferences.files()
