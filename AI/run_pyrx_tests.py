@@ -18,6 +18,9 @@ Usage (run from anywhere; paths are resolved relative to this file):
 
 Exit code: 0 = all selected tests passed; non-zero = failures, errors, host crash,
 or timeout.
+
+a good example is:
+run_pyrx_tests.py, example python AI/run_pyrx_tests.py --hosts acad --pyinit 0x1 --no-slow --timeout 900
 """
 
 from __future__ import annotations
