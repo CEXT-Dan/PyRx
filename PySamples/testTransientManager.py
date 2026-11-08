@@ -26,9 +26,15 @@ def pydrawtmp(CmdFlags=Ap.CmdFlags.TRANSPARENT):
         dbl.setDatabaseDefaults()
         dbl.setColorIndex(1)
         markers.append(dbl)
+        
+        dbc = Db.Circle(dbl.midPoint(),Ge.Vector3d.kZAxis,dbl.length() * 0.5 )
+        dbc.setDatabaseDefaults()
+        dbc.setColorIndex(2)
+        markers.append(dbc)
 
         tm = Gi.TransientManager.current()
-        tm.addTransient(dbl, Gi.TransientDrawingMode.kAcGiDirectShortTerm, 128, vpids)
+        for marker in markers:
+            tm.addTransient(marker, Gi.TransientDrawingMode.kAcGiDirectShortTerm, 128, vpids)
         Ed.Core.vportTableRecords2Vports()
 
     except Exception as err:
