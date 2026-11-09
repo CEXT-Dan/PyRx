@@ -2228,6 +2228,18 @@ static BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
+    enum_<TextFindSearchOptions>("TextFindOptions")
+        .value("kAC_SRCH_BLOCK", kAC_SRCH_BLOCK)
+        .value("kAC_SRCH_DIM_TEXT", kAC_SRCH_DIM_TEXT)
+        .value("kAC_SRCH_TEXT", kAC_SRCH_TEXT)
+        .value("kAC_SRCH_LINK_NAME", kAC_SRCH_LINK_NAME)
+        .value("kAC_SRCH_LINK_URL", kAC_SRCH_LINK_URL)
+        .value("kAC_SRCH_MATCH_CASE", kAC_SRCH_MATCH_CASE)
+        .value("kAC_SRCH_WHOLE_WORD", kAC_SRCH_WHOLE_WORD)
+        .value("kAC_SRCH_DEFAULT", kAC_SRCH_DEFAULT)
+        .export_values()
+        ;
+
 };
 
 void initPyDbModule()
