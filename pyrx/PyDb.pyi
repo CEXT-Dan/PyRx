@@ -7273,6 +7273,7 @@ class Database(PyRx.RxObject):
         WarningAs the const qualifier indicates, no attempt should be made to deallocate the
         returned string.
         """
+    def getFingerprintGuid(self, /) -> str: ...
     def getLayerStateManager(self, /) -> LayerStateManager:
         """
         getLayerStateManager() returns a pointer to the current AcDbLayerStateManager object.

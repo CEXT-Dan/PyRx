@@ -128,6 +128,7 @@ void makePyDbDatabaseWrapper()
         .def("filletrad", &PyDbDatabase::filletrad, DS.ARGS(2944))
         .def("fillmode", &PyDbDatabase::fillmode, DS.ARGS(2945))
         .def("forceWblockDatabaseCopy", &PyDbDatabase::forceWblockDatabaseCopy, DS.ARGS(2946))
+        .def("getFingerprintGuid", &PyDbDatabase::getFingerprintGuid, DS.ARGS())
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId, DS.ARGS(2947))
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS(2948))
         .def("getLayerStateManager", &PyDbDatabase::getLayerStateManager, DS.ARGS(2972))
@@ -1043,6 +1044,19 @@ bool PyDbDatabase::fillmode() const
 void PyDbDatabase::forceWblockDatabaseCopy() const
 {
     impObj()->forceWblockDatabaseCopy();
+}
+
+std::string PyDbDatabase::getFingerprintGuid() const
+{
+#if defined(_BRXTARGET270)
+    RxAutoOutStr outstr;
+    PyThrowBadEs(impObj()->getFingerprintGuid(outstr.buf));
+    return outstr.str();
+#else
+    AcString guidString;
+    PyThrowBadEs(impObj()->getFingerprintGuid(guidString));
+    return wstr_to_utf8(guidString);
+#endif
 }
 
 PyDbDbLayerStateManager PyDbDatabase::getLayerStateManager() const

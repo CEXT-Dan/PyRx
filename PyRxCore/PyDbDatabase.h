@@ -108,6 +108,7 @@ public:
     double              filletrad() const;
     bool                fillmode() const;
     void                forceWblockDatabaseCopy() const;
+    std::string         getFingerprintGuid() const;
     PyDbDbLayerStateManager getLayerStateManager() const;
     std::string         geoCoordinateSystemId() const;
     bool                geoMarkerVisibility() const;
