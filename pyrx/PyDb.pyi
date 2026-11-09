@@ -582,6 +582,14 @@ k8_1: StdScaleType  # 30
 k90: MLeaderSegmentAngleType  # 6
 k90degrees: PlotRotation  # 1
 kACITab: AcCmDialogTabs  # 1
+kAC_SRCH_BLOCK: TextFindOptions  # 1
+kAC_SRCH_DEFAULT: TextFindOptions  # 31
+kAC_SRCH_DIM_TEXT: TextFindOptions  # 2
+kAC_SRCH_LINK_NAME: TextFindOptions  # 8
+kAC_SRCH_LINK_URL: TextFindOptions  # 16
+kAC_SRCH_MATCH_CASE: TextFindOptions  # 32
+kAC_SRCH_TEXT: TextFindOptions  # 4
+kAC_SRCH_WHOLE_WORD: TextFindOptions  # 64
 kARXApplication: FindFileHint  # 7
 kAbuDhabi: TimeZone  # 4000
 kAddMarkers: FieldCodeFlag  # 16
@@ -6139,7 +6147,7 @@ class Core:
         db: PyDb.Database,
         findString: str,
         replaceString: str,
-        searchOptions: int,
+        searchOptions: PyDb.TextFindOptions,
         ids: list[PyDb.ObjectId],
         /,
     ) -> list[PyDb.ObjectId]:
@@ -32302,6 +32310,16 @@ class TextAlignment(_BoostPythonEnum):
     kTextAlignmentBottomLeft: ClassVar[Self]  # 12
     kTextAlignmentBottomCenter: ClassVar[Self]  # 13
     kTextAlignmentBottomRight: ClassVar[Self]  # 14
+
+class TextFindOptions(_BoostPythonEnum):
+    kAC_SRCH_BLOCK: ClassVar[Self]  # 1
+    kAC_SRCH_DIM_TEXT: ClassVar[Self]  # 2
+    kAC_SRCH_TEXT: ClassVar[Self]  # 4
+    kAC_SRCH_LINK_NAME: ClassVar[Self]  # 8
+    kAC_SRCH_LINK_URL: ClassVar[Self]  # 16
+    kAC_SRCH_MATCH_CASE: ClassVar[Self]  # 32
+    kAC_SRCH_WHOLE_WORD: ClassVar[Self]  # 64
+    kAC_SRCH_DEFAULT: ClassVar[Self]  # 31
 
 class TextHorzMode(_BoostPythonEnum):
     kTextLeft: ClassVar[Self]  # 0

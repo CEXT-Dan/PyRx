@@ -22,7 +22,7 @@ void makeDbCoreWrapper()
 {
     constexpr const std::string_view textFindOverloads = "Overloads:\n"
         "- db: PyDb.Database, findString: str\n"
-        "- db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId]\n";
+        "- db: PyDb.Database, findString: str,replaceString: str,searchOptions: PyDb.TextFindOptions,ids: list[PyDb.ObjectId]\n";
 
     constexpr const std::string_view evaluateFieldsOverloads = "Overloads:\n"
         "- None: Any\n"
@@ -875,14 +875,14 @@ boost::python::list DbCore::textFind1(const PyDbDatabase& db, const std::string&
 #endif
 }
 
-boost::python::list DbCore::textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet)
+boost::python::list DbCore::textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString,TextFindSearchOptions searchOptions, const boost::python::list& selSet)
 {
 #if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray resultSet;
     auto set = PyListToObjectIdArray(selSet);
-    acdbTextFind(db.impObj(), resultSet, AsWStr(findString), AsWStr(replaceString), searchOptions, resultSet);
+    acdbTextFind(db.impObj(), resultSet, AsWStr(findString), AsWStr(replaceString), Adesk::UInt8(searchOptions), resultSet);
     return ObjectIdArrayToPyList(resultSet);
 #endif
 }

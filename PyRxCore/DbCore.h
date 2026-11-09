@@ -12,6 +12,18 @@ class PyDbSymUtilServices;
 class PyDbTransactionManager;
 class PyDbDimAssoc;
 
+enum TextFindSearchOptions
+{
+    kAC_SRCH_BLOCK = 0x01,
+    kAC_SRCH_DIM_TEXT = 0x02,
+    kAC_SRCH_TEXT = 0x04,
+    kAC_SRCH_LINK_NAME = 0x08,
+    kAC_SRCH_LINK_URL = 0x10,
+    kAC_SRCH_MATCH_CASE = 0x20,
+    kAC_SRCH_WHOLE_WORD = 0x40,
+    kAC_SRCH_DEFAULT = 0x1F,
+};
+
 void makeDbCoreWrapper();
 
 class DbCore
@@ -107,7 +119,7 @@ public:
     static PyDbObjectId         tblObjName(const std::string& tblname, const std::string& sym);
     static boost::python::list  tblSearch(const std::string& tblname, const std::string& sym, int setnext);
     static boost::python::list  textFind1(const PyDbDatabase& db, const std::string& findString);
-    static boost::python::list  textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet);
+    static boost::python::list  textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, TextFindSearchOptions searchOptions, const boost::python::list& selSet);
     static PyDbTransactionManager transactionManager();
     static AcGeMatrix3d         ucsMatrix1();
     static AcGeMatrix3d         ucsMatrix2(const PyDbDatabase& db);
