@@ -26,18 +26,13 @@ static AcDbObjectId getblockModelSpaceId(AcDbDatabase* pDb)
 
 static size_t PyDbDatabase_hash(const PyDbDatabase& self)
 {
-#if defined(_ARXTARGET240) || defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) 
     return reinterpret_cast<size_t>(self.impObj());
-#else
-    return static_cast<size_t>(self.impObj()->runtimeId());
-#endif
 }
 
 bool PyDbDatabase_eq(const PyDbDatabase& self, const PyDbDatabase& other)
 {
     return self.impObj() == other.impObj();
 }
-
 
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
