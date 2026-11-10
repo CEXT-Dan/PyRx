@@ -1349,11 +1349,11 @@ std::string PyDbDictUtil::dictionaryNameAt2(const PyDbObjectId& itemId, const Py
 {
 #if defined(_BRXTARGET270)
     RxAutoOutStr str;
-    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str.buf, itemId.m_id));
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str.buf, itemId.m_id, ownerDictId.m_id));
     return wstr_to_utf8(str.buf);
 #else
     AcString str;
-    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id));
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id, ownerDictId.m_id));
     return wstr_to_utf8(str);
 #endif
 }
