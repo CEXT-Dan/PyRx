@@ -1,3 +1,12 @@
+## v3.1.18
+
+* update to CDT2.0.2
+* improve Db.Core.textFind, added enum
+* [#557] add Db.Database.getFingerprintGuid
+* add Database.__hash__ and __eq__
+* add Database.dbPtrFromId
+* add Database.runtimeId
+
 ## v3.1.17
 
 * add Db.FieldEngine.getEvaluatorIds (acad only)
