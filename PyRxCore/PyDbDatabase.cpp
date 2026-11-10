@@ -143,7 +143,6 @@ void makePyDbDatabaseWrapper()
         .def("filletrad", &PyDbDatabase::filletrad, DS.ARGS(2944))
         .def("fillmode", &PyDbDatabase::fillmode, DS.ARGS(2945))
         .def("forceWblockDatabaseCopy", &PyDbDatabase::forceWblockDatabaseCopy, DS.ARGS(2946))
-        .def("dbPtrFromId", &PyDbDatabase::dbPtrFromId, DS.ARGS({ "runtimeId : int" }))
         .def("getFingerprintGuid", &PyDbDatabase::getFingerprintGuid, DS.ARGS())
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId, DS.ARGS(2947))
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS(2948))
@@ -579,12 +578,13 @@ void makePyDbDatabaseWrapper()
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "current_entity_color : PyDb.Color" }, 3146))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "current_entity_transparency : PyDb.Transparency" }, 3151))
         .def("setInterfereColor", &PyDbDatabase::setInterfereColor, DS.ARGS({ "interference_color : PyDb.Color" }, 3197))
+        .def("dbPtrFromId", &PyDbDatabase::dbPtrFromId, DS.SARGS({ "runtimeId : int" })).staticmethod("dbPtrFromId")
         .def("createFromDWG", &PyDbDatabase::createFromDWG1)
         .def("createFromDWG", &PyDbDatabase::createFromDWG2, DS.SARGS({ "fullPath : str", "closeInput : bool = True" })).staticmethod("createFromDWG")
         .def("className", &PyDbDatabase::className, DS.SARGS()).staticmethod("className")
 
-         .def("__hash__", &PyDbDatabase_hash)
-         .def("__eq__", &PyDbDatabase_eq)
+        .def("__hash__", &PyDbDatabase_hash)
+        .def("__eq__", &PyDbDatabase_eq)
         ;
 }
 
@@ -1064,15 +1064,6 @@ bool PyDbDatabase::fillmode() const
 void PyDbDatabase::forceWblockDatabaseCopy() const
 {
     impObj()->forceWblockDatabaseCopy();
-}
-
-PyDbDatabase PyDbDatabase::dbPtrFromId(int64_t nId) const
-{
-#if defined(_ARXTARGET240) || defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) 
-    throw PyNotimplementedByHost();
-#else
-    return PyDbDatabase(impObj()->dbPtrFromId(nId), false);
-#endif
 }
 
 std::string PyDbDatabase::getFingerprintGuid() const
@@ -2052,7 +2043,7 @@ bool PyDbDatabase::retainOriginalThumbnailBitmap() const
 int64_t PyDbDatabase::runtimeId() const
 {
 #if defined(_ARXTARGET240) || defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) 
-    throw PyNotimplementedByHost();
+    return reinterpret_cast<int64_t>(impObj());
 #else
     return impObj()->runtimeId();
 #endif
@@ -3733,6 +3724,27 @@ PyDbObjectId PyDbDatabase::xrefBlockId() const
 bool PyDbDatabase::xrefEditEnabled() const
 {
     return impObj()->xrefEditEnabled();
+}
+
+PyDbDatabase PyDbDatabase::dbPtrFromId(int64_t nId)
+{
+#if defined(_ARXTARGET240) || defined(_BRXTARGET270) || defined(_GRXTARGET270) || defined(_ZRXTARGET270) 
+    AcDbDatabase* pTargetDb = reinterpret_cast<AcDbDatabase*>(nId);
+    auto pArr = acdbActiveDatabaseArray();
+    for (int i = 0; i < pArr.length(); ++i)
+    {
+        AcDbDatabase* db = static_cast<AcDbDatabase*>(pArr.at(i));
+        if (db != nullptr && pTargetDb == db)
+            return PyDbDatabase(db, false);
+    }
+    throw PyErrorStatusException(eInvalidInput);
+#else
+    AcDbDatabase* pDb = AcDbDatabase::dbPtrFromId(nId);
+    if (pDb == nullptr) {
+        throw PyErrorStatusException(eInvalidInput);
+    }
+    return PyDbDatabase(pDb, false);
+#endif
 }
 
 PyDbDatabase PyDbDatabase::createFromDWG1(const std::string& path)
