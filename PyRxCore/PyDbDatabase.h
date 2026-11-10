@@ -108,6 +108,7 @@ public:
     double              filletrad() const;
     bool                fillmode() const;
     void                forceWblockDatabaseCopy() const;
+    PyDbDatabase        dbPtrFromId(int64_t nId) const;
     std::string         getFingerprintGuid() const;
     PyDbDbLayerStateManager getLayerStateManager() const;
     std::string         geoCoordinateSystemId() const;
@@ -256,6 +257,7 @@ public:
     void                restoreForwardingXrefSymbols() const;
     void                restoreOriginalXrefSymbols() const;
     bool				retainOriginalThumbnailBitmap() const;
+    int64_t             runtimeId() const;
     Adesk::Int16	    saveproxygraphics() const;
     PyDbObjectId		scaleListDictionaryId() const;
     PyDbObjectId		sectionViewStyle() const;

@@ -6758,6 +6758,7 @@ class Database(PyRx.RxObject):
         """
         Returns the object ID of the database's AcDbUCSTable.
         """
+    def __hash__(self, /) -> int: ...
     def __init__(self, buildDefaultDrawing: bool = True, noDocument: bool = False, /) -> None:
         """
         Default constructor.If buildDefaultDrawing == true, then the new AcDbDatabase object
@@ -7015,6 +7016,7 @@ class Database(PyRx.RxObject):
         Returns the object ID of the AcDbBlockTableRecord of the current space (e.g., model space
         or paper space.)
         """
+    def dbPtrFromId(self, runtimeId: int, /) -> Database: ...
     def deepCloneObjects(
         self,
         ids: list[PyDb.ObjectId],
@@ -8149,6 +8151,12 @@ class Database(PyRx.RxObject):
         having multiple calls to restore the symbols.
         """
     def retainOriginalThumbnailBitmap(self, /) -> bool:
+        """
+        This function returns the status of the thumbnail bitmap toggle flag. The retainOriginal
+        status is FALSE by default. If it is toggled to TRUE, the AcDbDatabase will always try to
+        retain the original image, no matter what other action is taken.
+        """
+    def runtimeId(self, /) -> int:
         """
         This function returns the status of the thumbnail bitmap toggle flag. The retainOriginal
         status is FALSE by default. If it is toggled to TRUE, the AcDbDatabase will always try to
