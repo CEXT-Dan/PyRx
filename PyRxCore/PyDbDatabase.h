@@ -108,7 +108,6 @@ public:
     double              filletrad() const;
     bool                fillmode() const;
     void                forceWblockDatabaseCopy() const;
-    PyDbDatabase        dbPtrFromId(int64_t nId) const;
     std::string         getFingerprintGuid() const;
     PyDbDbLayerStateManager getLayerStateManager() const;
     std::string         geoCoordinateSystemId() const;
@@ -558,6 +557,7 @@ public:
     PyDbObjectId		xrefBlockId() const;
     bool				xrefEditEnabled() const;
     //
+    static PyDbDatabase dbPtrFromId(int64_t nId);
     static PyDbDatabase createFromDWG1(const std::string& path);
     static PyDbDatabase createFromDWG2(const std::string& path, bool closeInput);
     static std::string	className();

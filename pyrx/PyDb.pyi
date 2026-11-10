@@ -7016,7 +7016,8 @@ class Database(PyRx.RxObject):
         Returns the object ID of the AcDbBlockTableRecord of the current space (e.g., model space
         or paper space.)
         """
-    def dbPtrFromId(self, runtimeId: int, /) -> Database: ...
+    @staticmethod
+    def dbPtrFromId(runtimeId: int, /) -> Database: ...
     def deepCloneObjects(
         self,
         ids: list[PyDb.ObjectId],
