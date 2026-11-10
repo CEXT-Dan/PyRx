@@ -18325,11 +18325,14 @@ class HostApplicationServices:
         """
         This is findFile, a member of class AcDbHostApplicationServices.
         """
+    def getAllUsersRootFolder(self, /) -> str: ...
+    def getLocalRootFolder(self, /) -> str: ...
     def getMachineRegistryProductRootKey(self, /) -> str:
         """
         Use this function to obtain registry root for storing/retrieving product specific data.
         This location is generally read-only for limited users.
         """
+    def getRoamableRootFolder(self, /) -> str: ...
     def getUserRegistryProductRootKey(self, /) -> str:
         """
         Use this function to obtain registry root for storing/retrieving product specific user
@@ -18361,6 +18364,7 @@ class HostApplicationServices:
         version value by 1. This method should not be overridden because it is used to identify
         support files.
         """
+    def releaseMajorVersion(self, /) -> int: ...
     def releaseMarketVersion(self, /) -> str:
         """
         This value is primarily used in User Interface. It is the year displayed after the product
@@ -18369,6 +18373,7 @@ class HostApplicationServices:
         valid value. If they do not, then the default value returned will be the same as AutoCAD's
         version of the same year.
         """
+    def releaseMinorVersion(self, /) -> int: ...
     def setWorkingDatabase(self, val: PyDb.Database, /) -> None:
         """
         This method may not be overridden. setWorkingDatabase() may be called by the host

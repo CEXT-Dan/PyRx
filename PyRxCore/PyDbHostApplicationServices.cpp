@@ -146,6 +146,11 @@ void makePyDbHostApplicationServicesWrapper()
         .def("findFile", &PyDbHostApplicationServices::findFile1)
         .def("findFile", &PyDbHostApplicationServices::findFile2)
         .def("findFile", &PyDbHostApplicationServices::findFile3, DS.OVRL(findFileOverloads, 5442))
+        .def("getRoamableRootFolder", &PyDbHostApplicationServices::getRoamableRootFolder, DS.ARGS())
+        .def("getLocalRootFolder", &PyDbHostApplicationServices::getLocalRootFolder, DS.ARGS())
+        .def("getAllUsersRootFolder", &PyDbHostApplicationServices::getAllUsersRootFolder, DS.ARGS())
+        .def("releaseMajorVersion", &PyDbHostApplicationServices::releaseMajorVersion, DS.ARGS())
+        .def("releaseMinorVersion", &PyDbHostApplicationServices::releaseMinorVersion, DS.ARGS())
         .def("product", &PyDbHostApplicationServices::product, DS.ARGS(5486))
         .def("program", &PyDbHostApplicationServices::program, DS.ARGS(5487))
         .def("companyName", &PyDbHostApplicationServices::companyName, DS.ARGS(5433))
@@ -224,21 +229,21 @@ std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, 
 
 std::string PyDbHostApplicationServices::getRoamableRootFolder()
 {
-    const TCHAR* val = nullptr;
+    const wchar_t* val = nullptr;
     PyThrowBadEs(pDbHostApp->getRoamableRootFolder(val));
     return wstr_to_utf8(val);
 }
 
 std::string PyDbHostApplicationServices::getLocalRootFolder()
 {
-    const TCHAR* val = nullptr;
+    const wchar_t* val = nullptr;
     PyThrowBadEs(pDbHostApp->getLocalRootFolder(val));
     return wstr_to_utf8(val);
 }
 
 std::string PyDbHostApplicationServices::getAllUsersRootFolder()
 {
-    const TCHAR* val = nullptr;
+    const wchar_t* val = nullptr;
     PyThrowBadEs(pDbHostApp->getAllUsersRootFolder(val));
     return wstr_to_utf8(val);
 }
@@ -562,32 +567,27 @@ std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, c
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET >= 260)
     AcString pNewName;
     PyThrowBadEs(imp->makeDependentName(pNewName, AsWStr(dwgName), AsWStr(symbolName)));
-    std::string val = wstr_to_utf8(pNewName);
+    return wstr_to_utf8(pNewName);
 #else
+    RxAutoOutStr val;
     ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->makeDependentName(pNewName, AsWStr(dwgName), AsWStr(symbolName)));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
+    PyThrowBadEs(imp->makeDependentName(val.buf, AsWStr(dwgName), AsWStr(symbolName)));
+    return val.str();
 #endif
-    return val;
 }
 
 std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->repairPreExtendedSymbolName(pNewName, AsWStr(oldName), allowVerticalBar));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
-    return val;
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->repairPreExtendedSymbolName(val.buf, AsWStr(oldName), allowVerticalBar));
+    return val.str();
 }
 
 std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->repairSymbolName(pNewName, AsWStr(oldName), allowVerticalBar));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
-    return val;
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->repairSymbolName(val.buf, AsWStr(oldName), allowVerticalBar));
+    return val.str();
 }
 
 Acad::ErrorStatus PyDbSymUtilServices::validatePreExtendedSymbolName(const std::string& name, bool allowVerticalBar) const
@@ -607,11 +607,9 @@ bool PyDbSymUtilServices::compatibilityMode(PyDbDatabase& pDb) const
 
 std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::string& pathName) const
 {
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getBlockNameFromInsertPathName(pNewName, AsWStr(pathName)));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
-    return val;
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->getBlockNameFromInsertPathName(val.buf, AsWStr(pathName)));
+    return val.str();
 }
 
 std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::string& pathName) const
@@ -619,32 +617,26 @@ std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::strin
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET >= 260) 
     AcString pNewName;
     PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, AsWStr(pathName)));
-    std::string val = wstr_to_utf8(pNewName);
+    return wstr_to_utf8(pNewName);
 #else
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, AsWStr(pathName)));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->getInsertPathNameFromBlockName(val.buf, AsWStr(pathName)));
+    return val.str();
 #endif
-    return val;
 }
 
 std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& symbolName, const std::string& extensions) const
 {
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getPathNameFromSymbolName(pNewName, AsWStr(symbolName), AsWStr(extensions)));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
-    return val;
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->getPathNameFromSymbolName(val.buf, AsWStr(symbolName), AsWStr(extensions)));
+    return val.str();
 }
 
 std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& symbolName, const std::string& extensions) const
 {
-    ACHAR* pNewName = nullptr;
-    PyThrowBadEs(imp->getSymbolNameFromPathName(pNewName, AsWStr(symbolName), AsWStr(extensions)));
-    std::string val = wstr_to_utf8(pNewName);
-    acutDelString(pNewName);
-    return val;
+    RxAutoOutStr val;
+    PyThrowBadEs(imp->getSymbolNameFromPathName(val.buf, AsWStr(symbolName), AsWStr(extensions)));
+    return val.str();
 }
 
 Acad::ErrorStatus PyDbSymUtilServices::validateCompatibleSymbolName(const std::string& name, bool isNewName, bool allowVerticalBar, bool compatibilityMode) const
