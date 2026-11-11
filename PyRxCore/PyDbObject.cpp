@@ -249,7 +249,7 @@ void makePyDbObjectWrapper()
         "- propName:str, index:int,subPropName:str\n";
 
     constexpr const std::string_view setPropertyValueOverloads = "Overloads:\n"
-        "- propName:str, val:PyDd.AcValue\n"
+        "- propName:str, val:PyDb.AcValue\n"
         "- propName:str, index:int, subPropName:str, val:PyDb.AcValue\n";
 
     PyDocString DS("DbObject");

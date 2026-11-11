@@ -1,22 +1,14 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
-from pyrx import Ap as PyAp
+
 from pyrx import Ax as PyAx
-from pyrx import Br as PyBr
 from pyrx import Db as PyDb
-from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
-from pyrx import Pl as PyPl
 from pyrx import Rx as PyRx
-from pyrx import Sm as PySm
-import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
-
-from __future__ import annotations
-
-from pyrx import Db as PyDb
 
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
@@ -10513,7 +10505,7 @@ class DbObject(PyGi.Drawable):
         Returns Acad::eOk if successful.
         """
     @overload
-    def setPropertyValue(self, propName: str, val: PyDd.AcValue, /) -> None: ...
+    def setPropertyValue(self, propName: str, val: PyDb.AcValue, /) -> None: ...
     @overload
     def setPropertyValue(
         self, propName: str, index: int, subPropName: str, val: PyDb.AcValue, /
