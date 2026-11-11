@@ -201,7 +201,7 @@ static AcRxObject* unwrapRxObject(AcRxValue& itemVal)
     return nullptr;
 }
 
-static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp,const AcRxObject* pObj, int index, AcRxValue& outItem)
+static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)
 {
     if (index < 0)
         return Acad::eInvalidIndex;
@@ -1035,11 +1035,13 @@ boost::python::list PyDbObject::dumpAllProperties() const
             continue;
 
         boost::python::dict propInfo;
-        propInfo["name"] = wstr_to_utf8(pMember->name());
-        propInfo["type"] = wstr_to_utf8(pMember->type().name());
 
         if (const AcRxProperty* pProp = AcRxProperty::cast(pMember))
         {
+            AcRxValue testVal;
+            if (pProp->getValue(impObj(), testVal) != eOk)
+                continue;
+
             propInfo["kind"] = "property";
             propInfo["readonly"] = pProp->isReadOnly(impObj());
         }
@@ -1051,14 +1053,15 @@ boost::python::list PyDbObject::dumpAllProperties() const
         else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
         {
             propInfo["kind"] = "collection";
-            propInfo["readonly"] = true; // Collections are traversed rather than overwritten directly
+            propInfo["readonly"] = true;
         }
         else
         {
-            // Skip internal methods/events that aren't readable properties
             continue;
         }
 
+        propInfo["name"] = wstr_to_utf8(pMember->name());
+        propInfo["type"] = wstr_to_utf8(pMember->type().name());
         result.append(propInfo);
     }
     return result;
@@ -1066,8 +1069,6 @@ boost::python::list PyDbObject::dumpAllProperties() const
     throw PyNotimplementedByHost{};
 #endif
 }
-
-
 
 PyRxClass PyDbObject::desc()
 {
