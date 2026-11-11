@@ -23,11 +23,6 @@
 //----- acrxEntryPoint.cpp
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
-
-#include "rxmember.h"
-#include "rxprop.h"
-#include "rxvalue.h"
-
 #include "resource.h"
 #include "PyLispService.h"
 #include "PyRxApp.h"
@@ -480,22 +475,6 @@ public:
 
     static void AcRxPyApp_idoit1(void)
     {
-        auto [ps, id, _pnt] = entsel(L"\nSelect Circle: ", AcDbCircle::desc());
-        if (ps != Acad::PromptStatus::eNormal)
-            return;
-
-        AcDbObjectPointer<AcDbCircle> pCircle(id,AcDb::OpenMode::kForWrite);
-        if (pCircle.openStatus() != eOk)
-            return;
-
-        AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
-        AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(pCircle, _T("Radius")));
-
-        if (pProp != nullptr) 
-        {
-            AcRxValue val(25.5); // Wrap the new value in AcRxValue
-            Acad::ErrorStatus es = pProp->setValue(pCircle, val);
-        }
     }
 #endif
 };
