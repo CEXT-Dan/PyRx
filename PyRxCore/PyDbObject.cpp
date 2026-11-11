@@ -1038,19 +1038,23 @@ boost::python::list PyDbObject::dumpAllProperties() const
         }
         else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
         {
+            int count = 0;
+            PyThrowBadEs(pIdxProp->tryGetCount(impObj(), count));
             propInfo["name"] = wstr_to_utf8(pMember->name());
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "indexed";
             propInfo["readonly"] = pIdxProp->isReadOnly(impObj());
-            propInfo["value"] = "none";
+            propInfo["value"] = count;
         }
         else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
         {
+            int count = 0;
+            PyThrowBadEs(pColProp->tryGetCount(impObj(), count));
             propInfo["name"] = wstr_to_utf8(pMember->name());
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "collection";
             propInfo["readonly"] = true;
-            propInfo["value"] = "none";
+            propInfo["value"] = count;
         }
         else
         {
