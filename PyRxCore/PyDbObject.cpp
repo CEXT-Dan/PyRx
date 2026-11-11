@@ -11,14 +11,18 @@
 #include "dbObjectContextInterface.h"
 #include "dbAnnotativeObjectPE.h"
 
+#if defined(_ARXTARGET)
 #include "rxmember.h"
 #include "rxprop.h"
 #include "rxvalue.h"
+#endif
+
 #include "AcValue.h"
 #include "PyDbEval.h"
 
 using namespace boost::python;
 
+#if defined(_ARXTARGET)
 static Acad::ErrorStatus acValueToAcRxValue(const AcValue& src, AcRxValue& dst)
 {
     switch (src.dataType())
@@ -232,6 +236,7 @@ static const AcRxProperty* findChildProperty(const AcRxMember* pParent, const Ac
     }
     return nullptr;
 }
+#endif
 
 void makePyDbObjectWrapper()
 {
@@ -877,6 +882,7 @@ void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::ob
 
 PyDbAcValue PyDbObject::getPropertyValue(const std::string& propName) const
 {
+#if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
     AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
     AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(impObj(), acPropName));
@@ -887,10 +893,14 @@ PyDbAcValue PyDbObject::getPropertyValue(const std::string& propName) const
     AcValue acVal;
     PyThrowBadEs(acRxValueToAcValue(rxVal, acVal));
     return PyDbAcValue(acVal);
+#else 
+    throw PyNotimplementedByHost{};
+#endif
 }
 
 void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue& pyVal) const
 {
+#if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
     AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
     AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(impObj(), acPropName));
@@ -901,13 +911,14 @@ void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(pProp->setValue(impObj(), rxVal));
+#else 
+    throw PyNotimplementedByHost{};
+#endif
 }
 
-PyDbAcValue PyDbObject::getIndexedPropertyValue(
-    const std::string& propName,
-    int index,
-    const std::string& subPropName) const
+PyDbAcValue PyDbObject::getIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName) const
 {
+#if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
     AcString acSubName = utf8_to_wstr(subPropName).c_str();
 
@@ -948,14 +959,14 @@ PyDbAcValue PyDbObject::getIndexedPropertyValue(
     AcValue acVal;
     PyThrowBadEs(acRxValueToAcValue(subVal, acVal));
     return PyDbAcValue(acVal);
+#else 
+    throw PyNotimplementedByHost{};
+#endif
 }
 
-void PyDbObject::setIndexedPropertyValue(
-    const std::string& propName,
-    int index,
-    const std::string& subPropName,
-    const PyDbAcValue& pyVal) const
+void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName, const PyDbAcValue& pyVal) const
 {
+#if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
     AcString acSubName = utf8_to_wstr(subPropName).c_str();
 
@@ -1000,82 +1011,62 @@ void PyDbObject::setIndexedPropertyValue(
     {
         PyThrowBadEs(pIdxProp->setValue(impObj(), index, itemVal));
     }
-}
-
-static bool memberToDict(const AcRxMember* pMember, const AcRxObject* pObj, boost::python::dict& outDict)
-{
-    if (pMember == nullptr)
-        return false;
-
-    if (const AcRxProperty* pProp = AcRxProperty::cast(pMember))
-    {
-        outDict["kind"] = "property";
-        outDict["readonly"] = pProp->isReadOnly(pObj);
-    }
-    else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
-    {
-        outDict["kind"] = "indexed";
-        outDict["readonly"] = pIdxProp->isReadOnly(pObj);
-    }
-    else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
-    {
-        outDict["kind"] = "collection";
-        outDict["readonly"] = true;
-    }
-    else
-    {
-        // Skip internal methods/events that are not readable/writable properties
-        return false;
-    }
-
-    outDict["name"] = wstr_to_utf8(pMember->name());
-    outDict["type"] = wstr_to_utf8(pMember->type().name());
-
-    // Inspect nested child properties (e.g., "Position", "Bulge" under "Vertices")
-    if (auto pChildren = pMember->children())
-    {
-        if (pChildren->length() > 0)
-        {
-            boost::python::list childList;
-            for (int i = 0; i < pChildren->length(); ++i)
-            {
-                boost::python::dict childDict;
-                // Pass nullptr for pObj on sub-members since child properties target the sub-object/boxed value
-                if (memberToDict(pChildren->at(i), nullptr, childDict))
-                {
-                    childList.append(childDict);
-                }
-            }
-            if (boost::python::len(childList) > 0)
-            {
-                outDict["children"] = childList;
-            }
-        }
-    }
-    return true;
+#else 
+    throw PyNotimplementedByHost{};
+#endif
 }
 
 boost::python::list PyDbObject::dumpAllProperties() const
 {
+#if defined(_ARXTARGET)
     PyAutoLockGIL lock;
     boost::python::list result;
 
     AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
     std::unique_ptr<AcRxMemberIterator> pIter(pEngine->newMemberIterator(impObj()));
+
     if (pIter == nullptr)
         return result;
 
     for (; !pIter->done(); pIter->next())
     {
-        boost::python::dict propInfo;
-        if (memberToDict(pIter->current(), impObj(), propInfo))
-        {
-            result.append(propInfo);
-        }
-    }
+        const AcRxMember* pMember = pIter->current();
+        if (pMember == nullptr)
+            continue;
 
+        boost::python::dict propInfo;
+        propInfo["name"] = wstr_to_utf8(pMember->name());
+        propInfo["type"] = wstr_to_utf8(pMember->type().name());
+
+        if (const AcRxProperty* pProp = AcRxProperty::cast(pMember))
+        {
+            propInfo["kind"] = "property";
+            propInfo["readonly"] = pProp->isReadOnly(impObj());
+        }
+        else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
+        {
+            propInfo["kind"] = "indexed";
+            propInfo["readonly"] = pIdxProp->isReadOnly(impObj());
+        }
+        else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
+        {
+            propInfo["kind"] = "collection";
+            propInfo["readonly"] = true; // Collections are traversed rather than overwritten directly
+        }
+        else
+        {
+            // Skip internal methods/events that aren't readable properties
+            continue;
+        }
+
+        result.append(propInfo);
+    }
     return result;
+#else 
+    throw PyNotimplementedByHost{};
+#endif
 }
+
 
 
 PyRxClass PyDbObject::desc()
