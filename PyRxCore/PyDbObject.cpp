@@ -10,13 +10,242 @@
 #include "PyDbObjectContext.h"
 #include "dbObjectContextInterface.h"
 #include "dbAnnotativeObjectPE.h"
+
+#include "rxmember.h"
+#include "rxprop.h"
+#include "rxvalue.h"
+#include "AcValue.h"
+#include "PyDbEval.h"
+
 using namespace boost::python;
+
+static Acad::ErrorStatus acValueToAcRxValue(const AcValue& src, AcRxValue& dst)
+{
+    switch (src.dataType())
+    {
+        case AcValue::kLong:
+        {
+            Adesk::Int32 val = 0;
+            if (src.get(val))
+            {
+                dst = AcRxValue(val);
+                return Acad::eOk;
+            }
+            break;
+        }
+        case AcValue::kDouble:
+        {
+            double val = 0.0;
+            if (src.get(val))
+            {
+                dst = AcRxValue(val);
+                return Acad::eOk;
+            }
+            break;
+        }
+        case AcValue::kString:
+        {
+            const ACHAR* pszVal = nullptr;
+            if (src.get(pszVal) && pszVal != nullptr)
+            {
+                // AcRxProperty string setters expect AcString
+                dst = AcRxValue(AcString(pszVal));
+                return Acad::eOk;
+            }
+            break;
+        }
+        case AcValue::kPoint:
+        {
+            AcGePoint2d pt2d;
+            if (src.get(pt2d))
+            {
+                dst = AcRxValue(pt2d);
+                return Acad::eOk;
+            }
+            break;
+        }
+        case AcValue::k3dPoint:
+        {
+            AcGePoint3d pt3d;
+            if (src.get(pt3d))
+            {
+                dst = AcRxValue(pt3d);
+                return Acad::eOk;
+            }
+            break;
+        }
+        case AcValue::kObjectId:
+        {
+            AcDbObjectId id;
+            if (src.get(id))
+            {
+                dst = AcRxValue(id);
+                return Acad::eOk;
+            }
+            break;
+        }
+        default:
+            return Acad::eNotApplicable;
+    }
+    return Acad::eInvalidInput;
+}
+
+static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
+{
+    if (src.isEmpty())
+    {
+        dst.reset();
+        return Acad::eOk;
+    }
+
+    const AcRxValueType& vt = src.type();
+
+    if (vt == AcRxValueType::Desc<bool>::value())
+    {
+        if (const bool* pVal = rxvalue_cast<bool>(&src))
+        {
+            dst = AcValue(static_cast<Adesk::Int32>(*pVal ? 1 : 0));
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<Adesk::Int32>::value())
+    {
+        if (const Adesk::Int32* pVal = rxvalue_cast<Adesk::Int32>(&src))
+        {
+            dst = AcValue(*pVal);
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<Adesk::Int16>::value())
+    {
+        if (const Adesk::Int16* pVal = rxvalue_cast<Adesk::Int16>(&src))
+        {
+            dst = AcValue(static_cast<Adesk::Int32>(*pVal));
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<double>::value())
+    {
+        if (const double* pVal = rxvalue_cast<double>(&src))
+        {
+            dst = AcValue(*pVal);
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<AcString>::value())
+    {
+        if (const AcString* pVal = rxvalue_cast<AcString>(&src))
+        {
+            dst = AcValue(pVal->kwszPtr());
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<AcGePoint2d>::value())
+    {
+        if (const AcGePoint2d* pVal = rxvalue_cast<AcGePoint2d>(&src))
+        {
+            dst = AcValue(*pVal);
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<AcGePoint3d>::value())
+    {
+        if (const AcGePoint3d* pVal = rxvalue_cast<AcGePoint3d>(&src))
+        {
+            dst = AcValue(*pVal);
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<AcGeVector3d>::value())
+    {
+        if (const AcGeVector3d* pVal = rxvalue_cast<AcGeVector3d>(&src))
+        {
+            // AcValue stores 3D vectors as 3D points
+            dst = AcValue(AcGePoint3d(pVal->x, pVal->y, pVal->z));
+            return Acad::eOk;
+        }
+    }
+    else if (vt == AcRxValueType::Desc<AcDbObjectId>::value())
+    {
+        if (const AcDbObjectId* pVal = rxvalue_cast<AcDbObjectId>(&src))
+        {
+            dst = AcValue(*pVal);
+            return Acad::eOk;
+        }
+    }
+    else
+    {
+        ACHAR buf[512] = { 0 };
+        if (src.toString(buf, 512, AcRxValueType::kStringFormatGlobal) > 0)
+        {
+            dst = AcValue(buf);
+            return Acad::eOk;
+        }
+    }
+
+    return Acad::eNotApplicable;
+}
+
+static AcRxObject* unwrapRxObject(AcRxValue& itemVal)
+{
+    if (AcRxObject** ppObj = rxvalue_cast<AcRxObject*>(&itemVal))
+        return *ppObj;
+
+    if (AcRxBoxedValue* pBoxed = rxvalue_cast<AcRxBoxedValue>(&itemVal))
+        return pBoxed;
+
+    return nullptr;
+}
+
+static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp,const AcRxObject* pObj, int index, AcRxValue& outItem)
+{
+    if (index < 0)
+        return Acad::eInvalidIndex;
+
+    std::unique_ptr<AcRxValueIterator> pIter(pColProp->newValueIterator(pObj));
+    if (pIter == nullptr)
+        return Acad::eNotApplicable;
+
+    int currentIdx = 0;
+    for (; !pIter->done(); pIter->next(), ++currentIdx)
+    {
+        if (currentIdx == index)
+        {
+            outItem = pIter->current();
+            return Acad::eOk;
+        }
+    }
+    return Acad::eInvalidIndex;
+}
+
+static const AcRxProperty* findChildProperty(const AcRxMember* pParent, const AcString& name)
+{
+    auto pChildren = pParent->children();
+    if (pChildren == nullptr)
+        return nullptr;
+
+    for (int i = 0; i < pChildren->length(); ++i)
+    {
+        const AcRxMember* pChild = pChildren->at(i);
+        if (pChild != nullptr && name.compareNoCase(pChild->name()) == 0)
+            return AcRxProperty::cast(pChild);
+    }
+    return nullptr;
+}
 
 void makePyDbObjectWrapper()
 {
     constexpr const std::string_view setFieldOverloads = "Overloads:\n"
         "- field: PyDb.Field\n"
         "- propName: str, field: PyDb.Field\n";
+
+    constexpr const std::string_view getPropertyValueOverloads = "Overloads:\n"
+        "- propName:str\n"
+        "- propName:str, index:int,subPropName:str\n";
+
+    constexpr const std::string_view setPropertyValueOverloads = "Overloads:\n"
+        "- propName:str, val:PyDd.AcValue\n"
+        "- propName:str, index:int, subPropName:str, val:PyDd.AcValue\n";
 
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
@@ -98,6 +327,13 @@ void makePyDbObjectWrapper()
         .def("getXDBinaryData", &PyDbObject::getXDBinaryData, DS.ARGS({ "key: str" }))
         .def("setXDBinaryData", &PyDbObject::setXDBinaryData, DS.ARGS({ "key: str", "data: memoryview" }))
         .def("dwgDump", &PyDbObject::dwgDump, DS.ARGS())
+
+        .def("getPropertyValue", &PyDbObject::getPropertyValue)
+        .def("getPropertyValue", &PyDbObject::getIndexedPropertyValue, DS.OVRL(getPropertyValueOverloads))
+        .def("setPropertyValue", &PyDbObject::setPropertyValue)
+        .def("setPropertyValue", &PyDbObject::setIndexedPropertyValue, DS.OVRL(setPropertyValueOverloads))
+
+        .def("dumpAllProperties", &PyDbObject::dumpAllProperties)
         .def("desc", &PyDbObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -638,6 +874,209 @@ void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::ob
     PyBuffer_Release(&view);
     PyThrowBadEs(impObj()->setXData(pHead.get()));
 }
+
+PyDbAcValue PyDbObject::getPropertyValue(const std::string& propName) const
+{
+    AcString acPropName = utf8_to_wstr(propName).c_str();
+    AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
+    AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(impObj(), acPropName));
+    if (pProp == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+    AcRxValue rxVal;
+    PyThrowBadEs(pProp->getValue(impObj(), rxVal));
+    AcValue acVal;
+    PyThrowBadEs(acRxValueToAcValue(rxVal, acVal));
+    return PyDbAcValue(acVal);
+}
+
+void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue& pyVal) const
+{
+    AcString acPropName = utf8_to_wstr(propName).c_str();
+    AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
+    AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(impObj(), acPropName));
+    if (pProp == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+    AcRxValue rxVal;
+    PyThrowBadEs(acValueToAcRxValue(*pyVal.impObj(), rxVal));
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
+    PyThrowBadEs(pProp->setValue(impObj(), rxVal));
+}
+
+PyDbAcValue PyDbObject::getIndexedPropertyValue(
+    const std::string& propName,
+    int index,
+    const std::string& subPropName) const
+{
+    AcString acPropName = utf8_to_wstr(propName).c_str();
+    AcString acSubName = utf8_to_wstr(subPropName).c_str();
+
+    AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
+    const AcRxMember* pMember = pEngine->find(impObj(), acPropName);
+    if (pMember == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+
+    AcRxValue itemVal;
+    if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
+    {
+        PyThrowBadEs(pIdxProp->getValue(impObj(), index, itemVal));
+    }
+    else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
+    {
+        PyThrowBadEs(getCollectionItemAt(pColProp, impObj(), index, itemVal));
+    }
+    else
+    {
+        PyThrowBadEs(Acad::eNotApplicable);
+    }
+
+    // Resolve the target AcRxObject* (either raw AcRxObject* or stack-boxed AcRxValue)
+    AcRxObject** ppObj = rxvalue_cast<AcRxObject*>(&itemVal);
+    AcRxBoxedValueOnStack boxedObj(itemVal);
+    AcRxObject* pSubObj = (ppObj != nullptr && *ppObj != nullptr) ? *ppObj : static_cast<AcRxObject*>(&boxedObj);
+
+    const AcRxProperty* pSubProp = findChildProperty(pMember, acSubName);
+    if (pSubProp == nullptr)
+        pSubProp = AcRxProperty::cast(pEngine->find(pSubObj, acSubName));
+
+    if (pSubProp == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+
+    AcRxValue subVal;
+    PyThrowBadEs(pSubProp->getValue(pSubObj, subVal));
+
+    AcValue acVal;
+    PyThrowBadEs(acRxValueToAcValue(subVal, acVal));
+    return PyDbAcValue(acVal);
+}
+
+void PyDbObject::setIndexedPropertyValue(
+    const std::string& propName,
+    int index,
+    const std::string& subPropName,
+    const PyDbAcValue& pyVal) const
+{
+    AcString acPropName = utf8_to_wstr(propName).c_str();
+    AcString acSubName = utf8_to_wstr(subPropName).c_str();
+
+    AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
+    const AcRxMember* pMember = pEngine->find(impObj(), acPropName);
+    if (pMember == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+
+    AcRxValue itemVal;
+    const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember);
+    const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember);
+
+    if (pIdxProp != nullptr)
+    {
+        PyThrowBadEs(pIdxProp->getValue(impObj(), index, itemVal));
+    }
+    else if (pColProp != nullptr)
+    {
+        PyThrowBadEs(getCollectionItemAt(pColProp, impObj(), index, itemVal));
+    }
+    else
+    {
+        PyThrowBadEs(Acad::eNotApplicable);
+    }
+
+    AcRxObject** ppObj = rxvalue_cast<AcRxObject*>(&itemVal);
+    AcRxBoxedValueOnStack boxedObj(itemVal);
+    AcRxObject* pSubObj = (ppObj != nullptr && *ppObj != nullptr) ? *ppObj : static_cast<AcRxObject*>(&boxedObj);
+
+    const AcRxProperty* pSubProp = findChildProperty(pMember, acSubName);
+    if (pSubProp == nullptr)
+        pSubProp = AcRxProperty::cast(pEngine->find(pSubObj, acSubName));
+
+    if (pSubProp == nullptr)
+        PyThrowBadEs(Acad::eKeyNotFound);
+
+    AcRxValue newSubVal;
+    PyThrowBadEs(acValueToAcRxValue(*pyVal.impObj(), newSubVal));
+    PyThrowBadEs(pSubProp->setValue(pSubObj, newSubVal));
+
+    if (pIdxProp != nullptr && !pIdxProp->isReadOnly(impObj()))
+    {
+        PyThrowBadEs(pIdxProp->setValue(impObj(), index, itemVal));
+    }
+}
+
+static bool memberToDict(const AcRxMember* pMember, const AcRxObject* pObj, boost::python::dict& outDict)
+{
+    if (pMember == nullptr)
+        return false;
+
+    if (const AcRxProperty* pProp = AcRxProperty::cast(pMember))
+    {
+        outDict["kind"] = "property";
+        outDict["readonly"] = pProp->isReadOnly(pObj);
+    }
+    else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
+    {
+        outDict["kind"] = "indexed";
+        outDict["readonly"] = pIdxProp->isReadOnly(pObj);
+    }
+    else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
+    {
+        outDict["kind"] = "collection";
+        outDict["readonly"] = true;
+    }
+    else
+    {
+        // Skip internal methods/events that are not readable/writable properties
+        return false;
+    }
+
+    outDict["name"] = wstr_to_utf8(pMember->name());
+    outDict["type"] = wstr_to_utf8(pMember->type().name());
+
+    // Inspect nested child properties (e.g., "Position", "Bulge" under "Vertices")
+    if (auto pChildren = pMember->children())
+    {
+        if (pChildren->length() > 0)
+        {
+            boost::python::list childList;
+            for (int i = 0; i < pChildren->length(); ++i)
+            {
+                boost::python::dict childDict;
+                // Pass nullptr for pObj on sub-members since child properties target the sub-object/boxed value
+                if (memberToDict(pChildren->at(i), nullptr, childDict))
+                {
+                    childList.append(childDict);
+                }
+            }
+            if (boost::python::len(childList) > 0)
+            {
+                outDict["children"] = childList;
+            }
+        }
+    }
+    return true;
+}
+
+boost::python::list PyDbObject::dumpAllProperties() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list result;
+
+    AcRxMemberQueryEngine* pEngine = AcRxMemberQueryEngine::theEngine();
+    std::unique_ptr<AcRxMemberIterator> pIter(pEngine->newMemberIterator(impObj()));
+    if (pIter == nullptr)
+        return result;
+
+    for (; !pIter->done(); pIter->next())
+    {
+        boost::python::dict propInfo;
+        if (memberToDict(pIter->current(), impObj(), propInfo))
+        {
+            result.append(propInfo);
+        }
+    }
+
+    return result;
+}
+
 
 PyRxClass PyDbObject::desc()
 {

@@ -22,7 +22,8 @@ void makeDbCoreWrapper()
 {
     constexpr const std::string_view textFindOverloads = "Overloads:\n"
         "- db: PyDb.Database, findString: str\n"
-        "- db: PyDb.Database, findString: str,replaceString: str,searchOptions: PyDb.TextFindOptions,ids: list[PyDb.ObjectId]\n";
+        "- db: PyDb.Database, findString: str,searchOptions: PyDb.TextFindOptions\n";
+    "- db: PyDb.Database, findString: str,replaceString: str,searchOptions: PyDb.TextFindOptions,ids: list[PyDb.ObjectId]\n";
 
     constexpr const std::string_view evaluateFieldsOverloads = "Overloads:\n"
         "- None: Any\n"
@@ -132,7 +133,8 @@ void makeDbCoreWrapper()
         .def("tblObjName", &DbCore::tblObjName, DS.SARGS({ "tblname: str","sym: str" }, 9451)).staticmethod("tblObjName")
         .def("tblSearch", &DbCore::tblSearch, DS.SARGS({ "tblname: str","sym: str","setnext: int" }, 9452)).staticmethod("tblSearch")
         .def("textFind", &DbCore::textFind1)
-        .def("textFind", &DbCore::textFind2, DS.SOVRL(textFindOverloads, 9686)).staticmethod("textFind")
+        .def("textFind", &DbCore::textFind2)
+        .def("textFind", &DbCore::textFind3, DS.SOVRL(textFindOverloads, 9686)).staticmethod("textFind")
         .def("transactionManager", &DbCore::transactionManager, DS.SARGS(9784)).staticmethod("transactionManager")
         .def("ucsMatrix", &DbCore::ucsMatrix1)
         .def("ucsMatrix", &DbCore::ucsMatrix2, DS.SARGS({ "db: PyDb.Database = ..." }, 9808)).staticmethod("ucsMatrix")
@@ -875,7 +877,18 @@ boost::python::list DbCore::textFind1(const PyDbDatabase& db, const std::string&
 #endif
 }
 
-boost::python::list DbCore::textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString,TextFindSearchOptions searchOptions, const boost::python::list& selSet)
+boost::python::list DbCore::textFind2(const PyDbDatabase& db, const std::string& findString, TextFindSearchOptions searchOptions)
+{
+#if defined(_BRXTARGET270)
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray resultSet;
+    acdbTextFind(db.impObj(), resultSet, AsWStr(findString), nullptr, Adesk::UInt8(searchOptions));
+    return ObjectIdArrayToPyList(resultSet);
+#endif
+}
+
+boost::python::list DbCore::textFind3(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, TextFindSearchOptions searchOptions, const boost::python::list& selSet)
 {
 #if defined(_BRXTARGET270)
     throw PyNotimplementedByHost();
@@ -1106,7 +1119,7 @@ boost::python::list DbCore::tessellateString2(const std::string& str, const std:
     boost::python::list pylst;
     std::wstring stringToTessalate = utf8_to_wstr(str);
     AcGiTextStyle textStyle;
-   
+
     AcString outFile;
     PyThrowBadEs(acdbHostApplicationServices()->findFile(outFile, utf8_to_wstr(font).c_str(), acdbCurDwg(), AcDbHostApplicationServices::kFontFile));
     textStyle.setFileName(outFile);
@@ -1115,7 +1128,6 @@ boost::python::list DbCore::tessellateString2(const std::string& str, const std:
     std::unique_ptr<AcGiTextEngine> pTextEngine(AcGiTextEngine::create());
     if (pTextEngine != nullptr)
     {
-        acutPrintf(_T("\nTessellating text string..."));
         pTextEngine->tessellate(
             textStyle,
             stringToTessalate.c_str(),

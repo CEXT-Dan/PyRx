@@ -13,6 +13,7 @@ class PyDbSnoopDwgFiler;
 class PyDbSnoopDxfFiler;
 class PyDbIdMapping;
 class PyDbObjectContext;
+class PyDbAcValue;
 
 enum class AnnotativeStates
 {
@@ -110,6 +111,14 @@ public:
 
     boost::python::object getXDBinaryData(const std::string& key) const;
     void                  setXDBinaryData(const std::string& key, const boost::python::object& inbuf) const;
+
+    PyDbAcValue           getPropertyValue(const std::string& propName) const;
+    void                  setPropertyValue(const std::string& propName, const PyDbAcValue& pyVal) const;
+    PyDbAcValue           getIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName) const;
+    void                  setIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName, const PyDbAcValue& pyVal) const;
+    
+    boost::python::list   dumpAllProperties() const;
+
 
     static PyRxClass    desc();
     static std::string  className();

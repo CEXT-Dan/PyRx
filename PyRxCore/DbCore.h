@@ -119,7 +119,8 @@ public:
     static PyDbObjectId         tblObjName(const std::string& tblname, const std::string& sym);
     static boost::python::list  tblSearch(const std::string& tblname, const std::string& sym, int setnext);
     static boost::python::list  textFind1(const PyDbDatabase& db, const std::string& findString);
-    static boost::python::list  textFind2(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, TextFindSearchOptions searchOptions, const boost::python::list& selSet);
+    static boost::python::list  textFind2(const PyDbDatabase& db, const std::string& findString, TextFindSearchOptions searchOptions);
+    static boost::python::list  textFind3(const PyDbDatabase& db, const std::string& findString, const std::string& replaceString, TextFindSearchOptions searchOptions, const boost::python::list& selSet);
     static PyDbTransactionManager transactionManager();
     static AcGeMatrix3d         ucsMatrix1();
     static AcGeMatrix3d         ucsMatrix2(const PyDbDatabase& db);

@@ -1,14 +1,22 @@
 from __future__ import annotations
-
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
-
+from pyrx import Ap as PyAp
 from pyrx import Ax as PyAx
+from pyrx import Br as PyBr
 from pyrx import Db as PyDb
+from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
+from pyrx import Pl as PyPl
 from pyrx import Rx as PyRx
+from pyrx import Sm as PySm
+import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
+from __future__ import annotations
+
+from pyrx import Db as PyDb
 
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
@@ -6144,12 +6152,7 @@ class Core:
     @overload
     @staticmethod
     def textFind(
-        db: PyDb.Database,
-        findString: str,
-        replaceString: str,
-        searchOptions: PyDb.TextFindOptions,
-        ids: list[PyDb.ObjectId],
-        /,
+        db: PyDb.Database, findString: str, searchOptions: PyDb.TextFindOptions, /
     ) -> list[PyDb.ObjectId]:
         """
         This function searches the set of entities for text that matches findString. If a match is
@@ -10282,6 +10285,7 @@ class DbObject(PyGi.Drawable):
         proper open status. This function must have been preceded by a call to upgradeFromNotify().
         Returns Acad::eOk if successful.
         """
+    def dumpAllProperties(self, /) -> list: ...
     def dwgDump(self, /) -> list: ...
     def erase(self, erasing: bool = True, /) -> None:
         """
@@ -10312,6 +10316,12 @@ class DbObject(PyGi.Drawable):
         database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this
         condition.
         """
+    @overload
+    def getPropertyValue(self, propName: str, /) -> AcValue: ...
+    @overload
+    def getPropertyValue(self, propName: str, index: int, subPropName: str, /) -> AcValue: ...
+    @overload
+    def getPropertyValue(self, *args) -> AcValue: ...
     def getXDBinaryData(self, key: str, /) -> object: ...
     def handOverTo(self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool, /) -> None:
         """
@@ -10502,6 +10512,14 @@ class DbObject(PyGi.Drawable):
         This backpointer is used by WBLOCK to be sure all necessary objects are written out.
         Returns Acad::eOk if successful.
         """
+    @overload
+    def setPropertyValue(self, propName: str, val: PyDd.AcValue, /) -> None: ...
+    @overload
+    def setPropertyValue(
+        self, propName: str, index: int, subPropName: str, val: PyDd.AcValue, /
+    ) -> None: ...
+    @overload
+    def setPropertyValue(self, *args) -> None: ...
     def setXDBinaryData(self, key: str, data: memoryview, /) -> None: ...
     def setXData(self, xdata: list[tuple[int, Any]], /) -> None:
         """
