@@ -250,7 +250,7 @@ void makePyDbObjectWrapper()
 
     constexpr const std::string_view setPropertyValueOverloads = "Overloads:\n"
         "- propName:str, val:PyDd.AcValue\n"
-        "- propName:str, index:int, subPropName:str, val:PyDd.AcValue\n";
+        "- propName:str, index:int, subPropName:str, val:PyDb.AcValue\n";
 
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
