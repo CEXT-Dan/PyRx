@@ -190,17 +190,6 @@ static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
     return Acad::eNotApplicable;
 }
 
-static AcRxObject* unwrapRxObject(AcRxValue& itemVal)
-{
-    if (AcRxObject** ppObj = rxvalue_cast<AcRxObject*>(&itemVal))
-        return *ppObj;
-
-    if (AcRxBoxedValue* pBoxed = rxvalue_cast<AcRxBoxedValue>(&itemVal))
-        return pBoxed;
-
-    return nullptr;
-}
-
 static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)
 {
     if (index < 0)
@@ -332,12 +321,10 @@ void makePyDbObjectWrapper()
         .def("getXDBinaryData", &PyDbObject::getXDBinaryData, DS.ARGS({ "key: str" }))
         .def("setXDBinaryData", &PyDbObject::setXDBinaryData, DS.ARGS({ "key: str", "data: memoryview" }))
         .def("dwgDump", &PyDbObject::dwgDump, DS.ARGS())
-
         .def("getPropertyValue", &PyDbObject::getPropertyValue)
         .def("getPropertyValue", &PyDbObject::getIndexedPropertyValue, DS.OVRL(getPropertyValueOverloads))
         .def("setPropertyValue", &PyDbObject::setPropertyValue)
         .def("setPropertyValue", &PyDbObject::setIndexedPropertyValue, DS.OVRL(setPropertyValueOverloads))
-
         .def("dumpAllProperties", &PyDbObject::dumpAllProperties)
         .def("desc", &PyDbObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.SARGS()).staticmethod("className")
@@ -1041,27 +1028,34 @@ boost::python::list PyDbObject::dumpAllProperties() const
             AcRxValue testVal;
             if (pProp->getValue(impObj(), testVal) != eOk)
                 continue;
-
+            AcValue acVal;
+            PyThrowBadEs(acRxValueToAcValue(testVal, acVal));
+            propInfo["name"] = wstr_to_utf8(pMember->name());
+            propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "property";
             propInfo["readonly"] = pProp->isReadOnly(impObj());
+            propInfo["value"] = wstr_to_utf8(acVal.format());
         }
         else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
         {
+            propInfo["name"] = wstr_to_utf8(pMember->name());
+            propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "indexed";
             propInfo["readonly"] = pIdxProp->isReadOnly(impObj());
+            propInfo["value"] = "none";
         }
         else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
         {
+            propInfo["name"] = wstr_to_utf8(pMember->name());
+            propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "collection";
             propInfo["readonly"] = true;
+            propInfo["value"] = "none";
         }
         else
         {
             continue;
         }
-
-        propInfo["name"] = wstr_to_utf8(pMember->name());
-        propInfo["type"] = wstr_to_utf8(pMember->type().name());
         result.append(propInfo);
     }
     return result;
