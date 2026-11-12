@@ -179,11 +179,15 @@ static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
     }
     else
     {
-        std::wstring buf(1024,0);
-        if (src.toString(buf.data(), buf.size(), AcRxValueType::kStringFormatGlobal) > 0)
+        int reqSize = src.toString(nullptr, 0, AcRxValueType::kStringFormatGlobal);
+        if (reqSize > 0)
         {
-            dst = AcValue(buf.c_str());
-            return Acad::eOk;
+            std::wstring buf(reqSize + 1, L'\0');
+            if (src.toString(buf.data(), buf.size(), AcRxValueType::kStringFormatGlobal) > 0)
+            {
+                dst = AcValue(buf.c_str());
+                return Acad::eOk;
+            }
         }
     }
     dst = AcValue(L"NULL_VALUE");
