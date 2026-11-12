@@ -24,7 +24,13 @@ using namespace boost::python;
 #if defined(_ARXTARGET)
 static Acad::ErrorStatus PyObjectToAcRxValue(const std::string& propName, const boost::python::object& src, AcRxValue& dst)
 {
-    if (PyBool_Check(src.ptr()))
+    if ("Visible" == propName)
+    {
+        const int val = extract<int32_t>(src);
+        dst = AcRxValue(AcDb::Visibility(val));
+        return eOk;
+    }
+    else if (PyBool_Check(src.ptr()))
     {
         const bool val = extract<bool>(src);
         dst = AcRxValue(val);
@@ -105,8 +111,9 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
         return Acad::eOk;
     }
 
-    // Helper lambda to test type, cast, and assign
     const AcRxValueType& vt = src.type();
+
+    // Helper lambda to test type, cast, and assign
     auto tryAssign = [&]<typename T>(auto&& converter) -> bool {
         if (vt == AcRxValueType::Desc<T>::value())
         {
@@ -128,7 +135,7 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
         tryAssign.template operator() < Adesk::UInt16 > (identity) ||
         tryAssign.template operator() < Adesk::Int32 > (identity) ||
         tryAssign.template operator() < Adesk::UInt32 > (identity) ||
-#if !defined(_ARXTARGET) && _ARXTARGET >= 250
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
         tryAssign.template operator() < Adesk::Int64 > (identity) ||
         tryAssign.template operator() < Adesk::UInt64 > (identity) ||
 #endif
@@ -146,6 +153,16 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
         return Acad::eOk;
     }
 
+    // Handle enum properties explicitly if exposed in Boost.Python
+    if (propName == "Visible")
+    {
+        if (const auto* pVal = rxvalue_cast<AcDb::Visibility>(&src))
+        {
+            dst = boost::python::object(*pVal);
+            return Acad::eOk;
+        }
+    }
+
     // Fallback: convert unknown types (like enums or custom structs) to string
     int reqSize = src.toString(nullptr, 0, AcRxValueType::kStringFormatGlobal);
     if (reqSize > 0)
@@ -157,6 +174,7 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
             return Acad::eOk;
         }
     }
+
     return Acad::eNotApplicable;
 }
 
