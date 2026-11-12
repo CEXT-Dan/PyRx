@@ -22,6 +22,12 @@
 using namespace boost::python;
 
 #if defined(_ARXTARGET)
+
+//'HorizontalMode', 'AcDb::TextHorzMode'
+//'Justify','AcDbText::AcTextAlignment',
+//'Attachment','AcDbMText::AttachmentPoint
+//'FlowDirection','AcDbMText::FlowDirection'
+
 static Acad::ErrorStatus PyObjectToAcRxValue(const std::string& propName, const boost::python::object& src, AcRxValue& dst)
 {
     if ("Visible" == propName)
@@ -175,7 +181,7 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
         }
     }
 
-    return Acad::eNotApplicable;
+    return Acad::eOk; //None
 }
 
 static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)
