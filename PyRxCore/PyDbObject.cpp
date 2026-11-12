@@ -17,181 +17,135 @@
 #include "rxvalue.h"
 #endif
 
-#include "AcValue.h"
 #include "PyDbEval.h"
 
 using namespace boost::python;
 
 #if defined(_ARXTARGET)
-static Acad::ErrorStatus acValueToAcRxValue(const AcValue& src, AcRxValue& dst)
+static Acad::ErrorStatus PyObjectToAcRxValue(const boost::python::object& src, AcRxValue& dst)
 {
-    switch (src.dataType())
+    if (PyBool_Check(src.ptr()))
     {
-        case AcValue::kLong:
-        {
-            Adesk::Int32 val = 0;
-            if (src.get(val))
-            {
-                dst = AcRxValue(val);
-                return Acad::eOk;
-            }
-            break;
-        }
-        case AcValue::kDouble:
-        {
-            double val = 0.0;
-            if (src.get(val))
-            {
-                dst = AcRxValue(val);
-                return Acad::eOk;
-            }
-            break;
-        }
-        case AcValue::kString:
-        {
-            AcString val;
-            if (src.get(val))
-            {
-                dst = AcRxValue(val);
-                return Acad::eOk;
-            }
-            break;
-        }
-        case AcValue::kPoint:
-        {
-            AcGePoint2d pt2d;
-            if (src.get(pt2d))
-            {
-                dst = AcRxValue(pt2d);
-                return Acad::eOk;
-            }
-            break;
-        }
-        case AcValue::k3dPoint:
-        {
-            AcGePoint3d pt3d;
-            if (src.get(pt3d))
-            {
-                dst = AcRxValue(pt3d);
-                return Acad::eOk;
-            }
-            break;
-        }
-        case AcValue::kObjectId:
-        {
-            AcDbObjectId id;
-            if (src.get(id))
-            {
-                dst = AcRxValue(id);
-                return Acad::eOk;
-            }
-            break;
-        }
-        default:
-            return Acad::eNotApplicable;
+        const bool val = extract<bool>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (PyLong_Check(src.ptr()))
+    {
+        const int val = extract<int32_t>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (PyFloat_Check(src.ptr()))
+    {
+        const double val = extract<double>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<AcGePoint2d>(src.ptr()).check())
+    {
+        const AcGePoint2d& val = extract<AcGePoint2d>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<AcGeVector2d>(src.ptr()).check())
+    {
+        const AcGeVector2d& p = extract<AcGeVector2d>(src);
+        const AcGePoint3d val(p.x, p.y, 0);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<AcGePoint3d>(src.ptr()).check())
+    {
+        const AcGePoint3d& val = extract<AcGePoint3d>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<AcGeVector3d>(src.ptr()).check())
+    {
+        const AcGeVector3d& p = extract<AcGeVector3d>(src);
+        const AcGePoint3d val(p.x, p.y, p.z);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<PyDbObjectId>(src.ptr()).check())
+    {
+        const PyDbObjectId val = extract<PyDbObjectId>(src);
+        dst = AcRxValue(val.m_id);
+        return eOk;
+    }
+    else if (extract<std::string>(src.ptr()).check())
+    {
+        const std::wstring& wstr = utf8_to_wstr(extract<std::string>(src)).c_str();
+        dst = AcRxValue(AcString(utf8_to_wstr(extract<std::string>(src)).c_str()));
+        return eOk;
     }
     return Acad::eInvalidInput;
 }
 
-static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
+static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python::object& dst)
 {
+    // Always reset dst to None first to prevent stale data if reused
+    dst = boost::python::object();
+
     if (src.isEmpty())
     {
-        dst.reset();
         return Acad::eOk;
     }
 
+    // Helper lambda to test type, cast, and assign
     const AcRxValueType& vt = src.type();
-
-    if (vt == AcRxValueType::Desc<bool>::value())
-    {
-        if (const bool* pVal = rxvalue_cast<bool>(&src))
+    auto tryAssign = [&]<typename T>(auto&& converter) -> bool {
+        if (vt == AcRxValueType::Desc<T>::value())
         {
-            dst = AcValue(static_cast<Adesk::Int32>(*pVal ? 1 : 0));
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<Adesk::Int32>::value())
-    {
-        if (const Adesk::Int32* pVal = rxvalue_cast<Adesk::Int32>(&src))
-        {
-            dst = AcValue(*pVal);
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<Adesk::Int16>::value())
-    {
-        if (const Adesk::Int16* pVal = rxvalue_cast<Adesk::Int16>(&src))
-        {
-            dst = AcValue(static_cast<Adesk::Int32>(*pVal));
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<double>::value())
-    {
-        if (const double* pVal = rxvalue_cast<double>(&src))
-        {
-            dst = AcValue(*pVal);
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<AcString>::value())
-    {
-        if (const AcString* pVal = rxvalue_cast<AcString>(&src))
-        {
-            dst = AcValue(pVal->kwszPtr());
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<AcGePoint2d>::value())
-    {
-        if (const AcGePoint2d* pVal = rxvalue_cast<AcGePoint2d>(&src))
-        {
-            dst = AcValue(*pVal);
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<AcGePoint3d>::value())
-    {
-        if (const AcGePoint3d* pVal = rxvalue_cast<AcGePoint3d>(&src))
-        {
-            dst = AcValue(*pVal);
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<AcGeVector3d>::value())
-    {
-        if (const AcGeVector3d* pVal = rxvalue_cast<AcGeVector3d>(&src))
-        {
-            // AcValue stores 3D vectors as 3D points
-            dst = AcValue(AcGePoint3d(pVal->x, pVal->y, pVal->z));
-            return Acad::eOk;
-        }
-    }
-    else if (vt == AcRxValueType::Desc<AcDbObjectId>::value())
-    {
-        if (const AcDbObjectId* pVal = rxvalue_cast<AcDbObjectId>(&src))
-        {
-            dst = AcValue(*pVal);
-            return Acad::eOk;
-        }
-    }
-    else
-    {
-        int reqSize = src.toString(nullptr, 0, AcRxValueType::kStringFormatGlobal);
-        if (reqSize > 0)
-        {
-            std::wstring buf(reqSize + 1, L'\0');
-            if (src.toString(buf.data(), buf.size(), AcRxValueType::kStringFormatGlobal) > 0)
+            if (const T* pVal = rxvalue_cast<T>(&src))
             {
-                dst = AcValue(buf.c_str());
-                return Acad::eOk;
+                dst = boost::python::object(converter(*pVal));
+                return true;
             }
         }
+        return false;
+    };
+
+    // Identity converter for types Boost.Python natively understands
+    auto identity = [](const auto& val) -> const auto& { return val; };
+
+    if (tryAssign.template operator() < bool > (identity) ||
+        tryAssign.template operator() < Adesk::UInt8 > (identity) ||
+        tryAssign.template operator() < Adesk::Int16 > (identity) ||
+        tryAssign.template operator() < Adesk::UInt16 > (identity) ||
+        tryAssign.template operator() < Adesk::Int32 > (identity) ||
+        tryAssign.template operator() < Adesk::UInt32 > (identity) ||
+#if !defined(_ARXTARGET) && _ARXTARGET >= 250
+        tryAssign.template operator() < Adesk::Int64 > (identity) ||
+        tryAssign.template operator() < Adesk::UInt64 > (identity) ||
+#endif
+        tryAssign.template operator() < double > (identity) ||
+        tryAssign.template operator() < AcGePoint2d > (identity) ||
+        tryAssign.template operator() < AcGePoint3d > (identity) ||
+        tryAssign.template operator() < AcGeVector2d > (identity) ||
+        tryAssign.template operator() < AcGeVector3d > (identity) ||
+        tryAssign.template operator() < AcString > ([](const AcString& s) { return wstr_to_utf8(s); }) ||
+        tryAssign.template operator() < const ACHAR* > ([](const ACHAR* s) { return s ? wstr_to_utf8(s) : ""; }) ||
+        tryAssign.template operator() < AcDbObjectId > ([](const AcDbObjectId& id) { return PyDbObjectId(id); }))
+    {
+        return Acad::eOk;
     }
-    dst = AcValue(L"NULL_VALUE");
-    return Acad::eOk;
+
+    // Fallback: convert unknown types (like enums or custom structs) to string
+    int reqSize = src.toString(nullptr, 0, AcRxValueType::kStringFormatGlobal);
+    if (reqSize > 0)
+    {
+        std::wstring buf(reqSize + 1, L'\0');
+        if (src.toString(buf.data(), buf.size(), AcRxValueType::kStringFormatGlobal) > 0)
+        {
+            dst = boost::python::object(wstr_to_utf8(buf.c_str()));
+            return Acad::eOk;
+        }
+    }
+    return Acad::eNotApplicable;
 }
+
 
 static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)
 {
@@ -240,8 +194,8 @@ void makePyDbObjectWrapper()
         "- propName:str, index:int,subPropName:str\n";
 
     constexpr const std::string_view setPropertyValueOverloads = "Overloads:\n"
-        "- propName:str, val:PyDb.AcValue\n"
-        "- propName:str, index:int, subPropName:str, val:PyDb.AcValue\n";
+        "- propName:str, val:Any\n"
+        "- propName:str, index:int, subPropName:str, val:Any\n";
 
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
@@ -869,7 +823,7 @@ void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::ob
     PyThrowBadEs(impObj()->setXData(pHead.get()));
 }
 
-PyDbAcValue PyDbObject::getPropertyValue(const std::string& propName) const
+boost::python::object PyDbObject::getPropertyValue(const std::string& propName) const
 {
 #if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
@@ -879,15 +833,15 @@ PyDbAcValue PyDbObject::getPropertyValue(const std::string& propName) const
         PyThrowBadEs(Acad::eKeyNotFound);
     AcRxValue rxVal;
     PyThrowBadEs(pProp->getValue(impObj(), rxVal));
-    AcValue acVal;
-    PyThrowBadEs(acRxValueToAcValue(rxVal, acVal));
-    return PyDbAcValue(acVal);
+    boost::python::object acVal;
+    PyThrowBadEs(acRxValueToPyObject(rxVal, acVal));
+    return acVal;
 #else 
     throw PyNotimplementedByHost{};
 #endif
 }
 
-void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue& pyVal) const
+void PyDbObject::setPropertyValue(const std::string& propName, const boost::python::object& pyVal) const
 {
 #if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
@@ -896,7 +850,7 @@ void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue
     if (pProp == nullptr)
         PyThrowBadEs(Acad::eKeyNotFound);
     AcRxValue rxVal;
-    PyThrowBadEs(acValueToAcRxValue(*pyVal.impObj(), rxVal));
+    PyThrowBadEs(PyObjectToAcRxValue(pyVal, rxVal));
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(pProp->setValue(impObj(), rxVal));
@@ -905,7 +859,7 @@ void PyDbObject::setPropertyValue(const std::string& propName, const PyDbAcValue
 #endif
 }
 
-PyDbAcValue PyDbObject::getIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName) const
+boost::python::object PyDbObject::getIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName) const
 {
 #if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
@@ -945,15 +899,15 @@ PyDbAcValue PyDbObject::getIndexedPropertyValue(const std::string& propName, int
     AcRxValue subVal;
     PyThrowBadEs(pSubProp->getValue(pSubObj, subVal));
 
-    AcValue acVal;
-    PyThrowBadEs(acRxValueToAcValue(subVal, acVal));
-    return PyDbAcValue(acVal);
+    boost::python::object acVal;
+    PyThrowBadEs(acRxValueToPyObject(subVal, acVal));
+    return acVal;
 #else 
     throw PyNotimplementedByHost{};
 #endif
 }
 
-void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName, const PyDbAcValue& pyVal) const
+void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName, const boost::python::object& pyVal) const
 {
 #if defined(_ARXTARGET)
     AcString acPropName = utf8_to_wstr(propName).c_str();
@@ -993,7 +947,7 @@ void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index,
         PyThrowBadEs(Acad::eKeyNotFound);
 
     AcRxValue newSubVal;
-    PyThrowBadEs(acValueToAcRxValue(*pyVal.impObj(), newSubVal));
+    PyThrowBadEs(PyObjectToAcRxValue(*pyVal, newSubVal));
     PyThrowBadEs(pSubProp->setValue(pSubObj, newSubVal));
 
     if (pIdxProp != nullptr && !pIdxProp->isReadOnly(impObj()))
@@ -1030,13 +984,13 @@ boost::python::list PyDbObject::dumpAllProperties() const
             AcRxValue testVal;
             if (pProp->getValue(impObj(), testVal) != eOk)
                 continue;
-            AcValue acVal;
-            PyThrowBadEs(acRxValueToAcValue(testVal, acVal));
+            boost::python::object acVal;
+            PyThrowBadEs(acRxValueToPyObject(testVal, acVal));
             propInfo["name"] = wstr_to_utf8(pMember->name());
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "property";
             propInfo["readonly"] = pProp->isReadOnly(impObj());
-            propInfo["value"] = wstr_to_utf8(acVal.format());
+            propInfo["value"] = acVal;
         }
         else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
         {

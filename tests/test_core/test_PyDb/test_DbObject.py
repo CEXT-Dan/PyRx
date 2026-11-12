@@ -147,9 +147,9 @@ class TestDbObject:
     @pytest.mark.known_failure_ZRX
     def test_getsetproperty(self):
         ent = create_polyline()
-        ent.setPropertyValue("Vertices", 2, "Position", Db.AcValue(Ge.Point2d(3, 3)))
-        ent.setPropertyValue("Vertices", 2, "Bulge", Db.AcValue(0.05))
+        ent.setPropertyValue("Vertices", 2, "Position", Ge.Point2d(3, 3))
+        ent.setPropertyValue("Vertices", 2, "Bulge", 0.05)
         v1 = ent.getPropertyValue("Vertices", 2, "Position")
-        assert v1.getPoint2d() == Ge.Point2d(3, 3)
+        assert v1 == Ge.Point2d(3, 3)
         v2 = ent.getPropertyValue("Vertices", 2, "Bulge")
-        assert v2.getDouble() == 0.05
+        assert v2 == 0.05
