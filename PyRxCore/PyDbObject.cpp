@@ -179,10 +179,10 @@ static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
     }
     else
     {
-        ACHAR buf[512] = { 0 };
-        if (src.toString(buf, 512, AcRxValueType::kStringFormatGlobal) > 0)
+        std::wstring buf(1024,0);
+        if (src.toString(buf.data(), buf.size(), AcRxValueType::kStringFormatGlobal) > 0)
         {
-            dst = AcValue(buf);
+            dst = AcValue(buf.c_str());
             return Acad::eOk;
         }
     }
@@ -199,8 +199,7 @@ static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColP
     if (pIter == nullptr)
         return Acad::eNotApplicable;
 
-    int currentIdx = 0;
-    for (; !pIter->done(); pIter->next(), ++currentIdx)
+    for (int currentIdx = 0; !pIter->done(); pIter->next(), ++currentIdx)
     {
         if (currentIdx == index)
         {
