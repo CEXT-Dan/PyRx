@@ -22,17 +22,11 @@
 using namespace boost::python;
 
 #if defined(_ARXTARGET)
-static Acad::ErrorStatus PyObjectToAcRxValue(const boost::python::object& src, AcRxValue& dst)
+static Acad::ErrorStatus PyObjectToAcRxValue(const std::string& propName, const boost::python::object& src, AcRxValue& dst)
 {
     if (PyBool_Check(src.ptr()))
     {
         const bool val = extract<bool>(src);
-        dst = AcRxValue(val);
-        return eOk;
-    }
-    else if (extract<AcDb::Visibility>(src.ptr()).check())
-    {
-        const AcDb::Visibility val = extract<AcDb::Visibility>(src);
         dst = AcRxValue(val);
         return eOk;
     }
@@ -101,7 +95,7 @@ static Acad::ErrorStatus PyObjectToAcRxValue(const boost::python::object& src, A
     return Acad::eInvalidInput;
 }
 
-static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python::object& dst)
+static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const AcRxValue& src, boost::python::object& dst)
 {
     // Always reset dst to None first to prevent stale data if reused
     dst = boost::python::object();
@@ -145,7 +139,6 @@ static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python
         tryAssign.template operator() < AcGeVector3d > (identity) ||
         tryAssign.template operator() < AcCmColor > (identity) ||
         tryAssign.template operator() < AcCmTransparency > (identity) ||
-        tryAssign.template operator() < AcDb::Visibility > (identity) ||
         tryAssign.template operator() < AcString > ([](const AcString& s) { return wstr_to_utf8(s); }) ||
         tryAssign.template operator() < const ACHAR* > ([](const ACHAR* s) { return s ? wstr_to_utf8(s) : ""; }) ||
         tryAssign.template operator() < AcDbObjectId > ([](const AcDbObjectId& id) { return PyDbObjectId(id); }))
@@ -854,7 +847,7 @@ boost::python::object PyDbObject::getPropertyValue(const std::string& propName) 
     AcRxValue rxVal;
     PyThrowBadEs(pProp->getValue(impObj(), rxVal));
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(rxVal, acVal));
+    PyThrowBadEs(acRxValueToPyObject(propName,rxVal, acVal));
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -870,7 +863,7 @@ void PyDbObject::setPropertyValue(const std::string& propName, const boost::pyth
     if (pProp == nullptr)
         PyThrowBadEs(Acad::eKeyNotFound);
     AcRxValue rxVal;
-    PyThrowBadEs(PyObjectToAcRxValue(pyVal, rxVal));
+    PyThrowBadEs(PyObjectToAcRxValue(propName, pyVal, rxVal));
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(pProp->setValue(impObj(), rxVal));
@@ -920,7 +913,7 @@ boost::python::object PyDbObject::getIndexedPropertyValue(const std::string& pro
     PyThrowBadEs(pSubProp->getValue(pSubObj, subVal));
 
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(subVal, acVal));
+    PyThrowBadEs(acRxValueToPyObject(subPropName,subVal, acVal));
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -967,7 +960,7 @@ void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index,
         PyThrowBadEs(Acad::eKeyNotFound);
 
     AcRxValue newSubVal;
-    PyThrowBadEs(PyObjectToAcRxValue(*pyVal, newSubVal));
+    PyThrowBadEs(PyObjectToAcRxValue(subPropName ,*pyVal, newSubVal));
     PyThrowBadEs(pSubProp->setValue(pSubObj, newSubVal));
 
     if (pIdxProp != nullptr && !pIdxProp->isReadOnly(impObj()))
@@ -1005,8 +998,9 @@ boost::python::list PyDbObject::dumpAllProperties() const
             if (pProp->getValue(impObj(), testVal) != eOk)
                 continue;
             boost::python::object acVal;
-            PyThrowBadEs(acRxValueToPyObject(testVal, acVal));
-            propInfo["name"] = wstr_to_utf8(pMember->name());
+            const auto name = wstr_to_utf8(pMember->name());
+            PyThrowBadEs(acRxValueToPyObject(name,testVal, acVal));
+            propInfo["name"] = name;
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "property";
             propInfo["readonly"] = pProp->isReadOnly(impObj());
