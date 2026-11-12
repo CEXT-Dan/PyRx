@@ -30,6 +30,12 @@ static Acad::ErrorStatus PyObjectToAcRxValue(const boost::python::object& src, A
         dst = AcRxValue(val);
         return eOk;
     }
+    else if (extract<AcDb::Visibility>(src.ptr()).check())
+    {
+        const AcDb::Visibility val = extract<AcDb::Visibility>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
     else if (PyLong_Check(src.ptr()))
     {
         const int val = extract<int32_t>(src);
@@ -139,6 +145,7 @@ static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python
         tryAssign.template operator() < AcGeVector3d > (identity) ||
         tryAssign.template operator() < AcCmColor > (identity) ||
         tryAssign.template operator() < AcCmTransparency > (identity) ||
+        tryAssign.template operator() < AcDb::Visibility > (identity) ||
         tryAssign.template operator() < AcString > ([](const AcString& s) { return wstr_to_utf8(s); }) ||
         tryAssign.template operator() < const ACHAR* > ([](const ACHAR* s) { return s ? wstr_to_utf8(s) : ""; }) ||
         tryAssign.template operator() < AcDbObjectId > ([](const AcDbObjectId& id) { return PyDbObjectId(id); }))
