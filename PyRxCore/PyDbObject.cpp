@@ -74,6 +74,18 @@ static Acad::ErrorStatus PyObjectToAcRxValue(const boost::python::object& src, A
         dst = AcRxValue(val.m_id);
         return eOk;
     }
+    else if (extract<AcCmColor>(src.ptr()).check())
+    {
+        const AcCmColor val = extract<AcCmColor>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
+    else if (extract<AcCmTransparency>(src.ptr()).check())
+    {
+        const AcCmTransparency val = extract<AcCmTransparency>(src);
+        dst = AcRxValue(val);
+        return eOk;
+    }
     else if (extract<std::string>(src.ptr()).check())
     {
         const std::wstring& wstr = utf8_to_wstr(extract<std::string>(src)).c_str();
@@ -125,6 +137,8 @@ static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python
         tryAssign.template operator() < AcGePoint3d > (identity) ||
         tryAssign.template operator() < AcGeVector2d > (identity) ||
         tryAssign.template operator() < AcGeVector3d > (identity) ||
+        tryAssign.template operator() < AcCmColor > (identity) ||
+        tryAssign.template operator() < AcCmTransparency > (identity) ||
         tryAssign.template operator() < AcString > ([](const AcString& s) { return wstr_to_utf8(s); }) ||
         tryAssign.template operator() < const ACHAR* > ([](const ACHAR* s) { return s ? wstr_to_utf8(s) : ""; }) ||
         tryAssign.template operator() < AcDbObjectId > ([](const AcDbObjectId& id) { return PyDbObjectId(id); }))
@@ -145,7 +159,6 @@ static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python
     }
     return Acad::eNotApplicable;
 }
-
 
 static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)
 {
