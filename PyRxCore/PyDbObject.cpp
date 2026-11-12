@@ -186,8 +186,8 @@ static Acad::ErrorStatus acRxValueToAcValue(const AcRxValue& src, AcValue& dst)
             return Acad::eOk;
         }
     }
-
-    return Acad::eNotApplicable;
+    dst = AcValue(L"NULL_VALUE");
+    return Acad::eOk;
 }
 
 static Acad::ErrorStatus getCollectionItemAt(const AcRxCollectionProperty* pColProp, const AcRxObject* pObj, int index, AcRxValue& outItem)

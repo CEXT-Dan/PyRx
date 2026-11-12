@@ -116,7 +116,7 @@ public:
     void                  setPropertyValue(const std::string& propName, const PyDbAcValue& pyVal) const;
     PyDbAcValue           getIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName) const;
     void                  setIndexedPropertyValue(const std::string& propName, int index, const std::string& subPropName, const PyDbAcValue& pyVal) const;
-    
+
     boost::python::list   dumpAllProperties() const;
 
 
