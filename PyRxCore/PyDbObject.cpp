@@ -1039,7 +1039,7 @@ boost::python::list PyDbObject::dumpAllProperties() const
         else if (const AcRxIndexedProperty* pIdxProp = AcRxIndexedProperty::cast(pMember))
         {
             int count = 0;
-            PyThrowBadEs(pIdxProp->tryGetCount(impObj(), count));
+            pIdxProp->tryGetCount(impObj(), count);
             propInfo["name"] = wstr_to_utf8(pMember->name());
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "indexed";
@@ -1049,7 +1049,7 @@ boost::python::list PyDbObject::dumpAllProperties() const
         else if (const AcRxCollectionProperty* pColProp = AcRxCollectionProperty::cast(pMember))
         {
             int count = 0;
-            PyThrowBadEs(pColProp->tryGetCount(impObj(), count));
+            pColProp->tryGetCount(impObj(), count);
             propInfo["name"] = wstr_to_utf8(pMember->name());
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "collection";
