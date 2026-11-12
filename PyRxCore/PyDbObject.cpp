@@ -49,11 +49,10 @@ static Acad::ErrorStatus acValueToAcRxValue(const AcValue& src, AcRxValue& dst)
         }
         case AcValue::kString:
         {
-            const ACHAR* pszVal = nullptr;
-            if (src.get(pszVal) && pszVal != nullptr)
+            AcString val;
+            if (src.get(val))
             {
-                // AcRxProperty string setters expect AcString
-                dst = AcRxValue(AcString(pszVal));
+                dst = AcRxValue(val);
                 return Acad::eOk;
             }
             break;
