@@ -7,6 +7,18 @@ import pytest
 from pyrx import Db, Ge
 
 
+def create_polyline():
+    pnts = []
+    pnts.append(Ge.Point2d(0, 0))
+    pnts.append(Ge.Point2d(2, 0))
+    pnts.append(Ge.Point2d(2, 2))
+    pnts.append(Ge.Point2d(0, 2))
+    pl = Db.Polyline(pnts)
+    pl.setDatabaseDefaults()
+    pl.setClosed(True)
+    return pl
+
+
 class PyData:
     sd1 = "check out the brain on brad, lets make this bigger than 127 bytes"
     sd2 = "check out the brain on brad, lets make this bigger than 127 bytes"
@@ -37,16 +49,14 @@ class TestDbObject:
         #
         assert bdo.database() == Db.workingDb()
 
-    @pytest.mark.known_failure_IRX
     def test_property_ids2(self):
         id = Db.HostApplicationServices().workingDatabase().blockTableId()
         bdo = Db.DbObject(id, Db.OpenMode.ForRead)
-        
-        #iacad is deleted
+
+        # iacad is deleted
         bdo.close()
         assert not bdo.isReadEnabled()
 
-    @pytest.mark.known_failure_IRX
     def test_undo_recording(self):
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
@@ -88,7 +98,6 @@ class TestDbObject:
         assert p.y == 10
         assert p.z == 100
 
-    @pytest.mark.known_failure_IRX
     def test_BinaryData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)
@@ -100,7 +109,6 @@ class TestDbObject:
         assert not xrid.isNull()
         assert xrid.isDerivedFrom(Db.Xrecord.desc())
 
-    @pytest.mark.known_failure_IRX
     def test_BinaryXdData(self):
         data = PyData()
         dataBytes = pickle.dumps(data)
@@ -122,7 +130,7 @@ class TestDbObject:
         assert not line.isDerivedFrom(Db.Circle.desc())
         assert line.isDerivedFrom(Db.Curve.desc())
 
-    def EntityHyperlinkPE(self, db_06457: Db.Database):
+    def test_EntityHyperlinkPE(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c95f5")
         objId = db_06457.getObjectId(False, objHnd)
         obj = Db.DbObject(objId)
@@ -133,3 +141,15 @@ class TestDbObject:
             lnk = hpc.item(idx)
             assert lnk.name() == "http://www.theswamp.org/"
             assert lnk.description() == "theSwamp"
+
+    @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_ZRX
+    def test_getsetproperty(self):
+        ent = create_polyline()
+        ent.setPropertyValue("Vertices", 2, "Position", Db.AcValue(Ge.Point2d(3, 3)))
+        ent.setPropertyValue("Vertices", 2, "Bulge", Db.AcValue(0.05))
+        v1 = ent.getPropertyValue("Vertices", 2, "Position")
+        assert v1.getPoint2d() == Ge.Point2d(3, 3)
+        v2 = ent.getPropertyValue("Vertices", 2, "Bulge")
+        assert v2.getDouble() == 0.05
