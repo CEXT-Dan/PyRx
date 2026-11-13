@@ -118,8 +118,6 @@ void makePyDbMTextWrapper()
         .def("cloneFrom", &PyDbMText::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbMText::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
-
-
     enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
         .value("kTopLeft", AcDbMText::AttachmentPoint::kTopLeft)
         .value("kTopCenter", AcDbMText::AttachmentPoint::kTopCenter)
@@ -159,7 +157,6 @@ void makePyDbMTextWrapper()
         .value("kDynamicColumns", AcDbMText::ColumnType::kDynamicColumns)
         .export_values()
         ;
-
     enum_<PyRxMTextFragmentType>("MTextFragmentType")
         .value("kLocation", PyRxMTextFragmentType::kLocation)
         .value("kNormal", PyRxMTextFragmentType::kNormal)
