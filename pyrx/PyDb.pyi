@@ -692,7 +692,6 @@ kBottomView: OrthographicView  # 2
 kBoundary: SectionState  # 2
 kBrasilia: TimeZone  # -3000
 kBrisbane: TimeZone  # 10002
-kBtoT: MTextFlowDirection  # 4
 kBuenosAires: TimeZone  # -3001
 kBuffer: ValueDataType  # 128
 kByBlock: ReservedStringEnumType  # 1
@@ -1573,7 +1572,6 @@ kRightView: OrthographicView  # 6
 kRiyadh: TimeZone  # 3001
 kRoad: AcGeoMapType  # 2
 kRotate: AssocTransformationType  # 2
-kRtoL: MTextFlowDirection  # 2
 kSantiago: TimeZone  # -4002
 kSarajevo: TimeZone  # 1003
 kSaskatchewan: TimeZone  # -6003
@@ -21380,9 +21378,7 @@ class MTextColumnType(_BoostPythonEnum):
 
 class MTextFlowDirection(_BoostPythonEnum):
     kLtoR: ClassVar[Self]  # 1
-    kRtoL: ClassVar[Self]  # 2
     kTtoB: ClassVar[Self]  # 3
-    kBtoT: ClassVar[Self]  # 4
     kByStyle: ClassVar[Self]  # 5
 
 class MTextFragmentType(_BoostPythonEnum):
