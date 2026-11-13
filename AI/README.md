@@ -8,7 +8,50 @@ All stub files are in `pyrx\`
 C++ headers and implmentation are in `PyRxCore\`
 Python samples are in `PySamples\`
 most used test files are in `tests\test_core\`
+all SDK files are in M:\Dev\ArxSdk
 
+## Building PyRx (ARX/BRX/ZRX/GRX)
+
+`AI/build_pyrx.py` builds the **latest** PyRx module + RxLoader for each CAD host with
+MSBuild (Visual Studio 2022, toolset v143). Output lands in `Bin/<core>/x64/<Config>/`.
+
+| host | CAD | core project | loader project | Debug x64 output |
+|------|-----|--------------|----------------|------------------|
+| `acad` | AutoCAD 2027 | PyRx26.0 | RxLoader26.0 | `Bin/PyRx26.0/x64/Debug/PyRx26.0.arx` + `RxLoader26.0.arx` + `pyrx_onload.py` |
+| `bcad` | BricsCAD V27 | PyRxV27.0 | RxLoaderV27.0 | `Bin/PyRxV27.0/x64/Debug/PyRxV27.0.brx` + loader |
+| `zcad` | ZWCAD 2027 | PyRxZ27.0 | RxLoaderZ27.0 | `Bin/PyRxZ27.0/x64/Debug/PyRxZ27.0.zrx` + loader |
+| `gcad` | GstarCAD 2027 | PyRxG27.0 | RxLoaderG27.0 | `Bin/PyRxG27.0/x64/Debug/PyRxG27.0.grx` + loader |
+
+```bash
+python AI/build_pyrx.py                 # ALL hosts, Debug|x64
+python AI/build_pyrx.py acad            # AutoCAD 2027 only (the unit-test autoload host)
+python AI/build_pyrx.py bcad zcad       # any subset (host names are case-insensitive)
+python AI/build_pyrx.py acad --config Release
+python AI/build_pyrx.py acad --rebuild  # clean + rebuild
+python AI/build_pyrx.py acad --dry-run  # print the MSBuild commands, build nothing
+python AI/build_pyrx.py --msbuild "C:\...\MSBuild.exe"   # override MSBuild discovery
+```
+
+Notes:
+- Only the **latest** version per CAD is built (PyRx26.0 = AutoCAD 2027; V27.0/Z27.0/G27.0 =
+  the 2027 releases of Brics/Zw/Gstar). Older versions exist in the sln but aren't built here.
+- SDK paths come from env vars `ARX2027`, `BRX27`, `ZRX2027`, `GRX27` (see `BUILDENV.txt`);
+  the tool checks them up front and fails with a clear message if one is missing/wrong.
+- Builds are **incremental**: seconds when nothing changed; a few minutes when a header
+  changed (the core project compiles ~100 .cpp files). MSBuild output streams live.
+- Needs Visual Studio 2022 (2026 also works) with the *Desktop development with C++*
+  workload. The tool finds MSBuild via vswhere and prefers VS 2022 (projects pin toolset v143).
+- Manual MSBuild equivalent, one project at a time (from the repo root):
+  ```
+  MSBuild.exe PyRxCore\PyRx26.0.vcxproj  -p:Configuration=Debug -p:Platform=x64 -p:SolutionDir="M:\Dev\Projects\PyRxGit\"
+  MSBuild.exe PyRxLoader\RxLoader26.0.vcxproj -p:Configuration=Debug -p:Platform=x64 -p:SolutionDir="M:\Dev\Projects\PyRxGit\"
+  ```
+  `-p:SolutionDir` (absolute, trailing `\`) is **required** — `OutDir` is
+  `$(SolutionDir)Bin\...` and is empty when building a vcxproj outside the solution.
+- Git Bash mangles MSBuild `/t:`-style switches (MSYS path conversion) — use the dash form
+  (`-t:`, `-p:`) there, or run from cmd/PowerShell. Python's subprocess is unaffected.
+- AutoCAD 2027 autoloads the unit tests from `Bin\PyRx26.0\x64\Debug\` — rebuild after any
+  C++ change, then re-run `AI/run_pyrx_tests.py`.
 
 ## Quick start: use the helper (RECOMMENDED)
 
@@ -118,27 +161,10 @@ Use the helper: `python AI/parse_test_output.py [substring]`
 - `RxClass` from `desc()` has `.name()`; `obj.isA() == Db.Face.desc()` comparison works.
 - `.pyi` files can be WRONG vs the actual binding, check the cpp in `PyRxCore/*.cpp`
 
-## Status (2026-11-02)
-
-- `tests/test_core/test_PyDb/test_OverrulableEntity.py` — **done, 29/29 tests green** in scoped run
-  (`-k OverrulableEntity`) and in the full run. Full `run_tests.bat --pyinit 0x1 --no-slow --hosts acad`
-  summary: **1407 passed, 3 skipped, 11 deselected, 4 xfailed, 0 failed**. Covers class introspection,
-  default ctor, `cloneFrom`/`cast`, default values, every getter/setter round-trip, DB persistence
-  (add → reopen ForRead/ForWrite → verify → erase), `erase()`, and `transformBy`. No `.pyi`/binding
-  discrepancies found (stub matched the binding exactly).
-
-## Status (2026-10-31)
-
-- `tests/test_core/test_PyDb/test_Face.py` — **done, 40/40 tests green** in full run
-  (`local_test_runner.bat`): suite summary `1377 passed, 3 skipped, 11 deselected, 4 xfailed, 0 failed`.
-- Fast-iteration loop that worked well:
-  1. `./run_tests.bat --pyinit 0x1 --no-slow --hosts acad --pytest -k <Class> > /tmp/run.log 2>&1 &`
-  2. poll `tasklist | grep -i acad.exe` until it exits (~20–30 s per scoped run)
-  3. `python AI/parse_test_output.py` for FAILURES + summary
-  4. for binding doubts: check `PyRxCore/PyDb*.cpp` `makePy...Wrapper()` overloads (the `.pyi` can be wrong)
-
 ## Helper files in this folder
 
+- `build_pyrx.py` — build the latest PyRx + RxLoader for AutoCAD/BricsCAD/ZWCAD/GstarCAD
+  (Debug or Release, x64). See "Building PyRx" above.
 - `run_pyrx_tests.py` — **recommended** blocking runner: launches the CAD host, blocks until it
   exits, evaluates every host log, prints a PASS/FAIL verdict + exit code. See "Quick start" above.
 - `PROMPT_create_class_tests.md` — reusable prompt template: "Create tests for class XXXX",
