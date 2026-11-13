@@ -100,6 +100,23 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 ``(adspyreload PATH)`` returns T or nil  
 ``(adspyloaded)`` returns a list of loaded modules  
 
+## AI workspace (AI folder)
+
+A small sandbox for running PyRx modules hands-free (used by AI assistants to test code without watching the command line):
+
+- [AI/ai_template.py](./AI/ai_template.py) — module template that logs every PyRx callback to a local file (log path from the `AI_RUN_LOG` env var, defaulting to `AI/ai_run.log`). It has a `foo()` placeholder hook called from `OnPyLoadDwg`; [AI/ai_experiment.py](./AI/ai_experiment.py) shows a filled-in example (draws a line). Copy the template to start your own modules.
+- [AI/autocad_run.py](./AI/autocad_run.py) — launcher that starts CAD with `acad.exe /ld <module>`, watches the log, then closes CAD again.
+
+```bash
+# load the template, auto-close CAD once the init callback is logged
+python AI/autocad_run.py --wait 90 --expect OnPyInitApp
+
+# load your own module (defaults to AutoCAD 2027; override with --acad)
+python AI/autocad_run.py -m AI/my_module.py --wait 90 --expect OnPyInitApp
+```
+
+Useful flags: `--acad` (path to acad.exe), `--log` (log file), `--wait` (seconds), `--expect` (text that ends the wait), `--force` (kill a running instance of that version first).
+
 ## ARX sample
 
 ```py
