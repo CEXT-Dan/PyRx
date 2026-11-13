@@ -10,6 +10,7 @@
 #include "PyDbObjectContext.h"
 #include "dbObjectContextInterface.h"
 #include "dbAnnotativeObjectPE.h"
+#include "PyDbEval.h"
 
 #if defined(_ARXTARGET)
 #include "rxmember.h"
@@ -17,87 +18,130 @@
 #include "rxvalue.h"
 #endif
 
-#include "PyDbEval.h"
-
 using namespace boost::python;
 
 #if defined(_ARXTARGET)
 static Acad::ErrorStatus PyObjectToAcRxValue(const AcRxValueType& targetType, const boost::python::object& src, AcRxValue& dst)
 {
+    using namespace boost::python;
+
     if (targetType.isEnum())
     {
-        const int val = extract<int32_t>(src);
-        dst = AcRxValue(targetType, AcRxValue(val));
-        return eOk;
+        extract<int32_t> ext(src);
+        if (!ext.check())
+            return Acad::eInvalidInput;
+        dst = AcRxValue(targetType, AcRxValue(ext()));
+        return Acad::eOk;
     }
     else if (PyBool_Check(src.ptr()))
     {
-        const bool val = extract<bool>(src);
-        dst = AcRxValue(val);
-        return eOk;
+        dst = AcRxValue(static_cast<bool>(PyObject_IsTrue(src.ptr())));
+        return Acad::eOk;
     }
     else if (PyLong_Check(src.ptr()))
     {
-        const int val = extract<int32_t>(src);
-        dst = AcRxValue(val);
-        return eOk;
+        if (targetType == AcRxValueType::Desc<double>::value())
+        {
+            extract<double> ext(src);
+            if (!ext.check()) return 
+                Acad::eInvalidInput;
+            dst = AcRxValue(ext());
+            return Acad::eOk;
+        }
+        else if (targetType == AcRxValueType::Desc<Adesk::Int64>::value())
+        {
+            extract<Adesk::Int64> ext(src);
+            if (!ext.check()) return 
+                Acad::eInvalidInput;
+            dst = AcRxValue(ext());
+            return Acad::eOk;
+        }
+        else if (targetType == AcRxValueType::Desc<Adesk::UInt32>::value())
+        {
+            extract<Adesk::UInt32> ext(src);
+            if (!ext.check()) return 
+                Acad::eInvalidInput;
+            dst = AcRxValue(ext());
+            return Acad::eOk;
+        }
+        else if (targetType == AcRxValueType::Desc<Adesk::Int16>::value())
+        {
+            extract<Adesk::Int16> ext(src);
+            if (!ext.check()) 
+                return Acad::eInvalidInput;
+            dst = AcRxValue(ext());
+            return Acad::eOk;
+        }
+
+        extract<Adesk::Int32> ext(src);
+        if (!ext.check()) 
+            return Acad::eInvalidInput;
+        dst = AcRxValue(ext());
+        return Acad::eOk;
     }
     else if (PyFloat_Check(src.ptr()))
     {
-        const double val = extract<double>(src);
-        dst = AcRxValue(val);
-        return eOk;
+        extract<double> ext(src);
+        if (!ext.check()) 
+            return Acad::eInvalidInput;
+        dst = AcRxValue(ext());
+        return Acad::eOk;
     }
-    else if (extract<AcGePoint2d>(src.ptr()).check())
+    else if (extract<AcGePoint2d>(src).check())
     {
-        const AcGePoint2d& val = extract<AcGePoint2d>(src);
+        const AcGePoint2d val = extract<AcGePoint2d>(src);
         dst = AcRxValue(val);
-        return eOk;
+        return Acad::eOk;
     }
-    else if (extract<AcGeVector2d>(src.ptr()).check())
+    else if (extract<AcGeVector2d>(src).check())
     {
-        const AcGeVector2d& p = extract<AcGeVector2d>(src);
-        const AcGePoint3d val(p.x, p.y, 0);
-        dst = AcRxValue(val);
-        return eOk;
+        const AcGeVector2d val = extract<AcGeVector2d>(src);
+        if (targetType == AcRxValueType::Desc<AcGePoint3d>::value())
+            dst = AcRxValue(AcGePoint3d(val.x, val.y, 0.0));
+        else
+            dst = AcRxValue(val);
+        return Acad::eOk;
     }
-    else if (extract<AcGePoint3d>(src.ptr()).check())
+    else if (extract<AcGePoint3d>(src).check())
     {
-        const AcGePoint3d& val = extract<AcGePoint3d>(src);
+        const AcGePoint3d val = extract<AcGePoint3d>(src);
         dst = AcRxValue(val);
-        return eOk;
+        return Acad::eOk;
     }
-    else if (extract<AcGeVector3d>(src.ptr()).check())
+    else if (extract<AcGeVector3d>(src).check())
     {
-        const AcGeVector3d& p = extract<AcGeVector3d>(src);
-        const AcGePoint3d val(p.x, p.y, p.z);
-        dst = AcRxValue(val);
-        return eOk;
+        const AcGeVector3d val = extract<AcGeVector3d>(src);
+        if (targetType == AcRxValueType::Desc<AcGePoint3d>::value())
+            dst = AcRxValue(AcGePoint3d(val.x, val.y, val.z));
+        else
+            dst = AcRxValue(val);
+        return Acad::eOk;
     }
-    else if (extract<PyDbObjectId>(src.ptr()).check())
+    else if (extract<PyDbObjectId>(src).check())
     {
         const PyDbObjectId val = extract<PyDbObjectId>(src);
         dst = AcRxValue(val.m_id);
-        return eOk;
+        return Acad::eOk;
     }
-    else if (extract<AcCmColor>(src.ptr()).check())
+    else if (extract<AcCmColor>(src).check())
     {
         const AcCmColor val = extract<AcCmColor>(src);
         dst = AcRxValue(val);
-        return eOk;
+        return Acad::eOk;
     }
-    else if (extract<AcCmTransparency>(src.ptr()).check())
+    else if (extract<AcCmTransparency>(src).check())
     {
         const AcCmTransparency val = extract<AcCmTransparency>(src);
         dst = AcRxValue(val);
-        return eOk;
+        return Acad::eOk;
     }
-    else if (extract<std::string>(src.ptr()).check())
+    else if (extract<std::string>(src).check())
     {
-        const std::wstring& wstr = utf8_to_wstr(extract<std::string>(src)).c_str();
-        dst = AcRxValue(AcString(utf8_to_wstr(extract<std::string>(src)).c_str()));
-        return eOk;
+        const std::string str = extract<std::string>(src);
+        dst = AcRxValue(AcString(utf8_to_wstr(str).c_str()));
+        return Acad::eOk;
     }
+
     return Acad::eInvalidInput;
 }
 
@@ -146,8 +190,8 @@ static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python
         tryAssign.template operator() < Adesk::UInt16 > (identity) ||
         tryAssign.template operator() < Adesk::Int32 > (identity) ||
         tryAssign.template operator() < Adesk::UInt32 > (identity) ||
-#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
         tryAssign.template operator() < Adesk::Int64 > (identity) ||
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
         tryAssign.template operator() < Adesk::UInt64 > (identity) ||
 #endif
         tryAssign.template operator() < double > (identity) ||
