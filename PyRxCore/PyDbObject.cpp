@@ -22,18 +22,12 @@
 using namespace boost::python;
 
 #if defined(_ARXTARGET)
-
-//'HorizontalMode', 'AcDb::TextHorzMode'
-//'Justify','AcDbText::AcTextAlignment',
-//'Attachment','AcDbMText::AttachmentPoint
-//'FlowDirection','AcDbMText::FlowDirection'
-
-static Acad::ErrorStatus PyObjectToAcRxValue(const std::string& propName, const boost::python::object& src, AcRxValue& dst)
+static Acad::ErrorStatus PyObjectToAcRxValue(const AcRxValueType& targetType, const boost::python::object& src, AcRxValue& dst)
 {
-    if ("Visible" == propName)
+    if (targetType.isEnum())
     {
         const int val = extract<int32_t>(src);
-        dst = AcRxValue(AcDb::Visibility(val));
+        dst = AcRxValue(targetType, AcRxValue(val));
         return eOk;
     }
     else if (PyBool_Check(src.ptr()))
@@ -107,7 +101,7 @@ static Acad::ErrorStatus PyObjectToAcRxValue(const std::string& propName, const 
     return Acad::eInvalidInput;
 }
 
-static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const AcRxValue& src, boost::python::object& dst)
+static Acad::ErrorStatus acRxValueToPyObject(const AcRxValue& src, boost::python::object& dst)
 {
     // Always reset dst to None first to prevent stale data if reused
     dst = boost::python::object();
@@ -118,6 +112,17 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
     }
 
     const AcRxValueType& vt = src.type();
+
+    if (vt.isEnum())
+    {
+        AcRxValue intVal(AcRxValueType::Desc<Adesk::Int32>::value(), src);
+        if (const auto* pVal = rxvalue_cast<Adesk::Int32>(&intVal))
+        {
+            dst = boost::python::object(*pVal);
+            return Acad::eOk;
+        }
+        return Acad::eInvalidInput;
+    }
 
     // Helper lambda to test type, cast, and assign
     auto tryAssign = [&]<typename T>(auto&& converter) -> bool {
@@ -157,16 +162,6 @@ static Acad::ErrorStatus acRxValueToPyObject(const std::string& propName, const 
         tryAssign.template operator() < AcDbObjectId > ([](const AcDbObjectId& id) { return PyDbObjectId(id); }))
     {
         return Acad::eOk;
-    }
-
-    // Handle enum properties explicitly if exposed in Boost.Python
-    if (propName == "Visible")
-    {
-        if (const auto* pVal = rxvalue_cast<AcDb::Visibility>(&src))
-        {
-            dst = boost::python::object(*pVal);
-            return Acad::eOk;
-        }
     }
 
     // Fallback: convert unknown types (like enums or custom structs) to string
@@ -871,7 +866,7 @@ boost::python::object PyDbObject::getPropertyValue(const std::string& propName) 
     AcRxValue rxVal;
     PyThrowBadEs(pProp->getValue(impObj(), rxVal));
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(propName,rxVal, acVal));
+    PyThrowBadEs(acRxValueToPyObject(rxVal, acVal));
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -886,8 +881,16 @@ void PyDbObject::setPropertyValue(const std::string& propName, const boost::pyth
     AcRxProperty* pProp = AcRxProperty::cast(pEngine->find(impObj(), acPropName));
     if (pProp == nullptr)
         PyThrowBadEs(Acad::eKeyNotFound);
+
+    // Prefer the declared type. For properties that expose only a base type,
+    // use a read-back value to find the concrete runtime enum descriptor.
+    const AcRxValueType* targetType = &pProp->type();
+    AcRxValue currentVal;
+    if (!targetType->isEnum() && pProp->getValue(impObj(), currentVal) == eOk && currentVal.type().isEnum())
+        targetType = &currentVal.type();
+
     AcRxValue rxVal;
-    PyThrowBadEs(PyObjectToAcRxValue(propName, pyVal, rxVal));
+    PyThrowBadEs(PyObjectToAcRxValue(*targetType, pyVal, rxVal));
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
     PyThrowBadEs(pProp->setValue(impObj(), rxVal));
@@ -937,7 +940,7 @@ boost::python::object PyDbObject::getIndexedPropertyValue(const std::string& pro
     PyThrowBadEs(pSubProp->getValue(pSubObj, subVal));
 
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(subPropName,subVal, acVal));
+    PyThrowBadEs(acRxValueToPyObject(subVal, acVal));
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -983,8 +986,13 @@ void PyDbObject::setIndexedPropertyValue(const std::string& propName, int index,
     if (pSubProp == nullptr)
         PyThrowBadEs(Acad::eKeyNotFound);
 
+    const AcRxValueType* targetType = &pSubProp->type();
+    AcRxValue currentSubVal;
+    if (!targetType->isEnum() && pSubProp->getValue(pSubObj, currentSubVal) == eOk && currentSubVal.type().isEnum())
+        targetType = &currentSubVal.type();
+
     AcRxValue newSubVal;
-    PyThrowBadEs(PyObjectToAcRxValue(subPropName ,*pyVal, newSubVal));
+    PyThrowBadEs(PyObjectToAcRxValue(*targetType, *pyVal, newSubVal));
     PyThrowBadEs(pSubProp->setValue(pSubObj, newSubVal));
 
     if (pIdxProp != nullptr && !pIdxProp->isReadOnly(impObj()))
@@ -1023,7 +1031,7 @@ boost::python::list PyDbObject::dumpAllProperties() const
                 continue;
             boost::python::object acVal;
             const auto name = wstr_to_utf8(pMember->name());
-            PyThrowBadEs(acRxValueToPyObject(name,testVal, acVal));
+            PyThrowBadEs(acRxValueToPyObject(testVal, acVal));
             propInfo["name"] = name;
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "property";
