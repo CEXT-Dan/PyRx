@@ -153,3 +153,44 @@ class TestDbObject:
         assert v1 == Ge.Point2d(3, 3)
         v2 = ent.getPropertyValue("Vertices", 2, "Bulge")
         assert v2 == 0.05
+        
+    
+    @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_ZRX
+    def test_getsetproperty_visible(self):
+        ent = Db.Line(Ge.Point3d(0,0,0),Ge.Point3d(1,0,0))
+        ent.setDatabaseDefaults()
+        before =  ent.getPropertyValue("Visible")
+        ent.setPropertyValue("Visible", Db.Visibility.kInvisible)
+        after =  ent.getPropertyValue("Visible")
+        assert before == Db.Visibility.kVisible
+        assert after == Db.Visibility.kInvisible
+        
+    @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_ZRX
+    def test_getsetproperty_flowDirection(self):
+        ent = Db.MText()
+        ent.setContents("hello world")
+        ent.setDatabaseDefaults()
+        before = ent.getPropertyValue("FlowDirection")
+        ent.setPropertyValue("FlowDirection", Db.MTextFlowDirection.kTtoB)
+        after =  ent.getPropertyValue("FlowDirection")
+        assert before == Db.MTextFlowDirection.kByStyle
+        assert after == Db.MTextFlowDirection.kTtoB
+
+
+    @pytest.mark.known_failure_BRX
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_ZRX
+    def test_getsetproperty_flowDirection_int(self):
+        ent = Db.MText()
+        ent.setContents("hello world")
+        ent.setDatabaseDefaults()
+        before = ent.getPropertyValue("FlowDirection")
+        ent.setPropertyValue("FlowDirection", 3)
+        after =  ent.getPropertyValue("FlowDirection")
+        assert before == 5
+        assert after == 3
+

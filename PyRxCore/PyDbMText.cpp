@@ -149,9 +149,7 @@ void makePyDbMTextWrapper()
         ;
     enum_<AcDbMText::FlowDirection>("MTextFlowDirection")
         .value("kLtoR", AcDbMText::FlowDirection::kLtoR)
-        .value("kRtoL", AcDbMText::FlowDirection::kRtoL)
         .value("kTtoB", AcDbMText::FlowDirection::kTtoB)
-        .value("kBtoT", AcDbMText::FlowDirection::kBtoT)
         .value("kByStyle", AcDbMText::FlowDirection::kByStyle)
         .export_values()
         ;
