@@ -8,7 +8,7 @@ All stub files are in `pyrx\`
 C++ headers and implmentation are in `PyRxCore\`
 Python samples are in `PySamples\`
 most used test files are in `tests\test_core\`
-all SDK files are in M:\Dev\ArxSdk
+all SDK files are in `M:\Dev\ArxSdk`
 
 ## Building PyRx (ARX/BRX/ZRX/GRX)
 
