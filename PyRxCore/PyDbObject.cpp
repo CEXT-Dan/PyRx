@@ -910,7 +910,7 @@ boost::python::object PyDbObject::getPropertyValue(const std::string& propName) 
     AcRxValue rxVal;
     PyThrowBadEs(pProp->getValue(impObj(), rxVal));
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(rxVal, acVal));
+    acRxValueToPyObject(rxVal, acVal);
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -926,8 +926,6 @@ void PyDbObject::setPropertyValue(const std::string& propName, const boost::pyth
     if (pProp == nullptr)
         PyThrowBadEs(Acad::eKeyNotFound);
 
-    // Prefer the declared type. For properties that expose only a base type,
-    // use a read-back value to find the concrete runtime enum descriptor.
     const AcRxValueType* targetType = &pProp->type();
     AcRxValue currentVal;
     if (!targetType->isEnum() && pProp->getValue(impObj(), currentVal) == eOk && currentVal.type().isEnum())
@@ -984,7 +982,7 @@ boost::python::object PyDbObject::getIndexedPropertyValue(const std::string& pro
     PyThrowBadEs(pSubProp->getValue(pSubObj, subVal));
 
     boost::python::object acVal;
-    PyThrowBadEs(acRxValueToPyObject(subVal, acVal));
+    acRxValueToPyObject(subVal, acVal);
     return acVal;
 #else 
     throw PyNotimplementedByHost{};
@@ -1075,7 +1073,7 @@ boost::python::list PyDbObject::dumpAllProperties() const
                 continue;
             boost::python::object acVal;
             const auto name = wstr_to_utf8(pMember->name());
-            PyThrowBadEs(acRxValueToPyObject(testVal, acVal));
+            acRxValueToPyObject(testVal, acVal);
             propInfo["name"] = name;
             propInfo["type"] = wstr_to_utf8(pMember->type().name());
             propInfo["kind"] = "property";
