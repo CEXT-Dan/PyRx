@@ -89,7 +89,7 @@ def _run_lm_studio_agent(user_prompt: str):
     messages = [
         {
             "role": "system",
-            "content": "You are an AutoCAD 3D assistant. Use create_cylinder to build 3D cylinders.",
+            "content": "You are an AutoCAD assistant.",
         },
         {"role": "user", "content": user_prompt},
     ]
@@ -137,7 +137,7 @@ def _run_lm_studio_agent(user_prompt: str):
         traceback.print_exc()
 
 
-@Ap.Command("LMAI")
+@Ap.Command("LMAI", Ap.CmdFlags.SESSION)
 def cmd_lmai():
     ps, prompt = Ed.Editor.getString(1, "\nAsk LM Studio: ")
     if ps == Ed.PromptStatus.eOk and prompt:
