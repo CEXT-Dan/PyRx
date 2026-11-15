@@ -4,14 +4,11 @@ import queue
 import sys
 import threading
 import traceback
+import importlib
 from openai import OpenAI
 from pyrx import Ap, Ed
 
-# Ensure the folder containing this script is importable (PyRx loads it as an app script).
-_APP_DIR = os.path.dirname(os.path.abspath(__file__))
-if _APP_DIR not in sys.path:
-    sys.path.insert(0, _APP_DIR)
-
+import ai_tools
 from ai_tools import TOOL_FUNCTIONS, TOOL_SCHEMAS
 
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
@@ -74,6 +71,12 @@ def OnPyInitApp():
 
 def OnPyUnloadApp():
     Ap.Application.removeOnIdleWinMsg(onIdle)
+    
+def OnPyReload():
+    global TOOL_FUNCTIONS, TOOL_SCHEMAS
+    importlib.reload(ai_tools)
+    TOOL_FUNCTIONS = ai_tools.TOOL_FUNCTIONS
+    TOOL_SCHEMAS = ai_tools.TOOL_SCHEMAS
 
 
 # --- LM Studio Agent Loop ---
