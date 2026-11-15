@@ -723,6 +723,7 @@ void makePyDbTextWrapper()
         "- None: Any\n"
         "- position: PyGe.Point3d, text: str\n"
         "- position: PyGe.Point3d, text: str, height: float, rotation: float\n"
+        "- position: PyGe.Point3d, text: str, style: PyDb.ObjectId, height: float, rotation: float\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -731,6 +732,7 @@ void makePyDbTextWrapper()
     class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&>())
+        .def(init<const AcGePoint3d&, const std::string&, double, double>())
         .def(init<const AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -805,6 +807,11 @@ PyDbText::PyDbText()
 
 PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text)
     : PyDbText::PyDbText(new AcDbText(position, AsWStr(text)), true)
+{
+}
+
+PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, double height, double rotation)
+    : PyDbText::PyDbText(new AcDbText(position, AsWStr(text), AcDbObjectId::kNull, height, rotation), true)
 {
 }
 

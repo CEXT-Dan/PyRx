@@ -96,6 +96,7 @@ class PyDbText : public PyDbEntity
 public:
     PyDbText();
     PyDbText(const AcGePoint3d& position, const std::string& text);
+    PyDbText(const AcGePoint3d& position, const std::string& text, double height, double rotation);
     PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation);
     PyDbText(AcDbText* ptr, bool autoDelete);
     PyDbText(const PyDbObjectId& id);

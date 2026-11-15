@@ -31997,6 +31997,16 @@ class Text(PyDb.Entity):
         self, position: PyGe.Point3d, text: str, height: float, rotation: float, /
     ) -> None: ...
     @overload
+    def __init__(
+        self,
+        position: PyGe.Point3d,
+        text: str,
+        style: PyDb.ObjectId,
+        height: float,
+        rotation: float,
+        /,
+    ) -> None: ...
+    @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
