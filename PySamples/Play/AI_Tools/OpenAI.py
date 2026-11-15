@@ -12,6 +12,12 @@ from ai_tools import TOOL_FUNCTIONS, TOOL_SCHEMAS
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 LM_STUDIO_MODEL = "local-model"
 
+# --- OPTION 2: Official OpenAI API Setup ---
+# Uncomment the lines below and comment out Option 1 to use an official OpenAI API key.
+# Ensure your OPENAI_API_KEY environment variable is set, or pass api_key="sk-..." directly.
+# client = OpenAI()
+# MODEL_NAME = "gpt-4o-mini"
+
 _tool_queue: queue.Queue["ToolCallTask"] = queue.Queue()
 
 
