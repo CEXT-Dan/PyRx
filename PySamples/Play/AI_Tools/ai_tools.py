@@ -110,9 +110,7 @@ def create_dimension(
     xl1 = Ge.Point3d(float(x1), float(y1), 0.0)
     xl2 = Ge.Point3d(float(x2), float(y2), 0.0)
     dim_pt = Ge.Point3d(float(dim_line_point_x), float(dim_line_point_y), 0.0)
-
     dim = Db.AlignedDimension(xl1, xl2, dim_pt)
-
     dim.setLayer(layer)
     obj_id = db.addToCurrentspace(dim)
     return {
@@ -128,6 +126,8 @@ def create_cylinder(
     cz: float,
     radius: float,
     height: float,
+    rotation_angle: float = 0.0,
+    rotation_axis: tuple[float, float, float] | list[float] = (0.0, 0.0, 1.0),
     layer: str = "0",
 ):
     r = float(radius)
@@ -135,14 +135,27 @@ def create_cylinder(
     if r <= 0.0 or h <= 0.0:
         raise ValueError("Radius and height must be positive.")
 
+    ax, ay, az = (float(v) for v in rotation_axis)
+    axis = Ge.Vector3d(ax, ay, az)
+    angle = math.radians(float(rotation_angle))
+    if abs(angle) > 0.0 and axis.length() <= 0.0:
+        raise ValueError("rotation_axis must be a non-zero vector when rotation_angle is not 0.")
+
     db = Db.curDb()
     solid = Db.Solid3d()
     solid.setDatabaseDefaults(db)
     solid.createFrustum(h, r, r, r)
 
-    # Translate from origin (0,0,0) to (cx, cy, cz)
-    vec = Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
-    solid.transformBy(Ge.Matrix3d.translation(vec))
+    # The solid is created centered on the origin: rotate it about its own
+    # center, then translate so the center lands at (cx, cy, cz).
+    translation = Ge.Matrix3d.translation(
+        Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
+    )
+    if abs(angle) > 0.0:
+        rotation = Ge.Matrix3d.rotation(angle, axis, Ge.Point3d.kOrigin)
+        solid.transformBy(rotation * translation)
+    else:
+        solid.transformBy(translation)
     solid.setLayer(layer)
 
     obj_id = db.addToCurrentspace(solid)
@@ -226,8 +239,11 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "create_cylinder",
             "description": (
-                "Create a 3D solid cylinder aligned with the Z-axis. "
-                "(cx, cy, cz) is the geometric center of the cylinder."
+                "Create a 3D solid cylinder. "
+                "(cx, cy, cz) is the geometric center of the cylinder. "
+                "By default the cylinder's axis is the Z-axis; use rotation_angle and rotation_axis "
+                "to tilt it in 3D. The cylinder is rotated about its own center, "
+                "so (cx, cy, cz) stays at the geometric center after rotation."
             ),
             "parameters": {
                 "type": "object",
@@ -237,6 +253,17 @@ TOOL_SCHEMAS = [
                     "cz": {"type": "number"},
                     "radius": {"type": "number"},
                     "height": {"type": "number"},
+                    "rotation_angle": {
+                        "type": "number",
+                        "description": "Angle in degrees to rotate the cylinder about rotation_axis. Default 0 (no rotation).",
+                    },
+                    "rotation_axis": {
+                        "type": "array",
+                        "description": "Rotation axis as [x, y, z], e.g. [1, 0, 0], [0, 1, 0], or [0, 0, 1]. Default [0, 0, 1].",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
                     "layer": {"type": "string"},
                 },
                 "required": ["cx", "cy", "cz", "radius", "height"],
@@ -268,8 +295,14 @@ TOOL_SCHEMAS = [
                     "cx": {"type": "number", "description": "Center X coordinate"},
                     "cy": {"type": "number", "description": "Center Y coordinate"},
                     "radius": {"type": "number", "description": "Arc radius"},
-                    "start_angle": {"type": "number", "description": "Start angle in degrees, counterclockwise from +X"},
-                    "end_angle": {"type": "number", "description": "End angle in degrees, counterclockwise from +X"},
+                    "start_angle": {
+                        "type": "number",
+                        "description": "Start angle in degrees, counterclockwise from +X",
+                    },
+                    "end_angle": {
+                        "type": "number",
+                        "description": "End angle in degrees, counterclockwise from +X",
+                    },
                     "layer": {"type": "string", "description": "Target layer name"},
                 },
                 "required": ["cx", "cy", "radius", "start_angle", "end_angle"],
@@ -295,8 +328,14 @@ TOOL_SCHEMAS = [
                     "y1": {"type": "number", "description": "First extension-line point Y"},
                     "x2": {"type": "number", "description": "Second extension-line point X"},
                     "y2": {"type": "number", "description": "Second extension-line point Y"},
-                    "dim_line_point_x": {"type": "number", "description": "X of a point the dimension line passes through (controls placement)"},
-                    "dim_line_point_y": {"type": "number", "description": "Y of a point the dimension line passes through (controls placement)"},
+                    "dim_line_point_x": {
+                        "type": "number",
+                        "description": "X of a point the dimension line passes through (controls placement)",
+                    },
+                    "dim_line_point_y": {
+                        "type": "number",
+                        "description": "Y of a point the dimension line passes through (controls placement)",
+                    },
                     "layer": {"type": "string", "description": "Target layer name"},
                 },
                 "required": ["x1", "y1", "x2", "y2", "dim_line_point_x", "dim_line_point_y"],
