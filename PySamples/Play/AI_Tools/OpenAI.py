@@ -71,7 +71,8 @@ def OnPyInitApp():
 
 def OnPyUnloadApp():
     Ap.Application.removeOnIdleWinMsg(onIdle)
-    
+
+
 def OnPyReload():
     global TOOL_FUNCTIONS, TOOL_SCHEMAS
     importlib.reload(ai_tools)
