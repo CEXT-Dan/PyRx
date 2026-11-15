@@ -95,7 +95,7 @@ def _run_lm_studio_agent(user_prompt: str):
     ]
 
     try:
-        for _ in range(5):
+        for _ in range(30):
             response = client.chat.completions.create(
                 model=LM_STUDIO_MODEL,
                 messages=messages,
