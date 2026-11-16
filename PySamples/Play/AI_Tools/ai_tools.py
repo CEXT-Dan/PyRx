@@ -192,6 +192,75 @@ def create_cuboid(
     }
 
 
+def create_cuboid_between_points(
+    start_point: tuple[float, float, float] | list[float],
+    end_point: tuple[float, float, float] | list[float],
+    width: float,
+    depth: float,
+    roll_angle: float = 0.0,
+    layer: str = "0",
+):
+    w = float(width)
+    d = float(depth)
+    if w <= 0.0 or d <= 0.0:
+        raise ValueError("width and depth must both be positive.")
+
+    p1 = Ge.Point3d(*(float(v) for v in start_point))
+    p2 = Ge.Point3d(*(float(v) for v in end_point))
+    span = p2 - p1
+    length = span.length()
+    if length <= 1e-9:
+        raise ValueError("start_point and end_point must be distinct.")
+
+    # Local X axis points along the beam from p1 to p2
+    x_axis = span.normal()
+
+    # Choose a stable reference up-vector to keep 'width' horizontal whenever possible
+    world_z = Ge.Vector3d.kZAxis
+    if abs(x_axis.dotProduct(world_z)) > 0.999:
+        # Beam is nearly vertical: align local Y with world Y
+        ref_up = Ge.Vector3d.kYAxis
+    else:
+        ref_up = world_z
+
+    y_axis = ref_up.crossProduct(x_axis).normal()
+    z_axis = x_axis.crossProduct(y_axis).normal()
+
+    # Apply optional roll around the beam's longitudinal X axis
+    roll = math.radians(float(roll_angle))
+    if abs(roll) > 0.0:
+        roll_mat = Ge.Matrix3d.rotation(roll, x_axis, Ge.Point3d.kOrigin)
+        y_axis = y_axis.transformBy(roll_mat)
+        z_axis = z_axis.transformBy(roll_mat)
+
+    mid = Ge.Point3d(
+        (p1.x + p2.x) / 2.0,
+        (p1.y + p2.y) / 2.0,
+        (p1.z + p2.z) / 2.0,
+    )
+
+    db = Db.curDb()
+    solid = Db.Solid3d()
+    solid.setDatabaseDefaults(db)
+    solid.createBox(length, w, d)
+
+    # Map local (X=length, Y=width, Z=depth) directly to the beam's coordinate frame at midpoint
+    transform = Ge.Matrix3d()
+    transform.setCoordSystem(mid, x_axis, y_axis, z_axis)
+
+    solid.transformBy(transform)
+    solid.setLayer(layer)
+
+    obj_id = db.addToCurrentspace(solid)
+    return {
+        "status": "created",
+        "type": "Solid3d",
+        "handle": str(obj_id.handle()),
+        "is_null": solid.isNull(),
+        "dimensions": [length, w, d],
+    }
+
+
 def create_cylinder(
     cx: float,
     cy: float,
@@ -244,10 +313,12 @@ TOOL_FUNCTIONS = {
     "create_polyline": create_polyline,
     "create_cylinder": create_cylinder,
     "create_cuboid": create_cuboid,
+    "create_cuboid_between_points": create_cuboid_between_points,
     "create_circle": create_circle,
     "create_line": create_line,
     "create_arc": create_arc,
     "create_dimension": create_dimension,
+    "create_text": create_text,
     "create_text": create_text,
 }
 
@@ -416,6 +487,54 @@ TOOL_SCHEMAS = [
                     },
                 },
                 "required": ["cx", "cy", "cz", "x_len", "y_len", "z_len"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_cuboid_between_points",
+            "description": (
+                "Create a 3D rectangular beam/strut (cuboid) spanning directly from start_point to end_point. "
+                "The length of the cuboid is automatically set to the distance between the two points, "
+                "and its local X-axis is aligned from start_point to end_point. "
+                "Use this instead of create_cuboid whenever connecting two 3D coordinates with an angled beam, brace, or rail."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "start_point": {
+                        "type": "array",
+                        "description": "3D coordinates [x, y, z] of the center of the starting end face.",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
+                    "end_point": {
+                        "type": "array",
+                        "description": "3D coordinates [x, y, z] of the center of the ending end face.",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
+                    "width": {
+                        "type": "number",
+                        "description": "Cross-sectional width of the beam (horizontal thickness perpendicular to the beam). Must be positive.",
+                    },
+                    "depth": {
+                        "type": "number",
+                        "description": "Cross-sectional depth/height of the beam (vertical thickness perpendicular to the beam). Must be positive.",
+                    },
+                    "roll_angle": {
+                        "type": "number",
+                        "description": "Optional twist angle in degrees around the beam's own longitudinal axis. Default 0 (keeps width horizontal).",
+                    },
+                    "layer": {
+                        "type": "string",
+                        "description": "CAD layer name. Default '0'.",
+                    },
+                },
+                "required": ["start_point", "end_point", "width", "depth"],
             },
         },
     },
