@@ -278,7 +278,7 @@ def create_cylinder(
 
     dx, dy, dz = (float(v) for v in direction)
     target_dir = Ge.Vector3d(dx, dy, dz)
-    if target_dir.length() <= 0.0:
+    if target_dir.length() <= 1e-9:
         raise ValueError("direction must be a non-zero vector.")
     target_dir.normalize()
 
@@ -288,8 +288,8 @@ def create_cylinder(
     # createFrustum builds a cylinder centered at (0,0,0) aligned with +Z
     solid.createFrustum(h, r, r, r)
 
-    # Rotate +Z axis directly onto target_dir at the origin
-    rotation = Ge.Vector3d.kZAxis.rotateTo(target_dir)
+    # Pass a perpendicular fallback axis (kXAxis) for 180-degree antiparallel (-Z) cases
+    rotation = Ge.Vector3d.kZAxis.rotateTo(target_dir, Ge.Vector3d.kXAxis)
     translation = Ge.Matrix3d.translation(
         Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
     )
@@ -337,14 +337,8 @@ def create_cylinder_between_points(
     # Created centered at (0, 0, 0) aligned with +Z
     solid.createFrustum(h, r, r, r)
 
-    z_axis = Ge.Vector3d.kZAxis
-    if target_dir.isCodirectionalTo(z_axis):
-        rotation = Ge.Matrix3d.kIdentity
-    elif target_dir.isCodirectionalTo(-z_axis):
-        rotation = Ge.Matrix3d.rotation(math.pi, Ge.Vector3d.kXAxis, Ge.Point3d.kOrigin)
-    else:
-        rotation = z_axis.rotateTo(target_dir)
-
+    # Pass a perpendicular fallback axis (kXAxis) for 180-degree antiparallel (-Z) cases
+    rotation = Ge.Vector3d.kZAxis.rotateTo(target_dir, Ge.Vector3d.kXAxis)
     translation = Ge.Matrix3d.translation(mid - Ge.Point3d.kOrigin)
 
     solid.transformBy(translation * rotation)
