@@ -21,6 +21,32 @@ class TestDbText:
         assert t.textString() == val
         assert t.position() == pos
 
+    def test_creation_3(self):
+        """Test Text creation with position, text, height and rotation"""
+        val = "123456"
+        pos = Ge.Point3d(1, 1, 0)
+        height = 2.5
+        rotation = 1.5708
+        t = Db.Text(pos, val, height, rotation)
+        assert t.textString() == val
+        assert t.position() == pos
+        assert t.height() == pytest.approx(height)
+        assert t.rotation() == pytest.approx(rotation)
+        
+    def test_creation_4(self):
+        """Test Text creation with position, text, style, height and rotation"""
+        val = "123456"
+        pos = Ge.Point3d(1, 1, 0)
+        height = 2.5
+        rotation = 1.5708
+        db = Db.curDb()
+        t = Db.Text(pos, val, db.textstyle(), height, rotation)
+        assert t.textString() == val
+        assert t.position() == pos
+        assert t.height() == pytest.approx(height)
+        assert t.rotation() == pytest.approx(rotation)
+        assert t.textStyle() == db.textstyle()
+
     def test_position(self):
         """Test setting and getting text position"""
         t = Db.Text()
