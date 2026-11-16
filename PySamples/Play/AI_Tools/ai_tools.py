@@ -307,18 +307,71 @@ def create_cylinder(
     }
 
 
+def create_cylinder_between_points(
+    start_point: tuple[float, float, float] | list[float],
+    end_point: tuple[float, float, float] | list[float],
+    radius: float,
+    layer: str = "0",
+):
+    r = float(radius)
+    if r <= 0.0:
+        raise ValueError("Radius must be positive.")
+
+    p1 = Ge.Point3d(*(float(v) for v in start_point))
+    p2 = Ge.Point3d(*(float(v) for v in end_point))
+    span = p2 - p1
+    h = span.length()
+    if h <= 1e-9:
+        raise ValueError("start_point and end_point must be distinct.")
+
+    target_dir = span.normal()
+    mid = Ge.Point3d(
+        (p1.x + p2.x) / 2.0,
+        (p1.y + p2.y) / 2.0,
+        (p1.z + p2.z) / 2.0,
+    )
+
+    db = Db.curDb()
+    solid = Db.Solid3d()
+    solid.setDatabaseDefaults(db)
+    # Created centered at (0, 0, 0) aligned with +Z
+    solid.createFrustum(h, r, r, r)
+
+    z_axis = Ge.Vector3d.kZAxis
+    if target_dir.isCodirectionalTo(z_axis):
+        rotation = Ge.Matrix3d.kIdentity
+    elif target_dir.isCodirectionalTo(-z_axis):
+        rotation = Ge.Matrix3d.rotation(math.pi, Ge.Vector3d.kXAxis, Ge.Point3d.kOrigin)
+    else:
+        rotation = z_axis.rotateTo(target_dir)
+
+    translation = Ge.Matrix3d.translation(mid - Ge.Point3d.kOrigin)
+
+    solid.transformBy(translation * rotation)
+    solid.setLayer(layer)
+
+    obj_id = db.addToCurrentspace(solid)
+    return {
+        "status": "created",
+        "type": "Solid3d",
+        "handle": str(obj_id.handle()),
+        "is_null": solid.isNull(),
+        "height": h,
+    }
+
+
 TOOL_FUNCTIONS = {
     "get_drawing_info": get_drawing_info,
     "create_layer": create_layer,
     "create_polyline": create_polyline,
     "create_cylinder": create_cylinder,
+    "create_cylinder_between_points": create_cylinder_between_points,
     "create_cuboid": create_cuboid,
     "create_cuboid_between_points": create_cuboid_between_points,
     "create_circle": create_circle,
     "create_line": create_line,
     "create_arc": create_arc,
     "create_dimension": create_dimension,
-    "create_text": create_text,
     "create_text": create_text,
 }
 
@@ -428,6 +481,47 @@ TOOL_SCHEMAS = [
                     },
                 },
                 "required": ["cx", "cy", "cz", "radius", "height"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_cylinder_between_points",
+            "description": (
+                "Create a 3D solid cylinder (such as a round pillar, column, pipe, or strut) "
+                "spanning directly from start_point to end_point. "
+                "The cylinder's height and orientation are automatically calculated from the two endpoints. "
+                "Prefer this over create_cylinder whenever placing pillars between floor/ceiling heights "
+                "or connecting two 3D coordinates."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "start_point": {
+                        "type": "array",
+                        "description": "3D coordinates [x, y, z] of the center of the base/start circular face.",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
+                    "end_point": {
+                        "type": "array",
+                        "description": "3D coordinates [x, y, z] of the center of the top/end circular face.",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
+                    "radius": {
+                        "type": "number",
+                        "description": "Radius of the cylinder (must be positive).",
+                    },
+                    "layer": {
+                        "type": "string",
+                        "description": "CAD layer name. Default '0'.",
+                    },
+                },
+                "required": ["start_point", "end_point", "radius"],
             },
         },
     },
