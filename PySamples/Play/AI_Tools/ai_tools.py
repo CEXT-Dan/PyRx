@@ -120,6 +120,34 @@ def create_dimension(
     }
 
 
+def create_text(
+    x: float,
+    y: float,
+    text: str,
+    height: float = 1.0,
+    rotation: float = 0.0,
+    layer: str = "0",
+):
+    h = float(height)
+    if h <= 0.0:
+        raise ValueError("Text height must be positive.")
+
+    db = Db.curDb()
+    txt = Db.Text(Ge.Point3d(float(x), float(y), 0.0), str(text))
+    txt.setHeight(h)
+    txt.setRotation(math.radians(float(rotation)))
+    txt.setLayer(layer)
+    obj_id = db.addToCurrentspace(txt)
+    return {
+        "status": "created",
+        "type": "Text",
+        "handle": str(obj_id.handle()),
+        "text": str(text),
+        "height": h,
+        "rotation": float(rotation),
+    }
+
+
 def create_cylinder(
     cx: float,
     cy: float,
@@ -176,6 +204,7 @@ TOOL_FUNCTIONS = {
     "create_line": create_line,
     "create_arc": create_arc,
     "create_dimension": create_dimension,
+    "create_text": create_text,
 }
 
 TOOL_SCHEMAS = [
@@ -374,6 +403,36 @@ TOOL_SCHEMAS = [
                     "layer": {"type": "string"},
                 },
                 "required": ["x1", "y1", "x2", "y2"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_text",
+            "description": (
+                "Add a single-line text entity in AutoCAD modelspace. "
+                "(x, y) is the insertion point of the text. "
+                "height is the text height in drawing units. "
+                "rotation is the text rotation in degrees, counterclockwise from the positive X axis (default 0)."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "x": {"type": "number", "description": "Insertion point X coordinate"},
+                    "y": {"type": "number", "description": "Insertion point Y coordinate"},
+                    "text": {"type": "string", "description": "Text string to display"},
+                    "height": {
+                        "type": "number",
+                        "description": "Text height in drawing units. Must be positive. Default 1.0.",
+                    },
+                    "rotation": {
+                        "type": "number",
+                        "description": "Text rotation in degrees, counterclockwise from +X. Default 0.",
+                    },
+                    "layer": {"type": "string", "description": "Target layer name"},
+                },
+                "required": ["x", "y", "text"],
             },
         },
     },

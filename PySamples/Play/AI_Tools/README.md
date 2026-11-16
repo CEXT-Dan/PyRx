@@ -1,9 +1,10 @@
 # AI Tools — Natural-Language AutoCAD Assistant
 
 A small [PyRx](https://pyrx.dev) app script that turns plain English into real AutoCAD
-drawing commands. It exposes a set of CAD "tools" (circle, line, polyline, 3D cylinder,
-and a drawing inspector) as OpenAI-style function schemas, lets an LLM decide which tool
-to call, and executes the call safely inside the AutoCAD application context.
+drawing commands. It exposes a set of CAD "tools" (circle, line, polyline, arc, dimension,
+text, 3D cylinder, and a drawing inspector) as OpenAI-style function schemas, lets an LLM
+decide which tool to call, and executes the call safely inside the AutoCAD application
+context.
 
 By default it talks to a local [LM Studio](https://lmstudio.ai) server, but it will work
 with any OpenAI-compatible endpoint.
@@ -70,6 +71,9 @@ while the drawing work stays on it.
 | `create_circle`    | Draw a 2D circle                                          | `cx`, `cy`, `radius`, `layer`                         |
 | `create_line`      | Draw a 2D line segment                                    | `x1`, `y1`, `x2`, `y2`, `layer`                       |
 | `create_polyline`  | Draw a 2D polyline through a list of points              | `points`, `closed`, `layer`                           |
+| `create_arc`       | Draw a 2D circular arc                                    | `cx`, `cy`, `radius`, `start_angle`, `end_angle`, `layer` |
+| `create_dimension` | Add an aligned linear dimension between two points        | `x1`, `y1`, `x2`, `y2`, `dim_line_point_x`, `dim_line_point_y`, `layer` |
+| `create_text`      | Add a single-line text entity                             | `x`, `y`, `text`, `height`, `rotation`, `layer`       |
 | `create_cylinder`  | Create a Z-axis-aligned 3D solid cylinder                 | `cx`, `cy`, `cz`, `radius`, `height`, `layer`         |
 
 > **Cylinder coordinates are the *center*.** `create_cylinder` places the solid so that
