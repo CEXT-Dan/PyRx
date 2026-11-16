@@ -2,7 +2,7 @@
 
 A small [PyRx](https://pyrx.dev) app script that turns plain English into real AutoCAD
 drawing commands. It exposes a set of CAD "tools" (layer, circle, line, polyline, arc, dimension,
-text, 3D cylinder, 3D cuboid, 3D beam between two points, and a drawing inspector) as OpenAI-style function schemas, lets an LLM
+text, 3D cylinder, 3D cylinder between two points, 3D cuboid, 3D beam between two points, and a drawing inspector) as OpenAI-style function schemas, lets an LLM
 decide which tool to call, and executes the call safely inside the AutoCAD application
 context.
 
@@ -75,19 +75,28 @@ while the drawing work stays on it.
 | `create_arc`       | Draw a 2D circular arc                                    | `cx`, `cy`, `radius`, `start_angle`, `end_angle`, `layer` |
 | `create_dimension` | Add an aligned linear dimension between two points        | `x1`, `y1`, `x2`, `y2`, `dim_line_point_x`, `dim_line_point_y`, `layer` |
 | `create_text`      | Add a single-line text entity                             | `x`, `y`, `text`, `height`, `rotation`, `layer`       |
-| `create_cylinder`  | Create a Z-axis-aligned 3D solid cylinder                 | `cx`, `cy`, `cz`, `radius`, `height`, `layer`         |
+| `create_cylinder`  | Create a 3D solid cylinder centered at a point, aligned along a direction | `cx`, `cy`, `cz`, `radius`, `height`, `direction`, `layer` |
+| `create_cylinder_between_points` | Create a 3D cylinder (pillar/column/pipe) spanning between two 3D points | `start_point`, `end_point`, `radius`, `layer` |
 | `create_cuboid`    | Create a 3D box (cuboid) solid                            | `cx`, `cy`, `cz`, `x_len`, `y_len`, `z_len`, `layer`  |
 | `create_cuboid_between_points` | Create a 3D beam/strut spanning between two 3D points | `start_point`, `end_point`, `width`, `depth`, `roll_angle`, `layer` |
 
 > **Cylinder coordinates are the *center*.** `create_cylinder` places the solid so that
 > `(cx, cy, cz)` is its geometric **center**, not its base. A cylinder of height `h`
-> therefore spans `cz − h/2` to `cz + h/2`. To make a cylinder "rest on" the Z=0 plane,
-> set `cz = height / 2`.
+> therefore spans `cz − h/2` to `cz + h/2` along its axis. To make a vertical cylinder
+> "rest on" the Z=0 plane, set `cz = height / 2`. The `direction` vector (default
+> `[0, 0, 1]`) sets the axis orientation — e.g. `[1, 0, 0]` aligns it along X — and does
+> not need to be normalized.
 
 > **Cuboid coordinates are the *center*.** `create_cuboid` places the box so that
 > `(cx, cy, cz)` is its geometric **center**. A box of dimensions `x_len × y_len × z_len`
 > therefore spans `cz − z_len/2` to `cz + z_len/2` along Z (and likewise for X and Y). To
 > make a box "rest on" the Z=0 plane, set `cz = z_len / 2`.
+
+> **Cylinder endpoints are the *end-face centers*.** `create_cylinder_between_points`
+> spans a cylinder directly from `start_point` to `end_point`, so those two points are the
+> centers of the two end faces and the height is the distance between them. Use this
+> instead of `create_cylinder` when placing a pillar, column, or pipe between two 3D
+> coordinates (e.g. between floor and ceiling heights).
 
 > **Beam endpoints are the *end-face centers*.** `create_cuboid_between_points` spans a
 > beam directly from `start_point` to `end_point`, so those two points are the centers of
