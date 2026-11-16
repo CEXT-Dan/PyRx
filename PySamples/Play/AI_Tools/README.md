@@ -1,7 +1,7 @@
 # AI Tools — Natural-Language AutoCAD Assistant
 
 A small [PyRx](https://pyrx.dev) app script that turns plain English into real AutoCAD
-drawing commands. It exposes a set of CAD "tools" (circle, line, polyline, arc, dimension,
+drawing commands. It exposes a set of CAD "tools" (layer, circle, line, polyline, arc, dimension,
 text, 3D cylinder, 3D cuboid, and a drawing inspector) as OpenAI-style function schemas, lets an LLM
 decide which tool to call, and executes the call safely inside the AutoCAD application
 context.
@@ -68,6 +68,7 @@ while the drawing work stays on it.
 | Tool               | What it does                                            | Key parameters                                        |
 | ------------------ | ------------------------------------------------------- | ----------------------------------------------------- |
 | `get_drawing_info` | Inspect entity counts in the active model space          | —                                                     |
+| `create_layer`     | Create a named layer (safe to call if it already exists)  | `layer`, `color`                                      |
 | `create_circle`    | Draw a 2D circle                                          | `cx`, `cy`, `radius`, `layer`                         |
 | `create_line`      | Draw a 2D line segment                                    | `x1`, `y1`, `x2`, `y2`, `layer`                       |
 | `create_polyline`  | Draw a 2D polyline through a list of points              | `points`, `closed`, `layer`                           |
