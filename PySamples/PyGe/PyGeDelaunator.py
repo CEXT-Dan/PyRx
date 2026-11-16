@@ -302,6 +302,39 @@ def process_triangle_contours(triangle_points: list[Ge.Point3d], level: float):
 
     return contour_points
 
+def calculate_tin_volume(pnt3ds, triangles, z_base=0.0):
+    """
+    Calculates the net volume of a TIN mesh relative to a flat z_base plane.
+    
+    Args:
+        pnt3ds: List of Ge.Point3d objects
+        triangles: Flat list/array of triangle vertex indices from Ge.Delaunator
+        z_base: Reference datum elevation (float)
+        
+    Returns:
+        float: Net volume in cubic drawing units
+    """
+    total_volume = 0.0
+
+    for i in range(0, len(triangles), 3):
+        p1 = pnt3ds[triangles[i]]
+        p2 = pnt3ds[triangles[i + 1]]
+        p3 = pnt3ds[triangles[i + 2]]
+
+        # 2D projected area on the XY plane
+        area = 0.5 * abs(
+            p1[0] * (p2[1] - p3[1]) +
+            p2[0] * (p3[1] - p1[1]) +
+            p3[0] * (p1[1] - p2[1])
+        )
+
+        # Average height of the triangle above z_base
+        avg_height = ((p1[2] - z_base) + (p2[2] - z_base) + (p3[2] - z_base)) / 3.0
+
+        total_volume += area * avg_height
+
+    return total_volume
+
 
 # ----------------------------------------------------------------------
 # AutoCAD Commands
@@ -368,7 +401,7 @@ def pyvoronoiCEN():
 def pydelaunator():
     """
     AutoCAD Command: pydelaunator
-    Generates Delaunay triangles and contour lines based on point Z values.
+    Generates Delaunay triangles, contour lines, and prints TIN volume.
     """
     try:
         ss = do_select()
@@ -387,6 +420,13 @@ def pydelaunator():
         min_z = min(z_values)
         max_z = max(z_values)
         step = (max_z - min_z) / ncontours
+
+        # --- NEW: Calculate and print volumes ---
+        vol_from_zero = calculate_tin_volume(pnt3ds, t, z_base=0.0)
+        vol_from_min = calculate_tin_volume(pnt3ds, t, z_base=min_z)
+        print(f"Volume (above Z=0.0): {vol_from_zero:.3f}")
+        print(f"Volume (above min Z={min_z:.3f}): {vol_from_min:.3f}")
+        # ----------------------------------------
 
         contour_lines = []
 
@@ -423,3 +463,4 @@ def pydelaunator():
         print("Elapsed time: {t:.4f}".format(t=t1_stop - t1_start))
     except Exception as err:
         print(err)
+
