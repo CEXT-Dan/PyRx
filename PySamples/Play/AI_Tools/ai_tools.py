@@ -148,6 +148,56 @@ def create_text(
     }
 
 
+def create_cuboid(
+    cx: float,
+    cy: float,
+    cz: float,
+    x_len: float,
+    y_len: float,
+    z_len: float,
+    rotation_angle: float = 0.0,
+    rotation_axis: tuple[float, float, float] | list[float] = (0.0, 0.0, 1.0),
+    layer: str = "0",
+):
+    xl = float(x_len)
+    yl = float(y_len)
+    zl = float(z_len)
+    if xl <= 0.0 or yl <= 0.0 or zl <= 0.0:
+        raise ValueError("x_len, y_len, and z_len must all be positive.")
+
+    ax, ay, az = (float(v) for v in rotation_axis)
+    axis = Ge.Vector3d(ax, ay, az)
+    angle = math.radians(float(rotation_angle))
+    if abs(angle) > 0.0 and axis.length() <= 0.0:
+        raise ValueError("rotation_axis must be a non-zero vector when rotation_angle is not 0.")
+
+    db = Db.curDb()
+    solid = Db.Solid3d()
+    solid.setDatabaseDefaults(db)
+    solid.createBox(xl, yl, zl)
+
+    # The box is created centered on the origin: rotate it about its own
+    # center, then translate so the center lands at (cx, cy, cz).
+    translation = Ge.Matrix3d.translation(
+        Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
+    )
+    if abs(angle) > 0.0:
+        rotation = Ge.Matrix3d.rotation(angle, axis, Ge.Point3d.kOrigin)
+        solid.transformBy(rotation * translation)
+    else:
+        solid.transformBy(translation)
+    solid.setLayer(layer)
+
+    obj_id = db.addToCurrentspace(solid)
+    return {
+        "status": "created",
+        "type": "Solid3d",
+        "handle": str(obj_id.handle()),
+        "is_null": solid.isNull(),
+        "dimensions": [xl, yl, zl],
+    }
+
+
 def create_cylinder(
     cx: float,
     cy: float,
@@ -200,6 +250,7 @@ TOOL_FUNCTIONS = {
     "create_layer": create_layer,
     "create_polyline": create_polyline,
     "create_cylinder": create_cylinder,
+    "create_cuboid": create_cuboid,
     "create_circle": create_circle,
     "create_line": create_line,
     "create_arc": create_arc,
@@ -296,6 +347,44 @@ TOOL_SCHEMAS = [
                     "layer": {"type": "string"},
                 },
                 "required": ["cx", "cy", "cz", "radius", "height"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_cuboid",
+            "description": (
+                "Create a 3D box (cuboid) solid. "
+                "(cx, cy, cz) is the geometric center of the box. "
+                "x_len, y_len, and z_len are the box dimensions along the X, Y, and Z axes. "
+                "By default the box faces are aligned with the WCS axes; use rotation_angle and "
+                "rotation_axis to tilt it in 3D. The box is rotated about its own center, "
+                "so (cx, cy, cz) stays at the geometric center after rotation."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "cx": {"type": "number"},
+                    "cy": {"type": "number"},
+                    "cz": {"type": "number"},
+                    "x_len": {"type": "number", "description": "Box length along the X axis"},
+                    "y_len": {"type": "number", "description": "Box width along the Y axis"},
+                    "z_len": {"type": "number", "description": "Box height along the Z axis"},
+                    "rotation_angle": {
+                        "type": "number",
+                        "description": "Angle in degrees to rotate the box about rotation_axis. Default 0 (no rotation).",
+                    },
+                    "rotation_axis": {
+                        "type": "array",
+                        "description": "Rotation axis as [x, y, z], e.g. [1, 0, 0], [0, 1, 0], or [0, 0, 1]. Default [0, 0, 1].",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {"type": "number"},
+                    },
+                    "layer": {"type": "string"},
+                },
+                "required": ["cx", "cy", "cz", "x_len", "y_len", "z_len"],
             },
         },
     },
