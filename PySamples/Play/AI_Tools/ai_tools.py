@@ -155,37 +155,31 @@ def create_cuboid(
     x_len: float,
     y_len: float,
     z_len: float,
-    rotation_angle: float = 0.0,
-    rotation_axis: tuple[float, float, float] | list[float] = (0.0, 0.0, 1.0),
+    rot_x: float = 0.0,
+    rot_y: float = 0.0,
+    rot_z: float = 0.0,
     layer: str = "0",
 ):
-    xl = float(x_len)
-    yl = float(y_len)
-    zl = float(z_len)
+    xl, yl, zl = float(x_len), float(y_len), float(z_len)
     if xl <= 0.0 or yl <= 0.0 or zl <= 0.0:
         raise ValueError("x_len, y_len, and z_len must all be positive.")
-
-    ax, ay, az = (float(v) for v in rotation_axis)
-    axis = Ge.Vector3d(ax, ay, az)
-    angle = math.radians(float(rotation_angle))
-    if abs(angle) > 0.0 and axis.length() <= 0.0:
-        raise ValueError("rotation_axis must be a non-zero vector when rotation_angle is not 0.")
 
     db = Db.curDb()
     solid = Db.Solid3d()
     solid.setDatabaseDefaults(db)
     solid.createBox(xl, yl, zl)
 
-    # The box is created centered on the origin: rotate it about its own
-    # center, then translate so the center lands at (cx, cy, cz).
+    rx = Ge.Matrix3d.rotation(math.radians(float(rot_x)), Ge.Vector3d.kXAxis, Ge.Point3d.kOrigin)
+    ry = Ge.Matrix3d.rotation(math.radians(float(rot_y)), Ge.Vector3d.kYAxis, Ge.Point3d.kOrigin)
+    rz = Ge.Matrix3d.rotation(math.radians(float(rot_z)), Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
+
     translation = Ge.Matrix3d.translation(
         Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
     )
-    if abs(angle) > 0.0:
-        rotation = Ge.Matrix3d.rotation(angle, axis, Ge.Point3d.kOrigin)
-        solid.transformBy(rotation * translation)
-    else:
-        solid.transformBy(translation)
+
+    # Apply X -> Y -> Z rotation around local center, then translate to (cx, cy, cz)
+    transform = translation * rz * ry * rx
+    solid.transformBy(transform)
     solid.setLayer(layer)
 
     obj_id = db.addToCurrentspace(solid)
@@ -204,36 +198,35 @@ def create_cylinder(
     cz: float,
     radius: float,
     height: float,
-    rotation_angle: float = 0.0,
-    rotation_axis: tuple[float, float, float] | list[float] = (0.0, 0.0, 1.0),
+    direction: tuple[float, float, float] | list[float] = (0.0, 0.0, 1.0),
     layer: str = "0",
 ):
+    """Creates a 3D cylinder centered at (cx, cy, cz) aligned along `direction`."""
     r = float(radius)
     h = float(height)
     if r <= 0.0 or h <= 0.0:
         raise ValueError("Radius and height must be positive.")
 
-    ax, ay, az = (float(v) for v in rotation_axis)
-    axis = Ge.Vector3d(ax, ay, az)
-    angle = math.radians(float(rotation_angle))
-    if abs(angle) > 0.0 and axis.length() <= 0.0:
-        raise ValueError("rotation_axis must be a non-zero vector when rotation_angle is not 0.")
+    dx, dy, dz = (float(v) for v in direction)
+    target_dir = Ge.Vector3d(dx, dy, dz)
+    if target_dir.length() <= 0.0:
+        raise ValueError("direction must be a non-zero vector.")
+    target_dir.normalize()
 
     db = Db.curDb()
     solid = Db.Solid3d()
     solid.setDatabaseDefaults(db)
+    # createFrustum builds a cylinder centered at (0,0,0) aligned with +Z
     solid.createFrustum(h, r, r, r)
 
-    # The solid is created centered on the origin: rotate it about its own
-    # center, then translate so the center lands at (cx, cy, cz).
+    # Rotate +Z axis directly onto target_dir at the origin
+    rotation = Ge.Vector3d.kZAxis.rotateTo(target_dir)
     translation = Ge.Matrix3d.translation(
         Ge.Point3d(float(cx), float(cy), float(cz)) - Ge.Point3d.kOrigin
     )
-    if abs(angle) > 0.0:
-        rotation = Ge.Matrix3d.rotation(angle, axis, Ge.Point3d.kOrigin)
-        solid.transformBy(rotation * translation)
-    else:
-        solid.transformBy(translation)
+
+    # Rotate first (at origin), then translate to (cx, cy, cz)
+    solid.transformBy(translation * rotation)
     solid.setLayer(layer)
 
     obj_id = db.addToCurrentspace(solid)
@@ -319,32 +312,49 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "create_cylinder",
             "description": (
-                "Create a 3D solid cylinder. "
-                "(cx, cy, cz) is the geometric center of the cylinder. "
-                "By default the cylinder's axis is the Z-axis; use rotation_angle and rotation_axis "
-                "to tilt it in 3D. The cylinder is rotated about its own center, "
-                "so (cx, cy, cz) stays at the geometric center after rotation."
+                "Create a 3D solid cylinder centered at (cx, cy, cz). "
+                "The cylinder's height axis is aligned along the `direction` vector [dx, dy, dz]. "
+                "For example, [0, 0, 1] creates a vertical cylinder along Z, [1, 0, 0] aligns it along X, "
+                "and [1, 1, 0] tilts it diagonally at 45 degrees in the XY plane. "
+                "The geometric center remains fixed at (cx, cy, cz)."
             ),
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "cx": {"type": "number"},
-                    "cy": {"type": "number"},
-                    "cz": {"type": "number"},
-                    "radius": {"type": "number"},
-                    "height": {"type": "number"},
-                    "rotation_angle": {
+                    "cx": {
                         "type": "number",
-                        "description": "Angle in degrees to rotate the cylinder about rotation_axis. Default 0 (no rotation).",
+                        "description": "X coordinate of the cylinder's geometric center.",
                     },
-                    "rotation_axis": {
+                    "cy": {
+                        "type": "number",
+                        "description": "Y coordinate of the cylinder's geometric center.",
+                    },
+                    "cz": {
+                        "type": "number",
+                        "description": "Z coordinate of the cylinder's geometric center.",
+                    },
+                    "radius": {
+                        "type": "number",
+                        "description": "Radius of the cylinder (must be positive).",
+                    },
+                    "height": {
+                        "type": "number",
+                        "description": "Total length/height of the cylinder along its axis (must be positive).",
+                    },
+                    "direction": {
                         "type": "array",
-                        "description": "Rotation axis as [x, y, z], e.g. [1, 0, 0], [0, 1, 0], or [0, 0, 1]. Default [0, 0, 1].",
+                        "description": (
+                            "3D direction vector [dx, dy, dz] along which the cylinder's axis points "
+                            "(does not need to be normalized). Default [0, 0, 1] (vertical along Z)."
+                        ),
                         "minItems": 3,
                         "maxItems": 3,
                         "items": {"type": "number"},
                     },
-                    "layer": {"type": "string"},
+                    "layer": {
+                        "type": "string",
+                        "description": "CAD layer name. Default '0'.",
+                    },
                 },
                 "required": ["cx", "cy", "cz", "radius", "height"],
             },
@@ -355,34 +365,55 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "create_cuboid",
             "description": (
-                "Create a 3D box (cuboid) solid. "
-                "(cx, cy, cz) is the geometric center of the box. "
-                "x_len, y_len, and z_len are the box dimensions along the X, Y, and Z axes. "
-                "By default the box faces are aligned with the WCS axes; use rotation_angle and "
-                "rotation_axis to tilt it in 3D. The box is rotated about its own center, "
-                "so (cx, cy, cz) stays at the geometric center after rotation."
+                "Create a 3D box (cuboid) solid centered at (cx, cy, cz). "
+                "x_len, y_len, and z_len are the initial dimensions along the X, Y, and Z axes. "
+                "Use rot_x, rot_y, and rot_z (in degrees) to rotate the box around its own center. "
+                "Rotations are applied around the world X, then Y, then Z axes (extrinsic XYZ) "
+                "before moving the center to (cx, cy, cz), so the center stays fixed at (cx, cy, cz)."
             ),
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "cx": {"type": "number"},
-                    "cy": {"type": "number"},
-                    "cz": {"type": "number"},
-                    "x_len": {"type": "number", "description": "Box length along the X axis"},
-                    "y_len": {"type": "number", "description": "Box width along the Y axis"},
-                    "z_len": {"type": "number", "description": "Box height along the Z axis"},
-                    "rotation_angle": {
+                    "cx": {
                         "type": "number",
-                        "description": "Angle in degrees to rotate the box about rotation_axis. Default 0 (no rotation).",
+                        "description": "X coordinate of the box's geometric center.",
                     },
-                    "rotation_axis": {
-                        "type": "array",
-                        "description": "Rotation axis as [x, y, z], e.g. [1, 0, 0], [0, 1, 0], or [0, 0, 1]. Default [0, 0, 1].",
-                        "minItems": 3,
-                        "maxItems": 3,
-                        "items": {"type": "number"},
+                    "cy": {
+                        "type": "number",
+                        "description": "Y coordinate of the box's geometric center.",
                     },
-                    "layer": {"type": "string"},
+                    "cz": {
+                        "type": "number",
+                        "description": "Z coordinate of the box's geometric center.",
+                    },
+                    "x_len": {
+                        "type": "number",
+                        "description": "Box dimension along the X axis before rotation (must be positive).",
+                    },
+                    "y_len": {
+                        "type": "number",
+                        "description": "Box dimension along the Y axis before rotation (must be positive).",
+                    },
+                    "z_len": {
+                        "type": "number",
+                        "description": "Box dimension along the Z axis before rotation (must be positive).",
+                    },
+                    "rot_x": {
+                        "type": "number",
+                        "description": "Rotation angle in degrees around the X axis (roll/tilt forward-back). Default 0.",
+                    },
+                    "rot_y": {
+                        "type": "number",
+                        "description": "Rotation angle in degrees around the Y axis (pitch/tilt left-right). Default 0.",
+                    },
+                    "rot_z": {
+                        "type": "number",
+                        "description": "Rotation angle in degrees around the Z axis (yaw/spin in XY plane). Default 0.",
+                    },
+                    "layer": {
+                        "type": "string",
+                        "description": "CAD layer name. Default '0'.",
+                    },
                 },
                 "required": ["cx", "cy", "cz", "x_len", "y_len", "z_len"],
             },
