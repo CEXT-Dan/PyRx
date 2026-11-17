@@ -99,7 +99,6 @@ void makePyApApplictionWrapper()
         .def("docManager", &PyApApplication::docManager, DS.SARGS(77)).staticmethod("docManager")
         .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS(19144)).staticmethod("acadApplication")
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
-        .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "hwnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "hwnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("loadPythonModule", &PyApApplication::loadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("loadPythonModule")
@@ -163,17 +162,6 @@ void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
         return;
     child->ModifyStyle(0, WS_POPUPWINDOW);
     child->SetIcon(hIcon, FALSE);
-}
-
-void PyApApplication::setTitleThemeDark(UINT_PTR _hwnd)
-{
-    HWND hwnd = (HWND)_hwnd;
-    constexpr DWORD DWMWA_USE_IMMERSIVE_DARK_MODE_I20 = 20;
-    BOOL USE_DARK_MODE = true;
-    DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_I20, &USE_DARK_MODE, sizeof(USE_DARK_MODE));
-    const auto style = GetWindowLong(hwnd, GWL_STYLE);
-    SetWindowLong(hwnd, GWL_STYLE, 0);
-    SetWindowLong(hwnd, GWL_STYLE, style);
 }
 
 int PyApApplication::getInvisibleBorderWidth(UINT_PTR _hwnd)

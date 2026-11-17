@@ -44,8 +44,8 @@ kAny: PaletteDockStyle  # 61440
 kAutoWrite: DocLockMode  # 1
 kBottom: PaletteDockStyle  # 32768
 kLeft: PaletteDockStyle  # 4096
-kNative: SaveFormat  # 64
-kNative_Template: SaveFormat  # 66
+kNative: SaveFormat  # 68
+kNative_Template: SaveFormat  # 70
 kNoOptimize: PyRxTestFlags  # 1
 kNone: PaletteDockStyle  # 0
 kNotLocked: DocLockMode  # 2
@@ -143,8 +143,6 @@ class Application:
     def removeOnIdleWinMsg(func: Any, /) -> None: ...
     @staticmethod
     def removeWatchWinMsg(func: Any, /) -> bool: ...
-    @staticmethod
-    def setTitleThemeDark(hwnd: int, /) -> None: ...
     @staticmethod
     def showModalDialog(window: wx.Dialog, /) -> int: ...
     @staticmethod
@@ -1305,8 +1303,8 @@ class SaveFormat(_BoostPythonEnum):
     k2018_dxf: ClassVar[Self]  # 65
     k2018_Template: ClassVar[Self]  # 66
     k2018_Standard: ClassVar[Self]  # 67
-    kNative: ClassVar[Self]  # 64
-    kNative_Template: ClassVar[Self]  # 66
+    kNative: ClassVar[Self]  # 68
+    kNative_Template: ClassVar[Self]  # 70
 
 class TransactionManager(PyDb.TransactionManager):
     def __init__(self, /) -> None:

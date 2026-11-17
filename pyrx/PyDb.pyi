@@ -815,13 +815,9 @@ kDHL_1021: DwgVersion  # 27
 kDHL_1024: DwgVersion  # 29
 kDHL_1027: DwgVersion  # 31
 kDHL_1032: DwgVersion  # 33
+kDHL_1042: DwgVersion  # 35
 kDHL_1500: DwgVersion  # 22
 kDHL_1800: DwgVersion  # 25
-kDHL_1800a: DwgVersion  # 24
-kDHL_2100a: DwgVersion  # 26
-kDHL_2400a: DwgVersion  # 28
-kDHL_2700a: DwgVersion  # 30
-kDHL_3200a: DwgVersion  # 32
 kDHL_AC1_2: DwgVersion  # 1
 kDHL_AC1_40: DwgVersion  # 2
 kDHL_AC1_50: DwgVersion  # 3
@@ -829,10 +825,10 @@ kDHL_AC2_10: DwgVersion  # 5
 kDHL_AC2_20: DwgVersion  # 4
 kDHL_AC2_21: DwgVersion  # 6
 kDHL_AC2_22: DwgVersion  # 7
-kDHL_CURRENT: DwgVersion  # 33
+kDHL_CURRENT: DwgVersion  # 35
 kDHL_MC0_0: DwgVersion  # 0
 kDHL_Max: DwgVersion  # 255
-kDHL_Newest: DwgVersion  # 33
+kDHL_Newest: DwgVersion  # 35
 kDHL_Unknown: DwgVersion  # 254
 kDarwin: TimeZone  # 9301
 kData: ReservedStringEnumType  # 19
@@ -12639,18 +12635,14 @@ class DwgVersion(_BoostPythonEnum):
     kDHL_1014: ClassVar[Self]  # 21
     kDHL_1500: ClassVar[Self]  # 22
     kDHL_1015: ClassVar[Self]  # 23
-    kDHL_1800a: ClassVar[Self]  # 24
     kDHL_1800: ClassVar[Self]  # 25
-    kDHL_2100a: ClassVar[Self]  # 26
     kDHL_1021: ClassVar[Self]  # 27
-    kDHL_2400a: ClassVar[Self]  # 28
     kDHL_1024: ClassVar[Self]  # 29
-    kDHL_2700a: ClassVar[Self]  # 30
     kDHL_1027: ClassVar[Self]  # 31
-    kDHL_3200a: ClassVar[Self]  # 32
     kDHL_1032: ClassVar[Self]  # 33
-    kDHL_Newest: ClassVar[Self]  # 33
-    kDHL_CURRENT: ClassVar[Self]  # 33
+    kDHL_1042: ClassVar[Self]  # 35
+    kDHL_Newest: ClassVar[Self]  # 35
+    kDHL_CURRENT: ClassVar[Self]  # 35
     kDHL_Unknown: ClassVar[Self]  # 254
     kDHL_Max: ClassVar[Self]  # 255
 

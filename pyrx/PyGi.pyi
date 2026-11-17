@@ -145,7 +145,6 @@ kSymbolCharset: Charset  # 2
 kTamilCharset: Charset  # 259
 kTeluguCharset: Charset  # 260
 kThaiCharset: Charset  # 222
-kThreadedWorldDrawViewportDraw: GiAttributesFlags  # 131072
 kTransparency1Bit: TransparencyMode  # 1
 kTransparency8Bit: TransparencyMode  # 2
 kTransparencyOff: TransparencyMode  # 0
@@ -777,7 +776,6 @@ class GiAttributesFlags(_BoostPythonEnum):
     kDrawableNotPlottable: ClassVar[Self]  # 16384
     kDrawableNotAllowLCS: ClassVar[Self]  # 32768
     kDrawableMergeControlOff: ClassVar[Self]  # 65536
-    kThreadedWorldDrawViewportDraw: ClassVar[Self]  # 131072
 
 class GiDrawableType(_BoostPythonEnum):
     kGeometry: ClassVar[Self]  # 0
