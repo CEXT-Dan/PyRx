@@ -1,6 +1,8 @@
 from collections import deque
+
 import wx
-from pyrx import Ap, Db, Ed
+
+from pyrx import Ap, Ed
 
 print("Added command = pyaddrepeat")
 print("Added command = pyremoverepeat")

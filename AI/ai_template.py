@@ -9,8 +9,6 @@ import datetime
 import os
 import traceback
 
-from pyrx import Ap, Db, Ed, Ge
-
 LOG_PATH = os.environ.get("AI_RUN_LOG") or os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "ai_run.log"
 )

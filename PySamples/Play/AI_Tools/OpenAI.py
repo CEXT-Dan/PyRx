@@ -1,13 +1,14 @@
+import importlib
 import json
 import queue
 import threading
 import traceback
-import importlib
-from openai import OpenAI
-from pyrx import Ap, Ed
 
 import ai_tools
 from ai_tools import TOOL_FUNCTIONS, TOOL_SCHEMAS
+from openai import OpenAI
+
+from pyrx import Ap, Ed
 
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 LM_STUDIO_MODEL = "local-model"
@@ -35,7 +36,7 @@ class ToolCallTask:
             doc = Ap.DocManager().mdiActiveDocument()
             if doc is None:
                 raise RuntimeError("No active AutoCAD document.")
-            autolock = doc.autoLock()
+            _autolock = doc.autoLock()
             self.result = self.func(*self.args, **self.kwargs)
         except Exception as exc:
             self.error = exc

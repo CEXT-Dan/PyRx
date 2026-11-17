@@ -4,6 +4,7 @@ import unittest
 
 from pyrx import Br, Db, Ge
 
+
 class TestBrep:
     def setup_class(self):
         self.assertions = unittest.TestCase("__init__")
