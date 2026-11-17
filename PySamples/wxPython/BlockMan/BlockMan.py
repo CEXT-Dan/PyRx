@@ -39,6 +39,10 @@ class BlockInfo(NamedTuple):
 def getBlockInfos(db: Db.Database):
     ids = []
     infos: list[BlockInfo] = []
+    theme = Ed.Core.getVar("COLORTHEME")
+    rgb = [25, 25, 25]
+    if theme == 1:
+        rgb = [230, 230, 230]
     for name, id in db.blockTable():
         rec = Db.BlockTableRecord(id)
         if rec.isLayout() or rec.isAnonymous():
@@ -47,7 +51,7 @@ def getBlockInfos(db: Db.Database):
             continue
         infos.append(BlockInfo(id, name, None))
         ids.append(id)
-    for idx, image in enumerate(Gs.Core.getBlockImages(ids, 64, 64, 1.0, [25, 25, 25])):
+    for idx, image in enumerate(Gs.Core.getBlockImages(ids, 64, 64, 1.0, rgb)):
         infos[idx] = infos[idx]._replace(image=image)
     return sorted(infos, key=lambda info: info.name)
 
@@ -168,9 +172,11 @@ class PalettePanel(wx.Panel):
         self.sosCheckBoxCtrl = xrc.XRCCTRL(self, "ID_CHECKBOX_SOS")
 
         # theme
-        bkl = wx.Colour(45, 45, 45)
-        self.rot_textctrl.SetBackgroundColour(bkl)
-        self.scale_txtctrl.SetBackgroundColour(bkl)
+        theme = Ed.Core.getVar("COLORTHEME")
+        if theme != 1:
+            bkl = wx.Colour(45, 45, 45)
+            self.rot_textctrl.SetBackgroundColour(bkl)
+            self.scale_txtctrl.SetBackgroundColour(bkl)
 
     def bind_events(self):
         __annotations__res = Ap.ResourceOverride()
