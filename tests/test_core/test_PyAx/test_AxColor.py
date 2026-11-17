@@ -47,3 +47,12 @@ class TestAxColor:
         assert color.green() == 255
         assert color.blue() == 170
         assert color.toHTMLColor() == "#00FFAA"
+        
+    def test_Color_setRGB(self):
+        color = Ax.AcadAcCmColor()
+        color.setRGB(0,255,170)
+        assert color.red() == 0
+        assert color.green() == 255
+        assert color.blue() == 170
+        assert color.toHTMLColor() == "#00FFAA"
+        

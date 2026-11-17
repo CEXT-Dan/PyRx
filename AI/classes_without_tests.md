@@ -28,7 +28,7 @@
 
 ### PyAx (87) — test folder: `test_PyAx`
 
-- [ ] PyAx.AcadAcCmColor
+- [x] PyAx.AcadAcCmColor
 - [ ] PyAx.AcadAttributeReference
 - [ ] PyAx.AcadBlocks
 - [ ] PyAx.AcadDatabasePreferences
