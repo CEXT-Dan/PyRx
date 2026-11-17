@@ -29,9 +29,11 @@ void makePyEditorReactorWrapper()
         .def("beginDxfIn", &PyEditorReactor::beginDxfInWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("abortDxfIn", &PyEditorReactor::abortDxfInWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("dxfInComplete", &PyEditorReactor::dxfInCompleteWr, DS.ARGS({ "db: PyDb.Database" }))
+#ifdef __NEVER_2028
         .def("beginDxfOut", &PyEditorReactor::beginDxfOutWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("abortDxfOut", &PyEditorReactor::abortDxfOutWr, DS.ARGS({ "db: PyDb.Database" }))
         .def("dxfOutComplete", &PyEditorReactor::dxfOutCompleteWr, DS.ARGS({ "db: PyDb.Database" }))
+#endif
         .def("beginDwgOpen", &PyEditorReactor::beginDwgOpenWr, DS.ARGS({ "fineName: str" }))
         .def("endDwgOpen", &PyEditorReactor::endDwgOpenWr, DS.ARGS({ "fineName: str","db: PyDb.Database" }))
         .def("initialDwgFileOpenComplete", &PyEditorReactor::initialDwgFileOpenCompleteWr, DS.ARGS({ "db: PyDb.Database" }))
@@ -230,6 +232,7 @@ void PyEditorReactor::dxfInComplete(AcDbDatabase* pDb)
     dxfInCompleteWr(db);
 }
 
+#ifdef __NEVER_2028
 void PyEditorReactor::beginDxfOut(AcDbDatabase* pDb)
 {
     if (reg_beginDxfOut == false)
@@ -238,7 +241,9 @@ void PyEditorReactor::beginDxfOut(AcDbDatabase* pDb)
     PyDbDatabase db(pDb);
     beginDxfOutWr(db);
 }
+#endif 
 
+#ifdef __NEVER_2028
 void PyEditorReactor::abortDxfOut(AcDbDatabase* pDb)
 {
     if (reg_abortDxfOut == false)
@@ -247,7 +252,9 @@ void PyEditorReactor::abortDxfOut(AcDbDatabase* pDb)
     PyDbDatabase db(pDb);
     abortDxfOutWr(db);
 }
+#endif 
 
+#ifdef __NEVER_2028
 void PyEditorReactor::dxfOutComplete(AcDbDatabase* pDb)
 {
     if (reg_dxfOutComplete == false)
@@ -256,6 +263,7 @@ void PyEditorReactor::dxfOutComplete(AcDbDatabase* pDb)
     PyDbDatabase db(pDb);
     dxfOutCompleteWr(db);
 }
+#endif 
 
 void PyEditorReactor::beginDwgOpen(const ACHAR* filename)
 {
@@ -1095,6 +1103,7 @@ void PyEditorReactor::dxfInCompleteWr(PyDbDatabase& db)
     }
 }
 
+#ifdef __NEVER_2028
 void PyEditorReactor::beginDxfOutWr(PyDbDatabase& db)
 {
     try
@@ -1110,7 +1119,9 @@ void PyEditorReactor::beginDxfOutWr(PyDbDatabase& db)
         printExceptionMsg();
     }
 }
+#endif
 
+#ifdef __NEVER_2028
 void PyEditorReactor::abortDxfOutWr(PyDbDatabase& db)
 {
     try
@@ -1126,7 +1137,9 @@ void PyEditorReactor::abortDxfOutWr(PyDbDatabase& db)
         printExceptionMsg();
     }
 }
+#endif
 
+#ifdef __NEVER_2028
 void PyEditorReactor::dxfOutCompleteWr(PyDbDatabase& db)
 {
     try
@@ -1142,6 +1155,7 @@ void PyEditorReactor::dxfOutCompleteWr(PyDbDatabase& db)
         printExceptionMsg();
     }
 }
+#endif
 
 void PyEditorReactor::beginDwgOpenWr(const std::string& filename)
 {
