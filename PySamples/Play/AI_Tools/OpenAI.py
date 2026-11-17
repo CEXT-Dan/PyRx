@@ -95,8 +95,9 @@ def _run_lm_studio_agent(user_prompt: str):
         {"role": "user", "content": user_prompt},
     ]
 
+    max_turns = 30
     try:
-        for _ in range(30):
+        for _ in range(max_turns):
             response = client.chat.completions.create(
                 model=LM_STUDIO_MODEL,
                 messages=messages,
@@ -134,6 +135,9 @@ def _run_lm_studio_agent(user_prompt: str):
                         "content": json.dumps(output),
                     }
                 )
+
+        print(f"\n[LM Studio] Stopped: Reached maximum limit of {max_turns} tool steps.")
+
     except Exception:
         traceback.print_exc()
 
