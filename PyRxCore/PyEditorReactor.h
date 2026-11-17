@@ -30,13 +30,13 @@ public:
     virtual void abortDxfIn(AcDbDatabase* pDb) override;
     virtual void dxfInComplete(AcDbDatabase* pDb) override;
 
-#ifdef __NEVER_2028
+#if defined (_ARXTARGET) && (_ARXTARGET >= 270)
+    virtual void beginDxfOut(AcDbDatabase* pDb, const ACHAR* pFileName, AcDb::AcDbDwgVersion) override;
+    virtual void abortDxfOut(AcDbDatabase* pDb, const ACHAR* pFileName, AcDb::AcDbDwgVersion) override;
+    virtual void dxfOutComplete(AcDbDatabase* pDb, const ACHAR* pFileName, AcDb::AcDbDwgVersion) override;
+#else
     virtual void beginDxfOut(AcDbDatabase* pDb) override;
-#endif 
-#ifdef __NEVER_2028
     virtual void abortDxfOut(AcDbDatabase* pDb) override;
-#endif 
-#ifdef __NEVER_2028
     virtual void dxfOutComplete(AcDbDatabase* pDb) override;
 #endif 
     virtual void beginDwgOpen(const ACHAR* filename) override;
@@ -137,15 +137,11 @@ public:
     void beginDxfInWr(PyDbDatabase& db);
     void abortDxfInWr(PyDbDatabase& db);
     void dxfInCompleteWr(PyDbDatabase& db);
-#ifdef __NEVER_2028
-    void beginDxfOutWr(PyDbDatabase& db);
-#endif
-#ifdef __NEVER_2028
-    void abortDxfOutWr(PyDbDatabase& db);
-#endif
-#ifdef __NEVER_2028
-    void dxfOutCompleteWr(PyDbDatabase& db);
-#endif
+
+    void beginDxfOutWr(PyDbDatabase& db, const std::string& filename, AcDb::AcDbDwgVersion version);
+    void abortDxfOutWr(PyDbDatabase& db, const std::string& filename, AcDb::AcDbDwgVersion version);
+    void dxfOutCompleteWr(PyDbDatabase& db, const std::string& filename, AcDb::AcDbDwgVersion version);
+
     void beginDwgOpenWr(const std::string& filename);
     void endDwgOpenWr(const std::string& filename, PyDbDatabase& db);
     void initialDwgFileOpenCompleteWr(PyDbDatabase& db);
