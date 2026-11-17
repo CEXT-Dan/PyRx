@@ -1,0 +1,608 @@
+[
+  {
+    "module": "PyAp",
+    "class": "Application",
+    "category": "TESTED",
+    "evidence_file": "test_PyAp/test_Application.py"
+  },
+  {
+    "module": "PyAp",
+    "class": "Document",
+    "category": "TESTED",
+    "evidence_file": "test_PyAp/test_Document.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DFace",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_Ax3DFace.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DPolyline",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_Ax3DPolyline.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DSolid",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_Ax3DSolid.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadApplication",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxApplication.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadArc",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxArc.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAttribute",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxAttribute.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlock",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxBlock.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlockReference",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxBlockReference.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadCircle",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxCircle.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDatabase",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxDatabase.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDocument",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxDocument.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadEllipse",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxEllipse.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadEntity",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxEntity.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadGroup",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxGroup.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHatch",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxHatch.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLWPolyline",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxLWPolyline.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayout",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxLayout.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLeader",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxLeader.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLine",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxLine.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMText",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxMtext.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadObject",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxObject.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPoint",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxPoint.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolygonMesh",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxPolygonMesh.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolyline",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxPolyline.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferences",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxPreferences.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegion",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxRegion.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSelectionSet",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxSelectionSet.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSortentsTable",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxAcadSortentsTable.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSummaryInfo",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxSummaryInfo.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTable",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxTable.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadText",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxText.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUtility",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxUtility.py"
+  },
+  {
+    "module": "PyAx",
+    "class": "ModelSpace",
+    "category": "REVIEW_CONVENTION",
+    "evidence_file": "test_PyAx/test_AxModelSpace.py"
+  },
+  {
+    "module": "PyBr",
+    "class": "Brep",
+    "category": "TESTED",
+    "evidence_file": "test_PyBr/test_Brep.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "AcValue",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_AcValue.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "AlignedDimension",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_AlignedDimension.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Arc",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Arc.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "ArcDimension",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_ArcDimension.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocPersSubentIdPE",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_AssocPersSubentIdPE.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "AttributeDefinition",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_AttributeDefinition.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "AttributeReference",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_AttributeReference.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockReference",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_BlockReference.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTableRecord",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_BlockTableRecord.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Circle",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Circle.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Color",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Color.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Curve",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Curve.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Database",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Database.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObject",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_DbObject.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "DiametricDimension",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_DiametricDimension.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Dictionary",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Dictionary.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Dimension",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Dimension.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Ellipse",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Ellipse.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Entity",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_entity.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Face",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Face.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Fcf",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Fcf.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Helix",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Helix.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Line",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Line.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "MText",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_MText.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Mline",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Mline.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectId",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_ObjectId.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "OverrulableEntity",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_OverrulableEntity.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Point",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Point.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Point3AngularDimension",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Point3AngularDimension.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline",
+    "category": "REVIEW_NEARMISS",
+    "evidence_file": "test_PyDb/test_Ployline.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Polyline2d.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Polyline3d.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Shape",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Shape.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Solid3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Solid3d.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "SortentsTable",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_SortentsTable.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Spline",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Spline.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Text",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Text.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Wipeout",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Wipeout.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Xline",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Xline.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "Xrecord",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_Xrecord.py"
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefGraph",
+    "category": "TESTED",
+    "evidence_file": "test_PyDb/test_XrefGraph.py"
+  },
+  {
+    "module": "PyEd",
+    "class": "Editor",
+    "category": "TESTED",
+    "evidence_file": "test_PyEd/test_Editor.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "CircArc2d",
+    "category": "REVIEW_NEARMISS",
+    "evidence_file": "test_PyGe/test_CircArc3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "CircArc3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_CircArc3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "ClipBoundary2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_ClipBoundary2d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Curve2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Curve2d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Curve3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Curve3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Cylinder",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Cylinder.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Delaunator",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Delaunator.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Interval",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Interval.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "LineSeg2d",
+    "category": "REVIEW_NEARMISS",
+    "evidence_file": "test_PyGe/test_LineSeg3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "LineSeg3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_LineSeg3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Matrix2d",
+    "category": "REVIEW_NEARMISS",
+    "evidence_file": "test_PyGe/test_Matrix3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Matrix3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Matrix3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Plane",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Plane.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Point2d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2dTree",
+    "category": "REVIEW_NEARMISS",
+    "evidence_file": "test_PyGe/test_Point3dTree.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Point3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3dTree",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Point3dTree.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Scale2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Scale2d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Scale3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Scale3d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Vector2d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Vector2d.py"
+  },
+  {
+    "module": "PyGe",
+    "class": "Vector3d",
+    "category": "TESTED",
+    "evidence_file": "test_PyGe/test_Vector3d.py"
+  },
+  {
+    "module": "PyRx",
+    "class": "RxObject",
+    "category": "TESTED",
+    "evidence_file": "test_PyRx/test_RxObject.py"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSet",
+    "category": "TESTED",
+    "evidence_file": "test_PySm/test_SheetSet.py"
+  }
+]

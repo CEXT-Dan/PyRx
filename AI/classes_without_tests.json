@@ -1,0 +1,2406 @@
+[
+  {
+    "module": "PyAp",
+    "class": "AutoDocLock"
+  },
+  {
+    "module": "PyAp",
+    "class": "CmdFlags"
+  },
+  {
+    "module": "PyAp",
+    "class": "DocManager"
+  },
+  {
+    "module": "PyAp",
+    "class": "DocManagerReactor"
+  },
+  {
+    "module": "PyAp",
+    "class": "DocumentIterator"
+  },
+  {
+    "module": "PyAp",
+    "class": "Internal"
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerFilter"
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerFilterManager"
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerGroup"
+  },
+  {
+    "module": "PyAp",
+    "class": "LayoutManager"
+  },
+  {
+    "module": "PyAp",
+    "class": "Palette"
+  },
+  {
+    "module": "PyAp",
+    "class": "PaletteSet"
+  },
+  {
+    "module": "PyAp",
+    "class": "ResourceOverride"
+  },
+  {
+    "module": "PyAp",
+    "class": "TransactionManager"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAcCmColor"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAttributeReference"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlocks"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDatabasePreferences"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDictionaries"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDictionary"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDim3PointAngular"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimAligned"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimAngular"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimArcLength"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimDiametric"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimOrdinate"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRadial"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRadialLarge"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRotated"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimStyle"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimStyles"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimension"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDocuments"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDynamicBlockReferenceProperty"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadExternalReference"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadGroups"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHyperlink"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHyperlinks"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadIdPair"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayer"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayers"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayouts"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLineType"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLineTypes"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMInsertBlock"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLeader"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLeaderStyle"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLine"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMaterial"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMaterials"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuBar"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuGroup"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuGroups"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPViewport"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlot"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlotConfiguration"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlotConfigurations"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolyfaceMesh"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenu"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenuItem"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenus"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesDisplay"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesDrafting"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesFiles"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesOpenSave"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesOutput"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesProfiles"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesSelection"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesSystem"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesUser"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRasterImage"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRay"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegisteredApplication"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegisteredApplications"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSection"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionManager"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionSettings"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionTypeSettings"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSecurityParams"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSelectionSets"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadShape"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSolid"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSpline"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadState"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTableStyle"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTextStyle"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTextStyles"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTolerance"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbar"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbarItem"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbars"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTrace"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUCS"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUCSs"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadView"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViewport"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViewports"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViews"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadXRecord"
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadXline"
+  },
+  {
+    "module": "PyAx",
+    "class": "PaperSpace"
+  },
+  {
+    "module": "PyBr",
+    "class": "Complex"
+  },
+  {
+    "module": "PyBr",
+    "class": "ComplexShellTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "ComplexTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Edge"
+  },
+  {
+    "module": "PyBr",
+    "class": "EdgeLoopTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "EdgeTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Element"
+  },
+  {
+    "module": "PyBr",
+    "class": "Element2d"
+  },
+  {
+    "module": "PyBr",
+    "class": "Element2dNodeTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Entity"
+  },
+  {
+    "module": "PyBr",
+    "class": "Face"
+  },
+  {
+    "module": "PyBr",
+    "class": "FaceLoopTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "FaceTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Hit"
+  },
+  {
+    "module": "PyBr",
+    "class": "Loop"
+  },
+  {
+    "module": "PyBr",
+    "class": "LoopEdgeTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "LoopVertexTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "MassProps"
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh"
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh2d"
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh2dElement2dTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "MeshEntity"
+  },
+  {
+    "module": "PyBr",
+    "class": "Node"
+  },
+  {
+    "module": "PyBr",
+    "class": "Shell"
+  },
+  {
+    "module": "PyBr",
+    "class": "ShellFaceTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "ShellTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Traverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "Vertex"
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexEdgeTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexLoopTraverser"
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexTraverser"
+  },
+  {
+    "module": "PyBrx",
+    "class": "BlockParameter"
+  },
+  {
+    "module": "PyBrx",
+    "class": "Constraint"
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintArgument"
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintsGroup"
+  },
+  {
+    "module": "PyBrx",
+    "class": "Core"
+  },
+  {
+    "module": "PyBrx",
+    "class": "DbProperties"
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTable"
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTableConfiguration"
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTableConfigurationEntry"
+  },
+  {
+    "module": "PyBrx",
+    "class": "MechanicalPropertyDefinition"
+  },
+  {
+    "module": "PyBrx",
+    "class": "MechanicalPropertySet"
+  },
+  {
+    "module": "PyBrx",
+    "class": "PyBrxPanel"
+  },
+  {
+    "module": "PyBrx",
+    "class": "Variable"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimAssets"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimBuilding"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimClassification"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimComposition"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimHatchPattern"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimInformationalAssets"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimLinearGeometry"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimMaterial"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimNameSpaces"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimObject"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimPly"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimPolicies"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimProfile"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimRoom"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimSpace"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimSpatialLocation"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimStory"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BrxBimAttributeSet"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BrxBimDialogs"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "Core"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcBinary"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEntity"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEntityDesc"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEnumValue"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportContext"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportOptions"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportReactor"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcGuid"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcHeader"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportContext"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportInfo"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportOptions"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportReactor"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcLogical"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcModel"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcProjectData"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcSelectValue"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcSelectorDesc"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcString"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVariant"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVectorDesc"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVectorValue"
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "PyBrxBimPropertySets"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvAttribVariant"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvCivil3dConverter"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvCivil3dEntityInfo"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDb3dAlignment"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbCurve"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbCurveLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbEntity"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbFileFormatManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbGrading"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignment"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentArc"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentCurve"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentElement"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentLine"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentPI"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSCS"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSSCSS"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSTS"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSpiral"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyle"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleArrow"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleBlock"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleComponent"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleLine"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleText"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLineLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbObject"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbObjectManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPoint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointGroup"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointGroupManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointReferencedEntity"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStringLine"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStringLineManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStyle"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStylePartDisplaySettings"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSubObject"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceContourLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceElevationLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceSlopeLabelStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSymbolStyle"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSymbolStyleManager"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurface"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceBoundary"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceBreakline"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceConstraint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinition"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddDrawingObjects"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddFromFiles"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddFromPointClouds"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddLine"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddLines"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPoint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPointGroups"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPoints"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromC3D"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromFaces"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromLandXML"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeleteEdge"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeleteEdges"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeletePoint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionGroupDefs"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointElevation"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointsElevation"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointsElevations"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionMovePoint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionMovePoints"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRemoveElevations"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRemoveOuterEdges"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRiseLower"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionSwapEdge"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionTransform"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionTrianglesVisibility"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceWall"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignment"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentArc"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentCurve"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentElement"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentPVI"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentParabola"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentTangent"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentView"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbView"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVolumeSurface"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingRule"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingSlopeOffsetRule"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingSlopeSurfaceRule"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvStationEquation"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvStationEquations"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvTinPoint"
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvTinTriangle"
+  },
+  {
+    "module": "PyDb",
+    "class": "AbstractViewTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "AbstractViewTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "AdsName"
+  },
+  {
+    "module": "PyDb",
+    "class": "AnnotationScale"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocAction"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocDependency"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocNetwork"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocValueDependency"
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocVariable"
+  },
+  {
+    "module": "PyDb",
+    "class": "AutoWorkingDatabase"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockBegin"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockEnd"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTableRecordIterator"
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockUserParameter"
+  },
+  {
+    "module": "PyDb",
+    "class": "Body"
+  },
+  {
+    "module": "PyDb",
+    "class": "Cell"
+  },
+  {
+    "module": "PyDb",
+    "class": "CellRange"
+  },
+  {
+    "module": "PyDb",
+    "class": "Core"
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseReactor"
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseSummaryInfo"
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseSummaryInfoIterator"
+  },
+  {
+    "module": "PyDb",
+    "class": "Date"
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectCloseScope"
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectOverrule"
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectReactor"
+  },
+  {
+    "module": "PyDb",
+    "class": "DetailSymbol"
+  },
+  {
+    "module": "PyDb",
+    "class": "DictUtil"
+  },
+  {
+    "module": "PyDb",
+    "class": "DictionaryIterator"
+  },
+  {
+    "module": "PyDb",
+    "class": "DictionaryWithDefault"
+  },
+  {
+    "module": "PyDb",
+    "class": "DimAssoc"
+  },
+  {
+    "module": "PyDb",
+    "class": "DimStyleTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "DimStyleTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockReference"
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockReferenceProperty"
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityColor"
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityHyperlinkPE"
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityReactor"
+  },
+  {
+    "module": "PyDb",
+    "class": "ErrorStatusException"
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalConnectable"
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalExpr"
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalGraph"
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalVariant"
+  },
+  {
+    "module": "PyDb",
+    "class": "Extents"
+  },
+  {
+    "module": "PyDb",
+    "class": "Extents2d"
+  },
+  {
+    "module": "PyDb",
+    "class": "ExtrudedSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "FaceRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Field"
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEngine"
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEvaluator"
+  },
+  {
+    "module": "PyDb",
+    "class": "FullSubentPath"
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystem"
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystemTransformer"
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoData"
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoMap"
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoPositionMarker"
+  },
+  {
+    "module": "PyDb",
+    "class": "Graph"
+  },
+  {
+    "module": "PyDb",
+    "class": "GraphNode"
+  },
+  {
+    "module": "PyDb",
+    "class": "GripData"
+  },
+  {
+    "module": "PyDb",
+    "class": "GripOverrule"
+  },
+  {
+    "module": "PyDb",
+    "class": "Group"
+  },
+  {
+    "module": "PyDb",
+    "class": "Handle"
+  },
+  {
+    "module": "PyDb",
+    "class": "HardOwnershipId"
+  },
+  {
+    "module": "PyDb",
+    "class": "HardPointerId"
+  },
+  {
+    "module": "PyDb",
+    "class": "Hatch"
+  },
+  {
+    "module": "PyDb",
+    "class": "HostApplicationServices"
+  },
+  {
+    "module": "PyDb",
+    "class": "Hyperlink"
+  },
+  {
+    "module": "PyDb",
+    "class": "HyperlinkCollection"
+  },
+  {
+    "module": "PyDb",
+    "class": "IdMapping"
+  },
+  {
+    "module": "PyDb",
+    "class": "IdPair"
+  },
+  {
+    "module": "PyDb",
+    "class": "Image"
+  },
+  {
+    "module": "PyDb",
+    "class": "IndexFilterManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "JoinEntityPE"
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerFilter"
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerStateManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Layout"
+  },
+  {
+    "module": "PyDb",
+    "class": "LayoutManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "Leader"
+  },
+  {
+    "module": "PyDb",
+    "class": "LineAngularDimension2"
+  },
+  {
+    "module": "PyDb",
+    "class": "LinetypeTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "LinetypeTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "LoftedSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "MInsertBlock"
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeader"
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderStyle"
+  },
+  {
+    "module": "PyDb",
+    "class": "MPolygon"
+  },
+  {
+    "module": "PyDb",
+    "class": "MlineStyle"
+  },
+  {
+    "module": "PyDb",
+    "class": "NurbSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContext"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContextCollection"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContextManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdArray"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdGraph"
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdGraphNode"
+  },
+  {
+    "module": "PyDb",
+    "class": "OrdinateDimension"
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapOverrule"
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapPointRef"
+  },
+  {
+    "module": "PyDb",
+    "class": "OutputDisplayService"
+  },
+  {
+    "module": "PyDb",
+    "class": "PdfDefinition"
+  },
+  {
+    "module": "PyDb",
+    "class": "PdfReference"
+  },
+  {
+    "module": "PyDb",
+    "class": "PlaceHolder"
+  },
+  {
+    "module": "PyDb",
+    "class": "PlaneSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotSettings"
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotSettingsValidator"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudClassificationColorRamp"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudColorMap"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudColorRamp"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudCrop"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudDefEx"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudEx"
+  },
+  {
+    "module": "PyDb",
+    "class": "PointRef"
+  },
+  {
+    "module": "PyDb",
+    "class": "PolyFaceMeshVertex"
+  },
+  {
+    "module": "PyDb",
+    "class": "PolygonMeshVertex"
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline3dVertex"
+  },
+  {
+    "module": "PyDb",
+    "class": "Profile3d"
+  },
+  {
+    "module": "PyDb",
+    "class": "ProxyEntity"
+  },
+  {
+    "module": "PyDb",
+    "class": "ProxyObject"
+  },
+  {
+    "module": "PyDb",
+    "class": "RadialDimension"
+  },
+  {
+    "module": "PyDb",
+    "class": "RadialDimensionLarge"
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImage"
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImageDef"
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImageDefReactor"
+  },
+  {
+    "module": "PyDb",
+    "class": "Ray"
+  },
+  {
+    "module": "PyDb",
+    "class": "RegAppTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "RegAppTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Region"
+  },
+  {
+    "module": "PyDb",
+    "class": "RevolveOptions"
+  },
+  {
+    "module": "PyDb",
+    "class": "RevolvedSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "RotatedDimension"
+  },
+  {
+    "module": "PyDb",
+    "class": "Section"
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionSettings"
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionSymbol"
+  },
+  {
+    "module": "PyDb",
+    "class": "SequenceEnd"
+  },
+  {
+    "module": "PyDb",
+    "class": "SnoopDwgFiler"
+  },
+  {
+    "module": "PyDb",
+    "class": "SnoopDxfFiler"
+  },
+  {
+    "module": "PyDb",
+    "class": "SoftOwnershipId"
+  },
+  {
+    "module": "PyDb",
+    "class": "SoftPointerId"
+  },
+  {
+    "module": "PyDb",
+    "class": "Solid"
+  },
+  {
+    "module": "PyDb",
+    "class": "SpatialFilter"
+  },
+  {
+    "module": "PyDb",
+    "class": "SubDMesh"
+  },
+  {
+    "module": "PyDb",
+    "class": "SubentId"
+  },
+  {
+    "module": "PyDb",
+    "class": "Surface"
+  },
+  {
+    "module": "PyDb",
+    "class": "SweepOptions"
+  },
+  {
+    "module": "PyDb",
+    "class": "SweptSurface"
+  },
+  {
+    "module": "PyDb",
+    "class": "SymUtilServices"
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTableIterator"
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Table"
+  },
+  {
+    "module": "PyDb",
+    "class": "TableStyle"
+  },
+  {
+    "module": "PyDb",
+    "class": "TextStyleTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "TextStyleTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Trace"
+  },
+  {
+    "module": "PyDb",
+    "class": "Transaction"
+  },
+  {
+    "module": "PyDb",
+    "class": "TransactionManager"
+  },
+  {
+    "module": "PyDb",
+    "class": "Transparency"
+  },
+  {
+    "module": "PyDb",
+    "class": "UCSTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "UCSTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayDefinition"
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayLayer"
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayReference"
+  },
+  {
+    "module": "PyDb",
+    "class": "Vertex"
+  },
+  {
+    "module": "PyDb",
+    "class": "Vertex2d"
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewSymbol"
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "Viewport"
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewportTable"
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewportTableRecord"
+  },
+  {
+    "module": "PyDb",
+    "class": "XRefLayerPropertyOverride"
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefGraphNode"
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefObjectId"
+  },
+  {
+    "module": "PyEd",
+    "class": "AutoSysVar"
+  },
+  {
+    "module": "PyEd",
+    "class": "Core"
+  },
+  {
+    "module": "PyEd",
+    "class": "DragEffect"
+  },
+  {
+    "module": "PyEd",
+    "class": "DragStyle"
+  },
+  {
+    "module": "PyEd",
+    "class": "DrawJig"
+  },
+  {
+    "module": "PyEd",
+    "class": "EditorReactor"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPoint"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointFilter"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointFilterResult"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointManager"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointMonitor"
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointMonitorResult"
+  },
+  {
+    "module": "PyEd",
+    "class": "Jig"
+  },
+  {
+    "module": "PyEd",
+    "class": "SelectionSet"
+  },
+  {
+    "module": "PyEd",
+    "class": "SelectionSetIterator"
+  },
+  {
+    "module": "PyEd",
+    "class": "UIContext"
+  },
+  {
+    "module": "PyEd",
+    "class": "UserInteraction"
+  },
+  {
+    "module": "PyEd",
+    "class": "Util"
+  },
+  {
+    "module": "PyGe",
+    "class": "AutoTol"
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundBlock2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundBlock3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundedPlane"
+  },
+  {
+    "module": "PyGe",
+    "class": "CDT"
+  },
+  {
+    "module": "PyGe",
+    "class": "CompositeCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "CompositeCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Cone"
+  },
+  {
+    "module": "PyGe",
+    "class": "CubicSplineCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "CubicSplineCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveCurveInt2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveCurveInt3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveSurfInt"
+  },
+  {
+    "module": "PyGe",
+    "class": "EllipArc2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "EllipArc3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Entity2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Entity3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalBoundedSurface"
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalSurface"
+  },
+  {
+    "module": "PyGe",
+    "class": "KnotVector"
+  },
+  {
+    "module": "PyGe",
+    "class": "Line2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Line3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "LinearEnt2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "LinearEnt3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbSurface"
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetSurface"
+  },
+  {
+    "module": "PyGe",
+    "class": "PlanarEnt"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2dArray"
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3dArray"
+  },
+  {
+    "module": "PyGe",
+    "class": "PointEnt2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "PointEnt3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnCurve2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnCurve3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnSurface"
+  },
+  {
+    "module": "PyGe",
+    "class": "Polyline2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Polyline3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Position2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Position3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Ray2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Ray3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "Sphere"
+  },
+  {
+    "module": "PyGe",
+    "class": "SplineEnt2d"
+  },
+  {
+    "module": "PyGe",
+    "class": "SplineEnt3d"
+  },
+  {
+    "module": "PyGe",
+    "class": "SurfSurfInt"
+  },
+  {
+    "module": "PyGe",
+    "class": "Surface"
+  },
+  {
+    "module": "PyGe",
+    "class": "Tol"
+  },
+  {
+    "module": "PyGe",
+    "class": "Torus"
+  },
+  {
+    "module": "PyGi",
+    "class": "CommonDraw"
+  },
+  {
+    "module": "PyGi",
+    "class": "Drawable"
+  },
+  {
+    "module": "PyGi",
+    "class": "DrawableOverrule"
+  },
+  {
+    "module": "PyGi",
+    "class": "DrawableTraits"
+  },
+  {
+    "module": "PyGi",
+    "class": "EdgeData"
+  },
+  {
+    "module": "PyGi",
+    "class": "FaceData"
+  },
+  {
+    "module": "PyGi",
+    "class": "Geometry"
+  },
+  {
+    "module": "PyGi",
+    "class": "GiGraphicsKernel"
+  },
+  {
+    "module": "PyGi",
+    "class": "GiKernelDescriptor"
+  },
+  {
+    "module": "PyGi",
+    "class": "Mapper"
+  },
+  {
+    "module": "PyGi",
+    "class": "Parameter"
+  },
+  {
+    "module": "PyGi",
+    "class": "PixelBGRA32Array"
+  },
+  {
+    "module": "PyGi",
+    "class": "Polyline"
+  },
+  {
+    "module": "PyGi",
+    "class": "SubEntityTraits"
+  },
+  {
+    "module": "PyGi",
+    "class": "TextStyle"
+  },
+  {
+    "module": "PyGi",
+    "class": "TransientManager"
+  },
+  {
+    "module": "PyGi",
+    "class": "VertexData"
+  },
+  {
+    "module": "PyGi",
+    "class": "ViewportDraw"
+  },
+  {
+    "module": "PyGi",
+    "class": "ViewportGeometry"
+  },
+  {
+    "module": "PyGi",
+    "class": "WorldDraw"
+  },
+  {
+    "module": "PyGi",
+    "class": "WorldGeometry"
+  },
+  {
+    "module": "PyGs",
+    "class": "Core"
+  },
+  {
+    "module": "PyGs",
+    "class": "GraphicsKernel"
+  },
+  {
+    "module": "PyGs",
+    "class": "GsManager"
+  },
+  {
+    "module": "PyGs",
+    "class": "GsView"
+  },
+  {
+    "module": "PyGs",
+    "class": "KernelDescriptor"
+  },
+  {
+    "module": "PyPl",
+    "class": "Core"
+  },
+  {
+    "module": "PyPl",
+    "class": "DSDData"
+  },
+  {
+    "module": "PyPl",
+    "class": "DSDEntry"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlObject"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfig"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfigInfo"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfigManager"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotEngine"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotFactory"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotInfo"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotInfoValidator"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotPageInfo"
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotProgressDialog"
+  },
+  {
+    "module": "PyPl",
+    "class": "PrecisionEntry"
+  },
+  {
+    "module": "PyRx",
+    "class": "CopyOnWriteObject"
+  },
+  {
+    "module": "PyRx",
+    "class": "Overrule"
+  },
+  {
+    "module": "PyRx",
+    "class": "RxClass"
+  },
+  {
+    "module": "PyRx",
+    "class": "stderr"
+  },
+  {
+    "module": "PyRx",
+    "class": "stdout"
+  },
+  {
+    "module": "PySm",
+    "class": "CalloutBlocks"
+  },
+  {
+    "module": "PySm",
+    "class": "Component"
+  },
+  {
+    "module": "PySm",
+    "class": "CustomPropertyBag"
+  },
+  {
+    "module": "PySm",
+    "class": "CustomPropertyValue"
+  },
+  {
+    "module": "PySm",
+    "class": "DbBlockRecordReference"
+  },
+  {
+    "module": "PySm",
+    "class": "DbDatabase"
+  },
+  {
+    "module": "PySm",
+    "class": "DbLayoutReference"
+  },
+  {
+    "module": "PySm",
+    "class": "DbObjectReference"
+  },
+  {
+    "module": "PySm",
+    "class": "DbViewReference"
+  },
+  {
+    "module": "PySm",
+    "class": "FileReference"
+  },
+  {
+    "module": "PySm",
+    "class": "NamedDbObjectReference"
+  },
+  {
+    "module": "PySm",
+    "class": "ObjectReference"
+  },
+  {
+    "module": "PySm",
+    "class": "Persist"
+  },
+  {
+    "module": "PySm",
+    "class": "PersistProxy"
+  },
+  {
+    "module": "PySm",
+    "class": "ProjectPointLocation"
+  },
+  {
+    "module": "PySm",
+    "class": "ProjectPointLocations"
+  },
+  {
+    "module": "PySm",
+    "class": "PublishOptions"
+  },
+  {
+    "module": "PySm",
+    "class": "Resources"
+  },
+  {
+    "module": "PySm",
+    "class": "Sheet"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSelSet"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSelSets"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSetMgr"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetView"
+  },
+  {
+    "module": "PySm",
+    "class": "SheetViews"
+  },
+  {
+    "module": "PySm",
+    "class": "SmDatabase"
+  },
+  {
+    "module": "PySm",
+    "class": "Subset"
+  },
+  {
+    "module": "PySm",
+    "class": "ViewCategories"
+  },
+  {
+    "module": "PySm",
+    "class": "ViewCategory"
+  }
+]

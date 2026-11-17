@@ -1,0 +1,9740 @@
+[
+  {
+    "module": "PyAp",
+    "class": "Application",
+    "line": 73,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "AutoDocLock",
+    "line": 155,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "CmdFlags",
+    "line": 173,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "DocLockMode",
+    "line": 197,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAp",
+    "class": "DocManager",
+    "line": 206,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "DocManagerReactor",
+    "line": 462,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "Document",
+    "line": 559,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "DocumentIterator",
+    "line": 707,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "Internal",
+    "line": 717,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerFilter",
+    "line": 737,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerFilterManager",
+    "line": 863,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "LayerGroup",
+    "line": 874,
+    "bases": [
+      "PyAp.LayerFilter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "LayoutManager",
+    "line": 893,
+    "bases": [
+      "PyDb.LayoutManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "Palette",
+    "line": 1045,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "PaletteDockStyle",
+    "line": 1054,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAp",
+    "class": "PaletteSet",
+    "line": 1062,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "PaletteTitleBarLocation",
+    "line": 1240,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAp",
+    "class": "PyRxTestFlags",
+    "line": 1244,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAp",
+    "class": "ResourceOverride",
+    "line": 1255,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAp",
+    "class": "SaveFormat",
+    "line": 1276,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAp",
+    "class": "TransactionManager",
+    "line": 1311,
+    "bases": [
+      "PyDb.TransactionManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "Ac3DPolylineType",
+    "line": 701,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcActiveSpace",
+    "line": 706,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcAlignment",
+    "line": 710,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcAlignmentPointAcquisition",
+    "line": 727,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcAngleUnits",
+    "line": 731,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcAttachmentPoint",
+    "line": 737,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcAttributeMode",
+    "line": 748,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcBlockConnectionType",
+    "line": 757,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcBlockScaling",
+    "line": 761,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcBooleanType",
+    "line": 765,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellAlignment",
+    "line": 770,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellContentLayout",
+    "line": 781,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellContentType",
+    "line": 786,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellEdgeMask",
+    "line": 792,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellMargin",
+    "line": 798,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellProperty",
+    "line": 806,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellState",
+    "line": 832,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCellType",
+    "line": 842,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcColor",
+    "line": 847,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcColorMethod",
+    "line": 858,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcCoordinateSystem",
+    "line": 865,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDataLinkUpdateDirection",
+    "line": 872,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDataLinkUpdateOption",
+    "line": 876,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimArcLengthSymbol",
+    "line": 883,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimArrowheadType",
+    "line": 888,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimCenterType",
+    "line": 911,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimFit",
+    "line": 916,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimFractionType",
+    "line": 922,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimHorizontalJustification",
+    "line": 927,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimLUnits",
+    "line": 934,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimPrecision",
+    "line": 942,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimTextMovement",
+    "line": 953,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimToleranceJustify",
+    "line": 958,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimToleranceMethod",
+    "line": 963,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimUnits",
+    "line": 970,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDimVerticalJustification",
+    "line": 980,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawLeaderOrderType",
+    "line": 987,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawMLeaderOrderType",
+    "line": 991,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawingAreaSCMCommand",
+    "line": 995,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawingAreaSCMDefault",
+    "line": 1000,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawingAreaSCMEdit",
+    "line": 1004,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDrawingDirection",
+    "line": 1008,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcDynamicBlockReferencePropertyUnitsType",
+    "line": 1015,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcEntityName",
+    "line": 1021,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcExtendOption",
+    "line": 1070,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcFormatOption",
+    "line": 1076,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcGridLineStyle",
+    "line": 1083,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcGridLineType",
+    "line": 1087,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcHatchObjectType",
+    "line": 1096,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcHatchStyle",
+    "line": 1100,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcHorizontalAlignment",
+    "line": 1105,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcISOPenWidth",
+    "line": 1113,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcInsertUnits",
+    "line": 1125,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcKeyboardAccelerator",
+    "line": 1152,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcKeyboardPriority",
+    "line": 1155,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcLeaderType",
+    "line": 1160,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcLineSpacingStyle",
+    "line": 1166,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcLineWeight",
+    "line": 1170,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcLoopType",
+    "line": 1199,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMLeaderContentType",
+    "line": 1206,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMLeaderType",
+    "line": 1211,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMLineJustification",
+    "line": 1216,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMenuFileType",
+    "line": 1221,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMenuGroupType",
+    "line": 1225,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMenuItemType",
+    "line": 1229,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcMergeCellStyleOption",
+    "line": 1234,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcOleQuality",
+    "line": 1241,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcParseOption",
+    "line": 1248,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPatternType",
+    "line": 1253,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPlotPaperUnits",
+    "line": 1258,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPlotRotation",
+    "line": 1263,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPlotScale",
+    "line": 1269,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPlotType",
+    "line": 1304,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPolylineType",
+    "line": 1312,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPolymeshType",
+    "line": 1318,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPredefBlockType",
+    "line": 1324,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPreviewMode",
+    "line": 1333,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcPrinterSpoolAlert",
+    "line": 1337,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcProxyImage",
+    "line": 1343,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcRegenType",
+    "line": 1348,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcRotationAngle",
+    "line": 1352,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcRowType",
+    "line": 1358,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSaveAsType",
+    "line": 1364,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSectionGeneration",
+    "line": 1397,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSectionState",
+    "line": 1404,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSectionSubItem",
+    "line": 1409,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSectionType",
+    "line": 1420,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSegmentAngleType",
+    "line": 1425,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSelect",
+    "line": 1434,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSelectType",
+    "line": 1443,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSplineFrameType",
+    "line": 1447,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSplineKnotParameterizationType",
+    "line": 1451,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcSplineMethodType",
+    "line": 1457,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTableDirection",
+    "line": 1461,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTableFlowDirection",
+    "line": 1465,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTextAlignmentType",
+    "line": 1470,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTextAngleType",
+    "line": 1475,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTextAttachmentDirection",
+    "line": 1480,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTextAttachmentType",
+    "line": 1484,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcTextFontStyle",
+    "line": 1495,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcToolbarDockStatus",
+    "line": 1501,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcToolbarItemType",
+    "line": 1508,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcUnits",
+    "line": 1514,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcValueDataType",
+    "line": 1522,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcValueUnitType",
+    "line": 1535,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcVerticalAlignment",
+    "line": 1542,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcVerticalTextAttachmentType",
+    "line": 1548,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcViewportScale",
+    "line": 1552,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcViewportSplitType",
+    "line": 1589,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcWindowState",
+    "line": 1600,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcXRefDemandLoad",
+    "line": 1605,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "AcZoomScaleType",
+    "line": 1610,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DFace",
+    "line": 1615,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DPolyline",
+    "line": 1635,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "Acad3DSolid",
+    "line": 1658,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAcCmColor",
+    "line": 1694,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadApplication",
+    "line": 1726,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadArc",
+    "line": 1774,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAttribute",
+    "line": 1804,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadAttributeReference",
+    "line": 1875,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlock",
+    "line": 1935,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlockReference",
+    "line": 2187,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadBlocks",
+    "line": 2231,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadCircle",
+    "line": 2251,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDatabase",
+    "line": 2278,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDatabasePreferences",
+    "line": 2319,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDictionaries",
+    "line": 2367,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDictionary",
+    "line": 2385,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDim3PointAngular",
+    "line": 2409,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimAligned",
+    "line": 2500,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimAngular",
+    "line": 2639,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimArcLength",
+    "line": 2732,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimDiametric",
+    "line": 2883,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimOrdinate",
+    "line": 2991,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRadial",
+    "line": 3074,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRadialLarge",
+    "line": 3184,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimRotated",
+    "line": 3285,
+    "bases": [
+      "PyAx.AcadDimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimStyle",
+    "line": 3426,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimStyles",
+    "line": 3441,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDimension",
+    "line": 3459,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDocument",
+    "line": 3531,
+    "bases": [
+      "PyAx.AcadDatabase"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDocuments",
+    "line": 3616,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadDynamicBlockReferenceProperty",
+    "line": 3632,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadEllipse",
+    "line": 3650,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadEntity",
+    "line": 3687,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadExternalReference",
+    "line": 3753,
+    "bases": [
+      "PyAx.AcadBlockReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadGroup",
+    "line": 3768,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadGroups",
+    "line": 3800,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHatch",
+    "line": 3818,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHyperlink",
+    "line": 3876,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadHyperlinks",
+    "line": 3893,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadIdPair",
+    "line": 3907,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLWPolyline",
+    "line": 3922,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayer",
+    "line": 3959,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayers",
+    "line": 3998,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayout",
+    "line": 4016,
+    "bases": [
+      "PyAx.AcadPlotConfiguration"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLayouts",
+    "line": 4031,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLeader",
+    "line": 4049,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLine",
+    "line": 4089,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLineType",
+    "line": 4113,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadLineTypes",
+    "line": 4129,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMInsertBlock",
+    "line": 4147,
+    "bases": [
+      "PyAx.AcadBlockReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLeader",
+    "line": 4167,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLeaderStyle",
+    "line": 4264,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMLine",
+    "line": 4365,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMText",
+    "line": 4384,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMaterial",
+    "line": 4424,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMaterials",
+    "line": 4440,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuBar",
+    "line": 4458,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuGroup",
+    "line": 4471,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadMenuGroups",
+    "line": 4490,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadObject",
+    "line": 4504,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPViewport",
+    "line": 4531,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlot",
+    "line": 4606,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlotConfiguration",
+    "line": 4629,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPlotConfigurations",
+    "line": 4692,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPoint",
+    "line": 4710,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolyfaceMesh",
+    "line": 4728,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolygonMesh",
+    "line": 4747,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPolyline",
+    "line": 4777,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenu",
+    "line": 4813,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenuItem",
+    "line": 4838,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPopupMenus",
+    "line": 4868,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferences",
+    "line": 4885,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesDisplay",
+    "line": 4904,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesDrafting",
+    "line": 4966,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesFiles",
+    "line": 4998,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesOpenSave",
+    "line": 5080,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesOutput",
+    "line": 5117,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesProfiles",
+    "line": 5153,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesSelection",
+    "line": 5172,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesSystem",
+    "line": 5204,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadPreferencesUser",
+    "line": 5230,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRasterImage",
+    "line": 5262,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRay",
+    "line": 5305,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegion",
+    "line": 5323,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegisteredApplication",
+    "line": 5345,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadRegisteredApplications",
+    "line": 5359,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSection",
+    "line": 5377,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionManager",
+    "line": 5421,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionSettings",
+    "line": 5437,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSectionTypeSettings",
+    "line": 5452,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSecurityParams",
+    "line": 5560,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSelectionSet",
+    "line": 5570,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSelectionSets",
+    "line": 5613,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadShape",
+    "line": 5627,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSolid",
+    "line": 5655,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSortentsTable",
+    "line": 5673,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSpline",
+    "line": 5698,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadState",
+    "line": 5755,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadSummaryInfo",
+    "line": 5766,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTable",
+    "line": 5801,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTableStyle",
+    "line": 6101,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadText",
+    "line": 6202,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTextStyle",
+    "line": 6247,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTextStyles",
+    "line": 6278,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTolerance",
+    "line": 6296,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbar",
+    "line": 6328,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbarItem",
+    "line": 6365,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadToolbars",
+    "line": 6392,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadTrace",
+    "line": 6409,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUCS",
+    "line": 6427,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUCSs",
+    "line": 6448,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadUtility",
+    "line": 6468,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadView",
+    "line": 6521,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViewport",
+    "line": 6553,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViewports",
+    "line": 6601,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadViews",
+    "line": 6619,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadXRecord",
+    "line": 6637,
+    "bases": [
+      "PyAx.AcadObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "AcadXline",
+    "line": 6655,
+    "bases": [
+      "PyAx.AcadEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "ModelSpace",
+    "line": 6674,
+    "bases": [
+      "PyAx.AcadBlock"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyAx",
+    "class": "PaperSpace",
+    "line": 6686,
+    "bases": [
+      "PyAx.AcadBlock"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Brep",
+    "line": 55,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Complex",
+    "line": 74,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ComplexShellTraverser",
+    "line": 90,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ComplexTraverser",
+    "line": 112,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Edge",
+    "line": 134,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "EdgeLoopTraverser",
+    "line": 155,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "EdgeTraverser",
+    "line": 177,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Element",
+    "line": 199,
+    "bases": [
+      "PyBr.MeshEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Element2d",
+    "line": 219,
+    "bases": [
+      "PyBr.Element"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Element2dNodeTraverser",
+    "line": 236,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Element2dShape",
+    "line": 259,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "Entity",
+    "line": 265,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ErrorStatus",
+    "line": 305,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "Face",
+    "line": 328,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "FaceLoopTraverser",
+    "line": 350,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "FaceTraverser",
+    "line": 372,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Hit",
+    "line": 394,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Loop",
+    "line": 419,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "LoopEdgeTraverser",
+    "line": 437,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "LoopType",
+    "line": 462,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "LoopVertexTraverser",
+    "line": 470,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "MassProps",
+    "line": 493,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh",
+    "line": 505,
+    "bases": [
+      "PyBr.MeshEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh2d",
+    "line": 525,
+    "bases": [
+      "PyBr.Mesh"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Mesh2dElement2dTraverser",
+    "line": 541,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "MeshEntity",
+    "line": 562,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Node",
+    "line": 588,
+    "bases": [
+      "PyBr.MeshEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "Relation",
+    "line": 605,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "Shell",
+    "line": 614,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ShellFaceTraverser",
+    "line": 632,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ShellTraverser",
+    "line": 654,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ShellType",
+    "line": 676,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "Traverser",
+    "line": 681,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "ValidationLevel",
+    "line": 709,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBr",
+    "class": "Vertex",
+    "line": 713,
+    "bases": [
+      "PyBr.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexEdgeTraverser",
+    "line": 730,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexLoopTraverser",
+    "line": 750,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBr",
+    "class": "VertexTraverser",
+    "line": 771,
+    "bases": [
+      "PyBr.Traverser"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "BlockParameter",
+    "line": 60,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "Constraint",
+    "line": 75,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintArgCoordSysObj",
+    "line": 106,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintArgument",
+    "line": 115,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintDirections",
+    "line": 135,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintMeasurementMode",
+    "line": 141,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintPlacement",
+    "line": 146,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintType",
+    "line": 152,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "ConstraintsGroup",
+    "line": 171,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "Core",
+    "line": 195,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "DbProperties",
+    "line": 241,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTable",
+    "line": 261,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTableConfiguration",
+    "line": 278,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "DesignTableConfigurationEntry",
+    "line": 290,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "LicensedFeature",
+    "line": 304,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "MechanicalPropertyDefinition",
+    "line": 310,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "MechanicalPropertySet",
+    "line": 325,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "MechanicalPropertyType",
+    "line": 355,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "PyBrxPanel",
+    "line": 362,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "Variable",
+    "line": 372,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrx",
+    "class": "VariableEGdMode",
+    "line": 409,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrx",
+    "class": "VariableExposeMode",
+    "line": 414,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimAssets",
+    "line": 175,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimBuilding",
+    "line": 185,
+    "bases": [
+      "PyBrxBim.BimSpatialLocation"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimCategory",
+    "line": 229,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimClassification",
+    "line": 240,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimComposition",
+    "line": 375,
+    "bases": [
+      "PyBrxBim.BimObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimElementType",
+    "line": 388,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimHatchPattern",
+    "line": 447,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimHatchType",
+    "line": 469,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimInformationalAssets",
+    "line": 475,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimLinearGeometry",
+    "line": 485,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimMaterial",
+    "line": 496,
+    "bases": [
+      "PyBrxBim.BimObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimNameSpaces",
+    "line": 509,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimObject",
+    "line": 542,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimObjectType",
+    "line": 562,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimPly",
+    "line": 572,
+    "bases": [
+      "PyBrxBim.BimObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimPolicies",
+    "line": 591,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimPolicyOptions",
+    "line": 605,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimProfile",
+    "line": 609,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimRoom",
+    "line": 620,
+    "bases": [
+      "PyBrxBim.BimObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimSpace",
+    "line": 744,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimSpaceRepresentation",
+    "line": 809,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimSpatialLocation",
+    "line": 813,
+    "bases": [
+      "PyBrxBim.BimObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BimStory",
+    "line": 841,
+    "bases": [
+      "PyBrxBim.BimSpatialLocation"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BrxBimAttributeSet",
+    "line": 878,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "BrxBimDialogs",
+    "line": 884,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "Core",
+    "line": 890,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcBinary",
+    "line": 932,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEntity",
+    "line": 945,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEntityDesc",
+    "line": 962,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcEnumValue",
+    "line": 2800,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportContext",
+    "line": 2812,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportOptionFlags",
+    "line": 2893,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportOptions",
+    "line": 2904,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcExportReactor",
+    "line": 2926,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcGuid",
+    "line": 2945,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcHeader",
+    "line": 2959,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportContext",
+    "line": 2984,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportInfo",
+    "line": 3010,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportModelOrigin",
+    "line": 3028,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportOptions",
+    "line": 3033,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcImportReactor",
+    "line": 3055,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcLogical",
+    "line": 3082,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcModel",
+    "line": 3090,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcModelViewDefType",
+    "line": 3108,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcProjectData",
+    "line": 3113,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcResult",
+    "line": 3173,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcSchemaId",
+    "line": 3180,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcSelectValue",
+    "line": 3186,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcSelectorDesc",
+    "line": 3200,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcString",
+    "line": 3206,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcValueType",
+    "line": 3223,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVariant",
+    "line": 3238,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVectorDesc",
+    "line": 3269,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "IfcVectorValue",
+    "line": 3275,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "PyBrxBimPropertySets",
+    "line": 3291,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxBim",
+    "class": "ResultStatus",
+    "line": 3297,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "ArcParameterType",
+    "line": 349,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "ArcType",
+    "line": 360,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "BlockAttachment",
+    "line": 364,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "BorderType",
+    "line": 376,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "BreaklineIntersectionElevation",
+    "line": 381,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "Civil3dAlignmentType",
+    "line": 387,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "Civil3dEntityType",
+    "line": 395,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "Civil3dLabels",
+    "line": 402,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "Civil3dProfileType",
+    "line": 410,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CustomSymbol",
+    "line": 417,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvAttribVariant",
+    "line": 426,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvCivil3dConverter",
+    "line": 478,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvCivil3dEntityInfo",
+    "line": 498,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDataType",
+    "line": 514,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDb3dAlignment",
+    "line": 536,
+    "bases": [
+      "PyBrxCv.CvDbCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbCurve",
+    "line": 572,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbCurveLabelStyleManager",
+    "line": 606,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbEntity",
+    "line": 643,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbFileFormatManager",
+    "line": 677,
+    "bases": [
+      "PyBrxCv.CvDbObjectManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbGrading",
+    "line": 713,
+    "bases": [
+      "PyBrxCv.CvDbEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignment",
+    "line": 771,
+    "bases": [
+      "PyBrxCv.CvDbCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentArc",
+    "line": 1118,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentCurve",
+    "line": 1158,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentElement"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentElement",
+    "line": 1189,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentLine",
+    "line": 1226,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentPI",
+    "line": 1254,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentElement"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSCS",
+    "line": 1277,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSSCSS",
+    "line": 1302,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSTS",
+    "line": 1329,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbHAlignmentSpiral",
+    "line": 1355,
+    "bases": [
+      "PyBrxCv.CvDbHAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyle",
+    "line": 1395,
+    "bases": [
+      "PyBrxCv.CvDbStyle"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleArrow",
+    "line": 1507,
+    "bases": [
+      "PyBrxCv.CvDbLabelStyleComponent"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleBlock",
+    "line": 1550,
+    "bases": [
+      "PyBrxCv.CvDbLabelStyleComponent"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleComponent",
+    "line": 1590,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleLine",
+    "line": 1606,
+    "bases": [
+      "PyBrxCv.CvDbLabelStyleComponent"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLabelStyleText",
+    "line": 1656,
+    "bases": [
+      "PyBrxCv.CvDbLabelStyleComponent"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbLineLabelStyleManager",
+    "line": 1720,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbObject",
+    "line": 1757,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbObjectManager",
+    "line": 1791,
+    "bases": [
+      "PyBrxCv.CvDbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPoint",
+    "line": 1831,
+    "bases": [
+      "PyBrxCv.CvDbEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointGroup",
+    "line": 1913,
+    "bases": [
+      "PyBrxCv.CvDbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointGroupManager",
+    "line": 1977,
+    "bases": [
+      "PyBrxCv.CvDbObjectManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointLabelStyleManager",
+    "line": 2016,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbPointReferencedEntity",
+    "line": 2053,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStringLine",
+    "line": 2078,
+    "bases": [
+      "PyBrxCv.CvDbCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStringLineManager",
+    "line": 2158,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStyle",
+    "line": 2218,
+    "bases": [
+      "PyBrxCv.CvDbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStyleManager",
+    "line": 2257,
+    "bases": [
+      "PyBrxCv.CvDbObjectManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbStylePartDisplaySettings",
+    "line": 2293,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSubObject",
+    "line": 2317,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceContourLabelStyleManager",
+    "line": 2347,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceElevationLabelStyleManager",
+    "line": 2386,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSurfaceSlopeLabelStyleManager",
+    "line": 2425,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSymbolStyle",
+    "line": 2464,
+    "bases": [
+      "PyBrxCv.CvDbStyle"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbSymbolStyleManager",
+    "line": 2521,
+    "bases": [
+      "PyBrxCv.CvDbStyleManager"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurface",
+    "line": 2558,
+    "bases": [
+      "PyBrxCv.CvDbEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceBoundary",
+    "line": 2701,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceConstraint"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceBreakline",
+    "line": 2708,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceConstraint"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceConstraint",
+    "line": 2716,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinition",
+    "line": 2731,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddDrawingObjects",
+    "line": 2770,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddFromFiles",
+    "line": 2804,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddFromPointClouds",
+    "line": 2830,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddLine",
+    "line": 2854,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddLines",
+    "line": 2878,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPoint",
+    "line": 2902,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPointGroups",
+    "line": 2926,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionAddPoints",
+    "line": 2950,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromC3D",
+    "line": 2974,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromFaces",
+    "line": 3000,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionCreateFromLandXML",
+    "line": 3027,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeleteEdge",
+    "line": 3056,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeleteEdges",
+    "line": 3080,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionDeletePoint",
+    "line": 3107,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionGroupDefs",
+    "line": 3131,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointElevation",
+    "line": 3158,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointsElevation",
+    "line": 3186,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionModifyPointsElevations",
+    "line": 3213,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionMovePoint",
+    "line": 3240,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionMovePoints",
+    "line": 3266,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRemoveElevations",
+    "line": 3292,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRemoveOuterEdges",
+    "line": 3323,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionRiseLower",
+    "line": 3357,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionSwapEdge",
+    "line": 3381,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionTransform",
+    "line": 3405,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceDefinitionTrianglesVisibility",
+    "line": 3429,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbTinSurfaceWall",
+    "line": 3455,
+    "bases": [
+      "PyBrxCv.CvDbTinSurfaceConstraint"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignment",
+    "line": 3465,
+    "bases": [
+      "PyBrxCv.CvDbCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentArc",
+    "line": 3537,
+    "bases": [
+      "PyBrxCv.CvDbVAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentCurve",
+    "line": 3567,
+    "bases": [
+      "PyBrxCv.CvDbVAlignmentElement"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentElement",
+    "line": 3596,
+    "bases": [
+      "PyBrxCv.CvDbSubObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentPVI",
+    "line": 3632,
+    "bases": [
+      "PyBrxCv.CvDbVAlignmentElement"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentParabola",
+    "line": 3655,
+    "bases": [
+      "PyBrxCv.CvDbVAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentTangent",
+    "line": 3681,
+    "bases": [
+      "PyBrxCv.CvDbVAlignmentCurve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVAlignmentView",
+    "line": 3707,
+    "bases": [
+      "PyBrxCv.CvDbView"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbView",
+    "line": 3738,
+    "bases": [
+      "PyBrxCv.CvDbEntity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvDbVolumeSurface",
+    "line": 3792,
+    "bases": [
+      "PyBrxCv.CvDbTinSurface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingRule",
+    "line": 3868,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingSlopeOffsetRule",
+    "line": 3887,
+    "bases": [
+      "PyBrxCv.CvGradingRule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvGradingSlopeSurfaceRule",
+    "line": 3899,
+    "bases": [
+      "PyBrxCv.CvGradingRule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvStationEquation",
+    "line": 3913,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvStationEquations",
+    "line": 3933,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvTinPoint",
+    "line": 3960,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "CvTinTriangle",
+    "line": 3967,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "DisplayMode",
+    "line": 3984,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "DisplayOrientation",
+    "line": 3988,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "DrawingObjectType",
+    "line": 3994,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "ForcedInsertion",
+    "line": 4004,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingCalculationMethod",
+    "line": 4009,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingSide",
+    "line": 4013,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingSlopeFormat",
+    "line": 4018,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingStatus",
+    "line": 4025,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingType",
+    "line": 4043,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "GradingVisualStyle",
+    "line": 4048,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "HAlignmentElementType",
+    "line": 4054,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "HAlignmentParameterConstraint",
+    "line": 4077,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "HAlignmentTangencyConstraint",
+    "line": 4122,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "HAlignmentVisualStyle",
+    "line": 4129,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "LabelAnchor",
+    "line": 4135,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "LeaderAttachment",
+    "line": 4154,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "LeaderType",
+    "line": 4161,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "LengthType",
+    "line": 4165,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "OrientationRef",
+    "line": 4169,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "ScalingType",
+    "line": 4175,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralCurveType",
+    "line": 4181,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralDefinitionType",
+    "line": 4185,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralDefinitionTypeSpiral",
+    "line": 4189,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralDirectionType",
+    "line": 4193,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralParameterType",
+    "line": 4197,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SpiralParameterType2",
+    "line": 4201,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "StationEquationType",
+    "line": 4205,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "StringLineCreationSource",
+    "line": 4209,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "StringLinePointType",
+    "line": 4214,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "StyleManagerType",
+    "line": 4220,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "SymbolType",
+    "line": 4229,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinBoundaryType",
+    "line": 4235,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinBreaklineType",
+    "line": 4240,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinConstraintType",
+    "line": 4244,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinIntersectionElevation",
+    "line": 4249,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinSurfaceDefinitionType",
+    "line": 4255,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinSurfaceIntersectType",
+    "line": 4299,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinSurfaceMeshType",
+    "line": 4303,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinSurfaceSolidType",
+    "line": 4308,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinSurfaceStyle",
+    "line": 4313,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinWallSide",
+    "line": 4321,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "TinWallType",
+    "line": 4325,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VAlignmentElementType",
+    "line": 4329,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VAlignmentParameterConstraint",
+    "line": 4336,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VAlignmentTangencyConstraint",
+    "line": 4345,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VAlignmentType",
+    "line": 4352,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VAlignmentVisualStyle",
+    "line": 4358,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyBrxCv",
+    "class": "VolumeSurfaceType",
+    "line": 4363,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ACIcolorMethod",
+    "line": 1908,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AbstractViewTable",
+    "line": 1919,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AbstractViewTableRecord",
+    "line": 1953,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AcCmDialogTabs",
+    "line": 2341,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AcGeoMapResolution",
+    "line": 2346,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AcGeoMapType",
+    "line": 2352,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AcValue",
+    "line": 2366,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AdsName",
+    "line": 2421,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AdskBoolean",
+    "line": 2427,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AlignedDimension",
+    "line": 2431,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AnnoType",
+    "line": 2623,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AnnotationScale",
+    "line": 2629,
+    "bases": [
+      "PyDb.ObjectContext"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AnnotativeStates",
+    "line": 2655,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Arc",
+    "line": 2660,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ArcDimension",
+    "line": 2826,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocAction",
+    "line": 3007,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocConstraintType",
+    "line": 3177,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocDependency",
+    "line": 3189,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocDraggingState",
+    "line": 3266,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocEvaluationMode",
+    "line": 3272,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocEvaluationPriority",
+    "line": 3276,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocFlags",
+    "line": 3281,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocNetwork",
+    "line": 3287,
+    "bases": [
+      "PyDb.AssocAction"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocPersSubentIdPE",
+    "line": 3347,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocStatus",
+    "line": 3421,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocTransformationType",
+    "line": 3431,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocValueDependency",
+    "line": 3437,
+    "bases": [
+      "PyDb.AssocDependency"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AssocVariable",
+    "line": 3472,
+    "bases": [
+      "PyDb.AssocAction"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AttributeDefinition",
+    "line": 3549,
+    "bases": [
+      "PyDb.Text"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AttributeReference",
+    "line": 3752,
+    "bases": [
+      "PyDb.Text"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "AutoWorkingDatabase",
+    "line": 3912,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockBegin",
+    "line": 3917,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockEnd",
+    "line": 3976,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockReference",
+    "line": 4031,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockScaling",
+    "line": 4387,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTable",
+    "line": 4391,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTableRecord",
+    "line": 4425,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockTableRecordIterator",
+    "line": 4808,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BlockUserParameter",
+    "line": 4818,
+    "bases": [
+      "PyDb.EvalExpr"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Body",
+    "line": 4848,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "BoolOperType",
+    "line": 4891,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Cell",
+    "line": 4896,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "CellAlignment",
+    "line": 4906,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellContentLayout",
+    "line": 4917,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellContentType",
+    "line": 4922,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellEdgeMask",
+    "line": 4928,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellMargin",
+    "line": 4934,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellOption",
+    "line": 4942,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellProperty",
+    "line": 4946,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellRange",
+    "line": 4972,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "CellState",
+    "line": 4988,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CellType",
+    "line": 4999,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CenterMarkType",
+    "line": 5005,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Circle",
+    "line": 5010,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ClipBoundaryType",
+    "line": 5124,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "CollisionType",
+    "line": 5129,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Color",
+    "line": 5133,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ColorMethod",
+    "line": 5195,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ConvertFieldToTextOption",
+    "line": 5206,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Core",
+    "line": 5212,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Curve",
+    "line": 6253,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Database",
+    "line": 6749,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseOpenMode",
+    "line": 9747,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseReactor",
+    "line": 9753,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseSummaryInfo",
+    "line": 9848,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DatabaseSummaryInfoIterator",
+    "line": 9908,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Date",
+    "line": 9918,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObject",
+    "line": 10096,
+    "bases": [
+      "PyGi.Drawable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectCloseScope",
+    "line": 10633,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectOverrule",
+    "line": 10645,
+    "bases": [
+      "PyRx.Overrule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DbObjectReactor",
+    "line": 10708,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DeepCloneType",
+    "line": 10736,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DetailSymbol",
+    "line": 10749,
+    "bases": [
+      "PyDb.ViewSymbol"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DetailSymbolBoundaryType",
+    "line": 10796,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DetailSymbolOverriddenProperty",
+    "line": 10801,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DiametricDimension",
+    "line": 10805,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DictUtil",
+    "line": 10980,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Dictionary",
+    "line": 11040,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DictionaryIterator",
+    "line": 11238,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DictionaryWithDefault",
+    "line": 11248,
+    "bases": [
+      "PyDb.Dictionary"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DimArrowFlags",
+    "line": 11350,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DimAssoc",
+    "line": 11354,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DimAssocPointType",
+    "line": 11600,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DimInspect",
+    "line": 11619,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DimStyleTable",
+    "line": 11627,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DimStyleTableRecord",
+    "line": 11661,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Dimension",
+    "line": 11878,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DragStat",
+    "line": 12579,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DrawLeaderOrderType",
+    "line": 12584,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DrawMLeaderOrderType",
+    "line": 12588,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DuplicateRecordCloning",
+    "line": 12592,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DwgDataType",
+    "line": 12600,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DwgVersion",
+    "line": 12617,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DxfCode",
+    "line": 12657,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockReference",
+    "line": 12828,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockReferenceProperty",
+    "line": 12884,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DynBlockTableRecord",
+    "line": 12954,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "DynUnitsType",
+    "line": 12993,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Ellipse",
+    "line": 12999,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EndCaps",
+    "line": 13254,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Entity",
+    "line": 13260,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityColor",
+    "line": 14163,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityHyperlinkPE",
+    "line": 14229,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EntityReactor",
+    "line": 14280,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EraseMask",
+    "line": 14310,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ErrorStatus",
+    "line": 14315,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ErrorStatusException",
+    "line": 14828,
+    "bases": [
+      "RuntimeError"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalConnectable",
+    "line": 14833,
+    "bases": [
+      "PyDb.EvalExpr"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalExpr",
+    "line": 14853,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalGraph",
+    "line": 14877,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "EvalVariant",
+    "line": 14911,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Extents",
+    "line": 15054,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Extents2d",
+    "line": 15112,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ExtrudedSurface",
+    "line": 15191,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Face",
+    "line": 15217,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "FaceRecord",
+    "line": 15342,
+    "bases": [
+      "PyDb.Vertex"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Fcf",
+    "line": 15458,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Field",
+    "line": 15775,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldCodeFlag",
+    "line": 16033,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEngine",
+    "line": 16048,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEvalContext",
+    "line": 16067,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEvalOption",
+    "line": 16077,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEvalStatus",
+    "line": 16087,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldEvaluator",
+    "line": 16096,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "FieldState",
+    "line": 16159,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FilerType",
+    "line": 16167,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FindFileHint",
+    "line": 16179,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "FullSubentPath",
+    "line": 16198,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystem",
+    "line": 16230,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystemProjectionCode",
+    "line": 16257,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystemTransformer",
+    "line": 16331,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystemType",
+    "line": 16349,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoCoordinateSystemUnit",
+    "line": 16355,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoData",
+    "line": 16419,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoMap",
+    "line": 16796,
+    "bases": [
+      "PyDb.RasterImage"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoPositionMarker",
+    "line": 16866,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoScaleEstimationMethod",
+    "line": 16921,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoTextAlignmentType",
+    "line": 16927,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GeoTypeOfCoordinates",
+    "line": 16932,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Graph",
+    "line": 16938,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GraphNode",
+    "line": 16960,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GraphNodeFlags",
+    "line": 16988,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GridLineStyle",
+    "line": 16999,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GridLineType",
+    "line": 17003,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GridProperty",
+    "line": 17017,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "GripData",
+    "line": 17027,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GripOverrule",
+    "line": 17057,
+    "bases": [
+      "PyRx.Overrule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "GripStat",
+    "line": 17092,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Group",
+    "line": 17097,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Handle",
+    "line": 17343,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "HardOwnershipId",
+    "line": 17370,
+    "bases": [
+      "PyDb.ObjectId"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "HardPointerId",
+    "line": 17374,
+    "bases": [
+      "PyDb.ObjectId"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Hatch",
+    "line": 17378,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchEdgeType",
+    "line": 18202,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchGradientPatternType",
+    "line": 18208,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchLoopType",
+    "line": 18212,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchObjectType",
+    "line": 18229,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchPatternType",
+    "line": 18233,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HatchStyle",
+    "line": 18238,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Helix",
+    "line": 18243,
+    "bases": [
+      "PyDb.Spline"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "HelixConstrainType",
+    "line": 18289,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "HostApplicationServices",
+    "line": 18294,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Hyperlink",
+    "line": 18409,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "HyperlinkCollection",
+    "line": 18430,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "IdMapping",
+    "line": 18455,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "IdPair",
+    "line": 18529,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Image",
+    "line": 18625,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ImageDisplayOpt",
+    "line": 18671,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ImageUnits",
+    "line": 18677,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "IndexFilterManager",
+    "line": 18700,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Intersect",
+    "line": 18759,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "JoinEntityPE",
+    "line": 18765,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "JoinStyle",
+    "line": 18791,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerFilter",
+    "line": 18797,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerStateManager",
+    "line": 18862,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerStateMask",
+    "line": 19068,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerTable",
+    "line": 19086,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LayerTableRecord",
+    "line": 19121,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Layout",
+    "line": 19412,
+    "bases": [
+      "PyDb.PlotSettings"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LayoutManager",
+    "line": 19481,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Leader",
+    "line": 19520,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Line",
+    "line": 19688,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LineAngularDimension2",
+    "line": 19837,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LineSpacingStyle",
+    "line": 20006,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "LineWeight",
+    "line": 20010,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "LinetypeTable",
+    "line": 20039,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LinetypeTableRecord",
+    "line": 20073,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "LoftedSurface",
+    "line": 20183,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MInsertBlock",
+    "line": 20209,
+    "bases": [
+      "PyDb.BlockReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeader",
+    "line": 20333,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderBlockConnectionType",
+    "line": 20537,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderContentType",
+    "line": 20541,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderGsMarkType",
+    "line": 20547,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderLeaderDirectionType",
+    "line": 20558,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderLeaderType",
+    "line": 20565,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderMoveType",
+    "line": 20570,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderPropertyOverrideType",
+    "line": 20575,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderSegmentAngleType",
+    "line": 20609,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderStyle",
+    "line": 20618,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderTextAlignmentType",
+    "line": 20747,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderTextAngleType",
+    "line": 20752,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderTextAttachmentDirection",
+    "line": 20757,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MLeaderTextAttachmentType",
+    "line": 20761,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MPolygon",
+    "line": 20774,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MPolygonloopDir",
+    "line": 20887,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MText",
+    "line": 20892,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MTextAttachmentPoint",
+    "line": 21348,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MTextColumnType",
+    "line": 21374,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MTextFlowDirection",
+    "line": 21379,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MTextFragmentType",
+    "line": 21384,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MeasurementValue",
+    "line": 21410,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MergeCellStyleOption",
+    "line": 21414,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Mline",
+    "line": 21421,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "MlineJustification",
+    "line": 21514,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "MlineStyle",
+    "line": 21522,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "NurbSurface",
+    "line": 21588,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContext",
+    "line": 21614,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContextCollection",
+    "line": 21638,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectContextManager",
+    "line": 21669,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectId",
+    "line": 21694,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdArray",
+    "line": 21814,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdGraph",
+    "line": 21845,
+    "bases": [
+      "PyDb.Graph"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ObjectIdGraphNode",
+    "line": 21861,
+    "bases": [
+      "PyDb.GraphNode"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "OpenMode",
+    "line": 21872,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "OrdinateDimension",
+    "line": 21880,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "OrthographicView",
+    "line": 22072,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapMask",
+    "line": 22081,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapMode",
+    "line": 22102,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapOverrule",
+    "line": 22114,
+    "bases": [
+      "PyRx.Overrule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapPointRef",
+    "line": 22175,
+    "bases": [
+      "PyDb.PointRef"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "OsnapType",
+    "line": 22241,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "OutputDisplayService",
+    "line": 22257,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "OverrulableEntity",
+    "line": 22266,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PdfDefinition",
+    "line": 22319,
+    "bases": [
+      "PyDb.UnderlayDefinition"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PdfReference",
+    "line": 22343,
+    "bases": [
+      "PyDb.UnderlayReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PlaceHolder",
+    "line": 22367,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Planarity",
+    "line": 22389,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PlaneSurface",
+    "line": 22394,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotPaperUnits",
+    "line": 22420,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotRotation",
+    "line": 22425,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotSettings",
+    "line": 22431,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotSettingsValidator",
+    "line": 22536,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotStyleNameType",
+    "line": 22603,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PlotType",
+    "line": 22609,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Point",
+    "line": 22617,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Point3AngularDimension",
+    "line": 22750,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudClassificationColorRamp",
+    "line": 22909,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudColorMap",
+    "line": 22927,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudColorRamp",
+    "line": 22986,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudCrop",
+    "line": 23005,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudCropType",
+    "line": 23030,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudDefEx",
+    "line": 23036,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudDispOptionOutOfRange",
+    "line": 23098,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudEx",
+    "line": 23103,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudOSnapMode",
+    "line": 23252,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudProperty",
+    "line": 23262,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudPropertyState",
+    "line": 23270,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointCloudStylizationType",
+    "line": 23275,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PointRef",
+    "line": 23283,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Poly2dType",
+    "line": 23303,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Poly3dType",
+    "line": 23309,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "PolyFaceMeshVertex",
+    "line": 23314,
+    "bases": [
+      "PyDb.Vertex"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "PolygonMeshVertex",
+    "line": 23380,
+    "bases": [
+      "PyDb.Vertex"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline",
+    "line": 23449,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline2d",
+    "line": 23906,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline3d",
+    "line": 24276,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Polyline3dVertex",
+    "line": 24538,
+    "bases": [
+      "PyDb.Vertex"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Profile3d",
+    "line": 24607,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ProxyEntity",
+    "line": 24652,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ProxyObject",
+    "line": 24676,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RadialDimension",
+    "line": 24700,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RadialDimensionLarge",
+    "line": 24859,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImage",
+    "line": 25015,
+    "bases": [
+      "PyDb.Image"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImageDef",
+    "line": 25083,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RasterImageDefReactor",
+    "line": 25231,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Ray",
+    "line": 25300,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RegAppTable",
+    "line": 25355,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RegAppTableRecord",
+    "line": 25388,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Region",
+    "line": 25442,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RemapFileContext",
+    "line": 25545,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ReservedStringEnumType",
+    "line": 25551,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "RevolveOptions",
+    "line": 25579,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RevolvedSurface",
+    "line": 25635,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RotatedDimType",
+    "line": 25661,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "RotatedDimension",
+    "line": 25666,
+    "bases": [
+      "PyDb.Dimension"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "RotationAngle",
+    "line": 25900,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "RowType",
+    "line": 25907,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Section",
+    "line": 25914,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionGeneration",
+    "line": 26014,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionGeometry",
+    "line": 26021,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionHeight",
+    "line": 26028,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionManager",
+    "line": 26032,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionSettings",
+    "line": 26086,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionState",
+    "line": 26230,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionSubItem",
+    "line": 26235,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionSymbol",
+    "line": 26246,
+    "bases": [
+      "PyDb.ViewSymbol"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SectionType",
+    "line": 26289,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SegType",
+    "line": 26294,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SequenceEnd",
+    "line": 26301,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ShadePlotResLevel",
+    "line": 26360,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ShadePlotType",
+    "line": 26368,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Shape",
+    "line": 26376,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SnoopDwgFiler",
+    "line": 26566,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SnoopDxfFiler",
+    "line": 26572,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SoftOwnershipId",
+    "line": 26578,
+    "bases": [
+      "PyDb.ObjectId"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SoftPointerId",
+    "line": 26582,
+    "bases": [
+      "PyDb.ObjectId"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Solid",
+    "line": 26586,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Solid3d",
+    "line": 26701,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SortentsTable",
+    "line": 27309,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SpatialFilter",
+    "line": 27582,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Spline",
+    "line": 27712,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SplineType",
+    "line": 28406,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "StandardScaleType",
+    "line": 28410,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "StdScaleType",
+    "line": 28447,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SubDMesh",
+    "line": 28484,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SubentId",
+    "line": 28890,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SubentType",
+    "line": 28931,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Surface",
+    "line": 28941,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SurfaceEdgeExtensionType",
+    "line": 29042,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SurfaceWireframeType",
+    "line": 29046,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SweepAlignOption",
+    "line": 29050,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SweepMiterOption",
+    "line": 29056,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "SweepOptions",
+    "line": 29063,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SweptSurface",
+    "line": 29249,
+    "bases": [
+      "PyDb.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SymUtilServices",
+    "line": 29275,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTable",
+    "line": 29326,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTableIterator",
+    "line": 29379,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "SymbolTableRecord",
+    "line": 29389,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Table",
+    "line": 29453,
+    "bases": [
+      "PyDb.BlockReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TableBreakFlowDirection",
+    "line": 31157,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TableBreakOption",
+    "line": 31162,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TableFlowDirection",
+    "line": 31170,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TableHitItem",
+    "line": 31174,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TableIteratorOption",
+    "line": 31181,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TableStyle",
+    "line": 31192,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Text",
+    "line": 31990,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TextAlignment",
+    "line": 32328,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TextFindOptions",
+    "line": 32345,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TextHorzMode",
+    "line": 32355,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TextStyleTable",
+    "line": 32363,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TextStyleTableRecord",
+    "line": 32396,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TextVertMode",
+    "line": 32615,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "TimeZone",
+    "line": 32621,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Trace",
+    "line": 32699,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Transaction",
+    "line": 32790,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TransactionManager",
+    "line": 32815,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Transparency",
+    "line": 32851,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "TransparencyMethod",
+    "line": 32866,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "UCSTable",
+    "line": 32872,
+    "bases": [
+      "PyDb.SymbolTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "UCSTableRecord",
+    "line": 32905,
+    "bases": [
+      "PyDb.SymbolTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayDefinition",
+    "line": 33008,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayLayer",
+    "line": 33088,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "UnderlayReference",
+    "line": 33117,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "UnitsValue",
+    "line": 33394,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "UpdateDirection",
+    "line": 33422,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "UpdateOption",
+    "line": 33426,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "UserParameterType",
+    "line": 33439,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ValueDataType",
+    "line": 33447,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ValueFormatOption",
+    "line": 33461,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ValueParseOption",
+    "line": 33468,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ValueUnitType",
+    "line": 33476,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Vertex",
+    "line": 33486,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Vertex2d",
+    "line": 33550,
+    "bases": [
+      "PyDb.Vertex"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Vertex2dType",
+    "line": 33733,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewSymbol",
+    "line": 33739,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewTable",
+    "line": 33770,
+    "bases": [
+      "PyDb.AbstractViewTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewTableRecord",
+    "line": 33803,
+    "bases": [
+      "PyDb.AbstractViewTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Viewport",
+    "line": 34003,
+    "bases": [
+      "PyDb.Entity"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewportTable",
+    "line": 35164,
+    "bases": [
+      "PyDb.AbstractViewTable"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "ViewportTableRecord",
+    "line": 35197,
+    "bases": [
+      "PyDb.AbstractViewTableRecord"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Visibility",
+    "line": 35622,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "VpFreezeOps",
+    "line": 35626,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "VpShadePlotType",
+    "line": 35631,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Wipeout",
+    "line": 35639,
+    "bases": [
+      "PyDb.RasterImage"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XRefLayerPropertyOverride",
+    "line": 35708,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XRefLayerPropertyOverrideType",
+    "line": 35766,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyDb",
+    "class": "Xline",
+    "line": 35779,
+    "bases": [
+      "PyDb.Curve"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "Xrecord",
+    "line": 35834,
+    "bases": [
+      "PyDb.DbObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefGraph",
+    "line": 35982,
+    "bases": [
+      "PyDb.Graph"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefGraphNode",
+    "line": 36011,
+    "bases": [
+      "PyDb.GraphNode"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefObjectId",
+    "line": 36040,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyDb",
+    "class": "XrefStatus",
+    "line": 36053,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "AutoSysVar",
+    "line": 112,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "Core",
+    "line": 117,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "CursorType",
+    "line": 1441,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "DragEffect",
+    "line": 1457,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "DragStatus",
+    "line": 1462,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "DragStyle",
+    "line": 1481,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "DragStyleType",
+    "line": 1495,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "DrawJig",
+    "line": 1504,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "DrawOrderCmdType",
+    "line": 1529,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "Editor",
+    "line": 1536,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "EditorReactor",
+    "line": 2328,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPoint",
+    "line": 2450,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointFilter",
+    "line": 2478,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointFilterResult",
+    "line": 2485,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointManager",
+    "line": 2501,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointMonitor",
+    "line": 2523,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "InputPointMonitorResult",
+    "line": 2530,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "Jig",
+    "line": 2541,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "PointHistory",
+    "line": 2565,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "PromptCondition",
+    "line": 2592,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "PromptStatus",
+    "line": 2598,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "SelectionSet",
+    "line": 2611,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "SelectionSetIterator",
+    "line": 2645,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "UIContext",
+    "line": 2655,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "UserInputControls",
+    "line": 2671,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyEd",
+    "class": "UserInteraction",
+    "line": 2690,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyEd",
+    "class": "Util",
+    "line": 2694,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "AcGeCSIConfig",
+    "line": 156,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "AcGeError",
+    "line": 165,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "AcGeSSIConfig",
+    "line": 179,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "AcGeSSIType",
+    "line": 185,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "AcGeXConfig",
+    "line": 190,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "AutoTol",
+    "line": 207,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundBlock2d",
+    "line": 215,
+    "bases": [
+      "PyGe.Entity2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundBlock3d",
+    "line": 297,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "BoundedPlane",
+    "line": 351,
+    "bases": [
+      "PyGe.PlanarEnt"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CDT",
+    "line": 391,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CDTOpts",
+    "line": 403,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "CircArc2d",
+    "line": 411,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CircArc3d",
+    "line": 519,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "ClipBoundary2d",
+    "line": 613,
+    "bases": [
+      "PyGe.Entity2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "ClipCondition",
+    "line": 726,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "CompositeCurve2d",
+    "line": 734,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CompositeCurve3d",
+    "line": 808,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Cone",
+    "line": 890,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CubicSplineCurve2d",
+    "line": 983,
+    "bases": [
+      "PyGe.SplineEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CubicSplineCurve3d",
+    "line": 1041,
+    "bases": [
+      "PyGe.SplineEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Curve2d",
+    "line": 1099,
+    "bases": [
+      "PyGe.Entity2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Curve3d",
+    "line": 1156,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveCurveInt2d",
+    "line": 1474,
+    "bases": [
+      "PyGe.Entity2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveCurveInt3d",
+    "line": 1619,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "CurveSurfInt",
+    "line": 1773,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Cylinder",
+    "line": 1817,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Delaunator",
+    "line": 1891,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "EllipArc2d",
+    "line": 1899,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "EllipArc3d",
+    "line": 1999,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Entity2d",
+    "line": 2106,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Entity3d",
+    "line": 2131,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "EntityId",
+    "line": 2191,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalBoundedSurface",
+    "line": 2274,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalCurve2d",
+    "line": 2315,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalCurve3d",
+    "line": 2329,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalEntityKind",
+    "line": 2354,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "ExternalSurface",
+    "line": 2358,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Interval",
+    "line": 2392,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "KnotParameterization",
+    "line": 2461,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "KnotVector",
+    "line": 2468,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Line2d",
+    "line": 2535,
+    "bases": [
+      "PyGe.LinearEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Line3d",
+    "line": 2574,
+    "bases": [
+      "PyGe.LinearEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "LineSeg2d",
+    "line": 2614,
+    "bases": [
+      "PyGe.LinearEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "LineSeg3d",
+    "line": 2668,
+    "bases": [
+      "PyGe.LinearEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "LinearEnt2d",
+    "line": 2718,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "LinearEnt3d",
+    "line": 2745,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Matrix2d",
+    "line": 2807,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Matrix3d",
+    "line": 2885,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbCurve2d",
+    "line": 3001,
+    "bases": [
+      "PyGe.SplineEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbCurve3d",
+    "line": 3174,
+    "bases": [
+      "PyGe.SplineEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "NurbSurface",
+    "line": 3359,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetCrvExtType",
+    "line": 3372,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetCurve2d",
+    "line": 3377,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetCurve3d",
+    "line": 3387,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "OffsetSurface",
+    "line": 3407,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PlanarEnt",
+    "line": 3420,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Plane",
+    "line": 3456,
+    "bases": [
+      "PyGe.PlanarEnt"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2d",
+    "line": 3513,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2dArray",
+    "line": 3558,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point2dTree",
+    "line": 3596,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3d",
+    "line": 3609,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3dArray",
+    "line": 3721,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Point3dTree",
+    "line": 3781,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PointContainment",
+    "line": 3794,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGe",
+    "class": "PointEnt2d",
+    "line": 3799,
+    "bases": [
+      "PyGe.Entity2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PointEnt3d",
+    "line": 3814,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnCurve2d",
+    "line": 3829,
+    "bases": [
+      "PyGe.PointEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnCurve3d",
+    "line": 3886,
+    "bases": [
+      "PyGe.PointEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "PointOnSurface",
+    "line": 3945,
+    "bases": [
+      "PyGe.PointEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Polyline2d",
+    "line": 4046,
+    "bases": [
+      "PyGe.SplineEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Polyline3d",
+    "line": 4083,
+    "bases": [
+      "PyGe.SplineEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Position2d",
+    "line": 4120,
+    "bases": [
+      "PyGe.PointEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Position3d",
+    "line": 4155,
+    "bases": [
+      "PyGe.PointEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Ray2d",
+    "line": 4190,
+    "bases": [
+      "PyGe.LinearEnt2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Ray3d",
+    "line": 4231,
+    "bases": [
+      "PyGe.LinearEnt3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Scale2d",
+    "line": 4272,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Scale3d",
+    "line": 4304,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Sphere",
+    "line": 4338,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "SplineEnt2d",
+    "line": 4411,
+    "bases": [
+      "PyGe.Curve2d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "SplineEnt3d",
+    "line": 4441,
+    "bases": [
+      "PyGe.Curve3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "SurfSurfInt",
+    "line": 4471,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Surface",
+    "line": 4512,
+    "bases": [
+      "PyGe.Entity3d"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Tol",
+    "line": 4562,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Torus",
+    "line": 4574,
+    "bases": [
+      "PyGe.Surface"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Vector2d",
+    "line": 4587,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGe",
+    "class": "Vector3d",
+    "line": 4649,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "ArcType",
+    "line": 161,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "Charset",
+    "line": 166,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "CommonDraw",
+    "line": 206,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "DefaultLightingType",
+    "line": 259,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "DrawFlags",
+    "line": 264,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "Drawable",
+    "line": 280,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "DrawableOverrule",
+    "line": 367,
+    "bases": [
+      "PyRx.Overrule"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "DrawableTraits",
+    "line": 383,
+    "bases": [
+      "PyGi.SubEntityTraits"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "EdgeData",
+    "line": 411,
+    "bases": [
+      "PyGi.Parameter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "FaceData",
+    "line": 421,
+    "bases": [
+      "PyGi.Parameter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "FillType",
+    "line": 431,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "FontFamily",
+    "line": 435,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "FontPitch",
+    "line": 444,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "Geometry",
+    "line": 449,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "GiAttributesFlags",
+    "line": 761,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "GiDrawableType",
+    "line": 782,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "GiGraphicsKernel",
+    "line": 797,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "GiKernelDescriptor",
+    "line": 812,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "HighlightStyle",
+    "line": 827,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "Mapper",
+    "line": 835,
+    "bases": [
+      "PyGi.Parameter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "OrientationTransformBehavior",
+    "line": 845,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "OrientationType",
+    "line": 850,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "Parameter",
+    "line": 855,
+    "bases": [
+      "PyRx.CopyOnWriteObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "PixelBGRA32Array",
+    "line": 869,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "Polyline",
+    "line": 888,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "PositionTransformBehavior",
+    "line": 898,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "RegenType",
+    "line": 905,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "ScaleTransformBehavior",
+    "line": 913,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "SelectionFlags",
+    "line": 920,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "ShadowFlags",
+    "line": 924,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "SubEntityTraits",
+    "line": 930,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "TextStyle",
+    "line": 985,
+    "bases": [
+      "PyGi.Parameter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "TransientDrawingMode",
+    "line": 1077,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "TransientManager",
+    "line": 1086,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "TransparencyMode",
+    "line": 1149,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "VertexData",
+    "line": 1154,
+    "bases": [
+      "PyGi.Parameter"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "ViewportDraw",
+    "line": 1164,
+    "bases": [
+      "PyGi.CommonDraw"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "ViewportGeometry",
+    "line": 1190,
+    "bases": [
+      "PyGi.Geometry"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "Visibility",
+    "line": 1210,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyGi",
+    "class": "WorldDraw",
+    "line": 1215,
+    "bases": [
+      "PyGi.CommonDraw"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGi",
+    "class": "WorldGeometry",
+    "line": 1241,
+    "bases": [
+      "PyGi.Geometry"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "Core",
+    "line": 15,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "GraphicsKernel",
+    "line": 41,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "GsManager",
+    "line": 53,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "GsView",
+    "line": 59,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "KernelDescriptor",
+    "line": 104,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyGs",
+    "class": "ViewProjection",
+    "line": 115,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "Core",
+    "line": 100,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "CustomSizeResult",
+    "line": 112,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "DSDData",
+    "line": 129,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "DSDEntry",
+    "line": 204,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "DeviceType",
+    "line": 241,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "MatchingPolicy",
+    "line": 247,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "PlObject",
+    "line": 253,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotCancelStatus",
+    "line": 263,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfig",
+    "line": 269,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfigInfo",
+    "line": 303,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotConfigManager",
+    "line": 327,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotEngine",
+    "line": 339,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotFactory",
+    "line": 363,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotInfo",
+    "line": 379,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotInfoValidator",
+    "line": 425,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotMSGIndex",
+    "line": 476,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotPageInfo",
+    "line": 489,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotProgressDialog",
+    "line": 521,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "PlotToFileCapability",
+    "line": 563,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "PrecisionEntry",
+    "line": 568,
+    "bases": [
+      "PyPl.PlObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyPl",
+    "class": "ProcessPlotState",
+    "line": 600,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "RefreshCode",
+    "line": 605,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "SetupType",
+    "line": 612,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "SheetCancelStatus",
+    "line": 619,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "SheetType",
+    "line": 626,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "StdConfigs",
+    "line": 637,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyPl",
+    "class": "StyTypes",
+    "line": 655,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyRx",
+    "class": "CopyOnWriteObject",
+    "line": 31,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyRx",
+    "class": "LispType",
+    "line": 53,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyRx",
+    "class": "Ordering",
+    "line": 73,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PyRx",
+    "class": "Overrule",
+    "line": 79,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyRx",
+    "class": "RxClass",
+    "line": 113,
+    "bases": [
+      "PyRx.RxObject"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PyRx",
+    "class": "RxObject",
+    "line": 175,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyRx",
+    "class": "stderr",
+    "line": 258,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PyRx",
+    "class": "stdout",
+    "line": 266,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "CalloutBlocks",
+    "line": 23,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "Component",
+    "line": 34,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "CustomPropertyBag",
+    "line": 51,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "CustomPropertyValue",
+    "line": 64,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "DbBlockRecordReference",
+    "line": 76,
+    "bases": [
+      "PySm.NamedDbObjectReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "DbDatabase",
+    "line": 84,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "DbLayoutReference",
+    "line": 95,
+    "bases": [
+      "PySm.NamedDbObjectReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "DbObjectReference",
+    "line": 103,
+    "bases": [
+      "PySm.FileReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "DbViewReference",
+    "line": 116,
+    "bases": [
+      "PySm.NamedDbObjectReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "FileReference",
+    "line": 124,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "LockStatus",
+    "line": 135,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PySm",
+    "class": "NamedDbObjectReference",
+    "line": 143,
+    "bases": [
+      "PySm.DbObjectReference"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ObjectReference",
+    "line": 155,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ObjectReferenceFlags",
+    "line": 167,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PySm",
+    "class": "Persist",
+    "line": 171,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "PersistProxy",
+    "line": 192,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ProjectPointLocation",
+    "line": 200,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ProjectPointLocations",
+    "line": 218,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "PropertyFlags",
+    "line": 231,
+    "bases": [
+      "_BoostPythonEnum"
+    ],
+    "is_enum": true
+  },
+  {
+    "module": "PySm",
+    "class": "PublishOptions",
+    "line": 238,
+    "bases": [
+      "PySm.Persist"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "Resources",
+    "line": 272,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "Sheet",
+    "line": 283,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSelSet",
+    "line": 308,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSelSets",
+    "line": 319,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSet",
+    "line": 330,
+    "bases": [
+      "PySm.Subset"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetSetMgr",
+    "line": 353,
+    "bases": [],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetView",
+    "line": 376,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SheetViews",
+    "line": 392,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "SmDatabase",
+    "line": 402,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "Subset",
+    "line": 420,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ViewCategories",
+    "line": 450,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  },
+  {
+    "module": "PySm",
+    "class": "ViewCategory",
+    "line": 462,
+    "bases": [
+      "PySm.Component"
+    ],
+    "is_enum": false
+  }
+]

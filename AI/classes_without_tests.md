@@ -1,0 +1,704 @@
+# Untested PyRx Classes
+
+- Generated: 2026-11-17
+- Scope: non-enum `class` definitions in the 14 top-level stubs `pyrx/*.pyi` (`pyrx/doc_utils/stubs/` duplicates excluded); enums (`_BoostPythonEnum` bases) are out of scope.
+- Totals: 1130 classes, 428 enums, **702 in scope**
+- Results: 63 tested, 38 manual review, **601 untested**
+- Sources: stubs in `pyrx/`, tests under `tests/test_core/`
+- Rule: a class counts as TESTED only when its own module's test folder contains `test_<Class>.py` (case-insensitive). Near-miss filenames (Damerau-Levenshtein distance <= 1), the PyAx `Acad*` class ↔ `test_Ax*` file naming convention, and cross-folder exact matches for unique class names are listed under *Manual review* instead, so nothing is silently dropped and no duplicate test file is created. Class names that exist in more than one module are never credited via another module's folder (collision guard).
+
+## Untested classes (create one test file per class)
+
+### PyAp (14) — test folder: `test_PyAp`
+
+- [ ] PyAp.AutoDocLock
+- [ ] PyAp.CmdFlags
+- [ ] PyAp.DocManager
+- [ ] PyAp.DocManagerReactor
+- [ ] PyAp.DocumentIterator
+- [ ] PyAp.Internal
+- [ ] PyAp.LayerFilter *(base)*
+- [ ] PyAp.LayerFilterManager
+- [ ] PyAp.LayerGroup
+- [ ] PyAp.LayoutManager *(base)*
+- [ ] PyAp.Palette
+- [ ] PyAp.PaletteSet
+- [ ] PyAp.ResourceOverride
+- [ ] PyAp.TransactionManager *(base)*
+
+### PyAx (87) — test folder: `test_PyAx`
+
+- [ ] PyAx.AcadAcCmColor
+- [ ] PyAx.AcadAttributeReference
+- [ ] PyAx.AcadBlocks
+- [ ] PyAx.AcadDatabasePreferences
+- [ ] PyAx.AcadDictionaries
+- [ ] PyAx.AcadDictionary
+- [ ] PyAx.AcadDim3PointAngular
+- [ ] PyAx.AcadDimAligned
+- [ ] PyAx.AcadDimAngular
+- [ ] PyAx.AcadDimArcLength
+- [ ] PyAx.AcadDimDiametric
+- [ ] PyAx.AcadDimOrdinate
+- [ ] PyAx.AcadDimRadial
+- [ ] PyAx.AcadDimRadialLarge
+- [ ] PyAx.AcadDimRotated
+- [ ] PyAx.AcadDimStyle
+- [ ] PyAx.AcadDimStyles
+- [ ] PyAx.AcadDimension *(base)*
+- [ ] PyAx.AcadDocuments
+- [ ] PyAx.AcadDynamicBlockReferenceProperty
+- [ ] PyAx.AcadExternalReference
+- [ ] PyAx.AcadGroups
+- [ ] PyAx.AcadHyperlink
+- [ ] PyAx.AcadHyperlinks
+- [ ] PyAx.AcadIdPair
+- [ ] PyAx.AcadLayer
+- [ ] PyAx.AcadLayers
+- [ ] PyAx.AcadLayouts
+- [ ] PyAx.AcadLineType
+- [ ] PyAx.AcadLineTypes
+- [ ] PyAx.AcadMInsertBlock
+- [ ] PyAx.AcadMLeader
+- [ ] PyAx.AcadMLeaderStyle
+- [ ] PyAx.AcadMLine
+- [ ] PyAx.AcadMaterial
+- [ ] PyAx.AcadMaterials
+- [ ] PyAx.AcadMenuBar
+- [ ] PyAx.AcadMenuGroup
+- [ ] PyAx.AcadMenuGroups
+- [ ] PyAx.AcadPViewport
+- [ ] PyAx.AcadPlot
+- [ ] PyAx.AcadPlotConfiguration *(base)*
+- [ ] PyAx.AcadPlotConfigurations
+- [ ] PyAx.AcadPolyfaceMesh
+- [ ] PyAx.AcadPopupMenu
+- [ ] PyAx.AcadPopupMenuItem
+- [ ] PyAx.AcadPopupMenus
+- [ ] PyAx.AcadPreferencesDisplay
+- [ ] PyAx.AcadPreferencesDrafting
+- [ ] PyAx.AcadPreferencesFiles
+- [ ] PyAx.AcadPreferencesOpenSave
+- [ ] PyAx.AcadPreferencesOutput
+- [ ] PyAx.AcadPreferencesProfiles
+- [ ] PyAx.AcadPreferencesSelection
+- [ ] PyAx.AcadPreferencesSystem
+- [ ] PyAx.AcadPreferencesUser
+- [ ] PyAx.AcadRasterImage
+- [ ] PyAx.AcadRay
+- [ ] PyAx.AcadRegisteredApplication
+- [ ] PyAx.AcadRegisteredApplications
+- [ ] PyAx.AcadSection
+- [ ] PyAx.AcadSectionManager
+- [ ] PyAx.AcadSectionSettings
+- [ ] PyAx.AcadSectionTypeSettings
+- [ ] PyAx.AcadSecurityParams
+- [ ] PyAx.AcadSelectionSets
+- [ ] PyAx.AcadShape
+- [ ] PyAx.AcadSolid
+- [ ] PyAx.AcadSpline
+- [ ] PyAx.AcadState
+- [ ] PyAx.AcadTableStyle
+- [ ] PyAx.AcadTextStyle
+- [ ] PyAx.AcadTextStyles
+- [ ] PyAx.AcadTolerance
+- [ ] PyAx.AcadToolbar
+- [ ] PyAx.AcadToolbarItem
+- [ ] PyAx.AcadToolbars
+- [ ] PyAx.AcadTrace
+- [ ] PyAx.AcadUCS
+- [ ] PyAx.AcadUCSs
+- [ ] PyAx.AcadView
+- [ ] PyAx.AcadViewport
+- [ ] PyAx.AcadViewports
+- [ ] PyAx.AcadViews
+- [ ] PyAx.AcadXRecord
+- [ ] PyAx.AcadXline
+- [ ] PyAx.PaperSpace
+
+### PyBr (31) — test folder: `test_PyBr`
+
+- [ ] PyBr.Complex
+- [ ] PyBr.ComplexShellTraverser
+- [ ] PyBr.ComplexTraverser
+- [ ] PyBr.Edge
+- [ ] PyBr.EdgeLoopTraverser
+- [ ] PyBr.EdgeTraverser
+- [ ] PyBr.Element *(base)*
+- [ ] PyBr.Element2d
+- [ ] PyBr.Element2dNodeTraverser
+- [ ] PyBr.Entity *(base)*
+- [ ] PyBr.Face
+- [ ] PyBr.FaceLoopTraverser
+- [ ] PyBr.FaceTraverser
+- [ ] PyBr.Hit
+- [ ] PyBr.Loop
+- [ ] PyBr.LoopEdgeTraverser
+- [ ] PyBr.LoopVertexTraverser
+- [ ] PyBr.MassProps
+- [ ] PyBr.Mesh *(base)*
+- [ ] PyBr.Mesh2d
+- [ ] PyBr.Mesh2dElement2dTraverser
+- [ ] PyBr.MeshEntity *(base)*
+- [ ] PyBr.Node
+- [ ] PyBr.Shell
+- [ ] PyBr.ShellFaceTraverser
+- [ ] PyBr.ShellTraverser
+- [ ] PyBr.Traverser *(base)*
+- [ ] PyBr.Vertex *(base)*
+- [ ] PyBr.VertexEdgeTraverser
+- [ ] PyBr.VertexLoopTraverser
+- [ ] PyBr.VertexTraverser
+
+### PyBrx (13) — test folder: `test_Brx`
+
+- [ ] PyBrx.BlockParameter
+- [ ] PyBrx.Constraint
+- [ ] PyBrx.ConstraintArgument
+- [ ] PyBrx.ConstraintsGroup
+- [ ] PyBrx.Core
+- [ ] PyBrx.DbProperties
+- [ ] PyBrx.DesignTable
+- [ ] PyBrx.DesignTableConfiguration
+- [ ] PyBrx.DesignTableConfigurationEntry
+- [ ] PyBrx.MechanicalPropertyDefinition
+- [ ] PyBrx.MechanicalPropertySet
+- [ ] PyBrx.PyBrxPanel
+- [ ] PyBrx.Variable
+
+### PyBrxBim (43) — test folder: `test_Brx`
+
+- [ ] PyBrxBim.BimAssets
+- [ ] PyBrxBim.BimBuilding
+- [ ] PyBrxBim.BimClassification
+- [ ] PyBrxBim.BimComposition
+- [ ] PyBrxBim.BimHatchPattern
+- [ ] PyBrxBim.BimInformationalAssets
+- [ ] PyBrxBim.BimLinearGeometry
+- [ ] PyBrxBim.BimMaterial
+- [ ] PyBrxBim.BimNameSpaces
+- [ ] PyBrxBim.BimObject *(base)*
+- [ ] PyBrxBim.BimPly
+- [ ] PyBrxBim.BimPolicies
+- [ ] PyBrxBim.BimProfile
+- [ ] PyBrxBim.BimRoom
+- [ ] PyBrxBim.BimSpace
+- [ ] PyBrxBim.BimSpatialLocation *(base)*
+- [ ] PyBrxBim.BimStory
+- [ ] PyBrxBim.BrxBimAttributeSet
+- [ ] PyBrxBim.BrxBimDialogs
+- [ ] PyBrxBim.Core
+- [ ] PyBrxBim.IfcBinary
+- [ ] PyBrxBim.IfcEntity
+- [ ] PyBrxBim.IfcEntityDesc
+- [ ] PyBrxBim.IfcEnumValue
+- [ ] PyBrxBim.IfcExportContext
+- [ ] PyBrxBim.IfcExportOptions
+- [ ] PyBrxBim.IfcExportReactor
+- [ ] PyBrxBim.IfcGuid
+- [ ] PyBrxBim.IfcHeader
+- [ ] PyBrxBim.IfcImportContext
+- [ ] PyBrxBim.IfcImportInfo
+- [ ] PyBrxBim.IfcImportOptions
+- [ ] PyBrxBim.IfcImportReactor
+- [ ] PyBrxBim.IfcLogical
+- [ ] PyBrxBim.IfcModel
+- [ ] PyBrxBim.IfcProjectData
+- [ ] PyBrxBim.IfcSelectValue
+- [ ] PyBrxBim.IfcSelectorDesc
+- [ ] PyBrxBim.IfcString
+- [ ] PyBrxBim.IfcVariant
+- [ ] PyBrxBim.IfcVectorDesc
+- [ ] PyBrxBim.IfcVectorValue
+- [ ] PyBrxBim.PyBrxBimPropertySets
+
+### PyBrxCv (93) — test folder: `test_Brx`
+
+- [ ] PyBrxCv.CvAttribVariant
+- [ ] PyBrxCv.CvCivil3dConverter
+- [ ] PyBrxCv.CvCivil3dEntityInfo
+- [ ] PyBrxCv.CvDb3dAlignment
+- [ ] PyBrxCv.CvDbCurve *(base)*
+- [ ] PyBrxCv.CvDbCurveLabelStyleManager
+- [ ] PyBrxCv.CvDbEntity *(base)*
+- [ ] PyBrxCv.CvDbFileFormatManager
+- [ ] PyBrxCv.CvDbGrading
+- [ ] PyBrxCv.CvDbHAlignment
+- [ ] PyBrxCv.CvDbHAlignmentArc
+- [ ] PyBrxCv.CvDbHAlignmentCurve *(base)*
+- [ ] PyBrxCv.CvDbHAlignmentElement *(base)*
+- [ ] PyBrxCv.CvDbHAlignmentLine
+- [ ] PyBrxCv.CvDbHAlignmentPI
+- [ ] PyBrxCv.CvDbHAlignmentSCS
+- [ ] PyBrxCv.CvDbHAlignmentSSCSS
+- [ ] PyBrxCv.CvDbHAlignmentSTS
+- [ ] PyBrxCv.CvDbHAlignmentSpiral
+- [ ] PyBrxCv.CvDbLabelStyle
+- [ ] PyBrxCv.CvDbLabelStyleArrow
+- [ ] PyBrxCv.CvDbLabelStyleBlock
+- [ ] PyBrxCv.CvDbLabelStyleComponent *(base)*
+- [ ] PyBrxCv.CvDbLabelStyleLine
+- [ ] PyBrxCv.CvDbLabelStyleText
+- [ ] PyBrxCv.CvDbLineLabelStyleManager
+- [ ] PyBrxCv.CvDbObject *(base)*
+- [ ] PyBrxCv.CvDbObjectManager *(base)*
+- [ ] PyBrxCv.CvDbPoint
+- [ ] PyBrxCv.CvDbPointGroup
+- [ ] PyBrxCv.CvDbPointGroupManager
+- [ ] PyBrxCv.CvDbPointLabelStyleManager
+- [ ] PyBrxCv.CvDbPointReferencedEntity
+- [ ] PyBrxCv.CvDbStringLine
+- [ ] PyBrxCv.CvDbStringLineManager
+- [ ] PyBrxCv.CvDbStyle *(base)*
+- [ ] PyBrxCv.CvDbStyleManager *(base)*
+- [ ] PyBrxCv.CvDbStylePartDisplaySettings
+- [ ] PyBrxCv.CvDbSubObject *(base)*
+- [ ] PyBrxCv.CvDbSurfaceContourLabelStyleManager
+- [ ] PyBrxCv.CvDbSurfaceElevationLabelStyleManager
+- [ ] PyBrxCv.CvDbSurfaceSlopeLabelStyleManager
+- [ ] PyBrxCv.CvDbSymbolStyle
+- [ ] PyBrxCv.CvDbSymbolStyleManager
+- [ ] PyBrxCv.CvDbTinSurface *(base)*
+- [ ] PyBrxCv.CvDbTinSurfaceBoundary
+- [ ] PyBrxCv.CvDbTinSurfaceBreakline
+- [ ] PyBrxCv.CvDbTinSurfaceConstraint *(base)*
+- [ ] PyBrxCv.CvDbTinSurfaceDefinition *(base)*
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddDrawingObjects
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddFromFiles
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddFromPointClouds
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddLine
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddLines
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddPoint
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddPointGroups
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionAddPoints
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionCreateFromC3D
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionCreateFromFaces
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionCreateFromLandXML
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionDeleteEdge
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionDeleteEdges
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionDeletePoint
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionGroupDefs
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionModifyPointElevation
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionModifyPointsElevation
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionModifyPointsElevations
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionMovePoint
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionMovePoints
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionRemoveElevations
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionRemoveOuterEdges
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionRiseLower
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionSwapEdge
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionTransform
+- [ ] PyBrxCv.CvDbTinSurfaceDefinitionTrianglesVisibility
+- [ ] PyBrxCv.CvDbTinSurfaceWall
+- [ ] PyBrxCv.CvDbVAlignment
+- [ ] PyBrxCv.CvDbVAlignmentArc
+- [ ] PyBrxCv.CvDbVAlignmentCurve *(base)*
+- [ ] PyBrxCv.CvDbVAlignmentElement *(base)*
+- [ ] PyBrxCv.CvDbVAlignmentPVI
+- [ ] PyBrxCv.CvDbVAlignmentParabola
+- [ ] PyBrxCv.CvDbVAlignmentTangent
+- [ ] PyBrxCv.CvDbVAlignmentView
+- [ ] PyBrxCv.CvDbView *(base)*
+- [ ] PyBrxCv.CvDbVolumeSurface
+- [ ] PyBrxCv.CvGradingRule *(base)*
+- [ ] PyBrxCv.CvGradingSlopeOffsetRule
+- [ ] PyBrxCv.CvGradingSlopeSurfaceRule
+- [ ] PyBrxCv.CvStationEquation
+- [ ] PyBrxCv.CvStationEquations
+- [ ] PyBrxCv.CvTinPoint
+- [ ] PyBrxCv.CvTinTriangle
+
+### PyDb (176) — test folder: `test_PyDb`
+
+- [ ] PyDb.AbstractViewTable *(base)*
+- [ ] PyDb.AbstractViewTableRecord *(base)*
+- [ ] PyDb.AdsName
+- [ ] PyDb.AnnotationScale
+- [ ] PyDb.AssocAction *(base)*
+- [ ] PyDb.AssocDependency *(base)*
+- [ ] PyDb.AssocNetwork
+- [ ] PyDb.AssocValueDependency
+- [ ] PyDb.AssocVariable
+- [ ] PyDb.AutoWorkingDatabase
+- [ ] PyDb.BlockBegin
+- [ ] PyDb.BlockEnd
+- [ ] PyDb.BlockTable
+- [ ] PyDb.BlockTableRecordIterator
+- [ ] PyDb.BlockUserParameter
+- [ ] PyDb.Body
+- [ ] PyDb.Cell
+- [ ] PyDb.CellRange
+- [ ] PyDb.Core
+- [ ] PyDb.DatabaseReactor
+- [ ] PyDb.DatabaseSummaryInfo
+- [ ] PyDb.DatabaseSummaryInfoIterator
+- [ ] PyDb.Date
+- [ ] PyDb.DbObjectCloseScope
+- [ ] PyDb.DbObjectOverrule
+- [ ] PyDb.DbObjectReactor
+- [ ] PyDb.DetailSymbol
+- [ ] PyDb.DictUtil
+- [ ] PyDb.DictionaryIterator
+- [ ] PyDb.DictionaryWithDefault
+- [ ] PyDb.DimAssoc
+- [ ] PyDb.DimStyleTable
+- [ ] PyDb.DimStyleTableRecord
+- [ ] PyDb.DynBlockReference
+- [ ] PyDb.DynBlockReferenceProperty
+- [ ] PyDb.DynBlockTableRecord
+- [ ] PyDb.EntityColor
+- [ ] PyDb.EntityHyperlinkPE
+- [ ] PyDb.EntityReactor
+- [ ] PyDb.ErrorStatusException
+- [ ] PyDb.EvalConnectable
+- [ ] PyDb.EvalExpr *(base)*
+- [ ] PyDb.EvalGraph
+- [ ] PyDb.EvalVariant
+- [ ] PyDb.Extents
+- [ ] PyDb.Extents2d
+- [ ] PyDb.ExtrudedSurface
+- [ ] PyDb.FaceRecord
+- [ ] PyDb.Field
+- [ ] PyDb.FieldEngine
+- [ ] PyDb.FieldEvaluator
+- [ ] PyDb.FullSubentPath
+- [ ] PyDb.GeoCoordinateSystem
+- [ ] PyDb.GeoCoordinateSystemTransformer
+- [ ] PyDb.GeoData
+- [ ] PyDb.GeoMap
+- [ ] PyDb.GeoPositionMarker
+- [ ] PyDb.Graph *(base)*
+- [ ] PyDb.GraphNode *(base)*
+- [ ] PyDb.GripData
+- [ ] PyDb.GripOverrule
+- [ ] PyDb.Group
+- [ ] PyDb.Handle
+- [ ] PyDb.HardOwnershipId
+- [ ] PyDb.HardPointerId
+- [ ] PyDb.Hatch
+- [ ] PyDb.HostApplicationServices
+- [ ] PyDb.Hyperlink
+- [ ] PyDb.HyperlinkCollection
+- [ ] PyDb.IdMapping
+- [ ] PyDb.IdPair
+- [ ] PyDb.Image *(base)*
+- [ ] PyDb.IndexFilterManager
+- [ ] PyDb.JoinEntityPE
+- [ ] PyDb.LayerFilter *(base)*
+- [ ] PyDb.LayerStateManager
+- [ ] PyDb.LayerTable
+- [ ] PyDb.LayerTableRecord
+- [ ] PyDb.Layout
+- [ ] PyDb.LayoutManager *(base)*
+- [ ] PyDb.Leader
+- [ ] PyDb.LineAngularDimension2
+- [ ] PyDb.LinetypeTable
+- [ ] PyDb.LinetypeTableRecord
+- [ ] PyDb.LoftedSurface
+- [ ] PyDb.MInsertBlock
+- [ ] PyDb.MLeader
+- [ ] PyDb.MLeaderStyle
+- [ ] PyDb.MPolygon
+- [ ] PyDb.MlineStyle
+- [ ] PyDb.NurbSurface
+- [ ] PyDb.ObjectContext *(base)*
+- [ ] PyDb.ObjectContextCollection
+- [ ] PyDb.ObjectContextManager
+- [ ] PyDb.ObjectIdArray
+- [ ] PyDb.ObjectIdGraph
+- [ ] PyDb.ObjectIdGraphNode
+- [ ] PyDb.OrdinateDimension
+- [ ] PyDb.OsnapOverrule
+- [ ] PyDb.OsnapPointRef
+- [ ] PyDb.OutputDisplayService
+- [ ] PyDb.PdfDefinition
+- [ ] PyDb.PdfReference
+- [ ] PyDb.PlaceHolder
+- [ ] PyDb.PlaneSurface
+- [ ] PyDb.PlotSettings *(base)*
+- [ ] PyDb.PlotSettingsValidator
+- [ ] PyDb.PointCloudClassificationColorRamp
+- [ ] PyDb.PointCloudColorMap
+- [ ] PyDb.PointCloudColorRamp
+- [ ] PyDb.PointCloudCrop
+- [ ] PyDb.PointCloudDefEx
+- [ ] PyDb.PointCloudEx
+- [ ] PyDb.PointRef *(base)*
+- [ ] PyDb.PolyFaceMeshVertex
+- [ ] PyDb.PolygonMeshVertex
+- [ ] PyDb.Polyline3dVertex
+- [ ] PyDb.Profile3d
+- [ ] PyDb.ProxyEntity
+- [ ] PyDb.ProxyObject
+- [ ] PyDb.RadialDimension
+- [ ] PyDb.RadialDimensionLarge
+- [ ] PyDb.RasterImage *(base)*
+- [ ] PyDb.RasterImageDef
+- [ ] PyDb.RasterImageDefReactor
+- [ ] PyDb.Ray
+- [ ] PyDb.RegAppTable
+- [ ] PyDb.RegAppTableRecord
+- [ ] PyDb.Region
+- [ ] PyDb.RevolveOptions
+- [ ] PyDb.RevolvedSurface
+- [ ] PyDb.RotatedDimension
+- [ ] PyDb.Section
+- [ ] PyDb.SectionManager
+- [ ] PyDb.SectionSettings
+- [ ] PyDb.SectionSymbol
+- [ ] PyDb.SequenceEnd
+- [ ] PyDb.SnoopDwgFiler
+- [ ] PyDb.SnoopDxfFiler
+- [ ] PyDb.SoftOwnershipId
+- [ ] PyDb.SoftPointerId
+- [ ] PyDb.Solid
+- [ ] PyDb.SpatialFilter
+- [ ] PyDb.SubDMesh
+- [ ] PyDb.SubentId
+- [ ] PyDb.Surface *(base)*
+- [ ] PyDb.SweepOptions
+- [ ] PyDb.SweptSurface
+- [ ] PyDb.SymUtilServices
+- [ ] PyDb.SymbolTable *(base)*
+- [ ] PyDb.SymbolTableIterator
+- [ ] PyDb.SymbolTableRecord *(base)*
+- [ ] PyDb.Table
+- [ ] PyDb.TableStyle
+- [ ] PyDb.TextStyleTable
+- [ ] PyDb.TextStyleTableRecord
+- [ ] PyDb.Trace
+- [ ] PyDb.Transaction
+- [ ] PyDb.TransactionManager *(base)*
+- [ ] PyDb.Transparency
+- [ ] PyDb.UCSTable
+- [ ] PyDb.UCSTableRecord
+- [ ] PyDb.UnderlayDefinition *(base)*
+- [ ] PyDb.UnderlayLayer
+- [ ] PyDb.UnderlayReference *(base)*
+- [ ] PyDb.Vertex *(base)*
+- [ ] PyDb.Vertex2d
+- [ ] PyDb.ViewSymbol *(base)*
+- [ ] PyDb.ViewTable
+- [ ] PyDb.ViewTableRecord
+- [ ] PyDb.Viewport
+- [ ] PyDb.ViewportTable
+- [ ] PyDb.ViewportTableRecord
+- [ ] PyDb.XRefLayerPropertyOverride
+- [ ] PyDb.XrefGraphNode
+- [ ] PyDb.XrefObjectId
+
+### PyEd (18) — test folder: `test_PyEd`
+
+- [ ] PyEd.AutoSysVar
+- [ ] PyEd.Core
+- [ ] PyEd.DragEffect
+- [ ] PyEd.DragStyle
+- [ ] PyEd.DrawJig
+- [ ] PyEd.EditorReactor
+- [ ] PyEd.InputPoint
+- [ ] PyEd.InputPointFilter
+- [ ] PyEd.InputPointFilterResult
+- [ ] PyEd.InputPointManager
+- [ ] PyEd.InputPointMonitor
+- [ ] PyEd.InputPointMonitorResult
+- [ ] PyEd.Jig
+- [ ] PyEd.SelectionSet
+- [ ] PyEd.SelectionSetIterator
+- [ ] PyEd.UIContext
+- [ ] PyEd.UserInteraction
+- [ ] PyEd.Util
+
+### PyGe (53) — test folder: `test_PyGe`
+
+- [ ] PyGe.AutoTol
+- [ ] PyGe.BoundBlock2d
+- [ ] PyGe.BoundBlock3d
+- [ ] PyGe.BoundedPlane
+- [ ] PyGe.CDT
+- [ ] PyGe.CompositeCurve2d
+- [ ] PyGe.CompositeCurve3d
+- [ ] PyGe.Cone
+- [ ] PyGe.CubicSplineCurve2d
+- [ ] PyGe.CubicSplineCurve3d
+- [ ] PyGe.CurveCurveInt2d
+- [ ] PyGe.CurveCurveInt3d
+- [ ] PyGe.CurveSurfInt
+- [ ] PyGe.EllipArc2d
+- [ ] PyGe.EllipArc3d
+- [ ] PyGe.Entity2d *(base)*
+- [ ] PyGe.Entity3d *(base)*
+- [ ] PyGe.ExternalBoundedSurface
+- [ ] PyGe.ExternalCurve2d
+- [ ] PyGe.ExternalCurve3d
+- [ ] PyGe.ExternalSurface
+- [ ] PyGe.KnotVector
+- [ ] PyGe.Line2d
+- [ ] PyGe.Line3d
+- [ ] PyGe.LinearEnt2d *(base)*
+- [ ] PyGe.LinearEnt3d *(base)*
+- [ ] PyGe.NurbCurve2d
+- [ ] PyGe.NurbCurve3d
+- [ ] PyGe.NurbSurface
+- [ ] PyGe.OffsetCurve2d
+- [ ] PyGe.OffsetCurve3d
+- [ ] PyGe.OffsetSurface
+- [ ] PyGe.PlanarEnt *(base)*
+- [ ] PyGe.Point2dArray
+- [ ] PyGe.Point3dArray
+- [ ] PyGe.PointEnt2d *(base)*
+- [ ] PyGe.PointEnt3d *(base)*
+- [ ] PyGe.PointOnCurve2d
+- [ ] PyGe.PointOnCurve3d
+- [ ] PyGe.PointOnSurface
+- [ ] PyGe.Polyline2d
+- [ ] PyGe.Polyline3d
+- [ ] PyGe.Position2d
+- [ ] PyGe.Position3d
+- [ ] PyGe.Ray2d
+- [ ] PyGe.Ray3d
+- [ ] PyGe.Sphere
+- [ ] PyGe.SplineEnt2d *(base)*
+- [ ] PyGe.SplineEnt3d *(base)*
+- [ ] PyGe.SurfSurfInt
+- [ ] PyGe.Surface *(base)*
+- [ ] PyGe.Tol
+- [ ] PyGe.Torus
+
+### PyGi (21) — test folder: `(no test folder)`
+
+- [ ] PyGi.CommonDraw *(base)*
+- [ ] PyGi.Drawable *(base)*
+- [ ] PyGi.DrawableOverrule
+- [ ] PyGi.DrawableTraits
+- [ ] PyGi.EdgeData
+- [ ] PyGi.FaceData
+- [ ] PyGi.Geometry *(base)*
+- [ ] PyGi.GiGraphicsKernel
+- [ ] PyGi.GiKernelDescriptor
+- [ ] PyGi.Mapper
+- [ ] PyGi.Parameter *(base)*
+- [ ] PyGi.PixelBGRA32Array
+- [ ] PyGi.Polyline
+- [ ] PyGi.SubEntityTraits *(base)*
+- [ ] PyGi.TextStyle
+- [ ] PyGi.TransientManager
+- [ ] PyGi.VertexData
+- [ ] PyGi.ViewportDraw
+- [ ] PyGi.ViewportGeometry
+- [ ] PyGi.WorldDraw
+- [ ] PyGi.WorldGeometry
+
+### PyGs (5) — test folder: `test_PyGs`
+
+- [ ] PyGs.Core
+- [ ] PyGs.GraphicsKernel
+- [ ] PyGs.GsManager
+- [ ] PyGs.GsView
+- [ ] PyGs.KernelDescriptor
+
+### PyPl (14) — test folder: `(no test folder)`
+
+- [ ] PyPl.Core
+- [ ] PyPl.DSDData
+- [ ] PyPl.DSDEntry
+- [ ] PyPl.PlObject *(base)*
+- [ ] PyPl.PlotConfig
+- [ ] PyPl.PlotConfigInfo
+- [ ] PyPl.PlotConfigManager
+- [ ] PyPl.PlotEngine
+- [ ] PyPl.PlotFactory
+- [ ] PyPl.PlotInfo
+- [ ] PyPl.PlotInfoValidator
+- [ ] PyPl.PlotPageInfo
+- [ ] PyPl.PlotProgressDialog
+- [ ] PyPl.PrecisionEntry
+
+### PyRx (5) — test folder: `test_PyRx`
+
+- [ ] PyRx.CopyOnWriteObject *(base)*
+- [ ] PyRx.Overrule *(base)*
+- [ ] PyRx.RxClass
+- [ ] PyRx.stderr
+- [ ] PyRx.stdout
+
+### PySm (28) — test folder: `test_PySm`
+
+- [ ] PySm.CalloutBlocks
+- [ ] PySm.Component *(base)*
+- [ ] PySm.CustomPropertyBag
+- [ ] PySm.CustomPropertyValue
+- [ ] PySm.DbBlockRecordReference
+- [ ] PySm.DbDatabase
+- [ ] PySm.DbLayoutReference
+- [ ] PySm.DbObjectReference *(base)*
+- [ ] PySm.DbViewReference
+- [ ] PySm.FileReference *(base)*
+- [ ] PySm.NamedDbObjectReference *(base)*
+- [ ] PySm.ObjectReference
+- [ ] PySm.Persist *(base)*
+- [ ] PySm.PersistProxy
+- [ ] PySm.ProjectPointLocation
+- [ ] PySm.ProjectPointLocations
+- [ ] PySm.PublishOptions
+- [ ] PySm.Resources
+- [ ] PySm.Sheet
+- [ ] PySm.SheetSelSet
+- [ ] PySm.SheetSelSets
+- [ ] PySm.SheetSetMgr
+- [ ] PySm.SheetView
+- [ ] PySm.SheetViews
+- [ ] PySm.SmDatabase
+- [ ] PySm.Subset *(base)*
+- [ ] PySm.ViewCategories
+- [ ] PySm.ViewCategory
+
+## Manual review (possible typo/case or cross-folder)
+
+- PyDb.Polyline — near-miss file: `tests/test_core/test_PyDb/test_Ployline.py` (check before creating a duplicate)
+- PyGe.CircArc2d — near-miss file: `tests/test_core/test_PyGe/test_CircArc3d.py` (check before creating a duplicate)
+- PyGe.LineSeg2d — near-miss file: `tests/test_core/test_PyGe/test_LineSeg3d.py` (check before creating a duplicate)
+- PyGe.Matrix2d — near-miss file: `tests/test_core/test_PyGe/test_Matrix3d.py` (check before creating a duplicate)
+- PyGe.Point2dTree — near-miss file: `tests/test_core/test_PyGe/test_Point3dTree.py` (check before creating a duplicate)
+
+PyAx naming convention — dedicated test files use the module alias `Ax` in place of the `Acad` prefix (or prepend `Ax` to the class name), e.g. `test_AxEntity.py` ↔ `AcadEntity`, `test_AxModelSpace.py` ↔ `ModelSpace`, `test_AxAcadSortentsTable.py` ↔ `AcadSortentsTable`. Each entry below already has a dedicated test file; verify before creating a duplicate:
+
+- PyAx.Acad3DFace — convention file: `tests/test_core/test_PyAx/test_Ax3DFace.py`
+- PyAx.Acad3DPolyline — convention file: `tests/test_core/test_PyAx/test_Ax3DPolyline.py`
+- PyAx.Acad3DSolid — convention file: `tests/test_core/test_PyAx/test_Ax3DSolid.py`
+- PyAx.AcadApplication — convention file: `tests/test_core/test_PyAx/test_AxApplication.py`
+- PyAx.AcadArc — convention file: `tests/test_core/test_PyAx/test_AxArc.py`
+- PyAx.AcadAttribute — convention file: `tests/test_core/test_PyAx/test_AxAttribute.py`
+- PyAx.AcadBlock — convention file: `tests/test_core/test_PyAx/test_AxBlock.py`
+- PyAx.AcadBlockReference — convention file: `tests/test_core/test_PyAx/test_AxBlockReference.py`
+- PyAx.AcadCircle — convention file: `tests/test_core/test_PyAx/test_AxCircle.py`
+- PyAx.AcadDatabase — convention file: `tests/test_core/test_PyAx/test_AxDatabase.py`
+- PyAx.AcadDocument — convention file: `tests/test_core/test_PyAx/test_AxDocument.py`
+- PyAx.AcadEllipse — convention file: `tests/test_core/test_PyAx/test_AxEllipse.py`
+- PyAx.AcadEntity — convention file: `tests/test_core/test_PyAx/test_AxEntity.py`
+- PyAx.AcadGroup — convention file: `tests/test_core/test_PyAx/test_AxGroup.py`
+- PyAx.AcadHatch — convention file: `tests/test_core/test_PyAx/test_AxHatch.py`
+- PyAx.AcadLWPolyline — convention file: `tests/test_core/test_PyAx/test_AxLWPolyline.py`
+- PyAx.AcadLayout — convention file: `tests/test_core/test_PyAx/test_AxLayout.py`
+- PyAx.AcadLeader — convention file: `tests/test_core/test_PyAx/test_AxLeader.py`
+- PyAx.AcadLine — convention file: `tests/test_core/test_PyAx/test_AxLine.py`
+- PyAx.AcadMText — convention file: `tests/test_core/test_PyAx/test_AxMtext.py`
+- PyAx.AcadObject — convention file: `tests/test_core/test_PyAx/test_AxObject.py`
+- PyAx.AcadPoint — convention file: `tests/test_core/test_PyAx/test_AxPoint.py`
+- PyAx.AcadPolygonMesh — convention file: `tests/test_core/test_PyAx/test_AxPolygonMesh.py`
+- PyAx.AcadPolyline — convention file: `tests/test_core/test_PyAx/test_AxPolyline.py`
+- PyAx.AcadPreferences — convention file: `tests/test_core/test_PyAx/test_AxPreferences.py`
+- PyAx.AcadRegion — convention file: `tests/test_core/test_PyAx/test_AxRegion.py`
+- PyAx.AcadSelectionSet — convention file: `tests/test_core/test_PyAx/test_AxSelectionSet.py`
+- PyAx.AcadSortentsTable — convention file: `tests/test_core/test_PyAx/test_AxAcadSortentsTable.py`
+- PyAx.AcadSummaryInfo — convention file: `tests/test_core/test_PyAx/test_AxSummaryInfo.py`
+- PyAx.AcadTable — convention file: `tests/test_core/test_PyAx/test_AxTable.py`
+- PyAx.AcadText — convention file: `tests/test_core/test_PyAx/test_AxText.py`
+- PyAx.AcadUtility — convention file: `tests/test_core/test_PyAx/test_AxUtility.py`
+- PyAx.ModelSpace — convention file: `tests/test_core/test_PyAx/test_AxModelSpace.py`
+
+## Notes
+
+- Modules with **no test folder** at all — every non-enum class above in these modules is untested: PyGi, PyPl.
+- `PyBrx` shares the `test_Brx` folder with `PyBrxBim`/`PyBrxCv`; that folder contains `test_BcadBim.py`/`test_BcadCivil.py` (module-level tests), not per-class PyBrx files.
+- `*(base)*` marks a class used as a base of another class (typically abstract; normally tested through a concrete subclass) — useful for prioritization.
+- Helper test files that do not map to a single class (e.g. `test_PyDb/test_desc.py`, `test_PyGe/test_Pickle.py`, `test_wx/test_wx.py`) are not credited to any class.
