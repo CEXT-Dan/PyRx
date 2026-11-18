@@ -46,8 +46,10 @@ public:
         return RGB(49, 56, 66);
 #elif _GRXTARGET
         return RGB(58, 69, 86);
-#elif _ZRXTARGET
+#elif _ZRXTARGET && _ZRXTARGET >= 270
         return RGB(33, 37, 46);
+#elif _ZRXTARGET && _ZRXTARGET < 270
+        return RGB(66, 76, 88);
 #else
         return RGB(49, 56, 66);
 #endif
