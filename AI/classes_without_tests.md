@@ -31,7 +31,7 @@
 - [x] PyAx.AcadAcCmColor
 - [x] PyAx.AcadAttributeReference
 - [x] PyAx.AcadBlocks
-- [ ] PyAx.AcadDatabasePreferences
+- [x] PyAx.AcadDatabasePreferences
 - [ ] PyAx.AcadDictionaries
 - [ ] PyAx.AcadDictionary
 - [ ] PyAx.AcadDim3PointAngular
