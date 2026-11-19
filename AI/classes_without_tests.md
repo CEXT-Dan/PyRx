@@ -33,7 +33,7 @@
 - [x] PyAx.AcadBlocks
 - [x] PyAx.AcadDatabasePreferences
 - [x] PyAx.AcadDictionaries
-- [ ] PyAx.AcadDictionary
+- [x] PyAx.AcadDictionary
 - [ ] PyAx.AcadDim3PointAngular
 - [ ] PyAx.AcadDimAligned
 - [ ] PyAx.AcadDimAngular
