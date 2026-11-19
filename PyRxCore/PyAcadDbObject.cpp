@@ -1795,11 +1795,11 @@ long PyAcadDictionaries::count() const
     return impObj()->GetCount();
 }
 
-PyAcadDictionary PyAcadDictionaries::item(long index) const
+PyAcadObject PyAcadDictionaries::item(long index) const
 {
     if (index >= count())
         throw std::out_of_range{ "IndexError " };
-    return PyAcadDictionary{ impObj()->GetItem(index) };
+    return PyAcadObject{ impObj()->GetItem(index) };
 }
 
 PyAcadDictionary PyAcadDictionaries::add(const std::string& name) const
@@ -1812,7 +1812,7 @@ boost::python::list PyAcadDictionaries::items() const
     PyAutoLockGIL lock;
     boost::python::list _pylist;
     for (const auto& item : impObj()->GetIter())
-        _pylist.append(PyAcadDictionary{ item });
+        _pylist.append(PyAcadObject{ item });
     return _pylist;
 }
 
@@ -1840,15 +1840,15 @@ void PyAcadDictionaries::filliterator()
     m_iterable.clear();
     m_iterable.reserve(items.size());
     for (const auto& item : items)
-        m_iterable.emplace_back(PyAcadDictionary{ item });
+        m_iterable.emplace_back(PyAcadObject{ item });
 }
 
-std::vector<PyAcadDictionary>::iterator PyAcadDictionaries::begin()
+std::vector<PyAcadObject>::iterator PyAcadDictionaries::begin()
 {
     return m_iterable.begin();
 }
 
-std::vector<PyAcadDictionary>::iterator PyAcadDictionaries::end()
+std::vector<PyAcadObject>::iterator PyAcadDictionaries::end()
 {
     filliterator();
     return m_iterable.end();

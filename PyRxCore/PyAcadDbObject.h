@@ -498,7 +498,7 @@ public:
     PyAcadDictionaries(std::shared_ptr<PyIAcadDictionariesImpl> ptr);
     virtual ~PyAcadDictionaries() override = default;
     long                count() const;
-    PyAcadDictionary    item(long index) const;
+    PyAcadObject        item(long index) const;
     PyAcadDictionary    add(const std::string& name) const;
     boost::python::list items() const;
     static PyAcadDictionaries cast(const PyAcadObject& src);
@@ -506,9 +506,9 @@ public:
 public:
     PyIAcadDictionariesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     void filliterator();
-    std::vector<PyAcadDictionary>::iterator begin();
-    std::vector<PyAcadDictionary>::iterator end();
-    std::vector<PyAcadDictionary> m_iterable{ 0 };
+    std::vector<PyAcadObject>::iterator begin();
+    std::vector<PyAcadObject>::iterator end();
+    std::vector<PyAcadObject> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------

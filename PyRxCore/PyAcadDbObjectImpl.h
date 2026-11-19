@@ -394,10 +394,10 @@ public:
     explicit PyIAcadDictionariesImpl(IAcadDictionaries* ptr);
     virtual ~PyIAcadDictionariesImpl() = default;
 
-    PyIAcadDictionaryPtr        GetItem(long ind) const;
+    PyIAcadObjectPtr            GetItem(long ind) const;
     long                        GetCount() const;
     PyIAcadDictionaryPtr        Add(const CString& name) const;
-    PyIAcadDictionaryPtrArray   GetIter() const;
+    PyIAcadObjectPtrArray       GetIter() const;
 
     IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
 };

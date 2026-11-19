@@ -1448,15 +1448,17 @@ PyIAcadDictionaryImpl::PyIAcadDictionaryImpl(IAcadDictionary* ptr)
 CString PyIAcadDictionaryImpl::GetName() const
 {
     _bstr_t bstrVal;
-    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
-    return (LPCTSTR)bstrVal;
+    if (SUCCEEDED(impObj()->get_Name(&bstrVal.GetBSTR())))
+        return (LPCTSTR)bstrVal;
+    return L"<Unnamed>";
 }
 
 CString PyIAcadDictionaryImpl::GetName(const PyIAcadObjectImpl& src) const
 {
     _bstr_t bstrVal;
-    PyThrowBadHr(impObj()->GetName(src.impObj(), &bstrVal.GetBSTR()));
-    return (LPCTSTR)bstrVal;
+    if (SUCCEEDED(impObj()->GetName(src.impObj(), &bstrVal.GetBSTR())))
+        return (LPCTSTR)bstrVal;
+    return L"<Unnamed>";
 }
 
 PyIAcadObjectPtr PyIAcadDictionaryImpl::GetObject(const CString& objectName) const
@@ -1560,12 +1562,12 @@ PyIAcadDictionariesImpl::PyIAcadDictionariesImpl(IAcadDictionaries* ptr)
 {
 }
 
-PyIAcadDictionaryPtr PyIAcadDictionariesImpl::GetItem(long ind) const
+PyIAcadObjectPtr PyIAcadDictionariesImpl::GetItem(long ind) const
 {
     _variant_t vtind{ ind };
     IAcadObject* ptr = nullptr;
     PyThrowBadHr(impObj()->Item(vtind, &ptr));
-    return std::make_unique<PyIAcadDictionaryImpl>((IAcadDictionary*)ptr);
+    return std::make_unique<PyIAcadObjectImpl>(ptr);
 }
 
 long PyIAcadDictionariesImpl::GetCount() const
@@ -1583,24 +1585,31 @@ PyIAcadDictionaryPtr PyIAcadDictionariesImpl::Add(const CString& name) const
     return std::make_unique<PyIAcadDictionaryImpl>((IAcadDictionary*)ptr);
 }
 
-PyIAcadDictionaryPtrArray PyIAcadDictionariesImpl::GetIter() const
+PyIAcadObjectPtrArray PyIAcadDictionariesImpl::GetIter() const
 {
     IUnknownPtr pUnk;
     IEnumVARIANTPtr vtenum;
-    PyIAcadDictionaryPtrArray vec;
+    PyIAcadObjectPtrArray vec;
     PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
     PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+
+    HRESULT hr = S_OK;
+    for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
     {
-        HRESULT hr = S_OK;
-        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        _variant_t item;
+        if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
         {
-            _variant_t item;
-            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
-                vec.emplace_back(std::make_shared<PyIAcadDictionaryImpl>((IAcadDictionary*)(IDispatch*)item));
+            IAcadObjectPtr pObj;
+            if (item.vt == VT_DISPATCH && item.pdispVal != nullptr &&
+                SUCCEEDED(item.pdispVal->QueryInterface(IID_IAcadObject, (void**)&pObj)))
+            {
+                vec.emplace_back(std::make_shared<PyIAcadObjectImpl>(pObj.Detach())); // or pObj.GetInterfacePtr() if ctor AddRefs
+            }
         }
     }
     return vec;
 }
+
 
 IAcadDictionaries* PyIAcadDictionariesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
