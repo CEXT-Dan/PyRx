@@ -34,7 +34,7 @@
 - [x] PyAx.AcadDatabasePreferences
 - [x] PyAx.AcadDictionaries
 - [x] PyAx.AcadDictionary
-- [ ] PyAx.AcadDim3PointAngular
+- [x] PyAx.AcadDim3PointAngular
 - [ ] PyAx.AcadDimAligned
 - [ ] PyAx.AcadDimAngular
 - [ ] PyAx.AcadDimArcLength
