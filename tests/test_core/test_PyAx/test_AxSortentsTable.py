@@ -12,7 +12,7 @@ def is_before(objs: list[Ax.AcadEntity], left: Ax.AcadEntity, right: Ax.AcadEnti
         elif obj == left:
             return True
 
-class TestAcadSortentsTable:
+class TestAxSortentsTable:
     
     @pytest.mark.known_failure_IRX
     @pytest.mark.known_failure_GRX
