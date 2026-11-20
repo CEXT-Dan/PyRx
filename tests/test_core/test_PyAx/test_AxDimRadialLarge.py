@@ -23,7 +23,7 @@ class TestAcadDimRadialLarge:
     def test_create(self):
         ent = self._create_dim()
         assert ent.objectName() == "AcDbRadialDimensionLarge"
-        assert ent.entityType() == Ax.AcEntityName(45)
+        assert ent.entityType() == Ax.AcEntityName.acDimRadialLarge
 
     def test_cast(self):
         ent = self._create_dim()

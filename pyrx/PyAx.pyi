@@ -268,6 +268,7 @@ acDimPrecisionThree: AcDimPrecision  # 3
 acDimPrecisionTwo: AcDimPrecision  # 2
 acDimPrecisionZero: AcDimPrecision  # 0
 acDimRadial: AcEntityName  # 14
+acDimRadialLarge: AcEntityName  # 45
 acDimRotated: AcEntityName  # 15
 acDimScientific: AcDimUnits  # 1
 acDimWindowsDesktop: AcDimUnits  # 8
@@ -1062,6 +1063,7 @@ class AcEntityName(_BoostPythonEnum):
     acLightWeightPolyline: ClassVar[Self]  # 24
     acTable: ClassVar[Self]  # 43
     acDimArcLength: ClassVar[Self]  # 44
+    acDimRadialLarge: ClassVar[Self]  # 45
     acMLeader: ClassVar[Self]  # 48
     acSubDMesh: ClassVar[Self]  # 49
     acSurface: ClassVar[Self]  # 50
