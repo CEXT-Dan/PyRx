@@ -35,7 +35,7 @@
 - [x] PyAx.AcadDictionaries
 - [x] PyAx.AcadDictionary
 - [x] PyAx.AcadDim3PointAngular
-- [ ] PyAx.AcadDimAligned
+- [x] PyAx.AcadDimAligned
 - [ ] PyAx.AcadDimAngular
 - [ ] PyAx.AcadDimArcLength
 - [ ] PyAx.AcadDimDiametric
