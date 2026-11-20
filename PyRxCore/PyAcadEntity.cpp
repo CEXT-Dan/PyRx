@@ -358,6 +358,8 @@ AcEntityNameNative PyAcadEntity::entityType() const
     if (pClass->isDerivedFrom(AcDbSection::desc()))
         return AcEntityNameNative::acSection;
 #endif
+    if (pClass->isDerivedFrom(AcDbArcDimension::desc()))
+        return AcEntityNameNative::acDimArcLength;
     return (AcEntityNameNative)impObj()->GetEntityType();
 }
 
