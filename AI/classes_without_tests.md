@@ -45,7 +45,7 @@
 - [ ] PyAx.AcadDimRotated
 - [ ] PyAx.AcadDimStyle
 - [ ] PyAx.AcadDimStyles
-- [ ] PyAx.AcadDimension *(base)*
+- [x] PyAx.AcadDimension *(base)*
 - [ ] PyAx.AcadDocuments
 - [ ] PyAx.AcadDynamicBlockReferenceProperty
 - [ ] PyAx.AcadExternalReference
