@@ -39,10 +39,10 @@
 - [x] PyAx.AcadDimAngular
 - [x] PyAx.AcadDimArcLength
 - [x] PyAx.AcadDimDiametric
-- [ ] PyAx.AcadDimOrdinate
-- [ ] PyAx.AcadDimRadial
-- [ ] PyAx.AcadDimRadialLarge
-- [ ] PyAx.AcadDimRotated
+- [x] PyAx.AcadDimOrdinate
+- [x] PyAx.AcadDimRadial
+- [x] PyAx.AcadDimRadialLarge
+- [x] PyAx.AcadDimRotated
 - [ ] PyAx.AcadDimStyle
 - [ ] PyAx.AcadDimStyles
 - [x] PyAx.AcadDimension *(base)*
