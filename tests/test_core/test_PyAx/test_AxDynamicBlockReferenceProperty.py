@@ -23,7 +23,19 @@ class TestAxDynamicBlockReferenceProperty:
         count = 0
         for prop in blkref.dynamicBlockProperties():
             for val in prop.allowedValues():
-                count +=1
+                count += 1
                 assert str(val.toString()) in values
         assert count == 4
-        
+
+    def test_set(self, db_dynblock: Db.Database):
+
+        val = Db.EvalVariant("Limit Switch Held Closed")
+
+        blkref = self.get_dynamic_block(db_dynblock)
+        for prop in blkref.dynamicBlockProperties():
+            prop.setValue(val)
+            break
+
+        for prop in blkref.dynamicBlockProperties():
+            assert prop.value() == val
+            break
