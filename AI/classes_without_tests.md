@@ -43,8 +43,8 @@
 - [x] PyAx.AcadDimRadial
 - [x] PyAx.AcadDimRadialLarge
 - [x] PyAx.AcadDimRotated
-- [ ] PyAx.AcadDimStyle
-- [ ] PyAx.AcadDimStyles
+- [x] PyAx.AcadDimStyle
+- [x] PyAx.AcadDimStyles
 - [x] PyAx.AcadDimension *(base)*
 - [ ] PyAx.AcadDocuments
 - [ ] PyAx.AcadDynamicBlockReferenceProperty
