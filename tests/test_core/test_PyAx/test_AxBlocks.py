@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pyrx import Ap, Ax, Ge
-from tests import MEDIA_DIR
 
 
 class TestAxBlocks:
