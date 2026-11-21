@@ -38,7 +38,7 @@ class TestAxBlocks:
     def test_item(self):
         blocks = self.axDoc.blocks()
         count = blocks.count()
-        block = blocks.add(Ge.Point3d.kOrigin, "testblock_item")
+        _block = blocks.add(Ge.Point3d.kOrigin, "testblock_item")
         assert blocks.item(count).name() == "testblock_item"
         assert blocks[count].name() == "testblock_item"
 

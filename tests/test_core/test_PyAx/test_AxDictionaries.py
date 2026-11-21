@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from pyrx import Ap, Ax, Db, Ge
+from pyrx import Ap, Ax, Db
+
 
 # note AcadDictionaries can hold different types
 # we need to check 

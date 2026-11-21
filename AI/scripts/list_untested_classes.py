@@ -330,11 +330,11 @@ def write_outputs(classes, tested, untested, base_flags) -> None:
                      "(check before creating a duplicate)")
     if review_convention:
         lines.append("")
-        lines.append(f"PyAx naming convention — dedicated test files use the module alias `Ax` in place of "
-                     f"the `Acad` prefix (or prepend `Ax` to the class name), e.g. `test_AxEntity.py` ↔ "
-                     f"`AcadEntity`, `test_AxModelSpace.py` ↔ `ModelSpace`, `test_AxAcadSortentsTable.py` ↔ "
-                     f"`AcadSortentsTable`. Each entry below already has a dedicated test file; verify before "
-                     f"creating a duplicate:")
+        lines.append("PyAx naming convention — dedicated test files use the module alias `Ax` in place of "
+                     "the `Acad` prefix (or prepend `Ax` to the class name), e.g. `test_AxEntity.py` ↔ "
+                     "`AcadEntity`, `test_AxModelSpace.py` ↔ `ModelSpace`, `test_AxAcadSortentsTable.py` ↔ "
+                     "`AcadSortentsTable`. Each entry below already has a dedicated test file; verify before "
+                     "creating a duplicate:")
         lines.append("")
         for t in review_convention:
             lines.append(f"- {t['module']}.{t['class']} — convention file: `tests/test_core/{t['evidence_file']}`")

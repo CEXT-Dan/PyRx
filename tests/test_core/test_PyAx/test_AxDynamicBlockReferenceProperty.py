@@ -1,7 +1,6 @@
 from __future__ import annotations
-from optparse import Values
 
-from pyrx import Ax, Db, Ge
+from pyrx import Ax, Db
 
 
 class TestAxDynamicBlockReferenceProperty:
