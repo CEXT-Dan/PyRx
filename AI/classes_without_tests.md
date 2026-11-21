@@ -47,7 +47,7 @@
 - [x] PyAx.AcadDimStyles
 - [x] PyAx.AcadDimension *(base)*
 - [x] PyAx.AcadDocuments
-- [ ] PyAx.AcadDynamicBlockReferenceProperty
+- [x] PyAx.AcadDynamicBlockReferenceProperty
 - [ ] PyAx.AcadExternalReference
 - [ ] PyAx.AcadGroups
 - [ ] PyAx.AcadHyperlink
