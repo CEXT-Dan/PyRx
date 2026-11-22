@@ -401,6 +401,12 @@ bool PyRxApp::init()
         initPyBrxBimModule();
 #endif
         initTestFlags();
+
+        //turn off logging while starting unit tests 
+        std::optional<wxLogNull> logNull;
+        if (testflags) {
+            logNull.emplace();
+        }
         initWxApp();
 
         if (Py_IsInitialized() && setPyConfig())
