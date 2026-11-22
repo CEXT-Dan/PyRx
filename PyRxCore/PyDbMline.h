@@ -54,7 +54,6 @@ public:
     AcDbMline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //PyDbMlineStyle
 void makePyDbMlineStyleWrapper();
