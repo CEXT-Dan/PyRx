@@ -402,12 +402,13 @@ bool PyRxApp::init()
 #endif
         initTestFlags();
 
-        //turn off logging while starting unit tests 
-        std::optional<wxLogNull> logNull;
-        if (testflags) {
-            logNull.emplace();
+        {//turn off logging while starting unit tests 
+            std::optional<wxLogNull> logNull;
+            if (testflags) {
+                logNull.emplace();
+            }
+            initWxApp();
         }
-        initWxApp();
 
         if (Py_IsInitialized() && setPyConfig())
         {
