@@ -534,7 +534,9 @@ int PyApApplication::showModalDialog2(const boost::python::object& window, bool 
 
     applyHostIcon((UINT_PTR)pDlg->GetHandle());
 
+    const bool isResizable = (pDlg->GetWindowStyleFlag() & wxRESIZE_BORDER) != 0;
     wxString dlgKey;
+
     if (persist)
     {
         if (wxConfigBase::Get(false) == nullptr)
@@ -560,42 +562,61 @@ int PyApApplication::showModalDialog2(const boost::python::object& window, bool 
             {
                 wxString group = wxString::Format(wxT("/Dialogs/%s"), dlgKey);
                 long x = -1, y = -1, w = -1, h = -1;
+
+                if (isResizable &&
+                    pCfg->Read(group + wxT("/w"), &w) && pCfg->Read(group + wxT("/h"), &h) &&
+                    w > 0 && h > 0)
+                {
+                    pDlg->SetSize(wxSize(w, h));
+                }
+
                 if (pCfg->Read(group + wxT("/x"), &x) && pCfg->Read(group + wxT("/y"), &y))
                 {
-                    // Multi-monitor safety check: only restore if position is on an active display
-                    if (wxDisplay::GetFromPoint(wxPoint(x, y)) != wxNOT_FOUND)
+                    // Multi-monitor safety check: verify title-bar strip intersects an active display
+                    wxRect titleBarRect(x, y, std::max<long>(pDlg->GetSize().GetWidth(), 100), 40);
+                    bool isVisible = false;
+                    for (unsigned i = 0; i < wxDisplay::GetCount(); ++i)
+                    {
+                        if (wxDisplay(i).GetClientArea().Intersects(titleBarRect))
+                        {
+                            isVisible = true;
+                            break;
+                        }
+                    }
+                    if (isVisible)
                     {
                         pDlg->SetPosition(wxPoint(x, y));
                     }
-                }
-                if (pCfg->Read(group + wxT("/w"), &w) && pCfg->Read(group + wxT("/h"), &h) && w > 0 && h > 0)
-                {
-                    pDlg->SetSize(wxSize(w, h));
                 }
             }
         }
     }
 
-    int res = pDlg->ShowModal();
+    const int res = pDlg->ShowModal();
 
     if (persist && !dlgKey.IsEmpty())
     {
         if (auto* pCfg = wxConfigBase::Get(false))
         {
-            wxPoint pos = pDlg->GetPosition();
-            wxSize sz = pDlg->GetSize();
-
             wxString group = wxString::Format(wxT("/Dialogs/%s"), dlgKey);
-            pCfg->Write(group + wxT("/x"), (long)pos.x);
-            pCfg->Write(group + wxT("/y"), (long)pos.y);
-            pCfg->Write(group + wxT("/w"), (long)sz.GetWidth());
-            pCfg->Write(group + wxT("/h"), (long)sz.GetHeight());
+            const wxPoint pos = pDlg->GetPosition();
+            pCfg->Write(group + wxT("/x"), static_cast<long>(pos.x));
+            pCfg->Write(group + wxT("/y"), static_cast<long>(pos.y));
+
+            if (isResizable)
+            {
+                const wxSize sz = pDlg->GetSize();
+                pCfg->Write(group + wxT("/w"), static_cast<long>(sz.GetWidth()));
+                pCfg->Write(group + wxT("/h"), static_cast<long>(sz.GetHeight()));
+            }
+
             pCfg->Flush();
         }
     }
 
     return res;
 }
+
 
 void PyApApplication::appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
 {
