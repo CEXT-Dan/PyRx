@@ -132,7 +132,7 @@ void makePyApApplictionWrapper()
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
         .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
         .def("showModalDialog", &PyApApplication::showModalDialog1)
-        .def("showModalDialog", &PyApApplication::showModalDialog2, DS.SARGS({ "window: wx.Dialog", "persist: bool = False"})).staticmethod("showModalDialog")
+        .def("showModalDialog", &PyApApplication::showModalDialog2, DS.SARGS({ "window: wx.Dialog", "persist: bool = False" })).staticmethod("showModalDialog")
         .def("listFilesInPath", &PyApApplication::listFilesInPath, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPath")
         .def("listFilesInPathRecursive", &PyApApplication::listFilesInPathRecursive, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPathRecursive")
         .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
@@ -616,7 +616,6 @@ int PyApApplication::showModalDialog2(const boost::python::object& window, bool 
 
     return res;
 }
-
 
 void PyApApplication::appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
 {
