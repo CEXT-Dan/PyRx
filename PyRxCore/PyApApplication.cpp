@@ -8,6 +8,13 @@
 #include "PyRxAppSettings.h"
 #include "ResultBuffer.h"
 
+#include <wx/persist.h>
+#include <wx/persist/toplevel.h>
+#include <wx/fileconf.h>
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
+#include <wx/display.h>
+
 #include "PyRxApp.h"
 #include "dwmapi.h"
 #pragma comment( lib, "dwmapi.lib")
@@ -124,7 +131,8 @@ void makePyApApplictionWrapper()
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
         .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
-        .def("showModalDialog", &PyApApplication::showModalDialog1, DS.SARGS({ "window: wx.Dialog" })).staticmethod("showModalDialog")
+        .def("showModalDialog", &PyApApplication::showModalDialog1)
+        .def("showModalDialog", &PyApApplication::showModalDialog2, DS.SARGS({ "window: wx.Dialog", "persist: bool = False"})).staticmethod("showModalDialog")
         .def("listFilesInPath", &PyApApplication::listFilesInPath, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPath")
         .def("listFilesInPathRecursive", &PyApApplication::listFilesInPathRecursive, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPathRecursive")
         .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
@@ -514,6 +522,79 @@ int PyApApplication::showModalDialog1(const boost::python::object& window)
         return -1;
     applyHostIcon((UINT_PTR)pDlg->GetHandle());
     return pDlg->ShowModal();
+}
+
+int PyApApplication::showModalDialog2(const boost::python::object& window, bool persist)
+{
+    wxDialog* pDlg = nullptr; // we are NOT the owner!
+    if (!wxPyConvertWrappedPtr(window.ptr(), (void**)&pDlg, wxT("wxDialog")))
+        return -1;
+    if (pDlg == nullptr)
+        return -1;
+
+    applyHostIcon((UINT_PTR)pDlg->GetHandle());
+
+    wxString dlgKey;
+    if (persist)
+    {
+        if (wxConfigBase::Get(false) == nullptr)
+        {
+            wxString localAppData;
+            wxGetEnv(wxT("LOCALAPPDATA"), &localAppData);
+            wxFileName cfgPath(localAppData, wxEmptyString);
+            cfgPath.AppendDir(wxT("PyRx"));
+            cfgPath.SetFullName(wxT("PyRxDialogs.ini"));
+            cfgPath.Mkdir(wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL);
+
+            wxConfigBase::Set(new wxFileConfig(wxT("PyRx"), wxEmptyString, cfgPath.GetFullPath()));
+        }
+
+        dlgKey = (pDlg->GetName() != wxDialogNameStr) ? pDlg->GetName() : pDlg->GetTitle();
+        if (!dlgKey.IsEmpty())
+        {
+            // Sanitize slashes so wxConfig doesn't create nested groups
+            dlgKey.Replace(wxT("/"), wxT("_"));
+            dlgKey.Replace(wxT("\\"), wxT("_"));
+
+            if (auto* pCfg = wxConfigBase::Get(false))
+            {
+                wxString group = wxString::Format(wxT("/Dialogs/%s"), dlgKey);
+                long x = -1, y = -1, w = -1, h = -1;
+                if (pCfg->Read(group + wxT("/x"), &x) && pCfg->Read(group + wxT("/y"), &y))
+                {
+                    // Multi-monitor safety check: only restore if position is on an active display
+                    if (wxDisplay::GetFromPoint(wxPoint(x, y)) != wxNOT_FOUND)
+                    {
+                        pDlg->SetPosition(wxPoint(x, y));
+                    }
+                }
+                if (pCfg->Read(group + wxT("/w"), &w) && pCfg->Read(group + wxT("/h"), &h) && w > 0 && h > 0)
+                {
+                    pDlg->SetSize(wxSize(w, h));
+                }
+            }
+        }
+    }
+
+    int res = pDlg->ShowModal();
+
+    if (persist && !dlgKey.IsEmpty())
+    {
+        if (auto* pCfg = wxConfigBase::Get(false))
+        {
+            wxPoint pos = pDlg->GetPosition();
+            wxSize sz = pDlg->GetSize();
+
+            wxString group = wxString::Format(wxT("/Dialogs/%s"), dlgKey);
+            pCfg->Write(group + wxT("/x"), (long)pos.x);
+            pCfg->Write(group + wxT("/y"), (long)pos.y);
+            pCfg->Write(group + wxT("/w"), (long)sz.GetWidth());
+            pCfg->Write(group + wxT("/h"), (long)sz.GetHeight());
+            pCfg->Flush();
+        }
+    }
+
+    return res;
 }
 
 void PyApApplication::appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)

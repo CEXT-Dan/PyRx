@@ -40,6 +40,7 @@ public:
     static boost::python::list  getLoadedModuleNames();
     static void                 acedWatchWinMsgFn(const MSG* message);
     static int                  showModalDialog1(const boost::python::object& window);
+    static int                  showModalDialog2(const boost::python::object& window, bool persist);
     static void                 appregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static int                  getInvisibleBorderWidth(UINT_PTR hwnd);
