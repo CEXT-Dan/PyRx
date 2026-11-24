@@ -49,12 +49,12 @@
 - [x] PyAx.AcadDocuments
 - [x] PyAx.AcadDynamicBlockReferenceProperty
 - [ ] PyAx.AcadExternalReference
-- [ ] PyAx.AcadGroups
+- [x] PyAx.AcadGroups
 - [ ] PyAx.AcadHyperlink
 - [ ] PyAx.AcadHyperlinks
 - [ ] PyAx.AcadIdPair
-- [ ] PyAx.AcadLayer
-- [ ] PyAx.AcadLayers
+- [x] PyAx.AcadLayer
+- [x] PyAx.AcadLayers
 - [ ] PyAx.AcadLayouts
 - [ ] PyAx.AcadLineType
 - [ ] PyAx.AcadLineTypes
