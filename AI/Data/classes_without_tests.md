@@ -50,8 +50,8 @@
 - [x] PyAx.AcadDynamicBlockReferenceProperty
 - [ ] PyAx.AcadExternalReference
 - [x] PyAx.AcadGroups
-- [ ] PyAx.AcadHyperlink
-- [ ] PyAx.AcadHyperlinks
+- [x] PyAx.AcadHyperlink
+- [x] PyAx.AcadHyperlinks
 - [ ] PyAx.AcadIdPair
 - [x] PyAx.AcadLayer
 - [x] PyAx.AcadLayers
