@@ -19,6 +19,10 @@ class TestAxSelectionSetFilter:
     def setup_class(self):
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
+        for layout in self.axDoc.layouts():
+            if layout.modelType():
+                self.axDoc.setActiveLayout(layout)
+                break
         makeEnts(self.axDoc)
         self.axApp.zoomExtents()
 
