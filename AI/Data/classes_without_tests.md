@@ -55,22 +55,22 @@
 - [ ] PyAx.AcadIdPair
 - [x] PyAx.AcadLayer
 - [x] PyAx.AcadLayers
-- [ ] PyAx.AcadLayouts
-- [ ] PyAx.AcadLineType
-- [ ] PyAx.AcadLineTypes
+- [x] PyAx.AcadLayouts
+- [x] PyAx.AcadLineType
+- [x] PyAx.AcadLineTypes
 - [ ] PyAx.AcadMInsertBlock
 - [ ] PyAx.AcadMLeader
 - [ ] PyAx.AcadMLeaderStyle
 - [ ] PyAx.AcadMLine
-- [ ] PyAx.AcadMaterial
-- [ ] PyAx.AcadMaterials
+- [x] PyAx.AcadMaterial
+- [x] PyAx.AcadMaterials
 - [ ] PyAx.AcadMenuBar
 - [ ] PyAx.AcadMenuGroup
 - [ ] PyAx.AcadMenuGroups
 - [ ] PyAx.AcadPViewport
 - [ ] PyAx.AcadPlot
-- [ ] PyAx.AcadPlotConfiguration *(base)*
-- [ ] PyAx.AcadPlotConfigurations
+- [x] PyAx.AcadPlotConfiguration *(base)*
+- [x] PyAx.AcadPlotConfigurations
 - [ ] PyAx.AcadPolyfaceMesh
 - [ ] PyAx.AcadPopupMenu
 - [ ] PyAx.AcadPopupMenuItem
@@ -106,8 +106,8 @@
 - [ ] PyAx.AcadToolbarItem
 - [ ] PyAx.AcadToolbars
 - [ ] PyAx.AcadTrace
-- [ ] PyAx.AcadUCS
-- [ ] PyAx.AcadUCSs
+- [x] PyAx.AcadUCS
+- [x] PyAx.AcadUCSs
 - [ ] PyAx.AcadView
 - [ ] PyAx.AcadViewport
 - [ ] PyAx.AcadViewports
