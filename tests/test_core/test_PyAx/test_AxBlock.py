@@ -145,7 +145,7 @@ class TestAxBlock:
         )
         assert ent.objectName() == "AcDbRotatedDimension"
         assert ent.entityType() == Ax.AcEntityName.acDimRotated
-        
+
     def test_addDimOrdinate(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addDimOrdinate(Ge.Point3d(0, 5, 0), Ge.Point3d(10, 5, 0), 5)
@@ -215,7 +215,6 @@ class TestAxBlock:
         assert ent.objectName() == "AcDb2dPolyline"
         assert ent.entityType() == Ax.AcEntityName.acPolyline2d
 
-
     def test_addRay(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addRay(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0))
@@ -235,14 +234,11 @@ class TestAxBlock:
         assert len(regions) != 0
         assert regions[0].objectName() == "AcDbRegion"
         assert regions[0].entityType() == Ax.AcEntityName.acRegion
-        
 
     def test_addSpline(self):
         axSpace = self.axDoc.modelSpace()
         pnts = [Ge.Point3d(1, 1, 0), Ge.Point3d(5, 5, 0), Ge.Point3d(10, 0, 0)]
-        ent = axSpace.addSpline(
-            pnts, Ge.Vector3d(0.5, 0.5, 0), Ge.Vector3d(0.5, 0.5, 0)
-        )
+        ent = axSpace.addSpline(pnts, Ge.Vector3d(0.5, 0.5, 0), Ge.Vector3d(0.5, 0.5, 0))
         assert ent.objectName() == "AcDbSpline"
         assert ent.entityType() == Ax.AcEntityName.acSpline
 
@@ -261,9 +257,7 @@ class TestAxBlock:
     def test_insertBlock(self):
         axSpace = self.axDoc.modelSpace()
         blockPath = str(MEDIA_DIR / "18X36RP.dwg")
-        ent = axSpace.insertBlock(
-            Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1, 1, 1), 0
-        )
+        ent = axSpace.insertBlock(Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1, 1, 1), 0)
         assert ent.objectName() == "AcDbBlockReference"
         assert ent.entityType() == Ax.AcEntityName.acBlockReference
 
@@ -337,9 +331,7 @@ class TestAxBlock:
 
     def test_addSection(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addSection(
-            Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0), Ge.Vector3d.kZAxis
-        )
+        ent = axSpace.addSection(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0), Ge.Vector3d.kZAxis)
         assert ent.objectName() == "AcDbSection"
         assert int(ent.entityType()) == int(Ax.AcEntityName.acSection)
 
