@@ -82,12 +82,14 @@ void AcGsModelDeleter::operator()(AcGsModel* ptr)
     acgsGetGsManager()->destroyAutoCADModel(ptr);
 }
 
-BlockImageRenderer::BlockImageRenderer(int width, int height, const boost::python::object& rgb)
+
+BlockImageRenderer::BlockImageRenderer(int width, int height, const boost::python::object& rgb, const AcGeVector3d& viewDir)
     : m_width(width)
     , m_height(height)
     , m_isReady(false)
     , m_rgbModel(32)
     , m_initialColor(m_rgbModel.pixelType())
+    , m_viewDir(viewDir.isZeroLength() ? AcGeVector3d::kZAxis : viewDir.normal())
 {
     AcGsManager* gsManager = acgsGetGsManager();
     AcGsKernelDescriptor descriptor;
@@ -143,6 +145,30 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
         return wxImage{};
 
     AcDbExtents ex = calcBlockExtents(*pBlock);
+    if (ex.minPoint().x > ex.maxPoint().x) // guard empty block
+    {
+        m_pView->erase(pBlock);
+        return wxImage{};
+    }
+
+    AcGePoint3d target = ex.minPoint() + (ex.maxPoint() - ex.minPoint()) * 0.5;
+    AcGeVector3d dir = m_viewDir.isZeroLength() ? AcGeVector3d::kZAxis : m_viewDir.normal();
+
+    // Pick an upVector that is never parallel to dir
+    AcGeVector3d up = (std::abs(dir.dotProduct(AcGeVector3d::kZAxis)) > 0.999)
+        ? AcGeVector3d::kYAxis
+        : AcGeVector3d::kZAxis;
+
+#if !defined(_BRXTARGET)
+    up.negate();
+#endif
+
+    // Ensure camera distance is well outside the bounding sphere so near-plane clipping doesn't cull entities
+    double radius = (ex.maxPoint() - ex.minPoint()).length() * 0.5;
+    double dist = std::max(radius * 10.0, 100.0);
+    AcGePoint3d position = target + dir * dist;
+
+    m_pView->setView(position, target, up, m_width, m_height);
     m_pView->zoomExtents(ex.minPoint(), ex.maxPoint());
     m_pView->zoom(zoomFactor);
 
@@ -197,7 +223,6 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     return wximage;
 }
 
-
 //------------------------------------------------------------------------------------
 //GsCore
 void makeGsCoreWrapper()
@@ -212,8 +237,10 @@ void makeGsCoreWrapper()
         .def("setViewParameters", &GsCore::setViewParameters2,
             DS.SARGS({ "vpNum : int", "view : PyGs.View", "bRegen: bool","bRescale: bool","bSync: bool=False" })).staticmethod("setViewParameters")
 
-        .def("getBlockImage", &GsCore::getBlockImage,
-            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImage")
+        .def("getBlockImage", &GsCore::getBlockImage1)
+        .def("getBlockImage", &GsCore::getBlockImage2,
+            DS.SARGS({ "blkid: PyDb.ObjectId" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ...","viewDir:PyGe.Vector3d = ..."}), 
+            arg("bkrgb") = boost::python::object(), arg("viewDir") = AcGeVector3d::kZAxis).staticmethod("getBlockImage")
 
         .def("getBlockImages", &GsCore::getBlockImages,
             DS.SARGS({ "blkids: list[PyDb.ObjectId]" , "sx: int", "sy: int", "zoomFactor: float", "bkrgb: list[int] = ..." }), arg("bkrgb") = boost::python::object()).staticmethod("getBlockImages")
@@ -253,7 +280,7 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
     return acgsSetViewParameters(viewportNumber, obj.impObj(), bRegenRequired, bRescaleRequired, bSyncRequired);
 }
 
-PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
+PyObject* GsCore::getBlockImage1(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
 #if defined(_GRXTARGET270)
     throw PyNotimplementedByHost();
@@ -262,6 +289,24 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcAxDocLock lock;
     PyAutoLockGIL pylock;
     BlockImageRenderer renderer(width, height, pyrgb);
+    if (!renderer.isValid())
+        throw PyErrorStatusException(eInvalidInput);
+    AcDbBlockTableRecordPointer pBlock(blkid.m_id);
+    if (pBlock.openStatus() != eOk)
+        throw PyErrorStatusException(pBlock.openStatus());
+    const auto& image = renderer.render(pBlock, zf);
+    return wxPyConstructObject((void*)new wxImage(image), wxT("wxImage"), true);
+}
+
+PyObject* GsCore::getBlockImage2(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb, AcGeVector3d viewDir)
+{
+#if defined(_GRXTARGET270)
+    throw PyNotimplementedByHost();
+    return nullptr;
+#endif
+    AcAxDocLock lock;
+    PyAutoLockGIL pylock;
+    BlockImageRenderer renderer(x, y, rgb, viewDir);
     if (!renderer.isValid())
         throw PyErrorStatusException(eInvalidInput);
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);

@@ -49,11 +49,13 @@ using AcGsModelPtr = std::unique_ptr <AcGsModel, AcGsModelDeleter>;
 class BlockImageRenderer
 {
 public:
-    BlockImageRenderer(int width, int height, const boost::python::object& rgb);
+    BlockImageRenderer(int width, int height, const boost::python::object& rgb,
+        const AcGeVector3d& viewDir = AcGeVector3d::kZAxis);
     bool isValid() const;
     wxImage render(AcDbBlockTableRecord* pBlock, double zoomFactor);
 
 private:
+    AcGeVector3d m_viewDir = AcGeVector3d::kZAxis;
     AcGsGraphicsKernelPtr m_pGraphicsKernel;
     AcGsDevicePtr m_pOffDevice;
     AcGsViewPtr m_pView;
@@ -77,7 +79,10 @@ public:
     static bool getViewParameters(int vpNum, PyGsView& view);
     static bool setViewParameters1(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired);
     static bool setViewParameters2(int viewportNumber, const PyGsView& obj, bool bRegenRequired, bool bRescaleRequired, bool bSyncRequired);
-    static PyObject* getBlockImage(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
+    static PyObject* getBlockImage1(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb);
+
+    static PyObject* getBlockImage2(const PyDbObjectId& blkid, int x, int y, double zf, boost::python::object& rgb,AcGeVector3d viewDir);
+
     static boost::python::list getBlockImages(const boost::python::list& blkid, int x, int y, double zf, const boost::python::object& rgb);
     static bool displayImage(int viewportNumber, Adesk::Int32 originLeft, Adesk::Int32 originTop, const boost::python::object& image);
     static PyObject* slideToWxImage(const std::string& sld_path, int width, int height, const boost::python::object& rgb);
