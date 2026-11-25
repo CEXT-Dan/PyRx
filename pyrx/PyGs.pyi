@@ -19,7 +19,13 @@ class Core:
     def displayImage(vpNum: int, originLeft: int, originBottom: int, img: wx.Image, /) -> bool: ...
     @staticmethod
     def getBlockImage(
-        blkid: PyDb.ObjectId, sx: int, sy: int, zoomFactor: float, bkrgb: list[int] = ..., /
+        blkid: PyDb.ObjectId,
+        sx: int,
+        sy: int,
+        zoomFactor: float,
+        bkrgb: list[int] = ...,
+        viewDir: PyGe.Vector3d = ...,
+        /,
     ) -> object: ...
     @staticmethod
     def getBlockImages(
