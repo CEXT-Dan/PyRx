@@ -5521,7 +5521,7 @@ void makePyAcadExternalReferenceWrapper()
     class_<PyAcadExternalReference, bases<PyAcadBlockReference>>("AcadExternalReference", boost::python::no_init)
         .def("path", &PyAcadExternalReference::path, DS.ARGS())
         .def("setPath", &PyAcadExternalReference::setPath, DS.ARGS({ "ref_path:str" }))
-        .def("layerPropertyOverrides", &PyAcadExternalReference::layerPropertyOverrides, DS.ARGS({ "layer_overrides:str" }))
+        .def("layerPropertyOverrides", &PyAcadExternalReference::layerPropertyOverrides, DS.ARGS())
         .def("cast", &PyAcadExternalReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadExternalReference::className, DS.SARGS()).staticmethod("className")
         ;
