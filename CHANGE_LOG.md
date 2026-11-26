@@ -1,3 +1,17 @@
+## v3.1.20
+
+pip install cad-pyrx
+
+* Port to AutoCAD 2028 beta
+* add viewdir overload to  image: wx.Image = Gs.Core.getBlockImage( id, w, h, zf, [R,G, B], viewdir)
+* add persist Ap.Application.showModalDialog(dlg,True), persists the dialog location and size in Roaming\PyRx\
+* remove Application::setTitleThemeDark
+* change EditorReactor signatures to match ARX2028
+abortDxfOut(self, db: PyDb.Database, version: PyDb.DwgVersion, /),beginDxfOut(self, db: PyDb.Database, filename: str, version: PyDb.DwgVersion, / ),dxfOutComplete(self, db: PyDb.Database, filename: str, version: PyDb.DwgVersion, /)
+* improve backgroundColor for wxWidgets
+* fix bug in AcadDictionaries
+* fix stubs for AcadDim3PointAngular.
+
 ## v3.1.18
 
 * update to CDT2.0.2
