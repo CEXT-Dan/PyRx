@@ -82,7 +82,6 @@ void AcGsModelDeleter::operator()(AcGsModel* ptr)
     acgsGetGsManager()->destroyAutoCADModel(ptr);
 }
 
-
 BlockImageRenderer::BlockImageRenderer(int width, int height, const boost::python::object& rgb, const AcGeVector3d& viewDir)
     : m_width(width)
     , m_height(height)
@@ -122,12 +121,6 @@ BlockImageRenderer::BlockImageRenderer(int width, int height, const boost::pytho
 
     m_pView->setVisualStyle(acdbGetViewportVisualStyle());
     setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
-#if !defined(_BRXTARGET)
-    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector().negate(), m_width, m_height);
-#else
-    m_pView->setView(m_pView->position(), m_pView->target(), m_pView->upVector(), m_width, m_height);
-#endif// _BRXTARGET
-    setBackgroundColorFromPy(m_pOffDevice.get(), rgb);
     m_isReady = true;
 }
 
@@ -155,10 +148,7 @@ wxImage BlockImageRenderer::render(AcDbBlockTableRecord* pBlock, double zoomFact
     AcGeVector3d dir = m_viewDir.isZeroLength() ? AcGeVector3d::kZAxis : m_viewDir.normal();
 
     // Pick an upVector that is never parallel to dir
-    AcGeVector3d up = (std::abs(dir.dotProduct(AcGeVector3d::kZAxis)) > 0.999)
-        ? AcGeVector3d::kYAxis
-        : AcGeVector3d::kZAxis;
-
+    AcGeVector3d up = (std::abs(dir.dotProduct(AcGeVector3d::kZAxis)) > 0.999) ? AcGeVector3d::kYAxis : AcGeVector3d::kZAxis;
 #if !defined(_BRXTARGET)
     up.negate();
 #endif
