@@ -341,6 +341,7 @@ void makePyAcadBlockWrapper()
         .def("addSolid", &PyAcadBlock::addSolid, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
         .def("addSphere", &PyAcadBlock::addSphere, DS.ARGS({ "center:PyGe.Point3d","radius:float" }))
         .def("addSpline", &PyAcadBlock::addSpline, DS.ARGS({ "points:Collection[PyGe.Point3d]", "startTangent:PyGe.Vector3d","endTangent:PyGe.Vector3d" }))
+        .def("addTrace", &PyAcadBlock::addTrace, DS.ARGS({ "points:Collection[PyGe.Point3d]"}))
         .def("addText", &PyAcadBlock::addText, DS.ARGS({ "textValue:str","insertionPoint:PyGe.Point3d", "height:float" }))
         .def("addTolerance", &PyAcadBlock::addTolerance, DS.ARGS({ "textValue:str","insertionPoint:PyGe.Point3d", "direction:PyGe.Vector3d" }))
         .def("addTorus", &PyAcadBlock::addTorus, DS.ARGS({ "center:PyGe.Point3d","torusRadius:float","tubeRadius:float" }))
@@ -691,6 +692,11 @@ PyAcad3DSolid PyAcadBlock::addSphere(const AcGePoint3d& center, double radius)
 PyAcadSpline PyAcadBlock::addSpline(const boost::python::object& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
 {
     return PyAcadSpline{ impObj()->AddSpline(py_list_to_std_vector<AcGePoint3d>(points), startTangent, endTangent) };
+}
+
+PyAcadTrace PyAcadBlock::addTrace(const boost::python::object& points)
+{
+    return PyAcadTrace{ impObj()->AddTrace(py_list_to_std_vector<AcGePoint3d>(points)) };
 }
 
 PyAcadText PyAcadBlock::addText(const std::string& textValue, const AcGePoint3d& insertionPoint, double height)

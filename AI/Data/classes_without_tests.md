@@ -94,26 +94,26 @@
 - [ ] PyAx.AcadSectionTypeSettings
 - [ ] PyAx.AcadSecurityParams
 - [ ] PyAx.AcadSelectionSets
-- [x] PyAx.AcadShape
+- [ ] PyAx.AcadShape
 - [x] PyAx.AcadSolid
 - [x] PyAx.AcadSpline
 - [ ] PyAx.AcadState
-- [ ] PyAx.AcadTableStyle
-- [ ] PyAx.AcadTextStyle
-- [ ] PyAx.AcadTextStyles
+- [x] PyAx.AcadTableStyle
+- [x] PyAx.AcadTextStyle
+- [x] PyAx.AcadTextStyles
 - [ ] PyAx.AcadTolerance
 - [ ] PyAx.AcadToolbar
 - [ ] PyAx.AcadToolbarItem
 - [ ] PyAx.AcadToolbars
-- [ ] PyAx.AcadTrace
+- [x] PyAx.AcadTrace
 - [x] PyAx.AcadUCS
 - [x] PyAx.AcadUCSs
 - [ ] PyAx.AcadView
 - [ ] PyAx.AcadViewport
 - [ ] PyAx.AcadViewports
 - [ ] PyAx.AcadViews
-- [ ] PyAx.AcadXRecord
-- [ ] PyAx.AcadXline
+- [x] PyAx.AcadXRecord
+- [x] PyAx.AcadXline
 - [ ] PyAx.PaperSpace
 
 ### PyBr (31) — test folder: `test_PyBr`

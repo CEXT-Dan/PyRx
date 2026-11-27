@@ -1402,11 +1402,14 @@ void PyIAcadXRecordImpl::SetName(const CString& val) const
 
 TypedVariants PyIAcadXRecordImpl::GetXRecordData() const
 {
+    // return empty list when XRecord has no data (E_INVALIDARG)
     _variant_t xdataTypes;
     _variant_t xdataValues;
     TypedVariants typedVariants;
     PyThrowBadHr(impObj()->GetXRecordData(&xdataTypes.GetVARIANT(), &xdataValues.GetVARIANT()));
-    PyThrowBadHr(VariantToTypedVariants(xdataTypes, xdataValues, typedVariants));
+    HRESULT res = VariantToTypedVariants(xdataTypes, xdataValues, typedVariants);
+    if (FAILED(res) && res != E_INVALIDARG)
+        PyThrowBadHr(res);
     return typedVariants;
 }
 

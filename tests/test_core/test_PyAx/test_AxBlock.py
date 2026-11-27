@@ -221,6 +221,12 @@ class TestAxBlock:
         assert ent.objectName() == "AcDbRay"
         assert ent.entityType() == Ax.AcEntityName.acRay
 
+    def test_addXline(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addXline(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0))
+        assert ent.objectName() == "AcDbXline"
+        assert ent.entityType() == Ax.AcEntityName.acXline
+
     def test_addRegion(self):
         axSpace = self.axDoc.modelSpace()
         pnts = [
@@ -348,3 +354,18 @@ class TestAxBlock:
         ent = axSpace.addMLeader(pnts)
         assert ent.objectName() == "AcDbMLeader"
         assert ent.entityType() == Ax.AcEntityName.acMLeader
+        
+    def test_addTrace(self):
+        axSpace = self.axDoc.modelSpace()
+
+        pnts = [
+            Ge.Point3d(1, 1, 0),
+            Ge.Point3d(3, 3, 0),
+            Ge.Point3d(5, 3, 0),
+            Ge.Point3d(5, 1, 0),
+        ]
+        ent = axSpace.addTrace(pnts)
+        assert ent.objectName() == "AcDbTrace"
+        assert ent.entityType() == Ax.AcEntityName.acTrace
+        
+    

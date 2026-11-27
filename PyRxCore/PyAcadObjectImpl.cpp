@@ -347,8 +347,8 @@ HRESULT VariantToTypedVariants(const VARIANT& types, const VARIANT& values, Type
 {
     auto xdataTypeLen = VariantGetElementCount(types);
     auto xdataDalueLen = VariantGetElementCount(values);
-    if (xdataTypeLen != xdataDalueLen)
-        return E_FAIL;
+    if (xdataTypeLen == 0 || xdataTypeLen != xdataDalueLen)
+        return E_INVALIDARG;
 
     CComSafeArray<VARIANT> safeVariantArray;
     if (safeVariantArray.Attach(values.parray) == S_OK)

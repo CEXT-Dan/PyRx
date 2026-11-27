@@ -86,6 +86,7 @@ public:
     PyIAcadSolidPtr             AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4) const;
     PyIAcad3DSolidPtr           AddSphere(const AcGePoint3d& center, double radius) const;
     PyIAcadSplinePtr            AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent) const;
+    PyIAcadTracePtr             AddTrace(const std::vector<AcGePoint3d>& points) const;
     PyIAcadTextPtr              AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height) const;
     PyIAcadTolerancePtr         AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction) const;
     PyIAcad3DSolidPtr           AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius) const;
