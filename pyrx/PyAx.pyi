@@ -2067,6 +2067,7 @@ class AcadBlock(PyAx.AcadObject):
         self,
         point: PyGe.Point3d,
         name: str,
+        scale: PyGe.Scale3d,
         rotation: float,
         numRows: int,
         numCols: int,
