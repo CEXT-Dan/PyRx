@@ -84,19 +84,19 @@
 - [ ] PyAx.AcadPreferencesSelection
 - [ ] PyAx.AcadPreferencesSystem
 - [ ] PyAx.AcadPreferencesUser
-- [ ] PyAx.AcadRasterImage
-- [ ] PyAx.AcadRay
-- [ ] PyAx.AcadRegisteredApplication
-- [ ] PyAx.AcadRegisteredApplications
+- [x] PyAx.AcadRasterImage
+- [x] PyAx.AcadRay
+- [x] PyAx.AcadRegisteredApplication
+- [x] PyAx.AcadRegisteredApplications
 - [ ] PyAx.AcadSection
 - [ ] PyAx.AcadSectionManager
 - [ ] PyAx.AcadSectionSettings
 - [ ] PyAx.AcadSectionTypeSettings
 - [ ] PyAx.AcadSecurityParams
 - [ ] PyAx.AcadSelectionSets
-- [ ] PyAx.AcadShape
-- [ ] PyAx.AcadSolid
-- [ ] PyAx.AcadSpline
+- [x] PyAx.AcadShape
+- [x] PyAx.AcadSolid
+- [x] PyAx.AcadSpline
 - [ ] PyAx.AcadState
 - [ ] PyAx.AcadTableStyle
 - [ ] PyAx.AcadTextStyle
