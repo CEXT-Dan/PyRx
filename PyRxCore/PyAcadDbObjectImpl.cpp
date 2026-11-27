@@ -3201,7 +3201,7 @@ PyAcDrawMLeaderOrderType PyIAcadMLeaderStyleImpl::GetDrawMLeaderOrderType() cons
     return (PyAcDrawMLeaderOrderType)rtval;
 }
 
-void PyIAcadMLeaderStyleImpl::SetDrawMLeaderOrderType(PyAcMLeaderContentType val) const
+void PyIAcadMLeaderStyleImpl::SetDrawMLeaderOrderType(PyAcDrawMLeaderOrderType val) const
 {
     PyThrowBadHr(impObj()->put_DrawMLeaderOrderType((AcDrawMLeaderOrderType)val));
 }

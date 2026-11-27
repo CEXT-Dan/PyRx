@@ -3387,7 +3387,7 @@ void makePyAcadMLeaderStyleWrapper()
         .def("contentType", &PyAcadMLeaderStyle::contentType, DS.ARGS())
         .def("setContentType", &PyAcadMLeaderStyle::setContentType, DS.ARGS({ "content_type: PyAx.AcMLeaderContentType" }))
         .def("drawMLeaderOrderType", &PyAcadMLeaderStyle::drawMLeaderOrderType, DS.ARGS())
-        .def("setDrawMLeaderOrderType", &PyAcadMLeaderStyle::setDrawMLeaderOrderType, DS.ARGS({ "order_type: PyAx.AcMLeaderContentType" }))
+        .def("setDrawMLeaderOrderType", &PyAcadMLeaderStyle::setDrawMLeaderOrderType, DS.ARGS({ "order_type: PyAx.AcDrawMLeaderOrderType" }))
         .def("drawLeaderOrderType", &PyAcadMLeaderStyle::drawLeaderOrderType, DS.ARGS())
         .def("setDrawLeaderOrderType", &PyAcadMLeaderStyle::setDrawLeaderOrderType, DS.ARGS({ "order_type: PyAx.AcDrawLeaderOrderType" }))
         .def("maxLeaderSegmentsPoints", &PyAcadMLeaderStyle::maxLeaderSegmentsPoints, DS.ARGS())
@@ -3516,7 +3516,7 @@ PyAcDrawMLeaderOrderType PyAcadMLeaderStyle::drawMLeaderOrderType() const
     return impObj()->GetDrawMLeaderOrderType();
 }
 
-void PyAcadMLeaderStyle::setDrawMLeaderOrderType(PyAcMLeaderContentType val) const
+void PyAcadMLeaderStyle::setDrawMLeaderOrderType(PyAcDrawMLeaderOrderType val) const
 {
     impObj()->SetDrawMLeaderOrderType(val);
 }

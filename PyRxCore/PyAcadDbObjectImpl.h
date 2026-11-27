@@ -753,7 +753,7 @@ public:
     PyAcMLeaderContentType      GetContentType() const;
     void                        SetContentType(PyAcMLeaderContentType val) const;
     PyAcDrawMLeaderOrderType    GetDrawMLeaderOrderType() const;
-    void                        SetDrawMLeaderOrderType(PyAcMLeaderContentType val) const;
+    void                        SetDrawMLeaderOrderType(PyAcDrawMLeaderOrderType val) const;
     PyAcDrawLeaderOrderType     GetDrawLeaderOrderType() const;
     void                        SetDrawLeaderOrderType(PyAcDrawLeaderOrderType val) const;
     int                         GetMaxLeaderSegmentsPoints() const;
