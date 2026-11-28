@@ -71,12 +71,12 @@ class TestAxLayers:
         layers = self._layers()
         items = layers.items()
         assert len(items) == layers.count()
-        assert all(l.className() == "AcadLayer" for l in items)
+        assert all(layer.className() == "AcadLayer" for layer in items)
 
     def test_iter(self):
         layers = self._layers()
         count = layers.count()
-        names = [l.name() for l in layers]
+        names = [layer.name() for layer in layers]
         assert len(names) == count
 
     def test_cast(self):

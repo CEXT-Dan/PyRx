@@ -77,12 +77,12 @@ class TestAxLayouts:
         layouts = self._layouts()
         items = layouts.items()
         assert len(items) == layouts.count()
-        assert all(l.className() == "AcadLayout" for l in items)
+        assert all(layout.className() == "AcadLayout" for layout in items)
 
     def test_iter(self):
         layouts = self._layouts()
         count = layouts.count()
-        names = [l.name() for l in layouts]
+        names = [layout.name() for layout in layouts]
         assert len(names) == count
 
     # --- item methods reachable through the collection ---
